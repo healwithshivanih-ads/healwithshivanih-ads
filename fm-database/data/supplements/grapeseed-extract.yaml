@@ -1,33 +1,224 @@
 slug: grapeseed-extract
-display_name: Grapeseed Extract (PCOs / Proanthocyanidins)
+display_name: Grape Seed Extract (OPCs / proanthocyanidins)
+aliases:
+- grape-seed-extract
+- grape-seed
+- grapeseed
+- vitis-vinifera-seed-extract
+- vitis-vinifera
+- proanthocyanidin
+- proanthocyanidins
+- oligomeric-proanthocyanidins
+- opc
+- opcs
+- procyanidolic-oligomers
+- pcos-proanthocyanidins
+- leucoselect
+- enovita
+- grapeseed-pine-bark-extract
 category: herb
 forms_available:
 - capsule
 - tablet
 typical_dose_range:
   capsule:
-    min: 100
-    max: 200
+    min: 150
+    max: 300
     unit: mg
 timing_options:
-- with_breakfast
 - morning
+- with_breakfast
 take_with_food: optional
+contraindications:
+  conditions:
+  - Hypothyroidism, Hashimoto's, or impaired T4-to-T3 conversion — NOT a thyroid
+    supplement, and the theoretical direction of effect runs the wrong way
+    (catechin lowered TPO and 5'-deiodinase I in rats). If used for a vascular
+    reason, keep the dose modest, space it well away from levothyroxine, and
+    recheck TSH at the next panel
+  - Bleeding disorders, or any recent or planned surgery or dental extraction —
+    stop at least 2 weeks before
+  - Iron deficiency or iron-deficiency anaemia under active correction —
+    proanthocyanidins are condensed tannins and block non-haem iron absorption;
+    finish correcting the iron first, or separate by at least 2 hours
+  - Known reactivity to grapes or grape seeds — check the client's own food
+    intolerance and allergy record before suggesting it, since grape seed appears
+    on some microbiome-derived intolerance panels
+  medications:
+  - Anticoagulants and antiplatelets (warfarin, clopidogrel, aspirin, DOACs) —
+    theoretical additive bleeding risk, clinician sign-off required
+  - Antihypertensives — additive blood-pressure lowering; a client on an ARB, CCB
+    or beta-blocker should keep a home BP log and have the doctor aware
+  - Drugs cleared by CYP3A4 — grape seed inhibits CYP3A4 in vitro; review the full
+    medication list rather than assuming a plant supplement is inert
+  life_stages:
+  - Pregnancy — no data, not studied
+  - Lactation — no data, not studied
+interactions: {}
+pregnancy_safety: unknown
+lactation_safety: unknown
+pregnancy_safety_note: NCCIH states little is known about safety in pregnancy or
+  lactation. Unknown means unknown — do not reason by analogy from "it is just a
+  grape".
 linked_to_topics:
+- hypertension
 - atherosclerosis
-notes_for_coach: 'Interchangeable with pine bark extract (pycnogenol) for microvascular
-  support. Mechanisms: antioxidant activity, improved endothelial cell function. 100
-  mg/day per therapeutic approach. Rich in proanthocyanidins (PCOs).'
-notes_for_client: Grapeseed extract is a potent antioxidant that protects blood vessel
-  walls from damage and supports circulation.
+- cardiovascular-disease-prevention
+- endothelial-dysfunction
+- metabolic-syndrome
+- dyslipidemia
+- nafld
+- diabetic-retinopathy
+- diabetic-neuropathy
+- varicose-veins
+- hemorrhoids
+- macular-degeneration
+- oxidative-stress
+- flavonoids-and-nrf2
+- iron-deficiency-anemia
+linked_to_mechanisms:
+- endothelial-dysfunction
+- oxidative-stress
+- ldl-oxidation
+- nitric-oxide-bioavailability
+- gag-layer-arterial-endothelium-damage
+linked_to_claims:
+- grape-seed-extract-lowers-blood-pressure-modestly
+- grape-seed-extract-lipid-effect-small-and-not-dose-dependent
+- grape-seed-extract-does-not-improve-glycaemia
+- grape-seed-extract-antiplatelet-and-cyp3a4-caution
+- grape-seed-extract-nafld-liver-enzymes-single-rct
+- concentrated-polyphenol-extracts-block-non-haem-iron
+- opc-extracts-lower-oxidative-stress-markers-not-disease-outcomes
+- opc-extract-null-in-blinded-post-viral-fatigue-trial
+- proanthocyanidin-brain-entry-is-monomer-metabolites-only
+- opc-antiviral-evidence-is-in-vitro-and-food-safety-only
+- grape-seed-extract-no-thyroid-benefit-and-a-theoretical-caution
+- grapeseed-pine-bark-extracts-stabilise-microvasculature
+- bilberry-ginkgo-grapeseed-benefit-armd
+- flavonoids-strengthen-rectal-veins
+- murray-armd-flavonoid-extracts-retinal-blood-flow
+consolidates:
+- grapeseed-pine-bark-extract
+notes_for_coach: |
+  WHAT IT IS. Standardised extract of Vitis vinifera seed, sold on its oligomeric
+  proanthocyanidin (OPC / procyanidolic oligomer) content — look for 95% OPCs.
+  Distinct from pine bark extract (Pycnogenol, Pinus pinaster), which the
+  naturopathic textbooks treat as interchangeable because both are OPC sources.
+  They are NOT the same botanical and their trial literature is largely separate:
+  pine bark carries the ADHD, perimenopause and endometriosis evidence, grape seed
+  carries the blood-pressure and lipid meta-analyses. Choose deliberately rather
+  than treating them as substitutes. (The old combined `grapeseed-pine-bark-extract`
+  entry was merged into this one on 2026-09-09 and survives as an alias — a
+  "grape seed OR pine bark" row in a textbook table is not a product a client can
+  buy.)
+
+  WHAT IT ACTUALLY DOES, in descending order of confidence:
+    1. Lowers blood pressure a little. Diastolic effect is the one that survives
+       every meta-analysis; the systolic effect is disputed (-6.1 mmHg in the
+       2016 pooled analysis, null in the better-powered 2022 one).
+    2. Small LDL and triglyceride reduction (~6.6 and ~9.7 mg/dL). No effect on
+       total or HDL cholesterol, and NO dose-response — more does not help.
+    3. Microvascular / venous support (capillary fragility, venous reflux,
+       haemorrhoids, retinopathy). Mechanistically the oldest claim and the one
+       the textbooks lean on; the modern trial base is thinner than the
+       cardiovascular one.
+    4. Liver enzymes and hepatic steatosis in NAFLD — one small RCT, read the
+       direction not the magnitude.
+
+  WHAT IT DOES NOT DO. It does not improve glycaemia. Two placebo-controlled
+  trials in exactly the at-risk populations found no change in HbA1c, fasting
+  glucose or OGTT. It also did not improve flow-mediated dilation in the largest
+  meta-analysis — so do not describe it to a client as "healing the endothelium".
+
+  DOSE. 150-300 mg/day of a 95% OPC extract is the working range. The lipid
+  meta-analysis found effects were BETTER below 300 mg/day with no dose-response
+  above it, so there is no case for high doses. Allow 8-16 weeks before judging.
+
+  WHO IT SUITS. Best fit is a younger or metabolically-loaded client with raised
+  blood pressure and a microvascular concern — retinopathy, easy bruising, poor
+  wound healing, venous symptoms. Poorest fit is someone hoping to move an HbA1c
+  or a cholesterol number, or an older client already on multiple cardiac drugs
+  where the interaction surface outweighs a couple of mmHg.
+
+  SAFETY. Generally well tolerated; GI upset is the usual complaint. The two real
+  cautions are theoretical rather than documented: antiplatelet activity (do not
+  stack on a blood thinner or daily aspirin without the prescriber knowing; stop
+  2 weeks pre-surgery) and CYP3A4 inhibition. Unknown in pregnancy and lactation.
+
+  THE ANTIOXIDANT QUESTION, since it always comes up. Yes, it lowers
+  malondialdehyde and nudges total antioxidant capacity in human trials — that is
+  a real, measurable antioxidant effect. No, that has never been shown to help
+  anyone with an autoimmune condition, an EBV history, MS or lupus: there are
+  ZERO human trials in any of those, the antiviral work is in vitro and does not
+  even cover EBV, and the one properly blinded trial of this compound class in a
+  comparable fatigue-dominant syndrome (PYCNOVID) was flatly null. "Crosses the
+  blood-brain barrier" is a marketing line — the oligomers on the label are barely
+  absorbed, and what reaches brain tissue is small monomer metabolites. See the
+  three linked claims before repeating any of this to a client.
+
+  IRON. This is the caution most likely to be missed on a mostly-vegetarian
+  roster. OPCs are condensed tannins and block non-haem (plant) iron absorption —
+  the dose in a 150-300 mg capsule sits in the band that cut absorption 60-90% in
+  human radio-iron studies. Never co-administer with an iron supplement or an
+  iron-rich meal; separate by at least 2 hours. For a client actively being
+  treated for iron deficiency, correct the iron first and add this afterwards.
+
+  QUALITY. Indian retail OPC products frequently under-deliver the labelled
+  percentage — verify standardisation before recommending a specific product.
+notes_for_client: Grape seed extract is a concentrated antioxidant from grape seeds.
+  It gently supports the walls of your small blood vessels and can nudge blood
+  pressure down a little over a couple of months. It works best alongside — never
+  instead of — the food, movement and sleep changes in your plan, and because it
+  can make blood slightly slower to clot, your doctor should know you are taking it.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
-linked_to_claims: []
 sources:
+- id: zhang-2016-grape-seed-extract-bp-meta-analysis
+  location: Abstract — pooled blood pressure effect
+  quote: >-
+    Overall analyses found significant reductions for SBP and DBP after grape seed
+    extract treatment (SBP -6.077 mmHg, DBP -2.803 mmHg).
+- id: asbaghi-2022-grape-seed-fmd-bp-meta-analysis
+  location: Abstract — nineteen trials
+  quote: >-
+    Grape seed extract supplementation significantly reduced diastolic blood pressure
+    and heart rate but had no significant effects on flow-mediated dilation.
+- id: anjom-shoae-2020-grape-seed-dyslipidaemia-meta-analysis
+  location: Abstract — pooled lipid WMDs and dose-response
+  quote: >-
+    Significant reduction in serum LDL-cholesterol (WMD -0.17 mmol/l) and TAG
+    (WMD -0.11 mmol/l), with no significant effect on total or HDL-cholesterol and no
+    significant dose-response relationship.
+- id: grohmann-2023-precise-bilberry-grape-seed-prediabetes
+  location: Results — blood pressure and null glycaemic outcomes
+  quote: >-
+    Systolic blood pressure decreased by 4.7 mmHg and diastolic by 2.3 mmHg. The
+    combined bilberry and grape seed extract did not affect glucose and cholesterol
+    outcomes.
+- id: mskcc-grape-seed-about-herbs
+  location: Herb-Drug Interactions
+  quote: >-
+    In vitro, grape seed has antiplatelet activity and may increase the risk of adverse
+    effects of anticoagulants/antiplatelets. Clinical relevance has yet to be determined.
+- id: nccih-grape-seed-extract-factsheet
+  location: Safety
+  quote: >-
+    Grape seed extract is generally well tolerated when taken orally or used topically.
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Flavonoids table
+  quote: >-
+    Grapeseed extract or pine bark extract (95% procyanidolic oligomers) 150-300 mg —
+    Systemic antioxidant; best choice for most people younger than 50 years, especially
+    if retinopathy, hypertension, easy bruising, and poor wound healing are present.
+- id: hurrell-1999-polyphenols-inhibit-nonhaem-iron
+  location: Abstract — dose-response results
+  quote: >-
+    Beverages containing 100-400 mg total polyphenols per serving reduced iron
+    absorption by 60-90%.
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Therapeutic Approach — Supplements
   quote: 'Grapeseed or pine bark extract: 100 mg q.d.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-09-09'
+updated_by: shivani

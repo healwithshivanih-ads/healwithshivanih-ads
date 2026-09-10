@@ -1,0 +1,37 @@
+id: asbaghi-2022-grape-seed-fmd-bp-meta-analysis
+title: 'The effect of grape (Vitis vinifera) seed extract supplementation on flow-mediated
+  dilation, blood pressure, and heart rate: a systematic review and meta-analysis of
+  controlled trials with duration- and dose-response analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Asbaghi O
+- Nazarian B
+- Yousefi M
+- Anjom-Shoae J
+- Rasekhi H
+- Sadeghi O
+year: 2022
+publisher: Pharmacological Research 175:105991
+url: https://www.sciencedirect.com/science/article/abs/pii/S1043661821004898
+doi: 10.1016/j.phrs.2021.105991
+notes: |
+  The most rigorous of the grape seed extract cardiovascular meta-analyses:
+  nineteen controlled trials, databases searched to 24 May 2021, with both
+  duration- and dose-response modelling.
+
+  The result is a useful corrective. GSE significantly reduced DIASTOLIC blood
+  pressure and heart rate, but did NOT significantly change flow-mediated
+  dilation (FMD). That matters because FMD is the direct measure of endothelial
+  function — the mechanism the whole naturopathic case for GSE rests on. The
+  hard endothelial endpoint did not move.
+
+  This is the source to cite when someone claims GSE "improves endothelial
+  function". It lowers a blood pressure number; the endothelial claim is
+  mechanistically plausible and not demonstrated at this endpoint.
+
+  Abstract captured; ScienceDirect full text 403 through this container.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

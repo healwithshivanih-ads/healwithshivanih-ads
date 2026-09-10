@@ -1,0 +1,66 @@
+slug: concentrated-polyphenol-extracts-block-non-haem-iron
+statement: |
+  Polyphenols block non-haem iron absorption in a dose-dependent way. In human
+  radio-iron studies, beverages delivering 20-50 mg total polyphenols per serving
+  reduced iron absorption by 50-70%, and 100-400 mg per serving reduced it by
+  60-90% (black tea 79-94%, cocoa 71%). Proanthocyanidins are condensed tannins
+  and belong to the inhibiting class. A standardised grape seed extract capsule at
+  150-300 mg of 95% OPCs delivers roughly 140-285 mg of proanthocyanidins — at or
+  above the dose band that produced 60-90% inhibition — so a concentrated
+  polyphenol supplement taken with an iron-containing meal or an iron tablet
+  should be expected to cut that iron's absorption substantially.
+evidence_tier: plausible_emerging
+rationale: >
+  The underlying human evidence is strong and old: Hurrell's radio-iron work is a
+  well-replicated finding with a clear dose-response and a known mechanism
+  (insoluble Fe-polyphenol complexes forming in the intestinal lumen, the galloyl
+  group binding iron). What keeps this claim at plausible_emerging rather than
+  strong is the extrapolation step — the trials measured BEVERAGES, and applying
+  the same dose-response to a capsule of concentrated extract is an inference from
+  polyphenol quantity, not a direct measurement. The inference is sound enough to
+  act on, since the direction is certain and only the exact magnitude is
+  uncertain, and the mitigation (separate them by two hours) costs nothing.
+coaching_translation: >
+  Concentrated plant-polyphenol supplements — grape seed extract, green tea
+  extract, cocoa flavanols — grab onto the iron in food and stop it being
+  absorbed. This matters far more for vegetarian clients, because plant iron is
+  the kind that gets blocked. The fix is free: keep any polyphenol extract, and
+  tea and coffee too, at least two hours away from iron-rich meals and from an
+  iron supplement. Take the extract away from meals or with a light non-iron
+  snack. For a client who is actively being treated for iron deficiency or anaemia,
+  the simpler answer is to finish correcting the iron first and add the polyphenol
+  extract afterwards.
+caveats:
+- The quantitative data come from beverages; the capsule extrapolation is an
+  inference from dose, not a measured result.
+- Affects NON-HAEM (plant) iron most; haem iron from meat is far less affected —
+  so vegetarian clients carry nearly all of this risk.
+- Adding milk did not reduce the inhibition, so "have it with milk" is not a fix.
+- The same caution applies to tea, coffee and cocoa around iron-rich meals.
+- Vitamin C in the same meal partly counteracts the effect but does not abolish it.
+linked_to_topics:
+- iron-deficiency-anemia
+- oxidative-stress
+linked_to_mechanisms: []
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+- green-tea
+- egcg
+- iron
+out_of_scope_notes: >
+  Diagnosing and treating iron deficiency is clinician scope. Supplement and meal
+  TIMING is squarely coaching scope and is where this claim earns its keep — a
+  coach can and should space polyphenol extracts, tea and coffee away from iron,
+  without needing anyone's sign-off.
+sources:
+- id: hurrell-1999-polyphenols-inhibit-nonhaem-iron
+  location: Abstract — dose-response results
+  quote: >-
+    Beverages containing 20-50 mg total polyphenols per serving reduced iron absorption
+    from a bread meal by 50-70%, whereas beverages containing 100-400 mg total
+    polyphenols per serving reduced iron absorption by 60-90%.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

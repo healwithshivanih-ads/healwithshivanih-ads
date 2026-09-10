@@ -1,0 +1,62 @@
+slug: pycnogenol-fibromyalgia-evidence-is-open-label-only
+statement: |
+  The only human study of an OPC extract in fibromyalgia is open-label. Belcaro et
+  al. gave 26 women Pycnogenol 150 mg/day for 4 weeks against 24 controls on
+  "standard management alone" — no placebo, no blinding — and reported large
+  improvements: 54% decrease in stiffness pain (vs 17% control), 58% in widespread
+  pain (vs 38%), 58% in pain worsening with fatigue (vs 14%), plus less fatigue,
+  mental cloudiness and IBS, and reduced analgesic use. Every outcome is subjective
+  and self-reported, and participants knew what they were taking. The enrolled
+  population was also atypical: "otherwise healthy women (BMI < 26), not using any
+  drug". Read alongside the quadruple-blind null in post-COVID condition, the
+  parsimonious reading is that this trial measured its own design.
+evidence_tier: fm_specific_thin
+rationale: >
+  An unblinded, non-placebo-controlled trial with entirely subjective endpoints in
+  a condition where expectation effects are known to be very large. Four weeks is
+  short for a chronic pain syndrome, and the inclusion criteria (lean, medication-
+  free women) exclude most real fibromyalgia clients, so external validity is poor
+  even if the internal result were trustworthy. This is tiered fm_specific_thin
+  rather than rejected outright because it is a real published trial in a real
+  patient group and the direction may yet prove correct — but it cannot support a
+  recommendation on its own, and it should never be cited without its design.
+coaching_translation: >
+  There is one study of pine bark extract in fibromyalgia and the numbers look
+  impressive, which is why it circulates. The problem is that everyone in it knew
+  whether they were taking the supplement, and everything measured was how people
+  said they felt. That is the setup most likely to produce a big result from
+  nothing. The women enrolled were also lean and on no medication at all, which is
+  not who walks into a fibromyalgia consultation. It is not a reason to tell a
+  client it will not work — it is a reason not to tell her it will, and not to let
+  her spend on it as though it were established.
+caveats:
+- No placebo and no blinding; all endpoints subjective and self-reported.
+- 4-week duration in a chronic condition.
+- Population (lean, drug-free women) is unrepresentative of clinical fibromyalgia.
+- Pycnogenol, not grape seed extract — do not transfer the claim across botanicals.
+- The same research group has published a long series of similarly-designed
+  registry studies on this branded ingredient.
+linked_to_topics:
+- fibromyalgia
+- chronic-fatigue-syndrome
+linked_to_mechanisms:
+- oxidative-stress
+linked_to_supplements:
+- pine-bark-extract
+out_of_scope_notes: >
+  Fibromyalgia management is clinician scope. A coach may support sleep, pacing,
+  graded movement and stress load — all of which have better evidence than this —
+  and should be straight with a client about the quality of the study behind any
+  supplement she has read about.
+sources:
+- id: belcaro-2021-pycnogenol-fibromyalgia
+  location: Abstract — design and results
+  quote: >-
+    Fifty patients with idiopathic fibromyalgia were included: 26 in the Pycnogenol group
+    and 24 served as controls. All subjects were otherwise healthy women (BMI<26), not
+    using any drug. Pycnogenol supplementation was used at the dose of 150 mg/day
+    (4 weeks).
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

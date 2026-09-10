@@ -1,0 +1,75 @@
+slug: grape-seed-extract-nafld-liver-enzymes-single-rct
+statement: |
+  One double-blind placebo-controlled RCT (n = 50, 520 mg/day grape seed extract,
+  2 months) in non-alcoholic fatty liver disease reported falls in ALT
+  (p < 0.001) and AST (p = 0.02, between-group p = 0.03), improvement of
+  moderate/severe steatosis to normal or mild in 60% of patients (between-group
+  p = 0.002), improved insulin and HOMA-IR (p = 0.01), and improved lipids. This
+  is a single unreplicated trial and its blood-pressure arm reports effects
+  (-14.8/-14.4 mmHg in two months) three to five times larger than the pooled
+  meta-analytic estimate for the same compound, which is a reason to treat the
+  whole trial's magnitudes with suspicion.
+evidence_tier: fm_specific_thin
+rationale: >
+  A single small single-centre RCT with no replication. It is included because
+  the direction is mechanistically coherent — hepatic steatosis is an
+  oxidative-stress and lipid-handling problem, and a polyphenol antioxidant
+  plausibly touches it — and because NAFLD is common across this coach's roster.
+  It is tiered fm_specific_thin rather than plausible_emerging specifically
+  because of the internal implausibility signal: a supplement trial reporting a
+  14.8 mmHg systolic drop when three meta-analyses of that same supplement
+  bracket the effect between zero and 6 mmHg is more likely telling us something
+  about the trial's conduct or population than about the molecule. Effect
+  magnitudes from this paper must not be quoted to a client.
+coaching_translation: >
+  There is one small trial suggesting grape seed extract improved liver enzymes
+  and fatty-liver grade over two months. It is early, unreplicated, and some of
+  its numbers look too good, so it is a reason to be curious rather than a reason
+  to prescribe. Fatty liver responds so strongly and so reliably to the things
+  already in a coaching plan — losing visceral weight, cutting fructose and
+  refined carbohydrate, walking after meals, alcohol — that those stay the whole
+  answer. If a client's doctor is already considering an antioxidant for the
+  liver, this is worth their attention; it is not something to start on the
+  strength of one paper.
+caveats:
+- Single trial, n = 50, no replication.
+- Effect sizes across the trial are far outside the meta-analytic range for this
+  compound — read the direction, not the magnitude.
+- Fasting glucose and HbA1c did not change even here.
+- Never a reason to defer or replace the weight, alcohol and refined-carbohydrate
+  work that is the established treatment for NAFLD.
+- Clients with liver disease are often on multiple medications; the CYP3A4
+  interaction question applies with more force here.
+linked_to_topics:
+- nafld
+- insulin-resistance
+- metabolic-syndrome
+- oxidative-stress
+linked_to_mechanisms:
+- oxidative-stress
+- insulin-resistance
+linked_to_supplements:
+- grapeseed-extract
+out_of_scope_notes: >
+  Fatty liver is a medical diagnosis and its management, including any
+  supplement, is clinician scope. Everything that actually works for it —
+  visceral fat loss, fructose and refined-carbohydrate reduction, alcohol
+  reduction, post-meal movement — is in coaching scope, and should be where the
+  conversation goes.
+sources:
+- id: ghanbari-2024-grape-seed-nafld-rct
+  location: Results — liver enzymes and hepatic steatosis
+  quote: >-
+    ALT significantly decreased in the GSE group (p < 0.001) and AST significantly
+    decreased (p = 0.02); 60% of patients with moderate/severe steatosis improved to
+    normal or mild steatosis (p < 0.001), with a significant between-group difference
+    favouring GSE (p = 0.002).
+- id: asbaghi-2022-grape-seed-fmd-bp-meta-analysis
+  location: Abstract — pooled blood pressure effect, for magnitude comparison
+  quote: >-
+    Grape seed extract supplementation significantly reduced diastolic blood pressure
+    and heart rate but had no significant effects on flow-mediated dilation.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

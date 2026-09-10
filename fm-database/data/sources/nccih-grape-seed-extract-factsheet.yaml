@@ -1,0 +1,32 @@
+id: nccih-grape-seed-extract-factsheet
+title: 'Grape Seed Extract: Usefulness and Safety'
+source_type: clinical_guideline
+quality: high
+authors:
+- National Center for Complementary and Integrative Health (NCCIH), US National Institutes
+  of Health
+year: 2024
+publisher: NCCIH, National Institutes of Health
+url: https://www.nccih.nih.gov/health/grape-seed-extract
+notes: |
+  The conservative government-body read, useful as the counterweight to
+  naturopathic textbook enthusiasm.
+
+  Lipids: a 2020 review found grape seed extract may have desirable effects on
+  LDL-cholesterol and triglycerides but NOT on total or HDL cholesterol, with the
+  explicit caution that conclusions are not definite because the studies were
+  small.
+
+  Blood pressure: a 2022 review showed reduced DIASTOLIC but not systolic
+  pressure.
+
+  Everything else: "not much is known about grape seed extract's effects on other
+  conditions." Wound healing and tooth decay have laboratory signal only.
+
+  Safety: generally well tolerated taken orally or used topically. Advises
+  checking with a healthcare provider because herb-drug interactions occur.
+  Little is known about safety in pregnancy or lactation.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

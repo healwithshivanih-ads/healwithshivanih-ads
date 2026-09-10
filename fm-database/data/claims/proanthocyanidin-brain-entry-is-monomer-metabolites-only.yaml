@@ -1,0 +1,63 @@
+slug: proanthocyanidin-brain-entry-is-monomer-metabolites-only
+statement: |
+  The claim that proanthocyanidins "cross the blood-brain barrier" is misleading as
+  usually stated. In a young-swine model dosed for 3 weeks with apple/grape seed
+  extract, the compounds detected in regional brain tissue were monomeric
+  flavan-3-ol and flavonol METABOLITES — catechin- and epicatechin-O-glucuronides,
+  their 3'-O-methyl forms, and quercetin glucuronides. Intact oligomeric
+  procyanidins were not among them. OPCs — the oligomers a "95% OPC" product is
+  sold on — are poorly absorbed, with 88-94% of administered proanthocyanidins
+  recovered in the GI tract and faeces in tracer studies, and reviews now invoke
+  gut-microbiota, enteric-nervous-system and vagal routes precisely because
+  liver-derived OPC metabolites do not cross. The molecule on the label is not the
+  molecule in the brain.
+evidence_tier: plausible_emerging
+rationale: >
+  Direct LC-MS/MS measurement of regional brain tissue in a large animal whose gut
+  physiology and neuroanatomy are much closer to human than a rodent's, which is
+  about as good as this question gets without human brain sampling. Tiered
+  plausible_emerging rather than strong on two counts: it is an animal model, and
+  the claim being made is partly a negative one (absence of oligomers in brain),
+  which is always weaker than a positive detection. The direction is nonetheless
+  clear and consistent with the absorption data.
+coaching_translation: >
+  You will see "crosses the blood-brain barrier" on almost every grape seed and
+  pine bark product, usually with a line about it being better at this than
+  vitamin E or curcumin. What the measurement actually shows is that the big
+  molecules these products are standardised on barely get absorbed at all, and
+  what turns up in brain tissue is small breakdown fragments, in small amounts. So
+  the phrase is not a lie, but it is doing marketing work: it invites a client to
+  believe a brain effect that has never been demonstrated. If a client asks
+  directly, that is the honest answer — and it is a good moment to note that no
+  human trial has shown a cognitive or neurological benefit either.
+caveats:
+- Swine model, not human — no human brain-tissue data exists.
+- Per-region brain concentrations were not captured when this entry was written
+  and must not be quoted.
+- This is a statement about what reaches the brain, NOT a claim that grape seed
+  extract has no systemic effects — the vascular effects are real and are measured
+  in blood vessels, not brain.
+- The apple/grape seed extract was a mixture, so grape-seed-specific attribution is
+  imperfect.
+linked_to_topics:
+- oxidative-stress
+linked_to_mechanisms: []
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+out_of_scope_notes: >
+  Nothing clinical turns on this claim; it exists to keep a marketing line from
+  being repeated as fact in coach- or client-facing writing.
+sources:
+- id: chen-2015-polyphenol-brain-distribution-swine
+  location: Abstract — brain metabolite identification
+  quote: >-
+    Major flavan-3-ol and flavonol metabolites including catechin-O-beta-glucuronide,
+    epicatechin-O-beta-glucuronide, 3'O-methyl-catechin-O-beta-glucuronide,
+    3'O-methyl-epicatechin-O-beta-glucuronide, quercetin-O-beta-glucuronide and
+    O-methyl-quercetin-O-beta-glucuronide were analysed in plasma, urine and regional
+    brain extracts.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

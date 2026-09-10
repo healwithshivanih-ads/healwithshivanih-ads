@@ -1,0 +1,71 @@
+slug: grape-seed-extract-antiplatelet-and-cyp3a4-caution
+statement: |
+  Grape seed extract carries two theoretical drug-interaction risks, both
+  established in vitro and neither demonstrated clinically. It inhibits platelet
+  aggregation (via inhibition of protein tyrosine phosphatase), so it may add to
+  the effect of anticoagulant and antiplatelet drugs — warfarin, clopidogrel,
+  aspirin, DOACs. It also inhibits CYP3A4, so it may raise intracellular
+  concentrations of drugs cleared by that enzyme. Memorial Sloan Kettering states
+  for both that clinical relevance has yet to be determined. Orally it is
+  otherwise generally well tolerated, with stomach ache, nausea and diarrhoea the
+  reported side effects; safety in pregnancy and lactation is unknown.
+evidence_tier: plausible_emerging
+rationale: >
+  The antiplatelet and CYP3A4 mechanisms are well characterised in vitro and
+  reported consistently by both major clinician-facing references (MSKCC About
+  Herbs and NCCIH). What is missing is any clinical signal — no case series of
+  bleeding events, no pharmacokinetic study showing a meaningful change in a
+  CYP3A4 substrate's exposure. Tiered plausible_emerging because that is exactly
+  what the evidence supports: a real mechanism, an unquantified clinical risk.
+  Under-stating it would be unsafe; over-stating it as documented bleeding risk
+  would be inaccurate.
+coaching_translation: >
+  Grape seed extract is well tolerated by most people, but it makes platelets
+  slightly less sticky, so it must not simply be added on top of a blood thinner
+  or daily aspirin without the prescribing doctor knowing. The honest framing to
+  a client is "this is a theoretical interaction, not a documented one — which is
+  why your doctor should sign it off rather than why you should be worried."
+  Also stop it about two weeks before any planned surgery or dental extraction.
+  Since it can slow the clearance of some medicines, a client on several
+  prescriptions should have the whole list reviewed rather than assume it is
+  inert because it is a plant.
+caveats:
+- Anticoagulants and antiplatelets (warfarin, clopidogrel, aspirin, DOACs) —
+  clinician sign-off required, not a coaching decision.
+- Stop at least 2 weeks before surgery or dental extraction.
+- CYP3A4 inhibition means a wide range of medicines could in principle be
+  affected; review the full medication list.
+- Unknown in pregnancy and lactation — no data, so no recommendation.
+- GI upset (stomach ache, nausea, loose stools) is the common tolerability issue.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- hypertension
+linked_to_mechanisms: []
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+out_of_scope_notes: >
+  Deciding whether a client on an anticoagulant, antiplatelet or a CYP3A4-cleared
+  medication may take grape seed extract is squarely clinician scope. The coach's
+  job is the one thing here that IS in scope and matters most: proactively
+  surfacing self-started supplement use to the treating clinician, since clients
+  routinely do not mention plant supplements when asked what medication they take.
+sources:
+- id: mskcc-grape-seed-about-herbs
+  location: Herb-Drug Interactions
+  quote: >-
+    Anticoagulants/Antiplatelets: In vitro, grape seed has antiplatelet activity and
+    may increase the risk of adverse effects of anticoagulants/antiplatelets. Clinical
+    relevance has yet to be determined. Cytochrome P450 3A4 substrates: In vitro, GSE
+    inhibits CYP3A4 and may affect the intracellular concentration of drugs
+    metabolized by this enzyme.
+- id: nccih-grape-seed-extract-factsheet
+  location: Safety
+  quote: >-
+    Grape seed extract is generally well tolerated when taken orally or used
+    topically. Little is known about whether it's safe to use grape seed extract
+    during pregnancy or while breastfeeding.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

@@ -1,0 +1,34 @@
+id: divi-doerge-1996-flavonoid-tpo-inhibition
+title: Inhibition of Thyroid Peroxidase by Dietary Flavonoids
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Divi RL
+- Doerge DR
+year: 1996
+publisher: 'Chemical Research in Toxicology 9(1): 16-23'
+url: https://pubmed.ncbi.nlm.nih.gov/8924586/
+doi: 10.1021/tx950076m
+notes: |
+  The classic structure-activity study behind "flavonoids are goitrogenic": 13
+  commonly consumed flavonoids tested against purified thyroid peroxidase, most
+  potent inhibitors, IC50 0.6-41 microM. The strongest — fisetin, kaempferol,
+  naringenin and quercetin, all carrying a resorcinol moiety — showed
+  mechanism-based (irreversible) inactivation of TPO. Myricetin and naringin
+  inhibited by other kinetics. Biochanin A (isoflavone) also inhibited.
+
+  READ THE PANEL BEFORE CITING THIS AGAINST GRAPE SEED EXTRACT. Every named potent
+  inhibitor is a flavonol, flavanone or isoflavone. Catechin, epicatechin and the
+  procyanidins — the flavan-3-ols that grape seed and pine bark extracts actually
+  consist of — could NOT be confirmed as part of this panel when this entry was
+  written. So this paper establishes that SOME dietary flavonoids inhibit TPO
+  potently; it does not establish that the ones in an OPC supplement do.
+
+  Kept in the catalogue precisely to stop the over-broad version of the claim
+  ("flavonoids inhibit TPO, grape seed is a flavonoid, therefore...") being made
+  in a coach- or client-facing note. The flavan-3-ol-specific evidence is
+  chandra-2013-catechin-thyroid-enzyme-inhibition and it is weaker.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

@@ -1,0 +1,40 @@
+id: ghanbari-2024-grape-seed-nafld-rct
+title: 'The effects of grape seed extract supplementation on cardiovascular risk factors,
+  liver enzymes and hepatic steatosis in patients with non-alcoholic fatty liver disease:
+  a randomised, double-blind, placebo-controlled study'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Ghanbari P
+- Raiesi D
+- Alboebadi R
+- et al.
+year: 2024
+publisher: 'BMC Complementary Medicine and Therapies 24: 192'
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11100156/
+doi: 10.1186/s12906-024-04477-3
+notes: |
+  Double-blind placebo-controlled RCT, n = 50 (25/25), 520 mg/day grape seed
+  extract for 2 months in non-alcoholic fatty liver disease.
+
+  Reported: ALT down (p < 0.001), AST down (p = 0.02, between-group p = 0.03),
+  60% of moderate/severe steatosis improved to normal/mild (between-group
+  p = 0.002), total cholesterol / triglycerides / LDL down and HDL up (all
+  p < 0.05), insulin and HOMA-IR improved (p = 0.01), QUICKI improved
+  (p = 0.002). Fasting blood sugar and HbA1c NOT significantly affected.
+
+  READ THIS TRIAL SCEPTICALLY. The blood pressure arm reports -14.80/-14.40 mmHg
+  in two months from a single supplement. That is a pharmacological-grade effect,
+  three to five times the pooled estimate from meta-analyses of the same compound
+  (Zhang 2016: -6.1/-2.8; Asbaghi 2022: no significant systolic effect at all).
+  A single unreplicated 50-person single-centre trial producing effect sizes far
+  outside the meta-analytic range is more likely to be measuring something about
+  the trial than about the molecule. The direction of the liver-enzyme finding is
+  plausible and interesting; the magnitudes across the board should not be quoted
+  to a client as what to expect.
+
+  Quality graded MODERATE for that reason, despite the RCT design.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

@@ -1,0 +1,65 @@
+slug: opc-extract-null-in-blinded-post-viral-fatigue-trial
+statement: |
+  When an OPC extract was tested in a fatigue-dominant post-viral syndrome under
+  proper blinding, it did nothing. PYCNOVID randomised 153 people with post-COVID
+  condition to Pycnogenol 200 mg/day or placebo for 12 weeks, quadruple-blind.
+  Self-reported health status (EQ-VAS) rose 5.4 units on Pycnogenol and 7.9 units
+  on PLACEBO, with no between-group difference (beta = 0.54, 95% CI -3.45 to 4.54,
+  p = 0.79). The placebo arm did numerically better. This is the appropriate prior
+  for every open-label claim about OPC extracts in fibromyalgia, chronic fatigue,
+  long COVID and post-EBV illness.
+evidence_tier: strong
+rationale: >
+  A quadruple-blind, placebo-controlled, adequately-sized RCT with a
+  pre-registered primary outcome and a published protocol. This is the highest
+  level of evidence available anywhere in the OPC literature, and it is a clean
+  null. Tiered strong for that reason, with the preprint status noted: the design
+  is what is being relied on, and the result is unambiguous rather than borderline.
+  It is held as a general discipline claim rather than a COVID-specific one
+  because the mechanism being tested — an antioxidant improving a subjectively-
+  measured, fatigue-dominant, oxidative-stress-framed syndrome — is identical to
+  the mechanism claimed in fibromyalgia and post-EBV fatigue.
+coaching_translation: >
+  This is the study to remember whenever someone sends a link about pine bark or
+  grape seed extract for fatigue, fibromyalgia or long COVID. Researchers gave 153
+  people with post-COVID fatigue either the real thing or a dummy capsule for
+  three months, and nobody — not the participants, not the doctors, not the
+  statisticians — knew who got which. Both groups improved. The dummy group
+  improved slightly more. That does not mean nothing helps these clients; it means
+  people with fatigue syndromes improve on attention, structure and time, and an
+  unblinded study cannot tell that apart from the pill. Spend the client's money
+  on pacing, sleep and the things with real trials behind them.
+caveats:
+- Preprint; peer review was pending when this entry was written.
+- Tested Pycnogenol specifically at 200 mg/day; grape seed extract was not the
+  intervention, though the compound class is the same.
+- A null in post-COVID condition is strong evidence about this MECHANISM in
+  fatigue syndromes, not formal proof of a null in fibromyalgia or post-EBV
+  illness — those trials have not been run.
+- Says nothing about the vascular indications, where the evidence is separate and
+  genuinely positive.
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- oxidative-stress
+linked_to_mechanisms:
+- post-viral-fatigue
+- ebv-reactivation
+linked_to_supplements:
+- pine-bark-extract
+- grapeseed-extract
+out_of_scope_notes: >
+  Treating post-viral illness is clinician scope. Setting expectations about
+  supplements is not, and this claim exists to let a coach do that with a number
+  rather than a hunch.
+sources:
+- id: pycnovid-2025-pycnogenol-post-covid-rct
+  location: Abstract — primary outcome
+  quote: >-
+    Unadjusted median EQ-VAS increased by 5.4 units and 7.9 units in the Pycnogenol and
+    placebo groups, respectively, with no difference observed between the groups
+    (beta = 0.54, 95% CI -3.45 to 4.54, p = 0.79).
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

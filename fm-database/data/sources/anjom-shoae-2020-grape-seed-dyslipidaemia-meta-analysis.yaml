@@ -1,0 +1,34 @@
+id: anjom-shoae-2020-grape-seed-dyslipidaemia-meta-analysis
+title: 'Effects of grape seed extract on dyslipidaemia: a systematic review and dose-response
+  meta-analysis of randomised controlled trials'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Anjom-Shoae J
+- Milajerdi A
+- Larijani B
+- Esmaillzadeh A
+year: 2020
+publisher: 'British Journal of Nutrition 124(2): 121-134'
+url: https://www.cambridge.org/core/journals/british-journal-of-nutrition/article/effects-of-grape-seed-extract-on-dyslipidaemia-a-systematic-review-and-doseresponse-metaanalysis-of-randomised-controlled-trials/B599121C6BE107077B5BED88BC8F46D2
+doi: 10.1017/S0007114520000914
+notes: |
+  Eleven RCTs, 536 participants, doses 150-2000 mg/day, 4-24 weeks, across the
+  USA, UK, Iran, Australia, Spain, Italy and Japan.
+
+  Pooled weighted mean differences:
+    - LDL-cholesterol  -0.17 mmol/l (95% CI -0.34, -0.01)  -> significant, ~ -6.6 mg/dL
+    - Triglycerides    -0.11 mmol/l (95% CI -0.18, -0.05)  -> significant, ~ -9.7 mg/dL
+    - Total cholesterol -0.18 mmol/l (95% CI -0.38, 0.03)  -> NOT significant
+    - HDL-cholesterol   0.01 mmol/l (95% CI -0.03, 0.04)   -> NOT significant
+
+  The two findings that actually change practice are in the subgroup and
+  dose-response analyses: NO significant linear or non-linear dose-response was
+  found for any lipid outcome, and effects were more favourable at doses UNDER
+  300 mg/day and in participants with BMI under 27. In other words, pushing the
+  dose up does not buy a bigger lipid effect, and the people who respond are the
+  leaner ones — the opposite of who the coach is usually tempted to give it to.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

@@ -1,0 +1,69 @@
+slug: grape-seed-extract-lipid-effect-small-and-not-dose-dependent
+statement: |
+  Grape seed extract has a small but real effect on two lipid fractions and none
+  on the other two. Pooled across 11 RCTs (536 participants, 150-2000 mg/day,
+  4-24 weeks): LDL-cholesterol fell 0.17 mmol/l (95% CI -0.34, -0.01; about
+  6.6 mg/dL) and triglycerides fell 0.11 mmol/l (95% CI -0.18, -0.05; about
+  9.7 mg/dL), while total cholesterol and HDL did not change significantly.
+  Crucially, NO significant linear or non-linear dose-response relationship was
+  found for any lipid outcome, and effects were more favourable at doses UNDER
+  300 mg/day and in participants with BMI under 27.
+evidence_tier: plausible_emerging
+rationale: >
+  A well-conducted dose-response meta-analysis with a consistent independent read
+  from NCCIH, which reached the same split conclusion (LDL and triglycerides yes,
+  total and HDL cholesterol no). The effect sizes are small and the confidence
+  interval for LDL nearly touches zero. The absent dose-response is the most
+  informative finding in the paper and is what keeps this out of the "strong"
+  tier: a genuine pharmacological effect on lipids would normally scale with
+  dose, and this one does not.
+coaching_translation: >
+  Grape seed extract is not a lipid-lowering agent and should not be positioned as
+  one. About 6 mg/dL off LDL and 10 mg/dL off triglycerides is real but small —
+  less than a good week of dietary change, and far less than a client with an
+  ApoB or Lp(a) problem needs. If a client is taking it for their cholesterol,
+  the honest answer is that it is doing very little for that. Two practical
+  points: taking MORE does not help, since the effect does not scale with dose,
+  and the clients who responded were the leaner ones, not the heavier ones — the
+  opposite of the intuition.
+caveats:
+- The LDL confidence interval (-0.34, -0.01) very nearly includes zero.
+- No dose-response means there is no rationale for going above 300 mg/day for lipids.
+- Effects were better below BMI 27 — do not extrapolate to obese clients.
+- Total cholesterol and HDL did not move at all.
+- Never a substitute for a statin or for the dietary and weight work that actually
+  moves ApoB.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+- atherosclerosis
+- metabolic-syndrome
+linked_to_mechanisms:
+- ldl-oxidation
+- oxidative-stress
+linked_to_supplements:
+- grapeseed-extract
+out_of_scope_notes: >
+  Interpreting a client's lipid panel and deciding what to do about it is clinician
+  scope. A coach can say that this supplement is a weak lever for lipids and
+  redirect attention to fibre, saturated fat, weight and movement, which are
+  squarely in scope and considerably more effective.
+sources:
+- id: anjom-shoae-2020-grape-seed-dyslipidaemia-meta-analysis
+  location: Abstract — pooled WMDs and dose-response analysis
+  quote: >-
+    GSE supplementation resulted in a significant reduction in serum LDL-cholesterol
+    (WMD -0.17 mmol/l; 95% CI -0.34, -0.01) and TAG (WMD -0.11 mmol/l; 95% CI -0.18,
+    -0.05), with no significant effect on total or HDL-cholesterol. No significant
+    linear or non-linear dose-response relationships were identified.
+- id: nccih-grape-seed-extract-factsheet
+  location: What the Science Says — Blood Cholesterol
+  quote: >-
+    A 2020 review found grape seed extract may have desirable effects on levels of
+    low-density lipoprotein (LDL) cholesterol and triglycerides but not on total
+    cholesterol and high-density lipoprotein (HDL) cholesterol levels. These
+    conclusions should not be considered definite because the studies were small.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

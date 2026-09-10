@@ -1,0 +1,67 @@
+slug: grape-seed-extract-does-not-improve-glycaemia
+statement: |
+  Grape seed extract does not improve blood sugar control. Two independent
+  placebo-controlled trials in exactly the populations where it would be expected
+  to work both reported null glycaemic results. In the PRECISE cross-over trial
+  (n = 14, BMI > 28, at risk of type 2 diabetes, 300 mg/day grape seed extract
+  plus 250 mg/day bilberry for 12 weeks), blood pressure fell but HbA1c, fasting
+  glucose, oral glucose tolerance, insulin, glucagon and advanced glycation
+  end-product score were all unaffected. In a 50-person NAFLD RCT using 520 mg/day
+  for 2 months, fasting blood sugar and HbA1c were likewise unchanged, even though
+  insulin and HOMA-IR shifted in that trial.
+evidence_tier: plausible_emerging
+rationale: >
+  Two small placebo-controlled trials agreeing on a null result in metabolically
+  at-risk cohorts is reasonable evidence of absence for a clinically meaningful
+  glycaemic effect, and it is corroborated by NCCIH listing no glycaemic
+  indication at all. It is not tiered higher because both trials are small
+  (n = 14 and n = 50), PRECISE used a grape seed / bilberry COMBINATION so the
+  contributions cannot be separated, and the NAFLD trial did move insulin and
+  HOMA-IR — leaving open a possible insulin-sensitivity effect that does not
+  translate into a glucose or HbA1c change over these short durations.
+coaching_translation: >
+  This is a vascular supplement, not a blood-sugar one. If a client with
+  prediabetes or type 2 diabetes is taking grape seed extract expecting it to
+  bring their HbA1c down, it will not, and the trials that looked hardest for
+  that effect did not find it. Say so plainly and put the effort back where the
+  numbers actually move — meal composition, walking after meals, sleep, weight
+  and the medications their doctor manages. The reason someone with diabetes
+  might still be offered it is the blood-pressure and small-blood-vessel angle,
+  not the sugar.
+caveats:
+- Both trials are small; absence of effect at n = 14 and n = 50 is suggestive,
+  not conclusive.
+- PRECISE tested grape seed WITH bilberry, so the two cannot be separated.
+- A short-term insulin/HOMA-IR signal in one trial is unresolved — it did not
+  carry through to glucose or HbA1c.
+- Do not let a client substitute this for metformin, a GLP-1 agonist, or any
+  prescribed glycaemic therapy.
+linked_to_topics:
+- type-2-diabetes
+- prediabetes
+- insulin-resistance
+- blood-sugar-dysfunction
+- metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- grapeseed-extract
+out_of_scope_notes: >
+  Diabetes management is clinician scope throughout. What is squarely in coaching
+  scope here is correcting a client's expectation: a client should not be
+  spending money on, or placing hope in, a supplement for an outcome the trials
+  say it does not deliver.
+sources:
+- id: grohmann-2023-precise-bilberry-grape-seed-prediabetes
+  location: Results — secondary outcomes
+  quote: >-
+    The combined bilberry and grape seed extract did not affect glucose and
+    cholesterol outcomes.
+- id: ghanbari-2024-grape-seed-nafld-rct
+  location: Results — glycaemic outcomes
+  quote: >-
+    Fasting blood sugar and HbA1c were not significantly affected.
+version: 1
+status: active
+updated_at: '2026-09-09'
+updated_by: shivani

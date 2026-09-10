@@ -1,0 +1,35 @@
+id: foshati-2021-grape-seed-oxidative-stress-meta-analysis
+title: 'The effect of grape seed extract supplementation on oxidative stress and inflammation:
+  a systematic review and meta-analysis of controlled trials'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Foshati S
+- Rouhani MH
+year: 2021
+publisher: 'International Journal of Clinical Practice 75(11): e14469'
+url: https://onlinelibrary.wiley.com/doi/10.1111/ijcp.14469
+doi: 10.1111/ijcp.14469
+notes: |
+  23 studies in the systematic review, 19 in the meta-analysis, six biomarkers
+  pooled with random-effects models.
+
+  Headline: grape seed extract significantly DECREASED malondialdehyde (MDA, the
+  standard lipid-peroxidation marker) and produced a MARGINALLY significant
+  increase in total antioxidant capacity (TAC). A separate 2024 meta-analysis
+  (Dehghani, J Food Biochem) reached the same split and added that superoxide
+  dismutase and glutathione peroxidase did NOT change.
+
+  This is the honest evidentiary basis for calling grape seed extract "an
+  antioxidant": it moves lipid-peroxidation biomarkers in humans. What it is NOT
+  is evidence of clinical benefit in any oxidative-stress-associated disease — a
+  biomarker shift is the beginning of a hypothesis, not the end of one.
+
+  Full text was 403 through this container; the study counts and directional
+  results are from the abstract and the publisher record. The pooled inflammatory
+  marker results (CRP, IL-6, TNF-alpha) could NOT be retrieved and are therefore
+  NOT asserted anywhere in this catalogue — do not fill them in from memory.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

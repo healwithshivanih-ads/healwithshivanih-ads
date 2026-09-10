@@ -1,0 +1,77 @@
+slug: opc-extracts-lower-oxidative-stress-markers-not-disease-outcomes
+statement: |
+  Grape seed extract measurably reduces oxidative stress at the BIOMARKER level in
+  humans: pooled across 19 controlled trials it significantly lowered
+  malondialdehyde (MDA, the standard lipid-peroxidation marker) and marginally
+  raised total antioxidant capacity (TAC). A separate 2024 meta-analysis agreed on
+  MDA and TAC and found no change in superoxide dismutase or glutathione
+  peroxidase. That is the whole of the human antioxidant evidence. There are NO
+  human trials of grape seed extract or pine bark extract in Epstein-Barr virus
+  reactivation, Hashimoto's thyroiditis, multiple sclerosis, or systemic lupus
+  erythematosus — the antiviral work is in vitro (HIV-1, hepatitis A and C,
+  norovirus surrogates, enteric viruses) and the autoimmune work is in vitro and
+  in animal models only.
+evidence_tier: plausible_emerging
+rationale: >
+  Two independent meta-analyses agree on the direction and on which markers move,
+  so the biomarker effect itself is reasonably established. The tier is capped at
+  plausible_emerging because a lipid-peroxidation marker is a surrogate: MDA
+  falling has never been shown to translate into a clinical outcome for any of the
+  conditions people reach for antioxidants to treat. The claim is written to make
+  the missing step explicit, because the inferential leap it blocks — "it is an
+  antioxidant, oxidative stress drives autoimmunity, therefore it treats
+  autoimmunity" — is the single most common way this class of supplement gets
+  over-sold. Each link in that chain is plausible; the chain as a whole has never
+  been tested in a human with any of these diagnoses.
+coaching_translation: >
+  Grape seed extract genuinely is an antioxidant in the measurable sense — it
+  lowers a marker of fat oxidation in the blood. What has never been shown is that
+  moving that marker makes anyone with an autoimmune condition, an EBV history, or
+  MS or lupus feel better or do better. Nobody has run that trial. So it is
+  accurate to say "this lowers oxidative stress markers" and inaccurate to say
+  "this helps autoimmune disease" or "this suppresses EBV" — and the second one is
+  the sentence clients actually hear. If a client raises it in that context, the
+  honest answer is that it is a reasonable hypothesis with no human evidence behind
+  it yet, and their money and effort go further on sleep, on the food pattern, and
+  on whatever their specialist is managing.
+caveats:
+- MDA is a surrogate marker; no trial links lowering it to a clinical outcome in
+  autoimmune or post-viral disease.
+- SOD and glutathione peroxidase did NOT change — the antioxidant effect is
+  narrow, not global.
+- Antiviral activity against EBV specifically has not been demonstrated even in
+  vitro; the in-vitro work covers other viruses.
+- In-vitro and rodent autoimmune findings do not transfer — see the null result of
+  the one properly blinded human trial in a comparable syndrome.
+- The pooled inflammatory-marker results (CRP, IL-6, TNF-alpha) could not be
+  retrieved when this entry was written and are deliberately not asserted.
+linked_to_topics:
+- oxidative-stress
+- autoimmune-disease
+- autoimmune-thyroiditis
+- multiple-sclerosis
+- systemic-lupus-erythematosus
+- chronic-inflammation
+linked_to_mechanisms:
+- oxidative-stress
+- ebv-reactivation
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+out_of_scope_notes: >
+  Autoimmune disease and viral reactivation are clinician territory and a coach
+  must not position any supplement as treatment for them. What IS in scope, and
+  more useful, is managing expectations: telling a client plainly that the
+  antioxidant story stops at a blood marker protects them from spending on a
+  hypothesis, and it protects the coaching relationship when the supplement does
+  not deliver what the internet promised.
+sources:
+- id: foshati-2021-grape-seed-oxidative-stress-meta-analysis
+  location: Abstract — pooled biomarker results
+  quote: >-
+    Grape seed extract supplementation caused a significant decrease in malondialdehyde
+    and a marginally significant increase in total antioxidant capacity.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani
