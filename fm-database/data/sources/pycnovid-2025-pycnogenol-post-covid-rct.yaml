@@ -1,0 +1,42 @@
+id: pycnovid-2025-pycnogenol-post-covid-rct
+title: 'Effects of Pycnogenol in post-COVID-19 condition (PYCNOVID): a single-center,
+  placebo-controlled, quadruple-blind, randomized trial'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- University of Zurich / Epidemiology, Biostatistics and Prevention Institute (Fehr JS
+  and colleagues)
+year: 2025
+publisher: medRxiv preprint (protocol published in Trials 2024;25:397)
+url: https://www.medrxiv.org/content/10.1101/2025.06.12.25329489v1
+doi: 10.1101/2025.06.12.25329489
+notes: |
+  The methodologically strongest trial of an OPC extract in a post-viral fatigue
+  syndrome, and it is NULL.
+
+  Single-centre, placebo-controlled, QUADRUPLE-blind RCT. 153 participants
+  randomised between 14 Jun 2023 and 5 Jul 2024: Pycnogenol n = 75, placebo
+  n = 78. Dose 200 mg/day (50 mg four times daily) for 12 weeks. Primary outcome
+  self-reported health status (EQ-VAS) at 12 weeks.
+
+  Result: unadjusted median EQ-VAS rose 5.4 units on Pycnogenol and 7.9 units on
+  PLACEBO — no difference between groups (beta = 0.54, 95% CI -3.45 to 4.54,
+  p = 0.79). The placebo arm did numerically better.
+
+  Why this matters far beyond COVID: this is the closest well-controlled analogue
+  to the claims made for OPC extracts in fibromyalgia, chronic fatigue and
+  EBV-associated illness — a fatigue-dominant, oxidative-stress-framed,
+  subjectively-measured syndrome. Every open-label OPC study in that space
+  reports large benefits. When the same class of compound is put through a
+  quadruple-blind placebo-controlled design in that same kind of population, the
+  effect disappears entirely. Treat that as the prior.
+
+  Preprint status noted deliberately: peer review pending. Quality is graded high
+  on design, which is what is being relied on here.
+
+  Results captured from the abstract; medRxiv full text and PDF were both 403
+  through this container.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

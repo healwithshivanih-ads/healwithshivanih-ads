@@ -1,0 +1,52 @@
+id: chen-2015-polyphenol-brain-distribution-swine
+title: Plasma bioavailability and regional brain distribution of polyphenols from apple/grape
+  seed and bilberry extracts in a young swine model
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Chen TY
+- Kritchevsky J
+- Hargett K
+- Feller K
+- Klobusnik R
+- Song BJ
+- Cooper B
+- Jouni Z
+- Ferruzzi MG
+- Janle EM
+year: 2015
+publisher: 'Molecular Nutrition & Food Research 59(12): 2432-2447'
+url: https://onlinelibrary.wiley.com/doi/10.1002/mnfr.201500224
+doi: 10.1002/mnfr.201500224
+notes: |
+  The study that answers "does grape seed extract cross the blood-brain barrier?"
+  properly, in a large-animal model whose neuroanatomy and gut physiology are far
+  closer to human than a rodent's.
+
+  Weanling pigs dosed 3 weeks with an apple/grape seed extract mixture or bilberry
+  extract; plasma, urine and REGIONAL BRAIN extracts analysed by LC-MS/MS.
+
+  What was found in brain tissue: monomeric flavan-3-ol and flavonol METABOLITES —
+  catechin-O-beta-glucuronide, epicatechin-O-beta-glucuronide, the 3'-O-methyl
+  forms of each, quercetin-O-beta-glucuronide and O-methyl-quercetin-O-beta-
+  glucuronide.
+
+  What was NOT found: intact oligomeric procyanidins. This is the crux. An OPC
+  product is sold on its OLIGOMER content (dimers and larger, "95% OPCs"), and
+  those are poorly absorbed — rodent tracer work recovers 88-94% of administered
+  proanthocyanidins in the GI tract and faeces. The molecules that reach brain
+  tissue are the small monomer conjugates, in low concentrations.
+
+  So the popular claim "proanthocyanidins cross the blood-brain barrier" is not
+  flatly false, but it is not what it sounds like: the thing on the label is not
+  the thing in the brain. Reviews now propose gut-microbiota, enteric-nervous-
+  system and vagal routes to explain OPC extra-digestive effects precisely because
+  liver-derived OPC metabolites do not cross.
+
+  Compound list and design captured from the abstract and publisher record; Wiley
+  full text was 403 through this container, so per-region brain CONCENTRATIONS are
+  not held here and must not be quoted.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

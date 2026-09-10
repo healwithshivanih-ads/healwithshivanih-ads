@@ -1,0 +1,49 @@
+id: belcaro-2021-pycnogenol-fibromyalgia
+title: 'Idiopathic myalgic pain (fibromyalgia): supportive management and prevention
+  with Pycnogenol'
+source_type: peer_reviewed_paper
+quality: low
+authors:
+- Belcaro G
+- Hu S
+- Cesarone MR
+- Dugall M
+- Scipione C
+- Scipione V
+- Hosoi M
+- Ledda A
+- Cornelli U
+- Feragalli B
+- Cotellese R
+year: 2021
+publisher: 'Panminerva Medica 63(1): 46-50'
+url: https://www.minervamedica.it/en/journals/panminerva-medica/article.php?cod=R41Y2021N01A0046
+notes: |
+  The only human study of an OPC extract in fibromyalgia, and the reason this
+  catalogue does not treat fibromyalgia as an indication.
+
+  50 patients with idiopathic fibromyalgia: 26 on Pycnogenol 150 mg/day for
+  4 weeks, 24 on "standard management" alone. Reported large improvements —
+  54% decrease in stiffness pain (vs 17% control), 58% in widespread pain
+  (vs 38%), 58% in pain worsening with fatigue (vs 14%), plus reductions in
+  fatigue, mental cloudiness and IBS symptoms, and reduced analgesic use.
+
+  Quality graded LOW, and the reasons are structural rather than nitpicking:
+    - NO placebo and NO blinding. The comparator is "standard management alone",
+      so participants knew whether they were taking something. Every outcome is
+      subjective and self-reported — the exact configuration in which expectation
+      effects are largest.
+    - The population is not the fibromyalgia population a coach sees: "otherwise
+      healthy women (BMI < 26), not using any drug". Real fibromyalgia clients are
+      typically on several medications and frequently not lean.
+    - 4 weeks is very short for a condition defined by chronicity.
+    - This group publishes a long series of similarly-designed registry studies on
+      the same branded ingredient.
+
+  Read against PYCNOVID (quadruple-blind, placebo-controlled, n = 153, null in a
+  comparable fatigue-dominant syndrome), the most parsimonious reading of this
+  trial is that it measured the open-label design, not the compound.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

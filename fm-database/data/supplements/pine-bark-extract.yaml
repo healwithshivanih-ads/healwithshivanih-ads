@@ -1,5 +1,13 @@
 slug: pine-bark-extract
 display_name: Pine Bark Extract (Pycnogenol)
+aliases:
+- pycnogenol
+- french-maritime-pine-bark
+- maritime-pine-bark-extract
+- pinus-pinaster
+- pinus-maritima
+- pine-bark
+- landes-pine-extract
 category: herb
 forms_available:
 - capsule
@@ -10,29 +18,115 @@ typical_dose_range:
     max: 200
     unit: mg
 timing_options:
-- with_breakfast
 - morning
+- with_breakfast
 - with_lunch
 take_with_food: optional
+contraindications:
+  conditions:
+  - Bleeding disorders, or any recent or planned surgery or dental extraction —
+    stop at least 2 weeks before
+  - Iron deficiency or iron-deficiency anaemia under active correction —
+    procyanidins are condensed tannins and block non-haem iron absorption; finish
+    correcting the iron first, or separate by at least 2 hours
+  - Autoimmune disease — no human trial evidence of benefit; do not position as
+    immune therapy, and note that immunomodulatory claims are unsupported
+  medications:
+  - Anticoagulants and antiplatelets (warfarin, clopidogrel, aspirin, DOACs) —
+    theoretical additive bleeding risk shared across the OPC class, clinician
+    sign-off required
+  - Antihypertensives — additive blood-pressure lowering
+  - Immunosuppressants — no interaction data; clinician decision
+  life_stages:
+  - Pregnancy — no data, not studied
+  - Lactation — no data, not studied
+interactions: {}
+pregnancy_safety: unknown
+lactation_safety: unknown
+pregnancy_safety_note: No adequate human data. Unknown means unknown.
 linked_to_topics:
 - atherosclerosis
+- cardiovascular-disease-prevention
+- hypertension
+- endothelial-dysfunction
 - adhd
 - perimenopause-and-menopause
 - menopause
+- endometriosis
 - tendinopathy
-notes_for_coach: 'Interchangeable with grapeseed extract for PCO/proanthocyanidin content.
-  Same mechanism: antioxidant + endothelial function support. For ADHD: 1 mg/kg body weight
-  daily. For atherosclerosis/general antioxidant: 100 mg daily. Rich in procyanidolic oligomers;
-  broad-spectrum antioxidant. Can be used interchangeably with grapeseed extract for antioxidant
-  purposes.'
-notes_for_client: Pine bark extract (pycnogenol) is a powerful antioxidant flavonoid that
-  protects blood vessel linings and improves circulation.
-evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+- varicose-veins
+- hemorrhoids
+- glaucoma
+- macular-degeneration
+- oxidative-stress
+- fibromyalgia
+- chronic-fatigue-syndrome
+linked_to_mechanisms:
+- endothelial-dysfunction
+- oxidative-stress
+- nitric-oxide-bioavailability
+- post-viral-fatigue
 linked_to_claims:
 - pycnogenol-adhd-antioxidant-benefit
 - murray-pycnogenol-multi-symptom-perimenopause
+- pycnogenol-60mg-cuts-endo-symptoms-33pct-48wks
 - murray-flavonoids-halve-sports-injury-recovery
+- varicose-flavonoids-diosmin-pycnogenol-gotu-kola
+- flavonoids-strengthen-rectal-veins
+- glaucoma-bilberry-pine-bark-reduces-iop
+- murray-armd-flavonoid-extracts-retinal-blood-flow
+- grapeseed-pine-bark-extracts-stabilise-microvasculature
+- grape-seed-extract-lowers-blood-pressure-modestly
+- grape-seed-extract-antiplatelet-and-cyp3a4-caution
+- concentrated-polyphenol-extracts-block-non-haem-iron
+- opc-extracts-lower-oxidative-stress-markers-not-disease-outcomes
+- opc-extract-null-in-blinded-post-viral-fatigue-trial
+- pycnogenol-fibromyalgia-evidence-is-open-label-only
+- proanthocyanidin-brain-entry-is-monomer-metabolites-only
+notes_for_coach: |
+  WHAT IT IS. Standardised extract of French maritime pine (Pinus pinaster) bark,
+  sold overwhelmingly as the branded ingredient Pycnogenol. Like grape seed
+  extract it is an OPC/procyanidin source.
+
+  NOT INTERCHANGEABLE WITH GRAPE SEED EXTRACT — this entry used to say it was, and
+  that was wrong (corrected 2026-09-10). They share a compound class, but they are
+  different species with largely SEPARATE trial literatures, and the choice should
+  follow the evidence rather than the chemistry:
+    - Pine bark carries ADHD, perimenopausal symptoms, endometriosis, venous and
+      sports-injury data.
+    - Grape seed carries the blood-pressure and lipid meta-analyses.
+  Substituting one for the other silently discards the reason the choice was made.
+  Where a source genuinely says "either" (the Pizzorno microvascular and ARMD
+  tables), both are listed on the claim.
+
+  A SECOND ASYMMETRY WORTH KNOWING. Much of the pine bark literature comes from
+  one research group publishing open-label registry studies on the branded
+  ingredient. That does not make it worthless, but it means pine bark's apparent
+  breadth of indication is partly an artefact of who has studied it, not evidence
+  that it does more than grape seed does. Weight the blinded trials accordingly.
+
+  WHAT THE BLINDED EVIDENCE SAYS. The single best-designed trial in this class is
+  PYCNOVID — quadruple-blind, placebo-controlled, n = 153, Pycnogenol 200 mg/day
+  for 12 weeks in post-COVID condition — and it was NULL, with placebo doing
+  numerically better. Hold that as the prior for every fatigue-syndrome claim made
+  for this ingredient, fibromyalgia included.
+
+  DOSE. 50-200 mg/day. ADHD dosing is weight-based at 1 mg/kg/day. General
+  antioxidant / atherosclerosis use around 100 mg/day. Allow 8-12 weeks.
+
+  ANTIOXIDANT CLAIMS. It does lower lipid-peroxidation markers. It has NOT been
+  shown to help any autoimmune condition, EBV reactivation, MS or lupus in any
+  human trial, and "crosses the blood-brain barrier" is a marketing line that
+  overstates what is measurable. See the linked claims before repeating either.
+
+  SAFETY. Same OPC-class cautions as grape seed: antiplatelet activity (clinician
+  sign-off alongside any blood thinner; stop 2 weeks pre-surgery), non-haem iron
+  blockade (space 2 hours from iron), unknown in pregnancy and lactation.
+notes_for_client: Pine bark extract, often sold as Pycnogenol, is a concentrated
+  antioxidant. It supports the walls of small blood vessels and circulation. Because
+  it can make blood slightly slower to clot, your doctor should know you are taking
+  it, and it should be kept a couple of hours away from any iron supplement.
+evidence_tier: plausible_emerging
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Grapeseed and Pine Bark Extracts
@@ -51,9 +145,24 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 2
+- id: pycnovid-2025-pycnogenol-post-covid-rct
+  location: Abstract — primary outcome
+  quote: >-
+    Unadjusted median EQ-VAS increased by 5.4 units and 7.9 units in the Pycnogenol and
+    placebo groups, respectively, with no difference observed between the groups
+    (beta = 0.54, 95% CI -3.45 to 4.54, p = 0.79).
+- id: belcaro-2021-pycnogenol-fibromyalgia
+  location: Abstract — design
+  quote: >-
+    Fifty patients with idiopathic fibromyalgia were included: 26 in the Pycnogenol group
+    and 24 served as controls. All subjects were otherwise healthy women (BMI<26), not
+    using any drug.
+- id: foshati-2021-grape-seed-oxidative-stress-meta-analysis
+  location: Abstract — pooled biomarker results
+  quote: >-
+    Grape seed extract supplementation caused a significant decrease in malondialdehyde
+    and a marginally significant increase in total antioxidant capacity.
+version: 3
 status: active
-updated_at: '2026-08-09'
-updated_by: Shivani
-aliases:
-- pycnogenol
+updated_at: '2026-09-10'
+updated_by: shivani
