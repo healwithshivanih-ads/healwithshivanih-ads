@@ -1,0 +1,68 @@
+slug: opc-antiviral-evidence-is-in-vitro-and-food-safety-only
+statement: |
+  There is no human evidence that grape seed extract reduces viral load or speeds
+  recovery after an infection. The antiviral literature is entirely in vitro or in
+  model food systems: downregulation of HIV-1 entry co-receptors (CCR2b, CCR3,
+  CCR5) in cultured peripheral blood mononuclear cells; attenuated hepatitis C
+  replication in cell culture, synergistic with interferon; suppressed respiratory
+  syncytial virus replication in A549 cells; inhibition of SARS-CoV-2 entry in
+  vitro; and virucidal activity against norovirus surrogates, feline calicivirus
+  and hepatitis A. Much of that last group is FOOD-SAFETY work — extract applied
+  directly to virus on food surfaces or under simulated gastric conditions — which
+  is a fundamentally different exposure from swallowing a capsule and expecting an
+  effect on virus inside the body. Papers in this area explicitly state that
+  clinical trials are still needed. Notably, EBV — the virus most often invoked in
+  functional-medicine practice — has not been tested even in vitro.
+evidence_tier: plausible_emerging
+rationale: >
+  The in-vitro findings are numerous, reproducible across several virus families,
+  and mechanistically varied (receptor downregulation, replication inhibition,
+  direct virucidal action), so the antiviral activity of the molecules in a dish is
+  not in doubt. What is entirely absent is the translational step. Tiered
+  plausible_emerging to reflect exactly that: a real laboratory phenomenon with
+  zero human outcome data. The claim is written primarily to name the
+  food-safety-versus-systemic confusion, which is the specific way this literature
+  gets misread — a study showing grape seed extract inactivates norovirus on
+  lettuce says nothing about taking it for a viral illness.
+coaching_translation: >
+  Grape seed extract kills or blocks viruses in a test tube, and a lot of that work
+  was done to see whether it could be sprayed on food to make it safer — not to see
+  whether swallowing it helps a person who is already infected. Nobody has measured
+  viral load in a human taking it. So if a client wants it to "clear a virus" or
+  bring down a viral load after an infection, the honest answer is that the idea
+  comes from cell studies and has never been tested in people. The one human trial
+  in a post-viral population (Pycnogenol in post-COVID condition) found nothing.
+  Sleep, protein, and time have better support than any supplement here.
+caveats:
+- All findings are in vitro, in cell lines, or in model food systems.
+- Food-surface virucidal activity does not imply systemic antiviral effect.
+- EBV specifically has not been tested, in vitro or otherwise.
+- The HIV co-receptor work was proposed as grounds for a future trial; that trial
+  was never run.
+- The related human trial in a post-viral syndrome was null — see
+  [[opc-extract-null-in-blinded-post-viral-fatigue-trial]].
+linked_to_topics:
+- oxidative-stress
+- chronic-fatigue-syndrome
+linked_to_mechanisms:
+- ebv-reactivation
+- post-viral-fatigue
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+out_of_scope_notes: >
+  Treating an infection is clinician scope. Correcting the expectation is coaching
+  scope, and it matters here because "antiviral" is one of the stickiest labels a
+  supplement can acquire — once a client believes it, they may delay care for
+  something that needs treating.
+sources:
+- id: mskcc-grape-seed-about-herbs
+  location: Mechanism of Action / Purported Uses
+  quote: >-
+    Grape seed extract has been reported to exhibit antiviral activity against human
+    immunodeficiency virus type 1, human enteric virus, human norovirus surrogates,
+    and hepatitis A virus.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

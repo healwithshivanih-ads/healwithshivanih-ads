@@ -1,0 +1,41 @@
+id: chandra-2013-catechin-thyroid-enzyme-inhibition
+title: Catechin induced modulation in the activities of thyroid hormone synthesizing
+  enzymes leading to hypothyroidism
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Chandra AK
+- De N
+year: 2013
+publisher: 'Molecular and Cellular Biochemistry 374(1-2): 37-48'
+url: https://pubmed.ncbi.nlm.nih.gov/23117228/
+doi: 10.1007/s11010-012-1503-8
+notes: |
+  The most directly relevant thyroid-safety data for the flavan-3-ol class that
+  grape seed and pine bark extracts are built from — because it tests CATECHIN
+  itself rather than the flavonols usually cited in this literature.
+
+  Rat work, in vitro and in vivo. Catechin decreased the activities of thyroid
+  peroxidase (TPO, the iodination enzyme) and thyroidal 5'-deiodinase I (the
+  T4-to-T3 conversion enzyme). In vivo: serum T3 and T4 fell substantially, TSH
+  rose significantly, and thyroid histology showed marked follicular hypertrophy
+  and/or hyperplasia with depleted colloid — the classic goitrogenic picture. The
+  same group's companion work found goitrogenic/antithyroid potential for whole
+  green tea extract in proportion to its catechin content.
+
+  Held here as a CAUTION signal, not a demonstrated human harm. It is rat data at
+  doses that may not be reachable from a supplement, and the human study that
+  would settle it has not been done (see
+  kumar-2016-green-tea-catechin-one-year-safety-rct, which ran EGCG 400 mg/day for
+  a year and did not measure thyroid function at all).
+
+  Why it belongs on the grape seed and pine bark entries: it is the reason the
+  answer to "will this help my thyroid?" is not merely "no evidence" but "no
+  evidence, and the theoretical direction of effect runs the other way."
+
+  Captured from the abstract and publisher record; full text not retrievable
+  through this container, so per-dose effect sizes are not held here.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

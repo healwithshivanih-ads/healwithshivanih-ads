@@ -1,0 +1,34 @@
+id: kumar-2016-green-tea-catechin-one-year-safety-rct
+title: 'Randomized, placebo-controlled trial evaluating the safety of one-year administration
+  of green tea catechins'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Kumar NB
+- Pow-Sang J
+- Spiess PE
+- et al.
+year: 2016
+publisher: 'Oncotarget 7(43): 70794-70802'
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC5340117/
+doi: 10.18632/oncotarget.12222
+notes: |
+  The longest and best-controlled human safety trial of concentrated catechins:
+  97 men (49 treatment / 48 placebo) on EGCG 400 mg/day for ONE YEAR, with monthly
+  liver function monitoring. No treatment-related adverse effects; grade I-II liver
+  toxicity not significantly different from placebo; no difference in PT/PTT
+  bleeding markers; one grade III nausea possibly related.
+
+  Held here for a NEGATIVE reason: thyroid function was NOT MEASURED. No TSH, no
+  T3, no T4, anywhere in the protocol.
+
+  That absence is the honest answer to "is the catechin-goitrogen signal real in
+  people?" — nobody looked. A year of high-dose catechins in 49 men produced no
+  visible safety problem, which is mildly reassuring, but a subclinical shift in
+  TSH would have gone completely undetected by this design. Cite it for what it
+  shows (broad tolerability, no bleeding signal) and for what it does not (any
+  information whatsoever about thyroid).
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani

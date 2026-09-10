@@ -31,6 +31,11 @@ timing_options:
 take_with_food: optional
 contraindications:
   conditions:
+  - Hypothyroidism, Hashimoto's, or impaired T4-to-T3 conversion — NOT a thyroid
+    supplement, and the theoretical direction of effect runs the wrong way
+    (catechin lowered TPO and 5'-deiodinase I in rats). If used for a vascular
+    reason, keep the dose modest, space it well away from levothyroxine, and
+    recheck TSH at the next panel
   - Bleeding disorders, or any recent or planned surgery or dental extraction —
     stop at least 2 weeks before
   - Iron deficiency or iron-deficiency anaemia under active correction —
@@ -87,6 +92,8 @@ linked_to_claims:
 - opc-extracts-lower-oxidative-stress-markers-not-disease-outcomes
 - opc-extract-null-in-blinded-post-viral-fatigue-trial
 - proanthocyanidin-brain-entry-is-monomer-metabolites-only
+- opc-antiviral-evidence-is-in-vitro-and-food-safety-only
+- grape-seed-extract-no-thyroid-benefit-and-a-theoretical-caution
 - grapeseed-pine-bark-extracts-stabilise-microvasculature
 - bilberry-ginkgo-grapeseed-benefit-armd
 - flavonoids-strengthen-rectal-veins

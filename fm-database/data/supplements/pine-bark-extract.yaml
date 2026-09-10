@@ -24,6 +24,11 @@ timing_options:
 take_with_food: optional
 contraindications:
   conditions:
+  - Hypothyroidism, Hashimoto's, or impaired T4-to-T3 conversion — NOT a thyroid
+    supplement, and the theoretical direction of effect runs the wrong way
+    (catechin lowered TPO and 5'-deiodinase I in rats). If used for a vascular
+    reason, keep the dose modest, space it well away from levothyroxine, and
+    recheck TSH at the next panel
   - Bleeding disorders, or any recent or planned surgery or dental extraction —
     stop at least 2 weeks before
   - Iron deficiency or iron-deficiency anaemia under active correction —
@@ -83,6 +88,8 @@ linked_to_claims:
 - opc-extract-null-in-blinded-post-viral-fatigue-trial
 - pycnogenol-fibromyalgia-evidence-is-open-label-only
 - proanthocyanidin-brain-entry-is-monomer-metabolites-only
+- opc-antiviral-evidence-is-in-vitro-and-food-safety-only
+- grape-seed-extract-no-thyroid-benefit-and-a-theoretical-caution
 notes_for_coach: |
   WHAT IT IS. Standardised extract of French maritime pine (Pinus pinaster) bark,
   sold overwhelmingly as the branded ingredient Pycnogenol. Like grape seed

@@ -1,0 +1,87 @@
+slug: grape-seed-extract-no-thyroid-benefit-and-a-theoretical-caution
+statement: |
+  No human study has tested grape seed extract or pine bark extract for thyroid
+  function. The entire thyroid literature for these extracts is rat work in which
+  grape seed extract blunted DRUG-induced thyroid disruption (L-thyroxine,
+  carbimazole, dexamethasone), published in low-tier journals — which is not
+  evidence of benefit in human hypothyroidism or Hashimoto's. The theoretical
+  direction of effect in fact runs the OTHER way: catechin, a major constituent of
+  these extracts, decreased thyroid peroxidase and thyroidal 5'-deiodinase I
+  activity in rat thyroid, with falling T3 and T4, rising TSH, and goitrous
+  follicular hypertrophy. The human trial that would settle this does not exist —
+  the best long-term human catechin safety study (EGCG 400 mg/day for one year,
+  n = 97) did not measure thyroid function at all.
+evidence_tier: fm_specific_thin
+rationale: >
+  Tiered fm_specific_thin because every strand is thin in a different way. The
+  "benefit" strand is rat studies of drug-induced thyroid injury in weak journals,
+  which cannot support a human recommendation. The "caution" strand is better
+  quality but still rodent, and at doses whose human relevance is unknown. An
+  important precision point keeps the caution from being overstated: the famous
+  Divi and Doerge TPO panel found potent inhibition by fisetin, kaempferol,
+  naringenin and quercetin — flavonols, flavanones and isoflavones, NOT the
+  flavan-3-ols that grape seed and pine bark actually consist of. So the sweeping
+  "flavonoids inhibit TPO, therefore grape seed does" argument does not hold; the
+  flavan-3-ol-specific evidence is the narrower catechin work alone.
+coaching_translation: >
+  There is no reason to give grape seed or pine bark extract for a thyroid problem,
+  and a mild reason to be careful with it. Nobody has ever tested it for thyroid in
+  a human. In rats, catechin — which these extracts are largely made of — lowered
+  the two enzymes the thyroid needs, one to make hormone and one to convert T4 into
+  active T3, and the animals became hypothyroid. That is rat data at doses we
+  cannot map onto a capsule, so it is not a scare. But it is enough that for a
+  client with Hashimoto's, an underactive thyroid, or poor T4-to-T3 conversion, the
+  sensible position is: not for the thyroid, and if she wants it for her blood
+  pressure or her veins, keep the dose modest, keep it well away from her
+  levothyroxine, and recheck TSH at the next panel rather than assume nothing
+  changed.
+caveats:
+- No human data in either direction — this is rodent evidence throughout.
+- The strong TPO-inhibition data is for a DIFFERENT flavonoid subclass; do not
+  transfer it wholesale to flavan-3-ols.
+- Rat doses may be far above what a 150-300 mg supplement delivers.
+- Levothyroxine absorption is separately vulnerable to polyphenols and to iron and
+  calcium — spacing matters regardless of any TPO question.
+- A year of EGCG 400 mg/day in men produced no visible safety signal, but thyroid
+  was never measured, so subclinical shifts would not have been seen.
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- thyroid-dysfunction
+- oxidative-stress
+linked_to_mechanisms:
+- thyroid-conversion-impairment
+- thyroid-autoimmunity
+- oxidative-stress
+linked_to_supplements:
+- grapeseed-extract
+- pine-bark-extract
+out_of_scope_notes: >
+  Thyroid diagnosis, dosing and monitoring are clinician scope throughout. What a
+  coach can and should do: not present these extracts as thyroid support, keep any
+  polyphenol extract spaced from levothyroxine, and flag self-started supplement
+  use to the prescribing doctor before the next thyroid panel so an unexplained TSH
+  drift is not chased in the dark.
+sources:
+- id: chandra-2013-catechin-thyroid-enzyme-inhibition
+  location: Abstract — enzyme and hormone findings
+  quote: >-
+    Catechin decreased the activities of thyroid peroxidase and thyroidal
+    5'-deiodinase I, while substantial decrease in serum T3 and T4 levels coupled with
+    significant elevation of serum TSH were noted.
+- id: divi-doerge-1996-flavonoid-tpo-inhibition
+  location: Abstract — structure-activity panel
+  quote: >-
+    Most flavonoids tested were potent inhibitors of TPO with IC50 values of 0.6-41
+    microM. Inhibition by the more potent compounds, fisetin, kaempferol, naringenin
+    and quercetin, which contain a resorcinol moiety, was consistent with
+    mechanism-based inactivation of TPO.
+- id: kumar-2016-green-tea-catechin-one-year-safety-rct
+  location: Methods — outcome measures
+  quote: >-
+    Monthly liver function tests were performed; the study protocol did not include
+    thyroid function tests.
+version: 1
+status: active
+updated_at: '2026-09-10'
+updated_by: shivani
