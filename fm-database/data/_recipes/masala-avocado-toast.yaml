@@ -85,30 +85,30 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 118
-  protein_g: 1.6
-  carbs_g: 7.4
-  fat_g: 10.5
-  fibre_g: 5.0
-  iron_mg: 0.5
-  calcium_mg: 11.9
-  magnesium_mg: 23.0
-  zinc_mg: 0.5
-  potassium_mg: 386
-  folate_ug: 60.9
+  kcal: 194
+  protein_g: 5.3
+  carbs_g: 20.3
+  fat_g: 11.6
+  fibre_g: 6.8
+  iron_mg: 1.3
+  calcium_mg: 60.8
+  magnesium_mg: 46.1
+  zinc_mg: 1.0
+  potassium_mg: 462
+  folate_ug: 73.5
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 12.7
-  omega3_mg: 77.8
-nutrient_coverage_pct: 75.4
+  omega3_mg: 117
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: bread-whole-wheat
+  g: 60.0
 - i: 1
   key: avocado
   g: 140.0
@@ -125,13 +125,12 @@ nutrient_lines:
   key: lemon-juice
   g: 5.083333333333333
 - i: 6
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 0.0
 - i: 7
   key: coriander-fresh
   g: 1.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: मसाला एवोकाडो टोस्ट

@@ -74,29 +74,29 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 156
-  protein_g: 0.8
-  carbs_g: 14.1
-  fat_g: 11.7
-  fibre_g: 1.7
-  iron_mg: 0.2
-  calcium_mg: 9.5
-  magnesium_mg: 16.7
-  zinc_mg: 0.1
-  potassium_mg: 220
-  folate_ug: 12.4
+  kcal: 240
+  protein_g: 4.8
+  carbs_g: 27.7
+  fat_g: 13.3
+  fibre_g: 4.1
+  iron_mg: 1.1
+  calcium_mg: 69.0
+  magnesium_mg: 45.4
+  zinc_mg: 0.8
+  potassium_mg: 303
+  folate_ug: 25.9
   b12_ug: 0.0
   vit_d_ug: 0.1
-  vit_c_mg: 5.2
-  omega3_mg: 58.8
-nutrient_coverage_pct: 71.3
+  vit_c_mg: 5.3
+  omega3_mg: 394
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: bread-whole-wheat
+  g: 60.0
 - i: 1
   key: butter
   g: 28.375
@@ -107,10 +107,9 @@ nutrient_lines:
   key: cinnamon
   g: 0.625
 - i: 4
-  key: null
-  g: 30.0
+  key: chia-seeds
+  g: 3.3333333333333335
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: पीनट बटर केला टोस्ट

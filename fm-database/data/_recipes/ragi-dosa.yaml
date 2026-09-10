@@ -97,10 +97,10 @@ kcal_total: 450
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 319
+  kcal: 439
   protein_g: 8.0
   carbs_g: 65.2
-  fat_g: 2.5
+  fat_g: 16.1
   fibre_g: 8.4
   iron_mg: 3.6
   calcium_mg: 276
@@ -111,8 +111,8 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 7.3
-  omega3_mg: 31.3
-nutrient_coverage_pct: 92.0
+  omega3_mg: 36.8
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - iron
@@ -120,7 +120,7 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 kitchen_tested: false
 aliases:
 - Nachni dosa
@@ -150,8 +150,8 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 - i: 9
   key: water
   g: 0.0
@@ -159,13 +159,14 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: रागी डोसा
     steps:
-    - रागी आटा, चावल आटा, दही, पानी फेंटकर पतला गुठली-रहित घोल बनाएँ — सामान्य डोसा से पतला।
+    - रागी आटा, चावल आटा, दही, पानी फेंटकर पतला गुठली-रहित घोल बनाएँ — सामान्य डोसा
+      से पतला।
     - प्याज़, हरी मिर्च, जीरा, धनिया, नमक मिलाएँ; 10 मिनट रखें।
     - तवा गरम करें; फैलाने के बजाय पतला घोल ऊँचाई से घेरे में डालें, खाली जगह भरें।
-    - किनारे तेल डालकर कुरकुरा-जालीदार होने तक पकाएँ; पैन गरम हो तो पलटने की ज़रूरत नहीं।
+    - किनारे तेल डालकर कुरकुरा-जालीदार होने तक पकाएँ; पैन गरम हो तो पलटने की ज़रूरत
+      नहीं।
     - तवे से सीधे परोसें — रखे रहने पर नरम हो जाता है।

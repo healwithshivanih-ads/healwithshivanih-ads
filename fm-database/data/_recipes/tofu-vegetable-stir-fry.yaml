@@ -101,20 +101,20 @@ kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
   kcal: 199
-  protein_g: 12.2
+  protein_g: 12.1
   carbs_g: 15.1
-  fat_g: 11.4
-  fibre_g: 4.9
+  fat_g: 11.3
+  fibre_g: 4.8
   iron_mg: 2.8
   calcium_mg: 248
-  magnesium_mg: 70.8
+  magnesium_mg: 70.0
   zinc_mg: 1.3
-  potassium_mg: 517
-  folate_ug: 71.2
+  potassium_mg: 509
+  folate_ug: 69.5
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 88.5
-  omega3_mg: 308
+  vit_c_mg: 87.1
+  omega3_mg: 306
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -123,7 +123,7 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: tofu
@@ -153,13 +153,12 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 9
-  key: mixed-vegetables
-  g: 15.0
+  key: onion
+  g: 14.375
 nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: टोफू-सब्ज़ी स्टिर-फ्राई
@@ -168,4 +167,5 @@ translations:
     - टोफू को गरम तेल में दो तरफ़ से सुनहरा होने तक सेंकें, फिर निकालकर अलग रख दें।
     - उसी पैन में लहसुन और अदरक को 20 सेकंड चलाएँ, फिर बीन्स और गाजर को 2 मिनट।
     - शिमला मिर्च डालकर एक मिनट और स्टिर-फ्राई करें — यह अब भी कड़क होनी चाहिए।
-    - टोफू वापस डालें, तामारी और नमक मिलाएँ, एक बार चलाएँ, और हरी प्याज़ के पत्तों से पूरा करें।
+    - टोफू वापस डालें, तामारी और नमक मिलाएँ, एक बार चलाएँ, और हरी प्याज़ के पत्तों
+      से पूरा करें।

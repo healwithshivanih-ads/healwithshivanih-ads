@@ -109,22 +109,22 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 331
-  protein_g: 7.9
-  carbs_g: 36.0
-  fat_g: 20.5
-  fibre_g: 10.8
-  iron_mg: 3.0
-  calcium_mg: 164
-  magnesium_mg: 107
-  zinc_mg: 1.7
-  potassium_mg: 1297
-  folate_ug: 151
+  kcal: 342
+  protein_g: 8.3
+  carbs_g: 38.4
+  fat_g: 20.7
+  fibre_g: 11.4
+  iron_mg: 3.2
+  calcium_mg: 181
+  magnesium_mg: 113
+  zinc_mg: 1.8
+  potassium_mg: 1360
+  folate_ug: 165
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 82.2
-  omega3_mg: 1073
-nutrient_coverage_pct: 95.2
+  vit_c_mg: 84.8
+  omega3_mg: 1097
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - iron
@@ -135,14 +135,14 @@ rich_in:
 - vitamin-c
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: romaine
   g: 94.0
 - i: 1
-  key: null
-  g: 30.0
+  key: arugula
+  g: 20.0
 - i: 2
   key: cabbage
   g: 89.0
@@ -162,8 +162,8 @@ nutrient_lines:
   key: chia-seeds
   g: 10.0
 - i: 8
-  key: null
-  g: 30.0
+  key: pomegranate
+  g: 21.75
 - i: 9
   key: olive-oil
   g: 27.0
@@ -180,12 +180,13 @@ nutrient_servings: 2.0
 cycle_phases:
 - follicular
 - ovulatory
-
 translations:
   hi:
     name: कच्चा रेनबो सलाद
     steps:
     - एक बड़े कटोरे में लेट्यूस और अरुगुला पत्तियाँ मिलाएँ।
-    - ऊपर से बैंगनी पत्तागोभी, खीरा और आधे कटे चेरी टमाटर हल्के से बिखेरें (कटी तरफ़ ऊपर सुंदर दिखती है)।
+    - ऊपर से बैंगनी पत्तागोभी, खीरा और आधे कटे चेरी टमाटर हल्के से बिखेरें (कटी तरफ़
+      ऊपर सुंदर दिखती है)।
     - बादाम की कतरनें, अनार के दाने और चिया बुरकें।
-    - ऑलिव ऑयल, मेपल सिरप, नींबू का रस, नमक और काली मिर्च को एक जार में मिलाकर हिलाएँ, सलाद पर डालें और परोसें।
+    - ऑलिव ऑयल, मेपल सिरप, नींबू का रस, नमक और काली मिर्च को एक जार में मिलाकर हिलाएँ,
+      सलाद पर डालें और परोसें।

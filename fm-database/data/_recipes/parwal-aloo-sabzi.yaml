@@ -116,12 +116,10 @@ nutrients_per_serving:
   vit_d_ug: 0.0
   vit_c_mg: 21.3
   omega3_mg: 41.7
-nutrient_coverage_pct: 93.8
-rich_in:
-- potassium
-- vitamin-c
+nutrient_coverage_pct: 60.3
+rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -136,7 +134,7 @@ image:
 nutrient_lines:
 - i: 0
   key: null
-  g: 30.0
+  g: 300.0
 - i: 1
   key: potato
   g: 300.0
@@ -174,7 +172,6 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 3.5
-
 translations:
   hi:
     name: परवल आलू सब्ज़ी

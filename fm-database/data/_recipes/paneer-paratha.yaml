@@ -87,31 +87,35 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 319
-  protein_g: 12.6
-  carbs_g: 3.8
-  fat_g: 28.6
-  fibre_g: 0.2
-  iron_mg: 0.9
-  calcium_mg: 320
-  magnesium_mg: 16.7
-  zinc_mg: 1.5
-  potassium_mg: 93.3
-  folate_ug: 11.1
+  kcal: 608
+  protein_g: 22.2
+  carbs_g: 62.0
+  fat_g: 30.0
+  fibre_g: 10.5
+  iron_mg: 4.4
+  calcium_mg: 355
+  magnesium_mg: 129
+  zinc_mg: 3.8
+  potassium_mg: 399
+  folate_ug: 38.1
   b12_ug: 0.5
   vit_d_ug: 0.2
   vit_c_mg: 3.1
-  omega3_mg: 176
-nutrient_coverage_pct: 84.7
+  omega3_mg: 217
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- fibre
+- iron
 - calcium
+- magnesium
+- zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-flour
+  g: 180.0
 - i: 1
   key: paneer
   g: 130.0
@@ -137,14 +141,15 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: पनीर पराठा
     steps:
     - आटे में एक चुटकी नमक और पानी डालकर नरम गूँथ लें, ढककर 15 मिनट रख दें।
     - पनीर कद्दूकस करें और उसमें हरी मिर्च, धनिया, जीरा पाउडर, गरम मसाला और नमक मिलाएँ।
-    - आटे के 4 लोई बनाएँ, हर एक को चपटा करें, बीच में पनीर का भरावन रखें और किनारों को दबाकर बंद कर दें।
+    - आटे के 4 लोई बनाएँ, हर एक को चपटा करें, बीच में पनीर का भरावन रखें और किनारों
+      को दबाकर बंद कर दें।
     - थोड़ा सूखा आटा लगाकर हल्के हाथ से पराठा बेलें, भरावन बराबर फैला रहे।
-    - गरम तवे पर सेकें, पलटें, और दोनों तरफ घी लगाकर सुनहरा और हल्का कुरकुरा होने तक सेकें।
+    - गरम तवे पर सेकें, पलटें, और दोनों तरफ घी लगाकर सुनहरा और हल्का कुरकुरा होने
+      तक सेकें।
     - दही या अचार के साथ गरम परोसें।

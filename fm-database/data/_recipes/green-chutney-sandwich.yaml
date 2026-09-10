@@ -81,29 +81,31 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 23.9
-  protein_g: 1.3
-  carbs_g: 5.4
-  fat_g: 0.2
-  fibre_g: 1.6
-  iron_mg: 2.0
-  calcium_mg: 46.8
-  magnesium_mg: 23.7
-  zinc_mg: 0.4
-  potassium_mg: 257
-  folate_ug: 26.2
+  kcal: 176
+  protein_g: 8.7
+  carbs_g: 31.2
+  fat_g: 2.3
+  fibre_g: 5.2
+  iron_mg: 3.5
+  calcium_mg: 145
+  magnesium_mg: 69.9
+  zinc_mg: 1.5
+  potassium_mg: 409
+  folate_ug: 51.4
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 10.3
-  omega3_mg: 46.5
-nutrient_coverage_pct: 89.3
-rich_in: []
+  omega3_mg: 124
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: bread-whole-wheat
+  g: 120.0
 - i: 1
   key: mint-fresh
   g: 25.0
@@ -123,12 +125,13 @@ nutrient_lines:
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: हरी चटनी सैंडविच
     steps:
-    - पुदीना, धनिया, हरी मिर्च, नींबू का रस, नमक और थोड़ा पानी मिलाकर गाढ़ी हरी चटनी बनाएँ।
+    - पुदीना, धनिया, हरी मिर्च, नींबू का रस, नमक और थोड़ा पानी मिलाकर गाढ़ी हरी चटनी
+      बनाएँ।
     - चटनी को चारों ब्रेड स्लाइस पर लगाएँ।
-    - इनमें से दो पर खीरे की स्लाइस रखें, जीरा पाउडर छिड़कें, और बाकी स्लाइस से ढक दें।
+    - इनमें से दो पर खीरे की स्लाइस रखें, जीरा पाउडर छिड़कें, और बाकी स्लाइस से ढक
+      दें।
     - दबाएँ, आधा काटें और तुरंत परोसें।

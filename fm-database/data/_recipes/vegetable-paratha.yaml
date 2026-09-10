@@ -90,29 +90,35 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 152
-  protein_g: 1.1
-  carbs_g: 6.3
-  fat_g: 13.9
-  fibre_g: 2.0
-  iron_mg: 0.8
-  calcium_mg: 30.4
-  magnesium_mg: 12.7
-  zinc_mg: 0.2
-  potassium_mg: 203
-  folate_ug: 23.1
+  kcal: 537
+  protein_g: 13.8
+  carbs_g: 83.9
+  fat_g: 15.7
+  fibre_g: 15.7
+  iron_mg: 5.5
+  calcium_mg: 77.2
+  magnesium_mg: 163
+  zinc_mg: 3.3
+  potassium_mg: 611
+  folate_ug: 59.1
   b12_ug: 0.0
   vit_d_ug: 0.1
   vit_c_mg: 17.0
-  omega3_mg: 119
-nutrient_coverage_pct: 85.3
-rich_in: []
+  omega3_mg: 173
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-flour
+  g: 240.0
 - i: 1
   key: carrot
   g: 64.0
@@ -138,14 +144,15 @@ nutrient_lines:
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: मिली-जुली सब्ज़ी पराठा
     steps:
     - आटे में चुटकी भर नमक और पानी डालकर नरम आटा गूँथें, ढककर 15 मिनट रखें।
-    - कद्दूकस गाजर, पत्तागोभी, मसले मटर, हरी मिर्च, जीरा पाउडर, धनिया और नमक मिलाकर नम भरावन बनाएँ।
-    - आटे को 5 लोइयों में बाँटें, हर एक को चपटा करें, सब्ज़ी की भरावन भरें और किनारे बंद करें।
+    - कद्दूकस गाजर, पत्तागोभी, मसले मटर, हरी मिर्च, जीरा पाउडर, धनिया और नमक मिलाकर
+      नम भरावन बनाएँ।
+    - आटे को 5 लोइयों में बाँटें, हर एक को चपटा करें, सब्ज़ी की भरावन भरें और किनारे
+      बंद करें।
     - आटा छिड़ककर धीरे से पराठा बेलें, सब्ज़ियाँ अंदर बराबर टिकी रखें।
     - गरम तवे पर सेंकें, पलटें और दोनों तरफ घी लगाकर सुनहरा और पका होने तक सेंकें।
     - दही या चटनी के साथ गरमागरम परोसें।

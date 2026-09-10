@@ -91,10 +91,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 189
+  kcal: 229
   protein_g: 11.2
   carbs_g: 28.2
-  fat_g: 3.4
+  fat_g: 7.9
   fibre_g: 6.0
   iron_mg: 4.1
   calcium_mg: 75.7
@@ -105,15 +105,15 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 11.1
-  omega3_mg: 71.0
-nutrient_coverage_pct: 81.9
+  omega3_mg: 72.8
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - iron
 - magnesium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 aliases:
 - Besan-methi cheela
 nutrient_lines:
@@ -142,14 +142,13 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 9.083333333333334
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: मेथी वाला बेसन चीला

@@ -16,7 +16,9 @@ Written-back keys on a recipe (see compute_recipe_nutrients):
                            vit_c_mg, omega3_mg}
   nutrient_coverage_pct:  share of estimated ingredient mass (water excluded)
                           that matched the table — below LOW_COVERAGE the
-                          rich_in tags are withheld
+                          rich_in tags are withheld. Unmatched lines are
+                          SIZED (see UNKNOWN_ENTRY), not flat-rated, so a
+                          heavy missing ingredient actually shows up here
   rich_in:                per-serving threshold badges (see RICH_IN_THRESHOLDS)
   nutrient_basis:         "ingredient_table_v1"
   nutrients_computed_at:  ISO date
@@ -61,6 +63,16 @@ RICH_IN_THRESHOLDS = {
 }
 
 LOW_COVERAGE = 70.0  # % matched mass below which rich_in is withheld
+
+# An ingredient the table does not carry is still SIZED, against this stand-in,
+# so the coverage denominator gets its real mass. Flat-rating every unmatched
+# line at 30 g made coverage a near-meaningless number in both directions: a
+# missing DOMINANT ingredient barely dented it (1.5 cup of untabled atta
+# counted as 30 g, so a paratha with no flour in the table still reported 92%
+# coverage and kept its rich_in badges), while a missing pinch of spice was
+# penalised as though it were 30 g of food.
+UNKNOWN_ENTRY: dict = {"category": "other", "density": {}}
+UNSIZEABLE_GRAMS = 30.0  # genuinely cannot estimate — qty/unit give nothing
 
 
 def load_thresholds() -> tuple[dict, float]:
@@ -154,6 +166,7 @@ class NutrientTable:
                 self.alias_index.setdefault(str(a).lower(), key)
         # longest-first so "coconut sugar" wins over "coconut"
         self.sorted_aliases = sorted(self.alias_index, key=len, reverse=True)
+        self._scanner_cache: "re.Pattern[str] | None" = None
 
     def match(self, norm: str) -> str | None:
         if norm in self.alias_index:
@@ -165,6 +178,75 @@ class NutrientTable:
             if re.search(rf"(?<![a-z]){re.escape(a)}(?:e?s)?(?![a-z])", norm):
                 return self.alias_index[a]
         return None
+
+    #  An alias that names MORE THAN ONE food. The table carries 27 of these —
+    #  `kale` has the literal alias "kale, swiss chard leaves", `sweet-potato`
+    #  has "cubed sweet potatoes, white potatoes" — pasted in from ingredient
+    #  lines rather than authored as spellings of one food.
+    #
+    #  They are harmless to `match`, which only ever returns one key anyway,
+    #  and they are poison to `match_all`: being the longest thing that matches,
+    #  they claim the whole span and the second food inside them never surfaces.
+    #  A hypothyroid client's cabbage disappeared inside carrot's "shredded
+    #  carrots, cabbage" exactly that way.
+    #
+    #  The test is structural, not a blocklist: a real compound food name
+    #  ("sweet potato", "black pepper") never contains a comma or a standalone
+    #  and/or. That matters — a rule like "drop any alias containing another
+    #  key's alias" would also drop "sweet potato" for containing "potato",
+    #  which is the specificity `match_all` exists to protect.
+    _MULTI_FOOD_ALIAS = re.compile(r",|\b(?:and|or|plus)\b")
+
+    # One alternation over every usable alias, LONGEST FIRST. Python's `re`
+    # takes the first alternative that matches at a position, so ordering by
+    # length is what makes the longest alias win there — the same preference
+    # `match` gets from its longest-first loop.
+    @property
+    def _scanner(self):
+        if self._scanner_cache is None:
+            usable = [
+                a for a in self.sorted_aliases
+                if len(a) >= 4 and not self._MULTI_FOOD_ALIAS.search(a)
+            ]
+            self._scanner_cache = re.compile(
+                r"(?<![a-z])(" + "|".join(re.escape(a) for a in usable) + r")(?:e?s)?(?![a-z])"
+            )
+        return self._scanner_cache
+
+    def match_all(self, text: str) -> set[str]:
+        """EVERY food named in a text, one key per MENTION.
+
+        `match` answers "which food is this text?" — one key, longest alias
+        wins. That is right for a nutrient line, which is exactly one food.
+        It is wrong wherever a text can name SEVERAL foods: a dish string
+        "Ragi roti" is both a millet and a wheat flatbread, and returning only
+        the winner silently dropped the other. `food_cautions.py` screened
+        whole dish names through `match` and lost a Hashimoto's client's ragi
+        that way.
+
+        The fix is one key per MENTION, not one key per text — longest-wins
+        per mention is itself load-bearing and MUST survive:
+
+          * "foxtail millet" is `millet-foxtail`, never also `millet-generic`.
+            Foxtail is deliberately uncautioned for goitrogens (see
+            `_food_cautions.yaml`); letting the bare word "millet" fire
+            alongside it re-flags the one millet that is the safe substitute.
+          * "sweet potato" is `sweet-potato`, never also `potato`.
+
+        `finditer` over a longest-first alternation gives exactly that: matches
+        are non-overlapping, and at each position the longest alias wins. So a
+        mention is consumed by its most specific name and the generic one
+        cannot also claim it.
+        """
+        out: set[str] = set()
+        s = str(text or "").lower()
+        if not s.strip():
+            return out
+        if s in self.alias_index:
+            out.add(self.alias_index[s])
+        for m in self._scanner.finditer(s):
+            out.add(self.alias_index[m.group(1)])
+        return out
 
 
 # --------------------------------------------------------------- qty parser
@@ -384,29 +466,35 @@ def compute_recipe_nutrients(recipe: dict, table: NutrientTable) -> dict:
         norm = normalize_item(raw)
         if not norm:
             continue
+        qty, unit = ing.get("qty"), ing.get("unit")
+        if qty in (None, "") and unit in (None, ""):
+            embedded = extract_embedded_qty(raw)
+            if embedded:
+                qty, unit = embedded
         key = table.match(norm)
         if key is None:
             unmatched.append(raw)
-            # assume a modest 30g so coverage honestly reflects the gap
-            total_mass += 30.0
-            lines.append({"i": idx, "key": None, "g": 30.0})
+            # Size it against UNKNOWN_ENTRY anyway: the mass is what coverage
+            # is measured against, and we know "1.5 cup" of SOMETHING even when
+            # we don't know what. Nutrients stay zero — only the denominator
+            # moves, so coverage reports the real size of the gap.
+            grams = ingredient_grams(qty, unit, UNKNOWN_ENTRY, norm)
+            if grams is None:
+                grams = UNSIZEABLE_GRAMS
+            total_mass += grams
+            lines.append({"i": idx, "key": None, "g": float(grams)})
             continue
         entry = table.entries[key]
         if key in ("water", "broth"):
             # zero-nutrient carriers — keep out of the coverage denominator
             lines.append({"i": idx, "key": key, "g": 0.0})
             continue
-        qty, unit = ing.get("qty"), ing.get("unit")
-        if qty in (None, "") and unit in (None, ""):
-            embedded = extract_embedded_qty(raw)
-            if embedded:
-                qty, unit = embedded
         grams = ingredient_grams(qty, unit, entry, norm)
         if grams is None:
             notes.append(f"could not size: {raw!r}")
-            total_mass += 30.0
+            total_mass += UNSIZEABLE_GRAMS
             unmatched.append(raw)
-            lines.append({"i": idx, "key": None, "g": 30.0})
+            lines.append({"i": idx, "key": None, "g": UNSIZEABLE_GRAMS})
             continue
         total_mass += grams
         matched_mass += grams

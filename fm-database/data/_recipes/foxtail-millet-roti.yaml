@@ -38,8 +38,8 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Mix foxtail millet flour with salt. Add warm water a little at a time, kneading into a
-  soft, pliable dough. Rest 10 minutes.
+- Mix foxtail millet flour with salt. Add warm water a little at a time, kneading
+  into a soft, pliable dough. Rest 10 minutes.
 - Divide into balls. Pat or roll each into a round flatbread on a floured surface
   (gluten-free flours roll best between two sheets of parchment).
 - Cook on a hot tava 1-2 minutes per side until brown spots appear and it puffs.
@@ -53,8 +53,8 @@ protein_g: 11.1
 good_for:
 - blood-sugar-regulation
 - agni-digestive-fire
-one_line: A wholesome foxtail millet flatbread — naturally gluten-free and far steadier on
-  blood sugar than wheat.
+one_line: A wholesome foxtail millet flatbread — naturally gluten-free and far steadier
+  on blood sugar than wheat.
 headnote: 'Foxtail rotis are a traditional millet/whole-grain bread: more fibre, more
   minerals, and a gentler glucose response than refined wheat.'
 attribution:
@@ -79,32 +79,34 @@ kcal_total: 480
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 318
-  protein_g: 11.1
-  carbs_g: 54.8
-  fat_g: 6.1
-  fibre_g: 7.2
-  iron_mg: 2.5
-  calcium_mg: 27.9
-  magnesium_mg: 72.9
-  zinc_mg: 2.2
-  potassium_mg: 225
-  folate_ug: 13.5
+  kcal: 467
+  protein_g: 16.6
+  carbs_g: 81.1
+  fat_g: 8.1
+  fibre_g: 10.8
+  iron_mg: 3.8
+  calcium_mg: 41.9
+  magnesium_mg: 109
+  zinc_mg: 3.2
+  potassium_mg: 338
+  folate_ug: 20.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 63.2
+  omega3_mg: 85.7
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
 - fibre
+- iron
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: foxtail-flour
-  g: 180.0
+  key: millet-foxtail
+  g: 270.0
 - i: 1
   key: water
   g: 0.0
@@ -118,12 +120,13 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: कंगनी बाजरे की रोटी
     steps:
-    - कंगनी बाजरे के आटे में नमक मिलाएँ। थोड़ा-थोड़ा गुनगुना पानी डालते हुए नरम, लचीला आटा गूँधें। 10 मिनट रखें।
-    - लोइयाँ बनाएँ। हर एक को आटा लगी सतह पर थपथपाकर या बेलकर गोल रोटी बनाएँ (ग्लूटेन-रहित आटे दो पार्चमेंट शीट के बीच सबसे अच्छे बिलते हैं)।
+    - कंगनी बाजरे के आटे में नमक मिलाएँ। थोड़ा-थोड़ा गुनगुना पानी डालते हुए नरम, लचीला
+      आटा गूँधें। 10 मिनट रखें।
+    - लोइयाँ बनाएँ। हर एक को आटा लगी सतह पर थपथपाकर या बेलकर गोल रोटी बनाएँ (ग्लूटेन-रहित
+      आटे दो पार्चमेंट शीट के बीच सबसे अच्छे बिलते हैं)।
     - गरम तवे पर हर तरफ़ 1-2 मिनट पकाएँ जब तक भूरे धब्बे आ जाएँ और यह फूल जाए।
     - हल्का घी लगाएँ और गरम परोसें।

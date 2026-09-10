@@ -47,6 +47,16 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--only", help="single recipe slug")
     ap.add_argument("--report-unmatched", action="store_true")
+    ap.add_argument(
+        "--skip-unchanged",
+        action="store_true",
+        help=(
+            "leave a recipe alone when the computed block is identical. Without "
+            "it a no-op pass still bumps nutrients_computed_at and re-dumps the "
+            "file, reflowing every other block in it (the Hindi translations "
+            "especially) for no change in the numbers."
+        ),
+    )
     args = ap.parse_args()
 
     table = NutrientTable()
@@ -60,6 +70,8 @@ def main() -> int:
     low_cov: list[tuple[str, float]] = []
     unmatched_all: dict[str, int] = {}
     ratio_buckets = {"<0.7": 0, "0.7-1.3": 0, ">1.3": 0, "n/a": 0}
+    skipped = 0
+    changed: list[str] = []
 
     for p in paths:
         recipe = yaml.safe_load(p.read_text())
@@ -80,13 +92,29 @@ def main() -> int:
             ratio_buckets["n/a"] += 1
 
         if not args.dry_run:
-            apply_to_recipe(recipe, result)
-            p.write_text(yaml.safe_dump(recipe, sort_keys=False, allow_unicode=True))
+            unchanged = args.skip_unchanged and all(
+                recipe.get(k) == v
+                for k, v in (
+                    ("nutrients_per_serving", result["per_serving"]),
+                    ("nutrient_coverage_pct", result["coverage_pct"]),
+                    ("rich_in", result["rich_in"]),
+                    ("nutrient_lines", result["lines"]),
+                    ("nutrient_servings", result["servings"]),
+                )
+            )
+            if unchanged:
+                skipped += 1
+            else:
+                apply_to_recipe(recipe, result)
+                p.write_text(yaml.safe_dump(recipe, sort_keys=False, allow_unicode=True))
+                changed.append(p.stem)
         done += 1
         if args.only:
             print(yaml.safe_dump(result, sort_keys=False, allow_unicode=True))
 
     print(f"processed: {done} recipes{' (dry-run)' if args.dry_run else ''}")
+    if args.skip_unchanged and not args.dry_run:
+        print(f"rewritten: {len(changed)}   unchanged (left alone): {skipped}")
     print(f"low coverage (<70%): {len(low_cov)}")
     for slug, cov in sorted(low_cov, key=lambda t: t[1])[:15]:
         print(f"  {cov:5.1f}%  {slug}")

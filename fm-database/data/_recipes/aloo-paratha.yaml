@@ -86,31 +86,36 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 243
-  protein_g: 3.2
-  carbs_g: 26.3
-  fat_g: 14.0
-  fibre_g: 3.8
-  iron_mg: 1.4
-  calcium_mg: 28.0
-  magnesium_mg: 37.0
-  zinc_mg: 0.5
-  potassium_mg: 671
-  folate_ug: 24.3
+  kcal: 532
+  protein_g: 12.8
+  carbs_g: 84.6
+  fat_g: 15.4
+  fibre_g: 14.0
+  iron_mg: 4.9
+  calcium_mg: 63.1
+  magnesium_mg: 149
+  zinc_mg: 2.8
+  potassium_mg: 977
+  folate_ug: 51.3
   b12_ug: 0.0
   vit_d_ug: 0.1
   vit_c_mg: 33.5
-  omega3_mg: 126
-nutrient_coverage_pct: 91.8
+  omega3_mg: 167
+nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-flour
+  g: 180.0
 - i: 1
   key: potato
   g: 300.0
@@ -133,14 +138,15 @@ nutrient_lines:
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: आलू पराठा
     steps:
     - आटे में एक चुटकी नमक और पानी डालकर नरम गूँथ लें, ढककर 15 मिनट रख दें।
-    - उबले आलू मैश करें और उसमें हरी मिर्च, धनिया, अजवाइन, लाल मिर्च पाउडर और नमक मिलाएँ।
-    - आटे के 4 लोई बनाएँ, हर एक को छोटा गोल बेलें, बीच में एक चम्मच भरावन रखें और किनारों को मोड़कर बंद कर दें।
+    - उबले आलू मैश करें और उसमें हरी मिर्च, धनिया, अजवाइन, लाल मिर्च पाउडर और नमक
+      मिलाएँ।
+    - आटे के 4 लोई बनाएँ, हर एक को छोटा गोल बेलें, बीच में एक चम्मच भरावन रखें और
+      किनारों को मोड़कर बंद कर दें।
     - थोड़ा सूखा आटा लगाकर भरी हुई लोई को हल्के हाथ से पराठा बेलें, भरावन बराबर रहे।
     - गरम तवे पर सेकें, पलटें, और दोनों तरफ घी लगाकर सुनहरे भूरे चित्ते आने तक सेकें।
     - दही या अचार के साथ गरम परोसें।

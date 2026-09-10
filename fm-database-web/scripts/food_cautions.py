@@ -27,11 +27,19 @@ Food matching goes through `nutrients_lib.NutrientTable` — the same alias inde
 that resolves all ~729 ingredient spellings in the recipe library. This module
 adds no second matching surface; see the standing invariant in CLAUDE.md.
 
+It reads that index through `match_all`, not `match`. `match` returns the ONE
+food a text most likely IS — right for a nutrient line, which is exactly one
+food. A safety screen must surface EVERY food a text names, because a dish
+string names several and dropping the losers hides real cautions. Longest-wins
+still applies per MENTION, so "foxtail millet" cannot also read as generic
+millet. See `NutrientTable.match_all` and `foods_named_in`.
+
 Public API
 ----------
     load_cautions(root=None)            -> list[Caution]            (active only)
     review_queue(root=None)             -> list[Caution]            (needs_review)
     live_cautions(client, plan=None)    -> list[Caution]            (condition match)
+    foods_named_in(texts)               -> set[str]
     screen_recipe(recipe, live, ...)    -> list[CautionHit]
     screen_text(text, live, ...)        -> list[CautionHit]
     score_penalty(hits)                 -> float                    (≤ 0.0)
@@ -251,23 +259,34 @@ def _table():
     return _TABLE_CACHE["t"]
 
 
-def _ingredient_keys(texts: Iterable[str]) -> set[str]:
-    """Resolve free-text ingredient/dish phrases to canonical ingredient keys."""
+def foods_named_in(texts: Iterable[str]) -> set[str]:
+    """Every catalogue food NAMED across these texts, one key per mention.
+
+    Was `_ingredient_keys`, and the rename is the point: it used to resolve
+    each text to the ONE food it most likely is (`NutrientTable.match`), which
+    is right for a nutrient line and wrong for a safety screen. A text can name
+    two cautioned foods and only the longest-alias winner survived —
+    "Chicken drumstick curry" resolved to `drumstick` (the vegetable, a longer
+    alias) so a gout client's chicken carried no purine caution at all.
+
+    `match_all` keeps longest-wins per MENTION, which is separately
+    load-bearing: "foxtail millet" must stay `millet-foxtail` and never also
+    become `millet-generic`, or the deliberately-uncautioned millet gets
+    re-flagged. See NutrientTable.match_all.
+
+    Scans the RAW text rather than `normalize_item`'d text: the normaliser
+    splits on " or " and drops parentheticals, so "rohu or hilsa fish steaks"
+    loses the word "fish". Dropping information is acceptable when picking ONE
+    food and not when screening for ANY.
+    """
     tab = _table()
     if tab is None:
         return set()
-    try:
-        from nutrients_lib import normalize_item
-    except Exception:                               # pragma: no cover
-        return set()
     keys: set[str] = set()
     for t in texts:
-        t = str(t or "").strip()
-        if not t:
-            continue
-        k = tab.match(normalize_item(t))
-        if k:
-            keys.add(k)
+        s = str(t or "").strip()
+        if s:
+            keys |= tab.match_all(s)
     return keys
 
 
@@ -322,7 +341,7 @@ def screen_recipe(
     """Which of this client's live cautions does this recipe trip?"""
     if not live:
         return []
-    keys = _ingredient_keys(_recipe_texts(recipe))
+    keys = foods_named_in(_recipe_texts(recipe))
     if not keys:
         return []
     hits: list[CautionHit] = []

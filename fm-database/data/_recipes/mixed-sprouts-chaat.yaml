@@ -50,7 +50,8 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Steam the mixed sprouts lightly — sprouts are gentler on digestion steamed than raw.
+- Steam the mixed sprouts lightly — sprouts are gentler on digestion steamed than
+  raw.
 - Toss with cucumber, lemon juice, roasted cumin, and rock salt.
 - Fold through fresh herbs and a touch of oil if using. Serve fresh.
 servings: '2'
@@ -88,29 +89,29 @@ kcal_total: 180
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 29.0
-  protein_g: 0.4
-  carbs_g: 1.9
-  fat_g: 2.4
-  fibre_g: 0.3
-  iron_mg: 0.5
-  calcium_mg: 11.7
-  magnesium_mg: 6.9
-  zinc_mg: 0.1
-  potassium_mg: 68.3
-  folate_ug: 4.3
+  kcal: 60.2
+  protein_g: 3.5
+  carbs_g: 8.1
+  fat_g: 2.6
+  fibre_g: 2.1
+  iron_mg: 1.5
+  calcium_mg: 25.3
+  magnesium_mg: 28.7
+  zinc_mg: 0.5
+  potassium_mg: 223
+  folate_ug: 67.7
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 4.1
-  omega3_mg: 3.1
-nutrient_coverage_pct: 73.5
+  vit_c_mg: 17.6
+  omega3_mg: 18.7
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mung-sprouted
+  g: 208.0
 - i: 1
   key: cucumber
   g: 60.0
@@ -132,11 +133,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: मिक्स स्प्राउट्स चाट
     steps:
-    - मिले-जुले स्प्राउट्स को हल्का भाप में पका लें — कच्चे की बजाय भाप में पके स्प्राउट्स पाचन के लिए ज़्यादा नरम होते हैं।
+    - मिले-जुले स्प्राउट्स को हल्का भाप में पका लें — कच्चे की बजाय भाप में पके स्प्राउट्स
+      पाचन के लिए ज़्यादा नरम होते हैं।
     - खीरा, नींबू का रस, भुना जीरा और सेंधा नमक के साथ मिलाएँ।
     - ताज़ा हरी पत्तियाँ और थोड़ा तेल (हो तो) मिलाएँ। ताज़ा परोसें।

@@ -103,10 +103,10 @@ kcal_total: 280
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 225
+  kcal: 265
   protein_g: 14.1
   carbs_g: 17.6
-  fat_g: 12.6
+  fat_g: 17.1
   fibre_g: 5.9
   iron_mg: 3.5
   calcium_mg: 280
@@ -117,8 +117,8 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 83.5
-  omega3_mg: 337
-nutrient_coverage_pct: 94.7
+  omega3_mg: 339
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - fibre
@@ -127,7 +127,7 @@ rich_in:
 - magnesium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: tofu
@@ -160,8 +160,8 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 10
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 9.083333333333334
 - i: 11
   key: lemon-juice
   g: 5.083333333333333
@@ -169,12 +169,12 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: टोफू टिक्का
     steps:
-    - टोफू को 10 मिनट किसी भारी चीज़ के नीचे दबाएँ ताकि पानी छोड़ने की जगह वह मैरिनेड सोख ले।
+    - टोफू को 10 मिनट किसी भारी चीज़ के नीचे दबाएँ ताकि पानी छोड़ने की जगह वह मैरिनेड
+      सोख ले।
     - दही को अदरक-लहसुन पेस्ट, मिर्च पाउडर, हल्दी, गरम मसाला, बेसन और नमक के साथ फेंटें।
     - टोफू, शिमला मिर्च और प्याज़ मिलाएँ और 20 मिनट छोड़ दें।
     - गरम भारी कड़ाही में एक ही परत में पकाएँ, एक बार पलटकर, जब तक किनारे झुलस जाएँ।

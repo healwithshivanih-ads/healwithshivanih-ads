@@ -94,29 +94,33 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 125
-  protein_g: 4.8
-  carbs_g: 20.8
-  fat_g: 2.5
-  fibre_g: 4.6
-  iron_mg: 3.8
-  calcium_mg: 82.0
-  magnesium_mg: 53.8
-  zinc_mg: 1.1
-  potassium_mg: 206
-  folate_ug: 23.5
+  kcal: 438
+  protein_g: 11.1
+  carbs_g: 59.7
+  fat_g: 17.0
+  fibre_g: 11.5
+  iron_mg: 6.1
+  calcium_mg: 105
+  magnesium_mg: 129
+  zinc_mg: 2.7
+  potassium_mg: 410
+  folate_ug: 41.5
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 8.8
-  omega3_mg: 65.4
-nutrient_coverage_pct: 68.2
-rich_in: []
+  omega3_mg: 97.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-flour
+  g: 120.0
 - i: 1
   key: bajra-flour
   g: 60.0
@@ -139,17 +143,17 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: मेथी-बाजरा थेपला
     steps:
-    - गेहूँ का आटा, बाजरे का आटा, कटी मेथी, दही, हल्दी, मिर्च, जीरा, नमक और 1 छोटा चम्मच तेल एक बर्तन में मिलाएँ।
+    - गेहूँ का आटा, बाजरे का आटा, कटी मेथी, दही, हल्दी, मिर्च, जीरा, नमक और 1 छोटा
+      चम्मच तेल एक बर्तन में मिलाएँ।
     - थोड़ा-थोड़ा पानी डालते हुए नरम, मुलायम आटा गूँथें; 15 मिनट रखें।
     - छोटी लोइयाँ बनाएँ और हर लोई को हल्की आटा छिड़की सतह पर पतला गोल थेपला बेलें।
     - तवा मध्यम आँच पर गरम करें और थेपला को नीचे से हल्के भूरे धब्बे आने तक सेंकें।

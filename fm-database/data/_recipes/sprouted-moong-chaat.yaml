@@ -109,28 +109,29 @@ kcal_total: 120
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 130
-  protein_g: 7.0
-  carbs_g: 18.0
-  fat_g: 5.0
-  fibre_g: 4.4
-  iron_mg: 2.3
-  calcium_mg: 41.4
-  magnesium_mg: 55.1
-  zinc_mg: 1.0
-  potassium_mg: 522
-  folate_ug: 103
+  kcal: 152
+  protein_g: 7.4
+  carbs_g: 22.8
+  fat_g: 5.3
+  fibre_g: 5.5
+  iron_mg: 2.5
+  calcium_mg: 47.2
+  magnesium_mg: 59.6
+  zinc_mg: 1.1
+  potassium_mg: 586
+  folate_ug: 111
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 31.5
-  omega3_mg: 24.2
-nutrient_coverage_pct: 82.7
+  vit_c_mg: 33.9
+  omega3_mg: 37.6
+nutrient_coverage_pct: 100.0
 rich_in:
+- fibre
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: mung-sprouted
@@ -145,17 +146,17 @@ nutrient_lines:
   key: tomato
   g: 75.0
 - i: 4
-  key: null
-  g: 30.0
+  key: pomegranate
+  g: 43.5
 - i: 5
   key: mixed-vegetables
   g: 7.5
 - i: 6
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 2.2916666666666665
 - i: 7
-  key: null
-  g: 30.0
+  key: amchur
+  g: 0.5729166666666666
 - i: 8
   key: cumin-powder
   g: 1.25
@@ -174,13 +175,13 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: अंकुरित मूँग चाट
     steps:
     - स्प्राउट्स को 5 मिनट भाप में पकाएँ और पूरी तरह ठंडा कर लें।
     - आलू, प्याज़, टमाटर और अनार के साथ मिलाएँ।
-    - हरी चटनी, चाट मसाला, अमचूर, भुना जीरा, नींबू का रस और सेंधा नमक डालकर अच्छे से मिलाएँ — चाट सादी सलाद के मुक़ाबले ज़ोरदार खट्टी और नमकीन होनी चाहिए।
+    - हरी चटनी, चाट मसाला, अमचूर, भुना जीरा, नींबू का रस और सेंधा नमक डालकर अच्छे
+      से मिलाएँ — चाट सादी सलाद के मुक़ाबले ज़ोरदार खट्टी और नमकीन होनी चाहिए।
     - मूँगफली और धनिया बिल्कुल आख़िर में मिलाएँ ताकि कुरकुरे रहें।
     - तुरंत परोसें।

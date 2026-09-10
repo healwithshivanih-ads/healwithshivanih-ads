@@ -50,8 +50,8 @@ ingredients:
   qty: ''
   unit: ''
 steps:
-- In a large bowl, whisk together the maple syrup, a little salt and the zest
-  and juice of the lemon.
+- In a large bowl, whisk together the maple syrup, a little salt and the zest and
+  juice of the lemon.
 - Add the chopped watermelon and toss gently to coat.
 - Fold in the mint and arugula, then scatter over the pecans and chia seeds.
 - Check the seasoning and serve chilled.
@@ -86,38 +86,38 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 30.0
-  protein_g: 0.6
-  carbs_g: 5.9
-  fat_g: 0.8
-  fibre_g: 1.4
-  iron_mg: 0.4
-  calcium_mg: 26.7
-  magnesium_mg: 11.2
-  zinc_mg: 0.2
-  potassium_mg: 46.5
-  folate_ug: 3.8
+  kcal: 32.5
+  protein_g: 0.9
+  carbs_g: 6.3
+  fat_g: 0.9
+  fibre_g: 1.5
+  iron_mg: 0.5
+  calcium_mg: 42.7
+  magnesium_mg: 15.9
+  zinc_mg: 0.3
+  potassium_mg: 83.4
+  folate_ug: 13.5
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 8.8
-  omega3_mg: 452
-nutrient_coverage_pct: 52.6
+  vit_c_mg: 10.2
+  omega3_mg: 469
+nutrient_coverage_pct: 21.8
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: null
-  g: 30.0
+  g: 480.0
 - i: 1
-  key: null
-  g: 30.0
+  key: arugula
+  g: 40.0
 - i: 2
   key: mint-fresh
   g: 3.0
 - i: 3
   key: null
-  g: 30.0
+  g: 20.0
 - i: 4
   key: chia-seeds
   g: 10.0
@@ -134,7 +134,6 @@ nutrient_servings: 4.0
 cycle_phases:
 - follicular
 - ovulatory
-
 translations:
   hi:
     name: तरबूज़ सलाद

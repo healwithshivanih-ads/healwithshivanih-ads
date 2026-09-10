@@ -92,9 +92,9 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 99.4
+  kcal: 103
   protein_g: 1.1
-  carbs_g: 5.6
+  carbs_g: 6.6
   fat_g: 8.5
   fibre_g: 1.2
   iron_mg: 0.5
@@ -107,14 +107,14 @@ nutrients_per_serving:
   vit_d_ug: 0.0
   vit_c_mg: 1.4
   omega3_mg: 90.3
-nutrient_coverage_pct: 70.8
+nutrient_coverage_pct: 49.1
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: null
-  g: 30.0
+  g: 180.0
 - i: 1
   key: almonds
   g: 13.2
@@ -122,14 +122,14 @@ nutrient_lines:
   key: maple-syrup
   g: 19.6875
 - i: 3
-  key: null
-  g: 30.0
+  key: sugar-white
+  g: 4.166666666666667
 - i: 4
   key: salt
   g: 2.0
 - i: 5
   key: null
-  g: 30.0
+  g: 50.0
 - i: 6
   key: romaine
   g: 141.0
@@ -140,7 +140,6 @@ nutrient_lines:
   key: vinegar
   g: 15.0
 nutrient_servings: 4.0
-
 translations:
   hi:
     name: अंजीर और चीज़ सलाद

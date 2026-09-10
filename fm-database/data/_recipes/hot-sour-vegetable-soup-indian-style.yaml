@@ -119,25 +119,26 @@ protein_g: 1.1
 kcal_per_serving: 32
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 32.0
-  protein_g: 1.1
-  carbs_g: 4.3
-  fat_g: 1.4
-  fibre_g: 1.1
-  iron_mg: 0.4
-  calcium_mg: 18.3
-  magnesium_mg: 9.5
-  zinc_mg: 0.1
-  potassium_mg: 102
-  folate_ug: 15.2
+  kcal: 61.3
+  protein_g: 2.3
+  carbs_g: 10.9
+  fat_g: 1.6
+  fibre_g: 2.6
+  iron_mg: 0.8
+  calcium_mg: 43.4
+  magnesium_mg: 22.0
+  zinc_mg: 0.3
+  potassium_mg: 340
+  folate_ug: 30.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 11.3
-  omega3_mg: 11.2
-nutrient_coverage_pct: 50.5
-rich_in: []
+  vit_c_mg: 25.3
+  omega3_mg: 20.5
+nutrient_coverage_pct: 98.6
+rich_in:
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -154,26 +155,26 @@ nutrient_lines:
   key: ginger-fresh
   g: 12.0
 - i: 1
-  key: null
-  g: 30.0
+  key: garlic
+  g: 18.0
 - i: 2
-  key: null
-  g: 30.0
+  key: green-chilli
+  g: 10.0
 - i: 3
-  key: null
-  g: 30.0
+  key: carrot
+  g: 60.0
 - i: 4
-  key: null
-  g: 30.0
+  key: green-beans
+  g: 40.0
 - i: 5
   key: cabbage
   g: 89.0
 - i: 6
-  key: null
-  g: 30.0
+  key: tomato
+  g: 200.0
 - i: 7
-  key: mixed-vegetables
-  g: 22.5
+  key: onion
+  g: 21.5625
 - i: 8
   key: vinegar
   g: 30.0
@@ -197,14 +198,13 @@ nutrient_lines:
   g: 5.6875
 - i: 15
   key: null
-  g: 30.0
+  g: 7.5
 - i: 16
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 3.5
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: हॉट एंड सॉर वेज सूप (इंडियन स्टाइल)

@@ -89,22 +89,22 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 2067
+  kcal: 2159
   protein_g: 105
   carbs_g: 120
-  fat_g: 144
+  fat_g: 154
   fibre_g: 50.0
-  iron_mg: 37.2
-  calcium_mg: 1092
+  iron_mg: 37.5
+  calcium_mg: 1093
   magnesium_mg: 1489
   zinc_mg: 24.6
-  potassium_mg: 3076
+  potassium_mg: 3084
   folate_ug: 659
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 37.6
-  omega3_mg: 1284
-nutrient_coverage_pct: 94.0
+  omega3_mg: 1290
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - fibre
@@ -117,7 +117,7 @@ rich_in:
 - vitamin-c
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: mustard-seeds
@@ -135,21 +135,20 @@ nutrient_lines:
   key: ginger-fresh
   g: 2.0
 - i: 5
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 0.78125
 - i: 6
   key: asafoetida
   g: 0.3
 - i: 7
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 20.4375
 - i: 8
   key: salt
   g: 0.0
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: भुनी सरसों का साग

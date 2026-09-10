@@ -121,31 +121,32 @@ protein_g: 12.6
 kcal_per_serving: 305
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 305
-  protein_g: 12.6
-  carbs_g: 45.8
-  fat_g: 8.2
-  fibre_g: 6.6
-  iron_mg: 3.2
-  calcium_mg: 59.4
-  magnesium_mg: 78.3
-  zinc_mg: 1.9
-  potassium_mg: 529
-  folate_ug: 171
+  kcal: 318
+  protein_g: 14.4
+  carbs_g: 47.7
+  fat_g: 8.4
+  fibre_g: 7.2
+  iron_mg: 3.5
+  calcium_mg: 61.6
+  magnesium_mg: 83.5
+  zinc_mg: 2.2
+  potassium_mg: 711
+  folate_ug: 180
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 7.3
+  vit_d_ug: 0.1
+  vit_c_mg: 8.6
   omega3_mg: 80.0
-nutrient_coverage_pct: 87.3
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - fibre
 - iron
 - magnesium
+- zinc
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -165,8 +166,8 @@ nutrient_lines:
   key: moong-dal
   g: 100.0
 - i: 2
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 200.0
 - i: 3
   key: ghee
   g: 20.4375
@@ -174,8 +175,8 @@ nutrient_lines:
   key: cumin-seeds
   g: 2.0833333333333335
 - i: 5
-  key: null
-  g: 30.0
+  key: bay-leaf
+  g: 0.2
 - i: 6
   key: onion
   g: 110.0
@@ -214,7 +215,6 @@ cycle_phases:
 - menstrual
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: मशरूम बाजरा खिचड़ी
@@ -223,5 +223,6 @@ translations:
     - प्याज़ 4–5 मिनट सुनहरा करें। अदरक, लहसुन, हरी मिर्च 1 मिनट पकाएँ।
     - मशरूम 3–4 मिनट भूनें जब तक नमी छोड़कर फिर सोख लें।
     - छना बाजरा और मूंग दाल डालें। हल्दी, धनिया पाउडर, काली मिर्च, नमक मिलाएँ।
-    - 4.5 कप पानी डालें, 3 सीटी लगाएँ जब तक बाजरा-दाल नरम हों। ज़रूरत हो तो गरम पानी डालें।
+    - 4.5 कप पानी डालें, 3 सीटी लगाएँ जब तक बाजरा-दाल नरम हों। ज़रूरत हो तो गरम पानी
+      डालें।
     - नींबू रस और धनिया मिलाएँ। ऊपर घी डालकर गरम परोसें।

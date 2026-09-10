@@ -86,32 +86,32 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 118
-  protein_g: 2.3
-  carbs_g: 27.1
-  fat_g: 0.4
-  fibre_g: 4.2
+  kcal: 180
+  protein_g: 2.4
+  carbs_g: 27.3
+  fat_g: 7.2
+  fibre_g: 4.3
   iron_mg: 1.5
-  calcium_mg: 46.6
-  magnesium_mg: 36.7
+  calcium_mg: 48.3
+  magnesium_mg: 37.5
   zinc_mg: 0.5
-  potassium_mg: 473
+  potassium_mg: 478
   folate_ug: 15.6
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 4.6
-  omega3_mg: 13.1
-nutrient_coverage_pct: 81.7
+  omega3_mg: 16.0
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: sweet-potato
   g: 260.0
 - i: 1
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 13.625
 - i: 2
   key: turmeric
   g: 0.78125
@@ -122,8 +122,8 @@ nutrient_lines:
   key: cumin-powder
   g: 1.25
 - i: 5
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 1.1458333333333333
 - i: 6
   key: salt
   g: 0.0
@@ -134,7 +134,6 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: भुना शकरकंद
@@ -142,7 +141,8 @@ translations:
     - शकरकंद को छीलकर एक-से आकार के टुकड़ों में काटें।
     - टुकड़ों को तेल, हल्दी, मिर्च पाउडर, जीरा पाउडर और नमक में एक-सा लिपटने तक मिलाएँ।
     - उन्हें बेकिंग ट्रे या मोटे तले के पैन में एक परत में फैलाएँ।
-    - गरम ओवन में भूनें, या ढककर गैस पर बीच-बीच में पलटते हुए अंदर तक नरम होने तक पकाएँ।
+    - गरम ओवन में भूनें, या ढककर गैस पर बीच-बीच में पलटते हुए अंदर तक नरम होने तक
+      पकाएँ।
     - किनारे कैरामेलाइज़ होकर करारे होने तक, करीब 25 minute, पकाते रहें।
     - चाट मसाला बुरकें और नींबू का रस निचोड़ें।
     - एक बार मिलाएँ और साइड या नाश्ते के रूप में गरम परोसें।

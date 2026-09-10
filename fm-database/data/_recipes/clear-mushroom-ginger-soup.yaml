@@ -99,25 +99,25 @@ protein_g: 1.4
 kcal_per_serving: 43
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 43.4
-  protein_g: 1.4
-  carbs_g: 5.9
-  fat_g: 1.9
-  fibre_g: 0.9
-  iron_mg: 0.4
-  calcium_mg: 18.8
-  magnesium_mg: 9.5
-  zinc_mg: 0.2
-  potassium_mg: 106
-  folate_ug: 9.5
+  kcal: 65.4
+  protein_g: 4.5
+  carbs_g: 9.2
+  fat_g: 2.2
+  fibre_g: 1.9
+  iron_mg: 0.9
+  calcium_mg: 21.8
+  magnesium_mg: 18.5
+  zinc_mg: 0.7
+  potassium_mg: 424
+  folate_ug: 26.5
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 6.2
+  vit_d_ug: 0.2
+  vit_c_mg: 8.3
   omega3_mg: 17.4
-nutrient_coverage_pct: 82.3
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -131,8 +131,8 @@ image:
     watermark
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 250.0
 - i: 1
   key: ginger-fresh
   g: 9.0
@@ -166,7 +166,6 @@ nutrient_lines:
 nutrient_servings: 2.5
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: क्लियर मशरूम अदरक सूप

@@ -87,29 +87,29 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 71.7
+  kcal: 72.3
   protein_g: 3.2
-  carbs_g: 16.0
+  carbs_g: 16.1
   fat_g: 0.8
   fibre_g: 5.0
-  iron_mg: 1.1
-  calcium_mg: 37.7
-  magnesium_mg: 37.1
+  iron_mg: 1.2
+  calcium_mg: 39.4
+  magnesium_mg: 37.4
   zinc_mg: 0.8
-  potassium_mg: 739
-  folate_ug: 85.3
+  potassium_mg: 740
+  folate_ug: 85.7
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 183
   omega3_mg: 36.6
-nutrient_coverage_pct: 87.8
+nutrient_coverage_pct: 94.9
 rich_in:
 - fibre
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: capsicum
@@ -121,24 +121,27 @@ nutrient_lines:
   key: garlic
   g: 6.0
 - i: 3
-  key: null
-  g: 30.0
+  key: bay-leaf
+  g: 0.4
 - i: 4
   key: null
-  g: 30.0
+  g: 15.0
 - i: 5
   key: salt
   g: 2.0
 - i: 6
   key: null
-  g: 30.0
+  g: 20.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: भुनी शिमला मिर्च और टमाटर सूप
     steps:
-    - शिमला मिर्च को आँच पर घुमाते हुए तब तक भूनें जब तक छिलका चारों तरफ काला पड़ जाए। एक कटोरे में रखकर ठंडा करें, फिर छीलें, बीज निकालें और चार टुकड़े करें।
-    - टमाटरों को तेज पत्ता और लहसुन के साथ करीब 3 कप पानी में तब तक उबालें जब तक टमाटर नरम हो जाएँ।
-    - तेज पत्ते और ढीले हुए टमाटर के छिलके निकाल दें, भुनी शिमला मिर्च डालें और भगोने में ही चिकना पीस लें।
-    - वापस आँच पर रखें, वॉर्सेस्टरशायर सॉस और नमक मिलाएँ, और करीब 5 मिनट उबालें। गरम परोसें, चाहें तो तीखी सॉस के साथ।
+    - शिमला मिर्च को आँच पर घुमाते हुए तब तक भूनें जब तक छिलका चारों तरफ काला पड़
+      जाए। एक कटोरे में रखकर ठंडा करें, फिर छीलें, बीज निकालें और चार टुकड़े करें।
+    - टमाटरों को तेज पत्ता और लहसुन के साथ करीब 3 कप पानी में तब तक उबालें जब तक टमाटर
+      नरम हो जाएँ।
+    - तेज पत्ते और ढीले हुए टमाटर के छिलके निकाल दें, भुनी शिमला मिर्च डालें और भगोने
+      में ही चिकना पीस लें।
+    - वापस आँच पर रखें, वॉर्सेस्टरशायर सॉस और नमक मिलाएँ, और करीब 5 मिनट उबालें। गरम
+      परोसें, चाहें तो तीखी सॉस के साथ।

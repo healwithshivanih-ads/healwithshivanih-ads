@@ -81,10 +81,10 @@ kcal_total: 320
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 315
+  kcal: 323
   protein_g: 11.4
   carbs_g: 59.1
-  fat_g: 4.2
+  fat_g: 5.1
   fibre_g: 7.9
   iron_mg: 2.6
   calcium_mg: 40.4
@@ -95,14 +95,14 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 59.1
-nutrient_coverage_pct: 93.9
+  omega3_mg: 59.4
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: millet-little
@@ -117,21 +117,22 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 4
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 4.541666666666667
 nutrient_servings: 5.0
 cycle_phases:
 - follicular
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: कुटकी बाजरे की इडली
     steps:
     - कुटकी बाजरे को कई बार पानी बदलकर तब तक धोएँ जब तक साफ पानी निकले।
     - बाजरे को अलग, और मेथी वाली उड़द दाल को अलग, 5 घंटे भिगोएँ।
-    - दाल को बहुत हल्का पीसें, फिर बाजरा बारीक। नमक के साथ धीरे से मिलाएँ और खमीर उठाएँ।
+    - दाल को बहुत हल्का पीसें, फिर बाजरा बारीक। नमक के साथ धीरे से मिलाएँ और खमीर
+      उठाएँ।
     - तेल लगे साँचों में डालें और 12 मिनट भाप में पकाएँ।
     - ये चावल की इडली से थोड़ी सघन होती हैं — साँचे ज़्यादा न भरें।
-    - इस बैटर से करीब 20 इडली बनती हैं — लगभग 5 सर्विंग। जो न पकाएँ उसे फ्रिज में रखें और 3 दिन में इस्तेमाल करें। रातभर।
+    - इस बैटर से करीब 20 इडली बनती हैं — लगभग 5 सर्विंग। जो न पकाएँ उसे फ्रिज में
+      रखें और 3 दिन में इस्तेमाल करें। रातभर।

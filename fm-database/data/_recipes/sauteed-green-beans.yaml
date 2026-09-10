@@ -92,27 +92,27 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 94.9
-  protein_g: 4.3
-  carbs_g: 15.8
-  fat_g: 3.0
-  fibre_g: 5.9
-  iron_mg: 2.1
-  calcium_mg: 133
-  magnesium_mg: 53.5
-  zinc_mg: 0.5
-  potassium_mg: 470
-  folate_ug: 68.9
+  kcal: 162
+  protein_g: 4.6
+  carbs_g: 16.3
+  fat_g: 10.2
+  fibre_g: 6.1
+  iron_mg: 2.5
+  calcium_mg: 136
+  magnesium_mg: 58.1
+  zinc_mg: 0.6
+  potassium_mg: 486
+  folate_ug: 70.7
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 23.1
-  omega3_mg: 127
-nutrient_coverage_pct: 80.5
+  vit_c_mg: 23.2
+  omega3_mg: 135
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: green-beans
@@ -121,8 +121,8 @@ nutrient_lines:
   key: coconut-fresh
   g: 15.0
 - i: 2
-  key: null
-  g: 30.0
+  key: mustard-seeds
+  g: 2.0833333333333335
 - i: 3
   key: urad-dal
   g: 4.166666666666667
@@ -133,24 +133,24 @@ nutrient_lines:
   key: green-chilli
   g: 5.0
 - i: 6
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 0.78125
 - i: 7
   key: asafoetida
   g: 0.3
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 13.625
 - i: 9
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: भुनी हरी बीन्स
     steps:
-    - कड़ाही में तेल गरम करें, राई डालकर चटकाएँ, फिर उड़द दाल डालकर सुनहरा होने तक भूनें।
+    - कड़ाही में तेल गरम करें, राई डालकर चटकाएँ, फिर उड़द दाल डालकर सुनहरा होने तक
+      भूनें।
     - करी पत्ता, हरी मिर्च और हींग डालें।
     - कटी बीन्स को हल्दी और नमक के साथ डालें और अच्छे से मिलाएँ।
     - थोड़ा पानी छिड़कें, ढककर धीमी आँच पर बीन्स के नरम होने तक करीब 10 minute पकाएँ।

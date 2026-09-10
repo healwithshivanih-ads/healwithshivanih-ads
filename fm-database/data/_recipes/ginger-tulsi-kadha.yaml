@@ -74,25 +74,25 @@ protein_g: 0.2
 kcal_per_serving: 22
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 21.9
-  protein_g: 0.2
-  carbs_g: 5.7
+  kcal: 22.6
+  protein_g: 0.3
+  carbs_g: 5.8
   fat_g: 0.1
-  fibre_g: 0.3
-  iron_mg: 0.1
-  calcium_mg: 4.6
-  magnesium_mg: 3.4
-  zinc_mg: 0.0
-  potassium_mg: 32.1
-  folate_ug: 0.7
+  fibre_g: 0.4
+  iron_mg: 0.2
+  calcium_mg: 9.9
+  magnesium_mg: 5.3
+  zinc_mg: 0.1
+  potassium_mg: 40.9
+  folate_ug: 2.8
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 0.3
-  omega3_mg: 2.6
-nutrient_coverage_pct: 47.9
+  vit_c_mg: 0.8
+  omega3_mg: 11.9
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -109,8 +109,9 @@ nutrient_lines:
   key: ginger-fresh
   g: 9.0
 - i: 1
-  key: null
+  key: basil-fresh
   g: 30.0
+  f: 0.2
 - i: 2
   key: black-pepper
   g: 8.0
@@ -124,13 +125,16 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: अदरक-तुलसी काढ़ा
     steps:
     - एक छोटे पतीले में पानी उबालें। अदरक के टुकड़े और कुटी काली मिर्च डालें।
-    - आँच धीमी करें और 5 minute उबालें जब तक पानी हल्का सुनहरा हो जाए और अदरक की तेज़ महक आए।
-    - तुलसी के पत्ते डालें, एक बार चलाएँ, और 2 minute और उबालें — इससे ज़्यादा नहीं, ताकि तुलसी के गुणकारी तेल बने रहें।
-    - बारीक छलनी से कपों में छान लें। एक मिनट ठंडा होने दें जब तक गरम पर पीने लायक हो जाए।
-    - चाहें तो इसी समय शहद मिलाएँ — कभी उबलते हुए तरल में नहीं, क्योंकि तेज़ गरमी शहद के गुण घटाती है। तुरंत परोसें।
+    - आँच धीमी करें और 5 minute उबालें जब तक पानी हल्का सुनहरा हो जाए और अदरक की तेज़
+      महक आए।
+    - तुलसी के पत्ते डालें, एक बार चलाएँ, और 2 minute और उबालें — इससे ज़्यादा नहीं,
+      ताकि तुलसी के गुणकारी तेल बने रहें।
+    - बारीक छलनी से कपों में छान लें। एक मिनट ठंडा होने दें जब तक गरम पर पीने लायक
+      हो जाए।
+    - चाहें तो इसी समय शहद मिलाएँ — कभी उबलते हुए तरल में नहीं, क्योंकि तेज़ गरमी
+      शहद के गुण घटाती है। तुरंत परोसें।

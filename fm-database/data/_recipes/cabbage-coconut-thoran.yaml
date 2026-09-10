@@ -112,36 +112,38 @@ kcal_total: 170
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 237
-  protein_g: 4.7
-  carbs_g: 19.2
-  fat_g: 17.6
-  fibre_g: 8.0
-  iron_mg: 2.6
-  calcium_mg: 109
-  magnesium_mg: 47.1
-  zinc_mg: 0.9
-  potassium_mg: 516
-  folate_ug: 94.7
+  kcal: 325
+  protein_g: 7.2
+  carbs_g: 39.6
+  fat_g: 17.8
+  fibre_g: 11.7
+  iron_mg: 3.5
+  calcium_mg: 159
+  magnesium_mg: 69.1
+  zinc_mg: 1.4
+  potassium_mg: 837
+  folate_ug: 137
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 79.1
-  omega3_mg: 34.4
-nutrient_coverage_pct: 94.0
+  vit_c_mg: 95.3
+  omega3_mg: 43.2
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
+- iron
+- calcium
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: cabbage
   g: 356.0
 - i: 1
-  key: null
-  g: 30.0
+  key: onion
+  g: 440.0
 - i: 2
   key: coconut-fresh
   g: 60.0
@@ -178,14 +180,18 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - ovulatory
-
 translations:
   hi:
     name: पत्तागोभी-नारियल थोरन
     steps:
-    - नारियल को हरी मिर्च, लहसुन और जीरे के साथ मोटा-मोटा कूट लें — ओखली में दो-चार बार, पेस्ट नहीं। कुछ घरों में बस कद्दूकस किया नारियल मिला देते हैं; दोनों सही हैं, और कूटने से नमी ज़्यादा छूटती है।
+    - नारियल को हरी मिर्च, लहसुन और जीरे के साथ मोटा-मोटा कूट लें — ओखली में दो-चार
+      बार, पेस्ट नहीं। कुछ घरों में बस कद्दूकस किया नारियल मिला देते हैं; दोनों सही
+      हैं, और कूटने से नमी ज़्यादा छूटती है।
     - नारियल तेल में राई तड़काएँ, फिर उड़द दाल, लाल मिर्च और करी पत्ता डालें।
-    - शैलट (छोटे प्याज़) डालकर एक मिनट नरम करें — हर केरल वाली विधि यहीं से शुरू होती है।
+    - शैलट (छोटे प्याज़) डालकर एक मिनट नरम करें — हर केरल वाली विधि यहीं से शुरू होती
+      है।
     - पत्तागोभी हल्दी और नमक के साथ डालें और तेज़ आँच पर चलाएँ।
-    - ढककर धीमी आँच पर 5 minute पकाएँ — पत्तागोभी अपने ही पानी में भाप से पके, ऊपर से पानी न डालें।
-    - ढक्कन हटाएँ, कूटा हुआ नारियल मिश्रण मिलाएँ और तेज़ आँच पर 2 minute तक सूखने तक चलाएँ।
+    - ढककर धीमी आँच पर 5 minute पकाएँ — पत्तागोभी अपने ही पानी में भाप से पके, ऊपर
+      से पानी न डालें।
+    - ढक्कन हटाएँ, कूटा हुआ नारियल मिश्रण मिलाएँ और तेज़ आँच पर 2 minute तक सूखने
+      तक चलाएँ।

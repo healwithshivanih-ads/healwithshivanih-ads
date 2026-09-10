@@ -97,26 +97,27 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 55.6
-  protein_g: 2.7
-  carbs_g: 10.9
-  fat_g: 0.3
-  fibre_g: 3.6
-  iron_mg: 2.2
-  calcium_mg: 131
-  magnesium_mg: 31.3
-  zinc_mg: 0.5
-  potassium_mg: 409
-  folate_ug: 36.0
+  kcal: 190
+  protein_g: 3.3
+  carbs_g: 12.7
+  fat_g: 14.7
+  fibre_g: 4.5
+  iron_mg: 3.2
+  calcium_mg: 149
+  magnesium_mg: 42.8
+  zinc_mg: 0.7
+  potassium_mg: 458
+  folate_ug: 37.9
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 23.6
-  omega3_mg: 15.8
-nutrient_coverage_pct: 71.6
+  vit_c_mg: 24.0
+  omega3_mg: 30.3
+nutrient_coverage_pct: 100.0
 rich_in:
+- iron
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: tendli
@@ -125,41 +126,43 @@ nutrient_lines:
   key: onion
   g: 110.0
 - i: 2
-  key: null
-  g: 30.0
+  key: mustard-seeds
+  g: 2.0833333333333335
 - i: 3
-  key: null
-  g: 30.0
+  key: cumin-seeds
+  g: 1.0416666666666667
 - i: 4
   key: curry-leaves
   g: 16.0
 - i: 5
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 1.5625
 - i: 6
   key: chilli-powder
   g: 1.25
 - i: 7
-  key: null
-  g: 30.0
+  key: coriander-powder
+  g: 2.5
 - i: 8
   key: asafoetida
   g: 0.3
 - i: 9
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 - i: 10
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: टिंडोरा की सब्ज़ी
     steps:
-    - कड़ाही में तेल गरम करें, राई डालें और चटकने दें, फिर जीरा, करी पत्ता और हींग डालें।
+    - कड़ाही में तेल गरम करें, राई डालें और चटकने दें, फिर जीरा, करी पत्ता और हींग
+      डालें।
     - प्याज़ डालें और नरम होने तक भूनें।
     - कटा टिंडोरा, हल्दी, मिर्च, धनिया पाउडर और नमक डालें; लपेटने के लिए चलाएँ।
-    - ढककर धीमी आँच पर बीच-बीच में चलाते हुए तब तक पकाएँ जब तक टिंडोरा नरम हो जाए, लगभग 15 मिनट।
-    - ढक्कन हटाएँ, आँच तेज़ करें और तब तक पकाएँ जब तक टुकड़े सूखे और किनारों पर हल्के करारे हो जाएँ।
+    - ढककर धीमी आँच पर बीच-बीच में चलाते हुए तब तक पकाएँ जब तक टिंडोरा नरम हो जाए,
+      लगभग 15 मिनट।
+    - ढक्कन हटाएँ, आँच तेज़ करें और तब तक पकाएँ जब तक टुकड़े सूखे और किनारों पर हल्के
+      करारे हो जाएँ।
     - रोटी या दाल-चावल के साथ गरम परोसें।

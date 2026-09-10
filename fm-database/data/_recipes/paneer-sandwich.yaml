@@ -89,32 +89,35 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 223
-  protein_g: 13.6
-  carbs_g: 10.0
-  fat_g: 15.1
-  fibre_g: 1.9
-  iron_mg: 1.0
-  calcium_mg: 328
-  magnesium_mg: 26.5
-  zinc_mg: 1.7
-  potassium_mg: 309
-  folate_ug: 37.5
+  kcal: 375
+  protein_g: 21.0
+  carbs_g: 35.8
+  fat_g: 17.2
+  fibre_g: 5.5
+  iron_mg: 2.5
+  calcium_mg: 426
+  magnesium_mg: 72.7
+  zinc_mg: 2.8
+  potassium_mg: 461
+  folate_ug: 62.7
   b12_ug: 0.5
   vit_d_ug: 0.1
   vit_c_mg: 50.5
-  omega3_mg: 77.2
-nutrient_coverage_pct: 85.5
+  omega3_mg: 155
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- fibre
 - calcium
+- magnesium
+- zinc
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: bread-whole-wheat
+  g: 120.0
 - i: 1
   key: paneer
   g: 130.0
@@ -134,8 +137,8 @@ nutrient_lines:
   key: turmeric
   g: 0.78125
 - i: 7
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 0.0
 - i: 8
   key: coriander-fresh
   g: 2.0
@@ -143,12 +146,12 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: पनीर सैंडविच
     steps:
-    - एक कटोरे में कद्दूकस पनीर को प्याज़, शिमला मिर्च, टमाटर, हरी मिर्च, हल्दी, चाट मसाला, नमक और धनिया के साथ मिलाएँ।
+    - एक कटोरे में कद्दूकस पनीर को प्याज़, शिमला मिर्च, टमाटर, हरी मिर्च, हल्दी, चाट
+      मसाला, नमक और धनिया के साथ मिलाएँ।
     - पनीर का मिश्रण दो ब्रेड स्लाइस पर फैलाएँ और बाकी दो से ढकें।
     - गरम पैन या सैंडविच प्रेस पर 3 से 4 मिनट सुनहरा होने तक सेंकें, या ऐसे ही खाएँ।
     - आधा काटकर गरमागरम परोसें।

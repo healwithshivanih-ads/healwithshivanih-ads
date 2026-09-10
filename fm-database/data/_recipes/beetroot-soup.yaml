@@ -118,7 +118,7 @@ nutrients_per_serving:
   vit_d_ug: 0.1
   vit_c_mg: 92.0
   omega3_mg: 286
-nutrient_coverage_pct: 97.7
+nutrient_coverage_pct: 82.4
 rich_in:
 - fibre
 - iron
@@ -128,7 +128,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: beetroot
@@ -156,7 +156,7 @@ nutrient_lines:
   g: 40.5
 - i: 8
   key: null
-  g: 30.0
+  g: 270.0
 - i: 9
   key: onion
   g: 110.0
@@ -166,13 +166,14 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: चुकंदर सूप
     steps:
-    - चौथाई कटे टमाटर और लहसुन को 1 बड़ा चम्मच ऑलिव ऑयल के साथ 200°C पर करीब 20 मिनट भूनें।
+    - चौथाई कटे टमाटर और लहसुन को 1 बड़ा चम्मच ऑलिव ऑयल के साथ 200°C पर करीब 20 मिनट
+      भूनें।
     - एक गहरे बर्तन में बचे तेल में प्याज़ को 4-5 मिनट नरम करें।
     - ठंडे भुने टमाटरों को छीलकर मसल लें।
-    - कद्दूकस चुकंदर, स्टॉक और मसाला प्याज़ में डालें, ढककर करीब 10 मिनट पकाएँ, बीच-बीच में चलाते हुए; मसला टमाटर मिलाएँ और एक मिनट और पकाएँ।
+    - कद्दूकस चुकंदर, स्टॉक और मसाला प्याज़ में डालें, ढककर करीब 10 मिनट पकाएँ, बीच-बीच
+      में चलाते हुए; मसला टमाटर मिलाएँ और एक मिनट और पकाएँ।
     - चिकना पीस लें। ऊपर थोड़ी क्रीम, क्रूटन और हरे प्याज़ के पत्ते डालकर परोसें।

@@ -106,27 +106,28 @@ protein_g: 2.7
 kcal_per_serving: 151
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 151
-  protein_g: 2.7
-  carbs_g: 11.0
-  fat_g: 11.6
-  fibre_g: 3.7
-  iron_mg: 3.0
-  calcium_mg: 114
-  magnesium_mg: 35.1
-  zinc_mg: 0.5
-  potassium_mg: 333
-  folate_ug: 35.9
+  kcal: 174
+  protein_g: 5.8
+  carbs_g: 14.6
+  fat_g: 11.9
+  fibre_g: 4.7
+  iron_mg: 3.5
+  calcium_mg: 118
+  magnesium_mg: 44.3
+  zinc_mg: 1.0
+  potassium_mg: 655
+  folate_ug: 52.9
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 25.1
+  vit_d_ug: 0.2
+  vit_c_mg: 27.3
   omega3_mg: 125
-nutrient_coverage_pct: 86.1
+nutrient_coverage_pct: 100.0
 rich_in:
 - iron
+- potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -136,12 +137,12 @@ image:
   credit: generated with ChatGPT image generation
   source_url: chatgpt-generated://mushroom-methi-sabzi
   rights_status: original_generated
-  note: original generated image; visually reviewed for no people, hands, text,
-    or watermark
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 250.0
 - i: 1
   key: methi-leaves
   g: 70.0
@@ -173,22 +174,28 @@ nutrient_lines:
   key: chilli-powder
   g: 1.25
 - i: 11
-  key: null
-  g: 30.0
+  key: amchur
+  g: 1.1458333333333333
 - i: 12
   key: salt
   g: 4.265625
 nutrient_servings: 2.5
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: मशरूम मेथी सब्ज़ी
     steps:
-    - चार-चार टुकड़े किए मशरूम को गिल्स ऊपर की ओर करके पकाने से पहले 20 मिनट सीधी धूप में रखें।
-    - एक चौड़े पैन में तेल मध्यम आँच पर गरम करें। जीरा डालकर चटकने दें। प्याज़ डालकर पारदर्शी और हल्का सुनहरा होने तक पकाएँ, लगभग 6–7 मिनट।
-    - अदरक और लहसुन मिलाकर 1 मिनट पकाएँ। टमाटर, हल्दी, धनिया पाउडर, मिर्च पाउडर और नमक डालें। टमाटर नरम होकर मिश्रण एक साथ आने तक पकाएँ, लगभग 4–5 मिनट।
-    - धूप में सुखाए मशरूम डालें; मध्यम-तेज़ आँच पर बीच-बीच में चलाते हुए 4 मिनट पकाएँ जब तक पानी छोड़कर भूरे होने लगें।
-    - कटे मेथी के पत्ते डालकर अच्छे से मिलाएँ। बिना ढके मध्यम आँच पर 5–6 मिनट पकाएँ, बीच-बीच में चलाते हुए, जब तक मेथी पूरी तरह मुरझा जाए और सब्ज़ी सूखी व एकसार दिखे।
-    - अमचूर बुरकें, मिलाएँ, चखकर नमक ठीक करें, और दाल-चावल या फुलके के साथ साइड में परोसें।
+    - चार-चार टुकड़े किए मशरूम को गिल्स ऊपर की ओर करके पकाने से पहले 20 मिनट सीधी
+      धूप में रखें।
+    - एक चौड़े पैन में तेल मध्यम आँच पर गरम करें। जीरा डालकर चटकने दें। प्याज़ डालकर
+      पारदर्शी और हल्का सुनहरा होने तक पकाएँ, लगभग 6–7 मिनट।
+    - अदरक और लहसुन मिलाकर 1 मिनट पकाएँ। टमाटर, हल्दी, धनिया पाउडर, मिर्च पाउडर और
+      नमक डालें। टमाटर नरम होकर मिश्रण एक साथ आने तक पकाएँ, लगभग 4–5 मिनट।
+    - धूप में सुखाए मशरूम डालें; मध्यम-तेज़ आँच पर बीच-बीच में चलाते हुए 4 मिनट पकाएँ
+      जब तक पानी छोड़कर भूरे होने लगें।
+    - कटे मेथी के पत्ते डालकर अच्छे से मिलाएँ। बिना ढके मध्यम आँच पर 5–6 मिनट पकाएँ,
+      बीच-बीच में चलाते हुए, जब तक मेथी पूरी तरह मुरझा जाए और सब्ज़ी सूखी व एकसार
+      दिखे।
+    - अमचूर बुरकें, मिलाएँ, चखकर नमक ठीक करें, और दाल-चावल या फुलके के साथ साइड में
+      परोसें।

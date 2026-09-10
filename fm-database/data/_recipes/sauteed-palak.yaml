@@ -87,25 +87,27 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 25.3
-  protein_g: 1.7
-  carbs_g: 4.2
-  fat_g: 0.4
-  fibre_g: 1.6
-  iron_mg: 1.9
-  calcium_mg: 61.7
-  magnesium_mg: 46.8
-  zinc_mg: 0.3
-  potassium_mg: 312
-  folate_ug: 85.3
+  kcal: 88.7
+  protein_g: 1.8
+  carbs_g: 4.7
+  fat_g: 7.3
+  fibre_g: 1.8
+  iron_mg: 2.5
+  calcium_mg: 67.2
+  magnesium_mg: 49.5
+  zinc_mg: 0.4
+  potassium_mg: 330
+  folate_ug: 85.4
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 23.6
-  omega3_mg: 85.5
-nutrient_coverage_pct: 61.3
-rich_in: []
+  vit_c_mg: 23.7
+  omega3_mg: 91.4
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: spinach
@@ -114,20 +116,20 @@ nutrient_lines:
   key: garlic
   g: 12.0
 - i: 2
-  key: null
-  g: 30.0
+  key: cumin-seeds
+  g: 1.0416666666666667
 - i: 3
   key: green-chilli
   g: 5.0
 - i: 4
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 0.78125
 - i: 5
   key: asafoetida
   g: 0.3
 - i: 6
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 13.625
 - i: 7
   key: salt
   g: 0.0
@@ -137,7 +139,6 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: भुना हुआ पालक

@@ -115,31 +115,38 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 398
-  protein_g: 10.1
-  carbs_g: 86.8
-  fat_g: 1.2
-  fibre_g: 6.7
-  iron_mg: 2.5
-  calcium_mg: 74.6
-  magnesium_mg: 50.3
-  zinc_mg: 1.7
-  potassium_mg: 405
-  folate_ug: 44.9
+  kcal: 603
+  protein_g: 22.8
+  carbs_g: 94.9
+  fat_g: 15.0
+  fibre_g: 9.9
+  iron_mg: 7.4
+  calcium_mg: 161
+  magnesium_mg: 111
+  zinc_mg: 2.8
+  potassium_mg: 844
+  folate_ug: 119
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 20.9
-  omega3_mg: 40.9
-nutrient_coverage_pct: 83.0
+  vit_c_mg: 21.0
+  omega3_mg: 144
+nutrient_coverage_pct: 100.0
 rich_in:
+- protein
 - fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: soya-chunks
+  g: 48.75
 - i: 1
   key: white-rice
   g: 185.0
@@ -153,11 +160,11 @@ nutrient_lines:
   key: ginger-garlic-paste
   g: 15.0
 - i: 5
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 - i: 6
-  key: null
-  g: 30.0
+  key: bay-leaf
+  g: 0.2
 - i: 7
   key: cloves
   g: 0.30000000000000004
@@ -180,15 +187,18 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: सोया चंक पुलाव सब्ज़ियों के साथ
     steps:
-    - सोया चंक को नमकीन पानी में 4-5 मिनट उबालें, छानें, और पानी निचोड़ लें। अलग रख दें।
-    - भारी बर्तन में मध्यम आँच पर तेल गरम करें। तेज पत्ता, लौंग, इलायची, दालचीनी और जीरा डालें; खुशबू आने तक चटकने दें।
+    - सोया चंक को नमकीन पानी में 4-5 मिनट उबालें, छानें, और पानी निचोड़ लें। अलग रख
+      दें।
+    - भारी बर्तन में मध्यम आँच पर तेल गरम करें। तेज पत्ता, लौंग, इलायची, दालचीनी और
+      जीरा डालें; खुशबू आने तक चटकने दें।
     - कटा प्याज़ डालकर सुनहरा होने तक भूनें, फिर अदरक-लहसुन पेस्ट मिलाकर 1 मिनट पकाएँ।
-    - मिली-जुली सब्ज़ियाँ और निचोड़े सोया चंक डालें, 3-4 मिनट भूनें, फिर गरम मसाला और नमक छिड़कें।
+    - मिली-जुली सब्ज़ियाँ और निचोड़े सोया चंक डालें, 3-4 मिनट भूनें, फिर गरम मसाला
+      और नमक छिड़कें।
     - भिगोया चावल छानकर बर्तन में डालें, दानों को तोड़े बिना हल्के से मसाले में मिलाएँ।
-    - 2 कप पानी डालें, उबाल लाएँ, फिर ढककर धीमी आँच पर 12-15 मिनट पकाएँ जब तक चावल फूल जाए और पानी सोख जाए।
+    - 2 कप पानी डालें, उबाल लाएँ, फिर ढककर धीमी आँच पर 12-15 मिनट पकाएँ जब तक चावल
+      फूल जाए और पानी सोख जाए।
     - ढककर 5 मिनट रखें, काँटे से फुलाएँ, और परोसने से पहले ताज़े धनिया से सजाएँ।

@@ -114,25 +114,27 @@ protein_g: 2.1
 kcal_per_serving: 125
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 125
-  protein_g: 2.1
-  carbs_g: 11.9
-  fat_g: 8.5
-  fibre_g: 3.0
-  iron_mg: 1.7
-  calcium_mg: 49.1
-  magnesium_mg: 25.6
-  zinc_mg: 0.5
-  potassium_mg: 360
-  folate_ug: 25.9
+  kcal: 144
+  protein_g: 4.8
+  carbs_g: 14.8
+  fat_g: 8.7
+  fibre_g: 3.8
+  iron_mg: 2.1
+  calcium_mg: 52.2
+  magnesium_mg: 33.4
+  zinc_mg: 0.9
+  potassium_mg: 633
+  folate_ug: 40.6
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 18.5
+  vit_d_ug: 0.2
+  vit_c_mg: 20.3
   omega3_mg: 70.1
-nutrient_coverage_pct: 90.6
-rich_in: []
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -146,8 +148,8 @@ image:
     watermark
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 300.0
 - i: 1
   key: onion
   g: 220.0
@@ -167,8 +169,8 @@ nutrient_lines:
   key: cumin-seeds
   g: 2.0833333333333335
 - i: 7
-  key: null
-  g: 30.0
+  key: bay-leaf
+  g: 0.2
 - i: 8
   key: coriander-powder
   g: 3.75
@@ -194,14 +196,19 @@ nutrient_lines:
   key: water
   g: 0.0
 nutrient_servings: 3.5
-
 translations:
   hi:
     name: मशरूम मसाला
     steps:
-    - कटे मशरूम को गिल्स ऊपर की ओर करके पकाने से पहले 20 minute सीधी धूप में सुखाएँ, फिर रख दें।
-    - कड़ाही में मध्यम आँच पर तेल गरम करें। जीरा और तेज़ पत्ता डालकर 30 second चटकाएँ। प्याज़ डालकर बार-बार चलाते हुए करीब 10 minute गहरा सुनहरा होने तक पकाएँ।
-    - अदरक और लहसुन मिलाएँ और 1–2 minute कच्चापन जाने तक पकाएँ। टमाटर, नमक, हल्दी, धनिया पाउडर, जीरा पाउडर और मिर्च पाउडर डालें। करीब 7–8 minute तक टमाटर गलने और किनारों पर तेल छूटने तक पकाएँ।
-    - धूप में सुखाए मशरूम डालें, मसाले में अच्छे से मिलाएँ, और मध्यम-तेज़ आँच पर 4–5 minute तक मशरूम नरम और हल्के भूरे होने तक पकाएँ।
-    - पानी डालें, चलाएँ, और 3–4 minute उबालें ताकि ग्रेवी बन जाए। गरम मसाला बुरकें, नमक ठीक करें, और 1 minute और पकाएँ।
+    - कटे मशरूम को गिल्स ऊपर की ओर करके पकाने से पहले 20 minute सीधी धूप में सुखाएँ,
+      फिर रख दें।
+    - कड़ाही में मध्यम आँच पर तेल गरम करें। जीरा और तेज़ पत्ता डालकर 30 second चटकाएँ।
+      प्याज़ डालकर बार-बार चलाते हुए करीब 10 minute गहरा सुनहरा होने तक पकाएँ।
+    - अदरक और लहसुन मिलाएँ और 1–2 minute कच्चापन जाने तक पकाएँ। टमाटर, नमक, हल्दी,
+      धनिया पाउडर, जीरा पाउडर और मिर्च पाउडर डालें। करीब 7–8 minute तक टमाटर गलने
+      और किनारों पर तेल छूटने तक पकाएँ।
+    - धूप में सुखाए मशरूम डालें, मसाले में अच्छे से मिलाएँ, और मध्यम-तेज़ आँच पर 4–5
+      minute तक मशरूम नरम और हल्के भूरे होने तक पकाएँ।
+    - पानी डालें, चलाएँ, और 3–4 minute उबालें ताकि ग्रेवी बन जाए। गरम मसाला बुरकें,
+      नमक ठीक करें, और 1 minute और पकाएँ।
     - ताज़ा धनिया डालें और रोटी या चावल के साथ गरम परोसें।

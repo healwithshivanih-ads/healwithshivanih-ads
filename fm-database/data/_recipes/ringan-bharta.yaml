@@ -100,28 +100,28 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 77.4
-  protein_g: 3.0
-  carbs_g: 17.6
-  fat_g: 0.6
-  fibre_g: 6.2
-  iron_mg: 0.9
-  calcium_mg: 38.4
-  magnesium_mg: 36.7
-  zinc_mg: 0.6
-  potassium_mg: 640
-  folate_ug: 54.9
+  kcal: 204
+  protein_g: 3.3
+  carbs_g: 18.6
+  fat_g: 14.5
+  fibre_g: 6.5
+  iron_mg: 2.0
+  calcium_mg: 49.4
+  magnesium_mg: 42.1
+  zinc_mg: 0.7
+  potassium_mg: 675
+  folate_ug: 55.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 24.8
-  omega3_mg: 23.6
-nutrient_coverage_pct: 86.4
+  omega3_mg: 35.4
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: baingan
@@ -139,17 +139,17 @@ nutrient_lines:
   key: ginger-garlic-paste
   g: 5.0
 - i: 5
-  key: null
-  g: 30.0
+  key: cumin-seeds
+  g: 2.0833333333333335
 - i: 6
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 1.5625
 - i: 7
   key: chilli-powder
   g: 1.25
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 - i: 9
   key: salt
   g: 0.0
@@ -157,14 +157,16 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: रिंगण भर्ता
     steps:
-    - बैंगन पर थोड़ा तेल मलें और खुली आँच या ओवन में तब तक भूनें जब तक छिलका जल जाए और गूदा नरम हो जाए।
+    - बैंगन पर थोड़ा तेल मलें और खुली आँच या ओवन में तब तक भूनें जब तक छिलका जल जाए
+      और गूदा नरम हो जाए।
     - ठंडा करें, जला छिलका उतारें और धुँधले गूदे को काँटे से मसलें।
-    - कड़ाही में तेल गरम करें, जीरा चटकाएँ, फिर प्याज़, हरी मिर्च और अदरक-लहसुन पेस्ट डालें; सुनहरा होने तक भूनें।
-    - टमाटर, हल्दी और मिर्च पाउडर डालें; तब तक पकाएँ जब तक टमाटर गल जाए और तेल अलग हो जाए।
+    - कड़ाही में तेल गरम करें, जीरा चटकाएँ, फिर प्याज़, हरी मिर्च और अदरक-लहसुन पेस्ट
+      डालें; सुनहरा होने तक भूनें।
+    - टमाटर, हल्दी और मिर्च पाउडर डालें; तब तक पकाएँ जब तक टमाटर गल जाए और तेल अलग
+      हो जाए।
     - मसला बैंगन नमक के साथ मिलाएँ और 5 से 7 मिनट पकाएँ ताकि स्वाद घुल जाएँ।
     - ताज़ी धनिया डालकर पूरा करें और रोटी या बाजरे के रोटले के साथ गरम परोसें।

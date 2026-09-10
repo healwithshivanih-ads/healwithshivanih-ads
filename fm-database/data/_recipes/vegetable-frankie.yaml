@@ -88,30 +88,32 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 137
-  protein_g: 2.4
-  carbs_g: 19.1
-  fat_g: 6.0
-  fibre_g: 3.0
-  iron_mg: 0.9
-  calcium_mg: 26.5
-  magnesium_mg: 25.5
-  zinc_mg: 0.4
-  potassium_mg: 435
-  folate_ug: 26.1
+  kcal: 237
+  protein_g: 5.7
+  carbs_g: 39.1
+  fat_g: 6.5
+  fibre_g: 6.5
+  iron_mg: 2.1
+  calcium_mg: 38.5
+  magnesium_mg: 64.3
+  zinc_mg: 1.2
+  potassium_mg: 540
+  folate_ug: 35.3
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 22.4
-  omega3_mg: 35.5
-nutrient_coverage_pct: 83.1
+  omega3_mg: 49.5
+nutrient_coverage_pct: 99.3
 rich_in:
+- fibre
+- potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-roti
+  g: 80.0
 - i: 1
   key: potato
   g: 150.0
@@ -123,7 +125,7 @@ nutrient_lines:
   g: 14.1875
 - i: 4
   key: null
-  g: 30.0
+  g: 2.5
 - i: 5
   key: chilli-powder
   g: 1.25
@@ -137,12 +139,12 @@ nutrient_lines:
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: सब्ज़ी फ्रैंकी
     steps:
-    - उबले आलू को लाल मिर्च पाउडर, आधा फ्रैंकी मसाला और नमक के साथ मैश करें, और दो लंबे रोल बनाएँ।
+    - उबले आलू को लाल मिर्च पाउडर, आधा फ्रैंकी मसाला और नमक के साथ मैश करें, और दो
+      लंबे रोल बनाएँ।
     - रोटियों को गरम पैन पर थोड़े मक्खन के साथ एक-एक मिनट प्रति तरफ़ सेंक लें।
     - हर रोटी पर हरी चटनी लगाएँ, किनारे पर आलू का रोल रखें, और ऊपर कटा प्याज़ डालें।
     - बचा फ्रैंकी मसाला और नींबू का रस बुरकें, कसकर लपेटें और परोसें।
