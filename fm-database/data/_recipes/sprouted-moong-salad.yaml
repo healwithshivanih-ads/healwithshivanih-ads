@@ -94,10 +94,10 @@ kcal_total: 120
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 55.5
+  kcal: 75.6
   protein_g: 4.1
   carbs_g: 11.7
-  fat_g: 0.5
+  fat_g: 2.8
   fibre_g: 2.9
   iron_mg: 1.7
   calcium_mg: 35.0
@@ -108,12 +108,12 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 25.8
-  omega3_mg: 21.1
-nutrient_coverage_pct: 93.4
+  omega3_mg: 22.0
+nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: mung-sprouted
@@ -140,18 +140,19 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 4.541666666666667
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: अंकुरित मूँग सलाद
     steps:
-    - अगर आपका पाचन नाज़ुक है तो अंकुरित मूँग को 4–5 मिनट भाप में पकाएँ; वरना कच्चा ही इस्तेमाल करें।
-    - उन्हें पूरी तरह ठंडा होने दें — गरम अंकुर पर ड्रेसिंग डालने से सलाद पानीदार हो जाता है।
+    - अगर आपका पाचन नाज़ुक है तो अंकुरित मूँग को 4–5 मिनट भाप में पकाएँ; वरना कच्चा
+      ही इस्तेमाल करें।
+    - उन्हें पूरी तरह ठंडा होने दें — गरम अंकुर पर ड्रेसिंग डालने से सलाद पानीदार
+      हो जाता है।
     - खीरे, टमाटर, प्याज़ और धनिया के साथ मिलाएँ।
     - नींबू के रस, भुने जीरे, सेंधा नमक और चाहें तो तेल से ड्रेस करें।
     - तुरंत परोसें; रखने पर यह पानी छोड़ देता है।

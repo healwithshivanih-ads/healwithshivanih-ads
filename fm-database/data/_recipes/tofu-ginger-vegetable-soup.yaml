@@ -132,22 +132,22 @@ protein_g: 25.9
 kcal_per_serving: 573
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 573
-  protein_g: 25.9
-  carbs_g: 74.2
-  fat_g: 20.7
-  fibre_g: 11.9
-  iron_mg: 5.7
-  calcium_mg: 396
-  magnesium_mg: 198
-  zinc_mg: 3.8
-  potassium_mg: 1025
-  folate_ug: 126
+  kcal: 600
+  protein_g: 29.5
+  carbs_g: 78.6
+  fat_g: 21.0
+  fibre_g: 13.2
+  iron_mg: 6.3
+  calcium_mg: 401
+  magnesium_mg: 209
+  zinc_mg: 4.3
+  potassium_mg: 1398
+  folate_ug: 147
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 38.8
+  vit_d_ug: 0.2
+  vit_c_mg: 41.7
   omega3_mg: 519
-nutrient_coverage_pct: 95.1
+nutrient_coverage_pct: 98.6
 rich_in:
 - protein
 - fibre
@@ -160,7 +160,7 @@ rich_in:
 - vitamin-c
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -201,8 +201,8 @@ nutrient_lines:
   key: tamari
   g: 47.8125
 - i: 9
-  key: null
-  g: 30.0
+  key: onion
+  g: 21.5625
 - i: 10
   key: coriander-fresh
   g: 3.0
@@ -219,8 +219,8 @@ nutrient_lines:
   key: peas
   g: 200.0
 - i: 15
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 400.0
 - i: 16
   key: water
   g: 0.0
@@ -238,7 +238,6 @@ cycle_phases:
 - menstrual
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: टोफू-अदरक सब्ज़ी सूप
@@ -248,7 +247,8 @@ translations:
     - बारीक अदरक और लहसुन डालें, लगभग 1 मिनट लगातार चलाते हुए खुशबू आने तक पकाएँ।
     - मिसो पेस्ट घुलने तक मिलाएँ, फिर पानी और सोया सॉस डालें।
     - सूप को उबाल लाएँ, फिर आँच कम करके धीमे-धीमे पकाएँ।
-    - परोसने से लगभग 30 मिनट पहले, टोफू के टुकड़े, बीन स्प्राउट्स, कसी गाजर, स्नो पीज़, मशरूम, वॉटर चेस्टनट और पका ब्राउन राइस डालें।
+    - परोसने से लगभग 30 मिनट पहले, टोफू के टुकड़े, बीन स्प्राउट्स, कसी गाजर, स्नो
+      पीज़, मशरूम, वॉटर चेस्टनट और पका ब्राउन राइस डालें।
     - सारी सब्ज़ियाँ नरम होने और स्वाद घुलने तक, लगभग 25–30 मिनट, धीमे पकाएँ।
     - चखें और ज़रूरत अनुसार नमक ठीक करें।
     - परोसने से ठीक पहले हरा प्याज़ और धनिया मिलाएँ।

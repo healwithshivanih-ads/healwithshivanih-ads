@@ -109,22 +109,22 @@ protein_g: 14.8
 kcal_per_serving: 416
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 416
-  protein_g: 14.8
-  carbs_g: 65.7
+  kcal: 428
+  protein_g: 15.2
+  carbs_g: 68.4
   fat_g: 11.6
-  fibre_g: 10.4
-  iron_mg: 4.7
-  calcium_mg: 118
-  magnesium_mg: 193
-  zinc_mg: 3.2
-  potassium_mg: 902
-  folate_ug: 219
+  fibre_g: 10.9
+  iron_mg: 4.8
+  calcium_mg: 124
+  magnesium_mg: 196
+  zinc_mg: 3.3
+  potassium_mg: 944
+  folate_ug: 224
   b12_ug: 0.1
   vit_d_ug: 0.0
-  vit_c_mg: 30.3
-  omega3_mg: 272
-nutrient_coverage_pct: 72.6
+  vit_c_mg: 32.4
+  omega3_mg: 273
+nutrient_coverage_pct: 90.7
 rich_in:
 - protein
 - fibre
@@ -135,7 +135,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-02'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -154,13 +154,13 @@ nutrient_lines:
   g: 7.5
 - i: 2
   key: null
-  g: 30.0
+  g: 7.5
 - i: 3
   key: null
-  g: 30.0
+  g: 7.5
 - i: 4
   key: null
-  g: 30.0
+  g: 7.5
 - i: 5
   key: lemon-juice
   g: 15.25
@@ -169,7 +169,7 @@ nutrient_lines:
   g: 0.0
 - i: 7
   key: null
-  g: 30.0
+  g: 2.5
 - i: 8
   key: garlic
   g: 3.0
@@ -192,8 +192,8 @@ nutrient_lines:
   key: cabbage
   g: 89.0
 - i: 15
-  key: null
-  g: 30.0
+  key: onion
+  g: 57.5
 - i: 16
   key: avocado
   g: 70.0
@@ -201,12 +201,12 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: ग्रीन गॉडेस छोले बाउल
     steps:
-    - दही, पार्सली, टैरागन, चाइव्स, मेयोनेज़, नींबू का रस, पानी, केपर्स, बारीक कटा लहसुन और नमक (1/4 छोटा चम्मच) को एक छोटे फूड प्रोसेसर या मिक्सी में डालें।
+    - दही, पार्सली, टैरागन, चाइव्स, मेयोनेज़, नींबू का रस, पानी, केपर्स, बारीक कटा
+      लहसुन और नमक (1/4 छोटा चम्मच) को एक छोटे फूड प्रोसेसर या मिक्सी में डालें।
     - करीब 1 मिनट तक पीसें जब तक ड्रेसिंग चिकनी और चमकीली हरी न हो जाए।
     - पके क्विनोआ को दो कटोरों में बाँटकर आधार बनाएँ।
     - धुले छोले, कद्दूकस की गाजर, कटी लाल पत्तागोभी और हरे प्याज़ को क्विनोआ पर सजाएँ।

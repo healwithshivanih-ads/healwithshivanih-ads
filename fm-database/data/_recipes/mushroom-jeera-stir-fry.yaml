@@ -95,25 +95,25 @@ protein_g: 0.6
 kcal_per_serving: 86
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 85.5
-  protein_g: 0.6
-  carbs_g: 2.7
-  fat_g: 8.4
-  fibre_g: 0.6
-  iron_mg: 1.0
-  calcium_mg: 20.8
-  magnesium_mg: 7.8
-  zinc_mg: 0.1
-  potassium_mg: 61.4
-  folate_ug: 1.7
+  kcal: 112
+  protein_g: 4.3
+  carbs_g: 6.6
+  fat_g: 8.8
+  fibre_g: 1.8
+  iron_mg: 1.6
+  calcium_mg: 24.4
+  magnesium_mg: 18.6
+  zinc_mg: 0.7
+  potassium_mg: 443
+  folate_ug: 22.1
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 4.6
+  vit_d_ug: 0.2
+  vit_c_mg: 7.1
   omega3_mg: 66.9
-nutrient_coverage_pct: 62.9
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -127,8 +127,8 @@ image:
     use
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 300.0
 - i: 1
   key: olive-oil
   g: 20.25
@@ -163,13 +163,14 @@ nutrient_lines:
   key: lemon-juice
   g: 5.083333333333333
 nutrient_servings: 2.5
-
 translations:
   hi:
     name: मशरूम जीरा स्टिर-फ्राई
     steps:
-    - एक चौड़ी कड़ाही में मध्यम-तेज़ आँच पर तेल गरम करें। जीरा डालें और 20 सेकंड चटकने दें।
+    - एक चौड़ी कड़ाही में मध्यम-तेज़ आँच पर तेल गरम करें। जीरा डालें और 20 सेकंड चटकने
+      दें।
     - चीरी हुई हरी मिर्च, अदरक और लहसुन डालें; 1 मिनट भूनें जब तक खुशबू न आए।
     - मशरूम को एक ही परत में डालें। 2–3 मिनट तक न चलाएँ, ताकि एक तरफ़ रंग आ जाए।
-    - मशरूम को चलाएँ, हल्दी, धनिया पाउडर, नमक और काली मिर्च छिड़कें, और 4–5 मिनट और भूनें जब तक सारी नमी सूख जाए और किनारे हल्के सुनहरे हो जाएँ।
+    - मशरूम को चलाएँ, हल्दी, धनिया पाउडर, नमक और काली मिर्च छिड़कें, और 4–5 मिनट और
+      भूनें जब तक सारी नमी सूख जाए और किनारे हल्के सुनहरे हो जाएँ।
     - आँच बंद करें, नींबू का रस और ताज़ा धनिया डालकर पूरा करें, और तुरंत परोसें।

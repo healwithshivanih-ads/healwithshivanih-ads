@@ -85,29 +85,29 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 91.2
-  protein_g: 1.1
-  carbs_g: 2.6
-  fat_g: 9.1
-  fibre_g: 0.7
-  iron_mg: 0.4
-  calcium_mg: 9.1
-  magnesium_mg: 16.8
-  zinc_mg: 0.2
-  potassium_mg: 57.3
-  folate_ug: 13.2
+  kcal: 161
+  protein_g: 3.1
+  carbs_g: 17.7
+  fat_g: 10.2
+  fibre_g: 4.2
+  iron_mg: 1.1
+  calcium_mg: 64.6
+  magnesium_mg: 39.9
+  zinc_mg: 0.7
+  potassium_mg: 345
+  folate_ug: 70.8
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 6.0
-  omega3_mg: 55.5
-nutrient_coverage_pct: 38.7
+  vit_c_mg: 18.1
+  omega3_mg: 152
+nutrient_coverage_pct: 93.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: arugula
+  g: 60.0
 - i: 1
   key: olive-oil
   g: 13.5
@@ -122,10 +122,10 @@ nutrient_lines:
   g: 2.0
 - i: 5
   key: null
-  g: 30.0
+  g: 20.0
 - i: 6
-  key: null
-  g: 30.0
+  key: pomegranate
+  g: 150.0
 - i: 7
   key: sunflower-seeds
   g: 8.75
@@ -133,7 +133,6 @@ nutrient_servings: 2.0
 cycle_phases:
 - ovulatory
 - follicular
-
 translations:
   hi:
     name: अरुगुला और पार्मेसन सलाद

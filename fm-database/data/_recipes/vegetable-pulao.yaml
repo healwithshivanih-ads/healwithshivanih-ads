@@ -111,40 +111,40 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 408
-  protein_g: 10.7
-  carbs_g: 88.8
-  fat_g: 1.2
-  fibre_g: 7.6
+  kcal: 496
+  protein_g: 10.5
+  carbs_g: 88.3
+  fat_g: 11.4
+  fibre_g: 7.5
   iron_mg: 2.8
-  calcium_mg: 77.4
-  magnesium_mg: 55.5
+  calcium_mg: 76.7
+  magnesium_mg: 54.5
   zinc_mg: 1.8
-  potassium_mg: 475
-  folate_ug: 59.1
+  potassium_mg: 461
+  folate_ug: 57.0
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 28.9
-  omega3_mg: 54.4
-nutrient_coverage_pct: 94.3
+  vit_c_mg: 27.5
+  omega3_mg: 56.5
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: white-rice
   g: 185.0
 - i: 1
-  key: mixed-vegetables
-  g: 11.25
+  key: sunflower-oil
+  g: 20.4375
 - i: 2
   key: cumin-seeds
   g: 2.0833333333333335
 - i: 3
-  key: null
-  g: 30.0
+  key: bay-leaf
+  g: 0.2
 - i: 4
   key: cinnamon
   g: 3.0
@@ -176,15 +176,17 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: सब्ज़ी पुलाव
     steps:
     - भीगे चावल को छानकर रख दें।
-    - एक मोटे तले के बर्तन में तेल गरम करें, जीरा, तेज़ पत्ता, दालचीनी, इलायची और लौंग डालें, और कुछ सेकंड चटकने दें।
-    - कटा प्याज़ डालकर नरम और हल्का सुनहरा होने तक भूनें, फिर अदरक-लहसुन पेस्ट आधे मिनट के लिए मिलाएँ।
+    - एक मोटे तले के बर्तन में तेल गरम करें, जीरा, तेज़ पत्ता, दालचीनी, इलायची और
+      लौंग डालें, और कुछ सेकंड चटकने दें।
+    - कटा प्याज़ डालकर नरम और हल्का सुनहरा होने तक भूनें, फिर अदरक-लहसुन पेस्ट आधे
+      मिनट के लिए मिलाएँ।
     - कटी सब्ज़ियाँ, हल्दी और नमक डालें, और 2-3 minute तक नरम पड़ने लगने तक भूनें।
     - छना हुआ चावल डालें और एक मिनट मसालों में हल्के से लपेटें।
-    - पानी डालें, उबाल लाएँ, फिर ढककर धीमी आँच पर 12-15 minute तक चावल नरम और पानी सूखने तक पकाएँ।
+    - पानी डालें, उबाल लाएँ, फिर ढककर धीमी आँच पर 12-15 minute तक चावल नरम और पानी
+      सूखने तक पकाएँ।
     - ढककर 5 minute रखें, फिर काँटे से हल्के से फुलाएँ और धनिया से सजाएँ।

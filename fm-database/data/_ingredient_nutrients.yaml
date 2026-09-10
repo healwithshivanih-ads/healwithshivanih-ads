@@ -65,12 +65,36 @@ _meta:
   verified: '2026-07-07'
   verification: 'All 200 ingredients cross-checked vs IFCT 2017 / USDA FDC by an independent skeptical pass (25-agent workflow). 6 corrections applied: ajwain fat/fibre, tendli potassium, methi-leaves iron,
     vanilla kcal, cacao kcal. Remainder confirmed within tolerance.'
+  # 2026-09-09: +14 entries, NOT part of the 25-agent verification above — treat as
+  # authored-not-verified until a pass covers them: wheat-flour, maida, suji,
+  # wheat-roti, bread-whole-wheat, soya-chunks, mushroom-button, sugar-white,
+  # pomegranate, makhana, arugula, bay-leaf, amchur, chaat-masala.
+  #
+  # WHY THEY WERE ADDED: whole-wheat flour was absent, so EVERY roti / paratha /
+  # thepla under-reported protein and calories — `whole-wheat-roti` itself stored
+  # 0.0 g protein and 20 kcal a serving. The gap hid because an unmatched
+  # ingredient was flat-rated at 30 g in the coverage denominator regardless of
+  # its real mass, so a paratha with no flour in this table still reported 92%
+  # coverage. See scripts/nutrients_lib.py::UNKNOWN_ENTRY for that half of the fix.
+  #
+  # THE RULE THIS ENFORCES: a new spelling is an ALIAS on the entry that already
+  # owns the food — never a second entry. Adding 'wheat flour' here is what makes
+  # `atta`, `chapati flour` and `gehun ka atta` one matching surface.
+  #
+  # BUT KEEP NEW ALIASES SPECIFIC. The matcher returns ONE key per text, longest
+  # alias wins, and food_cautions.py resolves whole DISH NAMES through this same
+  # index — so a short generic alias can shadow a cautioned food inside a dish
+  # name and silently drop a safety flag. See `wheat-roti` for the worked example.
+  # chaat-masala is a BLEND: its per_100g is an approximation of a mixed masala at
+  # the 1-2 g a recipe uses, not a measured figure for any one brand.
 ajwain:
   category: spice
   basis: dry
   aliases:
   - ajwain seeds
   - ajwain
+  - carom seeds
+  - carom seed
   per_100g:
     kcal: 360
     protein_g: 16.0
@@ -199,6 +223,36 @@ almonds:
     g_per_cup: 143
     g_per_piece: 1.2
     g_per_leaf: null
+amchur:
+  category: spice
+  basis: dry
+  aliases:
+  - amchur
+  - amchoor
+  - amchur powder
+  - dry mango powder
+  - dried mango powder
+  - mango powder
+  per_100g:
+    kcal: 310
+    protein_g: 2.5
+    carbs_g: 76.0
+    fat_g: 1.0
+    fibre_g: 8.0
+    iron_mg: 4.0
+    calcium_mg: 60
+    magnesium_mg: 40
+    zinc_mg: 0.5
+    potassium_mg: 900
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 35
+    omega3_mg: 0
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
 amla-powder:
   category: spice
   basis: dry
@@ -254,6 +308,34 @@ apple:
     g_per_cup: 125
     g_per_piece: 180
     g_per_leaf: null
+arugula:
+  category: leafy
+  basis: raw
+  aliases:
+  - arugula
+  - arugula leaves
+  - rocket leaves
+  - rocket
+  per_100g:
+    kcal: 25
+    protein_g: 2.6
+    carbs_g: 3.7
+    fat_g: 0.7
+    fibre_g: 1.6
+    iron_mg: 1.5
+    calcium_mg: 160
+    magnesium_mg: 47
+    zinc_mg: 0.5
+    potassium_mg: 369
+    folate_ug: 97
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 15
+    omega3_mg: 170
+  density:
+    g_per_cup: 20
+    g_per_piece: null
+    g_per_leaf: 0.5
 artichoke:
   category: vegetable
   basis: raw
@@ -555,6 +637,10 @@ basil-fresh:
   aliases:
   - fresh basil leaves
   - basil
+  - tulsi
+  - holy basil
+  - tulsi leaves
+  - fresh tulsi leaves
   per_100g:
     kcal: 23
     protein_g: 3.2
@@ -575,6 +661,36 @@ basil-fresh:
     g_per_cup: 24
     g_per_piece: null
     g_per_leaf: 0.5
+bay-leaf:
+  category: spice
+  basis: dry
+  aliases:
+  - bay leaf
+  - bay leaves
+  - dried bay leaf
+  - indian bay leaf
+  - tej patta
+  - tejpatta
+  per_100g:
+    kcal: 313
+    protein_g: 7.6
+    carbs_g: 75.0
+    fat_g: 8.4
+    fibre_g: 26.3
+    iron_mg: 43.0
+    calcium_mg: 834
+    magnesium_mg: 120
+    zinc_mg: 3.7
+    potassium_mg: 529
+    folate_ug: 180
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 46.5
+    omega3_mg: 0
+  density:
+    g_per_cup: 20
+    g_per_piece: 0.2
+    g_per_leaf: 0.2
 beetroot:
   category: vegetable
   basis: raw
@@ -768,6 +884,41 @@ bok-choy:
     g_per_cup: 70
     g_per_piece: null
     g_per_leaf: 15
+bread-whole-wheat:
+  category: grain
+  basis: as_consumed
+  aliases:
+  - whole-wheat bread
+  - whole wheat bread
+  - wholewheat bread
+  - whole-grain bread
+  - whole grain bread
+  - multigrain bread
+  - atta bread
+  - brown bread
+  - bread slice
+  - bread slices
+  - bread
+  per_100g:
+    kcal: 254
+    protein_g: 12.3
+    carbs_g: 43.1
+    fat_g: 3.5
+    fibre_g: 6.0
+    iron_mg: 2.5
+    calcium_mg: 163
+    magnesium_mg: 77
+    zinc_mg: 1.8
+    potassium_mg: 254
+    folate_ug: 42
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 130
+  density:
+    g_per_cup: 45
+    g_per_piece: 30
+    g_per_leaf: null
 broccoli:
   category: vegetable
   basis: raw
@@ -1223,6 +1374,32 @@ celery:
     g_per_cup: 101
     g_per_piece: 40
     g_per_leaf: null
+chaat-masala:
+  category: spice
+  basis: dry
+  aliases:
+  - chaat masala
+  - chat masala
+  per_100g:
+    kcal: 250
+    protein_g: 9.0
+    carbs_g: 45.0
+    fat_g: 4.0
+    fibre_g: 15.0
+    iron_mg: 12.0
+    calcium_mg: 300
+    magnesium_mg: 150
+    zinc_mg: 2.0
+    potassium_mg: 900
+    folate_ug: 10
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 5
+    omega3_mg: 30
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
 chana-dal:
   category: dal_legume
   basis: dry
@@ -1247,6 +1424,135 @@ chana-dal:
   density:
     g_per_cup: 200
     g_per_piece: null
+    g_per_leaf: null
+maida:
+  category: flour
+  basis: dry
+  aliases:
+  - maida
+  - refined wheat flour
+  - refined flour
+  - all purpose flour
+  - all-purpose flour
+  - plain flour
+  - white flour
+  per_100g:
+    kcal: 348
+    protein_g: 10.4
+    carbs_g: 73.9
+    fat_g: 0.8
+    fibre_g: 2.7
+    iron_mg: 1.8
+    calcium_mg: 23
+    magnesium_mg: 30
+    zinc_mg: 0.8
+    potassium_mg: 120
+    folate_ug: 12
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 20
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+makhana:
+  category: nut_seed
+  basis: dry
+  aliases:
+  - makhana
+  - phool makhana
+  - fox nuts
+  - foxnuts
+  - fox nut
+  - lotus seeds
+  - puffed lotus seeds
+  per_100g:
+    kcal: 347
+    protein_g: 9.7
+    carbs_g: 76.9
+    fat_g: 0.1
+    fibre_g: 14.5
+    iron_mg: 1.4
+    calcium_mg: 60
+    magnesium_mg: 210
+    zinc_mg: 1.6
+    potassium_mg: 500
+    folate_ug: 12
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 25
+    g_per_piece: 0.5
+    g_per_leaf: null
+mushroom-button:
+  category: vegetable
+  basis: raw
+  aliases:
+  - button mushrooms
+  - button mushroom
+  - white button mushrooms
+  - white mushrooms
+  - cremini mushrooms
+  - portobello mushrooms
+  - shiitake mushrooms
+  - enoki mushrooms
+  - mushrooms
+  # No singular 'mushroom' alias: the matcher takes ONE key per text and
+  # food_cautions.py runs whole DISH NAMES through it, where 'mushroom' beat
+  # 'millet' in "Mushroom Millet Khichdi" and dropped that dish out of the
+  # week-level millet phytate count. 'mushrooms' matches every ingredient
+  # line in the library and cannot shadow the singular in a dish name.
+  per_100g:
+    kcal: 22
+    protein_g: 3.1
+    carbs_g: 3.3
+    fat_g: 0.3
+    fibre_g: 1.0
+    iron_mg: 0.5
+    calcium_mg: 3
+    magnesium_mg: 9
+    zinc_mg: 0.5
+    potassium_mg: 318
+    folate_ug: 17
+    b12_ug: 0.04
+    vit_d_ug: 0.2
+    vit_c_mg: 2.1
+    omega3_mg: 0
+  density:
+    g_per_cup: 70
+    g_per_piece: 18
+    g_per_leaf: null
+pomegranate:
+  category: fruit
+  basis: raw
+  aliases:
+  - pomegranate
+  - pomegranate seeds
+  - pomegranate arils
+  - pomegranate kernels
+  - anar
+  per_100g:
+    kcal: 83
+    protein_g: 1.7
+    carbs_g: 18.7
+    fat_g: 1.2
+    fibre_g: 4.0
+    iron_mg: 0.3
+    calcium_mg: 10
+    magnesium_mg: 12
+    zinc_mg: 0.4
+    potassium_mg: 236
+    folate_ug: 38
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 10.2
+    omega3_mg: 60
+  density:
+    g_per_cup: 174
+    g_per_piece: 150
     g_per_leaf: null
 sabja-seeds:
   category: nut_seed
@@ -1284,6 +1590,7 @@ chia-seeds:
   basis: as_consumed
   aliases:
   - chia seeds
+  - chia
   per_100g:
     kcal: 486
     protein_g: 16.5
@@ -1646,6 +1953,9 @@ coriander-fresh:
   - cilantro
   - lemon juice and coriander
   - fresh coriander and mint
+  - dhania
+  - hara dhania
+  - dhania leaves
   per_100g:
     kcal: 23
     protein_g: 2.1
@@ -1671,6 +1981,8 @@ coriander-powder:
   basis: dry
   aliases:
   - coriander powder
+  - dhania powder
+  - dhaniya powder
   per_100g:
     kcal: 355
     protein_g: 12.4
@@ -1835,6 +2147,8 @@ cumin-powder:
   - ground cumin
   - cumin
   - cinnamon, cumin
+  - jeera powder
+  - roasted jeera powder
   per_100g:
     kcal: 375
     protein_g: 17.8
@@ -1864,6 +2178,7 @@ cumin-seeds:
   - whole cumin seed
   - whole cumin seeds
   - jeera seeds
+  - jeera
   per_100g:
     kcal: 375
     protein_g: 17.8
@@ -2765,6 +3080,12 @@ idli-dosa-batter:
   aliases:
   - fermented millet-and-dal batter
   - fermented rice-and-dal batter
+  - idli-dosa batter
+  - idli dosa batter
+  - dosa batter
+  - idli batter
+  - fermented dosa batter
+  - fermented idli batter
   per_100g:
     kcal: 145
     protein_g: 4.5
@@ -3205,6 +3526,8 @@ methi-leaves:
   - methi leaves
   - methi
   - small bunch methi leaves
+  - fenugreek leaves
+  - fresh fenugreek leaves
   per_100g:
     kcal: 34
     protein_g: 4.0
@@ -3576,6 +3899,9 @@ moong-dal:
   - yellow split mung dal
   - split yellow mung beans
   - moong
+  - split mung dal
+  - split moong dal
+  - yellow moong
   per_100g:
     kcal: 348
     protein_g: 24.5
@@ -3683,6 +4009,8 @@ mustard-seeds:
   - black mustard seeds
   - mustard powder
   - mustard
+  - rai
+  - rai seeds
   per_100g:
     kcal: 508
     protein_g: 26.0
@@ -3817,6 +4145,12 @@ onion:
   - small onion
   - red onion
   - diced red onion
+  - shallots
+  - shallot
+  - spring onion
+  - spring onions
+  - scallions
+  - scallion
   per_100g:
     kcal: 40
     protein_g: 1.1
@@ -4742,6 +5076,38 @@ snake-gourd:
     g_per_cup: 110
     g_per_piece: null
     g_per_leaf: null
+soya-chunks:
+  category: protein
+  basis: dry
+  aliases:
+  - soya chunks
+  - soy chunks
+  - soya nuggets
+  - soya granules
+  - textured vegetable protein
+  - nutrela
+  - meal maker
+  - tvp
+  per_100g:
+    kcal: 345
+    protein_g: 52.0
+    carbs_g: 33.0
+    fat_g: 0.5
+    fibre_g: 13.0
+    iron_mg: 20.0
+    calcium_mg: 350
+    magnesium_mg: 250
+    zinc_mg: 4.5
+    potassium_mg: 1800
+    folate_ug: 305
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 400
+  density:
+    g_per_cup: 65
+    g_per_piece: 1.5
+    g_per_leaf: null
 spice-mix-savory:
   category: spice
   basis: dry
@@ -4852,12 +5218,88 @@ star-anise:
     g_per_cup: 90
     g_per_piece: 1
     g_per_leaf: null
+sugar-white:
+  category: sweetener
+  basis: as_consumed
+  aliases:
+  - sugar
+  - white sugar
+  - brown sugar
+  - cane sugar
+  - granulated sugar
+  - caster sugar
+  - powdered sugar
+  - demerara sugar
+  per_100g:
+    kcal: 387
+    protein_g: 0
+    carbs_g: 100.0
+    fat_g: 0
+    fibre_g: 0
+    iron_mg: 0
+    calcium_mg: 1
+    magnesium_mg: 0
+    zinc_mg: 0
+    potassium_mg: 2
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 0
+  density:
+    g_per_cup: 200
+    g_per_piece: null
+    g_per_leaf: null
+suji:
+  category: flour
+  basis: dry
+  aliases:
+  - suji
+  - sooji
+  - semolina
+  - rava
+  - rawa
+  - sooji rava
+  - bombay rava
+  - upma rava
+  - wheat rava
+  per_100g:
+    kcal: 348
+    protein_g: 11.5
+    carbs_g: 74.8
+    fat_g: 0.8
+    fibre_g: 2.4
+    iron_mg: 2.2
+    calcium_mg: 17
+    magnesium_mg: 47
+    zinc_mg: 1.0
+    potassium_mg: 186
+    folate_ug: 23
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 20
+  density:
+    g_per_cup: 167
+    g_per_piece: null
+    g_per_leaf: null
 sunflower-oil:
   category: oil_fat
   basis: as_consumed
   aliases:
   - sunflower oil
   - sunflower
+  - cooking oil
+  - oil for cooking
+  - oil for greasing
+  - oil, for greasing
+  - cold-pressed oil
+  - cold pressed oil
+  - vegetable oil
+  - refined oil
+  - groundnut oil
+  - peanut oil
+  - cold-pressed groundnut oil
   per_100g:
     kcal: 884
     protein_g: 0
@@ -5205,6 +5647,8 @@ turmeric:
   aliases:
   - turmeric
   - turmeric powder
+  - haldi
+  - haldi powder
   per_100g:
     kcal: 312
     protein_g: 9.7
@@ -5339,6 +5783,7 @@ walnuts:
   - walnuts
   - chopped pecans
   - raw hazelnuts
+  - walnut halves
   per_100g:
     kcal: 654
     protein_g: 15.2
@@ -5396,6 +5841,45 @@ water:
     g_per_cup: 240
     g_per_piece: null
     g_per_leaf: null
+wheat-flour:
+  category: flour
+  basis: dry
+  aliases:
+  - atta
+  - whole-wheat atta
+  - whole wheat atta
+  - wheat atta
+  - atta flour
+  - wheat flour
+  - whole wheat flour
+  - whole-wheat flour
+  - wholewheat flour
+  - whole-grain wheat flour
+  - chapati flour
+  - chapati atta
+  - gehun ka atta
+  - gehu atta
+  - gehun atta
+  per_100g:
+    kcal: 321
+    protein_g: 10.6
+    carbs_g: 64.7
+    fat_g: 1.5
+    fibre_g: 11.4
+    iron_mg: 3.9
+    calcium_mg: 39
+    magnesium_mg: 125
+    zinc_mg: 2.6
+    potassium_mg: 340
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 45
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
 white-beans:
   category: dal_legume
   basis: cooked
@@ -5423,6 +5907,43 @@ white-beans:
   density:
     g_per_cup: 179
     g_per_piece: null
+    g_per_leaf: null
+wheat-roti:
+  category: grain
+  basis: cooked
+  # DELIBERATELY no bare 'roti' / 'chapati' / 'phulka' alias. The matcher takes
+  # ONE key per text and longest-alias-wins, and food_cautions.py resolves whole
+  # DISH NAMES through this index — so a bare 'roti' shadowed 'ragi' in the dish
+  # string "Ragi roti" (a 4-character tie that 'roti' won), which silently killed
+  # the week-level goitrogen frequency flag for a Hashimoto's client eating ragi
+  # every day. food-cautions.test.ts fails if that alias comes back. Only the
+  # spellings that already name wheat unambiguously belong here — and the KEY
+  # is `wheat-roti`, not `roti`, because the matcher indexes the key itself as
+  # an alias, so a key of `roti` would reintroduce the collision on its own.
+  aliases:
+  - whole-wheat roti
+  - whole wheat roti
+  - wholewheat roti
+  - atta roti
+  per_100g:
+    kcal: 250
+    protein_g: 8.2
+    carbs_g: 50.0
+    fat_g: 1.2
+    fibre_g: 8.8
+    iron_mg: 3.0
+    calcium_mg: 30
+    magnesium_mg: 97
+    zinc_mg: 2.0
+    potassium_mg: 264
+    folate_ug: 23
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 35
+  density:
+    g_per_cup: null
+    g_per_piece: 40
     g_per_leaf: null
 white-rice:
   category: grain
@@ -5555,6 +6076,7 @@ mung-sprouted:
   - whole sprouted moong
   - mung bean sprouts
   - moong sprouts
+  - mixed sprouts
   per_100g:
     kcal: 30
     protein_g: 3.0

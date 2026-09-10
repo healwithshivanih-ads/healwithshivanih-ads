@@ -102,31 +102,32 @@ kcal_total: 340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 725
-  protein_g: 56.7
-  carbs_g: 12.2
-  fat_g: 51.1
-  fibre_g: 3.6
-  iron_mg: 7.2
-  calcium_mg: 96.3
-  magnesium_mg: 136
-  zinc_mg: 4.5
-  potassium_mg: 1087
-  folate_ug: 41.6
+  kcal: 760
+  protein_g: 57.7
+  carbs_g: 20.2
+  fat_g: 51.2
+  fibre_g: 5.1
+  iron_mg: 7.6
+  calcium_mg: 116
+  magnesium_mg: 145
+  zinc_mg: 4.6
+  potassium_mg: 1213
+  folate_ug: 58.0
   b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 10.3
-  omega3_mg: 211
-nutrient_coverage_pct: 96.9
+  vit_c_mg: 16.7
+  omega3_mg: 214
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
+- fibre
 - iron
 - magnesium
 - zinc
 - potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: chicken
@@ -141,8 +142,8 @@ nutrient_lines:
   key: curry-leaves
   g: 3.5999999999999996
 - i: 4
-  key: null
-  g: 30.0
+  key: onion
+  g: 172.5
 - i: 5
   key: ginger-garlic-paste
   g: 22.5
@@ -165,13 +166,15 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: चिकन-नारियल करी
     steps:
     - नारियल तेल में राई चटकाएँ और करी पत्ता डालें।
     - छोटे प्याज़ को नरम करें, फिर अदरक-लहसुन पेस्ट और हरी मिर्च डालें।
-    - हल्दी और धनिया पाउडर मिलाएँ, फिर चिकन और नमक डालें। टुकड़ों को हर तरफ से सील करें।
-    - नारियल का दूध डालें, हल्की आँच पर लाएँ, ढककर 25 मिनट पकाएँ जब तक चिकन नरम हो जाए।
-    - पूरे समय इसे उबाल से नीचे रखें — ज़ोर से पकाने पर नारियल का दूध फट जाता है। धनिया डालकर पूरा करें।
+    - हल्दी और धनिया पाउडर मिलाएँ, फिर चिकन और नमक डालें। टुकड़ों को हर तरफ से सील
+      करें।
+    - नारियल का दूध डालें, हल्की आँच पर लाएँ, ढककर 25 मिनट पकाएँ जब तक चिकन नरम हो
+      जाए।
+    - पूरे समय इसे उबाल से नीचे रखें — ज़ोर से पकाने पर नारियल का दूध फट जाता है।
+      धनिया डालकर पूरा करें।

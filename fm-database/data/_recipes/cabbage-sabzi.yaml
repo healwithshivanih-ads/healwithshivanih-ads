@@ -103,29 +103,29 @@ kcal_total: 170
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 168
+  kcal: 170
   protein_g: 5.3
-  carbs_g: 22.4
+  carbs_g: 22.8
   fat_g: 7.6
   fibre_g: 8.1
   iron_mg: 2.7
-  calcium_mg: 109
-  magnesium_mg: 47.8
+  calcium_mg: 110
+  magnesium_mg: 48.0
   zinc_mg: 1.0
-  potassium_mg: 531
+  potassium_mg: 536
   folate_ug: 112
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 87.8
+  vit_c_mg: 88.0
   omega3_mg: 97.0
-nutrient_coverage_pct: 95.0
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: cabbage
@@ -155,8 +155,8 @@ nutrient_lines:
   key: coriander-powder
   g: 2.5
 - i: 9
-  key: null
-  g: 30.0
+  key: amchur
+  g: 1.1458333333333333
 - i: 10
   key: salt
   g: 0.0
@@ -166,13 +166,13 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - ovulatory
-
 translations:
   hi:
     name: पत्तागोभी की सब्ज़ी
     steps:
     - घी में जीरा चटकाएँ, फिर प्याज़, अदरक और हरी मिर्च नरम कर लें।
     - पत्तागोभी और मटर डालें, साथ में हल्दी, धनिया पाउडर और नमक।
-    - अच्छे से मिलाएँ, ढककर धीमी आँच पर 8 मिनट पकाएँ। पत्तागोभी खूब पानी छोड़ती है — पानी न डालें।
+    - अच्छे से मिलाएँ, ढककर धीमी आँच पर 8 मिनट पकाएँ। पत्तागोभी खूब पानी छोड़ती है
+      — पानी न डालें।
     - ढक्कन हटाकर सारा पानी सुखा लें ताकि सब्ज़ी सूखी बने।
     - अमचूर और धनिये से पूरा करें।

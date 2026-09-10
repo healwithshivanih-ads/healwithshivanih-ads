@@ -95,10 +95,10 @@ kcal_total: 300
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 263
+  kcal: 384
   protein_g: 8.2
   carbs_g: 51.6
-  fat_g: 2.2
+  fat_g: 15.9
   fibre_g: 6.6
   iron_mg: 2.9
   calcium_mg: 60.9
@@ -109,13 +109,13 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 3.2
-  omega3_mg: 48.4
-nutrient_coverage_pct: 87.6
+  omega3_mg: 53.9
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: jowar-flour
@@ -139,8 +139,8 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 7
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 - i: 8
   key: water
   g: 0.0
@@ -148,7 +148,6 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: ज्वार दोसा
@@ -156,5 +155,6 @@ translations:
     - ज्वार का आटा, चावल का आटा, दही और पानी को बिना गुठली के पतला घोल बना लें।
     - जीरा, हरी मिर्च, धनिया और नमक डालें और 15 मिनट रखें ताकि आटा पानी सोख ले।
     - घोल रखे रहने पर गाढ़ा हो जाता है — हर दोसे से पहले थोड़ा पानी डालकर पतला करें।
-    - गरम तवे पर डालें और धीरे फैलाएँ; ज्वार का घोल चावल के घोल से ज़्यादा नाज़ुक होता है, इसलिए बीच से बाहर की ओर बिना दबाए काम करें।
+    - गरम तवे पर डालें और धीरे फैलाएँ; ज्वार का घोल चावल के घोल से ज़्यादा नाज़ुक
+      होता है, इसलिए बीच से बाहर की ओर बिना दबाए काम करें।
     - किनारों पर तेल लगाएँ और तब तक पकाएँ जब तक साफ न उठ जाए।

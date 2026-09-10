@@ -103,10 +103,10 @@ kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 213
+  kcal: 333
   protein_g: 11.8
   carbs_g: 32.9
-  fat_g: 3.9
+  fat_g: 17.5
   fibre_g: 6.4
   iron_mg: 3.0
   calcium_mg: 57.4
@@ -117,8 +117,8 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 29.9
-  omega3_mg: 56.6
-nutrient_coverage_pct: 90.7
+  omega3_mg: 62.1
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - iron
@@ -127,7 +127,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: besan
@@ -160,19 +160,21 @@ nutrient_lines:
   key: water
   g: 0.0
 - i: 10
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 27.25
 nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: बेसन उत्तपम
     steps:
-    - बेसन, दही और पानी को फेंटकर चीले के घोल से काफ़ी गाढ़ा घोल बनाएँ — इसे ऊपर की टॉपिंग सँभालनी है।
+    - बेसन, दही और पानी को फेंटकर चीले के घोल से काफ़ी गाढ़ा घोल बनाएँ — इसे ऊपर की
+      टॉपिंग सँभालनी है।
     - जीरा और नमक डालें और 10 मिनट रखा रहने दें।
     - मध्यम तवे पर एक मोटा गोल घोल डालें। इसे फैलाएँ नहीं।
-    - ऊपर से प्याज़, टमाटर, शिमला मिर्च, मिर्च और धनिया बिखेरें और कलछी की पीठ से हल्के से दबाएँ।
-    - किनारों पर तेल डालें, ढककर तली सुनहरी होने तक पकाएँ। सावधानी से पलटें और टॉपिंग वाले हिस्से को तवे पर एक मिनट सिकने दें।
+    - ऊपर से प्याज़, टमाटर, शिमला मिर्च, मिर्च और धनिया बिखेरें और कलछी की पीठ से
+      हल्के से दबाएँ।
+    - किनारों पर तेल डालें, ढककर तली सुनहरी होने तक पकाएँ। सावधानी से पलटें और टॉपिंग
+      वाले हिस्से को तवे पर एक मिनट सिकने दें।

@@ -95,10 +95,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 364
+  kcal: 424
   protein_g: 22.6
   carbs_g: 18.3
-  fat_g: 23.7
+  fat_g: 30.5
   fibre_g: 4.8
   iron_mg: 4.1
   calcium_mg: 618
@@ -109,8 +109,8 @@ nutrients_per_serving:
   b12_ug: 0.8
   vit_d_ug: 0.2
   vit_c_mg: 36.2
-  omega3_mg: 150
-nutrient_coverage_pct: 95.2
+  omega3_mg: 153
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - iron
@@ -120,7 +120,7 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: paneer
@@ -150,14 +150,13 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 9
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 13.625
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: मेथी पनीर

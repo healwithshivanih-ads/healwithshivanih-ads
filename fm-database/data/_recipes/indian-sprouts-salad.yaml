@@ -106,29 +106,31 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 108
-  protein_g: 6.1
-  carbs_g: 24.3
-  fat_g: 1.0
-  fibre_g: 6.3
-  iron_mg: 2.9
-  calcium_mg: 75.0
-  magnesium_mg: 61.2
-  zinc_mg: 1.1
-  potassium_mg: 711
-  folate_ug: 121
+  kcal: 174
+  protein_g: 7.4
+  carbs_g: 39.2
+  fat_g: 1.9
+  fibre_g: 9.4
+  iron_mg: 3.2
+  calcium_mg: 83.2
+  magnesium_mg: 70.7
+  zinc_mg: 1.4
+  potassium_mg: 898
+  folate_ug: 150
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 125
-  omega3_mg: 51.1
-nutrient_coverage_pct: 93.1
+  vit_c_mg: 133
+  omega3_mg: 96.1
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
+- iron
+- magnesium
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: mung-sprouted
@@ -152,8 +154,8 @@ nutrient_lines:
   key: coriander-fresh
   g: 3.0
 - i: 7
-  key: null
-  g: 30.0
+  key: pomegranate
+  g: 150.0
 - i: 8
   key: lemon
   g: 65.0
@@ -161,8 +163,8 @@ nutrient_lines:
   key: cumin-powder
   g: 2.5
 - i: 10
-  key: null
-  g: 30.0
+  key: amchur
+  g: 2.2916666666666665
 - i: 11
   key: salt
   g: 2.0
@@ -170,7 +172,6 @@ nutrient_servings: 2.0
 cycle_phases:
 - follicular
 - ovulatory
-
 translations:
   hi:
     name: भारतीय अंकुरित सलाद
@@ -178,4 +179,5 @@ translations:
     - सारी सब्ज़ियों को एक समान छोटे आकार में बारीक काटें।
     - बड़े कटोरे में कटी सब्ज़ियाँ, अंकुरित मूँग और आधे अनार दाने मिलाएँ।
     - नींबू रस, जीरा, आमचूर, नमक, काली मिर्च व ताज़ा धनिया डालकर अच्छी तरह मिलाएँ।
-    - बचे अनार दाने ऊपर डालकर परोसें। (स्रोत पर शक हो तो अंकुरित पहले उबाल-ठंडा कर लें।)
+    - बचे अनार दाने ऊपर डालकर परोसें। (स्रोत पर शक हो तो अंकुरित पहले उबाल-ठंडा कर
+      लें।)

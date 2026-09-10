@@ -78,30 +78,34 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 125
-  protein_g: 10.1
-  carbs_g: 3.6
-  fat_g: 7.5
-  fibre_g: 0.7
-  iron_mg: 1.6
-  calcium_mg: 52.2
-  magnesium_mg: 16.5
-  zinc_mg: 1.1
-  potassium_mg: 165
-  folate_ug: 43.4
+  kcal: 277
+  protein_g: 17.5
+  carbs_g: 29.5
+  fat_g: 9.6
+  fibre_g: 4.3
+  iron_mg: 3.1
+  calcium_mg: 150
+  magnesium_mg: 62.7
+  zinc_mg: 2.2
+  potassium_mg: 317
+  folate_ug: 68.6
   b12_ug: 0.7
   vit_d_ug: 1.5
   vit_c_mg: 5.2
-  omega3_mg: 79.7
-nutrient_coverage_pct: 87.7
+  omega3_mg: 158
+nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- iron
+- calcium
+- zinc
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: bread-whole-wheat
+  g: 120.0
 - i: 1
   key: egg
   g: 150.0
@@ -121,7 +125,6 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: अंडा सैंडविच

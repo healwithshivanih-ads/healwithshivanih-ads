@@ -70,29 +70,34 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 20.4
-  protein_g: 0.0
-  carbs_g: 0.0
-  fat_g: 2.3
-  fibre_g: 0.0
-  iron_mg: 0.0
-  calcium_mg: 0.0
-  magnesium_mg: 0.0
-  zinc_mg: 0.0
-  potassium_mg: 0.0
-  folate_ug: 0.0
+  kcal: 406
+  protein_g: 12.7
+  carbs_g: 77.6
+  fat_g: 4.1
+  fibre_g: 13.7
+  iron_mg: 4.7
+  calcium_mg: 46.8
+  magnesium_mg: 150
+  zinc_mg: 3.1
+  potassium_mg: 408
+  folate_ug: 36.0
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 18.2
-nutrient_coverage_pct: 13.1
-rich_in: []
+  omega3_mg: 72.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-flour
+  g: 240.0
 - i: 1
   key: water
   g: 0.0
@@ -103,7 +108,6 @@ nutrient_lines:
   key: ghee
   g: 4.541666666666667
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: गेहूँ की रोटी

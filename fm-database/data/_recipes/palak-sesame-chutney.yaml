@@ -88,10 +88,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 119
+  kcal: 139
   protein_g: 4.2
   carbs_g: 7.0
-  fat_g: 9.3
+  fat_g: 11.5
   fibre_g: 3.0
   iron_mg: 4.0
   calcium_mg: 211
@@ -102,14 +102,14 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 16.5
-  omega3_mg: 113
-nutrient_coverage_pct: 79.7
+  omega3_mg: 114
+nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: spinach
@@ -133,14 +133,13 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 7
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 4.541666666666667
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: पालक तिल चटनी

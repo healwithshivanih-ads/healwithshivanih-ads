@@ -91,25 +91,25 @@ protein_g: 3.1
 kcal_per_serving: 91
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 91.3
-  protein_g: 3.1
-  carbs_g: 18.1
+  kcal: 92.8
+  protein_g: 3.2
+  carbs_g: 18.4
   fat_g: 2.5
-  fibre_g: 2.0
-  iron_mg: 0.5
-  calcium_mg: 3.8
-  magnesium_mg: 35.1
+  fibre_g: 2.1
+  iron_mg: 0.6
+  calcium_mg: 5.5
+  magnesium_mg: 35.9
   zinc_mg: 0.5
-  potassium_mg: 269
+  potassium_mg: 274
   folate_ug: 40.6
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 12.2
-  omega3_mg: 24.2
-nutrient_coverage_pct: 93.2
+  omega3_mg: 24.4
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -135,8 +135,8 @@ nutrient_lines:
   key: lemon-juice
   g: 30.5
 - i: 4
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 2.2916666666666665
 - i: 5
   key: chilli-powder
   g: 1.25
@@ -153,12 +153,16 @@ nutrient_lines:
   key: ginger-fresh
   g: 1.0
 nutrient_servings: 4.0
-
 translations:
   hi:
     name: मसाला भुट्टा बाउल
     steps:
-    - भुट्टों को सीधे गैस की आँच पर मध्यम-तेज़ आँच पर हर मिनट चिमटे से घुमाते हुए तब तक भूनें जब तक दाने जगह-जगह जल-भुन जाएँ और पक जाएँ — करीब 8–10 minute। या गरम ग्रिल के नीचे 12 minute, बीच में पलटते हुए, भूनें।
-    - भुट्टों को 5 minute ठंडा होने दें, फिर हर एक को चौड़े बोर्ड पर खड़ा कर तेज़ चाकू से दाने काट लें।
-    - दानों को एक कटोरी में डालें। तेल, हरी मिर्च, अदरक, लाल मिर्च पाउडर, काला नमक और सादा नमक डालें। अच्छे से मिलाएँ।
-    - नींबू का रस और चाट मसाला डालें, फिर से मिलाएँ, फिर चखकर नमक या नींबू ठीक करें। धनिया पत्ती से सजाएँ और गरम रहते ही तुरंत परोसें।
+    - भुट्टों को सीधे गैस की आँच पर मध्यम-तेज़ आँच पर हर मिनट चिमटे से घुमाते हुए
+      तब तक भूनें जब तक दाने जगह-जगह जल-भुन जाएँ और पक जाएँ — करीब 8–10 minute। या
+      गरम ग्रिल के नीचे 12 minute, बीच में पलटते हुए, भूनें।
+    - भुट्टों को 5 minute ठंडा होने दें, फिर हर एक को चौड़े बोर्ड पर खड़ा कर तेज़
+      चाकू से दाने काट लें।
+    - दानों को एक कटोरी में डालें। तेल, हरी मिर्च, अदरक, लाल मिर्च पाउडर, काला नमक
+      और सादा नमक डालें। अच्छे से मिलाएँ।
+    - नींबू का रस और चाट मसाला डालें, फिर से मिलाएँ, फिर चखकर नमक या नींबू ठीक करें।
+      धनिया पत्ती से सजाएँ और गरम रहते ही तुरंत परोसें।

@@ -110,31 +110,38 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 82.3
-  protein_g: 3.4
-  carbs_g: 17.0
-  fat_g: 1.1
-  fibre_g: 4.7
-  iron_mg: 2.3
-  calcium_mg: 65.6
-  magnesium_mg: 39.0
-  zinc_mg: 0.8
-  potassium_mg: 527
-  folate_ug: 46.0
+  kcal: 285
+  protein_g: 20.3
+  carbs_g: 27.7
+  fat_g: 11.5
+  fibre_g: 8.9
+  iron_mg: 8.8
+  calcium_mg: 179
+  magnesium_mg: 120
+  zinc_mg: 2.2
+  potassium_mg: 1112
+  folate_ug: 145
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 31.8
-  omega3_mg: 28.7
-nutrient_coverage_pct: 87.6
+  omega3_mg: 163
+nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
 - potassium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: soya-chunks
+  g: 65.0
 - i: 1
   key: mixed-vegetables
   g: 90.0
@@ -148,8 +155,8 @@ nutrient_lines:
   key: ginger-garlic-paste
   g: 15.0
 - i: 5
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 20.4375
 - i: 6
   key: cumin-seeds
   g: 2.0833333333333335
@@ -175,7 +182,6 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: सोया चंक और मटर करी

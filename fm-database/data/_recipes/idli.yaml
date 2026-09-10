@@ -40,14 +40,14 @@ ingredients:
   unit: tsp
 steps:
 - Soak the rice and the dal-with-methi separately for 5–6 hours.
-- Grind the dal to a very light, aerated paste and the rice to a fine one. Combine gently
-  — the air you beat in is what makes idlis soft.
+- Grind the dal to a very light, aerated paste and the rice to a fine one. Combine
+  gently — the air you beat in is what makes idlis soft.
 - Add salt and ferment overnight until risen and mildly sour.
 - Grease the idli moulds, pour the batter in to about three-quarters, and steam for
   10–12 minutes.
 - A skewer should come out clean. Rest for 2 minutes before unmoulding.
-- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't cook
-  and use it within 3 days.
+- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't
+  cook and use it within 3 days.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 15
@@ -84,10 +84,10 @@ kcal_total: 220
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 333
+  kcal: 341
   protein_g: 11.0
   carbs_g: 69.7
-  fat_g: 0.8
+  fat_g: 1.7
   fibre_g: 4.5
   iron_mg: 2.1
   calcium_mg: 34.8
@@ -98,12 +98,12 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 41.4
-nutrient_coverage_pct: 94.0
+  omega3_mg: 41.7
+nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: white-rice
@@ -118,19 +118,21 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 4
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 4.541666666666667
 nutrient_servings: 5.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: इडली
     steps:
     - चावल और मेथी वाली दाल को अलग-अलग 5–6 घंटे भिगोएँ।
-    - दाल को बहुत हल्का, हवादार पेस्ट पीसें और चावल को बारीक। धीरे से मिलाएँ — इसमें भरी हवा ही इडली को नरम बनाती है।
+    - दाल को बहुत हल्का, हवादार पेस्ट पीसें और चावल को बारीक। धीरे से मिलाएँ — इसमें
+      भरी हवा ही इडली को नरम बनाती है।
     - नमक डालें और रातभर खमीर उठने दें जब तक फूल जाए और हल्का खट्टा हो।
-    - इडली के साँचों में तेल लगाएँ, बैटर तीन-चौथाई तक डालें, और 10–12 मिनट भाप में पकाएँ।
+    - इडली के साँचों में तेल लगाएँ, बैटर तीन-चौथाई तक डालें, और 10–12 मिनट भाप में
+      पकाएँ।
     - सींक साफ निकलनी चाहिए। साँचे से निकालने से पहले 2 मिनट रखें।
-    - इस बैटर से करीब 20 इडली बनती हैं — लगभग 5 सर्विंग। जो न पकाएँ उसे फ्रिज में रखें और 3 दिन में इस्तेमाल करें।
+    - इस बैटर से करीब 20 इडली बनती हैं — लगभग 5 सर्विंग। जो न पकाएँ उसे फ्रिज में
+      रखें और 3 दिन में इस्तेमाल करें।

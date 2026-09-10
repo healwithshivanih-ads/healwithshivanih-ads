@@ -84,29 +84,30 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 42.9
-  protein_g: 1.6
-  carbs_g: 10.0
-  fat_g: 0.3
-  fibre_g: 2.3
-  iron_mg: 0.7
-  calcium_mg: 40.1
-  magnesium_mg: 22.8
-  zinc_mg: 0.4
-  potassium_mg: 344
-  folate_ug: 50.4
+  kcal: 143
+  protein_g: 4.8
+  carbs_g: 30.0
+  fat_g: 0.7
+  fibre_g: 5.8
+  iron_mg: 1.9
+  calcium_mg: 52.1
+  magnesium_mg: 61.6
+  zinc_mg: 1.2
+  potassium_mg: 449
+  folate_ug: 59.6
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 8.5
-  omega3_mg: 32.6
-nutrient_coverage_pct: 86.0
-rich_in: []
+  omega3_mg: 46.6
+nutrient_coverage_pct: 93.7
+rich_in:
+- fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-roti
+  g: 80.0
 - i: 1
   key: null
   g: 30.0
@@ -129,12 +130,12 @@ nutrient_lines:
   key: black-pepper
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: हम्मस और सब्ज़ी रैप
     steps:
     - रोटियों को गरम करें ताकि वे बिना फटे मुड़ जाएँ।
     - हर रोटी पर दो बड़े चम्मच हम्मस फैलाएँ।
-    - खीरा, गाजर, सलाद पत्ता और प्याज़ एक किनारे पर रखें, फिर नींबू, काली मिर्च और नमक छिड़कें।
+    - खीरा, गाजर, सलाद पत्ता और प्याज़ एक किनारे पर रखें, फिर नींबू, काली मिर्च और
+      नमक छिड़कें।
     - कसकर लपेटें, आधा काटें और परोसें।

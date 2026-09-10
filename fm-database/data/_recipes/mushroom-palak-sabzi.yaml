@@ -91,29 +91,32 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 43.4
-  protein_g: 2.0
-  carbs_g: 8.7
-  fat_g: 0.4
-  fibre_g: 2.3
-  iron_mg: 1.7
-  calcium_mg: 62.0
-  magnesium_mg: 41.2
-  zinc_mg: 0.4
-  potassium_mg: 321
-  folate_ug: 74.0
+  kcal: 159
+  protein_g: 5.2
+  carbs_g: 12.5
+  fat_g: 11.1
+  fibre_g: 3.4
+  iron_mg: 2.7
+  calcium_mg: 70.5
+  magnesium_mg: 52.9
+  zinc_mg: 0.9
+  potassium_mg: 657
+  folate_ug: 91.1
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 19.6
-  omega3_mg: 67.8
-nutrient_coverage_pct: 64.0
-rich_in: []
+  vit_d_ug: 0.2
+  vit_c_mg: 21.8
+  omega3_mg: 75.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
+- folate
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 200.0
 - i: 1
   key: spinach
   g: 90.0
@@ -124,11 +127,11 @@ nutrient_lines:
   key: garlic
   g: 12.0
 - i: 4
-  key: null
-  g: 30.0
+  key: cumin-seeds
+  g: 1.0416666666666667
 - i: 5
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 0.78125
 - i: 6
   key: chilli-powder
   g: 0.625
@@ -136,21 +139,21 @@ nutrient_lines:
   key: black-pepper
   g: 0.5208333333333334
 - i: 8
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 20.4375
 - i: 9
   key: salt
   g: 0.0
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: मशरूम और पालक की भुजिया
     steps:
     - पैन में तेल गरम करके जीरा तड़काएँ, फिर लहसुन और प्याज़ डालें; नरम होने तक भूनें।
-    - कटे मशरूम डालें और तेज़ आँच पर तब तक पकाएँ जब तक वे अपना पानी छोड़ दें और वह सूख जाए।
+    - कटे मशरूम डालें और तेज़ आँच पर तब तक पकाएँ जब तक वे अपना पानी छोड़ दें और वह
+      सूख जाए।
     - हल्दी, मिर्च पाउडर, कुटी काली मिर्च और नमक मिलाएँ।
     - कटा पालक डालें और तेज़ आँच पर लगभग 3 से 4 मिनट, नरम होने तक, चलाएँ।
     - बची नमी सुखा दें ताकि सब्ज़ी सूखी रहे, और रोटी के साथ गरम परोसें।

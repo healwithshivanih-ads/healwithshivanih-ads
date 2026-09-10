@@ -86,27 +86,27 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 57.6
-  protein_g: 4.3
-  carbs_g: 11.6
-  fat_g: 0.6
-  fibre_g: 3.8
-  iron_mg: 1.1
-  calcium_mg: 76.8
-  magnesium_mg: 31.4
-  zinc_mg: 0.6
-  potassium_mg: 470
-  folate_ug: 87.3
+  kcal: 121
+  protein_g: 4.4
+  carbs_g: 12.1
+  fat_g: 7.5
+  fibre_g: 3.9
+  iron_mg: 1.7
+  calcium_mg: 82.3
+  magnesium_mg: 34.1
+  zinc_mg: 0.7
+  potassium_mg: 487
+  folate_ug: 87.4
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 127
-  omega3_mg: 138
-nutrient_coverage_pct: 76.7
+  omega3_mg: 144
+nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: broccoli
@@ -115,20 +115,20 @@ nutrient_lines:
   key: garlic
   g: 12.0
 - i: 2
-  key: null
-  g: 30.0
+  key: cumin-seeds
+  g: 1.0416666666666667
 - i: 3
   key: green-chilli
   g: 5.0
 - i: 4
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 0.78125
 - i: 5
   key: black-pepper
   g: 0.5208333333333334
 - i: 6
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 13.625
 - i: 7
   key: salt
   g: 0.0
@@ -138,7 +138,6 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - ovulatory
-
 translations:
   hi:
     name: भुनी ब्रोकली
@@ -146,6 +145,7 @@ translations:
     - ब्रोकली के फूलों को गरम नमकीन पानी में 2 मिनट उबालें, फिर अच्छे से छान लें।
     - पैन में तेल गरम करें, जीरा चटकाएँ और कटा लहसुन और हरी मिर्च डालें।
     - लहसुन को बस सुनहरा और खुशबूदार होने तक भूनें।
-    - ब्रोकली को हल्दी, कुटी काली मिर्च और नमक के साथ डालें और तेज़ आँच पर 3 से 4 मिनट भूनें।
+    - ब्रोकली को हल्दी, कुटी काली मिर्च और नमक के साथ डालें और तेज़ आँच पर 3 से 4
+      मिनट भूनें।
     - फूलों को चमकीला हरा और थोड़ा कुरकुरा रखें; ज़्यादा न पकाएँ।
     - ऊपर से नींबू का रस निचोड़ें, एक बार मिलाएँ और गरमागरम परोसें।

@@ -42,15 +42,15 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi, soak
-  that too.
+- Soak the rice and the dal-with-methi separately for 5 hours. If using whole ragi,
+  soak that too.
 - Grind the dal to a light aerated paste, then the rice and ragi finer.
 - Combine gently with salt and ferment overnight. Ragi batter looks darker and rises
   less dramatically than white idli batter — that's normal.
 - Pour into greased moulds and steam 12–14 minutes.
 - Rest 2 minutes before unmoulding or they tear.
-- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't cook
-  and use it within 3 days.
+- This batter makes about 20 idlis — roughly 5 servings. Refrigerate what you don't
+  cook and use it within 3 days.
 servings: '5'
 prep_time_min: 20
 cook_time_min: 18
@@ -86,10 +86,10 @@ kcal_total: 380
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 251
+  kcal: 259
   protein_g: 9.2
   carbs_g: 50.5
-  fat_g: 1.1
+  fat_g: 2.0
   fibre_g: 7.0
   iron_mg: 3.4
   calcium_mg: 161
@@ -100,15 +100,15 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 43.9
-nutrient_coverage_pct: 92.6
+  omega3_mg: 44.2
+nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - iron
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: ragi
@@ -126,21 +126,23 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 5
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 4.541666666666667
 nutrient_servings: 5.0
 cycle_phases:
 - follicular
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: रागी इडली
     steps:
-    - चावल और मेथी-वाली दाल को अलग-अलग 5 घंटे भिगोएँ। साबुत रागी इस्तेमाल कर रहे हों तो उसे भी भिगोएँ।
+    - चावल और मेथी-वाली दाल को अलग-अलग 5 घंटे भिगोएँ। साबुत रागी इस्तेमाल कर रहे हों
+      तो उसे भी भिगोएँ।
     - दाल को हल्के हवादार पेस्ट में पीसें, फिर चावल और रागी को बारीक पीसें।
-    - नमक के साथ हल्के हाथ मिलाएँ और रात भर खमीर उठने दें। रागी का घोल सफेद इडली के घोल से गहरा दिखता है और कम फूलता है — यह सामान्य है।
+    - नमक के साथ हल्के हाथ मिलाएँ और रात भर खमीर उठने दें। रागी का घोल सफेद इडली के
+      घोल से गहरा दिखता है और कम फूलता है — यह सामान्य है।
     - चिकने साँचों में डालें और 12–14 मिनट भाप में पकाएँ।
     - साँचे से निकालने से पहले 2 मिनट रखें वरना टूट जाती हैं।
-    - इस घोल से करीब 20 इडली बनती हैं — लगभग 5 सर्विंग। जो न पकाएँ उसे फ्रिज में रखें और 3 दिन के भीतर इस्तेमाल करें।
+    - इस घोल से करीब 20 इडली बनती हैं — लगभग 5 सर्विंग। जो न पकाएँ उसे फ्रिज में रखें
+      और 3 दिन के भीतर इस्तेमाल करें।

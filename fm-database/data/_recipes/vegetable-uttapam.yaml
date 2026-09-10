@@ -90,30 +90,34 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 23.4
-  protein_g: 0.9
-  carbs_g: 5.3
-  fat_g: 0.2
-  fibre_g: 1.3
-  iron_mg: 0.3
-  calcium_mg: 13.0
-  magnesium_mg: 9.7
-  zinc_mg: 0.2
-  potassium_mg: 176
-  folate_ug: 19.2
+  kcal: 426
+  protein_g: 12.1
+  carbs_g: 77.8
+  fat_g: 6.2
+  fibre_g: 5.8
+  iron_mg: 2.8
+  calcium_mg: 50.5
+  magnesium_mg: 72.2
+  zinc_mg: 1.9
+  potassium_mg: 476
+  folate_ug: 94.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 29.6
-  omega3_mg: 6.3
-nutrient_coverage_pct: 73.9
+  omega3_mg: 33.1
+nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
+- magnesium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: idli-dosa-batter
+  g: 500.0
 - i: 1
   key: onion
   g: 57.5
@@ -133,12 +137,11 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 7
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 9.083333333333334
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: सब्ज़ी उत्तपम

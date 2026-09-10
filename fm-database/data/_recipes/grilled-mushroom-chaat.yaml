@@ -97,25 +97,26 @@ protein_g: 1.3
 kcal_per_serving: 106
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 106
-  protein_g: 1.3
-  carbs_g: 10.9
-  fat_g: 7.1
-  fibre_g: 1.7
-  iron_mg: 1.0
-  calcium_mg: 25.8
-  magnesium_mg: 19.9
-  zinc_mg: 0.2
-  potassium_mg: 253
-  folate_ug: 18.0
-  b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 17.2
-  omega3_mg: 56.6
-nutrient_coverage_pct: 78.4
-rich_in: []
+  kcal: 136
+  protein_g: 5.2
+  carbs_g: 15.6
+  fat_g: 7.6
+  fibre_g: 3.2
+  iron_mg: 1.8
+  calcium_mg: 33.0
+  magnesium_mg: 32.9
+  zinc_mg: 0.9
+  potassium_mg: 661
+  folate_ug: 39.4
+  b12_ug: 0.1
+  vit_d_ug: 0.2
+  vit_c_mg: 19.9
+  omega3_mg: 57.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -129,14 +130,14 @@ image:
     watermark
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 250.0
 - i: 1
   key: olive-oil
   g: 13.5
 - i: 2
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 2.2916666666666665
 - i: 3
   key: cumin-powder
   g: 1.25
@@ -165,13 +166,16 @@ nutrient_lines:
   key: tamarind
   g: 15.625
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: ग्रिल्ड मशरूम चाट
     steps:
-    - आधे कटे मशरूम को तेल, चुटकी भर नमक और लाल मिर्च पाउडर के साथ मिलाएँ। 5 मिनट रखें।
-    - एक ग्रिल पैन या भारी तवा तेज़ आँच पर बहुत गरम करें। मशरूम को कटी तरफ़ नीचे रखकर बिना हिलाए 3–4 मिनट ग्रिल करें जब तक जलने के निशान न दिखें; पलटकर 2 मिनट और ग्रिल करें। निकालकर थोड़ा ठंडा होने दें।
+    - आधे कटे मशरूम को तेल, चुटकी भर नमक और लाल मिर्च पाउडर के साथ मिलाएँ। 5 मिनट
+      रखें।
+    - एक ग्रिल पैन या भारी तवा तेज़ आँच पर बहुत गरम करें। मशरूम को कटी तरफ़ नीचे रखकर
+      बिना हिलाए 3–4 मिनट ग्रिल करें जब तक जलने के निशान न दिखें; पलटकर 2 मिनट और
+      ग्रिल करें। निकालकर थोड़ा ठंडा होने दें।
     - एक कटोरे में लाल प्याज़, टमाटर, हरी मिर्च और ताज़ा धनिया मिलाएँ।
-    - ग्रिल किए मशरूम कटोरे में डालें। चाट मसाला और जीरा पाउडर बुरकें, नींबू का रस और इमली की चटनी डालें, और अच्छे से मिलाएँ।
+    - ग्रिल किए मशरूम कटोरे में डालें। चाट मसाला और जीरा पाउडर बुरकें, नींबू का रस
+      और इमली की चटनी डालें, और अच्छे से मिलाएँ।
     - चखें, नमक और नींबू ठीक करें, और तुरंत कमरे के तापमान पर परोसें।

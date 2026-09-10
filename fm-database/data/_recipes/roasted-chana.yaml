@@ -40,8 +40,8 @@ steps:
   seeds in a small bowl.
 - To roast fresh — soak dried chickpeas overnight, drain, and pat dry. Toss with a
   light coating of ghee and rock salt.
-- Spread on a baking tray in a single layer and roast at 350°F (175°C) for 20-25
-  minutes, stirring halfway, until golden and crisp. Cool completely before storing.
+- Spread on a baking tray in a single layer and roast at 350°F (175°C) for 20-25 minutes,
+  stirring halfway, until golden and crisp. Cool completely before storing.
 - Mix roasted chana with the seeds just before eating for a crunchy, protein-rich
   snack.
 servings: '1'
@@ -81,12 +81,55 @@ kcal_computed_at: '2026-07-02'
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: भुना चना और बीज मिश्रण
     steps:
-    - अगर बाज़ार का भुना चना इस्तेमाल कर रहे हैं, तो बस कद्दू और सूरजमुखी के बीज के साथ एक छोटे कटोरे में मिला लें।
-    - ताज़ा भूनने के लिए — सूखे चने रात भर भिगोएँ, निथारें और पोंछकर सुखाएँ। थोड़े घी और सेंधा नमक में मिलाएँ।
-    - बेकिंग ट्रे पर एक परत में फैलाएँ और 350°F (175°C) पर 20-25 मिनट भूनें, बीच में एक बार चलाएँ, जब तक सुनहरे और कुरकुरे हो जाएँ। रखने से पहले पूरी तरह ठंडा करें।
-    - खाने से ठीक पहले भुना चना बीजों के साथ मिलाएँ — एक कुरकुरा, प्रोटीन से भरपूर नाश्ता।
+    - अगर बाज़ार का भुना चना इस्तेमाल कर रहे हैं, तो बस कद्दू और सूरजमुखी के बीज के
+      साथ एक छोटे कटोरे में मिला लें।
+    - ताज़ा भूनने के लिए — सूखे चने रात भर भिगोएँ, निथारें और पोंछकर सुखाएँ। थोड़े
+      घी और सेंधा नमक में मिलाएँ।
+    - बेकिंग ट्रे पर एक परत में फैलाएँ और 350°F (175°C) पर 20-25 मिनट भूनें, बीच में
+      एक बार चलाएँ, जब तक सुनहरे और कुरकुरे हो जाएँ। रखने से पहले पूरी तरह ठंडा करें।
+    - खाने से ठीक पहले भुना चना बीजों के साथ मिलाएँ — एक कुरकुरा, प्रोटीन से भरपूर
+      नाश्ता।
+nutrients_per_serving:
+  kcal: 286
+  protein_g: 14.5
+  carbs_g: 34.1
+  fat_g: 11.5
+  fibre_g: 7.3
+  iron_mg: 3.3
+  calcium_mg: 39.1
+  magnesium_mg: 116
+  zinc_mg: 2.5
+  potassium_mg: 481
+  folate_ug: 303
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 2.3
+  omega3_mg: 65.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-09-09'
+nutrient_lines:
+- i: 0
+  key: chickpeas
+  g: 50.0
+- i: 1
+  key: pumpkin-seeds
+  g: 8.125
+- i: 2
+  key: sunflower-seeds
+  g: 8.75
+- i: 3
+  key: salt
+  g: 0.0
+nutrient_servings: 1.0

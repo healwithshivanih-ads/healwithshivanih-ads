@@ -104,10 +104,10 @@ kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 464
+  kcal: 505
   protein_g: 28.2
   carbs_g: 20.9
-  fat_g: 31.1
+  fat_g: 35.7
   fibre_g: 3.0
   iron_mg: 1.9
   calcium_mg: 701
@@ -118,8 +118,8 @@ nutrients_per_serving:
   b12_ug: 1.2
   vit_d_ug: 0.3
   vit_c_mg: 83.1
-  omega3_mg: 162
-nutrient_coverage_pct: 95.4
+  omega3_mg: 164
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - calcium
@@ -127,7 +127,7 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: paneer
@@ -160,8 +160,8 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 10
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 9.083333333333334
 - i: 11
   key: lemon-juice
   g: 5.083333333333333
@@ -169,13 +169,16 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: पनीर टिक्का (दही में मैरिनेट)
     steps:
-    - दही पतला लगे तो उसे कुछ मिनट मलमल के कपड़े में टाँग दें — पतला मैरिनेड पनीर से फिसल जाता है।
-    - दही को अदरक-लहसुन पेस्ट, मिर्च पाउडर, हल्दी, गरम मसाला, भुने बेसन और नमक के साथ फेंटें।
-    - पनीर, शिमला मिर्च और प्याज़ मिलाएँ और कमरे के तापमान पर 20 minute मैरिनेट होने दें।
-    - मोटे तले के पैन में तेल गरम करें और टुकड़ों को एक परत में, एक बार पलटते हुए, किनारे भुन जाने तक पकाएँ।
+    - दही पतला लगे तो उसे कुछ मिनट मलमल के कपड़े में टाँग दें — पतला मैरिनेड पनीर
+      से फिसल जाता है।
+    - दही को अदरक-लहसुन पेस्ट, मिर्च पाउडर, हल्दी, गरम मसाला, भुने बेसन और नमक के
+      साथ फेंटें।
+    - पनीर, शिमला मिर्च और प्याज़ मिलाएँ और कमरे के तापमान पर 20 minute मैरिनेट होने
+      दें।
+    - मोटे तले के पैन में तेल गरम करें और टुकड़ों को एक परत में, एक बार पलटते हुए,
+      किनारे भुन जाने तक पकाएँ।
     - परोसने से ठीक पहले ऊपर से नींबू निचोड़ें।

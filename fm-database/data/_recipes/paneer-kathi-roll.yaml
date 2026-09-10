@@ -88,33 +88,35 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 295
-  protein_g: 14.0
-  carbs_g: 11.4
-  fat_g: 22.2
-  fibre_g: 1.8
-  iron_mg: 0.8
-  calcium_mg: 348
-  magnesium_mg: 25.4
-  zinc_mg: 1.8
-  potassium_mg: 251
-  folate_ug: 38.1
+  kcal: 395
+  protein_g: 17.3
+  carbs_g: 31.4
+  fat_g: 22.7
+  fibre_g: 5.3
+  iron_mg: 2.0
+  calcium_mg: 360
+  magnesium_mg: 64.2
+  zinc_mg: 2.6
+  potassium_mg: 357
+  folate_ug: 47.3
   b12_ug: 0.6
   vit_d_ug: 0.1
   vit_c_mg: 44.4
-  omega3_mg: 132
-nutrient_coverage_pct: 85.7
+  omega3_mg: 146
+nutrient_coverage_pct: 99.4
 rich_in:
 - protein
+- fibre
 - calcium
+- zinc
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-roti
+  g: 80.0
 - i: 1
   key: paneer
   g: 130.0
@@ -129,7 +131,7 @@ nutrient_lines:
   g: 30.625
 - i: 5
   key: null
-  g: 30.0
+  g: 2.5
 - i: 6
   key: chilli-powder
   g: 0.0
@@ -143,12 +145,12 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: पनीर काठी रोल
     steps:
     - पनीर की स्ट्रिप्स को दही, तंदूरी मसाला, लाल मिर्च पाउडर और नमक के साथ मिलाएँ।
-    - पैन में तेल गरम करें और प्याज़ व शिमला मिर्च को एक मिनट भूनें, फिर पनीर डालकर 3 से 4 मिनट हल्का चारित होने तक पकाएँ।
+    - पैन में तेल गरम करें और प्याज़ व शिमला मिर्च को एक मिनट भूनें, फिर पनीर डालकर
+      3 से 4 मिनट हल्का चारित होने तक पकाएँ।
     - रोटियाँ गरम करें, हरी चटनी लगाएँ और एक किनारे पर पनीर का भरावन रखें।
     - कसकर रोल करें, दो हिस्सों में काटें और गरम परोसें।

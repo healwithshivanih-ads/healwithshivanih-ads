@@ -42,7 +42,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getCataloguePath } from "@/lib/fmdb/paths";
-import { loadNutrientTable } from "@/lib/fmdb/recipe-nutrients";
+import { loadFoodMatcher, type FoodMatcher } from "@/lib/fmdb/recipe-nutrients";
 
 export type CautionSeverity = "avoid" | "moderate" | "monitor";
 
@@ -176,25 +176,6 @@ export function liveFoodCautions(
   return out;
 }
 
-/**
- * Every spelling an ingredient key answers to, for SCANNING prose.
- *
- * Aliases come from `_ingredient_nutrients.yaml` so there is no second food
- * vocabulary to maintain. These are matching fodder — for something to show a
- * human, use `plainFoodNames`.
- */
-export async function foodDisplayTerms(keys: string[]): Promise<Map<string, string[]>> {
-  const table = await loadNutrientTable();
-  const out = new Map<string, string[]>();
-  for (const k of keys) {
-    const aliases = table?.entries[k]?.aliases ?? [];
-    const terms = [...new Set([...aliases.map((a) => a.toLowerCase()), k.replace(/-/g, " ")])]
-      // longest first, so "sweet potato" is tried before "potato"
-      .sort((a, b) => b.length - a.length);
-    out.set(k, terms);
-  }
-  return out;
-}
 
 /** Key suffixes that describe the table's bookkeeping, not the food. */
 const KEY_QUALIFIERS = [" generic", " cooked", " soaked", " thin"];
@@ -253,7 +234,7 @@ export const STAPLE_THRESHOLD = 5;
 export function screenMenuFrequency(
   dishes: string[],
   live: LiveFoodCaution[],
-  terms: Map<string, string[]>,
+  matcher: FoodMatcher,
   threshold: number = STAPLE_THRESHOLD,
 ): MenuStapleFlag[] {
   if (!live.length) return [];
@@ -262,7 +243,7 @@ export function screenMenuFrequency(
 
   for (const dish of dishes) {
     for (const caution of live) {
-      const hits = cautionedFoodsInText(dish, caution, terms);
+      const hits = cautionedFoodsInText(dish, caution, matcher);
       if (!hits.length) continue;
       const per = counts.get(caution.id) ?? new Map<string, number>();
       for (const key of hits) per.set(key, (per.get(key) ?? 0) + 1);
@@ -307,8 +288,7 @@ export async function screenMenuForClient(
 ): Promise<MenuStapleFlag[]> {
   const live = liveFoodCautions(client, await loadFoodCautions());
   if (!live.length || !dishes.length) return [];
-  const terms = await foodDisplayTerms([...new Set(live.flatMap((c) => c.foods))]);
-  return screenMenuFrequency(dishes, live, terms, threshold);
+  return screenMenuFrequency(dishes, live, await loadFoodMatcher(), threshold);
 }
 
 /** One caution, fully resolved against a client + plan for the coach UI. */
@@ -341,7 +321,7 @@ export async function resolveFoodCautionFindings(
   if (!live.length) return [];
 
   const allKeys = [...new Set(live.flatMap((c) => c.foods))];
-  const terms = await foodDisplayTerms(allKeys);
+  const matcher = await loadFoodMatcher();
 
   const plain = plainFoodNames(allKeys);
   const plainByKey = new Map(allKeys.map((k, i) => [k, plain[i]]));
@@ -354,42 +334,34 @@ export async function resolveFoodCautionFindings(
   const avoidText = client.foods_to_avoid ?? "";
 
   return live.map((caution) => {
-    const inPlanFoods = cautionedFoodsInText(planText, caution, terms);
+    const inPlanFoods = cautionedFoodsInText(planText, caution, matcher);
     return {
       caution,
       foodNames: caution.foods.map((k) => plainByKey.get(k) ?? k.replace(/-/g, " ")),
       inPlanFoods,
-      alreadyRecorded: cautionedFoodsInText(avoidText, caution, terms).length > 0,
+      alreadyRecorded: cautionedFoodsInText(avoidText, caution, matcher).length > 0,
     };
   });
 }
 
 /**
- * Which of a caution's foods are named in a blob of coach prose.
+ * Which of a caution's foods are named in a text.
  *
- * Word-boundary containment over free text — this reads `nutrition.add`
- * ("millets, seasonal vegetables, whole grains") and `non_negotiables`, not
- * ingredient lines. Terms under 4 characters are skipped: the same length
- * guard the backlog suggestion chips needed after "IF" matched inside
- * "Behavior Modifications".
+ * Reads free text — `nutrition.add` ("millets, seasonal vegetables, whole
+ * grains"), `non_negotiables`, or a menu dish string — not ingredient lines.
+ *
+ * Resolution is delegated to `FoodMatcher`, which is the SAME index and the
+ * same per-mention longest-wins rule the Python engine uses. It used to scan
+ * this caution's own terms one at a time, which had no way to know that a
+ * longer name had already claimed the words: "Foxtail millet dosa" matched the
+ * bare term "millet" and flagged the one millet that is deliberately
+ * uncautioned. Resolving the text first, then intersecting, cannot do that.
  */
 export function cautionedFoodsInText(
   text: string,
   caution: FoodCaution,
-  terms: Map<string, string[]>,
+  matcher: FoodMatcher,
 ): string[] {
-  const hay = ` ${String(text ?? "").toLowerCase()} `;
-  if (!hay.trim()) return [];
-  const hits: string[] = [];
-  for (const key of caution.foods) {
-    const words = terms.get(key) ?? [key.replace(/-/g, " ")];
-    const found = words.some((w) => {
-      if (w.length < 4) return false;
-      return new RegExp(`(?<![a-z])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:e?s)?(?![a-z])`).test(
-        hay,
-      );
-    });
-    if (found) hits.push(key);
-  }
-  return hits;
+  const named = matcher.foodsIn(text);
+  return caution.foods.filter((k) => named.has(k));
 }

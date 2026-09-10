@@ -91,33 +91,34 @@ kcal_total: 280
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 154
-  protein_g: 10.3
-  carbs_g: 4.8
-  fat_g: 11.0
-  fibre_g: 1.2
-  iron_mg: 2.0
-  calcium_mg: 215
-  magnesium_mg: 45.8
-  zinc_mg: 0.9
-  potassium_mg: 174
-  folate_ug: 17.3
+  kcal: 176
+  protein_g: 13.4
+  carbs_g: 8.1
+  fat_g: 11.3
+  fibre_g: 2.2
+  iron_mg: 2.5
+  calcium_mg: 218
+  magnesium_mg: 54.8
+  zinc_mg: 1.4
+  potassium_mg: 492
+  folate_ug: 34.3
   b12_ug: 0.0
-  vit_d_ug: 0.0
-  vit_c_mg: 2.1
+  vit_d_ug: 0.2
+  vit_c_mg: 4.2
   omega3_mg: 252
-nutrient_coverage_pct: 89.1
+nutrient_coverage_pct: 100.0
 rich_in:
+- protein
 - calcium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: tofu
   g: 200.0
 - i: 1
-  key: null
-  g: 30.0
+  key: mushroom-button
+  g: 200.0
 - i: 2
   key: coconut-oil
   g: 13.625
@@ -140,13 +141,15 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: टोफू और मशरूम स्टर-फ्राई
     steps:
-    - मशरूम बहुत पानी छोड़ते हैं — उन्हें चौड़े पैन में पकाएँ, और भीड़ न करें वरना वे उबल-से जाएँगे।
+    - मशरूम बहुत पानी छोड़ते हैं — उन्हें चौड़े पैन में पकाएँ, और भीड़ न करें वरना
+      वे उबल-से जाएँगे।
     - पहले टोफू को सुनहरा होने तक सेंकें, फिर निकालकर रख दें।
-    - गरम पैन में मशरूम डालें और रंग आने तक बिना छेड़े छोड़ें, फिर चलाकर उनका पानी पूरी तरह सुखा लें।
-    - लहसुन 30 second डालें, टोफू वापस डालें, और तमारी, काली मिर्च व नमक से स्वाद दें।
+    - गरम पैन में मशरूम डालें और रंग आने तक बिना छेड़े छोड़ें, फिर चलाकर उनका पानी
+      पूरी तरह सुखा लें।
+    - लहसुन 30 second डालें, टोफू वापस डालें, और तमारी, काली मिर्च व नमक से स्वाद
+      दें।
     - धनिया या हरे प्याज़ से पूरा करें।

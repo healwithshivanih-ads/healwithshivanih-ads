@@ -88,27 +88,27 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 48.3
-  protein_g: 3.1
-  carbs_g: 9.0
-  fat_g: 0.7
-  fibre_g: 2.6
-  iron_mg: 1.0
-  calcium_mg: 90.7
-  magnesium_mg: 40.4
-  zinc_mg: 0.7
-  potassium_mg: 598
-  folate_ug: 54.3
+  kcal: 117
+  protein_g: 3.5
+  carbs_g: 9.8
+  fat_g: 8.0
+  fibre_g: 2.9
+  iron_mg: 1.6
+  calcium_mg: 99.0
+  magnesium_mg: 46.9
+  zinc_mg: 0.8
+  potassium_mg: 623
+  folate_ug: 56.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 38.0
-  omega3_mg: 97.8
-nutrient_coverage_pct: 77.9
+  vit_c_mg: 38.1
+  omega3_mg: 107
+nutrient_coverage_pct: 100.0
 rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: zucchini
@@ -117,23 +117,23 @@ nutrient_lines:
   key: garlic
   g: 9.0
 - i: 2
-  key: null
-  g: 30.0
+  key: mustard-seeds
+  g: 2.0833333333333335
 - i: 3
-  key: null
-  g: 30.0
+  key: cumin-seeds
+  g: 1.0416666666666667
 - i: 4
   key: curry-leaves
   g: 12.0
 - i: 5
-  key: null
-  g: 30.0
+  key: turmeric
+  g: 0.78125
 - i: 6
   key: chilli-powder
   g: 0.625
 - i: 7
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 13.625
 - i: 8
   key: salt
   g: 0.0
@@ -141,7 +141,6 @@ nutrient_lines:
   key: coriander-fresh
   g: 1.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: भुनी ज़ुकीनी
@@ -149,5 +148,6 @@ translations:
     - पैन में तेल गरम करें और राई डालें; चटकने पर जीरा, करी पत्ता और लहसुन डालें।
     - लहसुन को कुछ सेकंड खुशबू आने तक भूनें।
     - ज़ुकीनी को हल्दी, मिर्च पाउडर और नमक के साथ डालें, और अच्छी तरह मिलाएँ।
-    - मध्यम-तेज़ आँच पर चलाते हुए 5 से 6 मिनट पकाएँ ताकि ज़ुकीनी बस नरम पर थोड़ी कुरकुरी रहे।
+    - मध्यम-तेज़ आँच पर चलाते हुए 5 से 6 मिनट पकाएँ ताकि ज़ुकीनी बस नरम पर थोड़ी कुरकुरी
+      रहे।
     - ज़्यादा न पकाएँ वरना पानी छोड़ देगी; ताज़ी धनिया डालकर गरम परोसें।

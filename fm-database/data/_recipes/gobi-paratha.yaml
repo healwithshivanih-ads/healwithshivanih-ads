@@ -85,30 +85,36 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 154
-  protein_g: 2.2
-  carbs_g: 6.1
-  fat_g: 14.1
-  fibre_g: 2.3
-  iron_mg: 0.9
-  calcium_mg: 30.6
-  magnesium_mg: 19.7
-  zinc_mg: 0.4
-  potassium_mg: 349
-  folate_ug: 62.4
+  kcal: 443
+  protein_g: 11.8
+  carbs_g: 64.3
+  fat_g: 15.5
+  fibre_g: 12.6
+  iron_mg: 4.4
+  calcium_mg: 65.7
+  magnesium_mg: 132
+  zinc_mg: 2.7
+  potassium_mg: 655
+  folate_ug: 89.4
   b12_ug: 0.0
   vit_d_ug: 0.1
   vit_c_mg: 54.5
-  omega3_mg: 151
-nutrient_coverage_pct: 89.3
+  omega3_mg: 191
+nutrient_coverage_pct: 100.0
 rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: wheat-flour
+  g: 180.0
 - i: 1
   key: cauliflower
   g: 214.0
@@ -133,14 +139,15 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - ovulatory
-
 translations:
   hi:
     name: गोभी पराठा
     steps:
     - आटे में चुटकी भर नमक और पानी डालकर नरम आटा गूँधें, ढककर 15 मिनट रखें।
-    - फूलगोभी कद्दूकस करें, उसकी नमी निचोड़ें, और अदरक, हरी मिर्च, धनिया, जीरा पाउडर और नमक के साथ मिलाएँ।
-    - आटे को 4 लोइयों में बाँटें, हर एक को चपटा करें, बीच में गोभी का भरावन रखें और किनारों को अच्छी तरह बंद करें।
+    - फूलगोभी कद्दूकस करें, उसकी नमी निचोड़ें, और अदरक, हरी मिर्च, धनिया, जीरा पाउडर
+      और नमक के साथ मिलाएँ।
+    - आटे को 4 लोइयों में बाँटें, हर एक को चपटा करें, बीच में गोभी का भरावन रखें और
+      किनारों को अच्छी तरह बंद करें।
     - आटा लगाकर हल्के हाथ से पराठा बेलें, ध्यान रखें कि सतह न फटे।
     - गरम तवे पर पकाएँ, पलटें, और दोनों तरफ़ घी लगाकर कुरकुरा और सुनहरा होने तक सेकें।
     - दही या मक्खन की डली के साथ गरम परोसें।

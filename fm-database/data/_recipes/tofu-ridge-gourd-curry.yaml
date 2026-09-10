@@ -110,10 +110,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 155
+  kcal: 245
   protein_g: 12.3
   carbs_g: 17.7
-  fat_g: 5.4
+  fat_g: 15.7
   fibre_g: 4.8
   iron_mg: 3.4
   calcium_mg: 264
@@ -124,8 +124,8 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 26.7
-  omega3_mg: 266
-nutrient_coverage_pct: 95.6
+  omega3_mg: 270
+nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - iron
@@ -134,7 +134,7 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: tofu
@@ -152,8 +152,8 @@ nutrient_lines:
   key: ginger-garlic-paste
   g: 15.0
 - i: 5
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 20.4375
 - i: 6
   key: mustard-seeds
   g: 2.0833333333333335
@@ -179,7 +179,6 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: टोफू और तोरई करी
@@ -187,6 +186,7 @@ translations:
     - टोफू सुखाकर पोंछें; तोरई छीलकर सख्त धारियाँ हटाकर छोटे टुकड़े करें।
     - कड़ाही में तेल गरम करें; राई तड़काएँ, फिर जीरा व प्याज़ नरम होने तक भूनें।
     - अदरक-लहसुन पेस्ट 1 मिनट पकाएँ; टमाटर, हल्दी, मिर्च, धनिया डालकर 5-6 मिनट पकाएँ।
-    - तोरई-नमक डाल ढककर धीमी आँच 8-10 मिनट पकाएँ; यह पानी छोड़ती है, ज़रूरत हो तो थोड़ा।
+    - तोरई-नमक डाल ढककर धीमी आँच 8-10 मिनट पकाएँ; यह पानी छोड़ती है, ज़रूरत हो तो
+      थोड़ा।
     - धीरे से टोफू डालें, 4-5 मिनट गरम व तोरई नरम होने तक पकाएँ।
     - ताज़ा धनिया डालकर चावल या बाजरा रोटी संग गरम परोसें।

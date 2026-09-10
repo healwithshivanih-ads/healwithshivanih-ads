@@ -84,29 +84,30 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 37.4
-  protein_g: 2.4
-  carbs_g: 8.0
-  fat_g: 0.2
-  fibre_g: 2.1
-  iron_mg: 0.8
-  calcium_mg: 19.4
-  magnesium_mg: 20.2
-  zinc_mg: 0.4
-  potassium_mg: 252
-  folate_ug: 46.1
+  kcal: 190
+  protein_g: 9.8
+  carbs_g: 33.9
+  fat_g: 2.3
+  fibre_g: 5.7
+  iron_mg: 2.3
+  calcium_mg: 117
+  magnesium_mg: 66.4
+  zinc_mg: 1.5
+  potassium_mg: 405
+  folate_ug: 71.3
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 19.8
-  omega3_mg: 10.7
-nutrient_coverage_pct: 81.9
-rich_in: []
+  omega3_mg: 88.6
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
-  key: null
-  g: 30.0
+  key: bread-whole-wheat
+  g: 120.0
 - i: 1
   key: mung-sprouted
   g: 104.0
@@ -123,15 +124,14 @@ nutrient_lines:
   key: lemon-juice
   g: 5.083333333333333
 - i: 6
-  key: null
-  g: 30.0
+  key: chaat-masala
+  g: 0.0
 - i: 7
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: अंकुर और सब्ज़ी सैंडविच

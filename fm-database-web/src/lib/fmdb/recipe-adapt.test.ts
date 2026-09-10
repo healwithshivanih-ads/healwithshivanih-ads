@@ -20,7 +20,7 @@ import {
   type AdaptableRecipe,
 } from "./recipe-adapt";
 import { loadLibraryRecipes, buildClientRecipeAdapter } from "./client-app";
-import { loadNutrientTable } from "./recipe-nutrients";
+import { loadNutrientTable, recomputeWithout } from "./recipe-nutrients";
 
 const ALLIUM = ["onion", "garlic"];
 
@@ -221,11 +221,20 @@ describe("calories follow the adaptation", () => {
     let dropped = 0;
     for (const { recipe } of lib) {
       const shown = adapt(recipe);
-      if (!shown?.omits?.length || !recipe.kcalPerServing || !shown.kcalPerServing) continue;
+      if (!shown?.omits?.length || !shown.kcalPerServing) continue;
+      // The baseline is the SAME recipe through the SAME engine with nothing
+      // removed — not `recipe.kcalPerServing`, which is the ai_haiku estimate.
+      // Comparing the table recompute against a Haiku figure compares two
+      // different measurements: 89 library recipes now read higher on the table
+      // than Haiku guessed (39 did even before whole-wheat flour was added to
+      // it), so that form of the assertion tested the table's agreement with an
+      // AI guess, not the invariant this block is named for.
+      const base = await recomputeWithout(recipe.nutrientLines, recipe.nutrientServings, []);
+      if (!base) continue;
       compared++;
       // never MORE than the original — an adaptation only ever removes food
-      expect(shown.kcalPerServing, recipe.title).toBeLessThanOrEqual(recipe.kcalPerServing);
-      if (shown.kcalPerServing < recipe.kcalPerServing) dropped++;
+      expect(shown.kcalPerServing, recipe.title).toBeLessThanOrEqual(base.perServing.kcal);
+      if (shown.kcalPerServing < base.perServing.kcal) dropped++;
     }
     expect(compared, "the sweep must compare real adaptations").toBeGreaterThan(50);
     expect(dropped, "removing food must actually reduce the count").toBeGreaterThan(30);

@@ -71,6 +71,87 @@ export interface LoadedTable {
   lowCoveragePct: number;
 }
 
+/**
+ * Every catalogue food NAMED in a text, one key per MENTION.
+ *
+ * Mirrors `NutrientTable.match_all` in scripts/nutrients_lib.py; the two are
+ * pinned together by food-cautions.test.ts.
+ *
+ * The nutrient engine asks a different question of the same index: "which food
+ * IS this line?" — one key, longest alias wins, because an ingredient line is
+ * exactly one food and counting it twice would double its calories. A safety
+ * screen has to surface EVERY food a text names, or a dish naming two
+ * cautioned foods reports only one of them.
+ *
+ * Longest-wins still applies PER MENTION and that half is load-bearing:
+ * "foxtail millet" must resolve to `millet-foxtail` and never also to
+ * `millet-generic`, because foxtail is deliberately uncautioned for goitrogens
+ * (see _food_cautions.yaml) and re-flagging it would take away the millet that
+ * is the safe substitute. A longest-first alternation scanned with matchAll
+ * gives exactly that: non-overlapping matches, most specific name per mention.
+ */
+export interface FoodMatcher {
+  foodsIn(text: string): Set<string>;
+}
+
+let matcherCache: Promise<FoodMatcher> | undefined;
+
+export function loadFoodMatcher(): Promise<FoodMatcher> {
+  matcherCache ??= (async () => {
+    const table = await loadNutrientTable();
+    const aliasIndex = new Map<string, string>();
+    for (const [key, spec] of Object.entries(table?.entries ?? {})) {
+      const own = key.replace(/-/g, " ");
+      if (!aliasIndex.has(own)) aliasIndex.set(own, key);
+      for (const a of spec.aliases ?? []) {
+        const s = String(a).toLowerCase();
+        if (!aliasIndex.has(s)) aliasIndex.set(s, key);
+      }
+    }
+    // Terms under 4 characters are skipped — the shortest alias for `chicken`
+    // is "leg", which would fire on "drumstick leaves". Same guard both sides.
+    //
+    // Aliases naming MORE THAN ONE food are skipped too. The table carries 27
+    // of them, pasted in from ingredient lines: `kale` has the literal alias
+    // "kale, swiss chard leaves". Being the longest thing that matches, such an
+    // alias claims the whole span and the second food inside it never surfaces.
+    // The test is structural rather than a blocklist — a real compound name
+    // ("sweet potato") never contains a comma or a standalone and/or, and a
+    // rule like "contains another key's alias" would wrongly drop that one.
+    // Mirrors NutrientTable._MULTI_FOOD_ALIAS in scripts/nutrients_lib.py.
+    const multiFood = /,|\b(?:and|or|plus)\b/;
+    const usable = [...aliasIndex.keys()]
+      .filter((a) => a.length >= 4 && !multiFood.test(a))
+      .sort((a, b) => b.length - a.length);
+    const scanner = usable.length
+      ? new RegExp(
+          `(?<![a-z])(${usable.map((a) => a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?:e?s)?(?![a-z])`,
+          "g",
+        )
+      : null;
+    return {
+      foodsIn(text: string): Set<string> {
+        const out = new Set<string>();
+        const s = String(text ?? "").toLowerCase();
+        if (!s.trim() || !scanner) return out;
+        const exact = aliasIndex.get(s);
+        if (exact) out.add(exact);
+        for (const m of s.matchAll(scanner)) {
+          const k = aliasIndex.get(m[1]);
+          if (k) out.add(k);
+        }
+        return out;
+      },
+    };
+  })();
+  return matcherCache;
+}
+
+/** Test seam — the matcher caches the compiled alternation for the process. */
+export function __resetFoodMatcher(): void {
+  matcherCache = undefined;
+}
+
 let cached: Promise<LoadedTable | null> | undefined;
 
 /** The ingredient table, read once. Server-side only — this is the same file

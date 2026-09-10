@@ -101,10 +101,10 @@ kcal_total: 400
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 153
+  kcal: 193
   protein_g: 8.4
   carbs_g: 24.4
-  fat_g: 2.4
+  fat_g: 7.0
   fibre_g: 4.9
   iron_mg: 2.1
   calcium_mg: 26.8
@@ -115,13 +115,13 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 24.1
-  omega3_mg: 41.8
-nutrient_coverage_pct: 86.7
+  omega3_mg: 43.6
+nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: besan
@@ -154,19 +154,20 @@ nutrient_lines:
   key: water
   g: 0.0
 - i: 10
-  key: null
-  g: 30.0
+  key: sunflower-oil
+  g: 9.083333333333334
 nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: सब्ज़ी बेसन ऑमलेट
     steps:
     - बेसन को पानी के साथ चिकने घोल में फेंटें, चीले से थोड़ा गाढ़ा।
-    - काला नमक डालें — यही इसे अंडे जैसा स्वाद देता है — साथ में हल्दी, नमक और चुटकी भर सोडा।
+    - काला नमक डालें — यही इसे अंडे जैसा स्वाद देता है — साथ में हल्दी, नमक और चुटकी
+      भर सोडा।
     - सब्ज़ियाँ और धनिया मिलाएँ।
-    - मध्यम गरम तेल लगे पैन पर एक गोल डालें और ढककर 2–3 minute तक ऊपर लगभग जमने तक पकाएँ।
+    - मध्यम गरम तेल लगे पैन पर एक गोल डालें और ढककर 2–3 minute तक ऊपर लगभग जमने तक
+      पकाएँ।
     - ऑमलेट की तरह आधा मोड़ें, हल्के दबाएँ, और एक मिनट और पकाएँ।

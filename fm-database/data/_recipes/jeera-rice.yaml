@@ -86,24 +86,24 @@ updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
   kcal: 424
-  protein_g: 7.6
+  protein_g: 7.7
   carbs_g: 72.9
   fat_g: 10.9
   fibre_g: 2.8
-  iron_mg: 1.4
-  calcium_mg: 18.9
-  magnesium_mg: 27.7
+  iron_mg: 1.5
+  calcium_mg: 19.7
+  magnesium_mg: 27.8
   zinc_mg: 1.2
   potassium_mg: 132
-  folate_ug: 9.3
+  folate_ug: 9.5
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 3.0
   omega3_mg: 93.7
-nutrient_coverage_pct: 87.7
+nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-09-09'
 nutrient_lines:
 - i: 0
   key: white-rice
@@ -115,8 +115,8 @@ nutrient_lines:
   key: olive-oil
   g: 20.25
 - i: 3
-  key: null
-  g: 30.0
+  key: bay-leaf
+  g: 0.2
 - i: 4
   key: green-chilli
   g: 5.0
@@ -130,13 +130,13 @@ nutrient_lines:
   key: coriander-fresh
   g: 1.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: जीरा राइस
     steps:
     - बासमती चावल को साफ पानी आने तक धोएँ, फिर 20 मिनट भिगोकर पानी निकाल दें।
-    - एक बर्तन में तेल गरम करें और जीरा व तेज़पत्ता डालें; जीरे को चटकने और खुशबू आने तक भूनें।
+    - एक बर्तन में तेल गरम करें और जीरा व तेज़पत्ता डालें; जीरे को चटकने और खुशबू
+      आने तक भूनें।
     - चीरी हुई हरी मिर्च डालें, फिर भीगे चावल डालकर एक मिनट हल्के हाथ से चलाएँ।
     - पानी डालें, नमक मिलाएँ और उबाल आने दें।
     - ढककर आँच धीमी कर दें और चावल के नरम होने व पानी सूखने तक, लगभग 12 मिनट पकाएँ।
