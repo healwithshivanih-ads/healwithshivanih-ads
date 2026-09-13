@@ -62,6 +62,13 @@ kitchen_tested: false
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/ash-gourd-petha-juice.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://upload.wikimedia.org/wikipedia/commons/4/4d/Rajbangshi_Thali_with_rice%2C_Taro_leaf_chhyaka%2C_Bottle_gourd_curry_and_crispy_fried_dried_Indian_Carplet_fishes%2C_Siliguri%2C_West_Bengal_DSC_0045.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Plain Ash Gourd (Petha) Juice

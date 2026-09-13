@@ -93,6 +93,13 @@ headnote: Cooking the millet apart from the dal is the whole trick — it keeps 
 attribution:
   author: Shivani Hari
   source_id: uas-bengaluru-2017-millet-daily-lifestyle
+image:
+  file: images/web/foxtail-millet-bisi-bele-bath.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://upload.wikimedia.org/wikipedia/commons/9/9a/Japanese_Foxtail_millet_02.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
 sources:
 - id: uas-bengaluru-2017-millet-daily-lifestyle
   location: Foxtail Millet Bisi bele baat / Millet Navane-Sajje Bisibele Bath
