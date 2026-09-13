@@ -8,6 +8,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
+import { clientIsLapsed } from "@/lib/fmdb/engagement";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { runShim } from "@/lib/fmdb/shim";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
@@ -56,12 +57,20 @@ export async function POST(req: NextRequest) {
   if (!lookup.ok) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }
+  // Programme over → no model calls. A lapsed client keeps the app (recipes,
+  // keepsake, re-order links) but the co-pilot is part of active care. The
+  // engagement check is the cheap one; the LIBRARY-mode check below also
+  // catches a maintenance lapse, which never sets engagement_status.
+  if (await clientIsLapsed(lookup.client_id)) {
+    return NextResponse.json({ ok: true, answer: "DEFER" });
+  }
 
   try {
     const data = await loadClientAppData(token, {
       deviceTz: req.cookies.get("ochre_tz")?.value ?? null,
     });
     if (!data) return NextResponse.json({ ok: true, answer: "DEFER" });
+    if (data.mode === "LIBRARY") return NextResponse.json({ ok: true, answer: "DEFER" });
     const context =
       `Client: ${data.client.firstName}, week ${data.client.week} of ${data.client.totalWeeks}, ${data.client.program}. ` +
       // Continuation matters to the copilot as much as to a letter: without it

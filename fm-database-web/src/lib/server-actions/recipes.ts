@@ -32,6 +32,7 @@ import {
 } from "@/lib/fmdb/client-app";
 import { primaryDishPart } from "@/lib/fmdb/dish-components";
 import { weeklyGenerationPaused, setWeeklyGenerationPaused } from "@/lib/fmdb/weekly-generation-pause";
+import { clientIsLapsed, lapsedRefusal } from "@/lib/fmdb/engagement";
 
 export interface RecipeGenResult {
   ok: boolean;
@@ -64,6 +65,12 @@ export async function generateWeekRecipesAction(
   // she may be paused-by-default but want one week's pack for a specific
   // reason. Checked FIRST so a paused client costs nothing at all — no token
   // resolve, no app load, no Haiku call.
+  //
+  // Lapsed is checked even earlier and is NOT overridable by force — the
+  // programme ended with no successor, so there is no pack to write.
+  if (await clientIsLapsed(clientId)) {
+    return { ok: false, error: lapsedRefusal(clientId) };
+  }
   if (!force && (await weeklyGenerationPaused(clientId))) {
     return {
       ok: false,

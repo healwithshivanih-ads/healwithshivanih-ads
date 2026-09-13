@@ -1,4 +1,8 @@
 import "server-only";
+import fs from "node:fs/promises";
+import path from "node:path";
+import yaml from "js-yaml";
+import { getPlansRoot } from "./paths";
 
 /**
  * Who counts as a client.
@@ -24,6 +28,15 @@ import "server-only";
  * Most crons already gate on "has a published plan", which a non-signed-up
  * person never has, so they need no extra guard. Use these only where a cron
  * reaches clients *without* a plan gate.
+ *
+ * **The plan gate does NOT cover lapsed clients.** The renewal sweep marks a
+ * client `lapsed` 14 days after their last plan window closes with no
+ * successor — but it only flips `engagement_status`; the plan stays in
+ * `published/` with `status: published` forever. So every path that drafts,
+ * generates, regenerates or nudges off a published plan must ALSO check
+ * `isLapsed` / `clientIsLapsed`, or it keeps spending on a programme that
+ * ended (cl-004 / cl-007, 2026-09-13: still scanned by the grocery/recipe
+ * backfill, still pushed reminders, still offered the co-pilot).
  */
 
 /** The one engagement_status that means "this is a real, enrolled client". */
@@ -51,6 +64,47 @@ export function isSignedUp(client: MaybeClient): boolean {
 /** True when the coach has explicitly ruled this person out. */
 export function isDeclined(client: MaybeClient): boolean {
   return statusOf(client) === "declined";
+}
+
+/** The engagement_status the renewal sweep writes when a plan window ends
+ *  and nothing follows it. Mirrors `LAPSED` in `fmdb/plan/renewals.py`. */
+export const LAPSED = "lapsed";
+
+/** True when the renewal sweep has parked this client. Their published plan
+ *  is still on disk, so "has a published plan" is NOT evidence of active
+ *  care for them — see the module docstring. */
+export function isLapsed(client: MaybeClient): boolean {
+  return statusOf(client) === LAPSED;
+}
+
+/**
+ * `isLapsed` for callers that only hold a client id (the crons, the app
+ * routes). Reads `clients/<id>/client.yaml` directly.
+ *
+ * A missing or unreadable file answers `false` — NOT lapsed. This is a
+ * spend/nudge guard layered on top of the existing plan gates, so failing
+ * open here only means "behave exactly as before this guard existed"; the
+ * unreadable-file case is already reported to the coach every morning by
+ * the client-yaml-integrity cron.
+ */
+export async function clientIsLapsed(clientId: string): Promise<boolean> {
+  try {
+    const file = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+    const doc = yaml.load(await fs.readFile(file, "utf-8")) as MaybeClient;
+    return isLapsed(doc);
+  } catch {
+    return false;
+  }
+}
+
+/** The one refusal every generator returns for a lapsed client, so the
+ *  coach reads the same sentence — and the same way back — everywhere. */
+export function lapsedRefusal(clientId: string): string {
+  return (
+    `${clientId} is lapsed — the programme ended with no successor plan, so ` +
+    "nothing is drafted, generated or sent for them. Publishing a successor " +
+    "plan (or setting engagement_status back to signed_up) resumes automation."
+  );
 }
 
 /**

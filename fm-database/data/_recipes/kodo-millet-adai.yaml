@@ -86,6 +86,13 @@ headnote: The four-dal base is what makes adai worth choosing over dosa — it l
 attribution:
   author: Shivani Hari
   source_id: uas-bengaluru-2017-millet-daily-lifestyle
+image:
+  file: images/web/kodo-millet-adai.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://upload.wikimedia.org/wikipedia/commons/d/d0/Kodo_Millet.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
 sources:
 - id: uas-bengaluru-2017-millet-daily-lifestyle
   location: Kodo Millet Adai

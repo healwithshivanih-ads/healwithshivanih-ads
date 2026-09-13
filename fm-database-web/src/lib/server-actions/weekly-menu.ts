@@ -20,6 +20,7 @@ import { menuNutrition, type MenuNutrition } from "@/lib/fmdb/menu-nutrients";
 import { screenMenuForClient, type MenuStapleFlag } from "@/lib/fmdb/food-cautions";
 import { weeksAfterApproval, planWeekFromStart } from "@/lib/fmdb/menu-weeks";
 import { weeklyGenerationPaused } from "@/lib/fmdb/weekly-generation-pause";
+import { clientIsLapsed, lapsedRefusal } from "@/lib/fmdb/engagement";
 import { withFsRetry } from "@/lib/fmdb/fs-retry";
 import { generateGroceryListAction } from "./grocery";
 
@@ -325,6 +326,13 @@ export async function generateWeekMenuAction(
   // statement: dormancy asks "has she disappeared?", this one says "she is
   // here, she just does not need a new menu every week." She stays frozen on
   // her last loaded week (client-app.ts falls back to it), which is the point.
+  // Lapsed — the programme ended with no successor. Deliberately NOT
+  // overridable by `force`: "Draft menu" exists to re-engage someone whose
+  // plan is still running, and a lapsed client has no plan window to draft
+  // into. The way back is a successor plan, which the renewal sweep sees.
+  if (await clientIsLapsed(clientId)) {
+    return { ok: false, error: lapsedRefusal(clientId) };
+  }
   if (!force && (await weeklyGenerationPaused(clientId))) {
     return {
       ok: false,
@@ -614,6 +622,19 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       // mealPlanStyle logs it with the client id.
       const style = await mealPlanStyle(cid);
       if (style === null || style === "principles") continue;
+      // Lapsed clients keep their published plan on disk forever (the renewal
+      // sweep only flips engagement_status), so being in this bucket says
+      // nothing. Skip BEFORE the two pause checks below: both short-circuit
+      // into a dashboard row, which is how two clients whose programmes ended
+      // a month earlier rendered as "Menu paused — not opening the app" — a
+      // prompt to chase them (cl-004 / cl-007, 2026-09-13).
+      if (await clientIsLapsed(cid)) continue;
+      // Same ordering for the plan window itself. An over-run plan is not
+      // "paused", it is finished — recycle, never extend — and it must be
+      // decided before the pause rows for the same reason.
+      const cur = currentPlanWeek(p);
+      const total = Number(p.plan_period_weeks) || 12;
+      if (cur > total) continue;
       // Coach-paused → emit and SHORT-CIRCUIT, for exactly the reason spelled
       // out for dormancy below: "who is paused" is a standing fact about the
       // client, not a function of what is due this instant, so it must not be
@@ -621,12 +642,11 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       // Checked before dormancy so a client who is both reads as coach-paused,
       // which is the decision that actually governs.
       if (await weeklyGenerationPaused(cid)) {
-        const curWeek = currentPlanWeek(p);
         rows.push({
           clientId: cid,
           planSlug: String(p.slug ?? ""),
-          currentWeek: curWeek,
-          targetWeek: curWeek,
+          currentWeek: cur,
+          targetWeek: cur,
           daysToNextWeek: 0,
           behind: false,
           pending: !!p.app_menu_pending,
@@ -648,12 +668,11 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       // not be gated on due-ness.
       const dormantRaw = DORMANT_DAYS > 0 ? await daysSinceLastAppOpen(cid) : null;
       if (dormantRaw !== null && dormantRaw >= DORMANT_DAYS) {
-        const curWeek = currentPlanWeek(p);
         rows.push({
           clientId: cid,
           planSlug: String(p.slug ?? ""),
-          currentWeek: curWeek,
-          targetWeek: curWeek,
+          currentWeek: cur,
+          targetWeek: cur,
           daysToNextWeek: 0,
           behind: false,
           pending: !!p.app_menu_pending,
@@ -667,10 +686,8 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       // missing its menu entirely → it falls through and gets its FIRST week
       // auto-drafted (currentReady=false → behind → targetWeek=cur). Principle
       // plans are excluded above, so an empty menu now means "real plan needs
-      // a menu", not "framework-only by design".
-      const cur = currentPlanWeek(p);
-      const total = Number(p.plan_period_weeks) || 12;
-      if (cur > total) continue; // plan over — recycle, never extend
+      // a menu", not "framework-only by design". (The plan-over check now
+      // sits above the pause rows — see the lapsed comment.)
       const start = effectiveMealPlanStart({
         meal_plan_started_on: p.meal_plan_started_on,
         plan_period_start: p.plan_period_start,

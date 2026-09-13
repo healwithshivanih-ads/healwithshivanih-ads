@@ -149,6 +149,20 @@ describe("computeActiveClientCounts", () => {
     });
   });
 
+  it("lapsed clients never count — their published plan is still on disk", () => {
+    // The renewal sweep only flips engagement_status; the ended plan stays in
+    // published/ with a start date in the past, which is exactly the shape
+    // that used to land in active_care and overstate the capacity signal.
+    const clients = [{ client_id: "cl-1", engagement_status: "lapsed" }];
+    const plans = [{ client_id: "cl-1", slug: "a-plan-1", _bucket: "published", ...started }];
+    expect(computeActiveClientCounts(clients, plans, TODAY)).toEqual({
+      active_care: 0,
+      awaiting_start: 0,
+      onboarding: 0,
+      maintenance: 0,
+    });
+  });
+
   it("declined clients never count", () => {
     const clients = [{ client_id: "cl-1", engagement_status: "declined" }];
     const plans = [{ client_id: "cl-1", slug: "a-plan-1", _bucket: "published", ...started }];

@@ -31,6 +31,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { clientIsLapsed } from "@/lib/fmdb/engagement";
 import { generateGroceryListAction, groceryRefreshNeededAction } from "@/lib/server-actions/grocery";
 import { generateWeekRecipesAction } from "@/lib/server-actions/recipes";
 
@@ -82,6 +83,7 @@ export async function POST(req: NextRequest) {
   // Newest published plan per client (matches how the app resolves the active plan).
   const seen = new Set<string>();
   const active: { clientId: string; slug: string; menuChangedAt: number }[] = [];
+  const skippedLapsed: string[] = [];
   for (const n of names.sort().reverse()) {
     if (!n.endsWith(".yaml")) continue;
     let p: PlanLite;
@@ -94,6 +96,14 @@ export async function POST(req: NextRequest) {
     const slug = String(p.slug ?? "");
     if (!cid || !slug || seen.has(cid)) continue;
     seen.add(cid);
+    // A lapsed client's plan never leaves published/, and its menu never
+    // empties, so "has a menu" kept two ended programmes in this sweep for a
+    // month. The generators refuse lapsed clients anyway; skipping here keeps
+    // that refusal out of the `failed` list, where it would read as an error.
+    if (await clientIsLapsed(cid)) {
+      skippedLapsed.push(cid);
+      continue;
+    }
     const weeks = p.app_menu?.weeks ?? [];
     if (!Array.isArray(weeks) || weeks.length === 0) continue; // no live menu → nothing to shop for / cook
     active.push({
@@ -162,5 +172,12 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  return NextResponse.json({ ok: true, scanned: active.length, grocery, recipes, details });
+  return NextResponse.json({
+    ok: true,
+    scanned: active.length,
+    skipped_lapsed: skippedLapsed,
+    grocery,
+    recipes,
+    details,
+  });
 }
