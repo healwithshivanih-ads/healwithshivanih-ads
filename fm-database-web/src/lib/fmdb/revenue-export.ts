@@ -240,7 +240,10 @@ export function computeActiveClientCounts(
   for (const c of clients) {
     const cid = c.client_id ?? "";
     if (!cid) continue;
-    if (c.engagement_status === "declined") continue;
+    // Lapsed keeps its published plan on disk (the sweep only flips the
+    // status), so without this line every ended programme counts as a live
+    // seat and the capacity signal sent to the funnel overstates load.
+    if (c.engagement_status === "declined" || c.engagement_status === "lapsed") continue;
     const published = publishedBy.get(cid) ?? [];
     if (c.maintenance_status === "active" || (published.length === 0 && maintenancePlanClients.has(cid))) {
       breakdown.maintenance += 1;

@@ -13,10 +13,28 @@ import { describe, it, expect } from "vitest";
 import {
   isSignedUp,
   isDeclined,
+  isLapsed,
   onlySignedUp,
   confirmationNameMatches,
   findUnevidencedSignups,
 } from "./engagement";
+
+describe("isLapsed", () => {
+  it("is true only for the status the renewal sweep writes", () => {
+    expect(isLapsed({ engagement_status: "lapsed" })).toBe(true);
+    expect(isLapsed({ engagement_status: " Lapsed " })).toBe(true);
+    expect(isLapsed({ engagement_status: "signed_up" })).toBe(false);
+    expect(isLapsed({ engagement_status: "declined" })).toBe(false);
+  });
+
+  it("treats a missing field as NOT lapsed", () => {
+    // Opposite safe direction to isSignedUp: this guard withholds automation,
+    // so a forgotten field must not silently switch a real client off.
+    expect(isLapsed({})).toBe(false);
+    expect(isLapsed(null)).toBe(false);
+    expect(isLapsed(undefined)).toBe(false);
+  });
+});
 
 describe("isSignedUp", () => {
   it("accepts only an explicit signed_up", () => {

@@ -26,6 +26,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { isLapsed } from "@/lib/fmdb/engagement";
 import { deriveReminders, effectiveReminders } from "@/lib/fmdb/reminders-derive";
 import { remediesForReminders } from "@/lib/fmdb/remedy-reminder-source";
 import { readOverrides, readFired, writeFired } from "@/lib/fmdb/reminders-server";
@@ -160,6 +161,10 @@ export async function POST(req: NextRequest) {
     const plan = await publishedPlanForClient(clientId);
     if (!plan) continue;
     const client = await readClientYaml(clientId);
+    // The plan above is still on disk for a lapsed client — the renewal
+    // sweep never unpublishes it — so a daily "take your supplements" push
+    // kept firing a month after the programme ended (cl-004, 2026-09-13).
+    if (isLapsed(client)) continue;
     // Reminder times fire on the CLIENT's wall clock (client.yaml#timezone,
     // IST default) — and the idempotence day-stamp uses her day, not IST's.
     const tz = clientTz(client);

@@ -32,6 +32,7 @@ import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
 import { planWeekFromStart } from "@/lib/fmdb/menu-weeks";
 import { planGroceryRefresh, type GroceryWeekEntry, type RawMenuWeek } from "@/lib/fmdb/grocery-weeks";
+import { clientIsLapsed, lapsedRefusal } from "@/lib/fmdb/engagement";
 
 export interface GroceryGenResult {
   ok: boolean;
@@ -123,6 +124,13 @@ export async function generateGroceryListAction(
   planSlug: string,
   opts: { force?: boolean } = {},
 ): Promise<GroceryGenResult> {
+  // Lapsed — programme over, no successor. Checked FIRST so it costs no plan
+  // read, no app load and no Haiku call, and NOT overridable by force: the
+  // backfill cron passed a lapsed client's over-run plan straight through
+  // here (its only gate was "has a menu") — cl-004 / cl-007, 2026-09-13.
+  if (await clientIsLapsed(clientId)) {
+    return { ok: false, error: lapsedRefusal(clientId) };
+  }
   const plan = await readPlanDoc(planSlug);
   // Resolve the plan's letter token so we can reuse the app's own loader —
   // guarantees the grocery list is built from EXACTLY the menu the app shows.

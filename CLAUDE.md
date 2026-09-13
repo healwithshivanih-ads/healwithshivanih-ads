@@ -63,6 +63,18 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.84 — a lapsed client costs nothing.** Dhanishta (cl-004) and Archana (cl-007) — `engagement_status: lapsed`, plan windows closed 2026-08-04 / 2026-08-12 — were still listed on the dashboard as "⏸ Menu paused — not opening the app", still scanned daily by the grocery/recipe backfill (Haiku), still pushed reminders, and the app co-pilot + travel guide were still live for them.
+
+**Key invariants (v0.84):**
+- **"Has a published plan" is NOT "is in active care."** The renewal sweep (`fmdb/plan/renewals.py`) only flips `engagement_status` + `lapsed_on`; it never ends, supersedes, revokes or moves the plan, so a lapsed client's plan sits in `published/` with `status: published` forever. Every automated path that drafts, generates, regenerates or nudges off a published plan must ALSO check `isLapsed` / `clientIsLapsed` (`src/lib/fmdb/engagement.ts`). Zero of the 17 crons did; the module docstring now says why.
+- **The generators are the choke point.** `generateWeekMenuAction`, `generateGroceryListAction`, `generateWeekRecipesAction` refuse a lapsed client FIRST (before any plan read, app load or Haiku call) and `force` does NOT override it — "Draft menu" exists to re-engage someone mid-plan; the way back for a lapsed client is a successor plan, which the sweep restores on. `lapsedRefusal()` is the one sentence they all return.
+- **Ordering in `weeklyMenuQueueAction` is load-bearing.** Lapsed AND plan-over (`cur > total`) are decided BEFORE the coach-paused / dormancy short-circuits — those emit a dashboard row and `continue`, which is exactly how an ended programme rendered as a "chase her" prompt. `lapsed-client-guards.test.ts` pins both orderings; the over-run-but-not-yet-lapsed shape (inside the sweep's 14-day grace) is the one the engagement check alone would miss.
+- Also gated: `grocery-backfill` (skips in the scan, reports `skipped_lapsed`, so the refusal never lands in `failed`), `maintenance-menu-seasonal`, `app-reminders` (push), `revenue-export` (lapsed no longer counted as `active_care` in the capacity signal), `/api/app-copilot` (DEFER on lapsed OR `mode === "LIBRARY"`), `/api/app-travel-guide` (403).
+- **Deliberately NOT gated:** `graduation-notice` (one WhatsApp per graduation, inside a 30-day backfill window — the intended close), `winback-drip` (deterministic template drafts, coach must send), the dashboard triage buckets and the "silent 14d+" chase list (coach-facing signals, no spend). If the coach wants lapsed clients out of triage, that is the archive suggester's job, not a cron gate.
+- Measured before the fix: real post-lapse spend was small (one forced grocery regen each on 2026-08-23 during the v0.80 week-restore), but the exposure was structural and unbounded.
+
+---
+
 **v0.83 — whole-wheat flour, honest coverage, and one caution key per MENTION.** `_ingredient_nutrients.yaml` had no wheat flour, so every roti / paratha / thepla under-reported protein and calories — `whole-wheat-roti` itself stored **0.0 g protein and 20 kcal** a serving, which `menu-nutrients.ts` reads straight into the coach's protein-floor strip (worse than the ~3 g its own fallback table would have guessed).
 
 **Key invariants (v0.83):**

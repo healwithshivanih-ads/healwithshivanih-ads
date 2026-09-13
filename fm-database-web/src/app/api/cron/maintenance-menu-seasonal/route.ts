@@ -18,6 +18,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { clientIsLapsed } from "@/lib/fmdb/engagement";
 import { runShim } from "@/lib/fmdb/shim";
 import { seasonalRefreshDue } from "@/lib/fmdb/maintenance-season";
 import { seasonForYmd } from "@/lib/fmdb/season";
@@ -68,6 +69,9 @@ export async function POST(req: NextRequest) {
     const slug = String(p.slug ?? "");
     if (!cid || !slug || seen.has(cid)) continue;
     seen.add(cid);
+    // A lapsed client is off the maintenance track too — the seasonal
+    // refresh is a Haiku call that auto-applies live, so never for them.
+    if (await clientIsLapsed(cid)) continue;
     // Needs an existing app_menu to refresh (a maintenance plan with no menu is
     // a principles plan by another name — nothing to regenerate).
     if (!p.app_menu?.weeks?.length) continue;

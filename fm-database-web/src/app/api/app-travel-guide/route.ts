@@ -11,6 +11,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
+import { clientIsLapsed } from "@/lib/fmdb/engagement";
 import { runShim } from "@/lib/fmdb/shim";
 import { coerceGuide } from "@/lib/fmdb/travel-foods";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
@@ -34,6 +35,11 @@ export async function POST(req: NextRequest) {
   const lookup = await resolveAppToken(token);
   if (!lookup.ok) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
+  }
+  // Programme over → no model call. The guide is part of active care; the
+  // library floor keeps recipes and the keepsake, not a Haiku travel plan.
+  if (await clientIsLapsed(lookup.client_id)) {
+    return NextResponse.json({ ok: false, error: "programme has ended" }, { status: 403 });
   }
 
   try {
