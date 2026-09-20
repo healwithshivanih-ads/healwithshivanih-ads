@@ -15,7 +15,25 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import yaml from "js-yaml";
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+
+// This suite drives the real Python (`fmdb client-new`, then save-session.py
+// via saveSessionAction) because the TS→Python wiring is exactly the part that
+// breaks. Both resolve their interpreter from shim.ts's PYTHON, which is a
+// module const pointing at the untracked repo venv — absent in CI and in a git
+// worktree, where it fails as `spawn …/.venv/bin/python ENOENT`.
+//
+// test-python.ts already owns that resolution (venv → python3 on PATH, which
+// is the branch CI depends on). Hoist it so FMDB_PYTHON is set BEFORE shim.ts
+// is imported: a beforeEach would run too late, since the const is read at
+// import time and the module is cached.
+await vi.hoisted(async () => {
+  if (!process.env.FMDB_PYTHON?.trim()) {
+    const { TEST_PYTHON } = await import("./test-python");
+    process.env.FMDB_PYTHON = TEST_PYTHON;
+  }
+});
+
 import {
   buildBookingNote,
   ensureClientForBooking,
