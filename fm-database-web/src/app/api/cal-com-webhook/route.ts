@@ -51,6 +51,7 @@ import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { queueNoJoinNudge, queueOneHourReminder } from "@/lib/server-actions/plan-publish-followups";
 import { cleanSessionLabel } from "@/lib/fmdb/appointment-utils";
+import { ensureClientForBooking, type LeadIntakeResult } from "@/lib/fmdb/booking-lead-intake";
 
 // ── Coach notification ──────────────────────────────────────────────────────
 const IST_TZ = "Asia/Kolkata";
@@ -130,8 +131,14 @@ export const dynamic = "force-dynamic";
 
 // ── Mode A (slice 2) payload ────────────────────────────────────────────────
 interface SliceTwoPayload {
-  type?: "booking_created" | "booking_rescheduled" | "booking_cancelled" | "booking_no_show";
+  /** `booking_requested` is Wix-only: the client has asked for a slot on a
+   *  service that requires approval, and Shivani has not approved it yet. */
+  type?: "booking_created" | "booking_rescheduled" | "booking_cancelled" | "booking_no_show" | "booking_requested";
   booking?: {
+    /** "wix" when forwarded by the Wix Bookings handler; absent for cal.com. */
+    source?: string;
+    /** The client's own answers on the Wix booking form. */
+    form_fields?: Array<{ question: string; answer: string }>;
     uid?: string;
     external_id?: string;
     appointment_id?: string;
@@ -467,7 +474,40 @@ export async function POST(req: Request) {
   // ── Mode A: slice 2 (resolved shape) ────────────────────────────────────
   if (mode === "slice2" && body.type && body.booking?.uid) {
     const booking = body.booking;
-    const match = await matchClient(body.attendee?.email, body.attendee?.phone);
+    // Wix-sourced bookings carry these two extras (see wix-forwarder.js).
+    const isWix = (booking as { source?: string }).source === "wix";
+    const formFields = ((booking as { form_fields?: Array<{ question: string; answer: string }> })
+      .form_fields) ?? [];
+
+    let match = await matchClient(body.attendee?.email, body.attendee?.phone);
+
+    // A booking from someone who isn't in the database yet used to stop
+    // here, in _calcom_unmatched.yaml. Now it creates the client record and
+    // saves whatever they wrote in the booking form as a note on it.
+    let lead: LeadIntakeResult | null = null;
+    const isBookingIntent =
+      body.type === "booking_created" ||
+      body.type === "booking_rescheduled" ||
+      body.type === "booking_requested";
+    if (isBookingIntent) {
+      lead = await ensureClientForBooking({
+        uid: booking.uid as string,
+        name: body.attendee?.name,
+        email: body.attendee?.email,
+        phone: body.attendee?.phone,
+        eventSlug: booking.event_slug,
+        eventTitle: booking.event_title,
+        startTime: booking.start_time,
+        source: isWix ? "wix" : "calcom",
+        formFields,
+      });
+      if (lead.error) console.error("[cal-com-webhook] lead intake failed:", lead.error);
+      if (lead.created) console.log(`[cal-com-webhook] created client ${lead.clientId} from booking ${booking.uid}`);
+      if (!match && lead.clientId) {
+        match = { clientId: lead.clientId, matchedBy: body.attendee?.email ? "email" : "phone" };
+      }
+    }
+
     if (!match) {
       await appendUnmatched({
         mode: "slice2",
@@ -515,7 +555,12 @@ export async function POST(req: Request) {
       const clientPhone = evt.attendee_phone || body.attendee?.phone;
       const clientName = evt.attendee_name || body.attendee?.name || match.clientId;
       const sessionType = cleanSessionLabel(evt.event_slug || evt.event_title);
-      if (clientPhone && evt.start_time) {
+      // Wix bookings get their confirmation + 24h reminder from the
+      // WhatsApp server's own reminder runner (classification 'fm_zoom').
+      // Queueing fm-coach's set too would send the client two of everything
+      // — and fm-coach's zoom templates need a join URL that a Wix payload
+      // does not carry.
+      if (clientPhone && evt.start_time && !isWix) {
         queueOneHourReminder({
           clientId: match.clientId,
           bookingUid: evt.uid,
@@ -557,6 +602,8 @@ export async function POST(req: Request) {
       matched: true,
       client_id: match.clientId,
       matched_by: match.matchedBy,
+      client_created: Boolean(lead?.created),
+      note_saved: Boolean(lead?.noteSaved),
       type: body.type,
       mode: "slice2",
     });

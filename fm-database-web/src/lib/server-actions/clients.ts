@@ -238,7 +238,11 @@ function normaliseMobile(n: string): string {
 }
 
 /** Auto-generate the next client ID by scanning existing cl-NNN dirs. */
-async function nextClientId(): Promise<string> {
+/**
+ * Next free `cl-0NN` id. Exported so the booking webhook can allocate an id
+ * for a lead who books before she is in the database at all.
+ */
+export async function nextClientId(): Promise<string> {
   const root = getPlansRoot();
   const clientsDir = path.join(root, "clients");
   let maxN = 0;
