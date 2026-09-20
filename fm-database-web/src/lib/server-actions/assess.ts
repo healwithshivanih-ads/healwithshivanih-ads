@@ -1101,15 +1101,24 @@ export async function saveSessionAction(input: SaveSessionInput): Promise<SaveSe
     return { ok: false, error: `save-session.py produced no output. stderr: ${excerpt(stderr, 400)}` };
   }
 
+  let result: SaveSessionResult;
   try {
-    const result = JSON.parse(stdout) as SaveSessionResult;
-    if (result.ok) {
-      revalidatePath(`/clients/${input.client_id}`);
-    }
-    return result;
+    result = JSON.parse(stdout) as SaveSessionResult;
   } catch {
     return { ok: false, error: `save-session.py invalid JSON: ${stdout.slice(0, 200)}` };
   }
+
+  if (result.ok) {
+    // revalidatePath throws outside a request/render context (a test, a
+    // script, a background tick). That used to be caught by the same catch
+    // as JSON.parse, so a session that saved perfectly was reported back as
+    // "invalid JSON: {"ok": true, ...}" — an error message that contradicts
+    // itself and sends you looking at the Python.
+    try {
+      revalidatePath(`/clients/${input.client_id}`);
+    } catch { /* not in a request context — the session is still saved */ }
+  }
+  return result;
 }
 
 // ── Load raw AI analysis for IFM trend scoring ──────────────────────────────
