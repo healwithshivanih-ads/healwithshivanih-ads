@@ -118,6 +118,9 @@ describe("ensureClientForBooking", () => {
     // A booking is an enquiry, not a sign-up.
     expect(client.engagement_status).toBe("pending");
     expect(client.lead_source).toBe("wix_booking");
+    // Not "programme_active" (the CLI default) — revenue-export counts that
+    // as paid active care, and nothing outbound should fire for a lead.
+    expect(client.lifecycle_state).toBe("prospect");
 
     expect(res.noteSaved).toBe(true);
     const sessions = readSessions(res.clientId!);

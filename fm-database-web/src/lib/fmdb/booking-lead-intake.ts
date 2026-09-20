@@ -246,6 +246,13 @@ async function createLeadRecord(lead: BookingLead, name: string): Promise<string
   const doc = (yaml.load(raw) ?? {}) as Record<string, unknown>;
   if (lead.email) doc.email = lead.email.trim();
   doc.engagement_status = "pending";
+  // `fmdb client-new` defaults lifecycle_state to "programme_active" for
+  // back-compat with manually-created clients. That is wrong for someone who
+  // has only booked a call: revenue-export.ts counts programme_active as
+  // active paid care, so a free discovery lead would inflate the capacity
+  // signal. "prospect" is the model's own word for a record that exists but
+  // fires nothing outbound.
+  doc.lifecycle_state = "prospect";
   doc.lead_source = lead.source === "wix" ? "wix_booking" : "calcom_booking";
   await fs.writeFile(file, yaml.dump(doc, { sortKeys: false }), "utf-8");
 
