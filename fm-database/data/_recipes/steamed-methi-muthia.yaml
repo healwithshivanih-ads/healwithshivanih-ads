@@ -4,7 +4,6 @@ meal_type:
 - breakfast
 - snack
 diet:
-- dairy_free
 - vegetarian
 region: Gujarat
 seasons:

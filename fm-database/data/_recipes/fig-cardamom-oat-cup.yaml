@@ -5,7 +5,6 @@ meal_type:
 diet:
 - vegetarian
 - vegan
-- gluten_free
 region: ''
 seasons:
 - autumn
@@ -23,6 +22,7 @@ main_ingredients:
 - ground cardamom
 - almond milk
 contains_allergens:
+- gluten
 - nuts
 ingredients:
 - item: rolled oats

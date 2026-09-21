@@ -26,8 +26,7 @@ main_ingredients:
 - red bell pepper, finely diced (optional)
 - salt and pepper
 - fresh cilantro, chopped, for garnish
-contains_allergens:
-- dairy
+contains_allergens: []
 ingredients:
 - item: ears of fresh corn
   qty: 2-3

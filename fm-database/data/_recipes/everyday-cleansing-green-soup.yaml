@@ -27,8 +27,7 @@ main_ingredients:
 - flat-leaf parsley leaves, no stems (about 2 big handfuls)
 - ghee or coconut oil
 - salt and black pepper to taste
-contains_allergens:
-- dairy
+contains_allergens: []
 ingredients:
 - item: vegetable broth
   qty: '3'

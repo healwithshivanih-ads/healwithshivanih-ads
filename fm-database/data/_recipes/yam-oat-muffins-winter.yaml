@@ -4,7 +4,6 @@ meal_type:
 - breakfast
 - snack
 diet:
-- gluten_free
 - eggetarian
 region: ''
 seasons:
