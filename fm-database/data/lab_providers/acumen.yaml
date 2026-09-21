@@ -226,6 +226,12 @@ addon_tests:
   - { slug: calprotectin,      name: Calprotectin (stool),   quoted_inr: 3000, dos_list_inr: 3200 }
   - { slug: h-pylori-stool,    name: H. pylori antigen (stool), quoted_inr: 1800, dos_list_inr: 1580 } # above list
   - { slug: h-pylori-iga,      name: H. pylori IgA (blood),  quoted_inr: 2400, dos_list_inr: null }
+  # IgG is the STANDARD H. pylori serology — better sensitivity than IgA, and the
+  # only H. pylori test unaffected by an active PPI (both the urea breath test and
+  # the stool antigen false-negative on one, and a PPI holiday needs a prescriber).
+  # Its weakness — cannot separate current from past infection — disappears in a
+  # never-treated client. Added 2026-09-21; DOS price, billed at the 50% deal rate.
+  - { slug: h-pylori-igg,      name: H. pylori IgG (blood),  quoted_inr: 2400, dos_list_inr: 2400 }
   - { slug: stool-occult,      name: Stool occult blood,     quoted_inr: 200,  dos_list_inr: 200 }
   - { slug: stool-routine,     name: Stool routine,          quoted_inr: 250,  dos_list_inr: null }
   - { slug: urine-routine,     name: Urine routine,          quoted_inr: 200,  dos_list_inr: 200 }
