@@ -42,6 +42,15 @@ const TUNNEL_SERVICE =
 
 const STATE_FILE = () => path.join(getPlansRoot(), "_infra_health.json");
 
+/**
+ * Neutral reachability control. MUST NOT be our own infrastructure — the whole
+ * point is to tell "this Mac is offline" apart from "the remote host is down",
+ * and a host we run cannot answer that question. Overridable for a network
+ * where this particular endpoint is blocked.
+ */
+const INTERNET_CHECK_URL =
+  process.env.INFRA_HEALTH_INTERNET_URL || "https://www.gstatic.com/generate_204";
+
 /** A probe never throws — a dead host is data, not an exception. */
 async function probe(url: string, timeoutMs = 10_000): Promise<Probe> {
   const ctrl = new AbortController();
@@ -89,6 +98,23 @@ async function probeResilient(
 }
 
 /**
+ * Is this machine on the internet at all?
+ *
+ * ANY HTTP answer proves the uplink — a 204, a 403, a 500, all fine. Only a
+ * thrown request means offline, and we retry that once before believing it, so
+ * that a single dropped packet cannot silence a genuine outage alert.
+ */
+async function probeReachable(url: string, attempts = 2): Promise<Probe> {
+  let last: Probe = { status: null };
+  for (let i = 0; i < attempts; i++) {
+    last = await probe(url, 8_000);
+    if (last.status !== null) return last;
+    if (i < attempts - 1) await new Promise((r) => setTimeout(r, 1_500));
+  }
+  return last;
+}
+
+/**
  * Restart the tunnel service.
  *
  * `sudo -n` is non-interactive: with no NOPASSWD rule it fails immediately
@@ -126,6 +152,7 @@ async function readState(): Promise<WatchdogState> {
     const parsed = JSON.parse(raw) as Partial<WatchdogState>;
     return {
       consecutiveTunnelFailures: Number(parsed.consecutiveTunnelFailures) || 0,
+      consecutiveFlyFailures: Number(parsed.consecutiveFlyFailures) || 0,
       lastAlertAt:
         parsed.lastAlertAt && typeof parsed.lastAlertAt === "object"
           ? parsed.lastAlertAt
@@ -174,13 +201,29 @@ export async function POST(req: NextRequest) {
   // actually opens, so a wall that would not stop her does not pass here.
   const COACH_ROUTE = "/clients-v2";
 
-  const probes: ProbeSet = {
+  const remote = {
     tunnelHealth: await probe(`${coachUrl}/api/health`),
     tunnelCoachRoute: await probe(`${coachUrl}${COACH_ROUTE}`),
     localCoachRoute: await probe(`${localUrl}${COACH_ROUTE}`),
-    // Resilient: the cross-region Fly probe flaps on transient blips, and
-    // fly_down is a no-debounce CRITICAL — so only a sustained failure counts.
-    flyHealth: flyUrl ? await probeResilient(`${flyUrl}/api/health`) : { status: 200 },
+    // Resilient: the cross-region Fly probe flaps on transient blips. This
+    // absorbs a dropped packet; the cross-cycle FLY_ALERT_AFTER debounce in
+    // infra-health.ts absorbs the longer ones (sleep/wake, Wi-Fi reconnect).
+    flyHealth: flyUrl
+      ? await probeResilient(`${flyUrl}/api/health`)
+      : ({ status: 200 } as Probe),
+  };
+
+  // Only ask the neutral host once one of ours has already failed. A 200 from
+  // our own remote endpoints IS proof the uplink works, so the healthy path
+  // costs nothing and we don't ping a third party 288 times a day.
+  const remoteFailed =
+    remote.tunnelHealth.status !== 200 || remote.flyHealth.status !== 200;
+
+  const probes: ProbeSet = {
+    ...remote,
+    internet: remoteFailed
+      ? await probeReachable(INTERNET_CHECK_URL)
+      : { status: 200 },
   };
 
   let evaluation = evaluate(probes);
@@ -214,6 +257,15 @@ export async function POST(req: NextRequest) {
     now: new Date(),
   });
   await writeState(state);
+
+  // Suppression must be visible, or a Mac that is permanently off the internet
+  // becomes a watchdog that reports nothing and looks healthy doing it.
+  if (evaluation.networkUncertain) {
+    console.error(
+      `[infra-health] this Mac could not reach ${INTERNET_CHECK_URL} — ` +
+        `treating the tunnel/Fly probes as NO READING this cycle, not as an outage`,
+    );
+  }
 
   if (repaired) {
     console.log(`[infra-health] tunnel was down — restarted, now healthy (${repairDetail})`);
@@ -270,6 +322,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     ok: true,
     problems: evaluation.problems.map((p) => ({ key: p.key, severity: p.severity })),
+    networkUncertain: evaluation.networkUncertain,
     repaired,
     alerted: alert.length,
     emailed,

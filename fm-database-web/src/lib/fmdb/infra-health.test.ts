@@ -7,7 +7,10 @@
  * when the tunnel had been dead since June and surfaced only when the coach
  * urgently needed it from away.
  *
- * These pin the escalation rules.
+ * Both failures have now actually happened here, one after the other: the June
+ * silence, then the 28 Aug – 20 Sep 2026 run of daily false "clients cannot
+ * open their forms" emails while Fly was up the entire time. So these tests
+ * pin BOTH edges — the alert that must not fire, and the one that must.
  */
 import { describe, it, expect } from "vitest";
 import {
@@ -15,21 +18,51 @@ import {
   evaluate,
   EMPTY_STATE,
   isQuiet,
+  FLY_ALERT_AFTER,
   REALERT_AFTER_HOURS,
   TUNNEL_ALERT_AFTER,
+  type Evaluation,
   type ProbeSet,
+  type WatchdogState,
 } from "./infra-health";
 
-/** All-healthy baseline: tunnel up, auth wall on, Fly up. */
+/** All-healthy baseline: tunnel up, auth wall on, Fly up, Mac online. */
 const healthy = (over: Partial<ProbeSet> = {}): ProbeSet => ({
   tunnelHealth: { status: 200 },
   tunnelCoachRoute: { status: 401 },
   localCoachRoute: { status: 401 },
   flyHealth: { status: 200 },
+  internet: { status: 204 },
   ...over,
 });
 
-const keys = (p: ReturnType<typeof evaluate>) => p.problems.map((x) => x.key).sort();
+/** The Mac is off the internet: every outbound probe threw, including the
+ *  neutral control. This is the 2026-09-20 22:15 shape. */
+const offline = (over: Partial<ProbeSet> = {}): ProbeSet =>
+  healthy({
+    tunnelHealth: { status: null },
+    tunnelCoachRoute: { status: null },
+    flyHealth: { status: null },
+    internet: { status: null },
+    ...over,
+  });
+
+const keys = (p: Evaluation) => p.problems.map((x) => x.key).sort();
+
+/** Feed the same evaluation through `n` cycles, threading state. */
+function cycles(
+  e: Evaluation,
+  n: number,
+  now: Date,
+  start: WatchdogState = EMPTY_STATE,
+  repairAttempted = false,
+) {
+  let last = decide(e, start, { repairAttempted, now });
+  for (let i = 1; i < n; i++) {
+    last = decide(e, last.state, { repairAttempted, now });
+  }
+  return last;
+}
 
 describe("evaluate — what counts as a problem", () => {
   it("a fully healthy system reports nothing", () => {
@@ -37,11 +70,14 @@ describe("evaluate — what counts as a problem", () => {
     expect(e.problems).toEqual([]);
     expect(e.tunnelNeedsRepair).toBe(false);
     expect(e.exposed).toBe(false);
+    expect(e.networkUncertain).toBe(false);
     expect(isQuiet(e, false)).toBe(true);
   });
 
   it("THE 1033 CASE: no response from the tunnel is a repairable problem", () => {
-    const e = evaluate(healthy({ tunnelHealth: { status: null }, tunnelCoachRoute: { status: null } }));
+    const e = evaluate(
+      healthy({ tunnelHealth: { status: null }, tunnelCoachRoute: { status: null } }),
+    );
     expect(keys(e)).toEqual(["tunnel_down"]);
     expect(e.tunnelNeedsRepair).toBe(true);
   });
@@ -78,15 +114,49 @@ describe("evaluate — what counts as a problem", () => {
     expect(keys(e)).toEqual([]);
   });
 
-  it("every problem carries a paste-able fix", () => {
+  it("every reportable problem carries a paste-able fix", () => {
     const e = evaluate({
       tunnelHealth: { status: null },
       tunnelCoachRoute: { status: 200 },
       localCoachRoute: { status: 200 },
       flyHealth: { status: 500 },
+      internet: { status: 204 },
     });
     expect(e.problems).toHaveLength(4);
     for (const p of e.problems) expect(p.fix.length).toBeGreaterThan(0);
+  });
+});
+
+describe("evaluate — an offline Mac is not a remote outage", () => {
+  /**
+   * THE 2026-09-20 CASE. Every probe leaves from the coach's Mac. When its
+   * uplink drops, the tunnel (Mac → Cloudflare → Mac) and Fly (Mac →
+   * Singapore) fail together, because the only thing they share is that
+   * uplink. The watchdog used to call that "clients cannot open their forms".
+   * Fly had not restarted since 13 Sep and its health check never stopped
+   * passing.
+   */
+  it("reports NEITHER tunnel_down NOR fly_down when the control host is unreachable", () => {
+    const e = evaluate(offline());
+    expect(keys(e)).toEqual(["local_network_down"]);
+    expect(e.networkUncertain).toBe(true);
+  });
+
+  it("does not kickstart the tunnel over our own dropped Wi-Fi", () => {
+    expect(evaluate(offline()).tunnelNeedsRepair).toBe(false);
+  });
+
+  it("ANY answer from the control host proves the uplink — even a 500", () => {
+    // The control tests our uplink, not the other end's health.
+    const e = evaluate(offline({ internet: { status: 500 } }));
+    expect(e.networkUncertain).toBe(false);
+    expect(keys(e)).toEqual(["fly_down", "tunnel_down"]);
+  });
+
+  it("an exposure is still reported while offline — it needs no uplink to be true", () => {
+    // A 200 is something we actually received; an offline Mac cannot invent one.
+    const e = evaluate(offline({ tunnelCoachRoute: { status: 200 } }));
+    expect(keys(e)).toContain("dashboard_exposed");
   });
 });
 
@@ -102,12 +172,7 @@ describe("decide — repair first, escalate late", () => {
 
   it("escalates once repair has failed TUNNEL_ALERT_AFTER times", () => {
     const e = evaluate(healthy({ tunnelHealth: { status: null } }));
-    let state = EMPTY_STATE;
-    let last = decide(e, state, { repairAttempted: true, now });
-    for (let i = 1; i < TUNNEL_ALERT_AFTER; i++) {
-      state = last.state;
-      last = decide(e, state, { repairAttempted: true, now });
-    }
+    const last = cycles(e, TUNNEL_ALERT_AFTER, now, EMPTY_STATE, true);
     expect(last.state.consecutiveTunnelFailures).toBe(TUNNEL_ALERT_AFTER);
     expect(last.alert.map((p) => p.key)).toEqual(["tunnel_down"]);
   });
@@ -143,7 +208,7 @@ describe("decide — repair first, escalate late", () => {
 
   it("does not re-send the same alert within the re-alert window", () => {
     const e = evaluate(healthy({ flyHealth: { status: null } }));
-    const first = decide(e, EMPTY_STATE, { repairAttempted: false, now });
+    const first = cycles(e, FLY_ALERT_AFTER, now);
     expect(first.alert).toHaveLength(1);
 
     const soon = new Date(now.getTime() + (REALERT_AFTER_HOURS - 1) * 3_600_000);
@@ -152,14 +217,18 @@ describe("decide — repair first, escalate late", () => {
 
   it("nags again once the window passes — an unfixed problem must not go quiet forever", () => {
     const e = evaluate(healthy({ flyHealth: { status: null } }));
-    const first = decide(e, EMPTY_STATE, { repairAttempted: false, now });
+    const first = cycles(e, FLY_ALERT_AFTER, now);
     const later = new Date(now.getTime() + (REALERT_AFTER_HOURS + 1) * 3_600_000);
     expect(decide(e, first.state, { repairAttempted: false, now: later }).alert).toHaveLength(1);
   });
 
   it("a corrupt lastAlertAt is treated as never-alerted rather than swallowing the alert", () => {
     const e = evaluate(healthy({ flyHealth: { status: null } }));
-    const state = { consecutiveTunnelFailures: 0, lastAlertAt: { fly_down: "not-a-date" } };
+    const state: WatchdogState = {
+      consecutiveTunnelFailures: 0,
+      consecutiveFlyFailures: FLY_ALERT_AFTER - 1,
+      lastAlertAt: { fly_down: "not-a-date" },
+    };
     expect(decide(e, state, { repairAttempted: false, now }).alert).toHaveLength(1);
   });
 
@@ -167,5 +236,75 @@ describe("decide — repair first, escalate late", () => {
     const e = evaluate(healthy());
     expect(isQuiet(e, false)).toBe(true);
     expect(isQuiet(e, true)).toBe(false);
+  });
+});
+
+describe("decide — Fly gets the same cushion the tunnel has", () => {
+  const now = new Date("2026-09-20T22:15:00Z");
+
+  /**
+   * THE REGRESSION. Before 2026-09-21, ONE cycle in which Fly did not answer
+   * mailed a CRITICAL. Eleven such emails went out between 28 Aug and 20 Sep,
+   * every one of them false — the only thing holding it to one a day was the
+   * 24h re-alert throttle. An in-cycle retry (2026-09-08) did not help: three
+   * attempts inside ~25 seconds is still ONE observation.
+   */
+  it("a single unreachable cycle does NOT email", () => {
+    const e = evaluate(healthy({ flyHealth: { status: null } }));
+    const d = decide(e, EMPTY_STATE, { repairAttempted: false, now });
+    expect(d.alert).toEqual([]);
+    expect(d.state.consecutiveFlyFailures).toBe(1);
+  });
+
+  it("escalates once Fly has been unreachable FLY_ALERT_AFTER cycles running", () => {
+    // A real outage must still reach her — roughly a quarter hour at 5-min ticks.
+    const e = evaluate(healthy({ flyHealth: { status: null } }));
+    const last = cycles(e, FLY_ALERT_AFTER, now);
+    expect(last.state.consecutiveFlyFailures).toBe(FLY_ALERT_AFTER);
+    expect(last.alert.map((p) => p.key)).toEqual(["fly_down"]);
+  });
+
+  it("a 500 from Fly counts towards the same debounce as no answer at all", () => {
+    const e = evaluate(healthy({ flyHealth: { status: 500 } }));
+    expect(cycles(e, FLY_ALERT_AFTER - 1, now).alert).toEqual([]);
+    expect(cycles(e, FLY_ALERT_AFTER, now).alert.map((p) => p.key)).toEqual(["fly_down"]);
+  });
+
+  it("Fly answering again clears the counter", () => {
+    const down = evaluate(healthy({ flyHealth: { status: null } }));
+    const d1 = cycles(down, FLY_ALERT_AFTER - 1, now);
+    expect(d1.state.consecutiveFlyFailures).toBe(FLY_ALERT_AFTER - 1);
+
+    const up = evaluate(healthy());
+    expect(decide(up, d1.state, { repairAttempted: false, now }).state.consecutiveFlyFailures).toBe(0);
+  });
+
+  it("an OFFLINE cycle neither counts nor clears — it saw nothing", () => {
+    // Clearing on an offline cycle would let a flapping uplink reset a real
+    // outage's counter forever, which is the silent-failure direction.
+    const down = evaluate(healthy({ flyHealth: { status: null } }));
+    const d1 = cycles(down, FLY_ALERT_AFTER - 1, now);
+
+    const blind = decide(evaluate(offline()), d1.state, { repairAttempted: false, now });
+    expect(blind.alert).toEqual([]);
+    expect(blind.state.consecutiveFlyFailures).toBe(FLY_ALERT_AFTER - 1);
+
+    // The next cycle that can actually see Fly completes the escalation.
+    const d3 = decide(down, blind.state, { repairAttempted: false, now });
+    expect(d3.alert.map((p) => p.key)).toEqual(["fly_down"]);
+  });
+
+  it("THE 20 SEP EMAIL: an offline Mac mails nothing, however long it lasts", () => {
+    const e = evaluate(offline());
+    const last = cycles(e, 50, now);
+    expect(last.alert).toEqual([]);
+    expect(last.state.consecutiveFlyFailures).toBe(0);
+    expect(last.state.consecutiveTunnelFailures).toBe(0);
+  });
+
+  it("local_network_down never becomes an email on its own", () => {
+    const e = evaluate(offline());
+    expect(keys(e)).toEqual(["local_network_down"]);
+    expect(cycles(e, 10, now, EMPTY_STATE, true).alert).toEqual([]);
   });
 });
