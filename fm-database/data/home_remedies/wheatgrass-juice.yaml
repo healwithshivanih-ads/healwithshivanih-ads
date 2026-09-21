@@ -1,0 +1,57 @@
+slug: wheatgrass-juice
+display_name: Wheatgrass Juice
+aliases:
+- wheatgrass
+- wheat grass juice
+- gehun ghas
+- triticum aestivum grass
+category: vegetable_juice
+route: internal
+summary: >-
+  Fresh juice pressed from young wheat shoots, drunk on an empty stomach. Hugely
+  popular in Indian wellness circles, where it is promoted for anaemia, energy and
+  detoxification. Honest position — the popularity far exceeds the evidence. The
+  strongest human work is in transfusion-dependent thalassaemia, which is a very
+  different population from the client drinking it for tiredness, and the
+  chlorophyll-is-like-haemoglobin story commonly told about it is not a mechanism.
+indications:
+- fatigue
+- detoxification
+contraindications:
+- coeliac disease and gluten sensitivity — the GRASS is technically gluten-free, but home-grown and small-batch wheatgrass is very easily contaminated with the grain and this is not a risk worth taking in coeliac disease
+- grass pollen allergy
+- mould-sensitive clients — home trays grow mould readily
+- immunosuppressed clients — raw unpasteurised juice carries a real contamination risk
+- nausea is common on first use; start with a very small amount
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- astringent
+- sweet
+ayurvedic_actions:
+- rakta-shodhaka
+- shita
+virya: cooling
+vipaka: pungent
+preparation: >-
+  Press 25-30 ml of juice from freshly cut young wheatgrass and drink it immediately — it oxidises fast. Rinse the grass well and discard any tray showing mould at the roots.
+typical_dose: >-
+  25-30 ml a day, on an empty stomach, starting lower.
+duration: >-
+  Reviewed like anything else — and judged on whether the client actually feels better, since the evidence will not settle it.
+timing_notes: >-
+  Morning, on an empty stomach, at least 30 minutes before food.
+linked_to_topics:
+- detoxification
+sources:
+- id: indian-traditional-household-practice
+  location: Widespread Indian wellness practice — fresh wheatgrass juice taken on an empty stomach
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

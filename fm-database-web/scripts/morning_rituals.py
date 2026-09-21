@@ -172,14 +172,48 @@ def _select_rituals(plan: dict, client: dict, max_n: int = 2) -> list[dict]:
     incl. slug), best-first. A ritual qualifies with ≥1 indication match AND
     passing every gate (ritual_avoid, avoid_in, suitable_sex, suitable_stages)."""
     topics_blob = _topics_blob(plan)
-    cond_text = " | ".join(
-        _as_list(client.get("active_conditions")) + _as_list(client.get("goals"))
-    ).lower()
+    # The client's picture as a LIST of distinct facets (one per condition /
+    # goal entry), not just one blob — the ranker below scores by how many
+    # facets a ritual covers, so it needs them separable.
+    facets = [
+        str(x).lower()
+        for x in _as_list(client.get("active_conditions")) + _as_list(client.get("goals"))
+        if str(x).strip()
+    ]
+    cond_text = " | ".join(facets)
     hay = topics_blob + " | " + cond_text
     hay_tokens = set(re.split(r"[^a-z0-9]+", hay))
     # hyphens/pipes -> spaces so a multi-word gate token ("heart-failure") matches
     # the client's free-text condition ("congestive heart failure") and vice versa.
     hay_norm = re.sub(r"[^a-z0-9]+", " ", hay)
+
+    # ── TWO HAYSTACKS, ON PURPOSE ────────────────────────────────────────────
+    # RELEVANCE (`hay`) stays topics + conditions + goals. EXCLUSION
+    # (`avoid_hay_norm`) additionally carries medications and allergies.
+    #
+    # Added 2026-09-21. Before this, `ritual_avoid` could not gate on a drug or
+    # an allergen at all, because neither was in the haystack — so an
+    # auto-appended ritual could not see a medication it interacts with. The
+    # live case: a client on berberine for blood sugar, where any
+    # glucose-lowering ritual is an additive-hypoglycaemia risk the engine was
+    # structurally blind to.
+    #
+    # Medications must NOT feed relevance. Med strings routinely name the
+    # condition ("Berberine ... taken in place of Janumet", "Telma 40
+    # antihypertensive"), so folding them into `hay` would manufacture
+    # indication matches and RAISE a ritual's score for a client who is already
+    # medicated for that thing — the opposite of what is wanted. Keeping the two
+    # haystacks apart preserves the module's stated rule: match narrowly for
+    # relevance, loosely for exclusion.
+    _avoid_extra = (
+        _as_list(client.get("medications"))
+        + _as_list(client.get("current_medications"))
+        + _as_list(client.get("allergies"))
+        + _as_list(client.get("known_allergies"))
+    )
+    avoid_hay_norm = re.sub(
+        r"[^a-z0-9]+", " ", hay + " | " + " | ".join(str(x).lower() for x in _avoid_extra)
+    )
     flags = _compute_flags(plan, client, topics_blob)
     active_flags = {f for f in _DIET_FLAGS if flags.get(f)}
     stages = _client_life_stages(client)
@@ -212,13 +246,14 @@ def _select_rituals(plan: dict, client: dict, max_n: int = 2) -> list[dict]:
                     break
             else:
                 tok_norm = re.sub(r"[^a-z0-9]+", " ", tok).strip()
-                if tok_norm and tok_norm in hay_norm:
+                if tok_norm and tok_norm in avoid_hay_norm:
                     skip = True
                     break
         if skip:
             continue
-        # ── relevance: ≥1 indication match ──
-        hits = [i for i in _as_list(r.get("indications")) if _ind_match(i, hay, hay_tokens)]
+        # ── relevance: >=1 indication match ──
+        inds = _as_list(r.get("indications"))
+        hits = [i for i in inds if _ind_match(i, hay, hay_tokens)]
         if not hits:
             continue
         prio = int(r.get("ritual_priority") or 100)

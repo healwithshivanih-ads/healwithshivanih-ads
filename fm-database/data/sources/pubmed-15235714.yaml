@@ -1,0 +1,25 @@
+id: pubmed-15235714
+title: Garden cress Lepidium sativum seeds as oral contraceptive plant in mice
+source_type: peer_reviewed_paper
+quality: low
+authors:
+- M Sharief
+- Z H Gani
+year: 2004
+publisher: Saudi Medical Journal 25(7):965-6
+url: https://pubmed.ncbi.nlm.nih.gov/15235714/
+notes: >-
+  PubMed PMID 15235714. Short (2-page) animal study reporting antifertility /
+  oral-contraceptive activity of Lepidium sativum seed in mice. Quality is `low`
+  deliberately: rodent model, brief report, no human data, and the citation below
+  is metadata-verified via the NCBI eutils API rather than read in full text.
+
+  It is cited anyway because it is the closest thing to a primary source behind
+  the widely repeated "avoid halim in pregnancy" caution, and a precautionary
+  contraindication is the right call on animal evidence plus consistent
+  traditional emmenagogue use. It must NOT be used to assert a human
+  contraceptive or abortifacient effect. Captured 2026-09-21.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

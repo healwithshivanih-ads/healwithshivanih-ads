@@ -1,0 +1,70 @@
+slug: garden-cress-seed-iron-content-is-widely-overstated
+statement: >-
+  The figure of 100 mg iron per 100 g, repeated for halim (garden cress, Lepidium
+  sativum) seed across Indian nutrition writing and in at least one peer-reviewed
+  review, is not supported by direct laboratory analysis of the seed. Measured
+  values cluster roughly an order of magnitude lower: 7.29-8.48 mg/100 g dry
+  weight across growing sites, 11.7 mg/100 g in another report, and 10.84 mg/100 g
+  after boiling plus roasting. Halim is a genuinely iron-dense seed at that lower
+  level — comparable to wheat bran or sesame — but it is not the extraordinary
+  iron source the 100 mg figure implies.
+evidence_tier: plausible_emerging
+rationale: >-
+  The direction of this claim is well supported: multiple independent direct
+  analyses land in the 7-12 mg/100 g band, and a 100 mg/100 g iron density would
+  exceed that of every commonly eaten food including liver and would be
+  physiologically implausible for a seed. The lower cluster is therefore far more
+  credible than the outlier. It is tiered plausible_emerging rather than strong
+  because no national food-composition authority settles it: IFCT 2017 (the right
+  Indian reference) includes garden cress LEAVES as a green leafy vegetable, not
+  the seed, so there is no NIN-sampled national value to appeal to. The individual
+  studies are small single-lab analyses with real site-to-site variation, and the
+  Food Chemistry Advances figure was captured from the abstract rather than the
+  methods.
+coaching_translation: >-
+  Halim seeds are a good plant source of iron, but not a magic one. If a client
+  has read that two teaspoons of halim will fix her haemoglobin, the arithmetic
+  behind that comes from a figure that laboratory analyses do not support. A
+  realistic teaspoon of halim (about 3-4 g) contributes something in the region of
+  a third of a milligram of iron — a useful addition to an iron-focused diet,
+  nowhere near a replacement for one. Frame halim as one more iron-bearing food
+  to rotate in, alongside the absorption levers (vitamin C at the meal, no chai or
+  coffee with the meal, soaking), not as a treatment.
+caveats:
+- The iron in halim is non-haem and therefore subject to the absorption penalty
+  and the phytate interference described in murray-heme-vs-nonheme-iron-absorption.
+  The seed itself carries phytic acid, oxalates and tannins, so the figure on paper
+  overstates what is absorbed even at the lower, credible level.
+- No entry for halim was added to _ingredient_nutrients.yaml because of this
+  dispute. That table drives the `rich_in` badges and the coach's protein/nutrient
+  strip, and entering either the 100 mg figure or a hand-picked midpoint would put
+  an invented number into automated output. Revisit if IFCT or another national
+  table publishes a seed value.
+- The published values are for the dry seed. Halim is eaten soaked, which adds
+  water weight and lowers the per-serving-as-eaten density further.
+linked_to_topics:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+- phytate-mineral-binding
+linked_to_symptoms:
+- anemia
+linked_to_supplements: []
+out_of_scope_notes: >-
+  Coach scope — correcting an overstated food claim and building meals that make
+  plant iron more available. Clinician scope — diagnosing and treating anaemia.
+sources:
+- id: tufail-2024-garden-cress-seeds-review
+  location: Nutritional composition — mineral content table, attributed to Zia-Ul-Haq et al. (2011, 2012)
+  quote: 'Iron: 100 mg/100g'
+- id: malhotra-2023-garden-cress-pretreatments
+  location: Mineral composition after pre-treatment (abstract)
+  quote: >-
+    Boiling for 10 min followed by sun drying and roasting for 7.5 min significantly
+    improved the iron content to 10.84 mg/100 g.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

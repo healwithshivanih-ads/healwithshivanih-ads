@@ -1,0 +1,56 @@
+slug: safed-musli-milk
+display_name: Safed Musli in Milk
+aliases:
+- safed musli
+- safed moosli
+- chlorophytum borivilianum
+- musli
+- dholi musli
+category: kitchen_remedy
+route: internal
+summary: >-
+  A white tuberous root taken as a powder in warm milk as a balya and vajikarana
+  rasayana — for strength, stamina, convalescence and, traditionally, male
+  vitality. Widely sold in India; the clinical evidence is preliminary and largely
+  preclinical.
+indications:
+- chronic-fatigue
+- fatigue
+contraindications:
+- diabetes with poor control — usually taken in sweetened milk; account for it
+- kapha-predominant clients or active weight loss — heavy, building and unctuous by design
+- pregnancy and lactation — not established
+- dairy allergy or vegan clients — the milk vehicle is traditional but not essential; warm water works
+- poor digestion — heavy; start small
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+ayurvedic_actions:
+- balya
+- brimhana
+- rasayana
+- vajikarana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Stir 1/2 to 1 tsp of safed musli powder into a cup of warm milk. A little cardamom helps the taste.
+typical_dose: >-
+  1/2 to 1 tsp of powder once or twice a day.
+duration: >-
+  Traditionally a course of several weeks during convalescence, then reviewed.
+timing_notes: >-
+  Morning or bedtime in warm milk.
+linked_to_topics:
+- chronic-fatigue
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Safed Musli (Chlorophytum borivilianum Sant. & Fernand.), API Part I (volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

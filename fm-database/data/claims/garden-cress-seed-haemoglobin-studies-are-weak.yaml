@@ -1,0 +1,61 @@
+slug: garden-cress-seed-haemoglobin-studies-are-weak
+statement: >-
+  The human evidence that halim (garden cress) seed raises haemoglobin consists of
+  small Indian nutrition-intervention studies in undernourished adolescent girls,
+  not controlled trials in adults. A health mix containing 5 g garden cress seed
+  was reported to raise haemoglobin from 8.23 to 11.11 g/dL over six months in 100
+  anaemic teenage girls, and a garden cress ladoo was reported to raise
+  haemoglobin by 3.8 g/dL against 0.1 g/dL in controls in moderately undernourished
+  12-15 year olds. In both, halim was one ingredient inside a multi-component
+  supplementary food given to a deficient, growing, undernourished population.
+evidence_tier: fm_specific_thin
+rationale: >-
+  The effect sizes are large and the direction is consistent, but the design
+  cannot support attributing the effect to halim. The vehicles were composite
+  foods (a "health mix", a ladoo) carrying other iron sources, energy and
+  micronutrients, so the seed is confounded with the rest of the formulation and
+  with the general effect of feeding undernourished adolescents. Baseline
+  haemoglobin of 8.23 g/dL is frank anaemia in a growing population, where almost
+  any adequate iron-and-energy intervention produces a large rise; that says
+  nothing about a replete or mildly low adult. Both studies are known to this
+  catalogue only through a narrative review, not from their own methods sections.
+coaching_translation: >-
+  There is real-world Indian evidence that halim-containing foods help anaemic,
+  undernourished teenagers — which is a genuine and useful thing. It does not
+  transfer to a well-nourished adult woman whose haemoglobin has drifted down, and
+  it is not evidence that halim specifically did the work rather than the ladoo it
+  was in. Use halim as one iron-bearing food in an overall pattern; do not present
+  it to a client as something shown to raise haemoglobin by three points.
+caveats:
+- Both studies were in undernourished adolescent girls. Extrapolating to adults,
+  to men, or to anyone not deficient at baseline is unsupported.
+- Halim was never given alone. The comparison in the ladoo study was against a
+  control that gained 0.1 g/dL, which is consistent with the whole supplementary
+  food rather than the seed being the active part.
+- Neither primary paper was read. Both are cited here via the Tufail 2024 review,
+  whose mineral table is separately shown to be unreliable — see
+  garden-cress-seed-iron-content-is-widely-overstated. Re-tier if the primaries
+  are obtained.
+linked_to_topics:
+- iron-deficiency-anemia
+- iron-deficiency
+- iron-nutrition
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+linked_to_symptoms:
+- anemia
+- fatigue
+linked_to_supplements: []
+out_of_scope_notes: >-
+  Coach scope — food-first iron support and absorption coaching. Clinician scope —
+  diagnosing the cause of anaemia, ordering iron studies, and treating.
+sources:
+- id: tufail-2024-garden-cress-seeds-review
+  location: Therapeutic potential — anaemia
+  quote: >-
+    Health mix containing 5g garden cress seeds raised hemoglobin in 100 anemic
+    teenage females from 8.23 +/- 0.49 to 11.11 +/- 0.46 g/dL over 6 months.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

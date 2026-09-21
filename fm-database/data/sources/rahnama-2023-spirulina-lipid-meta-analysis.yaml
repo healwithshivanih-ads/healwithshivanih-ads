@@ -1,0 +1,28 @@
+id: rahnama-2023-spirulina-lipid-meta-analysis
+title: 'The effect of Spirulina supplementation on lipid profile: GRADE-assessed systematic review and dose-response meta-analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Iman Rahnama
+- Seyyed Mostafa Arabi
+- Mahla Chambari
+- Leila Sadat Bahrami
+year: 2023
+publisher: Pharmacological Research 193:106802
+doi: 10.1016/j.phrs.2023.106802
+notes: >-
+  GRADE-assessed systematic review and dose-response meta-analysis of randomised
+  trials of Spirulina on lipid profile. Quality `high` — a well-regarded
+  pharmacology journal, GRADE methodology, and a dose-response analysis rather
+  than a bare pooled estimate, which is unusual for a supplement of this kind.
+
+  This is the strongest evidence behind spirulina in the catalogue, and it is
+  about LIPIDS. It is not evidence for the anaemia, energy or detox claims that
+  spirulina is usually marketed on in India. Metadata verified via Crossref
+  2026-09-21; abstract-level capture, full text not read, so GRADE certainty
+  ratings per outcome were not transcribed — check before quoting a certainty
+  level to anyone.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

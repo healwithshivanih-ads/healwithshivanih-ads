@@ -1,0 +1,66 @@
+slug: garden-cress-seed-is-a-brassica-carrying-glucosinolate
+statement: >-
+  Halim (garden cress, Lepidium sativum) is a member of the Brassicaceae, the same
+  family as cabbage, mustard and radish, and its seed carries glucosinolate —
+  glucotropaeolin (benzyl glucosinolate) has been identified in seed extracts. The
+  family and the compound class are the same ones behind the raw-brassica
+  goitrogen caution. What is absent is any human evidence that halim at culinary
+  doses of one to two teaspoons affects thyroid function.
+evidence_tier: plausible_emerging
+rationale: >-
+  The botanical placement is settled, and the presence of a glucosinolate in the
+  seed is reported in the review literature, so the mechanistic concern is real
+  rather than invented. But the brassica goitrogen effect is a dose-and-matrix
+  phenomenon: the clinical signal for cruciferous goitrogens comes from
+  staple-level or large daily raw intakes, and the reported human cases involve
+  very large quantities. A teaspoon of halim is one to two orders of magnitude
+  below that exposure. Reports that garden cress goitrogens depress thyroid
+  hormone secretion come from secondary and animal-adjacent sources, not from
+  human studies at culinary doses. Plausible_emerging is therefore the honest
+  tier: the compound is there, the clinical consequence at real doses is not
+  demonstrated in either direction.
+coaching_translation: >-
+  Halim belongs to the cabbage family, so a hypothyroid client who asks about it is
+  asking a reasonable question. The answer is that a teaspoon of soaked halim is
+  not the kind of exposure the cruciferous-goitrogen concern is about — that
+  concern is about a large raw salad or a green smoothie every day. Worth knowing,
+  not worth banning. If a client on thyroid medication is taking halim daily, the
+  more practical point is the one that already applies to every high-fibre food
+  and calcium source: keep it clear of the levothyroxine dose.
+caveats:
+- No human study has tested halim at culinary doses against thyroid function. The
+  concern here is mechanistic and familial, not measured.
+- Halim was deliberately NOT added to the goitrogen-brassica-thyroid entry in
+  _food_cautions.yaml. Three reasons, recorded in a comment there — that file keys
+  foods by _ingredient_nutrients.yaml key and halim has no entry there, so the
+  caution could never match; the brassica entry carries preparation_clears
+  `cooked`, and halim is eaten as a raw soaked seed, so the entry's own
+  reassurance would be attached to the one preparation it does not cover; and the
+  teaspoon-scale dose is far below the entry's clinical target.
+- The Tufail review names the compound as glucotropaeolin and also as
+  "gluconasturiin", which are two different glucosinolates. The family-level point
+  stands; the specific compound identity should be checked against primary
+  phytochemistry before being asserted.
+- Separately from the thyroid question, this is a real drug-timing matter for
+  anyone on levothyroxine. That rule lives in drug_depletions/levothyroxine.yaml
+  and is not restated here.
+linked_to_topics:
+- hypothyroidism
+- thyroid
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: >-
+  Coach scope: explaining food-family context and preparation, and keeping food
+  clear of medication timing. Clinician scope: thyroid dosing and any decision
+  that a food is affecting thyroid status.
+sources:
+- id: tufail-2024-garden-cress-seeds-review
+  location: Phytochemistry — glucosinolates
+  quote: >-
+    Glucotropaeolin (2-phenyl ethyl glucosinolate, also "gluconasturiin") was
+    found in seed extracts.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

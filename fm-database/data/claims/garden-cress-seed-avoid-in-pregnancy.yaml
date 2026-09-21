@@ -1,0 +1,64 @@
+slug: garden-cress-seed-avoid-in-pregnancy
+statement: >-
+  Halim (garden cress, Lepidium sativum) seed should be avoided in pregnancy.
+  Animal work reports antifertility and oral-contraceptive activity for the seed
+  in mice, the seed has a long traditional reputation as an emmenagogue and
+  abortifacient in both Ayurvedic and Unani practice, and the review literature
+  reports anovulatory and abortifacient effects alongside its galactagogue use.
+  Human safety in pregnancy has not been established.
+evidence_tier: plausible_emerging
+rationale: >-
+  There is no human trial either way, so this cannot be tiered strong. But the
+  signal converges from three independent directions — a rodent antifertility
+  study, consistent traditional use as a uterine stimulant across two traditional
+  systems, and the review literature's own report of anovulatory and abortifacient
+  effects — and the cost of the precaution is zero, because halim is a
+  discretionary food with ordinary substitutes. Where a safety signal is
+  mechanistically coherent, traditionally corroborated, and cheap to act on, the
+  precautionary direction is the correct one to record. Note that the same review
+  also contains a blanket "safe for consumption without any side effects"
+  sentence, which is inconsistent with its own content and is not relied on here.
+coaching_translation: >-
+  Halim is not for pregnancy. This one is worth stating plainly, because halim's
+  best-known traditional use in India is the opposite end of the same window — it
+  is a classic postpartum and breastfeeding food, so a client who has heard "halim
+  is for new mothers" can easily assume it is a pregnancy food too. The
+  traditional practice is deliberate about the distinction: after the birth, not
+  before. If a client is pregnant, trying to conceive, or unsure, leave it out and
+  use other iron-bearing foods.
+caveats:
+- The primary evidence is a two-page mouse study. It should not be described to a
+  client as showing that halim causes miscarriage in humans — the honest framing
+  is that safety has not been established and the traditional use points the other
+  way.
+- The galactagogue tradition (postpartum, lactation) is a separate question from
+  pregnancy safety and is not contradicted by this claim. Lactation use is
+  traditional and supported only by animal work and small observations; it is
+  outside coaching scope to advise on and is not asserted as a claim here.
+- The review also reports testosterone elevation and aphrodisiac effects in males.
+  Not assessed; flagged only so a future session knows the reproductive-activity
+  signal is not limited to one sex.
+linked_to_topics:
+- pregnancy-first-trimester
+- preconception-protocol
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: >-
+  Coach scope: withholding a discretionary food during pregnancy and saying why.
+  Clinician scope: everything about managing a pregnancy, and any advice to a
+  client who has already been taking halim while pregnant — that is a
+  reassurance-and-assessment conversation for her doctor, not the coach.
+sources:
+- id: pubmed-15235714
+  location: Saudi Med J 2004;25(7):965-6 — title and abstract (metadata verified via NCBI eutils)
+  quote: Garden cress lepidium sativum seeds as oral contraceptive plant in mice.
+- id: tufail-2024-garden-cress-seeds-review
+  location: Safety and reproductive effects
+  quote: >-
+    Male aphrodisiac effects and testosterone elevation reported; female
+    anovulatory and abortifacient effects also mentioned.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

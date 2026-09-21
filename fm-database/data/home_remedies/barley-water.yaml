@@ -1,0 +1,153 @@
+# ============================================================================
+# BARLEY WATER (Yava, jau ka pani) — coach notes. Authored 2026-09-21. Barley
+# the grain was already in _ingredient_nutrients.yaml and in two recipes, but
+# barley water as a remedy was absent. (HomeRemedy has no free-text coach-notes
+# field; the machine-readable half lives in
+# claims/barley-water-is-a-fluid-vehicle-not-a-beta-glucan-dose.)
+#
+# THE FLUID IS THE ACTIVE INGREDIENT. The catalogue already carries STRONG claims
+# that >2 L/day fluid, giving >2.5 L urine output, cuts stone recurrence by ~60%
+# (water-intake-2l-reduces-kidney-stone-recurrence). Those same claims say plainly
+# that WATER, not other beverages, is the lever. Barley water does not beat water
+# — it beats not drinking, for a client who finds plain water boring and will
+# actually drink this. That is a real and legitimate use and it is the one to
+# offer. There is no good human evidence that barley water dissolves an existing
+# stone; do not imply otherwise.
+#
+# DO NOT BORROW THE GRAIN'S CHOLESTEROL EVIDENCE. EFSA/FDA authorised the claim
+# for 3 g/day of beta-glucan delivered by the food. Barley grain is ~2-10%
+# beta-glucan and PEARLED barley sits at the low end (pearling strips the outer
+# layers where it concentrates). Two tablespoons is roughly 25 g of grain, so the
+# beta-glucan present before brewing is on the order of 0.5-1 g — already below
+# the 3 g threshold BEFORE the drink is strained and the grain discarded. Nobody
+# has measured how much survives into the strained water. If lipids are the goal,
+# the client EATS the barley.
+#
+# GLUTEN IS THE HARD GATE, and the one most likely to be missed: barley reads as
+# a humble innocuous grain and "barley water" sounds like a herbal tea. Coeliac
+# and gluten-sensitive clients are excluded outright.
+#
+# FLAGGED WHILE AUTHORING, NOT FIXED HERE: the two existing barley recipes
+# (_recipes/coconut-breakfast-barley-with-peaches.yaml and
+# _recipes/everyday-creamed-grain-cereal.yaml) are BOTH tagged
+# `diet: [... gluten_free]` while also declaring `contains_allergens: [gluten]`.
+# Barley is not gluten free. That looks like a real mislabelling bug with a
+# coeliac-safety consequence and needs fixing separately.
+#
+# MERGED ENTRY — READ BEFORE RE-SPLITTING. This absorbed the former
+# `barley-water-edema` (Lad, Appendix B First Aid — Swelling), which was the same
+# drink, same preparation and same dose under a narrower name. It was referenced
+# by nothing in the catalogue and by no client plan, so the merge was lossless;
+# its slug and aliases are carried in `aliases` here so any lookup still resolves.
+# Two things were deliberately NOT inherited verbatim: its `aggravates_dosha: []`
+# (the catalogue's own ayurveda-grains-by-dosha claim puts barley among the dry,
+# light grains that vata should REDUCE, so vata is listed here), and its free-text
+# indications (rewritten as real slugs so the remedy is actually retrievable). Its
+# `rasa: pungent` was kept in the union rather than silently dropped, but classical
+# dravyaguna gives Yava as madhura + kashaya — worth checking against the API
+# monograph before relying on it.
+#
+# OXALATE NOTE. Barley is not notably high-oxalate, but a stone former's plan
+# should follow murray-stone-type-dictates-therapy rather than treating "barley
+# water" as a generic stone remedy — uric-acid and oxalate stones want different
+# things.
+# ============================================================================
+slug: barley-water
+display_name: Barley Water (Yava)
+aliases:
+- jau ka pani
+- jau-ka-pani
+- jau water
+- yava water
+- jaun water
+- barley kanji
+- barley-water-diuretic
+- barley-water-edema
+category: infused_water
+route: internal
+summary: >-
+  Pearled barley simmered in water and strained — a light, unsweetened drink taken
+  through the day, traditionally for urinary comfort, stone prevention and
+  convalescence. Its honest value is as a palatable way to raise fluid intake,
+  which IS the proven lever for stone recurrence. It does not dissolve stones, and
+  because the grain is strained out it should not be treated as a way to get
+  barley's cholesterol-lowering beta-glucan. Lad also lists it as a first-aid for
+  mild puffiness and water retention, which is folded into this entry.
+indications:
+- kidney-stones
+- cystitis-and-interstitial-cystitis
+- edema
+- constipation
+contraindications:
+- 'RED FLAG — persistent or sudden swelling (legs, face), or swelling with
+  breathlessness. Do not treat this with a diuretic drink; investigate heart,
+  kidney and liver causes urgently'
+- celiac disease — barley contains gluten; absolutely excluded
+- non-coeliac gluten sensitivity or wheat allergy — excluded
+- low-FODMAP elimination phase — barley is a fructan source and is cut in that
+  protocol (see protocols/low-fodmap-protocol.yaml)
+- advanced kidney disease or any fluid restriction — a drink whose whole point is
+  volume is the wrong advice under a fluid cap; clinician decides
+- diabetes — unsweetened only; the traditional sweetened/lemon-sugar versions
+  undo the point
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+suitable_sex: any
+rasa:
+- sweet
+- astringent
+- pungent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- mutrala
+- medohara
+- shita
+- dipana
+- carminative
+- antispasmodic
+preparation: >-
+  Rinse 2 tbsp pearled barley, simmer in 4-5 cups water for 25-30 minutes until
+  the grain is soft and the water has turned cloudy, then strain. Drink warm or at
+  room temperature through the day. A squeeze of lemon is fine; sugar defeats the
+  purpose. Keep the strained grain and eat it in a soup, khichdi or salad rather
+  than discarding it — that is where the fibre actually is.
+typical_dose: >-
+  2-3 cups spread across the day, counted as part of total fluid intake rather
+  than on top of it.
+duration: >-
+  Safe as a daily drink for anyone who tolerates gluten. Review with the coach if
+  it is being used for a specific urinary complaint rather than as a general
+  fluid habit.
+timing_notes: >-
+  Spread through the day rather than taken in one sitting — steady urine output is
+  the mechanism. Avoid large volumes close to bedtime if nocturia is an issue.
+linked_to_topics:
+- kidney-stones
+- cystitis-and-interstitial-cystitis
+- cardiovascular-health
+- fiber-gap
+- dyslipidemia
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+- raas-and-fluid-balance
+- soluble-fiber-gel-formation
+# FEATURED — bypasses the assess cap when it matches a CORE topic.
+# Coach pin: the fluid-volume lever for recurrent UTI and stone prevention.
+# Kamla (cl-021) is the live case — recurrent UTIs, currently off all prophylaxis.
+featured: true
+sources:
+- id: efsa-2011-barley-beta-glucan-cholesterol
+  location: Conditions of use — 3 g/day beta-glucan threshold
+- id: lad-ayurvedic-institute-food-chart
+  location: Food Guidelines for Basic Constitutional Types — barley as a light, drying, kapha-reducing grain
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Swelling)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

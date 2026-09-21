@@ -1,0 +1,60 @@
+slug: chyawanprash
+display_name: Chyawanprash
+aliases:
+- chyawanprash avaleha
+- chyavanaprasha
+- chawanprash
+- amla jam
+category: other
+route: internal
+summary: >-
+  The best-known Ayurvedic preparation in India — an amla-based avaleha (herbal
+  jam) with ghee, honey, sesame oil, sugar and around forty herbs, taken a
+  spoonful a day as a rasayana for immunity, stamina and convalescence. Culturally
+  ubiquitous and genuinely amla-rich; the evidence behind the immunity claim is
+  traditional rather than trial-grade, and the sugar content is real and often
+  overlooked.
+indications:
+- immune-support
+- common-cold
+- chronic-fatigue
+contraindications:
+- diabetes or poor glycaemic control — most commercial chyawanprash is 40-50% sugar/jaggery by weight; use a sugar-free version or skip it
+- weight loss as the active goal — it is a calorie-dense confection eaten daily
+- active fever or acute infection — traditionally withheld until the fever settles
+- poor digestion / low agni — heavy and unctuous; start small or defer
+- vegan clients — contains ghee and usually honey
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- sour
+- astringent
+ayurvedic_actions:
+- rasayana
+- balya
+- ojas-vardhaka
+virya: heating
+vipaka: sweet
+preparation: >-
+  Bought as a prepared avaleha. Take with warm milk or warm water; not with anything cold.
+typical_dose: >-
+  1 tsp (roughly 5-10 g) once a day in the morning, traditionally up to twice daily in winter. Check the sugar load against the client's other intake.
+duration: >-
+  Seasonal (classically autumn and winter) or through a convalescence, rather than year-round.
+timing_notes: >-
+  Morning on an empty stomach, followed by warm milk or water.
+linked_to_topics:
+- immune-support
+- common-cold
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Chyavanaprasha — AFI Part I, Avaleha and Paka Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani
