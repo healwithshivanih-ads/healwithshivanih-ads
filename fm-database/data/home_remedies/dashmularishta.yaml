@@ -1,0 +1,59 @@
+slug: dashmularishta
+display_name: Dashmularishta
+aliases:
+- dashamularishta
+- dasamoolarishtam
+- dashmool arishta
+category: other
+route: internal
+summary: >-
+  The classical postpartum arishta, built on the dashamoola (ten roots) group.
+  Traditionally given through the weeks after childbirth for recovery, uterine
+  involution, appetite and vata-pacification, and used more broadly for
+  post-illness debility. Like all arishtas it is self-fermented and mildly
+  alcoholic.
+indications:
+- chronic-fatigue
+- indigestion
+- anxiety
+contraindications:
+- pregnancy — avoid; this is a POST-partum preparation, not an antenatal one, and dashamoola is traditionally emmenagogue
+- lactation — widely used traditionally, but it contains self-generated alcohol; that is the mother's and clinician's decision, not an assumption
+- any history of alcohol dependence — self-generated alcohol content
+- diabetes — jaggery fermentation base
+- acute fever or infection — settle that first
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+avoid_in:
+- pregnancy
+rasa:
+- astringent
+- bitter
+- sweet
+ayurvedic_actions:
+- vatahara
+- balya
+- dipana
+- rasayana
+virya: heating
+vipaka: pungent
+preparation: >-
+  Bought as a prepared arishta. Dilute with an equal quantity of water.
+typical_dose: >-
+  12-24 ml (roughly 2-4 tsp) twice a day after food, diluted with equal water. Follow the pack or the practitioner's direction.
+duration: >-
+  Traditionally through the postpartum period or a defined convalescence, then stopped.
+timing_notes: >-
+  After meals, twice daily.
+linked_to_topics:
+- perimenopause
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Dashamularishta — AFI Part I, Asava-Arishta Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

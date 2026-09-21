@@ -1,0 +1,126 @@
+slug: spirulina
+display_name: Spirulina
+aliases:
+- arthrospira platensis
+- spirulina platensis
+- blue-green algae
+- arthrospira
+- blue green algae
+category: other
+forms_available:
+- powder
+- tablet
+- capsule
+typical_dose_range:
+  powder:
+    min: 1
+    max: 8
+    unit: g
+  tablet:
+    min: 1000
+    max: 8000
+    unit: mg
+  capsule:
+    min: 1000
+    max: 8000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+contraindications:
+  conditions:
+  - phenylketonuria
+  - autoimmune disease (immunostimulant — relevant to Hashimoto's, RA, lupus, psoriasis)
+  - gout
+  - hyperuricaemia
+  - uric-acid kidney stones
+  - haemochromatosis or iron overload
+  - severe seafood or algae allergy (anaphylaxis case reports in atopic individuals)
+  medications:
+  - warfarin
+  - immunosuppressants
+  life_stages:
+  - pregnancy
+  - lactation
+interactions:
+  with_medications:
+  - medication: warfarin
+    type: space_by_hours
+    reason: Spirulina contains vitamin K, which can oppose warfarin's effect. INR monitoring is the clinician's call.
+  - medication: immunosuppressants
+    type: avoid_together
+    reason: Spirulina is immunostimulating; the theoretical opposition to immunosuppressive therapy is the reason to avoid rather than time.
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: >-
+  Not the biology — the product. Spirulina itself has no established
+  teratogenicity, but retail product is documented to carry microcystin and heavy
+  metal contamination, and there is no safety margin worth taking in pregnancy or
+  lactation for a supplement whose main evidence base is lipids.
+rasa:
+- astringent
+- salty
+virya: cooling
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- balya
+- rasayana
+linked_to_topics:
+- dyslipidemia
+- iron-nutrition
+- iron-deficiency
+- protein-adequacy-vegetarian
+linked_to_symptoms:
+- fatigue
+- anemia
+notes_for_coach: >-
+  WHAT THE EVIDENCE ACTUALLY SUPPORTS. The strongest data on spirulina is for
+  LIPIDS — a GRADE-assessed dose-response meta-analysis of randomised trials. It
+  is NOT the anaemia, energy and detox positioning spirulina is sold on in India.
+  Spirulina is genuinely protein- and iron-dense by weight, but the doses people
+  actually take (1-3 g) contribute little absolute iron, and its iron is non-haem
+  like every other plant source. If iron is the goal, moringa has better direct
+  human evidence and costs a fraction — see home_remedies/moringa-leaf-powder.
+
+  FOUR CONTRAINDICATIONS THAT ACTUALLY BITE, and the first two are the ones this
+  practice will hit:
+
+  1. AUTOIMMUNE DISEASE. Spirulina is immunostimulating. For a Hashimoto's, RA,
+     lupus or psoriasis client this is a real reason to leave it alone — and
+     Hashimoto's is common in this roster. The concern is mechanistic rather than
+     trial-demonstrated, but the upside here does not justify the bet.
+  2. GOUT, HIGH URIC ACID, URIC-ACID STONES. Spirulina is purine-rich. This is
+     the same axis as the purine-uric-acid caution in _food_cautions.yaml, and
+     the catalogue's protein rule already suppresses protein pushes for
+     urate-flagged clients — spirulina falls under the same logic.
+  3. PHENYLKETONURIA. Absolute. Spirulina is a complete protein and a meaningful
+     phenylalanine source.
+  4. PRODUCT QUALITY IS A SAFETY ISSUE, NOT A PREFERENCE. Open-pond spirulina can
+     carry hepatotoxic microcystins from co-occurring cyanobacteria, plus lead,
+     arsenic, cadmium and mercury. This has been found in product actually on
+     retail shelves. Only recommend third-party-tested, closed-system product,
+     and treat an unbranded local powder as unusable.
+
+  Anaphylaxis has been reported in atopic individuals. Start low.
+notes_for_client: >-
+  A green algae powder taken for cholesterol support. Start with a small amount —
+  about half a teaspoon — and build up, because it can upset the stomach at
+  first. Buy a tested brand rather than a loose local powder; with this one the
+  brand genuinely matters. Do not start it without checking with Shivani if you
+  have a thyroid or other autoimmune condition, gout, or are pregnant or
+  breastfeeding.
+sources:
+- id: rahnama-2023-spirulina-lipid-meta-analysis
+  location: GRADE-assessed systematic review and dose-response meta-analysis — spirulina and lipid profile
+- id: rhoades-2023-spirulina-cyanotoxin-retail
+  location: Cyanotoxin and microbiota content of retail spirulina supplements
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

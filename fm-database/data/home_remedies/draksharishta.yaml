@@ -1,0 +1,55 @@
+slug: draksharishta
+display_name: Draksharishta
+aliases:
+- draksharishtam
+- draksha arishta
+- drakshasava
+category: other
+route: internal
+summary: >-
+  A raisin-based fermented arishta used for debility, poor appetite, dry cough and
+  convalescence — the gentlest and most palatable of the common arishtas, and the
+  one most often given to someone simply run down. Cooling where dashmularishta is
+  heating, which is the usual basis for choosing between them.
+indications:
+- chronic-fatigue
+- indigestion
+- constipation
+contraindications:
+- any history of alcohol dependence — self-generated alcohol content
+- diabetes — raisin and jaggery base; a real sugar load
+- pregnancy — not established
+- active loose stools — mildly laxative
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+ayurvedic_actions:
+- balya
+- dipana
+- anulomana
+- rasayana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Bought as a prepared arishta. Dilute with an equal quantity of water.
+typical_dose: >-
+  12-24 ml (roughly 2-4 tsp) twice a day after food, diluted with equal water. Follow the pack or the practitioner's direction.
+duration: >-
+  Through a convalescence; reviewed rather than open-ended.
+timing_notes: >-
+  After meals, twice daily.
+linked_to_topics:
+- constipation
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Draksharishta — AFI Part I, Asava-Arishta Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

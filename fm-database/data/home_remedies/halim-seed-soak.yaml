@@ -1,0 +1,135 @@
+# ============================================================================
+# HALIM (garden cress, Lepidium sativum) — coach notes. Authored 2026-09-21
+# after a client question. Halim was completely absent from the catalogue: no
+# ingredient entry, no caution, no remedy. (HomeRemedy has no notes_for_coach
+# field, so the reasoning lives here and, machine-readably, in the four
+# garden-cress-* claims.)
+#
+# THE IRON NUMBER IS THE THING TO GET RIGHT. Every Indian wellness page repeats
+# 100 mg iron per 100 g. Direct laboratory analyses put it at 7.3-11.7 mg/100 g
+# — roughly a tenth — and the higher figure would exceed the iron density of
+# any commonly eaten food. At the credible level a 1 tsp serving contributes on
+# the order of a THIRD OF A MILLIGRAM of iron: a worthwhile addition to an
+# iron-focused pattern, nothing like a treatment.
+# See claims/garden-cress-seed-iron-content-is-widely-overstated.
+#
+# NO ENTRY WAS ADDED TO _ingredient_nutrients.yaml, deliberately. The published
+# values disagree more than tenfold on exactly the nutrient that matters, and
+# that table drives the `rich_in: iron` badge and the coach's nutrient strip.
+# The 100 mg figure would make every halim dish falsely blaze "rich in iron";
+# a hand-picked midpoint would be an invented number inside automated output.
+# Revisit only if a national table publishes a value for the SEED — IFCT 2017
+# carries garden cress LEAVES (halim sag) as a green leafy vegetable, which is
+# a different food and must not be used as a proxy.
+#
+# IT IS A BRASSICA, and glucosinolate is reported in the seed — but halim was
+# deliberately NOT added to the goitrogen-brassica-thyroid caution. Reasoning is
+# recorded in a comment in _food_cautions.yaml and in
+# claims/garden-cress-seed-is-a-brassica-carrying-glucosinolate.
+#
+# THE HAEMOGLOBIN EVIDENCE IS ABOUT UNDERNOURISHED TEENAGERS, and halim was one
+# ingredient inside a composite supplementary food in both studies. Do not carry
+# those effect sizes into an adult conversation.
+#
+# COACH USE: Shivani uses halim for low iron on the strength of her own clinical
+# experience, and that is recorded as a first-class indication here (see
+# claims/halim-seed-soak-coach-observation-low-iron). The published-literature
+# caveats above are about the 100 mg figure and the adolescent studies — they are
+# not an argument against the remedy.
+# ============================================================================
+slug: halim-seed-soak
+display_name: Halim (Garden Cress) Seed Soak
+aliases:
+- aliv seeds
+- garden cress seeds
+- chandrashura
+- asaliya
+- haleem seeds
+- aliv-water
+- halim seed drink
+category: kitchen_remedy
+route: internal
+summary: >-
+  A teaspoon of garden cress (Lepidium sativum) seed soaked until it swells into a
+  soft gel, taken in water, lemon water or warm milk. A traditional Indian
+  iron-bearing and postpartum food, and one the coach uses for low iron on her own
+  clinical experience. Pair it with vitamin C and keep it away from chai, coffee
+  and the meal's calcium — the absorption levers matter more here than the dose.
+  Note for accuracy when talking to clients: the widely circulated 100 mg
+  iron/100 g figure is not supported by laboratory analysis.
+indications:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+- constipation
+contraindications:
+- pregnancy — avoid; animal antifertility data plus a long traditional emmenagogue
+  and abortifacient reputation, and human safety is not established
+- trying to conceive — leave out on the same precautionary grounds
+- hypothyroidism on levothyroxine — not a reason to avoid the seed, but keep it
+  clear of the thyroid dose like any high-fibre or calcium-containing food (the
+  4-hour rule lives in drug_depletions/levothyroxine.yaml)
+- calcium-oxalate stone formers — the seed carries oxalate; not a ban, but it is
+  not the iron food to reach for in this client
+- swallowing difficulty — the soaked seed forms a mucilaginous gel and must be
+  taken with adequate fluid
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+avoid_in:
+- pregnancy
+suitable_sex: any
+rasa:
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- balya
+- emmenagogue
+preparation: >-
+  Soak 1 tsp halim seeds in about 1/2 cup water, lemon water or warm milk for
+  15-30 minutes, until the seeds swell and turn gelatinous. Drink the whole thing
+  including the seeds — this is not a strained water, and straining would discard
+  most of what you are after. Lemon water is the better base when the goal is
+  iron: the vitamin C improves non-haem iron absorption from the same meal. Halim
+  is also traditionally roasted into ladoos with jaggery and coconut, which is the
+  usual postpartum form.
+typical_dose: >-
+  1 tsp (roughly 3-4 g) of dry seed once a day. Traditional practice does not go
+  far above this and there is no dose-ranging evidence to justify more.
+duration: >-
+  Rotate it rather than run it continuously — a few weeks at a time alongside
+  other iron-bearing foods, reviewed with the coach.
+timing_notes: >-
+  Mid-morning or as an afternoon drink. Keep it away from chai, coffee and the
+  main calcium source of the day, all of which reduce non-haem iron absorption,
+  and at least 4 hours clear of levothyroxine if the client takes it.
+linked_to_topics:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+- phytate-mineral-binding
+# FEATURED — bypasses the assess cap when it matches a CORE topic.
+# Coach pin: Shivani's own clinical experience for low iron (2026-09-21).
+# See claims/halim-seed-soak-coach-observation-low-iron.
+featured: true
+sources:
+- id: tufail-2024-garden-cress-seeds-review
+  location: Nutritional composition, therapeutic potential, and safety
+- id: malhotra-2023-garden-cress-pretreatments
+  location: Mineral composition after domestic pre-treatment
+- id: pubmed-15235714
+  location: Saudi Med J 2004;25(7):965-6 — antifertility activity in mice
+- id: coach-shivani
+  location: Clinical experience — halim for low iron
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

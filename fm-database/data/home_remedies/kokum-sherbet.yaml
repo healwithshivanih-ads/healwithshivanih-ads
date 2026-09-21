@@ -1,0 +1,65 @@
+slug: kokum-sherbet
+display_name: Kokum Sherbet
+aliases:
+- kokum
+- kokam
+- garcinia indica
+- amsul
+- birinda
+- kokum sharbat
+category: kitchen_remedy
+route: internal
+summary: >-
+  The dried purple rind of Garcinia indica steeped into a tart, deep-pink summer
+  drink — the Konkan and coastal Karnataka answer to heat. Traditionally taken for
+  acidity, heat exhaustion and sluggish digestion, and used as the souring agent
+  in place of tamarind in coastal cooking.
+indications:
+- gerd
+- indigestion
+- bloating
+contraindications:
+- pregnancy and lactation — the drink in culinary quantity is ordinary food, but concentrated Garcinia extracts are a different matter and are not established
+- do not confuse kokum (Garcinia indica) with Garcinia cambogia weight-loss extracts — those carry hepatotoxicity reports and are not this
+- the commercial syrups are largely sugar; make it at home or read the label
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- astringent
+- sweet
+ayurvedic_actions:
+- shita
+- dipana
+- daha-shamana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Steep 4-5 dried kokum rinds in a cup of hot water for 20 minutes, or soak overnight in cold water. Strain, then add cold water, a little jaggery or sugar to taste, roasted jeera powder and a pinch of salt.
+typical_dose: >-
+  One glass, once or twice a day in hot weather.
+duration: >-
+  Seasonal summer drink.
+timing_notes: >-
+  Afternoon, or after a heavy meal.
+linked_to_topics:
+- gerd
+# DAILY RITUAL. Added 2026-09-21. Fills a niche none of the existing six cover:
+# the acidity-and-heat client. warm-ghee-water covers acidity but is excluded for
+# vegan / weight-loss / fatty-liver / dyslipidemia clients, which is a large part
+# of this roster, leaving them nothing for that picture. Priority 4.
+daily_ritual: true
+ritual_priority: 4
+ritual_avoid:
+- vata
+sources:
+- id: indian-traditional-household-practice
+  location: Konkan and coastal Karnataka summer practice — kokum sharbat (amsul) for heat and acidity
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

@@ -1,0 +1,74 @@
+slug: moringa-leaf-powder
+display_name: Moringa (Drumstick) Leaf Powder
+aliases:
+- moringa
+- drumstick leaf powder
+- sahjan
+- munaga
+- murungai
+- shigru
+- nugge soppu
+- moringa oleifera
+category: kitchen_remedy
+route: internal
+summary: >-
+  Dried drumstick leaf, taken as a spoonful of powder stirred into water, buttermilk
+  or dal, or simply cooked as the fresh leaf. Iron- and calcium-dense, cheap, and
+  grown in most of India. Of everything in this list it has the best human
+  evidence for raising haemoglobin — small trials, but repeatedly in the same
+  direction, including one where moringa powder performed comparably to iron
+  sulphate in lactating women.
+indications:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+- blood-sugar-regulation
+contraindications:
+- pregnancy — the LEAF is widely eaten as a food, but moringa ROOT and BARK are traditionally abortifacient and must be avoided; do not use root-containing preparations, and keep leaf use to food quantities
+- hypothyroidism on levothyroxine — moringa is calcium- and fibre-rich; keep it clear of the thyroid dose
+- on blood-sugar-lowering medication — the glycaemic effect is real enough to matter; the clinician monitors
+- calcium-oxalate stone formers — moringa leaf carries oxalate
+- start small — a full tablespoon on day one commonly causes loose stools and nausea
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+ayurvedic_actions:
+- dipana
+- rakta-shodhaka
+- balya
+virya: heating
+vipaka: pungent
+preparation: >-
+  Stir 1 tsp of dried leaf powder into warm water, buttermilk, dal or a vegetable dish. Adding it at the end of cooking rather than boiling it keeps more of the vitamin C, which is also what helps the iron absorb. Fresh cooked drumstick leaves are the traditional form and are just as good.
+typical_dose: >-
+  Start at 1/2 tsp a day and build to 1-2 tsp. Trials of the powder have used considerably more, but food quantities are what this entry is about.
+duration: >-
+  Daily use is fine as a food. Give it weeks, not days, if haemoglobin is the goal.
+timing_notes: >-
+  With a meal. Pair with a vitamin C source and keep it away from chai and coffee — the same absorption levers as any non-haem iron.
+linked_to_topics:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+- blood-sugar-regulation
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+# FEATURED — bypasses the assess cap when it matches a CORE topic.
+# Coach pin: best human evidence for haemoglobin of anything in the
+# 2026-09-21 batch, and cheap and locally available.
+featured: true
+sources:
+- id: kalam-2024-moringa-anemia-meta-analysis
+  location: Systematic review and meta-analysis — moringa supplementation and haemoglobin
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Shigru (Moringa oleifera Lam.), API Part I (volume/page not pinned)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

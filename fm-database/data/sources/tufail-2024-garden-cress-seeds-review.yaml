@@ -1,0 +1,45 @@
+id: tufail-2024-garden-cress-seeds-review
+title: 'Garden cress seeds: a review on nutritional composition, therapeutic potential, and industrial utilization'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Tabussam Tufail
+- Tehreem Khan
+- Huma Bader Ul Ain
+- Sonia Morya
+- Mohd Asif Shah
+year: 2024
+publisher: Food Science & Nutrition 12:3834-3848
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11167195/
+doi: 10.1002/fsn3.4096
+notes: >-
+  Open-access narrative review of Lepidium sativum (halim / garden cress / aliv)
+  seed. The most complete single overview available and the only one that pulls
+  composition, the Indian haemoglobin intervention studies, the galactagogue
+  literature and the glucosinolate chemistry into one place — which is why it is
+  cited here.
+
+  QUALITY IS `moderate`, NOT `high`, AND THE REASON MATTERS. This is a narrative
+  review, not a systematic one, and its mineral table is demonstrably unreliable:
+  it reports iron at 100 mg/100 g (attributed to Zia-Ul-Haq et al.), a figure
+  roughly 10x higher than any direct analysis of the seed and higher than the
+  iron density of any commonly eaten food. Direct measurement studies put it at
+  7.3-11.7 mg/100 g (see malhotra-2023-garden-cress-pretreatments). The review is
+  the likely upstream origin of the "halim has 100 mg iron" claim that circulates
+  on Indian wellness sites. Its potassium figure is similarly inconsistent with
+  other reports (696 vs 1635 mg/100 g).
+
+  USE IT FOR: the presence of glucotropaeolin (a glucosinolate) in the seed, the
+  existence and rough shape of the haemoglobin intervention studies, the
+  galactagogue tradition, and the reproductive-effect signal. DO NOT use its
+  mineral table as a composition reference — that is exactly why no halim entry
+  was added to _ingredient_nutrients.yaml (2026-09-21).
+
+  Its blanket safety line ("garden cress is safe for consumption without any side
+  effects") sits in the same paper as its own report of anovulatory and
+  abortifacient effects, so that sentence should not be relied on.
+  Captured 2026-09-21 from the open-access full text.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

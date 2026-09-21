@@ -1,0 +1,62 @@
+slug: kalonji-seeds
+display_name: Kalonji (Black Seed / Nigella)
+aliases:
+- nigella sativa
+- black seed
+- black cumin
+- kalaunji
+- krishna jeeraka
+- black caraway
+category: kitchen_remedy
+route: internal
+summary: >-
+  The small black seed used in Indian tadka and pickles. Unusually for a kitchen
+  spice it has a real trial base — repeated meta-analyses of randomised trials on
+  blood sugar and on lipids. The catch is dose: those trials used 1-3 g a day of
+  seed powder or oil as a supplement, not the pinch that goes into a jar of
+  pickle.
+indications:
+- blood-sugar-regulation
+- dyslipidemia
+- insulin-resistance
+contraindications:
+- pregnancy — avoid at therapeutic doses; traditionally regarded as uterine-stimulant, and unstudied
+- on blood-sugar-lowering medication — the glycaemic effect is real; doses may need adjusting and that is the clinician's call
+- on anticoagulants — possible additive effect, unstudied
+- before surgery — stop two weeks ahead on the same grounds
+- culinary amounts are not therapeutic amounts — do not promise trial results from a tadka
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+ayurvedic_actions:
+- dipana
+- pachana
+- amapachana
+virya: heating
+vipaka: pungent
+preparation: >-
+  Lightly dry-roast and grind the seeds, or use as whole seed in tadka, pickle and breads. For the therapeutic range, ground seed is taken with warm water or honey.
+typical_dose: >-
+  Culinary use freely. Therapeutic trial doses sit around 1-3 g a day of ground seed — that is a supplement decision, not a kitchen one, and belongs with the clinician when the client is on medication.
+duration: >-
+  Trials typically ran 8-12 weeks.
+timing_notes: >-
+  With meals.
+linked_to_topics:
+- blood-sugar-regulation
+- dyslipidemia
+- insulin-resistance
+- type-2-diabetes
+sources:
+- id: shirvani-2024-nigella-glycemic-meta-analysis
+  location: Updated systematic review and meta-analysis — Nigella sativa and glycaemic status
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

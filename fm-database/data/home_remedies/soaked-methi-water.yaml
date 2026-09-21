@@ -75,6 +75,20 @@ ritual_avoid:
 - interstitial
 - urinary
 - uti
+# COACH DECISION 2026-09-21 — NO MEDICATION GATE ON THIS RITUAL.
+# A glucose-lowering drug gate was added and then REMOVED at the coach's
+# direction: methi water stays available to clients on metformin, berberine and
+# GLP-1 agonists. The clinical reasoning is hers — a teaspoon of soaked
+# fenugreek is a food dose, not the therapeutic fenugreek dose the additive-
+# hypoglycaemia caution is written about.
+#
+# The free-text `contraindications` line ("on glucose-lowering medication
+# (additive effect — monitor for lows)") is DELIBERATELY LEFT IN PLACE: it is
+# coach-facing information, and it is not read by the ritual engine, so it
+# gates nothing. Do not "tidy" this into ritual_avoid without asking her.
+#
+# The engine CAN now gate on medications (the exclusion haystack carries them
+# as of 2026-09-21) — this entry simply chooses not to.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Home Remedies / Indian Tradition

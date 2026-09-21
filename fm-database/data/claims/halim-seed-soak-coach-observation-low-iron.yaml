@@ -1,0 +1,50 @@
+slug: halim-seed-soak-coach-observation-low-iron
+statement: >-
+  Coach clinical observation — soaked halim (garden cress) seed, taken daily as a
+  1 tsp soak in lemon water and paired with the standard non-haem absorption
+  levers, is useful for clients running low on iron. This is the coach's own
+  practice experience with the remedy, recorded as such.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Recorded on the coach's direct clinical experience, which is what
+  fm_specific_thin is for in this catalogue. It is consistent with the
+  surrounding evidence without depending on it: halim is a genuinely iron-bearing
+  seed at its properly measured level of roughly 7-12 mg/100 g, the Indian
+  supplementary-feeding studies point the same direction even though their design
+  cannot isolate the seed, and the traditional postpartum use is long-standing.
+  Tiered thin rather than higher because there is no controlled human trial of
+  halim alone at a culinary dose, not because the observation is doubted.
+coaching_translation: >-
+  Halim is one of the iron foods worth actually using. A teaspoon soaked in lemon
+  water, taken daily, away from chai and coffee. Rotate it alongside the other
+  iron-bearing foods rather than relying on it alone, and give it weeks rather
+  than days.
+caveats:
+- Not for pregnancy or while trying to conceive — see
+  garden-cress-seed-avoid-in-pregnancy.
+- The absorption context does more work than the dose. Vitamin C in the same
+  glass helps; tea, coffee and a big calcium load in the same sitting work against
+  it. See murray-heme-vs-nonheme-iron-absorption.
+- Do not repeat the 100 mg iron/100 g figure to a client — it is not supported
+  and it sets up an expectation the seed cannot meet. See
+  garden-cress-seed-iron-content-is-widely-overstated.
+linked_to_topics:
+- iron-nutrition
+- iron-deficiency
+- iron-deficiency-anemia
+linked_to_mechanisms:
+- heme-vs-nonheme-iron-absorption
+linked_to_symptoms:
+- anemia
+- fatigue
+linked_to_supplements: []
+out_of_scope_notes: >-
+  Food-first iron support and absorption coaching sit in coach scope. Diagnosis
+  and treatment of anaemia remain clinician scope.
+sources:
+- id: coach-shivani
+  location: Clinical experience — halim (garden cress) seed for low iron
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

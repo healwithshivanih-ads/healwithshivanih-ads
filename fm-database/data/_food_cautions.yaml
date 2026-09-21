@@ -153,6 +153,28 @@ cautions:
       - mustard-seeds
       - dijon-mustard
       - peanuts
+    # HALIM (garden cress, Lepidium sativum) IS DELIBERATELY ABSENT (2026-09-21),
+    # although it IS a Brassicaceae and glucosinolate (glucotropaeolin) is
+    # reported in its seed. Three reasons, in order of decisiveness:
+    #
+    #   1. NO KEY TO MATCH ON. Header rule 1: foods here are keyed by
+    #      _ingredient_nutrients.yaml key. Halim has no entry there and
+    #      deliberately so — its published iron values disagree by more than
+    #      tenfold (7.3-11.7 mg/100 g measured vs the 100 mg/100 g figure the
+    #      review literature repeats), and that table drives the `rich_in` badge.
+    #      Listing `halim` here would resolve to nothing and be dead data that
+    #      reads as live.
+    #   2. THIS ENTRY'S OWN LOGIC DOES NOT FIT IT. preparation_clears `cooked`
+    #      is the promise that cooking inactivates the glucosinolate. Halim is
+    #      eaten as a RAW SOAKED seed — the one preparation this entry does not
+    #      clear — so attaching it here would hand a reassurance to the wrong form.
+    #   3. WRONG ORDER OF MAGNITUDE. This entry's clinical target is the daily
+    #      raw smoothie or a large raw salad. Halim is used at 1 tsp (3-4 g).
+    #
+    # The knowledge is not lost: it lives in
+    # claims/garden-cress-seed-is-a-brassica-carrying-glucosinolate and in
+    # home_remedies/halim-seed-soak's contraindications. Revisit ONLY if halim
+    # gains an _ingredient_nutrients.yaml key, and even then weigh dose first.
     condition_terms:
       - hypothyroid
       - hashimoto
