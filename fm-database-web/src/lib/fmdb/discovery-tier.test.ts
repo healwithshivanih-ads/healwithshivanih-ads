@@ -16,10 +16,33 @@ function addDays(ymd: string, n: number): string {
 }
 
 describe("resolveAppTier — tier split", () => {
-  it("package when signed up (even with no plan yet — enrol→build gap)", () => {
+  // Changed 2026-09-21: this combination used to resolve "package", which made
+  // buildDiscoveryAppData return null and the client's /app/<token> render
+  // "This link isn't active any more" — a dead link for someone who had just
+  // paid. It now resolves to its own tier.
+  it("enrolled when signed up with no plan yet (the enrol→build gap)", () => {
     const r = resolveAppTier({ engagementStatus: "signed_up", hasPublishedPlan: false }, "2026-06-25");
-    expect(r.tier).toBe("package");
+    expect(r.tier).toBe("enrolled");
     expect(r.credit).toBeNull();
+  });
+
+  it("a published plan beats signed_up — a planned client is package, never enrolled", () => {
+    const r = resolveAppTier({ engagementStatus: "signed_up", hasPublishedPlan: true }, "2026-06-25");
+    expect(r.tier).toBe("package");
+  });
+
+  // The whole point of the tier: an enrolled client has already bought the
+  // programme, so they must never be offered the consult upgrade or its credit
+  // window. `credit: null` is what UpgradeCta keys off.
+  it("never carries a credit window — enrolled clients are not upsold", () => {
+    for (const day of ["2026-06-25", addDays(CALL, 3), addDays(CALL, 40)]) {
+      const r = resolveAppTier(
+        { engagementStatus: "signed_up", hasPublishedPlan: false, discoveryCallDate: CALL },
+        day,
+      );
+      expect(r.tier).toBe("enrolled");
+      expect(r.credit).toBeNull();
+    }
   });
 
   it("package when a published plan exists", () => {
@@ -42,7 +65,7 @@ describe("resolveAppTier — tier split", () => {
       { engagementStatus: "signed_up", discoveryCallDate: CALL },
       addDays(CALL, 30),
     );
-    expect(r.tier).toBe("package");
+    expect(r.tier).toBe("enrolled");
   });
 });
 
@@ -173,5 +196,47 @@ describe("resolveDiscoveryCredit — the 15-day window", () => {
     const c = resolveDiscoveryCredit("25-06-2026", "2026-06-25");
     expect(c.state).toBe("credit_live");
     expect(c.expiresOn).toBeNull();
+  });
+});
+
+describe("resolveDiscoveryStage — an unpaid recommendation beats stale results", () => {
+  // Regression: Shweta (cl-906) enrolled with a May panel already filed as a
+  // health_snapshot. Her coach recommended a fresh Acumen base panel; the app
+  // showed "your results are in" and never offered the booking step, so the
+  // ₹12,500 order was unpayable from the app it was created for.
+  it("shows book_labs when a recommended order coexists with labs on file", () => {
+    expect(
+      resolveDiscoveryStage({
+        intakeSubmitted: true,
+        hasRecommendedOrder: true,
+        hasActiveOrder: false,
+        hasResults: true,
+        callDone: false,
+      }),
+    ).toBe("book_labs");
+  });
+
+  it("still reaches awaiting_call once the order is no longer outstanding", () => {
+    expect(
+      resolveDiscoveryStage({
+        intakeSubmitted: true,
+        hasRecommendedOrder: false,
+        hasActiveOrder: false,
+        hasResults: true,
+        callDone: false,
+      }),
+    ).toBe("awaiting_call");
+  });
+
+  it("callDone still wins over everything", () => {
+    expect(
+      resolveDiscoveryStage({
+        intakeSubmitted: true,
+        hasRecommendedOrder: true,
+        hasActiveOrder: false,
+        hasResults: true,
+        callDone: true,
+      }),
+    ).toBe("post_call");
   });
 });

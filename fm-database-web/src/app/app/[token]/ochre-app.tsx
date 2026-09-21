@@ -672,7 +672,12 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // Consult-tier (no published plan): a read-only Summary + Lab Vault, with
   // Plan/Progress locked and the Coach tab as an upgrade CTA. Resolved upstream
   // in client-app.ts; package clients are never "discovery".
-  const discovery = data.tier === "discovery";
+  // Both pre-plan tiers render through the discovery surface: "discovery" (paid
+  // the consult, deciding) and "enrolled" (signed up, plan not written yet).
+  // They differ only in copy + the upgrade CTA, which UpgradeCta suppresses for
+  // enrolled — everything structural (onboarding stepper, Lab Vault, locked
+  // Plan/Progress tabs, lab ordering + payment) is identical.
+  const discovery = data.tier === "discovery" || data.tier === "enrolled";
   // Guided tier (self-serve subscriber): package rendering for everything
   // plan-shaped, but NO live-coach surfaces — no chat, no check-in review,
   // no labs. Coach + Labs tabs swap to guided screens; check-in routes to

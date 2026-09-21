@@ -3450,8 +3450,11 @@ async function buildDiscoveryAppData(
   token: string,
   tz: string,
 ): Promise<ClientAppData | null> {
-  // A signed_up client (enrol→build gap) is NOT discovery even with no plan yet
-  // — leave them on the existing null path (status quo: OchreAppError).
+  // Serves BOTH pre-plan tiers off one builder:
+  //   "discovery" — paid the consult, deciding. Gets the upgrade CTA + credit window.
+  //   "enrolled"  — signed up, plan not written yet (the enrol→build gap). Same
+  //                 onboarding + Lab Vault surface, commercial framing removed.
+  // Anything else (package / guided) has a plan and belongs on the main path.
   const tierRes = resolveAppTier(
     {
       engagementStatus: asStr(client.engagement_status) || null,
@@ -3460,7 +3463,8 @@ async function buildDiscoveryAppData(
     },
     tzTodayYmd(tz),
   );
-  if (tierRes.tier !== "discovery") return null;
+  if (tierRes.tier !== "discovery" && tierRes.tier !== "enrolled") return null;
+  const isEnrolled = tierRes.tier === "enrolled";
 
   const displayName = asStr(client.display_name) || clientId;
   const firstName = displayName.split(/\s+/)[0] || displayName;
@@ -3544,7 +3548,9 @@ async function buildDiscoveryAppData(
     planSlug: "",
     token,
     timezone: tz,
-    tier: "discovery",
+    tier: tierRes.tier,
+    // null for the enrolled tier — resolveAppTier withholds it, so the upgrade
+    // CTA never renders to someone who has already bought the programme.
     discoveryCredit: tierRes.credit,
     discoverySummary: await parseDiscoverySummary(client, firstName),
     discoveryStage,
@@ -3554,7 +3560,7 @@ async function buildDiscoveryAppData(
     labOrders: discoveryLabOrders,
     client: {
       firstName,
-      program: "Discovery consult",
+      program: isEnrolled ? "Your programme" : "Discovery consult",
       week: 0,
       totalWeeks: 0,
       // No plan yet, so no tenure — a consult-tier client is by definition at
@@ -3575,7 +3581,9 @@ async function buildDiscoveryAppData(
       role: "Functional medicine coach",
       initials: "SH",
       whatsappNumber: "918976563971",
-      whatsappPrefill: `Hi Shivani, a question after my discovery call —`,
+      whatsappPrefill: isEnrolled
+        ? `Hi Shivani, a question while my plan is being put together —`
+        : `Hi Shivani, a question after my discovery call —`,
       nextSession: null,
     },
     today: { dow: dowName, dateLabel: fmt({ day: "numeric", month: "long" }), idx: Math.max(0, DOW.indexOf(dowName)) },

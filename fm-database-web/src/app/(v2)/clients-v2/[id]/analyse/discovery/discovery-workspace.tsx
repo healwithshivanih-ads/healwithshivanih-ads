@@ -10,6 +10,7 @@
  *
  * Mounted only for a client with no published plan. tier === "discovery" gets
  * the full stage-aware workspace; a "signed_up" pre-build client (tier
+ * "enrolled" since 2026-09-21 — previously "package")
  * "package", no plan yet) gets the lab-recommend tool only. The stage comes from
  * resolveDiscoveryStage (same source the client app uses), so this page always
  * mirrors what the client currently sees.
@@ -114,7 +115,7 @@ interface Props {
    *  recommend tool only — no discovery framing. (Accepts the full AppTier
    *  union for typing; guided subscribers never reach this coach page —
    *  resolveAppTier only ever returns discovery/package here.) */
-  tier: "discovery" | "package" | "guided";
+  tier: "discovery" | "package" | "guided" | "enrolled";
   stage: DiscoveryStage;
   intakeSubmitted: boolean;
   callDate: string | null;
@@ -490,8 +491,9 @@ export function DiscoveryWorkspace({ clientId, tier, stage, intakeSubmitted, cal
 
   const phone = labSend.appToken ? <ClientAppPhone token={labSend.appToken} reloadKey={previewKey} /> : null;
 
-  // Package client with no plan yet — just the lab-recommend tool + send, no
-  // discovery stage framing or Starting Map (their app shows the plan).
+  // Enrolled/package client with no plan yet — just the lab-recommend tool +
+  // send, no discovery stage framing and no Starting Map (the Starting Map is a
+  // consult-tier artifact; an enrolled client is getting a real plan instead).
   if (tier !== "discovery") {
     return (
       <div style={{ marginTop: 22, display: "grid", gap: 16 }}>
