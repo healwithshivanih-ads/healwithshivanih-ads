@@ -25,7 +25,7 @@
  *  2026-06-25. */
 export const DISCOVERY_CREDIT_WINDOW_DAYS = 15;
 
-export type AppTier = "discovery" | "package" | "guided";
+export type AppTier = "discovery" | "package" | "guided" | "enrolled";
 
 /** Credit-window state — drives the upgrade CTA in the Summary + Coach tabs. */
 export type DiscoveryCreditState = "credit_live" | "credit_expired";
@@ -115,9 +115,17 @@ export interface DiscoveryStageInput {
  */
 export function resolveDiscoveryStage(i: DiscoveryStageInput): DiscoveryStage {
   if (i.callDone) return "post_call";
+  // An UNPAID recommendation outranks results already on file (2026-09-21).
+  // `hasResults` is true for any health_snapshot, including panels the client had
+  // done privately months before they enrolled. So a client with old labs on file
+  // whose coach has just recommended a NEW panel was being sent straight to
+  // "your results are in" — skipping the booking step, which is the only place
+  // the app lets them pay. The coach's order sat unpayable and invisible.
+  // A `recommended` order is an outstanding ask: it wins over stale results.
+  // Once paid it becomes hasActiveOrder, then results_in, and the flow resumes.
+  if (i.hasRecommendedOrder) return "book_labs";
   if (i.hasResults && i.intakeSubmitted) return "awaiting_call";
   if (i.hasActiveOrder) return "awaiting_results";
-  if (i.hasRecommendedOrder) return "book_labs";
   if (i.intakeSubmitted) return "awaiting_recommendation";
   return "onboard_intake";
 }
@@ -217,11 +225,19 @@ export function resolveAppTier(
   input: AppTierInput,
   todayYmd: string,
 ): AppTierResult {
-  if (input.engagementStatus === "signed_up") {
-    return { tier: "package", reason: "engagement_status = signed_up", credit: null };
-  }
   if (input.hasPublishedPlan) {
     return { tier: "package", reason: "published plan on file", credit: null };
+  }
+  // The enrol->build gap. A client who has signed up but whose plan hasn't been
+  // published yet is NOT discovery (they've bought the programme, so the consult
+  // upsell and its credit window are both wrong and, shown to someone who has
+  // already paid, faintly insulting) and NOT package (there is no plan to render).
+  // Before this tier existed they fell through to a null payload and their
+  // /app/<token> link rendered "This link isn't active any more" — a dead link
+  // the coach had usually just sent them. They get the onboarding + Lab Vault
+  // surface with the commercial framing stripped out.
+  if (input.engagementStatus === "signed_up") {
+    return { tier: "enrolled", reason: "signed up; plan not published yet", credit: null };
   }
   const credit = resolveDiscoveryCredit(input.discoveryCallDate, todayYmd);
   return {

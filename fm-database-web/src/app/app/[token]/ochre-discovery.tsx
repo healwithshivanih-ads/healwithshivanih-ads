@@ -29,7 +29,12 @@ function waHref(number: string, text: string): string {
  * driven by the date-resolved credit window (credit_live vs credit_expired).
  */
 export function UpgradeCta() {
-  const { discoveryCredit: credit, coach } = useOchre();
+  const { discoveryCredit: credit, coach, tier } = useOchre();
+  // NEVER shown to an enrolled client. They have already bought the programme,
+  // so both branches below are wrong for them — "upgrade to the full programme"
+  // and, worse, the fallback "your consult-credit window has closed". Guarding
+  // here rather than at the three call sites means a fourth can't reintroduce it.
+  if (tier === "enrolled") return null;
   const live = credit?.state === "credit_live";
 
   const title = live ? "Ready for the full journey?" : "Continue your journey";
@@ -277,6 +282,9 @@ export function DiscoveryCoachScreen() {
  * Rendered full-screen (no bottom nav) for every stage except post_call. */
 
 const ONBOARD_STEPS = ["Your intake", "Book labs", "Sample & results", "Discovery call"];
+/** Enrolled (signed up, plan being written) clients have no discovery call ahead
+ *  of them — the last step is the plan itself. Same four beats, honest label. */
+const ONBOARD_STEPS_ENROLLED = ["Your intake", "Book labs", "Sample & results", "Your plan"];
 
 function stageStepIndex(stage: DiscoveryStage): number {
   switch (stage) {
@@ -294,10 +302,11 @@ function stageStepIndex(stage: DiscoveryStage): number {
   }
 }
 
-function OnboardStepper({ active }: { active: number }) {
+function OnboardStepper({ active, enrolled }: { active: number; enrolled?: boolean }) {
+  const steps = enrolled ? ONBOARD_STEPS_ENROLLED : ONBOARD_STEPS;
   return (
     <div style={{ display: "flex", gap: 6, margin: "2px 0 18px" }} aria-hidden>
-      {ONBOARD_STEPS.map((label, i) => {
+      {steps.map((label, i) => {
         const cur = i === active;
         const done = i < active;
         return (
@@ -366,6 +375,7 @@ export function DiscoveryOnboardingScreen() {
   const data = useOchre();
   const stage: DiscoveryStage = data.discoveryStage ?? "onboard_intake";
   const { client, intakeUrl } = data;
+  const enrolled = data.tier === "enrolled";
 
   return (
     <div className="screen-pad screen-anim">
@@ -374,7 +384,7 @@ export function DiscoveryOnboardingScreen() {
         <div className="date script">Welcome to The Ochre Tree</div>
       </div>
 
-      <OnboardStepper active={stageStepIndex(stage)} />
+      <OnboardStepper active={stageStepIndex(stage)} enrolled={enrolled} />
 
       {stage === "onboard_intake" && (
         <>
@@ -432,11 +442,19 @@ export function DiscoveryOnboardingScreen() {
       )}
 
       {stage === "awaiting_call" && (
-        <OnboardCard
-          icon="📞"
-          title="Your results are in"
-          body="Your discovery call is next — we&apos;ll reach out on WhatsApp to find a time. Right after the call, your starting map opens up here."
-        />
+        enrolled ? (
+          <OnboardCard
+            icon="🌱"
+            title="Your results are in"
+            body="Shivani is reading them now and writing your programme around what they show. It lands here as soon as it&apos;s ready — you don&apos;t need to do anything in the meantime."
+          />
+        ) : (
+          <OnboardCard
+            icon="📞"
+            title="Your results are in"
+            body="Your discovery call is next — we&apos;ll reach out on WhatsApp to find a time. Right after the call, your starting map opens up here."
+          />
+        )
       )}
 
       <OnboardContactLine />
