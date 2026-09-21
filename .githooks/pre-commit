@@ -1,7 +1,9 @@
 #!/bin/sh
 # Recipe YAML goes straight to clients' phones, so bad data is a client-visible
 # bug, not a lint nit — an overnight soak parked in prep_time_min showed a
-# chickpea snack as "500 min" on a live card (2026-07-26).
+# chickpea snack as "500 min" on a live card (2026-07-26), and a `gluten_free`
+# flag on a barley porridge cancelled the gluten filter for a coeliac client
+# (2026-09-21).
 #
 # Only runs when the commit actually touches fm-database/data/_recipes/.
 # Bypass with `git commit --no-verify` when you need to.
@@ -11,21 +13,66 @@
 set -e
 
 REPO_ROOT=$(git rev-parse --show-toplevel)
-PYTHON="$REPO_ROOT/fm-database/.venv/bin/python"
 VALIDATOR="$REPO_ROOT/fm-database-web/scripts/validate-recipes.py"
+PYTHON="$REPO_ROOT/fm-database/.venv/bin/python"
 
 if ! git diff --cached --name-only --diff-filter=ACM \
      | grep -q '^fm-database/data/_recipes/.*\.yaml$'; then
   exit 0
 fi
 
-# A missing venv must not block every commit on a fresh machine — warn and pass.
-if [ ! -x "$PYTHON" ] || [ ! -f "$VALIDATOR" ]; then
-  echo "pre-commit: recipe validator unavailable (no venv at $PYTHON) — skipping." >&2
+# ── interpreter resolution ──────────────────────────────────────────────────
+# `fm-database/.venv` is untracked, so a linked worktree does not have one and
+# this hook used to find no interpreter there and SKIP ITSELF — reporting
+# success while the recipes went in unchecked. Found on 2026-09-21, when the
+# commit that added the diet-vs-allergen guard was itself waved through by it.
+# pre-push already borrowed the main checkout's venv for the same reason; this
+# is that fix, applied here too. Keep the two in step.
+#
+# FMDB_PYTHON wins when set — same variable src/lib/fmdb/test-python.ts and
+# src/lib/fmdb/shim.ts honour, so one setting covers hooks, tests and the app.
+if [ -n "$FMDB_PYTHON" ] && [ -x "$FMDB_PYTHON" ]; then
+  PYTHON="$FMDB_PYTHON"
+elif [ ! -x "$PYTHON" ]; then
+  common_dir=$(git rev-parse --git-common-dir 2>/dev/null || echo "")
+  case "$common_dir" in
+    "") ;;
+    /*) ;;                                   # absolute: we are in a worktree
+    *)  common_dir="$REPO_ROOT/$common_dir" ;;  # relative ".git": plain clone
+  esac
+  if [ -n "$common_dir" ] && [ -d "$common_dir" ]; then
+    main_root=$(cd "$(dirname "$common_dir")" 2>/dev/null && pwd || echo "")
+    if [ -n "$main_root" ] && [ -x "$main_root/fm-database/.venv/bin/python" ]; then
+      PYTHON="$main_root/fm-database/.venv/bin/python"
+      echo "pre-commit: worktree detected — borrowing the venv at $PYTHON" >&2
+    fi
+  fi
+fi
+
+# Last resort: a bare python3 is fine here, because the validator's only
+# third-party import is pyyaml (validate-recipes.py; recipe_schema and
+# recipe_times are stdlib-only). PROBE rather than assume — this Mac's system
+# python3 has no pyyaml, and without it the script dies on `import yaml`, which
+# would read as a validation failure and block the commit for the wrong reason.
+if [ ! -x "$PYTHON" ] || ! "$PYTHON" -c 'import yaml' >/dev/null 2>&1; then
+  fallback=$(command -v python3 || true)
+  if [ -n "$fallback" ] && "$fallback" -c 'import yaml' >/dev/null 2>&1; then
+    PYTHON="$fallback"
+  else
+    # Never block a commit on a fresh machine — but say plainly that the
+    # recipes went in UNCHECKED. A silent skip is what hid this for months.
+    echo "pre-commit: ⚠ recipes committed WITHOUT validation — found no Python with pyyaml." >&2
+    echo "  fix: pip install pyyaml, or set FMDB_PYTHON=<interpreter that has it>" >&2
+    exit 0
+  fi
+fi
+
+if [ ! -f "$VALIDATOR" ]; then
+  echo "pre-commit: ⚠ recipes committed WITHOUT validation — $VALIDATOR is missing." >&2
   exit 0
 fi
 
-echo "pre-commit: validating recipe library…"
+echo "pre-commit: validating recipe library… ($PYTHON)"
 # Note: validates the working tree, not the staged snapshot. With staged and
 # unstaged recipe edits in flight it can disagree with what you're committing.
 if ! FMDB_RECIPES_DIR="$REPO_ROOT/fm-database/data/_recipes" "$PYTHON" "$VALIDATOR"; then

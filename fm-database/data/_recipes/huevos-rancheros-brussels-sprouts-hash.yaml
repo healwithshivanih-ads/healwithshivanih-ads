@@ -43,7 +43,6 @@ main_ingredients:
 contains_allergens:
 - egg
 - dairy
-- gluten
 ingredients:
 - item: diced red onion
   qty: '0.5'

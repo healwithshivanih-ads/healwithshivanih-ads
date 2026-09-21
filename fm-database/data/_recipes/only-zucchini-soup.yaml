@@ -23,8 +23,7 @@ main_ingredients:
 - ghee
 - water
 - salt
-contains_allergens:
-- dairy
+contains_allergens: []
 ingredients:
 - item: medium zucchini or summer squash
   qty: '2'

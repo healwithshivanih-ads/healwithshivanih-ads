@@ -12,7 +12,7 @@ balances_dosha: []
 aggravates_dosha: []
 rasa: []
 main_ingredients:
-- warm milk alternative (almond, oat or coconut)
+- warm milk alternative (almond or coconut)
 - ashwagandha powder
 - ghee
 - honey or jaggery
@@ -21,7 +21,7 @@ contains_allergens:
 - dairy
 - nuts
 ingredients:
-- item: warm milk alternative (almond, oat or coconut)
+- item: warm milk alternative (almond or coconut)
   qty: ''
   unit: ''
 - item: ashwagandha powder
