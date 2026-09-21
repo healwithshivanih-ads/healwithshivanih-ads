@@ -1,0 +1,57 @@
+slug: avipattikar-churna
+display_name: Avipattikar Churna
+aliases:
+- avipattikar
+- avipathi churna
+- avipattikara churna
+category: ayurvedic_churan
+route: internal
+summary: >-
+  The classical Ayurvedic powder for hyperacidity — trikatu, triphala, musta,
+  vidanga, elaichi, tejpatra, lavanga and trivrit in a sugar base. Used for acid
+  reflux, sour belching and the constipation that often travels with them. It is
+  mildly laxative by design, which is part of how it is meant to work.
+indications:
+- gerd
+- indigestion
+- constipation
+contraindications:
+- pregnancy — contains trivrit (a purgative) and vidanga; avoid
+- active peptic ulcer or GI bleeding — clinician first
+- diarrhoea or loose stools — the formulation is laxative and will worsen it
+- diabetes — sugar-containing base
+- already on a PPI or H2 blocker — this is not a substitute; any change to the drug is the clinician's call
+balances_dosha:
+- pitta
+- vata
+avoid_in:
+- pregnancy
+rasa:
+- pungent
+- bitter
+- sweet
+ayurvedic_actions:
+- pittashamana
+- anulomana
+- dipana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Classical powder, taken with warm water.
+typical_dose: >-
+  1/2 to 1 tsp once or twice a day with warm water. Follow the pack or the practitioner's direction.
+duration: >-
+  A few weeks at a time, reviewed — not indefinitely.
+timing_notes: >-
+  Traditionally before food or at bedtime.
+linked_to_topics:
+- gerd
+- constipation
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Avipattikar Churna — AFI Part I, Churna Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

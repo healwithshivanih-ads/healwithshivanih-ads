@@ -1,0 +1,31 @@
+id: malhotra-2023-garden-cress-pretreatments
+title: Effects of pre-treatments on nutritional and mineral composition of garden cress seeds (Lepidium sativum)
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Umang Malhotra
+- Manmath Sontakke
+- Rafeeya Shams
+- Vinay Kumar Pandey
+year: 2023
+publisher: Food Chemistry Advances 3:100398
+url: https://www.sciencedirect.com/science/article/pii/S2772753X23002198
+doi: 10.1016/j.focha.2023.100398
+notes: >-
+  Direct laboratory analysis of garden cress seed minerals before and after
+  domestic pre-treatments (soaking, boiling, roasting, sun-drying). Cited here as
+  a measured counterweight to the 100 mg/100 g iron figure repeated in the Tufail
+  2024 review: this paper reports iron rising to 10.84 mg/100 g after boiling plus
+  roasting, i.e. an order of magnitude below the review's figure and in line with
+  the other direct analyses (7.29-8.48 mg/100 g dry weight reported elsewhere,
+  11.7 mg/100 g elsewhere again).
+
+  CAPTURE LIMITATION: the publisher full text was HTTP 403 through this
+  environment on 2026-09-21. The 10.84 mg/100 g figure and the pre-treatment
+  design were taken from the indexed abstract/summary, not from the methods
+  section. Re-tier and re-check the exact figures if anyone reads the primary
+  methods. This is recorded because the whole point of citing it is the NUMBER.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

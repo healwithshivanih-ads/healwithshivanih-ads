@@ -1,0 +1,56 @@
+slug: sattu-drink
+display_name: Sattu Drink
+aliases:
+- sattu
+- sattu sharbat
+- chana sattu
+- roasted gram flour drink
+- satwa
+category: kitchen_remedy
+route: internal
+summary: >-
+  Roasted Bengal-gram flour whisked into water with salt and lemon, or with
+  jaggery for the sweet version — the everyday summer drink of Bihar, Jharkhand
+  and eastern UP. Cheap, cooling and unusually protein-dense for a drink, which
+  makes it one of the most practical vegetarian protein additions in the Indian
+  repertoire.
+indications:
+- constipation
+- fatigue
+contraindications:
+- low-FODMAP elimination phase — chana (Bengal gram) is a galacto-oligosaccharide source and is cut in that phase
+- known chickpea or legume sensitivity
+- new to it — start with a small quantity; a full glass on day one commonly causes gas and bloating
+- the sweet jaggery version carries a real sugar load; use the salted lemon version for a metabolic client
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+ayurvedic_actions:
+- balya
+- shita
+- brimhana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Whisk 2-3 tbsp of roasted chana sattu into a glass of cold water until smooth. Savoury — add black salt, roasted jeera powder, lemon and chopped onion or coriander. Sweet — jaggery or sugar instead.
+typical_dose: >-
+  One glass, using roughly 2-3 tbsp of sattu.
+duration: >-
+  Daily through summer.
+timing_notes: >-
+  Mid-morning or as an afternoon drink. Also works as a genuinely filling breakfast.
+linked_to_topics:
+- constipation
+- fiber-gap
+sources:
+- id: indian-traditional-household-practice
+  location: Bihar, Jharkhand and eastern Uttar Pradesh summer staple — salted and sweet sattu sharbat
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

@@ -1,0 +1,56 @@
+slug: sitopaladi-churna
+display_name: Sitopaladi Churna
+aliases:
+- sitopaladi
+- sitopaladi powder
+- sitopaladyadi churna
+category: ayurvedic_churan
+route: internal
+summary: >-
+  The classical Ayurvedic cough and respiratory powder — mishri (rock sugar),
+  vamsalochana, pippali, elaichi and dalchini. Taken with honey for a dry or
+  lingering cough, post-viral throat irritation and the tail end of a cold. One of
+  the most widely dispensed churnas in India and the first thing many families
+  reach for.
+indications:
+- chronic-cough
+- upper-respiratory-symptoms
+- common-cold
+contraindications:
+- diabetes — the base is rock sugar; account for it or use a sugar-free preparation
+- children under 1 year — the honey vehicle is unsafe (infant botulism risk)
+- productive cough with fever or breathlessness — needs assessment, not a churna
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- pungent
+ayurvedic_actions:
+- kasahara
+- dipana
+- rasayana
+virya: heating
+vipaka: sweet
+preparation: >-
+  Classical/proprietary powder. Mix the dose with an equal quantity of honey to a paste, or take with warm water.
+typical_dose: >-
+  1/4 to 1/2 tsp, two or three times a day, with honey. Follow the pack or the practitioner's direction.
+duration: >-
+  Through an acute episode; not a standing daily powder.
+timing_notes: >-
+  After meals, or when the cough is troublesome.
+linked_to_topics:
+- bronchitis-and-pneumonia
+- common-cold
+- immune-support
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Sitopaladi Churna — AFI Part I, Churna Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

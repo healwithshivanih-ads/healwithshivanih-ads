@@ -1,0 +1,53 @@
+slug: talisadi-churna
+display_name: Talisadi Churna
+aliases:
+- talisadi
+- talisapatradi churna
+category: ayurvedic_churan
+route: internal
+summary: >-
+  A close cousin of sitopaladi built on talisapatra, used where a cough sits
+  alongside poor appetite and sluggish digestion. The traditional distinction is
+  that sitopaladi leans respiratory while talisadi carries a stronger digestive
+  (dipana) action, so it suits the kapha-heavy cold that has flattened appetite.
+indications:
+- chronic-cough
+- upper-respiratory-symptoms
+- indigestion
+contraindications:
+- diabetes — sugar-containing base
+- pitta-predominant presentation with heartburn — heating formulation
+- pregnancy — not established; defer to a practitioner
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sweet
+ayurvedic_actions:
+- kasahara
+- dipana
+- amapachana
+virya: heating
+vipaka: pungent
+preparation: >-
+  Classical powder, taken with honey or warm water.
+typical_dose: >-
+  1/4 to 1/2 tsp two or three times a day. Follow the pack or the practitioner's direction.
+duration: >-
+  Through an acute episode.
+timing_notes: >-
+  After meals.
+linked_to_topics:
+- bronchitis-and-pneumonia
+- common-cold
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Talisadi Churna — AFI Part I, Churna Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

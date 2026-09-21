@@ -1,0 +1,33 @@
+id: ayurvedic-formulary-of-india
+title: The Ayurvedic Formulary of India (Parts I-III)
+source_type: clinical_guideline
+quality: high
+authors:
+- Government of India, Ministry of AYUSH — Department of Indian Systems of Medicine & Homoeopathy
+publisher: Government of India, Ministry of AYUSH
+url: https://www.ppcim.gov.in
+notes: >-
+  The official Government of India formulary for COMPOUND Ayurvedic preparations —
+  the companion to the Ayurvedic Pharmacopoeia of India, which covers single drugs
+  (dravya). AFI is where the classical multi-ingredient formulations live, grouped
+  by dosage form: Asava-Arishta (fermented preparations), Churna (powders), Avaleha
+  and Paka (confections such as Chyawanprash), Guggulu, Ghrita, Taila, Kwatha and
+  so on. Each monograph gives the formulation composition, method of preparation,
+  therapeutic uses (Rogadhikara) and official dose (Matra).
+
+  Used in this catalogue as the India-context authority for classical compound
+  remedies, in the same role API plays for single herbs. Cite per-formulation in
+  the location field (e.g. "Sitopaladi Churna, AFI Part I — Churna Prakarana").
+
+  CITATION LIMITATION, STATED PLAINLY: the entries added on 2026-09-21 cite AFI
+  for the FACT that each is an official classical formulation with a recognised
+  traditional indication and dose form. Individual volume and page numbers were
+  NOT pinned against the printed monographs in that session. Anyone relying on a
+  specific composition, ratio or official Matra should verify it against the
+  monograph before use. AFI documents traditional use — it is not clinical-trial
+  evidence, and every entry citing it alone is tiered fm_specific_thin for that
+  reason.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

@@ -1,0 +1,59 @@
+slug: manjistha-decoction
+display_name: Manjistha (Indian Madder)
+aliases:
+- manjistha
+- manjishtha
+- rubia cordifolia
+- indian madder
+- majith
+category: herbal_tea
+route: internal
+summary: >-
+  The classical Ayurvedic rakta-shodhaka (blood purifier), taken as a powder in
+  warm water or as a decoction for chronic skin complaints, pigmentation and
+  lymphatic sluggishness. One of the most-used herbs in Ayurvedic dermatology, and
+  one with essentially no modern clinical trial behind it.
+indications:
+- acne-vulgaris
+- atopic-dermatitis
+- detoxification
+contraindications:
+- pregnancy — traditionally emmenagogue; avoid
+- lactation — not established
+- expect harmless reddish discolouration of urine; warn the client or it causes alarm
+- on anticoagulants — unstudied; defer to the clinician
+balances_dosha:
+- pitta
+- kapha
+avoid_in:
+- pregnancy
+rasa:
+- bitter
+- astringent
+- sweet
+ayurvedic_actions:
+- rakta-shodhaka
+- varnya
+- pittashamana
+virya: cooling
+vipaka: pungent
+preparation: >-
+  Simmer 1/2 tsp of manjistha powder in a cup of water down to about half, and strain; or simply stir the powder into warm water.
+typical_dose: >-
+  1/2 to 1 tsp of powder a day, or one cup of the decoction.
+duration: >-
+  Skin work is slow — traditionally given over 8-12 weeks and reviewed.
+timing_notes: >-
+  Away from meals.
+linked_to_topics:
+- acne-vulgaris
+- atopic-dermatitis
+- detoxification
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Manjishtha (Rubia cordifolia Linn.), API Part I (volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

@@ -1,0 +1,75 @@
+slug: barley-water-is-a-fluid-vehicle-not-a-beta-glucan-dose
+statement: >-
+  Barley's two strongest evidence bases do not transfer to strained barley water.
+  The authorised cholesterol claim (EFSA 2011, and the parallel US FDA claim)
+  requires 3 g/day of beta-glucan delivered by the food; barley grain is roughly
+  2-10% beta-glucan and pearled barley — the form barley water is usually made
+  from — sits at the low end because pearling strips the outer layers where
+  beta-glucan concentrates. A barley water made from one or two tablespoons of
+  pearled barley and then strained leaves the grain behind and cannot be assumed
+  to reach that dose. Likewise, the evidence that fluid intake prevents kidney
+  stones is evidence about urine volume, not about barley: barley water's real
+  contribution there is that it is a palatable, unsweetened way to drink more.
+evidence_tier: plausible_emerging
+rationale: >-
+  Each half of this claim rests on a solid anchor used correctly. The 3 g/day
+  beta-glucan threshold is an EFSA Article 14 authorisation backed by a
+  meta-analysis of 11 RCTs plus a further RCT, and the authorisation is explicitly
+  conditioned on the food delivering that dose — so pointing out that a strained
+  drink is not a demonstrated vehicle for it is reading the source, not
+  extrapolating from it. The beta-glucan content range of barley grain is
+  well-characterised in the cereal-chemistry literature. The stone half simply
+  defers to the catalogue's own strong claims on urine volume, which already state
+  that water rather than other beverages is the lever.
+
+  It is tiered plausible_emerging rather than strong because the specific
+  quantitative step — how much beta-glucan actually leaches into the water and
+  survives straining — has not been measured in any source located here. The
+  conclusion is inference from the grain's content and the discard of the solids,
+  not a measurement of the drink. That inference is strongly directional (it
+  cannot plausibly reach 3 g from 25 g of pearled barley even with complete
+  extraction) but it is inference.
+coaching_translation: >-
+  Barley water is a good drink and a bad shortcut. If a client wants barley's
+  cholesterol benefit, she needs to eat the barley — in a khichdi, a soup, a
+  pulao, a salad — not drink the strained water and throw the grain away. If she
+  wants it for kidney stones or urinary comfort, it genuinely helps, but as a
+  pleasant low-sugar way to get her fluid intake up, which is the thing that
+  actually works. Both are worth saying out loud, because "barley water lowers
+  cholesterol" and "barley water dissolves stones" are both in circulation and
+  both overstate it.
+caveats:
+- Nobody located a measurement of the beta-glucan content of a strained household
+  barley water. If one is found, this claim should be re-tiered and the arithmetic
+  replaced with the figure.
+- Do not eat the grain and discard the water expecting the reverse — the point is
+  that the grain carries the fibre, so the useful move is to keep and eat it.
+- There is no good evidence that barley water dissolves an existing stone. A 2014
+  Iranian trial in patients with stones under 5 mm is the most cited human study
+  and is not enough to support a dissolution claim; it was not read here and is
+  not cited as a source.
+- Barley contains gluten. None of this applies to a coeliac or gluten-sensitive
+  client, for whom barley water is simply off the table.
+linked_to_topics:
+- dyslipidemia
+- kidney-stones
+- fiber-gap
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+linked_to_symptoms: []
+linked_to_supplements: []
+out_of_scope_notes: >-
+  Coach scope: fluid intake, food form, and correcting an overstated claim.
+  Clinician scope: managing stones or lipids, and any decision about whether a
+  client's cholesterol or stone risk needs treatment.
+sources:
+- id: efsa-2011-barley-beta-glucan-cholesterol
+  location: Conditions of use — beta-glucan dose
+  quote: >-
+    Barley beta-glucans at doses of at least 3 g/day showed a decrease in total
+    and LDL-cholesterol concentrations in both normo- and hypercholesterolaemic
+    subjects.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani
