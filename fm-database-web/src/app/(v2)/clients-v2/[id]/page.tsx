@@ -45,7 +45,9 @@ import { BackOnTrackButton } from "./back-on-track-button";
 import { MonthlyCardButton } from "./monthly-card-button";
 import type { BackOnTrackCard } from "@/lib/server-actions/clients";
 import { Tier1AdvisoryCard } from "./tier1-advisory-card";
+import { UnsupervisedMedicationCard } from "./unsupervised-medication-card";
 import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
+import { detectUnsupervisedMedication } from "@/lib/fmdb/unsupervised-medication";
 import { DirtyGenesOverviewCard } from "./dirty-genes-overview-card";
 import { computePrefill, extractPrefillInput } from "@/lib/fmdb/dirty-genes-prefill";
 import { loadLatestDirtyGenesAssessment } from "@/lib/server-actions/dirty-genes";
@@ -1874,6 +1876,15 @@ export default async function ClientV2Page({
                       clientId={client.client_id}
                       prefill={dgPrefill}
                       lastScreenDate={dgLatest.screenDate ?? null}
+                    />
+                    {/* Dependence-forming psychoactive med with NO clinical
+                        supervision. Mounted ABOVE the other advisories on
+                        purpose: it is not a prompt, it is a constraint on what
+                        is safe to author, and it must be read before any plan,
+                        letter or supplement suggestion. Self-hides unless the
+                        intake positively records "no mental health care". */}
+                    <UnsupervisedMedicationCard
+                      advisory={detectUnsupervisedMedication(client as unknown as Record<string, unknown>)}
                     />
                     <Tier1AdvisoryCard
                       clientId={client.client_id}
