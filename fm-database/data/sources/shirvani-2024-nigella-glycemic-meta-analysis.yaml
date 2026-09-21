@@ -1,0 +1,28 @@
+id: shirvani-2024-nigella-glycemic-meta-analysis
+title: 'The effect of Nigella sativa supplementation on glycemic status in adults: An updated systematic review and meta-analysis'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Shabnam Shirvani
+- Maryam Falahatzadeh
+- Elham Oveili
+- Mehrdad Jamali
+year: 2024
+publisher: Prostaglandins & Other Lipid Mediators 174:106885
+doi: 10.1016/j.prostaglandins.2024.106885
+notes: >-
+  Updated systematic review and meta-analysis of randomised trials of Nigella
+  sativa (kalonji / black seed) on glycaemic status in adults. Kalonji has one of
+  the better trial bases of any Indian kitchen spice — repeated meta-analyses on
+  glycaemia and on lipids — which is why the catalogue entry is tiered
+  plausible_emerging rather than fm_specific_thin like most spice remedies.
+
+  CAVEATS THAT MATTER: the trials use SUPPLEMENT doses of seed powder or oil
+  (typically 1-3 g/day of powder), not the pinch of kalonji in a tadka, so the
+  evidence does not transfer to culinary use. Trial quality and heterogeneity are
+  mixed and most are from a small number of regions. Metadata verified via
+  Crossref 2026-09-21; abstract-level capture, full text not read.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

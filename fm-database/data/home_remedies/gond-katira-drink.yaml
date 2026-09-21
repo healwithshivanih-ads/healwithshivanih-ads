@@ -1,0 +1,55 @@
+slug: gond-katira-drink
+display_name: Gond Katira (Tragacanth) Cooling Drink
+aliases:
+- gond katira
+- tragacanth gum
+- katira gond
+- badam pisin
+- astragalus gum
+category: infused_water
+route: internal
+summary: >-
+  Crystals of tragacanth gum soaked overnight until they bloom into a soft clear
+  jelly, then stirred into cold milk, rose sharbat or nimbu pani. A north Indian
+  summer staple for heat, taken specifically for nosebleeds, heat rash and general
+  overheating. Not to be confused with gond (edible acacia gum), which is the
+  warming winter one used in laddoos.
+indications:
+- constipation
+contraindications:
+- always soak fully — dry tragacanth swells many times its volume and is a genuine choking and obstruction risk
+- swallowing difficulty
+- on medication — a bulking mucilage can slow absorption; separate by about two hours
+- poor fluid intake — bulk fibre without water worsens constipation
+- kapha-predominant clients in cold weather — this is a cooling summer preparation
+balances_dosha:
+- pitta
+aggravates_dosha:
+- kapha
+- vata
+rasa:
+- sweet
+ayurvedic_actions:
+- shita
+- daha-shamana
+- anulomana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Soak 1 tsp of gond katira crystals in a cup of water overnight, or for at least six hours, until fully bloomed into a soft jelly with no hard cores. Whisk lightly and stir into cold milk, rose sharbat, coconut water or nimbu pani.
+typical_dose: >-
+  1 tsp of dry crystals a day, fully soaked.
+duration: >-
+  A summer drink — seasonal rather than year-round.
+timing_notes: >-
+  Afternoon, in the heat of the day.
+linked_to_topics:
+- constipation
+sources:
+- id: indian-traditional-household-practice
+  location: North Indian summer practice — gond katira sharbat for heat, nosebleeds and heat rash
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

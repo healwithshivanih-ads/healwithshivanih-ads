@@ -1,0 +1,61 @@
+slug: jamun-seed-powder
+display_name: Jamun Seed Powder
+aliases:
+- jamun
+- java plum seed
+- black plum seed
+- syzygium cumini
+- jambu
+- naval seed
+- jambul
+category: ayurvedic_churan
+route: internal
+summary: >-
+  Dried, powdered jamun kernel — the classical Indian folk remedy for high blood
+  sugar, and one of the most commonly self-prescribed. The tradition is old and
+  consistent; the human evidence is thin and mostly small or preclinical, which is
+  the honest gap to state when a client brings it up.
+indications:
+- blood-sugar-regulation
+- type-2-diabetes
+contraindications:
+- on blood-sugar-lowering medication or insulin — additive hypoglycaemia is the real risk here; never stack it unmonitored, and any dose change is the clinician's
+- pregnancy — not established
+- before surgery — stop two weeks ahead
+- clients who substitute it for prescribed medication — this is the specific failure mode with jamun and worth naming out loud
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- astringent
+- sour
+- sweet
+ayurvedic_actions:
+- kaphahara
+- stambhana
+- mutra-sangrahaniya
+virya: cooling
+vipaka: pungent
+preparation: >-
+  Dry the seeds thoroughly, remove the outer coat, grind the kernel to a fine powder and store airtight.
+typical_dose: >-
+  Traditionally 1/2 to 1 tsp once or twice a day with warm water. Follow a practitioner where the client is medicated.
+duration: >-
+  Reviewed with blood-sugar monitoring rather than run open-ended.
+timing_notes: >-
+  Before meals, traditionally.
+linked_to_topics:
+- blood-sugar-regulation
+- type-2-diabetes
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Jambu (Syzygium cumini (L.) Skeels), API Part I (volume/page not pinned)
+- id: indian-traditional-household-practice
+  location: Widespread Indian folk use of jamun kernel powder for blood sugar
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

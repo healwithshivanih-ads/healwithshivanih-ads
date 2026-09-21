@@ -1,0 +1,34 @@
+id: kalam-2024-moringa-anemia-meta-analysis
+title: 'Moringa oleifera supplementation for anemic pregnant women: A Systematic Review and Meta-analysis'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Ermadina Mohamad Kalam
+- Norhayati Mohd Noor
+- Azlina Ishak
+- Siti Suhaila Mohd Yusoff
+year: 2024
+publisher: Bangladesh Journal of Medical Science 23(3)
+doi: 10.3329/bjms.v23i3.75014
+notes: >-
+  Systematic review and meta-analysis of Moringa oleifera supplementation for
+  haemoglobin in anaemic pregnant women. Cited as the best available synthesis
+  for the moringa-and-haemoglobin question, which is otherwise a scatter of
+  small single-centre trials.
+
+  QUALITY IS `moderate`, NOT `high`. The underlying trials are small, largely from
+  low-resource settings, several are open-label, and the intervention vehicle
+  varies (leaf powder, extract, moringa-with-jaggery). The journal is not a
+  high-impact one. The direction of effect is consistent across the literature —
+  including a trial in lactating women where moringa powder performed comparably
+  to iron sulphate, and a double-blind placebo-controlled add-on trial — which is
+  why this supports `plausible_emerging` rather than `strong`.
+
+  SCOPE NOTE: this review is specifically in PREGNANT women. The moringa entry in
+  this catalogue uses it for the general haemoglobin signal, not to recommend
+  moringa in pregnancy. Metadata verified via Crossref 2026-09-21; abstract-level
+  capture, full text not read.
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

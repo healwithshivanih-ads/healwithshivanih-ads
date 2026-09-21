@@ -368,15 +368,54 @@ def build_subgraph(
         hr for hr in cat.home_remedies
         if set(hr.linked_to_topics) & topic_set or set(hr.linked_to_mechanisms) & mech_set
     ]
-    # Rank core-first (linked to a SELECTED topic/mechanism), then by evidence
-    # tier, then slug for determinism, and cap — keeps the most relevant tail.
-    relevant_remedies.sort(key=lambda hr: (
-        0 if (set(hr.linked_to_topics) & core_topic_set
-              or set(hr.linked_to_mechanisms) & core_mech_set) else 1,
-        _tier_rank(hr.evidence_tier),
-        hr.slug,
-    ))
+    # Rank by DIRECTNESS TO THE SELECTION — the same fix already applied to
+    # supplements above, for the same reason.
+    #
+    # The old key was (core?, tier, slug) and it had degenerated exactly the
+    # way the supplement key had. `core` includes every topic any selected
+    # symptom links to, so a realistic assessment put almost the whole in-scope
+    # set into one bucket; most remedies share `fm_specific_thin`, so tier
+    # barely discriminated; and the real cut was then made ALPHABETICALLY by
+    # slug. Measured on the live roster (12 active clients, 2026-09-21) BEFORE
+    # this change: 192 of 245 remedies never reached a single client, 182 of
+    # them in scope and merely capped out, and the set that did surface ran
+    # a... -> j... and stopped dead. Not one remedy from k-z ever appeared —
+    # no triphala, no trikatu, no sesame-oil anything, despite 38 slugs
+    # starting with 's' and 17 with 't'.
+    #
+    # Same three bands as _supp_rank, ordered by how MANY of the coach's picks
+    # the remedy touches, with evidence tier demoted to a tiebreak:
+    #   0 - touches something explicitly selected
+    #   1 - touches a symptom-expanded topic/mechanism (the old "core")
+    #   2 - reached only through one-hop expansion
+    def _remedy_rank(hr):
+        sel_hits = (
+            len(set(hr.linked_to_topics) & scope.selected_topic_set)
+            + len(set(hr.linked_to_mechanisms) & scope.selected_mech_set)
+        )
+        core_hits = (
+            len(set(hr.linked_to_topics) & core_topic_set)
+            + len(set(hr.linked_to_mechanisms) & core_mech_set)
+        )
+        scope_hits = (
+            len(set(hr.linked_to_topics) & topic_set)
+            + len(set(hr.linked_to_mechanisms) & mech_set)
+        )
+        band = 0 if sel_hits else (1 if core_hits else 2)
+        return (band, -sel_hits, -core_hits, _tier_rank(hr.evidence_tier), -scope_hits, hr.slug)
+
+    relevant_remedies.sort(key=_remedy_rank)
     _in_scope_remedies = relevant_remedies  # full ranked in-scope list (pre-cap)
+    # Never truncate silently — mirrors the supplement cap logging above.
+    if len(relevant_remedies) > MAX_HOME_REMEDIES:
+        _dropped = relevant_remedies[MAX_HOME_REMEDIES:]
+        _dropped_sel = sum(1 for hr in _dropped if _remedy_rank(hr)[0] == 0)
+        _log.info(
+            "subgraph: home-remedy cap dropped %d of %d candidates "
+            "(%d of them directly selection-linked) for topics=%s",
+            len(_dropped), len(relevant_remedies), _dropped_sel,
+            sorted(scope.selected_topic_set),
+        )
     relevant_remedies = relevant_remedies[:MAX_HOME_REMEDIES]
     # Coach-featured remedies bypass the cap: a pinned remedy force-included
     # when it matches the client's CORE TOPICS (directly selected, or linked

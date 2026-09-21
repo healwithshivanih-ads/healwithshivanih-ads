@@ -1,0 +1,56 @@
+slug: lavan-bhaskar-churna
+display_name: Lavan Bhaskar Churna
+aliases:
+- lavan bhaskar
+- lavana bhaskara churna
+- bhaskar lavan
+category: ayurvedic_churan
+route: internal
+summary: >-
+  A salty, heating digestive churna for weak agni — poor appetite, gas, heaviness
+  after meals and sluggish digestion. The salt content is the point, and also the
+  catch: it is deliberately lavana-predominant, which makes it the wrong powder for
+  anyone watching sodium.
+indications:
+- indigestion
+- bloating
+- constipation
+contraindications:
+- hypertension or any sodium restriction — this is a deliberately high-salt formulation
+- kidney disease — sodium load
+- hyperacidity, gastritis or peptic ulcer — heating and pungent; will aggravate
+- pregnancy — not established
+- pitta-predominant clients — aggravating
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- salty
+- pungent
+- sour
+ayurvedic_actions:
+- dipana
+- pachana
+- anulomana
+virya: heating
+vipaka: pungent
+preparation: >-
+  Classical powder, taken with warm water or buttermilk.
+typical_dose: >-
+  1/4 to 1/2 tsp after meals. Follow the pack or the practitioner's direction.
+duration: >-
+  Short courses while digestion is being rebuilt.
+timing_notes: >-
+  After meals.
+linked_to_topics:
+- constipation
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Lavana Bhaskara Churna — AFI Part I, Churna Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

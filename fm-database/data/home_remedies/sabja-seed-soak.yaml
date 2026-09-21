@@ -1,0 +1,69 @@
+slug: sabja-seed-soak
+display_name: Sabja (Sweet Basil) Seed Soak
+aliases:
+- sabja
+- tukmaria
+- falooda seeds
+- sweet basil seed
+- takmaria
+- basil seeds
+category: kitchen_remedy
+route: internal
+summary: >-
+  Sweet basil seed soaked in water until it swells into a translucent gel, stirred
+  into nimbu pani, falooda or coconut water. Cooling, filling and mucilage-rich —
+  the classic Indian summer drink seed. Often confused with chia and with halim,
+  which are three different seeds doing three different jobs.
+indications:
+- constipation
+- gerd
+- bloating
+contraindications:
+- swallowing difficulty — the seed swells substantially and must always be fully soaked before it is eaten, never dry
+- children — same swelling caution
+- on medication — mucilaginous fibre can slow absorption; separate by about two hours
+- poor fluid intake — fibre without water worsens constipation
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+ayurvedic_actions:
+- shita
+- anulomana
+- daha-shamana
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Soak 1 tsp sabja in about half a cup of water for 10-15 minutes until each seed is surrounded by clear gel. Stir into lemon water, coconut water, buttermilk or milk. Never eat it dry.
+typical_dose: >-
+  1-2 tsp of dry seed a day, always fully soaked.
+duration: >-
+  Safe as a daily summer drink.
+timing_notes: >-
+  Through the day in hot weather; some take it before meals for satiety.
+linked_to_topics:
+- constipation
+- gerd
+# DAILY RITUAL. Added 2026-09-21 as a rotation partner for soaked-chia-water,
+# which was reaching 9 of 13 active clients because its 12 metabolic indications
+# beat everything else. Sabja is the closest analogue — a soaked mucilaginous
+# seed — but cooling rather than neutral, so it wins on the heat/acidity picture
+# where chia has no claim. Priority 4 (below chia's 3) on purpose: this is meant
+# to pick up the clients chia does NOT fit, not to displace it.
+daily_ritual: true
+ritual_priority: 4
+ritual_avoid:
+- dysphagia
+- swallowing
+sources:
+- id: indian-traditional-household-practice
+  location: Widespread Indian summer drink practice — sabja in nimbu pani, falooda and coconut water
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

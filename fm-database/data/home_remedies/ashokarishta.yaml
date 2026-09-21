@@ -1,0 +1,62 @@
+slug: ashokarishta
+display_name: Ashokarishta
+aliases:
+- ashokarishtam
+- ashoka arishta
+- asokarishta
+category: other
+route: internal
+summary: >-
+  A classical self-generated fermented preparation (arishta) built on ashoka bark,
+  the single most-dispensed Ayurvedic medicine for heavy or painful periods and
+  general uterine tone in India. Being an arishta it carries a small amount of
+  self-generated alcohol, which is inherent to the dosage form and matters for
+  some clients.
+indications:
+- menorrhagia
+- dysmenorrhea
+- perimenopause
+contraindications:
+- pregnancy — avoid; uterine-acting and not established as safe
+- any history of alcohol dependence — arishtas are self-fermented and contain 5-10% self-generated alcohol
+- diabetes — the jaggery/sugar fermentation base means a real sugar load
+- heavy bleeding that is new, worsening, or post-menopausal — this needs investigation first, not a tonic
+- on anticoagulants — unstudied interaction; clinician first
+- on a progestin or hormonal therapy for endometriosis, fibroids or abnormal
+  bleeding (dienogest/Dinogest, norethisterone, an LNG-IUS, GnRH analogues) —
+  ashoka is uterine-acting and the prescribed hormone is already doing that job;
+  adding this unstudied on top muddies the read on whether the drug is working.
+  Clinician first
+balances_dosha:
+- pitta
+- kapha
+avoid_in:
+- pregnancy
+rasa:
+- astringent
+- bitter
+ayurvedic_actions:
+- garbhashaya-balya
+- stambhana
+- rakta-stambhaka
+virya: cooling
+vipaka: pungent
+preparation: >-
+  Bought as a prepared arishta. Dilute with an equal quantity of water.
+typical_dose: >-
+  12-24 ml (roughly 2-4 tsp) twice a day after food, diluted with equal water. Follow the pack or the practitioner's direction.
+duration: >-
+  Typically cyclical, over two to three cycles, then reviewed.
+timing_notes: >-
+  After meals, twice daily.
+linked_to_topics:
+- menorrhagia
+- perimenopause
+sources:
+- id: ayurvedic-formulary-of-india
+  location: Ashokarishta — AFI Part I, Asava-Arishta Prakarana (classical formulation; volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani

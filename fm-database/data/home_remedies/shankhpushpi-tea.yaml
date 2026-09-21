@@ -1,0 +1,56 @@
+slug: shankhpushpi-tea
+display_name: Shankhpushpi
+aliases:
+- shankhpushpi
+- shankhapushpi
+- convolvulus pluricaulis
+- shankhavalli
+category: herbal_tea
+route: internal
+summary: >-
+  The classical medhya rasayana (brain tonic) for anxiety, mental fatigue and poor
+  concentration — traditionally the calming counterpart to brahmi, and often given
+  to students. Long-standing classical use with only preliminary modern study
+  behind it.
+indications:
+- anxiety
+- brain-fog
+- insomnia
+contraindications:
+- pregnancy and lactation — not established
+- on sedatives, benzodiazepines or SSRIs — possible additive sedation; the clinician decides
+- hypotension — traditionally regarded as mildly blood-pressure-lowering
+- before surgery — stop two weeks ahead on sedation grounds
+balances_dosha:
+- vata
+- pitta
+- kapha
+rasa:
+- bitter
+- astringent
+ayurvedic_actions:
+- medhya
+- rasayana
+- nervine
+virya: cooling
+vipaka: sweet
+preparation: >-
+  Steep 1/2 tsp of shankhpushpi powder in a cup of hot water for five minutes, or take the powder stirred into warm milk at night.
+typical_dose: >-
+  1/2 to 1 tsp of powder a day.
+duration: >-
+  Traditionally taken over 8-12 weeks as a rasayana rather than as an acute remedy.
+timing_notes: >-
+  Evening, or at night in milk.
+linked_to_topics:
+- anxiety
+- insomnia
+- cognitive-decline
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Shankhapushpi (Convolvulus pluricaulis Chois.), API Part I (volume/page not pinned)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-09-21'
+updated_by: Shivani
