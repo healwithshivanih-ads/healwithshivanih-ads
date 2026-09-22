@@ -23,6 +23,7 @@ main_ingredients:
 - dates
 - almond milk
 contains_allergens:
+- gluten
 - nuts
 ingredients:
 - item: rolled oats

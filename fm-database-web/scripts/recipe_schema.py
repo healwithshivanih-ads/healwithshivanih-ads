@@ -73,8 +73,17 @@ ALLERGEN_KEYWORDS: dict[str, tuple[str, ...]] = {
               "chhena", "khoya", "malai"),
     # "crouton" is bread by another name and the scan was blind to it —
     # beetroot-soup shipped croutons while claiming `gluten_free`.
+    # OATS COUNT AS GLUTEN HERE (coach decision 2026-09-21). Oats are
+    # gluten-free botanically; the risk is shared milling and storage, and
+    # Indian retail oats are almost never certified gluten-free. The library
+    # was split 4-4 on this — four oat recipes declared the allergen, four
+    # claimed `gluten_free` — so whether a coeliac client saw an oat dish came
+    # down to which recipe the drafter happened to pick. Revisit only with a
+    # certified-GF supply, and change it HERE: foods-to-avoid.ts carries the
+    # matching token so the two surfaces agree.
     "gluten": ("wheat", "atta", "maida", "barley", "bulgur", "rye", "semolina", "rava",
-               "sooji", "suji", "dalia", "seitan", "bread", "pasta", "crouton"),
+               "sooji", "suji", "dalia", "seitan", "bread", "pasta", "crouton",
+               "oat", "oatmeal"),
     "nuts": ("almond", "cashew", "walnut", "pistachio", "pecan", "hazelnut", "macadamia"),
     "peanut": ("peanut", "groundnut", "moongphali"),
     # dish-form words like "omelette"/"bhurji" are NOT egg keywords — besan
@@ -133,6 +142,33 @@ _SUBSTITUTION_PAREN = re.compile(
 # recipes and buries the allergens where a miss actually harms someone. Tag it
 # by hand when mustard is a headline ingredient, as sarson fish curry does.
 GAP_CHECK_ALLERGENS = ALLERGENS - {"mustard"}
+
+# A diet flag is a PROMISE; contains_allergens is the same file's statement of
+# fact. When the two disagree the promise WINS on the surface that matters, so
+# the contradiction is not untidiness — it is a live hole. The client app reads
+# `diet` and never loads `contains_allergens` at all, and foods-to-avoid.ts
+# EXONERATES a category's proxy words for any recipe carrying the matching tag.
+# So `gluten_free` on a barley recipe does not merely fail to protect a coeliac
+# client: it CANCELS the catch that the word "barley" would otherwise have made
+# (measured — a client with `foods_to_avoid: gluten` was served the barley
+# porridge, and stripping the tag alone put it back behind the gate).
+# ERROR, not warn: unlike the gap check below this needs no outside knowledge of
+# brand names or variants — it is two fields of one file contradicting each
+# other, which the reader can always settle by looking at the ingredients.
+DIET_ALLERGEN_CONFLICTS: dict[str, frozenset[str]] = {
+    "gluten_free": frozenset({"gluten"}),
+    "dairy_free": frozenset({"dairy"}),
+    # peanut is a legume, but "nut free" is a client's words, not a botanist's,
+    # and cold-pressed groundnut oil keeps enough protein to matter.
+    "nut_free": frozenset({"nuts", "peanut"}),
+    "vegan": frozenset({"dairy", "egg", "fish", "shellfish"}),
+    # this library keeps `eggetarian` separate from `vegetarian`, so egg in a
+    # vegetarian-tagged recipe is a contradiction here even where it is not
+    # elsewhere in the world.
+    "vegetarian": frozenset({"egg", "fish", "shellfish"}),
+    "eggetarian": frozenset({"fish", "shellfish"}),
+    "jain": frozenset({"egg", "fish", "shellfish"}),
+}
 
 
 def derive_allergens(ingredient_text: str) -> set[str]:
@@ -196,6 +232,18 @@ def check_recipe(d: dict, fname: str) -> tuple[list[str], list[str]]:
         warns.append(
             f"{fname}: ingredients suggest {sorted(missed)} but contains_allergens "
             f"is {sorted(declared) or '[]'} — clients with that allergy are not filtered out")
+
+    # …and the mirror of that check: a diet flag its own allergen list denies.
+    declared_diet = {str(x).lower() for x in (d.get("diet") or [])}
+    for flag in sorted(declared_diet):
+        clash = declared & DIET_ALLERGEN_CONFLICTS.get(flag, frozenset())
+        if clash:
+            errs.append(
+                f"{fname}: diet claims {flag!r} but contains_allergens declares "
+                f"{sorted(clash)} — one of the two is wrong. Drop the diet flag if "
+                f"the allergen is really in there; drop the allergen only if it is "
+                f"a false positive (ghee is not dairy here, plant milks are not "
+                f"dairy, millet/besan/rice flour are not gluten).")
 
     # unfilled template slot: "mixed salad vegetables / sprouts (as named)".
     # main_ingredients is checked too — the first version of this guard only

@@ -27,8 +27,7 @@ main_ingredients:
 - zucchini, grated
 - fresh cilantro, chopped
 - ghee for cooking
-contains_allergens:
-- dairy
+contains_allergens: []
 ingredients:
 - item: chickpea (garbanzo bean) flour
   qty: '1'

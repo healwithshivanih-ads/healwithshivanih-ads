@@ -43,7 +43,13 @@ const AVOID_EXPAND: Record<string, string[]> = {
   dairy: ["milk", "curd", "dahi", "yogurt", "yoghurt", "paneer", "cheese", "cream", "khoya", "malai", "lassi", "buttermilk"],
   // "crouton" is bread the word "bread" does not catch — see the same
   // addition to the allergen scan in scripts/recipe_schema.py.
-  gluten: ["wheat", "atta", "maida", "suji", "rava", "semolina", "bread", "crouton", "pasta", "barley", "rye", "dalia", "paratha", "roti", "chapati", "thepla", "poori"],
+  // "oat" is here because this practice treats oats as gluten-bearing — not
+  // botanically, but because Indian retail oats are milled and stored with
+  // wheat and are almost never certified GF (coach decision 2026-09-21). It
+  // must stay in lockstep with ALLERGEN_KEYWORDS["gluten"] in
+  // scripts/recipe_schema.py, which is what tags the catalogue; without the
+  // token here a gluten-avoiding client was still served oat porridge.
+  gluten: ["wheat", "atta", "maida", "suji", "rava", "semolina", "bread", "crouton", "pasta", "barley", "rye", "dalia", "oat", "paratha", "roti", "chapati", "thepla", "poori"],
   nut: ["almond", "cashew", "walnut", "pistachio", "hazelnut", "pecan"],
   onion: ["onion", "shallot", "leek"],
   // NOTE: a category's members are PROXIES, and some proxy words name a FORM

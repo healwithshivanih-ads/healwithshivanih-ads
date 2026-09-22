@@ -6,7 +6,6 @@ meal_type:
 diet:
 - vegetarian
 - vegan
-- gluten_free
 region: ''
 seasons:
 - autumn
@@ -32,6 +31,7 @@ main_ingredients:
 - salt
 - shredded coconut or chopped walnuts (optional)
 contains_allergens:
+- gluten
 - nuts
 ingredients:
 - item: medium apples, chopped (about 5 cups)
