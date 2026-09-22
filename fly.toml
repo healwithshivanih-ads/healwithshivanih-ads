@@ -18,12 +18,17 @@
 # Hostnames (configured via `flyctl certs add`):
 #   intake.theochretree.com    — only public hostname; no coach UI here
 #
-# Region: bom (Mumbai) — most clients are in India, lowest latency.
+# Region: sin (Singapore). NOT bom — see primary_region below.
 # Volume: fmcoach_data, 3 GB, mounted at /data for client.yaml + sessions.
 # Auto-stop: OFF — clients submit async over hours, no cold starts.
 
 app = "theochretree-coach"
-primary_region = "bom"
+# Singapore, NOT Mumbai. bom was RETIRED by Fly: it appears in neither
+# `fly platform regions` nor the 2026-10-01 pricing page's 17-region list.
+# This machine has run in sin since 2026-08 anyway, so the line was stale.
+# Singapore is also the cheaper home for an Indian audience: egress bills at
+# the Asia-Pacific rate ($0.04/GB), where bom billed India's ($0.12/GB).
+primary_region = "sin"
 
 [build]
   dockerfile = "Dockerfile"
