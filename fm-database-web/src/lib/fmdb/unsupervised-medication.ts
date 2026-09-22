@@ -22,14 +22,22 @@
  *    because a taper requires controlled dosing, which an over-the-counter
  *    supply cannot give.
  *
- * AND IT MUST NOT IMPORT A DIAGNOSIS. `_derive_conditions_from_intake` maps a
- * benzodiazepine to a condition_implication of anxiety/depression and reads the
- * drug's presence as "on treatment". For a client who started a sleeping pill
- * on their own and grew dependent, BOTH halves are false — Shweta carried
- * "Anxiety/Depression (on treatment)" in `active_conditions`, a field that is
- * prefilled into her own public intake form and seeds her plan. A
- * condition_implication should be downgraded when `current_mental_health_care`
- * is explicitly "No"; not yet built, flagged here so it is not forgotten.
+ * A NOTE ON THE DIAGNOSIS INFERENCE — AND WHY IT IS DELIBERATELY LEFT ALONE.
+ * `_derive_conditions_from_intake` maps a benzodiazepine to a
+ * condition_implication of anxiety/depression, and reads the drug's presence as
+ * "on treatment". For Shweta both halves were false (she started a sleeping pill
+ * alone and grew dependent), and it had to be corrected on her record by hand.
+ *
+ * It is tempting to suppress that inference whenever `current_mental_health_care`
+ * is "No". DO NOT. Coach decision 2026-09-21: "In most clients case they don't
+ * report a mental condition and we have to infer from the drugs. Shweta is an
+ * exception." Most clients on an SSRI are not in active mental health care, and
+ * the drug is the ONLY signal there is — gating on that field would break the
+ * inference precisely where it earns its keep, to fix a minority case the coach
+ * can correct in seconds. The exception stays a manual correction.
+ *
+ * This detector is a DIFFERENT question and is unaffected: it infers
+ * "unsupervised", not "diagnosed". Both can be true at once.
  *
  * Deliberately HIGH PRECISION. It fires only on named drug classes with real
  * dependence potential, and only when supervision is explicitly absent. A
