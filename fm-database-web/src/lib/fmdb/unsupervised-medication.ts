@@ -17,8 +17,19 @@
  *  - it rules out every sedating botanical (additive CNS depression);
  *  - an over-the-counter supply can be interrupted without warning, which for
  *    a dependent client is a medical emergency waiting to happen;
- *  - the client needs connecting to a prescriber, which is a different and
- *    more urgent referral than "inform their existing one".
+ *  - the referral is for a SUPERVISED TAPER, not for a prescription. A
+ *    self-started dependence has no indication to treat; the doctor is needed
+ *    because a taper requires controlled dosing, which an over-the-counter
+ *    supply cannot give.
+ *
+ * AND IT MUST NOT IMPORT A DIAGNOSIS. `_derive_conditions_from_intake` maps a
+ * benzodiazepine to a condition_implication of anxiety/depression and reads the
+ * drug's presence as "on treatment". For a client who started a sleeping pill
+ * on their own and grew dependent, BOTH halves are false — Shweta carried
+ * "Anxiety/Depression (on treatment)" in `active_conditions`, a field that is
+ * prefilled into her own public intake form and seeds her plan. A
+ * condition_implication should be downgraded when `current_mental_health_care`
+ * is explicitly "No"; not yet built, flagged here so it is not forgotten.
  *
  * Deliberately HIGH PRECISION. It fires only on named drug classes with real
  * dependence potential, and only when supervision is explicitly absent. A
@@ -217,7 +228,7 @@ export function detectUnsupervisedMedication(
       : `${classes.join(" + ")} taken without clinical supervision`,
     actions: [
       "Do NOT suggest reducing or stopping it. Abrupt withdrawal after long-term use of these drugs carries a seizure risk.",
-      "Connect them to a prescriber who will take it over — this is a referral to CREATE supervision, not to inform an existing prescriber.",
+      "Refer for a SUPERVISED TAPER, not for a prescription. The goal is getting them off safely, not legitimising or continuing the drug — and it needs a doctor because you cannot taper off an over-the-counter supply: a taper needs controlled, predictable dosing in planned decrements over months.",
       "Ask what they actually take per day. A tablet strength is not a daily dose, and unsupervised use drifts upward.",
       "If the supply is over-the-counter, tell them it can be interrupted without warning — for a dependent client that is a safety issue, not an inconvenience.",
       "Exclude every sedating botanical from the protocol (valerian, jatamansi, brahmi, kava, passionflower, high-dose ashwagandha) — additive CNS depression.",

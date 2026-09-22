@@ -25,6 +25,11 @@ describe("detectUnsupervisedMedication", () => {
     // are evidence, and the brand is the one a coach might not recognise
     expect(a.findings.some((f) => /restil/i.test(f.reported))).toBe(true);
     expect(a.actions[0]).toMatch(/do not suggest reducing or stopping/i);
+    // The referral is for a TAPER. Wording that implies legitimising or
+    // continuing the drug is wrong: a self-started dependence has no
+    // indication to treat.
+    expect(a.actions[1]).toMatch(/supervised taper/i);
+    expect(a.actions[1]).not.toMatch(/take it over/i);
     // The quote is rendered to the coach in quotation marks, so it must not
     // start or end mid-word — it read "ert mind, insomnia..." before the fix.
     const quote = a.findings.find((f) => f.withdrawalEvidence)!.withdrawalEvidence!;
