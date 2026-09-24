@@ -51,7 +51,7 @@ profiles_final:
     # add-on slugs already inside this panel — hidden from the add-on picker (and
     # dropped server-side) when this profile is chosen, so a test is never
     # recommended + charged twice. Gender/age profiles inherit this Base set.
-    covered_addon_slugs: [apob, apoa1, lp-a, am-cortisol]
+    covered_addon_slugs: [apob, apoa1, lp-a, am-cortisol, folate-serum, magnesium-serum, lft, rft]
   - id: 2
     name: "Women's Reproductive"
     audience: "women <45"
@@ -242,6 +242,14 @@ addon_tests:
   - { slug: reticulocyte,      name: Reticulocyte count,     quoted_inr: 450,  dos_list_inr: 480 }
   # Functional B12 (from earlier — confirm Acumen add-on price)
   - { slug: methylmalonic-acid, name: "MMA Serum (LC-MS/MS) — functional B12", quoted_inr: null, dos_list_inr: 3430 }
+  # Pulled from DOS for gap-only orders (a client whose recent report already
+  # covers most of the Base panel). Prices = "Acumen DOS.pdf" list, 2026-09-24.
+  # Serum folate + serum magnesium are the same forms the Base panel uses.
+  - { slug: folate-serum,      name: "Folate (serum)",       quoted_inr: null, dos_list_inr: 1400 }
+  - { slug: folate-rbc,        name: "Folate (RBC)",         quoted_inr: null, dos_list_inr: 2300 }
+  - { slug: magnesium-serum,   name: "Magnesium (serum)",    quoted_inr: null, dos_list_inr: 610 }
+  - { slug: lft,               name: "Liver function (LFT)", quoted_inr: null, dos_list_inr: 1000 }
+  - { slug: rft,               name: "Kidney function (RFT)", quoted_inr: null, dos_list_inr: 1400 }
 
 # Esoteric extras present in DOS but not yet quoted as add-ons:
 #   Apolipoprotein Profile 1870 · DHT 2750 · HLA-B27 3800 · Full Fatty Acid Profile 4000 · Salivary cortisol 2940
