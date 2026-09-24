@@ -99,10 +99,13 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   // The gender/age profiles (ids 2–4) are "Base panel + <profile>" — the Base
   // panel is always included — so label the package that way for Acumen (e.g.
   // "Base + Perimenopause"). Base itself (id 1) and add-on-only orders stay as-is.
+  // An add-on-only order (client's recent report already covers the Base panel)
+  // has no package — its first line is just the first test, which read as if the
+  // whole booking were one test.
   const packageName =
     order.profile_id === 1 ? "Base Panel"
     : order.profile_id != null ? `Base + ${panel}`
-    : panel;
+    : `Individual tests (${order.lines.length})`;
   const listText = order.includes?.length ? order.includes.join("; ") : panel;
   // Our cost = what Acumen invoices us (order.our_cost_inr — profile cost + any
   // add-ons at 50% of catalogue). NOT the client MRP; Acumen never sees margin.
@@ -117,7 +120,9 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   const allTests = order.includes?.length ? order.includes : [panel];
   const baseTests = baseIncludes.size ? allTests.filter((t) => baseIncludes.has(t)) : allTests;
   const extraTests = baseIncludes.size ? allTests.filter((t) => !baseIncludes.has(t)) : [];
-  const groupHeader = (order.profile_id != null && HORMONE_HEADER[order.profile_id]) || "Hormones & add-ons";
+  const groupHeader =
+    order.profile_id == null ? "Tests"
+    : HORMONE_HEADER[order.profile_id] || "Hormones & add-ons";
   const collectionLine = `${l.preferred_date}, ${slot}${order.fasting_required ? " · fasting" : ""}`;
   const v3Params = [
     flat(nameField),                        // {{1}} Client (name · age/sex)
