@@ -27,8 +27,8 @@ import {
   followupDecision,
   nextFollowupTouch,
   touchesFor,
-  renderFollowupMessage,
-  checkFollowupMessage,
+  renderFollowupEmail,
+  checkFollowupEmail,
   parseBookedCallDate,
   isFreeCallEventSlug,
   quotableConcern,
@@ -42,15 +42,15 @@ import {
 import {
   loadCommunicationThreadAction,
   recordOutboundMessageAction,
-  sendWhatsAppAction,
 } from "@/app/api/whatsapp/actions";
+import { sendClientEmailAction } from "@/app/api/email/actions";
+import { foundationSessionPaid } from "@/lib/fmdb/foundation-orders";
 
 type Dict = Record<string, unknown>;
 
 const STATE_FILE = "_discovery_followup.yaml";
-/** The approved generic opener: "Hi {{1}}, a quick note from my side: {{2}}
- *  Reply here whenever you can and I'll update your record." */
-const WA_TEMPLATE = "fm_coach_message_v1";
+/** What these sends are recorded as in the client's thread (+ _<touch>). */
+const THREAD_TEMPLATE = "fm_discovery_followup_email";
 const SAFE_ID = /^[A-Za-z0-9_-]+$/;
 const YMD = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -65,7 +65,8 @@ export interface FollowupTouchRecord {
   drafted_at?: string;
   sent_at?: string;
   skipped_at?: string;
-  message?: string;
+  subject?: string;
+  body?: string;
 }
 
 export interface FollowupState {
@@ -88,7 +89,8 @@ export interface FollowupDraftRow {
   daysSinceCall: number;
   touch: number;
   kind: FollowupTouchKind;
-  message: string;
+  subject: string;
+  body: string;
   /** Foundation track only — when the ₹12,000 credit lapses. */
   creditExpiresOn: string | null;
   /** Foundation recap with no Starting Map written yet. */
@@ -384,7 +386,7 @@ async function collect(today: string): Promise<Collected> {
         callDate,
         engagementStatus: es || null,
         hasPlan,
-        hasPhone: String(doc.mobile_number ?? "").trim() !== "",
+        hasEmail: String(doc.email ?? "").trim() !== "",
         lastInboundAt: null,
         upcomingBookingAt: upcoming,
         touchesHandled: handled,
@@ -449,7 +451,7 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
       callDate: c.callDate,
       engagementStatus: String(c.doc.engagement_status ?? "").trim() || null,
       hasPlan: c.hasPlan,
-      hasPhone: true,
+      hasEmail: true,
       lastInboundAt: inbound,
       upcomingBookingAt: c.upcomingBookingAt,
       touchesHandled: c.handled,
@@ -460,7 +462,7 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
       continue;
     }
 
-    const message = renderFollowupMessage(
+    const email = renderFollowupEmail(
       decision.touch.kind,
       {
         firstName: firstNameOf(c.doc, c.clientName),
@@ -500,7 +502,8 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
       due_on: addDaysYmd(c.callDate, decision.touch.day),
       status: "pending",
       drafted_at: new Date().toISOString(),
-      message,
+      subject: email.subject,
+      body: email.body,
     });
     await writeState(state);
     drafted++;
@@ -539,7 +542,8 @@ export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
         daysSinceCall,
         touch: pending.touch,
         kind: pending.kind,
-        message: pending.message ?? "",
+        subject: pending.subject ?? "",
+        body: pending.body ?? "",
         creditExpiresOn: c.track === "foundation" ? creditExpiresOn(c.callDate) : null,
         missingStartingMap: c.track === "foundation" && pending.kind === "fdn_recap" && !appUrlFor(c.doc),
       });
@@ -574,16 +578,16 @@ export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
 // ── coach actions ──────────────────────────────────────────────────────────
 
 /**
- * Send one approved draft — the ONLY path here that reaches a person.
+ * Send one approved draft by email — the ONLY path here that reaches a person.
  *
  * Re-checks eligibility at approval, because a draft can sit for days: someone
- * who signed up this morning, or messaged yesterday, must not get a nudge that
- * was queued before either happened.
+ * who signed up this morning, or wrote back yesterday, must not get a nudge
+ * that was queued before either happened.
  */
 export async function approveFollowupDraftAction(
   clientId: string,
   touchN: number,
-  message: string,
+  input: { subject: string; body: string },
 ): Promise<{ ok: boolean; error?: string; warnings?: string[] }> {
   if (!SAFE_ID.test(clientId)) return { ok: false, error: "bad client id" };
   const state = await readState(clientId);
@@ -604,46 +608,56 @@ export async function approveFollowupDraftAction(
     return { ok: false, error: "a plan exists for them now — nothing should be sent" };
   }
   // The track the record implies NOW must match the draft's — a free-call
-  // draft must not go to someone whose Foundation session has since happened.
+  // email must not go to someone whose paid Foundation session has since happened.
   const nowTrack: FollowupTrack = asYmd(doc.discovery_call_date) ? "foundation" : state.track;
   if (nowTrack !== state.track) {
-    return { ok: false, error: "they have had their Foundation session since this was drafted — the next scan will redraft" };
+    return { ok: false, error: "they have had their paid Foundation session since this was drafted — the next scan will redraft" };
   }
   const inbound = await lastInbound(clientId);
   if (inbound && t.drafted_at && inbound > t.drafted_at) {
     return {
       ok: false,
-      error: `they messaged on ${inbound.slice(0, 10)}, after this was drafted — reply to them personally`,
+      error: `they got in touch on ${inbound.slice(0, 10)}, after this was drafted — reply to them personally`,
     };
   }
 
-  const body = (message ?? "").trim();
-  const gate = checkFollowupMessage(body, state.track);
+  const subject = (input.subject ?? "").trim();
+  const body = (input.body ?? "").trim();
+  const gate = checkFollowupEmail(subject, body, state.track);
   if (!gate.ok) return { ok: false, error: gate.refuse.join(" · ") };
 
-  const phone = String(doc.mobile_number ?? "").trim();
-  if (!phone) return { ok: false, error: "no mobile number on file" };
-  const firstName = firstNameOf(doc, state.client_name);
+  const to = String(doc.email ?? "").trim();
+  if (!to) return { ok: false, error: "no email address on file" };
 
-  const sent = await sendWhatsAppAction(phone, WA_TEMPLATE, [firstName, body], {
-    name: String(doc.display_name ?? ""),
+  const html = `<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.6;color:#2b2d42;white-space:pre-wrap;">${body
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")}</div>`;
+  const sent = await sendClientEmailAction({
+    to,
+    bcc: process.env.GMAIL_USER ?? undefined,
+    subject,
+    textBody: body,
+    htmlBody: html,
   });
-  if (!sent.ok) return { ok: false, error: sent.error || "WhatsApp send failed" };
+  if (!sent.ok) return { ok: false, error: sent.error };
 
   // Recorded only after a successful send, so a failure never shows in the
   // thread as though it went.
   const rec = await recordOutboundMessageAction({
     clientId,
-    templateName: WA_TEMPLATE,
-    renderedBody: `Hi ${firstName}, a quick note from my side: ${body} Reply here whenever you can and I'll update your record.`,
+    templateName: `${THREAD_TEMPLATE}_${touchN}`,
+    renderedBody: `[subject: ${subject}]\n\n${body}`,
+    channel: "email",
   });
   if (!rec.ok) {
-    console.error(`[discovery-followup] sent touch ${touchN} to ${clientId} but could not record it: ${rec.error}`);
+    console.error(`[discovery-followup] emailed touch ${touchN} to ${clientId} but could not record it: ${rec.error}`);
   }
 
   t.status = "sent";
   t.sent_at = new Date().toISOString();
-  t.message = body;
+  t.subject = subject;
+  t.body = body;
   await writeState(state);
   revalidatePath("/dashboard-v2");
   revalidatePath(`/clients-v2/${clientId}`);
@@ -708,15 +722,15 @@ export async function resumeFollowupAction(clientId: string): Promise<{ ok: bool
 }
 
 /**
- * Start (or correct) a follow-up by hand — for a call the system could not
- * date, e.g. a call arranged on WhatsApp.
+ * Record that a FREE discovery call happened on a date — the free half of the
+ * "free or paid?" choice (recordDiscoveryCallAction in app-token.ts is the
+ * paid half). Also how a call the system could not date gets into follow-up.
  *
- * A FOUNDATION start is refused here on purpose: the foundation track must
- * count from discovery_call_date, which the client's app uses for the credit.
- * Use "Mark discovery call done" on their overview instead, so the message and
- * the app agree.
+ * Deliberately touches nothing on client.yaml: a free call must never set
+ * discovery_call_date, because that starts a ₹12,000 credit countdown in the
+ * client's app.
  */
-export async function startFollowupAction(
+export async function recordFreeCallAction(
   clientId: string,
   callDate: string,
 ): Promise<{ ok: boolean; error?: string }> {
@@ -727,7 +741,16 @@ export async function startFollowupAction(
   const doc = await readYaml(path.join(clientDir(clientId), "client.yaml"));
   if (!doc) return { ok: false, error: "client record not found" };
   if (asYmd(doc.discovery_call_date)) {
-    return { ok: false, error: "they have a Foundation call date already — they are on the Foundation follow-up" };
+    return { ok: false, error: "they are already recorded as having had the PAID Foundation session" };
+  }
+  // A paid Foundation order means this was not a free call — recording it as
+  // one would send them the "book a Foundation session" emails they have
+  // already paid for.
+  if ((await foundationSessionPaid(clientId)).paid) {
+    return {
+      ok: false,
+      error: "they have a paid Foundation order — record this as the PAID Foundation session instead",
+    };
   }
   const state = (await readState(clientId)) ?? {
     client_id: clientId,
@@ -745,4 +768,49 @@ export async function startFollowupAction(
   await writeState(state);
   revalidatePath("/dashboard-v2");
   return { ok: true };
+}
+
+/**
+ * Record a discovery call as FREE or PAID — the one place the coach answers
+ * "which kind of call was this?", used by the overview card, the Starting Map
+ * workspace and the dashboard panel alike.
+ *
+ *   paid → the ₹12,000 Foundation session: sets discovery_call_date, which
+ *          reveals the Starting Map and starts the 15-day credit in their app.
+ *   free → the free discovery call: no credit, nothing on client.yaml; starts
+ *          the free-call email follow-up (next step = the Foundation session).
+ */
+export async function recordDiscoveryCallAction(
+  clientId: string,
+  kind: "free" | "paid",
+  onDate: string,
+): Promise<{ ok: boolean; error?: string; creditExpiresOn?: string | null }> {
+  if (!SAFE_ID.test(clientId)) return { ok: false, error: "bad client id" };
+  if (!YMD.test(onDate)) return { ok: false, error: "date must be YYYY-MM-DD" };
+  if (kind === "free") {
+    const r = await recordFreeCallAction(clientId, onDate);
+    if (r.ok) revalidatePath(`/clients-v2/${clientId}`);
+    return { ...r, creditExpiresOn: null };
+  }
+  const { markDiscoveryCallDoneAction } = await import("@/lib/server-actions/app-token");
+  const r = await markDiscoveryCallDoneAction(clientId, onDate);
+  if (!r.ok) return { ok: false, error: r.error };
+  // A free-call follow-up in flight is now the wrong offer; the next scan
+  // moves them to the Foundation track and expires any pending free draft.
+  revalidatePath("/dashboard-v2");
+  return { ok: true, creditExpiresOn: r.credit.expiresOn };
+}
+
+/** How a person's call is currently recorded, for the "free or paid?" control. */
+export async function loadCallRecordAction(
+  clientId: string,
+): Promise<{ kind: "free" | "paid" | null; date: string | null; foundationPaid: boolean }> {
+  if (!SAFE_ID.test(clientId)) return { kind: null, date: null, foundationPaid: false };
+  const doc = await readYaml(path.join(clientDir(clientId), "client.yaml"));
+  const paidDate = doc ? asYmd(doc.discovery_call_date) : null;
+  const foundationPaid = (await foundationSessionPaid(clientId).catch(() => ({ paid: false }))).paid;
+  if (paidDate) return { kind: "paid", date: paidDate, foundationPaid };
+  const st = await readState(clientId);
+  if (st?.manual?.track === "free") return { kind: "free", date: st.manual.call_date, foundationPaid };
+  return { kind: null, date: null, foundationPaid };
 }

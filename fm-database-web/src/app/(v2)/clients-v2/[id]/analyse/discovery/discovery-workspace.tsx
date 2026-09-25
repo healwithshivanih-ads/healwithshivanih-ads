@@ -383,7 +383,7 @@ function StartingMapEditor({
       <div style={{ display: "grid", gap: 14 }}>
         {live && callDate && (
           <div style={{ fontSize: 12.5, color: "#2f7a3f" }}>
-            ✓ Revealed {humanDate(callDate)} · the 15-day upgrade window is running.
+            ✓ Paid Foundation session {humanDate(callDate)} · map revealed · the 15-day ₹12,000 credit window is running.
           </div>
         )}
 
@@ -446,13 +446,13 @@ function StartingMapEditor({
               onClick={reveal}
               disabled={revealing || saving}
             >
-              {revealing ? "Revealing…" : "✓ Discovery call done — reveal map + start window"}
+              {revealing ? "Revealing…" : "✓ Paid Foundation session done — reveal map + start ₹12,000 credit"}
             </button>
           )}
         </div>
         {!live && (
           <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary, #6f6a5d)" }}>
-            Revealing shows this map in the client&apos;s app and starts the 15-day upgrade-credit countdown. Save a draft as many times as you like before then.
+            For the <strong>paid ₹12,000 Foundation session</strong> only: revealing shows this map in the client&apos;s app and starts the 15-day ₹12,000 credit countdown towards the programme. Had a <strong>free</strong> discovery call instead? Don&apos;t use this — record it as a free call on their overview (no credit). Save a draft as many times as you like before then.
           </div>
         )}
       </div>

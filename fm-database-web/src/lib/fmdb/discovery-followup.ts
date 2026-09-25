@@ -21,7 +21,7 @@
  *
  * A free-call message must never mention a credit the person does not have,
  * and a Foundation message must never pitch the Foundation session they have
- * already bought. `renderFollowupMessage` and `checkFollowupMessage` both
+ * already bought. `renderFollowupEmail` and `checkFollowupEmail` both
  * enforce that split — the second one at send time, over whatever the coach
  * finally has on screen.
  *
@@ -122,7 +122,7 @@ export interface FollowupDecisionInput {
   engagementStatus: string | null;
   /** Any plan at all — draft, ready or published. */
   hasPlan: boolean;
-  hasPhone: boolean;
+  hasEmail: boolean;
   /** ISO timestamp of the most recent inbound message, if any. */
   lastInboundAt: string | null;
   /** ISO start time of a booking still in the future, if any. */
@@ -196,8 +196,8 @@ export function followupDecision(input: FollowupDecisionInput): FollowupDecision
     return { draft: false, reason: `call is on ${callDate} — not happened yet`, daysSinceCall };
   }
 
-  if (!input.hasPhone) {
-    return { draft: false, reason: "no mobile number on file", daysSinceCall };
+  if (!input.hasEmail) {
+    return { draft: false, reason: "no email address on file", daysSinceCall };
   }
 
   const inbound = ymdOf(input.lastInboundAt);
@@ -279,7 +279,7 @@ export function humanDate(ymd: string): string {
  * A booking-form concern short and plain enough to quote back to them.
  *
  * Booking forms carry anything from "Gut health" to a paragraph of diagnoses.
- * A long one quoted into a WhatsApp line reads like a form letter, so anything
+ * A long one quoted back into an email reads like a form letter, so anything
  * over a sentence's worth is dropped and the copy falls back to a phrasing that
  * does not name it. Lower-cased only at the start, so "MS" and "Hashimoto's"
  * survive.
@@ -292,61 +292,112 @@ export function quotableConcern(raw: string | null | undefined): string | null {
   return s.charAt(0).toLowerCase() + s.slice(1);
 }
 
+export interface FollowupEmail {
+  subject: string;
+  body: string;
+}
+
+/** Sign-off used on every follow-up, matching the win-back emails. */
+export const FOLLOWUP_SIGN_OFF = "Shivani";
+
+/** Wrap paragraphs in the greeting and sign-off every follow-up email shares. */
+function letter(firstName: string, paragraphs: string[]): string {
+  return [`Hi ${firstName},`, ...paragraphs, `Warmly,\n${FOLLOWUP_SIGN_OFF}`].join("\n\n");
+}
+
 /**
- * The `{{2}}` body for fm_coach_message_v1.
+ * The follow-up email for one touch — subject and plain-text body.
  *
- * The approved template reads "Hi {{1}}, a quick note from my side: {{2}}
- * Reply here whenever you can and I'll update your record." — so these start
- * mid-sentence-friendly, contain NO line breaks (Meta rejects newlines in a
- * parameter), and end with their own punctuation.
+ * Email only (coach decision 2026-09-25): these are sent from her mailbox, not
+ * WhatsApp. The body is plain text with paragraph breaks; the send path wraps
+ * it in minimal HTML.
  */
-export function renderFollowupMessage(kind: FollowupTouchKind, f: FollowupFacts, track: FollowupTrack): string {
+export function renderFollowupEmail(
+  kind: FollowupTouchKind,
+  f: FollowupFacts,
+  track: FollowupTrack,
+): FollowupEmail {
   // "what you shared about X" reads naturally whether X is "gut health" or a
   // comma list like "migraine, iron and vitamin deficiency, sleep".
   const about = f.concern ? `what you shared about ${f.concern}` : "what you're dealing with";
+  const expiry = humanDate(creditExpiresOn(f.callDate));
+  const name = f.firstName;
   switch (kind) {
     case "free_thanks":
-      return (
-        `thank you for taking the time to talk with me. ` +
-        `If you'd like to go deeper into ${about}, the next step is a Foundation session: ` +
-        `we go through your full health history together, I give you the list of labs worth doing, ` +
-        `and then we read the results side by side so you know where you actually stand. ` +
-        `Would you like me to send you the details?`
-      );
+      return {
+        subject: "Thank you for our chat",
+        body: letter(name, [
+          "Thank you for taking the time to talk with me.",
+          `If you'd like to go deeper into ${about}, the next step is a Foundation session. We go through your full health history together, I give you the list of labs worth doing, and then we read the results side by side so you know where you actually stand.`,
+          "Would you like me to send you the details? Just reply to this email.",
+        ]),
+      };
     case "free_foundation_offer":
-      return (
-        `I wanted to follow up on our chat. The Foundation session is ₹12,000 and it is where we map ${about} properly: ` +
-        `your history, the right labs, and what the results mean for you. ` +
-        `If you then decide to do the 12-week programme within 15 days of that session, the ₹12,000 is adjusted against it, so nothing is wasted. ` +
-        `Shall I send you the link to book?`
-      );
+      return {
+        subject: "The next step, if you'd like it",
+        body: letter(name, [
+          `I wanted to follow up on our chat. The Foundation session is ₹12,000, and it is where we map ${about} properly: your history, the right labs, and what the results mean for you.`,
+          "If you then decide to do the 12-week programme within 15 days of that session, the ₹12,000 is adjusted against it, so nothing is wasted.",
+          "Reply to this email and I'll send you the link to book.",
+        ]),
+      };
     case "free_check_in":
-      return (
-        `it's been a couple of weeks since we spoke, and I wanted to check in on how you are doing. ` +
-        `If something is holding you back from the next step (timing, cost, or questions about how it works), tell me honestly and we can talk it through.`
-      );
+      return {
+        subject: "Checking in",
+        body: letter(name, [
+          "It's been a couple of weeks since we spoke, and I wanted to check in on how you are doing.",
+          "If something is holding you back from the next step (timing, cost, or questions about how it works), tell me honestly and we can talk it through.",
+        ]),
+      };
     case "fdn_recap":
-      return f.appUrl
-        ? `thank you for our Foundation session. Your Starting Map is now in your Ochre Tree app: ${f.appUrl} ` +
-            `It has what we found and the first changes to begin with. Start with just the first one this week; that is enough.`
-        : `thank you for our Foundation session. Start with just the first change we discussed this week; that is enough. ` +
-            `I will share your written Starting Map with you shortly.`;
+      return {
+        subject: "Your Starting Map",
+        body: letter(
+          name,
+          f.appUrl
+            ? [
+                "Thank you for our Foundation session.",
+                `Your Starting Map is now in your Ochre Tree app:\n${f.appUrl}`,
+                "It has what we found and the first changes to begin with. Start with just the first one this week; that is enough.",
+              ]
+            : [
+                "Thank you for our Foundation session.",
+                "Start with just the first change we discussed this week; that is enough. I will share your written Starting Map with you shortly.",
+              ],
+        ),
+      };
     case "fdn_journey":
-      return (
-        `I hope the first changes are settling in. When you're ready to go further with ${about}, ` +
-        `the 12-week programme is where we build your full plan: food, the right labs over time, and me alongside you on WhatsApp throughout. ` +
-        `Your ₹12,000 from the Foundation session is adjusted against it until ${humanDate(creditExpiresOn(f.callDate))}.`
-      );
+      return {
+        subject: "Where we could go from here",
+        body: letter(name, [
+          "I hope the first changes are settling in.",
+          `When you're ready to go further with ${about}, the 12-week programme is where we build your full plan: food, the right labs over time, and me alongside you throughout.`,
+          `Your ₹12,000 from the Foundation session is adjusted against the programme until ${expiry}.`,
+        ]),
+      };
     case "fdn_credit_expiring":
-      return (
-        `a quick heads-up that your ₹12,000 Foundation credit towards the 12-week programme is open until ${humanDate(creditExpiresOn(f.callDate))}. ` +
-        `If you'd like to begin, reply here and I'll send your enrolment link. ` +
-        `If something is holding you back, tell me and we can talk it through.`
-      );
+      return {
+        subject: `Your Foundation credit is open until ${expiry}`,
+        body: letter(name, [
+          `A quick heads-up that your ₹12,000 Foundation credit towards the 12-week programme is open until ${expiry}.`,
+          "If you'd like to begin, reply to this email and I'll send your enrolment link. If something is holding you back, tell me and we can talk it through.",
+        ]),
+      };
     case "door_open":
-      return track === "foundation"
-        ? `no pressure at all from my side. Whenever you feel ready for the next step, just message me here. Your reports and Starting Map stay in your Ochre Tree app in the meantime.`
-        : `no pressure at all from my side. Whenever you feel ready to look into this properly, just message me here and we'll pick it up.`;
+      return {
+        subject: "Whenever you're ready",
+        body: letter(
+          name,
+          track === "foundation"
+            ? [
+                "No pressure at all from my side. Whenever you feel ready for the next step, just reply to this email.",
+                "Your reports and Starting Map stay in your Ochre Tree app in the meantime.",
+              ]
+            : [
+                "No pressure at all from my side. Whenever you feel ready to look into this properly, just reply to this email and we'll pick it up.",
+              ],
+        ),
+      };
   }
 }
 
@@ -369,53 +420,49 @@ export interface FollowupGateResult {
   warn: string[];
 }
 
-/** WhatsApp template parameters are capped at 1024 chars; leave headroom. */
-export const MAX_MESSAGE_CHARS = 900;
+export const MAX_BODY_CHARS = 3000;
 
 /**
  * Checked over what the coach finally has on screen, at approval.
  *
- * Refuses: line breaks (Meta rejects the parameter), unfilled brackets, an
- * over-long body, and — the rule this feature exists for — any mention of a
- * credit, adjustment or "applies" to someone who came through the FREE call.
- * A free-call message may describe the Foundation session's own credit only in
- * the one approved phrasing ("adjusted against it" after "within 15 days of
- * that session"); a looser mention would read as though the free call itself
- * carried money forward.
+ * Refuses: an empty subject or body, unfilled brackets, an over-long body, and
+ * — the rule this feature exists for — any mention of a credit to someone who
+ * came through the FREE call. A free-call email may describe the Foundation
+ * session's own credit only in the approved phrasing ("adjusted against it"
+ * alongside "within 15 days of that session"); a looser mention would read as
+ * though the free call itself carried money forward.
  */
-export function checkFollowupMessage(
-  message: string,
+export function checkFollowupEmail(
+  subject: string,
+  body: string,
   track: FollowupTrack,
 ): FollowupGateResult {
   const refuse: string[] = [];
   const warn: string[] = [];
-  const m = message.trim();
+  const b = body.trim();
+  const all = `${subject}\n${b}`;
 
-  if (!m) refuse.push("message is empty");
-  if (/[\r\n\t]/.test(m)) refuse.push("remove the line breaks — WhatsApp templates reject them");
-  if (/ {5,}/.test(m)) refuse.push("remove the long run of spaces — WhatsApp templates reject it");
-  if (/\[[^\]]*\]|\{\{/.test(m)) refuse.push("there is an unfilled [bracket] or {{placeholder}} in the message");
-  if (m.length > MAX_MESSAGE_CHARS) refuse.push(`message is ${m.length} characters; keep it under ${MAX_MESSAGE_CHARS}`);
+  if (!subject.trim()) refuse.push("the subject is empty");
+  if (!b) refuse.push("the email is empty");
+  if (/\[[^\]]*\]|\{\{/.test(all)) refuse.push("there is an unfilled [bracket] or {{placeholder}} in the email");
+  if (b.length > MAX_BODY_CHARS) refuse.push(`the email is ${b.length} characters; keep it under ${MAX_BODY_CHARS}`);
 
   if (track === "free") {
-    const creditWords = /\bcredit(ed|s)?\b|\bdeduct/i;
-    if (creditWords.test(m)) {
+    if (/\bcredit(ed|s)?\b|\bdeduct/i.test(all)) {
       refuse.push("this person had the FREE call — there is no credit to mention");
     }
-    // "adjusted against it" is allowed only when it is plainly about the
-    // Foundation session (the approved day-5 wording).
-    if (/adjusted against/i.test(m) && !/within 15 days of that session/i.test(m)) {
+    if (/adjusted against/i.test(all) && !/within 15 days of that session/i.test(all)) {
       refuse.push(
         "\"adjusted against\" must stay tied to the Foundation session (\"within 15 days of that session\") — the free call carries no credit",
       );
     }
   } else {
-    if (/foundation session is ₹|book (a|your) foundation/i.test(m)) {
+    if (/foundation session is ₹|book (a|your) foundation/i.test(all)) {
       refuse.push("this person already had the Foundation session — don't sell it to them again");
     }
   }
 
-  const rupees = m.match(/₹\s?[\d,]+/g) ?? [];
+  const rupees = all.match(/₹\s?[\d,]+/g) ?? [];
   for (const r of rupees) {
     const n = Number(r.replace(/[^\d]/g, ""));
     if (n !== 12000) warn.push(`${r} is quoted — double-check it is the current price`);

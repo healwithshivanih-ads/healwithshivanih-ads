@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import {
   followupDecision,
-  renderFollowupMessage,
-  checkFollowupMessage,
+  renderFollowupEmail,
+  checkFollowupEmail,
   parseBookedCallDate,
   isFreeCallEventSlug,
   quotableConcern,
@@ -10,7 +10,6 @@ import {
   touchesFor,
   type FollowupDecisionInput,
   type FollowupTouchKind,
-  type FollowupTrack,
 } from "./discovery-followup";
 
 const base: FollowupDecisionInput = {
@@ -19,7 +18,7 @@ const base: FollowupDecisionInput = {
   callDate: "2026-09-20",
   engagementStatus: "pending",
   hasPlan: false,
-  hasPhone: true,
+  hasEmail: true,
   lastInboundAt: null,
   upcomingBookingAt: null,
   touchesHandled: [],
@@ -64,8 +63,8 @@ describe("followupDecision — who is open", () => {
     expect(followupDecision({ ...base, upcomingBookingAt: "2026-09-24T06:00:00Z" }).draft).toBe(false);
   });
 
-  it("needs a phone", () => {
-    expect(followupDecision({ ...base, hasPhone: false }).draft).toBe(false);
+  it("needs an email address", () => {
+    expect(followupDecision({ ...base, hasEmail: false }).draft).toBe(false);
   });
 });
 
@@ -106,56 +105,56 @@ const FDN_KINDS: FollowupTouchKind[] = ["fdn_recap", "fdn_journey", "fdn_credit_
 
 describe("copy", () => {
   it.each(FREE_KINDS)("free %s passes its own gate and never mentions a credit", (k) => {
-    const msg = renderFollowupMessage(k, facts, "free");
-    expect(msg).not.toMatch(/credit/i);
-    expect(checkFollowupMessage(msg, "free").ok).toBe(true);
+    const e = renderFollowupEmail(k, facts, "free");
+    expect(`${e.subject} ${e.body}`).not.toMatch(/credit/i);
+    expect(checkFollowupEmail(e.subject, e.body, "free").refuse).toEqual([]);
   });
 
   it.each(FDN_KINDS)("foundation %s passes its own gate", (k) => {
-    const msg = renderFollowupMessage(k, facts, "foundation");
-    const g = checkFollowupMessage(msg, "foundation");
-    expect(g.refuse).toEqual([]);
+    const e = renderFollowupEmail(k, facts, "foundation");
+    expect(checkFollowupEmail(e.subject, e.body, "foundation").refuse).toEqual([]);
   });
 
-  it("no rendered message carries a line break (Meta rejects them)", () => {
-    for (const [k, tr] of [
-      ...FREE_KINDS.map((k) => [k, "free"] as const),
-      ...FDN_KINDS.map((k) => [k, "foundation"] as const),
-    ]) {
-      expect(renderFollowupMessage(k, facts, tr as FollowupTrack)).not.toMatch(/\n/);
+  it("every email greets by first name and signs off", () => {
+    for (const k of FREE_KINDS) {
+      const { body } = renderFollowupEmail(k, facts, "free");
+      expect(body.startsWith("Hi Asha,")).toBe(true);
+      expect(body.trim().endsWith("Shivani")).toBe(true);
     }
   });
 
-  it("foundation messages carry the same expiry date the app shows", () => {
-    expect(renderFollowupMessage("fdn_credit_expiring", facts, "foundation")).toContain("5 October");
+  it("foundation emails carry the same expiry date the app shows", () => {
+    const e = renderFollowupEmail("fdn_credit_expiring", facts, "foundation");
+    expect(e.body).toContain("5 October");
+    expect(e.subject).toContain("5 October");
   });
 
   it("recap without a Starting Map does not link an empty app", () => {
-    expect(renderFollowupMessage("fdn_recap", { ...facts, appUrl: null }, "foundation")).not.toContain("http");
+    expect(renderFollowupEmail("fdn_recap", { ...facts, appUrl: null }, "foundation").body).not.toContain("http");
   });
 });
 
-describe("checkFollowupMessage — the free-call credit rule", () => {
-  it("refuses any credit wording to a free-call person", () => {
-    const g = checkFollowupMessage("your ₹12,000 credit is waiting for you.", "free");
-    expect(g.ok).toBe(false);
+describe("checkFollowupEmail — the free-call credit rule", () => {
+  it("refuses any credit wording to a free-call person, subject included", () => {
+    expect(checkFollowupEmail("Hello", "your ₹12,000 credit is waiting for you.", "free").ok).toBe(false);
+    expect(checkFollowupEmail("Your credit", "hello", "free").ok).toBe(false);
   });
 
   it("refuses a loose 'adjusted against' to a free-call person", () => {
-    expect(checkFollowupMessage("our call fee is adjusted against the programme.", "free").ok).toBe(false);
+    expect(checkFollowupEmail("Hi", "our call fee is adjusted against the programme.", "free").ok).toBe(false);
   });
 
   it("refuses re-selling the Foundation session to someone who bought it", () => {
-    expect(checkFollowupMessage("the Foundation session is ₹12,000 — shall I book it?", "foundation").ok).toBe(false);
+    expect(checkFollowupEmail("Hi", "the Foundation session is ₹12,000 — shall I book it?", "foundation").ok).toBe(false);
   });
 
-  it("refuses line breaks and placeholders", () => {
-    expect(checkFollowupMessage("hello\nthere.", "free").ok).toBe(false);
-    expect(checkFollowupMessage("your link: [LINK].", "free").ok).toBe(false);
+  it("refuses placeholders and an empty subject", () => {
+    expect(checkFollowupEmail("Hi", "your link: [LINK].", "free").ok).toBe(false);
+    expect(checkFollowupEmail(" ", "hello", "free").ok).toBe(false);
   });
 
   it("warns on a price other than the Foundation fee", () => {
-    const g = checkFollowupMessage("the programme is ₹85,000.", "foundation");
+    const g = checkFollowupEmail("Hi", "the programme is ₹85,000.", "foundation");
     expect(g.ok).toBe(true);
     expect(g.warn.length).toBe(1);
   });

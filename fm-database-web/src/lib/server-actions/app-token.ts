@@ -137,14 +137,23 @@ export async function shareDiscoveryApp(
 
 /**
  * Mark the discovery call done (the coach taps this after the client's labs are
- * in and the call has happened). Sets `discovery_call_date` — which REVEALS the
+ * in and the call has happened). PAID Foundation session only — a free
+ * discovery call goes through recordFreeCallAction and never sets this.
+ * Sets `discovery_call_date` — which REVEALS the
  * Starting Map recommendations in the app AND starts the 15-day upgrade-credit
  * countdown. Idempotent: re-tapping doesn't reset an existing window.
  */
 export async function markDiscoveryCallDoneAction(
   clientId: string,
+  /** The day the PAID Foundation session happened (YYYY-MM-DD, not in the
+   *  future). Defaults to today. The credit window counts from this date. */
+  onDate?: string,
 ): Promise<{ ok: true; callDate: string; credit: DiscoveryCredit } | { ok: false; error: string }> {
   if (!clientId) return { ok: false, error: "missing_client_id" };
+  if (onDate !== undefined) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(onDate)) return { ok: false, error: "date must be YYYY-MM-DD" };
+    if (onDate > istTodayYmd()) return { ok: false, error: "that session has not happened yet" };
+  }
   const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
   let data: Record<string, unknown>;
   try {
@@ -154,7 +163,7 @@ export async function markDiscoveryCallDoneAction(
   }
   let callDate = asYmd(data.discovery_call_date);
   if (!callDate) {
-    callDate = istTodayYmd();
+    callDate = onDate ?? istTodayYmd();
     data.discovery_call_date = callDate;
     await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }), "utf-8");
   }

@@ -2,19 +2,21 @@
 
 /**
  * DiscoveryAppCard — coach-side control to share the app at the DISCOVERY
- * (consult-only) stage: a client who's had the ₹12,000 call but hasn't signed
- * up for the full programme. One click issues the stable app link, starts the
- * 15-day upgrade-credit window, and projects the read-only discovery app
+ * (consult-only) stage: a client who's had a discovery call but hasn't signed
+ * up for the full programme. One click issues the stable app link; recording
+ * the call as the PAID Foundation session (not a free call) starts the 15-day
+ * ₹12,000 credit window; and it projects the read-only discovery app
  * (Lab Vault + Starting Map, locked Plan/Progress) to Fly.
  *
  * Same `app_token` the full app uses — when a plan is later published, this
  * exact link flips to the full Ochre Tree in place. See DISCOVERY_TIER_SPEC.md.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FmPanel } from "@/components/fm";
 import { copyText } from "@/lib/copy-text";
 import { resolveDiscoveryCredit, type DiscoveryCredit } from "@/lib/fmdb/discovery-tier";
+import { CallKindRecorder } from "@/components/call-kind-recorder";
 
 interface Props {
   clientId: string;
@@ -109,23 +111,25 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
     }
   };
 
-  // After the labs are in and the call has happened: reveal the Starting Map +
-  // start the 15-day credit window.
-  const markCallDone = async () => {
-    setBusy(true);
-    setError("");
-    try {
-      const { markDiscoveryCallDoneAction } = await import("@/lib/server-actions/app-token");
-      const out = await markDiscoveryCallDoneAction(clientId);
-      if (!out.ok) throw new Error(out.error);
-      setCallDate(out.callDate);
-      setCredit(out.credit);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "could not update");
-    } finally {
-      setBusy(false);
-    }
-  };
+  // "Which call was this?" — a FREE call is recorded without any credit; only
+  // the PAID Foundation session sets discovery_call_date (reveals the Starting
+  // Map + starts the 15-day ₹12,000 credit). See CallKindRecorder.
+  const [freeCallDate, setFreeCallDate] = useState<string | null>(null);
+  const [foundationPaid, setFoundationPaid] = useState(false);
+  useEffect(() => {
+    let live = true;
+    import("@/lib/server-actions/discovery-followup")
+      .then((m) => m.loadCallRecordAction(clientId))
+      .then((r) => {
+        if (!live) return;
+        setFoundationPaid(r.foundationPaid);
+        if (r.kind === "free") setFreeCallDate(r.date);
+      })
+      .catch(() => {/* the recorder still works without it */});
+    return () => {
+      live = false;
+    };
+  }, [clientId]);
 
   const copy = async () => {
     if (!url) return;
@@ -144,9 +148,9 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
         <div style={{ display: "grid", gap: 8 }}>
           <div style={{ fontSize: 13, color: "var(--fm-muted, #6f6a5d)" }}>
             For a consult-only client: opens the app so they can complete their intake and book their
-            labs. Their Starting Map + the 15-day upgrade window appear only <strong>after their labs are
-            in and you mark the discovery call done</strong>. Same link upgrades to the full app when you
-            publish their plan.
+            labs. Their Starting Map + the 15-day ₹12,000 credit appear only <strong>after you record
+            their call as the paid Foundation session</strong> (a free call carries no credit). Same link
+            upgrades to the full app when you publish their plan.
           </div>
           <button className="fm-btn" onClick={share} disabled={busy}>
             {busy ? "Sharing…" : "🌱 Share app (discovery stage)"}
@@ -163,14 +167,30 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
           {callDate ? (
             credit && <CreditChip credit={credit} />
           ) : (
-            <div style={{ display: "grid", gap: 6, padding: "9px 11px", background: "var(--fm-surface)", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8 }}>
+            <div style={{ display: "grid", gap: 8, padding: "9px 11px", background: "var(--fm-surface)", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8 }}>
+              {freeCallDate && (
+                <div style={{ fontSize: 12.5, color: "#2f7a3f" }}>
+                  ✓ Free discovery call on {humanDate(freeCallDate)} — no credit. Follow-up emails offer the
+                  Foundation session. If they then book the paid session, record it below.
+                </div>
+              )}
               <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)", lineHeight: 1.45 }}>
-                The client&apos;s Starting Map + the 15-day window stay hidden until their labs are in. Once
-                you&apos;ve had the discovery call, mark it done to reveal the recommendations and start the clock.
+                After the call, record which kind it was. Only the <strong>paid Foundation session</strong>{" "}
+                reveals their Starting Map and starts the 15-day ₹12,000 credit in their app.
               </div>
-              <button className="fm-btn" onClick={markCallDone} disabled={busy} style={{ justifySelf: "start" }}>
-                {busy ? "…" : "✓ Discovery call done — reveal map + start window"}
-              </button>
+              <CallKindRecorder
+                clientId={clientId}
+                clientName={displayName ?? undefined}
+                foundationPaid={foundationPaid}
+                onRecorded={(kind, date) => {
+                  if (kind === "paid") {
+                    setCallDate(date);
+                    setCredit(resolveDiscoveryCredit(date, istTodayYmd()));
+                  } else {
+                    setFreeCallDate(date);
+                  }
+                }}
+              />
             </div>
           )}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>

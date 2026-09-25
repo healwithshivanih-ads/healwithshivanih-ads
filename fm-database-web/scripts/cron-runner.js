@@ -26,7 +26,7 @@
  *                                    resolved. Runs after 10:00 graduation-
  *                                    notice so it can see that send and stay
  *                                    quiet around it.
- *   10:45  discovery-followup     — DRAFT (never send) WhatsApp follow-ups for
+ *   10:45  discovery-followup     — DRAFT (never send) follow-up EMAILS for
  *                                    people who had a free discovery call or a
  *                                    paid Foundation session and have not
  *                                    signed up. Coach approves in the dashboard.
