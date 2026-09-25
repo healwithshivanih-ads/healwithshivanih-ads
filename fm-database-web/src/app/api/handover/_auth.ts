@@ -20,9 +20,22 @@ export interface AuthResult {
 }
 
 export async function verifyHandoverRequest(req: Request): Promise<AuthResult> {
-  const secret = process.env.HANDOVER_SECRET;
+  return verifySignedRequest(req, process.env.HANDOVER_SECRET, "HANDOVER_SECRET", ALLOWED_SOURCES);
+}
+
+/**
+ * The same HMAC check with a caller-chosen secret and source list — so a
+ * narrow pipe (e.g. /api/handover/triage-paid) can carry its OWN secret and
+ * enabling it does not also switch on the programme handover routes.
+ */
+export async function verifySignedRequest(
+  req: Request,
+  secret: string | undefined,
+  secretName: string,
+  allowedSources: ReadonlySet<string>,
+): Promise<AuthResult> {
   if (!secret) {
-    return { ok: false, error: "HANDOVER_SECRET not configured on server" };
+    return { ok: false, error: `${secretName} not configured on server` };
   }
 
   const rawBody = await req.text();
@@ -49,7 +62,7 @@ export async function verifyHandoverRequest(req: Request): Promise<AuthResult> {
   }
 
   const source = body.source;
-  if (typeof source !== "string" || !ALLOWED_SOURCES.has(source)) {
+  if (typeof source !== "string" || !allowedSources.has(source)) {
     return { ok: false, error: `source_not_allowed: ${String(source)}` };
   }
 

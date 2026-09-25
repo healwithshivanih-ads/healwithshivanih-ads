@@ -222,6 +222,31 @@ export async function ensureClientForBooking(lead: BookingLead): Promise<LeadInt
 
 /** `fmdb client-new` + the fields the CLI has no flags for. */
 async function createLeadRecord(lead: BookingLead, name: string): Promise<string> {
+  return createProspectRecord({
+    name,
+    email: lead.email ?? null,
+    phone: lead.phone ?? null,
+    leadSource: lead.source === "wix" ? "wix_booking" : "calcom_booking",
+    origin: lead.source === "wix" ? "website booking" : "Cal.com booking",
+  });
+}
+
+/**
+ * Create a prospect record (`engagement_status: pending`,
+ * `lifecycle_state: prospect`) for someone who has made contact but not
+ * signed up. Shared by bookings and by the funnel's ₹999-payment notice so
+ * both land in exactly the same shape.
+ */
+export async function createProspectRecord(opts: {
+  name: string;
+  email: string | null;
+  phone: string | null;
+  leadSource: string;
+  /** Human words for the note, e.g. "Cal.com booking". */
+  origin: string;
+}): Promise<string> {
+  const lead = { email: opts.email, phone: opts.phone };
+  const name = opts.name;
   const { nextClientId } = await import("@/lib/server-actions/clients");
   const clientId = await nextClientId();
   const today = new Date().toISOString().slice(0, 10);
@@ -236,7 +261,7 @@ async function createLeadRecord(lead: BookingLead, name: string): Promise<string
     "--display-name", name,
   ];
   if (lead.phone) args.push("--mobile", lead.phone);
-  args.push("--notes", `Created automatically from a ${lead.source === "wix" ? "website" : "Cal.com"} booking on ${today}. Sex not captured at booking — confirm on the call.`);
+  args.push("--notes", `Created automatically from a ${opts.origin} on ${today}. Sex not captured — confirm on the call.`);
 
   await execFileP(PYTHON, args, { cwd: FMDB_REPO, timeout: 20000 });
 
@@ -253,7 +278,7 @@ async function createLeadRecord(lead: BookingLead, name: string): Promise<string
   // signal. "prospect" is the model's own word for a record that exists but
   // fires nothing outbound.
   doc.lifecycle_state = "prospect";
-  doc.lead_source = lead.source === "wix" ? "wix_booking" : "calcom_booking";
+  doc.lead_source = opts.leadSource;
   await fs.writeFile(file, yaml.dump(doc, { sortKeys: false }), "utf-8");
 
   return clientId;

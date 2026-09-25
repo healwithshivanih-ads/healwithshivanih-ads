@@ -115,6 +115,8 @@ export interface FollowupUnanchoredRow {
   clientId: string;
   clientName: string;
   reason: string;
+  /** YYYY-MM-DD the funnel reported a ₹999 payment, if any. */
+  triagePaidOn: string | null;
 }
 
 // ── disk ───────────────────────────────────────────────────────────────────
@@ -350,6 +352,11 @@ async function collect(today: string): Promise<Collected> {
     let source: CallSource = "booking";
     const dcall = asYmd(doc.discovery_call_date);
     const tcall = asYmd(doc.triage_call_date);
+    // Reported by ochre-funnel when the ₹999 clears. Paying is not having had
+    // the call, so this only anchors a follow-up once a 15-min call on or after
+    // the payment has happened.
+    const tpaid = asYmd(typeof doc.triage_paid_at === "string" ? doc.triage_paid_at.slice(0, 10) : doc.triage_paid_at);
+    const callsSincePaid = tpaid ? [...pastBooked, ...freeFromCal].filter((d) => d >= tpaid).sort() : [];
     if (dcall) {
       track = "foundation";
       callDate = dcall;
@@ -358,6 +365,13 @@ async function collect(today: string): Promise<Collected> {
       track = "triage";
       callDate = tcall;
       source = "triage";
+    } else if (tpaid) {
+      if (callsSincePaid.length) {
+        track = "triage";
+        callDate = callsSincePaid[callsSincePaid.length - 1];
+        source = "triage";
+      }
+      // else: paid, no call yet → falls to the unanchored row below
     } else if (state?.manual && YMD.test(state.manual.call_date)) {
       track = state.manual.track;
       callDate = state.manual.call_date;
@@ -375,9 +389,14 @@ async function collect(today: string): Promise<Collected> {
       unanchored.push({
         clientId: id,
         clientName,
-        reason: upcoming
-          ? `call booked for ${upcoming.slice(0, 10)} — follow-up starts after it`
-          : "no call date found — start it by hand if they had a call",
+        triagePaidOn: tpaid,
+        reason: tpaid
+          ? upcoming
+            ? `paid ₹999 on ${tpaid}; their call is booked for ${upcoming.slice(0, 10)} — follow-up starts after it`
+            : `paid ₹999 on ${tpaid} but hasn't booked the call yet — nudge them to book`
+          : upcoming
+            ? `call booked for ${upcoming.slice(0, 10)} — follow-up starts after it`
+            : "no call date found — record it if they had a call",
       });
       continue;
     }
@@ -630,7 +649,7 @@ export async function approveFollowupDraftAction(
   // email must not go to someone whose paid Foundation session has since happened.
   const nowTrack: FollowupTrack = asYmd(doc.discovery_call_date)
     ? "foundation"
-    : asYmd(doc.triage_call_date)
+    : asYmd(doc.triage_call_date) || doc.triage_paid_at
       ? "triage"
       : state.track;
   if (nowTrack !== state.track) {
@@ -769,8 +788,8 @@ export async function recordFreeCallAction(
   if (asYmd(doc.discovery_call_date)) {
     return { ok: false, error: "they are already recorded as having had the PAID Foundation session" };
   }
-  if (asYmd(doc.triage_call_date)) {
-    return { ok: false, error: "they are already recorded as having paid for the ₹999 call" };
+  if (asYmd(doc.triage_call_date) || doc.triage_paid_at) {
+    return { ok: false, error: "they paid for the ₹999 call — record it as the ₹999 call, not a free one" };
   }
   // A paid Foundation order means this was not a free call — recording it as
   // one would send them the "book a Foundation session" emails they have
@@ -857,15 +876,24 @@ export async function recordDiscoveryCallAction(
 /** How a person's call is currently recorded, for the "free or paid?" control. */
 export async function loadCallRecordAction(
   clientId: string,
-): Promise<{ kind: "free" | "triage" | "paid" | null; date: string | null; foundationPaid: boolean }> {
-  if (!SAFE_ID.test(clientId)) return { kind: null, date: null, foundationPaid: false };
+): Promise<{
+  kind: "free" | "triage" | "paid" | null;
+  date: string | null;
+  foundationPaid: boolean;
+  /** YYYY-MM-DD the funnel reported a ₹999 payment, if it did. */
+  triagePaidOn: string | null;
+}> {
+  if (!SAFE_ID.test(clientId)) return { kind: null, date: null, foundationPaid: false, triagePaidOn: null };
   const doc = await readYaml(path.join(clientDir(clientId), "client.yaml"));
   const paidDate = doc ? asYmd(doc.discovery_call_date) : null;
+  const triagePaidOn = doc && doc.triage_paid_at ? String(
+    doc.triage_paid_at instanceof Date ? doc.triage_paid_at.toISOString() : doc.triage_paid_at,
+  ).slice(0, 10) : null;
   const foundationPaid = (await foundationSessionPaid(clientId).catch(() => ({ paid: false }))).paid;
-  if (paidDate) return { kind: "paid", date: paidDate, foundationPaid };
+  if (paidDate) return { kind: "paid", date: paidDate, foundationPaid, triagePaidOn };
   const triageDate = doc ? asYmd(doc.triage_call_date) : null;
-  if (triageDate) return { kind: "triage", date: triageDate, foundationPaid };
+  if (triageDate) return { kind: "triage", date: triageDate, foundationPaid, triagePaidOn };
   const st = await readState(clientId);
-  if (st?.manual?.track === "free") return { kind: "free", date: st.manual.call_date, foundationPaid };
-  return { kind: null, date: null, foundationPaid };
+  if (st?.manual?.track === "free") return { kind: "free", date: st.manual.call_date, foundationPaid, triagePaidOn };
+  return { kind: null, date: null, foundationPaid, triagePaidOn };
 }

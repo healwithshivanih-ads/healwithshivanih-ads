@@ -53,24 +53,29 @@ export interface FoundationPrice {
 /**
  * The Foundation price for one client, from their client.yaml.
  *
- * `triage_call_date` (YYYY-MM-DD) is set when the coach records that they had
- * the PAID ₹999 call. It is the only credit toward the Foundation session — a
- * FREE discovery call carries none. Pure; the pay route, the pay page and the
+ * `triage_call_date` (YYYY-MM-DD, the coach recorded the PAID ₹999 call) or
+ * `triage_paid_at` (ochre-funnel reported the ₹999 payment) is the only credit
+ * toward the Foundation session — a FREE discovery call carries none. Pure; the pay route, the pay page and the
  * coach's pay-link card all go through this so they can never disagree.
  */
 export function foundationPriceFor(client: Record<string, unknown> | null | undefined): FoundationPrice {
-  const v = client?.triage_call_date;
-  const ymd =
+  // Either marker is the credit: triage_call_date (coach recorded the call)
+  // or triage_paid_at (ochre-funnel reported the ₹999 payment).
+  const ymdOf = (v: unknown): string | null =>
     v instanceof Date && !Number.isNaN(v.getTime())
       ? v.toISOString().slice(0, 10)
-      : typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v.trim())
-        ? v.trim()
+      : typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v.trim())
+        ? v.trim().slice(0, 10)
         : null;
-  if (!ymd) return { amountInr: FOUNDATION_SESSION_PRICE_INR, creditInr: 0, creditReason: null };
+  const call = ymdOf(client?.triage_call_date);
+  const paid = ymdOf(client?.triage_paid_at);
+  if (!call && !paid) return { amountInr: FOUNDATION_SESSION_PRICE_INR, creditInr: 0, creditReason: null };
   return {
     amountInr: FOUNDATION_SESSION_PRICE_INR - TRIAGE_CALL_PRICE_INR,
     creditInr: TRIAGE_CALL_PRICE_INR,
-    creditReason: `₹${TRIAGE_CALL_PRICE_INR} short call on ${ymd}`,
+    creditReason: call
+      ? `₹${TRIAGE_CALL_PRICE_INR} short call on ${call}`
+      : `₹${TRIAGE_CALL_PRICE_INR} short call paid ${paid}`,
   };
 }
 

@@ -250,7 +250,7 @@ export function DiscoveryFollowupPanel({
                 <details style={{ margin: "4px 0 6px" }}>
                   <summary style={{ fontSize: 11.5, cursor: "pointer", color: "var(--fm-text-secondary)" }}>Record their call</summary>
                   <div style={{ marginTop: 6 }}>
-                    <CallKindRecorder clientId={u.clientId} clientName={u.clientName} compact />
+                    <CallKindRecorder clientId={u.clientId} clientName={u.clientName} triagePaidOn={u.triagePaidOn} compact />
                   </div>
                 </details>
               </li>

@@ -116,6 +116,7 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
   // Map + starts the 15-day ₹12,000 credit). See CallKindRecorder.
   const [earlierCall, setEarlierCall] = useState<{ kind: "free" | "triage"; date: string } | null>(null);
   const [foundationPaid, setFoundationPaid] = useState(false);
+  const [triagePaidOn, setTriagePaidOn] = useState<string | null>(null);
   useEffect(() => {
     let live = true;
     import("@/lib/server-actions/discovery-followup")
@@ -123,6 +124,7 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
       .then((r) => {
         if (!live) return;
         setFoundationPaid(r.foundationPaid);
+        setTriagePaidOn(r.triagePaidOn);
         if ((r.kind === "free" || r.kind === "triage") && r.date) setEarlierCall({ kind: r.kind, date: r.date });
       })
       .catch(() => {/* the recorder still works without it */});
@@ -184,6 +186,7 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
                 clientId={clientId}
                 clientName={displayName ?? undefined}
                 foundationPaid={foundationPaid}
+                triagePaidOn={triagePaidOn}
                 onRecorded={(kind, date) => {
                   if (kind === "paid") {
                     setCallDate(date);

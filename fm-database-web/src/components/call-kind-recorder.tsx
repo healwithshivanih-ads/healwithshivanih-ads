@@ -33,6 +33,7 @@ export function CallKindRecorder({
   clientId,
   clientName,
   foundationPaid = false,
+  triagePaidOn = null,
   compact = false,
   onRecorded,
 }: {
@@ -40,6 +41,8 @@ export function CallKindRecorder({
   clientName?: string;
   /** A paid Foundation order exists — free is then not a valid answer. */
   foundationPaid?: boolean;
+  /** YYYY-MM-DD the funnel reported their ₹999 payment — "free" is then wrong. */
+  triagePaidOn?: string | null;
   compact?: boolean;
   onRecorded?: (kind: Kind, date: string, creditExpiresOn: string | null) => void;
 }) {
@@ -104,7 +107,7 @@ export function CallKindRecorder({
           "free",
           "Free discovery call",
           "No credit. Follow-up emails offer the Foundation session.",
-          foundationPaid,
+          foundationPaid || !!triagePaidOn,
         )}
         {option(
           "triage",
@@ -118,6 +121,12 @@ export function CallKindRecorder({
           "Starts the 15-day ₹12,000 credit towards the programme in their app and reveals their Starting Map.",
         )}
       </div>
+      {triagePaidOn && !foundationPaid && (
+        <div style={{ fontSize: 11.5, color: "#8a5a12" }}>
+          They paid ₹999 through the funnel on {humanDate(triagePaidOn)} — their Foundation session is already
+          ₹11,001. Record the short call here once you&apos;ve had it.
+        </div>
+      )}
       {foundationPaid && (
         <div style={{ fontSize: 11.5, color: "var(--fm-muted, #6f6a5d)" }}>
           They have a paid Foundation order, so this can only be the paid Foundation session.

@@ -594,6 +594,12 @@ class Client(BaseModel):
     # nothing. Set by the coach via "Which call did they have?"
     # (recordDiscoveryCallAction). Projected to Fly for the pay route.
     triage_call_date: Optional[date] = None
+    # Set by ochre-funnel's ₹999 payment notice (/api/handover/triage-paid):
+    # when the ₹999 cleared, and its Razorpay id. Either this OR
+    # triage_call_date is the ₹999 credit. Paying is NOT having had the call,
+    # so the follow-up emails still wait for the call itself.
+    triage_paid_at: Optional[datetime] = None
+    triage_payment_id: Optional[str] = None
     # The coach-authored Starting Map shown in the consult-tier app after the
     # discovery call. Authored on /analyse/discovery (post-results stage). The
     # client app reads it via parseDiscoverySummary. Optional — pre-call clients

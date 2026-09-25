@@ -89,6 +89,11 @@ describe("foundationPriceFor — the ₹999 short-call credit", () => {
   it("reads a js-yaml Date the same way", () => {
     expect(foundationPriceFor({ triage_call_date: new Date("2026-09-20T00:00:00Z") }).amountInr).toBe(11001);
   });
+  it("a funnel-reported ₹999 payment is the credit too", () => {
+    const p = foundationPriceFor({ triage_paid_at: "2026-09-24T10:11:12.000Z" });
+    expect(p).toMatchObject({ amountInr: 11001, creditInr: 999 });
+    expect(p.creditReason).toContain("2026-09-24");
+  });
   it("ignores junk rather than discounting", () => {
     expect(foundationPriceFor({ triage_call_date: "yes" }).amountInr).toBe(12000);
   });
