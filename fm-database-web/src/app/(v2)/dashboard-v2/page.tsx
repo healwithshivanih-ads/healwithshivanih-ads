@@ -50,6 +50,8 @@ import { RenewalQueuePanel } from "@/components/renewal-queue-panel";
 import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
 import { listRenewalLettersAction } from "@/lib/server-actions/renewal-letters";
 import { WinbackDripPanel } from "@/components/winback-drip-panel";
+import { DiscoveryFollowupPanel } from "@/components/discovery-followup-panel";
+import { loadDiscoveryFollowupAction } from "@/lib/server-actions/discovery-followup";
 import {
   listWinbackDraftsAction,
   listWinbackScheduledAction,
@@ -567,6 +569,10 @@ export default async function DashboardV2() {
     listWinbackDraftsAction(),
     listWinbackScheduledAction(),
   ]);
+
+  // 🌱 Call follow-ups — people who had a free discovery call or a paid
+  // Foundation session and have not signed up. Auto-drafted, coach-approved.
+  const discoveryFollowup = await loadDiscoveryFollowupAction();
 
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
@@ -1173,6 +1179,14 @@ export default async function DashboardV2() {
           people who fell off the end of it. Self-hides when empty (unlike the
           panel above) since an empty win-back list is the normal state. */}
       <WinbackDripPanel drafts={winbackDrafts} scheduled={winbackScheduled} />
+
+      {/* 🌱 Call follow-ups — the front-of-funnel twin of the win-back drip:
+          people who had a call and haven't signed up yet. Self-hides when empty. */}
+      <DiscoveryFollowupPanel
+        drafts={discoveryFollowup.drafts}
+        scheduled={discoveryFollowup.scheduled}
+        unanchored={discoveryFollowup.unanchored}
+      />
 
       {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never
           miss a menu waiting for approval (clients stay frozen until she

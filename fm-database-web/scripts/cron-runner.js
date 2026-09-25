@@ -26,6 +26,10 @@
  *                                    resolved. Runs after 10:00 graduation-
  *                                    notice so it can see that send and stay
  *                                    quiet around it.
+ *   10:45  discovery-followup     — DRAFT (never send) WhatsApp follow-ups for
+ *                                    people who had a free discovery call or a
+ *                                    paid Foundation session and have not
+ *                                    signed up. Coach approves in the dashboard.
  *   Sun    recipe-image-qc        — 05:30 Sundays. Scans the recipe catalogue
  *   05:30                            for dishes with no shown photo, auto-sources
  *                                    them from Openverse (no API), then commits
@@ -340,6 +344,17 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 10:45 IST daily — draft follow-ups for everyone who has had a call with the
+// coach and not signed up: the free discovery call (→ Foundation session, no
+// credit) and the paid Foundation session (→ programme, inside its 15-day
+// ₹12,000 credit window). DRAFTS ONLY — each one waits for her approval in the
+// dashboard before anything reaches the person.
+cron.schedule(
+  "45 10 * * *",
+  () => fire("discovery-followup"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — fire time-of-day app reminders (client sets these in the app's
 // Account screen; delivered via web push). Cheap: skips any reminder not due
 // this minute, idempotent per (client, reminder, day). A reminder only lands if
@@ -429,6 +444,7 @@ console.log(
     + "\n  · 09:30 IST  renewal-send"
     + "\n  · 10:00 IST  graduation-notice"
     + "\n  · 10:30 IST  winback-drip"
+    + "\n  · 10:45 IST  discovery-followup"
     + "\n  · 21:00 IST  revenue-export"
     + "\n  · Sun 05:30  recipe-image-qc (source → commit → deploy)"
     + "\n  · * * * * *  pending-sends"
