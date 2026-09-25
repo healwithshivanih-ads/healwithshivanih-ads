@@ -9,11 +9,13 @@
  * into her 15-day credit window without anyone having told her it existed.
  * The conversion window was closing in silence.
  *
- * TWO TRACKS, BECAUSE THE CALLS SELL DIFFERENT THINGS (coach, 2026-09-25):
+ * THREE TRACKS, BECAUSE THE CALLS SELL DIFFERENT THINGS (coach, 2026-09-25):
  *
  *   free        — the free discovery call (15-min cal.com "Discover" call, or
  *                 the website Discovery Call). There is NO credit attached to
  *                 it. Its next rung is the paid Foundation session.
+ *   triage      — the PAID ₹999 short call. Same next rung as the free call,
+ *                 but its ₹999 is credited in full: Foundation costs ₹11,001.
  *   foundation  — the paid ₹12,000 Foundation session. Its ₹12,000 is adjusted
  *                 against the 12-week programme if they join within 15 days of
  *                 the call (DISCOVERY_CREDIT_WINDOW_DAYS). Its next rung is the
@@ -38,7 +40,12 @@
 
 import { DISCOVERY_CREDIT_WINDOW_DAYS } from "./discovery-tier";
 
-export type FollowupTrack = "free" | "foundation";
+export type FollowupTrack = "free" | "triage" | "foundation";
+
+/** The ₹999 short call, credited in full toward the Foundation session. */
+export const TRIAGE_CREDIT_INR = 999;
+/** What a ₹999 caller pays for the Foundation session (12,000 − 999). */
+export const FOUNDATION_AFTER_TRIAGE_INR = 12000 - TRIAGE_CREDIT_INR;
 
 export type FollowupTouchKind =
   // free track
@@ -89,8 +96,10 @@ export const FOUNDATION_TOUCHES: readonly FollowupTouch[] = [
   { n: 4, day: 22, kind: "door_open" },
 ] as const;
 
+/** The ₹999 short call sells the same next step as the free call (the
+ *  Foundation session), so it shares the free cadence; only the copy differs. */
 export function touchesFor(track: FollowupTrack): readonly FollowupTouch[] {
-  return track === "free" ? FREE_TOUCHES : FOUNDATION_TOUCHES;
+  return track === "foundation" ? FOUNDATION_TOUCHES : FREE_TOUCHES;
 }
 
 /**
@@ -329,6 +338,9 @@ export function renderFollowupEmail(
         body: letter(name, [
           "Thank you for taking the time to talk with me.",
           `If you'd like to go deeper into ${about}, the next step is a Foundation session. We go through your full health history together, I give you the list of labs worth doing, and then we read the results side by side so you know where you actually stand.`,
+          ...(track === "triage"
+            ? [`The ₹${TRIAGE_CREDIT_INR} you paid for our call comes off the Foundation session, so it isn't lost.`]
+            : []),
           "Would you like me to send you the details? Just reply to this email.",
         ]),
       };
@@ -336,7 +348,9 @@ export function renderFollowupEmail(
       return {
         subject: "The next step, if you'd like it",
         body: letter(name, [
-          `I wanted to follow up on our chat. The Foundation session is ₹12,000, and it is where we map ${about} properly: your history, the right labs, and what the results mean for you.`,
+          track === "triage"
+            ? `I wanted to follow up on our call. The Foundation session is ₹12,000, and the ₹${TRIAGE_CREDIT_INR} you paid for our call comes off it, so it is ₹${FOUNDATION_AFTER_TRIAGE_INR.toLocaleString("en-IN")} for you. It is where we map ${about} properly: your history, the right labs, and what the results mean for you.`
+            : `I wanted to follow up on our chat. The Foundation session is ₹12,000, and it is where we map ${about} properly: your history, the right labs, and what the results mean for you.`,
           "If you then decide to do the 12-week programme within 15 days of that session, the ₹12,000 is adjusted against it, so nothing is wasted.",
           "Reply to this email and I'll send you the link to book.",
         ]),
@@ -347,6 +361,9 @@ export function renderFollowupEmail(
         body: letter(name, [
           "It's been a couple of weeks since we spoke, and I wanted to check in on how you are doing.",
           "If something is holding you back from the next step (timing, cost, or questions about how it works), tell me honestly and we can talk it through.",
+          ...(track === "triage"
+            ? [`Your ₹${TRIAGE_CREDIT_INR} from our call still counts towards the Foundation session whenever you're ready.`]
+            : []),
         ]),
       };
     case "fdn_recap":
@@ -395,6 +412,9 @@ export function renderFollowupEmail(
               ]
             : [
                 "No pressure at all from my side. Whenever you feel ready to look into this properly, just reply to this email and we'll pick it up.",
+                ...(track === "triage"
+                  ? [`The ₹${TRIAGE_CREDIT_INR} you paid for our call stays credited towards the Foundation session.`]
+                  : []),
               ],
         ),
       };
@@ -447,6 +467,17 @@ export function checkFollowupEmail(
   if (/\[[^\]]*\]|\{\{/.test(all)) refuse.push("there is an unfilled [bracket] or {{placeholder}} in the email");
   if (b.length > MAX_BODY_CHARS) refuse.push(`the email is ${b.length} characters; keep it under ${MAX_BODY_CHARS}`);
 
+  if (track === "triage") {
+    // A ₹999 caller's only credit is that ₹999. Mentioning a credit is fine;
+    // presenting them with the Foundation session's own ₹12,000 credit (which
+    // they do not have until they buy it) is not.
+    if (/₹\s?12,?000 (foundation )?credit/i.test(all)) {
+      refuse.push("this person paid ₹999, not ₹12,000 — their only credit so far is the ₹999");
+    }
+    if (/foundation session is ₹\s?12,?000/i.test(all) && !/11,?001/.test(all)) {
+      refuse.push("they paid for the ₹999 call — quote ₹11,001 for the Foundation session, not ₹12,000");
+    }
+  }
   if (track === "free") {
     if (/\bcredit(ed|s)?\b|\bdeduct/i.test(all)) {
       refuse.push("this person had the FREE call — there is no credit to mention");
@@ -456,7 +487,7 @@ export function checkFollowupEmail(
         "\"adjusted against\" must stay tied to the Foundation session (\"within 15 days of that session\") — the free call carries no credit",
       );
     }
-  } else {
+  } else if (track === "foundation") {
     if (/foundation session is ₹|book (a|your) foundation/i.test(all)) {
       refuse.push("this person already had the Foundation session — don't sell it to them again");
     }
@@ -465,7 +496,8 @@ export function checkFollowupEmail(
   const rupees = all.match(/₹\s?[\d,]+/g) ?? [];
   for (const r of rupees) {
     const n = Number(r.replace(/[^\d]/g, ""));
-    if (n !== 12000) warn.push(`${r} is quoted — double-check it is the current price`);
+    const known = track === "triage" ? [12000, TRIAGE_CREDIT_INR, FOUNDATION_AFTER_TRIAGE_INR] : [12000];
+    if (!known.includes(n)) warn.push(`${r} is quoted — double-check it is the current price`);
   }
   return { ok: refuse.length === 0, refuse, warn };
 }

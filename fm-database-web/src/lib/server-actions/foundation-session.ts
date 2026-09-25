@@ -31,6 +31,7 @@ import {
   foundationCallUrl,
   foundationSessionPaid,
   FOUNDATION_SESSION_PRICE_INR,
+  foundationPriceFor,
 } from "@/lib/fmdb/foundation-orders";
 
 const IST = "Asia/Kolkata";
@@ -121,6 +122,8 @@ export async function startFoundationSession(clientId: string): Promise<
       intakeUrl: string | null;
       bookingUrl: string;
       amountInr: number;
+      /** ₹ taken off for a recorded ₹999 short call (0 when none). */
+      creditInr: number;
       paid: boolean;
       waText: string;
     }
@@ -157,9 +160,13 @@ export async function startFoundationSession(clientId: string): Promise<
   const bookingUrl = foundationCallUrl();
   const { paid } = await foundationSessionPaid(clientId);
 
+  const price = foundationPriceFor(data);
+  const priceLine = price.creditInr
+    ? `(₹${price.amountInr.toLocaleString("en-IN")} — the ₹${price.creditInr} you paid for our short call comes off the ₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")})`
+    : `(₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")})`;
   const waText =
     `Hi ${firstName}! Lovely to connect. Here's the link to book your Foundation Session ` +
-    `(₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")}):\n\n${payUrl}\n\n` +
+    `${priceLine}:\n\n${payUrl}\n\n` +
     `Once your payment is through, that same page will let you fill in your health intake form ` +
     `and pick a time for our call. Looking forward to it! — Shivani`;
 
@@ -171,7 +178,8 @@ export async function startFoundationSession(clientId: string): Promise<
     payUrl,
     intakeUrl,
     bookingUrl,
-    amountInr: FOUNDATION_SESSION_PRICE_INR,
+    amountInr: price.amountInr,
+    creditInr: price.creditInr,
     paid,
     waText,
   };
@@ -191,6 +199,7 @@ export async function lookupFoundationToken(token: string): Promise<
       firstName: string;
       paid: boolean;
       amountInr: number;
+      creditInr: number;
       intakePath: string | null;
       intakeSubmitted: boolean;
       bookingUrl: string;
@@ -216,7 +225,8 @@ export async function lookupFoundationToken(token: string): Promise<
     displayName,
     firstName,
     paid,
-    amountInr: FOUNDATION_SESSION_PRICE_INR,
+    amountInr: foundationPriceFor(data).amountInr,
+    creditInr: foundationPriceFor(data).creditInr,
     intakePath: intakeToken ? `/intake/${intakeToken}` : null,
     intakeSubmitted,
     bookingUrl: foundationCallUrl(),

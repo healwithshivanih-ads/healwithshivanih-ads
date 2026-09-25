@@ -588,6 +588,12 @@ class Client(BaseModel):
     # to compute credit_live vs credit_expired off a 15-day window. See
     # docs/DISCOVERY_TIER_SPEC.md.
     discovery_call_date: Optional[date] = None
+    # The day of the PAID ₹999 short (triage) call. Its presence is the ₹999
+    # credit toward the Foundation session (charged ₹11,001 instead of ₹12,000
+    # — foundationPriceFor in foundation-orders.ts). A FREE discovery call sets
+    # nothing. Set by the coach via "Which call did they have?"
+    # (recordDiscoveryCallAction). Projected to Fly for the pay route.
+    triage_call_date: Optional[date] = None
     # The coach-authored Starting Map shown in the consult-tier app after the
     # discovery call. Authored on /analyse/discovery (post-results stage). The
     # client app reads it via parseDiscoverySummary. Optional — pre-call clients

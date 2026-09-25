@@ -36,6 +36,44 @@ export type FoundationOrderStatus = "pending" | "paid" | "cancelled";
  *  supplied amount can never override it (the pay route never trusts a body amount). */
 export const FOUNDATION_SESSION_PRICE_INR = 12000;
 
+/** The ₹999 short (triage) call. It is credited IN FULL toward the Foundation
+ *  session (docs/TRIAGE_LANE.md in ochre-funnel), so someone who paid it is
+ *  charged 12,000 − 999 = ₹11,001. No expiry: the credit has never had one. */
+export const TRIAGE_CALL_PRICE_INR = 999;
+
+export interface FoundationPrice {
+  /** What the client is charged. */
+  amountInr: number;
+  /** How much came off the list price (0 when none). */
+  creditInr: number;
+  /** Why, in words — shown to the coach and stored on the order. */
+  creditReason: string | null;
+}
+
+/**
+ * The Foundation price for one client, from their client.yaml.
+ *
+ * `triage_call_date` (YYYY-MM-DD) is set when the coach records that they had
+ * the PAID ₹999 call. It is the only credit toward the Foundation session — a
+ * FREE discovery call carries none. Pure; the pay route, the pay page and the
+ * coach's pay-link card all go through this so they can never disagree.
+ */
+export function foundationPriceFor(client: Record<string, unknown> | null | undefined): FoundationPrice {
+  const v = client?.triage_call_date;
+  const ymd =
+    v instanceof Date && !Number.isNaN(v.getTime())
+      ? v.toISOString().slice(0, 10)
+      : typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v.trim())
+        ? v.trim()
+        : null;
+  if (!ymd) return { amountInr: FOUNDATION_SESSION_PRICE_INR, creditInr: 0, creditReason: null };
+  return {
+    amountInr: FOUNDATION_SESSION_PRICE_INR - TRIAGE_CALL_PRICE_INR,
+    creditInr: TRIAGE_CALL_PRICE_INR,
+    creditReason: `₹${TRIAGE_CALL_PRICE_INR} short call on ${ymd}`,
+  };
+}
+
 export interface FoundationOrder {
   order_id: string;
   client_id: string;
@@ -44,6 +82,9 @@ export interface FoundationOrder {
   status: FoundationOrderStatus;
   razorpay_order_id?: string;
   razorpay_payment_id?: string;
+  /** Credit taken off the list price (the ₹999 short call), for the audit trail. */
+  credit_inr?: number;
+  credit_reason?: string;
   created_at: string;
   paid_at?: string;
 }
@@ -54,15 +95,21 @@ export function buildFoundationOrder(
   orderId: string,
   clientId: string,
   createdAtIso: string,
+  price: FoundationPrice = { amountInr: FOUNDATION_SESSION_PRICE_INR, creditInr: 0, creditReason: null },
 ): FoundationOrder {
-  return {
+  const order: FoundationOrder = {
     order_id: orderId,
     client_id: clientId,
     kind: "foundation_session",
-    amount_inr: FOUNDATION_SESSION_PRICE_INR,
+    amount_inr: price.amountInr,
     status: "pending",
     created_at: createdAtIso,
   };
+  if (price.creditInr > 0) {
+    order.credit_inr = price.creditInr;
+    if (price.creditReason) order.credit_reason = price.creditReason;
+  }
+  return order;
 }
 
 /**

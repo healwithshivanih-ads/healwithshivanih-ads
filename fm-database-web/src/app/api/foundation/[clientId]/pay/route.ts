@@ -2,8 +2,9 @@
  * POST /api/foundation/[clientId]/pay
  *
  * The client taps "Pay for my foundation session" on /foundation/<token>. The
- * amount is a SERVER CONSTANT (FOUNDATION_SESSION_PRICE_INR) — never trusted from
- * the client. Creates (or reuses today's pending) Razorpay Order on the SEPARATE
+ * amount is decided on the SERVER (foundationPriceFor: ₹12,000, or ₹11,001 when
+ * a ₹999 short call is recorded on their client.yaml) — never trusted from the
+ * client. Creates (or reuses today's pending) Razorpay Order on the SEPARATE
  * "Ochre Life" account, stamps razorpay_order_id, and returns the public key for
  * in-app Checkout. The secret never leaves the server. "Paid" is set ONLY by the
  * verified webhook (see ../webhook/route.ts).
@@ -12,6 +13,9 @@
  * configured, so real money can never fall through to the labs/maintenance
  * (fallback) account by accident.
  */
+import fs from "node:fs/promises";
+import path from "node:path";
+import yaml from "js-yaml";
 import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
 import {
@@ -21,9 +25,10 @@ import {
   patchFoundationOrder,
   nextFoundationOrderId,
   resolveFoundationRazorpay,
-  FOUNDATION_SESSION_PRICE_INR,
+  foundationPriceFor,
   type FoundationOrder,
 } from "@/lib/fmdb/foundation-orders";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 import { verifyAppClient } from "@/lib/fmdb/app-auth";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
 
@@ -60,16 +65,35 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
   if (existing.some((o) => o.status === "paid")) {
     return NextResponse.json({ ok: false, error: "already paid" }, { status: 409 });
   }
-  // Reuse a still-pending order created earlier today rather than piling up
-  // orphan Razorpay orders on repeated taps; otherwise mint a fresh one.
+  // The price is decided HERE, from the client record — never from the body.
+  // A recorded ₹999 short call takes ₹999 off (foundationPriceFor).
+  let clientDoc: Record<string, unknown> | null = null;
+  try {
+    clientDoc = yaml.load(
+      await fs.readFile(path.join(getPlansRoot(), "clients", clientId, "client.yaml"), "utf8"),
+    ) as Record<string, unknown>;
+  } catch {
+    clientDoc = null; // no record → list price
+  }
+  const price = foundationPriceFor(clientDoc);
+
+  // Reuse a still-pending order rather than piling up orphan Razorpay orders on
+  // repeated taps — but ONLY at the current price. A pending order minted before
+  // the coach recorded a ₹999 credit would otherwise charge the full ₹12,000.
   let order: FoundationOrder | undefined = existing.find(
-    (o) => o.status === "pending" && !!o.razorpay_order_id,
+    (o) => o.status === "pending" && !!o.razorpay_order_id && o.amount_inr === price.amountInr,
   );
+  for (const stale of existing) {
+    if (stale.status === "pending" && stale.amount_inr !== price.amountInr) {
+      await patchFoundationOrder(clientId, stale.order_id, { status: "cancelled" });
+    }
+  }
   if (!order) {
     const built = buildFoundationOrder(
       await nextFoundationOrderId(clientId, istToday()),
       clientId,
       new Date().toISOString(),
+      price,
     );
     await createFoundationOrder(built);
     order = built;
@@ -100,7 +124,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
   return NextResponse.json({
     ok: true,
     razorpay_order_id: rzpOrderId,
-    amount_inr: order.amount_inr ?? FOUNDATION_SESSION_PRICE_INR,
+    amount_inr: order.amount_inr ?? price.amountInr,
     currency: "INR",
     keyId: publicKeyId, // public key only — the secret never leaves the server
     order_id: order.order_id,

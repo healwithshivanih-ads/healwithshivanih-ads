@@ -134,6 +134,36 @@ describe("copy", () => {
   });
 });
 
+describe("triage (₹999) track", () => {
+  it.each(FREE_KINDS)("triage %s passes its own gate", (k) => {
+    const e = renderFollowupEmail(k, facts, "triage");
+    const g = checkFollowupEmail(e.subject, e.body, "triage");
+    expect(g.refuse).toEqual([]);
+    expect(g.warn).toEqual([]);
+  });
+
+  it("the offer quotes ₹11,001, never ₹12,000 alone", () => {
+    const e = renderFollowupEmail("free_foundation_offer", facts, "triage");
+    expect(e.body).toContain("₹11,001");
+    expect(checkFollowupEmail("Hi", "The Foundation session is ₹12,000. Shall I book it?", "triage").ok).toBe(false);
+  });
+
+  it("free-call copy for the same touch never mentions the ₹999", () => {
+    for (const k of FREE_KINDS) {
+      expect(renderFollowupEmail(k, facts, "free").body).not.toContain("999");
+    }
+  });
+
+  it("refuses telling a ₹999 caller they hold a ₹12,000 credit", () => {
+    expect(checkFollowupEmail("Hi", "Your ₹12,000 credit is waiting.", "triage").ok).toBe(false);
+  });
+
+  it("uses the free-call cadence", () => {
+    const d = followupDecision({ ...base, track: "triage", todayYmd: "2026-09-25", touchesHandled: [1] });
+    expect(d.draft && d.touch.kind).toBe("free_foundation_offer");
+  });
+});
+
 describe("checkFollowupEmail — the free-call credit rule", () => {
   it("refuses any credit wording to a free-call person, subject included", () => {
     expect(checkFollowupEmail("Hello", "your ₹12,000 credit is waiting for you.", "free").ok).toBe(false);
@@ -189,5 +219,14 @@ describe("helpers", () => {
   it("quotes only short concerns", () => {
     expect(quotableConcern("Gut health")).toBe("gut health");
     expect(quotableConcern("Autoimmune disorders (Hashimoto’s thyroid and MS), fatigue, chronic anaemia, possible insulin resistance, weight")).toBeNull();
+  });
+});
+
+describe("the ₹999 figures agree with the pay route", () => {
+  it("follow-up copy and checkout use the same credit and price", async () => {
+    const fo = await import("./foundation-orders");
+    const df = await import("./discovery-followup");
+    expect(df.TRIAGE_CREDIT_INR).toBe(fo.TRIAGE_CALL_PRICE_INR);
+    expect(df.FOUNDATION_AFTER_TRIAGE_INR).toBe(fo.foundationPriceFor({ triage_call_date: "2026-09-20" }).amountInr);
   });
 });

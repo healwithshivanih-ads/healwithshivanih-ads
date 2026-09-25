@@ -117,6 +117,11 @@ export default async function FoundationTokenPage({
           <span className="text-3xl font-semibold text-stone-900">{inr(res.amountInr)}</span>
           <span className="text-sm text-stone-500">one-time</span>
         </div>
+        {res.creditInr > 0 && (
+          <p className="mt-2 text-sm text-emerald-700">
+            Includes your {inr(res.creditInr)} credit from our short call.
+          </p>
+        )}
       </div>
 
       <FoundationPayClient

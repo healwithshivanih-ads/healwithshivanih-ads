@@ -114,7 +114,7 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
   // "Which call was this?" — a FREE call is recorded without any credit; only
   // the PAID Foundation session sets discovery_call_date (reveals the Starting
   // Map + starts the 15-day ₹12,000 credit). See CallKindRecorder.
-  const [freeCallDate, setFreeCallDate] = useState<string | null>(null);
+  const [earlierCall, setEarlierCall] = useState<{ kind: "free" | "triage"; date: string } | null>(null);
   const [foundationPaid, setFoundationPaid] = useState(false);
   useEffect(() => {
     let live = true;
@@ -123,7 +123,7 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
       .then((r) => {
         if (!live) return;
         setFoundationPaid(r.foundationPaid);
-        if (r.kind === "free") setFreeCallDate(r.date);
+        if ((r.kind === "free" || r.kind === "triage") && r.date) setEarlierCall({ kind: r.kind, date: r.date });
       })
       .catch(() => {/* the recorder still works without it */});
     return () => {
@@ -168,10 +168,12 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
             credit && <CreditChip credit={credit} />
           ) : (
             <div style={{ display: "grid", gap: 8, padding: "9px 11px", background: "var(--fm-surface)", border: "1px solid var(--fm-border-light, #e6e1d6)", borderRadius: 8 }}>
-              {freeCallDate && (
+              {earlierCall && (
                 <div style={{ fontSize: 12.5, color: "#2f7a3f" }}>
-                  ✓ Free discovery call on {humanDate(freeCallDate)} — no credit. Follow-up emails offer the
-                  Foundation session. If they then book the paid session, record it below.
+                  {earlierCall.kind === "triage"
+                    ? `✓ Paid ₹999 short call on ${humanDate(earlierCall.date)} — their Foundation session is ₹11,001. `
+                    : `✓ Free discovery call on ${humanDate(earlierCall.date)} — no credit. `}
+                  Follow-up emails offer the Foundation session. When they have it, record it below.
                 </div>
               )}
               <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)", lineHeight: 1.45 }}>
@@ -187,7 +189,7 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
                     setCallDate(date);
                     setCredit(resolveDiscoveryCredit(date, istTodayYmd()));
                   } else {
-                    setFreeCallDate(date);
+                    setEarlierCall({ kind, date });
                   }
                 }}
               />

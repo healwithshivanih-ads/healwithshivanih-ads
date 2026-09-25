@@ -2,6 +2,7 @@ import { describe, it, expect, afterEach } from "vitest";
 import {
   FOUNDATION_SESSION_PRICE_INR,
   buildFoundationOrder,
+  foundationPriceFor,
   resolveFoundationRazorpay,
   foundationWebhookSecret,
   foundationCallUrl,
@@ -72,5 +73,27 @@ describe("foundationCallUrl", () => {
   it("defaults to the programme-intake session when unset", () => {
     delete process.env.FOUNDATION_CALL_URL;
     expect(foundationCallUrl()).toContain("cal.com/shivani-hariharan-0xyy3l/");
+  });
+});
+
+describe("foundationPriceFor — the ₹999 short-call credit", () => {
+  it("charges the list price with no short call on record", () => {
+    expect(foundationPriceFor({}).amountInr).toBe(12000);
+    expect(foundationPriceFor(null).creditInr).toBe(0);
+  });
+  it("takes ₹999 off when the paid short call is recorded", () => {
+    const p = foundationPriceFor({ triage_call_date: "2026-09-20" });
+    expect(p).toMatchObject({ amountInr: 11001, creditInr: 999 });
+    expect(p.creditReason).toContain("2026-09-20");
+  });
+  it("reads a js-yaml Date the same way", () => {
+    expect(foundationPriceFor({ triage_call_date: new Date("2026-09-20T00:00:00Z") }).amountInr).toBe(11001);
+  });
+  it("ignores junk rather than discounting", () => {
+    expect(foundationPriceFor({ triage_call_date: "yes" }).amountInr).toBe(12000);
+  });
+  it("stamps the credit on the order it builds", () => {
+    const o = buildFoundationOrder("f-1", "cl-1", "2026-09-25T00:00:00Z", foundationPriceFor({ triage_call_date: "2026-09-20" }));
+    expect(o).toMatchObject({ amount_inr: 11001, credit_inr: 999 });
   });
 });

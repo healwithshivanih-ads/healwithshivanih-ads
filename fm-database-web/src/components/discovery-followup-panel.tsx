@@ -30,6 +30,7 @@ import { FmPanel } from "@/components/fm";
 
 const TRACK_CHIP: Record<string, { label: string; bg: string; fg: string }> = {
   free: { label: "Free call · no credit", bg: "rgba(43,45,66,0.08)", fg: "#2b2d42" },
+  triage: { label: "Paid ₹999 call · Foundation ₹11,001", bg: "rgba(217,131,36,0.12)", fg: "#8a5a12" },
   foundation: { label: "Paid Foundation · ₹12k credit", bg: "rgba(107,142,107,0.15)", fg: "#3f5f3f" },
 };
 
@@ -114,6 +115,16 @@ function DraftCard({ row, onDone }: { row: FollowupDraftRow; onDone: (k: string)
 
       {open && (
         <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
+          {row.unconfirmedKind && (
+            <details style={{ fontSize: 12, background: "rgba(43,45,66,0.05)", borderRadius: "var(--fm-radius-sm)", padding: "7px 10px" }}>
+              <summary style={{ cursor: "pointer" }}>
+                Worked out from a 15-minute booking — was it the free call or the paid ₹999 one? Confirm before sending.
+              </summary>
+              <div style={{ marginTop: 8 }}>
+                <CallKindRecorder clientId={row.clientId} clientName={row.clientName} compact />
+              </div>
+            </details>
+          )}
           {row.missingStartingMap && (
             <div style={{ fontSize: 12, color: "#8a5a12", background: "rgba(217,131,36,0.10)", border: "1px solid rgba(217,131,36,0.35)", borderRadius: "var(--fm-radius-sm)", padding: "7px 10px" }}>
               {first}&rsquo;s Starting Map isn&rsquo;t written yet, so this email has no app link. Write it on
@@ -226,8 +237,8 @@ export function DiscoveryFollowupPanel({
             ❔ Not signed up, no call on record ({unanchored.length})
           </div>
           <div style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)", marginTop: 2 }}>
-            Had a call? Record whether it was the free discovery call (no credit) or the paid ₹12,000
-            Foundation session (starts their 15-day credit).
+            Had a call? Record whether it was the free discovery call (no credit), the paid ₹999 short
+            call (Foundation becomes ₹11,001), or the paid ₹12,000 Foundation session (starts their 15-day credit).
           </div>
           <ul style={{ margin: "6px 0 0", paddingLeft: 18 }}>
             {unanchored.map((u) => (

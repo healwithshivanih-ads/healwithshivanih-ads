@@ -139,6 +139,9 @@ _APP_CLIENT_KEYS = (
     "engagement_status",
     "discovery_call_date",
     "discovery_summary",
+    # the ₹999 short-call credit: the Fly Foundation pay route reads it to charge
+    # ₹11,001 instead of ₹12,000. Without it here the credit never reaches Fly.
+    "triage_call_date",
     # "one app link, intake inside": the discovery onboarding stage resolver reads
     # these. intake_token → the in-app "Start my intake" link (already a public Fly
     # credential — the intake form is a public Fly route); intake_submitted_at →

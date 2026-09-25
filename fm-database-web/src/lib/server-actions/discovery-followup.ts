@@ -45,6 +45,7 @@ import {
 } from "@/app/api/whatsapp/actions";
 import { sendClientEmailAction } from "@/app/api/email/actions";
 import { foundationSessionPaid } from "@/lib/fmdb/foundation-orders";
+import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 
 type Dict = Record<string, unknown>;
 
@@ -95,6 +96,8 @@ export interface FollowupDraftRow {
   creditExpiresOn: string | null;
   /** Foundation recap with no Starting Map written yet. */
   missingStartingMap: boolean;
+  /** Read off a 15-min booking — nobody has confirmed free vs the paid ₹999. */
+  unconfirmedKind: boolean;
 }
 
 export interface FollowupScheduledRow {
@@ -258,7 +261,12 @@ function firstNameOf(doc: Dict, fallback: string): string {
 
 // ── candidates ─────────────────────────────────────────────────────────────
 
+/** Where the call date came from. `booking` means it was read off a 15-minute
+ *  booking and nobody has said whether that call was free or the paid ₹999. */
+export type CallSource = "paid_foundation" | "triage" | "manual_free" | "booking";
+
 interface Candidate {
+  source: CallSource;
   clientId: string;
   clientName: string;
   doc: Dict;
@@ -339,18 +347,27 @@ async function collect(today: string): Promise<Collected> {
 
     let track: FollowupTrack | null = null;
     let callDate: string | null = null;
+    let source: CallSource = "booking";
     const dcall = asYmd(doc.discovery_call_date);
+    const tcall = asYmd(doc.triage_call_date);
     if (dcall) {
       track = "foundation";
       callDate = dcall;
+      source = "paid_foundation";
+    } else if (tcall) {
+      track = "triage";
+      callDate = tcall;
+      source = "triage";
     } else if (state?.manual && YMD.test(state.manual.call_date)) {
       track = state.manual.track;
       callDate = state.manual.call_date;
+      source = "manual_free";
     } else {
       const free = [...pastBooked, ...freeFromCal].sort();
       if (free.length) {
         track = "free";
         callDate = free[free.length - 1];
+        source = "booking";
       }
     }
 
@@ -370,6 +387,7 @@ async function collect(today: string): Promise<Collected> {
       .map((t) => t.touch);
 
     candidates.push({
+      source,
       clientId: id,
       clientName,
       doc,
@@ -546,6 +564,7 @@ export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
         body: pending.body ?? "",
         creditExpiresOn: c.track === "foundation" ? creditExpiresOn(c.callDate) : null,
         missingStartingMap: c.track === "foundation" && pending.kind === "fdn_recap" && !appUrlFor(c.doc),
+        unconfirmedKind: c.source === "booking",
       });
       continue;
     }
@@ -609,9 +628,16 @@ export async function approveFollowupDraftAction(
   }
   // The track the record implies NOW must match the draft's — a free-call
   // email must not go to someone whose paid Foundation session has since happened.
-  const nowTrack: FollowupTrack = asYmd(doc.discovery_call_date) ? "foundation" : state.track;
+  const nowTrack: FollowupTrack = asYmd(doc.discovery_call_date)
+    ? "foundation"
+    : asYmd(doc.triage_call_date)
+      ? "triage"
+      : state.track;
   if (nowTrack !== state.track) {
-    return { ok: false, error: "they have had their paid Foundation session since this was drafted — the next scan will redraft" };
+    return {
+      ok: false,
+      error: "how their call is recorded has changed since this was drafted (free / ₹999 / paid Foundation) — the next scan will redraft it with the right price",
+    };
   }
   const inbound = await lastInbound(clientId);
   if (inbound && t.drafted_at && inbound > t.drafted_at) {
@@ -743,6 +769,9 @@ export async function recordFreeCallAction(
   if (asYmd(doc.discovery_call_date)) {
     return { ok: false, error: "they are already recorded as having had the PAID Foundation session" };
   }
+  if (asYmd(doc.triage_call_date)) {
+    return { ok: false, error: "they are already recorded as having paid for the ₹999 call" };
+  }
   // A paid Foundation order means this was not a free call — recording it as
   // one would send them the "book a Foundation session" emails they have
   // already paid for.
@@ -771,32 +800,56 @@ export async function recordFreeCallAction(
 }
 
 /**
- * Record a discovery call as FREE or PAID — the one place the coach answers
- * "which kind of call was this?", used by the overview card, the Starting Map
- * workspace and the dashboard panel alike.
+ * Record which call someone had — the one place the coach answers it, used by
+ * the overview card and the dashboard panel alike.
  *
- *   paid → the ₹12,000 Foundation session: sets discovery_call_date, which
- *          reveals the Starting Map and starts the 15-day credit in their app.
- *   free → the free discovery call: no credit, nothing on client.yaml; starts
- *          the free-call email follow-up (next step = the Foundation session).
+ *   free   → the free discovery call: no credit, nothing on client.yaml; starts
+ *            the free-call email follow-up (next step = the Foundation session).
+ *   triage → the PAID ₹999 short call: sets client.yaml#triage_call_date, which
+ *            takes ₹999 off their Foundation price (₹11,001) and is staged to
+ *            Fly for the pay page. Follow-up emails quote ₹11,001.
+ *   paid   → the ₹12,000 Foundation session: sets discovery_call_date, which
+ *            reveals the Starting Map and starts the 15-day credit in their app.
  */
 export async function recordDiscoveryCallAction(
   clientId: string,
-  kind: "free" | "paid",
+  kind: "free" | "triage" | "paid",
   onDate: string,
-): Promise<{ ok: boolean; error?: string; creditExpiresOn?: string | null }> {
+): Promise<{ ok: boolean; error?: string; creditExpiresOn?: string | null; foundationPriceInr?: number }> {
   if (!SAFE_ID.test(clientId)) return { ok: false, error: "bad client id" };
   if (!YMD.test(onDate)) return { ok: false, error: "date must be YYYY-MM-DD" };
+  if (onDate > todayIst()) return { ok: false, error: "that call has not happened yet" };
+
   if (kind === "free") {
     const r = await recordFreeCallAction(clientId, onDate);
     if (r.ok) revalidatePath(`/clients-v2/${clientId}`);
     return { ...r, creditExpiresOn: null };
   }
+
+  if (kind === "triage") {
+    const file = path.join(clientDir(clientId), "client.yaml");
+    const doc = await readYaml(file);
+    if (!doc) return { ok: false, error: "client record not found" };
+    if (asYmd(doc.discovery_call_date)) {
+      return { ok: false, error: "they are already recorded as having had the paid Foundation session" };
+    }
+    if ((await foundationSessionPaid(clientId)).paid) {
+      return { ok: false, error: "they have already paid for the Foundation session — the ₹999 credit no longer applies" };
+    }
+    doc.triage_call_date = onDate;
+    await fs.writeFile(file, dumpYaml(doc, { sortKeys: false }), "utf-8");
+    // The Fly pay page prices from the STAGED record — without this re-stage
+    // the credit would not reach checkout and they would be charged ₹12,000.
+    const { stageDiscoveryClientArtifacts } = await import("@/lib/server-actions/letter-token");
+    await stageDiscoveryClientArtifacts(clientId).catch(() => {/* best-effort; the cron refresh retries */});
+    revalidatePath(`/clients-v2/${clientId}`);
+    revalidatePath("/dashboard-v2");
+    return { ok: true, creditExpiresOn: null, foundationPriceInr: 12000 - 999 };
+  }
+
   const { markDiscoveryCallDoneAction } = await import("@/lib/server-actions/app-token");
   const r = await markDiscoveryCallDoneAction(clientId, onDate);
   if (!r.ok) return { ok: false, error: r.error };
-  // A free-call follow-up in flight is now the wrong offer; the next scan
-  // moves them to the Foundation track and expires any pending free draft.
   revalidatePath("/dashboard-v2");
   return { ok: true, creditExpiresOn: r.credit.expiresOn };
 }
@@ -804,12 +857,14 @@ export async function recordDiscoveryCallAction(
 /** How a person's call is currently recorded, for the "free or paid?" control. */
 export async function loadCallRecordAction(
   clientId: string,
-): Promise<{ kind: "free" | "paid" | null; date: string | null; foundationPaid: boolean }> {
+): Promise<{ kind: "free" | "triage" | "paid" | null; date: string | null; foundationPaid: boolean }> {
   if (!SAFE_ID.test(clientId)) return { kind: null, date: null, foundationPaid: false };
   const doc = await readYaml(path.join(clientDir(clientId), "client.yaml"));
   const paidDate = doc ? asYmd(doc.discovery_call_date) : null;
   const foundationPaid = (await foundationSessionPaid(clientId).catch(() => ({ paid: false }))).paid;
   if (paidDate) return { kind: "paid", date: paidDate, foundationPaid };
+  const triageDate = doc ? asYmd(doc.triage_call_date) : null;
+  if (triageDate) return { kind: "triage", date: triageDate, foundationPaid };
   const st = await readState(clientId);
   if (st?.manual?.track === "free") return { kind: "free", date: st.manual.call_date, foundationPaid };
   return { kind: null, date: null, foundationPaid };
