@@ -20,10 +20,13 @@ import {
   approveFollowupDraftAction,
   skipFollowupTouchAction,
   stopFollowupAction,
+  resolveTriagePaymentAction,
+  dismissTriagePaymentAction,
   type FollowupDraftRow,
   type FollowupScheduledRow,
   type FollowupUnanchoredRow,
 } from "@/lib/server-actions/discovery-followup";
+import type { UnplacedTriagePayment } from "@/lib/fmdb/triage-payment-intake";
 import { TOUCH_LABEL, humanDate, MAX_BODY_CHARS } from "@/lib/fmdb/discovery-followup";
 import { CallKindRecorder } from "@/components/call-kind-recorder";
 import { FmPanel } from "@/components/fm";
@@ -180,18 +183,97 @@ function DraftCard({ row, onDone }: { row: FollowupDraftRow; onDone: (k: string)
   );
 }
 
+/**
+ * A ₹999 funnel payment the pipe could not put on anyone. The coach picks the
+ * person (one of the matches, or any client id) — or dismisses it.
+ */
+function UnplacedTriageRow({ p, onDone }: { p: UnplacedTriagePayment; onDone: () => void }) {
+  const [pending, startTransition] = useTransition();
+  const [other, setOther] = useState("");
+  const place = (clientId: string, name: string) =>
+    startTransition(async () => {
+      const r = await resolveTriagePaymentAction(p.paymentId, clientId);
+      if (r.ok) {
+        toast.success(`₹999 credit placed on ${name} — their Foundation session is now ₹11,001`);
+        onDone();
+      } else toast.error(r.error || "Could not place it");
+    });
+  const dismiss = () =>
+    startTransition(async () => {
+      const r = await dismissTriagePaymentAction(p.paymentId);
+      if (r.ok) {
+        toast.success("Dismissed — no credit placed");
+        onDone();
+      } else toast.error(r.error || "Could not dismiss");
+    });
+  return (
+    <div style={{ padding: "9px 11px", background: "var(--fm-surface)", border: "1px solid rgba(179,64,42,0.35)", borderRadius: "var(--fm-radius-sm)", display: "grid", gap: 6 }}>
+      <div style={{ fontSize: 12.5 }}>
+        <strong>{p.name || "Someone"}</strong> paid ₹{p.amountInr} on {humanDate(p.paidAt.slice(0, 10))}
+        <span style={{ color: "var(--fm-text-tertiary)" }}>
+          {" "}· {p.email ?? "no email"}{p.phoneLast4 ? ` · phone …${p.phoneLast4}` : ""} · {p.paymentId}
+        </span>
+      </div>
+      <div style={{ fontSize: 11.5, color: "#8a5a12" }}>
+        {p.outcome === "conflict"
+          ? "Their email and phone match different people, so the credit wasn't placed. Whose is it?"
+          : "Too little contact detail to match anyone. Whose is it?"}
+      </div>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+        {p.candidates.map((c) => (
+          <button
+            key={`${c.clientId}-${c.matchedBy}`}
+            type="button"
+            disabled={pending}
+            onClick={() => place(c.clientId, c.name)}
+            style={{ ...pill, border: "1px solid var(--fm-border)", background: "transparent", color: "var(--fm-text-primary)", padding: "3px 11px" }}
+          >
+            {c.name} ({c.clientId}, {c.matchedBy} matches)
+          </button>
+        ))}
+        <input
+          value={other}
+          onChange={(e) => setOther(e.target.value.trim())}
+          placeholder="or client id, e.g. cl-912"
+          style={{ fontSize: 11.5, padding: "3px 6px", width: 150, border: "1px solid var(--fm-border)", borderRadius: 6, fontFamily: "inherit" }}
+        />
+        <button
+          type="button"
+          disabled={pending || !/^[A-Za-z0-9_-]+$/.test(other)}
+          onClick={() => place(other, other)}
+          style={{ ...pill, border: "1px solid var(--fm-border)", background: "transparent", color: "var(--fm-text-secondary)", padding: "3px 11px" }}
+        >
+          Place on this client
+        </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={dismiss}
+          title="Refund, test payment, or otherwise no credit to place"
+          style={{ marginLeft: "auto", border: "none", background: "transparent", color: "#b3402a", fontSize: 12, fontWeight: 700, textDecoration: "underline", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+        >
+          Dismiss
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function DiscoveryFollowupPanel({
   drafts,
   scheduled,
   unanchored,
+  unplacedTriage = [],
 }: {
   drafts: FollowupDraftRow[];
   scheduled: FollowupScheduledRow[];
   unanchored: FollowupUnanchoredRow[];
+  unplacedTriage?: UnplacedTriagePayment[];
 }) {
   const [done, setDone] = useState<Set<string>>(new Set());
   const visible = drafts.filter((d) => !done.has(`${d.clientId}:${d.touch}`));
-  if (visible.length === 0 && scheduled.length === 0 && unanchored.length === 0) return null;
+  const unplaced = unplacedTriage.filter((p) => !done.has(`triage:${p.paymentId}`));
+  if (visible.length === 0 && scheduled.length === 0 && unanchored.length === 0 && unplaced.length === 0) return null;
 
   return (
     <FmPanel style={{ background: "rgba(107,142,107,0.05)", borderColor: "rgba(107,142,107,0.3)", padding: "12px 14px", marginBottom: 16 }}>
@@ -205,6 +287,21 @@ export function DiscoveryFollowupPanel({
           session (no credit). Paid Foundation → the programme, with their ₹12,000 credit date. Nothing goes out until you send it.
         </div>
       </div>
+
+      {unplaced.length > 0 && (
+        <div style={{ marginBottom: 12, display: "grid", gap: 6 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#b3402a" }}>
+            ⚠ ₹999 payments to place ({unplaced.length})
+          </div>
+          {unplaced.map((p) => (
+            <UnplacedTriageRow
+              key={p.paymentId}
+              p={p}
+              onDone={() => setDone((prev) => new Set(prev).add(`triage:${p.paymentId}`))}
+            />
+          ))}
+        </div>
+      )}
 
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {visible.map((d) => (

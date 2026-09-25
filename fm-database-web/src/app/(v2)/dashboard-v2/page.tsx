@@ -1186,6 +1186,7 @@ export default async function DashboardV2() {
         drafts={discoveryFollowup.drafts}
         scheduled={discoveryFollowup.scheduled}
         unanchored={discoveryFollowup.unanchored}
+        unplacedTriage={discoveryFollowup.unplacedTriage}
       />
 
       {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never

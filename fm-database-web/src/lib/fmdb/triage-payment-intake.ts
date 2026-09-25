@@ -62,6 +62,8 @@ interface LedgerRow {
   outcome: string;
   client_id?: string;
   detail?: string;
+  /** conflict rows: everyone the email or phone matched, for the dashboard. */
+  candidates?: Array<{ client_id: string; name: string; matched_by: "email" | "phone" }>;
 }
 
 function last10(p: string | null | undefined): string {
@@ -90,6 +92,7 @@ async function appendLedger(row: LedgerRow): Promise<void> {
 interface Found {
   clientId: string;
   bucket: "clients" | "prospects";
+  name: string;
 }
 
 /** Every person in both buckets whose email or phone matches. */
@@ -112,9 +115,10 @@ async function findPeople(email: string, phone10: string): Promise<{ byEmail: Fo
       } catch {
         continue;
       }
-      if (email && String(doc.email ?? "").trim().toLowerCase() === email) byEmail.push({ clientId: id, bucket });
+      const name = String(doc.display_name ?? id);
+      if (email && String(doc.email ?? "").trim().toLowerCase() === email) byEmail.push({ clientId: id, bucket, name });
       if (phone10 && last10(String(doc.mobile_number ?? doc.mobile ?? "")) === phone10) {
-        byPhone.push({ clientId: id, bucket });
+        byPhone.push({ clientId: id, bucket, name });
       }
     }
   }
@@ -155,7 +159,15 @@ export async function recordTriagePayment(n: TriagePaymentNotice): Promise<Triag
     const detail = `email → ${byEmail.map((f) => f.clientId).join(",") || "none"}; phone → ${
       byPhone.map((f) => f.clientId).join(",") || "none"
     }`;
-    await appendLedger({ ...base, outcome: "conflict", detail });
+    await appendLedger({
+      ...base,
+      outcome: "conflict",
+      detail,
+      candidates: [
+        ...byEmail.map((f) => ({ client_id: f.clientId, name: f.name, matched_by: "email" as const })),
+        ...byPhone.map((f) => ({ client_id: f.clientId, name: f.name, matched_by: "phone" as const })),
+      ],
+    });
     return {
       ok: false,
       outcome: "conflict",
@@ -189,9 +201,16 @@ export async function recordTriagePayment(n: TriagePaymentNotice): Promise<Triag
     }
   }
 
+  await stampCredit(clientId, paymentId, n.paid_at, n.amount_inr);
+  await appendLedger({ ...base, outcome, client_id: clientId });
+  return { ok: true, outcome, clientId };
+}
+
+/** Put the ₹999 credit on a person already in clients/: fields, note, re-stage. */
+async function stampCredit(clientId: string, paymentId: string, paidAt: string, amountInr: number): Promise<void> {
   const file = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
   const doc = (yaml.load(await fs.readFile(file, "utf8")) ?? {}) as Record<string, unknown>;
-  if (!doc.triage_paid_at) doc.triage_paid_at = n.paid_at;
+  if (!doc.triage_paid_at) doc.triage_paid_at = paidAt;
   if (!doc.triage_payment_id) doc.triage_payment_id = paymentId;
   await fs.writeFile(file, dumpYaml(doc, { sortKeys: false }), "utf8");
 
@@ -200,10 +219,10 @@ export async function recordTriagePayment(n: TriagePaymentNotice): Promise<Triag
     await saveSessionAction({
       client_id: clientId,
       session_type: "quick_note",
-      session_date: (n.paid_at || new Date().toISOString()).slice(0, 10),
+      session_date: (paidAt || new Date().toISOString()).slice(0, 10),
       presenting_complaints: "[source: funnel_triage_payment]",
       coach_notes:
-        `Paid ₹${n.amount_inr} for the short call (Razorpay ${paymentId}). ` +
+        `Paid ₹${amountInr} for the short call (Razorpay ${paymentId}). ` +
         `The ₹999 comes off their Foundation session — it now costs them ₹11,001.`,
     });
   } catch {
@@ -216,7 +235,92 @@ export async function recordTriagePayment(n: TriagePaymentNotice): Promise<Triag
   } catch {
     /* best-effort; the cron refresh re-stages */
   }
+}
 
-  await appendLedger({ ...base, outcome, client_id: clientId });
-  return { ok: true, outcome, clientId };
+// ── the coach's side of a payment that could not be placed ──────────────────
+
+export interface UnplacedTriagePayment {
+  paymentId: string;
+  paidAt: string;
+  amountInr: number;
+  name: string;
+  email: string | null;
+  phoneLast4: string | null;
+  outcome: "conflict" | "insufficient_contact";
+  candidates: Array<{ clientId: string; name: string; matchedBy: "email" | "phone" }>;
+}
+
+/**
+ * ₹999 payments the pipe could not put on anyone — a conflict (email and phone
+ * name different people) or too little contact detail — and which the coach
+ * has not yet resolved or dismissed. Latest row per payment wins.
+ */
+export async function listUnplacedTriagePayments(): Promise<UnplacedTriagePayment[]> {
+  const latest = new Map<string, LedgerRow>();
+  for (const r of await readLedger()) latest.set(r.payment_id, r);
+  const out: UnplacedTriagePayment[] = [];
+  for (const r of latest.values()) {
+    if (r.outcome !== "conflict" && r.outcome !== "insufficient_contact") continue;
+    out.push({
+      paymentId: r.payment_id,
+      paidAt: r.paid_at,
+      amountInr: r.amount_inr,
+      name: r.name,
+      email: r.email,
+      phoneLast4: r.phone_last4,
+      outcome: r.outcome,
+      candidates: (r.candidates ?? []).map((c) => ({ clientId: c.client_id, name: c.name, matchedBy: c.matched_by })),
+    });
+  }
+  return out.sort((a, b) => b.paidAt.localeCompare(a.paidAt));
+}
+
+/**
+ * The coach says which person an unplaced ₹999 payment belongs to. Any client
+ * id is accepted (not only the candidates): with "insufficient contact" there
+ * are no candidates, and she may know who it was from the payment itself.
+ */
+export async function resolveTriagePayment(
+  paymentId: string,
+  clientId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (!/^[A-Za-z0-9_-]+$/.test(clientId)) return { ok: false, error: "bad client id" };
+  const row = (await listUnplacedTriagePayments()).find((p) => p.paymentId === paymentId);
+  if (!row) return { ok: false, error: "that payment is not waiting on you (already placed or dismissed)" };
+  const ledgerRow = (await readLedger()).filter((r) => r.payment_id === paymentId).pop()!;
+  try {
+    await fs.access(path.join(getPlansRoot(), "clients", clientId, "client.yaml"));
+  } catch {
+    try {
+      await fs.access(path.join(getPlansRoot(), "prospects", clientId, "client.yaml"));
+      await fs.rename(
+        path.join(getPlansRoot(), "prospects", clientId),
+        path.join(getPlansRoot(), "clients", clientId),
+      );
+    } catch {
+      return { ok: false, error: `no client ${clientId}` };
+    }
+  }
+  await stampCredit(clientId, paymentId, row.paidAt, row.amountInr);
+  const { candidates: _c, ...rest } = ledgerRow;
+  await appendLedger({
+    ...rest,
+    received_at: new Date().toISOString(),
+    outcome: "resolved_by_coach",
+    client_id: clientId,
+  });
+  return { ok: true };
+}
+
+/** The coach says this payment needs no credit placed (refunded, test, …). */
+export async function dismissTriagePayment(paymentId: string): Promise<{ ok: boolean; error?: string }> {
+  const ledgerRow = (await readLedger()).filter((r) => r.payment_id === paymentId).pop();
+  if (!ledgerRow) return { ok: false, error: "unknown payment" };
+  const { candidates: _c, ...rest } = ledgerRow;
+  await appendLedger({
+    ...rest,
+    received_at: new Date().toISOString(),
+    outcome: "dismissed_by_coach",
+  });
+  return { ok: true };
 }

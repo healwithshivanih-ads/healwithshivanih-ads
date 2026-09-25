@@ -85,4 +85,30 @@ describe("POST /api/handover/triage-paid", () => {
     expect(r.status).toBe(200);
     expect(r.body).toMatchObject({ ok: false, outcome: "conflict" });
   });
+
+  it("lists the conflict for the dashboard with both candidates named", async () => {
+    const { listUnplacedTriagePayments } = await import("@/lib/fmdb/triage-payment-intake");
+    const rows = await listUnplacedTriagePayments();
+    const row = rows.find((r) => r.paymentId === "pay_C00001")!;
+    expect(row.outcome).toBe("conflict");
+    expect(row.candidates.map((c) => c.clientId).sort()).toEqual(["cl-a", "cl-b"]);
+  });
+
+  it("placing it credits the chosen person and clears it from the list", async () => {
+    const m = await import("@/lib/fmdb/triage-payment-intake");
+    expect(await m.resolveTriagePayment("pay_C00001", "cl-b")).toEqual({ ok: true });
+    expect(read("clients", "cl-b")).toContain("triage_paid_at");
+    expect((await m.listUnplacedTriagePayments()).some((r) => r.paymentId === "pay_C00001")).toBe(false);
+    // a redelivery from the funnel is now a no-op on the chosen person
+    const again = await post({ ...base, payment_id: "pay_C00001", first_name: "Mix", email: "asha@example.com", phone: "+919822222222" });
+    expect(again.body).toMatchObject({ outcome: "already_recorded", clientId: "cl-b" });
+  });
+
+  it("dismissing clears it without crediting anyone", async () => {
+    const m = await import("@/lib/fmdb/triage-payment-intake");
+    await post({ ...base, payment_id: "pay_I00001", first_name: "" , email: "" });
+    expect((await m.listUnplacedTriagePayments()).some((r) => r.paymentId === "pay_I00001")).toBe(true);
+    expect(await m.dismissTriagePayment("pay_I00001")).toEqual({ ok: true });
+    expect((await m.listUnplacedTriagePayments()).some((r) => r.paymentId === "pay_I00001")).toBe(false);
+  });
 });

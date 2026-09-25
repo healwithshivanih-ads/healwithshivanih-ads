@@ -46,6 +46,7 @@ import {
 import { sendClientEmailAction } from "@/app/api/email/actions";
 import { foundationSessionPaid } from "@/lib/fmdb/foundation-orders";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
+import type { UnplacedTriagePayment } from "@/lib/fmdb/triage-payment-intake";
 
 type Dict = Record<string, unknown>;
 
@@ -557,6 +558,8 @@ export interface FollowupOverview {
   drafts: FollowupDraftRow[];
   scheduled: FollowupScheduledRow[];
   unanchored: FollowupUnanchoredRow[];
+  /** ₹999 funnel payments that could not be placed on anyone automatically. */
+  unplacedTriage: UnplacedTriagePayment[];
 }
 
 export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
@@ -610,7 +613,9 @@ export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
   }
   drafts.sort((a, b) => a.callDate.localeCompare(b.callDate));
   scheduled.sort((a, b) => (a.nextDueOn ?? "9999").localeCompare(b.nextDueOn ?? "9999"));
-  return { drafts, scheduled, unanchored };
+  const { listUnplacedTriagePayments } = await import("@/lib/fmdb/triage-payment-intake");
+  const unplacedTriage = await listUnplacedTriagePayments().catch(() => []);
+  return { drafts, scheduled, unanchored, unplacedTriage };
 }
 
 // ── coach actions ──────────────────────────────────────────────────────────
@@ -896,4 +901,30 @@ export async function loadCallRecordAction(
   const st = await readState(clientId);
   if (st?.manual?.track === "free") return { kind: "free", date: st.manual.call_date, foundationPaid, triagePaidOn };
   return { kind: null, date: null, foundationPaid, triagePaidOn };
+}
+
+/**
+ * Place an unplaced ₹999 payment on the person the coach picks — the credit,
+ * the note and the Fly re-stage, exactly as if the funnel had matched them.
+ */
+export async function resolveTriagePaymentAction(
+  paymentId: string,
+  clientId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (!SAFE_ID.test(clientId)) return { ok: false, error: "bad client id" };
+  const { resolveTriagePayment } = await import("@/lib/fmdb/triage-payment-intake");
+  const r = await resolveTriagePayment(paymentId, clientId);
+  if (r.ok) {
+    revalidatePath("/dashboard-v2");
+    revalidatePath(`/clients-v2/${clientId}`);
+  }
+  return r;
+}
+
+/** Close an unplaced ₹999 payment without crediting anyone (refund, test…). */
+export async function dismissTriagePaymentAction(paymentId: string): Promise<{ ok: boolean; error?: string }> {
+  const { dismissTriagePayment } = await import("@/lib/fmdb/triage-payment-intake");
+  const r = await dismissTriagePayment(paymentId);
+  if (r.ok) revalidatePath("/dashboard-v2");
+  return r;
 }
