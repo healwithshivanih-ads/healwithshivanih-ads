@@ -250,6 +250,10 @@ addon_tests:
   - { slug: magnesium-serum,   name: "Magnesium (serum)",    quoted_inr: null, dos_list_inr: 610 }
   - { slug: lft,               name: "Liver function (LFT)", quoted_inr: null, dos_list_inr: 1000 }
   - { slug: rft,               name: "Kidney function (RFT)", quoted_inr: null, dos_list_inr: 1400 }
+  # Acumen asked (2026-09-25) for ₹250 on top of each booking's final price.
+  # A charge, not a test (`fee: true` keeps it out of "What we'll check");
+  # passed straight through — we pay Acumen 250, the client pays 250.
+  - { slug: acumen-booking-fee, name: "Home collection & handling", fee: true, our_cost_inr: 250, client_inr: 250, quoted_inr: null, dos_list_inr: null }
 
 # Esoteric extras present in DOS but not yet quoted as add-ons:
 #   Apolipoprotein Profile 1870 · DHT 2750 · HLA-B27 3800 · Full Fatty Acid Profile 4000 · Salivary cortisol 2940

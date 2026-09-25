@@ -88,7 +88,10 @@ export async function loadLabMenuAction(clientId: string): Promise<LabMenu | { o
     ok: true,
     profiles: provider.profiles,
     suggestedIds: profilesForClient(provider, { sex, age }).map((p) => p.id),
-    addons: provider.addons.map((a: LabAddon) => ({ slug: a.slug, name: a.name, ourCostInr: a.ourCostInr })),
+    // fees are added automatically on recommend — never offered as a pickable test
+    addons: provider.addons
+      .filter((a: LabAddon) => !a.isFee)
+      .map((a: LabAddon) => ({ slug: a.slug, name: a.name, ourCostInr: a.ourCostInr })),
     homeCollection: provider.homeCollection,
     coverage: await loadLabCoverage(),
   };
@@ -105,10 +108,16 @@ export async function recommendLabsAction(input: {
   if (!safeId(input.clientId)) return { ok: false, error: "bad client id" };
   const provider = await loadLabProvider();
   if (!provider) return { ok: false, error: "lab catalogue unavailable" };
+  // Per-booking charges (catalogue `fee: true`, e.g. Acumen's ₹250) ride on every
+  // recommendation at their catalogue price, so the coach never has to remember them.
+  const addons = Array.isArray(input.addons) ? [...input.addons] : [];
+  for (const fee of provider.addons.filter((a) => a.isFee && a.clientInr != null)) {
+    if (!addons.some((a) => a.slug === fee.slug)) addons.push({ slug: fee.slug, inr: fee.clientInr as number });
+  }
   const res = await createRecommendedOrder(provider, {
     clientId: input.clientId,
     profileId: input.profileId,
-    addons: input.addons ?? [],
+    addons,
     coachNote: input.coachNote ?? null,
     recommendedBy: process.env.COACH_NAME || "Shivani",
   });

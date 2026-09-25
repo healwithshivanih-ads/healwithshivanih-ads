@@ -254,7 +254,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       return { ok: false, error: `add-on "${a.slug}" needs a sane coach price (₹1–₹${MAX_ADDON_INR})` };
     }
     lines.push({ label: cat.name, inr: a.inr, slug: a.slug });
-    includes.push(cat.name);
+    if (!cat.isFee) includes.push(cat.name);
     chargedAddonSlugs.push(a.slug);
     amountInr += a.inr;
     ourCostInr += cat.ourCostInr ?? 0;

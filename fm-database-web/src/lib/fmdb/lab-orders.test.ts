@@ -15,7 +15,10 @@ const provider = parseAcumen({
     { id: 1, name: "Base Panel", audience: "everyone", our_cost_inr: 8500, mrp_inr: 12500, margin_inr: 4000, includes: ["Full thyroid", "Iron studies"] },
     { id: 4, name: "Male", audience: "men", our_cost_inr: 14000, mrp_inr: 21000, margin_inr: 7000 },
   ],
-  addon_tests: [{ slug: "c-peptide", name: "C-Peptide", quoted_inr: 1400, dos_list_inr: 1400 }],
+  addon_tests: [
+    { slug: "c-peptide", name: "C-Peptide", quoted_inr: 1400, dos_list_inr: 1400 },
+    { slug: "acumen-booking-fee", name: "Collection & handling", fee: true, our_cost_inr: 250, client_inr: 250 },
+  ],
 });
 
 const REC = { clientId: "cl-x", recommendedBy: "shivani", orderId: "2026-06-25-lab001", now: "2026-06-25T10:00:00.000Z" };
@@ -268,5 +271,22 @@ describe("sanitizeLogistics — client-submitted collection details", () => {
     const r = sanitizeLogistics({ ...good, notes: "" });
     expect(r.ok).toBe(true);
     if (r.ok) expect(r.logistics.notes).toBe("");
+  });
+});
+
+describe("fee add-ons (a charge, not a test)", () => {
+  it("bills the fee at its own cost, but never lists it as a test", () => {
+    const r = buildOrder(provider, {
+      ...REC,
+      profileId: null,
+      addons: [{ slug: "c-peptide", inr: 1400 }, { slug: "acumen-booking-fee", inr: 250 }],
+    });
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.order.amount_inr).toBe(1650);
+    expect(r.order.our_cost_inr).toBe(700 + 250); // c-peptide at 50% + fee at its own cost
+    expect(r.order.lines.map((l) => l.label)).toEqual(["C-Peptide", "Collection & handling"]);
+    expect(r.order.includes).toEqual(["C-Peptide"]);
+    expect(validateOrderAmount(provider, r.order)).toEqual({ ok: true });
   });
 });

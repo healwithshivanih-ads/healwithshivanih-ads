@@ -105,7 +105,7 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   const packageName =
     order.profile_id === 1 ? "Base Panel"
     : order.profile_id != null ? `Base + ${panel}`
-    : `Individual tests (${order.lines.length})`;
+    : `Individual tests (${order.includes?.length || order.lines.length})`;
   const listText = order.includes?.length ? order.includes.join("; ") : panel;
   // Our cost = what Acumen invoices us (order.our_cost_inr — profile cost + any
   // add-ons at 50% of catalogue). NOT the client MRP; Acumen never sees margin.
