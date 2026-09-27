@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Sugar Isn't Zero Effect: Alcohol &amp; Your Metabolism — Shivani Hari</title>
+<meta name="description" content="Spirits contain no sugar, but alcohol still acts on blood sugar, blood fats, liver and blood pressure. What the research shows, drink by drink.">
+<style>
+  :root{
+    --paper:#faf9f7; --sand:#f4efe6; --forest:#4a6152; --forest-2:#3b4f42;
+    --ochre:#a9651f; --ink:#262219; --muted:#6f6a5d; --line:#e4ddcf; --rose:#9b3d2e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{max-width:820px;margin:0 auto;padding:0 16px 40px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--forest);font-weight:normal;margin:0}
+  .masthead{background:var(--forest);color:#fff;padding:34px 40px 30px;margin:0 -16px 0;position:relative;overflow:hidden}
+  .masthead .eyebrow{color:#e8c79c}
+  .masthead h1{color:#fff;font-size:34px;line-height:1.15;margin:8px 0 10px}
+  .masthead p{margin:0;color:#dfe7e1;font-size:15px;max-width:560px}
+  .masthead .for{margin-top:18px;font-size:13px;color:#cfdad2}
+  .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre);font-weight:600}
+  section{margin-top:34px}
+  h2{font-size:23px;margin:6px 0 12px}
+  p{margin:0 0 12px}
+  .lead{font-size:16.5px}
+  .quote{border-left:3px solid var(--ochre);background:var(--sand);padding:12px 16px;margin:14px 0;border-radius:0 8px 8px 0}
+  .quote q{font-family:Georgia,serif;font-style:italic;font-size:16px;quotes:"“" "”"}
+  .quote .cite{display:block;margin-top:6px;font-size:12.5px;color:var(--muted)}
+  sup a{color:var(--ochre);text-decoration:none;font-size:11px;font-weight:600}
+
+  /* sugar chart */
+  .chart{border:1px solid var(--line);border-radius:12px;background:#fff;padding:18px 20px 10px}
+  .row{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 92px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .drink b{display:block;font-size:14.5px}
+  .drink span{font-size:12px;color:var(--muted)}
+  .track{height:14px;background:var(--sand);border-radius:7px;position:relative;overflow:hidden}
+  .bar{position:absolute;top:0;bottom:0;border-radius:7px;background:var(--ochre)}
+  .bar.range{background:linear-gradient(90deg,var(--ochre) 0,var(--ochre) var(--lo),#d9a978 var(--lo))}
+  .bar.zero{background:none}
+  .grams{text-align:right;font-weight:600;font-size:14px;white-space:nowrap}
+  .grams small{display:block;font-weight:400;color:var(--muted);font-size:11.5px}
+  .chart .foot{font-size:12px;color:var(--muted);margin:10px 0 4px}
+
+  .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card h3{font-size:17px;margin-bottom:6px}
+  .card p{font-size:14px;margin:0 0 8px}
+  .card .quote{margin:8px 0 0;padding:9px 12px}
+  .card .quote q{font-size:14.5px}
+
+  .gi{display:flex;gap:10px;margin:14px 0 6px;flex-wrap:wrap}
+  .gi div{flex:1 1 120px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-align:center}
+  .gi strong{display:block;font-family:Georgia,serif;font-size:26px;color:var(--forest)}
+  .gi span{font-size:12.5px;color:var(--muted)}
+
+  .alert{background:#f6e9e4;border:1px solid #e3c4b9;border-radius:12px;padding:16px 18px}
+  .alert h3{color:var(--rose)}
+
+  .takeaways{background:var(--forest);color:#fff;border-radius:14px;padding:22px 24px}
+  .takeaways h2{color:#fff}
+  .takeaways ol{margin:6px 0 0;padding-left:20px}
+  .takeaways li{margin:0 0 9px}
+  .takeaways li b{color:#f1d3a8}
+  .takeaways .src{color:#cfdad2;font-size:12px}
+
+  .refs{font-size:12px;color:var(--muted)}
+  .refs ol{padding-left:20px;margin:6px 0 0}
+  .refs li{margin:0 0 5px}
+  .refs a{color:var(--muted)}
+  .signoff{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .sig{font-family:"Segoe Script","Bradley Hand","Snell Roundhand",cursive;font-size:26px;color:var(--forest)}
+
+  @media (max-width:640px){
+    .masthead{padding:26px 20px}
+    .masthead h1{font-size:27px}
+    .row{grid-template-columns:minmax(0,1fr) 80px}
+    .row .track{grid-column:1 / -1;order:3}
+    .cards{grid-template-columns:minmax(0,1fr)}
+  }
+  @page{size:A4;margin:12mm 12mm 14mm}
+  @media print{
+    html,body{background:#fff;font-size:12.5px}
+    .page{max-width:none;padding:0}
+    .masthead{margin:0;border-radius:10px;padding:24px 28px}
+    section{margin-top:22px}
+    .chart,.card,.alert,.takeaways,.quote,.row,.gi div{break-inside:avoid}
+    h2,.eyebrow{break-after:avoid}
+    html,body{font-size:11.5px}
+    .masthead{padding:18px 24px}
+    .masthead h1{font-size:26px;margin:4px 0 6px}
+    section{margin-top:16px}
+    h2{font-size:19px;margin:2px 0 8px}
+    .lead{font-size:13px}
+    .chart{padding:10px 14px 6px}
+    .row{padding:4px 0}
+    .drink b{font-size:12.5px}
+    .quote{margin:8px 0;padding:8px 12px}
+    .quote q{font-size:13px}
+    .card{padding:12px 14px}
+    .card p{font-size:12px}
+    .card .quote q{font-size:12.5px}
+    .cards{gap:10px}
+    .gi strong{font-size:20px}
+    .gi div{padding:6px}
+    .takeaways{padding:16px 20px}
+    .refs{font-size:10px}
+    .refs li{margin:0 0 2px}
+    .signoff{margin-top:14px;padding-top:10px}
+  }
+
+  .mine{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .m{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .m-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px}
+  .m-name{font-family:Georgia,serif;color:var(--forest);font-size:17px}
+  .m-val{font-size:12px;font-weight:600;color:var(--rose);background:#f6e9e4;border-radius:20px;padding:2px 9px}
+  .m p{font-size:13.5px;margin:0 0 6px}
+  .m .quote{margin:6px 0 0;padding:8px 11px}
+  .m .quote q{font-size:13.5px}
+  .gi strong{font-size:22px}
+  @media (max-width:640px){.mine{grid-template-columns:minmax(0,1fr)}}
+  @media print{.m{break-inside:avoid;padding:10px 12px}.m p{font-size:11.5px}.m .quote q{font-size:12px}.m-name{font-size:15px}.mine{gap:8px}.signoff{break-inside:avoid;margin-top:8px}.refs li{margin:0}.gi div{padding:4px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="masthead">
+  <div class="eyebrow">Shivani Hari · Functional medicine</div>
+  <h1>Zero sugar isn't zero effect<br>Alcohol, sugar &amp; your metabolism</h1>
+  <p>A common belief is that spirits like whisky, vodka and rum are "safe" because they contain no sugar. The sugar part is true. This guide covers the rest of the picture. Every point comes from a peer-reviewed medical journal, cited at the end.</p>
+</header>
+
+<section>
+  <div class="eyebrow">Part 1</div>
+  <h2>How much sugar is in each drink</h2>
+  <div class="chart">
+    <div class="row">
+      <div class="drink"><b>Whisky, vodka, gin, rum</b><span>1 peg · 30 mL</span></div>
+      <div class="track"><div class="bar zero"></div></div>
+      <div class="grams">0 g<small>no sugar</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Dry red or white wine</b><span>1 glass · 150 mL</span></div>
+      <div class="track"><div class="bar" style="left:0;width:4.5%"></div></div>
+      <div class="grams">0.3–1.5 g<small>under ½ tsp</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Dry sherry</b><span>1 small glass · 60 mL</span></div>
+      <div class="track"><div class="bar" style="left:0;width:5.5%"></div></div>
+      <div class="grams">≈ 1.8 g<small>≈ ½ tsp</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Port</b><span>1 glass · 75 mL</span></div>
+      <div class="track"><div class="bar" style="left:0;width:27%"></div></div>
+      <div class="grams">up to 9 g<small>up to 2 tsp</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Dessert wine (ice wine)</b><span>1 glass · 75 mL</span></div>
+      <div class="track"><div class="bar range" style="left:0;width:30%;--lo:64%"></div></div>
+      <div class="grams">6–10 g<small>1½–2½ tsp</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Beer</b><span>1 bottle · 330 mL</span></div>
+      <div class="track"><div class="bar range" style="left:0;width:50%;--lo:80%"></div></div>
+      <div class="grams">13–17 g<small>3–4 tsp carbs</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Sweet white wine</b><span>1 glass · 150 mL</span></div>
+      <div class="track"><div class="bar" style="left:0;width:54%"></div></div>
+      <div class="grams">up to 18 g<small>up to 4½ tsp</small></div>
+    </div>
+    <div class="row">
+      <div class="drink"><b>Beer, large bottle</b><span>1 bottle · 650 mL</span></div>
+      <div class="track"><div class="bar range" style="left:0;width:100%;--lo:80%"></div></div>
+      <div class="grams">26–33 g<small>6½–8 tsp carbs</small></div>
+    </div>
+    <p class="foot">Grams per serving are worked out from the per-litre figures in the studies below (spirits, wines, sherry and port<sup><a href="#r1">1</a></sup>; ice wine<sup><a href="#r15">15</a></sup>; beer 4–5 g carbohydrate per 100 mL<sup><a href="#r14">14</a></sup>). 1 teaspoon of sugar ≈ 4 g. Mixers are not included: the sugar in cola, tonic, soda or juice adds to the figure above, and the amount is printed on the mixer's label.</p>
+  </div>
+
+  
+  <div class="quote">
+    <q>For example, whiskey, cognac, and vodka contain no sugars</q>
+    <span class="cite">Lieber CS, <i>Alcohol Research &amp; Health</i>, 2003<sup><a href="#r1">1</a></sup></span>
+  </div>
+  <p class="lead" style="margin-top:12px">So if sugar were the only question, spirits would be the safest drinks on the shelf. But alcohol is processed by the liver, the same organ that controls blood sugar and blood fats. That's where its effects come from, whichever drink it arrives in.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Part 2</div>
+  <h2>What alcohol does, with or without sugar</h2>
+  <div class="mine">
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Blood sugar, over time</span></div>
+      <p>Regular drinking over the long term pushes blood sugar <b>up</b> in people with diabetes, even when the drink has no sugar.<sup><a href="#r2">2</a></sup> When moderate-to-heavy drinkers stopped for one month, their insulin resistance fell by about a quarter (26%). A group that kept drinking saw no such change.<sup><a href="#r3">3</a></sup></p>
+      <div class="quote"><q>long-term alcohol use in well-nourished diabetics can result in excessive blood sugar levels</q><span class="cite">Emanuele NV et al., <i>Alcohol Health &amp; Research World</i>, 1998<sup><a href="#r2">2</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Blood sugar, same night</span></div>
+      <p>Between meals, the liver keeps blood sugar steady by making new glucose. Alcohol switches this off. In fasting healthy men, it cut the liver's glucose production by 45%.<sup><a href="#r13">13</a></sup> This is why drinking on an empty stomach is best avoided.<sup><a href="#r2">2</a></sup></p>
+      <div class="quote"><q>diabetics should consume alcohol only with or shortly after meals</q><span class="cite">Emanuele NV et al., 1998<sup><a href="#r2">2</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Blood fats (triglycerides)</span></div>
+      <p>After a drink, the liver starts turning alcohol into new fat. In one study, the share of blood fat made this way rose from 2% to 30%.<sup><a href="#r4">4</a></sup> In controlled trials, about 30 g of alcohol a day (roughly three small pegs) raised triglycerides.<sup><a href="#r5">5</a></sup></p>
+      <div class="quote"><q>The fractional contribution from DNL to VLDL-triacylglycerol palmitate rose after alcohol consumption from 2 +/- 1% to 30 +/- 8%</q><span class="cite">Siler SQ et al., <i>American Journal of Clinical Nutrition</i>, 1999<sup><a href="#r4">4</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">The liver</span></div>
+      <p>The first stage of alcohol-related liver damage is fat building up in the liver.<sup><a href="#r1">1</a></sup> GGT, a liver enzyme on routine blood tests, rises with regular drinking and comes down when drinking stops.<sup><a href="#r6">6</a></sup></p>
+      <div class="quote"><q>CDT and GGT both decreased during 4 weeks of abstinence.</q><span class="cite">Anton RF et al., <i>Alcoholism: Clinical &amp; Experimental Research</i>, 2002<sup><a href="#r6">6</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Blood pressure</span></div>
+      <p>A review of 36 trials found that cutting down lowers blood pressure in people who drink more than two drinks a day (about 2½ small pegs). People who drank most and halved their intake saw the top number fall by about 5.5 points.<sup><a href="#r7">7</a></sup></p>
+      <div class="quote"><q>Reducing alcohol intake lowers blood pressure in a dose-dependent manner</q><span class="cite">Roerecke M et al., <i>Lancet Public Health</i>, 2017<sup><a href="#r7">7</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Acidity &amp; reflux</span></div>
+      <p>Across 29 studies, drinkers had about 1.5 times the odds of acid reflux. For people drinking more than 3–5 days a week, the odds were about twice as high.<sup><a href="#r8">8</a></sup></p>
+      <div class="quote"><q>The increase in alcohol consumption and frequency showed a stronger association with GERD.</q><span class="cite">Pan J et al., <i>Alcohol and Alcoholism</i>, 2019<sup><a href="#r8">8</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Vitamins (folate)</span></div>
+      <p>Alcohol lowers folate, a B vitamin, in several ways: the gut absorbs less of it, the liver stores less, and the kidneys pass more out in the urine.<sup><a href="#r9">9</a></sup></p>
+      <div class="quote"><q>reduced dietary folate intake, intestinal malabsorption, reduced liver uptake and storage</q><span class="cite">Medici V, Halsted CH, <i>Molecular Nutrition &amp; Food Research</i>, 2013<sup><a href="#r9">9</a></sup></span></div>
+    </div>
+
+    <div class="m">
+      <div class="m-head"><span class="m-name">Diabetes risk in Asians</span></div>
+      <p>The "a little alcohol protects against diabetes" finding may not apply to Asian populations, according to the largest review (38 studies, 1.9 million people).<sup><a href="#r16">16</a></sup></p>
+      <div class="quote"><q>Reductions in risk among moderate alcohol drinkers may be confined to women and non-Asian populations.</q><span class="cite">Knott C et al., <i>Diabetes Care</i>, 2015<sup><a href="#r16">16</a></sup></span></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="alert">
+    <div class="eyebrow" style="color:var(--rose)">Good to know</div>
+    <h3 style="font-size:20px;margin:6px 0 10px">Medicines and tobacco</h3>
+    <p><b>Metformin</b>, one of the most widely used diabetes medicines, has a rare but serious side effect called lactic acidosis. Heavy drinking is one of its known risk factors.<sup><a href="#r10">10</a></sup></p>
+    <div class="quote" style="background:#fff"><q>Risk factors include those that reduce renal elimination of metformin and excessive alcohol consumption.</q><span class="cite">See KC, <i>World Journal of Diabetes</i>, 2024<sup><a href="#r10">10</a></sup></span></div>
+    <p style="margin-top:12px"><b>Alcohol and tobacco.</b> A study of Indian men found that alcohol alone raised the risk of mouth cancer about 2½ times, even in men who had never smoked or chewed tobacco.<sup><a href="#r11">11</a></sup> When 17 studies were pooled, tobacco and alcohol together were worse than the two risks multiplied.<sup><a href="#r12">12</a></sup></p>
+    <div class="quote" style="background:#fff;margin-bottom:0"><q>the joint effect between tobacco and alcohol use is greater than multiplicative</q><span class="cite">Hashibe M et al., <i>Cancer Epidemiology, Biomarkers &amp; Prevention</i>, 2009<sup><a href="#r12">12</a></sup></span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">What's in a peg</div>
+  <h2>No sugar, but not empty</h2>
+  <div class="gi">
+    <div><strong>0 g</strong><span>sugar in a peg of spirits</span></div>
+    <div><strong>≈ 9.5 g</strong><span>alcohol in a small peg (30 mL)</span></div>
+    <div><strong>≈ 67</strong><span>calories per small peg</span></div>
+    <div><strong>≈ 19 g</strong><span>alcohol in a large peg (60 mL)</span></div>
+  </div>
+  <p style="font-size:13px;color:var(--muted)">Worked out for a 40% spirit: alcohol weighs 0.79 g per mL and carries 7.1 calories per gram, nearly twice as much as sugar at 4.<sup><a href="#r1">1</a></sup> Soda or water keeps the glass sugar-free. Cola, juice or sweet mixers add sugar on top.</p>
+</section>
+
+<section>
+  <div class="takeaways">
+    <div class="eyebrow" style="color:#e8c79c">Putting it together</div>
+    <h2>What the research points to</h2>
+    <ol>
+      <li><b>Spirits are the lowest-sugar choice,</b> but the alcohol itself still affects blood sugar, blood fats, liver and blood pressure.<span class="src"> (1–7)</span></li>
+      <li><b>Always with food, never on an empty stomach.</b><span class="src"> (2, 13)</span></li>
+      <li><b>Keep the mixer sugar-free.</b> Soda or water rather than cola, tonic or juice.<span class="src"> (1)</span></li>
+      <li><b>Fewer, smaller pegs, and alcohol-free days.</b> Blood pressure benefits showed up in people who cut back from more than two drinks a day.<span class="src"> (7)</span></li>
+      <li><b>A month's break is revealing.</b> In the studies, insulin resistance, blood pressure and liver enzymes improved within four weeks. Timed before a routine blood test, it shows the difference in black and white.<span class="src"> (3, 6)</span></li>
+    </ol>
+    <p style="color:#cfdad2;font-size:12.5px;margin:10px 0 0">Anyone who has drunk daily for a long time should check with their doctor before stopping suddenly.</p>
+  </div>
+</section>
+
+<section class="refs">
+  <div class="eyebrow">Sources · all peer-reviewed journals</div>
+  <ol>
+    <li id="r1">Lieber CS. Relationships between nutrition, alcohol use, and liver disease. <i>Alcohol Res Health.</i> 2003;27(3):220–231. PMID 15535450.</li>
+    <li id="r2">Emanuele NV et al. Consequences of alcohol use in diabetics. <i>Alcohol Health Res World.</i> 1998;22(3):211–219. PMID 15706798.</li>
+    <li id="r3">Mehta G et al. Short-term abstinence from alcohol and changes in cardiovascular risk factors, liver function tests and cancer-related growth factors: a prospective observational study. <i>BMJ Open.</i> 2018;8(5):e020673. PMID 29730627.</li>
+    <li id="r4">Siler SQ et al. De novo lipogenesis, lipid kinetics, and whole-body lipid balances in humans after acute alcohol consumption. <i>Am J Clin Nutr.</i> 1999;70(5):928–936. PMID 10539756.</li>
+    <li id="r5">Rimm EB et al. Moderate alcohol intake and lower risk of coronary heart disease: meta-analysis of effects on lipids and haemostatic factors. <i>BMJ.</i> 1999;319:1523–1528. PMID 10591709.</li>
+    <li id="r6">Anton RF et al. Carbohydrate-deficient transferrin and gamma-glutamyltransferase for the detection and monitoring of alcohol use: results from a multisite study. <i>Alcohol Clin Exp Res.</i> 2002;26(8):1215–1222. PMID 12198396.</li>
+    <li id="r7">Roerecke M et al. The effect of a reduction in alcohol consumption on blood pressure: a systematic review and meta-analysis. <i>Lancet Public Health.</i> 2017;2(2):e108–e120. PMID 29253389.</li>
+    <li id="r8">Pan J et al. Alcohol consumption and the risk of gastroesophageal reflux disease: a systematic review and meta-analysis. <i>Alcohol Alcohol.</i> 2019;54(1):62–69. PMID 30184159.</li>
+    <li id="r9">Medici V, Halsted CH. Folate, alcohol, and liver disease. <i>Mol Nutr Food Res.</i> 2013;57(4):596–606. PMID 23136133.</li>
+    <li id="r10">See KC. Metformin-associated lactic acidosis: a mini review of pathophysiology, diagnosis and management in critically ill patients. <i>World J Diabetes.</i> 2024;15(6):1178–1186. PMID 38983827.</li>
+    <li id="r11">Znaor A et al. Independent and combined effects of tobacco smoking, chewing and alcohol drinking on the risk of oral, pharyngeal and esophageal cancers in Indian men. <i>Int J Cancer.</i> 2003;105(5):681–686. PMID 12740918.</li>
+    <li id="r12">Hashibe M et al. Interaction between tobacco and alcohol use and the risk of head and neck cancer. <i>Cancer Epidemiol Biomarkers Prev.</i> 2009;18(2):541–550. PMID 19190158.</li>
+    <li id="r13">Siler SQ et al. The inhibition of gluconeogenesis following alcohol in humans. <i>Am J Physiol.</i> 1998;275(5):E897–E907. PMID 9815011.</li>
+    <li id="r14">Sluik D et al. Contributors to dietary glycaemic index and glycaemic load in the Netherlands: the role of beer. <i>Br J Nutr.</i> 2016;115(7):1218–1225. PMID 26857156.</li>
+    <li id="r15">Li J, Hu WZ, Xu YP. Diversity and dynamics of yeasts during Vidal blanc icewine fermentation. <i>Front Microbiol.</i> 2019;10:1588. PMID 31354677.</li>
+    <li id="r16">Knott C et al. Alcohol consumption and the risk of type 2 diabetes: a systematic review and dose-response meta-analysis of more than 1.9 million individuals from 38 observational studies. <i>Diabetes Care.</i> 2015;38(9):1804–1812. PMID 26294775.</li>
+  </ol>
+</section>
+
+<footer class="signoff">
+  <div><div class="sig">Shivani</div>Shivani Hari · Functional medicine health coach</div>
+  <div style="text-align:right">For education only, alongside your doctor's care.<br>www.theochretree.com</div>
+</footer>
+
+</div>
+</body>
+</html>

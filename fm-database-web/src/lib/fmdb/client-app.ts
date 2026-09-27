@@ -50,6 +50,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { isInternationalClient } from "@/lib/server-actions/supplement-links-match";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { weekNourishment } from "@/lib/fmdb/nourishment";
+import { loadPlanHandouts } from "@/lib/fmdb/plan-handouts";
 import { deriveMindBodyReads, deriveSomatic, excludeSomaticLinked, type AppMindBodyRead, type AppSomatic } from "@/lib/fmdb/somatic";
 import {
   deriveExerciseSessions,
@@ -5474,6 +5475,19 @@ export async function loadClientAppData(
       // No body / no url: DocOverlay renders the pack IN-APP from
       // data.recipePack (letters are retiring — nothing links out).
       body: "",
+    });
+  }
+  // Handouts the coach attached to the plan (same list the WhatsApp drip
+  // sends) — each opens its full printable page.
+  for (const h of await loadPlanHandouts(plan.attached_resources)) {
+    resources.push({
+      id: `r-handout-${h.slug}`,
+      title: h.title,
+      kind: "Handout",
+      icon: "doc",
+      desc: h.desc || "A guide from Shivani — tap to read.",
+      body: `${h.desc ? `${h.desc}\n\n` : ""}Tap Open for the full guide — you can print it or share it from there.`,
+      url: h.url,
     });
   }
   // (no separate supplement-order resource — each supplement on the Plan tab
