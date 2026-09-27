@@ -24,7 +24,7 @@ from __future__ import annotations
 import re
 import shutil
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Optional
 
@@ -103,6 +103,20 @@ def last_touch(person_dir: Path, data: dict) -> Optional[date]:
     ]
     real = [c for c in candidates if c is not None]
     return max(real) if real else None
+
+
+def _gift_open_until(data: dict) -> Optional[date]:
+    """Last day a gifted Foundation session (Sequoya founding gift) is live:
+    the later of its expiry and 7 days after the second call (the credit
+    window). None when the person holds no gift. Mirrors founding.ts."""
+    g = data.get("gifted_foundation_session")
+    if not isinstance(g, dict) or not g.get("gifted_by"):
+        return None
+    ends = [d for d in (_as_date(g.get("expires_on")),) if d is not None]
+    call2 = _as_date(g.get("call_2_on"))
+    if call2 is not None:
+        ends.append(call2 + timedelta(days=7))
+    return max(ends) if ends else None
 
 
 def quiet_days(person_dir: Path, data: dict, today: date) -> Optional[int]:
@@ -202,6 +216,17 @@ def sweep(
         name = str(data.get("display_name") or cid)
 
         if status == SIGNED_UP:
+            continue
+
+        gift_until = _gift_open_until(data)
+        if gift_until is not None and today <= gift_until:
+            # A founding member's gifted Foundation session is still live.
+            # Parking would drop them off Fly and kill the gift link they were
+            # handed; the gift has its own end date, so wait for that.
+            kept.append(
+                {"client_id": cid, "display_name": name, "engagement_status": status,
+                 "reason": f"holds a gifted Foundation session (open until {gift_until.isoformat()})"}
+            )
             continue
 
         qd = quiet_days(person_dir, data, today)

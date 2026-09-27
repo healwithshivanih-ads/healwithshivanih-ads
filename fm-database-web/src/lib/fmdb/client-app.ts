@@ -67,7 +67,9 @@ import {
   stateAtDueFrom,
   type PollScore,
 } from "@/lib/fmdb/practice-phasing";
+import { creditWindowFor, giftedSessionOf } from "@/lib/fmdb/founding";
 import {
+  DISCOVERY_CREDIT_WINDOW_DAYS,
   resolveAppTier,
   resolveDiscoveryStage,
   type AppTier,
@@ -1136,6 +1138,10 @@ export interface ClientAppData {
   discoveryCredit: DiscoveryCredit | null;
   /** The "Your Starting Map" artifact — non-null only for tier === "discovery". */
   discoverySummary: DiscoverySummary | null;
+  /** Discovery tier only: this Foundation session was a Sequoya founding
+   *  member's gift, so the credit copy speaks of the gift (7 days from the
+   *  second call), not of a consult fee they never paid. */
+  giftedFoundation?: boolean;
   /** Discovery onboarding stage — non-null only for tier === "discovery". Gates
    *  the app: recommendations + countdown show only at `post_call`. */
   discoveryStage: DiscoveryStage | null;
@@ -1176,6 +1182,9 @@ export interface ClientAppData {
     dosha: string[];
     doshaLabel: string;
     coachLine: string;
+    /** Sequoya "Founding 20" member — shows the founding mark. Never carries
+     *  the private locked rate. */
+    founding?: boolean;
   };
   coach: {
     name: string;
@@ -3456,11 +3465,15 @@ async function buildDiscoveryAppData(
   //   "enrolled"  — signed up, plan not written yet (the enrol→build gap). Same
   //                 onboarding + Lab Vault surface, commercial framing removed.
   // Anything else (package / guided) has a plan and belongs on the main path.
+  // A founding member's gift recipient: the credit runs 7 days from their
+  // SECOND Foundation call, not 15 from discovery_call_date (founding.ts).
+  const creditWin = creditWindowFor(client, DISCOVERY_CREDIT_WINDOW_DAYS);
   const tierRes = resolveAppTier(
     {
       engagementStatus: asStr(client.engagement_status) || null,
       hasPublishedPlan: false,
-      discoveryCallDate: asYmd(client.discovery_call_date) || null,
+      discoveryCallDate: creditWin.anchor,
+      creditWindowDays: creditWin.days,
     },
     tzTodayYmd(tz),
   );
@@ -3554,6 +3567,7 @@ async function buildDiscoveryAppData(
     // CTA never renders to someone who has already bought the programme.
     discoveryCredit: tierRes.credit,
     discoverySummary: await parseDiscoverySummary(client, firstName),
+    giftedFoundation: !!giftedSessionOf(client),
     discoveryStage,
     intakeUrl,
     mode: "ACTIVE",
@@ -6081,6 +6095,9 @@ export async function loadClientAppData(
       dosha,
       doshaLabel,
       coachLine,
+      // Sequoya founding member → the quiet mark on Today + the tree. Only the
+      // flag crosses to the app; the private Sequoya+ rate never does.
+      founding: client.founding_member === true,
     },
     coach: {
       name: coachName,

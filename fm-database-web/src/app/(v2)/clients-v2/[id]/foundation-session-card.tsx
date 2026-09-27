@@ -65,7 +65,7 @@ function StepChip({ done, label }: { done: boolean; label: string }) {
 export function FoundationSessionCard({ clientId, mobileNumber, initialStatus }: Props) {
   const [payUrl, setPayUrl] = useState<string | null>(null);
   const [waText, setWaText] = useState<string>("");
-  const [amount, setAmount] = useState<{ amountInr: number; creditInr: number } | null>(null);
+  const [amount, setAmount] = useState<{ amountInr: number; creditInr: number; gifted: boolean } | null>(null);
   const [status, setStatus] = useState<FoundationStatus | null>(initialStatus ?? null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -106,7 +106,7 @@ export function FoundationSessionCard({ clientId, mobileNumber, initialStatus }:
       if (!out.ok) throw new Error(out.error);
       setPayUrl(out.payUrl);
       setWaText(out.waText);
-      setAmount({ amountInr: out.amountInr, creditInr: out.creditInr });
+      setAmount({ amountInr: out.amountInr, creditInr: out.creditInr, gifted: out.gifted });
       setStatus((s) => ({
         paid: out.paid,
         paidAt: s?.paidAt ?? null,
@@ -188,7 +188,12 @@ export function FoundationSessionCard({ clientId, mobileNumber, initialStatus }:
             >
               {payUrl}
             </code>
-            {amount && (
+            {amount?.gifted && (
+              <div style={{ fontSize: 12.5, color: "#a33a60" }}>
+                🎁 A Sequoya founding gift — nothing to pay. This link shows them the gift, then their intake and booking.
+              </div>
+            )}
+            {amount && !amount.gifted && (
               <div style={{ fontSize: 12.5, color: amount.creditInr ? "#2f7a3f" : "var(--fm-muted, #6f6a5d)" }}>
                 {amount.creditInr
                   ? `✓ ₹${amount.creditInr} short-call credit applied — they will be charged ₹${amount.amountInr.toLocaleString("en-IN")}.`

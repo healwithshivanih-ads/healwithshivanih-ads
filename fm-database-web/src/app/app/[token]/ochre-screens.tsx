@@ -15,6 +15,7 @@ import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
 import { isGrowingTreeEnabled } from "./growing-tree-flag";
 import { dailySeed } from "./daily-seed";
+import { FoundingMemberMark } from "@/components/sequoya/sequoya-brand";
 
 /** How many meal components the compact "today" row lists before it collapses
  *  the rest into "+N more". The row is two lines on a phone (.ml-dishes), which
@@ -470,6 +471,11 @@ export function TodayScreen({
         <div className="date script">
           {data.today.dow}, {data.today.dateLabel}
         </div>
+        {data.client.founding && (
+          <div style={{ marginTop: 6 }}>
+            <FoundingMemberMark />
+          </div>
+        )}
       </div>
 
       {/* RIGHT NOW hero */}

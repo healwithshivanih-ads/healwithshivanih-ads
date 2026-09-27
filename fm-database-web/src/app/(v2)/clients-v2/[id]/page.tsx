@@ -59,6 +59,8 @@ import { EngagementPicker } from "./engagement-picker";
 import { ClientArchiveControl } from "./client-archive-control";
 import { DiscoveryAppCard } from "./discovery-app-card";
 import { FoundationSessionCard } from "./foundation-session-card";
+import { FoundingMemberCard } from "./founding-member-card";
+import { creditWindowFor, giftedSessionOf, isFoundingMember } from "@/lib/fmdb/founding";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
 import { BeightonVerifyPanel } from "./beighton-verify-panel";
@@ -2266,6 +2268,15 @@ export default async function ClientV2Page({
                           discovery flow. Send the pay link; once paid the client
                           is walked into their intake form + booking a call. Same
                           gate as the discovery share (pre-plan, pre-signup). */}
+                      {/* Sequoya "Founding 20": founder mark + private locked
+                          rate + their one gifted Foundation session; or, on a
+                          gift recipient, the call 1 / call 2 / joined recorder
+                          and the 7-day credit deadline. */}
+                      {(engagement === "signed_up" ||
+                        isFoundingMember(client as unknown as Record<string, unknown>) ||
+                        !!giftedSessionOf(client as unknown as Record<string, unknown>)) && (
+                        <FoundingMemberCard clientId={client.client_id} />
+                      )}
                       {!publishedPlan && engagement !== "signed_up" && (
                         <FoundationSessionCard
                           clientId={client.client_id}
@@ -2287,6 +2298,10 @@ export default async function ClientV2Page({
                             if (v instanceof Date) return v.toISOString().slice(0, 10);
                             if (typeof v === "string") return v.slice(0, 10);
                             return null;
+                          })()}
+                          giftCreditWindow={(() => {
+                            const g = giftedSessionOf(client as unknown as Record<string, unknown>);
+                            return g ? creditWindowFor(client as unknown as Record<string, unknown>, 15) : null;
                           })()}
                         />
                       )}

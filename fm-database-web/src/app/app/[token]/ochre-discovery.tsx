@@ -29,7 +29,7 @@ function waHref(number: string, text: string): string {
  * driven by the date-resolved credit window (credit_live vs credit_expired).
  */
 export function UpgradeCta() {
-  const { discoveryCredit: credit, coach, tier } = useOchre();
+  const { discoveryCredit: credit, coach, tier, giftedFoundation } = useOchre();
   // NEVER shown to an enrolled client. They have already bought the programme,
   // so both branches below are wrong for them — "upgrade to the full programme"
   // and, worse, the fallback "your consult-credit window has closed". Guarding
@@ -38,9 +38,13 @@ export function UpgradeCta() {
   const live = credit?.state === "credit_live";
 
   const title = live ? "Ready for the full journey?" : "Continue your journey";
-  const body = live
-    ? "Your ₹12,000 consult adjusts in full against the programme — so upgrading costs only the difference."
-    : "Your consult-credit window has closed. You can begin the full programme, or book a fresh discovery call — its fee then credits toward your package.";
+  const body = giftedFoundation
+    ? live
+      ? "Your gifted Foundation session comes with a ₹12,000 credit — join the programme within 7 days of your second call and it comes off in full."
+      : "The credit window that came with your gifted session has closed. You can still begin the full programme whenever you're ready."
+    : live
+      ? "Your ₹12,000 consult adjusts in full against the programme — so upgrading costs only the difference."
+      : "Your consult-credit window has closed. You can begin the full programme, or book a fresh discovery call — its fee then credits toward your package.";
   const waText = live
     ? "Hi,I'd like to upgrade to the full programme after my discovery call."
     : "Hi,I'd like to continue — could you tell me about starting the full programme or booking another discovery call?";

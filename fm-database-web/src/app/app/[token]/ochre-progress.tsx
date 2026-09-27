@@ -13,6 +13,7 @@ import type { JourneyItem } from "@/lib/fmdb/client-app";
 import { MsqCard } from "./ochre-msq";
 import { GrowingTree } from "./growing-tree";
 import { isGrowingTreeEnabled } from "./growing-tree-flag";
+import { FoundingMemberMark } from "@/components/sequoya/sequoya-brand";
 
 // ── symptom-score hero ───────────────────────────────────────────────────────
 
@@ -544,6 +545,7 @@ export function ProgressScreen({
             Reach a milestone and it blossoms and fruits. Show up a little each day and watch it
             flourish.
           </p>
+          {data.client.founding && <FoundingMemberMark variant="line" />}
           {data.client.startsInDays > 0 ? (
             <div className="rn-tree-nudge">🌱 It wakes up on {data.client.startDateLabel} — that&rsquo;s your Day 1.</div>
           ) : dailyTotal > 0 && dailyDone < dailyTotal ? (

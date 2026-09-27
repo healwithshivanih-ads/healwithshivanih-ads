@@ -33,6 +33,7 @@ import {
   FOUNDATION_SESSION_PRICE_INR,
   foundationPriceFor,
 } from "@/lib/fmdb/foundation-orders";
+import { giftExpired, giftMessage, giftedSessionOf } from "@/lib/fmdb/founding";
 
 const IST = "Asia/Kolkata";
 
@@ -66,7 +67,7 @@ async function readClientYaml(clientId: string): Promise<Record<string, unknown>
   }
 }
 
-async function latestPublishedPlanSlug(clientId: string): Promise<string | null> {
+export async function latestPublishedPlanSlug(clientId: string): Promise<string | null> {
   const dir = path.join(getPlansRoot(), "published");
   let entries: string[];
   try {
@@ -103,7 +104,7 @@ async function ensureFullIntakeToken(clientId: string): Promise<string> {
   const exp = asYmd(data.intake_token_expires_at);
   const stillValid = tok.length >= 16 && (!exp || exp >= istTodayYmd());
   if (stillValid) return tok;
-  const res = await generateIntakeToken(clientId, 14, true);
+  const res = await generateIntakeToken(clientId, 14, true, true);
   return res.ok ? res.token : "";
 }
 
@@ -125,6 +126,8 @@ export async function startFoundationSession(clientId: string): Promise<
       /** ₹ taken off for a recorded ₹999 short call (0 when none). */
       creditInr: number;
       paid: boolean;
+      /** A founding member's gift — nothing to pay. */
+      gifted: boolean;
       waText: string;
     }
   | { ok: false; error: string }
@@ -160,15 +163,23 @@ export async function startFoundationSession(clientId: string): Promise<
   const bookingUrl = foundationCallUrl();
   const { paid } = await foundationSessionPaid(clientId);
 
+  const gift = giftedSessionOf(data);
   const price = foundationPriceFor(data);
   const priceLine = price.creditInr
     ? `(₹${price.amountInr.toLocaleString("en-IN")} — the ₹${price.creditInr} you paid for our short call comes off the ₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")})`
     : `(₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")})`;
-  const waText =
-    `Hi ${firstName}! Lovely to connect. Here's the link to book your Foundation Session ` +
-    `${priceLine}:\n\n${payUrl}\n\n` +
-    `Once your payment is through, that same page will let you fill in your health intake form ` +
-    `and pick a time for our call. Looking forward to it! — Shivani`;
+  // A gifted session (Sequoya founding gift) has no price — never quote one.
+  const waText = gift
+    ? giftMessage({
+        founderFirst: gift.gifted_by_name || "a friend",
+        recipientFirst: firstName,
+        url: payUrl,
+        expiresOn: gift.expires_on,
+      })
+    : `Hi ${firstName}! Lovely to connect. Here's the link to book your Foundation Session ` +
+      `${priceLine}:\n\n${payUrl}\n\n` +
+      `Once your payment is through, that same page will let you fill in your health intake form ` +
+      `and pick a time for our call. Looking forward to it! — Shivani`;
 
   revalidatePath(`/clients-v2/${clientId}`);
   return {
@@ -181,6 +192,7 @@ export async function startFoundationSession(clientId: string): Promise<
     amountInr: price.amountInr,
     creditInr: price.creditInr,
     paid,
+    gifted: !!gift,
     waText,
   };
 }
@@ -203,6 +215,9 @@ export async function lookupFoundationToken(token: string): Promise<
       intakePath: string | null;
       intakeSubmitted: boolean;
       bookingUrl: string;
+      /** Present when this Foundation session was gifted by a Sequoya
+       *  founding member — the page shows the gift, never a price. */
+      gift: { byFirstName: string; expiresOn: string; expired: boolean } | null;
     }
   | { ok: false; error: string }
 > {
@@ -219,12 +234,17 @@ export async function lookupFoundationToken(token: string): Promise<
   const intakeToken = typeof data?.intake_token === "string" ? data.intake_token.trim() : "";
   const intakeSubmitted = !!(data && asYmd(data.intake_submitted_at));
   const { paid } = await foundationSessionPaid(clientId);
+  const g = giftedSessionOf(data);
+  const todayYmd = new Date().toLocaleDateString("en-CA", { timeZone: IST });
   return {
     ok: true,
     clientId,
     displayName,
     firstName,
     paid,
+    gift: g
+      ? { byFirstName: g.gifted_by_name || "a friend", expiresOn: g.expires_on, expired: giftExpired(g, todayYmd) }
+      : null,
     amountInr: foundationPriceFor(data).amountInr,
     creditInr: foundationPriceFor(data).creditInr,
     intakePath: intakeToken ? `/intake/${intakeToken}` : null,
@@ -243,6 +263,8 @@ export async function foundationSessionStatus(clientId: string): Promise<
       intakeSubmitted: boolean;
       callBooked: boolean;
       callBookedFor: string | null;
+      /** Founder's first name when this session was a founding gift. */
+      giftedBy: string | null;
     }
   | { ok: false; error: string }
 > {
@@ -276,5 +298,9 @@ export async function foundationSessionStatus(clientId: string): Promise<
     intakeSubmitted,
     callBooked,
     callBookedFor,
+    giftedBy: (() => {
+      const g = giftedSessionOf(data);
+      return g ? g.gifted_by_name || g.gifted_by : null;
+    })(),
   };
 }

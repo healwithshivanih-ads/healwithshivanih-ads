@@ -45,6 +45,7 @@ import {
 } from "@/app/api/whatsapp/actions";
 import { sendClientEmailAction } from "@/app/api/email/actions";
 import { foundationSessionPaid } from "@/lib/fmdb/foundation-orders";
+import { giftedSessionOf } from "@/lib/fmdb/founding";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import type { UnplacedTriagePayment } from "@/lib/fmdb/triage-payment-intake";
 
@@ -325,6 +326,11 @@ async function collect(today: string): Promise<Collected> {
     if (es !== "" && es !== "pending") continue;
     const hasPlan = plans.has(id);
     if (hasPlan) continue;
+    // A Sequoya founding member's gift recipient. Their credit runs 7 days from
+    // the SECOND call (not 15 from the first), and they came through a friend —
+    // this drip's timings and credit wording are wrong for them. The coach
+    // follows up personally; the deadline shows on their Founding card.
+    if (giftedSessionOf(doc)) continue;
 
     const clientName = String(doc.display_name ?? id);
     const state = await readState(id);

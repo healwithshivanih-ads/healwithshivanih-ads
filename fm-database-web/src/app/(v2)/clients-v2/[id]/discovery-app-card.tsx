@@ -25,6 +25,9 @@ interface Props {
   existingToken?: string | null;
   /** YYYY-MM-DD if the credit window has already been started. */
   existingCallDate?: string | null;
+  /** Set for a Sequoya founding gift recipient: the credit runs `days` from
+   *  `anchor` (their SECOND Foundation call), not 15 from the call date. */
+  giftCreditWindow?: { anchor: string | null; days: number } | null;
 }
 
 function buildPublicUrl(p: string): string {
@@ -84,11 +87,24 @@ function CreditChip({ credit }: { credit: DiscoveryCredit }) {
   );
 }
 
-export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existingToken, existingCallDate }: Props) {
+export function DiscoveryAppCard({
+  clientId,
+  mobileNumber,
+  displayName,
+  existingToken,
+  existingCallDate,
+  giftCreditWindow,
+}: Props) {
   const [token, setToken] = useState<string | null>(existingToken ?? null);
   const [callDate, setCallDate] = useState<string | null>(existingCallDate ?? null);
   const [credit, setCredit] = useState<DiscoveryCredit | null>(
-    existingCallDate ? resolveDiscoveryCredit(existingCallDate, istTodayYmd()) : null,
+    giftCreditWindow
+      ? giftCreditWindow.anchor
+        ? resolveDiscoveryCredit(giftCreditWindow.anchor, istTodayYmd(), giftCreditWindow.days)
+        : null
+      : existingCallDate
+        ? resolveDiscoveryCredit(existingCallDate, istTodayYmd())
+        : null,
   );
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -190,7 +206,8 @@ export function DiscoveryAppCard({ clientId, mobileNumber, displayName, existing
                 onRecorded={(kind, date) => {
                   if (kind === "paid") {
                     setCallDate(date);
-                    setCredit(resolveDiscoveryCredit(date, istTodayYmd()));
+                    // A gift recipient's credit is anchored on call 2 (Founding card).
+                    if (!giftCreditWindow) setCredit(resolveDiscoveryCredit(date, istTodayYmd()));
                   } else {
                     setEarlierCall({ kind, date });
                   }

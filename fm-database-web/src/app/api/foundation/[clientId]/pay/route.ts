@@ -28,6 +28,7 @@ import {
   foundationPriceFor,
   type FoundationOrder,
 } from "@/lib/fmdb/foundation-orders";
+import { giftedSessionOf } from "@/lib/fmdb/founding";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { verifyAppClient } from "@/lib/fmdb/app-auth";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
@@ -74,6 +75,11 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     ) as Record<string, unknown>;
   } catch {
     clientDoc = null; // no record → list price
+  }
+  // A Sequoya founding member gifted this session — nothing to charge, ever.
+  // The page never shows a pay button for it; this refuses a hand-crafted POST.
+  if (giftedSessionOf(clientDoc)) {
+    return NextResponse.json({ ok: false, error: "gifted — nothing to pay" }, { status: 409 });
   }
   const price = foundationPriceFor(clientDoc);
 

@@ -47,6 +47,8 @@ export interface AppTierInput {
   hasPublishedPlan?: boolean;
   /** Client.discovery_call_date (YYYY-MM-DD) — the credit-window anchor. */
   discoveryCallDate?: string | null;
+  /** Credit-window length in days (default DISCOVERY_CREDIT_WINDOW_DAYS). */
+  creditWindowDays?: number;
 }
 
 export interface AppTierResult {
@@ -201,11 +203,14 @@ function isValidYmd(v: unknown): v is string {
 export function resolveDiscoveryCredit(
   discoveryCallDate: string | null | undefined,
   todayYmd: string,
+  /** Window length. 15 for a paid Foundation client; a founding member's
+   *  gift recipient gets 7 from their SECOND call (founding.ts creditWindowFor). */
+  windowDays: number = DISCOVERY_CREDIT_WINDOW_DAYS,
 ): DiscoveryCredit {
   if (!isValidYmd(discoveryCallDate)) {
     return { state: "credit_live", expiresOn: null, daysLeft: null };
   }
-  const expiresOn = addDaysYmd(discoveryCallDate, DISCOVERY_CREDIT_WINDOW_DAYS);
+  const expiresOn = addDaysYmd(discoveryCallDate, windowDays);
   if (todayYmd <= expiresOn) {
     // daysLeft clamps at 0 on the final day; never negative inside this branch.
     const daysLeft = Math.max(0, daysBetweenYmd(todayYmd, expiresOn));
@@ -239,7 +244,7 @@ export function resolveAppTier(
   if (input.engagementStatus === "signed_up") {
     return { tier: "enrolled", reason: "signed up; plan not published yet", credit: null };
   }
-  const credit = resolveDiscoveryCredit(input.discoveryCallDate, todayYmd);
+  const credit = resolveDiscoveryCredit(input.discoveryCallDate, todayYmd, input.creditWindowDays);
   return {
     tier: "discovery",
     reason: isValidYmd(input.discoveryCallDate)

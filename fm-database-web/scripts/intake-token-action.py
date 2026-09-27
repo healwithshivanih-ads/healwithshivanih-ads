@@ -774,7 +774,12 @@ def action_generate(payload: dict) -> dict:
     if unlock_full:
         if not data.get("intake_full_unlocked_at"):
             data["intake_full_unlocked_at"] = _now_iso()
-        data["engagement_status"] = "signed_up"
+        # `keep_engagement`: the Foundation session (paid or a Sequoya founding
+        # gift) needs the FULL form but is a consult, not a programme signup.
+        # Flipping them to signed_up hid the Foundation card, put their app on
+        # the "enrolled" tier and dropped them from the call follow-ups.
+        if not payload.get("keep_engagement"):
+            data["engagement_status"] = "signed_up"
     # Auto-reopen a finalised intake (2026-07-21). Issuing a token IS the
     # coach saying "I want this client in the form again", so a stale
     # `intake_finalised_at` must not outlive it: `action_lookup` refuses any

@@ -221,6 +221,9 @@ export async function generateIntakeToken(
   clientId: string,
   ttlDays?: number,
   unlockFull?: boolean,
+  /** Unlock the full form WITHOUT marking them signed up (the Foundation
+   *  session — a consult, not a programme enrolment). */
+  keepEngagement?: boolean,
 ): Promise<
   { ok: true; token: string; short_code?: string; url_path: string; expires_at: string; unlock_full: boolean } | { ok: false; error: string }
 > {
@@ -230,6 +233,7 @@ export async function generateIntakeToken(
       client_id: clientId,
       ttl_days: ttlDays ?? 14,
       unlock_full: !!unlockFull,
+      keep_engagement: !!keepEngagement,
     })) as
       | { ok: true; token: string; short_code?: string; url_path: string; expires_at: string; unlock_full: boolean }
       | { ok: false; error: string };

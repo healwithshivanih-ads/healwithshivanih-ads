@@ -143,6 +143,14 @@ _APP_CLIENT_KEYS = (
     # ₹11,001 instead of ₹12,000. Without it here the credit never reaches Fly.
     "triage_call_date",
     "triage_paid_at",
+    # Sequoya "Founding 20". founding_member → the "Founding member" mark in the
+    # app + on the growing tree. gifted_foundation_session → the /foundation
+    # page shows the gift card (not the pay step) and the Fly pay route refuses
+    # to charge. DELIBERATELY ABSENT: founding_splus_rate_inr (the locked
+    # Sequoya+ rate is private — never on Fly) and founding_gift (coach-side
+    # bookkeeping). tests/test_founding_member_fields.py pins both halves.
+    "founding_member",
+    "gifted_foundation_session",
     # "one app link, intake inside": the discovery onboarding stage resolver reads
     # these. intake_token → the in-app "Start my intake" link (already a public Fly
     # credential — the intake form is a public Fly route); intake_submitted_at →

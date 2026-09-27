@@ -335,6 +335,35 @@ class DiscoverySummary(BaseModel):
     included_supplements: list[DiscoverySummarySupplement] = Field(default_factory=list)
 
 
+class FoundingGift(BaseModel):
+    """The Foundation session a Sequoya founding member has gifted (one per
+    founder). Lives on the FOUNDER's record; everything about how the gift is
+    going lives on the recipient's GiftedFoundationSession. See
+    fm-database-web/src/lib/fmdb/founding.ts for the rules."""
+    model_config = ConfigDict(extra="ignore")
+
+    recipient_client_id: str = ""
+    issued_on: Optional[date] = None
+    expires_on: Optional[date] = None
+
+
+class GiftedFoundationSession(BaseModel):
+    """A Foundation session this client RECEIVED as a founding member's gift —
+    the /foundation/<token> page shows a gift card instead of the pay step and
+    no Razorpay order is ever created. Joining Sequoya within 7 days of
+    call_2_on earns the usual ₹12,000 credit. Projected to Fly (the page and
+    the pay route read it there)."""
+    model_config = ConfigDict(extra="ignore")
+
+    gifted_by: str = ""            # founder's client_id
+    gifted_by_name: str = ""       # founder's first name, for the gift card
+    issued_on: Optional[date] = None
+    expires_on: Optional[date] = None
+    call_1_on: Optional[date] = None   # intake-history call held
+    call_2_on: Optional[date] = None   # lab-review call held — anchors the 7-day credit
+    joined_on: Optional[date] = None   # joined Sequoya
+
+
 #: The values TypeScript writes today. Documentation, not enforcement — see
 #: Client.engagement_status for why this is not an Enum.
 KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined", "lapsed")
@@ -600,6 +629,18 @@ class Client(BaseModel):
     # so the follow-up emails still wait for the call itself.
     triage_paid_at: Optional[datetime] = None
     triage_payment_id: Optional[str] = None
+    # ── Sequoya "Founding 20" (launch Jan 2027) ──────────────────────────────
+    # founding_member drives the "Founding member" mark in the client app (it
+    # IS projected to Fly). founding_splus_rate_inr is the locked Sequoya+
+    # rate — PRIVATE: never add it to app-staging-action.py _APP_CLIENT_KEYS,
+    # never render it client-side. founding_gift = the one Foundation session
+    # this founder has gifted; gifted_foundation_session = one this client
+    # received. Rules: fm-database-web/src/lib/fmdb/founding.ts.
+    founding_member: bool = False
+    founding_joined_on: Optional[date] = None
+    founding_splus_rate_inr: Optional[int] = None
+    founding_gift: Optional[FoundingGift] = None
+    gifted_foundation_session: Optional[GiftedFoundationSession] = None
     # The coach-authored Starting Map shown in the consult-tier app after the
     # discovery call. Authored on /analyse/discovery (post-results stage). The
     # client app reads it via parseDiscoverySummary. Optional — pre-call clients

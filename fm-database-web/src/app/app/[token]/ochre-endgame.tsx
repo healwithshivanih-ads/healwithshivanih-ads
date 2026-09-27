@@ -14,6 +14,7 @@
 
 import { useState } from "react";
 import { useOchre } from "./ochre-context";
+import { FoundingMemberMark } from "@/components/sequoya/sequoya-brand";
 
 const FOREST = "var(--forest, #2d5a3d)";
 const OCHRE = "var(--ochre, #b07b1e)";
@@ -652,6 +653,11 @@ export function MaintenanceHome({ goTab, onRenew }: { goTab: (t: string) => void
             ? `Lighter touch, same support — your maintenance runs through ${endgame.paidThroughLabel}.`
             : "Lighter touch, same support."}
         </p>
+        {client.founding && (
+          <div style={{ marginTop: 10 }}>
+            <FoundingMemberMark />
+          </div>
+        )}
       </div>
 
       {renewalDue && (

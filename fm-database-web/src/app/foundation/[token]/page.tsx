@@ -1,5 +1,6 @@
 import { lookupFoundationToken } from "@/lib/server-actions/foundation-session";
 import { FoundationPayClient } from "./foundation-pay-client";
+import { GiftView } from "./gift-view";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +23,21 @@ export default async function FoundationTokenPage({
           one.
         </p>
       </div>
+    );
+  }
+
+  // ── GIFTED (Sequoya founding member) → the gift card, never a price ─────────
+  if (res.gift) {
+    return (
+      <GiftView
+        firstName={res.firstName}
+        byFirstName={res.gift.byFirstName}
+        expiresOn={res.gift.expiresOn}
+        expired={res.gift.expired}
+        intakePath={res.intakePath}
+        intakeSubmitted={res.intakeSubmitted}
+        bookingUrl={res.bookingUrl}
+      />
     );
   }
 
