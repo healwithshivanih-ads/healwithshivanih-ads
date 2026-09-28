@@ -2640,29 +2640,34 @@ video.ex-stepfig { object-fit: contain; border-radius: 4px; }
 /* ========================================================================
    Sequoya theme — the Sequoya Lite subscriber's app (data.tier "guided").
    Applied as a second class on the root, so a package client's app is
-   byte-identical with the class absent. Same roles, Sequoya voices:
-   forest → deep new-growth green, ochre → fireweed, paper → ash,
-   inner → muted cedar, Georgia → Fraunces, system sans → Instrument Sans.
-   "After the fire" — canonical atoms: src/components/sequoya/.
+   byte-identical with the class absent.
+
+   v2 (her call: "more aligned with Sequoya — even if it changes the whole
+   look"): FIREWEED is the primary — buttons, ticks, active states, rings —
+   with charcoal as heading ink and the day-card's dark ground, cedar as the
+   secondary warmth, ash as paper. The only green left is the living tree
+   and a muted-growth underlayer for the mind-body sections: after the fire,
+   the growth is the tree. Fraunces + Instrument Sans.
+   Canonical atoms: src/components/sequoya/.
    ======================================================================== */
 .ochre-app.sequoya {
 & {
-  --paper:   #f5f0eb;   /* ash                            */
+  --paper:   #f5f0eb;   /* ash                              */
   --paper-2: #ede6da;
   --paper-3: #e5dbcc;
-  --forest:  #4e6b45;   /* new growth, deepened for text  */
-  --forest-deep: #3f5738;
-  --ochre:   #c94a77;   /* fireweed                       */
-  --ochre-deep: #a93a62;
-  --ink:     #2a292d;   /* charcoal                       */
+  --forest:  #c94a77;   /* fireweed — the working primary   */
+  --forest-deep: #2a292d;   /* heading ink = charcoal       */
+  --ochre:   #a0673f;   /* cedar — secondary warmth         */
+  --ochre-deep: #8a5535;
+  --ink:     #2a292d;
   --muted:   #6e6862;
 
-  --forest-tint: rgba(78, 107, 69, 0.10);
-  --forest-tint-2: rgba(78, 107, 69, 0.16);
-  --ochre-tint:  rgba(201, 74, 119, 0.10);
-  --inner:       #7e5a46;   /* cedar, muted to stay a ground */
-  --inner-tint:  rgba(126, 90, 70, 0.09);
-  --inner-line:  rgba(126, 90, 70, 0.22);
+  --forest-tint: rgba(201, 74, 119, 0.10);
+  --forest-tint-2: rgba(201, 74, 119, 0.17);
+  --ochre-tint:  rgba(160, 103, 63, 0.10);
+  --inner:       #5a6b52;   /* muted growth — what's underneath */
+  --inner-tint:  rgba(90, 107, 82, 0.09);
+  --inner-line:  rgba(90, 107, 82, 0.22);
   --line:        rgba(42, 41, 45, 0.09);
   --line-soft:   rgba(42, 41, 45, 0.055);
 
@@ -2672,4 +2677,10 @@ video.ex-stepfig { object-fit: contain; border-radius: 4px; }
   --serif:  'Fraunces', Georgia, 'Times New Roman', serif;
   --sans:   'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Roboto, sans-serif;
 }
+
+/* The day's big card sits on charcoal — the brand's dark ground — and
+   fireweed is the CTA on it, never the wall behind it. */
+.rightnow { background: linear-gradient(150deg, #3a393e 0%, #26252a 100%); }
+.rn-cta { background: #c94a77; }
+.rn-cta:active { background: #a93a62; }
 }
