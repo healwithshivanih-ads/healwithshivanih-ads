@@ -567,21 +567,34 @@ export function TodayScreen({
                 {data.guidedWeekly.note}
               </div>
               <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
-                {data.guidedWeekly.items.map((it, i) => (
+                {data.guidedWeekly.items.slice(0, 3).map((it, i) => (
                   <li key={i} style={{ fontSize: 14.2, lineHeight: 1.55 }}>
                     {it}
                   </li>
                 ))}
               </ul>
+              {data.guidedWeekly.items.length > 3 && (
+                <button
+                  onClick={() => goTab("plan")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    marginTop: 9,
+                    fontSize: 13,
+                    color: "var(--forest)",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                >
+                  + {data.guidedWeekly.items.length - 3} more this week — see your Plan
+                </button>
+              )}
               {data.guidedWeekly.alsoActive.length > 0 && (
                 <div style={{ fontSize: 12.6, color: "var(--muted)", marginTop: 10 }}>
                   Still in flight: {data.guidedWeekly.alsoActive.join(" · ")} — the full picture is in your Plan.
                 </div>
               )}
-            </div>
-            <div className="card-quiet soon" style={{ marginTop: 8 }}>
-              <Icon name="dot" size={10} style={{ color: "var(--muted)", flexShrink: 0 }} />
-              <span>{data.guidedWeekly.standardNote}</span>
             </div>
           </Section>
         </div>
@@ -816,8 +829,8 @@ export function TodayScreen({
           {data.guidedWeekly ? (
             <Tile
               icon="coach"
-              t1="The monthly live session"
-              t2="Bring any question — details in the Coach tab"
+              t1="Want it built around you?"
+              t2="The assessment, when you're ready — in the Coach tab"
               onClick={goCoach}
             />
           ) : (

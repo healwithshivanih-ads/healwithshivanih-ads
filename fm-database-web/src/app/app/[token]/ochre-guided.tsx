@@ -5,7 +5,8 @@
  *
  * A guided subscriber has NO live coach relationship: no WhatsApp, no chat,
  * no weekly check-in review. This screen says so honestly, carries the
- * monthly live session, and holds the one upgrade path (the assessment).
+ * and holds the one upgrade path (the assessment). No live-session promise:
+ * her time is exclusively the 1:1 boundary (Shivani, 28 Sep 2026).
  *
  * Anti-steering note (matters when this ships inside the Play build): the
  * assessment is a 1:1 person-to-person service, which both stores permit
@@ -29,18 +30,6 @@ export function GuidedCoachScreen() {
         <div className="hi">Your programme, and what&apos;s beyond it</div>
         <div className="date script">Guided · self-paced</div>
       </div>
-
-      <Section title="The monthly live session">
-        <div className="card" style={{ padding: "14px 16px" }}>
-          <div style={{ fontSize: 14.2, lineHeight: 1.6 }}>
-            Once a month, Shivani takes questions live — any programme, any week.
-            The invite arrives by email a few days before.
-          </div>
-          <div style={{ fontSize: 12.8, color: "var(--muted)", marginTop: 8, lineHeight: 1.5 }}>
-            It&apos;s the one place your questions reach a human — use it.
-          </div>
-        </div>
-      </Section>
 
       <Section title="Want it built around you?">
         <div className="card" style={{ padding: "14px 16px" }}>
