@@ -9,6 +9,7 @@
 import { useEffect, useState } from "react";
 import type { AppRemedy, PlateItem } from "@/lib/fmdb/client-app";
 import { Icon, Mark, useOchre, REMEDY_CAT, DOSHA_LABEL } from "./ochre-context";
+import { SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 
 // ── avatar (photo with initials fallback) ────────────────────────────────────
 
@@ -38,15 +39,24 @@ export function AppAvatar({
 // ── header + nav ─────────────────────────────────────────────────────────────
 
 export function Header({ alert, onAccount }: { alert: boolean; onAccount: () => void }) {
-  const { account } = useOchre();
+  const { account, tier } = useOchre();
+  const sequoya = tier === "guided";
   return (
     <header className="appbar">
       <div className="masthead">
         <span className="mark">
-          <Mark />
+          {sequoya ? <SequoyaRingMark size={26} /> : <Mark />}
         </span>
         <span className="wordmark">
-          The <em>Ochre</em> Tree
+          {sequoya ? (
+            <>
+              Sequoya <em>Lite</em>
+            </>
+          ) : (
+            <>
+              The <em>Ochre</em> Tree
+            </>
+          )}
         </span>
       </div>
       <button className="avatar-btn" onClick={onAccount} aria-label="Your account">

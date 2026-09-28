@@ -40,6 +40,7 @@ import { ExerciseOverlay } from "./ochre-exercise";
 import { GroceryOverlay } from "./ochre-week-menu";
 import { MsqOverlay } from "./ochre-msq";
 import { OrderOverlay } from "./ochre-order";
+import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
 
 interface Stored {
   day?: string;
@@ -832,7 +833,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   return (
     <OchreContext.Provider value={data}>
-      <div className="ochre-app">
+      {/* Sequoya Lite: same app, Sequoya voice — a second class flips the tokens. */}
+      <div className={"ochre-app" + (guided ? " sequoya" : "")}>
+        {guided && <SequoyaFonts />}
         <div className={"app" + (textLarge ? " text-lg" : "")}>
           <Header alert={!submitted && !onHold} onAccount={() => setOverlay({ type: "account" })} />
           {showPlanUpdatedBanner && (
