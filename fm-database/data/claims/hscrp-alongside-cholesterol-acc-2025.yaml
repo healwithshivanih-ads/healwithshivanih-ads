@@ -1,0 +1,25 @@
+slug: hscrp-alongside-cholesterol-acc-2025
+statement: The 2025 ACC scientific statement on inflammation recommends broad hs-CRP screening of primary- and secondary-prevention
+  patients in combination with LDL cholesterol, because inflammation predicts cardiovascular events independently
+  of cholesterol.
+evidence_tier: strong
+rationale: ACC scientific statement (Mensah 2025), consistent with the existing catalogue claim hscrp-predicts-cv-events-independent-of-ldl.
+coaching_translation: Cholesterol in the blood is one thing; whether your blood vessels are inflamed is another.
+  hs-CRP is the test for that, and heart doctors now suggest checking it alongside cholesterol.
+caveats:
+- Broad screening of prevention patients, NOT universal population screening.
+- An anti-inflammatory drug (ziltivekimab, ZEUS) failed its outcome trial in Sep 2026; the marker still predicts
+  risk.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mensah-2025-acc-inflammation-cvd-statement
+  location: Key points
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

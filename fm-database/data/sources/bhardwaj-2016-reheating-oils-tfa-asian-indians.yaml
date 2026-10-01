@@ -1,0 +1,22 @@
+id: bhardwaj-2016-reheating-oils-tfa-asian-indians
+title: Effect of heating/reheating of fats/oils, as used by Asian Indians, on trans fatty acid formation
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Bhardwaj S
+- Passi SJ
+- Misra A
+- et al.
+year: 2016
+publisher: Food Chemistry 212
+url: https://www.researchgate.net/publication/303918262_Effect_of_heatingreheating_of_fatsoils_as_used_by_Asian_Indians_on_trans_fatty_acid_formation
+notes: |
+  Lab study (GC-FID). Six fats/oils used in Indian kitchens heated/fried at 180 and 220 C.
+  All six showed higher trans fatty acids and saturated fatty acids and lower cis-unsaturated
+  fatty acids after heating/frying. Authors call for guidelines on heating and re-frying.
+  Authored from the abstract (read 30 Sep 2026); full text not read. Measures oil chemistry,
+  not health outcomes in people.
+version: 1
+status: active
+updated_at: '2026-09-30'
+updated_by: shivani

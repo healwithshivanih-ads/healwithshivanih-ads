@@ -1,0 +1,35 @@
+slug: reheated-frying-oil-raises-trans-fats-indian-foods
+statement: Heating and re-using cooking oil for frying, as done in Indian kitchens and by
+  food vendors, raises its trans fat and saturated fat content with every cycle, and the fried
+  food carries even more trans fat than the oil. In packaged Indian snacks trans fat has fallen
+  sharply in recent years; bakery items remain the highest.
+evidence_tier: strong
+rationale: Two Indian laboratory studies (Bhardwaj 2016; Jain 2024) found trans fats rise in
+  every oil tested with heating and repeated frying, faster at higher temperatures. A survey of
+  75 Indian snacks (Joshee 2019) found low trans fat overall, highest in bakery products. The
+  heart harm of trans fats is a separate claim (trans-fats-negative-effect-heart-health).
+coaching_translation: Oil that has been heated again and again for frying is where trans fats
+  build up, so use fresh oil and don't keep re-frying in the same kadhai. Packaged snacks have
+  much less trans fat than they used to; bakery items still carry the most, so glance at the label.
+caveats:
+- Oil-chemistry studies; they measure the oil and food, not heart outcomes in people.
+- Snack figures are from 2019 samples; levels have likely fallen further since India's limits on
+  trans fat in oils and fats.
+- Do not use this to frighten people off home cooking or ghee - it is about reused frying oil.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: bhardwaj-2016-reheating-oils-tfa-asian-indians
+  location: Abstract
+- id: jain-2024-indian-fried-foods-tfa-frying-cycles
+  location: Abstract / conclusion
+- id: joshee-2019-indian-snacks-fatty-acid-profile
+  location: Abstract
+version: 1
+status: active
+updated_at: '2026-09-30'
+updated_by: shivani

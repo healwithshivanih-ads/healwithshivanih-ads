@@ -1,0 +1,26 @@
+slug: lpa-test-once-in-lifetime-guidelines
+statement: Because lipoprotein(a) is largely genetically determined and stable through life, current guidelines
+  recommend measuring it at least once in adulthood; ESC/EAS 2025 treats a raised level as a risk-enhancing factor
+  in all adults, with higher levels carrying more risk.
+evidence_tier: strong
+rationale: ACC/AHA 2026 ('Lp(a) should be measured at least once in adulthood') and ESC/EAS 2025 focused update
+  (Lp(a) as a risk enhancer in all adults).
+coaching_translation: Every adult should have Lp(a) checked at least once. Knowing your number changes how carefully
+  you and your doctor look after everything else.
+caveats:
+- Coaches name the test; they do not interpret the level.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: acc-aha-2026-dyslipidemia-guideline
+  location: Lp(a) recommendation
+- id: esc-eas-2025-dyslipidaemia-focused-update
+  location: Lp(a) recommendation
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: ldl-causes-ascvd-cumulative-exposure
+statement: LDL and other ApoB-containing lipoproteins cause atherosclerotic cardiovascular disease, and risk rises
+  with both how high and how long LDL has been raised (cumulative exposure), which is why lowering it earlier and
+  keeping it down matters.
+evidence_tier: strong
+rationale: EAS consensus (Ference 2017) built on Mendelian randomisation, prospective cohorts and randomised trials;
+  cumulative-exposure framing is central to the paper.
+coaching_translation: It isn't only how high your LDL is today, it's how many years it has been high. Years add
+  up, so it's worth acting early rather than waiting for a problem.
+caveats:
+- Some functional-medicine sources argue cholesterol is not causal; that is not the current consensus - see cholesterol-not-primary-driver-of-cvd,
+  which should be re-tiered.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ference-2017-eas-ldl-causes-ascvd
+  location: Abstract / conclusions
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

@@ -1,0 +1,22 @@
+id: jain-2024-indian-fried-foods-tfa-frying-cycles
+title: Total fat and fatty acid profile including TFA content of Indian fried foods versus the oils used for frying
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Jain
+- Passi SJ
+- Selvamurthy W
+year: 2024
+publisher: Journal of Food Science and Technology
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11465016/
+doi: 10.1007/s13197-024-05989-z
+notes: |
+  Five Indian fried foods (poori, bread pakora, mathri, potato chips, French fries) fried over
+  repeated cycles at 160 and 180 C. With reuse, cis-unsaturated fats fell and saturated and trans
+  fats rose sharply, faster at the higher temperature. Oil extracted from the fried foods held
+  MORE trans fat than the frying oil itself. Authors recommend limiting frying cycles and
+  temperatures. Authored from the PMC summary (read 30 Sep 2026). Oil chemistry, not outcomes.
+version: 1
+status: active
+updated_at: '2026-09-30'
+updated_by: shivani

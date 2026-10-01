@@ -1,0 +1,24 @@
+slug: lpa-raised-in-one-in-four-indians
+statement: Raised lipoprotein(a), one of the strongest genetic risk factors for premature coronary artery disease,
+  is present in about a quarter of Indians and other South Asians, compared with about a fifth of Caucasians.
+evidence_tier: plausible_emerging
+rationale: Figure stated in the CSI-aligned editorial (Sawhney & Gupta 2024); prevalence depends on the threshold
+  and population sampled.
+coaching_translation: About one in four Indians has a raised Lp(a), and most have never been tested. It can explain
+  heart attacks that come early in families who eat well and stay active.
+caveats:
+- Prevalence estimate from an editorial, not a primary survey; say 'about one in four'.
+- Mostly genetic, but not unchangeable - some treatments lower it; a doctor decision.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: sawhney-gupta-2024-indian-dyslipidaemia-guidelines
+  location: Lp(a) paragraph
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

@@ -1,0 +1,20 @@
+id: varbo-2013-remnant-cholesterol-causal-ihd
+title: Remnant cholesterol as a causal risk factor for ischemic heart disease
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Varbo A
+- Benn M
+- Tybjaerg-Hansen A
+- et al.
+year: 2013
+publisher: Journal of the American College of Cardiology 61(4):427-436
+url: https://doi.org/10.1016/j.jacc.2012.08.1026
+doi: 10.1016/j.jacc.2012.08.1026
+notes: 'Copenhagen cohorts, ~73,000 people, Mendelian randomisation: genetically raised remnant (non-fasting) cholesterol
+  associated with higher ischaemic heart disease risk, independent of reduced HDL. Authored 1 Oct 2026 from memory
+  of the abstract; verify against PubMed before quoting figures.'
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

@@ -1,0 +1,24 @@
+slug: cac-scan-midlife-risk-acc-aha-2026
+statement: Coronary artery calcium (CAC) scoring is recommended in midlife (men from 40, women from 45) at borderline
+  or intermediate risk when it would change the treatment decision, because it shows plaque in the arteries directly
+  rather than estimating it from blood tests.
+evidence_tier: strong
+rationale: 2026 ACC/AHA guideline recommendation.
+coaching_translation: A calcium scan looks for hardened plaque in your heart's arteries themselves. In midlife,
+  for some people, it tells you and your doctor more than a number on paper.
+caveats:
+- Not a screening test for everyone; the doctor decides when it would change the plan.
+- Ages are not spoken in client-facing video ('midlife').
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: acc-aha-2026-dyslipidemia-guideline
+  location: CAC recommendation
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

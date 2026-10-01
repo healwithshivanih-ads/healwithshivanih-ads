@@ -1,0 +1,26 @@
+slug: non-hdl-cholesterol-captures-all-atherogenic-particles
+statement: Non-HDL cholesterol (total cholesterol minus HDL) sums all the atherogenic lipoprotein particles - LDL,
+  intermediate-density lipoproteins and remnants - so it captures risk that LDL alone can miss, and Indian and American
+  guidelines use it alongside LDL.
+evidence_tier: strong
+rationale: CSI-aligned editorial (Sawhney & Gupta 2024) and the 2026 ACC/AHA guideline both use non-HDL-C with LDL-C
+  goals; the arithmetic definition is standard lipidology.
+coaching_translation: 'Take your total cholesterol and subtract your HDL. What''s left is non-HDL: every carrier
+  that can cause trouble, in one number. Many reports print it; if yours doesn''t, you can work it out.'
+caveats:
+- Targets are set by the clinician for the individual; coaches explain the line, not the cut-off.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: sawhney-gupta-2024-indian-dyslipidaemia-guidelines
+  location: Non-HDL paragraph
+- id: acc-aha-2026-dyslipidemia-guideline
+  location: LDL-C and non-HDL-C goals
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

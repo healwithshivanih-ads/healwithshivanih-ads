@@ -1,0 +1,28 @@
+slug: remnant-cholesterol-causal-cvd-risk
+statement: Remnant cholesterol - the cholesterol carried in triglyceride-rich lipoproteins after they have unloaded
+  triglyceride - is genetically linked to higher ischaemic heart disease risk, so high triglycerides are a heart
+  risk in their own right, not just a marker.
+evidence_tier: plausible_emerging
+rationale: Copenhagen Mendelian-randomisation study (Varbo 2013) found genetically raised remnant cholesterol associated
+  with ischaemic heart disease independent of low HDL; UK Biobank MR (Zhao 2024) links remnant cholesterol and triglycerides
+  to cardiometabolic multimorbidity.
+coaching_translation: The carriers that carry triglycerides leave remnants behind that can lodge in arteries too,
+  so a high triglyceride line deserves attention on its own.
+caveats:
+- Varbo 2013 authored from memory of the abstract - verify figures before quoting.
+- Remnant cholesterol is not printed on most Indian reports; it is calculated (total - HDL - LDL).
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: varbo-2013-remnant-cholesterol-causal-ihd
+  location: Abstract
+- id: zhao-2024-remnant-cholesterol-cardiometabolic-multimorbidity
+  location: Abstract
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

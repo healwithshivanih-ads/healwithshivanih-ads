@@ -1,0 +1,23 @@
+slug: apob-selective-testing-acc-aha-2026
+statement: The 2026 ACC/AHA guideline supports measuring ApoB selectively - in cardiovascular-kidney-metabolic syndrome,
+  type 2 diabetes, high triglycerides or known cardiovascular disease - to assess residual risk once LDL-C and non-HDL-C
+  goals are met.
+evidence_tier: strong
+rationale: Major guideline recommendation (ACC/AHA multisociety, March 2026).
+coaching_translation: ApoB counts the carriers themselves. It's most useful when triglycerides are high or there's
+  diabetes - a very common Indian picture - so it's a test worth asking your doctor about.
+caveats:
+- Selective, not universal; the doctor decides when it adds information.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: acc-aha-2026-dyslipidemia-guideline
+  location: ApoB recommendation
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

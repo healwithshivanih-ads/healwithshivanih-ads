@@ -1,0 +1,23 @@
+id: zhao-2024-remnant-cholesterol-cardiometabolic-multimorbidity
+title: Elevated blood remnant cholesterol and triglycerides are causally related to the risks of cardiometabolic
+  multimorbidity
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Zhao Y
+- Zhuang Z
+- Li Y
+- et al.
+- Clarke R
+- Huang T
+year: 2024
+publisher: Nature Communications 15:2451
+url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10951224/
+doi: 10.1038/s41467-024-46686-x
+notes: UK Biobank, >300,000 participants; multistate models + Mendelian randomisation. Remnant cholesterol and triglycerides
+  associated (observationally and genetically) with higher risk of cardiometabolic multimorbidity, especially progression
+  from ischaemic heart disease to IHD plus type 2 diabetes. Read 1 Oct 2026 from the abstract/summary.
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

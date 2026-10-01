@@ -1,0 +1,19 @@
+id: acc-aha-2026-dyslipidemia-guideline
+title: 2026 ACC/AHA/Multisociety Guideline on the Management of Dyslipidemia
+source_type: clinical_guideline
+quality: high
+authors:
+- ACC/AHA Joint Committee on Clinical Practice Guidelines
+year: 2026
+publisher: JACC and Circulation, 13 Mar 2026
+url: https://www.acc.org/about-acc/press-releases/2026/03/13/18/01/accaha-issue-updated-guideline-for-managing-lipids-cholesterol
+doi: 10.1016/j.jacc.2025.11.016
+notes: Read 1 Oct 2026 from the ACC press release (full guideline not read). Lp(a) 'should be measured at least
+  once in adulthood'. ApoB may be used to assess residual risk and guide treatment in cardiovascular-kidney-metabolic
+  syndrome, type 2 diabetes, high triglycerides or known CVD once LDL-C and non-HDL-C goals are met. CAC recommended
+  for men 40+ and women 45+ at borderline/intermediate 10-year risk when it would change the statin decision. PREVENT-ASCVD
+  equations estimate 10- and 30-year risk (ages 30-79). LDL-C/non-HDL-C goals return.
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani
