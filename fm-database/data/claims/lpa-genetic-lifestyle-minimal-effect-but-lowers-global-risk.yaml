@@ -1,0 +1,25 @@
+slug: lpa-genetic-lifestyle-minimal-effect-but-lowers-global-risk
+statement: Lipoprotein(a) concentration is largely genetically determined; diet and physical activity have little
+  or no effect on the Lp(a) number itself, but lifestyle change still substantially lowers overall cardiovascular
+  risk by improving other risk factors.
+evidence_tier: strong
+rationale: European Atherosclerosis Society consensus statement (Kronenberg 2022), consistent with the AHA scientific
+  statement describing Lp(a) as genetically determined.
+coaching_translation: Lp(a) is mostly set by your genes, so eating well won't move that number much. But everything
+  you do for your heart still lowers your overall risk - and if your Lp(a) is high, that matters even more.
+caveats:
+- '''Most but not all'' studies show no or minimal lifestyle effect - say ''little or no difference'', not ''never''.'
+- Lowering the number itself is a doctor conversation.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: kronenberg-2022-eas-lpa-consensus
+  location: Lifestyle and Lp(a) section
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani
