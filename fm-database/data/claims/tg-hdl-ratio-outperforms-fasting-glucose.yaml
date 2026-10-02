@@ -41,6 +41,8 @@ linked_to_supplements: []
 linked_to_symptoms:
 - insulin-resistance
 sources:
+- id: mclaughlin-2003-metabolic-markers-insulin-resistance
+  location: Abstract (primary source behind this claim, added 1 Oct 2026)
 - id: vitaone-skill-practice-guide
   location: evidence_tiers.md, Topic 2 Insulin Resistance, claim 4
 version: 1

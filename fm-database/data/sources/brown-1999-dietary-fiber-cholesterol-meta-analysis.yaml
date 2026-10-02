@@ -1,0 +1,19 @@
+id: brown-1999-dietary-fiber-cholesterol-meta-analysis
+title: 'Cholesterol-lowering effects of dietary fiber: a meta-analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Brown L
+- Rosner B
+- Willett WW
+- Sacks FM
+year: 1999
+publisher: American Journal of Clinical Nutrition 69:30-42
+url: https://www.ncbi.nlm.nih.gov/books/NBK67753/
+notes: 67 controlled trials, 2,990 people (oat, psyllium, pectin, guar). Soluble fibre 2-10 g/day gave small but
+  significant falls in total and LDL cholesterol; triglycerides and HDL were not significantly changed. Read 1 Oct
+  2026 from the DARE/abstract summary.
+version: 1
+status: active
+updated_at: '2026-10-01'
+updated_by: shivani

@@ -18,6 +18,8 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
+- id: sacks-2017-aha-dietary-fats-cvd
+  location: Abstract (primary source behind this claim, added 1 Oct 2026)
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Dietary Fats and LDL
   quote: There is level A evidence for Mediterranean diet and there's evidence that replacing saturated fat with monounsaturated

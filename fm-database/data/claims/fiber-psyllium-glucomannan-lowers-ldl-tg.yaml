@@ -18,6 +18,8 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
+- id: brown-1999-dietary-fiber-cholesterol-meta-analysis
+  location: Abstract (primary source behind this claim, added 1 Oct 2026)
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
   quote: 'Fiber (psyllium, glucomannan): ↓LDL, ↓TG.'
