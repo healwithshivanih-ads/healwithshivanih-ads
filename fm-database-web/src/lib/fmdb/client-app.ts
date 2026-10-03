@@ -4427,6 +4427,12 @@ export async function loadClientAppData(
     const beforeBreakfast = /empty stomach|before breakfast|first thing in the morning|on empty|upon waking|20.?30 minutes before breakfast/i.test(`${base.timing} ${blurb?.how ?? ""}`);
     remedies.push({
       ...base,
+      // Screening an assigned remedy against the client's record is the
+      // coach's job, done before she prescribes it — handing the catalogue's
+      // contraindication list to the client as "check before you start"
+      // shifts that duty onto her (coach rule 2026-10-03). Library remedies
+      // the client browses unprescribed keep their cautions.
+      cautions: [],
       assigned: true,
       daily,
       supplementLike: isChuran && daily,
