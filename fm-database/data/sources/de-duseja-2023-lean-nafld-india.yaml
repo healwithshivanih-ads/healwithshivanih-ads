@@ -1,0 +1,29 @@
+id: de-duseja-2023-lean-nafld-india
+title: Lean Indian patients with non-alcoholic fatty liver disease (NAFLD) have less metabolic risk factors but similar liver disease severity as non-lean patients with NAFLD
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - De A
+  - Mehta M
+  - Singh P
+  - Bhagat N
+  - Mitra S
+  - Das A
+  - Duseja A
+year: 2023
+publisher: International Journal of Obesity 47(10):986-992
+url: https://pubmed.ncbi.nlm.nih.gov/37474570/
+doi: 10.1038/s41366-023-01346-w
+notes: |
+  PGIMER Chandigarh, 10-year hepatology-clinic cohort of 1,040 NAFLD patients.
+  Lean = BMI < 23 (Asian cut-off). 14.3% were lean. Lean patients had less
+  hypertension and metabolic syndrome but similar diabetes, triglyceride and
+  low-HDL rates, similar steatosis and similar fibrosis/NASH. Central obesity
+  in 48.3% of the lean group. Quality moderate: single-centre clinic cohort,
+  not a population sample. Read from the PubMed abstract (30 Sep 2026).
+  NOTE: the often-quoted "19.2% of NAFLD is lean" is a GLOBAL meta-analysis
+  figure, not Indian — do not attribute it to India.
+version: 1
+status: active
+updated_at: 2026-09-30
+updated_by: shivani

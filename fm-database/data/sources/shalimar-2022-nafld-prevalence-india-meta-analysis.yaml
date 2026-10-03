@@ -1,0 +1,27 @@
+id: shalimar-2022-nafld-prevalence-india-meta-analysis
+title: Prevalence of Non-alcoholic Fatty Liver Disease in India — A Systematic Review and Meta-analysis
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Shalimar
+  - Elhence A
+  - Bansal B
+  - Gupta H
+  - Anand A
+  - Singh TP
+  - Goel A
+year: 2022
+publisher: Journal of Clinical and Experimental Hepatology 12(3):818-829
+url: https://pubmed.ncbi.nlm.nih.gov/35677499/
+doi: 10.1016/j.jceh.2021.11.010
+notes: |
+  AIIMS New Delhi + SGPGI Lucknow. 62 datasets from 50 studies (23,581 adults,
+  2,903 children), random-effects pooling. Adults pooled 38.6%; community-based
+  28.2% vs hospital-based 40.8%; average-risk 28.1% vs high-risk 52.8%. Authors'
+  own summary: about one in three Indian adults. Read from the PubMed abstract
+  (30 Sep 2026); full text not read. Use "about 1 in 3" publicly — the 38.6%
+  headline is inflated by hospital samples.
+version: 1
+status: active
+updated_at: 2026-09-30
+updated_by: shivani

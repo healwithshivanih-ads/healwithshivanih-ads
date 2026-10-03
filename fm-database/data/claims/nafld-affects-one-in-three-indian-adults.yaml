@@ -1,0 +1,31 @@
+slug: nafld-affects-one-in-three-indian-adults
+statement: Non-alcoholic fatty liver disease affects roughly one in three Indian
+  adults. A 2022 meta-analysis of 50 Indian studies (23,581 adults) pooled adult
+  prevalence at 38.6%, with community samples at 28.2% and hospital samples at
+  40.8%. In a representative 2017-2019 ultrasound survey of 30-60-year-olds in
+  Delhi and rural Haryana, about six in ten had fatty liver (65.7% urban, 61.1%
+  rural), with diabetes, central obesity and insulin resistance the associated
+  factors.
+evidence_tier: strong
+linked_to_topics:
+- nafld
+- metabolic-syndrome
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: shalimar-2022-nafld-prevalence-india-meta-analysis
+  location: Abstract — Results and Conclusion
+  quote: Among adults, the estimated pooled prevalence was 38.6% (95% CI 32-45.5).
+- id: asadullah-2022-nafld-rural-urban-north-india
+  location: Abstract — Results
+  quote: The age- and sex-standardized prevalence of ultrasound-diagnosed NAFLD was
+    65.7% in the urban and 61.1% in the rural areas.
+caveats:
+- Prevalence figures come from ultrasound, which misses mild fat and varies by operator. The six-in-ten figure is North India, ages 30-60, only. Say "about 1 in 3" for India as a whole.
+version: 1
+status: active
+updated_at: 2026-09-30
+updated_by: shivani
+rationale: Grounds the fatty-liver YouTube video (and client education) in Indian
+  data rather than US prevalence figures.

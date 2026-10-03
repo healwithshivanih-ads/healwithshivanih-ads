@@ -1,0 +1,28 @@
+slug: lean-nafld-india-same-severity
+statement: A normal BMI does not rule out fatty liver in Indians. In a PGIMER
+  Chandigarh cohort of 1,040 NAFLD patients, about 1 in 7 (14.3%) were lean
+  (BMI under 23), and their liver disease was just as severe as in heavier
+  patients (similar steatosis, fibrosis and NASH rates). Nearly half of the lean
+  patients (48.3%) still carried central (belly) obesity, and they had similar
+  rates of diabetes, high triglycerides and low HDL.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- nafld
+- visceral-adiposity
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+- visceral-adipose-inflammation
+sources:
+- id: de-duseja-2023-lean-nafld-india
+  location: Abstract — Results and Conclusion
+  quote: Although metabolic co-morbidities are less common, there is no difference
+    in liver disease severity among both groups.
+caveats:
+- Single-centre hepatology-clinic cohort, not a population estimate. The widely quoted "about 1 in 5 NAFLD patients is lean" is a global meta-analysis figure, not an Indian one.
+version: 1
+status: active
+updated_at: 2026-09-30
+updated_by: shivani
+rationale: The core point of the fatty-liver video — slim people, especially with
+  belly fat, get fatty liver and it is not milder for them.
