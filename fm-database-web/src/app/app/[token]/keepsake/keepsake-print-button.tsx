@@ -1,12 +1,13 @@
 "use client";
 
-/** Tiny client control — triggers the browser's print/save-as-PDF dialog for the
- *  recipe keepsake. Hidden on print itself (.no-print). */
+/** Tiny client control — downloads the real PDF (keepsake.pdf). window.print() was
+ *  a no-op in installed iOS home-screen apps. Hidden on print itself (.no-print). */
 export function KeepsakePrintButton() {
   return (
-    <button
+    <a
       className="no-print"
-      onClick={() => window.print()}
+      href="keepsake.pdf"
+      download
       style={{
         fontSize: 14,
         fontWeight: 600,
@@ -16,9 +17,11 @@ export function KeepsakePrintButton() {
         background: "#2d5a3d",
         color: "#fff",
         cursor: "pointer",
+        textDecoration: "none",
+        display: "inline-block",
       }}
     >
-      Save as PDF
-    </button>
+      Download PDF
+    </a>
   );
 }
