@@ -48,9 +48,45 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose lowering;
-    risk of hypoglycaemia, monitor glucose
-  - Acarbose / voglibose — same alpha-glucosidase mechanism; additive GI effects and glucose
-    lowering
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose
+      lowering; risk of hypoglycaemia, monitor glucose
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose
+      lowering; risk of hypoglycaemia, monitor glucose
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose
+      lowering; risk of hypoglycaemia, monitor glucose
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose
+      lowering; risk of hypoglycaemia, monitor glucose
+  - medication: glyburide
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose
+      lowering; risk of hypoglycaemia, monitor glucose
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose
+      lowering; risk of hypoglycaemia, monitor glucose
+  - medication: acarbose
+    type: monitor
+    reason: Acarbose / voglibose — same alpha-glucosidase mechanism; additive GI effects and
+      glucose lowering
+  - medication: voglibose
+    type: monitor
+    reason: Acarbose / voglibose — same alpha-glucosidase mechanism; additive GI effects and
+      glucose lowering
+  - medication: miglitol
+    type: monitor
+    reason: Acarbose / voglibose — same alpha-glucosidase mechanism; additive GI effects and
+      glucose lowering

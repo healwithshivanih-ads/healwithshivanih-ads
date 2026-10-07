@@ -54,8 +54,32 @@ contraindications:
   - gallstones / bile-duct obstruction — curcumin stimulates gallbladder contraction
   - history of drug- or herb-induced liver injury — turmeric supplements are a recognised
     cause of hepatotoxicity (LiverTox)
-  medications:
-  - warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  medications: []
   life_stages:
   - pregnancy — insufficient safety data for concentrated/supplemental curcumin doses (culinary
     turmeric is fine)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  - medication: acenocoumarol
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  - medication: apixaban
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  - medication: rivaroxaban
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  - medication: dabigatran
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  - medication: clopidogrel
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  - medication: aspirin
+    type: monitor
+    reason: warfarin / antiplatelets / anticoagulants — additive bleeding risk

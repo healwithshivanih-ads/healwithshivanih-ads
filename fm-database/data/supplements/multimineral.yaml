@@ -38,8 +38,49 @@ updated_by: shivani
 contraindications:
   conditions:
   - Haemochromatosis / iron overload — avoid formulas containing iron
-  medications:
-  - Levothyroxine — calcium, iron and magnesium bind thyroxine; separate by at least 4 hours
-  - Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic; separate
-    by 2–6 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — calcium, iron and magnesium bind thyroxine; separate by at least
+      4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — calcium, iron and magnesium bind thyroxine; separate by at least
+      4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic;
+      separate by 2–6 hours

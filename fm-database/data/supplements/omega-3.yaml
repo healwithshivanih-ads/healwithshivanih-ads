@@ -168,7 +168,33 @@ contraindications:
   - History of atrial fibrillation — trials and meta-analyses show dose-dependent increased
     AF risk with omega-3 supplements (especially >1 g/day)
   - Fish or shellfish allergy — use algae-based oil instead of fish/krill oil
-  medications:
-  - Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day; monitor
-    INR
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: aspirin
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: clopidogrel
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: prasugrel
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: ticagrelor
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR

@@ -111,7 +111,61 @@ contraindications:
   - severe renal impairment / CKD — risk of hypermagnesaemia
   - diarrhoea-predominant IBS / chronic diarrhoea — citrate form is laxative and will worsen
     loose stools
-  medications:
-  - levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics — magnesium
-    chelates them; separate by at least 4 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: alendronate
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: risedronate
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: ibandronate
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics —
+      magnesium chelates them; separate by at least 4 hours

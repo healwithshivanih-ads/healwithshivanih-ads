@@ -32,9 +32,7 @@ take_with_food: optional
 contraindications:
   conditions:
   - severe_kidney_disease
-  medications:
-  - Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine — magnesium
-    chelates them and cuts their absorption; separate by at least 2-4 hours
+  medications: []
   life_stages: []
 interactions:
   with_supplements:
@@ -47,7 +45,59 @@ interactions:
     hours: 2
     reason: Competitive divalent cation absorption
   with_foods: []
-  with_medications: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: alendronate
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: risedronate
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: ibandronate
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine
+      — magnesium chelates them and cuts their absorption; separate by at least 2-4 hours
 linked_to_topics:
 - insomnia
 - perimenopause

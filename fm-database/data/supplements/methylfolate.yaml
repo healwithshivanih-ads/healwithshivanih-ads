@@ -97,7 +97,22 @@ contraindications:
     progresses; check B12 or give with B12 (claim murray-folate-masks-b12-deficiency)
   - Bipolar disorder — case reports of hypomania with high-dose methylfolate; clinician only
   medications:
-  - Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels
   - Methotrexate (oncology doses) and 5-FU/capecitabine — folate can reduce efficacy or increase
     toxicity; clinician only
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: phenytoin
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels
+  - medication: fosphenytoin
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels
+  - medication: phenobarbital
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels
+  - medication: primidone
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels

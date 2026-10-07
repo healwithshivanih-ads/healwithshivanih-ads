@@ -46,10 +46,52 @@ contraindications:
   - Parkinson's disease — dopamine depletion worsens symptoms
   medications:
   - MAO inhibitors — risk of excitation and hypertensive reaction
-  - Other antihypertensives and beta-blockers — additive hypotension and bradycardia
   - Digoxin and antiarrhythmics — increased arrhythmia/bradycardia risk
   - Levodopa — reserpine opposes its effect
   - Antidepressants (SSRIs, TCAs) — additive CNS/mood effects; avoid unsupervised
   life_stages:
   - Pregnancy — reserpine crosses the placenta (neonatal respiratory and nasal congestion)
   - Breastfeeding — passes into breast milk
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: amlodipine
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: telmisartan
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: losartan
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: olmesartan
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: ramipril
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: enalapril
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: metoprolol
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: atenolol
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: propranolol
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: bisoprolol
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: nebivolol
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - medication: carvedilol
+    type: monitor
+    reason: Other antihypertensives and beta-blockers — additive hypotension and bradycardia

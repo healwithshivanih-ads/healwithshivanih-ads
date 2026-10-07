@@ -51,7 +51,13 @@ contraindications:
   conditions:
   - Unexplained macrocytic anaemia or neuropathy — test B12/MMA before starting; folate can
     mask the haematological signs of B12 deficiency while neurological damage progresses
-  medications:
-  - Levodopa without carbidopa — pyridoxine (B6) speeds peripheral levodopa breakdown and
-    reduces its effect
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levodopa
+    type: monitor
+    reason: Levodopa without carbidopa — pyridoxine (B6) speeds peripheral levodopa breakdown
+      and reduces its effect

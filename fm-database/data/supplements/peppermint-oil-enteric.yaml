@@ -69,7 +69,41 @@ contraindications:
   conditions:
   - GERD or hiatus hernia — menthol relaxes the lower oesophageal sphincter; heartburn is
     the commonest side effect
-  medications:
-  - PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric coating
-    early, causing heartburn; separate by 2 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: omeprazole
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: pantoprazole
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: rabeprazole
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: esomeprazole
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: lansoprazole
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: famotidine
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: ranitidine
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours
+  - medication: antacid
+    type: space_by_hours
+    reason: PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric
+      coating early, causing heartburn; separate by 2 hours

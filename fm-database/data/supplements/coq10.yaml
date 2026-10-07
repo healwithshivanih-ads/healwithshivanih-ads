@@ -191,7 +191,17 @@ cycle_phases:
 - follicular
 contraindications:
   conditions: []
-  medications:
-  - Warfarin — CoQ10 is structurally similar to vitamin K and may lower INR; monitor if started
-    or stopped
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — CoQ10 is structurally similar to vitamin K and may lower INR; monitor
+      if started or stopped
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — CoQ10 is structurally similar to vitamin K and may lower INR; monitor
+      if started or stopped

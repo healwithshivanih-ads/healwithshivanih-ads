@@ -82,6 +82,15 @@ contraindications:
   - Hypothyroidism — carnitine blocks thyroid hormone entry into cells (used therapeutically
     in hyperthyroidism); monitor symptoms/TSH in hypothyroid clients
   - Seizure disorder — reports of increased seizure frequency
-  medications:
-  - Warfarin / acenocoumarol — case reports of raised INR
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin / acenocoumarol — case reports of raised INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin / acenocoumarol — case reports of raised INR

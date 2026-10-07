@@ -66,9 +66,59 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
-  - Antihypertensives — additive blood-pressure lowering; monitor
+  medications: []
   life_stages:
   - Pregnancy — supplemental (capsule/oil) doses not advised; seeds are a traditional emmenagogue
     at high doses (culinary amounts are fine)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
+  - medication: glipizide
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
+  - medication: metformin
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering; monitor
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: olmesartan
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: metoprolol
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: atenolol
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor
+  - medication: cilnidipine
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor

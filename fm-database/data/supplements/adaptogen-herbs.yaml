@@ -48,11 +48,45 @@ contraindications:
   - Liver disease or prior herb-induced liver injury — ashwagandha (a common component) has
     published case reports of liver injury; stop if jaundice, dark urine or itching appear
   medications:
-  - Levothyroxine/thyroid medication — ashwagandha may raise thyroid hormone levels; recheck
-    TSH
-  - Sedatives/benzodiazepines — ashwagandha and passionflower are additive
   - Immunosuppressants — opposing effect
   life_stages:
   - Pregnancy — ashwagandha traditionally avoided (abortifacient concern); most adaptogens
     unstudied
   - Lactation — insufficient data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: monitor
+    reason: Levothyroxine/thyroid medication — ashwagandha may raise thyroid hormone levels;
+      recheck TSH
+  - medication: thyroxine
+    type: monitor
+    reason: Levothyroxine/thyroid medication — ashwagandha may raise thyroid hormone levels;
+      recheck TSH
+  - medication: liothyronine
+    type: monitor
+    reason: Levothyroxine/thyroid medication — ashwagandha may raise thyroid hormone levels;
+      recheck TSH
+  - medication: benzodiazepine
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - medication: alprazolam
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - medication: clonazepam
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - medication: lorazepam
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - medication: diazepam
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - medication: zolpidem
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - medication: sedative
+    type: monitor
+    reason: Sedatives/benzodiazepines — ashwagandha and passionflower are additive

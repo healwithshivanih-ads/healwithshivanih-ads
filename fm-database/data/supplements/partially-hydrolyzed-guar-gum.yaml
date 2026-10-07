@@ -62,7 +62,17 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Levothyroxine and other oral medications — soluble fibre can reduce absorption; separate
-    by 2-4 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine and other oral medications — soluble fibre can reduce absorption;
+      separate by 2-4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine and other oral medications — soluble fibre can reduce absorption;
+      separate by 2-4 hours

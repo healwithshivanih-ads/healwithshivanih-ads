@@ -61,7 +61,54 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Antihypertensives — additive blood-pressure lowering; monitor for hypotension
-  - Insulin and sulfonylureas — may modestly lower glucose; monitor
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: olmesartan
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: metoprolol
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: atenolol
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: cilnidipine
+    type: monitor
+    reason: Antihypertensives — additive blood-pressure lowering; monitor for hypotension
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas — may modestly lower glucose; monitor
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas — may modestly lower glucose; monitor
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas — may modestly lower glucose; monitor
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas — may modestly lower glucose; monitor
+  - medication: glipizide
+    type: monitor
+    reason: Insulin and sulfonylureas — may modestly lower glucose; monitor

@@ -51,7 +51,17 @@ updated_by: shivani
 contraindications:
   conditions:
   - Active liver disease — gram doses can be hepatotoxic; monitor liver enzymes
-  medications:
-  - Carbamazepine and primidone — nicotinamide can reduce their clearance and raise blood
-    levels; monitor
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: carbamazepine
+    type: monitor
+    reason: Carbamazepine and primidone — nicotinamide can reduce their clearance and raise
+      blood levels; monitor
+  - medication: primidone
+    type: monitor
+    reason: Carbamazepine and primidone — nicotinamide can reduce their clearance and raise
+      blood levels; monitor

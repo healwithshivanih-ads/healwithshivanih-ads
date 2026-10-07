@@ -49,7 +49,65 @@ contraindications:
   conditions:
   - Sodium-restricted diets (heart failure, uncontrolled hypertension, advanced kidney disease)
     — some alginate products (e.g. Gaviscon-type) carry substantial sodium
-  medications:
-  - Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
-    components reduce absorption; separate by 2-4 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: ferrous
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: alendronate
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: risedronate
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: ibandronate
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours
+  - medication: bisphosphonate
+    type: space_by_hours
+    reason: Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+      components reduce absorption; separate by 2-4 hours

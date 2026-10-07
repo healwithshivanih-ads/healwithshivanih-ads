@@ -71,11 +71,35 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  medications: []
   life_stages:
   - Pregnancy — WHO monograph contraindication (embryotoxicity/anti-implantation in animals;
     catalogue claim who-holy-basil-safety-pregnancy-contraindication-eugenol)
   - Lactation — WHO monograph contraindication
   - Trying to conceive — animal anti-fertility and anti-implantation data (WHO); avoid therapeutic
     doses
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: metformin
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  - medication: insulin
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  - medication: glimepiride
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  - medication: gliclazide
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  - medication: glibenclamide
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  - medication: glipizide
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  - medication: sulfonylurea
+    type: monitor
+    reason: Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia

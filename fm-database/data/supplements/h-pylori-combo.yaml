@@ -57,9 +57,43 @@ contraindications:
     the prescriber
   - Cyclosporine / tacrolimus — the berberine component raises their blood levels (CYP3A4
     inhibition)
-  - Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth and zinc
-    chelate them and reduce absorption; separate by at least 2-3 hours
   life_stages:
   - Pregnancy — contains berberine (contraindicated in pregnancy) and bismuth
   - Lactation — contains berberine
   - Infancy / children — not for use
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth
+      and zinc chelate them and reduce absorption; separate by at least 2-3 hours

@@ -48,10 +48,6 @@ contraindications:
   - CYP3A4 substrates
   - P-glycoprotein-substrate chemotherapy such as paclitaxel — berberine upregulates the multidrug-resistance
     transporter and may reduce drug retention (WHO Monographs Vol 4)
-  - Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering; hypoglycaemia
-    risk
-  - Narrow-therapeutic-index CYP2D6/CYP2C9 substrates — berberine inhibits these enzymes in
-    human studies; review co-medication
   life_stages:
   - pregnancy
   - lactation
@@ -68,6 +64,38 @@ interactions:
   - medication: blood thinners
     type: avoid_together
     reason: Auto-converted from string; review needed
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering;
+      hypoglycaemia risk
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering;
+      hypoglycaemia risk
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering;
+      hypoglycaemia risk
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering;
+      hypoglycaemia risk
+  - medication: glipizide
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering;
+      hypoglycaemia risk
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin and sulfonylureas (glimepiride, gliclazide) — additive glucose lowering;
+      hypoglycaemia risk
+  - medication: warfarin
+    type: monitor
+    reason: Narrow-therapeutic-index CYP2D6/CYP2C9 substrates — berberine inhibits these enzymes
+      in human studies; review co-medication
+  - medication: phenytoin
+    type: monitor
+    reason: Narrow-therapeutic-index CYP2D6/CYP2C9 substrates — berberine inhibits these enzymes
+      in human studies; review co-medication
 evidence_tier: plausible_emerging
 linked_to_topics:
 - mast-cell-activation-syndrome

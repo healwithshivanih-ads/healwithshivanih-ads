@@ -69,9 +69,38 @@ contraindications:
   conditions:
   - Allergy to Asteraceae/daisy family (ragweed, chrysanthemum, marigold) — cross-reactive
     allergic reactions incl. anaphylaxis reported
-  medications:
-  - Warfarin — case reports of raised INR and bleeding with chamomile; monitor
-  - Sedatives/benzodiazepines — additive drowsiness
+  medications: []
   life_stages:
   - Pregnancy — avoid concentrated extracts/high doses (traditional emmenagogue); ordinary
     tea amounts are generally considered acceptable
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — case reports of raised INR and bleeding with chamomile; monitor
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — case reports of raised INR and bleeding with chamomile; monitor
+  - medication: benzodiazepine
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness
+  - medication: alprazolam
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness
+  - medication: clonazepam
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness
+  - medication: lorazepam
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness
+  - medication: diazepam
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness
+  - medication: zolpidem
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness
+  - medication: sedative
+    type: monitor
+    reason: Sedatives/benzodiazepines — additive drowsiness

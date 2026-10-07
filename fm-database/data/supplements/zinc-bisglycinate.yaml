@@ -45,7 +45,45 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
-    — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: doxycycline
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: tetracycline
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: minocycline
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  - medication: penicillamine
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+      — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)

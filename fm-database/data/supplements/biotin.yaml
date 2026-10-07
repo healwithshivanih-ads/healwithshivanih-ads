@@ -46,7 +46,33 @@ contraindications:
   - Pending blood tests using streptavidin–biotin immunoassays — at 8–16 mg/day biotin reliably
     distorts thyroid tests (falsely low TSH, falsely high T4/T3 mimicking Graves') and troponin
     (FDA safety communication); stop several days before any blood draw
-  medications:
-  - Insulin and sulfonylureas — additive glucose lowering is the stated mechanism; monitor
-    for hypoglycaemia
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
+      monitor for hypoglycaemia
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
+      monitor for hypoglycaemia
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
+      monitor for hypoglycaemia
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
+      monitor for hypoglycaemia
+  - medication: glipizide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
+      monitor for hypoglycaemia
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
+      monitor for hypoglycaemia

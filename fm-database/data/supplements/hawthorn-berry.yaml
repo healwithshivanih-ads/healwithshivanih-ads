@@ -59,6 +59,100 @@ contraindications:
   medications:
   - Digoxin — hawthorn potentiates cardiac glycosides; clinician decision (catalogue claim
     murray-hawthorn-coronary-dilation-angina)
-  - Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive drops
-    in blood pressure and heart rate
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: nifedipine
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: cilnidipine
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: diltiazem
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: verapamil
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: metoprolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: atenolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: propranolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: bisoprolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: nebivolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: olmesartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: valsartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: lisinopril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: perindopril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: chlorthalidone
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: isosorbide mononitrate
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: isosorbide dinitrate
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate
+  - medication: nitroglycerin
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate

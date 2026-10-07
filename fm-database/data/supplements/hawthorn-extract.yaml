@@ -62,6 +62,100 @@ contraindications:
   medications:
   - Digoxin — hawthorn potentiates cardiac glycosides; clinician decision (catalogue claim
     murray-hawthorn-coronary-dilation-angina)
-  - Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive drops
-    in blood pressure and heart rate; home BP log and doctor aware
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: nifedipine
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: cilnidipine
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: diltiazem
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: verapamil
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: metoprolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: atenolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: propranolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: bisoprolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: nebivolol
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: olmesartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: valsartan
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: lisinopril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: perindopril
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: chlorthalidone
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: isosorbide mononitrate
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: isosorbide dinitrate
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware
+  - medication: nitroglycerin
+    type: monitor
+    reason: Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive
+      drops in blood pressure and heart rate; home BP log and doctor aware

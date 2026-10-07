@@ -58,7 +58,44 @@ contraindications:
     (claim ac-aspiration-pneumonitis-bezoar-major-risks)
   - Chronic constipation — commonly worsens it; avoid regular use
   - GI bleeding or suspected perforation — can obscure endoscopy and worsen obstruction
-  medications:
-  - Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics, antidepressants
-    etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours (claim ac-medication-spacing-rule-1-2-hours)
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)
+  - medication: oral contraceptive
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)
+  - medication: levonorgestrel
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)
+  - medication: ethinylestradiol
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)
+  - medication: metformin
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)
+  - medication: antiepileptic
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)
+  - medication: antidepressant
+    type: space_by_hours
+    reason: Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics,
+      antidepressants etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours
+      (claim ac-medication-spacing-rule-1-2-hours)

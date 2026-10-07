@@ -105,7 +105,59 @@ contraindications:
   - Gout or high uric acid — niacin raises serum urate and can trigger gout
   - Diabetes / insulin resistance — therapeutic niacin worsens glucose control and increased
     new-onset diabetes in HPS2-THRIVE
-  medications:
-  - Statins — combination raises myopathy and hepatotoxicity risk; clinician monitoring required
-  - Antihypertensives — additive hypotension/dizziness during flushing
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: statin
+    type: monitor
+    reason: Statins — combination raises myopathy and hepatotoxicity risk; clinician monitoring
+      required
+  - medication: atorvastatin
+    type: monitor
+    reason: Statins — combination raises myopathy and hepatotoxicity risk; clinician monitoring
+      required
+  - medication: rosuvastatin
+    type: monitor
+    reason: Statins — combination raises myopathy and hepatotoxicity risk; clinician monitoring
+      required
+  - medication: simvastatin
+    type: monitor
+    reason: Statins — combination raises myopathy and hepatotoxicity risk; clinician monitoring
+      required
+  - medication: pravastatin
+    type: monitor
+    reason: Statins — combination raises myopathy and hepatotoxicity risk; clinician monitoring
+      required
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: olmesartan
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: metoprolol
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: atenolol
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing
+  - medication: cilnidipine
+    type: monitor
+    reason: Antihypertensives — additive hypotension/dizziness during flushing

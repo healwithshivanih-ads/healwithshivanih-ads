@@ -34,8 +34,7 @@ notes_for_client: A traditional herb that binds bowel toxins so they leave throu
 contraindications:
   conditions:
   - severe-kidney-disease
-  medications:
-  - digoxin (sarsaparilla may increase digitalis glycoside absorption)
+  medications: []
   life_stages:
   - pregnancy
   - lactation
@@ -66,3 +65,10 @@ version: 2
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: digoxin
+    type: monitor
+    reason: digoxin (sarsaparilla may increase digitalis glycoside absorption)

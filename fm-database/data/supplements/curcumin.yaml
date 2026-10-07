@@ -178,8 +178,6 @@ contraindications:
   - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk; caution
   - Narrow-therapeutic-index drugs cleared by CYP3A4/P-gp (e.g. tacrolimus, cyclosporine)
     — piperine-enhanced curcumin can raise blood levels; clinician to coordinate
-  - Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering; monitor
-    when starting (relevant with the new diabetes/prediabetes links)
   life_stages:
   - pregnancy — supplemental (concentrated) curcumin not established safe; culinary turmeric
     is fine
@@ -189,3 +187,35 @@ updated_at: '2026-10-07'
 updated_by: shivani
 cycle_phases:
 - follicular
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: glipizide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: metformin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+      monitor when starting (relevant with the new diabetes/prediabetes links)

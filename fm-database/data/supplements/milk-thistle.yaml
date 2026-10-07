@@ -134,6 +134,37 @@ aliases:
 contraindications:
   conditions:
   - Allergy to Asteraceae/daisy family (ragweed, marigold, chamomile) — cross-reactivity
-  medications:
-  - Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive hypoglycaemia
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: metformin
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia
+  - medication: insulin
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia
+  - medication: glimepiride
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia
+  - medication: gliclazide
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia
+  - medication: glibenclamide
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia
+  - medication: glipizide
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia
+  - medication: sulfonylurea
+    type: monitor
+    reason: Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive
+      hypoglycaemia

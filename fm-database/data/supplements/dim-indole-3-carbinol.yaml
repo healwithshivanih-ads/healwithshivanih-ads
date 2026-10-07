@@ -44,8 +44,18 @@ contraindications:
   medications:
   - Tamoxifen — DIM lowered levels of the active metabolite endoxifen in an RCT (Thomson 2017);
     avoid unless the oncologist agrees
-  - CYP1A2 substrates (e.g. theophylline, clozapine) — I3C/DIM induce CYP1A2 and may lower
-    drug levels
   life_stages:
   - pregnancy
   - lactation
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: theophylline
+    type: monitor
+    reason: CYP1A2 substrates (e.g. theophylline, clozapine) — I3C/DIM induce CYP1A2 and may
+      lower drug levels
+  - medication: clozapine
+    type: monitor
+    reason: CYP1A2 substrates (e.g. theophylline, clozapine) — I3C/DIM induce CYP1A2 and may
+      lower drug levels

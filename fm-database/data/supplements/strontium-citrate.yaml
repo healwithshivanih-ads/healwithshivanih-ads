@@ -34,8 +34,6 @@ contraindications:
   - severe-cardiovascular-disease
   medications:
   - calcium-supplements-taken-concurrently
-  - tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
-  - oral bisphosphonates (separate dosing; co-prescription needs clinician oversight)
   life_stages:
   - pregnancy
   - lactation
@@ -51,3 +49,40 @@ version: 2
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: doxycycline
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: tetracycline
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: minocycline
+    type: space_by_hours
+    reason: tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - medication: alendronate
+    type: space_by_hours
+    reason: oral bisphosphonates (separate dosing; co-prescription needs clinician oversight)
+  - medication: risedronate
+    type: space_by_hours
+    reason: oral bisphosphonates (separate dosing; co-prescription needs clinician oversight)
+  - medication: ibandronate
+    type: space_by_hours
+    reason: oral bisphosphonates (separate dosing; co-prescription needs clinician oversight)

@@ -57,9 +57,31 @@ aliases:
 contraindications:
   conditions: []
   medications:
-  - Drugs metabolised by CYP1A2 (e.g. theophylline, clozapine, olanzapine, duloxetine, tizanidine)
-    — I3C induces CYP1A2 and can lower their blood levels
   - Tamoxifen and other hormone therapies for cancer — use only with the oncologist's agreement
   life_stages:
   - Pregnancy — alters oestrogen metabolism; no safety data
   - Lactation — no safety data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: theophylline
+    type: monitor
+    reason: Drugs metabolised by CYP1A2 (e.g. theophylline, clozapine, olanzapine, duloxetine,
+      tizanidine) — I3C induces CYP1A2 and can lower their blood levels
+  - medication: clozapine
+    type: monitor
+    reason: Drugs metabolised by CYP1A2 (e.g. theophylline, clozapine, olanzapine, duloxetine,
+      tizanidine) — I3C induces CYP1A2 and can lower their blood levels
+  - medication: olanzapine
+    type: monitor
+    reason: Drugs metabolised by CYP1A2 (e.g. theophylline, clozapine, olanzapine, duloxetine,
+      tizanidine) — I3C induces CYP1A2 and can lower their blood levels
+  - medication: duloxetine
+    type: monitor
+    reason: Drugs metabolised by CYP1A2 (e.g. theophylline, clozapine, olanzapine, duloxetine,
+      tizanidine) — I3C induces CYP1A2 and can lower their blood levels
+  - medication: tizanidine
+    type: monitor
+    reason: Drugs metabolised by CYP1A2 (e.g. theophylline, clozapine, olanzapine, duloxetine,
+      tizanidine) — I3C induces CYP1A2 and can lower their blood levels

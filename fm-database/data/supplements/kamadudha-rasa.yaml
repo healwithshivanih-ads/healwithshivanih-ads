@@ -42,11 +42,7 @@ contraindications:
   - pregnancy
   - chronic-kidney-disease
   - heavy-metal-burden
-  medications:
-  - Levothyroxine — calcium-rich bhasmas (pearl, conch, coral) can bind it and reduce absorption;
-    separate by at least 4 hours
-  - Tetracycline and fluoroquinolone antibiotics — calcium content chelates them; separate
-    by 2-4 hours
+  medications: []
   life_stages:
   - pregnancy
   - lactation
@@ -61,3 +57,47 @@ version: 2
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — calcium-rich bhasmas (pearl, conch, coral) can bind it and reduce
+      absorption; separate by at least 4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — calcium-rich bhasmas (pearl, conch, coral) can bind it and reduce
+      absorption; separate by at least 4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — calcium content chelates them;
+      separate by 2-4 hours

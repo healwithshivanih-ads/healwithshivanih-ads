@@ -44,7 +44,37 @@ contraindications:
   - Scheduled surgery or dental extraction — stop concentrated garlic products 7–10 days beforehand
     (antiplatelet effect, post-operative bleeding reports)
   medications:
-  - Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding time;
-    additive risk
   - HIV protease inhibitors (saquinavir) — garlic reduces their blood levels
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
+  - medication: apixaban
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
+  - medication: rivaroxaban
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
+  - medication: dabigatran
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
+  - medication: clopidogrel
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
+  - medication: aspirin
+    type: monitor
+    reason: Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding
+      time; additive risk
