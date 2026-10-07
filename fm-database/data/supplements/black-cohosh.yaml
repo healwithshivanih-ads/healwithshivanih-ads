@@ -14,18 +14,30 @@ linked_to_topics:
 - testosterone-dht-conversion
 - perimenopause-and-menopause
 - menopause
+- perimenopause
+linked_to_symptoms:
+- hot-flashes
+- night-sweats
+- menopause-symptoms
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
 - murray-black-cohosh-vs-conjugated-estrogen
-notes_for_coach: Listed as a 5-α reductase inhibitor. More commonly used in FM for
-  menopausal symptom relief. Clinician should supervise use especially in women with
-  hormone-sensitive conditions.
+notes_for_coach: |-
+  Listed as a 5-α reductase inhibitor. More commonly used in FM for menopausal symptom
+  relief. Clinician should supervise use especially in women with hormone-sensitive
+  conditions.
+
+  Best used for: Best evidence is for hot flashes and night sweats in
+  perimenopausal/menopausal women, particularly those who cannot or prefer not to use
+  hormone therapy; trial results are mixed, so set expectations and review at 8–12
+  weeks. Not a testosterone or DHT intervention.
 notes_for_client: Black cohosh is an herb used in hormone support, particularly for
   menopausal symptoms. It may also help regulate DHT levels.
 evidence_tier: fm_specific_thin
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- estrogen-decline
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Maintaining Healthy Testosterone Levels — Page 06
@@ -36,7 +48,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Liver disease or history of liver injury — rare idiosyncratic hepatitis reported; USP
+    and several regulators require a liver warning on labels
+  medications: []
+  life_stages:
+  - pregnancy — avoid (uterine-stimulant traditional use; no safety data)
+  - breastfeeding — avoid (insufficient data)

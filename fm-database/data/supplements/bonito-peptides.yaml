@@ -6,9 +6,14 @@ forms_available:
 - tablet
 - powder
 evidence_tier: plausible_emerging
-notes_for_coach: Bonito peptides (from dried bonito fish, Katsuobushi) are small peptides
-  with emerging evidence as natural ACE inhibitors, supporting modest blood pressure
-  reduction. Listed in beta blocker tapering protocol. Evidence base is early-stage.
+notes_for_coach: |-
+  Bonito peptides (from dried bonito fish, Katsuobushi) are small peptides with emerging
+  evidence as natural ACE inhibitors, supporting modest blood pressure reduction. Listed
+  in beta blocker tapering protocol. Evidence base is early-stage.
+
+  Best used for: A modest add-on for mild high blood pressure, based mainly on Japanese
+  trials of bonito peptide products. Not a replacement for prescribed antihypertensives
+  and not useful beyond blood pressure.
 notes_for_client: Bonito peptides come from a type of fish and may help support healthy
   blood pressure naturally. Use as directed by your healthcare provider.
 timing_options:
@@ -19,9 +24,11 @@ take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
 - hypertension
-- high-blood-pressure
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- raas-activation
+linked_to_symptoms:
+- elevated-blood-pressure
 linked_to_claims: []
 sources:
 - id: vitaone-cv-toolkit
@@ -31,7 +38,14 @@ sources:
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
     — Supplement Schedule'
   quote: Bonito peptides
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Fish allergy — fish-derived peptide
+  medications:
+  - Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+    lowering; monitor BP
+  life_stages: []

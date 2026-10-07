@@ -24,11 +24,16 @@ linked_to_mechanisms:
 linked_to_claims:
 - murray-kava-vs-benzodiazepine-anxiety
 - murray-kava-cognitive-preservation-vs-benzo
-notes_for_coach: Polynesian botanical with significant anxiolytic effect. Pizzorno
-  lists kava for anxiety component of depression. Standardised extract 60-120 mg kavalactones
-  twice daily. RARE but serious hepatotoxicity — banned in some countries. Use only
+notes_for_coach: |-
+  Polynesian botanical with significant anxiolytic effect. Pizzorno lists kava for
+  anxiety component of depression. Standardised extract 60-120 mg kavalactones twice
+  daily. RARE but serious hepatotoxicity — banned in some countries. Use only
   short-term, only with liver-enzyme monitoring, never with alcohol or hepatotoxic
   drugs. Aqueous (traditional) preparations are safer than ethanol/acetone extracts.
+
+  Best used for: Short-term use for anxiety where the client has healthy liver function
+  and avoids alcohol; the human evidence is for anxiety, not depression or insomnia. Not
+  worth the liver risk when L-theanine, magnesium or lifestyle measures are enough.
 notes_for_client: A traditional anti-anxiety herb that needs careful clinical supervision
   because of rare but serious liver risk. Not for use without baseline liver function
   tests and not with alcohol.
@@ -43,6 +48,10 @@ contraindications:
   - hepatotoxic-drugs
   - acetaminophen-high-dose
   - statins
+  - Levodopa — case reports of reduced effect / worsened parkinsonism (kava has dopamine-antagonist
+    activity)
+  - Other sedatives and hypnotics (zolpidem, barbiturates, sedating antihistamines) — additive
+    CNS depression
   life_stages:
   - pregnancy
   - lactation
@@ -56,7 +65,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

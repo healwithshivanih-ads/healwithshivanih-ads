@@ -20,6 +20,7 @@ linked_to_mechanisms:
 - mitochondrial-dysfunction
 - nk-cell-dysfunction-cfs
 - mitochondrial-dysfunction
+- mitochondrial-energy-production
 linked_to_claims:
 - nadh-improves-energy-cfs-mitochondrial
 notes_for_coach: The reduced active form of NAD+, essential coenzyme for mitochondrial
@@ -41,7 +42,7 @@ sources:
   location: Chronic Fatigue Syndrome — Nutritional support box (pp 214)
   quote: NADH listed alongside Magnesium, Vitamin E, L-Carnitine, Coenzyme Q10 as
     nutritional support to enhance energy levels.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

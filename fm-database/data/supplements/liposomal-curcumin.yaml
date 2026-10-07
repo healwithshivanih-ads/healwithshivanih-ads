@@ -16,23 +16,46 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - maoa-fast-serotonin-depletion
+- osteoarthritis
+- nafld
+- chronic-inflammation
+linked_to_symptoms:
+- joint-pain
+- elevated-hscrp
 linked_to_claims:
 - curcumin-anti-inflammatory-slows-tryptophan-steal
-notes_for_coach: Lynch recommends for fast MAOA to reduce inflammation — specifically
-  to slow down IDO1-mediated tryptophan steal, thereby conserving tryptophan for serotonin
-  synthesis. Liposomal form preferred for absorption. 1–3 times daily.
+notes_for_coach: |-
+  Lynch recommends for fast MAOA to reduce inflammation — specifically to slow down
+  IDO1-mediated tryptophan steal, thereby conserving tryptophan for serotonin synthesis.
+  Liposomal form preferred for absorption. 1–3 times daily.
+
+  Best used for: Strongest evidence is knee osteoarthritis pain, NAFLD liver enzymes and
+  lowering CRP. The 'protect tryptophan for serotonin' use is from Dirty Genes and is
+  FM-specific. Most trials used other bioavailable forms (phytosome, BCM-95), not
+  liposomal specifically.
 notes_for_client: A potent anti-inflammatory from turmeric that helps protect your
   tryptophan supply so your body can make serotonin. The liposomal form is much better
   absorbed than standard curcumin.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- nf-kb-activation
 sources:
 - id: dirty-genes-lynch
   location: Chapter 15 — Supplements for Your Fast MAOA
   quote: Consider taking this great anti-inflammatory one to three times daily. This
     helps slow the Tryptophan Steal that we discussed earlier, thereby conserving
     tryptophan for your fast MAOA.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - gallstones / bile-duct obstruction — curcumin stimulates gallbladder contraction
+  - history of drug- or herb-induced liver injury — turmeric supplements are a recognised
+    cause of hepatotoxicity (LiverTox)
+  medications:
+  - warfarin / antiplatelets / anticoagulants — additive bleeding risk
+  life_stages:
+  - pregnancy — insufficient safety data for concentrated/supplemental curcumin doses (culinary
+    turmeric is fine)

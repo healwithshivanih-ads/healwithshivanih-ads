@@ -18,17 +18,27 @@ linked_to_topics:
 - iron-nutrition
 - iron-deficiency-dysregulation
 - iron-deficiency-anemia
+- restless-legs-syndrome
+linked_to_symptoms:
+- restless-legs
 linked_to_claims:
 - ferrous-bisglycinate-superior-absorption-to-ferrous-sulfate-fumarate
 - ferrous-bisglycinate-fewer-gi-side-effects
-notes_for_coach: Commonly available OTC form. Associated with higher rates of GI side
-  effects (constipation, diarrhoea) and potentially lower compliance compared to ferrous
+notes_for_coach: |-
+  Commonly available OTC form. Associated with higher rates of GI side effects
+  (constipation, diarrhoea) and potentially lower compliance compared to ferrous
   bisglycinate. Referenced as comparison agent in the source document.
+
+  Best used for: Standard, inexpensive first-line oral iron for confirmed iron
+  deficiency (low ferritin), including heavy-period and RLS-related deficiency. GI side
+  effects are its main drawback — alternate-day dosing or a gentler form (bisglycinate)
+  often improves tolerance. Not worth taking without lab-confirmed deficiency.
 notes_for_client: This is the most common iron tablet prescribed, but it can cause
   constipation or stomach upset for some people. Ask your practitioner if a gentler
   form might suit you better.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- ferritin-storage-depletion
 sources:
 - id: coconote-fm-iron-deficiency-anemia
   location: Supplements / Management section
@@ -36,7 +46,22 @@ sources:
     counter available tablets which contain ferrous fumarate, ferrous sulphate. But
     recent researchers have shown us that they're not the best compounds for absorption
     of iron because of their viability.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Haemochromatosis or any iron-overload state — supplemental iron is harmful
+  - Thalassaemia trait or other non-iron-deficiency anaemia (common in India) — do not supplement
+    iron without iron studies (ferritin, TSAT) confirming deficiency
+  medications:
+  - Levothyroxine — iron binds it in the gut; separate by at least 4 hours
+  - Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate by
+    2–4 hours
+  - PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - Levodopa / carbidopa-levodopa — iron chelates levodopa and reduces its absorption; separate
+    doses by at least 2 hours
+  - Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir) —
+    polyvalent cations block absorption; separate per prescriber instructions
+  life_stages: []

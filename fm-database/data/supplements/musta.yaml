@@ -31,14 +31,21 @@ linked_to_topics:
 - perimenopause
 - dyspepsia
 - maldigestion
-notes_for_coach: 'Latin: Cyperus rotundus; Cyperaceae. Sanskrit: Musta. Traditional indications: menstrual
-  disorders, dysmenorrhea, menopause, diarrhea, malabsorption, indigestion, sluggish liver. Precautions:
-  constipation, high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Cyperus rotundus; Cyperaceae. Sanskrit: Musta. Traditional indications:
+  menstrual disorders, dysmenorrhea, menopause, diarrhea, malabsorption, indigestion,
+  sluggish liver. Precautions: constipation, high Vata. Ayurvedic energetics from The
+  Yoga of Herbs (Frawley & Lad).
+
+  Best used for: An Ayurvedic digestive herb traditionally used for loose stools,
+  indigestion and menstrual cramping. Human trial evidence is minimal, so treat it as a
+  gentle traditional adjunct rather than a primary option; avoid in
+  constipation-predominant clients.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — MUSTA
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

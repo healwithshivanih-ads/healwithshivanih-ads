@@ -14,21 +14,41 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - sluggish-bile-flow
+linked_to_symptoms:
+- elevated-liver-enzymes
 linked_to_claims:
 - tudca-thins-bile-cholestasis-fatty-liver
 - sluggish-bile-flow-overlooked-root-cause
-notes_for_coach: Most potent bile-thinning supplement. Use for sludge, cholestasis,
-  fatty liver under clinician supervision. Avoid in complete bile duct obstruction.
+notes_for_coach: |-
+  Most potent bile-thinning supplement. Use for sludge, cholestasis, fatty liver under
+  clinician supervision. Avoid in complete bile duct obstruction.
+
+  Best used for: Most relevant for sluggish bile flow and mildly raised liver enzymes,
+  alongside a clinician's work-up. Gallstone dissolution and cholestatic liver disease
+  are medical decisions (prescription bile-acid therapy), not coaching uses. Not needed
+  for routine 'liver detox'.
 notes_for_client: TUDCA is a bile acid supplement that helps thin and improve the
   flow of bile from your liver and gallbladder — supporting fat digestion and liver
   detox.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- bile-flow-regulation
+- sluggish-bile-flow-mechanism
 sources:
 - id: vitaone-gut-cheatsheet
   location: Sluggish Bile Flow — Supplements That Improve Bile Flow
   quote: TUDCA — Thins bile + reduces toxicity — Sludge, cholestasis, fatty liver
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - complete bile duct obstruction or acute cholecystitis — choleretic bile acids are contraindicated
+    (stated in notes but not in the structured list)
+  medications:
+  - bile acid sequestrants (cholestyramine, colesevelam) — bind bile acids; separate by at
+    least 4 hours
+  life_stages:
+  - pregnancy — insufficient safety data for supplemental TUDCA
+  - lactation — insufficient safety data

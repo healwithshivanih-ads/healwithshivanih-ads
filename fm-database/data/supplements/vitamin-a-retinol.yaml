@@ -39,7 +39,18 @@ sources:
     work this way... vitamin a allows this binding pocket that's been shut down from
     genetic expression the repressor action of it to be turned on into an expressive
     action
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - chronic liver disease or heavy alcohol use — retinol is stored in the liver and is hepatotoxic
+    in excess
+  - osteoporosis — chronic retinol intake above ~1,500 mcg RAE/day is associated with higher
+    fracture risk
+  medications:
+  - isotretinoin, acitretin or other oral retinoids — additive vitamin A toxicity
+  life_stages:
+  - pregnancy and women who may conceive — retinol above ~3,000 mcg RAE (10,000 IU)/day is
+    teratogenic

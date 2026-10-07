@@ -48,9 +48,17 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Hawthorne berry extract
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - hawthorn-berry-extract
+contraindications:
+  conditions: []
+  medications:
+  - Digoxin — hawthorn potentiates cardiac glycosides; clinician decision (catalogue claim
+    murray-hawthorn-coronary-dilation-angina)
+  - Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive drops
+    in blood pressure and heart rate
+  life_stages: []

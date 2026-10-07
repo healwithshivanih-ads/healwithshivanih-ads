@@ -23,9 +23,13 @@ take_with_food: avoid
 linked_to_topics:
 - gerd
 - h-pylori-infection
-- hypochlorhydria
 - peptic-ulcer-disease
-- helicobacter-pylori-infection
+- functional-dyspepsia
+- gerd-ppi-tapering
+linked_to_symptoms:
+- acid-reflux-heartburn
+- epigastric-pain
+- indigestion
 linked_to_claims:
 - betaine-hcl-corrects-hypochlorhydria
 - dgl-equivalent-cimetidine-recurrence-prevents-asa-ulcer
@@ -41,7 +45,9 @@ notes_for_client: DGL licorice is a soothing herb that coats and protects the st
   that raises blood pressure removed. It must be chewed — not swallowed whole — to work properly.
   Take it 20 minutes before meals.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- gastric-mucosal-barrier-disruption
+- h-pylori-mucosal-defense-breakdown
 sources:
 - id: vitaone-gut-cheatsheet
   location: H. Pylori Infection Cheatsheet — Antimicrobial Support
@@ -58,9 +64,9 @@ sources:
   quote: DGL is an antiulcer agent with no known side effects. DGL stimulates differentiation
     to glandular cells plus mucus formation and secretion. No significant differences exist
     in recurrence rates between cimetidine and DGL.
-version: 2
+version: 3
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - dgl

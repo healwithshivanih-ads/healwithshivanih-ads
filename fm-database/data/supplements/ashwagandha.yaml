@@ -42,6 +42,13 @@ linked_to_topics:
 - sleep-quality
 - anxiety
 - chronic-stress
+- sperm-quality
+- insomnia
+linked_to_symptoms:
+- stress
+- anxiety
+- insomnia
+- high-morning-cortisol
 linked_to_claims:
 - ashwagandha-cortisol-hair-loss
 - high-cortisol-inhibits-t4-to-t3-conversion
@@ -53,9 +60,16 @@ linked_to_claims:
 - ashwagandha-reduces-morning-cortisol
 - ashwagandha-improves-sleep-onset
 - murray-adaptogens-anxiety-mild-moderate
-notes_for_coach: 'Look for standardized extracts (withanolide content). Studies cited
-  show >60% reduction in morning cortisol and improved overall sleep performance.
-  Somnifera means ''sleep inducer''. Source: Coach Shivani clinical observations.'
+notes_for_coach: |-
+  Look for standardized extracts (withanolide content). Studies cited show >60%
+  reduction in morning cortisol and improved overall sleep performance. Somnifera means
+  'sleep inducer'. Source: Coach Shivani clinical observations.
+
+  Best used for: Strongest evidence is for stress, anxiety and sleep in chronically
+  stressed adults (lower perceived stress and cortisol over 6–8 weeks), with smaller
+  supporting trials for subclinical hypothyroidism and male fertility. Most useful for
+  the 'wired-and-tired', high-cortisol client; not appropriate in hyperthyroidism, and
+  not a substitute for thyroid medication in overt hypothyroidism.
 notes_for_client: Ashwagandha is an adaptogenic herb that may help your body manage
   stress hormones and support deeper, more restful sleep.
 rasa:
@@ -80,7 +94,9 @@ ayurvedic_actions:
 - sedative
 - astringent
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
@@ -134,20 +150,28 @@ sources:
     Due to the lack of safety data and its traditional use to induce abortion, use
     during pregnancy or breastfeeding is contraindicated.'
 contraindications:
-  conditions: []
+  conditions:
+  - Hyperthyroidism / Graves' disease — ashwagandha raises T3/T4 in RCTs and the catalogue's
+    own thyroid e-book source says avoid in hyperthyroidism
+  - Pre-existing liver disease or prior herb-induced liver injury — rare but repeatedly reported
+    cases of ashwagandha-associated cholestatic liver injury
   medications:
-  - Barbiturates — ashwagandha may potentiate their sedative effect (WHO Monographs
-    on Selected Medicinal Plants, Vol 4)
-  - Benzodiazepines including diazepam, clonazepam and alprazolam — ashwagandha may
-    reduce their anxiolytic/sedative effect (WHO Monographs on Selected Medicinal
-    Plants, Vol 4); review co-use before recommending
+  - Barbiturates — ashwagandha may potentiate their sedative effect (WHO Monographs on Selected
+    Medicinal Plants, Vol 4)
+  - Benzodiazepines including diazepam, clonazepam and alprazolam — ashwagandha may reduce
+    their anxiolytic/sedative effect (WHO Monographs on Selected Medicinal Plants, Vol 4);
+    review co-use before recommending
+  - Levothyroxine / thyroid hormone replacement — additive rise in thyroid hormones; recheck
+    TSH/fT4 after starting
+  - Immunosuppressants (e.g. tacrolimus, azathioprine, mycophenolate) — immunostimulatory
+    activity may counteract them
   life_stages:
   - pregnancy
   - breastfeeding
-version: 12
+version: 13
 status: active
-updated_at: '2026-07-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution
 pregnancy_safety_note: 'Insufficient safety data; uterine stimulant; avoid throughout

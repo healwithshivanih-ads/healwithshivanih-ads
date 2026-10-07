@@ -18,12 +18,26 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Stimulates bile flow to support digestion and liver health; useful
-  in detox and sluggish digestion protocols.
+notes_for_coach: |-
+  Stimulates bile flow to support digestion and liver health; useful in detox and
+  sluggish digestion protocols.
+
+  Best used for: Best evidence is functional dyspepsia (fullness, bloating after meals)
+  and modest cholesterol lowering, plus emerging NAFLD data. Good for a client with
+  sluggish digestion after fatty meals or mild dyslipidemia. Avoid where gallstones or
+  bile-duct problems are known.
 evidence_tier: plausible_emerging
 linked_to_topics:
-- gallstones
-linked_to_mechanisms: []
+- sluggish-bile-flow
+- dyslipidemia
+- functional-dyspepsia
+- nafld
+linked_to_mechanisms:
+- bile-flow-regulation
+- sluggish-bile-flow-mechanism
+linked_to_symptoms:
+- indigestion
+- elevated-cholesterol
 linked_to_claims: []
 notes_for_client: ''
 contraindications:
@@ -46,7 +60,7 @@ sources:
     and in obstruction of the bile ducts. Possible interaction with coumarin-type anticoagulants;
     patients with gallstones should seek provider advice. GI complaints (mild diarrhoea,
     cramps, nausea, heartburn) reported. Not recommended in pregnancy (lack of data).'
-version: 3
+version: 4
 status: active
-updated_at: '2026-07-13'
+updated_at: '2026-10-07'
 updated_by: shivani

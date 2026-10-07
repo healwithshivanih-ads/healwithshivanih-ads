@@ -20,19 +20,41 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - dyslipidemia
+- type-2-diabetes
+linked_to_symptoms:
+- elevated-cholesterol
 linked_to_claims:
 - fiber-psyllium-glucomannan-lowers-ldl-tg
-notes_for_coach: Highly viscous soluble fiber from konjac root. Take with large amounts
-  of water. Can lower post-meal blood sugar as well as LDL. Separate from medications.
+notes_for_coach: |-
+  Highly viscous soluble fiber from konjac root. Take with large amounts of water. Can
+  lower post-meal blood sugar as well as LDL. Separate from medications.
+
+  Best used for: Best evidence is for lowering LDL cholesterol, with a smaller effect on
+  fasting glucose, so it suits clients with raised LDL, prediabetes or type 2 diabetes.
+  Weight-loss evidence is weak (meta-analyses largely null). It must always be taken
+  with plenty of water (choking/obstruction risk if taken dry) and spaced away from
+  medicines.
 notes_for_client: Glucomannan is a natural fiber that helps lower cholesterol and
   triglycerides. Take it with a large glass of water before meals.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+- postprandial-glucose-spike
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
   quote: 'Fiber (psyllium, glucomannan): ↓LDL, ↓TG.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Difficulty swallowing, oesophageal stricture or bowel obstruction history — dry glucomannan
+    (especially tablets) swells and has caused choking and oesophageal/bowel obstruction;
+    always take powder or capsules with a full glass of water
+  medications:
+  - Oral medicines including levothyroxine, metformin and oral contraceptives — viscous fibre
+    can reduce absorption; separate by at least 2-4 hours
+  - Antidiabetic drugs — additive post-meal glucose lowering; monitor for hypoglycaemia
+  life_stages: []

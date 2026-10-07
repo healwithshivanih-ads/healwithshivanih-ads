@@ -16,20 +16,36 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - mthfr-methylation-gene
+- homocysteine-and-methylation
+- b12-folate-anemia
+- preconception-protocol
+- major-depressive-disorder
+linked_to_symptoms:
+- elevated-homocysteine
 linked_to_claims:
 - folic-acid-blocks-methylfolate-absorption
 - methylfolate-supports-mood-mthfr
 - mthfr-snp-reduces-methylfolate-production
 - methylfolate-supports-methylation-cycle
-notes_for_coach: Source book recommends starting very low and increasing slowly. Some
-  individuals experience significant mood or anxiety side effects (overmethylation)
-  at higher doses. Start with a 'Soak and Scrub' dietary approach before supplementing.
-  Dose selection is clinician territory.
+notes_for_coach: |-
+  Source book recommends starting very low and increasing slowly. Some individuals
+  experience significant mood or anxiety side effects (overmethylation) at higher doses.
+  Start with a 'Soak and Scrub' dietary approach before supplementing. Dose selection is
+  clinician territory.
+
+  Best used for: Best for raised homocysteine, confirmed low folate or MTHFR variants,
+  and preconception folate cover; use in depression is an adjunct for the client's
+  doctor to lead. Start low, as some people feel anxious, irritable or sleep poorly at
+  higher doses. Always check B12 first or pair with B12, because folate can mask B12
+  deficiency.
 notes_for_client: This is the activated form of folate your body can actually use,
   especially if you have an MTHFR variant. Start low — even a very small dose can
   have a big effect. Leafy greens first, supplements second.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- impaired-folate-to-5-mthf-conversion
+- homocysteine-remethylation
+- folate-trap
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
@@ -65,13 +81,23 @@ sources:
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
     Depletions
   quote: Folate (as methyl tetra hydro folate)
-version: 2
+version: 3
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - 5-mthf
 - folate-methylfolate
 - l-methylfolate
 - methylfolate-5-mthf
 - methylfolate-b9
+contraindications:
+  conditions:
+  - Untreated or unchecked B12 deficiency — folate can mask the anaemia while B12 neuropathy
+    progresses; check B12 or give with B12 (claim murray-folate-masks-b12-deficiency)
+  - Bipolar disorder — case reports of hypomania with high-dose methylfolate; clinician only
+  medications:
+  - Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels
+  - Methotrexate (oncology doses) and 5-FU/capecitabine — folate can reduce efficacy or increase
+    toxicity; clinician only
+  life_stages: []

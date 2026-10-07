@@ -20,13 +20,26 @@ timing_options:
 - with_breakfast
 - with_lunch
 take_with_food: optional
-notes_for_coach: Supports cortisol blunting and cognitive resilience under stress. Often combined with adaptogens for adrenal
-  recovery protocols. Verify dose with clinician.
+notes_for_coach: |-
+  Supports cortisol blunting and cognitive resilience under stress. Often combined with
+  adaptogens for adrenal recovery protocols. Verify dose with clinician.
+
+  Best used for: Best suited to the stressed client with an exaggerated cortisol
+  response to acute stress, and to older adults with mild memory complaints. The memory
+  evidence is strongest for the older bovine-derived form, and soy/sunflower PS results
+  are mixed. Small trials in children with diagnosed ADHD are encouraging but
+  preliminary. It will not correct a flat, low-cortisol picture.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hpa-axis-dysregulation
 - anxiety
-linked_to_mechanisms: []
+- adhd
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_symptoms:
+- mild-cognitive-impairment
+- stress-sensitivity
 linked_to_claims:
 - phosphatidylserine-blunts-cortisol-response
 - adaptogens-rebalance-hpa-axis
@@ -39,9 +52,14 @@ sources:
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Patterns Seen in Practice (p.15)
   quote: 'Adrenal: Cortisol flattening, "wired but tired". Adaptogens, phosphatidylserine, circadian restoration.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - phosphatidylserine 300-800mg
+contraindications:
+  conditions:
+  - Soy allergy — most PS supplements are soy-derived; use a sunflower-derived product
+  medications: []
+  life_stages: []

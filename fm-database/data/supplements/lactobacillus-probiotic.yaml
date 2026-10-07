@@ -24,6 +24,10 @@ linked_to_topics:
 - atopic-dermatitis
 - autoimmune-dermatitis
 - food-allergy-ige-mediated
+- vaginitis
+- ibs
+linked_to_symptoms:
+- diarrhea
 linked_to_claims:
 - lactobacillus-bifidobacterium-probiotics-have-transient-gut-effect
 - probiotics-contraindicated-in-bacterial-overgrowth
@@ -37,7 +41,8 @@ notes_for_client: Lactobacillus probiotics are beneficial but temporary — they
   You can boost their effect by using a live culture capsule to ferment milk or vegetables
   at home.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Probiotics Section
@@ -46,7 +51,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - severely immunocompromised, critically ill or central venous catheter in place — rare
+    but documented Lactobacillus bacteraemia/sepsis with live probiotics
+  - severe acute pancreatitis — multispecies probiotic increased mortality in the PROPATRIA
+    trial
+  medications: []
+  life_stages: []

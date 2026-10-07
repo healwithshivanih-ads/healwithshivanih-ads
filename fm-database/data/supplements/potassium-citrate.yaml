@@ -21,13 +21,22 @@ linked_to_topics:
 - oxalate-sensitivity
 linked_to_mechanisms:
 - calcium-oxalate-crystal-formation
+- renal-ph-buffering
+linked_to_symptoms:
+- kidney-stones
 linked_to_claims:
 - citrate-supplements-prevent-recurrent-kidney-stones
-notes_for_coach: Alkalinizing salt that raises urinary citrate (the natural Ca-oxalate
-  inhibitor) and urinary pH. First-line prophylaxis for recurrent Ca-oxalate and uric
-  acid stones. Typical dose 30-60 mEq/day in divided doses with meals. GI upset common
-  — use slow-release form. Caution with potassium-sparing diuretics, ACE inhibitors,
+notes_for_coach: |-
+  Alkalinizing salt that raises urinary citrate (the natural Ca-oxalate inhibitor) and
+  urinary pH. First-line prophylaxis for recurrent Ca-oxalate and uric acid stones.
+  Typical dose 30-60 mEq/day in divided doses with meals. GI upset common — use
+  slow-release form. Caution with potassium-sparing diuretics, ACE inhibitors,
   K-elevating drugs, renal insufficiency.
+
+  Best used for: Prescription-strength prophylaxis for recurrent calcium-oxalate or
+  uric-acid kidney stones, especially with low urinary citrate — a doctor-led therapy
+  that needs serum potassium and kidney function monitoring. Not for general
+  alkalinising or BP use without medical supervision.
 notes_for_client: An alkalinizing supplement that raises citrate in your urine — citrate
   stops kidney stones from forming. Always taken with meals to avoid stomach upset.
 contraindications:
@@ -35,10 +44,19 @@ contraindications:
   - hyperkalemia
   - acute-renal-failure
   - severe-renal-insufficiency
+  - Peptic ulcer, delayed gastric emptying or oesophageal compression — solid potassium-citrate
+    tablets can cause GI ulceration (Urocit-K label contraindication)
+  - Active urinary tract infection with urea-splitting organisms — label contraindication
+  - Adrenal insufficiency, uncontrolled diabetes, acute dehydration or delayed gastric emptying/intestinal
+    stricture — predispose to hyperkalaemia or GI injury (product label)
   medications:
   - potassium-sparing-diuretics
   - ace-inhibitors
   - angiotensin-receptor-blockers
+  - Anticholinergic drugs — slow GI transit and raise the risk of GI lesions with solid potassium
+    salts (label)
+  - Other potassium sources (KCl supplements, potassium-based salt substitutes) and potassium-raising
+    drugs (aldosterone antagonists, trimethoprim, NSAIDs) — additive hyperkalaemia risk
   life_stages: []
 evidence_tier: strong
 typical_dose_range: {}
@@ -47,7 +65,7 @@ sources:
   location: Kidney Stones — Therapeutic Approach / supplements (pp 596)
   quote: Citrate inhibits aggregation and growth of Ca oxalate and Ca phosphate crystals.
     Citrate supplements listed among preventive interventions for calcium stones.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

@@ -47,6 +47,9 @@ linked_to_topics:
 - chronic-fatigue-syndrome
 - insulin-resistance
 - pcos-insulin-resistant
+- migraine-headache
+- diminished-ovarian-reserve
+- male-infertility-oxidative-stress
 linked_to_symptoms:
 - fatigue
 - chronic-fatigue
@@ -62,26 +65,30 @@ linked_to_claims:
 - coq10-supports-mitochondrial-atp-production
 - vitamin-e-coq10-selenium-synergistic-antioxidant
 - coq10-deficient-39-percent-hypertensives
-notes_for_coach: 'CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol
-  form may have better bioavailability, especially in older adults. Fat-soluble —
-  always take with food. Dose should be verified with clinician.
+notes_for_coach: |-
+  CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol form may have
+  better bioavailability, especially in older adults. Fat-soluble — always take with
+  food. Dose should be verified with clinician.
 
-
-  Hypertension: average dose 225 mg/day; protocol uses 100 mg b.i.d.–t.i.d. Effect
-  is not seen until 4–12 weeks of therapy — CoQ10 corrects a metabolic abnormality
-  rather than acting as a direct antihypertensive, so it needs patience. Any drug
-  tapering must be supervised by the prescribing clinician. For hypertension WITH
-  diabetes, 100–200 mg/day; also used in the cardiovascular-complications protocol.
-
+  Hypertension: average dose 225 mg/day; protocol uses 100 mg b.i.d.–t.i.d. Effect is
+  not seen until 4–12 weeks of therapy — CoQ10 corrects a metabolic abnormality rather
+  than acting as a direct antihypertensive, so it needs patience. Any drug tapering must
+  be supervised by the prescribing clinician. For hypertension WITH diabetes, 100–200
+  mg/day; also used in the cardiovascular-complications protocol.
 
   Note on doubling: several product entries in supplement_links.yaml pair CoQ10 with
   another nutrient (e.g. "CoQ10 + Selenium", 100 mg CoQ10 per capsule). Check the
   co-prescribed products before adding a standalone CoQ10 — plan-check will warn.
 
+  Strongest case: clients on a statin (depletion is documented), and fatigue with a
+  mitochondrial / insulin-resistance picture. The muscle-pain link is mainly for
+  statin-associated muscle aches.
 
-  Strongest case: clients on a statin (depletion is documented), and fatigue
-  with a mitochondrial / insulin-resistance picture. The muscle-pain link is
-  mainly for statin-associated muscle aches.'
+  Best used for: Clearest use is for clients on a statin, since statins lower the body's
+  CoQ10; evidence that it relieves statin muscle aches is mixed. Modest trial evidence
+  for preventing migraine, and as an add-on in male infertility and in women with low
+  ovarian reserve preparing for IVF. Effects build over 2-3 months; it is not a quick
+  energy fix.
 notes_for_client: CoQ10 is like fuel for your cell's energy factories (mitochondria).
   It can help reduce fatigue and mental sluggishness. Take it with a meal containing
   some fat for best absorption.
@@ -90,6 +97,8 @@ linked_to_mechanisms:
 - mitochondrial-toxin-disruption
 - mitochondrial-dysfunction
 - mitochondrial-energy-production
+- coq10-depletion
+- oocyte-mitochondrial-dysfunction
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
@@ -158,7 +167,7 @@ sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Additional Supplements / For Hypertension
   quote: 'Coenzyme Q10: 100 to 200 mg q.d.'
-version: 10
+version: 11
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -180,3 +189,9 @@ aliases:
 - coenzyme-q10-diabetes
 cycle_phases:
 - follicular
+contraindications:
+  conditions: []
+  medications:
+  - Warfarin — CoQ10 is structurally similar to vitamin K and may lower INR; monitor if started
+    or stopped
+  life_stages: []

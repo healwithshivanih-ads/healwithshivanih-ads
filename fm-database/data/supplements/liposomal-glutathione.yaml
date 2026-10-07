@@ -19,21 +19,30 @@ linked_to_topics:
 - gst-gpx-glutathione-detox
 - clean-genes-protocol
 - nos3-nitric-oxide-cardiovascular
+- oxidative-stress
 linked_to_claims:
 - glutathione-supports-chemical-detox-gst-gpx
 - liposomal-glutathione-supports-detox-pathways
 - liposomal-glutathione-supports-gst-gpx-detox
 - glutathione-protects-nitric-oxide-from-superoxide
-notes_for_coach: Liposomal delivery bypasses gut degradation of oral glutathione.
-  Lynch recommends intermittent use (a few times per week initially, not daily) to
-  avoid over-suppression of endogenous glutathione synthesis. Requires adequate selenium
-  and riboflavin to regenerate spent glutathione. Also protects NOS3-derived nitric
-  oxide from converting to superoxide.
+notes_for_coach: |-
+  Liposomal delivery bypasses gut degradation of oral glutathione. Lynch recommends
+  intermittent use (a few times per week initially, not daily) to avoid over-suppression
+  of endogenous glutathione synthesis. Requires adequate selenium and riboflavin to
+  regenerate spent glutathione. Also protects NOS3-derived nitric oxide from converting
+  to superoxide.
+
+  Best used for: An intermittent, FM-specific option (Lynch) where glutathione demand is
+  thought to be high, such as heavy toxin exposure. Human evidence is limited to small
+  pilot studies showing raised glutathione levels, not clinical outcomes. NAC is a
+  cheaper precursor with more clinical data.
 notes_for_client: Glutathione is your body's master antioxidant. The liposomal form
   delivers it directly into your cells. Take a few times a week to start — daily long-term
   is not usually necessary.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- glutathione-depletion
+- glutathione-conjugation
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
@@ -49,9 +58,9 @@ sources:
   location: Dental Amalgam Removal Protocol — Pre-Procedure Recommendations
   quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
     600–1200 mg'
-version: 3
+version: 4
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - glutathione-liposomal

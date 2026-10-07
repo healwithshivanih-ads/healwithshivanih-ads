@@ -43,6 +43,12 @@ contraindications:
   - sumatriptan
   - dextromethorphan
   - linezolid
+  - Tricyclic antidepressants (amitriptyline, nortriptyline, clomipramine) — additive serotonergic
+    effect, serotonin syndrome risk; amitriptyline is widely prescribed in India for migraine/IBS
+  - Trazodone, mirtazapine and lithium — serotonergic; combined use raises serotonin syndrome
+    risk
+  - Carbidopa (incl. carbidopa-levodopa) — increases peripheral 5-HTP levels; scleroderma-like
+    illness reported with the combination
   life_stages:
   - pregnancy
   - lactation
@@ -50,14 +56,25 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Insufficient safety data in pregnancy and lactation; affects
   fetal serotonin signalling.
-notes_for_coach: 'Serotonin precursor — most appropriate for fast MAOA (serotonin
-  depleted too quickly) and as adjunct in fast COMT. CONTRAINDICATED with SSRIs (serotonin
-  syndrome risk). AVOID in slow MAOA (worsens excess serotonin). Sleep-maintenance
-  issues: Lynch suggests sustained-release form for overnight delivery. Lynch specifically
-  flags this worsens slow MAOA and makes slow COMT more irritable.'
+notes_for_coach: |-
+  Serotonin precursor — most appropriate for fast MAOA (serotonin depleted too quickly)
+  and as adjunct in fast COMT. CONTRAINDICATED with SSRIs (serotonin syndrome risk).
+  AVOID in slow MAOA (worsens excess serotonin). Sleep-maintenance issues: Lynch
+  suggests sustained-release form for overnight delivery. Lynch specifically flags this
+  worsens slow MAOA and makes slow COMT more irritable.
+
+  Best used for: Evidence is modest and from small, older trials: migraine prevention,
+  fibromyalgia pain and mild low mood, plus reduced carbohydrate cravings in overweight
+  adults. Sleep benefit is less well supported than the catalogue framing suggests. Only
+  for a client who is NOT on any antidepressant (SSRI, SNRI, tricyclic, MAOI, trazodone,
+  mirtazapine), lithium, triptan, tramadol or carbidopa — serotonin syndrome risk. The
+  fast/slow MAOA genetics framing is a book theory, not established clinical evidence.
 evidence_tier: plausible_emerging
 linked_to_symptoms:
 - depression-mood-disorder
+- headache-migraine
+- carb-cravings
+- fibromyalgia-pain
 linked_to_topics:
 - anxiety
 - insomnia
@@ -67,7 +84,11 @@ linked_to_topics:
 - major-depressive-disorder
 - maoa-fast-serotonin-depletion
 - comt-fast-dopamine-depletion
-linked_to_mechanisms: []
+- migraine-headache
+- fibromyalgia
+linked_to_mechanisms:
+- serotonin-deficiency
+- tryptophan-serotonin-melatonin-pathway
 linked_to_claims:
 - serotonin-gut-microbiome-mood-link
 - murray-5htp-rem-deep-sleep
@@ -90,7 +111,7 @@ sources:
 - id: dirty-genes-lynch
   location: Chapter 15 — Supplements for Your Fast MAOA
   quote: However, do not take this supplement if you're taking an SSRI.
-version: 5
+version: 6
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani

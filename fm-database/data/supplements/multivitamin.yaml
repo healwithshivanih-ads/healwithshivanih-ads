@@ -11,14 +11,23 @@ take_with_food: required
 linked_to_topics:
 - intermittent-fasting
 - cardiometabolic-health
-notes_for_coach: Listed as a supplementation option during fasting protocols to support
-  micronutrient adequacy when caloric intake is restricted. Specific product should
-  be individualised by the clinician.
+- cognitive-decline
+notes_for_coach: |-
+  Listed as a supplementation option during fasting protocols to support micronutrient
+  adequacy when caloric intake is restricted. Specific product should be individualised
+  by the clinician.
+
+  Best used for: Most useful as an insurance policy for restricted diets (fasting
+  protocols, strict vegetarian/Jain, low appetite, older adults) and medication-related
+  depletions; modest cognitive benefit shown in older adults. It does not treat specific
+  conditions and is no substitute for correcting a confirmed deficiency at therapeutic
+  dose.
 notes_for_client: Taking a good multivitamin during a fasting programme helps fill
   any nutritional gaps on lower-calorie days.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- medication-related-nutrient-depletion
 linked_to_claims: []
 sources:
 - id: vitaone-cardiometabolic-toolkit
@@ -27,7 +36,17 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — Personalized Recommendations
   quote: Multivitamin
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Current or recent smokers — avoid formulas with high-dose beta-carotene (increased lung
+    cancer risk in ATBC and CARET trials)
+  - Haemochromatosis / iron overload — use an iron-free formula
+  medications:
+  - Levothyroxine — mineral-containing multis bind thyroxine; separate by at least 4 hours
+  - Warfarin — vitamin K content can alter INR; keep intake consistent and inform prescriber
+  - Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  life_stages: []

@@ -13,12 +13,20 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - intermittent-fasting
-- cardiometabolic-health
+- low-carb-diet
+linked_to_symptoms:
+- dizziness-on-fasting
+- keto-flu
 linked_to_claims:
 - electrolyte-supplementation-recommended-during-fasting
-notes_for_coach: Recommended during fasting days per practitioner guidance. Individual
-  electrolyte needs vary. Flag for clinician to specify type and dose, especially
-  for clients with hypertension, kidney disease, or on diuretics.
+notes_for_coach: |-
+  Recommended during fasting days per practitioner guidance. Individual electrolyte
+  needs vary. Flag for clinician to specify type and dose, especially for clients with
+  hypertension, kidney disease, or on diuretics.
+
+  Best used for: For fasting days and low-carb transitions to prevent dizziness,
+  headache and fatigue. Not a general cardiometabolic supplement; kidney disease, heart
+  failure and potassium-sparing/ACE/ARB drugs need clinician input.
 notes_for_client: On fasting days, keeping your electrolytes balanced with a clinician-recommended
   supplement can help prevent dizziness and fatigue.
 evidence_tier: confirm_with_clinician
@@ -31,9 +39,23 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — Personalized Recommendations
   quote: Electrolytes (calcium, magnesium, sodium, potassium, chloride)
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - electrolyte-blend
+contraindications:
+  conditions:
+  - Chronic kidney disease or reduced eGFR — impaired potassium/magnesium excretion, risk
+    of hyperkalaemia/hypermagnesaemia
+  - Heart failure or a prescribed fluid/salt restriction — added sodium and fluid can worsen
+    fluid overload
+  - Uncontrolled hypertension — sodium-containing electrolyte mixes can raise BP; use a low-sodium
+    formula only with clinician input
+  medications:
+  - ACE inhibitors, ARBs, spironolactone/eplerenone and other potassium-sparing diuretics
+    — additive hyperkalaemia risk from potassium-containing electrolyte products
+  - Thiazide and loop diuretics, lithium — alter sodium/potassium handling; electrolyte supplementation
+    should be clinician-directed
+  life_stages: []

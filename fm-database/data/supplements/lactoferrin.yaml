@@ -10,21 +10,37 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - iron-deficiency-dysregulation
+- h-pylori-infection
+- iron-deficiency-anemia
+linked_to_symptoms:
+- non-responsive-anemia
+- iron-deficiency
 linked_to_claims:
 - lactoferrin-bypasses-hepcidin-in-inflammatory-iron-deficiency
-notes_for_coach: Lactoferrin is an iron-binding glycoprotein that may improve iron
-  utilisation in inflammatory states where hepcidin blocks standard iron absorption.
-  Considered a clinician-directed intervention.
+notes_for_coach: |-
+  Lactoferrin is an iron-binding glycoprotein that may improve iron utilisation in
+  inflammatory states where hepcidin blocks standard iron absorption. Considered a
+  clinician-directed intervention.
+
+  Best used for: Most useful for iron deficiency that does not respond to oral iron or
+  where iron causes GI upset, and as an add-on to H. pylori eradication. Not needed for
+  simple iron deficiency that is responding to standard iron.
 notes_for_client: Lactoferrin is a protein found naturally in colostrum and milk that
   may help the body absorb iron, particularly when inflammation is present.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- hepcidin-mediated-iron-block
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Consider lactoferrin in inflammatory cases
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - cow's milk protein allergy — most supplements are bovine-derived
+  medications: []
+  life_stages: []

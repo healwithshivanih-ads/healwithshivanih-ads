@@ -11,10 +11,16 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - fiber-gap
-- microbiome
+- gut-microbiome
+- ibs
+- constipation
+linked_to_symptoms:
+- constipation
+- ibs-constipation-predominant
+- diarrhea
 linked_to_claims:
 - psyllium-husk-best-tolerated-fiber-supplement
-notes_for_coach: |
+notes_for_coach: |-
   PHGG mixes well and is well tolerated by some, but others find it causes
   bloating at any dose. Presented as a secondary option to psyllium husk in
   Thurlow Session 7. Bio-individual tolerance varies considerably.
@@ -27,6 +33,12 @@ notes_for_coach: |
   before titrating up. Client-facing measurement guidance should use
   fraction-of-included-scoop — most clients don't have a kitchen scale that
   measures 1 g accurately.
+
+  Best used for: A low-FODMAP, low-viscosity soluble fibre with RCT support for IBS
+  (especially constipation-predominant) and functional constipation, and as a prebiotic
+  that supports butyrate production. It was generally well tolerated in IBS trials and
+  is a reasonable option for clients who react to inulin or psyllium. Some individuals
+  still bloat, so start low and titrate as described in the coach notes.
 notes_for_client: PHGG is a type of soluble fiber supplement that dissolves easily
   in water. Some people love it; others find it causes bloating. If you try it, start
   with a very small amount and see how your body responds.
@@ -36,13 +48,21 @@ typical_dose_range:
     min: 1
     max: 5
     unit: g
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- butyrate-production
+- dietary-fiber-modulation
 sources:
 - id: thurlow-microbiome-session-7
   location: Q&A — psyllium vs guar gum [00:28:06]
   quote: there's something called PHGG. It's partially hydrogenated guar gum... Some
     people tolerate it really well and others do not.
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Levothyroxine and other oral medications — soluble fibre can reduce absorption; separate
+    by 2-4 hours
+  life_stages: []

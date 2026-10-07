@@ -21,14 +21,15 @@ linked_to_topics:
 - osteoarthritis
 - tendinopathy
 linked_to_mechanisms: []
-notes_for_coach: 'Murray dose 100-200 mg/day oral; add when glucosamine alone insufficient.
-
-  Low-molecular-weight HA preferred for absorption. Effect on cartilage hydration
-  +
-
+notes_for_coach: |-
+  Murray dose 100-200 mg/day oral; add when glucosamine alone insufficient.
+  Low-molecular-weight HA preferred for absorption. Effect on cartilage hydration +
   synovial fluid viscosity. Also benefits skin hydration as bonus effect.
 
-  '
+  Best used for: Strongest (still modest) evidence is as an adjunct for knee
+  osteoarthritis pain and for skin hydration in older adults, over 8-12 weeks. Not worth
+  it as a first-line joint supplement before weight, movement and omega-3 basics are in
+  place, and not a treatment for inflammatory arthritis.
 notes_for_client: 'Oral hyaluronic acid 100-200 mg daily supports joint cushioning
   + skin hydration.
 
@@ -45,7 +46,9 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 80 — Osteoarthritis
   quote: 'Hyaluronic acid: 100 to 200 mg per day.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+linked_to_symptoms:
+- dry-skin

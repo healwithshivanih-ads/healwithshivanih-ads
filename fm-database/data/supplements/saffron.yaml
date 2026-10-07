@@ -22,21 +22,39 @@ timing_options:
 take_with_food: optional
 linked_to_symptoms:
 - depression-mood-disorder
+- depression-symptoms
+- low-mood
+- pms
+- premenstrual-mood-changes
 linked_to_topics:
 - premenstrual-syndrome
 - perimenopause-and-menopause
 - anxiety
-linked_to_mechanisms: []
-notes_for_coach: "Active compounds — crocin, crocetin, safranal, picrocrocin. Mechanism:\
-  \ serotonin\n+ dopamine + glutamate modulation; mild MAO-A inhibition. Comparable\
-  \ efficacy to\nfluoxetine 20 mg in mild-to-moderate depression (Akhondzadeh 2005)\
-  \ and to\nimipramine (Akhondzadeh 2004).\n\nTwo practical forms:\n- Stigma extract\
-  \ (the red threads, expensive) — research-grade, traditional\n- Petal extract (the\
-  \ purple flower petals, much cheaper) — Murray's recommendation\n  when budget is\
-  \ a factor; comparable efficacy in newer trials (Hosseinzadeh 2010)\n\nTrial dose\
-  \ for PMS, depression, anxiety: 15 mg twice daily (30 mg total). Effect\ndevelops\
-  \ over 4-8 weeks. Generally well-tolerated. India produces high-quality\nKashmir\
-  \ saffron at competitive prices.\n"
+- major-depressive-disorder
+- ssri-induced-sexual-dysfunction
+linked_to_mechanisms:
+- serotonin-dopamine-clearance
+notes_for_coach: |-
+  Active compounds — crocin, crocetin, safranal, picrocrocin. Mechanism: serotonin
+  + dopamine + glutamate modulation; mild MAO-A inhibition. Comparable efficacy to
+  fluoxetine 20 mg in mild-to-moderate depression (Akhondzadeh 2005) and to
+  imipramine (Akhondzadeh 2004).
+
+  Two practical forms:
+  - Stigma extract (the red threads, expensive) — research-grade, traditional
+  - Petal extract (the purple flower petals, much cheaper) — Murray's recommendation
+    when budget is a factor; comparable efficacy in newer trials (Hosseinzadeh 2010)
+
+  Trial dose for PMS, depression, anxiety: 15 mg twice daily (30 mg total). Effect
+  develops over 4-8 weeks. Generally well-tolerated. India produces high-quality
+  Kashmir saffron at competitive prices.
+
+  Best used for: Among the better-studied herbs for mild-to-moderate low mood (small
+  RCTs over 6–8 weeks, some comparing favourably with standard antidepressants), with
+  smaller trials for PMS and for SSRI-related sexual side effects. An adjunct only — not
+  a replacement for clinical care in moderate–severe depression or with any suicidal
+  thoughts; avoid in bipolar disorder and use with antidepressants only with the
+  prescriber's knowledge.
 notes_for_client: 'Saffron (kesar) — the world''s most expensive spice but the most
   concentrated form
 
@@ -69,13 +87,14 @@ ayurvedic_actions:
 - antispasmodic
 evidence_tier: plausible_emerging
 contraindications:
-  conditions: []
+  conditions:
+  - Bipolar disorder — antidepressant activity; risk of triggering mania (as with other antidepressants)
   medications:
   - SSRIs / SNRIs / MAOIs (serotonin syndrome risk)
   - anticoagulants (mild antiplatelet effect)
   life_stages:
-  - pregnancy (uterine stimulant at higher doses — avoid > 5 g/day; supplement dose
-    probably safe but avoid first trimester)
+  - pregnancy (uterine stimulant at higher doses — avoid > 5 g/day; supplement dose probably
+    safe but avoid first trimester)
   - breastfeeding (insufficient data)
 sources:
 - id: murray-pizzorno-2012-encyclopedia
@@ -83,7 +102,7 @@ sources:
   quote: 19 of the 25 women in the saffron group responded with at least a 50% reduction
     in severity of symptoms vs. only 2 of 25 in the placebo group. Saffron has been
     shown to have an antidepressant effect in women with mild to moderate depression.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani

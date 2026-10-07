@@ -26,23 +26,36 @@ contraindications:
   - hyperuricemia
   medications: []
   life_stages: []
-notes_for_coach: 'Protein top-up for the dairy-free client who tolerates legumes
-  — the default when dairy is being eliminated (gut healing, Hashimoto''s,
-  autoimmune protocols). Reference product = VitaOne Rebuild Plant Protein &
-  Lipid: mung + pea isolate (complete amino profile), built-in digestive
-  enzymes, sunflower phospholipids, dairy / gluten / soy free, zero added sugar,
-  low net carb — positioned for insulin resistance. Pea protein isolate is
-  Monash low-FODMAP; mung isolate is less documented but generally tolerated.
-  Lower-histamine than the yeast option, so this is also the preferred dairy-free
-  pick for histamine-sensitive clients. Do NOT raise the protein target for
-  clients with kidney disease or high uric acid / gout — keep moderate and refer
-  to physician. VitaOne affiliate link added via the catalogue queue once
-  sign-up clears (referral code vita13720sh).'
+notes_for_coach: |-
+  Protein top-up for the dairy-free client who tolerates legumes — the default when
+  dairy is being eliminated (gut healing, Hashimoto's, autoimmune protocols). Reference
+  product = VitaOne Rebuild Plant Protein & Lipid: mung + pea isolate (complete amino
+  profile), built-in digestive enzymes, sunflower phospholipids, dairy / gluten / soy
+  free, zero added sugar, low net carb — positioned for insulin resistance. Pea protein
+  isolate is Monash low-FODMAP; mung isolate is less documented but generally tolerated.
+  Lower-histamine than the yeast option, so this is also the preferred dairy-free pick
+  for histamine-sensitive clients. Do NOT raise the protein target for clients with
+  kidney disease or high uric acid / gout — keep moderate and refer to physician.
+  VitaOne affiliate link added via the catalogue queue once sign-up clears (referral
+  code vita13720sh).
+
+  Best used for: Best for vegetarian/Jain and dairy-free clients who cannot reach their
+  protein target from food, especially midlife women trying to keep muscle while losing
+  fat. Not needed when diet already meets the target, and protein targets stay moderate
+  for kidney disease or high uric acid.
 evidence_tier: strong
 linked_to_topics:
 - insulin-resistance
 - weight-management
-linked_to_mechanisms: []
+- protein-adequacy-vegetarian
+- sarcopenia-skeletal-muscle-loss
+- midlife-weight-gain
+linked_to_mechanisms:
+- anabolic-resistance-aging
+- sarcopenia
+linked_to_symptoms:
+- protein-deficiency
+- decreased-muscle-mass
 linked_to_claims: []
 notes_for_client: A dairy-free plant protein powder (mung and pea) you can stir
   into yogurt alternatives, kefir or a smoothie to top up your daily protein. It
@@ -50,7 +63,7 @@ notes_for_client: A dairy-free plant protein powder (mung and pea) you can stir
 sources:
 - id: protein-intake-guidance
   location: Powder track — plant blend (dairy-free, legume-tolerant)
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-20'
+updated_at: '2026-10-07'
 updated_by: shivani

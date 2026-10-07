@@ -16,12 +16,23 @@ take_with_food: optional
 linked_to_topics:
 - sibo
 - gallstones
-- ibs-ibd-differentiation
+- ibs
+- irritable-bowel-syndrome
+- functional-dyspepsia
+linked_to_symptoms:
+- abdominal-pain
+- abdominal-cramping
+- irritable-bowel
 linked_to_claims:
 - peppermint-saponins-reduce-methane-sibo
-notes_for_coach: Peppermint contains saponins that act as molecular sponges for excess
-  hydrogen and methane. Also promotes intestinal motility. Enteric coating prevents
-  reflux. Useful in methane-dominant and mixed SIBO.
+notes_for_coach: |-
+  Peppermint contains saponins that act as molecular sponges for excess hydrogen and
+  methane. Also promotes intestinal motility. Enteric coating prevents reflux. Useful in
+  methane-dominant and mixed SIBO.
+
+  Best used for: First-line, well-evidenced option for IBS abdominal pain, cramping and
+  bloating (enteric-coated, before meals), and with caraway for functional dyspepsia.
+  Less useful where reflux is the main complaint, as it can worsen heartburn.
 notes_for_client: Enteric-coated peppermint oil helps mop up excess gas in your gut
   and supports healthy gut movement.
 rasa:
@@ -42,14 +53,23 @@ ayurvedic_actions:
 - nervine
 - analgesic
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- altered-gi-motility
 sources:
 - id: coconote-fm-sibo-sifo
   location: Botanical Formulations for Methane-Dominant SIBO
   quote: These are peppermint and coir-baked white extract. They contain stannins
     and large decollized pleurite structures that acts as molecular sponges for access
     hydrogen and methane.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - GERD or hiatus hernia — menthol relaxes the lower oesophageal sphincter; heartburn is
+    the commonest side effect
+  medications:
+  - PPIs, H2 blockers and antacids — raise gastric pH and can dissolve the enteric coating
+    early, causing heartburn; separate by 2 hours
+  life_stages: []

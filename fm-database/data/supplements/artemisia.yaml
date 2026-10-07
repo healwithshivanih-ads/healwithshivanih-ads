@@ -13,10 +13,17 @@ timing_options:
 - on_empty_stomach
 take_with_food: avoid
 contraindications:
-  conditions: []
-  medications: []
+  conditions:
+  - Seizure disorder — thujone in A. absinthium lowers the seizure threshold
+  - Ragweed/Asteraceae allergy
+  - Liver disease — hepatitis reports with artemisinin-containing supplements
+  medications:
+  - Anticonvulsants — thujone may counteract them
+  - Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin (resistance
+    and treatment failure)
   life_stages:
   - pregnancy
+  - Lactation — insufficient safety data
 interactions:
   with_supplements: []
   with_foods: []
@@ -37,14 +44,22 @@ linked_to_topics:
 - intestinal-protozoan-infestation
 linked_to_mechanisms:
 - biofilm-antimicrobial-resistance
+- sibo-dysbiosis
 linked_to_claims: []
 consolidates: []
-notes_for_coach: Herbal antimicrobial with both anti-inflammatory and antiprotozoal
-  action (used against Blastocystis, Giardia, Toxoplasma, Cryptosporidium). Ruscio
-  adds it as a second-line agent when an initial herbal antimicrobial protocol under-responds,
-  and cites systematic-review evidence for an anti-inflammatory effect in IBD comparable
-  to mesalamine. Avoid overuse (antimicrobial resistance); antimicrobial dosing/duration
-  is clinician-directed. Dose stub — fill from the treating clinician's product.
+notes_for_coach: |-
+  Herbal antimicrobial with both anti-inflammatory and antiprotozoal action (used
+  against Blastocystis, Giardia, Toxoplasma, Cryptosporidium). Ruscio adds it as a
+  second-line agent when an initial herbal antimicrobial protocol under-responds, and
+  cites systematic-review evidence for an anti-inflammatory effect in IBD comparable to
+  mesalamine. Avoid overuse (antimicrobial resistance); antimicrobial dosing/duration is
+  clinician-directed. Dose stub — fill from the treating clinician's product.
+
+  Best used for: A second-line herbal antimicrobial for clinician-guided SIBO or
+  parasite protocols, used in short courses. Small trials of wormwood as an add-on in
+  Crohn's disease belong to the treating gastroenterologist, not a coaching plan. Not a
+  long-term or general gut supplement, and never a substitute for testing and treatment
+  of suspected malaria.
 notes_for_client: ''
 sources:
 - id: ruscio-healthy-gut-healthy-you-2018
@@ -52,7 +67,7 @@ sources:
     when the initial herbal protocol under-responds.
   location: Ch 17 — Antibacterial Treatments
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-07'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

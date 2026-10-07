@@ -26,7 +26,6 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - pcos
-- low-carb-diet
 - candida-overgrowth
 - ibd
 - autoimmunity-leaky-gut-triad
@@ -53,6 +52,13 @@ linked_to_topics:
 - psoriasis
 - osteoporosis
 - bone-health
+- vitamin-d3
+- prediabetes
+linked_to_symptoms:
+- vitamin-d-insufficiency
+- vitamin-d-deficiency-fatigue
+- upper-respiratory-infections
+- decreased-bone-mineral-density
 linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - vitamin-d-low-linked-recurrent-candida
@@ -82,7 +88,10 @@ notes_for_client: 'Vitamin D for your bones, immunity and mood.
 
   Take it with your largest meal — it needs a little fat alongside to absorb.'
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- immunomodulation-via-vitamin-d
+- vitamin-d-beta-cell-signaling
+- t-regulatory-cell-modulation
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
@@ -221,13 +230,21 @@ sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Therapeutic Approach — Supplements
   quote: 'Vitamin D: 1000 to 4000 IU q.d.'
-version: 17
+version: 18
 status: active
-updated_at: '2026-08-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - vitamin-d3-supplement
 - vitamin d (immune modulation)
 - vitamin d 2000 iu
 - vitamin-d3-4000-iu
 - vitamin-d
+contraindications:
+  conditions:
+  - hypercalcaemia or primary hyperparathyroidism — vitamin D raises serum calcium
+  - sarcoidosis, tuberculosis or other granulomatous disease — risk of hypercalcaemia
+  - history of calcium kidney stones — high doses raise urinary calcium; monitor
+  medications:
+  - thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  life_stages: []

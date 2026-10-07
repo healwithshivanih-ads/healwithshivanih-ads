@@ -22,14 +22,22 @@ linked_to_topics:
 - estrogen-dominance
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation-uterine
+- low-progesterone
+- age-related-progesterone-decline
 linked_to_claims:
 - progesterone-cream-arrests-fibroid-growth
-notes_for_coach: 'USP bioidentical progesterone (typically 400 mg/oz cream, ~20 mg
-  per 1/4 tsp). Cyclic dosing — 1/4 to 1/2 tsp bid days 15-26 for typical estrogen-dominance
-  / luteal-phase insufficiency; or days 8-28 for endometriosis with daily continuation;
-  week off during menses. Apply to inner arms, chest, inner thighs, palms (thin-skin
-  sites for absorption). Coach role: education + cycle tracking; prescription/dosing
-  decisions with a clinician trained in BHRT.'
+notes_for_coach: |-
+  USP bioidentical progesterone (typically 400 mg/oz cream, ~20 mg per 1/4 tsp). Cyclic
+  dosing — 1/4 to 1/2 tsp bid days 15-26 for typical estrogen-dominance / luteal-phase
+  insufficiency; or days 8-28 for endometriosis with daily continuation; week off during
+  menses. Apply to inner arms, chest, inner thighs, palms (thin-skin sites for
+  absorption). Coach role: education + cycle tracking; prescription/dosing decisions
+  with a clinician trained in BHRT.
+
+  Best used for: Evidence is weak and mixed: one RCT showed fewer hot flushes, others
+  found no effect, and serum levels poorly reflect tissue exposure. Best treated as a
+  clinician-supervised option for luteal-phase symptoms in perimenopause; not proven for
+  PMS and never a substitute for endometrial protection alongside estrogen.
 notes_for_client: A natural progesterone cream applied to the skin in the second half
   of your cycle. Helps balance estrogen-dominance symptoms like heavy periods, fibroid
   growth, and PMS.
@@ -38,9 +46,13 @@ contraindications:
   - breast-cancer-history
   - hormone-sensitive-cancers
   - undiagnosed-vaginal-bleeding
+  - History of venous thromboembolism or stroke — use only under clinician supervision
   medications:
   - tamoxifen
   - aromatase-inhibitors
+  - Systemic estrogen therapy (HRT) — progesterone cream does NOT give reliable endometrial
+    protection; women with a uterus on estrogen need prescribed oral micronised progesterone
+    or a levonorgestrel IUS
   life_stages: []
 evidence_tier: plausible_emerging
 typical_dose_range: {}
@@ -51,7 +63,7 @@ sources:
     decrease in size) until menopause, after which fibroids atrophy. Apply 1/4 tsp
     q.d. or b.i.d. for 1 week after menses, and 1/4 to 1/2 tsp b.i.d. for the next
     2 weeks.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

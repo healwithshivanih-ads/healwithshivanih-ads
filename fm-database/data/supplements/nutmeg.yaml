@@ -29,15 +29,29 @@ linked_to_topics:
 - digestion-and-nutrient-absorption
 - sleep
 - insomnia
-notes_for_coach: 'Latin: Myristica fragrans; Myristicaceae. Sanskrit: Jatiphala. Traditional indications:
-  poor absorption, abdominal pain and distension, diarrhea, dysentery, intestinal gas, insomnia, nervous
-  disorders, impotence. Precautions: pregnancy, high Pitta; tamasic — in excess can increase dullness
-  of mind. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Myristica fragrans; Myristicaceae. Sanskrit: Jatiphala. Traditional
+  indications: poor absorption, abdominal pain and distension, diarrhea, dysentery,
+  intestinal gas, insomnia, nervous disorders, impotence. Precautions: pregnancy, high
+  Pitta; tamasic — in excess can increase dullness of mind. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: A traditional Ayurvedic digestive and calming spice (small pinch, e.g.,
+  in warm milk). There is no human trial evidence for insomnia or digestive disorders;
+  keep to culinary amounts — around 5 g or more can cause nutmeg poisoning.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — NUTMEG
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Psychiatric illness or seizure disorders — myristicin/elemicin cause hallucinations, agitation
+    and tachycardia in excess
+  medications: []
+  life_stages:
+  - Pregnancy — supplemental/medicinal doses; nutmeg is a traditional abortifacient and myristicin
+    is toxic at higher doses (culinary pinches are fine)

@@ -10,8 +10,14 @@ contraindications:
   conditions:
   - pregnancy
   - liver-disease
-  medications: []
-  life_stages: []
+  - Allergy to Asteraceae/Compositae plants (ragweed, chrysanthemum, marigold) — cross-reactivity
+  medications:
+  - Other hepatotoxic drugs or herbs — additive liver-injury risk (hepatotoxicity reports
+    even with some 'PA-free' products)
+  life_stages:
+  - pregnancy — avoid (pyrrolizidine alkaloid risk; currently listed under conditions instead
+    of life_stages)
+  - breastfeeding — avoid
 interactions:
   with_supplements: []
   with_foods: []
@@ -20,20 +26,28 @@ pregnancy_safety: unknown
 lactation_safety: unknown
 linked_to_topics:
 - migraine-headache
+- hay-fever
 linked_to_mechanisms:
-- nitric-oxide-cranial-circulation
 - histamine-receptor-signaling
+- eicosanoid-metabolism
+linked_to_symptoms:
+- migraine
 linked_to_claims: []
-notes_for_coach: Use only PA-free extracts. Liver toxicity reported with unpurified
-  preparations. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before
-  clinical use.
+notes_for_coach: |-
+  Use only PA-free extracts. Liver toxicity reported with unpurified preparations. Stub
+  created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+
+  Best used for: Evidence is genuine for migraine prevention and hay fever, but only
+  with certified PA-free extracts, and liver-injury reports led to its withdrawal from
+  several markets. Reserve for clients whose doctor agrees, with liver monitoring; not a
+  first-line option.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - butterbur (pa-free only)

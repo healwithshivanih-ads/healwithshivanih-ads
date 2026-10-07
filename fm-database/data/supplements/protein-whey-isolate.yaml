@@ -21,23 +21,38 @@ contraindications:
   - chronic-kidney-disease
   - gout
   - hyperuricemia
+  - Cow's milk protein allergy — whey is a milk protein (lactose-free isolate does not remove
+    the allergen)
   medications: []
   life_stages: []
-notes_for_coach: 'Protein top-up for the dairy-tolerant lacto-vegetarian client —
-  the default protein powder when dairy is NOT being eliminated. Whey ISOLATE
-  (not concentrate) — low-lactose, highest leucine, most palatable, so client
-  pushback is lowest. Use isolate-grade for low-FODMAP clients (concentrate is
-  not low FODMAP — lactose). Mild caution in histamine-sensitive clients (dairy
-  can be a histamine liberator for some) — prefer the plant blend there. Do NOT
-  raise the protein target for clients with kidney disease or high uric acid /
-  gout — keep moderate and refer to physician. Source = catalogue queue once
-  the affiliate sign-up clears; until then the affiliate-link chain falls back
-  to Amazon / no link.'
+notes_for_coach: |-
+  Protein top-up for the dairy-tolerant lacto-vegetarian client — the default protein
+  powder when dairy is NOT being eliminated. Whey ISOLATE (not concentrate) —
+  low-lactose, highest leucine, most palatable, so client pushback is lowest. Use
+  isolate-grade for low-FODMAP clients (concentrate is not low FODMAP — lactose). Mild
+  caution in histamine-sensitive clients (dairy can be a histamine liberator for some) —
+  prefer the plant blend there. Do NOT raise the protein target for clients with kidney
+  disease or high uric acid / gout — keep moderate and refer to physician. Source =
+  catalogue queue once the affiliate sign-up clears; until then the affiliate-link chain
+  falls back to Amazon / no link.
+
+  Best used for: Best for dairy-tolerant vegetarians who fall short of their protein
+  target, for preserving muscle in midlife and older clients alongside strength
+  training, and as a small pre-meal dose to soften post-meal glucose spikes. Not for
+  milk-protein allergy, and protein targets stay moderate in kidney disease or high uric
+  acid.
 evidence_tier: strong
 linked_to_topics:
 - insulin-resistance
 - weight-management
-linked_to_mechanisms: []
+- protein-adequacy-vegetarian
+- sarcopenia-skeletal-muscle-loss
+linked_to_mechanisms:
+- anabolic-resistance-aging
+- postprandial-glucose-spike
+linked_to_symptoms:
+- protein-deficiency
+- decreased-muscle-mass
 linked_to_claims: []
 notes_for_client: A clean, light protein powder you can stir into curd, milk or
   a smoothie to top up your daily protein. Choose an unflavoured or lightly
@@ -45,7 +60,7 @@ notes_for_client: A clean, light protein powder you can stir into curd, milk or
 sources:
 - id: protein-intake-guidance
   location: Powder track — whey isolate (dairy-tolerant lacto-vegetarian)
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-20'
+updated_at: '2026-10-07'
 updated_by: shivani

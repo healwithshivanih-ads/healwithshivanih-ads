@@ -38,16 +38,22 @@ lactation_safety: unknown
 linked_to_topics:
   - hyperthyroidism
 linked_to_mechanisms:
-  - tsh-receptor-stimulating-antibodies
+- sympathetic-overactivity
 linked_to_claims:
   - motherwort-hyperthyroid-palpitations-anxiety
-notes_for_coach: "Sedative, anxiolytic, anti-arrhythmic, antispasmodic herb. German\
-  \ Commission E approved for cardiac disorders and associated anxiety, including symptomatic\
-  \ relief in hyperthyroidism (tachycardia, palpitations). Romm's classic hyperthyroid\
-  \ formula: 25mL motherwort + 25mL bugleweed + 25mL lemon balm + 25mL nettles =\
-  \ 100mL tincture; 5mL three times daily. Also appears in the Graves' formula alongside\
-  \ skullcap and valerian (10mL each) + eleuthero (10mL). Avoid in pregnancy and heavy\
-  \ menstrual bleeding."
+notes_for_coach: |-
+  Sedative, anxiolytic, anti-arrhythmic, antispasmodic herb. German Commission E
+  approved for cardiac disorders and associated anxiety, including symptomatic relief in
+  hyperthyroidism (tachycardia, palpitations). Romm's classic hyperthyroid formula: 25mL
+  motherwort + 25mL bugleweed + 25mL lemon balm + 25mL nettles = 100mL tincture; 5mL
+  three times daily. Also appears in the Graves' formula alongside skullcap and valerian
+  (10mL each) + eleuthero (10mL). Avoid in pregnancy and heavy menstrual bleeding.
+
+  Best used for: Traditional herb for symptomatic relief of a racing heart and anxiety,
+  mainly in hyperthyroidism alongside medical treatment; it does not treat the thyroid
+  disease itself and evidence is traditional rather than trial-based. Any new
+  palpitations need medical evaluation first. Avoid in pregnancy and heavy periods, and
+  coordinate with the doctor if on cardiac medication.
 notes_for_client: Motherwort is a traditional herb used to calm a racing heart and\
   \ anxiety in overactive thyroid conditions. Not suitable in pregnancy.
 evidence_tier: fm_specific_thin
@@ -63,7 +69,7 @@ sources:
     quote: "Leonurus cardiaca (Motherwort): sedative, anxiolytic, anti-arrhythmic,\
       \ antispasmodic. German Commission E approved for cardiac disorders and associated\
       \ anxiety, and for symptomatic relief in hyperthyroidism."
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-08'
+updated_at: '2026-10-07'
 updated_by: shivani

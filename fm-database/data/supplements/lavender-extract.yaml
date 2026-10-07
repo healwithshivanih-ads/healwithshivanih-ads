@@ -19,6 +19,7 @@ timing_options:
 take_with_food: optional
 linked_to_symptoms:
 - depression-mood-disorder
+- anxiety
 linked_to_topics:
 - anxiety
 - major-depressive-disorder
@@ -55,7 +56,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression
   quote: 'Lavender extract (4:1): 150 mg twice per day.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani

@@ -19,9 +19,15 @@ linked_to_topics:
 - chronic-inflammation
 linked_to_claims:
 - egcg-anti-inflammatory-antiviral
-notes_for_coach: Green tea (4 cups/day) is an accessible dietary approach. Concentrated
-  EGCG extracts carry hepatotoxicity risk per USP review — use with caution and clinician
-  awareness. Avoid with empty stomach for sensitive individuals.
+notes_for_coach: |-
+  Green tea (4 cups/day) is an accessible dietary approach. Concentrated EGCG extracts
+  carry hepatotoxicity risk per USP review — use with caution and clinician awareness.
+  Avoid with empty stomach for sensitive individuals.
+
+  Best used for: Drinking green tea is the safer, food-first route; concentrated EGCG
+  extracts have only modest evidence (small LDL and weight effects) and carry a real
+  risk of liver injury, especially on an empty stomach. Not worth using as a
+  concentrated extract for most clients.
 notes_for_client: Drinking 3–4 cups of green tea daily is a safe way to get EGCG.
   Concentrated extracts should be discussed with your practitioner first.
 evidence_tier: plausible_emerging
@@ -31,7 +37,21 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: In addition to reducing inflammation, green tea enhances the immune system
     and targets one of the processes involved in COVID-19 replication.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - 'Liver disease or elevated liver enzymes — concentrated green tea extract/EGCG is associated
+    with idiosyncratic liver injury (EFSA 2018: risk at ≥800 mg EGCG/day)'
+  - Iron-deficiency anaemia — catechins strongly block non-haem iron absorption (catalogue
+    claim concentrated-polyphenol-extracts-block-non-haem-iron); keep away from iron-containing
+    meals and iron supplements
+  medications:
+  - Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce nadolol
+    absorption (RCT)
+  - Bortezomib — EGCG blocks its anticancer action
+  life_stages:
+  - pregnancy — high-dose EGCG inhibits folate metabolism (DHFR); green tea as a drink in
+    moderation is fine

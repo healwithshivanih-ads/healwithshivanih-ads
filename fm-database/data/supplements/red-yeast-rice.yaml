@@ -16,23 +16,46 @@ take_with_food: required
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-disease-prevention
+linked_to_symptoms:
+- elevated-cholesterol
 linked_to_claims:
 - red-yeast-rice-equivalent-40mg-zocor-less-side-effects
-notes_for_coach: 2400mg/day cited as equivalent to 40mg simvastatin with fewer side
-  effects. Requires 4 capsules/day for therapeutic effect. Contains monacolin K (same
-  mechanism as lovastatin) — clinician oversight recommended. Also referenced as potentially
-  helpful for Lp(a).
+notes_for_coach: |-
+  2400mg/day cited as equivalent to 40mg simvastatin with fewer side effects. Requires 4
+  capsules/day for therapeutic effect. Contains monacolin K (same mechanism as
+  lovastatin) — clinician oversight recommended. Also referenced as potentially helpful
+  for Lp(a).
+
+  Best used for: Best for mildly raised LDL in clients who cannot or will not take a
+  statin, under clinician oversight with lipid and liver monitoring. It is effectively a
+  low-dose statin — not to be combined with one, and product quality varies (monacolin
+  content, citrinin contamination).
 notes_for_client: Red yeast rice is a natural supplement that works similarly to statin
   medications to lower LDL cholesterol. It should be used under clinician supervision,
   as it contains active statin-like compounds.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mevalonate-pathway-inhibition
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: LDL-Lowering Nutraceuticals
   quote: Regis Rice, everybody knows this, acts like a statin. 2,400 milligrams a
     day, equivalent to 40 milligrams of Zocor with less side effects.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Liver disease or raised liver enzymes — same hepatotoxicity profile as statins
+  - Kidney disease — increased myopathy/rhabdomyolysis risk
+  - History of statin-induced myopathy or rhabdomyolysis — monacolin K can reproduce it
+  - Heavy alcohol use — additive liver injury risk with a statin-equivalent
+  medications:
+  - Statins — duplicate therapy (monacolin K = lovastatin); do not combine
+  - Strong CYP3A4 inhibitors (clarithromycin, erythromycin, azole antifungals, HIV protease
+    inhibitors, cyclosporine) and gemfibrozil — rhabdomyolysis risk
+  - Warfarin — reported potentiation
+  life_stages:
+  - Pregnancy — statins are contraindicated in pregnancy
+  - Breastfeeding

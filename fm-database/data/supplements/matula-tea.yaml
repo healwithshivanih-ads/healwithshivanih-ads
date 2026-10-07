@@ -18,7 +18,6 @@ linked_to_topics:
 - h-pylori-infection
 - peptic-ulcer-disease
 - gerd
-- chronic-candidiasis
 linked_to_mechanisms:
 - h-pylori-mucosal-defense-breakdown
 - h-pylori-biofilm-coccoid-treatment-resistance
@@ -50,7 +49,7 @@ sources:
   location: Coach clinical practice — H. pylori protocol
   quote: Matula Tea is an excellent herbal remedy for treating H. pylori. Coach-curated
     affiliate link maintained in supplement_links.yaml for use in client letters.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

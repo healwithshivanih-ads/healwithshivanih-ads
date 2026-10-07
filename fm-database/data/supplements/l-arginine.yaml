@@ -6,10 +6,15 @@ forms_available:
 - powder
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: 'Dose: 4 g t.i.d. (total 12 g/day) or 0.5 g/10 kg body weight in
-  divided doses. Most effective in younger subjects. Less effective in elderly due
-  to impaired NO-dependent renal mechanisms. Therapeutic protocol prescribes spread
-  through the day.'
+notes_for_coach: |-
+  Dose: 4 g t.i.d. (total 12 g/day) or 0.5 g/10 kg body weight in divided doses. Most
+  effective in younger subjects. Less effective in elderly due to impaired NO-dependent
+  renal mechanisms. Therapeutic protocol prescribes spread through the day.
+
+  Best used for: Modest blood-pressure lowering and help for mild erectile dysfunction,
+  through nitric oxide. Not worth the high doses and GI upset for most clients — diet
+  (beetroot, leafy greens) or L-citrulline are often better tolerated — and not after a
+  heart attack.
 notes_for_client: L-arginine helps blood vessels relax by boosting nitric oxide —
   the body's natural vasodilator. Take in divided doses throughout the day.
 timing_options:
@@ -26,6 +31,7 @@ linked_to_topics:
 - hypertension
 - blood-pressure-management
 - essential-hypertension
+- endothelial-dysfunction
 typical_dose_range:
   capsule:
     min: 4000
@@ -35,7 +41,11 @@ typical_dose_range:
     min: 4000
     max: 12000
     unit: mg
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- endothelial-no-insufficiency
+- nitric-oxide-bioavailability
+linked_to_symptoms:
+- erectile-dysfunction
 linked_to_claims:
 - l-arginine-increases-nitric-oxide-and-lowers-blood-pressure
 - l-arginine-modest-systolic-reduction
@@ -54,7 +64,15 @@ sources:
   location: Therapeutic Considerations / L-Arginine
   quote: 'L-Arginine: amino acid precursor to NO that relaxes arteries, improving
     blood flow, renal plasma flow, and glomerular filtration rate.'
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Recent heart attack (myocardial infarction) — the VINTAGE-MI RCT was stopped early because
+    of excess deaths in the L-arginine group
+  medications:
+  - Nitrates and PDE-5 inhibitors (sildenafil, tadalafil) — additive vasodilation and low
+    blood pressure
+  life_stages: []

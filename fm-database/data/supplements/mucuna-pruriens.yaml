@@ -46,17 +46,24 @@ ayurvedic_actions:
 linked_to_symptoms:
 - low-libido
 linked_to_topics:
-- parkinsons-disease
 - nervous-system-regulation
-- male-infertility
 - emotional-wellbeing
-notes_for_coach: 'Mucuna seed (Kapikacchu) is a naturally L-DOPA-rich (levodopa) bean —
-  the dopaminergic action underlies its use for Parkinson''s, motivation/mood, libido,
-  and lowering prolactin. Standardise to L-DOPA content and start low. Ayurvedic energetics
-  + traditional indications (general/sexual/nervous debility, infertility, asthma, paralysis,
-  Parkinson''s) from The Yoga of Herbs (Frawley & Lad); precaution: menstrual bleeding /
-  menorrhagia. Because of the L-DOPA content, treat drug interactions as real — see
-  contraindications; a clinician must manage co-use with Parkinson''s medication.'
+- male-infertility-oxidative-stress
+- testosterone-health
+notes_for_coach: |-
+  Mucuna seed (Kapikacchu) is a naturally L-DOPA-rich (levodopa) bean — the dopaminergic
+  action underlies its use for Parkinson's, motivation/mood, libido, and lowering
+  prolactin. Standardise to L-DOPA content and start low. Ayurvedic energetics +
+  traditional indications (general/sexual/nervous debility, infertility, asthma,
+  paralysis, Parkinson's) from The Yoga of Herbs (Frawley & Lad); precaution: menstrual
+  bleeding / menorrhagia. Because of the L-DOPA content, treat drug interactions as real
+  — see contraindications; a clinician must manage co-use with Parkinson's medication.
+
+  Best used for: Best evidence is for male infertility (sperm quality, testosterone and
+  prolactin in small trials from infertile men). Because it is a natural L-DOPA source
+  with real drug interactions (levodopa, MAO inhibitors, antipsychotics), it is a
+  deliberate choice rather than a general energy or mood tonic; any use in Parkinson's
+  disease must be managed by the neurologist.
 notes_for_client: Mucuna (kaunch) is a traditional tonic bean used to support steady energy,
   mood and vitality.
 contraindications:
@@ -79,7 +86,10 @@ sources:
   quote: 'Actions: tonic, rejuvenative, aphrodisiac, astringent. Indications: general
     debility, sexual debility, impotence, infertility, nervous debility, paralysis,
     Parkinson''s disease. Precautions: menstrual bleeding, menorrhagia.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_mechanisms:
+- dopamine-norepinephrine-regulation
+- oxidative-stress-sperm-damage

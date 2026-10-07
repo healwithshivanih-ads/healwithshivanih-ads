@@ -13,26 +13,51 @@ timing_options:
 - with_breakfast
 take_with_food: optional
 linked_to_topics:
-- hyperhomocysteinemia
 - atherosclerosis
+- homocysteine-and-methylation
+- preconception-protocol
+- pregnancy-first-trimester
+- b12-folate-anemia
+linked_to_symptoms:
+- elevated-homocysteine
 linked_to_claims:
 - folic-acid-b12-b6-lower-homocysteine
-notes_for_coach: Must be co-administered with B12 and B6 for homocysteine lowering.
-  Consider active (methylfolate) form in MTHFR polymorphism patients. 400–800 mcg/day
-  standard; higher doses (1–5 mg) may be needed for significant hyperhomocysteinemia
-  under clinician guidance.
+notes_for_coach: |-
+  Must be co-administered with B12 and B6 for homocysteine lowering. Consider active
+  (methylfolate) form in MTHFR polymorphism patients. 400–800 mcg/day standard; higher
+  doses (1–5 mg) may be needed for significant hyperhomocysteinemia under clinician
+  guidance.
+
+  Best used for: Strongest evidence: around conception and in early pregnancy to prevent
+  neural tube defects, and lowering raised homocysteine together with B12/B6.
+  Homocysteine lowering has not reduced heart attacks in large trials (modest stroke
+  benefit only), so it is not worth taking for heart protection when homocysteine is
+  normal. Check B12 status first.
 notes_for_client: Folate (especially active methylfolate) helps lower homocysteine
   — a blood marker that damages artery walls. Works best when taken with vitamins
   B12 and B6.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- elevated-homocysteine
+- homocysteine-remethylation
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Homocysteine
   quote: Folic acid (400 mcg daily) alone can reduce homocysteine in some subjects,
     but not all; importance of vitamins B12 and B6 to homocysteine metabolism indicates
     all three should be used together.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Untreated or unconfirmed B12 deficiency / pernicious anaemia — folate (especially >1 mg/day)
+    can correct the anaemia and mask B12 deficiency while nerve damage progresses; check B12
+    first or co-supplement
+  medications:
+  - Methotrexate used for cancer — folate can blunt its effect (low-dose folate alongside
+    RA/psoriasis methotrexate is usually prescribed deliberately; leave that to the prescriber)
+  - Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants — folate
+    supplementation can lower drug levels and seizure control; prescriber should monitor
+  life_stages: []

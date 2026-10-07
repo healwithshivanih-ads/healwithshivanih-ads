@@ -16,6 +16,8 @@ linked_to_topics:
 - insomnia
 - sleep
 - circadian-rhythm-disruption
+linked_to_mechanisms:
+- gaba-receptor-modulation
 linked_to_claims:
 - apigenin-supports-sleep-onset
 contraindications:
@@ -30,15 +32,20 @@ contraindications:
   life_stages:
   - pregnancy
   - lactation
-notes_for_coach: 'Flavonoid found naturally in chamomile, parsley, celery seed. Modulates
-  GABA-A receptors at the benzodiazepine binding site, contributing to drowsiness.
-  Huberman uses 50 mg at bedtime as part of a 3-component sleep stack (with magnesium
-  threonate + theanine). IMPORTANT scope flag: apigenin is a fairly potent estrogen
-  (aromatase) inhibitor — Huberman cautions women against use without clinician oversight,
-  and notes that for some men this is desirable (estrogen lowering) while for others
-  it is not. Treat as confirm_with_clinician scope for any woman client. Dose ranges
-  in the literature span 25–500 mg; Huberman’s 50 mg sits at the low end. Quality
-  varies widely across brands.'
+notes_for_coach: |-
+  Flavonoid found naturally in chamomile, parsley, celery seed. Modulates GABA-A
+  receptors at the benzodiazepine binding site, contributing to drowsiness. Huberman
+  uses 50 mg at bedtime as part of a 3-component sleep stack (with magnesium threonate +
+  theanine). IMPORTANT scope flag: apigenin is a fairly potent estrogen (aromatase)
+  inhibitor — Huberman cautions women against use without clinician oversight, and notes
+  that for some men this is desirable (estrogen lowering) while for others it is not.
+  Treat as confirm_with_clinician scope for any woman client. Dose ranges in the
+  literature span 25–500 mg; Huberman’s 50 mg sits at the low end. Quality varies widely
+  across brands.
+
+  Best used for: Human evidence is mostly for chamomile extract (modest sleep-quality
+  and anxiety benefits), not isolated apigenin. Chamomile tea at bedtime is the cheaper
+  first step; isolated apigenin is optional.
 interactions:
   with_medications:
   - medication: hormone replacement therapy
@@ -67,7 +74,7 @@ sources:
   location: Episode body, supplements caveat
   quote: Apigenin is a fairly potent estrogen inhibitor.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-10-07'
 updated_by: shivani

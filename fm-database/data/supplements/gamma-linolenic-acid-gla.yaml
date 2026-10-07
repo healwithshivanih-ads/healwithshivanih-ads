@@ -30,22 +30,38 @@ linked_to_claims:
 - linoleic-acid-supplementation-reduces-ms-relapse-severity
 - epo-menopause-frequency-and-intensity-null
 - gla-ineffective-for-sjogrens-fatigue
-notes_for_coach: "Sources: borage oil (highest GLA ~20-24%), evening primrose oil (~8-14% GLA, 60-80%\
-  \ linoleic acid), black currant seed oil. 480 mg/day minimum for the neuropathy evidence. GLA bypasses\
-  \ impaired delta-6-desaturase in diabetics — that is the mechanism the neuropathy data rests on\
-  \ and it is the STRONGEST indication here.\n\nREAD THE INDICATIONS SEPARATELY — the evidence is\
-  \ not uniform and 'EPO for women's health' flattens a real split:\n  strong-ish : diabetic neuropathy\
-  \ (480 mg/day, 1 year, 16 parameters)\n  mixed      : mastalgia / cyclic breast pain; dry eye (better\
-  \ in contact-lens dry eye than in Sjogren's)\n  WEAK       : menopausal hot flashes — frequency\
-  \ AND intensity both non-significant; only DURATION and night sweats reached significance, on low-quality\
-  \ evidence\n  NEGATIVE   : Sjogren's fatigue (n=90, 6 months, ineffective); atopic eczema (Cochrane)\n\
-  \nDo not reach for this as a first-line perimenopause supplement. If a client is already on omega-3\
-  \ EPA/DHA for dry eye or inflammation, omega-3 carries the better evidence and adding GLA stacks\
-  \ weaker data on top of stronger. Night sweats are the one menopausal outcome with a real signal.\n\
-  \nFILING NOTE (2026-08-05): this entry was previously reachable ONLY via linked_to_topics: [diabetic-neuropathy]\
-  \ with no aliases at all, so 'evening primrose oil' matched nothing and the assess subgraph could\
-  \ never surface it for a perimenopause or dry-eye client. Four of its five claims are about EPO.\
-  \ Aliases and topic links added so it is findable under the name people actually use."
+notes_for_coach: |-
+  Sources: borage oil (highest GLA ~20-24%), evening primrose oil (~8-14% GLA, 60-80%
+  linoleic acid), black currant seed oil. 480 mg/day minimum for the neuropathy
+  evidence. GLA bypasses impaired delta-6-desaturase in diabetics — that is the
+  mechanism the neuropathy data rests on and it is the STRONGEST indication here.
+
+  READ THE INDICATIONS SEPARATELY — the evidence is not uniform and 'EPO for women's
+  health' flattens a real split:
+    strong-ish : diabetic neuropathy (480 mg/day, 1 year, 16 parameters)
+    mixed      : mastalgia / cyclic breast pain; dry eye (better in contact-lens dry eye
+  than in Sjogren's)
+    WEAK       : menopausal hot flashes — frequency AND intensity both non-significant;
+  only DURATION and night sweats reached significance, on low-quality evidence
+    NEGATIVE   : Sjogren's fatigue (n=90, 6 months, ineffective); atopic eczema
+  (Cochrane)
+
+  Do not reach for this as a first-line perimenopause supplement. If a client is already
+  on omega-3 EPA/DHA for dry eye or inflammation, omega-3 carries the better evidence
+  and adding GLA stacks weaker data on top of stronger. Night sweats are the one
+  menopausal outcome with a real signal.
+
+  FILING NOTE (2026-08-05): this entry was previously reachable ONLY via
+  linked_to_topics: [diabetic-neuropathy] with no aliases at all, so 'evening primrose
+  oil' matched nothing and the assess subgraph could never surface it for a
+  perimenopause or dry-eye client. Four of its five claims are about EPO. Aliases and
+  topic links added so it is findable under the name people actually use.
+
+  Best used for: Strongest for diabetic nerve pain when taken consistently for months,
+  with some support for morning stiffness in rheumatoid arthritis and mixed evidence for
+  cyclic breast pain and dry eye. Not a first-line menopause supplement (hot-flash
+  frequency did not improve; only night sweats show a signal) and not effective for
+  eczema or Sjogren's fatigue.
 notes_for_client: GLA is a fatty acid found in evening primrose and borage oil. The clearest benefit
   is for nerve health in diabetes. For menopausal symptoms the research is genuinely mixed — it may
   help night sweats, but it has not reliably reduced how often or how strongly hot flashes come.
@@ -59,10 +75,10 @@ sources:
   location: Recommendations for Specific Long-Term Complications / Neuropathy
   quote: GLA at 480 mg/day for 1 year improved 16 parameters, including conduction velocities, hot
     and cold thresholds, sensation, tendon reflexes, and muscle strength.
-version: 2
+version: 3
 status: active
-updated_at: '2026-08-05'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - evening primrose oil
 - evening-primrose-oil
@@ -80,18 +96,22 @@ linked_to_symptoms:
 - night-sweats
 - breast-tenderness
 - dry-eyes
+- diabetic-nerve-pain
+- morning-stiffness
 pregnancy_safety: contraindicated
 pregnancy_safety_note: Traditionally used to ripen the cervix at term and may affect labour; avoid
   in pregnancy unless a clinician directs otherwise.
 contraindications:
   conditions:
-  - Seizure disorder or epilepsy — case reports of a lowered seizure threshold with evening primrose
-    oil; avoid unless a neurologist has cleared it
+  - Seizure disorder or epilepsy — case reports of a lowered seizure threshold with evening
+    primrose oil; avoid unless a neurologist has cleared it
   - Scheduled surgery — stop at least 2 weeks beforehand
+  - Liver disease — borage-oil GLA sources can contain hepatotoxic pyrrolizidine alkaloids;
+    use only certified PA-free borage oil, or evening primrose oil
   medications:
   - Phenothiazines — reported to lower the seizure threshold in combination
-  - Anticoagulants and antiplatelets including warfarin, clopidogrel and chronic aspirin — theoretical
-    additive bleeding risk; review with the prescriber before starting
+  - Anticoagulants and antiplatelets including warfarin, clopidogrel and chronic aspirin —
+    theoretical additive bleeding risk; review with the prescriber before starting
   life_stages:
-  - pregnancy — traditionally used to ripen the cervix at term and may influence labour; avoid unless
-    a clinician directs otherwise
+  - pregnancy — traditionally used to ripen the cervix at term and may influence labour; avoid
+    unless a clinician directs otherwise

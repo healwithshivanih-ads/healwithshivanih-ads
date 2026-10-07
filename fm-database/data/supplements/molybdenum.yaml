@@ -24,11 +24,17 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Molybdenum is a cofactor for the sulfite oxidase enzyme that converts
-  sulfites to sulfates. Lynch recommends it for sulfite sensitivity (wine/food-triggered
-  headaches) and notes it helps with cruciferous vegetable gas in slow COMT. Long-term
-  high doses can raise uric acid and cause gout — use intermittently. If side effects
-  occur, add PQQ to counteract. Choose molybdenum not bound to ammonia.
+notes_for_coach: |-
+  Molybdenum is a cofactor for the sulfite oxidase enzyme that converts sulfites to
+  sulfates. Lynch recommends it for sulfite sensitivity (wine/food-triggered headaches)
+  and notes it helps with cruciferous vegetable gas in slow COMT. Long-term high doses
+  can raise uric acid and cause gout — use intermittently. If side effects occur, add
+  PQQ to counteract. Choose molybdenum not bound to ammonia.
+
+  Best used for: Niche: only worth considering for suspected sulfite sensitivity
+  (wine/dried-fruit headaches) as a short, low-dose trial; true deficiency is very rare
+  and there is no good human evidence for routine 'detox' supplementation. Use
+  intermittently, not long-term.
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - detoxification
@@ -53,7 +59,13 @@ sources:
   quote: Take molybdenum if your breath, armpits, and/or gas smells of sulfur, or
     if you're sensitive to sulfites. Start with 75 micrograms of molybdenum using
     The Pulse Method.
-version: 4
+version: 5
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Gout / hyperuricaemia — molybdenum is a xanthine-oxidase cofactor and high intake raises
+    uric acid (claim high-molybdenum-may-trigger-gout)
+  medications: []
+  life_stages: []

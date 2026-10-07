@@ -34,6 +34,8 @@ contraindications:
   - severe-cardiovascular-disease
   medications:
   - calcium-supplements-taken-concurrently
+  - tetracycline and fluoroquinolone antibiotics (chelation — separate dosing)
+  - oral bisphosphonates (separate dosing; co-prescription needs clinician oversight)
   life_stages:
   - pregnancy
   - lactation
@@ -45,7 +47,7 @@ sources:
   quote: Strontium listed alongside Calcium, Magnesium, Camellia sinensis, Vitamin
     K2 (MK-7), Phytoestrogens, and Potassium citrate as interventions to retard bone
     turnover and support bone mineral density.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

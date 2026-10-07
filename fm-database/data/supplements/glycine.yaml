@@ -31,6 +31,9 @@ linked_to_topics:
 - nervous-system-regulation
 - metabolic-detoxification
 - liver-detoxification
+- sleep-quality
+linked_to_symptoms:
+- non-restorative-sleep
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - l-theanine-glycine-increase-alpha-waves-relaxation
@@ -38,12 +41,21 @@ linked_to_claims:
 - glycine-promotes-sleep-and-relaxation
 - amino-acids-required-for-phase2-conjugation
 - low-protein-diet-impairs-phase2
-notes_for_coach: Glycine is a primary amino acid used in Phase 2 amino acid conjugation. Also a glutathione precursor. Particularly
-  relevant for patients on low-protein diets. Verify specific dosing with clinician.
+notes_for_coach: |-
+  Glycine is a primary amino acid used in Phase 2 amino acid conjugation. Also a
+  glutathione precursor. Particularly relevant for patients on low-protein diets. Verify
+  specific dosing with clinician.
+
+  Best used for: Best used as a bedtime option for clients whose sleep feels
+  unrefreshing; small but consistent trials show better subjective sleep quality and
+  less next-day sleepiness. Also a cheap glutathione/phase 2 co-factor alongside NAC.
+  Not a treatment for clinical insomnia on its own.
 notes_for_client: Glycine is an amino acid (building block of protein) that your liver uses to attach to and neutralize toxins,
   helping them leave your body.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- core-body-temperature-drop-for-sleep-onset
+- amino-acid-conjugation
 sources:
 - id: vitaone-practice-guide
   location: Sleep Optimization > Sleep-supporting supplements
@@ -61,7 +73,13 @@ sources:
   location: Phase 2 Conjugation Pathways
   quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can say, they are the primary amino acid they
     use for conjugation.
-version: 6
+version: 7
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Clozapine — adding high-dose glycine worsened clozapine response in a schizophrenia trial
+    (Potkin 1999); avoid unless the psychiatrist agrees
+  life_stages: []

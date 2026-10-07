@@ -5,9 +5,15 @@ forms_available:
 - powder
 - liquid
 evidence_tier: plausible_emerging
-notes_for_coach: Whey protein is included in the beta blocker tapering protocol, likely
-  for its role in supporting muscle mass, blood pressure reduction (via bioactive
-  peptides), and glutathione synthesis. Appropriate for most clients unless dairy-sensitive.
+notes_for_coach: |-
+  Whey protein is included in the beta blocker tapering protocol, likely for its role in
+  supporting muscle mass, blood pressure reduction (via bioactive peptides), and
+  glutathione synthesis. Appropriate for most clients unless dairy-sensitive.
+
+  Best used for: Most useful for closing a protein gap in vegetarian clients, and for
+  older or perimenopausal/menopausal women doing strength training to protect muscle. A
+  pre-meal dose can blunt glucose spikes in type 2 diabetes. Not needed when diet
+  protein is already adequate.
 notes_for_client: Whey protein is an easy way to get high-quality protein that supports
   muscle, immune function, and antioxidant production. Blend into a smoothie or mix
   with water.
@@ -22,6 +28,10 @@ linked_to_topics:
 - cardiovascular-dysfunction
 - cardiometabolic-health
 - sex-hormone-binding-globulin
+- sarcopenia-skeletal-muscle-loss
+- protein-adequacy-vegetarian
+- type-2-diabetes
+- strength-training
 typical_dose_range:
   powder:
     min: 14
@@ -35,7 +45,12 @@ typical_dose_range:
     min: 20
     max: 30
     unit: g
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- anabolic-resistance-aging
+- sarcopenia
+linked_to_symptoms:
+- low-lean-muscle-mass
+- protein-deficiency
 linked_to_claims:
 - whey-protein-decreases-shbg
 sources:
@@ -48,9 +63,18 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
   quote: Whey protein [listed under factors that Decrease SHBG]
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - whey-protein-powder
+contraindications:
+  conditions:
+  - cow's milk protein allergy — whey is a milk protein
+  - advanced chronic kidney disease (markedly reduced eGFR) — added protein load; keep total
+    protein moderate and only with the treating clinician's guidance
+  medications:
+  - levodopa (Parkinson's) — a large protein dose competes with levodopa absorption and can
+    blunt its effect; keep whey away from levodopa doses
+  life_stages: []

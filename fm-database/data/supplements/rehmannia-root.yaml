@@ -26,19 +26,29 @@ ayurvedic_actions:
 - laxative
 - emmenagogue
 linked_to_topics:
-- iron-deficiency-anemia
 - cognitive-decline
 - perimenopause-and-menopause
-- kidney-stones
-notes_for_coach: 'Latin: Rehmannia glutinosa; Scrophulariaceae. Traditional indications: weak kidneys,
-  low back pain, sexual debility, irregular menstruation, cirrhosis, anemia, hair loss, diabetes, senility.
-  Precautions: weak digestion, severe congestion or edema; may cause diarrhea without digestion-increasing
-  herbs like cinnamon or ginseng. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Rehmannia glutinosa; Scrophulariaceae. Traditional indications: weak kidneys,
+  low back pain, sexual debility, irregular menstruation, cirrhosis, anemia, hair loss,
+  diabetes, senility. Precautions: weak digestion, severe congestion or edema; may cause
+  diarrhea without digestion-increasing herbs like cinnamon or ginseng. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Traditional TCM/Ayurvedic tonic, usually given in multi-herb formulas
+  for menopausal dryness and age-related decline; human evidence for the single herb is
+  very limited. Consider only under a trained herbalist, not as a first-line supplement.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — REHMANNIA
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Chronic diarrhoea or weak digestion — rehmannia is laxative/heavy and can cause loose
+    stools (noted in source precautions)
+  medications: []
+  life_stages: []

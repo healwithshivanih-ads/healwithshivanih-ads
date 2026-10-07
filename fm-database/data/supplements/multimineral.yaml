@@ -31,7 +31,15 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — Personalized Recommendations
   quote: Multimineral
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Haemochromatosis / iron overload — avoid formulas containing iron
+  medications:
+  - Levothyroxine — calcium, iron and magnesium bind thyroxine; separate by at least 4 hours
+  - Quinolone and tetracycline antibiotics — divalent minerals chelate the antibiotic; separate
+    by 2–6 hours
+  life_stages: []

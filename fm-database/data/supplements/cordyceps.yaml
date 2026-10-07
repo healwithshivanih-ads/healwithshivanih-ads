@@ -16,8 +16,15 @@ typical_dose_range:
 timing_options:
 - morning
 take_with_food: optional
-notes_for_coach: Medicinal mushroom for energy, stamina, and immune support; best taken morning or
+notes_for_coach: |-
+  Medicinal mushroom for energy, stamina, and immune support; best taken morning or
   pre-workout.
+
+  Best used for: Human evidence is thin: one small trial showed a modest gain in aerobic
+  capacity, and other data (lung and kidney disease) come from low-quality Chinese
+  trials of a specific Cordyceps product. Product quality varies widely, and many
+  products contain little active compound. Not worth it for general fatigue over
+  better-studied options.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - immune-support
@@ -50,9 +57,9 @@ sources:
   location: quality discussion
   quote: Cordycepin is only found in natural C. sinensis with very low content and cannot be detected
     in the cultured ones.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-29'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - cordyceps 1g bid

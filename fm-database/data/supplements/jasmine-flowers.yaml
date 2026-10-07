@@ -31,16 +31,29 @@ linked_to_topics:
 - chronic-inflammation
 - anxiety
 - immune-support
-- uterine-fibroids
-notes_for_coach: 'Latin: Jasminum grandiflorum; Oleaceae. Sanskrit: Jati. Traditional indications: emotional
-  disturbances, headaches, fever, sunstroke, conjunctivitis, dermatitis, burning urethra, bleeding disorders,
-  bacterial or viral infections, cancer of lymph nodes, cancer of bones, Hodgkin''s disease. Precautions:
-  severe chills, high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Jasminum grandiflorum; Oleaceae. Sanskrit: Jati. Traditional indications:
+  emotional disturbances, headaches, fever, sunstroke, conjunctivitis, dermatitis,
+  burning urethra, bleeding disorders, bacterial or viral infections, cancer of lymph
+  nodes, cancer of bones, Hodgkin's disease. Precautions: severe chills, high Vata.
+  Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Traditional Ayurvedic cooling nervine with essentially no human
+  clinical evidence for internal use; at most a gentle aromatherapy or tea addition for
+  relaxation. Not an evidence-based choice for anxiety, immunity, inflammation or any
+  uterine condition.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — JASMINE FLOWERS
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - Lactation — jasmine flowers applied to the breasts suppress milk production (RCT comparable
+    to bromocriptine); avoid while breastfeeding
+  - Pregnancy — classed as an emmenagogue in Ayurvedic texts; no safety data

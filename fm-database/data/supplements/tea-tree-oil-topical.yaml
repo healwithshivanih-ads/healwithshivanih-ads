@@ -17,6 +17,8 @@ linked_to_topics:
 - acne-vulgaris
 linked_to_mechanisms:
 - chronic-inflammation
+linked_to_symptoms:
+- acne
 linked_to_claims:
 - tea-tree-oil-effective-against-p-acnes
 notes_for_coach: TOPICAL USE ONLY — internal use is toxic. Standardised to 30-40%
@@ -30,8 +32,12 @@ notes_for_client: A natural antiseptic oil from an Australian tree. Apply dilute
 contraindications:
   conditions:
   - tea-tree-oil-allergy
+  - broken, eczematous or inflamed skin (higher risk of contact dermatitis/sensitisation;
+    oxidised oil is more sensitising)
   medications: []
-  life_stages: []
+  life_stages:
+  - young children (accidental ingestion of the oil causes ataxia/CNS depression — store out
+    of reach)
 evidence_tier: strong
 typical_dose_range: {}
 sources:
@@ -41,7 +47,7 @@ sources:
     against wide range of organisms (including 27 of 32 strains of P. acnes); good
     penetration without skin irritation. Prefer strong solutions (up to 15% tea tree
     oil) for best results.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

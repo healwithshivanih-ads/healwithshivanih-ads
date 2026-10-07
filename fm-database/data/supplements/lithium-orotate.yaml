@@ -17,11 +17,17 @@ linked_to_topics:
 - maoa-slow-serotonin-excess
 linked_to_claims:
 - lithium-orotate-calms-excess-serotonin-slow-maoa
-notes_for_coach: Lynch recommends 5 mg lithium orotate (OTC low-dose form, not pharmaceutical
-  lithium carbonate) for slow MAOA to calm excess serotonin activity. Slow MAOA patients
-  often report benefit; fast MAOA patients report worsening. Inositol and lithium
-  act oppositely — if one fails, try the other. Distinguish clearly from prescription
+notes_for_coach: |-
+  Lynch recommends 5 mg lithium orotate (OTC low-dose form, not pharmaceutical lithium
+  carbonate) for slow MAOA to calm excess serotonin activity. Slow MAOA patients often
+  report benefit; fast MAOA patients report worsening. Inositol and lithium act
+  oppositely — if one fails, try the other. Distinguish clearly from prescription
   lithium carbonate (much higher doses, requires serum monitoring).
+
+  Best used for: An FM-specific, low-evidence option (Dirty Genes) for a suspected
+  slow-MAOA 'excess serotonin' picture; human evidence for over-the-counter microdose
+  lithium is very limited. Not for clients with thyroid or kidney problems, which in
+  this practice rules out many thyroid clients.
 notes_for_client: A mineral-based supplement at very low doses that can help balance
   serotonin activity. This is a food supplement dose, not the same as prescription
   lithium medication.
@@ -32,7 +38,19 @@ sources:
   location: Chapter 15 — Supplements for Your Slow MAOA
   quote: Consider 5 milligrams of lithium orotate, a supplement that helps calm the
     activity of excess serotonin.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - kidney disease / reduced renal function — lithium is renally cleared and accumulates
+  - hypothyroidism / thyroid disease — lithium inhibits thyroid hormone release and can cause
+    goitre and hypothyroidism
+  medications:
+  - thiazide diuretics, ACE inhibitors / ARBs and NSAIDs — reduce lithium clearance and raise
+    lithium levels
+  - lithium carbonate / prescription lithium — additive toxicity
+  life_stages:
+  - pregnancy — lithium linked to cardiac malformations (Ebstein's anomaly)
+  - lactation — passes into breast milk

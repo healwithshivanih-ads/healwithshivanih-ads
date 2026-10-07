@@ -47,14 +47,13 @@ pregnancy_safety: contraindicated
 lactation_safety: unknown
 linked_to_topics:
 - pcos-fertility
-- fertility-and-ovulation
-- androgen-excess
 - kidney-stones
 - cystitis-and-interstitial-cystitis
 - pcos
 - joint-pain
 linked_to_symptoms:
-- anovulation
+- low-libido
+- erectile-dysfunction
 linked_to_mechanisms: []
 linked_to_claims:
 - tribulus-pcos-menstrual-regularity
@@ -92,7 +91,7 @@ sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — GOKSHURA
 evidence_tier: fm_specific_thin
-version: 3
+version: 4
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani

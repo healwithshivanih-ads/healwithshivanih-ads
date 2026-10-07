@@ -15,20 +15,36 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - cardiovascular-disease-prevention
+- osteoporosis
+- bone-health
+linked_to_symptoms:
+- decreased-bone-mineral-density
 linked_to_claims: []
-notes_for_coach: Mentioned as universally prescribed alongside Vitamin D. K2 specifically
-  is relevant for vascular calcification prevention. Patients on anticoagulants (warfarin)
-  must discuss with their clinician before supplementing.
+notes_for_coach: |-
+  Mentioned as universally prescribed alongside Vitamin D. K2 specifically is relevant
+  for vascular calcification prevention. Patients on anticoagulants (warfarin) must
+  discuss with their clinician before supplementing.
+
+  Best used for: Best as the bone/vascular partner to vitamin D in postmenopausal women
+  with low BMD or osteopenia. Not useful for fatigue or lipids, and never a casual
+  add-on for anyone on warfarin.
 notes_for_client: Vitamin K (especially K2) works alongside Vitamin D and supports
   vascular health. If you are on blood thinners like warfarin, always check with your
   doctor before taking Vitamin K.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- calcium-trafficking-and-bone-mineralization
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Micronutrients in Clinical Practice
   quote: Every one of my patients leaves the office with vitamin D, vitamin K.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - warfarin / acenocoumarol (vitamin K antagonists) — vitamin K directly opposes the anticoagulant
+    effect and shifts INR; only with the prescriber's knowledge and a stable daily dose
+  life_stages: []

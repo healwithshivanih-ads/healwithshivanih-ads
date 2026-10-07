@@ -37,23 +37,36 @@ linked_to_topics:
 - dyslipidemia
 - atherogenic-dyslipidemia
 - cardiovascular-health
+- metabolic-syndrome
 linked_to_mechanisms:
 - reverse-cholesterol-transport
 - cholesterol-absorption-blockade
+- small-dense-ldl-atherogenesis
+linked_to_symptoms:
+- elevated-cholesterol
+- elevated-triglycerides
+- low-hdl
 linked_to_claims: []
-notes_for_coach: Bergamot polyphenolic fraction (BPF) is a citrus-derived extract
-  that lowers LDL cholesterol and triglycerides while raising HDL via HMG-CoA reductase
-  inhibition and improved insulin signaling. Used as a natural alternative or adjunct
-  in mild-moderate dyslipidaemia. Standard clinical dose is 500-1500 mg/day in divided
-  doses with meals. Effect develops over 4-12 weeks. Use Bergavit or Bergamonte standardised
-  extract (38% polyphenols).
+notes_for_coach: |-
+  Bergamot polyphenolic fraction (BPF) is a citrus-derived extract that lowers LDL
+  cholesterol and triglycerides while raising HDL via HMG-CoA reductase inhibition and
+  improved insulin signaling. Used as a natural alternative or adjunct in mild-moderate
+  dyslipidaemia. Standard clinical dose is 500-1500 mg/day in divided doses with meals.
+  Effect develops over 4-12 weeks. Use Bergavit or Bergamonte standardised extract (38%
+  polyphenols).
+
+  Best used for: Best evidence is for mild-to-moderately raised LDL and triglycerides,
+  with effects over 4–12 weeks; product standardisation (polyphenol content) matters.
+  Not a replacement for prescribed lipid-lowering medication — any use alongside a
+  statin or blood thinner should go through the prescribing doctor. Avoid in pregnancy
+  and breastfeeding.
 notes_for_client: ''
 sources:
 - id: vitaone-skill-practice-guide
   location: Practice guide — cardiovascular section
   quote: Bergamot extract supports lipid profile and cardiometabolic markers.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani

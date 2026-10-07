@@ -22,20 +22,32 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - type-1-diabetes-mellitus
-- type-2-diabetes-mellitus
 - type-2-diabetes
 - insulin-resistance
+- prediabetes
+linked_to_symptoms:
+- elevated-blood-glucose
 linked_to_claims:
 - gymnema-reduces-insulin-requirements
 - murray-gymnema-sylvestre-restore-beta-cell
-notes_for_coach: Standardised to 24% gymnemic acid; 200 mg b.i.d. Monitor blood glucose
-  closely — insulin or drug doses may need reduction. Capsules/tablets reduce carbohydrate
+notes_for_coach: |-
+  Standardised to 24% gymnemic acid; 200 mg b.i.d. Monitor blood glucose closely —
+  insulin or drug doses may need reduction. Capsules/tablets reduce carbohydrate
   cravings but don't produce tongue sweetness blockade.
+
+  Best used for: Best fit is prediabetes or type 2 diabetes: a small RCT in impaired
+  glucose tolerance and a meta-analysis in type 2 diabetes show modest HbA1c and glucose
+  reductions. Any client on diabetes medication needs their doctor involved because
+  glucose can drop. The type 1 diabetes evidence is one old open trial — not a reason to
+  use it there. Capsules do not give the sweet-taste blockade, so do not promise reduced
+  sugar cravings.
 notes_for_client: Gymnema sylvestre is an Ayurvedic herb that helps your body use
   insulin better and may reduce sugar cravings. Use with medical supervision if on
   insulin.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- postprandial-glucose-spike
+- insulin-resistance
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Gymnema sylvestre
@@ -45,7 +57,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia; doses
+    may need reducing under the prescriber (notes already say monitor glucose)
+  life_stages:
+  - Pregnancy — insufficient human safety data
+  - Lactation — insufficient human safety data

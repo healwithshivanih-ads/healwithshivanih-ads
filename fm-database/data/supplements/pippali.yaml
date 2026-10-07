@@ -29,15 +29,30 @@ linked_to_topics:
 - asthma
 - digestion-and-nutrient-absorption
 - joint-pain
-notes_for_coach: 'Latin: Piper longum; Piperaceae. Sanskrit: Pippali. Traditional indications: colds,
-  coughs, asthma, bronchitis, laryngitis, arthritis, rheumatism, gout, dyspepsia, abdominal distention,
-  flatulence, abdominal tumors, lumbago, sciatica, epilepsy, paralysis, worms. Precautions: high Pitta
-  (inflammatory conditions). Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Piper longum; Piperaceae. Sanskrit: Pippali. Traditional indications: colds,
+  coughs, asthma, bronchitis, laryngitis, arthritis, rheumatism, gout, dyspepsia,
+  abdominal distention, flatulence, abdominal tumors, lumbago, sciatica, epilepsy,
+  paralysis, worms. Precautions: high Pitta (inflammatory conditions). Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: An Ayurvedic digestive stimulant (Agni) and expectorant, often used in
+  combinations such as trikatu and as a bioavailability enhancer for other herbs. Human
+  evidence is limited to traditional use; not a stand-alone treatment for asthma or
+  joint pain.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — PIPPALI
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Active peptic ulcer, gastritis or GERD — pungent, heating irritant (high-Pitta precaution
+    in Frawley & Lad)
+  medications:
+  - Narrow-therapeutic-index drugs (phenytoin, theophylline, cyclosporine, propranolol) —
+    piperine inhibits CYP3A4/P-glycoprotein and raised drug blood levels in human PK studies
+  life_stages: []

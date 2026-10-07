@@ -17,8 +17,13 @@ timing_options:
 - morning
 - mid_morning
 take_with_food: optional
-notes_for_coach: Medicinal mushroom supporting neurogenesis and cognitive function;
-  best taken in the morning or early afternoon to avoid potential sleep disruption.
+notes_for_coach: |-
+  Medicinal mushroom supporting neurogenesis and cognitive function; best taken in the
+  morning or early afternoon to avoid potential sleep disruption.
+
+  Best used for: Most evidence is in mild cognitive impairment in older adults (small
+  Japanese RCTs) and small studies of mood and anxiety in menopausal women. Evidence for
+  younger healthy adults or for immune support is preliminary.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - cognitive-decline
@@ -29,6 +34,8 @@ linked_to_mechanisms:
 - ngf-bdnf-neurotrophic-signaling
 - chronic-inflammation
 - dectin-1-trained-immunity
+linked_to_symptoms:
+- mild-cognitive-impairment
 linked_to_claims:
 - lions-mane-mci-mori-2009
 - lions-mane-mood-menopause-nagano-2010
@@ -51,7 +58,12 @@ sources:
   location: mechanism + clinical sections
   quote: Erinacines have been extensively studied for their ability to cross the blood-brain
     barrier and exert potent neuroprotective effects.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-29'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - mushroom allergy — allergic reactions (including respiratory and contact dermatitis) reported
+  medications: []
+  life_stages: []

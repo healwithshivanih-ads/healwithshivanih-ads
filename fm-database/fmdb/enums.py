@@ -67,6 +67,10 @@ class InteractionType(str, Enum):
     avoid_together = "avoid_together"
     space_by_hours = "space_by_hours"
     take_together = "take_together"
+    # Safe to combine with monitoring / prescriber dose adjustment (additive
+    # glucose- or BP-lowering, recheck TSH). Every gate treats anything other
+    # than avoid_together as a warning, so this never hard-blocks.
+    monitor = "monitor"
 
 
 class SymptomCategory(str, Enum):

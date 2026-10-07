@@ -17,12 +17,21 @@ timing_options:
 - morning
 - with_breakfast
 take_with_food: optional
-notes_for_coach: Choline (CDP/PPC forms) listed for NAFLD support. Supports bile production
-  and hepatic fat metabolism. Dose not specified — verify with clinician.
+notes_for_coach: |-
+  Choline (CDP/PPC forms) listed for NAFLD support. Supports bile production and hepatic
+  fat metabolism. Dose not specified — verify with clinician.
+
+  Best used for: Best evidence is for citicoline in older adults with memory decline or
+  mild cognitive impairment, as an add-on to lifestyle work. For fatty liver the
+  evidence is for phosphatidylcholine (a different product at much higher doses), not
+  citicoline. Not worth it for everyday brain fog in younger clients.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - insulin-resistance
+- cognitive-decline
 linked_to_mechanisms: []
+linked_to_symptoms:
+- mild-cognitive-impairment
 linked_to_claims:
 - fatty-liver-drives-insulin-resistance
 notes_for_client: Choline is an essential nutrient for liver health — it helps prevent
@@ -35,7 +44,7 @@ sources:
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Fatty Liver (NAFLD)
   quote: Choline (CDP/PPC)
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani

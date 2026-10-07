@@ -12,20 +12,38 @@ take_with_food: optional
 linked_to_topics:
 - gerd
 - gut-dysfunction
+- constipation
+- periodontal-disease
+linked_to_symptoms:
+- constipation
+- gum-inflammation
 linked_to_claims:
 - triphala-modulates-gi-transit
-notes_for_coach: Listed as a transit time modulator in the PPI taper protocol. An
-  Ayurvedic formula with mild laxative and GI motility-supportive properties.
+notes_for_coach: |-
+  Listed as a transit time modulator in the PPI taper protocol. An Ayurvedic formula
+  with mild laxative and GI motility-supportive properties.
+
+  Best used for: Strongest for mild functional constipation and, as a mouthwash, for
+  plaque and gingivitis. Not a substitute for fibre, fluid and movement, and not useful
+  for diarrhoea-predominant clients.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- altered-gi-motility
 notes_for_client: ''
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - active diarrhoea or IBD flare — laxative effect worsens loose stools
+  medications: []
+  life_stages:
+  - pregnancy — haritaki/triphala is traditionally avoided in pregnancy and safety data are
+    lacking

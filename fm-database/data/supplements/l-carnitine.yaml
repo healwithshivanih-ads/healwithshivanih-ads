@@ -26,13 +26,27 @@ timing_options:
 - morning
 - mid_morning
 take_with_food: optional
-notes_for_coach: Acetyl-L-carnitine (ALCAR) crosses the blood-brain barrier and is
-  preferred for cognitive applications. L-carnitine is used more for physical fatigue
-  and fat metabolism. Dosing requires clinician involvement.
+notes_for_coach: |-
+  Acetyl-L-carnitine (ALCAR) crosses the blood-brain barrier and is preferred for
+  cognitive applications. L-carnitine is used more for physical fatigue and fat
+  metabolism. Dosing requires clinician involvement.
+
+  Best used for: Best evidence is in medically managed conditions — heart failure,
+  diabetic neuropathy (as acetyl-L-carnitine), NAFLD and symptom control in
+  hyperthyroidism — so use alongside the client's doctor. Not a general energy booster,
+  and use caution in hypothyroid clients because it blunts thyroid hormone action.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - mitochondrial-health-nutrition
-linked_to_mechanisms: []
+- mitochondrial-health-nutrients
+- congestive-heart-failure
+- nafld
+- hyperthyroidism
+- diabetic-neuropathy
+linked_to_mechanisms:
+- mitochondrial-energy-production
+linked_to_symptoms:
+- diabetic-nerve-pain
 linked_to_claims:
 - carnitine-supplementation-improves-fatigue-brain
 notes_for_client: Carnitine helps transport fats into your cells so they can be burned
@@ -55,11 +69,19 @@ sources:
   location: Cardiovascular Drugs and Potential Nutrient Deficiency
   quote: 'HMG-CoA Reductase: Carnitine, Copper, CoQ10, Essential Fatty Acids (EFAs),
     Selenium, Vitamin D, Vitamin E, Zinc'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - carnitine
 # 1 ref(s) used this name for the same concept (2026-07-29)
 - acetyl-l-carnitine
+contraindications:
+  conditions:
+  - Hypothyroidism — carnitine blocks thyroid hormone entry into cells (used therapeutically
+    in hyperthyroidism); monitor symptoms/TSH in hypothyroid clients
+  - Seizure disorder — reports of increased seizure frequency
+  medications:
+  - Warfarin / acenocoumarol — case reports of raised INR
+  life_stages: []

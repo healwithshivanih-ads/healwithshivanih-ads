@@ -17,20 +17,42 @@ take_with_food: required
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - 5r-gut-protocol
+- constipation
+- scfa-short-chain-fatty-acids
+linked_to_symptoms:
+- constipation
 linked_to_claims:
 - scfa-from-fiber-heals-intestinal-lining
-notes_for_coach: Dietary fibre is fermented by gut bacteria to produce short-chain fatty acids (SCFAs) like butyrate, which
-  are key nutrients for colonocytes and gut healing. Emphasise whole food fibre sources; fibre supplements can be used adjunctively.
+notes_for_coach: |-
+  Dietary fibre is fermented by gut bacteria to produce short-chain fatty acids (SCFAs)
+  like butyrate, which are key nutrients for colonocytes and gut healing. Emphasise
+  whole food fibre sources; fibre supplements can be used adjunctively.
+
+  Best used for: Food-first fibre is the foundation; as a supplement, soluble fibre such
+  as psyllium has the best evidence — for constipation, IBS, LDL cholesterol and
+  glycaemic control. Start low and build slowly; highly fermentable fibres (inulin, FOS)
+  often aggravate bloating in SIBO/IBS.
 notes_for_client: Eating enough fibre feeds your good gut bacteria, which produce substances called short-chain fatty acids
   that help heal your gut lining.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- butyrate-production
+- scfa-deficiency
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: 5R Protocol — Repair
   quote: Short chain fatty acid. So fiber is very important. They can create the short chain fatty acid and short chain fatty
     acid is very important as a gut nutrient. They can heal your intestine.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - bowel obstruction, strictures or severe dysmotility/gastroparesis
+  - active SIBO or FODMAP-sensitive IBS with fermentable fibres such as inulin/FOS (worsen
+    gas and bloating — use low-fermentable soluble fibre, titrate slowly)
+  medications:
+  - levothyroxine and other oral medications (fibre reduces absorption — separate by 2-4 hours)
+  life_stages: []

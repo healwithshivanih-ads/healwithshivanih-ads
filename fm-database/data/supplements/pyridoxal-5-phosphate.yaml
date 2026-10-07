@@ -22,22 +22,35 @@ linked_to_topics:
 - hormonal-nutrition-foundations
 - estrogen-signaling
 - premenstrual-syndrome
+- homocysteine-and-methylation
+- pregnancy-first-trimester
+linked_to_symptoms:
+- pms
+- premenstrual-mood-changes
 linked_to_claims:
 - p5p-controls-hormone-signaling-duration
 - p5p-deficiency-drives-estrogen-dominance
 - nutrient-cofactors-required-for-hormone-signaling
 - murray-b6-magnesium-pms-foundation
-notes_for_coach: 'P5P is the active, bioavailable form of B6 and controls signaling
-  duration at helix-12 of the receptor. Depleted by sugar, frequent flying (jet fuel
-  exposure), and the modern diet. IMPORTANT: doses over 100mg/day are linked to reversible
-  neurological symptoms — do not exceed without clinician guidance. Coaches should
-  not recommend doses above 100mg/day.'
+notes_for_coach: |-
+  P5P is the active, bioavailable form of B6 and controls signaling duration at helix-12
+  of the receptor. Depleted by sugar, frequent flying (jet fuel exposure), and the
+  modern diet. IMPORTANT: doses over 100mg/day are linked to reversible neurological
+  symptoms — do not exceed without clinician guidance. Coaches should not recommend
+  doses above 100mg/day.
+
+  Best used for: Best evidence is for PMS (mainly mood symptoms) and, within the
+  client's obstetric care, for nausea in early pregnancy; it plays a supporting role
+  alongside folate and B12 in homocysteine support. Stay within the catalogue's upper
+  limit — prolonged high intake can cause nerve damage, and more is not better.
 notes_for_client: Active vitamin B6 (P5P) acts like a volume dial on your hormone
   signals — too little means signals run too long, which can contribute to heavy periods
   or breast changes. Sugar and frequent air travel can deplete it. Discuss dose with
   your practitioner.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- transsulfuration-pathway
+- homocysteine-metabolism
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: P5P and Hormone Signaling Duration
@@ -70,9 +83,9 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - pyridoxal-5-phosphate-b6
@@ -83,3 +96,11 @@ aliases:
 cycle_phases:
 - early_luteal
 - late_luteal
+contraindications:
+  conditions:
+  - Existing peripheral neuropathy — high or prolonged B6 intake can itself cause sensory
+    neuropathy
+  medications:
+  - Levodopa taken WITHOUT carbidopa — B6 speeds peripheral levodopa breakdown and reduces
+    its effect
+  life_stages: []

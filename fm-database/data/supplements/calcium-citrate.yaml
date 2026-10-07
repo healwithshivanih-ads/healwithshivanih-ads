@@ -14,17 +14,27 @@ timing_options:
 - with_dinner
 take_with_food: optional
 linked_to_topics:
-- knee-pain
 - premenstrual-syndrome
 - osteoporosis
 - bone-health
-notes_for_coach: Citrate form absorbed without stomach acid (preferred over carbonate
-  for older adults or PPI users). Always pair with vitamin D3 and K2. Hydroxyapatite
-  is a natural alternative that also provides phosphorus and other bone minerals.
+notes_for_coach: |-
+  Citrate form absorbed without stomach acid (preferred over carbonate for older adults
+  or PPI users). Always pair with vitamin D3 and K2. Hydroxyapatite is a natural
+  alternative that also provides phosphorus and other bone minerals.
+
+  Best used for: Preferred calcium form when supplementation is genuinely needed — low
+  dietary intake, osteoporosis, or for PMS — especially in clients on acid-suppressing
+  drugs or older adults. Food calcium comes first; routine supplementation in people
+  eating enough calcium is not worthwhile.
 notes_for_client: Calcium citrate can be taken with or without food, unlike calcium
   carbonate. Always pair with vitamin D and K2.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- calcium-trafficking-and-bone-mineralization
+- reduced-gastric-acid-calcium-absorption
+- bone-resorption-formation-imbalance
+linked_to_symptoms:
+- pms
 linked_to_claims:
 - murray-calcium-1200mg-pms
 - murray-calcium-alone-insufficient-osteoporosis
@@ -39,11 +49,24 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: 1000-1200 mg/day standard supplementation in pregnancy if dietary
   intake low.
+contraindications:
+  conditions:
+  - Hypercalcaemia or primary hyperparathyroidism
+  - History of calcium kidney stones — supplement only under clinician guidance (food calcium
+    preferred)
+  medications:
+  - Levothyroxine — calcium binds it; separate by at least 4 hours
+  - Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - Bisphosphonates (alendronate) — markedly reduce absorption; separate per prescriber instructions
+  - Thiazide diuretics — reduce calcium excretion; risk of hypercalcaemia with supplements
+  - Digoxin — high-dose calcium can raise the risk of arrhythmia; supplement only with prescriber
+    agreement
+  life_stages: []

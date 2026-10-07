@@ -18,6 +18,9 @@ linked_to_topics:
 - type-2-diabetes-mellitus
 - diabetic-retinopathy
 - diabetic-neuropathy
+- insulin-resistance
+linked_to_symptoms:
+- blood-sugar-dysregulation
 linked_to_claims:
 - magnesium-deficiency-common-in-diabetics
 notes_for_coach: 'Deficiency is most severe in those with retinopathy. Co-supplement
@@ -28,13 +31,22 @@ notes_for_client: Magnesium is depleted in diabetes and is essential for blood s
   control, nerve health, and eye protection. Citrate or aspartate forms are easiest
   on the stomach.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance-magnesium
+- insulin-resistance
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Magnesium
   quote: Mg (at 400 to 500 mg q.d.) improves insulin response and action, glucose
     tolerance, and fluidity of RBC membranes.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - severe renal impairment / CKD — risk of hypermagnesaemia
+  medications:
+  - levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics — magnesium
+    chelates them; separate by at least 4 hours
+  life_stages: []

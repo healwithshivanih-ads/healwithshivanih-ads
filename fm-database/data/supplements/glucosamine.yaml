@@ -43,15 +43,23 @@ interactions: {}
 linked_to_topics:
 - osteoarthritis
 - joint-pain
+- knee-pain
 linked_to_mechanisms: []
 linked_to_claims: []
-notes_for_coach: Glucosamine sulfate 1500 mg/day is the most-studied form for osteoarthritis
+notes_for_coach: |-
+  Glucosamine sulfate 1500 mg/day is the most-studied form for osteoarthritis
   (especially knee OA), with meta-analyses showing modest pain reduction and slowed
   structural progression. Sulfate form has stronger evidence than HCl. Most preparations
   derived from shellfish (shrimp/crab) — vegetarian options (fermented corn) available.
-  Mild warfarin interaction reported (INR elevation) — coordinate with prescriber.
-  Avoid in poorly-controlled diabetes (mild insulin resistance possible). Often paired
-  with chondroitin sulfate for joint protocols.
+  Mild warfarin interaction reported (INR elevation) — coordinate with prescriber. Avoid
+  in poorly-controlled diabetes (mild insulin resistance possible). Often paired with
+  chondroitin sulfate for joint protocols.
+
+  Best used for: The sulfate form (rather than HCl) has the best evidence, for knee
+  osteoarthritis: modest pain relief and possible slowing of joint-space narrowing in
+  some trials. Give it a 2-3 month trial and stop if there is no clear benefit. Not
+  worth it for non-OA joint pain or inflammatory arthritis. Most products are
+  shellfish-derived, and clients on warfarin need their prescriber aware.
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
@@ -59,7 +67,7 @@ sources:
   quote: Glucosamine sulfate 1500 mg/day is well-studied for osteoarthritis pain reduction
     and joint structure preservation, particularly in knee OA.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani

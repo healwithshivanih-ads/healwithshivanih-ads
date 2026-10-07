@@ -40,7 +40,12 @@ sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — MANJISHTA
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - Pregnancy — listed as an emmenagogue (stimulates menstrual flow); avoid

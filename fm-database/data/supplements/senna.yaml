@@ -22,18 +22,38 @@ ayurvedic_actions:
 - alterative
 linked_to_topics:
 - constipation
-- liver-detoxification
-- hemorrhoids
-- metabolic-detoxification
-notes_for_coach: 'Latin: Cassia acutifolia; Leguminosae. Sanskrit: Rajavriksha. Traditional indications:
-  constipation, inflammatory skin conditions, hypertension, obesity. Precautions: hemorrhoids, inflammatory
-  conditions of the g.i. tract, diarrhea, pregnancy; irritant to intestinal membrane; repeated use may
-  weaken colon tone. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Cassia acutifolia; Leguminosae. Sanskrit: Rajavriksha. Traditional indications:
+  constipation, inflammatory skin conditions, hypertension, obesity. Precautions:
+  hemorrhoids, inflammatory conditions of the g.i. tract, diarrhea, pregnancy; irritant
+  to intestinal membrane; repeated use may weaken colon tone. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: A short-term rescue laxative for occasional constipation (bedtime dose,
+  works overnight) when fibre, fluids, magnesium and movement have not done enough. Not
+  a daily or long-term tool and never a 'detox' — chronic use risks dependence and low
+  potassium.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — SENNA
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- constipation
+linked_to_mechanisms:
+- altered-gi-motility
+contraindications:
+  conditions:
+  - intestinal obstruction, ileus or undiagnosed abdominal pain (stimulant laxative)
+  - inflammatory bowel disease — Crohn's, ulcerative colitis — or appendicitis
+  medications:
+  - digoxin and antiarrhythmics (laxative-induced hypokalaemia potentiates toxicity)
+  - thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  life_stages:
+  - pregnancy (clinician-directed use only)
+  - children under 12
+  - lactation (not recommended - insufficient data on excretion of anthranoid metabolites
+    into breast milk, per EMA monograph)

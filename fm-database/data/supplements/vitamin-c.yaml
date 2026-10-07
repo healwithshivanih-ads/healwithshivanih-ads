@@ -34,8 +34,14 @@ timing_options:
 - on_empty_stomach
 - evening
 take_with_food: optional
-notes_for_coach: Noted as supportive for stress response. Also recycles glutathione.
-  Consider alongside adaptogen protocol.
+notes_for_coach: |-
+  Noted as supportive for stress response. Also recycles glutathione. Consider alongside
+  adaptogen protocol.
+
+  Best used for: Most useful for vegetarian clients with low iron (taken with iron-rich
+  meals), for modestly shortening colds, and for a small blood-pressure benefit at
+  moderate doses; very high doses add little and raise oxalate and gut side effects. Not
+  a treatment for thyroid, hormone or gut conditions by itself.
 evidence_tier: strong
 linked_to_topics:
 - thyroid
@@ -50,7 +56,6 @@ linked_to_topics:
 - hypothyroidism
 - immune-support
 - chronic-inflammation
-- mitochondrial-health-nutrition
 - liver-detoxification
 - mercury-amalgam-removal
 - hypercortisolism
@@ -65,9 +70,7 @@ linked_to_topics:
 - detoxification
 - atherosclerosis
 - dyslipidemia
-- hyperhomocysteinemia
 - type-1-diabetes-mellitus
-- type-2-diabetes-mellitus
 - diabetic-neuropathy
 - diabetic-retinopathy
 - essential-hypertension
@@ -76,11 +79,20 @@ linked_to_topics:
 - common-cold
 - clean-genes-protocol
 - gst-gpx-glutathione-detox
+- type-2-diabetes
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
 - glutathione-conjugation
 - hpa-axis-dysregulation
+- heme-vs-nonheme-iron-absorption
+- oxidative-stress
+linked_to_symptoms:
+- upper-respiratory-infections
+- elevated-blood-pressure
+- easy-bruising
+- gum-inflammation
+- poor-wound-healing
 linked_to_claims:
 - adaptogens-rebalance-hpa-axis
 - low-dhea-high-cortisol-indicates-adrenal-burnout
@@ -171,10 +183,10 @@ sources:
 - id: dirty-genes-lynch
   location: Supplements — Adaptogens, Week 1
   quote: Vitamin B5 and vitamin C are also supportive for stress.
-version: 24
+version: 25
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - vitamin-c-ascorbic-acid
 - vitamin c 1-2g
@@ -182,6 +194,8 @@ contraindications:
   conditions:
   - very high doses contraindicated in oxalate kidney stone history
   - G6PD deficiency — high doses may cause hemolysis
+  - haemochromatosis / iron overload — vitamin C increases iron absorption
+  - advanced chronic kidney disease or dialysis — high doses risk oxalate nephropathy
   medications: []
   life_stages: []
 interactions:

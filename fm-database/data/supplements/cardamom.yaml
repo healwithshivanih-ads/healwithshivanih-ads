@@ -29,14 +29,20 @@ linked_to_topics:
 - agni-digestive-fire
 - dyspepsia
 - asthma
-notes_for_coach: 'Latin: Elettaria cardamomum; Zingiberaceae. Sanskrit: Ela. Traditional indications:
-  colds, cough, bronchitis, asthma, hoarse voice, loss of taste, poor absorption, indigestion. Precautions:
-  ulcers, high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Elettaria cardamomum; Zingiberaceae. Sanskrit: Ela. Traditional indications:
+  colds, cough, bronchitis, asthma, hoarse voice, loss of taste, poor absorption,
+  indigestion. Precautions: ulcers, high Pitta. Ayurvedic energetics from The Yoga of
+  Herbs (Frawley & Lad).
+
+  Best used for: A culinary carminative spice for indigestion and gas, safe in food
+  amounts. Small trials on blood pressure, lipids and fatty liver exist but are too
+  limited to use it as a therapeutic supplement.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CARDAMOM
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

@@ -21,10 +21,16 @@ timing_options:
 - with_dinner
 - with_lunch
 take_with_food: required
-notes_for_coach: Lynch recommends as part of a combination (stinging nettle, luteolin,
-  bromelain, quercetin) for natural histamine blocking — stabilises mast cells and
-  reduces histamine release. Useful adjunct while gut healing is underway. Generally
-  well tolerated.
+notes_for_coach: |-
+  Lynch recommends as part of a combination (stinging nettle, luteolin, bromelain,
+  quercetin) for natural histamine blocking — stabilises mast cells and reduces
+  histamine release. Useful adjunct while gut healing is underway. Generally well
+  tolerated.
+
+  Best used for: Best supported as a mast-cell-calming adjunct for histamine-type and
+  seasonal allergy symptoms, and for a modest blood-pressure reduction at ≥500 mg/day.
+  Poorly absorbed (phytosome/with bromelain helps); not a stand-alone treatment for
+  asthma or autoimmunity.
 contraindications:
   conditions: []
   medications:
@@ -51,12 +57,15 @@ linked_to_topics:
 - chronic-inflammation
 - asthma
 - histamine-intolerance-dao
+- hay-fever
+- hypertension
 linked_to_mechanisms:
 - mast-cell-degranulation
 - histamine-receptor-signaling
 - nf-kb-activation
 - systemic-inflammation
 - endothelial-dysfunction
+- mast-cell-degranulation-histamine-release
 sources:
 - id: eds-clinic
   location: Key Supplements
@@ -69,10 +78,12 @@ sources:
   location: Chapter 15 — Additional Supplements for Your DAO
   quote: A combination of stinging nettle, luteolin, bromelain, and quercetin works
     wonders to help keep histamine locked up and not troubling you.
-version: 5
+version: 6
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- elevated-blood-pressure
 linked_to_claims:
 - quercetin-stinging-nettle-luteolin-bromelain-block-histamine
 notes_for_client: A plant compound that helps keep histamine from triggering symptoms.

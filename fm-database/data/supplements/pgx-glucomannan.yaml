@@ -17,21 +17,46 @@ take_with_food: required
 linked_to_topics:
 - type-2-diabetes-mellitus
 - prediabetes-metabolic-syndrome
+- type-2-diabetes
+- prediabetes
+- insulin-resistance
+- dyslipidemia
+linked_to_symptoms:
+- elevated-blood-glucose
+- elevated-cholesterol
 linked_to_claims:
 - glucomannan-lowers-postprandial-glucose-20-percent
-notes_for_coach: PGX is glucomannan + alginate + xanthan gum; viscosity 3–5x higher
-  than glucomannan alone. Reduces GI of any food by 15–70%. Must take with 240–360
-  mL water before or with meals. 2500–5000 mg before each meal for T2DM Level 1.
+notes_for_coach: |-
+  PGX is glucomannan + alginate + xanthan gum; viscosity 3–5x higher than glucomannan
+  alone. Reduces GI of any food by 15–70%. Must take with 240–360 mL water before or
+  with meals. 2500–5000 mg before each meal for T2DM Level 1.
+
+  Best used for: Taken with a full glass of water before carbohydrate-containing meals,
+  it is a useful lever for postprandial glucose in prediabetes and type 2 diabetes, with
+  a modest LDL benefit. Weight-loss evidence for glucomannan is weak (meta-analyses
+  largely null), so do not position it as a weight-loss product.
 notes_for_client: PGX or glucomannan fibre taken before meals creates a gel that slows
   glucose absorption — like a natural speed bump for blood sugar.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+- postprandial-glucose-spike
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Fiber supplements
   quote: PGX reduces glycemic index of any food or beverage by 15% to 70% and also
     reduces postprandial blood glucose.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Swallowing difficulty, oesophageal stricture or bowel obstruction — glucomannan swells;
+    choking/obstruction reported with tablets, always take with a full glass of water
+  medications:
+  - Insulin / sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
+    monitor for hypoglycaemia
+  - Levothyroxine and other oral medications — viscous fibre reduces absorption; separate
+    by 2-4 hours
+  life_stages: []

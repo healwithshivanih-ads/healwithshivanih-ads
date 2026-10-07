@@ -32,16 +32,36 @@ linked_to_topics:
 - sinusitis
 - nervous-system-regulation
 - chronic-pain-and-fatigue
-notes_for_coach: 'Latin: Cinnamomum camphora; Lauraceae. Sanskrit: Karpura. Traditional indications: bronchitis,
-  asthma, whooping cough, pulmonary congestion, hysteria, epilepsy, delirium, insomnia, dysmenorrhea,
-  gout, rheumatism, nasal congestion, sinus headaches, eye problems, tooth decay. Precautions: in excess
-  acts as narcotic poison, aggravating Pitta and Vata; use only in prescribed low dosages; use only raw
-  camphor not synthetic. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Cinnamomum camphora; Lauraceae. Sanskrit: Karpura. Traditional indications:
+  bronchitis, asthma, whooping cough, pulmonary congestion, hysteria, epilepsy,
+  delirium, insomnia, dysmenorrhea, gout, rheumatism, nasal congestion, sinus headaches,
+  eye problems, tooth decay. Precautions: in excess acts as narcotic poison, aggravating
+  Pitta and Vata; use only in prescribed low dosages; use only raw camphor not
+  synthetic. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Use only externally — as an inhaled/topical decongestant or
+  counter-irritant rub for congestion and muscle aches. It has no place as an ingested
+  supplement.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CAMPHOR
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- nasal-congestion
+contraindications:
+  conditions:
+  - Any oral/internal use — camphor is toxic when swallowed (seizures; ingestion of ~1 g can
+    be fatal in children)
+  - Seizure disorder/epilepsy — camphor lowers seizure threshold
+  - Broken or damaged skin — increased absorption and toxicity
+  medications: []
+  life_stages:
+  - infants and children under 2 — do not apply to or near the face/nose (airway irritation,
+    toxicity)
+  - pregnancy — avoid (crosses placenta; toxicity reports)
+  - breastfeeding — do not apply to breast/chest area

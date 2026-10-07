@@ -14,8 +14,9 @@ timing_options:
 - with_breakfast
 take_with_food: optional
 linked_to_topics:
-- estrogen-dominance
 - perimenopause
+linked_to_symptoms:
+- low-dheas
 linked_to_claims:
 - dhea-supplementation-contraindicated-in-perimenopausal-estrogen-dominance
 notes_for_coach: DHEA is a precursor hormone — it can convert downstream to both testosterone
@@ -27,15 +28,29 @@ notes_for_client: DHEA is a building-block hormone your body uses to make other 
   However, it's not appropriate for everyone — especially if your estrogen is already
   high. Always check with your doctor before taking DHEA.
 evidence_tier: confirm_with_clinician
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dhea-depletion
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Causes of Estrogen Dominance / DHEA Caution
   quote: Do not give DHEA when the patient is having perimenopausal phase. We don't
     want estrogen to be on the higher side.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - dhea-s (resilience reserve)
+contraindications:
+  conditions:
+  - PCOS — raises ovarian androgens (catalogue claim dhea-contraindicated-in-pcos)
+  - Hormone-sensitive cancers (breast, endometrial, ovarian, prostate) or history thereof
+    — converts to oestrogen and testosterone
+  - Estrogen dominance / elevated oestradiol — can worsen it (catalogue claim)
+  medications:
+  - Aromatase inhibitors, tamoxifen and other hormone-blocking cancer therapy — opposes their
+    action
+  - HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
+  life_stages:
+  - pregnancy
+  - lactation

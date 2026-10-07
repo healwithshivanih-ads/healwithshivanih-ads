@@ -32,15 +32,30 @@ linked_to_topics:
 - joint-pain
 - rheumatoid-arthritis
 - blood-sugar-dysfunction
-notes_for_coach: 'Latin: Juniperus spp.; Coniferae. Sanskrit: Hapusha. Traditional indications: dropsy,
-  edema, sciatica, lumbago, arthritis, rheumatism, swollen joints, diabetes, weak digestion, weak immune
-  system, dysmenorrhea. Precautions: acute nephritis, cystitis, pregnancy. Ayurvedic energetics from The
-  Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Juniperus spp.; Coniferae. Sanskrit: Hapusha. Traditional indications: dropsy,
+  edema, sciatica, lumbago, arthritis, rheumatism, swollen joints, diabetes, weak
+  digestion, weak immune system, dysmenorrhea. Precautions: acute nephritis, cystitis,
+  pregnancy. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: No meaningful human clinical evidence; traditional use is as a
+  short-term diuretic and digestive warming herb (EMA limits use to 2 weeks). Not worth
+  suggesting for kidney stones, arthritis or blood sugar in this cohort.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — JUNIPER BERRIES
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Kidney disease or acute nephritis — juniper oil is a renal irritant with high-dose or
+    prolonged use (EMA monograph contraindication)
+  - Acute urinary tract inflammation / cystitis — irritant to inflamed urinary tract (listed
+    in the file's own precautions but not in a contraindications block)
+  medications: []
+  life_stages:
+  - Pregnancy — uterine stimulant, traditionally regarded as abortifacient (EMA monograph
+    contraindication)

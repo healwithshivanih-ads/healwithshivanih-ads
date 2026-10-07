@@ -57,6 +57,7 @@ notes_for_coach: 'Postbiotic — a gut-microbiome metabolite of ellagitannins (p
 evidence_tier: plausible_emerging
 linked_to_topics:
 - mitochondrial-health-nutrients
+- sarcopenia-skeletal-muscle-loss
 linked_to_mechanisms:
 - mitochondrial-biogenesis
 - mitochondrial-dysfunction
@@ -83,7 +84,7 @@ sources:
   location: RCT, adults 65-90, 8 weeks
   quote: Effect of Urolithin A Supplementation on Muscle Endurance and Mitochondrial Health
     in Older Adults
-version: 2
+version: 3
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani

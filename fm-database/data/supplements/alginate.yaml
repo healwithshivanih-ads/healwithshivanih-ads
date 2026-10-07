@@ -13,16 +13,24 @@ take_with_food: required
 linked_to_topics:
 - gerd
 - gerd-ppi-tapering
+linked_to_symptoms:
+- acid-reflux-heartburn
 linked_to_claims:
 - alginate-forms-protective-barrier-gerd
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - abrupt-ppi-discontinuation-causes-rebound-reflux
-notes_for_coach: Alginate forms a physical 'raft' on top of stomach contents to prevent
-  acid reflux. Listed under 'Protect' in PPI tapering. Some RCT evidence for GERD
-  symptom relief.
+notes_for_coach: |-
+  Alginate forms a physical 'raft' on top of stomach contents to prevent acid reflux.
+  Listed under 'Protect' in PPI tapering. Some RCT evidence for GERD symptom relief.
+
+  Best used for: Strong, practical evidence for reflux and heartburn, especially after
+  meals and at bedtime, and a key 'protect' tool while tapering off a PPI. Treats
+  symptoms, not cause — pair with root-cause work (meal size, late eating, weight, H.
+  pylori).
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- rebound-acid-hypersecretion
 notes_for_client: Alginate (derived from seaweed) forms a protective layer on top
   of stomach acid to prevent it from refluxing into the esophagus.
 sources:
@@ -33,7 +41,15 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Sodium-restricted diets (heart failure, uncontrolled hypertension, advanced kidney disease)
+    — some alginate products (e.g. Gaviscon-type) carry substantial sodium
+  medications:
+  - Levothyroxine, iron, tetracycline/quinolone antibiotics, bisphosphonates — calcium/antacid
+    components reduce absorption; separate by 2-4 hours
+  life_stages: []

@@ -18,9 +18,15 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: CDG inhibits beta-glucuronidase in the gut, preventing deconjugation
-  and reabsorption of metabolised estrogen. Part of phase 2 estrogen detox support
-  alongside methylation and sulfation. Use after gut stabilisation and hormone testing.
+notes_for_coach: |-
+  CDG inhibits beta-glucuronidase in the gut, preventing deconjugation and reabsorption
+  of metabolised estrogen. Part of phase 2 estrogen detox support alongside methylation
+  and sulfation. Use after gut stabilisation and hormone testing.
+
+  Best used for: Used to support oestrogen clearance where dysbiosis/high
+  beta-glucuronidase is suspected (oestrogen dominance, endometriosis), as part of a
+  gut-and-liver plan. Human evidence is largely mechanistic and animal-based; it is an
+  adjunct, not a primary treatment.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -28,7 +34,10 @@ linked_to_topics:
 - estrobolome
 - endometriosis
 - gut-skin-hormone-axis
-linked_to_mechanisms: []
+- estrogen-metabolism
+linked_to_mechanisms:
+- beta-glucuronidase-deconjugation
+- estrogen-enterohepatic-recirculation
 linked_to_claims:
 - estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
 - calcium-d-glucarate-prevents-estrogen-reabsorption
@@ -51,7 +60,7 @@ sources:
   location: Estrogen Detoxification Discussion
   quote: Calcium D glucarate can be brought in here to support this phase. CDG basically
     inhibits your beta glucuronidase and it supports the estrogen excretion.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani

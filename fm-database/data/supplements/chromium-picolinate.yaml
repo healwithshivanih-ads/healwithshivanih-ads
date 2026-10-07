@@ -26,20 +26,31 @@ linked_to_topics:
 - type-2-diabetes
 - prediabetes
 - hypoglycemia
+- pcos
+linked_to_symptoms:
+- carb-cravings
+- elevated-blood-glucose
 linked_to_claims:
 - micronutrient-deficiency-impairs-insulin-receptor-signalling
 - whole-foods-supply-micronutrients-supporting-insulin-sensitivity
 - chromium-improves-glycemic-control-deficient
 - murray-chromium-biotin-fasting-glucose-a1c
-notes_for_coach: Cr picolinate + biotin (600 mcg Cr + 2 mg biotin) combination shown
-  to drop fasting glucose 10 mg/dL and HbA1c 0.54%. Effects are meaningful only in
-  chromium-deficient individuals. At least 200 mcg/day for diabetics; 200–400 mcg/day
-  optimal.
+notes_for_coach: |-
+  Cr picolinate + biotin (600 mcg Cr + 2 mg biotin) combination shown to drop fasting
+  glucose 10 mg/dL and HbA1c 0.54%. Effects are meaningful only in chromium-deficient
+  individuals. At least 200 mcg/day for diabetics; 200–400 mcg/day optimal.
+
+  Best used for: Small and inconsistent benefits for fasting glucose and insulin in type
+  2 diabetes and insulin-resistant PCOS, mostly with the picolinate form, and limited
+  evidence for reducing carbohydrate cravings. Benefit is likelier in people with low
+  chromium intake. An add-on to diet and activity, never a replacement for diabetes
+  medication.
 notes_for_client: Chromium helps insulin work more effectively — it's especially useful
   if you eat refined carbohydrates or have a sedentary lifestyle, both of which deplete
   chromium.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 7.2 — Targeted Supplementation
@@ -52,10 +63,18 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 cycle_phases:
 - early_luteal
 - late_luteal
+contraindications:
+  conditions:
+  - Chronic kidney disease or liver disease — case reports of kidney and liver injury with
+    chromium picolinate
+  medications:
+  - Levothyroxine — chromium reduces its absorption; separate by at least 3-4 hours
+  - Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  life_stages: []

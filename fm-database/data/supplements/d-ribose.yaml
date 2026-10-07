@@ -50,18 +50,20 @@ interactions:
   with_supplements: []
   with_foods: []
 linked_to_topics:
-  - post-exertional-malaise-mecfs
-  - mitochondrial-health-nutrients
-  - chronic-pain-and-fatigue
+- post-exertional-malaise-mecfs
+- mitochondrial-health-nutrients
+- chronic-pain-and-fatigue
+- fibromyalgia
+- chronic-fatigue-syndrome
 linked_to_mechanisms:
-  - mitochondrial-dysfunction
-  - atp-recycling
+- mitochondrial-dysfunction
+- mitochondrial-energy-production
 sources:
   - id: coach-shivani
     location: Coach observation — PEM / mitochondrial support stack
     quote: D-Ribose paired with CoQ10 + magnesium + L-carnitine is the workhorse mito stack for PEM clients — noticeable in 2-4 weeks for most.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-10-07'
 updated_by: shivani

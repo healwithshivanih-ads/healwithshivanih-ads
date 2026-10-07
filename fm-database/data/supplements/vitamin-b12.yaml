@@ -7,9 +7,15 @@ forms_available:
 - liquid
 - lozenge
 evidence_tier: strong
-notes_for_coach: Required cofactor for homocysteine remethylation; deficiency causes homocysteine elevation.
-  Methylcobalamin or adenosylcobalamin preferred over cyanocobalamin. Sublingual/lozenge useful for absorption
-  issues.
+notes_for_coach: |-
+  Required cofactor for homocysteine remethylation; deficiency causes homocysteine
+  elevation. Methylcobalamin or adenosylcobalamin preferred over cyanocobalamin.
+  Sublingual/lozenge useful for absorption issues.
+
+  Best used for: Strongest evidence is for correcting deficiency — very common in Indian
+  vegetarians, metformin and long-term PPI users, people with low stomach acid or H.
+  pylori, and Hashimoto's clients. Test (B12, ideally MMA/homocysteine) before and
+  after. Little benefit for energy or mood when levels are already adequate.
 notes_for_client: Vitamin B12 is essential for converting homocysteine to safe metabolites; deficiency
   raises heart and stroke risk.
 timing_options:
@@ -21,13 +27,22 @@ linked_to_topics:
 - drug-induced-nutrient-depletion
 - beta-blocker-deprescribing
 - cardiovascular-dysfunction
-- mitochondrial-health-nutrition
 - chronic-pain-and-fatigue
 - low-stomach-acid
 - menopause
-- hyperhomocysteinemia
 - atherosclerosis
 - drug-induced-nutrient-depletion-cardiovascular
+- b12-folate-anemia
+- homocysteine-and-methylation
+- mitochondrial-health-nutrients
+- autoimmune-thyroiditis
+- cognitive-decline
+linked_to_symptoms:
+- megaloblastic-anemia
+- elevated-mcv
+- numbness-tingling
+- functional-b12-deficiency-symptoms
+- elevated-homocysteine
 linked_to_claims:
 - metformin-depletes-b12-folate-coq10
 - b12-vegans-higher-deficiency-risk
@@ -37,6 +52,9 @@ linked_to_claims:
 - folic-acid-b12-b6-lower-homocysteine
 linked_to_mechanisms:
 - elevated-homocysteine
+- homocysteine-remethylation
+- b12-absorption-impairment
+- methylmalonyl-coa-pathway
 typical_dose_range:
   capsule:
     min: 500
@@ -86,10 +104,10 @@ sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Homocysteine
   quote: Functionally deficiency in folic acid, vitamin B6, or vitamin B12 causes homocysteine to rise.
-version: 7
+version: 8
 status: active
-updated_at: '2026-08-02'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Methylcobalamin form preferred. Critical for vegetarian / vegan / on metformin
@@ -97,3 +115,9 @@ pregnancy_safety_note: Methylcobalamin form preferred. Critical for vegetarian /
 aliases:
 - vitaone-b12
 - vitamin-b12-methylcobalamin
+contraindications:
+  conditions:
+  - Leber's hereditary optic neuropathy — avoid cyanocobalamin (can worsen optic atrophy);
+    use hydroxo- or methylcobalamin
+  medications: []
+  life_stages: []

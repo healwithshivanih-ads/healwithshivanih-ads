@@ -66,11 +66,15 @@ linked_to_topics:
 - oxidative-stress
 - fibromyalgia
 - chronic-fatigue-syndrome
+- perimenopause
 linked_to_mechanisms:
 - endothelial-dysfunction
 - oxidative-stress
 - nitric-oxide-bioavailability
 - post-viral-fatigue
+linked_to_symptoms:
+- menopause-symptoms
+- dysmenorrhea
 linked_to_claims:
 - pycnogenol-adhd-antioxidant-benefit
 - murray-pycnogenol-multi-symptom-perimenopause
@@ -169,7 +173,7 @@ sources:
   quote: >-
     Grape seed extract supplementation caused a significant decrease in malondialdehyde
     and a marginally significant increase in total antioxidant capacity.
-version: 3
+version: 4
 status: active
-updated_at: '2026-09-10'
+updated_at: '2026-10-07'
 updated_by: shivani

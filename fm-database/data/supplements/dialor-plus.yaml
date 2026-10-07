@@ -56,6 +56,9 @@ evidence_tier: fm_specific_thin
 linked_to_topics:
 - insulin-resistance
 - blood-sugar-regulation
+- prediabetes
+- type-2-diabetes
+- pcos-insulin-resistant
 sources:
 - id: vitaone-product-catalog
   location: vitaone.in/products/liv-bio-s-dialor-plus-124
@@ -64,9 +67,27 @@ sources:
     2026-07-04 via the commerce catalogue (~/fm-plans/supplement_links.yaml, entry "fmn_livbio_dialor_plus_30_veg_tablets"
     / "dialor_plus").
 status: active
-version: 3
-updated_at: '2026-07-06'
+version: 4
+updated_at: '2026-10-07'
 updated_by: shivani
 notes_for_client: 'A combination formula for steadier blood sugar through the day.
 
   Take it with your largest carbohydrate meal.'
+linked_to_symptoms:
+- elevated-blood-glucose
+- elevated-fasting-insulin
+linked_to_mechanisms:
+- insulin-resistance
+- ampk-activation
+- postprandial-glucose-spike
+contraindications:
+  conditions: []
+  medications:
+  - Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium, cinnamon,
+    gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - Cyclosporine, tacrolimus — berberine inhibits CYP3A4 and raises their levels
+  - Warfarin and other anticoagulants — fenugreek has been associated with raised INR; monitor/clinician
+    to coordinate
+  life_stages:
+  - pregnancy — berberine crosses the placenta and can displace bilirubin (kernicterus risk)
+  - lactation — berberine passes into breast milk

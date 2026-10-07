@@ -11,22 +11,39 @@ take_with_food: avoid
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - gut-dysbiosis
+- leaky-gut
+linked_to_symptoms:
+- upper-respiratory-infections
 linked_to_claims:
 - colostrum-supports-gut-immune-repair-via-immunoglobulins
-notes_for_coach: Colostrum (bovine, from early post-partum milk) contains immunoglobulins and growth factors that support
-  gut immune repair. Indicated when sIgA antibody is low on GI-MAP or blood microbiome testing. Sourced from cow breast milk,
-  early postpartum (6–12 hours). Verify dairy tolerance before recommending.
+notes_for_coach: |-
+  Colostrum (bovine, from early post-partum milk) contains immunoglobulins and growth
+  factors that support gut immune repair. Indicated when sIgA antibody is low on GI-MAP
+  or blood microbiome testing. Sourced from cow breast milk, early postpartum (6–12
+  hours). Verify dairy tolerance before recommending.
+
+  Best used for: Small human trials show it limits the rise in gut permeability during
+  NSAID use or heavy exercise, and a meta-analysis found fewer upper respiratory
+  infections in athletes and active adults. Evidence in people with existing gut
+  conditions is limited. Not suitable for clients with cow's milk protein allergy.
 notes_for_client: Colostrum is a natural supplement from early cow's milk that contains immune proteins to help heal and strengthen
   your gut lining. Best taken on an empty stomach.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- gut-barrier-dysfunction
+- mucosal-immune-dysfunction
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair / Immunoglobulin Section
   quote: the commonest things and the ability that you can do is colostrum. So you can prescribe colostrum. Colostrum is coming
     from your cow breast milk.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Cow's milk protein allergy — colostrum is a dairy protein concentrate
+  medications: []
+  life_stages: []

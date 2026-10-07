@@ -33,37 +33,30 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - type-2-diabetes
-- type-2-diabetes-mellitus
 - type-1-diabetes-mellitus
 - insulin-resistance
 - prediabetes
-linked_to_mechanisms: []
-notes_for_coach: 'Traditional Asian and Indian (Ayurveda — karela) anti-diabetic herb.
-  Three
-
+linked_to_mechanisms:
+- insulin-resistance
+notes_for_coach: |-
+  Traditional Asian and Indian (Ayurveda — karela) anti-diabetic herb. Three
   distinct active compounds: charantin (mixed steroids, alcohol-extracted, more
-
   potent than tolbutamide in animal studies); polypeptide-P (insulin-like, lowers
-
   glucose when injected in T1); vicine (precursor of favism — caution G6PD
-
   deficiency).
 
-
-  Murray''s clinical dose — 2 fl oz (60 ml) fresh juice of the unripe fruit daily.
-
+  Murray's clinical dose — 2 fl oz (60 ml) fresh juice of the unripe fruit daily.
   Whole vegetable use in cooking is the traditional Indian approach; tincture +
-
   standardised extracts available but fresh juice is what the trials used.
 
-
   Very effective for postprandial glucose control. Pairs well with the standard
-
   T2DM toolkit (chromium, ALA, gymnema). Particularly useful in India where karela
-
   is culturally familiar and inexpensive.
 
-  '
+  Best used for: Reasonable as a food-first or adjunct option for prediabetes and type 2
+  diabetes in Indian clients (karela is familiar and cheap), with modest effects on
+  fasting glucose. Not a substitute for medication and not worth pushing to non-diabetic
+  clients.
 notes_for_client: 'Bitter melon (karela) is a vegetable widely used in Indian cooking
   that lowers
 
@@ -92,7 +85,9 @@ sources:
     fruit has been clearly established in modern scientific studies in both type 1
     and type 2. Taking as little as 2 fl oz of the juice has shown good results in
     clinical trials.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+linked_to_symptoms:
+- elevated-blood-glucose

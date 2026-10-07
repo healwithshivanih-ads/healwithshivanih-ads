@@ -23,21 +23,27 @@ timing_options:
 - morning
 - mid_morning
 take_with_food: avoid
-notes_for_coach: Precursor to dopamine, norepinephrine, epinephrine, and thyroid hormones.
-  Best taken away from food. Use cautiously with thyroid conditions or stimulant medications.
-  Lynch recommends for fast COMT as a precursor to dopamine, norepinephrine, and epinephrine.
-  NEVER within 6 hours of bedtime (stimulating). AVOID in slow COMT — worsens excess catecholamine
-  burden. Also a MAOA burden — avoid in slow MAOA. Only appropriate when catecholamine levels
-  are genuinely low (fast COMT). Discuss with clinician if prescribed as any medication could
-  interact.
+notes_for_coach: |-
+  Precursor to dopamine, norepinephrine, epinephrine, and thyroid hormones. Best taken
+  away from food. Use cautiously with thyroid conditions or stimulant medications. Lynch
+  recommends for fast COMT as a precursor to dopamine, norepinephrine, and epinephrine.
+  NEVER within 6 hours of bedtime (stimulating). AVOID in slow COMT — worsens excess
+  catecholamine burden. Also a MAOA burden — avoid in slow MAOA. Only appropriate when
+  catecholamine levels are genuinely low (fast COMT). Discuss with clinician if
+  prescribed as any medication could interact.
+
+  Best used for: Best evidence is for keeping focus and working memory under acute
+  stress, sleep loss or cold. Not worth it for anxiety, for slow-COMT clients, or as a
+  way to raise thyroid hormone — tyrosine is rarely the limiting factor in thyroid
+  hormone production.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hpa-axis-dysregulation
-- anxiety
 - hypothyroidism
 - comt-gene-catechol-clearance
 - comt-fast-dopamine-depletion
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dopamine-norepinephrine-regulation
 linked_to_claims:
 - adaptogens-rebalance-hpa-axis
 - tyrosine-supports-dopamine-synthesis-fast-comt
@@ -63,9 +69,16 @@ sources:
   location: 'Chapter 6: ADHD Support Without Ritalin'
   quote: Supplemental tyrosine. He has a bottle in his bathroom, and he takes a capsule every
     morning.
-version: 3
+version: 4
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - tyrosine
+contraindications:
+  conditions:
+  - Hyperthyroidism or Graves' disease — precursor of thyroid hormones
+  medications:
+  - MAO inhibitors (phenelzine, tranylcypromine, selegiline) — risk of hypertensive reaction
+  - Levodopa — competes for intestinal and brain uptake; reduces levodopa effect
+  life_stages: []

@@ -23,11 +23,17 @@ linked_to_mechanisms:
 - h-pylori-biofilm-coccoid-treatment-resistance
 linked_to_claims:
 - manuka-honey-suppresses-h-pylori-growth
-notes_for_coach: Look for MGO (methylglyoxal) rating ≥ 250 or UMF rating ≥ 10 for
-  therapeutic anti-H. pylori effect. Typical protocol — 1 tsp on empty stomach 20-30
-  min before meals, BID-TID for 8 weeks. Pair with mastic gum / sulforaphane / probiotics
-  for compounded effect. Pause if blood sugar is poorly controlled (still raises insulin).
-  Not for infants under 12 months (botulism spore risk).
+notes_for_coach: |-
+  Look for MGO (methylglyoxal) rating ≥ 250 or UMF rating ≥ 10 for therapeutic anti-H.
+  pylori effect. Typical protocol — 1 tsp on empty stomach 20-30 min before meals,
+  BID-TID for 8 weeks. Pair with mastic gum / sulforaphane / probiotics for compounded
+  effect. Pause if blood sugar is poorly controlled (still raises insulin). Not for
+  infants under 12 months (botulism spore risk).
+
+  Best used for: Reasonable soothing adjunct in an H. pylori / gastritis protocol, but
+  human trials have NOT shown it eradicates H. pylori on its own (anti-H. pylori
+  activity is mostly in vitro). Its strongest human evidence is topical wound/burn
+  healing, not oral use. Avoid or limit in poorly controlled diabetes.
 notes_for_client: A specific honey from New Zealand with research-backed antibacterial
   activity against H. pylori and other gut pathogens. Take 1 teaspoon 20 minutes before
   meals on an empty stomach. Look for MGO 250+ or UMF 10+ rating.
@@ -46,7 +52,7 @@ sources:
   quote: Manuka honey is highlighted as one of the most effective types, as it has
     been shown to suppress the growth of H. pylori in gastric cells. High-quality
     Manuka honey is recognized for its potent antibacterial activity.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

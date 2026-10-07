@@ -28,15 +28,22 @@ linked_to_topics:
 - cystitis-and-interstitial-cystitis
 - hay-fever
 - hives-urticaria
-notes_for_coach: 'Latin: Coriandrum sativum; Umbelliferae. Sanskrit: Dhanyaka. Traditional indications:
-  burning urethra, cystitis, urinary tract infection, urticaria, rash, burns, sore throat, vomiting, indigestion,
-  allergies, hay fever. Precautions: few, except high Vata with nerve tissue deficiency. Ayurvedic energetics
-  from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Coriandrum sativum; Umbelliferae. Sanskrit: Dhanyaka. Traditional indications:
+  burning urethra, cystitis, urinary tract infection, urticaria, rash, burns, sore
+  throat, vomiting, indigestion, allergies, hay fever. Precautions: few, except high
+  Vata with nerve tissue deficiency. Ayurvedic energetics from The Yoga of Herbs
+  (Frawley & Lad).
+
+  Best used for: A culinary carminative spice (dhania seed water/tea) for gas and
+  indigestion, used in combination formulas in small trials. There is no human evidence
+  for urinary infections, hay fever or hives. Fine as a kitchen remedy, not a supplement
+  choice.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CORIANDER
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

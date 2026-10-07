@@ -16,8 +16,16 @@ typical_dose_range:
 timing_options:
 - morning
 take_with_food: optional
-notes_for_coach: Highly bioavailable choline source for acetylcholine synthesis; supports
-  cognition and neuroprotection; best taken in the morning.
+notes_for_coach: |-
+  Highly bioavailable choline source for acetylcholine synthesis; supports cognition and
+  neuroprotection; best taken in the morning.
+
+  Best used for: Evidence is in established Alzheimer's/vascular dementia, mostly small
+  older Italian trials at doses above the catalogue range. Reasonable only for an older
+  client with documented cognitive decline, alongside lifestyle work and their doctor's
+  care. Not worth it for everyday brain fog in a younger client. A large observational
+  study linked long-term use with higher stroke risk, so avoid it in clients with
+  cardiovascular or stroke risk unless their clinician agrees.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - cognitive-decline
@@ -29,7 +37,7 @@ sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Alpha-GPC - Choline source, brain health - 300–600 mg/day - Morning
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani

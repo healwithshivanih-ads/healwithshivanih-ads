@@ -15,13 +15,22 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - chronic-inflammation
+linked_to_symptoms:
+- social-anxiety
 linked_to_claims:
 - cbd-anti-inflammatory-fibromyalgia-sleep-anxiety
-notes_for_coach: CBD oil referenced for fibromyalgia, chronic pain, sleep, anxiety,
-  neurodegeneration, and autoimmune conditions. Described as a secondary intervention
-  after foundational nutrition and antioxidants are in place. Not a replacement for
-  vitamin C, glutathione, or foundational diet work. Regulatory status varies by country
-  — verify local availability.
+notes_for_coach: |-
+  CBD oil referenced for fibromyalgia, chronic pain, sleep, anxiety, neurodegeneration,
+  and autoimmune conditions. Described as a secondary intervention after foundational
+  nutrition and antioxidants are in place. Not a replacement for vitamin C, glutathione,
+  or foundational diet work. Regulatory status varies by country — verify local
+  availability.
+
+  Best used for: Most credible for social or performance anxiety, based on small
+  short-term human studies. Evidence for sleep, chronic pain and general anxiety is
+  weaker and mixed. Low-dose drops may not match what was studied. Product quality and
+  THC content vary in India, and CBD interacts with several medications (blood thinners,
+  anti-seizure drugs, transplant drugs, sedatives).
 notes_for_client: CBD oil can support pain, sleep, and anxiety as part of a broader
   anti-inflammatory plan. It works best after you've built a strong dietary and nutritional
   foundation.
@@ -32,7 +41,18 @@ sources:
   location: Anti-Inflammatory Supplements – CBD Oil
   quote: You can see the effect of CBD oil in neurodegeneration, sleep anxiety, muscular
     pain, fibromyalgia, chronic fatigue and all sorts of anti-inflammatory.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Liver disease — CBD raises liver enzymes in a dose-dependent manner (Epidiolex trials)
+  medications:
+  - Warfarin — CBD inhibits CYP2C9 and raises INR
+  - Clobazam and valproate — raised clobazam metabolite levels and liver-enzyme elevations
+  - Tacrolimus / cyclosporine and other CYP3A4 substrates — raised drug levels
+  - Sedatives, opioids and alcohol — additive sedation
+  life_stages:
+  - pregnancy — avoid (FDA advises against)
+  - breastfeeding — avoid (FDA advises against)

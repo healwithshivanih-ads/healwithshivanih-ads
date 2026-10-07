@@ -14,17 +14,29 @@ linked_to_topics:
 - psoriasis
 - psoriasis-gut-immune
 - autoimmune
+- sluggish-bile-flow
+linked_to_symptoms:
+- fat-malabsorption
+- steatorrhea
 linked_to_claims:
 - bile-salts-indicated-for-fat-digestion-impairment
 - murray-bile-acid-psoriasis-dramatic
-notes_for_coach: Bile salts are indicated in patients who have had removal surgeries
-  or have difficulty digesting fats. Available as supplements. Typically taken with
-  fat-containing meals.
+notes_for_coach: |-
+  Bile salts are indicated in patients who have had removal surgeries or have difficulty
+  digesting fats. Available as supplements. Typically taken with fat-containing meals.
+
+  Best used for: Best for clients with clear fat-malabsorption signs (pale, greasy or
+  floating stools, fat intolerance), especially after gallbladder removal. Not a general
+  digestive aid for bloating without fat-digestion signs, and not a treatment for
+  psoriasis or autoimmunity on its own.
 notes_for_client: Bile salts help your body digest fats, especially if you've had
   surgery or struggle with fat absorption.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- bile-acid-insufficiency
+- liver-bile-emulsification
+- sluggish-bile-flow-mechanism
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace Section
@@ -34,7 +46,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Biliary obstruction (blocked bile duct) — adding bile acids is inappropriate until the
+    obstruction is assessed medically
+  - Bile-acid diarrhoea / ileal resection or chronic watery diarrhoea — exogenous bile acids
+    are secretagogues and worsen diarrhoea
+  medications: []
+  life_stages: []

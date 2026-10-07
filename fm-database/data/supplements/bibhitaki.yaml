@@ -29,14 +29,20 @@ linked_to_topics:
 - common-cold
 - asthma
 - agni-digestive-fire
-notes_for_coach: 'Latin: Terminalia belerica; Combretaceae. Sanskrit: Bibhitaki. Traditional indications:
-  cough, sore throat, laryngitis, bronchitis, catarrh, stones, chronic diarrhea, dysentery, parasites,
-  eye diseases. Precautions: high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Terminalia belerica; Combretaceae. Sanskrit: Bibhitaki. Traditional
+  indications: cough, sore throat, laryngitis, bronchitis, catarrh, stones, chronic
+  diarrhea, dysentery, parasites, eye diseases. Precautions: high Vata. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Traditional Ayurvedic Kapha/lung and digestive herb, mainly used as one
+  of the three fruits in triphala; there is little human evidence for it alone. Prefer
+  triphala when a gentle bowel or digestive tonic is wanted.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — BIBHITAKI
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

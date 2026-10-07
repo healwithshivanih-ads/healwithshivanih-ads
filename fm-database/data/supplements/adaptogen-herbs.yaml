@@ -14,9 +14,15 @@ linked_to_topics:
 - clean-genes-protocol
 - comt-catechol-clearance
 - maoa-neurotransmitter-balance
-notes_for_coach: 'Common examples: ashwagandha, rhodiola, Siberian ginseng, passionflower,
-  wild oats. Best taken daily for stress resilience. May skip during low-stress periods
-  (vacation). Do not take stimulating adaptogens close to bedtime.'
+notes_for_coach: |-
+  Common examples: ashwagandha, rhodiola, Siberian ginseng, passionflower, wild oats.
+  Best taken daily for stress resilience. May skip during low-stress periods (vacation).
+  Do not take stimulating adaptogens close to bedtime.
+
+  Best used for: A placeholder for the class; evidence belongs to individual herbs
+  (ashwagandha for stress/sleep, rhodiola for fatigue/burnout). Prefer prescribing the
+  specific herb so dose, safety and evidence are clear; a proprietary blend is hard to
+  dose or troubleshoot.
 notes_for_client: These herbs help your body respond to stress more calmly over time.
   Take with breakfast, or breakfast and lunch if particularly stressed.
 evidence_tier: plausible_emerging
@@ -29,7 +35,24 @@ sources:
   quote: Herbal compounds that support your ability to handle stress are known as
     adaptogens. Common adaptogens are ashwagandha, rhodiola, Siberian ginseng, passionflower,
     and wild oats.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Hyperthyroidism — ashwagandha can raise T4/T3
+  - Autoimmune disease on immunosuppressive treatment — ashwagandha and similar herbs are
+    immunostimulating; clinician sign-off
+  - Bipolar disorder — rhodiola and ginseng-type adaptogens have case reports of mania/hypomania
+  - Liver disease or prior herb-induced liver injury — ashwagandha (a common component) has
+    published case reports of liver injury; stop if jaundice, dark urine or itching appear
+  medications:
+  - Levothyroxine/thyroid medication — ashwagandha may raise thyroid hormone levels; recheck
+    TSH
+  - Sedatives/benzodiazepines — ashwagandha and passionflower are additive
+  - Immunosuppressants — opposing effect
+  life_stages:
+  - Pregnancy — ashwagandha traditionally avoided (abortifacient concern); most adaptogens
+    unstudied
+  - Lactation — insufficient data

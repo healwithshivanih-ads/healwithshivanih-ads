@@ -16,13 +16,23 @@ take_with_food: optional
 linked_to_topics:
 - atopic-dermatitis
 - chronic-candidiasis
+- h-pylori-infection
+linked_to_symptoms:
+- diarrhea
 linked_to_claims:
 - ad-lgg-reduces-eczema-severity
-notes_for_coach: Most evidence in atopic dermatitis in infants with cow's milk allergy.
-  Effect may be more pronounced in IgE-sensitized patients (positive skin-prick test,
-  elevated IgE). Can be combined with L. reuteri.
+notes_for_coach: |-
+  Most evidence in atopic dermatitis in infants with cow's milk allergy. Effect may be
+  more pronounced in IgE-sensitized patients (positive skin-prick test, elevated IgE).
+  Can be combined with L. reuteri.
+
+  Best used for: Best evidence of any Lactobacillus strain for preventing
+  antibiotic-associated diarrhoea and shortening acute infectious diarrhoea. Worth
+  considering when a client starts antibiotics or H. pylori treatment. Evidence for
+  infant eczema prevention is mixed, and benefit for adult IBS is weak.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
 notes_for_client: ''
 sources:
 - id: pizzorno-textbook-gi-2
@@ -30,7 +40,13 @@ sources:
   quote: Probiotic Lactobacillus rhamnosus strain GG alone or in conjunction with
     Lactobacillus reuteri given to infants with AD and cow's milk allergy reduced
     severity of eczema.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - severely immunocompromised, critically ill or central venous catheter in place — rare
+    but documented Lactobacillus bacteraemia/sepsis with live probiotics
+  medications: []
+  life_stages: []

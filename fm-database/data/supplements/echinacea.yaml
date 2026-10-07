@@ -27,7 +27,8 @@ take_with_food: optional
 linked_to_topics:
 - common-cold
 - immune-support
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- innate-immune-modulation
 notes_for_coach: 'Most effective form: fluid extract of FRESH AERIAL portion of E.
   purpurea
 
@@ -73,6 +74,8 @@ evidence_tier: plausible_emerging
 contraindications:
   conditions:
   - autoimmune disease (immune-stimulating; theoretical concern)
+  - Allergy to Asteraceae/Compositae plants (ragweed, chrysanthemum, marigold, daisy) — allergic
+    reactions including anaphylaxis reported
   medications:
   - immunosuppressants (theoretical interaction)
   life_stages:
@@ -82,7 +85,9 @@ sources:
   location: Chapter 39 — Common Cold
   quote: Clinical trials of an extract from freshly harvested E. purpurea plants have
     shown excellent results.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+linked_to_symptoms:
+- upper-respiratory-infections

@@ -46,10 +46,8 @@ linked_to_topics:
 - immune-support
 - gerd-ppi-tapering
 - immune-support-covid-19
-- emotional-healing-in-chronic-disease
 - nervous-system-regulation
 - pancreatic-insufficiency
-- digestive-enzyme-supplementation
 - tendinopathy
 - rheumatoid-arthritis
 - autoimmune
@@ -58,6 +56,15 @@ linked_to_topics:
 - osteoarthritis
 - mthfr-methylation-gene
 - gst-gpx-glutathione-detox
+- prediabetes
+- type-2-diabetes
+- dyslipidemia
+- inflammatory-bowel-disease
+- major-depressive-disorder
+linked_to_symptoms:
+- joint-pain
+- joint-stiffness-and-swelling
+- elevated-hscrp
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - loneliness-activates-inflammatory-pathways
@@ -78,14 +85,24 @@ linked_to_claims:
 - murray-curcumin-equals-phenylbutazone-ra
 - murray-topical-curcumin-vs-calcipotriene
 - curcumin-supports-methylation-mthfr
-notes_for_coach: Lynch mentions curcumin as supportive for MTHFR and healthy methylation.
-  Bioavailability is very low without a lipid carrier or piperine. Anti-inflammatory
-  and Nrf2-activating mechanisms are plausible.
+notes_for_coach: |-
+  Lynch mentions curcumin as supportive for MTHFR and healthy methylation.
+  Bioavailability is very low without a lipid carrier or piperine. Anti-inflammatory and
+  Nrf2-activating mechanisms are plausible.
+
+  Best used for: Best evidence is for knee osteoarthritis pain and stiffness. Supportive
+  RCT data cover lowering CRP, ulcerative colitis maintenance (alongside medical
+  treatment), NAFLD, prediabetes, and use as an add-on in depression. Effects are
+  modest. Use an enhanced-absorption form taken with a fat-containing meal; plain
+  turmeric powder capsules deliver little curcumin. Rare liver injury has been reported
+  with high-absorption products, so stop and refer if signs of liver trouble appear.
 notes_for_client: The active compound in turmeric, curcumin may help support healthy
   methylation and reduce inflammation. Take with a fat-containing meal to improve
   absorption.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- nf-kb-activation
+- nrf2-pathway-activation
 sources:
 - id: vitaone-practice-guide
   location: Seven Clinical Focus Areas > 6. Autoimmune Conditions > Coaching interventions
@@ -153,15 +170,22 @@ contraindications:
   conditions:
   - obstruction of the biliary tract (WHO Monographs Vol 1)
   - gallstones — use only after consulting a physician (WHO Monographs Vol 1)
-  - hypersensitivity / allergic contact dermatitis to turmeric (WHO Monographs Vol
-    1)
+  - hypersensitivity / allergic contact dermatitis to turmeric (WHO Monographs Vol 1)
+  - Active liver disease or history of drug/herb-induced liver injury — rare idiosyncratic
+    hepatotoxicity reported with high-bioavailability and piperine-enhanced curcumin products
+    (LiverTox); stop if jaundice, dark urine or abdominal pain
   medications:
-  - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk;
-    caution
-  life_stages: []
-version: 23
+  - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk; caution
+  - Narrow-therapeutic-index drugs cleared by CYP3A4/P-gp (e.g. tacrolimus, cyclosporine)
+    — piperine-enhanced curcumin can raise blood levels; clinician to coordinate
+  - Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering; monitor
+    when starting (relevant with the new diabetes/prediabetes links)
+  life_stages:
+  - pregnancy — supplemental (concentrated) curcumin not established safe; culinary turmeric
+    is fine
+version: 24
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 cycle_phases:
 - follicular

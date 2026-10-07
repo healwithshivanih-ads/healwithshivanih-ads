@@ -21,16 +21,30 @@ timing_options:
 - with_breakfast
 - with_dinner
 take_with_food: optional
-notes_for_coach: Taurine is an amino acid with emerging evidence for blood pressure
-  support and cardiac antioxidant protection. Listed in the beta blocker tapering
-  supplement protocol. Doses and duration require clinician guidance.
+notes_for_coach: |-
+  Taurine is an amino acid with emerging evidence for blood pressure support and cardiac
+  antioxidant protection. Listed in the beta blocker tapering supplement protocol. Doses
+  and duration require clinician guidance.
+
+  Best used for: Most useful as an adjunct for blood pressure (modest reductions in
+  meta-analyses), heart failure and glycaemic control in diabetes; effective trial doses
+  are considerably higher than typical single capsules. Briden pairs it with magnesium
+  at bedtime for perimenopausal sleep and mood symptoms (expert opinion, not trial
+  evidence). Generally very well tolerated.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - insulin-resistance
 - liver-detoxification
 - beta-blocker-deprescribing
 - cardiovascular-dysfunction
-linked_to_mechanisms: []
+- hypertension
+- congestive-heart-failure
+- type-2-diabetes
+linked_to_mechanisms:
+- bile-flow-regulation
+- endothelial-dysfunction
+linked_to_symptoms:
+- elevated-blood-pressure
 linked_to_claims:
 - fatty-liver-drives-insulin-resistance
 - taurine-bile-flow-gallstone-prevention
@@ -55,7 +69,7 @@ sources:
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
     — Supplement Schedule'
   quote: Taurine
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani

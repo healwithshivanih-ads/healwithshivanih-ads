@@ -10,24 +10,20 @@ timing_options:
 - on_empty_stomach
 - with_breakfast
 take_with_food: avoid
-notes_for_coach: 'Source (Minich transcript) names glutathione as a primary Phase
-  2
-
+notes_for_coach: |-
+  Source (Minich transcript) names glutathione as a primary Phase 2
   conjugating substrate and endogenous antioxidant but does NOT give
-
   dosing. Do not recommend doses from this entry alone — confirm dose
-
   range from a peer-reviewed source or clinical guideline before client
-
   use. Common forms include liposomal liquid, S-acetyl glutathione,
-
   and sublingual; oral reduced GSH absorption is debated. Often
-
   preferred as N-acetylcysteine (NAC) precursor for systemic GSH
-
   support — see NAC entry.
 
-  '
+  Best used for: Oral glutathione does raise body stores modestly in trials, but
+  clinical outcome evidence is thin (a small open-label NAFLD pilot is the best of it).
+  NAC or glycine + NAC are cheaper, better-studied ways to support glutathione for most
+  clients. Do not dose from this entry until a dose range is added.
 contraindications:
   conditions: []
   medications: []
@@ -39,9 +35,12 @@ interactions:
 evidence_tier: strong
 linked_to_topics:
 - detoxification
+- gst-gpx-glutathione-detox
 linked_to_mechanisms:
 - phase-2-conjugation
 - oxidative-stress-from-toxicants
+- glutathione-depletion
+- glutathione-conjugation
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Phase 2 enzymes section
@@ -60,9 +59,9 @@ sources:
   location: Phase 2 Conjugation Pathways
   quote: The other important pathway is glutathione, there's about 20 oxygens, so
     we can bind glutathione with anything.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - glutathione (intracellular)

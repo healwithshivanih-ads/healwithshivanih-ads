@@ -12,15 +12,28 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - gerd-ppi-tapering
+- functional-dyspepsia
+- ibs
+linked_to_symptoms:
+- epigastric-fullness
+- indigestion
+- epigastric-pain
 linked_to_claims:
 - iberogast-modulates-gi-transit
 - ppi-tapering-supplement-support-repair-protect-antioxidant
-notes_for_coach: A standardized herbal combination product (9 herbs including bitter
-  candy tuft, peppermint, chamomile). Listed as a 'transit time modulator' in PPI
-  tapering. Has RCT data for functional dyspepsia and IBS.
+notes_for_coach: |-
+  A standardized herbal combination product (9 herbs including bitter candy tuft,
+  peppermint, chamomile). Listed as a 'transit time modulator' in PPI tapering. Has RCT
+  data for functional dyspepsia and IBS.
+
+  Best used for: Best evidence is for functional dyspepsia (fullness, early satiety,
+  epigastric pain) and, to a lesser degree, IBS. Not a fix for acid-driven GERD or H.
+  pylori, and not for anyone with liver disease, in pregnancy or breastfeeding, or for
+  clients avoiding alcohol (the liquid is about 30% ethanol).
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- altered-gi-motility
 notes_for_client: Iberogast is a herbal liquid that helps regulate gut movement and
   ease digestive discomfort, including symptoms of reflux and irritable bowel.
 sources:
@@ -31,7 +44,16 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Liver disease or a history of drug-induced liver injury — contains greater celandine;
+    the manufacturer added a liver-injury warning in 2018 after rare hepatotoxicity cases
+  - Alcohol dependence or clients avoiding alcohol — the liquid contains about 31% ethanol
+  medications: []
+  life_stages:
+  - Pregnancy — manufacturer advises against use (insufficient safety data, celandine content)
+  - Lactation — manufacturer advises against use (insufficient safety data)

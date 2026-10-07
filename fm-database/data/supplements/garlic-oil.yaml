@@ -15,9 +15,15 @@ linked_to_topics:
 - parasite-infection
 linked_to_claims:
 - broad-spectrum-herbal-antimicrobials-effective-against-bacteria-fungi-parasites
-notes_for_coach: Garlic oil is a broad-spectrum antimicrobial with antifungal and
-  antiparasitic properties. Part of the herbal removal protocol for gut dysbiosis.
-  Often combined with oil of oregano, berberine, and caprylic acid.
+notes_for_coach: |-
+  Garlic oil is a broad-spectrum antimicrobial with antifungal and antiparasitic
+  properties. Part of the herbal removal protocol for gut dysbiosis. Often combined with
+  oil of oregano, berberine, and caprylic acid.
+
+  Best used for: Used as one part of a herbal antimicrobial 'weed' phase for dysbiosis
+  or candida, usually alongside oregano oil or berberine; evidence is mainly in vitro.
+  Garlic-infused cooking oil is a separate low-FODMAP flavour tool, not an
+  antimicrobial.
 notes_for_client: Garlic oil is a natural antimicrobial that supports your gut by
   targeting harmful bacteria, yeast, and parasites.
 evidence_tier: plausible_emerging
@@ -28,7 +34,17 @@ sources:
   location: Removal Section
   quote: garlic oil, berberine, OOC, oil of oregano, and oleoleflexic, they are the
     blood spectrum.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Known garlic/onion (Allium) allergy
+  - Scheduled surgery or dental extraction — stop concentrated garlic products 7–10 days beforehand
+    (antiplatelet effect, post-operative bleeding reports)
+  medications:
+  - Warfarin, other anticoagulants and antiplatelets — garlic products prolong bleeding time;
+    additive risk
+  - HIV protease inhibitors (saquinavir) — garlic reduces their blood levels
+  life_stages: []

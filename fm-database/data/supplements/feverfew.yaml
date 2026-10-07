@@ -7,9 +7,15 @@ typical_dose_range: {}
 timing_options: []
 take_with_food: optional
 contraindications:
-  conditions: []
-  medications: []
-  life_stages: []
+  conditions:
+  - Allergy to Asteraceae/Compositae plants (ragweed, chrysanthemum, marigold, chamomile)
+  - Scheduled surgery — stop ~2 weeks before (antiplatelet effect)
+  medications:
+  - Warfarin, other anticoagulants and antiplatelets — feverfew inhibits platelet aggregation;
+    additive bleeding risk
+  life_stages:
+  - Pregnancy — traditional emmenagogue with uterine-stimulant activity; avoid
+  - Breastfeeding — no safety data; avoid
 interactions:
   with_supplements: []
   with_foods: []
@@ -19,15 +25,22 @@ lactation_safety: unknown
 linked_to_topics:
 - migraine-headache
 linked_to_mechanisms:
-- nitric-oxide-cranial-circulation
 - neuroinflammation
+- eicosanoid-metabolism
+linked_to_symptoms:
+- migraine
 linked_to_claims: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+notes_for_coach: |-
+  Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+
+  Best used for: A migraine-prevention option taken daily for 2–3 months before judging
+  effect; trial results are mixed (Cochrane: small reduction of under one migraine a
+  month). Not useful for treating an attack in progress or for tension headaches.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani

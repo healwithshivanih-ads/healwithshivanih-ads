@@ -28,27 +28,49 @@ linked_to_topics:
 - chronic-fatigue
 - hair-loss-women
 - hair-loss
-linked_to_mechanisms: []
+- menorrhagia
+linked_to_mechanisms:
+- ferritin-storage-depletion
+- heme-vs-nonheme-iron-absorption
+linked_to_symptoms:
+- iron-deficiency
+- anemia
+- restless-legs
 linked_to_claims:
 - iron-not-absorbed-with-damaged-gut-lining
-notes_for_coach: "Ferrous ascorbate is iron molecularly chelated to ascorbic acid (vitamin C)\nwithin\
-  \ the molecule itself — distinct from bisglycinate (iron + 2× glycine)\nand from inorganic salts\
-  \ (sulfate / fumarate). The vit-C-chelation has two\nconsequences: (1) absorption is enhanced without\
-  \ needing a separate vit C\ncofactor, and (2) GI + headache tolerance is markedly better than\n\
-  bisglycinate in headache-sensitive clients.\n\nWHEN TO REACH FOR THIS FORM (over bisglycinate or\
-  \ inorganic salts):\n- Headache or migraine triggered by iron bisglycinate (sometimes histamine-\n\
-  \  or chelate-mediated; ferrous ascorbate sidesteps the trigger).\n- Sensitive GI / nausea on inorganic\
-  \ salts (sulfate, fumarate).\n- Pediatric / perimenopausal clients who prefer syrup over capsules.\n\
-  - Strict vegetarian + supplement-averse — syrup feels less \"medical\".\n\nINDIAN AVAILABILITY (the\
-  \ practical reason to keep this as a separate\ncatalogue entry rather than just aliasing into bisglycinate):\n\
-  - Tonoferon Liquid (Glenmark) — primary recommendation. OTC at most Indian\n  pharmacies, ₹130-180\
-  \ per 150 ml bottle. ~33 mg elemental per 15 ml; halve\n  to 7.5 ml (~16 mg) for headache-sensitive\
-  \ starts.\n- Tonoferon Drops (Glenmark) — for very-low-dose pediatric use, also adult-\n  sensitive\
-  \ starts.\n- Ferium XT (Emcure) — tablet form ferrous ascorbate + folic acid; daily dose.\n- Orofer\
-  \ XT (Emcure) — tablet form, ferrous ascorbate.\n\nDefer iron supplementation if gut lining is actively\
-  \ inflamed (same caveat\nas all iron forms — absorption is impaired during active gut inflammation).\n\
-  Confirm iron deficiency with ferritin before prescribing; target ferritin\n> 50 (restless-legs threshold),\
-  \ ideal 70-100 (FM optimal).\n"
+notes_for_coach: |-
+  Ferrous ascorbate is iron molecularly chelated to ascorbic acid (vitamin C)
+  within the molecule itself — distinct from bisglycinate (iron + 2× glycine)
+  and from inorganic salts (sulfate / fumarate). The vit-C-chelation has two
+  consequences: (1) absorption is enhanced without needing a separate vit C
+  cofactor, and (2) GI + headache tolerance is markedly better than
+  bisglycinate in headache-sensitive clients.
+
+  WHEN TO REACH FOR THIS FORM (over bisglycinate or inorganic salts):
+  - Headache or migraine triggered by iron bisglycinate (sometimes histamine-
+    or chelate-mediated; ferrous ascorbate sidesteps the trigger).
+  - Sensitive GI / nausea on inorganic salts (sulfate, fumarate).
+  - Pediatric / perimenopausal clients who prefer syrup over capsules.
+  - Strict vegetarian + supplement-averse — syrup feels less "medical".
+
+  INDIAN AVAILABILITY (the practical reason to keep this as a separate
+  catalogue entry rather than just aliasing into bisglycinate):
+  - Tonoferon Liquid (Glenmark) — primary recommendation. OTC at most Indian
+    pharmacies, ₹130-180 per 150 ml bottle. ~33 mg elemental per 15 ml; halve
+    to 7.5 ml (~16 mg) for headache-sensitive starts.
+  - Tonoferon Drops (Glenmark) — for very-low-dose pediatric use, also adult-
+    sensitive starts.
+  - Ferium XT (Emcure) — tablet form ferrous ascorbate + folic acid; daily dose.
+  - Orofer XT (Emcure) — tablet form, ferrous ascorbate.
+
+  Defer iron supplementation if gut lining is actively inflamed (same caveat
+  as all iron forms — absorption is impaired during active gut inflammation).
+  Confirm iron deficiency with ferritin before prescribing; target ferritin
+  > 50 (restless-legs threshold), ideal 70-100 (FM optimal).
+
+  Best used for: Best for confirmed iron deficiency in clients who prefer a syrup or did
+  not tolerate other forms; widely used in Indian antenatal care. Not worth it, and
+  potentially harmful, when ferritin is normal or high.
 notes_for_client: 'Iron, in a form that''s gentler on the stomach than most.
 
   Take it with something sharp — lemon, amla, orange — which helps it absorb. Never with tea, coffee
@@ -62,9 +84,9 @@ sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 — Supplement Table (iron dosing context)
   quote: Iron — Hemoglobin, oxygen transport — 18–30 mg/day — post any meal or with vitamin C
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
@@ -80,3 +102,14 @@ aliases:
 - tonoferon
 - ferium-xt
 - orofer-xt
+contraindications:
+  conditions:
+  - Haemochromatosis or iron overload (raised ferritin / transferrin saturation) — supplemental
+    iron worsens organ iron deposition
+  - Thalassaemia trait or other non-iron-deficiency microcytosis (common in India) — low MCV/Hb
+    is not proof of iron deficiency; iron without a low ferritin risks overload
+  medications:
+  - Levothyroxine — iron binds it in the gut; separate by at least 4 hours
+  - Tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin) — chelation
+    lowers absorption of both; separate by 2-4 hours
+  life_stages: []

@@ -21,20 +21,26 @@ take_with_food: optional
 linked_to_topics:
 - essential-hypertension
 - high-blood-pressure
-- type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
 linked_to_claims:
 - hawthorn-mild-bp-lowering-2-4-weeks
-notes_for_coach: 'Standardise to 10% procyanidins or 1.8% vitexin-4''-rhamnoside. Dose: 100–250
-  mg t.i.d. Also improves general heart function. Effects require 2–4 weeks minimum. Best
-  used as adjunct to other interventions. 100–250 mg t.i.d. (10% procyanidins or 1.8% vitexin
-  with 4% rhamnoside). Best choice for cardiovascular disease or hypertension in diabetes.
-  Consider drug interactions with cardiac medications.'
+notes_for_coach: |-
+  Standardise to 10% procyanidins or 1.8% vitexin-4'-rhamnoside. Dose: 100–250 mg t.i.d.
+  Also improves general heart function. Effects require 2–4 weeks minimum. Best used as
+  adjunct to other interventions. 100–250 mg t.i.d. (10% procyanidins or 1.8% vitexin
+  with 4% rhamnoside). Best choice for cardiovascular disease or hypertension in
+  diabetes. Consider drug interactions with cardiac medications.
+
+  Best used for: Strongest evidence is in mild heart failure (Cochrane: better exercise
+  tolerance and symptoms), with a mild blood-pressure effect that takes 2-4+ weeks.
+  Reasonable for mild hypertension, including in clients with type 2 diabetes. Any
+  client on heart medicines (especially digoxin) needs their cardiologist involved.
 notes_for_client: Hawthorn is a gentle herb for the heart and blood pressure — it works gradually,
   so give it at least a month. Hawthorn extract supports healthy blood pressure and heart
   function — the preferred herbal choice when cardiovascular risk is a concern.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- vascular-smooth-muscle-relaxation
 sources:
 - id: pizzorno-cardiometabolic-hypertension
   location: Botanical Medicines / Crataegus
@@ -45,9 +51,17 @@ sources:
   location: Nutritional and Herbal Supplements / Flavonoids table
   quote: Hawthorn extract (10% procyanidins) 150-300 mg — Best choice in cardiovascular disease
     or hypertension.
-version: 3
+version: 4
 status: active
-updated_at: '2026-08-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - hawthorn-extract-diabetes
+contraindications:
+  conditions: []
+  medications:
+  - Digoxin — hawthorn potentiates cardiac glycosides; clinician decision (catalogue claim
+    murray-hawthorn-coronary-dilation-angina)
+  - Antihypertensives, beta-blockers, nitrates and calcium-channel blockers — additive drops
+    in blood pressure and heart rate; home BP log and doctor aware
+  life_stages: []

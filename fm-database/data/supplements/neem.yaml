@@ -29,16 +29,37 @@ linked_to_topics:
 - psoriasis
 - blood-sugar-regulation
 - detoxification
-notes_for_coach: 'Latin: Azadirachta indica; Meliaceae. Sanskrit: Nimba. Traditional indications: skin
-  diseases, urticaria, eczema, ringworm, parasites, fever, malaria, cough, thirst, nausea, vomiting, diabetes,
-  tumors, obesity, arthritis, rheumatism, jaundice. Precautions: diseases of cold and tissue deficiency
-  generally; use with discretion in severe fatigue or emaciation. Ayurvedic energetics from The Yoga of
-  Herbs (Frawley & Lad).'
+- periodontal-disease
+notes_for_coach: |-
+  Latin: Azadirachta indica; Meliaceae. Sanskrit: Nimba. Traditional indications: skin
+  diseases, urticaria, eczema, ringworm, parasites, fever, malaria, cough, thirst,
+  nausea, vomiting, diabetes, tumors, obesity, arthritis, rheumatism, jaundice.
+  Precautions: diseases of cold and tissue deficiency generally; use with discretion in
+  severe fatigue or emaciation. Ayurvedic energetics from The Yoga of Herbs (Frawley &
+  Lad).
+
+  Best used for: Best supported topically: neem mouthwash or dentifrice for gum
+  inflammation and plaque, and traditional skin use. Oral blood-sugar and 'detox' uses
+  rest on small or animal studies — not worth choosing over better-evidenced options,
+  and never in pregnancy, breastfeeding, children or anyone trying to conceive.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — NEEM
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- gum-inflammation
+contraindications:
+  conditions:
+  - Trying to conceive (both partners) — documented antifertility/spermicidal effects
+  medications:
+  - Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO monograph
+    interaction)
+  life_stages:
+  - 'Pregnancy — WHO monograph: do not use; traditional abortifacient and antifertility effects'
+  - 'Lactation — WHO monograph: do not use'
+  - Children under 12 — WHO monograph; neem oil ingestion has caused fatal Reye-like encephalopathy
+    in infants

@@ -66,9 +66,10 @@ interactions:
 linked_to_topics:
 - histamine-intolerance
 - mast-cell-activation-syndrome
-- dao-histamine-intolerance
+- migraine-headache
 linked_to_mechanisms:
-- histamine-metabolism-impairment
+- histamine-catabolism-dao
+- diamine-oxidase-deficiency
 sources:
 - id: coach-shivani
   location: Coach observation — MCAS / histamine intolerance protocol
@@ -78,7 +79,11 @@ sources:
   location: 'Chapter 7: Making the Most of DAO'
   quote: He was making good use of a supplemental probiotic that helps process histamine.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
+linked_to_symptoms:
+- intolerance-fermented-high-histamine-foods
+- histamine-intolerance
+- migraine

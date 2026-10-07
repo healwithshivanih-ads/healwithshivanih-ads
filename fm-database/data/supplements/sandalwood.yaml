@@ -32,15 +32,26 @@ linked_to_topics:
 - chronic-inflammation
 - atopic-dermatitis
 - herpes-simplex
-notes_for_coach: 'Latin: Santalum album; Santalaceae. Sanskrit: Chandana. Traditional indications: eye
-  diseases, cystitis, urethritis, vaginitis, acute dermatitis, herpes zoster, bronchitis, palpitations,
-  gonorrhea, sunstroke. Precautions: high Kapha, severe lung congestion. Ayurvedic energetics from The
-  Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Santalum album; Santalaceae. Sanskrit: Chandana. Traditional indications: eye
+  diseases, cystitis, urethritis, vaginitis, acute dermatitis, herpes zoster,
+  bronchitis, palpitations, gonorrhea, sunstroke. Precautions: high Kapha, severe lung
+  congestion. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Traditional cooling Ayurvedic herb with almost no human trial evidence
+  for internal use; mainly relevant as topical/aromatic use (skin soothing, calming).
+  Not worth placing in a clinical supplement protocol.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — SANDALWOOD
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - kidney disease (sandalwood oil taken internally is contraindicated in renal parenchymal
+    disease per Commission E; limit internal use to short courses)
+  medications: []
+  life_stages: []

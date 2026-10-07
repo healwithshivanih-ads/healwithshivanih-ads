@@ -30,15 +30,28 @@ linked_to_topics:
 - sinusitis
 - immune-support
 - asthma
-notes_for_coach: 'Latin: Myrica spp.; Myricaceae. Sanskrit: Katphah. Traditional indications: colds, flus,
-  laryngitis, sinus and nasal congestion, sore throat, asthma, bronchitis, adenoids, fever, bleeding gums,
-  chronic sores, epilepsy. Precautions: high Pitta, hyperacidity, hypertension. Ayurvedic energetics from
-  The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Myrica spp.; Myricaceae. Sanskrit: Katphah. Traditional indications: colds,
+  flus, laryngitis, sinus and nasal congestion, sore throat, asthma, bronchitis,
+  adenoids, fever, bleeding gums, chronic sores, epilepsy. Precautions: high Pitta,
+  hyperacidity, hypertension. Ayurvedic energetics from The Yoga of Herbs (Frawley &
+  Lad).
+
+  Best used for: Traditional Ayurvedic/Western herbal anti-Kapha decongestant for colds,
+  sinus and throat; there are no modern human trials. Use only as a traditional adjunct,
+  and avoid in high blood pressure or high Pitta/acidity.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — BAYBERRY
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Hypertension and fluid retention — Myrica root bark contains myricadiol with mineralocorticoid
+    activity; Frawley & Lad list hypertension as a precaution
+  medications: []
+  life_stages:
+  - pregnancy — emetic/astringent herb with no safety data

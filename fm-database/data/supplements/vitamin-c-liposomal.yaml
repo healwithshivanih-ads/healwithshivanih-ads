@@ -14,8 +14,8 @@ timing_options:
 - with_breakfast
 take_with_food: optional
 linked_to_topics:
-- histamine-intolerance-dao
-- nos3-nitric-oxide-cardiovascular
+- histamine-intolerance
+- nos3-nitric-oxide
 linked_to_claims:
 - vitamin-c-fish-oil-stabilise-mast-cells
 notes_for_coach: Lynch notes vitamin C and fish oil help stabilise mast cells (storing
@@ -26,13 +26,22 @@ notes_for_client: Vitamin C helps stabilise the immune cells that release histam
   and supports your cardiovascular system. The liposomal form is absorbed better than
   standard vitamin C.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- histamine-metabolism
+- oxidative-stress
 sources:
 - id: dirty-genes-lynch
   location: Chapter 15 — Additional Supplements for Your DAO
   quote: Vitamin C and fish oil. These nutrients help stabilize mast cells (cells
     that store and release histamine).
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - history of calcium-oxalate kidney stones — high-dose vitamin C raises urinary oxalate
+  - haemochromatosis / iron overload — vitamin C increases iron absorption
+  - G6PD deficiency — high doses can trigger haemolysis
+  medications: []
+  life_stages: []

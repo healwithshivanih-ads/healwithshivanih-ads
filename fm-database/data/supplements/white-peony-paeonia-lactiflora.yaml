@@ -44,23 +44,30 @@ interactions:
 pregnancy_safety: caution
 lactation_safety: unknown
 linked_to_topics:
-  - pcos-fertility
-  - hirsutism-and-androgen-excess
-  - androgen-excess
+- pcos-fertility
+- hirsutism-and-androgen-excess
+- androgen-excess
+- pcos
 linked_to_symptoms:
-  - anovulation
+- anovulation
+- infertility-female
 linked_to_mechanisms: []
 linked_to_claims:
   - white-peony-licorice-pcos-androgens-tj68
-notes_for_coach: "White peony root (Bai Shao in Chinese medicine) is the primary
-  botanical for elevated androgens in PCOS. Active constituent paeoniflorin modulates
-  aromatase enzyme activity supporting follicle maturation and ovulation. Classically
-  combined with licorice as TJ-68 (Shakuyaku-Kanzo-To, a Kampo formula). Two small
-  trials show testosterone reduction and ovulation restoration in PCOS. Dose as
-  tincture: 20mL per 100mL formula batch (combined with chaste berry, black cohosh,
-  dong quai, hops per Romm Box 5-32). India availability: Himalaya and Organic India
-  don't carry it; look for TCM supplier or import as standardised extract. Pairs well
-  with NAC, inositol, spearmint tea for PCOS protocol."
+notes_for_coach: |-
+  White peony root (Bai Shao in Chinese medicine) is the primary botanical for elevated
+  androgens in PCOS. Active constituent paeoniflorin modulates aromatase enzyme activity
+  supporting follicle maturation and ovulation. Classically combined with licorice as
+  TJ-68 (Shakuyaku-Kanzo-To, a Kampo formula). Two small trials show testosterone
+  reduction and ovulation restoration in PCOS. Dose as tincture: 20mL per 100mL formula
+  batch (combined with chaste berry, black cohosh, dong quai, hops per Romm Box 5-32).
+  India availability: Himalaya and Organic India don't carry it; look for TCM supplier
+  or import as standardised extract. Pairs well with NAC, inositol, spearmint tea for
+  PCOS protocol.
+
+  Best used for: A second-line option for PCOS with high testosterone, usually in the
+  classic peony-licorice (TJ-68) formula, once diet, inositol and NAC are in place. The
+  evidence is a few small trials, and it is hard to source in India.
 notes_for_client: White peony root is a gentle Chinese medicinal herb that helps
   calm excess testosterone in PCOS. It works with the ovary's natural processes to
   support ovulation and hormone balance. Typically used as part of a blended formula.
@@ -71,7 +78,7 @@ sources:
       and ovulation. Trial n=8: testosterone decreased to <50 ng/dL, 7/8 resumed
       ovulation. Trial n=20: 90% testosterone lowered, 25% conceived."
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-08'
+updated_at: '2026-10-07'
 updated_by: shivani

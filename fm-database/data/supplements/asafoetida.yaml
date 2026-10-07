@@ -30,15 +30,34 @@ linked_to_topics:
 - gut-dysfunction
 - gut-dysbiosis
 - chronic-inflammation
-notes_for_coach: 'Latin: Ferula asafoetida; Umbelliferae. Sanskrit: Hingu. Traditional indications: indigestion,
-  flatulence, abdominal distention, intestinal colic pain, constipation, arthritis, rheumatism, whooping
-  cough, convulsions, epilepsy, hysteria, palpitation, asthma, paralysis, worms. Precautions: high fever,
-  hyperacidity, rash, urticaria, pregnancy. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+- functional-dyspepsia
+notes_for_coach: |-
+  Latin: Ferula asafoetida; Umbelliferae. Sanskrit: Hingu. Traditional indications:
+  indigestion, flatulence, abdominal distention, intestinal colic pain, constipation,
+  arthritis, rheumatism, whooping cough, convulsions, epilepsy, hysteria, palpitation,
+  asthma, paralysis, worms. Precautions: high fever, hyperacidity, rash, urticaria,
+  pregnancy. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Small-trial support for functional dyspepsia and gas; best as a
+  culinary carminative in lentil and bean dishes for clients with flatulence. Not a
+  treatment for dysbiosis.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — ASAFOETIDA
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- flatulence
+- indigestion
+contraindications:
+  conditions:
+  - Celiac disease or gluten sensitivity — most commercial hing is compounded with wheat flour;
+    use a gluten-free product
+  - Active GERD/hyperacidity — heating, can aggravate
+  medications: []
+  life_stages:
+  - Infants — reported methaemoglobinaemia in infants given asafoetida
+  - Pregnancy — medicinal doses (traditional emmenagogue/abortifacient)

@@ -28,19 +28,34 @@ linked_to_topics:
 - osteoporosis
 - constipation
 - healthy-menstrual-cycle-baseline
-notes_for_coach: 'Latin: Sesamum indicum; Pedaliaceae. Sanskrit: Tila. Traditional indications: chronic
-  cough, weak lungs, chronic constipation, hemorrhoids, dysentery, amenorrhea, dysmenorrhea, receding
-  gums, tooth decay, hair loss, weak bones, osteoporosis, emaciation, convalescence. Precautions: obesity,
-  high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+- dyslipidemia
+- hypertension
+notes_for_coach: |-
+  Latin: Sesamum indicum; Pedaliaceae. Sanskrit: Tila. Traditional indications: chronic
+  cough, weak lungs, chronic constipation, hemorrhoids, dysentery, amenorrhea,
+  dysmenorrhea, receding gums, tooth decay, hair loss, weak bones, osteoporosis,
+  emaciation, convalescence. Precautions: obesity, high Pitta. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: A food rather than a supplement: sesame (til) adds healthy fats,
+  magnesium and some calcium to vegetarian diets (calcium from unhulled seeds is less
+  well absorbed than label figures suggest), and sesame/sesame-oil intake has modest
+  meta-analytic support for lipids and blood pressure. 'Seed cycling' for menstrual
+  regulation has no trial evidence.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — SESAME SEEDS
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 cycle_phases:
 - ovulatory
 - early_luteal
 - late_luteal
+contraindications:
+  conditions:
+  - sesame allergy (major food allergen; anaphylaxis risk)
+  medications: []
+  life_stages: []

@@ -16,11 +16,20 @@ take_with_food: optional
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - hairfall
+linked_to_symptoms:
+- weak-peeling-nails
 linked_to_claims:
 - biotin-interferes-with-lab-tests
-notes_for_coach: Only one active form (D-Biotin). Stop 3–4 days before labs. High
-  doses may interfere with B5 and compete for absorption. 300 mcg typical; high-dose
-  hair protocols (2500–10,000 mcg) should be supervised.
+notes_for_coach: |-
+  Only one active form (D-Biotin). Stop 3–4 days before labs. High doses may interfere
+  with B5 and compete for absorption. 300 mcg typical; high-dose hair protocols
+  (2500–10,000 mcg) should be supervised.
+
+  Best used for: Strongest for brittle nails and for hair loss in people who are
+  actually biotin-deficient (long antibiotic courses, raw egg white intake,
+  anticonvulsants, pregnancy). Little evidence for hair loss in people with normal
+  biotin status, and high doses distort thyroid lab results — important for thyroid
+  clients.
 notes_for_client: 'Biotin is important for hair and nail strength. IMPORTANT: Stop
   taking it 3–4 days before any blood test as it can cause false results.'
 evidence_tier: plausible_emerging
@@ -30,9 +39,16 @@ sources:
   location: Vitamin B7 (Biotin)
   quote: 'Supplement: 300 mcg typical; high doses (thousands mcg/day) safe but may
     interfere with B5 & lab tests.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - vitamin-b7
+contraindications:
+  conditions:
+  - Pending blood tests using streptavidin–biotin immunoassays (thyroid function, troponin,
+    reproductive hormones, vitamin D) — biotin causes falsely low/high results (FDA safety
+    communication, incl. missed heart attacks); stop 2–3+ days before
+  medications: []
+  life_stages: []

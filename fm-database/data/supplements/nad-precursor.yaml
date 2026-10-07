@@ -33,27 +33,31 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Insufficient safety data in pregnancy and lactation.
 linked_to_topics:
-- long-covid
 - chronic-fatigue-syndrome
 linked_to_mechanisms:
-- nad-sirtuin-signaling
 - mitochondrial-dysfunction
 linked_to_claims: []
-notes_for_coach: NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside)
-  are NAD+ precursors used to support mitochondrial energy production and sirtuin
-  signaling. NAD+ depletion is documented in aging, post-viral syndromes including
-  Long COVID, and chronic fatigue. Standard clinical dose is 250-500 mg/day for general
-  support, up to 1000 mg/day in post-viral recovery contexts. NR has more human trial
-  data; NMN may raise NAD+ levels more efficiently in muscle. Best taken in the morning
-  on empty stomach. Avoid in active cancer (sirtuin activation has complex effects
-  on tumour biology).
+notes_for_coach: |-
+  NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside) are NAD+ precursors
+  used to support mitochondrial energy production and sirtuin signaling. NAD+ depletion
+  is documented in aging, post-viral syndromes including Long COVID, and chronic
+  fatigue. Standard clinical dose is 250-500 mg/day for general support, up to 1000
+  mg/day in post-viral recovery contexts. NR has more human trial data; NMN may raise
+  NAD+ levels more efficiently in muscle. Best taken in the morning on empty stomach.
+  Avoid in active cancer (sirtuin activation has complex effects on tumour biology).
+
+  Best used for: Reliably raises blood NAD+, but clinical benefits in humans are small
+  and inconsistent. One small NMN trial improved muscle insulin sensitivity in
+  prediabetic women, while NR trials on insulin sensitivity were null. Use in post-viral
+  fatigue or CFS is experimental with no proven benefit. Not worth the cost as a general
+  anti-ageing or energy supplement.
 notes_for_client: ''
 sources:
 - id: vitaone-skill-practice-guide
   location: Practice guide — mitochondrial / longevity section
   quote: NAD+ precursors (NR, NMN) support cellular energy and mitochondrial function.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-10-07'
 updated_by: shivani

@@ -21,20 +21,41 @@ take_with_food: required
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - 5r-gut-protocol
+- constipation
+- gut-dysbiosis
+- probiotic-and-prebiotic-support
+linked_to_symptoms:
+- constipation
 linked_to_claims:
 - fiber-generates-scfa-for-gut-healing
-notes_for_coach: Prebiotics feed beneficial bacteria and support short-chain fatty acid (SCFA) production, which nourishes
-  colonocytes. Increase dose gradually to minimize gas/bloating during introduction.
+notes_for_coach: |-
+  Prebiotics feed beneficial bacteria and support short-chain fatty acid (SCFA)
+  production, which nourishes colonocytes. Increase dose gradually to minimize
+  gas/bloating during introduction.
+
+  Best used for: Best for constipation and for rebuilding beneficial bacteria once the
+  gut is calm, started low and increased slowly. Not a good choice in SIBO or
+  FODMAP-sensitive IBS, where it usually worsens bloating — use psyllium or PHGG
+  instead.
 notes_for_client: Prebiotic fiber feeds the good bacteria in your gut and helps them produce compounds that repair the gut
   lining. Increase intake slowly to avoid gas.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- butyrate-production
+- scfa-deficiency
 sources:
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Repair
   quote: fiber is very important. They can create the short chain fatty acid and short chain fatty acid is very important
     as a gut nutrient. They can heal your intestine.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - SIBO — fermentable prebiotics (inulin, FOS, GOS) commonly worsen bloating, gas and pain
+  - IBS during the low-FODMAP elimination phase — inulin/FOS/GOS are high-FODMAP and often
+    aggravate symptoms (PHGG is the better-tolerated option)
+  medications: []
+  life_stages: []

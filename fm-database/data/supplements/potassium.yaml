@@ -20,23 +20,51 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - essential-hypertension
+- hypertension
+- kidney-stones
+linked_to_symptoms:
+- elevated-blood-pressure
 linked_to_claims:
 - potassium-supplements-reduce-bp
-notes_for_coach: OTC supplements limited to 99 mg/dose by FDA. Salt substitutes (NoSalt,
-  Nu-Salt) provide ~530 mg/1⁄6 tsp. Therapeutic doses (2.5–5 g/day) require food-based
-  approach or clinician supervision. Contraindicated with digitalis, K-sparing diuretics,
-  ACE inhibitors, and in kidney disease.
+notes_for_coach: |-
+  OTC supplements limited to 99 mg/dose by FDA. Salt substitutes (NoSalt, Nu-Salt)
+  provide ~530 mg/1⁄6 tsp. Therapeutic doses (2.5–5 g/day) require food-based approach
+  or clinician supervision. Contraindicated with digitalis, K-sparing diuretics, ACE
+  inhibitors, and in kidney disease.
+
+  Best used for: Strongest evidence is for lowering blood pressure, mainly by raising
+  potassium from food (fruit, vegetables, coconut water, dal); prescription potassium
+  citrate is used by doctors to prevent recurrent kidney stones. Supplemental potassium
+  is unsafe in kidney disease or with BP medicines that raise potassium (ACE inhibitors,
+  ARBs, spironolactone) — anything above food-level intake belongs with the client's
+  doctor.
 notes_for_client: Potassium works hand-in-hand with sodium — the more you get from
   fruits and vegetables, the better your blood pressure tends to be. High-dose pills
   can cause stomach upset; food is always best.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- sodium-volume-retention
 sources:
 - id: pizzorno-cardiometabolic-hypertension
   location: DASH Diet / K and Na
   quote: K supplements alone can reduce BP in hypertensives at a dose of 2.5 to 5.0
     g q.d. of K.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Chronic kidney disease / reduced eGFR — impaired potassium excretion, risk of dangerous
+    hyperkalaemia
+  - Known hyperkalaemia or Addison's disease (adrenal insufficiency) — cannot excrete potassium
+    normally
+  - Oesophageal or GI stricture, delayed gastric emptying or slowed gut transit — solid potassium
+    chloride tablets can cause GI ulceration/bleeding (labelled warning)
+  medications:
+  - ACE inhibitors and ARBs (e.g. ramipril, telmisartan, losartan) — raise serum potassium;
+    supplement can cause hyperkalaemia
+  - Potassium-sparing diuretics (spironolactone, eplerenone, amiloride) — additive hyperkalaemia
+    risk
+  - Digoxin — potassium shifts (high or low) alter digoxin toxicity and arrhythmia risk
+  life_stages: []

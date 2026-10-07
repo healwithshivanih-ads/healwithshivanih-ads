@@ -1,6 +1,6 @@
 slug: ox-bile
 display_name: Ox Bile
-category: enzyme
+category: other
 forms_available:
 - capsule
 typical_dose_range:
@@ -21,18 +21,30 @@ linked_to_topics:
 - autoimmune
 - histamine-intolerance-dao
 - pemt-choline-cell-membrane
+- maldigestion
+linked_to_symptoms:
+- fat-malabsorption
+- steatorrhea
 linked_to_claims:
 - sluggish-bile-flow-overlooked-root-cause
 - murray-bile-acid-psoriasis-dramatic
 - ox-bile-supports-sibo-fat-digestion-dao
-notes_for_coach: Lynch recommends starting with 250 mg at dinner for SIBO (antimicrobial
-  action in small intestine) and for those without a gallbladder. Supports fat digestion
-  and bile flow which is impaired in dirty PEMT. Also used in visceral/gallbladder
-  support alongside PEMT spot cleaning.
+notes_for_coach: |-
+  Lynch recommends starting with 250 mg at dinner for SIBO (antimicrobial action in
+  small intestine) and for those without a gallbladder. Supports fat digestion and bile
+  flow which is impaired in dirty PEMT. Also used in visceral/gallbladder support
+  alongside PEMT spot cleaning.
+
+  Best used for: Strongest rationale is direct bile replacement for fat maldigestion —
+  pale/greasy/floating stools, post-cholecystectomy clients, or poor tolerance of
+  dietary fat. Not worth it for a client with normal fat digestion, and the
+  psoriasis/SIBO/DAO uses rest on single-author or textbook opinion rather than trials.
 notes_for_client: A digestive supplement that mimics your own bile — helpful for fat
   digestion, supporting beneficial bacteria balance, and those without a gallbladder.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- bile-acid-insufficiency
+- liver-bile-emulsification
 sources:
 - id: vitaone-gut-cheatsheet
   location: Sluggish Bile Flow — Supplements That Improve Bile Flow
@@ -44,7 +56,16 @@ sources:
   location: Chapter 15 — SIBO section
   quote: Ox bile in small doses can help support the elimination of harmful bacteria
     in your small intestine, which will also support your DAO.
-version: 3
+version: 4
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Bile-duct obstruction or active gallstone colic — increases bile load; can provoke biliary
+    pain
+  - Chronic diarrhoea / bile-acid diarrhoea (e.g. after ileal resection) — bile salts are
+    secretory laxatives and can worsen it
+  medications:
+  - Bile-acid sequestrants (cholestyramine, colesevelam) — bind bile salts; separate dosing
+  life_stages: []

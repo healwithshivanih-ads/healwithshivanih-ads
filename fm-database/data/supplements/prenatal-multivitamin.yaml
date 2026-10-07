@@ -27,7 +27,8 @@ timing_options:
 - with_lunch
 take_with_food: required
 contraindications:
-  conditions: []
+  conditions:
+  - Hereditary haemochromatosis / iron overload — most prenatals contain iron
   medications:
   - methotrexate
   life_stages: []
@@ -40,6 +41,10 @@ linked_to_topics:
 - preconception
 - reproductive-health
 - methylation
+- preconception-protocol
+- pregnancy-first-trimester
+- female-infertility
+- couples-90-day-fertility-reset
 linked_to_mechanisms:
 - methylation
 linked_to_claims: []
@@ -57,7 +62,7 @@ sources:
   quote: Prenatal multivitamin standard recommendation for pregnancy and preconception
     support.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-10-07'
 updated_by: shivani

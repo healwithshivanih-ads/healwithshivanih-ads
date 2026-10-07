@@ -26,18 +26,33 @@ ayurvedic_actions:
 - nervine
 linked_to_topics:
 - hair-loss
-- iron-deficiency-anemia
 - adrenal-fatigue
 - cognitive-decline
-notes_for_coach: 'Latin: Polygonum multiflorum; Polygonaceae. Traditional indications: anemia, neurasthenia,
-  impotence, lower back pain, premature greying or falling of the hair, enlarged lymph glands, excessive
-  menstruation, leucorrhea, arteriosclerosis, diabetes. Precautions: weak digestion, severe congestion
-  or edema; K and Ama aggravated in excess. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Polygonum multiflorum; Polygonaceae. Traditional indications: anemia,
+  neurasthenia, impotence, lower back pain, premature greying or falling of the hair,
+  enlarged lymph glands, excessive menstruation, leucorrhea, arteriosclerosis, diabetes.
+  Precautions: weak digestion, severe congestion or edema; K and Ama aggravated in
+  excess. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Traditional tonic for premature greying and hair loss, but there is no
+  robust human evidence and a documented risk of liver injury. Generally not worth
+  recommending; any use belongs under clinician supervision with liver monitoring.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — FO-TI
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Any liver disease, raised liver enzymes or past drug-induced liver injury — Polygonum
+    multiflorum has many documented cases of idiosyncratic hepatotoxicity, including acute
+    liver failure (regulatory warnings in UK, Australia, China)
+  medications:
+  - Other potentially hepatotoxic drugs/supplements (e.g. high-dose paracetamol, methotrexate,
+    isoniazid, statins, kava, green-tea extract) — additive liver-injury risk
+  life_stages:
+  - Pregnancy and breastfeeding — no safety data and hepatotoxicity risk; avoid

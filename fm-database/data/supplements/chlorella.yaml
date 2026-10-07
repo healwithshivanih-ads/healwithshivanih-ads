@@ -27,9 +27,15 @@ linked_to_topics:
 linked_to_claims:
 - chlorella-binds-mercury-post-amalgam
 - chlorella-binds-prevents-mercury-absorption
-notes_for_coach: Used as a mouth rinse (swish and spit) immediately before and after
-  dental amalgam appointment, then swallow 1000mg evening of appointment, twice daily
-  for 5 days. Do NOT take within 2 hours of activated charcoal. Adult protocol only.
+notes_for_coach: |-
+  Used as a mouth rinse (swish and spit) immediately before and after dental amalgam
+  appointment, then swallow 1000mg evening of appointment, twice daily for 5 days. Do
+  NOT take within 2 hours of activated charcoal. Adult protocol only.
+
+  Best used for: Evidence for 'detox' and mercury binding in people is thin (mostly
+  animal studies). Small trials show modest drops in cholesterol, blood pressure and
+  fasting glucose, but these are not strong enough to choose it over better-studied
+  options. Product quality varies; choose tested brands.
 notes_for_client: Chlorella is a green algae that can bind mercury in your mouth and
   gut, helping prevent it from being absorbed into your body during and after your
   dental appointment.
@@ -44,7 +50,13 @@ sources:
     Regimen
   quote: 'Chlorella: Swish your mouth with chlorella immediately before and after
     the dental appointment... The chlorella can help bind and prevent mercury absorption.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Warfarin and other vitamin K antagonists — chlorella is high in vitamin K and can lower
+    INR
+  life_stages: []

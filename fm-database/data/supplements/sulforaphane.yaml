@@ -25,34 +25,37 @@ timing_options:
 - with_dinner
 - morning
 take_with_food: optional
-notes_for_coach: 'Isothiocyanate from cruciferous vegetables — especially broccoli
-
+notes_for_coach: |-
+  Isothiocyanate from cruciferous vegetables — especially broccoli
   sprouts (highest concentration), broccoli, cauliflower, cabbage, kale.
-
   Activates Nrf2 pathway, inducing Phase 2 enzymes. Source (Minich
-
   transcript) names sulforaphane as a Phase 2 inducer but does NOT
-
   give dosing. Confirm dose from peer-reviewed source before
-
   supplemental use. Food-first option: 1 tablespoon broccoli sprouts
-
   daily is a commonly cited culinary dose. Heat-sensitive — raw or
+  lightly steamed cruciferous preserve more activity. Clinical study dose: 70 g/day
+  fresh broccoli sprouts (420 µmol SF precursor) for 8 weeks. Decreased urea breath
+  test, H. pylori stool antigen, and serum pepsinogens I & II. Sprout potency varies;
+  standardised extract capsules may be used as alternative.
 
-  lightly steamed cruciferous preserve more activity. Clinical study dose: 70 g/day fresh broccoli
-  sprouts (420 µmol SF precursor) for 8 weeks. Decreased urea breath test, H. pylori stool antigen,
-  and serum pepsinogens I & II. Sprout potency varies; standardised extract capsules may be used as
-  alternative.'
+  Best used for: Best human evidence: broccoli-sprout sulforaphane modestly suppresses
+  H. pylori activity, improves fasting glucose in poorly controlled T2D, and increases
+  excretion of airborne pollutants. Food-first (fresh sprouts, raw or lightly cooked
+  crucifers with mustard seed) is usually enough; supplements vary widely in actual
+  sulforaphane yield.
 evidence_tier: strong
 linked_to_topics:
 - estrogen-dominance
 - inflammation
 - autoimmune
 - detoxification
-- helicobacter-pylori-infection
 - peptic-ulcer-disease
+- h-pylori-infection
+- type-2-diabetes
 linked_to_mechanisms:
 - phase-2-conjugation
+- nrf2-pathway-activation
+- glutathione-conjugation
 linked_to_claims:
 - emotional-stress-cascade-chronic-disease
 - sulforaphane-broccoli-sprouts-reduces-h-pylori-colonisation
@@ -79,9 +82,9 @@ sources:
   quote: Clinically, broccoli sprouts (70 g/day; containing 420 mmol of SF precursor) for 8 weeks
     decreased levels of urease (urea breath test and H. pylori stool antigen, biomarkers of H. pylori
     colonization) and serum pepsinogens I and II (biomarkers of gastric inflammation).
-version: 5
+version: 6
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []

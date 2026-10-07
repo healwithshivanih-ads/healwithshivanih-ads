@@ -29,16 +29,20 @@ ayurvedic_actions:
 - analgesic
 linked_to_topics:
 - perimenopause-and-menopause
-- low-progesterone
-notes_for_coach: Whole internal wild yam root (Dioscorea spp.). A sweet, cooling, nutritive rejuvenative
-  and antispasmodic traditionally used as a tonic and to support hormonal secretions; related to Vidari-kanda.
-  The topical diosgenin product is catalogued separately as 'wild-yam-cream'. Ayurvedic energetics from
-  The Yoga of Herbs (Frawley & Lad).
+notes_for_coach: |-
+  Whole internal wild yam root (Dioscorea spp.). A sweet, cooling, nutritive
+  rejuvenative and antispasmodic traditionally used as a tonic and to support hormonal
+  secretions; related to Vidari-kanda. The topical diosgenin product is catalogued
+  separately as 'wild-yam-cream'. Ayurvedic energetics from The Yoga of Herbs (Frawley &
+  Lad).
+
+  Best used for: A traditional Ayurvedic nutritive tonic with no clinical trial support
+  for menopause or hormone balance; low priority, and not a progesterone source.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — WILD YAM
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

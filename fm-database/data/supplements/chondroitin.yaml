@@ -37,14 +37,22 @@ interactions: {}
 linked_to_topics:
 - osteoarthritis
 - joint-pain
+- knee-pain
 linked_to_mechanisms: []
+linked_to_symptoms:
+- joint-stiffness-and-swelling
 linked_to_claims: []
-notes_for_coach: Chondroitin sulfate 800-1200 mg/day, typically paired with glucosamine
-  sulfate for joint protocols. Modest evidence for reducing OA pain and slowing cartilage
-  breakdown. Source matters — bovine (most common) and shark cartilage origins; quality
-  varies widely between products. Mild anticoagulant effect — coordinate with prescriber
-  if on warfarin or antiplatelets. Theoretical concern in active prostate cancer (limited
+notes_for_coach: |-
+  Chondroitin sulfate 800-1200 mg/day, typically paired with glucosamine sulfate for
+  joint protocols. Modest evidence for reducing OA pain and slowing cartilage breakdown.
+  Source matters — bovine (most common) and shark cartilage origins; quality varies
+  widely between products. Mild anticoagulant effect — coordinate with prescriber if on
+  warfarin or antiplatelets. Theoretical concern in active prostate cancer (limited
   data). Generally well-tolerated; effect develops over 8-12 weeks.
+
+  Best used for: Modest benefit for knee osteoarthritis pain and function over 3 months,
+  mainly with pharmaceutical-grade products; over-the-counter quality varies a lot. Not
+  worth it for joint pain from other causes (autoimmune, gout, injury).
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
@@ -52,7 +60,7 @@ sources:
   quote: Chondroitin sulfate (often with glucosamine) supports cartilage matrix integrity
     and modestly reduces OA pain over 8-12 weeks.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani

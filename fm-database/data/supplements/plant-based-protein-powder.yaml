@@ -16,21 +16,39 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - elimination-diet
+- protein-adequacy-vegetarian
+- sarcopenia-skeletal-muscle-loss
+linked_to_symptoms:
+- protein-deficiency
+- low-lean-muscle-mass
 linked_to_claims: []
-notes_for_coach: Recommended protein source during elimination diet. Provides 20–24
-  g protein per 30 g serve. Ensure product is gluten-free and free from hidden allergens
-  (check labels for inulin, chicory, milk derivatives).
+notes_for_coach: |-
+  Recommended protein source during elimination diet. Provides 20–24 g protein per 30 g
+  serve. Ensure product is gluten-free and free from hidden allergens (check labels for
+  inulin, chicory, milk derivatives).
+
+  Best used for: A practical way to close a protein gap for vegetarian and
+  perimenopausal/older clients, especially alongside strength training, and during
+  elimination diets when dairy/soy are out. Not needed if diet already meets the protein
+  target.
 notes_for_client: A clean plant protein powder (hemp, rice, or pea) can help meet
   your protein needs during the elimination phase. Always check the label for hidden
   gluten, dairy, or soy.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- sarcopenia
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Food Swaps/Replacements — Protein Sources
   quote: 'Protein powder - plant-based [hemp/ rice/ peas] — Per 30 g/ serve: 20-24
     g protein.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Advanced chronic kidney disease — high protein load; needs renal dietitian guidance
+  - Legume (pea) allergy — choose rice or hemp-based
+  medications: []
+  life_stages: []

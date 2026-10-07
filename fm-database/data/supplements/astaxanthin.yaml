@@ -18,16 +18,25 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Potent fat-soluble carotenoid antioxidant; take with fat-containing
-  meals for optimal absorption; supports skin, eye, and endurance.
+notes_for_coach: |-
+  Potent fat-soluble carotenoid antioxidant; take with fat-containing meals for optimal
+  absorption; supports skin, eye, and endurance.
+
+  Best used for: Evidence is modest and mostly from small trials: eye fatigue from
+  screen work, skin photo-ageing/moisture, and as one antioxidant in male-fertility
+  protocols. Not worth it as a first-line lipid, cardiovascular or macular-degeneration
+  intervention — those links rest on antioxidant rationale rather than outcome trials.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - oxidative-stress
 - macular-degeneration
 - cardiovascular-health
+- male-infertility-oxidative-stress
 linked_to_mechanisms:
 - antioxidant-protection
 - oxidative-damage
+linked_to_symptoms:
+- eye-strain
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -35,7 +44,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: Astaxanthin - Antioxidant, skin and eye health - 4–8 mg/day - With fat-containing
     meals
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani

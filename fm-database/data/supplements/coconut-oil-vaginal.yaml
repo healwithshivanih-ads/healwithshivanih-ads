@@ -3,8 +3,7 @@ display_name: Coconut Oil (Vaginal Use)
 category: other
 forms_available:
 - liquid
-linked_to_topics:
-- vaginal-microbiome-dysbiosis
+linked_to_topics: []
 linked_to_claims:
 - coconut-oil-vaginal-use-caution-alkalinity
 notes_for_coach: 'Coach Shivani flags: ''Coconut oil to be used with caution as can
@@ -24,7 +23,7 @@ sources:
   location: Coach Observation
   quote: Coconut oil to be used with caution as can affect the alkalinity of the vaginal
     microbiome.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

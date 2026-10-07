@@ -68,6 +68,15 @@ linked_to_topics:
 - autoimmune
 - hormonal-nutrition-foundations
 - estrogen-signaling
+- acne-vulgaris
+- type-2-diabetes
+- hairfall
+- macular-degeneration
+linked_to_symptoms:
+- frequent-infections
+- acne
+- taste-changes
+- poor-wound-healing
 linked_to_claims:
 - zinc-supports-thyroid-conversion
 - zinc-regulates-aromatase-balances-estrogen-testosterone
@@ -109,16 +118,29 @@ linked_to_claims:
 - murray-hypothyroidism-treatment-summary
 - zinc-pulls-hormones-into-receptors
 - nutrient-cofactors-required-for-hormone-signaling
-notes_for_coach: 30 mg/day for diabetics. Take with food to avoid nausea. Long-term use above 30 mg
-  may deplete copper — consider 2 mg copper supplementation with sustained use. Zinc is required for
-  hormone extraction from carrier proteins and entry into receptor binding pocket domains. Deficiency
-  may undermine hormone therapy effectiveness. Encourage food sources (oysters, pumpkin seeds, meat)
-  and assess through clinician if deficiency suspected.
+notes_for_coach: |-
+  30 mg/day for diabetics. Take with food to avoid nausea. Long-term use above 30 mg may
+  deplete copper — consider 2 mg copper supplementation with sustained use. Zinc is
+  required for hormone extraction from carrier proteins and entry into receptor binding
+  pocket domains. Deficiency may undermine hormone therapy effectiveness. Encourage food
+  sources (oysters, pumpkin seeds, meat) and assess through clinician if deficiency
+  suspected.
+
+  Best used for: Most useful when zinc intake or status is low, which is common on
+  phytate-rich Indian vegetarian diets and with long-term PPIs or metformin. Also useful
+  as support for acne, PCOS-related insulin resistance and slow wound healing. Lozenges
+  help colds only if started at the first sign. Not worth giving long-term when zinc is
+  already adequate. With sustained use, balance with copper and count zinc from every
+  product in the plan.
 notes_for_client: 'Zinc — for healing, immunity, skin and taste.
 
   Always with food; on an empty stomach it can make you feel sick.'
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- zinc-immune-cell-maturation
+- impaired-t4-to-t3-conversion
+- insulin-resistance
+- zinc-hcl-production-link
 sources:
 - id: vitaone-practice-guide
   location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical support
@@ -210,10 +232,10 @@ sources:
   quote: zinc, and it's called a zinc finger... one of its big things is it pulls the hormone, in
     essence, out of the uber and lets the hormone view the shape of the binding pocket and feel like
     it can go inside to do its job.
-version: 31
+version: 32
 status: active
-updated_at: '2026-08-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: 15-30 mg/day OK. Doses > 40 mg can cause copper deficiency.
@@ -223,3 +245,9 @@ aliases:
 - zinc 20-50mg
 - zinc-picolinate
 - zinc-hormone-support
+contraindications:
+  conditions: []
+  medications:
+  - tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+    — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  life_stages: []

@@ -18,15 +18,21 @@ timing_options:
 - evening
 - bedtime
 take_with_food: optional
-notes_for_coach: 'Triterpenoids exert anxiolytic/sedative effects. May work via microbiome-mediated
+notes_for_coach: |-
+  Triterpenoids exert anxiolytic/sedative effects. May work via microbiome-mediated
   mechanisms and serotonin modulation. Standardised triterpenoid content preferred.
-  Source: Coach Shivani clinical observations.'
+  Source: Coach Shivani clinical observations.
+
+  Best used for: Small human trials support modest benefit for stress-related
+  fatigue/neurasthenia and immune markers; sleep evidence in humans is weak. A gentle
+  evening adjunct for stressed clients, not a primary sleep or stress intervention.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hpa-axis-cortisol-regulation
 - sleep-quality
 linked_to_mechanisms:
 - dectin-1-trained-immunity
+- innate-immune-modulation
 linked_to_claims:
 - reishi-reduces-sleep-latency-cortisol
 notes_for_client: Reishi mushroom contains calming compounds called triterpenoids
@@ -40,7 +46,18 @@ sources:
   quote: Research suggests it can reduce sleep latency, increase total sleep time,
     and improve cortisol responses, possibly through microbiome-mediated mechanisms
     and serotonin modulation.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-29'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Bleeding disorders or surgery within 2 weeks — reishi inhibits platelet aggregation
+  - Organ transplant / autoimmune disease on immunosuppression — immunostimulating effect
+    may oppose therapy
+  medications:
+  - Anticoagulants and antiplatelet drugs (warfarin, aspirin, clopidogrel) — additive bleeding
+    risk
+  - Immunosuppressants (cyclosporine, tacrolimus) — may counteract
+  life_stages:
+  - Pregnancy and breastfeeding — insufficient safety data
