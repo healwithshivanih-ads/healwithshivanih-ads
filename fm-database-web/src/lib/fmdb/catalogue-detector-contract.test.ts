@@ -112,7 +112,7 @@ describe("fmdb duplicates contract — two modes, two shapes", () => {
     expect(items.length).toBeGreaterThan(0);
 
     for (const d of items) {
-      expect(["SHARED_ALIAS", "ALIAS_IS_SLUG", "SAME_DISPLAY", "NEAR_SLUG"]).toContain(d.check);
+      expect(["SHARED_ALIAS", "ALIAS_IS_SLUG", "SAME_DISPLAY", "FORM_VARIANT", "NEAR_SLUG"]).toContain(d.check);
       expect(typeof d.entity_kind).toBe("string");
       expect(Array.isArray(d.slugs)).toBe(true);
       // The action counts `severity === "CRITICAL"`. A renamed or lowercased

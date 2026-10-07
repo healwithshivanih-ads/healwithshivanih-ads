@@ -51,6 +51,24 @@ _KINDS = ("topics", "mechanisms", "symptoms", "supplements", "protocols",
 # Qualifier words that legitimately distinguish two entries. `vitamin-d` vs
 # `vitamin-d-deficiency` is a real distinction, so a pair whose only difference
 # is one of these is NOT a duplicate.
+# Words that name a FORM of a supplement (salt, plant part, preparation,
+# packaging) rather than a different substance. `chromium` vs
+# `chromium-picolinate` and `ginger` vs `ginger-root` are the shape that slipped
+# past NEAR_SLUG (overlap well under the threshold) and accumulated: 21 pairs
+# were merged in 2026-10. Some form-splits are deliberate (magnesium-glycinate
+# vs magnesium-citrate) — those are accepted into the baseline once, so only a
+# NEW split trips the ratchet.
+_FORM_WORDS = {
+    "picolinate", "polynicotinate", "gluconate", "citrate", "glycinate",
+    "bisglycinate", "oxide", "threonate", "malate", "taurate", "sulfate",
+    "sulphate", "fumarate", "ascorbate", "carbonate", "chelate", "aspartate",
+    "orotate", "retinol", "tocopherols", "mixed", "root", "leaf", "leaves",
+    "seed", "seeds", "bark", "flower", "flowers", "berry", "tea", "extract",
+    "powder", "oil", "capsule", "capsules", "tablet", "liquid", "supplement",
+    "supplements", "vitamins", "isolate", "concentrate", "standardized",
+    "standardised", "liposomal", "ionic", "natural", "complex",
+}
+
 _DISTINGUISHING = {
     "deficiency", "excess", "toxicity", "prevention", "recovery", "risk",
     "male", "female", "paediatric", "pediatric", "acute", "chronic",
@@ -76,8 +94,16 @@ def _canon(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", str(s or "").lower()).strip("-")
 
 
+_SHORT_KEEP = re.compile(r"^(?:[a-z]|[a-z]?\d+[a-z]?\d*)$")
+
+
 def _tokens(s: str) -> set[str]:
-    return {t for t in _canon(s).split("-") if len(t) > 2}
+    # Short tokens were all dropped, which made `vitamin-a`, `vitamin-c` and
+    # `vitamin-d3` the same single token {vitamin} — "100% overlap" — and the
+    # resulting wall of false positives was baselined along with the real
+    # duplicates. A lone letter or a letter-digit code (a, c, d3, k2, b12, q10)
+    # IS the identity, so keep it; only short connective words are noise.
+    return {t for t in _canon(s).split("-") if len(t) > 2 or _SHORT_KEEP.match(t)}
 
 
 def _entities(loaded: Loaded, kind: str) -> list:
@@ -183,6 +209,29 @@ def find_duplicates(loaded: Loaded, near_threshold: float = 0.6
                 f"slugs overlap {j:.0%} and differ by no distinguishing qualifier.",
                 evidence=[f"{j:.2f}"]))
 
+    # ---- 5. supplement form variants ---------------------------------------
+    # One slug is the other plus only form words: `ginger` / `ginger-root`.
+    if "supplements" in _KINDS:
+        sup = {getattr(e, "slug", None): e for e in _entities(loaded, "supplements")}
+        sup.pop(None, None)
+        stoks = {s: set(_canon(s).split("-")) for s in sup}
+        seen_pairs = {tuple(sorted(f.slugs)) for f in out if f.entity_kind == "supplements"}
+        for a, b in combinations(sorted(sup), 2):
+            ta, tb = stoks[a], stoks[b]
+            small, big = (ta, tb) if len(ta) <= len(tb) else (tb, ta)
+            extra = big - small
+            if not small or not extra or not small < big or not extra <= _FORM_WORDS:
+                continue
+            if tuple(sorted([a, b])) in seen_pairs:
+                continue
+            out.append(DuplicateFinding(
+                "FORM_VARIANT", "supplements", sorted([a, b]),
+                (f"differ only by form word(s) {sorted(extra)} — one substance "
+                 f"split in two? Merge (fmdb.supplement_merge keeps every field "
+                 f"and aliases the retired slug) unless the form is clinically "
+                 f"distinct, in which case accept it into the baseline."),
+                evidence=sorted(extra)))
+
     # Collapse by (check, kind, entity-set). One duplicate PAIR typically shares
     # several aliases — chronic-inflammation/systemic-inflammation share four —
     # and reporting it once per alias turns a 30-item worklist into a wall of
@@ -206,7 +255,8 @@ def find_duplicates(loaded: Loaded, near_threshold: float = 0.6
                 f"{len(f.evidence)} shared aliases ({', '.join(repr(e) for e in f.evidence[:4])}"
                 + (", ...)" if len(f.evidence) > 4 else ")"))
 
-    order = {"SHARED_ALIAS": 0, "ALIAS_IS_SLUG": 1, "SAME_DISPLAY": 2, "NEAR_SLUG": 3}
+    order = {"SHARED_ALIAS": 0, "ALIAS_IS_SLUG": 1, "SAME_DISPLAY": 2,
+             "FORM_VARIANT": 3, "NEAR_SLUG": 4}
     out.sort(key=lambda f: (order[f.kind], -len(f.evidence), f.entity_kind, f.slugs))
     return out
 

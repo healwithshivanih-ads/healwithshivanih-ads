@@ -48,6 +48,10 @@ const CHECK_META: Record<string, { label: string; fix: string }> = {
     label: "same display name",
     fix: "Indistinguishable in the UI — rename one, or merge.",
   },
+  FORM_VARIANT: {
+    label: "same supplement, form word added",
+    fix: "e.g. ginger / ginger-root. Merge with fmdb.supplement_merge (keeps every field) unless the form is clinically distinct.",
+  },
   NEAR_SLUG: {
     label: "near-identical slug",
     fix: "Weakest signal — confirm by eye before merging.",

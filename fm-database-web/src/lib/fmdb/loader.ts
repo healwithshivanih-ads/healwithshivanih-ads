@@ -5,6 +5,7 @@ import yaml from "js-yaml";
 import { getCataloguePath, getPlansRoot } from "./paths";
 import type { CatalogueKind, Plan, Client, PlanStatus } from "./types";
 import { withFsRetry } from "./fs-retry";
+import { resolveCatalogueSlug } from "./catalogue-resolve";
 
 async function readYaml<T>(absPath: string): Promise<T | null> {
   let raw: string;
@@ -60,7 +61,12 @@ export async function loadOne<T>(
   slug: string
 ): Promise<T | null> {
   const dir = path.join(getCataloguePath(), kind);
-  return readYaml<T>(path.join(dir, `${slug}.yaml`));
+  const direct = await readYaml<T>(path.join(dir, `${slug}.yaml`));
+  if (direct) return direct;
+  // A merged-away slug lives on as an alias of the survivor — resolve it so
+  // old links (plans, chips, bookmarks) open the merged entry, not a 404.
+  const canonical = await resolveCatalogueSlug(kind, slug);
+  return canonical === slug ? null : readYaml<T>(path.join(dir, `${canonical}.yaml`));
 }
 
 // ---- Plans + Clients ----

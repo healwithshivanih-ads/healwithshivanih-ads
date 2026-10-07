@@ -1,5 +1,5 @@
 slug: vitamin-a
-display_name: Vitamin A
+display_name: Vitamin A (Retinol)
 category: vitamin
 forms_available:
 - capsule
@@ -19,6 +19,8 @@ linked_to_topics:
 - pancreatic-insufficiency
 - sibo
 - peptic-ulcer-disease
+- hormonal-nutrition-foundations
+- estrogen-signaling
 linked_to_claims:
 - vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
 - vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
@@ -31,19 +33,39 @@ linked_to_claims:
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - 5rs-repair-includes-l-glutamine
 - vitamin-a-protective-chronic-gastric-ulcer
-notes_for_coach: |-
-  High-dose vitamin A cited for chronic GU protection. CRITICAL: teratogenic — use
+- vitamin-a-required-in-every-hormone-receptor
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: 'High-dose vitamin A cited for chronic GU protection. CRITICAL: teratogenic
+  — use
+
   beta-carotene if pregnancy is possible (explicitly stated in treatment algorithm).
+
   Therapeutic dose supervision required.
 
+
   Best used for: Useful mainly where intake or absorption is genuinely low (fat
+
   malabsorption, pancreatic insufficiency, very restricted diets). Food sources and
+
   beta-carotene are the safer default; supplemental retinol needs a clear reason and
+
   supervision, and should not be used by anyone who is pregnant or could become
+
   pregnant.
-notes_for_client: Vitamin A supports the lining of your stomach. If there's any chance
-  you could be pregnant, use beta-carotene instead — high-dose vitamin A is not safe
-  in pregnancy.
+
+
+  Dose note merged from Vitamin A (Retinol) — Hormone Receptor Activation: capsule 2500–5000
+  mcg (this entry keeps 5000–25000 mcg).
+
+
+  Merged from Vitamin A (Retinol) — Hormone Receptor Activation: Vitamin A (retinol form,
+  not beta-carotene) is present in every hormone receptor binding domain and switches the
+  receptor from repressor to expressive mode. Document mentions ~3,000 IU/day for physiologic
+  receptor function. High-dose vitamin A (above ~10,000 IU/day long-term) has toxicity risks
+  — verify with clinician, especially in pregnancy. The document notes past fears around vitamin
+  A toxicity from polar bear liver consumption as historically overweighted.'
+notes_for_client: Vitamin A supports the lining of your stomach. If there's any chance you
+  could be pregnant, use beta-carotene instead — high-dose vitamin A is not safe in pregnancy.
 typical_dose_range:
   capsule:
     min: 5000
@@ -63,25 +85,24 @@ linked_to_mechanisms:
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 7
-  quote: Note that high-dose retinol can be toxic — food-based retinol (liver, egg
-    yolks, dairy) or beta-carotene from brightly colored vegetables is the safe route
-    for coaching.
+  quote: Note that high-dose retinol can be toxic — food-based retinol (liver, egg yolks,
+    dairy) or beta-carotene from brightly colored vegetables is the safe route for coaching.
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Vitamin A (Retinyl Palmitate) - Vision, immune support, skin - 2500–5000
-    IU/day - With fat-containing meals
+  quote: Vitamin A (Retinyl Palmitate) - Vision, immune support, skin - 2500–5000 IU/day -
+    With fat-containing meals
 - id: vitaone-thyroid-toolkit
   location: Factors that Affect Thyroid Function
-  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
-    Exercise, Zinc.'
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A, Exercise,
+    Zinc.'
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the
-    lining of the respiratory tract.
+  quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the lining
+    of the respiratory tract.
 - id: vitaone-health-coaching-toolkit
   location: Factors that Affect Thyroid Function
-  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
-    Exercise, Zinc'
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A, Exercise,
+    Zinc'
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair Section
   quote: Micronutrients means vitamins and minerals. Vitamin A and vitamin B we require.
@@ -90,25 +111,39 @@ sources:
   quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
 - id: coconote-fm-sibo-sifo
   location: 5Rs Treatment Protocol – Repair
-  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
-    the L-butamine, all of these things, repair is important.
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and the L-butamine,
+    all of these things, repair is important.
 - id: pizzorno-textbook-hpylori
   location: Miscellaneous, p. 784
-  quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help
-    maintain integrity of mucosal barrier. High-dose vitamin A may have a useful protective
-    effect on chronic GUs.'
-version: 12
+  quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help maintain
+    integrity of mucosal barrier. High-dose vitamin A may have a useful protective effect
+    on chronic GUs.'
+- id: ask-expert-hormonal-health-bhrt
+  location: Vitamin A in Hormone Receptor Binding
+  quote: vitamin a is inside every single binding pocket domain and this includes insulin
+    vasopressin oxytocin um adrenal hormones epinephrine all the hormones work this way...
+    vitamin a allows this binding pocket that's been shut down from genetic expression the
+    repressor action of it to be turned on into an expressive action
+version: 13
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - vitamin a 2000 iu
+- vitamin-a-retinol
 contraindications:
   conditions:
   - chronic liver disease or heavy alcohol use — retinol hepatotoxicity
   - osteoporosis — chronic high retinol intake associated with fracture risk
+  - chronic liver disease or heavy alcohol use — retinol is stored in the liver and is hepatotoxic
+    in excess
+  - osteoporosis — chronic retinol intake above ~1,500 mcg RAE/day is associated with higher
+    fracture risk
   medications:
   - isotretinoin, acitretin or other oral retinoids — additive toxicity
+  - isotretinoin, acitretin or other oral retinoids — additive vitamin A toxicity
   life_stages:
   - pregnancy and women who may conceive — high-dose retinol is teratogenic (notes say this,
     but it is not in the structured list)
+  - pregnancy and women who may conceive — retinol above ~3,000 mcg RAE (10,000 IU)/day is
+    teratogenic

@@ -561,7 +561,7 @@ tree:
     - label: Vitamin A (food form preferred — liver, ghee, CLO)
       children: []
       linked_kind: supplement
-      linked_slug: vitamin-a-retinol
+      linked_slug: vitamin-a
       notes: ''
     - label: Omega-3 EPA/DHA (2–3 g/day)
       children: []
@@ -616,7 +616,7 @@ tree:
     - label: Probiotic (Lactobacillus + Bifidobacterium)
       children: []
       linked_kind: supplement
-      linked_slug: probiotics-lactobacillus-bifidobacterium
+      linked_slug: probiotics
       notes: ''
     - label: Fermented Foods (curd alternative if dairy-free)
       children: []

@@ -4,6 +4,9 @@ aliases:
 - NR
 - nicotinamide riboside
 - niagen
+- nmn
+- nicotinamide-mononucleotide
+- nmn-uthever
 category: other
 forms_available:
 - capsule
@@ -20,6 +23,7 @@ typical_dose_range:
 timing_options:
 - on_waking
 - with_breakfast
+- morning
 take_with_food: optional
 contraindications:
   conditions:
@@ -28,6 +32,8 @@ contraindications:
   life_stages:
   - pregnancy
   - lactation
+  - Pregnancy — no human safety data
+  - Lactation — no human safety data
 interactions: {}
 pregnancy_safety: contraindicated
 lactation_safety: contraindicated
@@ -36,28 +42,70 @@ linked_to_topics:
 - chronic-fatigue-syndrome
 linked_to_mechanisms:
 - mitochondrial-dysfunction
+- mitochondrial-energy-production
 linked_to_claims: []
-notes_for_coach: |-
-  NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside) are NAD+ precursors
+notes_for_coach: 'NMN (nicotinamide mononucleotide) and NR (nicotinamide riboside) are NAD+
+  precursors
+
   used to support mitochondrial energy production and sirtuin signaling. NAD+ depletion
+
   is documented in aging, post-viral syndromes including Long COVID, and chronic
+
   fatigue. Standard clinical dose is 250-500 mg/day for general support, up to 1000
+
   mg/day in post-viral recovery contexts. NR has more human trial data; NMN may raise
+
   NAD+ levels more efficiently in muscle. Best taken in the morning on empty stomach.
+
   Avoid in active cancer (sirtuin activation has complex effects on tumour biology).
 
+
   Best used for: Reliably raises blood NAD+, but clinical benefits in humans are small
+
   and inconsistent. One small NMN trial improved muscle insulin sensitivity in
+
   prediabetic women, while NR trials on insulin sensitivity were null. Use in post-viral
+
   fatigue or CFS is experimental with no proven benefit. Not worth the cost as a general
+
   anti-ageing or energy supplement.
-notes_for_client: ''
+
+
+  Dose note merged from NMN (Nicotinamide Mononucleotide): capsule 250–500 mg (this entry
+  keeps 250–1000 mg).
+
+
+  Merged from NMN (Nicotinamide Mononucleotide): NAD+ precursor marketed for cellular energy,
+  metabolic and longevity support. Evidence
+
+  in humans is emerging, not established — treat claims cautiously. VitaOne product
+
+  (Uthever®) is a 500 mg capsule taken once daily. No major drug interactions
+
+  documented, but longevity/anti-ageing framing should stay educational within coaching
+
+  scope.
+
+
+  Best used for: Raises blood NAD+ in humans, but clinical benefits are small and
+
+  inconsistent (one small trial improved muscle insulin sensitivity in prediabetic
+
+  postmenopausal women). Not worth the cost as a general energy or anti-ageing
+
+  supplement; keep it educational.'
+notes_for_client: NMN is a building block your body uses to make NAD+, a molecule involved
+  in cellular energy. Research is still early, so think of it as an optional extra, not a
+  foundation.
 sources:
 - id: vitaone-skill-practice-guide
   location: Practice guide — mitochondrial / longevity section
   quote: NAD+ precursors (NR, NMN) support cellular energy and mitochondrial function.
+- id: vitaone-product-catalog
+  location: Product page — NMN Uthever 500mg (vitaone.in/products/nmn-uthever-500mg-54)
+  quote: NMN (Uthever®) — 500 mg.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani

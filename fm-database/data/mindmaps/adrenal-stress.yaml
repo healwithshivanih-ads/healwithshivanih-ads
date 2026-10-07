@@ -265,7 +265,7 @@ tree:
     - label: B-Complex Vitamins
       children: []
       linked_kind: supplement
-      linked_slug: b-complex-vitamins
+      linked_slug: b-complex
       notes: ''
     - label: Magnesium Glycinate
       children: []

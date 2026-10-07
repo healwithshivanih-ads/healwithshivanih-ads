@@ -1,5 +1,5 @@
 slug: biotin
-display_name: Biotin (High-Dose)
+display_name: Biotin (Vitamin B7)
 category: vitamin
 forms_available:
 - capsule
@@ -12,32 +12,69 @@ typical_dose_range:
 timing_options:
 - with_breakfast
 - with_dinner
+- morning
 take_with_food: optional
 linked_to_topics:
 - type-1-diabetes-mellitus
 - diabetic-neuropathy
+- vitamin-b-complex-deficiency
+- hairfall
 linked_to_claims:
 - biotin-lowers-fasting-glucose-t1dm-t2dm
-notes_for_coach: |-
-  Pharmacological doses (9–16 mg/day) — much higher than standard supplements.
+- biotin-interferes-with-lab-tests
+notes_for_coach: 'Pharmacological doses (9–16 mg/day) — much higher than standard supplements.
+
   Upregulates glucokinase (hepatic glucose utilisation enzyme). Adjust insulin when
+
   adding. Also used for neuropathy. Combination with Cr picolinate: 2 mg biotin + 600
+
   mcg Cr.
 
+
   Best used for: A niche, specialist option for blood sugar, supported only by small
+
   older trials (often combined with chromium). Not a first-line glucose intervention. At
+
   these doses it also makes thyroid and cardiac blood tests unreliable, so any use needs
+
   clinician oversight.
-notes_for_client: At high doses, biotin activates a key liver enzyme that helps process
-  blood sugar — different from standard biotin supplements which use much lower doses.
+
+
+  Dose note merged from Vitamin B7 (Biotin): capsule 300–10000 mcg (this entry keeps 8–16
+  mg).
+
+
+  Merged from Vitamin B7 (Biotin): Only one active form (D-Biotin). Stop 3–4 days before labs.
+  High doses may interfere
+
+  with B5 and compete for absorption. 300 mcg typical; high-dose hair protocols
+
+  (2500–10,000 mcg) should be supervised.
+
+
+  Best used for: Strongest for brittle nails and for hair loss in people who are
+
+  actually biotin-deficient (long antibiotic courses, raw egg white intake,
+
+  anticonvulsants, pregnancy). Little evidence for hair loss in people with normal
+
+  biotin status, and high doses distort thyroid lab results — important for thyroid
+
+  clients.'
+notes_for_client: At high doses, biotin activates a key liver enzyme that helps process blood
+  sugar — different from standard biotin supplements which use much lower doses.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Biotin
-  quote: Dose of 16 mg biotin q.d. significantly lowers fasting glucose and improves
-    glucose control in T1DM; in T2DM, similar effects occur at 9 mg biotin q.d.
-version: 2
+  quote: Dose of 16 mg biotin q.d. significantly lowers fasting glucose and improves glucose
+    control in T1DM; in T2DM, similar effects occur at 9 mg biotin q.d.
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B7 (Biotin)
+  quote: 'Supplement: 300 mcg typical; high doses (thousands mcg/day) safe but may interfere
+    with B5 & lab tests.'
+version: 3
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -46,6 +83,9 @@ contraindications:
   - Pending blood tests using streptavidin–biotin immunoassays — at 8–16 mg/day biotin reliably
     distorts thyroid tests (falsely low TSH, falsely high T4/T3 mimicking Graves') and troponin
     (FDA safety communication); stop several days before any blood draw
+  - Pending blood tests using streptavidin–biotin immunoassays (thyroid function, troponin,
+    reproductive hormones, vitamin D) — biotin causes falsely low/high results (FDA safety
+    communication, incl. missed heart attacks); stop 2–3+ days before
   medications: []
   life_stages: []
 interactions:
@@ -76,3 +116,8 @@ interactions:
     type: monitor
     reason: Insulin and sulfonylureas — additive glucose lowering is the stated mechanism;
       monitor for hypoglycaemia
+linked_to_symptoms:
+- weak-peeling-nails
+aliases:
+- biotin-b7
+- vitamin-b7

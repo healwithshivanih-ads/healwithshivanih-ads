@@ -697,7 +697,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "B12 deficiency co-occurs frequently with iron deficiency and causes macrocytic anaemia — check and correct both.",
       },
       {
-        supplement_slug: "folate",
+        supplement_slug: "methylfolate",
         display_name: "Methylfolate (5-MTHF)",
         dose_display: "400–800 mcg",
         timing: "With breakfast",
@@ -1252,7 +1252,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["fatigue", "weight-gain"],
     supplements: [
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (EPA + DHA)",
         dose_display: "2–4 g combined EPA+DHA daily",
         timing: "With meals (improves absorption, reduces fishy reflux)",
@@ -1737,7 +1737,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["fatigue", "joint-pain", "brain-fog", "weight-gain"],
     supplements: [
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (algae-based for vegetarians / fish oil for non-veg)",
         dose_display: "2 g EPA+DHA",
         timing: "With largest meal of the day",
@@ -2297,7 +2297,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Vitamin D directly modulates Treg cells — low levels are nearly universal in autoimmunity",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (EPA/DHA fish oil)",
         dose_display: "2–3 g EPA+DHA",
         timing: "With meals",
@@ -2410,7 +2410,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Improves endothelial function and lowers BP 10–15 mmHg in trials; essential if on statins (statins deplete CoQ10)",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (EPA/DHA)",
         dose_display: "2–3 g EPA+DHA",
         timing: "With meals",
@@ -2548,7 +2548,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Both have anti-inflammatory effects on cerebral vasculature — feverfew RCT-validated, butterbur use note PA-free preparations only",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (EPA/DHA)",
         dose_display: "2–3 g",
         timing: "With meals",
@@ -2633,7 +2633,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Essential for skin barrier, reduces sebum production, anti-inflammatory. Acne and eczema commonly zinc-deficient.",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (EPA/DHA)",
         dose_display: "2–3 g EPA+DHA",
         timing: "With meals",
@@ -2769,7 +2769,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Mast cell stabiliser — MCAS is a common Long COVID component; also has antiviral properties",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (high EPA)",
         dose_display: "3–4 g EPA+DHA",
         timing: "With meals",
@@ -3023,7 +3023,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Antihistamine effect; supports adrenals (heavily taxed); antioxidant",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (high EPA)",
         dose_display: "3–4 g",
         timing: "With meals",
@@ -3131,7 +3131,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Foundation — START 3 MONTHS BEFORE conception attempt. Critical: methylfolate not folic acid (40%+ have MTHFR variants).",
       },
       {
-        supplement_slug: "omega-3",
+        supplement_slug: "fish-oil-epa-dha",
         display_name: "Omega-3 (EPA + DHA)",
         dose_display: "1–2 g (DHA-prioritised)",
         timing: "With meals",

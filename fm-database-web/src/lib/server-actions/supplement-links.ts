@@ -11,6 +11,7 @@
  * landing page we accept a simpler fallback so the page ships today;
  * the catalog can move into this file later.
  */
+import { relatedCatalogueSlugs } from "@/lib/fmdb/catalogue-resolve";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
@@ -86,7 +87,11 @@ export async function resolveSupplementLink(
   // in the pure, unit-tested pickLinkEntry — see supplement-links-match.ts.
   // For international (non-India) clients the candidate pool is restricted to
   // internationally-shippable retailers (iHerb) BEFORE scoring.
-  const entry = pickLinkEntry(links, name, catalogueSlug, opts);
+  // A product bound to a slug that was later merged (`covers: [omega-3]` after
+  // omega-3 → fish-oil-epa-dha) must still bind exactly — pass every slug that
+  // names the same catalogue entry.
+  const slugs = catalogueSlug ? await relatedCatalogueSlugs("supplements", catalogueSlug) : undefined;
+  const entry = pickLinkEntry(links, name, slugs, opts);
 
   if (entry?.url) {
     return {

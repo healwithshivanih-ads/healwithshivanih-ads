@@ -61,6 +61,8 @@ linked_to_topics:
 - dyslipidemia
 - inflammatory-bowel-disease
 - major-depressive-disorder
+- cardiovascular-disease-prevention
+- metabolic-syndrome
 linked_to_symptoms:
 - joint-pain
 - joint-stiffness-and-swelling
@@ -85,20 +87,50 @@ linked_to_claims:
 - murray-curcumin-equals-phenylbutazone-ra
 - murray-topical-curcumin-vs-calcipotriene
 - curcumin-supports-methylation-mthfr
-notes_for_coach: |-
-  Lynch mentions curcumin as supportive for MTHFR and healthy methylation.
+- turmeric-is-nf-kb-inhibitor
+- turmeric-downregulates-nf-kappab-upregulates-nrf2
+- turmeric-lowers-blood-sugar-and-hba1c
+notes_for_coach: 'Lynch mentions curcumin as supportive for MTHFR and healthy methylation.
+
   Bioavailability is very low without a lipid carrier or piperine. Anti-inflammatory and
+
   Nrf2-activating mechanisms are plausible.
 
+
   Best used for: Best evidence is for knee osteoarthritis pain and stiffness. Supportive
+
   RCT data cover lowering CRP, ulcerative colitis maintenance (alongside medical
+
   treatment), NAFLD, prediabetes, and use as an add-on in depression. Effects are
+
   modest. Use an enhanced-absorption form taken with a fat-containing meal; plain
+
   turmeric powder capsules deliver little curcumin. Rare liver injury has been reported
+
   with high-absorption products, so stop and refer if signs of liver trouble appear.
-notes_for_client: The active compound in turmeric, curcumin may help support healthy
-  methylation and reduce inflammation. Take with a fat-containing meal to improve
-  absorption.
+
+
+  Dose note merged from Turmeric / Curcumin: capsule 500–1000 mg (this entry keeps 500–2000
+  mg).
+
+
+  Merged from Turmeric / Curcumin: Clinician uses 500mg twice daily. Downregulates NF-κB and
+  upregulates NRF2.
+
+  Bioavailability enhanced with piperine (black pepper extract). Anti-inflammatory,
+
+  blood sugar lowering, and HbA1c lowering properties noted.
+
+
+  Best used for: Best evidence is for knee osteoarthritis pain, raised inflammatory
+
+  markers, fatty liver and as an adjunct for blood sugar and low mood — always a
+
+  bioavailable formulation. Plain turmeric powder in food will not deliver trial doses.
+
+  Not worth it as a stand-alone for hormone or thyroid concerns.'
+notes_for_client: The active compound in turmeric, curcumin may help support healthy methylation
+  and reduce inflammation. Take with a fat-containing meal to improve absorption.
 evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - nf-kb-activation
@@ -109,23 +141,21 @@ sources:
   quote: 'Specific supplements: Curcumin, omega-3s, vitamin D'
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
-  quote: Curcumin (with Piperine) - Anti-inflammatory, antioxidant - 500–1000 mg/day
-    - With fat-containing meals
+  quote: Curcumin (with Piperine) - Anti-inflammatory, antioxidant - 500–1000 mg/day - With
+    fat-containing meals
 - id: vitaone-sex-hormones-cheatsheet
   location: Advanced Support — Estrogen Dominance Supplement Cheatsheet
-  quote: 'Turmeric/Curcumin: Reduces inflammation + supports Phase II; Painful periods,
-    fibroids.'
+  quote: 'Turmeric/Curcumin: Reduces inflammation + supports Phase II; Painful periods, fibroids.'
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Interventions — Integrative Framework (p.12)
-  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium,
-    Resveratrol.'
+  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium, Resveratrol.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation
   quote: Curcumin (500 mg BID w/ piperine)
 - id: vitaone-liver-detox-cheatsheet
   location: Top Superfoods for Detoxification
-  quote: Supports liver regeneration & bile flow. Combine with black pepper for 2000%
-    better absorption.
+  quote: Supports liver regeneration & bile flow. Combine with black pepper for 2000% better
+    absorption.
 - id: vitaone-gut-cheatsheet
   location: Leaky Gut & Inflammation — Supplement Strategy
   quote: Curcumin — NF-κB inhibition — Chronic pain & autoimmune
@@ -136,36 +166,43 @@ sources:
   location: Knee Pain – Supplement Stack
   quote: Curcumin (bioavailable), Boswellia, Omega-3
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement
+    recommendations'
   quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E'
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Curcumin has been shown to reduce inflammation and decrease viral activity
-    for COVID-19.
+  quote: Curcumin has been shown to reduce inflammation and decrease viral activity for COVID-19.
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E.'
 - id: vitaone-health-coaching-cheatsheet
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Encourage emotional expression, mindfulness, breath retraining, omega-3,
-    curcumin, HRV tracking.
+  quote: Encourage emotional expression, mindfulness, breath retraining, omega-3, curcumin,
+    HRV tracking.
 - id: coconote-fm-pancreatic-insufficiency
   location: Management / Support Strategies
-  quote: Certain food which helps in terms of stimulating the enzymatic activity is
-    ginger, curcumin, coriander, onion.
+  quote: Certain food which helps in terms of stimulating the enzymatic activity is ginger,
+    curcumin, coriander, onion.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
 - id: who-monographs-selected-medicinal-plants
   location: Vol 1 (1999) — Rhizoma Curcumae Longae, Contraindications / Adverse reactions
-  quote: Contraindicated in obstruction of the biliary tract; in gallstones use only
-    after consulting a physician. Hypersensitivity to the drug; allergic dermatitis
-    has been reported.
+  quote: Contraindicated in obstruction of the biliary tract; in gallstones use only after
+    consulting a physician. Hypersensitivity to the drug; allergic dermatitis has been reported.
 - id: dirty-genes-lynch
   location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
-  quote: I also had her take curcumin and PQQ, both of which would support her MTHFR
-    gene and promote healthy methylation.
+  quote: I also had her take curcumin and PQQ, both of which would support her MTHFR gene
+    and promote healthy methylation.
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs – Turmeric
+  quote: Turmeric is basically one of those steroids. It is a master and a cup of tea blocker
+    or inhibitor. The ideal dose is 1000 ml. You can use a capsule two times a day.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — Turmeric
+  quote: Turmeric is a beauty. It downregulates NF-kappa B. Turmeric actually lowers blood
+    sugar. Turmeric lowers hemoglobin A1Cs, and it lowers inflammation. So if I'm going to
+    give turmeric, it's going to be about 500 milligrams twice a day.
 contraindications:
   conditions:
   - obstruction of the biliary tract (WHO Monographs Vol 1)
@@ -174,6 +211,9 @@ contraindications:
   - Active liver disease or history of drug/herb-induced liver injury — rare idiosyncratic
     hepatotoxicity reported with high-bioavailability and piperine-enhanced curcumin products
     (LiverTox); stop if jaundice, dark urine or abdominal pain
+  - gallstones or bile duct obstruction — curcumin is cholagogic (EMA/WHO monographs)
+  - active liver disease or prior drug/herb-induced liver injury — case reports of autoimmune-like
+    hepatitis with high-bioavailability (piperine/enhanced) curcumin products
   medications:
   - anticoagulant / antiplatelet drugs — high-dose curcumin may add bleeding risk; caution
   - Narrow-therapeutic-index drugs cleared by CYP3A4/P-gp (e.g. tacrolimus, cyclosporine)
@@ -181,7 +221,8 @@ contraindications:
   life_stages:
   - pregnancy — supplemental (concentrated) curcumin not established safe; culinary turmeric
     is fine
-version: 24
+  - pregnancy — supplemental (not culinary) doses not established as safe
+version: 25
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -219,3 +260,33 @@ interactions:
     type: monitor
     reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive glucose lowering;
       monitor when starting (relevant with the new diabetes/prediabetes links)
+  - medication: warfarin
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: apixaban
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: rivaroxaban
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: dabigatran
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: aspirin
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: clopidogrel
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+aliases:
+- turmeric-curcumin

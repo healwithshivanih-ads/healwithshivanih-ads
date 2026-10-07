@@ -10,26 +10,54 @@ timing_options:
 - morning
 - mid_morning
 - mid_afternoon
+- on_waking
 take_with_food: optional
 linked_to_topics:
 - intermittent-fasting
 - low-carb-diet
+- clean-genes-protocol
+- postural-orthostatic-tachycardia-syndrome
 linked_to_symptoms:
 - dizziness-on-fasting
 - keto-flu
+- low-blood-pressure-salt-craving-dehydration
 linked_to_claims:
 - electrolyte-supplementation-recommended-during-fasting
-notes_for_coach: |-
-  Recommended during fasting days per practitioner guidance. Individual electrolyte
+- electrolyte-depletion-common
+notes_for_coach: 'Recommended during fasting days per practitioner guidance. Individual electrolyte
+
   needs vary. Flag for clinician to specify type and dose, especially for clients with
+
   hypertension, kidney disease, or on diuretics.
 
+
   Best used for: For fasting days and low-carb transitions to prevent dizziness,
+
   headache and fatigue. Not a general cardiometabolic supplement; kidney disease, heart
+
   failure and potassium-sparing/ACE/ARB drugs need clinician input.
+
+
+  Merged from Electrolyte Supplement (with Taurine): Should contain at minimum: potassium,
+  magnesium, chloride, sodium, and taurine. No
+
+  sugar, artificial colors or sweeteners. Taurine aids electrolyte transport. Stop if
+
+  not exercising or sauna-using and symptom-free. If constipation occurs, increase water
+
+  or skip a day.
+
+
+  Best used for: Useful for heavy sweating (sauna, exercise in Indian heat), fasting
+
+  days, the first weeks of a low-carb diet, and low-BP/orthostatic dizziness. Not needed
+
+  by sedentary, symptom-free clients, and sodium-containing mixes are a poor fit for
+
+  hypertensive clients.'
 notes_for_client: On fasting days, keeping your electrolytes balanced with a clinician-recommended
   supplement can help prevent dizziness and fatigue.
-evidence_tier: confirm_with_clinician
+evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
 sources:
@@ -39,12 +67,18 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — Personalized Recommendations
   quote: Electrolytes (calcium, magnesium, sodium, potassium, chloride)
-version: 2
+- id: dirty-genes-lynch
+  location: Supplements — Electrolytes, Week 1
+  quote: You should be taking an electrolyte supplement that contains, at a minimum, potassium,
+    magnesium, chloride, sodium, and taurine, with no sugar, food coloring, or artificial
+    anything. Taurine is needed as it helps carry electrolytes.
+version: 3
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - electrolyte-blend
+- electrolyte-supplement
 contraindications:
   conditions:
   - Chronic kidney disease or reduced eGFR — impaired potassium/magnesium excretion, risk

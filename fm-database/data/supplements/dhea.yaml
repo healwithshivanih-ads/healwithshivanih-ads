@@ -13,37 +13,59 @@ linked_to_topics:
 - menopause
 - bhrt
 - diminished-ovarian-reserve
+- perimenopause
 linked_to_symptoms:
 - low-dheas
 linked_to_claims:
 - dhea-is-precursor-for-testosterone-and-sex-hormones
 - correct-dhea-before-replacing-testosterone
-notes_for_coach: |-
-  DHEA-S should be tested before supplementation. If DHEA-S is low, supplementing
+- dhea-supplementation-contraindicated-in-perimenopausal-estrogen-dominance
+notes_for_coach: 'DHEA-S should be tested before supplementation. If DHEA-S is low, supplementing
+
   directly addresses the precursor deficiency. Dosing and form are clinician-prescribed
+
   only.
 
+
   Best used for: Clinician-led only, and only after a measured low DHEA-S. Evidence is
+
   clearest for replacing documented low DHEA-S (e.g. adrenal insufficiency). Use in IVF
+
   for diminished ovarian reserve is contested and fertility-specialist-led. Oral DHEA
+
   shows little benefit for general menopausal symptoms or libido. Avoid in PCOS,
+
   oestrogen dominance and hormone-sensitive conditions. Vaginal DHEA (prasterone) for
+
   vaginal dryness is a separate prescription product, not this supplement.
-notes_for_client: DHEA is a natural precursor your body uses to make hormones like
-  testosterone and estrogen. Low DHEA-S on a blood test may explain why other hormones
-  are also low.
+
+
+  Merged from DHEA-S Supplement: DHEA is a precursor hormone — it can convert downstream to
+  both testosterone and estrogen. Do NOT recommend in perimenopausal women with existing estrogen
+  dominance or elevated estrogen, as it will worsen the condition. Requires clinician guidance
+  and lab monitoring. Normal DHEA-S reference range cited as 150-390 µg/dL in the document.'
+notes_for_client: DHEA is a natural precursor your body uses to make hormones like testosterone
+  and estrogen. Low DHEA-S on a blood test may explain why other hormones are also low.
 evidence_tier: confirm_with_clinician
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 25
+    max: 50
+    unit: mg
 linked_to_mechanisms:
 - dhea-depletion
 sources:
 - id: coconote-fm-sex-hormones
   location: Steroidogenesis Pathway
-  quote: DHEA is a precursor for testosterone. So, in all males and females, I always
-    check for the DHEA sulfate because that is where it's a precursor, it's a precursor
-    which means that it is formed prior to then. If the value of DHEA sulfate is not
-    only low, then there is no point of replacing their testosterone
-version: 2
+  quote: DHEA is a precursor for testosterone. So, in all males and females, I always check
+    for the DHEA sulfate because that is where it's a precursor, it's a precursor which means
+    that it is formed prior to then. If the value of DHEA sulfate is not only low, then there
+    is no point of replacing their testosterone
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance / DHEA Caution
+  quote: Do not give DHEA when the patient is having perimenopausal phase. We don't want estrogen
+    to be on the higher side.
+version: 3
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -53,6 +75,7 @@ contraindications:
   - Hormone-sensitive cancers (breast, endometrial, ovarian, prostate) or history thereof
     — converts to oestrogen and testosterone
   - Estrogen dominance / elevated oestradiol — can worsen it
+  - Estrogen dominance / elevated oestradiol — can worsen it (catalogue claim)
   medications:
   - Aromatase inhibitors, tamoxifen and other hormone-blocking cancer therapy — opposes their
     action
@@ -78,3 +101,6 @@ interactions:
   - medication: progesterone
     type: monitor
     reason: HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
+aliases:
+- dhea-s
+- dhea-s (resilience reserve)

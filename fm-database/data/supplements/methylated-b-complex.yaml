@@ -1,5 +1,5 @@
 slug: methylated-b-complex
-display_name: Methylated B Complex
+display_name: Methylated / Active B Complex
 category: vitamin
 forms_available:
 - capsule
@@ -20,24 +20,55 @@ linked_to_topics:
 - mthfr-gene-variant
 - medication-induced-nutrient-depletion
 - b12-folate-anemia
+- sibo
+- vitamin-b-complex-deficiency
 linked_to_symptoms:
 - elevated-homocysteine
+- functional-b12-deficiency-symptoms
 linked_to_claims:
 - melatonin-nac-methylated-b-vitamins-support-estrogen
 - genetic-variants-comt-cyp-impact-estrogen
-notes_for_coach: |-
-  Single-capsule methylated B-complex; replaces separate methylfolate + methyl-B12 + P5P
+- metformin-depletes-b12-folate
+- ppis-deplete-b12-magnesium-iron
+- gut-healing-requires-glutamine-zinc-omega3-bcomplex
+notes_for_coach: 'Single-capsule methylated B-complex; replaces separate methylfolate + methyl-B12
+  + P5P
+
   + riboflavin. Prefer over prescribing those individually, for adherence. Methylated B
+
   vitamins also support COMT enzyme activity, which is critical for Phase II methylation
+
   of catechol estrogens (4-OHE1 → 4-MeOE1) — particularly relevant for clients with COMT
+
   variants. Clinician to guide specific form and dose.
 
+
   Best used for: Best for clients with raised homocysteine, MTHFR variants,
+
   vegetarian/vegan diets, or on metformin/PPIs/OCPs — one pill covers B12, folate, B6
+
   and B2. Start low: some people feel anxious, wired or headachy (overmethylation); not
+
   needed if diet and labs are fine.
-notes_for_client: 'The B vitamins in their active form, so your body can use them without converting
-  first.
+
+
+  Merged from Active B-Vitamins (B-Complex): Active (methylated) forms of B12 (methylcobalamin)
+  and folate (5-MTHF) bypass
+
+  absorption and methylation issues. Particularly relevant for patients on metformin or
+
+  PPIs, and those with MTHFR variants. Dosing must be clinician-directed.
+
+
+  Best used for: Best evidence is for correcting documented deficiency and lowering
+
+  raised homocysteine, especially in clients on metformin or PPIs and vegetarians with
+
+  low B12. Not worth it as a general energy tonic in a well-nourished client with normal
+
+  B12/homocysteine; methylated forms add little unless MTHFR or absorption issues exist.'
+notes_for_client: 'The B vitamins in their active form, so your body can use them without
+  converting first.
 
   Mornings — for some people they''re too energising at night. Bright yellow urine is normal.'
 evidence_tier: plausible_emerging
@@ -45,27 +76,37 @@ typical_dose_range: {}
 linked_to_mechanisms:
 - homocysteine-remethylation
 - methylation-cycle-dysfunction
+- medication-related-nutrient-depletion
+- mthfr-enzyme-dysfunction
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Page 02
-  quote: N-acetyl-cystine, & methylated B vitamins may support healthy estrogen metabolism as well.
+  quote: N-acetyl-cystine, & methylated B vitamins may support healthy estrogen metabolism
+    as well.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
-  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins may
-    support healthy estrogen metabolism as well.
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins
+    may support healthy estrogen metabolism as well.
 - id: coach-shivani
   location: Coach Observation
-  quote: prefer a single methylated B-complex over prescribing methylfolate, methyl-B12, P5P and riboflavin
-    as separate pills — fewer pills improves adherence
-version: 3
+  quote: prefer a single methylated B-complex over prescribing methylfolate, methyl-B12, P5P
+    and riboflavin as separate pills — fewer pills improves adherence
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10, selenium,
+    zinc, and antioxidants helps restore metabolic resilience.
+version: 4
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - methylated-b-vitamins
 - active-b-complex
+- active-b-vitamins
 contraindications:
-  conditions: []
+  conditions:
+  - Unexplained macrocytic anaemia or neuropathy — test B12/MMA before starting; folate can
+    mask the haematological signs of B12 deficiency while neurological damage progresses
   medications:
   - Methotrexate (oncology doses) and 5-FU/capecitabine — folate can reduce efficacy or increase
     toxicity; clinician only
@@ -89,3 +130,7 @@ interactions:
   - medication: levodopa
     type: monitor
     reason: Levodopa without carbidopa — B6 reduces its effect
+  - medication: levodopa
+    type: monitor
+    reason: Levodopa without carbidopa — pyridoxine (B6) speeds peripheral levodopa breakdown
+      and reduces its effect

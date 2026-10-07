@@ -409,7 +409,7 @@ tree:
     - label: Biotin 1–2 mg/day
       children: []
       linked_kind: supplement
-      linked_slug: biotin-b7
+      linked_slug: biotin
       notes: 'Stop 48h before any lab draw — biotin skews thyroid + troponin assays.'
     - label: Omega-3 Fish Oil
       children: []

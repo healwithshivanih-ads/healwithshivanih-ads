@@ -15,23 +15,16 @@
  * plans are writable (mirrors updatePlan's gate).
  */
 
-import path from "path";
-import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import { loadAllPlans, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
-import { getCataloguePath } from "@/lib/fmdb/paths";
+import { loadCatalogueRecord } from "@/lib/fmdb/catalogue-resolve";
 import type { Plan } from "@/lib/fmdb/types";
 import type { PlanContribution, PlanSupplementSuggestion } from "@/lib/fmdb/dirty-genes-plan";
 
 async function loadSuppYaml(slug: string): Promise<Record<string, unknown> | null> {
-  try {
-    const raw = await fs.readFile(path.join(getCataloguePath(), "supplements", `${slug}.yaml`), "utf-8");
-    const yaml = await import("js-yaml");
-    return (yaml.load(raw) as Record<string, unknown>) ?? null;
-  } catch {
-    return null;
-  }
+  // Alias-aware so a merged-away slug still resolves to the surviving entry.
+  return loadCatalogueRecord("supplements", slug);
 }
 
 function strs(v: unknown): string[] {

@@ -142,7 +142,7 @@ export function containsAtBoundary(hay: string, needle: string): boolean {
 export function pickLinkEntry(
   links: LinksFile,
   rawName: string,
-  catalogueSlug?: string,
+  catalogueSlug?: string | string[],
   opts?: PickLinkOpts,
 ): LinksEntry | undefined {
   const name = (rawName || "").trim();
@@ -155,11 +155,15 @@ export function pickLinkEntry(
   );
   const cands: { v: LinksEntry; score: number }[] = [];
 
-  const catSlug = canonToken(catalogueSlug ?? "");
-  if (catSlug) {
+  // Several slugs may name one catalogue entry (a merged-away slug survives as
+  // an alias), so an exact binding to ANY of them counts.
+  const catSlugs = (Array.isArray(catalogueSlug) ? catalogueSlug : [catalogueSlug ?? ""])
+    .map(canonToken)
+    .filter(Boolean);
+  if (catSlugs.length) {
     for (const [k, v] of entries) {
       const tokens = [k, ...(v.aliases ?? []), ...(v.covers ?? [])].map(canonToken);
-      if (tokens.includes(catSlug)) cands.push({ v, score: 2000 });
+      if (catSlugs.some((s) => tokens.includes(s))) cands.push({ v, score: 2000 });
     }
   }
 

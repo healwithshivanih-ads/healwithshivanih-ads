@@ -18,33 +18,49 @@ timing_options:
 - morning
 - mid_morning
 - with_dinner
+- mid_afternoon
+- with_lunch
+- evening
 take_with_food: optional
 linked_to_topics:
 - essential-hypertension
 - high-blood-pressure
+- beta-blocker-deprescribing
+- hypertension
 linked_to_symptoms:
 - elevated-blood-pressure
 linked_to_claims:
 - hibiscus-extract-comparable-to-captopril
-notes_for_coach: |-
-  Protocol: three 240 mL cups brewed tea daily OR extract providing 10–20 mg
+notes_for_coach: 'Protocol: three 240 mL cups brewed tea daily OR extract providing 10–20
+  mg
+
   anthocyanidins daily. Comparable to captopril 50 mg/day in double-blind RCT. Inhibits
+
   plasma ACE activity. Active compounds are anthocyanidin glycosides.
 
+
   Best used for: One of the better-supported botanicals for mild-to-moderate high blood
+
   pressure: about three cups of brewed tea a day lowered systolic BP by around 7 mmHg in
+
   trials. Best for clients with raised BP not yet on, or on a single, BP medicine. Not
+
   worth it for lipids or weight.
-notes_for_client: Hibiscus tea (3 cups/day) or a standardised extract is one of the
-  most powerful botanical options for blood pressure — studies show results comparable
-  to a common prescription drug.
+
+
+  Merged from Hibiscus Tea: Hibiscus has modest RCT evidence for mild blood pressure reduction.
+  Listed as a supportive intervention during beta blocker tapering. Safe for most clients
+  as a daily beverage.'
+notes_for_client: Hibiscus tea (3 cups/day) or a standardised extract is one of the most powerful
+  botanical options for blood pressure — studies show results comparable to a common prescription
+  drug.
 rasa:
 - astringent
 - sweet
 virya: cooling
 vipaka: sweet
-prabhava: sacred to Ganesha; strengthens devotion in japa (mantra repetition); purifies blood and heart
-  physically and spiritually; promotes hair growth
+prabhava: sacred to Ganesha; strengthens devotion in japa (mantra repetition); purifies blood
+  and heart physically and spiritually; promotes hair growth
 balances_dosha:
 - pitta
 - kapha
@@ -63,9 +79,16 @@ linked_to_mechanisms:
 sources:
 - id: pizzorno-cardiometabolic-hypertension
   location: Botanical Medicines / Hibiscus sabdariffa
-  quote: Three 240-mL servings of brewed tea daily for 6 weeks lowered systolic BP
-    by 7.2 mm Hg.
-version: 3
+  quote: Three 240-mL servings of brewed tea daily for 6 weeks lowered systolic BP by 7.2
+    mm Hg.
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Hibiscus tea
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients — Supplement
+    Schedule'
+  quote: Hibiscus tea
+version: 4
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -117,3 +140,5 @@ interactions:
     type: monitor
     reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
       blood-pressure lowering; home BP log and doctor aware
+aliases:
+- hibiscus-tea
