@@ -10,6 +10,10 @@ typical_dose_range:
     min: 0.1
     max: 15
     unit: mg
+  tablet:
+    min: 400
+    max: 800
+    unit: mcg
 timing_options:
 - morning
 - with_breakfast
@@ -20,6 +24,12 @@ linked_to_topics:
 - b12-folate-anemia
 - preconception-protocol
 - major-depressive-disorder
+- drug-induced-nutrient-depletion
+- cardiovascular-dysfunction
+- vitamin-b-complex-deficiency
+- emotional-healing-in-chronic-disease
+- nervous-system-regulation
+- methylation
 linked_to_symptoms:
 - elevated-homocysteine
 linked_to_claims:
@@ -27,42 +37,79 @@ linked_to_claims:
 - methylfolate-supports-mood-mthfr
 - mthfr-snp-reduces-methylfolate-production
 - methylfolate-supports-methylation-cycle
-notes_for_coach: |-
-  Source book recommends starting very low and increasing slowly. Some individuals
+- high-homocysteine-triples-heart-attack-risk
+- metformin-depletes-b12-folate-coq10
+- folate-mthfr-natural-vs-folic-acid
+- mthfr-variants-respond-better-to-methylcobalamin
+- b-vitamins-improve-cognitive-function-mild-ci
+- b6-folate-support-serotonin-gaba-synthesis
+notes_for_coach: 'Source book recommends starting very low and increasing slowly. Some individuals
+
   experience significant mood or anxiety side effects (overmethylation) at higher doses.
-  Start with a 'Soak and Scrub' dietary approach before supplementing. Dose selection is
+
+  Start with a ''Soak and Scrub'' dietary approach before supplementing. Dose selection is
+
   clinician territory.
 
+
   Best used for: Best for raised homocysteine, confirmed low folate or MTHFR variants,
-  and preconception folate cover; use in depression is an adjunct for the client's
+
+  and preconception folate cover; use in depression is an adjunct for the client''s
+
   doctor to lead. Start low, as some people feel anxious, irritable or sleep poorly at
+
   higher doses. Always check B12 first or pair with B12, because folate can mask B12
+
   deficiency.
-notes_for_client: This is the activated form of folate your body can actually use,
-  especially if you have an MTHFR variant. Start low — even a very small dose can
-  have a big effect. Leafy greens first, supplements second.
+
+
+  Dose note merged from Folate (Methylfolate): capsule 400–1000 mcg (this entry keeps 0.1–15
+  mg).
+
+
+  Merged from Folate (Methylfolate): Methylfolate is the active form; preferred over folic
+  acid especially in MTHFR
+
+  polymorphism. Critical for methylation, neurotransmitter synthesis, and myelin
+
+  integrity. Clinician should assess MTHFR status and B12 levels.
+
+
+  Best used for: Best when homocysteine is raised, in MTHFR variants or folate
+
+  deficiency, and as a prescriber-guided adjunct in antidepressant-resistant depression
+
+  (L-methylfolate). Not needed by clients with normal folate and homocysteine; always
+
+  check or co-supplement B12.'
+notes_for_client: This is the activated form of folate your body can actually use, especially
+  if you have an MTHFR variant. Start low — even a very small dose can have a big effect.
+  Leafy greens first, supplements second.
 evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - impaired-folate-to-5-mthf-conversion
 - homocysteine-remethylation
 - folate-trap
+- elevated-homocysteine
+- methylation-cycle-disruption
+- mthfr-enzyme-dysfunction
 sources:
 - id: dirty-genes-lynch
   location: 'Chapter 1 — Success Stories: When Your Genes Get Clean'
-  quote: I started her on a twice-weekly supplement of methylfolate, one of the active
-    forms of folate/vitamin B9 (and a nutrient essential to the methylation process
-    on which good health depends).
+  quote: I started her on a twice-weekly supplement of methylfolate, one of the active forms
+    of folate/vitamin B9 (and a nutrient essential to the methylation process on which good
+    health depends).
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
   quote: Many people can't convert folic acid effectively.
 - id: coach-shivani
   location: Coach Observation
-  quote: use active folate such as low-dose L-methylfolate for a short while, pair
-    folate decisions with B12 status
+  quote: use active folate such as low-dose L-methylfolate for a short while, pair folate
+    decisions with B12 status
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Supplementation for MTHFR section
-  quote: The first most important supplement is as you have seen the folate supplement
-    but it should be in the form of methylfolate which is the active form.
+  quote: The first most important supplement is as you have seen the folate supplement but
+    it should be in the form of methylfolate which is the active form.
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
   quote: By the way, folic acid is not vitamin B9. Vitamin B9 is phytohydroxychloroquine.
@@ -72,16 +119,26 @@ sources:
   quote: 'Active folate: 5-MTHF'
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Folate (Methylfolate) - Methylation, pregnancy, detox - 800-1200 mcg/day
-    - sublingual morning pre breakfast OR homocysteine before breakfast
+  quote: Folate (Methylfolate) - Methylation, pregnancy, detox - 800-1200 mcg/day - sublingual
+    morning pre breakfast OR homocysteine before breakfast
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
   quote: Use with MTHF if MTHFR issue suspected.
 - id: vitaone-blood-sugar-cheatsheet
-  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
-    Depletions
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced Depletions
   quote: Folate (as methyl tetra hydro folate)
-version: 3
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: Homocysteine levels is a measure of folic acid deficiency.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Folate'
+  quote: Folate helps the body produce and maintain new cells. This is especially important
+    during periods of rapid growth and cell division, such as infancy and pregnancy.
+- id: vitaone-health-coaching-cheatsheet
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS, mood
+    swings, chronic anxiety.'
+version: 4
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -91,11 +148,15 @@ aliases:
 - l-methylfolate
 - methylfolate-5-mthf
 - methylfolate-b9
+- folate
 contraindications:
   conditions:
   - Untreated or unchecked B12 deficiency — folate can mask the anaemia while B12 neuropathy
     progresses; check B12 or give with B12 (claim murray-folate-masks-b12-deficiency)
   - Bipolar disorder — case reports of hypomania with high-dose methylfolate; clinician only
+  - Untreated or unconfirmed B12 deficiency / pernicious anaemia — folate (especially >1 mg/day)
+    can correct the anaemia and mask B12 deficiency while nerve damage progresses; check B12
+    first or co-supplement
   medications:
   - Methotrexate (oncology doses) and 5-FU/capecitabine — folate can reduce efficacy or increase
     toxicity; clinician only
@@ -116,3 +177,32 @@ interactions:
   - medication: primidone
     type: monitor
     reason: Phenytoin, phenobarbital, primidone — folate can lower anticonvulsant levels
+  - medication: methotrexate
+    type: monitor
+    reason: Methotrexate used for cancer — folate can blunt its effect (low-dose folate alongside
+      RA/psoriasis methotrexate is usually prescribed deliberately; leave that to the prescriber)
+  - medication: phenytoin
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: fosphenytoin
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: phenobarbital
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: primidone
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: carbamazepine
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor

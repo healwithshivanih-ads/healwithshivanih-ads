@@ -50,13 +50,13 @@ linked_to_topics:
 - vitamin-b12
 - folate-nutrition
 linked_to_supplements:
-- b-complex-vitamins
+- b-complex
 - vitamin-b6-pyridoxine
 - pantothenic-acid-b5
 - niacin
 - thiamin-b1
 - vitamin-b12
-- biotin-b7
+- biotin
 linked_to_mechanisms:
 - impaired-folate-to-5-mthf-conversion
 out_of_scope_notes: >

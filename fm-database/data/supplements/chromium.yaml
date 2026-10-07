@@ -26,6 +26,7 @@ linked_to_topics:
 - type-2-diabetes-mellitus
 - prediabetes
 - hypoglycemia
+- prediabetes-metabolic-syndrome
 linked_to_symptoms:
 - carb-cravings
 - elevated-blood-glucose
@@ -33,52 +34,90 @@ linked_to_claims:
 - chromium-biotin-combo-may-lower-hba1c
 - chromium-evidence-inconsistent-for-ir
 - murray-chromium-biotin-fasting-glucose-a1c
-notes_for_coach: |-
-  Evidence is inconsistent. Chromium picolinate is the most studied form.
+- micronutrient-deficiency-impairs-insulin-receptor-signalling
+- whole-foods-supply-micronutrients-supporting-insulin-sensitivity
+- chromium-improves-glycemic-control-deficient
+notes_for_coach: 'Evidence is inconsistent. Chromium picolinate is the most studied form.
+
   Contraindicated in kidney disease — screen before recommending. Chromium + biotin
+
   combination may enhance effects. Food sources: broccoli, turkey breast, green beans,
+
   grapes, apples.
 
+
   Best used for: Small and inconsistent benefits for fasting glucose and insulin in type
+
   2 diabetes and insulin-resistant PCOS, mostly with the picolinate form, and limited
+
   evidence for reducing carbohydrate cravings. Benefit is likelier in people with low
+
   chromium intake. An add-on to diet and activity, never a replacement for diabetes
+
   medication.
-notes_for_client: Chromium is a trace mineral that may play a role in blood sugar
-  management. Talk to your provider before supplementing, especially if you have any
-  kidney concerns.
-evidence_tier: fm_specific_thin
+
+
+  Dose note merged from Chromium (Picolinate / Polynicotinate): capsule 200–200 mcg (this
+  entry keeps 200–1000 mcg).
+
+
+  Merged from Chromium (Picolinate / Polynicotinate): Cr picolinate + biotin (600 mcg Cr +
+  2 mg biotin) combination shown to drop fasting
+
+  glucose 10 mg/dL and HbA1c 0.54%. Effects are meaningful only in chromium-deficient
+
+  individuals. At least 200 mcg/day for diabetics; 200–400 mcg/day optimal.
+
+
+  Best used for: Small and inconsistent benefits for fasting glucose and insulin in type
+
+  2 diabetes and insulin-resistant PCOS, mostly with the picolinate form, and limited
+
+  evidence for reducing carbohydrate cravings. Benefit is likelier in people with low
+
+  chromium intake. An add-on to diet and activity, never a replacement for diabetes
+
+  medication.'
+notes_for_client: Chromium is a trace mineral that may play a role in blood sugar management.
+  Talk to your provider before supplementing, especially if you have any kidney concerns.
+evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - insulin-resistance
 sources:
 - id: vitaone-practice-guide
   location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
-  quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium,
-    berberine'
+  quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium, berberine'
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Chromium Picolinate - Blood sugar regulation - 200–400 mcg/day - With meals
 - id: vitaone-sex-hormones-cheatsheet
   location: PCOS Supplement Cheatsheet
-  quote: 'Chromium Picolinate: Enhances glucose metabolism; Reduces cravings & insulin
-    spikes; 200–400 mcg/day; best with meals.'
+  quote: 'Chromium Picolinate: Enhances glucose metabolism; Reduces cravings & insulin spikes;
+    200–400 mcg/day; best with meals.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Nutrients to Support Insulin Sensitivity
   quote: Magnesium  Chromium
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Studies looking at the effect of chromium supplementation on insulin resistance
-    and glucose control are inconsistent, with a smaller number of studies showing
-    positive benefits, mainly in those who have diabetes.
+  quote: Studies looking at the effect of chromium supplementation on insulin resistance and
+    glucose control are inconsistent, with a smaller number of studies showing positive benefits,
+    mainly in those who have diabetes.
 - id: vitaone-health-coaching-toolkit
   location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
-  quote: Chromium is trace mineral required in very small amounts by the body. It
-    is thought to play a role in insulin function, but it's exact mechanism is not
-    fully understood.
+  quote: Chromium is trace mineral required in very small amounts by the body. It is thought
+    to play a role in insulin function, but it's exact mechanism is not fully understood.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 9
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Chromium picolinate: Potentiates insulin signalling; lowers fasting glucose. 200
+    µg.'
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Chromium
+  quote: Supplementing Cr decreases fasting glucose, improves glucose tolerance, lowers insulin,
+    decreases total cholesterol and triglycerides, and increases HDL.
+version: 10
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -116,3 +155,8 @@ interactions:
   - medication: sulfonylurea
     type: monitor
     reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+cycle_phases:
+- early_luteal
+- late_luteal
+aliases:
+- chromium-picolinate

@@ -412,7 +412,7 @@ tree:
     - label: Omega-3 EPA/DHA (inflammation)
       children: []
       linked_kind: supplement
-      linked_slug: omega-3
+      linked_slug: fish-oil-epa-dha
       notes: ''
     - label: Magnesium Glycinate (insulin signalling, sleep)
       children: []
@@ -427,7 +427,7 @@ tree:
     - label: Chromium Picolinate (glucose tolerance)
       children: []
       linked_kind: supplement
-      linked_slug: chromium-picolinate
+      linked_slug: chromium
       notes: ''
     - label: Zinc (skin, androgens)
       children: []

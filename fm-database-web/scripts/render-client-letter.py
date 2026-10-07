@@ -485,6 +485,46 @@ def _load_custom_links() -> dict[str, tuple[str, str]]:
         return {}
 
 
+_ALIAS_INDEX_CACHE: dict[str, dict[str, str]] = {}
+
+
+def _catalogue_alias_index(kind_dir: str) -> dict[str, str]:
+    """{slug-or-alias -> canonical slug} for one catalogue dir.
+
+    When two entries are merged the retired slug lives on as an alias of the
+    survivor (`ginger-root` on `ginger`). Plans written earlier still carry
+    the old slug, so a bare `<slug>.yaml` read misses it. Canonical slugs win
+    over another entry's alias, mirroring fmdb/validator.py::_resolve_index.
+    """
+    if kind_dir in _ALIAS_INDEX_CACHE:
+        return _ALIAS_INDEX_CACHE[kind_dir]
+    import yaml as _yaml
+    index: dict[str, str] = {}
+    records = []
+    for p in sorted((FMDB_ROOT / "data" / kind_dir).glob("*.yaml")):
+        try:
+            d = _yaml.safe_load(p.read_text()) or {}
+        except Exception:
+            continue
+        if isinstance(d, dict) and d.get("slug"):
+            records.append(d)
+            index[d["slug"]] = d["slug"]
+    for d in records:
+        for a in d.get("aliases") or []:
+            if isinstance(a, str) and a not in index:
+                index[a] = d["slug"]
+    _ALIAS_INDEX_CACHE[kind_dir] = index
+    return index
+
+
+def _related_supplement_slugs(slug: str) -> list[str]:
+    """The canonical slug plus every alias naming the same supplement."""
+    idx = _catalogue_alias_index("supplements")
+    canonical = idx.get(slug, slug)
+    out = [canonical] + [k for k, v in idx.items() if v == canonical and k != canonical]
+    return out if slug in out else out + [slug]
+
+
 def _load_custom_links_by_slug() -> dict[str, tuple[str, str]]:
     """Coach-managed affiliate links keyed by an explicit catalogue
     `slug:` field on the supplement_links.yaml entry.
@@ -1853,7 +1893,11 @@ def _load_catalogue_notes(plan: dict) -> str:
         for slug in slugs:
             p = catalogue_root / kind_dir / f"{slug}.yaml"
             if not p.exists():
-                continue
+                # merged-away slug → read the surviving entry's notes
+                canon = _catalogue_alias_index(kind_dir).get(slug)
+                if not canon:
+                    continue
+                p = catalogue_root / kind_dir / f"{canon}.yaml"
             try:
                 data = _yaml.safe_load(p.read_text()) or {}
                 note = (data.get("notes_for_coach") or "").strip()
@@ -1942,7 +1986,9 @@ def _vitaone_url_only(supplement_name: str, slug: str | None = None) -> tuple[st
         sl = slug.strip().lower()
         # Coach-set custom link bound by explicit `slug:` field — exact
         # match, takes precedence over every keyword path below.
-        cl = _load_custom_links_by_slug().get(sl)
+        by_slug = _load_custom_links_by_slug()
+        # A link bound to a slug that was later merged still binds exactly.
+        cl = next((by_slug[s] for s in _related_supplement_slugs(sl) if s in by_slug), None)
         if cl:
             return cl
         if sl in _STUB_SLUG_TO_VITAONE_SLUG:

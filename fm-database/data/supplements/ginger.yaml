@@ -14,7 +14,7 @@ timing_options:
 - mid_morning
 - mid_afternoon
 - evening
-take_with_food: optional
+take_with_food: required
 linked_to_topics:
 - gerd
 - gut-dysfunction
@@ -37,18 +37,33 @@ linked_to_claims:
 - ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
 - murray-ginger-ra-pain-mobility
 - ginger-anti-inflammatory-1g-per-day
-notes_for_coach: |-
-  Ginger is cited as a food/herb that stimulates endogenous enzymatic activity.
+notes_for_coach: 'Ginger is cited as a food/herb that stimulates endogenous enzymatic activity.
+
   Well-tolerated and broadly safe as a culinary and supplement addition. Supports
+
   digestive function coaching conversations. Ginger extract at 1g/day or 3–4 cups of
+
   ginger green tea daily is recommended. Food-first approach preferred. Ginger green tea
+
   is a practical and sustainable way for clients to incorporate this daily.
 
+
   Best used for: Best evidence is for nausea (pregnancy, motion, chemotherapy) and
+
   period pain, with smaller benefits for osteoarthritis pain and fasting glucose/HbA1c
+
   in overweight or type 2 diabetic clients. A good food-first addition for most clients.
+
   Not a substitute for medical anti-inflammatory care in active RA, and doses above ~4
+
   g/day often cause heartburn.
+
+
+  Dose note merged from Ginger Root: powder 500–1000 mg (this entry keeps 1–2 g).
+
+
+  Merged from Ginger Root: Anti-inflammatory and digestive herb; useful for nausea, indigestion,
+  and inflammatory conditions.'
 notes_for_client: Ginger can help stimulate your body's own digestive enzyme production. Adding
   it to meals or taking it as a tea or supplement may support digestion. Try 3–4 cups of ginger
   green tea daily as a simple anti-inflammatory habit. This is a sustainable way to get a
@@ -83,6 +98,10 @@ typical_dose_range:
     min: 1
     max: 2
     unit: g
+  tablet:
+    min: 500
+    max: 1000
+    unit: mg
 linked_to_mechanisms:
 - arachidonic-acid-cascade
 - altered-gi-motility
@@ -112,19 +131,58 @@ sources:
   location: Anti-Inflammatory Herbs – Ginger
   quote: Ginger, you can use ginger extract and those is really important. You should use
     one gram per day or you can use a ginger tea in your patient's diet.
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Ginger Root - Anti-inflammatory, digestion - 500–1000 mg/day - With meals
 contraindications:
   conditions:
   - gallstones — consult a physician before use (WHO Monographs Vol 1)
   - bleeding / coagulation disorders — consult a physician (WHO Monographs Vol 1)
+  - Gallstones — consult a physician before use (WHO Monographs Vol 1; mirrors the main ginger
+    entry)
+  - Bleeding / coagulation disorders — consult a physician (WHO Monographs Vol 1)
   medications:
   - anticoagulant / antiplatelet drugs — possible additive bleeding at higher doses (WHO Monographs
     Vol 1)
   life_stages: []
-version: 7
+version: 8
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - ginger-extract
+- ginger-root
 cycle_phases:
 - menstrual
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: acenocoumarol
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: apixaban
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: rivaroxaban
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: dabigatran
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: clopidogrel
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: aspirin
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)

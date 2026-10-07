@@ -12,6 +12,7 @@ timing_options:
 - bedtime
 - with_lunch
 - with_dinner
+- on_waking
 take_with_food: optional
 linked_to_topics:
 - liver-detoxification
@@ -39,9 +40,15 @@ linked_to_topics:
 - gut-skin-hormone-axis
 - ibs
 - irritable-bowel-syndrome
+- sibo
+- sifo
+- gut-microbiome-and-gut-flora
+- probiotic-and-prebiotic-support
+- inflammatory-bowel-conditions
 linked_to_symptoms:
 - diarrhea
 - irritable-bowel
+- constipation
 linked_to_claims:
 - probiotics-gut-microbiome-detox-support
 - gut-microbiome-diversity-restores-tolerance
@@ -61,24 +68,73 @@ linked_to_claims:
 - probiotics-restore-gut-microbiome
 - probiotics-support-gut-microbiome-in-5r-protocol
 - probiotics-deferred-until-gut-lining-stabilises
-notes_for_coach: |-
-  Probiotic-rich foods and supplements help diversify gut microbiome, potentially
+- probiotic-diversity-essential-for-gut-healing
+- 5rs-re-inoculate-probiotics
+- probiotic-supplement-needed-for-2-months-post-antibiotics
+- gut-flora-disrupted-by-antibiotics-statins-painkillers
+notes_for_coach: 'Probiotic-rich foods and supplements help diversify gut microbiome, potentially
+
   reducing beta-glucuronidase activity and improving estrogen excretion. Diversity of
+
   strains matters more than single-strain supplementation. Used in the Re-inoculate step
+
   of 5R. Strain selection matters; multi-strain formulations are commonly recommended.
+
   Clients on immunosuppressants should consult clinician before use. Used in the
+
   Re-inoculate phase of the 5R protocol to restore beneficial gut flora disrupted by low
+
   acid, dysbiosis, or SIBO. Strain and dose selection should be guided by a clinician,
+
   especially if SIBO is suspected. Probiotics and prebiotics were intentionally deferred
+
   for 3 months (until gut inflammation settled) to avoid aggravating fermentation and
+
   bloating. VSL#3 (high-potency multi-strain) and spore-forming probiotics were used in
+
   the re-inoculation phase. Introducing probiotics to an inflamed gut can worsen
+
   bloating and dysbiosis symptoms.
 
+
   Best used for: Best evidence: antibiotic-associated diarrhoea, IBS symptoms
+
   (multi-strain products) and the re-inoculate phase of a 5R protocol; modest supportive
+
   data for HbA1c and mood. Effects are strain-specific; not worth adding into an
+
   inflamed or SIBO-dominant gut, where it can worsen bloating — calm the gut first.
+
+
+  Dose note merged from Probiotics (Lactobacillus & Bifidobacterium strains): capsule 1–5000000000
+  capsules (this entry keeps 10–50 g).
+
+
+  Dose note merged from Probiotics (Lactobacillus & Bifidobacterium strains): powder 1–1 teaspoons
+  (this entry keeps 1–2 scoops).
+
+
+  Merged from Probiotics (Lactobacillus & Bifidobacterium strains): Emphasize strain diversity;
+  single-strain supplementation is often insufficient.
+
+  Introduce after enzyme and HCL support are established. Typical duration 6 weeks
+
+  minimum for SIBO/SIFO. Recommend after any antibiotic course for a minimum of 2
+
+  months. Pair with prebiotic fibre diversity (7+ varieties per meal) to feed the
+
+  organisms. Source is an expert practitioner talk; verify specific strain and dose with
+
+  a clinician.
+
+
+  Best used for: Best evidence: preventing antibiotic-associated diarrhoea and easing
+
+  IBS symptoms with multi-strain products, and as the re-inoculate step after the gut
+
+  has calmed. Benefits are strain-specific and stop when the product stops; not worth
+
+  starting into an inflamed or SIBO-dominant gut, where it can worsen bloating.'
 notes_for_client: 'Friendly bacteria to help settle and rebalance your gut.
 
   A little extra wind in the first week is normal and usually passes.'
@@ -105,72 +161,81 @@ sources:
   quote: Use probiotics, L-glutamine, zinc carnosine
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Reinoculate
-  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that contain
-    the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
+  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that
+    contain the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: There is also emerging research which shows that probiotics may have beneficial effects on
-    reducing blood sugar, insulin, and Hemoglobin A1c, especially for those who have type 2 or gestational
-    diabetes.
+  quote: There is also emerging research which shows that probiotics may have beneficial effects
+    on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those who have type
+    2 or gestational diabetes.
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that contain
-    the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
+  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements that
+    contain the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
 - id: coconote-fm-sex-hormones
   location: Gut Health and Estrogen Management
-  quote: Probiotics rich food, these can be included in the diet as well when it comes to managing
-    the microbial health of the gut.
+  quote: Probiotics rich food, these can be included in the diet as well when it comes to
+    managing the microbial health of the gut.
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
-  quote: incorporating a good quality probiotic and help to turn them into powder I'm sure you have
-    learned in your course and when you are talking about the supplement it has to be the high quality
-    not from the Amazon buying.
+  quote: incorporating a good quality probiotic and help to turn them into powder I'm sure
+    you have learned in your course and when you are talking about the supplement it has to
+    be the high quality not from the Amazon buying.
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion CFU/day - Empty
-    stomach or bedtime
+  quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion CFU/day
+    - Empty stomach or bedtime
 - id: vitaone-thyroid-cheatsheet
   location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
   quote: Repair gut with probiotics, prebiotics, L-glutamine, and zinc carnosine
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
-  quote: 'Probiotics (L. Rhamnosus, B. Longum): Rebalances estrobolome; reduces β-glucuronidase; Daily;
-    choose multi-strain for gut symptoms.'
+  quote: 'Probiotics (L. Rhamnosus, B. Longum): Rebalances estrobolome; reduces β-glucuronidase;
+    Daily; choose multi-strain for gut symptoms.'
 - id: vitaone-adrenal-cheatsheet
   location: The Anti-Stress Hormones / Clinical Interventions (p.22, p.12)
-  quote: 'Heal gut microbiome; add probiotics (L. plantarum, B. longum). Gut–Brain Axis Repair: Restore
-    microbial + vagal health. Polyphenols, Prebiotics, Butyrate, Mindful eating.'
+  quote: 'Heal gut microbiome; add probiotics (L. plantarum, B. longum). Gut–Brain Axis Repair:
+    Restore microbial + vagal health. Polyphenols, Prebiotics, Butyrate, Mindful eating.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis / Endotoxemia
   quote: Probiotic (10–50B CFU)
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet — Gut Dysbiosis
-  quote: Broad-spectrum probiotics, Prebiotics, Polyphenols, Butyrate — Balance = feed good microbes,
-    not just kill bad ones. Diet is key.
+  quote: Broad-spectrum probiotics, Prebiotics, Polyphenols, Butyrate — Balance = feed good
+    microbes, not just kill bad ones. Diet is key.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Re-inoculate
-  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria, then you
-    have to replace that bacteria with probiotics.
+  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria,
+    then you have to replace that bacteria with probiotics.
 - id: coconote-fm-hypochlorhydria
   location: Treatment / 5R Gut Protocol — Re-inoculate
-  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic can be
-    used in terms of repairing.
+  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic
+    can be used in terms of repairing.
 - id: coconote-fm-gut-skin-hormone-axis
   location: 5R Protocol — Re-inoculate
-  quote: Re-inoculation is with the beneficial microbes. So this was done after a span of three months.
-    That is when the prebiotic foods and probiotics were added in our case in the form of VSL3 and
-    spore biotic.
-version: 14
+  quote: Re-inoculation is with the beneficial microbes. So this was done after a span of
+    three months. That is when the prebiotic foods and probiotics were added in our case in
+    the form of VSL3 and spore biotic.
+- id: coconote-fm-sibo-sifo
+  location: SIFO Treatment Protocol
+  quote: Probiotics like lactobacillus and if so, we have to maintain different strains of
+    bacterial species as well, daily for a period of 6 weeks.
+- id: barbara-oneil-gi-tract
+  location: Probiotic Section
+  quote: If a person's been on antibiotics, they need to take a probiotic supplement every
+    morning for at least two months. Probiotic is a powder that contains lactobacillus acidophilus,
+    bifidus bacterium and quite possibly a few others.
+version: 15
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
-pregnancy_safety_note: Most strains well-tolerated. Lactobacillus + Bifidobacterium standard. Some
-  evidence reduces postpartum eczema in baby.
+pregnancy_safety_note: Most strains well-tolerated. Lactobacillus + Bifidobacterium standard.
+  Some evidence reduces postpartum eczema in baby.
 aliases:
 - probiotic
 - probiotic-multi-strain
@@ -178,12 +243,16 @@ aliases:
 - probiotics-gut-repair
 - probiotics-gut-reinoculation
 - probiotic-vsl3-spore-biotic
+- probiotics-lactobacillus-bifidobacterium
+- probiotic-lactobacillus-acidophilus-bifidus
 contraindications:
   conditions:
   - Severe immunocompromise, central venous catheter, or critical illness — rare but documented
     probiotic bacteraemia/fungaemia
   - Acute severe pancreatitis — probiotic use associated with increased mortality (PROPATRIA
     trial)
+  - Severe immunocompromise, central venous catheter, or critical illness — rare but documented
+    probiotic bacteraemia
   medications:
   - Immunosuppressants (e.g. transplant drugs, high-dose steroids, biologics) — clinician
     clearance before use (notes already advise this; not in a machine-checkable field)

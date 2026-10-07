@@ -1,5 +1,6 @@
 "use server";
 
+import { loadCatalogueRecord } from "@/lib/fmdb/catalogue-resolve";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import path from "path";
@@ -2908,7 +2909,6 @@ export async function checkPregnancySafetyAction(
 ): Promise<PregnancySafetyResult> {
   try {
     const yaml = await import("js-yaml");
-    const { getCataloguePath } = await import("@/lib/fmdb/paths");
     const root = getPlansRoot();
     const clientPath = path.join(root, "clients", clientId, "client.yaml");
 
@@ -2948,13 +2948,11 @@ export async function checkPregnancySafetyAction(
     const flags: PregnancySafetyFlag[] = [];
     const unknownSupps: PregnancySafetyFlag[] = [];
 
-    const cataloguePath = getCataloguePath();
     for (const key of planSlugs) {
       const [slug, sourcePlan] = key.split("|");
-      const fp = path.join(cataloguePath, "supplements", `${slug}.yaml`);
-      const sRaw = await fs.readFile(fp, "utf-8").catch(() => null);
-      if (!sRaw) continue;
-      const supp = yaml.load(sRaw) as Record<string, unknown> | null;
+      // Alias-aware: a merged-away slug in an older plan must still get its
+      // pregnancy/lactation flag — a bare file read skipped it silently.
+      const supp = await loadCatalogueRecord("supplements", slug);
       if (!supp) continue;
       const preg = String((supp.pregnancy_safety as string | undefined) ?? "unknown");
       const lact = String((supp.lactation_safety as string | undefined) ?? "unknown");

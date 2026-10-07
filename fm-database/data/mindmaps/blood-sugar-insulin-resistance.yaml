@@ -243,7 +243,7 @@ tree:
     - label: Chromium Picolinate
       children: []
       linked_kind: supplement
-      linked_slug: chromium-picolinate
+      linked_slug: chromium
       notes: ''
     - label: Magnesium Glycinate
       children: []

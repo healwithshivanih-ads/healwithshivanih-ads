@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from dataclasses import asdict
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -370,6 +371,7 @@ def stage(
     # Order matters: topics + mechanisms first so that claims/supplements that
     # link to them resolve cleanly when the validator simulates the post-state.
     by_type = result.by_type()
+    id_cache: dict[str, dict[str, str]] = {}
     for entity in EXTRACTED_TYPES:
         for raw in by_type.get(entity, []):
             # Defensive: LLM occasionally emits a string or other non-dict
@@ -389,12 +391,85 @@ def stage(
                 })
                 continue
             payload = _ENRICHERS[entity](raw, req.source_id, updated_by)
+            _redirect_to_existing(data_dir, entity, payload, manifest, id_cache)
             _write_or_record(
                 batch_dir, data_dir, entity, payload, manifest, slug_field="slug"
             )
 
     (batch_dir / "_meta.json").write_text(json.dumps(manifest, indent=2))
     return manifest
+
+
+# ---------------------------------------------------------------------------
+# Duplicate prevention
+# ---------------------------------------------------------------------------
+#
+# The extractor names an entity the way the DOCUMENT does. A cheatsheet that
+# says "Chromium Picolinate" produced `chromium-picolinate` next to the
+# existing `chromium`; "Ginger Root" produced `ginger-root` next to `ginger`.
+# The conflict check below used to be an exact FILENAME match, so every such
+# variant staged as "new", was approved, and became a second entity splitting
+# the first one's links — 21 supplement pairs by 2026-10. An incoming entity
+# whose slug, alias or display name (parenthetical dropped) already names an
+# existing entity is now redirected onto that entity: it stages as a
+# "conflict", so approving it needs --update and SMART-MERGES into the
+# existing record, and its own slug is kept as an alias.
+
+def _identity(s: Any) -> str:
+    s = re.sub(r"\([^)]*\)", " ", str(s or "").lower())
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
+def _identity_index(data_dir: Path, entity: str) -> dict[str, str]:
+    """{identity key -> canonical slug}. A key two entities share is dropped:
+    it cannot say which one an incoming candidate means."""
+    owners: dict[str, set[str]] = {}
+    for p in (data_dir / entity).glob("*.yaml"):
+        try:
+            d = yaml.safe_load(p.read_text()) or {}
+        except Exception:
+            continue
+        slug = d.get("slug")
+        if not slug:
+            continue
+        keys = {slug, _identity(slug), _identity(d.get("display_name"))}
+        keys |= {_identity(a) for a in (d.get("aliases") or []) if isinstance(a, str)}
+        for k in keys - {""}:
+            owners.setdefault(k, set()).add(slug)
+    return {k: next(iter(v)) for k, v in owners.items() if len(v) == 1}
+
+
+def _redirect_to_existing(data_dir: Path, entity: str, payload: dict[str, Any],
+                          manifest: dict[str, Any],
+                          cache: dict[str, dict[str, str]]) -> None:
+    if "aliases" not in _MODEL_BY_ENTITY[entity].model_fields:
+        return
+    slug = payload.get("slug")
+    if not slug or _canonical_exists(data_dir, entity, slug):
+        return
+    if entity not in cache:
+        cache[entity] = _identity_index(data_dir, entity)
+    idx = cache[entity]
+    target = idx.get(slug) or idx.get(_identity(slug)) or idx.get(
+        _identity(payload.get("display_name")))
+    if not target or target == slug:
+        return
+    aliases = list(payload.get("aliases") or [])
+    if slug not in aliases:
+        aliases.append(slug)
+    payload["aliases"] = aliases
+    payload["slug"] = target
+    # Smart-merge prefers the incoming scalar, so keep the existing name —
+    # otherwise approving the redirect would rename `Chromium` to
+    # `Chromium Picolinate`.
+    try:
+        existing = yaml.safe_load((data_dir / entity / f"{target}.yaml").read_text()) or {}
+        if existing.get("display_name"):
+            payload["display_name"] = existing["display_name"]
+    except Exception:
+        pass
+    manifest.setdefault("redirected", []).append(
+        {"entity": entity, "from": slug, "to": target})
 
 
 def _write_or_record(

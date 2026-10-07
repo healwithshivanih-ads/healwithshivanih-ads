@@ -1,5 +1,5 @@
 slug: folic-acid
-display_name: Folic Acid (Folate / Methylfolate)
+display_name: Folic Acid
 category: vitamin
 forms_available:
 - tablet
@@ -18,24 +18,54 @@ linked_to_topics:
 - preconception-protocol
 - pregnancy-first-trimester
 - b12-folate-anemia
+- cervical-dysplasia
 linked_to_symptoms:
 - elevated-homocysteine
 linked_to_claims:
 - folic-acid-b12-b6-lower-homocysteine
-notes_for_coach: |-
-  Must be co-administered with B12 and B6 for homocysteine lowering. Consider active
+- cervical-dysplasia-folate-regression
+notes_for_coach: 'Must be co-administered with B12 and B6 for homocysteine lowering. Consider
+  active
+
   (methylfolate) form in MTHFR polymorphism patients. 400–800 mcg/day standard; higher
+
   doses (1–5 mg) may be needed for significant hyperhomocysteinemia under clinician
+
   guidance.
 
+
   Best used for: Strongest evidence: around conception and in early pregnancy to prevent
+
   neural tube defects, and lowering raised homocysteine together with B12/B6.
+
   Homocysteine lowering has not reduced heart attacks in large trials (modest stroke
+
   benefit only), so it is not worth taking for heart protection when homocysteine is
+
   normal. Check B12 status first.
-notes_for_client: Folate (especially active methylfolate) helps lower homocysteine
-  — a blood marker that damages artery walls. Works best when taken with vitamins
-  B12 and B6.
+
+
+  Dose note merged from Folate / Folic Acid: tablet 400–10000 mcg (this entry keeps 400–1000
+  mcg).
+
+
+  Merged from Folate / Folic Acid: For cervical dysplasia: 10 mg daily for 3 months, then
+  2.5 mg daily. Always combine
+
+  with B12 (methylcobalamin 1 mg daily) to avoid masking B12 deficiency. RBC folate is
+
+  more clinically relevant than serum folate in OC users.
+
+
+  Best used for: Folic acid is the guideline form for preventing neural tube defects;
+
+  the high-dose cervical-dysplasia protocol in this entry is an old, specialist regimen
+
+  with mixed trial results and should stay clinician-directed. For general folate needs,
+
+  use the folic-acid or methylfolate entries.'
+notes_for_client: Folate (especially active methylfolate) helps lower homocysteine — a blood
+  marker that damages artery walls. Works best when taken with vitamins B12 and B6.
 evidence_tier: strong
 linked_to_mechanisms:
 - elevated-homocysteine
@@ -43,10 +73,13 @@ linked_to_mechanisms:
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Homocysteine
-  quote: Folic acid (400 mcg daily) alone can reduce homocysteine in some subjects,
-    but not all; importance of vitamins B12 and B6 to homocysteine metabolism indicates
-    all three should be used together.
-version: 2
+  quote: Folic acid (400 mcg daily) alone can reduce homocysteine in some subjects, but not
+    all; importance of vitamins B12 and B6 to homocysteine metabolism indicates all three
+    should be used together.
+- id: pizzorno-textbook-gi-2
+  location: Cervical Dysplasia — Therapeutic Approach — Supplements
+  quote: 'Folic acid: 10 mg q.d. for 3 months, then 2.5 mg q.d.'
+version: 3
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -90,3 +123,5 @@ interactions:
     reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
       — folate supplementation can lower drug levels and seizure control; prescriber should
       monitor
+aliases:
+- folate-folic-acid

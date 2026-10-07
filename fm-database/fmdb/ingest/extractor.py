@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import json
 import os
+from pathlib import Path
 from typing import Any, Protocol
 
 from .types import EXTRACTED_TYPES, ExtractionResult, IngestRequest
@@ -52,6 +53,11 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "required": ["slug", "display_name", "category", "evidence_tier"],
                 "properties": {
+                        "aliases": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": "Other names the document uses for this supplement (salt/form, plant part, brand, Hindi name).",
+                        },
                     "slug": {"type": "string"},
                     "display_name": {"type": "string"},
                     "category": {"type": "string"},
@@ -561,6 +567,46 @@ Strict rules:
 Call the extract_entities tool exactly once with your structured result."""
 
 
+def _existing_supplements_block() -> list[dict[str, Any]]:
+    """The supplements already in the catalogue, as a cached system block.
+
+    Without it the extractor names a supplement the way the document does —
+    "Chromium Picolinate", "Ginger Root", "Vitamin A (Retinol)" — and each
+    variant became a second catalogue entry beside the existing one (21 pairs
+    were merged in 2026-10). Staging also redirects these now; telling the
+    model up front means it enriches the right entry in the first place.
+    """
+    import yaml
+
+    data_dir = Path(os.environ.get("FMDB_DATA_DIR") or Path(__file__).resolve().parents[2] / "data")
+    rows = []
+    for p in sorted((data_dir / "supplements").glob("*.yaml")):
+        try:
+            d = yaml.safe_load(p.read_text()) or {}
+        except Exception:
+            continue
+        if not d.get("slug"):
+            continue
+        al = ", ".join(a for a in (d.get("aliases") or [])[:6] if isinstance(a, str))
+        rows.append(f"{d['slug']} | {d.get('display_name', '')}" + (f" | {al}" if al else ""))
+    if not rows:
+        return []
+    return [{
+        "type": "text",
+        "text": (
+            "EXISTING SUPPLEMENTS (slug | display name | aliases). When the document "
+            "discusses one of these — under ANY name, form, salt, plant part or brand "
+            "(e.g. 'chromium picolinate' is `chromium`, 'ginger root' is `ginger`) — "
+            "emit it under the EXISTING slug so it enriches that entry, and put the "
+            "document's name in its aliases. Create a new supplement slug only for a "
+            "genuinely different compound, or a form the catalogue already keeps "
+            "separate (e.g. methylfolate vs folic-acid, magnesium-glycinate vs "
+            "magnesium-citrate).\n" + "\n".join(rows)
+        ),
+        "cache_control": {"type": "ephemeral"},
+    }]
+
+
 class AnthropicExtractor:
     """LLM-backed extractor using Anthropic's tool-use for structured output.
 
@@ -646,6 +692,7 @@ class AnthropicExtractor:
                     "text": "Tool schema reference:\n" + json.dumps(_TOOL_INPUT_SCHEMA, indent=2),
                     "cache_control": {"type": "ephemeral"},
                 },
+                *_existing_supplements_block(),
             ],
             tools=[tool],
             tool_choice={"type": "tool", "name": "extract_entities"},

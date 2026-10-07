@@ -68,8 +68,17 @@ topic / mechanism / symptom / supplement, it cites the \`slug\`.
 - Source ids are kebab-case too. Use a publisher-style prefix when the source
   isn't a globally-known publication, e.g. \`vitaone-thyroid-ebook\`,
   \`coconote-fm-pancreatic-insufficiency\`, \`ask-expert-hormonal-health-bhrt\`.
-- Aliases: ONLY topics, mechanisms, and symptoms have an \`aliases\` list.
-  Supplements and claims do NOT support aliases (validator rejects them).
+- Aliases: topics, mechanisms, symptoms, protocols AND SUPPLEMENTS have an
+  \`aliases\` list. Claims and sources do not.
+- ONE SUBSTANCE = ONE SUPPLEMENT. Before creating a supplement, check whether
+  the catalogue already has it under another name, form, salt, plant part or
+  brand ("Chromium Picolinate" is \`chromium\`, "Ginger Root" is \`ginger\`,
+  "Vitamin A (Retinol)" is \`vitamin-a\`). If it does, ENRICH that entry (see
+  §7) and add the document's name to its \`aliases\` — never a second file.
+  21 duplicate pairs created this way had to be merged in 2026-10. Keep a
+  separate entry only for a clinically different form the catalogue already
+  separates (methylfolate vs folic-acid, magnesium-glycinate vs
+  magnesium-citrate).
 - An alias must NOT collide with any other entity's canonical slug. If
   \`estrobolome\` already exists as its own topic slug, you cannot list it as an
   alias on \`gut-hormone-axis\`.
@@ -643,8 +652,9 @@ Concrete template — copy this verbatim:
   typical_dose_range empty AND flag in notes_for_coach.
 - DO NOT invent contraindications, interactions, or evidence_tier. Be
   conservative — when in doubt, drop a tier.
-- DO NOT add aliases to supplements / claims / sources (they have no aliases
-  field).
+- DO NOT add aliases to claims / sources (they have no aliases field).
+- DO NOT create a new supplement for a new NAME of an existing one — add the
+  name to the existing supplement's \`aliases\` instead.
 - DO NOT use \`slug\` on a source — sources use \`id\`.
 - DO NOT cite a source with \`[id]\` shorthand. Always {id, location, quote}.
 - DO NOT mix dashes and underscores in slugs. Kebab-case only.

@@ -14,7 +14,7 @@ const FMDB_DIR = path.resolve(process.cwd(), "..", "fm-database");
 
 /** One duplicate candidate, as emitted by `fmdb duplicates --json`. */
 export interface DuplicateItem {
-  check: "SHARED_ALIAS" | "ALIAS_IS_SLUG" | "SAME_DISPLAY" | "NEAR_SLUG";
+  check: "SHARED_ALIAS" | "ALIAS_IS_SLUG" | "SAME_DISPLAY" | "FORM_VARIANT" | "NEAR_SLUG";
   entity_kind: string; // topics / mechanisms / supplements / ...
   slugs: string[];
   severity: "CRITICAL" | "WARNING";

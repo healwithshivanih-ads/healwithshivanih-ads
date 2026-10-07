@@ -2,6 +2,19 @@ _comment: Duplicate findings that already existed when the ratchet was adopted. 
   fails only on findings NOT listed here, so new duplicates are blocked while the backlog is worked down.
   Remove an entry once the underlying duplicate is merged — never add one to silence a NEW finding.
 accepted:
+- FORM_VARIANT:supplements:calcium+calcium-citrate
+- FORM_VARIANT:supplements:curcumin+liposomal-curcumin
+- FORM_VARIANT:supplements:garlic+garlic-oil
+- FORM_VARIANT:supplements:glutathione+liposomal-glutathione
+- FORM_VARIANT:supplements:iron+iron-bisglycinate
+- FORM_VARIANT:supplements:magnesium+magnesium-aspartate-citrate
+- FORM_VARIANT:supplements:magnesium+magnesium-citrate
+- FORM_VARIANT:supplements:magnesium+magnesium-glycinate
+- FORM_VARIANT:supplements:magnesium+magnesium-ionic-powder
+- FORM_VARIANT:supplements:magnesium+magnesium-oxide
+- FORM_VARIANT:supplements:magnesium+magnesium-threonate
+- FORM_VARIANT:supplements:potassium+potassium-citrate
+- FORM_VARIANT:supplements:zinc+zinc-bisglycinate
 - NEAR_SLUG:home_remedies:cooked-apple-ghee-cardamom-diarrhea+cooked-apple-nutmeg-ghee-colitis
 - NEAR_SLUG:home_remedies:morning-lemon-water-ritual+salted-lemon-water
 - NEAR_SLUG:home_remedies:morning-lemon-water-ritual+warm-lemon-water-morning
@@ -14,21 +27,19 @@ accepted:
 - NEAR_SLUG:lab_tests:cholesterol-hdl-ratio+hdl-cholesterol
 - NEAR_SLUG:lab_tests:cholesterol-hdl-ratio+tg-hdl-ratio
 - NEAR_SLUG:lab_tests:comt-genetics+mthfr-genetics
-- NEAR_SLUG:lab_tests:dutch-16-oh-estrogen+dutch-2-oh-estrogen
-- NEAR_SLUG:lab_tests:dutch-16-oh-estrogen+dutch-4-oh-estrogen
-- NEAR_SLUG:lab_tests:dutch-2-oh-estrogen+dutch-4-oh-estrogen
 - NEAR_SLUG:lab_tests:dxa-android-fat-percent+dxa-body-fat-percent
 - NEAR_SLUG:lab_tests:dxa-android-fat-percent+dxa-gynoid-fat-percent
 - NEAR_SLUG:lab_tests:dxa-body-fat-percent+dxa-gynoid-fat-percent
 - NEAR_SLUG:lab_tests:ferritin-iron-studies+iron-studies
 - NEAR_SLUG:lab_tests:food-sensitivity-igg+igg-food-sensitivity-panel
-- NEAR_SLUG:lab_tests:free-t3+free-t4
 - NEAR_SLUG:lab_tests:hdl-cholesterol+non-hdl-cholesterol
 - NEAR_SLUG:lab_tests:ldl-hdl-ratio+tg-hdl-ratio
 - NEAR_SLUG:lab_tests:magnesium-rbc+rbc-magnesium
 - NEAR_SLUG:lab_tests:microbiome-bacillus-complex+microbiome-lactobacillus-complex
+- NEAR_SLUG:mechanisms:5-alpha-reductase-activity+5-alpha-reductase-dht-conversion
 - NEAR_SLUG:mechanisms:5-alpha-reductase-activity+five-alpha-reductase-conversion
 - NEAR_SLUG:mechanisms:5-alpha-reductase-dht-conversion+five-alpha-reductase-conversion
+- NEAR_SLUG:mechanisms:amino-acid-conjugation+phase-2-conjugation
 - NEAR_SLUG:mechanisms:bpa-endocrine-disruption+endocrine-disruption
 - NEAR_SLUG:mechanisms:foam-cell-formation+macrophage-foam-cell-formation
 - NEAR_SLUG:mechanisms:folate-receptor-blockade-folic-acid+folate-trap
@@ -42,60 +53,20 @@ accepted:
 - NEAR_SLUG:mechanisms:lectin-driven-gut-inflammation+lectin-gut-inflammation
 - NEAR_SLUG:mechanisms:mast-cell-degranulation+mast-cell-degranulation-histamine-release
 - NEAR_SLUG:mechanisms:vascular-smooth-muscle-dysregulation+vascular-smooth-muscle-relaxation
-- NEAR_SLUG:supplements:active-b-vitamins+b-complex-vitamins
-- NEAR_SLUG:supplements:betaine-trimethylglycine+tmg
-- NEAR_SLUG:supplements:dao-enzyme+diamine-oxidase-enzyme
-- NEAR_SLUG:supplements:dgl-deglycyrrhizinated-licorice+dgl-licorice
 - NEAR_SLUG:supplements:dim-indole-3-carbinol+indole-3-carbinol
-- NEAR_SLUG:supplements:fish-oil+fish-oil-omega-3
-- NEAR_SLUG:supplements:fish-oil-epa-dha+fish-oil-omega-3
-- NEAR_SLUG:supplements:folate-folic-acid+folic-acid
 - NEAR_SLUG:supplements:garlic+garlic-allicin
-- NEAR_SLUG:supplements:gokshura+tribulus-terrestris
-- NEAR_SLUG:supplements:inositol+myo-inositol
 - NEAR_SLUG:supplements:inulin-prebiotic+prebiotic-fiber
 - NEAR_SLUG:supplements:magnesium-aspartate-citrate+magnesium-citrate
-- NEAR_SLUG:supplements:milk-thistle+milk-thistle-extract-diabetes
-- NEAR_SLUG:supplements:milk-thistle+silymarin
-- NEAR_SLUG:supplements:milk-thistle+silymarin-milk-thistle
-- NEAR_SLUG:supplements:milk-thistle-extract-diabetes+silymarin
-- NEAR_SLUG:supplements:milk-thistle-extract-diabetes+silymarin-milk-thistle
-- NEAR_SLUG:supplements:pantothenic-acid-b5+vitamin-b5-pantothenic-acid
-- NEAR_SLUG:supplements:pine-bark-extract+pycnogenol
-- NEAR_SLUG:supplements:plant-sterols+plant-sterols-stanols
-- NEAR_SLUG:supplements:probiotic-spore-based+spore-based-probiotic
-- NEAR_SLUG:supplements:protein-whey-isolate+whey-protein
-- NEAR_SLUG:supplements:psyllium+psyllium-husk
-- NEAR_SLUG:supplements:pyridoxine-b6+vitamin-b6
-- NEAR_SLUG:supplements:pyridoxine-b6+vitamin-b6-pyridoxine
-- NEAR_SLUG:supplements:silymarin+silymarin-milk-thistle
-- NEAR_SLUG:supplements:vitamin-a+vitamin-c
-- NEAR_SLUG:supplements:vitamin-a+vitamin-d3
-- NEAR_SLUG:supplements:vitamin-a+vitamin-d3-k2
-- NEAR_SLUG:supplements:vitamin-a+vitamin-k
-- NEAR_SLUG:supplements:vitamin-a+vitamin-k2
-- NEAR_SLUG:supplements:vitamin-c+vitamin-d3
-- NEAR_SLUG:supplements:vitamin-c+vitamin-d3-k2
-- NEAR_SLUG:supplements:vitamin-c+vitamin-k
-- NEAR_SLUG:supplements:vitamin-c+vitamin-k2
+- NEAR_SLUG:supplements:vitamin-c+vitamin-c-liposomal
 - NEAR_SLUG:supplements:vitamin-d3+vitamin-d3-k2
-- NEAR_SLUG:supplements:vitamin-d3+vitamin-k
-- NEAR_SLUG:supplements:vitamin-d3+vitamin-k2
-- NEAR_SLUG:supplements:vitamin-d3-k2+vitamin-k
+- NEAR_SLUG:supplements:vitamin-d3+vitaone-d3
 - NEAR_SLUG:supplements:vitamin-d3-k2+vitamin-k2
-- NEAR_SLUG:supplements:vitamin-e+vitamin-e-mixed-tocopherols
-- NEAR_SLUG:supplements:vitamin-k+vitamin-k2
 - NEAR_SLUG:symptoms:carb-cravings+premenstrual-sugar-cravings
-# deferred merge (2026-08-01): itching/skin-itching are likely the same concept,
-# but `itching` has ~91 inbound references (incl. client plans) — the canonical
-# choice + reference re-point is a clinical call for Shivani, not an auto-fix.
 - NEAR_SLUG:symptoms:itching+skin-itching
 - NEAR_SLUG:symptoms:joint-muscle-pain+muscle-aches-joint-pain
 - NEAR_SLUG:symptoms:low-mood+low-mood-anxiety
 - NEAR_SLUG:symptoms:macrocytic-anemia+megaloblastic-anemia
 - NEAR_SLUG:symptoms:mood-changes-and-anxiety+premenstrual-mood-changes
-# deferred merge (2026-08-01): phonophobia == sound-sensitivity clinically, but
-# which slug is canonical (and re-pointing phonophobia's refs) is Shivani's call.
 - NEAR_SLUG:symptoms:phonophobia+sound-sensitivity
 - NEAR_SLUG:symptoms:urinary-frequency+urinary-urgency
 - NEAR_SLUG:topics:acid-alkaline-balance+ph-balance
@@ -109,16 +80,9 @@ accepted:
 - NEAR_SLUG:topics:metabolic-syndrome+prediabetes-metabolic-syndrome
 - NEAR_SLUG:topics:mindful-eating+mindful-intuitive-eating
 - NEAR_SLUG:topics:type-1-diabetes-mellitus+type-2-diabetes
-- NEAR_SLUG:topics:vitamin-d3+vitamin-k2
 - SAME_DISPLAY:lab_tests:vitamin-d+vitamin-d-25-oh
 - SAME_DISPLAY:mechanisms:elevated-fibrinogen+fibrinogen-elevation
 - SAME_DISPLAY:mechanisms:filaggrin-epidermal-barrier-dysfunction+filaggrin-skin-barrier-dysfunction
-- SAME_DISPLAY:supplements:fish-oil+fish-oil-epa-dha
-- SAME_DISPLAY:supplements:l-tyrosine+tyrosine
-- SAME_DISPLAY:supplements:n-acetyl-cysteine+nac
-- SAME_DISPLAY:supplements:passiflora-incarnata+passionflower
-- SAME_DISPLAY:supplements:saw-palmetto+serenoa-repens
-- SAME_DISPLAY:supplements:vitamin-b6+vitamin-b6-pyridoxine
 - SAME_DISPLAY:symptoms:frequent-urination+polyuria
 - SAME_DISPLAY:symptoms:unexplained-weight-gain+weight-gain
 - SAME_DISPLAY:symptoms:unintentional-weight-loss+weight-loss
@@ -179,7 +143,6 @@ accepted:
 - SHARED_ALIAS:mechanisms:parasympathetic-activation+vagal-tone-enhancement
 - SHARED_ALIAS:mechanisms:parasympathetic-restoration-failure+sympathetic-dominance
 - SHARED_ALIAS:mechanisms:sympathetic-dominance+vagal-tone-dysregulation+vagal-tone-reduction
-- SHARED_ALIAS:supplements:nad-precursor+nmn
 - SHARED_ALIAS:symptoms:abdominal-bloating+bloating
 - SHARED_ALIAS:symptoms:abdominal-bloating+bloating+progressive-bloating
 - SHARED_ALIAS:symptoms:abdominal-cramping+abdominal-pain
@@ -202,7 +165,6 @@ accepted:
 - SHARED_ALIAS:symptoms:anxiety+low-mood-anxiety
 - SHARED_ALIAS:symptoms:anxiety+premenstrual-mood-changes
 - SHARED_ALIAS:symptoms:anxiety-palpitations-panic+palpitations
-- SHARED_ALIAS:symptoms:autoimmune-flares-low-immunity+poor-wound-healing
 - SHARED_ALIAS:symptoms:autoimmune-flares-low-immunity+upper-respiratory-infections
 - SHARED_ALIAS:symptoms:axonal-neuropathy+diabetic-nerve-pain+numbness-tingling
 - SHARED_ALIAS:symptoms:belching+flatulence
@@ -234,7 +196,6 @@ accepted:
 - SHARED_ALIAS:symptoms:chronic-pain+fibromyalgia-pain
 - SHARED_ALIAS:symptoms:chronic-pain-fibromyalgia-migraines+muscle-tension
 - SHARED_ALIAS:symptoms:cold-hands-feet+cold-intolerance
-- SHARED_ALIAS:symptoms:cold-intolerance+hot-flashes
 - SHARED_ALIAS:symptoms:daytime-fatigue+daytime-sleepiness
 - SHARED_ALIAS:symptoms:daytime-fatigue+lethargy
 - SHARED_ALIAS:symptoms:daytime-sleepiness+energy-crashes
@@ -249,7 +210,6 @@ accepted:
 - SHARED_ALIAS:symptoms:dizziness-on-fasting+dizziness-on-standing
 - SHARED_ALIAS:symptoms:dizziness-on-fasting+dizziness-on-standing+low-blood-pressure-salt-craving-dehydration
 - SHARED_ALIAS:symptoms:dizziness-on-fasting+dizziness-on-standing+pallor-dizziness-breathlessness
-- SHARED_ALIAS:symptoms:dry-skin+eczema-psoriasis-skin+skin-itching+skin-rash
 - SHARED_ALIAS:symptoms:dry-skin+hair-loss
 - SHARED_ALIAS:symptoms:dry-skin+weak-peeling-nails
 - SHARED_ALIAS:symptoms:dyslipidemia+elevated-cholesterol
@@ -319,11 +279,9 @@ accepted:
 - SHARED_ALIAS:symptoms:poor-concentration+poor-focus-adhd-pattern
 - SHARED_ALIAS:symptoms:poor-wound-healing+weak-peeling-nails
 - SHARED_ALIAS:symptoms:resistance-to-mindfulness-practices+restlessness
-- SHARED_ALIAS:symptoms:skin-itching+skin-rash
 - SHARED_ALIAS:symptoms:unexplained-weight-gain+weight-gain
 - SHARED_ALIAS:symptoms:unintentional-weight-loss+weight-loss
 - SHARED_ALIAS:topics:acid-alkaline-balance+ph-balance-and-diet
-- SHARED_ALIAS:topics:acid-reflux-and-cardiac-sphincter-weakness+dyspepsia
 - SHARED_ALIAS:topics:adrenal-fatigue+hpa-axis-cortisol-regulation+hpa-axis-dysregulation
 - SHARED_ALIAS:topics:adrenal-fatigue+hpa-axis-dysregulation
 - SHARED_ALIAS:topics:adverse-childhood-experiences-aces+chronic-stress+hpa-axis-dysregulation
@@ -354,17 +312,17 @@ accepted:
 - SHARED_ALIAS:topics:drug-induced-nutrient-depletion+medication-nutrient-interactions
 - SHARED_ALIAS:topics:essential-fatty-acids+omega-3-fatty-acids
 - SHARED_ALIAS:topics:exercise-prescription+exercise-prescription-fm
-- SHARED_ALIAS:topics:folate-nutrition+homocysteine-and-methylation+methylation
 - SHARED_ALIAS:topics:folate-nutrition+vitamin-b-complex-deficiency
 - SHARED_ALIAS:topics:gerd+gerd-ppi-tapering
 - SHARED_ALIAS:topics:gluten-intolerance+gluten-sensitivity
 - SHARED_ALIAS:topics:gut-brain-axis+gut-brain-axis-dysfunction
 - SHARED_ALIAS:topics:hair-loss+hair-loss-women+hairfall
 - SHARED_ALIAS:topics:hair-loss+hairfall
-- SHARED_ALIAS:topics:homocysteine-and-methylation+hyperhomocysteinemia
 - SHARED_ALIAS:topics:hpa-axis-cortisol-regulation+hpa-axis-dysregulation
 - SHARED_ALIAS:topics:hrt+menopausal-hormone-therapy
+- SHARED_ALIAS:topics:hyperthyroidism+thyroid-dysfunction
 - SHARED_ALIAS:topics:hypochlorhydria+low-stomach-acid+maldigestion
+- SHARED_ALIAS:topics:hypothyroidism+thyroid-dysfunction
 - SHARED_ALIAS:topics:ibd+inflammatory-bowel-conditions+inflammatory-bowel-disease
 - SHARED_ALIAS:topics:insulin-resistance+metabolic-syndrome+prediabetes-metabolic-syndrome
 - SHARED_ALIAS:topics:joint-pain+knee-pain
@@ -374,7 +332,6 @@ accepted:
 - SHARED_ALIAS:topics:male-infertility-oxidative-stress+sperm-quality
 - SHARED_ALIAS:topics:medication-induced-nutrient-depletion+medication-nutrient-interactions
 - SHARED_ALIAS:topics:menopause+perimenopause
-- SHARED_ALIAS:topics:methylation+methylation-cycle+mthfr-methylation
 - SHARED_ALIAS:topics:mi-oars+mi-oars-four-core-skills
 - SHARED_ALIAS:topics:nutrition-deficiency+nutritional-deficiency-screening
 - SHARED_ALIAS:topics:oral-health-toxins+oral-toxin-exposure
@@ -387,11 +344,3 @@ accepted:
 - SHARED_ALIAS:topics:total-toxic-load+toxic-body-burden+toxin-load
 - SHARED_ALIAS:topics:toxic-body-burden+toxin-load
 - SHARED_ALIAS:topics:toxic-body-burden+xenobiotic-exposure
-# deferred (2026-08-01): 'overactive-thyroid'/'underactive-thyroid' are shared by
-# the specific (hyper/hypo) and general (thyroid-dysfunction) topics. The somatic
-# reader (somatic-read.ts + its Python twin) resolves "overactive/underactive
-# thyroid" TO thyroid-dysfunction, which owns the combined hypo/hyper emotional-
-# roots card — so the alias must stay on thyroid-dysfunction. Which specific topic
-# also keeps it (or a merge) is Shivani's call; moving it broke 6 somatic tests.
-- SHARED_ALIAS:topics:hyperthyroidism+thyroid-dysfunction
-- SHARED_ALIAS:topics:hypothyroidism+thyroid-dysfunction

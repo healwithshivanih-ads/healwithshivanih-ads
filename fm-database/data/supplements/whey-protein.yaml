@@ -1,27 +1,67 @@
 slug: whey-protein
-display_name: Whey Protein
+display_name: Whey Protein (Concentrate / Isolate)
 category: other
 forms_available:
 - powder
 - liquid
-evidence_tier: plausible_emerging
-notes_for_coach: |-
-  Whey protein is included in the beta blocker tapering protocol, likely for its role in
+evidence_tier: strong
+notes_for_coach: 'Whey protein is included in the beta blocker tapering protocol, likely for
+  its role in
+
   supporting muscle mass, blood pressure reduction (via bioactive peptides), and
+
   glutathione synthesis. Appropriate for most clients unless dairy-sensitive.
 
+
   Best used for: Most useful for closing a protein gap in vegetarian clients, and for
+
   older or perimenopausal/menopausal women doing strength training to protect muscle. A
+
   pre-meal dose can blunt glucose spikes in type 2 diabetes. Not needed when diet
+
   protein is already adequate.
-notes_for_client: Whey protein is an easy way to get high-quality protein that supports
-  muscle, immune function, and antioxidant production. Blend into a smoothie or mix
-  with water.
+
+
+  Dose note merged from Whey Protein Isolate: powder 20–40 g (this entry keeps 14–28 g).
+
+
+  Merged from Whey Protein Isolate: Protein top-up for the dairy-tolerant lacto-vegetarian
+  client — the default protein
+
+  powder when dairy is NOT being eliminated. Whey ISOLATE (not concentrate) —
+
+  low-lactose, highest leucine, most palatable, so client pushback is lowest. Use
+
+  isolate-grade for low-FODMAP clients (concentrate is not low FODMAP — lactose). Mild
+
+  caution in histamine-sensitive clients (dairy can be a histamine liberator for some) —
+
+  prefer the plant blend there. Do NOT raise the protein target for clients with kidney
+
+  disease or high uric acid / gout — keep moderate and refer to physician. Source =
+
+  catalogue queue once the affiliate sign-up clears; until then the affiliate-link chain
+
+  falls back to Amazon / no link.
+
+
+  Best used for: Best for dairy-tolerant vegetarians who fall short of their protein
+
+  target, for preserving muscle in midlife and older clients alongside strength
+
+  training, and as a small pre-meal dose to soften post-meal glucose spikes. Not for
+
+  milk-protein allergy, and protein targets stay moderate in kidney disease or high uric
+
+  acid.'
+notes_for_client: Whey protein is an easy way to get high-quality protein that supports muscle,
+  immune function, and antioxidant production. Blend into a smoothie or mix with water.
 timing_options:
 - with_breakfast
 - morning
 - with_lunch
 - mid_morning
+- mid_afternoon
 take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
@@ -32,15 +72,13 @@ linked_to_topics:
 - protein-adequacy-vegetarian
 - type-2-diabetes
 - strength-training
+- insulin-resistance
+- weight-management
 typical_dose_range:
   powder:
     min: 14
     max: 28
     unit: g
-  # Ready-to-drink protein milks / shots (Provilac 25 g per 250 ml, VaraPace
-  # 24 g per 110 ml). Added 2026-08-28: the form existed on the market and in
-  # real plans but not here, so prescribing one raised a form warning. Range is
-  # per serving, matching what these products actually deliver in a bottle.
   liquid:
     min: 20
     max: 30
@@ -48,9 +86,11 @@ typical_dose_range:
 linked_to_mechanisms:
 - anabolic-resistance-aging
 - sarcopenia
+- postprandial-glucose-spike
 linked_to_symptoms:
 - low-lean-muscle-mass
 - protein-deficiency
+- decreased-muscle-mass
 linked_to_claims:
 - whey-protein-decreases-shbg
 sources:
@@ -63,17 +103,27 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
   quote: Whey protein [listed under factors that Decrease SHBG]
-version: 5
+- id: protein-intake-guidance
+  location: Powder track — whey isolate (dairy-tolerant lacto-vegetarian)
+version: 6
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - whey-protein-powder
+- protein-whey-isolate
+- whey isolate
 contraindications:
   conditions:
   - cow's milk protein allergy — whey is a milk protein
   - advanced chronic kidney disease (markedly reduced eGFR) — added protein load; keep total
     protein moderate and only with the treating clinician's guidance
+  - kidney-disease
+  - chronic-kidney-disease
+  - gout
+  - hyperuricemia
+  - Cow's milk protein allergy — whey is a milk protein (lactose-free isolate does not remove
+    the allergen)
   medications: []
   life_stages: []
 interactions:

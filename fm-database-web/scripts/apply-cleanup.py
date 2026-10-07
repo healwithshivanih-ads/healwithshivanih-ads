@@ -134,6 +134,37 @@ def _merge_into_canonical(
     return summary
 
 
+def _merge_supplements(root: Path, canonical_path: Path, canonical_data: dict,
+                       members_to_absorb: list[tuple[Path, dict, str]],
+                       dry_run: bool) -> dict:
+    """Merge supplements via fmdb.supplement_merge (keeps every field) and
+    point catalogue references at the survivor."""
+    sys.path.insert(0, str(root.parent))
+    from fmdb.supplement_merge import merge_supplement_records, rewrite_supplement_refs
+
+    merged = canonical_data
+    mapping: dict[str, str] = {}
+    for _mp, md, m in members_to_absorb:
+        if m == canonical_data.get("slug"):
+            continue
+        merged = merge_supplement_records(merged, md)
+        mapping[m] = canonical_data.get("slug", "")
+    summary = {
+        "canonical_slug": canonical_data.get("slug", ""),
+        "aliases_added": [m for m in mapping],
+        "files_deleted": [str(mp) for mp, _, m in members_to_absorb if m in mapping],
+        "refs_rewritten": rewrite_supplement_refs(root, mapping, dry_run=True),
+        "warnings": [],
+    }
+    if not dry_run:
+        _save_yaml(canonical_path, merged)
+        for mp, _, m in members_to_absorb:
+            if m in mapping and mp.exists():
+                mp.unlink()
+        rewrite_supplement_refs(root, mapping)
+    return summary
+
+
 def main() -> int:
     try:
         payload = json.loads(sys.stdin.read())
@@ -226,7 +257,13 @@ def main() -> int:
             if md is None:
                 continue
             members_to_absorb.append((mp, md, m))
-        summary = _merge_into_canonical(canonical_path, canonical_data, members_to_absorb, dry_run)
+        if kind == "duplicate_supplements":
+            # Full-record merge: the alias/source-only merge below would delete
+            # the member's contraindications, interactions, links and notes.
+            summary = _merge_supplements(root, canonical_path, canonical_data,
+                                         members_to_absorb, dry_run)
+        else:
+            summary = _merge_into_canonical(canonical_path, canonical_data, members_to_absorb, dry_run)
         json.dump({"ok": True, "summary": summary}, sys.stdout)
         return 0
 

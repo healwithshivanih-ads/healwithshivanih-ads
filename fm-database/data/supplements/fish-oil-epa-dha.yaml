@@ -1,5 +1,5 @@
 slug: fish-oil-epa-dha
-display_name: Fish Oil (EPA + DHA)
+display_name: Fish Oil — Omega-3 (EPA + DHA)
 category: fatty_acid
 forms_available:
 - capsule
@@ -50,6 +50,17 @@ linked_to_topics:
 - type-2-diabetes
 - major-depressive-disorder
 - nafld
+- liver-detoxification
+- low-carb-diet
+- autoimmunity-leaky-gut-triad
+- ibd
+- candida-overgrowth
+- sluggish-bile-flow
+- ibs
+- gut-dysbiosis
+- autoimmune-thyroiditis
+- hormonal-nutrition-foundations
+- estrogen-signaling
 linked_to_symptoms:
 - elevated-triglycerides
 - morning-stiffness
@@ -77,22 +88,79 @@ linked_to_claims:
 - omega3-curcumin-reduce-il6-tnfa-insulin-signalling
 - omega-3-ratio-4-to-1-reduces-inflammation
 - omega-3-supplementation-muscle-mass-elderly
-notes_for_coach: |-
-  Use pharmaceutical-grade (free of mercury, PCBs, solvents). Recently diagnosed T1DM:
+- omega-3-reduces-triglycerides
+- omega3-reduces-hepatic-fat-nafld
+- low-carb-decreases-hepatic-lipogenesis-in-nafld
+- leaky-gut-drives-systemic-inflammation
+- fodmap-4-phase-fm-protocol
+- omega-3-reduces-autoimmune-inflammatory-activity
+- cell-membrane-fluidity-required-for-non-genomic-hormone-signaling
+notes_for_coach: 'Use pharmaceutical-grade (free of mercury, PCBs, solvents). Recently diagnosed
+  T1DM:
+
   1000 mg each EPA + DHA. Level 1 T1DM/T2DM: 600 mg each. Combined EPA+DHA target
+
   1100–1600 mg/day. DHA-rich formulas preferred over EPA-dominant products for BP
+
   reduction. 3000 mg total EPA+DHA recommended in therapeutic approach. Ensure
+
   lab-certified purity against pollutants and peroxides. Take with a meal for absorption
+
   and to reduce fishy aftertaste. Quality varies greatly — advise clients to choose
+
   brands tested for heavy metals. High doses may affect bleeding; refer to clinician.
 
+
   Best used for: Strongest evidence is for lowering high triglycerides (at higher,
+
   clinician-guided intakes), as an adjunct in rheumatoid arthritis, and EPA-rich
+
   formulas as an add-on for depression; it also helps period pain and modestly lowers
+
   BP. Generic heart protection in healthy people, hot flashes and dry eye have not held
+
   up in large trials. Clients with atrial fibrillation or on blood thinners need
+
   clinician input before higher intakes.
-notes_for_client: 'The good fats your body can''t make — for your heart, your brain and calming inflammation.
+
+
+  Dose note merged from Omega-3 Fatty Acids (EPA/DHA): capsule 1000–3000 mg (this entry keeps
+  1000–4000 mg).
+
+
+  Dose note merged from Omega-3 Fatty Acids (EPA/DHA): liquid 5–15 ml (this entry keeps 1000–4000
+  mg).
+
+
+  Merged from Omega-3 Fatty Acids (EPA/DHA): Supports reduction of systemic inflammation that
+  drives autoimmune thyroid activity.
+
+  Food sources: fatty fish (salmon, sardines), flaxseeds, chia seeds, walnuts.
+
+  Supplementation dose not specified in document — typical therapeutic range is 1–3 g
+
+  EPA+DHA/day. Adequate omega-3 intake (and the omega-3:omega-6:omega-9 ratio) supports
+
+  fluid, healthy cell membranes required for non-genomic hormone signaling. Trans fats
+
+  and ultra-processed foods create rigid membranes that impair this rapid hormone
+
+  signaling pathway. Testing the omega-3 index or ratio can be useful.
+
+
+  Best used for: Strongest evidence: lowering high triglycerides, reducing joint pain
+
+  and stiffness in rheumatoid arthritis, as an EPA-rich adjunct in depression, and for
+
+  menstrual pain. These uses typically need higher EPA+DHA intakes than a basic capsule,
+
+  set with the clinician. Generic fish oil has not been shown to prevent heart events.
+
+  Modest or unproven for IBS, candida or general ''hormone balance''. Check diet or the
+
+  omega-3 index before adding it for low-risk clients.'
+notes_for_client: 'The good fats your body can''t make — for your heart, your brain and calming
+  inflammation.
 
   Always with food. If you notice an aftertaste, keep the bottle in the fridge.'
 evidence_tier: strong
@@ -101,54 +169,44 @@ linked_to_mechanisms:
 - epa-dha-cell-membrane-incorporation
 - chronic-inflammation
 - hepatic-lipogenesis
+- omega-3-omega-6-imbalance
+- resolvin-spm-production
+- eicosanoid-metabolism
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Olive Oil and Omega-3 Fatty Acids / Therapeutic Approach — Supplements
-  quote: 'Dose recommendation: 1000 mg EPA plus DHA a day. To lower TGs: 3000 mg EPA plus DHA q.d.'
+  quote: 'Dose recommendation: 1000 mg EPA plus DHA a day. To lower TGs: 3000 mg EPA plus
+    DHA q.d.'
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Omega-3 fatty acids
-  quote: At doses of 3 to 18 g/day (18% eicosapentaenoic acid [EPA] and 12% docosahexaenoic acid [DHA]),
-    fish oil has no adverse effect on glycemic control.
+  quote: At doses of 3 to 18 g/day (18% eicosapentaenoic acid [EPA] and 12% docosahexaenoic
+    acid [DHA]), fish oil has no adverse effect on glycemic control.
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 75 — Menopause
-  quote: Comprehensive natural treatment summary for menopausal symptoms.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 23 — Anxiety
-  quote: Comprehensive natural treatment summary for anxiety + panic.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 89 — Rheumatoid Arthritis
-  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 88 — Psoriasis
-  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-- id: murray-pizzorno-2012-encyclopedia
-  location: Chapter 50 — Eczema (Atopic Dermatitis)
-  quote: Comprehensive natural treatment for eczema + atopic dermatitis.
 - id: pizzorno-textbook-gi-2
   location: Atherosclerosis — Supplements
   quote: 'Fish oil: minimum 1000 mg of EPA plus DHA q.d.'
 - id: pizzorno-cardiometabolic-hypertension
   location: Therapeutic Considerations / Omega-3 oils
-  quote: Products with higher content of DHA are preferred. In one double-blind trial comparing 4
-    g q.d. of purified EPA, DHA, or olive oil (placebo), only DHA reduced 24-hour and daytime ambulatory
-    BP.
+  quote: Products with higher content of DHA are preferred. In one double-blind trial comparing
+    4 g q.d. of purified EPA, DHA, or olive oil (placebo), only DHA reduced 24-hour and daytime
+    ambulatory BP.
 - id: vitaone-practice-guide
-  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health > Coaching interventions
+  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health > Coaching
+    interventions
   quote: 'Supplement support: Fish oil (if tolerated), CoQ10 if on statins, niacin'
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Omega-3 (EPA/DHA) - Inflammation, heart, brain - 1000–3000 mg/day - With meals
 - id: vitaone-thyroid-cheatsheet
   location: What Doctors Miss — Prescribe Medication Without Diet Guidance
-  quote: Recommend anti-inflammatory, gluten-free, gut-friendly diet with adequate protein, selenium,
-    and omega-3s
+  quote: Recommend anti-inflammatory, gluten-free, gut-friendly diet with adequate protein,
+    selenium, and omega-3s
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
-  quote: 'Omega-3 (EPA/DHA): Reduces aromatase activity & inflammation; Decreases cramps, mood swings;
-    1000–2000 mg/day EPA+DHA.'
+  quote: 'Omega-3 (EPA/DHA): Reduces aromatase activity & inflammation; Decreases cramps,
+    mood swings; 1000–2000 mg/day EPA+DHA.'
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Interventions — Integrative Framework (p.12)
   quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium, Resveratrol.'
@@ -157,21 +215,21 @@ sources:
   quote: Omega-3 (EPA/DHA) (2–3 g/day)
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Omega-3 fatty acids (EPA & DHA) are used by mitochondria to produce energy. Both EPA and
-    DHA reduce inflammation, which indirectly protects the health of mitochondria.
+  quote: Omega-3 fatty acids (EPA & DHA) are used by mitochondria to produce energy. Both
+    EPA and DHA reduce inflammation, which indirectly protects the health of mitochondria.
 - id: coconote-fm-omega-3-fatty-acids
   location: Omega-3 Supplementation Recommendations Slide
-  quote: EPA and DHA supplementation is an effective lifestyle strategy for CVD prevention...3 to
-    6 grams per day would be effective. Greater than 7 grams is not efficient. Less than 1.5 grams
-    is also not effective.
+  quote: EPA and DHA supplementation is an effective lifestyle strategy for CVD prevention...3
+    to 6 grams per day would be effective. Greater than 7 grams is not efficient. Less than
+    1.5 grams is also not effective.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
   quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels of inflammation
     in the body, which may indirectly support healthy estrogen metabolism.
 - id: vitaone-gut-toolkit
   location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Omega-3 Fatty Acids'
-  quote: Omega-3 fatty acids, found in fatty fish (salmon, mackerel, sardines) & plant sources like
-    flaxseeds & walnuts, have potent anti-inflammatory properties.
+  quote: Omega-3 fatty acids, found in fatty fish (salmon, mackerel, sardines) & plant sources
+    like flaxseeds & walnuts, have potent anti-inflammatory properties.
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
   quote: Omega-3 (2–3g/day)
@@ -181,17 +239,97 @@ sources:
     in the body, which may indirectly support healthy estrogen metabolism.
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
-  quote: High-quality omega-3 are my biggest example. I'm taking at least four grams that Dr. Musa
-    recommended me.
+  quote: High-quality omega-3 are my biggest example. I'm taking at least four grams that
+    Dr. Musa recommended me.
 - id: coconote-fm-approach-inflammation
   location: Diet – Omega-3 Supplementation Protocol
-  quote: our therapeutic dose is more than two grams. So don't just assume that you prescribe the
-    180 or 300 milligram of capsule once a day, and the patient will have an anti-inflammatory effect.
+  quote: our therapeutic dose is more than two grams. So don't just assume that you prescribe
+    the 180 or 300 milligram of capsule once a day, and the patient will have an anti-inflammatory
+    effect.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Omega-3 and vaginal microbiome discussion
-  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a woman takes omega-3s
-    during pregnancy, the likelihood of premature labor drops precipitously.
-version: 13
+  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a woman takes
+    omega-3s during pregnancy, the likelihood of premature labor drops precipitously.
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Omega-3 (EPA/DHA): ↓TG, anti-inflammatory.'
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — NAFLD
+  quote: Omega-3, Vitamin E, Berberine, NAC
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Combine with omega-3s, NAC, and liver-support foods (beetroot, crucifers).
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Supplement Strategy
+  quote: Omega-3 — Anti-inflammatory — Joint, brain, hormone cases
+- id: vitaone-elimination-diet-cheatsheet
+  location: Final Practitioner Guideline
+  quote: 'Combine with gut-healing nutrients: glutamine, zinc carnosine, omega-3.'
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Omega-3 Fatty Acids: Anti-inflammatory properties that can help reduce autoimmune
+    activity.'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Omega-3 fatty acids (EPA/DHA): Anti-inflammatory, supports immune regulation.'
+- id: vitaone-cvs-risk-assessment
+  location: Nutrition supplements (Slide 21)
+  quote: 'The Nutritional parameters of the patient were corrected with the following supplements:
+    4. Omega 3'
+- id: vitaone-health-coaching-cheatsheet
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Omega-3 Fatty Acids — Anti-inflammatory for neuroinflammation. Clinical use: Depression,
+    trauma, chronic pain.'
+- id: coconote-fm-estrogen-dominance
+  location: Estrogen Metabolite Pathways
+  quote: Checking on the omega-3s as well when you are managing any kind of hormone abnormalities
+    also is very important.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: We require short-chain fatty acids and we require omega-3 fatty acids. They can help
+    in rebuilding your epithelium.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: Omega 3 for good fats.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Secretory IgA
+  quote: I have seen the patient having malnutrition. They are either deficient in omega-3
+    or protein because as you say, all the immune cells, all the antibodies, they are actually
+    a protein or peptides.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Nutritional Drivers of Intestinal Permeability
+  quote: Just think about if somebody is having a chronic deficiency of protein or omega-3
+    deficiency, vitamin deficiency, zinc deficiency because these are the nutrients required
+    to integrate this mucous membrane.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Triglyceride Treatment — Omega-3s
+  quote: Omega-3s you definitely want to do omega-3s four grams a day camo triglycerides fifty
+    percent.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Omega-3 intervention section
+  quote: You can take around three to six to build that ratio order and once you actually
+    you can find this you can reduce your omega-6 you can just move to a TG and walnut and
+    flexes.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: Omega-3s, turmeric, and green tea modulate NF-κB and cytokine expression at the cellular
+    level.
+- id: vitaone-nutrition-cheatsheet
+  location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
+  quote: Anti-inflammatory, modulate serotonin/dopamine receptors, neuronal fluidity
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Omega-3 (EPA + DHA): Anti-inflammatory; enhances adipocyte insulin sensitivity.
+    1-2 g combined.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: EFA supplementation including EPA+DHA and GLA
+- id: ask-expert-hormonal-health-bhrt
+  location: Non-Genomic Hormone Signaling and Cell Membranes
+  quote: only if the cell membrane is healthy... you can test the ratio of omega-3s to omega-6
+    to omega-9... hormones not just signal in target tissue but all membranes of the body
+    and they're instantaneous and they call that non-genomic signaling
+version: 14
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -200,11 +338,20 @@ aliases:
 - epa-dha-fish-oil
 - omega-3-fish-oil
 - fish-oil-omega-3
+- omega-3
+- vitaone-omega-3
+- omega-3-fatty-acids
+- omega-3-epa-dha
+- omega-3-epa-dha-gla
+- omega-3-fatty-acids-hormone-membrane
 contraindications:
   conditions:
   - Fish or shellfish allergy — use algae-derived EPA/DHA instead
   - Atrial fibrillation or high AF risk — meta-analyses of RCTs show omega-3 supplementation
     (especially ≥1 g/day, more at 4 g) increases new-onset AF; discuss with cardiologist
+  - History of atrial fibrillation — trials and meta-analyses show dose-dependent increased
+    AF risk with omega-3 supplements (especially >1 g/day)
+  - Fish or shellfish allergy — use algae-based oil instead of fish/krill oil
   medications: []
   life_stages: []
 interactions:
@@ -246,3 +393,31 @@ interactions:
     reason: Warfarin, other anticoagulants and antiplatelets (clopidogrel, chronic aspirin)
       at intakes above ~3 g/day EPA+DHA — additive bleeding tendency; prescriber should monitor
       INR
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: aspirin
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: clopidogrel
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: prasugrel
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+  - medication: ticagrelor
+    type: monitor
+    reason: Warfarin and antiplatelets — additive bleeding tendency at doses above ~3 g/day;
+      monitor INR
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: Recommended — DHA critical for fetal brain development. 1-2g EPA+DHA.
+  Choose fish oil or algae (vegetarian).

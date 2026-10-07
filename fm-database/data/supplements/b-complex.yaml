@@ -2,6 +2,8 @@ slug: b-complex
 display_name: B-Complex (B-Vitamin Complex)
 aliases:
 - vitamin-b-complex
+- b-complex-vitamins
+- b-vitamins-complex
 category: vitamin
 forms_available:
 - capsule
@@ -11,27 +13,59 @@ typical_dose_range: {}
 timing_options:
 - with_breakfast
 - with_lunch
+- morning
 take_with_food: required
-notes_for_coach: |-
-  Source (IFM Fig 3.5) names riboflavin (B2), niacin (B3), pyridoxine
+notes_for_coach: 'Source (IFM Fig 3.5) names riboflavin (B2), niacin (B3), pyridoxine
+
   (B6), folate, and vitamin B12 as Phase 1 cofactors but does NOT
+
   give dosing. Confirm dose ranges from peer-reviewed source or
+
   clinical guideline before client use. Methylated forms (methylfolate,
+
   methylcobalamin, P5P) are often preferred in FM contexts,
+
   especially for clients with MTHFR or other one-carbon-cycle variants.
+
   Activated B6 (P5P) was used in the previous client case at 25mg/day.
+
   Best taken earlier in the day — B vitamins can be mildly stimulating.
+
   Always check for biotin if testing thyroid or hormone immunoassays,
+
   as biotin interferes with these labs.
 
+
   Best used for: Best evidence is for lowering raised homocysteine and covering
+
   B-vitamin shortfalls (vegetarians, metformin/PPI/OCP users, high stress, heavy
+
   alcohol). A general B-complex is not a fix for diagnosed B12 or folate deficiency,
+
   which need dedicated dosing.
+
+
+  Merged from B-Complex Vitamins: B-complex is used in the amalgam removal protocol and B
+  vitamins (B2, B3, B6, B12,
+
+  folate) are key nutrients for Phase I cytochrome P450 enzyme function. Specific doses
+
+  not stated in document — verify with clinician.
+
+
+  Best used for: Best evidence is for lowering raised homocysteine and covering
+
+  B-vitamin shortfalls (vegetarians, metformin/PPI/OCP users, high stress, heavy
+
+  alcohol). A general B-complex is not a fix for diagnosed B12 or folate deficiency,
+
+  which need dedicated dosing.'
 contraindications:
   conditions:
-  - high-dose biotin interferes with thyroid and hormone immunoassays — discontinue before lab draw
-    per ordering clinician
+  - high-dose biotin interferes with thyroid and hormone immunoassays — discontinue before
+    lab draw per ordering clinician
+  - High-dose biotin interferes with thyroid and hormone immunoassays — stop several days
+    before lab draws (catalogue claim biotin-interferes-with-lab-tests)
   medications: []
   life_stages: []
 interactions:
@@ -43,6 +77,8 @@ linked_to_topics:
 - detoxification
 - homocysteine-and-methylation
 - methylation
+- dental-amalgam-mercury
+- metabolic-detoxification
 linked_to_mechanisms:
 - phase-1-b-vitamin-cofactor-dependency
 - phase-1-biotransformation
@@ -52,7 +88,27 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Phase I — Nutrients Used panel
   quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin B12
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Dental Amalgam Removal Protocol; Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: 'B-complex vitamins... PHASE I Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3),
+    Pyridoxine (Vit B6), Folic acid, Vitamin B12'
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Use Activated Nutrients – Always choose methylated or coenzyme forms.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'B-complex vitamins: Needed for methylation and energy metabolism.'
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'B-complex- B12, B9: Supports methylation; lowers homocysteine. B12- 1500mcg, B9-
+    100mg.'
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: Vitamin D and all the B vitamins are important.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: Vitamin D and all the B vitamins are important.
+version: 5
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
@@ -61,3 +117,5 @@ notes_for_client: 'The full set of B vitamins — how your body turns food into 
   Take them in the morning. Bright yellow urine afterwards is normal.'
 linked_to_symptoms:
 - elevated-homocysteine
+linked_to_claims:
+- b-vitamins-support-phase-i-detox-enzymes

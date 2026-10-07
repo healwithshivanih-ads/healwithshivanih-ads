@@ -12,6 +12,7 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
 import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { matchDrug } from "@/lib/fmdb/drug-match";
+import { loadCatalogueRecord } from "@/lib/fmdb/catalogue-resolve";
 
 // ─── Supplement sources ────────────────────────────────────────────────────────
 
@@ -361,10 +362,7 @@ export async function checkSupplementInteractionsAction(
     // Load each supplement from catalogue
     interface SupplementItem { supplement_slug: string }
     const supplements = (plan.supplement_protocol as SupplementItem[] | undefined) ?? [];
-    const catalogueDir = path.join(
-      path.resolve(process.cwd(), "..", "fm-database", "data"),
-      "supplements"
-    );
+    const catalogueKind = "supplements";
 
     const interactions: SupplementInteraction[] = [];
 
@@ -373,17 +371,20 @@ export async function checkSupplementInteractionsAction(
         const slug = s.supplement_slug;
         if (!slug) return;
 
-        let suppData: Record<string, unknown> | null = null;
-        try {
-          const raw = await fs.readFile(path.join(catalogueDir, `${slug}.yaml`), "utf-8");
-          suppData = yaml.load(raw) as Record<string, unknown>;
-        } catch {
-          return; // supplement not in catalogue — skip
-        }
-        if (!suppData) return;
+        // Alias-aware: a plan written before two supplements were merged still
+        // names the retired slug, and a bare file read would skip it silently.
+        const suppData = await loadCatalogueRecord(catalogueKind, slug);
+        if (!suppData) return; // supplement not in catalogue — skip
 
         const contraindications = suppData.contraindications;
-        if (!contraindications) return;
+        // "Space the doses" / "monitor" cautions live in
+        // interactions.with_medications (they warn, they don't block) — the
+        // banner must show them too, or moving them out of contraindications
+        // would hide them from the coach.
+        const interMeds = (
+          (suppData.interactions as { with_medications?: unknown } | undefined)?.with_medications ?? []
+        ) as Array<{ medication?: string; type?: string; reason?: string }>;
+        if (!contraindications && interMeds.length === 0) return;
 
         // Build a text blob for substring matching
         let contraindicationText = "";
@@ -403,17 +404,29 @@ export async function checkSupplementInteractionsAction(
           contraindicationText = parts.join("; ");
         }
 
-        if (!contraindicationText) return;
-
-        const lowerText = contraindicationText.toLowerCase();
+        const interLines: string[] = [];
         for (const med of medications) {
           if (!med) continue;
           const normalised = med.toLowerCase().replace(/\s*\d+\s*mg.*/i, "").trim();
           if (normalised.length < 3) continue;
-          if (lowerText.includes(normalised)) {
-            matchedMeds.push(med);
+          let hit = contraindicationText.toLowerCase().includes(normalised);
+          for (const im of interMeds) {
+            const drug = (im.medication ?? "").toLowerCase().trim();
+            if (drug.length < 4) continue;
+            // Both ways: "levothyroxine" vs "Thyronorm 50 (levothyroxine)".
+            if (normalised.includes(drug) || drug.includes(normalised)) {
+              hit = true;
+              const kind = im.type === "space_by_hours" ? "space the doses" : im.type === "monitor" ? "monitor" : "avoid";
+              const line = `${kind}: ${im.reason ?? drug}`;
+              if (!interLines.includes(line)) interLines.push(line);
+            }
           }
+          if (hit) matchedMeds.push(med);
         }
+        if (interLines.length) {
+          contraindicationText = [contraindicationText, ...interLines].filter(Boolean).join("; ");
+        }
+        if (!contraindicationText) return;
 
         if (matchedMeds.length > 0) {
           interactions.push({
