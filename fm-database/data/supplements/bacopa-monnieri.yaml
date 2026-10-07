@@ -50,7 +50,22 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Cholinesterase inhibitors (donepezil, rivastigmine) — additive cholinergic effect (API-cited)
+  medications: []
   life_stages:
   - pregnancy — insufficient safety data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: donepezil
+    type: monitor
+    reason: Cholinesterase inhibitors (donepezil, rivastigmine) — additive cholinergic effect
+      (API-cited)
+  - medication: rivastigmine
+    type: monitor
+    reason: Cholinesterase inhibitors (donepezil, rivastigmine) — additive cholinergic effect
+      (API-cited)
+  - medication: galantamine
+    type: monitor
+    reason: Cholinesterase inhibitors (donepezil, rivastigmine) — additive cholinergic effect
+      (API-cited)

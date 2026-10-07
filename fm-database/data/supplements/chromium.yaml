@@ -86,7 +86,33 @@ contraindications:
   conditions:
   - Chronic kidney disease or liver disease — case reports of kidney and liver injury with
     chromium picolinate
-  medications:
-  - Levothyroxine — chromium reduces its absorption; separate by at least 3-4 hours
-  - Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — chromium reduces its absorption; separate by at least 3-4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — chromium reduces its absorption; separate by at least 3-4 hours
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  - medication: glipizide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia

@@ -55,11 +55,37 @@ linked_to_symptoms:
 contraindications:
   conditions:
   - Trying to conceive (both partners) — documented antifertility/spermicidal effects
-  medications:
-  - Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO monograph
-    interaction)
+  medications: []
   life_stages:
   - 'Pregnancy — WHO monograph: do not use; traditional abortifacient and antifertility effects'
   - 'Lactation — WHO monograph: do not use'
   - Children under 12 — WHO monograph; neem oil ingestion has caused fatal Reye-like encephalopathy
     in infants
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO
+      monograph interaction)
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO
+      monograph interaction)
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO
+      monograph interaction)
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO
+      monograph interaction)
+  - medication: glipizide
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO
+      monograph interaction)
+  - medication: metformin
+    type: monitor
+    reason: Insulin, sulfonylureas and other antidiabetics — additive glucose lowering (WHO
+      monograph interaction)

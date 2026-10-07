@@ -42,7 +42,37 @@ contraindications:
   conditions:
   - bleeding disorder or history of haemorrhagic stroke — vitamin E above ~400 IU/day inhibits
     platelets (catalogue claim vitamin-e-dose-above-200-iu-may-increase-stroke-risk)
-  medications:
-  - warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day raises bleeding
-    risk
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk
+  - medication: acenocoumarol
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk
+  - medication: apixaban
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk
+  - medication: rivaroxaban
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk
+  - medication: dabigatran
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk
+  - medication: aspirin
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk
+  - medication: clopidogrel
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day
+      raises bleeding risk

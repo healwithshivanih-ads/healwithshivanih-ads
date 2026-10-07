@@ -57,8 +57,44 @@ contraindications:
   - Chronic diarrhoea or electrolyte imbalance (low potassium)
   medications:
   - Digoxin and antiarrhythmics — stimulant-laxative-induced low potassium increases toxicity
-  - Diuretics and corticosteroids — additive potassium loss
   life_stages:
   - Pregnancy — stimulant purgative (uterine stimulation)
   - Breastfeeding — anthraquinones pass into milk
   - Children under 12
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: furosemide
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: torsemide
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: chlorthalidone
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: indapamide
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: prednisolone
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: prednisone
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: methylprednisolone
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: dexamethasone
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: hydrocortisone
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss
+  - medication: deflazacort
+    type: monitor
+    reason: Diuretics and corticosteroids — additive potassium loss

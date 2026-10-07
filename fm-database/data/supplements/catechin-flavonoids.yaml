@@ -49,9 +49,35 @@ contraindications:
   conditions:
   - 'Liver disease — high-dose green-tea catechin extracts are linked to hepatotoxicity (EFSA:
     risk at ≥800 mg EGCG/day)'
-  medications:
-  - Nadolol and other beta blockers — green tea catechins markedly reduce nadolol absorption
-    (human pharmacokinetic study)
+  medications: []
   life_stages:
   - pregnancy — avoid high-dose catechin/green-tea extract supplements (hepatotoxicity risk;
     insufficient safety data)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: nadolol
+    type: monitor
+    reason: Nadolol and other beta blockers — green tea catechins markedly reduce nadolol
+      absorption (human pharmacokinetic study)
+  - medication: propranolol
+    type: monitor
+    reason: Nadolol and other beta blockers — green tea catechins markedly reduce nadolol
+      absorption (human pharmacokinetic study)
+  - medication: atenolol
+    type: monitor
+    reason: Nadolol and other beta blockers — green tea catechins markedly reduce nadolol
+      absorption (human pharmacokinetic study)
+  - medication: metoprolol
+    type: monitor
+    reason: Nadolol and other beta blockers — green tea catechins markedly reduce nadolol
+      absorption (human pharmacokinetic study)
+  - medication: bisoprolol
+    type: monitor
+    reason: Nadolol and other beta blockers — green tea catechins markedly reduce nadolol
+      absorption (human pharmacokinetic study)
+  - medication: beta blocker
+    type: monitor
+    reason: Nadolol and other beta blockers — green tea catechins markedly reduce nadolol
+      absorption (human pharmacokinetic study)

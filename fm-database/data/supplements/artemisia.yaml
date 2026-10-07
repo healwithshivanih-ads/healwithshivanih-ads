@@ -19,15 +19,37 @@ contraindications:
   - Liver disease — hepatitis reports with artemisinin-containing supplements
   medications:
   - Anticonvulsants — thujone may counteract them
-  - Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin (resistance
-    and treatment failure)
   life_stages:
   - pregnancy
   - Lactation — insufficient safety data
 interactions:
   with_supplements: []
   with_foods: []
-  with_medications: []
+  with_medications:
+  - medication: artemether
+    type: monitor
+    reason: Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin
+      (resistance and treatment failure)
+  - medication: artesunate
+    type: monitor
+    reason: Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin
+      (resistance and treatment failure)
+  - medication: artemisinin
+    type: monitor
+    reason: Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin
+      (resistance and treatment failure)
+  - medication: lumefantrine
+    type: monitor
+    reason: Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin
+      (resistance and treatment failure)
+  - medication: primaquine
+    type: monitor
+    reason: Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin
+      (resistance and treatment failure)
+  - medication: antimalarial
+    type: monitor
+    reason: Antimalarial use — never self-treat suspected malaria with artemisia/artemisinin
+      (resistance and treatment failure)
 pregnancy_safety: unknown
 lactation_safety: unknown
 pregnancy_safety_note: ''

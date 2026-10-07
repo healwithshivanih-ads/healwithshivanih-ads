@@ -55,8 +55,52 @@ contraindications:
   - Gastroparesis — vinegar further delays gastric emptying (Hlebowicz 2007, type 1 diabetes)
   - Active GERD, erosive oesophagitis or peptic ulcer — acidic; can worsen symptoms
   - Dental enamel erosion — always dilute and rinse mouth/use a straw
-  medications:
-  - Insulin and sulfonylureas — additive post-meal glucose lowering
-  - Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
-    (case report)
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas — additive post-meal glucose lowering
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas — additive post-meal glucose lowering
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive post-meal glucose lowering
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas — additive post-meal glucose lowering
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin and sulfonylureas — additive post-meal glucose lowering
+  - medication: digoxin
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)
+  - medication: furosemide
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)
+  - medication: torsemide
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)
+  - medication: chlorthalidone
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)
+  - medication: indapamide
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)
+  - medication: diuretic
+    type: monitor
+    reason: Digoxin and potassium-wasting diuretics — high long-term intake linked to hypokalaemia
+      (case report)

@@ -49,8 +49,34 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin, cyclosporine/tacrolimus,
-    theophylline, propranolol) — piperine extracts raise their blood levels in human studies;
-    culinary amounts are fine
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: phenytoin
+    type: monitor
+    reason: Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin,
+      cyclosporine/tacrolimus, theophylline, propranolol) — piperine extracts raise their
+      blood levels in human studies; culinary amounts are fine
+  - medication: cyclosporine
+    type: monitor
+    reason: Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin,
+      cyclosporine/tacrolimus, theophylline, propranolol) — piperine extracts raise their
+      blood levels in human studies; culinary amounts are fine
+  - medication: tacrolimus
+    type: monitor
+    reason: Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin,
+      cyclosporine/tacrolimus, theophylline, propranolol) — piperine extracts raise their
+      blood levels in human studies; culinary amounts are fine
+  - medication: theophylline
+    type: monitor
+    reason: Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin,
+      cyclosporine/tacrolimus, theophylline, propranolol) — piperine extracts raise their
+      blood levels in human studies; culinary amounts are fine
+  - medication: propranolol
+    type: monitor
+    reason: Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin,
+      cyclosporine/tacrolimus, theophylline, propranolol) — piperine extracts raise their
+      blood levels in human studies; culinary amounts are fine

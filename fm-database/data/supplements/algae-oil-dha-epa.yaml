@@ -57,6 +57,41 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding tendency
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: acenocoumarol
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: clopidogrel
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: aspirin
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: apixaban
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: rivaroxaban
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: dabigatran
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency
+  - medication: ticagrelor
+    type: monitor
+    reason: Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding
+      tendency

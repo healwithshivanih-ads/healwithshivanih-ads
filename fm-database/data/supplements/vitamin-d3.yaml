@@ -245,6 +245,18 @@ contraindications:
   - hypercalcaemia or primary hyperparathyroidism — vitamin D raises serum calcium
   - sarcoidosis, tuberculosis or other granulomatous disease — risk of hypercalcaemia
   - history of calcium kidney stones — high doses raise urinary calcium; monitor
-  medications:
-  - thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  - medication: chlorthalidone
+    type: monitor
+    reason: thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  - medication: indapamide
+    type: monitor
+    reason: thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D

@@ -46,9 +46,23 @@ contraindications:
   conditions:
   - complete bile duct obstruction or acute cholecystitis — choleretic bile acids are contraindicated
     (stated in notes but not in the structured list)
-  medications:
-  - bile acid sequestrants (cholestyramine, colesevelam) — bind bile acids; separate by at
-    least 4 hours
+  medications: []
   life_stages:
   - pregnancy — insufficient safety data for supplemental TUDCA
   - lactation — insufficient safety data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: cholestyramine
+    type: space_by_hours
+    reason: bile acid sequestrants (cholestyramine, colesevelam) — bind bile acids; separate
+      by at least 4 hours
+  - medication: colesevelam
+    type: space_by_hours
+    reason: bile acid sequestrants (cholestyramine, colesevelam) — bind bile acids; separate
+      by at least 4 hours
+  - medication: colestipol
+    type: space_by_hours
+    reason: bile acid sequestrants (cholestyramine, colesevelam) — bind bile acids; separate
+      by at least 4 hours

@@ -54,8 +54,54 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants — possible
-    additive sedation
+  medications: []
   life_stages:
   - Pregnancy and breastfeeding — no safety data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: alprazolam
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: clonazepam
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: lorazepam
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: diazepam
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: etizolam
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: benzodiazepine
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: zolpidem
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: zopiclone
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: eszopiclone
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: promethazine
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation
+  - medication: hydroxyzine
+    type: monitor
+    reason: Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants —
+      possible additive sedation

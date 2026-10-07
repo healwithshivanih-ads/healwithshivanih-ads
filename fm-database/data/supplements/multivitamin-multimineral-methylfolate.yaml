@@ -46,10 +46,49 @@ updated_by: shivani
 contraindications:
   conditions:
   - Haemochromatosis / iron overload — use an iron-free formula
-  medications:
-  - Levothyroxine — minerals (calcium/iron/magnesium) bind thyroxine; separate by at least
-    4 hours
-  - Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
-  - Warfarin — formulas containing vitamin K can alter INR; keep intake consistent and inform
-    prescriber
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — minerals (calcium/iron/magnesium) bind thyroxine; separate by
+      at least 4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — minerals (calcium/iron/magnesium) bind thyroxine; separate by
+      at least 4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — formulas containing vitamin K can alter INR; keep intake consistent
+      and inform prescriber
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — formulas containing vitamin K can alter INR; keep intake consistent
+      and inform prescriber

@@ -66,5 +66,12 @@ contraindications:
     supplement can cause hyperkalaemia
   - Potassium-sparing diuretics (spironolactone, eplerenone, amiloride) — additive hyperkalaemia
     risk
-  - Digoxin — potassium shifts (high or low) alter digoxin toxicity and arrhythmia risk
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: digoxin
+    type: monitor
+    reason: Digoxin — potassium shifts (high or low) alter digoxin toxicity and arrhythmia
+      risk

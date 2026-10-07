@@ -45,7 +45,49 @@ updated_by: shivani
 contraindications:
   conditions:
   - Fish allergy — fish-derived peptide
-  medications:
-  - Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
-    lowering; monitor BP
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: lisinopril
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: perindopril
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: olmesartan
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: valsartan
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP
+  - medication: antihypertensive
+    type: monitor
+    reason: Antihypertensive medication, especially ACE inhibitors/ARBs — additive blood-pressure
+      lowering; monitor BP

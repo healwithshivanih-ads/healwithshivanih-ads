@@ -106,9 +106,33 @@ contraindications:
   - Diabetic kidney disease / CKD — the DIVINe RCT (House 2010, JAMA) found high-dose folic
     acid + B6 + B12 accelerated GFR decline and increased vascular events in diabetic nephropathy;
     clinician sign-off
-  medications:
-  - Methotrexate (oncology doses) or other antifolate chemotherapy — folate can blunt efficacy;
-    prescriber decision (low-dose RA methotrexate is usually co-prescribed folate)
-  - Phenytoin, fosphenytoin, phenobarbital, primidone — high-dose folate can lower anticonvulsant
-    levels and seizure control
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: methotrexate
+    type: monitor
+    reason: Methotrexate (oncology doses) or other antifolate chemotherapy — folate can blunt
+      efficacy; prescriber decision (low-dose RA methotrexate is usually co-prescribed folate)
+  - medication: pemetrexed
+    type: monitor
+    reason: Methotrexate (oncology doses) or other antifolate chemotherapy — folate can blunt
+      efficacy; prescriber decision (low-dose RA methotrexate is usually co-prescribed folate)
+  - medication: phenytoin
+    type: monitor
+    reason: Phenytoin, fosphenytoin, phenobarbital, primidone — high-dose folate can lower
+      anticonvulsant levels and seizure control
+  - medication: fosphenytoin
+    type: monitor
+    reason: Phenytoin, fosphenytoin, phenobarbital, primidone — high-dose folate can lower
+      anticonvulsant levels and seizure control
+  - medication: phenobarbital
+    type: monitor
+    reason: Phenytoin, fosphenytoin, phenobarbital, primidone — high-dose folate can lower
+      anticonvulsant levels and seizure control
+  - medication: primidone
+    type: monitor
+    reason: Phenytoin, fosphenytoin, phenobarbital, primidone — high-dose folate can lower
+      anticonvulsant levels and seizure control

@@ -48,7 +48,33 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces absorption;
-    separate by 2-4 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces
+      absorption; separate by 2-4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces
+      absorption; separate by 2-4 hours
+  - medication: digoxin
+    type: space_by_hours
+    reason: Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces
+      absorption; separate by 2-4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces
+      absorption; separate by 2-4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces
+      absorption; separate by 2-4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces
+      absorption; separate by 2-4 hours

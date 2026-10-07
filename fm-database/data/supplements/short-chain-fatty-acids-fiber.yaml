@@ -53,6 +53,17 @@ contraindications:
   - bowel obstruction, strictures or severe dysmotility/gastroparesis
   - active SIBO or FODMAP-sensitive IBS with fermentable fibres such as inulin/FOS (worsen
     gas and bloating — use low-fermentable soluble fibre, titrate slowly)
-  medications:
-  - levothyroxine and other oral medications (fibre reduces absorption — separate by 2-4 hours)
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: levothyroxine and other oral medications (fibre reduces absorption — separate
+      by 2-4 hours)
+  - medication: thyroxine
+    type: space_by_hours
+    reason: levothyroxine and other oral medications (fibre reduces absorption — separate
+      by 2-4 hours)

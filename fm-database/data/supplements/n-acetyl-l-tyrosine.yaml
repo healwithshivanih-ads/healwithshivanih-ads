@@ -53,5 +53,12 @@ contraindications:
   medications:
   - MAO inhibitors (e.g., selegiline, phenelzine) — catecholamine precursor; risk of hypertensive
     reaction
-  - Levodopa — tyrosine competes for the same intestinal/BBB transporter; separate dosing
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levodopa
+    type: space_by_hours
+    reason: Levodopa — tyrosine competes for the same intestinal/BBB transporter; separate
+      dosing

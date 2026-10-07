@@ -45,9 +45,19 @@ contraindications:
   conditions:
   - Shellfish allergy — most glucosamine is shellfish-derived; use a vegetarian (fermented-corn)
     form
-  medications:
-  - Warfarin — case reports and MHRA/FDA pharmacovigilance of raised INR and bleeding with
-    glucosamine ± chondroitin; prescriber must know
+  medications: []
   life_stages:
   - Pregnancy — insufficient human safety data
   - Lactation — insufficient human safety data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — case reports and MHRA/FDA pharmacovigilance of raised INR and bleeding
+      with glucosamine ± chondroitin; prescriber must know
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — case reports and MHRA/FDA pharmacovigilance of raised INR and bleeding
+      with glucosamine ± chondroitin; prescriber must know

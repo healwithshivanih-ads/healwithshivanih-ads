@@ -57,9 +57,43 @@ contraindications:
     — beta-asarone is hepatotoxic/carcinogenic in animal studies; FDA prohibits it in food;
     avoid prolonged or high-dose oral use
   - Bleeding disorders (traditional precaution listed in notes)
-  medications:
-  - Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant effects
-    in animal studies; additive sedation
+  medications: []
   life_stages:
   - pregnancy — avoid (beta-asarone; emmenagogue)
   - breastfeeding — avoid
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: benzodiazepine
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: alprazolam
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: clonazepam
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: lorazepam
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: diazepam
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: phenobarbital
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: barbiturate
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation
+  - medication: zolpidem
+    type: monitor
+    reason: Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant
+      effects in animal studies; additive sedation

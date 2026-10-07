@@ -77,6 +77,20 @@ contraindications:
   - warfarin / acenocoumarol (vitamin K antagonists) — vitamin K directly opposes the anticoagulant
     effect and shifts INR; only with the prescriber's knowledge and a stable daily dose (both
     SKUs contain K2)
-  - thiazide diuretics with the 5000 IU tablet — reduced calcium excretion plus high-dose
-    D raises hypercalcaemia risk; check calcium
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: thiazide diuretics with the 5000 IU tablet — reduced calcium excretion plus high-dose
+      D raises hypercalcaemia risk; check calcium
+  - medication: chlorthalidone
+    type: monitor
+    reason: thiazide diuretics with the 5000 IU tablet — reduced calcium excretion plus high-dose
+      D raises hypercalcaemia risk; check calcium
+  - medication: indapamide
+    type: monitor
+    reason: thiazide diuretics with the 5000 IU tablet — reduced calcium excretion plus high-dose
+      D raises hypercalcaemia risk; check calcium

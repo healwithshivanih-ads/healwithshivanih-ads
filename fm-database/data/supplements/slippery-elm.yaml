@@ -72,8 +72,15 @@ aliases:
 - slippery-elm-bark
 contraindications:
   conditions: []
-  medications:
-  - oral medications generally — mucilage can slow/reduce absorption; take 1-2 hours apart
+  medications: []
   life_stages:
   - pregnancy (use inner-bark preparations only; whole/outer bark has a traditional abortifacient
     reputation)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: oral medications generally
+    type: space_by_hours
+    reason: oral medications generally — mucilage can slow/reduce absorption; take 1-2 hours
+      apart

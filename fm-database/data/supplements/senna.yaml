@@ -51,9 +51,45 @@ contraindications:
   - inflammatory bowel disease — Crohn's, ulcerative colitis — or appendicitis
   medications:
   - digoxin and antiarrhythmics (laxative-induced hypokalaemia potentiates toxicity)
-  - thiazide/loop diuretics and corticosteroids (additive potassium loss)
   life_stages:
   - pregnancy (clinician-directed use only)
   - children under 12
   - lactation (not recommended - insufficient data on excretion of anthranoid metabolites
     into breast milk, per EMA monograph)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: chlorthalidone
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: indapamide
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: furosemide
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: torsemide
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: prednisolone
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: prednisone
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: methylprednisolone
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: dexamethasone
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: hydrocortisone
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)
+  - medication: deflazacort
+    type: monitor
+    reason: thiazide/loop diuretics and corticosteroids (additive potassium loss)

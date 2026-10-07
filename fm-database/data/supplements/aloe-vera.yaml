@@ -88,8 +88,46 @@ contraindications:
   medications:
   - Diuretics, digoxin and corticosteroids — latex-induced potassium loss raises hypokalaemia
     and digoxin toxicity risk
-  - Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
-  - Stimulant laxatives — additive effect with latex-containing products
   life_stages:
   - Pregnancy — latex/anthraquinone forms can stimulate uterine contractions
   - Lactation — anthraquinones pass into breast milk
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: glimepiride
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: gliclazide
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: glibenclamide
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: glipizide
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: sulfonylurea
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: metformin
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - medication: bisacodyl
+    type: monitor
+    reason: Stimulant laxatives — additive effect with latex-containing products
+  - medication: senna
+    type: monitor
+    reason: Stimulant laxatives — additive effect with latex-containing products
+  - medication: sennoside
+    type: monitor
+    reason: Stimulant laxatives — additive effect with latex-containing products
+  - medication: sodium picosulfate
+    type: monitor
+    reason: Stimulant laxatives — additive effect with latex-containing products
+  - medication: laxative
+    type: monitor
+    reason: Stimulant laxatives — additive effect with latex-containing products

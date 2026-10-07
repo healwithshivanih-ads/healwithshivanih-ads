@@ -48,9 +48,7 @@ contraindications:
   - 'rind / root-bark preparations (Pericarpium & Cortex Granati): the anthelmintic root-bark
     contains alkaloids toxic in overdose — use only at appropriate dose. NOTE: WHO safety
     data pertain to the rind/bark, not the edible fruit or juice (WHO Monographs Vol 4)'
-  medications:
-  - Warfarin — case reports of INR changes with pomegranate juice; keep intake consistent
-    and monitor INR
+  medications: []
   life_stages: []
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
@@ -69,3 +67,15 @@ linked_to_symptoms:
 - elevated-blood-pressure
 linked_to_mechanisms:
 - ldl-oxidation
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — case reports of INR changes with pomegranate juice; keep intake consistent
+      and monitor INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — case reports of INR changes with pomegranate juice; keep intake consistent
+      and monitor INR

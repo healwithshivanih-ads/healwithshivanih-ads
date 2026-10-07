@@ -61,30 +61,34 @@ contraindications:
     clients
   medications:
   - pseudoephedrine
-  - clozapine — caffeine competes for CYP1A2 and can raise clozapine levels; changes in caffeine
-    intake destabilise dosing
   life_stages:
   - pregnancy
   - lactation
 interactions:
+  with_supplements: []
+  with_foods:
+  - food_slug: iron-rich-foods
+    type: space_by_hours
+    hours: 2
+    reason: Caffeine blocks non-haem iron absorption when taken with or near a meal — a real
+      consideration for an iron-deficient client, who should keep it clear of iron-rich meals
+      and any iron supplement.
   with_medications:
   - medication: pseudoephedrine
     type: avoid_together
     reason: Additive stimulant effect on heart rate and blood pressure.
   - medication: ciprofloxacin
     type: avoid_together
-    reason: Fluoroquinolones inhibit CYP1A2 and slow caffeine clearance, raising effective exposure
-      from the same dose. Same applies to fluvoxamine.
+    reason: Fluoroquinolones inhibit CYP1A2 and slow caffeine clearance, raising effective
+      exposure from the same dose. Same applies to fluvoxamine.
   - medication: adenosine
     type: avoid_together
-    reason: Caffeine antagonises adenosine — standard advice is to stop caffeine ~24 h before a cardiac
-      stress test or the test is invalidated.
-  with_foods:
-  - food_slug: iron-rich-foods
-    type: space_by_hours
-    hours: 2
-    reason: Caffeine blocks non-haem iron absorption when taken with or near a meal — a real consideration
-      for an iron-deficient client, who should keep it clear of iron-rich meals and any iron supplement.
+    reason: Caffeine antagonises adenosine — standard advice is to stop caffeine ~24 h before
+      a cardiac stress test or the test is invalidated.
+  - medication: clozapine
+    type: monitor
+    reason: clozapine — caffeine competes for CYP1A2 and can raise clozapine levels; changes
+      in caffeine intake destabilise dosing
 linked_to_topics:
 - cognitive-decline
 linked_to_mechanisms:

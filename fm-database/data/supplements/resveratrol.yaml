@@ -71,10 +71,50 @@ updated_by: shivani
 contraindications:
   conditions:
   - Bleeding disorders or surgery within 2 weeks — antiplatelet effect
-  medications:
-  - Anticoagulants and antiplatelet drugs (warfarin, clopidogrel, aspirin) — additive bleeding
-    risk
-  - CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel blockers,
-    cyclosporine) — resveratrol inhibits these enzymes
+  medications: []
   life_stages:
   - Pregnancy — adverse fetal pancreatic findings in primate studies (noted in coach notes)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Anticoagulants and antiplatelet drugs (warfarin, clopidogrel, aspirin) — additive
+      bleeding risk
+  - medication: acenocoumarol
+    type: monitor
+    reason: Anticoagulants and antiplatelet drugs (warfarin, clopidogrel, aspirin) — additive
+      bleeding risk
+  - medication: clopidogrel
+    type: monitor
+    reason: Anticoagulants and antiplatelet drugs (warfarin, clopidogrel, aspirin) — additive
+      bleeding risk
+  - medication: aspirin
+    type: monitor
+    reason: Anticoagulants and antiplatelet drugs (warfarin, clopidogrel, aspirin) — additive
+      bleeding risk
+  - medication: cyclosporine
+    type: monitor
+    reason: CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel
+      blockers, cyclosporine) — resveratrol inhibits these enzymes
+  - medication: ciclosporin
+    type: monitor
+    reason: CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel
+      blockers, cyclosporine) — resveratrol inhibits these enzymes
+  - medication: nifedipine
+    type: monitor
+    reason: CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel
+      blockers, cyclosporine) — resveratrol inhibits these enzymes
+  - medication: felodipine
+    type: monitor
+    reason: CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel
+      blockers, cyclosporine) — resveratrol inhibits these enzymes
+  - medication: verapamil
+    type: monitor
+    reason: CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel
+      blockers, cyclosporine) — resveratrol inhibits these enzymes
+  - medication: diltiazem
+    type: monitor
+    reason: CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel
+      blockers, cyclosporine) — resveratrol inhibits these enzymes

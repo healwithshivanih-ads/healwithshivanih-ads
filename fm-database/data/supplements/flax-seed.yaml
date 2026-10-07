@@ -23,9 +23,7 @@ contraindications:
   conditions:
   - severe_dysphagia
   - bowel_obstruction
-  medications:
-  - Oral medications generally — high-fibre mucilage can reduce absorption; take medicines
-    1–2 hours apart
+  medications: []
   life_stages:
   - pregnancy_first_trimester
 interactions:
@@ -46,6 +44,10 @@ interactions:
       anticoagulants. Defer to clinician.
 
       '
+  - medication: oral medications generally
+    type: space_by_hours
+    reason: Oral medications generally — high-fibre mucilage can reduce absorption; take medicines
+      1–2 hours apart
 linked_to_topics:
 - gut-dysbiosis
 - perimenopause

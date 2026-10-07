@@ -66,6 +66,21 @@ contraindications:
     pain
   - Chronic diarrhoea / bile-acid diarrhoea (e.g. after ileal resection) — bile salts are
     secretory laxatives and can worsen it
-  medications:
-  - Bile-acid sequestrants (cholestyramine, colesevelam) — bind bile salts; separate dosing
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: cholestyramine
+    type: space_by_hours
+    reason: Bile-acid sequestrants (cholestyramine, colesevelam) — bind bile salts; separate
+      dosing
+  - medication: colesevelam
+    type: space_by_hours
+    reason: Bile-acid sequestrants (cholestyramine, colesevelam) — bind bile salts; separate
+      dosing
+  - medication: colestipol
+    type: space_by_hours
+    reason: Bile-acid sequestrants (cholestyramine, colesevelam) — bind bile salts; separate
+      dosing

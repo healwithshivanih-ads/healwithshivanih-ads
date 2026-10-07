@@ -49,7 +49,37 @@ contraindications:
   - Gallstones — consult a physician before use (WHO Monographs Vol 1; mirrors the main ginger
     entry)
   - Bleeding / coagulation disorders — consult a physician (WHO Monographs Vol 1)
-  medications:
-  - Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
-    additive bleeding at higher doses (WHO Monographs Vol 1)
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: acenocoumarol
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: apixaban
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: rivaroxaban
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: dabigatran
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: clopidogrel
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)
+  - medication: aspirin
+    type: monitor
+    reason: Anticoagulant / antiplatelet drugs (warfarin, aspirin, clopidogrel, DOACs) — possible
+      additive bleeding at higher doses (WHO Monographs Vol 1)

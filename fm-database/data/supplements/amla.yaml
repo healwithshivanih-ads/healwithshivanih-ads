@@ -10,15 +10,58 @@ timing_options: []
 take_with_food: optional
 contraindications:
   conditions: []
-  medications:
-  - Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
-    platelet aggregation in human studies; additive bleeding risk
-  - Diabetes medications — additive glucose lowering
+  medications: []
   life_stages: []
 interactions:
   with_supplements: []
   with_foods: []
-  with_medications: []
+  with_medications:
+  - medication: aspirin
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: clopidogrel
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: warfarin
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: acenocoumarol
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: ticagrelor
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: apixaban
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: rivaroxaban
+    type: monitor
+    reason: Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+      platelet aggregation in human studies; additive bleeding risk
+  - medication: insulin
+    type: monitor
+    reason: Diabetes medications — additive glucose lowering
+  - medication: glimepiride
+    type: monitor
+    reason: Diabetes medications — additive glucose lowering
+  - medication: gliclazide
+    type: monitor
+    reason: Diabetes medications — additive glucose lowering
+  - medication: glibenclamide
+    type: monitor
+    reason: Diabetes medications — additive glucose lowering
+  - medication: sulfonylurea
+    type: monitor
+    reason: Diabetes medications — additive glucose lowering
+  - medication: metformin
+    type: monitor
+    reason: Diabetes medications — additive glucose lowering
 pregnancy_safety: unknown
 lactation_safety: unknown
 linked_to_topics:

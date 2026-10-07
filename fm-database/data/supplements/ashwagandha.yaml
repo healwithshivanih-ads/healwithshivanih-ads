@@ -161,8 +161,6 @@ contraindications:
   - Benzodiazepines including diazepam, clonazepam and alprazolam — ashwagandha may reduce
     their anxiolytic/sedative effect (WHO Monographs on Selected Medicinal Plants, Vol 4);
     review co-use before recommending
-  - Levothyroxine / thyroid hormone replacement — additive rise in thyroid hormones; recheck
-    TSH/fT4 after starting
   - Immunosuppressants (e.g. tacrolimus, azathioprine, mycophenolate) — immunostimulatory
     activity may counteract them
   life_stages:
@@ -182,3 +180,19 @@ aliases:
 - ashwagandha-ksm66
 - ashwagandha 2-4g
 - ashwagandha 600 mg daily
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: monitor
+    reason: Levothyroxine / thyroid hormone replacement — additive rise in thyroid hormones;
+      recheck TSH/fT4 after starting
+  - medication: thyroxine
+    type: monitor
+    reason: Levothyroxine / thyroid hormone replacement — additive rise in thyroid hormones;
+      recheck TSH/fT4 after starting
+  - medication: liothyronine
+    type: monitor
+    reason: Levothyroxine / thyroid hormone replacement — additive rise in thyroid hormones;
+      recheck TSH/fT4 after starting

@@ -38,9 +38,47 @@ contraindications:
   conditions:
   - Low blood pressure — additive hypotensive effect
   medications:
-  - Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive blood-pressure
-    lowering; home BP log and doctor aware
   - Chloroquine — hibiscus beverage reduced chloroquine bioavailability in a human study
   life_stages:
   - Pregnancy — avoid therapeutic amounts; traditional emmenagogue with animal reproductive-toxicity
     signals
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: ramipril
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: enalapril
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: lisinopril
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: perindopril
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: chlorthalidone
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: telmisartan
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: losartan
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware
+  - medication: amlodipine
+    type: monitor
+    reason: Antihypertensives (especially ACE inhibitors and hydrochlorothiazide) — additive
+      blood-pressure lowering; home BP log and doctor aware

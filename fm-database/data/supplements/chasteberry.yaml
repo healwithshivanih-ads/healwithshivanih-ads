@@ -82,12 +82,87 @@ contraindications:
   - Oestrogen- or hormone-sensitive cancer (breast, uterine, ovarian) — hormonal effects;
     avoid unless oncologist agrees (EMA monograph)
   medications:
-  - Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics, metoclopramide,
-    domperidone) — vitex acts on dopamine D2 receptors
   - IVF / ovulation-induction drugs (clomiphene, gonadotropins) — case reports of ovarian
     hyperstimulation
-  - Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
   life_stages:
   - Pregnancy — avoid
   - Breastfeeding — lowers prolactin and may reduce milk supply
   - Under 18 — not recommended (EMA monograph; HPO axis still maturing)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: bromocriptine
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: cabergoline
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: haloperidol
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: risperidone
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: olanzapine
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: quetiapine
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: aripiprazole
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: amisulpride
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: antipsychotic
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: metoclopramide
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: domperidone
+    type: monitor
+    reason: Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics,
+      metoclopramide, domperidone) — vitex acts on dopamine D2 receptors
+  - medication: oral contraceptive
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: levonorgestrel
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: ethinylestradiol
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: desogestrel
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: drospirenone
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: estradiol
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: conjugated estrogen
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: tibolone
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: progesterone
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  - medication: dydrogesterone
+    type: monitor
+    reason: Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)

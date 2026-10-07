@@ -118,8 +118,38 @@ contraindications:
     with enzymes
   - Pork allergy or religious/dietary avoidance — many pancreatin products are porcine; check
     the source
-  medications:
-  - Warfarin and other anticoagulants — blends containing bromelain or papain may add bleeding
-    risk
-  - Acarbose / miglitol — amylase in enzyme blends counteracts these drugs
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin and other anticoagulants — blends containing bromelain or papain may
+      add bleeding risk
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin and other anticoagulants — blends containing bromelain or papain may
+      add bleeding risk
+  - medication: apixaban
+    type: monitor
+    reason: Warfarin and other anticoagulants — blends containing bromelain or papain may
+      add bleeding risk
+  - medication: rivaroxaban
+    type: monitor
+    reason: Warfarin and other anticoagulants — blends containing bromelain or papain may
+      add bleeding risk
+  - medication: dabigatran
+    type: monitor
+    reason: Warfarin and other anticoagulants — blends containing bromelain or papain may
+      add bleeding risk
+  - medication: acarbose
+    type: monitor
+    reason: Acarbose / miglitol — amylase in enzyme blends counteracts these drugs
+  - medication: miglitol
+    type: monitor
+    reason: Acarbose / miglitol — amylase in enzyme blends counteracts these drugs
+  - medication: voglibose
+    type: monitor
+    reason: Acarbose / miglitol — amylase in enzyme blends counteracts these drugs

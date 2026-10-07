@@ -50,10 +50,20 @@ contraindications:
   conditions:
   - Liver disease or raised liver enzymes — rare hepatotoxicity reports (German BfArM review);
     stop if jaundice or dark urine
-  medications:
-  - Warfarin / coumarin anticoagulants — EMA monograph states an interaction cannot be excluded
-    (coumarin constituents); monitor INR
+  medications: []
   life_stages:
   - Pregnancy — not recommended (EMA monograph, no data)
   - Lactation — not recommended (EMA monograph, no data)
   - Infants under 1 year — not established safe
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin / coumarin anticoagulants — EMA monograph states an interaction cannot
+      be excluded (coumarin constituents); monitor INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin / coumarin anticoagulants — EMA monograph states an interaction cannot
+      be excluded (coumarin constituents); monitor INR

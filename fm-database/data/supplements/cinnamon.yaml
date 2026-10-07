@@ -67,9 +67,39 @@ contraindications:
   conditions:
   - Liver disease — cassia cinnamon is high in coumarin, which is hepatotoxic at supplemental
     doses; use Ceylon (C. zeylanicum) if supplementing
-  medications:
-  - Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
-    monitor
+  medications: []
   life_stages:
   - Pregnancy — avoid supplemental doses (insufficient safety data, EMA); culinary amounts
     are fine
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor
+  - medication: glimepiride
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor
+  - medication: gliclazide
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor
+  - medication: glibenclamide
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor
+  - medication: glipizide
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor
+  - medication: sulfonylurea
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor
+  - medication: metformin
+    type: monitor
+    reason: Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+      monitor

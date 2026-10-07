@@ -88,9 +88,6 @@ contraindications:
   medications:
   - MAO inhibitors (e.g. phenelzine) — reports of interaction (WHO Monographs Vol 1)
   - antidiabetic drugs — additive blood-sugar lowering possible (WHO Monographs Vol 1)
-  - Stimulants / high caffeine intake — additive nervousness, palpitations, insomnia
-  - Warfarin — case reports of reduced INR with Panax ginseng (the controlled INR-lowering
-    trial used American ginseng); monitor INR
   life_stages:
   - Pregnancy — avoid; ginsenoside Rb1 was teratogenic in animal embryo studies and human
     safety data are lacking
@@ -123,3 +120,30 @@ updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - ginseng
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: caffeine
+    type: monitor
+    reason: Stimulants / high caffeine intake — additive nervousness, palpitations, insomnia
+  - medication: methylphenidate
+    type: monitor
+    reason: Stimulants / high caffeine intake — additive nervousness, palpitations, insomnia
+  - medication: modafinil
+    type: monitor
+    reason: Stimulants / high caffeine intake — additive nervousness, palpitations, insomnia
+  - medication: armodafinil
+    type: monitor
+    reason: Stimulants / high caffeine intake — additive nervousness, palpitations, insomnia
+  - medication: amphetamine
+    type: monitor
+    reason: Stimulants / high caffeine intake — additive nervousness, palpitations, insomnia
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — case reports of reduced INR with Panax ginseng (the controlled INR-lowering
+      trial used American ginseng); monitor INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — case reports of reduced INR with Panax ginseng (the controlled INR-lowering
+      trial used American ginseng); monitor INR

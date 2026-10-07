@@ -45,8 +45,49 @@ contraindications:
   - Current or recent smokers — avoid formulas with high-dose beta-carotene (increased lung
     cancer risk in ATBC and CARET trials)
   - Haemochromatosis / iron overload — use an iron-free formula
-  medications:
-  - Levothyroxine — mineral-containing multis bind thyroxine; separate by at least 4 hours
-  - Warfarin — vitamin K content can alter INR; keep intake consistent and inform prescriber
-  - Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — mineral-containing multis bind thyroxine; separate by at least
+      4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — mineral-containing multis bind thyroxine; separate by at least
+      4 hours
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — vitamin K content can alter INR; keep intake consistent and inform
+      prescriber
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — vitamin K content can alter INR; keep intake consistent and inform
+      prescriber
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours

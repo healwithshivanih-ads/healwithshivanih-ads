@@ -111,5 +111,17 @@ contraindications:
   medications:
   - warfarin / acenocoumarol (vitamin K antagonists) — K2 (even MK-7 at 10–20 mcg) antagonises
     the drug and destabilises INR; avoid unless the prescriber manages it
-  - thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  - medication: chlorthalidone
+    type: monitor
+    reason: thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  - medication: indapamide
+    type: monitor
+    reason: thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D

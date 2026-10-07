@@ -55,9 +55,38 @@ contraindications:
   - Untreated or unconfirmed B12 deficiency / pernicious anaemia — folate (especially >1 mg/day)
     can correct the anaemia and mask B12 deficiency while nerve damage progresses; check B12
     first or co-supplement
-  medications:
-  - Methotrexate used for cancer — folate can blunt its effect (low-dose folate alongside
-    RA/psoriasis methotrexate is usually prescribed deliberately; leave that to the prescriber)
-  - Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants — folate
-    supplementation can lower drug levels and seizure control; prescriber should monitor
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: methotrexate
+    type: monitor
+    reason: Methotrexate used for cancer — folate can blunt its effect (low-dose folate alongside
+      RA/psoriasis methotrexate is usually prescribed deliberately; leave that to the prescriber)
+  - medication: phenytoin
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: fosphenytoin
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: phenobarbital
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: primidone
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor
+  - medication: carbamazepine
+    type: monitor
+    reason: Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants
+      — folate supplementation can lower drug levels and seizure control; prescriber should
+      monitor

@@ -55,7 +55,16 @@ contraindications:
   - Statins — duplicate therapy (monacolin K = lovastatin); do not combine
   - Strong CYP3A4 inhibitors (clarithromycin, erythromycin, azole antifungals, HIV protease
     inhibitors, cyclosporine) and gemfibrozil — rhabdomyolysis risk
-  - Warfarin — reported potentiation
   life_stages:
   - Pregnancy — statins are contraindicated in pregnancy
   - Breastfeeding
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — reported potentiation
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — reported potentiation

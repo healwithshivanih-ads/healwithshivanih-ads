@@ -63,9 +63,39 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia; doses
-    may need reducing under the prescriber (notes already say monitor glucose)
+  medications: []
   life_stages:
   - Pregnancy — insufficient human safety data
   - Lactation — insufficient human safety data
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: metformin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)
+  - medication: insulin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)
+  - medication: glipizide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      doses may need reducing under the prescriber (notes already say monitor glucose)

@@ -50,9 +50,59 @@ contraindications:
   - Liver disease — CBD raises liver enzymes in a dose-dependent manner (Epidiolex trials)
   medications:
   - Warfarin — CBD inhibits CYP2C9 and raises INR
-  - Clobazam and valproate — raised clobazam metabolite levels and liver-enzyme elevations
   - Tacrolimus / cyclosporine and other CYP3A4 substrates — raised drug levels
-  - Sedatives, opioids and alcohol — additive sedation
   life_stages:
   - pregnancy — avoid (FDA advises against)
   - breastfeeding — avoid (FDA advises against)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: clobazam
+    type: monitor
+    reason: Clobazam and valproate — raised clobazam metabolite levels and liver-enzyme elevations
+  - medication: valproate
+    type: monitor
+    reason: Clobazam and valproate — raised clobazam metabolite levels and liver-enzyme elevations
+  - medication: sodium valproate
+    type: monitor
+    reason: Clobazam and valproate — raised clobazam metabolite levels and liver-enzyme elevations
+  - medication: divalproex
+    type: monitor
+    reason: Clobazam and valproate — raised clobazam metabolite levels and liver-enzyme elevations
+  - medication: benzodiazepine
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: alprazolam
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: clonazepam
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: lorazepam
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: diazepam
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: zolpidem
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: tramadol
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: tapentadol
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: morphine
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: codeine
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: oxycodone
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation
+  - medication: opioid
+    type: monitor
+    reason: Sedatives, opioids and alcohol — additive sedation

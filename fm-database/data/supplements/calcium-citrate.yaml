@@ -63,10 +63,68 @@ contraindications:
   - History of calcium kidney stones — supplement only under clinician guidance (food calcium
     preferred)
   medications:
-  - Levothyroxine — calcium binds it; separate by at least 4 hours
-  - Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
-  - Bisphosphonates (alendronate) — markedly reduce absorption; separate per prescriber instructions
-  - Thiazide diuretics — reduce calcium excretion; risk of hypercalcaemia with supplements
   - Digoxin — high-dose calcium can raise the risk of arrhythmia; supplement only with prescriber
     agreement
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — calcium binds it; separate by at least 4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — calcium binds it; separate by at least 4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - medication: alendronate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) — markedly reduce absorption; separate per prescriber
+      instructions
+  - medication: risedronate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) — markedly reduce absorption; separate per prescriber
+      instructions
+  - medication: ibandronate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) — markedly reduce absorption; separate per prescriber
+      instructions
+  - medication: bisphosphonate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) — markedly reduce absorption; separate per prescriber
+      instructions
+  - medication: hydrochlorothiazide
+    type: monitor
+    reason: Thiazide diuretics — reduce calcium excretion; risk of hypercalcaemia with supplements
+  - medication: chlorthalidone
+    type: monitor
+    reason: Thiazide diuretics — reduce calcium excretion; risk of hypercalcaemia with supplements
+  - medication: indapamide
+    type: monitor
+    reason: Thiazide diuretics — reduce calcium excretion; risk of hypercalcaemia with supplements
+  - medication: thiazide
+    type: monitor
+    reason: Thiazide diuretics — reduce calcium excretion; risk of hypercalcaemia with supplements

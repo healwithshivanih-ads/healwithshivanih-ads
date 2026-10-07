@@ -105,10 +105,54 @@ contraindications:
   - Hormone-sensitive breast cancer on aromatase inhibitors — fenugreek may raise oestradiol/stimulate
     ER signalling (catalogue claim herbalgram-dong-quai-fenugreek-aromatase-inhibitor-contraindication)
   medications:
-  - Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia; monitor
-    glucose and inform prescriber
-  - Warfarin and other anticoagulants — case reports of raised INR; monitor
   - Aromatase inhibitors (anastrozole, letrozole, exemestane) — see oncology caution
   life_stages:
   - Pregnancy — medicinal doses are contraindicated (uterotonic activity, EMA); culinary use
     is fine
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: glipizide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: metformin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — additive hypoglycaemia;
+      monitor glucose and inform prescriber
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin and other anticoagulants — case reports of raised INR; monitor
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin and other anticoagulants — case reports of raised INR; monitor
+  - medication: apixaban
+    type: monitor
+    reason: Warfarin and other anticoagulants — case reports of raised INR; monitor
+  - medication: rivaroxaban
+    type: monitor
+    reason: Warfarin and other anticoagulants — case reports of raised INR; monitor
+  - medication: dabigatran
+    type: monitor
+    reason: Warfarin and other anticoagulants — case reports of raised INR; monitor

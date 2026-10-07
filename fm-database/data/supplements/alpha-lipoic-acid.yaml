@@ -133,12 +133,58 @@ contraindications:
   - Insulin autoimmune syndrome (Hirata disease) — ALA can trigger it in HLA-DRB1*04:06 carriers
     (mostly East Asian); stop if unexplained hypoglycaemia occurs
   medications:
-  - Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering; monitor
-    (currently recorded only as a condition)
   - Chemotherapy (alkylating agents, anthracyclines) — high-dose antioxidants may interfere;
     oncologist sign-off
   life_stages: []
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: glipizide
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: metformin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: sitagliptin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: vildagliptin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: teneligliptin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: dapagliflozin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)
+  - medication: empagliflozin
+    type: monitor
+    reason: Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering;
+      monitor (currently recorded only as a condition)

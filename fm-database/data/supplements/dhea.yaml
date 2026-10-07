@@ -56,7 +56,25 @@ contraindications:
   medications:
   - Aromatase inhibitors, tamoxifen and other hormone-blocking cancer therapy — opposes their
     action
-  - HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
   life_stages:
   - pregnancy
   - lactation
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: testosterone
+    type: monitor
+    reason: HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
+  - medication: estradiol
+    type: monitor
+    reason: HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
+  - medication: conjugated estrogen
+    type: monitor
+    reason: HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
+  - medication: tibolone
+    type: monitor
+    reason: HRT / testosterone therapy — additive hormone exposure; clinician to coordinate
+  - medication: progesterone
+    type: monitor
+    reason: HRT / testosterone therapy — additive hormone exposure; clinician to coordinate

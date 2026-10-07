@@ -46,6 +46,17 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Warfarin — CoQ10 is structurally vitamin-K-like and has been reported to reduce INR; monitor
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin — CoQ10 is structurally vitamin-K-like and has been reported to reduce
+      INR; monitor
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin — CoQ10 is structurally vitamin-K-like and has been reported to reduce
+      INR; monitor

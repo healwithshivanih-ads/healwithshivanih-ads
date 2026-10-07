@@ -83,11 +83,59 @@ linked_to_mechanisms:
 contraindications:
   conditions: []
   medications:
-  - Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium, cinnamon,
-    gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
   - Cyclosporine, tacrolimus — berberine inhibits CYP3A4 and raises their levels
-  - Warfarin and other anticoagulants — fenugreek has been associated with raised INR; monitor/clinician
-    to coordinate
   life_stages:
   - pregnancy — berberine crosses the placenta and can displace bilirubin (kernicterus risk)
   - lactation — berberine passes into breast milk
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: insulin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: glimepiride
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: gliclazide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: glibenclamide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: glipizide
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: sulfonylurea
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: metformin
+    type: monitor
+    reason: Insulin, sulfonylureas and other glucose-lowering drugs — berberine, chromium,
+      cinnamon, gymnema and ALA are additively glucose-lowering; hypoglycaemia risk
+  - medication: warfarin
+    type: monitor
+    reason: Warfarin and other anticoagulants — fenugreek has been associated with raised
+      INR; monitor/clinician to coordinate
+  - medication: acenocoumarol
+    type: monitor
+    reason: Warfarin and other anticoagulants — fenugreek has been associated with raised
+      INR; monitor/clinician to coordinate
+  - medication: apixaban
+    type: monitor
+    reason: Warfarin and other anticoagulants — fenugreek has been associated with raised
+      INR; monitor/clinician to coordinate
+  - medication: rivaroxaban
+    type: monitor
+    reason: Warfarin and other anticoagulants — fenugreek has been associated with raised
+      INR; monitor/clinician to coordinate
+  - medication: dabigatran
+    type: monitor
+    reason: Warfarin and other anticoagulants — fenugreek has been associated with raised
+      INR; monitor/clinician to coordinate

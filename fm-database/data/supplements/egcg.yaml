@@ -49,9 +49,35 @@ contraindications:
     claim concentrated-polyphenol-extracts-block-non-haem-iron); keep away from iron-containing
     meals and iron supplements
   medications:
-  - Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce nadolol
-    absorption (RCT)
   - Bortezomib — EGCG blocks its anticancer action
   life_stages:
   - pregnancy — high-dose EGCG inhibits folate metabolism (DHFR); green tea as a drink in
     moderation is fine
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: nadolol
+    type: monitor
+    reason: Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce
+      nadolol absorption (RCT)
+  - medication: propranolol
+    type: monitor
+    reason: Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce
+      nadolol absorption (RCT)
+  - medication: atenolol
+    type: monitor
+    reason: Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce
+      nadolol absorption (RCT)
+  - medication: metoprolol
+    type: monitor
+    reason: Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce
+      nadolol absorption (RCT)
+  - medication: bisoprolol
+    type: monitor
+    reason: Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce
+      nadolol absorption (RCT)
+  - medication: beta blocker
+    type: monitor
+    reason: Nadolol (and possibly other beta-blockers) — green tea catechins markedly reduce
+      nadolol absorption (RCT)

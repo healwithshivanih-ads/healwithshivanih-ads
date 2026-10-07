@@ -51,13 +51,100 @@ contraindications:
   - Haemochromatosis or any iron-overload state — supplemental iron is harmful
   - Thalassaemia trait or other non-iron-deficiency anaemia (common in India) — do not supplement
     iron without iron studies (ferritin, TSAT) confirming deficiency
-  medications:
-  - Levothyroxine — iron binds it in the gut; separate by at least 4 hours
-  - Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate by
-    2–4 hours
-  - PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
-  - Levodopa / carbidopa-levodopa — iron chelates levodopa and reduces its absorption; separate
-    doses by at least 2 hours
-  - Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir) —
-    polyvalent cations block absorption; separate per prescriber instructions
+  medications: []
   life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: levothyroxine
+    type: space_by_hours
+    reason: Levothyroxine — iron binds it in the gut; separate by at least 4 hours
+  - medication: thyroxine
+    type: space_by_hours
+    reason: Levothyroxine — iron binds it in the gut; separate by at least 4 hours
+  - medication: doxycycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: tetracycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: minocycline
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: ciprofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: levofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: ofloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: norfloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: moxifloxacin
+    type: space_by_hours
+    reason: Tetracycline and fluoroquinolone antibiotics — mutual absorption blockade; separate
+      by 2–4 hours
+  - medication: omeprazole
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: pantoprazole
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: esomeprazole
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: rabeprazole
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: lansoprazole
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: famotidine
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: ranitidine
+    type: monitor
+    reason: PPIs and H2 blockers — markedly reduce non-heme iron absorption; may explain non-response
+  - medication: levodopa
+    type: space_by_hours
+    reason: Levodopa / carbidopa-levodopa — iron chelates levodopa and reduces its absorption;
+      separate doses by at least 2 hours
+  - medication: carbidopa
+    type: space_by_hours
+    reason: Levodopa / carbidopa-levodopa — iron chelates levodopa and reduces its absorption;
+      separate doses by at least 2 hours
+  - medication: alendronate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir)
+      — polyvalent cations block absorption; separate per prescriber instructions
+  - medication: risedronate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir)
+      — polyvalent cations block absorption; separate per prescriber instructions
+  - medication: ibandronate
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir)
+      — polyvalent cations block absorption; separate per prescriber instructions
+  - medication: dolutegravir
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir)
+      — polyvalent cations block absorption; separate per prescriber instructions
+  - medication: raltegravir
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir)
+      — polyvalent cations block absorption; separate per prescriber instructions
+  - medication: bictegravir
+    type: space_by_hours
+    reason: Bisphosphonates (alendronate) and integrase-inhibitor antiretrovirals (dolutegravir)
+      — polyvalent cations block absorption; separate per prescriber instructions

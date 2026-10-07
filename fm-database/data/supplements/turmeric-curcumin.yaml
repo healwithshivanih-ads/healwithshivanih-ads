@@ -83,8 +83,38 @@ contraindications:
   - gallstones or bile duct obstruction — curcumin is cholagogic (EMA/WHO monographs)
   - active liver disease or prior drug/herb-induced liver injury — case reports of autoimmune-like
     hepatitis with high-bioavailability (piperine/enhanced) curcumin products
-  medications:
-  - warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity and
-    case reports of raised INR
+  medications: []
   life_stages:
   - pregnancy — supplemental (not culinary) doses not established as safe
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: acenocoumarol
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: apixaban
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: rivaroxaban
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: dabigatran
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: aspirin
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR
+  - medication: clopidogrel
+    type: monitor
+    reason: warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity
+      and case reports of raised INR

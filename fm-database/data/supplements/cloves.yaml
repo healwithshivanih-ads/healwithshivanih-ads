@@ -46,8 +46,38 @@ updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions: []
-  medications:
-  - Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits platelet
-    aggregation; avoid concentrated clove/clove oil
+  medications: []
   life_stages:
   - Children — ingested clove oil causes liver injury and seizures; culinary amounts only
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: warfarin
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
+  - medication: acenocoumarol
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
+  - medication: clopidogrel
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
+  - medication: aspirin
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
+  - medication: ticagrelor
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
+  - medication: apixaban
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
+  - medication: rivaroxaban
+    type: monitor
+    reason: Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits
+      platelet aggregation; avoid concentrated clove/clove oil
