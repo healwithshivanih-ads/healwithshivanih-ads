@@ -1,0 +1,30 @@
+slug: glp1-protein-and-strength-training-preserve-muscle
+statement: For people on GLP-1 therapy, a 2025 joint advisory (ACLM, ASN, OMA, TOS) recommends strength training
+  at least 3 times weekly plus at least 150 minutes of moderate aerobic activity to preserve muscle and bone, notes
+  that protein targets of 1.2-1.6 g/kg/day have been proposed during active weight reduction (or an absolute 80-120
+  g/day), and states that higher protein alone is likely inadequate without structured strength training.
+evidence_tier: plausible_emerging
+rationale: Expert consensus from four professional societies; the protein figures are described as proposed targets,
+  and the body-weight basis (actual vs adjusted) is unresolved.
+coaching_translation: Protein is the building material and strength training is the signal to use it. Aim for protein
+  at every meal (roughly 80-120 g a day for most people) and strength work at least three times a week; neither
+  works well on its own.
+caveats:
+- Protein targets based on actual body weight can overestimate needs in people with high body weight.
+- Kidney disease or raised uric acid needs individual protein guidance.
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- strength-training
+- protein-adequacy-vegetarian
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Section 4.6 Preservation of muscle and bone mass
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

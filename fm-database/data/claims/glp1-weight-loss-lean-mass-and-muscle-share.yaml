@@ -1,0 +1,26 @@
+slug: glp1-weight-loss-lean-mass-and-muscle-share
+statement: 'On GLP-1 therapy, a substantial share of weight lost is lean mass: in STEP 1 about 38% of the loss was
+  lean body mass, with roughly 20% estimated to be skeletal muscle. Without structured strength training, muscle
+  loss is estimated at about 10-15% of total weight reduction in women and 20-25% in men.'
+evidence_tier: strong
+rationale: Joint advisory of four professional societies summarising DXA body-composition data from STEP 1 and SURMOUNT-1.
+coaching_translation: Not all the weight lost on these medicines is fat. Part of it is muscle, your metabolic engine,
+  which is why protein and strength training matter from day one.
+caveats:
+- DXA lean mass includes water and organs, so it overstates true muscle loss.
+- Muscle-share estimates are approximate.
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- strength-training
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Section 2.4 Muscle and bone loss
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

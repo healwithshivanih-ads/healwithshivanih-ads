@@ -1,0 +1,22 @@
+id: west-2026-bmj-weight-regain-after-wmm-cessation
+title: 'Weight regain after cessation of medication for weight management: systematic review and meta-analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- West S
+- Scragg J
+- Aveyard P
+- et al.
+year: 2026
+publisher: BMJ 392:e085304
+url: https://pubmed.ncbi.nlm.nih.gov/41500720/
+doi: 10.1136/bmj-2025-085304
+notes: 'Oxford-led meta-analysis: 37 studies, 9,341 participants. Overall regain 0.4 kg/month, projected back to
+  baseline at 1.7 years; semaglutide + tirzepatide pooled: 0.8 kg/month, baseline at ~1.5 years (8 studies, max
+  12 months follow-up, so later figures are projections). Cardiometabolic markers projected back to baseline within
+  1.4 years. Regain faster than after behavioural programmes by 0.3 kg/month. Read 7 Oct 2026 from PubMed abstract
+  + PMC full text.'
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

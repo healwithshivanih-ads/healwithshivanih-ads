@@ -77,21 +77,21 @@ First, it wasn't just weight. Blood sugar, blood pressure and cholesterol, which
 
 Second, weight came back **faster** after stopping a drug than after finishing a diet-and-exercise programme. That makes sense: a programme teaches skills you keep. A drug does the work *for* you, and when it stops, it stops.
 
-`[STICKER]` **37 studies · 9,300+ people · ~0.8 kg/month regain · back to baseline in ~1.5 years.**
-Source: *The BMJ*, January 2026, systematic review and meta-analysis (University of Oxford).
+`[STICKER]` **37 studies · 9,300+ people · semaglutide/tirzepatide: ~0.8 kg/month regain · projected back to baseline in ~1.5 years.**
+Source: West et al., *The BMJ*, January 2026, systematic review and meta-analysis (University of Oxford). The newer-drug figures come from 8 studies with up to 12 months' follow-up; beyond that they're projections.
 
 So far, that sounds grim. Now here's the twist.
 
 In March 2026, Cleveland Clinic looked at nearly 8,000 real patients, not trial volunteers. These were people who had stopped semaglutide or tirzepatide after three months to a year. The ones treated for weight had lost about 8% of their body weight. A year after stopping, they'd regained only about **half a percent**.
 
-`[STICKER]` **Real-world: 7,938 patients · lost 8.4% · regained 0.5% a year after stopping.**
+`[STICKER]` **Real-world: 7,938 patients · lost 8.4% · regained 0.5% a year after stopping · 20% restarted, 35% switched to another treatment.**
 Source: Gasoyan et al., *Diabetes, Obesity and Metabolism*, 2026 (Cleveland Clinic).
 
 So how can both be true?
 
-The researchers explained it themselves. In real life, most people didn't just stop and walk away. Many restarted, switched to another treatment, or kept working on weight with a professional. In the trials, people were switched to nothing.
+The researchers explained it themselves. In real life, many people didn't just stop and walk away. Within a year, about one in five restarted the same drug, and about a third moved on to another treatment, such as a different medicine or lifestyle support. In the trials, people were switched to nothing.
 
-To be fair, this group also took the drug for a shorter time and lost less, so it isn't a perfect comparison. But the lesson is clear:
+To be fair, this group also took the drug for a shorter time and lost less, and the averages hide a lot of variation between individuals. So it isn't a perfect comparison. But the lesson is clear:
 
 **Stopping the drug isn't what decides your outcome. What you have in place when you stop is.**
 
@@ -103,12 +103,12 @@ That's the rest of this video.
 
 Before the plan, there's one thing almost nobody talks about.
 
-When you lose weight quickly, not all of it is fat. In the STEP-1 trial, a group of participants had body scans. Roughly 40% of the weight they lost was what the scan calls "lean mass".
+When you lose weight quickly, not all of it is fat. In the STEP-1 trial, a group of participants had body scans. About 38% of the weight they lost was what the scan calls "lean mass".
 
-Now, lean mass isn't only muscle. It also includes water, organs and other tissue, so that number overstates true muscle loss. Studies of tirzepatide found it closer to a quarter. But either way, a meaningful part of the weight that comes off is tissue you want to keep.
+Now, lean mass isn't only muscle. It also includes water, organs and other tissue. When experts estimate actual muscle, it comes to roughly one-fifth of the weight lost: around 10 to 15% for women and 20 to 25% for men, when there's no structured strength training. Still, that's a meaningful amount of tissue you want to keep.
 
-`[STICKER]` **Up to ~40% of weight lost on semaglutide showed up as "lean mass" on DXA scans (not all of it is muscle).**
-Source: Wilding et al., *NEJM* 2021, STEP-1 body-composition substudy.
+`[STICKER]` **STEP-1: ~38% of weight lost was "lean mass"; roughly ⅕ was actual muscle (10–15% in women, 20–25% in men, without strength training).**
+Source: Mozaffarian et al., joint advisory, *Obesity Pillars* 2025 (summarising STEP-1, Wilding et al., *NEJM* 2021).
 
 Here's why that matters for regain. Muscle is your metabolic engine. It burns energy at rest, it helps your body handle blood sugar, and it keeps you strong as you age.
 
@@ -124,32 +124,36 @@ The good news: this is one of the most preventable problems in the whole picture
 
 I call this a soft landing. Most of these steps work best if you start **while you're still on the medicine**, not after. The drug quiets your appetite, which makes it the easiest time to build new habits. Think of it as training wheels you use to learn the bike, so you can still ride when they come off.
 
+That isn't just my opinion. In 2025, four major obesity and nutrition organisations published joint guidance for people on these medicines, and this was one of their key points.
+
+`[STICKER]` **"Establish positive nutrition and other lifestyle practices before and during GLP-1 therapy, to increase success at maintaining such practices if the drug is stopped."**
+Source: Mozaffarian et al., joint advisory (ACLM, ASN, OMA, TOS), *Obesity Pillars* 2025.
+
 ### Step 1 · Protein, at every meal
 
 When your appetite is low, protein is often the first thing to drop. Yet protein is what tells your body to hold on to muscle.
 
-In 2025, four major obesity and nutrition organisations published joint guidance for people on these medicines, putting adequate protein near the top of the list. The range most experts now use is about **1.2 to 1.6 grams of protein per kilo of body weight per day**.
+That same 2025 guidance notes that, during weight loss, targets of about **1.2 to 1.6 grams of protein per kilo of body weight per day** have been proposed. It also offers a simpler number: **roughly 80 to 120 grams a day**. If you're carrying a lot of extra weight, ask your doctor or dietitian which number fits you, because calculating from your full body weight can overestimate what you need.
 
-`[STICKER]` **Protein: ~1.2–1.6 g per kg of body weight per day, spread across meals.**
-Source: Joint advisory "Nutritional Priorities to Support GLP-1 Therapy for Obesity" (ACLM, ASN, OMA, TOS), 2025.
+`[STICKER]` **Protein during weight loss: ~1.2–1.6 g per kg per day, or simply ~80–120 g a day, spread across meals.**
+Source: Mozaffarian et al., joint advisory, *Obesity Pillars* 2025.
 
-`⚠ CHECK` Confirm the exact protein wording in the advisory PDF (obesity.org was blocked from my research environment; the 1.2–1.6 g/kg figure is widely attributed to it).
-
-So if you weigh 70 kilos, that's somewhere around 85 to 110 grams a day. Don't try to get that in one meal. Spread it across the day: about 25 to 30 grams at each main meal.
+Don't try to get it all in one meal. Spread it across the day: about 25 to 30 grams at each main meal.
 
 What does that look like? Two or three eggs. A bowl of Greek yoghurt. A palm-and-a-half of fish or chicken. A cup of cooked lentils with some tofu or paneer. A protein-rich breakfast is the one most people miss.
 
 `[B-ROLL]` Three plates, each showing ~25–30 g of protein.
 
-### Step 2 · Strength training, two to three times a week
+### Step 2 · Strength training, at least three times a week
 
 Protein is the building material. Strength training is the signal to use it.
 
-You don't need a gym membership or heavy barbells to start. Squats to a chair, wall push-ups, resistance bands, carrying shopping bags. What matters is that your muscles work against resistance two or three times a week, and that it gets a little harder over time.
+The same guidance recommends strength training **at least three times a week**, plus about 150 minutes of moderate activity like brisk walking, to protect muscle and bone. And it says plainly that extra protein on its own is unlikely to be enough without the strength training.
 
-Protein and strength work as a pair. Either one alone does far less than both together.
+You don't need a gym membership or heavy barbells to start. Squats to a chair, wall push-ups, resistance bands, carrying shopping bags. What matters is that your muscles work against resistance regularly, and that it gets a little harder over time. If three times feels like a lot right now, start with two and build up.
 
-`[STICKER]` **Protein + strength training: neither works without the other.**
+`[STICKER]` **Strength training ≥3×/week + ~150 min moderate activity. Protein alone isn't enough.**
+Source: Mozaffarian et al., joint advisory, *Obesity Pillars* 2025.
 
 ### Step 3 · Fibre: help your body make its own GLP-1
 
@@ -210,7 +214,7 @@ Please don't stop on your own. Have a conversation first. Here are some question
 
 If you've already stopped and the scale is going up, first: you didn't fail. Remember the numbers. Most people in the trials regained a large part of their weight. That's the biology, not you.
 
-Second, it's not too late. Start with the two that protect your body most: protein at every meal and strength training twice a week. Then add fibre and look honestly at your sleep. And talk to your doctor about your options. There's no shame in deciding together that a medicine is part of your long-term plan, just like any other medicine for a long-term condition.
+Second, it's not too late. Start with the two that protect your body most: protein at every meal and strength training a few times a week. Then add fibre and look honestly at your sleep. And talk to your doctor about your options. There's no shame in deciding together that a medicine is part of your long-term plan, just like any other medicine for a long-term condition.
 
 ---
 
@@ -245,23 +249,21 @@ This video is educational and not medical advice. Please talk to your prescriber
 13:45 Final thoughts
 
 **Sources**
-- Wilding JPH et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. *Diabetes Obes Metab.* 2022.
-- Aronne LJ et al. Continued treatment with tirzepatide for maintenance of weight reduction (SURMOUNT-4). *JAMA.* 2024.
-- Weight regain after cessation of medication for weight management: systematic review and meta-analysis. *BMJ.* 2026. https://pubmed.ncbi.nlm.nih.gov/41500720/
-- Gasoyan H et al. Real-world weight change after discontinuation of semaglutide or tirzepatide. *Diabetes Obes Metab.* 2026. https://www.sciencedaily.com/releases/2026/03/260319044648.htm
-- Wilding JPH et al. Once-weekly semaglutide in adults with overweight or obesity (STEP-1). *NEJM.* 2021 (body-composition substudy).
-- Mozaffarian D et al. Nutritional Priorities to Support GLP-1 Therapy for Obesity: a joint advisory (ACLM, ASN, OMA, TOS). 2025.
-- Chambers ES et al. Effects of targeted delivery of propionate to the human colon on appetite regulation, body weight maintenance and adiposity. *Gut.* 2015.
-- Spiegel K et al. Sleep curtailment in healthy young men is associated with decreased leptin levels, elevated ghrelin levels, and increased hunger and appetite. *Ann Intern Med.* 2004. https://pubmed.ncbi.nlm.nih.gov/15583226/
-
-`⚠ CHECK` Fill in exact author lists and DOIs for the Cleveland Clinic and BMJ papers before publishing.
+- Wilding JPH et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. *Diabetes Obes Metab.* 2022;24(8):1553–64. https://doi.org/10.1111/dom.14725
+- Aronne LJ et al. Continued treatment with tirzepatide for maintenance of weight reduction in adults with obesity: the SURMOUNT-4 randomized clinical trial. *JAMA.* 2024;331(1):38–48. https://doi.org/10.1001/jama.2023.24945
+- West S et al. Weight regain after cessation of medication for weight management: systematic review and meta-analysis. *BMJ.* 2026;392:e085304. https://doi.org/10.1136/bmj-2025-085304
+- Gasoyan H et al. Obesity treatments and weight changes in clinical practice after discontinuation of semaglutide or tirzepatide. *Diabetes Obes Metab.* 2026;28(6):4795–805. https://doi.org/10.1111/dom.70660
+- Mozaffarian D et al. Nutritional priorities to support GLP-1 therapy for obesity: a joint advisory from ACLM, ASN, OMA and TOS. *Obesity Pillars.* 2025;15:100181. https://doi.org/10.1016/j.obpill.2025.100181
+- Chambers ES et al. Effects of targeted delivery of propionate to the human colon on appetite regulation, body weight maintenance and adiposity in overweight adults. *Gut.* 2015;64(11):1744–54. https://doi.org/10.1136/gutjnl-2014-307913
+- Spiegel K et al. Sleep curtailment in healthy young men is associated with decreased leptin levels, elevated ghrelin levels, and increased hunger and appetite. *Ann Intern Med.* 2004;141(11):846–50. https://doi.org/10.7326/0003-4819-141-11-200412070-00008
 
 ---
 
 ## Open checks before filming
 
-1. Protein figure wording in the 2025 joint advisory (primary PDF).
-2. Primary citation for "regained weight tends to be more fat than muscle", or keep the soft wording.
-3. Optional: Al Khatib 2017 sleep meta-analysis figure and NWCR self-weighing figure.
-4. Exact citations for the BMJ 2026 and Cleveland Clinic 2026 papers.
-5. Title is final: **"Stopping Ozempic? Watch This Before You Do"**. Thumbnail: split "60% BACK" vs "0.5% BACK". (Note: "60%" was the press headline for the BMJ review; the trial figure is "~⅔". Either is defensible; pick one and keep it consistent with the stickers.)
+Done (7 Oct 2026): protein, strength-training and lean-mass figures checked against the joint advisory's full text; BMJ and Cleveland Clinic figures and citations checked on PubMed.
+
+Still open:
+1. Primary citation for "regained weight tends to be more fat than muscle", or keep the soft wording.
+2. Optional: Al Khatib 2017 sleep meta-analysis figure and NWCR self-weighing figure.
+3. Title is final: **"Stopping Ozempic? Watch This Before You Do"**. Thumbnail: split "60% BACK" vs "0.5% BACK". (Note: "60%" was the press headline for the BMJ review; the trial figure is "~⅔". Either is defensible; pick one and keep it consistent with the stickers.)

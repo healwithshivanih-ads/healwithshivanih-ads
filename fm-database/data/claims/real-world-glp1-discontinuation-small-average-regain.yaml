@@ -1,0 +1,29 @@
+slug: real-world-glp1-discontinuation-small-average-regain
+statement: In a real-world cohort of 7,938 adults who stopped semaglutide or tirzepatide within 3-12 months, mean
+  weight change one year after stopping was +0.5% (obesity indication; after an 8.4% loss) and -1.3% (type 2 diabetes
+  indication). Within that year 19.6% restarted the drug and 35.2% received another obesity treatment; individual
+  variability was considerable.
+evidence_tier: plausible_emerging
+rationale: Large but retrospective observational EHR study; shorter treatment and smaller losses than trials, and
+  many patients received further treatment, so it does not show that stopping is benign.
+coaching_translation: In everyday practice, people who stopped and then stayed engaged (restarted, switched or got
+  lifestyle support) on average kept most of their loss. What you put in place around stopping matters more than
+  the stopping itself.
+caveats:
+- Observational; confounded by restarting and alternative treatments.
+- Averages hide wide individual variation.
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: gasoyan-2026-real-world-glp1-discontinuation
+  location: Abstract — results
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani
