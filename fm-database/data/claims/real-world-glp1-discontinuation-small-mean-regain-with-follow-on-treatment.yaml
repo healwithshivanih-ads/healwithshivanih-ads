@@ -1,0 +1,35 @@
+slug: real-world-glp1-discontinuation-small-mean-regain-with-follow-on-treatment
+statement: In a Cleveland Clinic cohort of 7938 people who stopped semaglutide or tirzepatide
+  within 3-12 months, those treated for obesity had lost a mean 8.4% and regained a mean 0.5%
+  in the following year. Within that year 19.6% restarted the same drug and 35.2% moved to
+  another obesity treatment (another medicine, lifestyle visits, or surgery).
+evidence_tier: plausible_emerging
+rationale: Real-world counterweight to the trial data; shows that 'stopping' in practice is
+  usually followed by something else.
+coaching_translation: What decides the outcome is what is in place when the medicine stops
+  - not the stopping itself.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Retrospective and observational; no control group
+- People had been on the drug a short time, many below therapeutic dose, and had lost less
+  than trial participants
+- The 0.5% is a mean (95% CI 0.0 to 1.0) with considerable individual variation
+- The authors say follow-on treatment 'may have contributed' - association, not proof
+linked_to_topics:
+- midlife-weight-gain
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: gasoyan-2026-dom-after-discontinuation-semaglutide-tirzepatide
+  location: Abstract, Results
+  quote: 19.6% restarted the index medication and 35.2% received an alternative obesity treatment
+- id: gasoyan-2026-dom-after-discontinuation-semaglutide-tirzepatide
+  location: Discussion
+  quote: which may have contributed to the relatively small observed mean changes from discontinuation
+    to 1 year later
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

@@ -1,0 +1,27 @@
+id: west-2026-bmj-weight-regain-after-medication-cessation
+title: 'Weight regain after cessation of medication for weight management: systematic review
+  and meta-analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- West S
+- Scragg J
+- Aveyard P
+- Oke JL
+- Jebb SA
+- Koutoukidis DA
+- et al. (University of Oxford)
+year: 2026
+publisher: BMJ 2026;392:e085304
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12776922/
+doi: 10.1136/bmj-2025-085304
+notes: PMID 41500720. Read in FULL TEXT (Europe PMC) on 2026-10-07. 37 studies, 63 intervention
+  arms, 9341 participants. Figures for semaglutide/tirzepatide ('newer and more effective
+  incretin mimetics') come from 10 intervention arms / 1776 participants with at most 12 months
+  of follow-up; anything beyond 12 months is a linear projection, which the authors state
+  themselves. Cardiometabolic-marker reversal (1.4 years) is for ALL weight-management medications;
+  the paper says data were insufficient to analyse markers for the newer drugs separately.
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

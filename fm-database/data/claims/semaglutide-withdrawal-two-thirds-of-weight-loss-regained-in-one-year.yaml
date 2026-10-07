@@ -1,0 +1,30 @@
+slug: semaglutide-withdrawal-two-thirds-of-weight-loss-regained-in-one-year
+statement: In the STEP 1 extension, people who had lost a mean 17.3% of body weight on semaglutide
+  2.4 mg over 68 weeks regained 11.6 percentage points in the year after stopping - about
+  two-thirds of the loss - and their cardiometabolic improvements moved back towards baseline.
+evidence_tier: strong
+rationale: Randomised trial extension; the single most-cited figure for what happens after
+  stopping semaglutide.
+coaching_translation: If the weight comes back after stopping, that is the expected biology,
+  not a willpower failure. The useful question is what is in place when the medicine stops.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Both the drug AND the trial's lifestyle support were withdrawn at week 68
+- Extension subset of 327 participants; analyses were exploratory
+- Manufacturer funded
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: wilding-2022-dom-step1-extension-semaglutide-withdrawal
+  location: Abstract, Conclusions
+  quote: participants regained two-thirds of their prior weight loss, with similar changes
+    in cardiometabolic variables
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

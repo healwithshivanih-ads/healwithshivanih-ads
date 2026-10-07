@@ -1,0 +1,28 @@
+slug: partial-sleep-deprivation-raises-energy-intake-by-about-385-kcal
+statement: A meta-analysis of 11 intervention studies (172 participants) found partial sleep
+  deprivation raised energy intake by 385 kcal a day compared with control, with no change
+  in energy expenditure.
+evidence_tier: strong
+rationale: Pooled confirmation of the sleep-appetite link; a sturdier companion to the small
+  Spiegel study.
+coaching_translation: Protecting sleep is appetite work, not a nice-to-have.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Short-term laboratory studies; long-term weight effect is inferred
+linked_to_topics:
+- sleep-deprivation
+- midlife-weight-gain
+linked_to_mechanisms:
+- hunger-satiety-signaling
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: al-khatib-2017-ejcn-partial-sleep-deprivation-energy-balance
+  location: Abstract, Results
+  quote: 'EI was significantly increased by 385 kcal (95% confidence interval: 252, 517; P<0.00001)
+    following PSD compared with the control condition'
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

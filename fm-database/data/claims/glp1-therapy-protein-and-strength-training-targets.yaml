@@ -1,0 +1,42 @@
+slug: glp1-therapy-protein-and-strength-training-targets
+statement: A 2025 joint advisory from four US obesity and nutrition societies notes proposed
+  protein targets of 1.2-1.6 g per kg body weight per day during active weight loss, or a
+  simpler absolute target of 80-120 g a day, and recommends strength training at least 3 times
+  a week plus at least 150 minutes of moderate aerobic activity to preserve muscle and bone.
+  It states that more protein alone is likely inadequate without structured strength training.
+evidence_tier: plausible_emerging
+rationale: The published basis for the protein + strength pairing on a GLP-1; keeps our own
+  advice anchored.
+coaching_translation: Protein at every meal is the building material; strength training is
+  the signal to use it. Neither works well alone.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Expert advisory, not a trial; targets are described as 'proposed'
+- Unclear whether to calculate from actual or adjusted body weight in people with obesity
+  - the absolute 80-120 g figure avoids that
+- Protein targets need individualising for kidney disease or raised uric acid
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- strength-training
+- midlife-weight-gain
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Protein section
+  quote: setting an absolute protein target of 80-120 g/day may enhance adherence while ensuring
+    adequate intake
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Exercise section
+  quote: regular strength training at least 3 times weekly plus at least 150 min of moderate-intensity
+    aerobic exercise weekly
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Protein section
+  quote: increased protein intake alone is likely inadequate to support the preservation of
+    muscle mass in the absence of structured resistance/strength training
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

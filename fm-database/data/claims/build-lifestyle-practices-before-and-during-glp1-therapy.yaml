@@ -1,0 +1,28 @@
+slug: build-lifestyle-practices-before-and-during-glp1-therapy
+statement: The 2025 joint advisory on GLP-1 therapy says nutrition and other lifestyle practices
+  should be established before and during treatment, so that they are more likely to hold
+  if the drug is stopped.
+evidence_tier: plausible_emerging
+rationale: Published support for starting the habit work while the medicine is still quieting
+  appetite.
+coaching_translation: The easiest time to build the habits is while the medicine is doing
+  the appetite work - not after it stops.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Expert advisory; the paper lists post-cessation nutrition as an area needing more study
+linked_to_topics:
+- midlife-weight-gain
+- strength-training
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: 7.3 Nutritional priorities for long-term weight maintenance post-therapy
+  quote: establish positive nutrition and other lifestyle practices before and during GLP-1
+    therapy, to increase success at maintaining such practices if the drug is stopped
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

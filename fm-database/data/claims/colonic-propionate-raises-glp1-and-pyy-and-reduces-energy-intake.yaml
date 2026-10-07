@@ -1,0 +1,34 @@
+slug: colonic-propionate-raises-glp1-and-pyy-and-reduces-energy-intake
+statement: In overweight adults, delivering the short-chain fatty acid propionate to the colon
+  raised post-meal GLP-1 and PYY and reduced energy intake; over 24 weeks it reduced weight
+  gain and abdominal fat. Propionate is one of the compounds gut bacteria make when they ferment
+  fibre.
+evidence_tier: plausible_emerging
+rationale: The human evidence behind 'fibre helps your body make its own GLP-1' - upgrades
+  the lecture-sourced SCFA claim.
+coaching_translation: Fibre feeds the gut bacteria that make the body's own fullness signal.
+  It is far weaker than the medicine and does not replace it; it works with the appetite system.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Propionate was delivered by a purpose-made inulin-propionate ester, not by ordinary dietary
+  fibre
+- 60 adults in the 24-week study
+- Shows the mechanism, not the size of effect from a high-fibre diet
+linked_to_topics:
+- scfa-short-chain-fatty-acids
+- fiber-gap
+- midlife-weight-gain
+linked_to_mechanisms:
+- hunger-satiety-signaling
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: chambers-2015-gut-colonic-propionate-appetite
+  location: Abstract, Results
+  quote: Acute ingestion of 10 g inulin-propionate ester significantly increased postprandial
+    plasma PYY and GLP-1 and reduced energy intake
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

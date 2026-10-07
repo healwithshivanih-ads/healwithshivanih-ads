@@ -1,0 +1,30 @@
+slug: tirzepatide-withdrawal-regains-about-half-of-weight-loss-in-one-year
+statement: In SURMOUNT-4, adults lost a mean 20.9% of body weight over 36 weeks on tirzepatide;
+  those then switched to placebo gained 14.0% over the next 52 weeks, ending 9.9% below their
+  starting weight (roughly half the loss regained), while those who stayed on the drug lost
+  a further 5.5%.
+evidence_tier: strong
+rationale: Randomised withdrawal trial - the cleanest design for the question, and the tirzepatide
+  counterpart to STEP 1.
+coaching_translation: 'Same pattern as semaglutide: stop with nothing else in place and about
+  half comes back within a year.'
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- The 14.0% is a change from the week-36 weight, not a share of the weight lost
+- Manufacturer funded
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: aronne-2024-jama-surmount-4-tirzepatide-withdrawal
+  location: Abstract, Results
+  quote: The mean percent weight change from week 36 to week 88 was -5.5% with tirzepatide
+    vs 14.0% with placebo
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

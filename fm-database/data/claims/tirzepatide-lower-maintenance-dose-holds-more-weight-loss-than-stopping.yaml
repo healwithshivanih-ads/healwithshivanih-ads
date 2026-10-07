@@ -1,0 +1,34 @@
+slug: tirzepatide-lower-maintenance-dose-holds-more-weight-loss-than-stopping
+statement: In SURMOUNT-MAINTAIN, after 60 weeks on full-dose tirzepatide, weight at week 112
+  was 21.9% below baseline in people who stayed on the full dose, 16.6% below in those who
+  dropped to 5 mg, and 9.9% below in those switched to placebo. The authors conclude a lower
+  dose might be an alternative to stopping, with individual responses varying.
+evidence_tier: strong
+rationale: First randomised trial of a lower maintenance dose versus stopping - gives 'is
+  a lower dose an option?' a real basis.
+coaching_translation: A lower maintenance dose is a real question to take to the prescriber.
+  In one trial it kept more of the loss than stopping did, though less than staying on the
+  full dose.
+out_of_scope_notes: Dose decisions belong to the prescriber. The coach raises it as a question
+  the client can ask, never as a recommendation.
+caveats:
+- Captured from the abstract only; the trial has a published erratum that was not read
+- Tirzepatide only - not shown for semaglutide
+- Rescue medication was allowed in all arms from week 84 (67% of the placebo arm received
+  it)
+- Manufacturer funded; US sites only
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: horn-2026-lancet-surmount-maintain-tirzepatide
+  location: Abstract, Interpretation
+  quote: Reducing to 5 mg tirzepatide might provide a valuable alternative to discontinuation,
+    although individuals' treatment response might vary.
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

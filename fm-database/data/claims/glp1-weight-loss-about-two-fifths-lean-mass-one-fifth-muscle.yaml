@@ -1,0 +1,35 @@
+slug: glp1-weight-loss-about-two-fifths-lean-mass-one-fifth-muscle
+statement: 'In the STEP 1 body-composition substudy, 38% of the weight lost on semaglutide
+  was lean body mass and 62% fat. Lean mass is not all muscle: muscle is about half of it,
+  so roughly 20% of the weight lost was muscle. Modelling suggests 10-15% of weight lost is
+  muscle in women and 20-25% in men when there is no structured strength training.'
+evidence_tier: plausible_emerging
+rationale: Replaces the looser 'up to half could be muscle' figure with the measured one and
+  its honest breakdown.
+coaching_translation: Not all the weight that comes off is fat. Protein and strength training
+  are what tilt the loss towards fat.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- The 38% is measured (DXA); the muscle share and the sex split are estimates/modelling
+- Summarised by an expert advisory from the original NEJM 2021 trial report
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- strength-training
+- midlife-weight-gain
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Section on muscle and bone
+  quote: 8.3 kg (62 %) was fat mass and 5.3 kg (38 %) was lean body mass (including muscle
+    and other non-fat tissues)
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Section on muscle and bone
+  quote: representing 10-15 % of total weight reduction in women and 20-25 % of total weight
+    reduction in men, in the absence of structured strength training
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

@@ -1,0 +1,25 @@
+id: horn-2026-lancet-surmount-maintain-tirzepatide
+title: 'Tirzepatide for maintenance of bodyweight reduction in people with obesity in the
+  USA (SURMOUNT-MAINTAIN): a multicentre, double-blind, randomised, placebo-controlled trial'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Horn DB
+- Aronne LJ
+- Wharton S
+- Bays HE
+- le Roux CW
+- et al.
+year: 2026
+publisher: Lancet 2026;407(10545):2305-2318
+url: https://pubmed.ncbi.nlm.nih.gov/42119587/
+doi: 10.1016/S0140-6736(26)00656-2
+notes: PMID 42119587. Abstract only, checked 2026-10-07 (full text not read; an erratum exists,
+  Lancet 2026;407:2290 - not read). Phase 3b, 20 US sites. 60 weeks open-label tirzepatide
+  at maximum tolerated dose, then 378 participants randomised 3:3:2 to stay on that dose,
+  drop to 5 mg, or switch to placebo for 52 weeks. Rescue tirzepatide was allowed from week
+  84 if regain exceeded 50%. Eli Lilly funded.
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

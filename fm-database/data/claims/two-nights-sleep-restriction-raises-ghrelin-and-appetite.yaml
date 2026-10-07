@@ -1,0 +1,31 @@
+slug: two-nights-sleep-restriction-raises-ghrelin-and-appetite
+statement: In 12 healthy young men, two days of sleep restriction lowered leptin by 18%, raised
+  ghrelin by 28%, and raised hunger by 24% and appetite by 23%, with appetite for calorie-dense,
+  high-carbohydrate foods up 33-45%.
+evidence_tier: plausible_emerging
+rationale: The classic sleep-and-appetite-hormone study; tiered below strong because of its
+  size.
+coaching_translation: Short sleep turns hunger up and fullness down - the last thing wanted
+  when a medicine's appetite effect is wearing off.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- 12 participants, all young men
+- Two nights only; later studies are mixed on the hormone changes though most agree intake
+  rises
+linked_to_topics:
+- sleep-deprivation
+- midlife-weight-gain
+linked_to_mechanisms:
+- hunger-satiety-signaling
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: spiegel-2004-sleep-curtailment-leptin-ghrelin
+  location: Abstract, Results
+  quote: elevations in the orexigenic factor ghrelin (increase, 28%; P < 0.04), and increased
+    hunger (increase, 24%; P < 0.01)
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

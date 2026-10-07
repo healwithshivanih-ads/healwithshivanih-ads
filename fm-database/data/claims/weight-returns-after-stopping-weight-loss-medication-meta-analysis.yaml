@@ -1,0 +1,39 @@
+slug: weight-returns-after-stopping-weight-loss-medication-meta-analysis
+statement: A 2026 Oxford meta-analysis of 37 studies (9341 participants) found weight is regained
+  at about 0.4 kg a month after stopping any weight-management medication, and about 0.8 kg
+  a month after semaglutide or tirzepatide, with a projected return to starting weight in
+  roughly 1.5 to 1.7 years. Cardiometabolic markers were projected back to baseline within
+  1.4 years, and regain was faster than after behavioural weight-loss programmes (by about
+  0.3 kg a month).
+evidence_tier: strong
+rationale: Largest synthesis to date; gives the regain RATE and the comparison with lifestyle
+  programmes.
+coaching_translation: Regain after a medicine is faster than after a programme because a programme
+  leaves skills behind. Build the skills while the medicine is doing the appetite work.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Semaglutide/tirzepatide figures rest on 10 arms (1776 people) with at most 12 months of
+  follow-up; later time points are linear projections
+- The 1.4-year marker reversal is for all medications pooled - data were insufficient for
+  the newer drugs alone
+- These are averages; the review does not say every individual returns to baseline
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: west-2026-bmj-weight-regain-after-medication-cessation
+  location: Results
+  quote: weight regain is faster (0.8 kg/month) and a return to baseline weight projected
+    at 1.5 years after cessation of treatment
+- id: west-2026-bmj-weight-regain-after-medication-cessation
+  location: Abstract
+  quote: Weight regain was faster after WMM than after BWMP (by 0.3 kg (0.22 to 0.34) monthly),
+    independent of initial weight loss
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani

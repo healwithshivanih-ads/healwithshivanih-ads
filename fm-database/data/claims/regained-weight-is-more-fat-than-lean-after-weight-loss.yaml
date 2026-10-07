@@ -1,0 +1,32 @@
+slug: regained-weight-is-more-fat-than-lean-after-weight-loss
+statement: In 78 postmenopausal women followed for a year after a weight-loss trial, 0.26
+  kg of lean tissue was lost for every 1 kg of fat lost, but only 0.12 kg of lean tissue came
+  back for every 1 kg of fat regained - so those who regained ended with relatively more fat
+  and less lean mass.
+evidence_tier: plausible_emerging
+rationale: Primary citation for 'the weight that comes back is more fat than muscle' - supports
+  keeping the wording at 'tends to'.
+coaching_translation: Losing muscle on the way down and regaining mostly fat can leave someone
+  at the same number on the scale with a weaker body. Protect the muscle before and after.
+out_of_scope_notes: Whether to start, stop, taper or restart a GLP-1 medicine is the prescriber's
+  decision, not a coaching one.
+caveats:
+- Diet-based weight loss, not GLP-1 medication
+- Postmenopausal women only; 78 participants
+- Older-adult data in men (Health ABC) point the same way but are not cited here
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- midlife-weight-gain
+- strength-training
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: beavers-2011-ajcn-lean-mass-during-weight-regain
+  location: Abstract, Conclusions
+  quote: fat mass is regained to a greater degree than is lean mass in those who do experience
+    some weight regain
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: Shivani
