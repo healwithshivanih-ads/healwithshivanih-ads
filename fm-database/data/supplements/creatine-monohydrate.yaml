@@ -20,17 +20,31 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Endogenous creatine synthesis is a major consumer of SAMe. Supplemental
+notes_for_coach: |-
+  Endogenous creatine synthesis is a major consumer of SAMe. Supplemental
   creatine 'spares' SAMe for phosphatidylcholine synthesis and COMT support. Lynch
   notes exceptional benefit in autistic or speech-delayed children. Mix with filtered
   water; can be combined with electrolytes. Well tolerated even by supplement-sensitive
   individuals.
+
+  Peri/postmenopause: oestrogen decline accelerates muscle and strength loss;
+  creatine works best paired with strength training, not instead of it.
+
+  Lab note: creatine raises serum creatinine (and so lowers calculated eGFR)
+  without harming the kidneys. Ask the client to mention it before kidney tests.
+  With existing kidney disease, clear it with the clinician first.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - sarcopenia-skeletal-muscle-loss
 - cognitive-decline
 - pemt-choline-cell-membrane
 - comt-slow-catechol-clearance
+- perimenopause
+- menopause
+linked_to_symptoms:
+- fatigue
+- muscle-weakness
+- brain-fog
 linked_to_mechanisms:
 - mitochondrial-energy-production
 linked_to_claims:
@@ -47,7 +61,7 @@ sources:
   location: Chapter 15 — Supplements for Your Slow COMT
   quote: When you take supplemental creatine, you conserve methyl donors and SAMe,
     leaving your SAMe free for other things, like helping your slow COMT.
-version: 3
+version: 4
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani

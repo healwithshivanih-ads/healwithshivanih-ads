@@ -43,6 +43,14 @@ linked_to_topics:
 - essential-hypertension
 - type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
+- statin-side-effects
+- chronic-fatigue-syndrome
+- insulin-resistance
+- pcos-insulin-resistant
+linked_to_symptoms:
+- fatigue
+- chronic-fatigue
+- muscle-pain
 linked_to_claims:
 - coq10-supports-mitochondrial-function-on-statins
 - coq10-carnitine-support-mitochondrial-repair
@@ -68,13 +76,20 @@ notes_for_coach: 'CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ub
 
   Note on doubling: several product entries in supplement_links.yaml pair CoQ10 with
   another nutrient (e.g. "CoQ10 + Selenium", 100 mg CoQ10 per capsule). Check the
-  co-prescribed products before adding a standalone CoQ10 — plan-check will warn.'
+  co-prescribed products before adding a standalone CoQ10 — plan-check will warn.
+
+
+  Strongest case: clients on a statin (depletion is documented), and fatigue
+  with a mitochondrial / insulin-resistance picture. The muscle-pain link is
+  mainly for statin-associated muscle aches.'
 notes_for_client: CoQ10 is like fuel for your cell's energy factories (mitochondria).
   It can help reduce fatigue and mental sluggishness. Take it with a meal containing
   some fat for best absorption.
 evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - mitochondrial-toxin-disruption
+- mitochondrial-dysfunction
+- mitochondrial-energy-production
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
@@ -143,9 +158,9 @@ sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Additional Supplements / For Hypertension
   quote: 'Coenzyme Q10: 100 to 200 mg q.d.'
-version: 9
+version: 10
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
