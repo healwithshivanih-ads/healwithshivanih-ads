@@ -36,10 +36,13 @@ notes_for_client: A traditional herb used under clinician supervision for mild o
 contraindications:
   conditions:
   - hypothyroidism
+  - thyroid enlargement (goitre) without hyperfunction — Commission E contraindication
   medications:
   - levothyroxine
   - liothyronine
   - desiccated-thyroid
+  - thyroid scintigraphy / radioactive iodine diagnostics — Lycopus interferes with radio-iodine
+    uptake (Commission E)
   life_stages:
   - pregnancy
   - lactation
@@ -51,7 +54,7 @@ sources:
   quote: Lycopus virginicus, Lithospermum officinale, and Melissa officinalis have
     a long history of use in mild Graves' disease — they appear to inhibit TSH receptor
     antibody binding and reduce peripheral T4-to-T3 conversion.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

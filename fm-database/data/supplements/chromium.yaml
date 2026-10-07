@@ -26,19 +26,30 @@ linked_to_topics:
 - type-2-diabetes-mellitus
 - prediabetes
 - hypoglycemia
+linked_to_symptoms:
+- carb-cravings
+- elevated-blood-glucose
 linked_to_claims:
 - chromium-biotin-combo-may-lower-hba1c
 - chromium-evidence-inconsistent-for-ir
 - murray-chromium-biotin-fasting-glucose-a1c
-notes_for_coach: 'Evidence is inconsistent. Chromium picolinate is the most studied
-  form. Contraindicated in kidney disease — screen before recommending. Chromium +
-  biotin combination may enhance effects. Food sources: broccoli, turkey breast, green
-  beans, grapes, apples.'
+notes_for_coach: |-
+  Evidence is inconsistent. Chromium picolinate is the most studied form.
+  Contraindicated in kidney disease — screen before recommending. Chromium + biotin
+  combination may enhance effects. Food sources: broccoli, turkey breast, green beans,
+  grapes, apples.
+
+  Best used for: Small and inconsistent benefits for fasting glucose and insulin in type
+  2 diabetes and insulin-resistant PCOS, mostly with the picolinate form, and limited
+  evidence for reducing carbohydrate cravings. Benefit is likelier in people with low
+  chromium intake. An add-on to diet and activity, never a replacement for diabetes
+  medication.
 notes_for_client: Chromium is a trace mineral that may play a role in blood sugar
   management. Talk to your provider before supplementing, especially if you have any
   kidney concerns.
 evidence_tier: fm_specific_thin
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance
 sources:
 - id: vitaone-practice-guide
   location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
@@ -67,7 +78,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 8
+version: 9
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Chronic kidney disease or liver disease — case reports of kidney and liver injury with
+    chromium picolinate
+  medications:
+  - Levothyroxine — chromium reduces its absorption; separate by at least 3-4 hours
+  - Insulin and sulfonylureas — additive blood-sugar lowering; monitor for hypoglycaemia
+  life_stages: []

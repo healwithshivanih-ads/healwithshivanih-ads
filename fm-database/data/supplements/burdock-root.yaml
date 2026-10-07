@@ -27,15 +27,28 @@ linked_to_topics:
 - chronic-inflammation
 - liver-detoxification
 - gut-dysbiosis
-notes_for_coach: 'Latin: Arctium lappa; Compositae. Traditional indications: inflammatory skin conditions,
-  rashes, cold with fever and sore throat, toxins in the blood, lymphatic clogging, nephritis, edema,
-  kidney inflammation, hypertension. Precautions: anemia, chronic chills, high Vata. Ayurvedic energetics
-  from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Arctium lappa; Compositae. Traditional indications: inflammatory skin
+  conditions, rashes, cold with fever and sore throat, toxins in the blood, lymphatic
+  clogging, nephritis, edema, kidney inflammation, hypertension. Precautions: anemia,
+  chronic chills, high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley &
+  Lad).
+
+  Best used for: Mainly a traditional 'blood-purifier' herb for skin conditions and a
+  prebiotic (inulin-rich) food; human evidence is minimal. Fine as a food (gobo) or
+  gentle tea; not a primary detox or anti-inflammatory intervention.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — BURDOCK
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Allergy to Asteraceae/Compositae plants (ragweed, chamomile, marigold, daisies) — cross-reactivity
+  medications: []
+  life_stages:
+  - pregnancy — avoid (traditional uterine stimulant)
+  - breastfeeding — avoid (insufficient data)

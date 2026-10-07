@@ -27,15 +27,27 @@ linked_to_topics:
 - digestion-and-nutrient-absorption
 - asthma
 - common-cold
-notes_for_coach: 'Latin: Caryophyllus aromaticus; Myrtaceae. Sanskrit: Lavanga. Traditional indications:
-  colds, cough, asthma, indigestion, toothache, vomiting, hiccough, laryngitis, pharyngitis, low blood
-  pressure, impotence. Precautions: inflammatory condition, hypertension, high Pitta. Ayurvedic energetics
-  from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Caryophyllus aromaticus; Myrtaceae. Sanskrit: Lavanga. Traditional indications:
+  colds, cough, asthma, indigestion, toothache, vomiting, hiccough, laryngitis,
+  pharyngitis, low blood pressure, impotence. Precautions: inflammatory condition,
+  hypertension, high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Culinary spice and topical dental pain remedy (clove oil on a painful
+  tooth). There is no meaningful human evidence for asthma, colds or digestion as a
+  supplement. Use in cooking, not as a therapeutic supplement.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CLOVES
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — eugenol inhibits platelet
+    aggregation; avoid concentrated clove/clove oil
+  life_stages:
+  - Children — ingested clove oil causes liver injury and seizures; culinary amounts only

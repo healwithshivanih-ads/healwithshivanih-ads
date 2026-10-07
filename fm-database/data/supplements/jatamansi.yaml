@@ -11,7 +11,9 @@ take_with_food: optional
 contraindications:
   conditions: []
   medications: []
-  life_stages: []
+  life_stages:
+  - Pregnancy — no safety data
+  - Lactation — no safety data
 interactions:
   with_supplements: []
   with_foods: []
@@ -25,15 +27,20 @@ linked_to_topics:
 linked_to_mechanisms:
 - gaba-receptor-modulation
 linked_to_claims: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
-  before clinical use.
+notes_for_coach: |-
+  Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+
+  Best used for: Traditional Ayurvedic calming herb for anxiety and sleep; human trials
+  are few and small, so better-evidenced options (L-theanine, magnesium, ashwagandha
+  where safe) should come first. Reasonable only as a traditional adjunct when the
+  client prefers Ayurvedic herbs.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - nardostachys-jatamansi

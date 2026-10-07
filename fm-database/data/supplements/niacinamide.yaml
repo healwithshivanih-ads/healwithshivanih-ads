@@ -21,9 +21,16 @@ linked_to_topics:
 linked_to_claims:
 - niacinamide-prolongs-t1dm-remission
 - murray-niacinamide-preserves-t1-beta-cells
-notes_for_coach: 'Dose is 25–50 mg/kg/day (max 3 g/day) divided. Monitor liver enzymes
-  every 3 months. Immediate-release preferred over timed-release for peak immune-blocking
-  effect. Physician must direct. Children: 100–200 mg/day.'
+notes_for_coach: |-
+  Dose is 25–50 mg/kg/day (max 3 g/day) divided. Monitor liver enzymes every 3 months.
+  Immediate-release preferred over timed-release for peak immune-blocking effect.
+  Physician must direct. Children: 100–200 mg/day.
+
+  Best used for: Oral nicotinamide's best human evidence is fewer new non-melanoma skin
+  cancers in high-risk people (ONTRAC trial). Topical niacinamide, a skincare product
+  rather than this tablet, helps inflammatory acne. Unlike niacin it does not improve
+  cholesterol, and it is not worth using to prevent type 1 diabetes: the large ENDIT
+  trial was negative. Gram-level dosing needs a physician.
 notes_for_client: Niacinamide is a form of vitamin B3 that may protect insulin-producing
   cells. Only use under medical supervision at therapeutic doses.
 evidence_tier: plausible_emerging
@@ -37,7 +44,14 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Active liver disease — gram doses can be hepatotoxic; monitor liver enzymes
+  medications:
+  - Carbamazepine and primidone — nicotinamide can reduce their clearance and raise blood
+    levels; monitor
+  life_stages: []

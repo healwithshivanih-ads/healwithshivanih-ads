@@ -15,20 +15,39 @@ take_with_food: avoid
 linked_to_topics:
 - h-pylori-infection
 - gerd
+- functional-dyspepsia
+- peptic-ulcer-disease
+linked_to_symptoms:
+- indigestion
+- epigastric-pain
 linked_to_claims:
 - hypochlorhydria-must-correct-before-kill-protocols
-notes_for_coach: Resin from Pistacia lentiscus — H. pylori antimicrobial with some
-  clinical trial support. 500mg 2x/day, typically taken on empty stomach. Used as
-  part of antimicrobial rotation.
+notes_for_coach: |-
+  Resin from Pistacia lentiscus — H. pylori antimicrobial with some clinical trial
+  support. 500mg 2x/day, typically taken on empty stomach. Used as part of antimicrobial
+  rotation.
+
+  Best used for: Best evidence is for functional dyspepsia/indigestion, and as one part
+  of a layered H. pylori protocol. On its own it clears H. pylori in only a minority of
+  people, so it is an adjunct, not a replacement for doctor-led eradication therapy —
+  eradication should be confirmed by a retest through the client's doctor.
 notes_for_client: Mastic gum is a natural resin with antibacterial properties — it's
   been used to help fight H. pylori and soothe the stomach lining.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
 sources:
 - id: vitaone-gut-cheatsheet
   location: H. Pylori Infection Cheatsheet — Antimicrobial Support
   quote: 'Mastic gum: 500 mg, 2x/day'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Allergy to pistachio, cashew or mango (Anacardiaceae) — cross-reactivity with Pistacia
+    resin
+  medications: []
+  life_stages:
+  - Pregnancy and lactation — insufficient safety data

@@ -51,6 +51,7 @@ linked_to_mechanisms:
 linked_to_symptoms:
 - unexplained-weight-gain
 - weight-gain
+- elevated-fasting-insulin
 linked_to_claims:
 - pasteurised-akkermansia-improves-insulin-sensitivity
 - pasteurised-akkermansia-outperforms-live-form
@@ -154,7 +155,7 @@ sources:
   location: Abstract — polyphenol lever
   quote: CE treatment markedly increased the proportion of the mucin-degrading bacterium
     Akkermansia in our metagenomic samples.
-version: 1
+version: 2
 status: active
-updated_at: '2026-09-02'
+updated_at: '2026-10-07'
 updated_by: shivani

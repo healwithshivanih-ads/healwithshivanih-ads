@@ -20,6 +20,15 @@ linked_to_topics:
 - methylation-cycle
 - mthfr-variants
 - mthfr-methylation-gene
+- b12-folate-anemia
+- diabetic-neuropathy
+- medication-induced-nutrient-depletion
+linked_to_symptoms:
+- numbness-tingling
+- tingling-hands-feet
+- diabetic-nerve-pain
+- elevated-homocysteine
+- sore-tongue
 linked_to_claims:
 - methylcobalamin-b12-mthfr-homocysteine
 - methylcobalamin-preferred-active-b12-form
@@ -29,10 +38,15 @@ linked_to_claims:
 - methylcobalamin-preferred-over-cyanocobalamin-in-mthfr-protocols
 - active-folate-forms-preferred-in-mthfr
 - methylcobalamin-cofactor-for-methylation-cycle
-notes_for_coach: The methylated form of B12; vegans and vegetarians are most at risk
-  of deficiency. Pairs with methylfolate in the methylation cycle. Recommended as
-  food sources first (red meat, salmon, eggs); supplementation especially important
-  for plant-based diets.
+notes_for_coach: |-
+  The methylated form of B12; vegans and vegetarians are most at risk of deficiency.
+  Pairs with methylfolate in the methylation cycle. Recommended as food sources first
+  (red meat, salmon, eggs); supplementation especially important for plant-based diets.
+
+  Best used for: Strongest value for vegetarians/vegans, clients on metformin or PPIs,
+  older adults and anyone with low/borderline B12, raised homocysteine or
+  tingling/numbness — very common in Indian vegetarian clients. Little benefit if B12
+  status is already good.
 notes_for_client: Methyl-B12 is the form your body can put straight to work in the
   methylation cycle. It works hand-in-hand with methylfolate. Vegans and vegetarians
   especially need this one.
@@ -50,7 +64,10 @@ typical_dose_range:
     min: 500
     max: 2000
     unit: mcg
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- homocysteine-remethylation
+- b12-absorption-impairment
+- methyl-trap
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Foundational Support
@@ -70,10 +87,10 @@ sources:
   location: 'Chapter 5: Beautiful B12'
   quote: Your Methylation Cycle depends on the teamwork of methylfolate and methylcobalamin.
     If either nutrient is deficient, your Methylation Cycle can't get a good start.
-version: 5
+version: 6
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Preferred B12 form in pregnancy.

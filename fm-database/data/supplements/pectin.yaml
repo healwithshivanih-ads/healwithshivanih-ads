@@ -13,14 +13,25 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - gerd-ppi-tapering
+- dyslipidemia
+linked_to_symptoms:
+- diarrhea
 linked_to_claims:
 - pectin-protects-gi-lining
 - ppi-tapering-supplement-support-repair-protect-antioxidant
-notes_for_coach: Soluble fiber from fruit; listed under 'Protect' in PPI tapering.
-  May coat and protect the gut lining. Also a prebiotic fiber.
+notes_for_coach: |-
+  Soluble fiber from fruit; listed under 'Protect' in PPI tapering. May coat and protect
+  the gut lining. Also a prebiotic fiber.
+
+  Best used for: A gentle soluble fibre for loose stools and as a 'protect' agent
+  alongside alginate/DGL during PPI tapering; at higher food-level doses it lowers LDL
+  modestly. Human evidence for gut-lining protection in GERD is thin, so it should not
+  be the main reflux intervention.
 evidence_tier: fm_specific_thin
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+- dietary-fiber-modulation
 notes_for_client: Pectin is a natural soluble fiber that can help protect the gut
   lining and act as a prebiotic to feed beneficial bacteria.
 sources:
@@ -31,7 +42,13 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Levothyroxine, digoxin, tetracyclines and other oral medications — gel fibre reduces absorption;
+    separate by 2-4 hours
+  life_stages: []

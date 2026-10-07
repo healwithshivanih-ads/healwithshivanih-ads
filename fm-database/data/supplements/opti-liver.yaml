@@ -13,39 +13,34 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: 'VitaOne / FM Nutrition Opti-Liver — liver support formulation.
-
+notes_for_coach: |-
+  VitaOne / FM Nutrition Opti-Liver — liver support formulation.
 
   VERIFIED ingredient panel (extracted from the VitaOne product page
-
   2026-07-04): reduced L-glutathione, dandelion, milk thistle, lecithin,
-
   N-acetyl cysteine (NAC), and trimethylglycine (TMG). Per-ingredient
-
   amounts are not printed on the label. Suggested use: 1 capsule before
-
   meals, or as recommended by a healthcare professional.
 
-
   Useful for liver/detox phase protocols and chemical-sensitivity pictures.
-
   The NAC + glutathione + TMG combination supports Phase 1/2 detoxification
-
   AND methylation — TMG (betaine) is a methyl donor, worth noting alongside
-
   any homocysteine-management goal. Milk thistle + dandelion support
-
   hepatic drainage.
 
-
   Product pages: https://vitaone.in/products/fm-nutrition-opti-liver-76?ref=vita13720sh
-
   (SKU ODOO-76) and https://fmnutrition.in/product/fm-nutrition-opti-liver-60capsules/
 
-  '
+  Best used for: A convenience liver-support blend (glutathione, NAC, milk thistle,
+  dandelion, lecithin, TMG) for liver/detox phases of a plan. Per-ingredient amounts are
+  not printed, so it cannot be matched to the trials behind any single ingredient. When
+  a specific target matters (fatty liver, homocysteine, glutathione support), use the
+  single ingredient at a known dose instead. Raised liver enzymes need medical
+  evaluation before relying on a supplement.
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - liver-detoxification
+- detoxification-support
 sources:
 - id: vitaone-product-catalog
   location: vitaone.in/products/fm-nutrition-opti-liver-76
@@ -53,10 +48,25 @@ sources:
     milk thistle, lecithin, NAC, TMG) verified 2026-07-04 via the commerce catalogue (~/fm-plans/supplement_links.yaml,
     entry "vo_fm_nutrition_opti_liver" / "fmn_fm_nutrition_opti_liver_veg_60_capsules").
 status: active
-version: 2
-updated_at: '2026-07-06'
+version: 3
+updated_at: '2026-10-07'
 updated_by: shivani
 notes_for_client: 'Background support for your liver, which quietly clears everything you eat and
   drink.
 
   Nothing you''ll feel day to day — it works alongside the rest of your plan.'
+linked_to_mechanisms:
+- glutathione-depletion
+- phase-1-phase-2-detox-imbalance
+contraindications:
+  conditions:
+  - Ragweed / Asteraceae (daisy-family) allergy — milk thistle and dandelion are both Asteraceae;
+    cross-reactive allergy reported
+  - Bile-duct obstruction or acute gallstone colic — dandelion is a choleretic and is contraindicated
+    in biliary obstruction (Commission E)
+  medications:
+  - Nitroglycerin / other nitrates — NAC potentiates nitrate vasodilation (hypotension, severe
+    headache)
+  life_stages:
+  - Pregnancy — proprietary blend with unlabelled ingredient amounts; no safety data
+  - Lactation — proprietary blend with unlabelled ingredient amounts; no safety data

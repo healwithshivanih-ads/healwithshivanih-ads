@@ -16,9 +16,15 @@ linked_to_topics:
 - cervical-dysplasia
 linked_to_claims:
 - cervical-dysplasia-folate-regression
-notes_for_coach: 'For cervical dysplasia: 10 mg daily for 3 months, then 2.5 mg daily.
-  Always combine with B12 (methylcobalamin 1 mg daily) to avoid masking B12 deficiency.
-  RBC folate is more clinically relevant than serum folate in OC users.'
+notes_for_coach: |-
+  For cervical dysplasia: 10 mg daily for 3 months, then 2.5 mg daily. Always combine
+  with B12 (methylcobalamin 1 mg daily) to avoid masking B12 deficiency. RBC folate is
+  more clinically relevant than serum folate in OC users.
+
+  Best used for: Folic acid is the guideline form for preventing neural tube defects;
+  the high-dose cervical-dysplasia protocol in this entry is an old, specialist regimen
+  with mixed trial results and should stay clinician-directed. For general folate needs,
+  use the folic-acid or methylfolate entries.
 notes_for_client: If you take birth control pills, your cervical cells may be folate-depleted
   even if your blood tests look normal — targeted supplementation may help.
 evidence_tier: plausible_emerging
@@ -27,7 +33,18 @@ sources:
 - id: pizzorno-textbook-gi-2
   location: Cervical Dysplasia — Therapeutic Approach — Supplements
   quote: 'Folic acid: 10 mg q.d. for 3 months, then 2.5 mg q.d.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Untreated or unconfirmed B12 deficiency / pernicious anaemia — folate (especially >1 mg/day)
+    can correct the anaemia and mask B12 deficiency while nerve damage progresses; check B12
+    first or co-supplement
+  medications:
+  - Methotrexate used for cancer — folate can blunt its effect (low-dose folate alongside
+    RA/psoriasis methotrexate is usually prescribed deliberately; leave that to the prescriber)
+  - Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants — folate
+    supplementation can lower drug levels and seizure control; prescriber should monitor
+  life_stages: []

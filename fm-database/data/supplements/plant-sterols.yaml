@@ -23,18 +23,27 @@ linked_to_topics:
 - cardiovascular-disease-prevention
 - atherogenic-dyslipidemia
 - familial-hypercholesterolemia
+linked_to_symptoms:
+- elevated-cholesterol
+- elevated-apob
 linked_to_claims:
 - plant-sterols-block-cholesterol-absorption
 - plant-sterols-3g-12-percent-cholesterol-reduction
 - murray-plant-sterols-2g-ldl-10pct
-notes_for_coach: 3g/day associated with 12% reduction in total cholesterol. Hard to
-  achieve therapeutic dose from food alone without supplementation, though Mediterranean
-  diet foods contain meaningful amounts.
+notes_for_coach: |-
+  3g/day associated with 12% reduction in total cholesterol. Hard to achieve therapeutic
+  dose from food alone without supplementation, though Mediterranean diet foods contain
+  meaningful amounts.
+
+  Best used for: Raised LDL, as an add-on taken with meals alongside diet or statins
+  (LDL down roughly 10% at studied intakes). Clinical-event benefit is unproven, so it
+  supplements rather than replaces proven LDL therapy.
 notes_for_client: Plant sterols are natural compounds found in plant foods that help
   block cholesterol absorption. At 3 grams per day, they can reduce total cholesterol
   by about 12%. They are found in nuts, seeds, and vegetable oils.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
@@ -45,7 +54,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Sitosterolaemia (phytosterolaemia) — absorbs plant sterols excessively; contraindicated
+  medications: []
+  life_stages:
+  - Pregnancy and lactation — not recommended (EU labelling; lowers carotenoid levels, no
+    benefit shown)
+  - Children under 5 — not recommended (EU labelling)

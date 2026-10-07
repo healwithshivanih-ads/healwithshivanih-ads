@@ -9,22 +9,37 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - testosterone-dht-conversion
+- dyslipidemia
+- omega-3-fatty-acids
+linked_to_symptoms:
+- elevated-triglycerides
 linked_to_claims:
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
-notes_for_coach: Krill oil contains astaxanthin, a carotenoid with antioxidant properties
-  and potential 5-AR inhibiting activity. Listed in the FMCN toolkit. Clinician should
-  guide dosing.
+notes_for_coach: |-
+  Krill oil contains astaxanthin, a carotenoid with antioxidant properties and potential
+  5-AR inhibiting activity. Listed in the FMCN toolkit. Clinician should guide dosing.
+
+  Best used for: A lower-dose, pricier way to get EPA/DHA; modest triglyceride lowering
+  and limited data for period pain. For triglycerides or inflammation, standard fish oil
+  at an adequate EPA/DHA dose is usually better value; the DHT/5-alpha-reductase use is
+  not well supported.
 notes_for_client: Krill oil contains a powerful antioxidant called astaxanthin that
   may help regulate DHT levels. Take with meals for best absorption.
 evidence_tier: fm_specific_thin
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- arachidonic-acid-cascade
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
   quote: Krill (astaxanthin) [listed under Nutrients/Phytonutrients that Inhibit 5-a
     Reductase]
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Shellfish (crustacean) allergy — krill is a crustacean
+  medications: []
+  life_stages: []

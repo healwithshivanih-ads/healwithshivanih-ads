@@ -32,15 +32,34 @@ linked_to_topics:
 - cognitive-decline
 - sinusitis
 - anxiety
-notes_for_coach: 'Latin: Acorus calamus; Araceae. Sanskrit: Vacha. Traditional indications: colds, cough,
-  asthma, sinus headaches, sinusitis, arthritis, epilepsy, shock, coma, loss of memory, deafness, hysteria,
-  neuralgia. Precautions: bleeding disorders including epistaxis, bleeding hemorrhoids; FDA restrictions
-  on internal use in the USA. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Acorus calamus; Araceae. Sanskrit: Vacha. Traditional indications: colds,
+  cough, asthma, sinus headaches, sinusitis, arthritis, epilepsy, shock, coma, loss of
+  memory, deafness, hysteria, neuralgia. Precautions: bleeding disorders including
+  epistaxis, bleeding hemorrhoids; FDA restrictions on internal use in the USA.
+  Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: A traditional Ayurvedic brain and nasal herb (Vacha), typically used in
+  tiny doses or nasally; there is essentially no human clinical evidence and real
+  toxicity concerns with oral use. Not one to recommend for anxiety or cognition in
+  place of better-studied options.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CALAMUS ROOT
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Internal use of beta-asarone–containing calamus (Indian triploid/tetraploid varieties)
+    — beta-asarone is hepatotoxic/carcinogenic in animal studies; FDA prohibits it in food;
+    avoid prolonged or high-dose oral use
+  - Bleeding disorders (traditional precaution listed in notes)
+  medications:
+  - Sedatives (benzodiazepines, barbiturates, alcohol) — calamus has CNS-depressant effects
+    in animal studies; additive sedation
+  life_stages:
+  - pregnancy — avoid (beta-asarone; emmenagogue)
+  - breastfeeding — avoid

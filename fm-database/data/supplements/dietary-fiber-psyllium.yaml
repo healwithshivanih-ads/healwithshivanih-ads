@@ -16,23 +16,54 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - peptic-ulcer-disease
+- constipation
+- ibs
+- dyslipidemia
+- type-2-diabetes
+- prediabetes
+- hemorrhoids
+- fiber-gap
+linked_to_symptoms:
+- constipation
+- ibs-constipation-predominant
+- elevated-cholesterol
+- elevated-blood-glucose
+- chronic-diarrhea
 linked_to_claims:
 - high-fiber-diet-halves-du-recurrence
-notes_for_coach: 'Fibre slows gastric emptying of liquid phase, reducing rapid acid
-  delivery to the duodenum. Specific supplemental forms cited: pectin, guar gum, psyllium.
-  Whole-food plant diet is preferred over isolated supplements.'
+notes_for_coach: |-
+  Fibre slows gastric emptying of liquid phase, reducing rapid acid delivery to the
+  duodenum. Specific supplemental forms cited: pectin, guar gum, psyllium. Whole-food
+  plant diet is preferred over isolated supplements.
+
+  Best used for: Psyllium has strong evidence for constipation, IBS (especially IBS-C),
+  LDL-cholesterol lowering and glucose control in type 2 diabetes and prediabetes. Start
+  low and build up with plenty of water; food-first fibre is still the foundation.
+  Bran-type insoluble fibre is not a substitute in IBS.
 notes_for_client: Adding more fibre to your diet — or taking psyllium supplements
   — may halve your chance of your duodenal ulcer coming back by slowing down how fast
   your stomach empties.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- soluble-fiber-gel-formation
+- dietary-fiber-modulation
+- postprandial-glucose-spike
 sources:
 - id: pizzorno-textbook-hpylori
   location: Nutritional Factors — Fiber, p. 782–783
   quote: 'Supplemental fibers used: pectin, guar gum, psyllium; diet rich in plant
     foods is best. A high-fiber diet in patients with recently healed DUs reduced
     recurrence rate by half.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Bowel obstruction, faecal impaction, GI strictures or swallowing difficulty — bulk-forming
+    fibre can obstruct; always take with a full glass of water
+  medications:
+  - Levothyroxine and other oral medications — fibre reduces absorption; separate by at least
+    2-4 hours
+  - Insulin / glucose-lowering drugs — may lower post-meal glucose; monitor when starting
+  life_stages: []

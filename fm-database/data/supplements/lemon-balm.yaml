@@ -18,24 +18,34 @@ linked_to_topics:
 - gerd-ppi-tapering
 - insomnia
 - hyperthyroidism
+- anxiety
+linked_to_symptoms:
+- anxiety
 linked_to_claims:
 - lemon-balm-reduces-anxiety-gerd
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - lemon-balm-hyperthyroid-graves-tsh-receptor-block
-notes_for_coach: "Calming herb in the mint family with mild anxiolytic and sleep-supportive\
-  \ effects. DUAL ROLE: (1) Antithyroid — Romm (Table 6-3) cites in-vitro evidence\
-  \ that Melissa blocks TSH receptors and Graves' autoantibody binding to thyroid\
-  \ tissue; combined with bugleweed + motherwort in classic hyperthyroid tincture (25mL\
-  \ each + 25mL nettles = 100mL; 5mL TID). (2) Gut/sleep/anxiety — standard calming\
-  \ adaptogen for PPI tapering, insomnia, nervous system support. CAUTION: contraindicated\
-  \ in hypothyroidism (mild thyroid-suppressive effect). Dose for antithyroid use:\
-  \ as part of tincture formula (see Romm formula above); for sleep/anxiety use confirm\
-  \ dose from clinician. Romm calls it the 'gladdening herb' — addresses emotional\
-  \ dysregulation in hyperthyroid clients."
+notes_for_coach: |-
+  Calming herb in the mint family with mild anxiolytic and sleep-supportive effects.
+  DUAL ROLE: (1) Antithyroid — Romm (Table 6-3) cites in-vitro evidence that Melissa
+  blocks TSH receptors and Graves' autoantibody binding to thyroid tissue; combined with
+  bugleweed + motherwort in classic hyperthyroid tincture (25mL each + 25mL nettles =
+  100mL; 5mL TID). (2) Gut/sleep/anxiety — standard calming adaptogen for PPI tapering,
+  insomnia, nervous system support. CAUTION: contraindicated in hypothyroidism (mild
+  thyroid-suppressive effect). Dose for antithyroid use: as part of tincture formula
+  (see Romm formula above); for sleep/anxiety use confirm dose from clinician. Romm
+  calls it the 'gladdening herb' — addresses emotional dysregulation in hyperthyroid
+  clients.
+
+  Best used for: A gentle option for mild anxiety and stress-related sleep trouble,
+  alone or with valerian; human trials are small. Not for clients with an underactive
+  thyroid. Its traditional use in overactive thyroid/Graves' belongs under clinician
+  supervision.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms:
 - parasympathetic-restoration-failure
+- gabaergic-modulation
 notes_for_client: Lemon balm is a calming herb that may help reduce anxiety and stress-related
   digestive symptoms while tapering off acid-blocking medications.
 sources:
@@ -56,16 +66,17 @@ sources:
   location: Natural sleep aids section
   quote: There's some lavender supplements that have shown in clinical trials some
     benefit, lemon balm, passion flower
-version: 6
+version: 7
 status: active
-updated_at: '2026-06-08'
+updated_at: '2026-10-07'
 updated_by: shivani
 contraindications:
   conditions:
-  - hypothyroidism — may have mild thyroid-suppressive effects in high doses, coordinate
-    with clinician
+  - hypothyroidism — may have mild thyroid-suppressive effects in high doses, coordinate with
+    clinician
   - pregnancy and lactation — coordinate with clinician
-  medications: []
+  medications:
+  - sedatives / CNS depressants (benzodiazepines, Z-drugs) — additive sedation
   life_stages: []
 interactions:
   with_supplements: []

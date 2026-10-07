@@ -19,17 +19,23 @@ timing_options:
 - with_lunch
 take_with_food: required
 linked_to_topics:
-- pancreatic-insufficiency
 - histamine-intolerance-dao
+linked_to_symptoms:
+- non-responsive-anemia
 linked_to_claims:
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - copper-cofactor-dao-enzyme
-notes_for_coach: Copper is the primary cofactor for DAO enzyme activity. Lynch notes
-  most people get enough from food but long-term zinc supplementation can deplete
-  copper. Start with low dose (1 mg) and only if copper is not already present in
-  a multivitamin. Excess copper is inflammatory — check copper levels via lab before
-  supplementing. Do not supplement if copper toxicity is suspected (e.g., Wilson's
-  disease).
+notes_for_coach: |-
+  Copper is the primary cofactor for DAO enzyme activity. Lynch notes most people get
+  enough from food but long-term zinc supplementation can deplete copper. Start with low
+  dose (1 mg) and only if copper is not already present in a multivitamin. Excess copper
+  is inflammatory — check copper levels via lab before supplementing. Do not supplement
+  if copper toxicity is suspected (e.g., Wilson's disease).
+
+  Best used for: Mainly a small top-up for clients on long-term high-dose zinc, or with
+  lab-confirmed low copper, where copper deficiency can cause anaemia that does not
+  respond to iron. Most people get enough from food. Its role in histamine intolerance
+  (as the DAO cofactor) is plausible but untested in trials. Excess copper is harmful.
 notes_for_client: Your histamine-clearing enzyme needs copper to work. Most people
   get enough from food — only consider supplementing if you've been taking zinc for
   a long time.
@@ -44,7 +50,15 @@ sources:
 - id: dirty-genes-lynch
   location: Chapter 15 — Additional Supplements for Your DAO
   quote: The primary nutrient that your DAO enzyme needs to work properly is copper.
-version: 2
+version: 3
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Wilson's disease or any copper-overload condition — copper accumulates in liver and brain
+  - Cholestatic liver disease / biliary obstruction — copper is excreted in bile and builds
+    up
+  medications:
+  - Copper chelators (penicillamine, trientine) — supplementing defeats treatment
+  life_stages: []

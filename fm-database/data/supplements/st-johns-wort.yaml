@@ -17,7 +17,7 @@ timing_options:
 - with_dinner
 take_with_food: optional
 linked_to_symptoms:
-- depression-mood-disorder
+- depression-symptoms
 linked_to_topics:
 - major-depressive-disorder
 - seasonal-affective-disorder
@@ -76,6 +76,14 @@ contraindications:
   - imatinib
   - statins
   - simvastatin
+  - rivaroxaban, apixaban and other DOACs (P-gp/CYP3A4 induction lowers levels — clot risk)
+  - tamoxifen (reduces active endoxifen)
+  - benzodiazepines (alprazolam, midazolam), methadone, oxycodone and calcium-channel blockers
+    - CYP3A4 induction reduces effect
+  - clopidogrel (enzyme induction increases active metabolite - enhanced antiplatelet effect
+    and bleeding risk)
+  - menopausal hormone therapy (CYP3A4 induction can lower oestrogen/progestogen levels -
+    breakthrough bleeding and reduced endometrial protection)
   life_stages:
   - pregnancy
   - lactation
@@ -96,7 +104,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

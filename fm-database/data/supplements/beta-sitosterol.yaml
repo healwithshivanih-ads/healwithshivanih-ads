@@ -12,13 +12,23 @@ linked_to_topics:
 - benign-prostatic-hyperplasia
 - testosterone-health
 - testosterone-dht-conversion
+linked_to_symptoms:
+- prostate-symptoms
+- weak-urinary-stream
+- incomplete-bladder-emptying
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
 - bph-beta-sitosterol-improves-flow
-notes_for_coach: 'Plant sterol found in Serenoa repens, Pygeum, pumpkin seed, soy,
-  avocados. Dose: 60–130 mg daily. Can be combined with saw palmetto and Cernilton
-  for synergistic BPH effect.'
+notes_for_coach: |-
+  Plant sterol found in Serenoa repens, Pygeum, pumpkin seed, soy, avocados. Dose:
+  60–130 mg daily. Can be combined with saw palmetto and Cernilton for synergistic BPH
+  effect.
+
+  Best used for: Best evidence is for urinary symptoms of benign prostate enlargement
+  (better flow, less residual urine) at 60–130 mg/day. LDL-lowering needs about 2 g/day
+  of plant sterols, far above this dose, so this entry is not a cholesterol supplement
+  as dosed.
 notes_for_client: Beta-sitosterol is a plant compound that may help ease urinary symptoms
   related to prostate health.
 evidence_tier: strong
@@ -39,7 +49,13 @@ sources:
 - id: pizzorno-textbook-gi-2
   location: Benign Prostatic Hyperplasia — Botanicals
   quote: 'Beta-sitosterol: 60 to 130 mg q.d.'
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Sitosterolemia (phytosterolemia) — inherited disorder of excess plant-sterol absorption;
+    plant sterols worsen it
+  medications: []
+  life_stages: []

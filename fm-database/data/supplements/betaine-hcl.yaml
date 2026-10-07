@@ -18,10 +18,16 @@ timing_options:
 - with_dinner
 - with_breakfast
 take_with_food: required
-notes_for_coach: Use only with meals; not needed for light meals. CONTRAINDICATED
-  in confirmed or suspected gastric ulcers. Do not open capsules (highly acidic).
-  Pancreatic enzymes should be combined. For fat intolerance, add lipase or ox bile
-  (~250 mg).
+notes_for_coach: |-
+  Use only with meals; not needed for light meals. CONTRAINDICATED in confirmed or
+  suspected gastric ulcers. Do not open capsules (highly acidic). Pancreatic enzymes
+  should be combined. For fat intolerance, add lipase or ox bile (~250 mg).
+
+  Best used for: Used in FM for suspected low stomach acid (heaviness after protein,
+  belching, undigested food, B12/mineral malabsorption), typically via a careful
+  titration with meals. Human evidence is thin and mostly mechanistic; avoid entirely
+  with ulcers, gastritis, NSAID/steroid use or if the client is on acid-suppressing
+  medication.
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - hypochlorhydria
@@ -33,7 +39,9 @@ linked_to_topics:
 - autoimmune
 - histamine-intolerance
 - clean-genes-protocol
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- hypochlorhydria
+- hcl-and-pepsin-protein-digestion
 linked_to_claims:
 - betaine-hcl-corrects-hypochlorhydria
 - hypochlorhydria-must-correct-before-kill-protocols
@@ -83,7 +91,18 @@ sources:
   quote: Consider taking betaine hydrochloride (HCl) along with pancreatic enzymes.
     If you're intolerant to fats or oils, add in lipase or about 250 milligrams of
     ox bile.
-version: 8
+version: 9
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Active peptic or gastric ulcer, gastritis or erosive oesophagitis — supplemental acid
+    can worsen mucosal injury (already stated in notes_for_coach but missing from contraindications)
+  - Untreated H. pylori infection — treat infection first; acid supplementation can aggravate
+    mucosal damage
+  medications:
+  - NSAIDs (including regular aspirin) and oral corticosteroids — combined with supplemental
+    acid increase ulcer/GI bleed risk
+  - PPIs and H2 blockers — directly opposing therapy; do not combine without clinician input
+  life_stages: []

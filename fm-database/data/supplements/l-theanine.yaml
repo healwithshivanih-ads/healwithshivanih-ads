@@ -37,15 +37,23 @@ linked_to_topics:
 - sleep-quality
 - chronic-stress
 - sleep-optimisation
+linked_to_symptoms:
+- anxiety
+- stress
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - l-theanine-glycine-increase-alpha-waves-relaxation
 - l-theanine-increases-alpha-waves-relaxation
 - l-theanine-adhd-sleep-quality
 - murray-l-theanine-relaxation-not-sedation
-notes_for_coach: 'Research dose for boys with ADHD: 400 mg daily. Amino acid found
-  in green tea; improves sleep quality, reduces anxiety, stabilizes mood without sedation,
-  enhances cerebral dopaminergic activity. Safe for children.'
+notes_for_coach: |-
+  Research dose for boys with ADHD: 400 mg daily. Amino acid found in green tea;
+  improves sleep quality, reduces anxiety, stabilizes mood without sedation, enhances
+  cerebral dopaminergic activity. Safe for children.
+
+  Best used for: Good, safe option for stress-related anxiety, calming without sedation,
+  with small trials suggesting better sleep quality. Not a treatment for clinical
+  depression or severe insomnia on its own.
 notes_for_client: L-theanine is the calming amino acid in green tea — it can help
   with focus and sleep without making you feel drowsy.
 evidence_tier: plausible_emerging
@@ -79,10 +87,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
-version: 10
+version: 11
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - l-theanine 200-1200mg
 contraindications:

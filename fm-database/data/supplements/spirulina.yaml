@@ -75,9 +75,10 @@ linked_to_topics:
 - iron-nutrition
 - iron-deficiency
 - protein-adequacy-vegetarian
+- type-2-diabetes
 linked_to_symptoms:
-- fatigue
 - anemia
+- elevated-cholesterol
 notes_for_coach: >-
   WHAT THE EVIDENCE ACTUALLY SUPPORTS. The strongest data on spirulina is for
   LIPIDS — a GRADE-assessed dose-response meta-analysis of randomised trials. It
@@ -120,7 +121,7 @@ sources:
 - id: rhoades-2023-spirulina-cyanotoxin-retail
   location: Cyanotoxin and microbiota content of retail spirulina supplements
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-09-21'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

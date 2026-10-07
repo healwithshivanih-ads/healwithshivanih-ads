@@ -20,8 +20,14 @@ timing_options:
 - morning
 - mid_morning
 take_with_food: optional
-notes_for_coach: Adaptogen supporting stress, blood sugar, and inflammation; avoid
-  late-day dosing as it may be mildly stimulating.
+notes_for_coach: |-
+  Adaptogen supporting stress, blood sugar, and inflammation; avoid late-day dosing as
+  it may be mildly stimulating.
+
+  Best used for: A reasonable gentle adaptogen for a stressed client with raised blood
+  sugar: small RCTs show lower perceived stress and modest glucose reductions. Culinary
+  tulsi tea is fine for most; therapeutic doses should be avoided in pregnancy,
+  breastfeeding and while trying to conceive.
 rasa:
 - pungent
 virya: heating
@@ -45,9 +51,13 @@ linked_to_topics:
 - stress-management
 - anxiety
 - blood-sugar-regulation
+- chronic-stress
+- type-2-diabetes
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - cortisol-elevation
+linked_to_symptoms:
+- stress
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -55,7 +65,17 @@ sources:
   location: Page 3 - Supplement Table
   quote: Holy Basil (Tulsi) - Adaptogen, stress reduction - 300–600 mg/day - Morning
     or midday
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Antidiabetic drugs — additive glucose lowering; monitor for hypoglycaemia
+  life_stages:
+  - Pregnancy — WHO monograph contraindication (embryotoxicity/anti-implantation in animals;
+    catalogue claim who-holy-basil-safety-pregnancy-contraindication-eugenol)
+  - Lactation — WHO monograph contraindication
+  - Trying to conceive — animal anti-fertility and anti-implantation data (WHO); avoid therapeutic
+    doses

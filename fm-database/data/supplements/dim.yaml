@@ -18,9 +18,16 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: DIM is a cruciferous-derived compound commonly recommended for estrogen
-  metabolism support. Dosing must be clinician-determined. Document explicitly notes
-  supplement recommendations should be tailored to individual physiology.
+notes_for_coach: |-
+  DIM is a cruciferous-derived compound commonly recommended for estrogen metabolism
+  support. Dosing must be clinician-determined. Document explicitly notes supplement
+  recommendations should be tailored to individual physiology.
+
+  Best used for: Used to shift oestrogen metabolism toward the 2-OH pathway in
+  oestrogen-dominance pictures (e.g. heavy periods, breast tenderness, PMS). Human
+  evidence is mostly on urinary metabolite ratios rather than symptom outcomes, so keep
+  expectations modest; cruciferous vegetables come first. Not for clients on tamoxifen
+  or with a hormone-sensitive cancer history unless the oncologist agrees.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -28,7 +35,11 @@ linked_to_topics:
 - pcos
 - perimenopause
 - estrogen-metabolism
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- estrogen-16-hydroxylation
+- hepatic-estrogen-metabolism
+linked_to_symptoms:
+- estrogen-dominance-symptoms
 linked_to_claims:
 - estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
 - dim-shifts-estrogen-to-2-oh-pathway
@@ -71,9 +82,9 @@ sources:
   quote: Cruciferous vegetables when they are eaten, they release a compound called
     Diindolyl Methane. That is the supplement DIM, which is usually given because
     cruciferous vegetables, of course, with food changes tend to happen slow.
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution
@@ -81,3 +92,11 @@ pregnancy_safety_note: Insufficient data; potent estrogen modulator; avoid in pr
   Caution lactating.
 aliases:
 - dim-diindolylmethane
+contraindications:
+  conditions: []
+  medications:
+  - Tamoxifen — DIM lowered levels of the active metabolite endoxifen in an RCT (Thomson 2017);
+    avoid unless the oncologist agrees
+  life_stages:
+  - pregnancy
+  - lactation

@@ -37,6 +37,10 @@ linked_to_topics:
 - vitamin-d3-k2-synergy
 - vitamin-d3
 - vitamin-k2
+- autoimmune-thyroiditis
+linked_to_symptoms:
+- vitamin-d-insufficiency
+- decreased-bone-mineral-density
 linked_to_claims:
 - vitamin-d-critical-for-treg-function
 - vitamin-d-k2-immune-tolerance
@@ -47,18 +51,27 @@ linked_to_claims:
 - murray-vitamin-d-osteoporosis-5000iu-target
 - murray-vitamin-k2-mk7-osteocalcin
 - vitamin-d3-k2-preferred-combination
-notes_for_coach: Even when vitamin D levels appear 'normal' on standard ranges, higher-dose D3 has
-  been researched for autoimmune/psoriatic conditions. K2 is co-administered to direct calcium appropriately.
-  High-dose D3 (above 4000 IU) should be supervised by a clinician with monitoring of serum 25(OH)D.
-  The preferred ratio cited is 5,000 IU D3 with 200 mcg K2. This combination is ideal for most supplementation
-  protocols as it provides both calcium absorption support (D3) and calcium direction to bone (K2).
-  Always recommend with fat-containing food. Clinician guidance needed for dose adjustment based on
-  blood levels.
+notes_for_coach: |-
+  Even when vitamin D levels appear 'normal' on standard ranges, higher-dose D3 has been
+  researched for autoimmune/psoriatic conditions. K2 is co-administered to direct
+  calcium appropriately. High-dose D3 (above 4000 IU) should be supervised by a
+  clinician with monitoring of serum 25(OH)D. The preferred ratio cited is 5,000 IU D3
+  with 200 mcg K2. This combination is ideal for most supplementation protocols as it
+  provides both calcium absorption support (D3) and calcium direction to bone (K2).
+  Always recommend with fat-containing food. Clinician guidance needed for dose
+  adjustment based on blood levels.
+
+  Best used for: Best for clients with low vitamin D who also need bone support
+  (perimenopausal and postmenopausal women, osteopenia) and for autoimmune thyroid
+  clients with low levels. Dose to a blood test. Avoid for anyone on warfarin.
 notes_for_client: 'Vitamin D for your bones, immunity and mood — the one most of us are short of.
 
   The K2 alongside steers calcium into your bones rather than your arteries. With your largest meal.'
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- vitamin-k2-calcium-trafficking
+- osteocalcin-activation
+- immunomodulation-via-vitamin-d
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
@@ -84,9 +97,19 @@ sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D + K2 Synergy Section
   quote: ideally a supplementation of vitamin D of 5000 international units and K1200 MCG is preferred.
-version: 7
+version: 8
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - vitamin-d3-k2-combination-supplement
+contraindications:
+  conditions:
+  - hypercalcaemia or primary hyperparathyroidism — vitamin D raises serum calcium
+  - sarcoidosis, tuberculosis or other granulomatous disease — unregulated 1,25-D production
+    causes hypercalcaemia
+  medications:
+  - warfarin / acenocoumarol (vitamin K antagonists) — K2 (even MK-7 at 10–20 mcg) antagonises
+    the drug and destabilises INR; avoid unless the prescriber manages it
+  - thiazide diuretics — raise hypercalcaemia risk with high-dose vitamin D
+  life_stages: []

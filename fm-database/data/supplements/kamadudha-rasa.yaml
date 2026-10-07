@@ -20,13 +20,20 @@ linked_to_mechanisms:
 - h-pylori-mucosal-defense-breakdown
 linked_to_claims:
 - ayurvedic-vidanga-kamadudha-60-day-h-pylori-eradication
-notes_for_coach: Classical Ayurvedic compound used for amlapitta (hyperacidity / gastritis).
-  Contains processed pearl, conch shell, mukta-pishti (pearl calx), and cooling herbs.
-  Mineral content provides mild acid-buffering + mucosal-protective effects. Case-study
-  dose — 250 mg tablet twice daily after food, 60 days, paired with Vidanga Churna.
-  Source from BAMS-supervised pharmacy. Heavy metals are a real concern with Bhasma-containing
-  rasashastra preparations — insist on lab-tested batches (Kerala Ayurveda, AVP, Vaidyaratnam
-  are reputable). Not for long-term continuous use without practitioner oversight.
+notes_for_coach: |-
+  Classical Ayurvedic compound used for amlapitta (hyperacidity / gastritis). Contains
+  processed pearl, conch shell, mukta-pishti (pearl calx), and cooling herbs. Mineral
+  content provides mild acid-buffering + mucosal-protective effects. Case-study dose —
+  250 mg tablet twice daily after food, 60 days, paired with Vidanga Churna. Source from
+  BAMS-supervised pharmacy. Heavy metals are a real concern with Bhasma-containing
+  rasashastra preparations — insist on lab-tested batches (Kerala Ayurveda, AVP,
+  Vaidyaratnam are reputable). Not for long-term continuous use without practitioner
+  oversight.
+
+  Best used for: A traditional antacid-type Ayurvedic preparation for hyperacidity and
+  gastritis, used short-term under a BAMS practitioner with lab-tested batches. Evidence
+  is case-report level, so it should not replace standard H. pylori eradication or
+  proper workup of persistent reflux.
 notes_for_client: A traditional Ayurvedic compound formulated to cool excess stomach
   acid and protect the stomach lining. 250 mg tablet twice daily after meals. Always
   source from a reputable Ayurvedic pharmacy and use under supervision of a BAMS practitioner.
@@ -35,7 +42,11 @@ contraindications:
   - pregnancy
   - chronic-kidney-disease
   - heavy-metal-burden
-  medications: []
+  medications:
+  - Levothyroxine — calcium-rich bhasmas (pearl, conch, coral) can bind it and reduce absorption;
+    separate by at least 4 hours
+  - Tetracycline and fluoroquinolone antibiotics — calcium content chelates them; separate
+    by 2-4 hours
   life_stages:
   - pregnancy
   - lactation
@@ -46,7 +57,7 @@ sources:
   location: Ayurvedic Protocol — Kamadudha Rasa
   quote: Kamadudha Rasa 250mg tablet twice daily after food for 60 days, paired with
     Vidanga Churna, achieved 100% eradication in case report.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

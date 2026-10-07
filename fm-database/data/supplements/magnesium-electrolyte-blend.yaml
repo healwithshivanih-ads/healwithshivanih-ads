@@ -13,11 +13,21 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - metabolic-health-lchf
+- intermittent-fasting
+linked_to_symptoms:
+- keto-flu
+- dizziness-on-fasting
 linked_to_claims:
 - lchf-electrolytes-prevent-keto-flu
-notes_for_coach: Sodium, potassium, and magnesium are lost rapidly during LCHF dietary
-  adaptation due to reduced insulin-driven renal reabsorption. Electrolyte blending
-  is a practical strategy to prevent keto flu symptoms. Individual needs vary.
+notes_for_coach: |-
+  Sodium, potassium, and magnesium are lost rapidly during LCHF dietary adaptation due
+  to reduced insulin-driven renal reabsorption. Electrolyte blending is a practical
+  strategy to prevent keto flu symptoms. Individual needs vary.
+
+  Best used for: Best used short-term during low-carb adaptation or longer fasting
+  windows to prevent keto-flu (headache, fatigue, cramps, dizziness). Not a substitute
+  for a therapeutic magnesium form when the goal is sleep, anxiety or insulin
+  sensitivity, and not needed on a normal mixed diet.
 notes_for_client: When following a low-carb diet, your body loses electrolytes quickly.
   A balanced electrolyte supplement helps prevent the fatigue, headaches, and cramps
   sometimes called 'keto flu'.
@@ -28,7 +38,19 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Ensure sodium, potassium and magnesium are optimized
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Chronic kidney disease / reduced eGFR — potassium and magnesium accumulate (hyperkalaemia,
+    hypermagnesaemia risk)
+  - Heart failure or hypertension on a sodium-restricted regimen — blend adds sodium; check
+    with clinician
+  medications:
+  - Potassium-sparing diuretics (spironolactone, amiloride), ACE inhibitors / ARBs — added
+    potassium raises hyperkalaemia risk
+  - Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine — magnesium
+    chelates them and cuts their absorption; separate by at least 2-4 hours
+  life_stages: []

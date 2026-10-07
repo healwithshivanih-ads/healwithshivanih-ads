@@ -28,7 +28,6 @@ ayurvedic_actions:
 linked_to_topics:
 - asthma
 - bronchitis-and-pneumonia
-- chronic-inflammation
 - bone-health
 notes_for_coach: 'Latin: Bambusa arundinaceae; Graminaceae. Sanskrit: Vamsha-rochana. Traditional indications:
   colds, cough, fever, asthma, bleeding disorders, emaciation, debility, dehydration, palpitation, vomiting,
@@ -38,7 +37,7 @@ sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — VAMSHA ROCHANA
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

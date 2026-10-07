@@ -24,6 +24,13 @@ linked_to_topics:
 - autoimmune-dermatitis
 - ibd
 - osteoarthritis
+- nafld
+- prediabetes
+- type-2-diabetes
+- major-depressive-disorder
+linked_to_symptoms:
+- joint-pain
+- elevated-hscrp
 linked_to_claims:
 - turmeric-is-nf-kb-inhibitor
 - turmeric-downregulates-nf-kappab-upregulates-nrf2
@@ -31,14 +38,22 @@ linked_to_claims:
 - murray-curcumin-bioavailable-forms
 - murray-curcumin-equals-phenylbutazone-ra
 - murray-topical-curcumin-vs-calcipotriene
-notes_for_coach: Clinician uses 500mg twice daily. Downregulates NF-κB and upregulates
-  NRF2. Bioavailability enhanced with piperine (black pepper extract). Anti-inflammatory,
+notes_for_coach: |-
+  Clinician uses 500mg twice daily. Downregulates NF-κB and upregulates NRF2.
+  Bioavailability enhanced with piperine (black pepper extract). Anti-inflammatory,
   blood sugar lowering, and HbA1c lowering properties noted.
+
+  Best used for: Best evidence is for knee osteoarthritis pain, raised inflammatory
+  markers, fatty liver and as an adjunct for blood sugar and low mood — always a
+  bioavailable formulation. Plain turmeric powder in food will not deliver trial doses.
+  Not worth it as a stand-alone for hormone or thyroid concerns.
 notes_for_client: Turmeric (curcumin) is a powerful anti-inflammatory spice that can
   help reduce inflammation throughout the body and may support healthy blood sugar
   levels. Take with food and black pepper for best absorption.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- nf-kb-activation
+- nrf2-pathway-activation
 sources:
 - id: coconote-fm-approach-inflammation
   location: Anti-Inflammatory Herbs – Turmeric
@@ -59,7 +74,17 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 7
+version: 8
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - gallstones or bile duct obstruction — curcumin is cholagogic (EMA/WHO monographs)
+  - active liver disease or prior drug/herb-induced liver injury — case reports of autoimmune-like
+    hepatitis with high-bioavailability (piperine/enhanced) curcumin products
+  medications:
+  - warfarin and other anticoagulants/antiplatelets — curcumin has antiplatelet activity and
+    case reports of raised INR
+  life_stages:
+  - pregnancy — supplemental (not culinary) doses not established as safe

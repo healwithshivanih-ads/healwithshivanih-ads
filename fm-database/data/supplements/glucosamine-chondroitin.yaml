@@ -19,9 +19,15 @@ linked_to_topics:
 - osteoarthritis
 linked_to_claims:
 - collagen-glucosamine-chondroitin-cartilage
-notes_for_coach: 'Standard dosing: 1500 mg glucosamine sulfate + 1200 mg chondroitin
-  sulfate daily. GAIT trial showed benefit in moderate-severe OA. Shell fish-derived
-  — check for shellfish allergy; vegan forms available.'
+notes_for_coach: |-
+  Standard dosing: 1500 mg glucosamine sulfate + 1200 mg chondroitin sulfate daily. GAIT
+  trial showed benefit in moderate-severe OA. Shell fish-derived — check for shellfish
+  allergy; vegan forms available.
+
+  Best used for: Reasonable for knee osteoarthritis pain with a 2-3 month trial; stop if
+  no clear benefit. The large GAIT trial was negative overall, with possible benefit
+  only in a moderate-to-severe pain subgroup. Not worth it for general joint pain or
+  inflammatory arthritis.
 notes_for_client: Glucosamine and chondroitin help nourish your joint cartilage. Take
   consistently for at least 2–3 months to assess benefit. If you have shellfish allergy,
   ask for a vegan form.
@@ -31,7 +37,17 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Knee Pain Cheatsheet
   quote: Collagen peptides, MSM, Glucosamine + Chondroitin, Vitamin D3 + K2
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Shellfish allergy — most glucosamine is shellfish-derived; use a vegetarian (fermented-corn)
+    form
+  medications:
+  - Warfarin — case reports and MHRA/FDA pharmacovigilance of raised INR and bleeding with
+    glucosamine ± chondroitin; prescriber must know
+  life_stages:
+  - Pregnancy — insufficient human safety data
+  - Lactation — insufficient human safety data

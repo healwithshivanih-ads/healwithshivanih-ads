@@ -17,19 +17,30 @@ linked_to_topics:
 - diabetic-neuropathy
 - diabetic-nephropathy
 - type-2-diabetes
-- type-2-diabetes-mellitus
 - type-1-diabetes-mellitus
+linked_to_symptoms:
+- diabetic-nerve-pain
 linked_to_claims:
 - benfotiamine-reduces-age-formation
 - murray-benfotiamine-diabetic-neuropathy-nephropathy
-notes_for_coach: 600 mg benfotiamine + 300 mg ALA shown to outperform benfotiamine
-  alone for reducing hyperglycaemic damage in T1DM. Raises blood thiamine 120–240%
-  vs regular thiamine. Monotherapy for neuropathy results are modest.
+notes_for_coach: |-
+  600 mg benfotiamine + 300 mg ALA shown to outperform benfotiamine alone for reducing
+  hyperglycaemic damage in T1DM. Raises blood thiamine 120–240% vs regular thiamine.
+  Monotherapy for neuropathy results are modest.
+
+  Best used for: Most useful for people with diabetes who already have neuropathy
+  symptoms (burning, painful feet), where trials show modest symptom relief. It is also
+  a well-absorbed form of thiamine where intake is poor, such as heavy alcohol use — but
+  suspected thiamine-deficiency confusion or unsteadiness is a medical emergency, not a
+  supplement question. It does not lower blood sugar and is not worth it as a general
+  diabetes supplement without nerve symptoms. For tingling without diabetes, check B12
+  first.
 notes_for_client: Benfotiamine is a fat-soluble form of vitamin B1 that penetrates
   cells more effectively than regular thiamine, helping to reduce sugar-related nerve
   and kidney damage.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- advanced-glycation-end-products
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Recommendations for Specific Long-Term Complications / Neuropathy
@@ -39,7 +50,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

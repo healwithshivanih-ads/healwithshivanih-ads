@@ -18,8 +18,13 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Supports liver and kidney detox and fluid retention; gentle diuretic
-  herb — ensure adequate hydration.
+notes_for_coach: |-
+  Supports liver and kidney detox and fluid retention; gentle diuretic herb — ensure
+  adequate hydration.
+
+  Best used for: Mainly a traditional bitter for bile flow and digestion; human trial
+  evidence is minimal (one small study on dandelion leaf as a diuretic, not root). A
+  gentle, low-priority option — not a treatment for gallstones.
 rasa:
 - bitter
 - sweet
@@ -48,7 +53,17 @@ sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: Dandelion Root - Liver and kidney detox - 500–1000 mg/day - With meals
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Bile duct obstruction, acute gallbladder inflammation (cholecystitis) or gallbladder empyema
+    — choleretic herb (Commission E contraindication); with existing gallstones use only under
+    medical supervision
+  - Allergy to Asteraceae/Compositae plants (ragweed, chrysanthemum, marigold, chamomile)
+    — cross-reactivity
+  medications:
+  - Lithium — diuretic effect may raise lithium levels
+  life_stages: []

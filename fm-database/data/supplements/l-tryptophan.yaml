@@ -65,16 +65,23 @@ linked_to_topics:
 - sleep-quality
 linked_to_mechanisms:
 - serotonin-melatonin-sleep-axis
+- tryptophan-serotonin-melatonin-pathway
 linked_to_claims:
 - murray-5htp-rem-deep-sleep
-notes_for_coach: L-tryptophan is an upstream serotonin precursor (one step before
-  5-HTP). Same serotonin-syndrome risk as 5-HTP when combined with SSRIs / SNRIs /
-  MAOIs / tramadol / triptans / dextromethorphan / linezolid / lithium. Historical
-  EMS (eosinophilia-myalgia syndrome) outbreak in 1989 was linked to a contaminated
-  supplier — pharmaceutical-grade product is considered safe now, but anyone with
-  personal or family history of EMS should avoid. Typically dosed 500-2000 mg at bedtime
-  for sleep/mood support; up to 3 g in clinical contexts. Clinician oversight strongly
+notes_for_coach: |-
+  L-tryptophan is an upstream serotonin precursor (one step before 5-HTP). Same
+  serotonin-syndrome risk as 5-HTP when combined with SSRIs / SNRIs / MAOIs / tramadol /
+  triptans / dextromethorphan / linezolid / lithium. Historical EMS
+  (eosinophilia-myalgia syndrome) outbreak in 1989 was linked to a contaminated supplier
+  — pharmaceutical-grade product is considered safe now, but anyone with personal or
+  family history of EMS should avoid. Typically dosed 500-2000 mg at bedtime for
+  sleep/mood support; up to 3 g in clinical contexts. Clinician oversight strongly
   recommended.
+
+  Best used for: Evidence is modest and mostly older: small trials for sleep and for
+  premenstrual mood (the latter at doses above this entry's range), and some support as
+  an add-on for low mood. Never combine with SSRIs, SNRIs, MAOIs, tramadol, triptans or
+  other serotonergic drugs, and avoid in bipolar disorder.
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
@@ -85,7 +92,7 @@ sources:
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani

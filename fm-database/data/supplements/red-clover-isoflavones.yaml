@@ -16,18 +16,27 @@ timing_options:
 take_with_food: optional
 linked_to_symptoms:
 - hot-flashes
+- menopause-symptoms
 linked_to_topics:
 - perimenopause-and-menopause
 - menopause
 - estrogen-signaling
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- estrogen-decline
 linked_to_claims:
 - red-clover-isoflavones-reduce-hot-flashes
-notes_for_coach: Phytoestrogen-rich herb commonly used for hot flashes. Pizzorno notes
-  proven scientific efficacy for menopausal symptoms; effect varies by patient (equol-producer
+notes_for_coach: |-
+  Phytoestrogen-rich herb commonly used for hot flashes. Pizzorno notes proven
+  scientific efficacy for menopausal symptoms; effect varies by patient (equol-producer
   status matters). Typical extract standardised to ~40 mg isoflavones (genistein,
   daidzein, biochanin A, formononetin). Avoid in hormone-sensitive cancers, pregnancy,
   lactation, anticoagulants.
+
+  Best used for: Modest, inconsistent benefit for hot flushes and night sweats in
+  menopause (Cochrane 2013: no consistent reduction in frequency; some trials positive,
+  benefit may depend on equol-producer status). A reasonable 8–12 week trial for women
+  who want a phytoestrogen route; not for anyone with an estrogen-sensitive cancer
+  history or on blood thinners.
 notes_for_client: A traditional herb that mimics gentle estrogen activity to ease
   hot flashes and night sweats. Best discussed with your clinician if you have a history
   of hormone-sensitive cancers.
@@ -74,7 +83,7 @@ sources:
     under 12 years, and hormone-associated diseases. Patients with estrogen-dependent
     cancers or a family history should consult a provider before use. Conflicting data
     on interaction with tamoxifen and other antiestrogenic drugs.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-07-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

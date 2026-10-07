@@ -32,11 +32,15 @@ contraindications:
 evidence_tier: plausible_emerging
 linked_to_topics:
 - cataracts
+- macular-degeneration
 linked_to_mechanisms: []
 sources:
 - id: klein-body-remembers
   location: surfaced as a catalogue gap during the somatic-map ingest
-version: 1
+version: 2
 status: active
-updated_at: 2026-07-28
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- macular-degeneration
+- eye-strain

@@ -11,6 +11,9 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - vaginal-microbiome
+- cystitis-and-interstitial-cystitis
+linked_to_symptoms:
+- urinary-tract-infections
 linked_to_claims:
 - d-mannose-modest-uti-benefit-exogenous
 notes_for_coach: Dr. Davis acknowledges modest evidence for D-mannose for UTI support
@@ -29,7 +32,7 @@ sources:
   location: D-mannose and UTI discussion
   quote: When D-mannose does work, some of the flavonoids, et cetera, in cranberries
     does have a modest effect. But is there a D-mannose deficiency? No.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani

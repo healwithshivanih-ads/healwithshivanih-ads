@@ -32,6 +32,7 @@ linked_to_topics:
 - detoxification
 - atherosclerosis
 - gst-gpx-glutathione-detox
+- male-infertility-oxidative-stress
 linked_to_claims:
 - selenium-supplementation-reduces-tpo-antibodies-in-hashimotos
 - selenium-zinc-iron-required-for-t4-to-t3-conversion
@@ -53,10 +54,18 @@ linked_to_claims:
 - murray-hypothyroidism-treatment-summary
 - selenium-required-for-gpx-h2o2-clearance
 - selenium-cofactor-glutathione-peroxidase
-notes_for_coach: Essential cofactor for GPX enzymes — without it, glutathione cannot
-  neutralise hydrogen peroxide. Toxicity threshold is relatively low (~400 mcg/day);
-  blood selenium should be monitored especially if using IV nutrient therapy. Lynch
-  notes 'too much selenium is toxic' — check serum levels before supplementing.
+notes_for_coach: |-
+  Essential cofactor for GPX enzymes — without it, glutathione cannot neutralise
+  hydrogen peroxide. Toxicity threshold is relatively low (~400 mcg/day); blood selenium
+  should be monitored especially if using IV nutrient therapy. Lynch notes 'too much
+  selenium is toxic' — check serum levels before supplementing.
+
+  Best used for: Best evidence is in Hashimoto's thyroiditis, where selenium (usually as
+  selenomethionine) lowers TPO antibodies over several months, most clearly in people
+  with low selenium intake; effects on thyroid function and symptoms are less certain.
+  Not worth adding for euthyroid clients without thyroid autoimmunity or for
+  cardiovascular prevention. The safety margin is narrow - avoid long-term high intakes
+  or stacking with regular Brazil nuts, which raise toxicity and type 2 diabetes risk.
 notes_for_client: A trace mineral your body needs to use glutathione effectively.
   A little goes a long way — don't exceed recommended amounts.
 typical_dose_range:
@@ -77,6 +86,9 @@ take_with_food: required
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
+- impaired-t4-to-t3-conversion
+- glutathione-peroxidase-activity
+- oxidative-stress-thyroid
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 3
@@ -129,16 +141,18 @@ sources:
   location: Chapter 9 — What Makes GST/GPX Dirty?
   quote: In order for your glutathione to turn hydrogen peroxide into water, it needs
     selenium. Without selenium, your GPX enzyme can't get rid of hydrogen peroxide.
-version: 19
+version: 20
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - selenium (deiodinase enzymes)
 - selenium (plasma)
 contraindications:
   conditions:
   - high-dose selenium with concurrent levothyroxine — coordinate timing with prescriber
+  - type 2 diabetes or high baseline selenium status (long-term 200 mcg/day was associated
+    with higher T2D incidence in the NPC trial; avoid stacking with regular Brazil nuts)
   medications: []
   life_stages: []
 interactions:

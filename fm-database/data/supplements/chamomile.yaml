@@ -17,11 +17,21 @@ take_with_food: optional
 linked_to_topics:
 - hpa-axis-cortisol-regulation
 - sleep-quality
+- anxiety
+linked_to_symptoms:
+- anxiety
 linked_to_claims:
 - chamomile-apigenin-gaba-cortisol-sleep
-notes_for_coach: '1g chamomile flower tea daily shown to reduce cortisol and improve
-  sleep quality in primary insomnia. Active constituent: apigenin (flavonoid) — acts
-  via GABA-A receptors. Source: Coach Shivani clinical observations.'
+notes_for_coach: |-
+  1g chamomile flower tea daily shown to reduce cortisol and improve sleep quality in
+  primary insomnia. Active constituent: apigenin (flavonoid) — acts via GABA-A
+  receptors. Source: Coach Shivani clinical observations.
+
+  Best used for: Modest trial evidence for generalised anxiety (standardised extract)
+  and for sleep quality in older adults and postpartum women. In diagnosed chronic
+  insomnia it has not beaten placebo. A gentle option for mild anxiety or poorer sleep
+  quality, not a treatment for severe insomnia or an anxiety disorder that needs medical
+  care.
 notes_for_client: Chamomile tea contains a calming compound called apigenin that interacts
   with your brain's relaxation receptors, helping to ease stress and support sleep.
 rasa:
@@ -44,13 +54,24 @@ ayurvedic_actions:
 - emmenagogue
 - emetic
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- gabaergic-modulation
 sources:
 - id: coach-shivani
   location: Coach Observation — Plant-Derived Adaptogens and Herbs
   quote: Consuming 1 gram of chamomile flower tea daily has been shown to reduce cortisol
     levels and improve sleep quality in individuals with primary insomnia.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Allergy to Asteraceae/daisy family (ragweed, chrysanthemum, marigold) — cross-reactive
+    allergic reactions incl. anaphylaxis reported
+  medications:
+  - Warfarin — case reports of raised INR and bleeding with chamomile; monitor
+  - Sedatives/benzodiazepines — additive drowsiness
+  life_stages:
+  - Pregnancy — avoid concentrated extracts/high doses (traditional emmenagogue); ordinary
+    tea amounts are generally considered acceptable

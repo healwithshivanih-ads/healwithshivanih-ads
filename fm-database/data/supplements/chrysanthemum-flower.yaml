@@ -28,15 +28,27 @@ linked_to_topics:
 - liver-detoxification
 - healthy-menstrual-cycle-baseline
 - inflammation
-notes_for_coach: 'Latin: Chrysanthemum indicum; Compositae. Sanskrit: Sevanti (service — gives energy
-  of devotion, surrender and service to the Divine). Traditional indications: headache, sore throat, eye
-  infections, nose bleeds, boils, dysmenorrhea, liver diseases. Precautions: few, high Vata. Ayurvedic
-  energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Chrysanthemum indicum; Compositae. Sanskrit: Sevanti (service — gives energy of
+  devotion, surrender and service to the Divine). Traditional indications: headache,
+  sore throat, eye infections, nose bleeds, boils, dysmenorrhea, liver diseases.
+  Precautions: few, high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley &
+  Lad).
+
+  Best used for: Traditional Ayurvedic/Chinese cooling herb, usually taken as tea; there
+  are no meaningful human trials for inflammation, liver or menstrual use. Fine as a
+  culinary tea, not a therapeutic supplement choice.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CHRYSANTHEMUM
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Allergy to Asteraceae/daisy family (ragweed, chamomile, marigold) — chrysanthemum is a
+    common cause of allergic contact dermatitis and cross-reactions
+  medications: []
+  life_stages: []

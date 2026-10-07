@@ -14,23 +14,41 @@ timing_options:
 - mid_morning
 take_with_food: optional
 linked_to_topics:
-- nos3-nitric-oxide-cardiovascular
+- hypertension
+- nos3-nitric-oxide
+- endothelial-dysfunction
+linked_to_symptoms:
+- elevated-blood-pressure
 linked_to_claims:
 - beet-root-citrulline-ornithine-raise-arginine-nos3
-notes_for_coach: Lynch prefers beet root, ornithine, and citrulline as indirect arginine
-  donors over direct arginine supplementation (which can worsen herpetic infections
-  and has other risks). Beet root provides dietary nitrates reduced to nitric oxide
-  in the gut. Easy to add to smoothies.
+notes_for_coach: |-
+  Lynch prefers beet root, ornithine, and citrulline as indirect arginine donors over
+  direct arginine supplementation (which can worsen herpetic infections and has other
+  risks). Beet root provides dietary nitrates reduced to nitric oxide in the gut. Easy
+  to add to smoothies.
+
+  Best used for: Best evidence is a modest drop in blood pressure and improved exercise
+  endurance from its natural nitrates, seen within hours to weeks. Benefit depends on
+  oral bacteria — antiseptic mouthwash blunts it — and powders vary widely in nitrate
+  content; whole beets or beet juice may be just as effective.
 notes_for_client: Beet root is a natural source of nitrates that your body converts
   to nitric oxide, supporting healthy blood pressure and circulation.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- nitric-oxide-bioavailability
+- endothelial-no-insufficiency
 sources:
 - id: dirty-genes-lynch
   location: Chapter 15 — Supplements for Your NOS3
   quote: If you're generally healthy, increasing arginine levels via these supplements
     may be all you need.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - History of calcium-oxalate kidney stones — beetroot is a high-oxalate food and concentrated
+    powder adds to the oxalate load
+  medications: []
+  life_stages: []

@@ -15,14 +15,19 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - type-1-diabetes-mellitus
-- type-2-diabetes-mellitus
 - diabetic-neuropathy
 linked_to_claims:
 - biotin-lowers-fasting-glucose-t1dm-t2dm
-notes_for_coach: 'Pharmacological doses (9–16 mg/day) — much higher than standard
-  supplements. Upregulates glucokinase (hepatic glucose utilisation enzyme). Adjust
-  insulin when adding. Also used for neuropathy. Combination with Cr picolinate: 2
-  mg biotin + 600 mcg Cr.'
+notes_for_coach: |-
+  Pharmacological doses (9–16 mg/day) — much higher than standard supplements.
+  Upregulates glucokinase (hepatic glucose utilisation enzyme). Adjust insulin when
+  adding. Also used for neuropathy. Combination with Cr picolinate: 2 mg biotin + 600
+  mcg Cr.
+
+  Best used for: A niche, specialist option for blood sugar, supported only by small
+  older trials (often combined with chromium). Not a first-line glucose intervention. At
+  these doses it also makes thyroid and cardiac blood tests unreliable, so any use needs
+  clinician oversight.
 notes_for_client: At high doses, biotin activates a key liver enzyme that helps process
   blood sugar — different from standard biotin supplements which use much lower doses.
 evidence_tier: plausible_emerging
@@ -32,7 +37,16 @@ sources:
   location: Nutritional and Herbal Supplements / Biotin
   quote: Dose of 16 mg biotin q.d. significantly lowers fasting glucose and improves
     glucose control in T1DM; in T2DM, similar effects occur at 9 mg biotin q.d.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Pending blood tests using streptavidin–biotin immunoassays — at 8–16 mg/day biotin reliably
+    distorts thyroid tests (falsely low TSH, falsely high T4/T3 mimicking Graves') and troponin
+    (FDA safety communication); stop several days before any blood draw
+  medications:
+  - Insulin and sulfonylureas — additive glucose lowering is the stated mechanism; monitor
+    for hypoglycaemia
+  life_stages: []

@@ -24,13 +24,23 @@ linked_to_topics:
 - immune-support-covid-19
 - atherogenic-dyslipidemia
 - insulin-resistance
+- common-cold
+linked_to_symptoms:
+- upper-respiratory-infections
+- frequent-infections
 linked_to_claims:
 - beta-glucans-immune-modulation-respiratory
 - beta-glucans-enhance-immunity-and-reduce-respiratory-infections
-notes_for_coach: Beta-glucans from yeast (Saccharomyces cerevisiae, 1,3/1,6-glucan)
-  and oat (1,3/1,4-glucan) have distinct structures and slightly different immune
-  effects. Both are well-tolerated and have good safety profiles. Most RCT evidence
-  uses yeast-derived forms at 250–500 mg/day.
+notes_for_coach: |-
+  Beta-glucans from yeast (Saccharomyces cerevisiae, 1,3/1,6-glucan) and oat
+  (1,3/1,4-glucan) have distinct structures and slightly different immune effects. Both
+  are well-tolerated and have good safety profiles. Most RCT evidence uses yeast-derived
+  forms at 250–500 mg/day.
+
+  Best used for: Yeast beta-glucan (250–500 mg) has the best evidence for fewer and
+  shorter colds/upper respiratory infections, especially in people under physical or
+  life stress. Cholesterol and blood-sugar benefits come from oat/barley beta-glucan at
+  ≥3 g/day (mostly from food), not from 250–500 mg capsules.
 notes_for_client: Beta-glucans are natural immune-training fibers found in oats, mushrooms,
   and yeast. They help your immune system stay alert and ready to respond to infections,
   especially in your respiratory tract.
@@ -49,7 +59,7 @@ sources:
   quote: Beta glucans are both anti-inflammatory and enhance immune function while
     specifically benefitting those with upper respiratory tract infections caused
     by viruses.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-29'
+updated_at: '2026-10-07'
 updated_by: shivani

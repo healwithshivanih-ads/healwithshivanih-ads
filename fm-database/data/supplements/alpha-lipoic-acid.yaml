@@ -22,9 +22,17 @@ timing_options:
 - morning
 - mid_morning
 take_with_food: optional
-notes_for_coach: Approved drug for diabetic neuropathy in Germany. Use with benfotiamine
-  for synergistic AGE reduction. Foundation supplement for all T1DM/T2DM with neuropathy
+notes_for_coach: |-
+  Approved drug for diabetic neuropathy in Germany. Use with benfotiamine for
+  synergistic AGE reduction. Foundation supplement for all T1DM/T2DM with neuropathy
   signs.
+
+  Best used for: Strongest evidence is symptom relief in diabetic peripheral neuropathy
+  (burning, tingling, numbness) — clearest with IV use and short-term oral trials;
+  long-term oral data are weaker. A modest insulin-sensitivity benefit adds to its fit
+  for clients with diabetes or prediabetes and neuropathic symptoms. For tingling
+  without diabetes, check B12 first. Not worth it as a weight-loss or 'detox' supplement
+  — weight effects are around 1 kg.
 evidence_tier: strong
 linked_to_topics:
 - pcos
@@ -43,6 +51,11 @@ linked_to_topics:
 linked_to_mechanisms:
 - oxidative-stress-from-toxicants
 - mitochondrial-toxin-disruption
+- oxidative-stress
+- insulin-resistance
+- glutathione-depletion
+linked_to_symptoms:
+- diabetic-nerve-pain
 linked_to_claims:
 - berberine-ampk-natural-metformin
 - ala-reduces-diabetic-nerve-pain
@@ -106,19 +119,24 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 12
+version: 13
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution
 pregnancy_safety_note: Limited safety data; theoretical concern for blood sugar swings.
   Avoid unless clinician-directed.
 contraindications:
   conditions:
-  - may lower blood glucose — coordinate with prescriber if client is on diabetes
-    medication
-  medications: []
+  - may lower blood glucose — coordinate with prescriber if client is on diabetes medication
+  - Insulin autoimmune syndrome (Hirata disease) — ALA can trigger it in HLA-DRB1*04:06 carriers
+    (mostly East Asian); stop if unexplained hypoglycaemia occurs
+  medications:
+  - Insulin and sulfonylureas/other glucose-lowering drugs — additive glucose lowering; monitor
+    (currently recorded only as a condition)
+  - Chemotherapy (alkylating agents, anthracyclines) — high-dose antioxidants may interfere;
+    oncologist sign-off
   life_stages: []
 interactions:
   with_medications: []

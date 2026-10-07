@@ -16,7 +16,10 @@ timing_options:
 take_with_food: avoid
 linked_to_topics:
 - leaky-gut
-linked_to_mechanisms: []
+- 5r-gut-protocol
+linked_to_mechanisms:
+- leaky-gut
+- tight-junction-dysfunction
 linked_to_symptoms: []
 linked_to_claims: []
 notes_for_coach: 'Practitioner-dispensed COMBINATION powder, not a single compound —
@@ -35,7 +38,7 @@ sources:
 - id: practitioner-product-pages
   location: FM Nutrition — Leaky Gut Care 80 gm powder, product page label copy
   quote: L-glutamine with zinc carnosine and mucosal herbs, 1 scoop daily in water.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-10-07'
 updated_by: shivani

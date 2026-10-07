@@ -10,7 +10,10 @@ timing_options: []
 take_with_food: optional
 contraindications:
   conditions: []
-  medications: []
+  medications:
+  - Antiplatelets/anticoagulants (aspirin, clopidogrel, warfarin) — amla extract inhibits
+    platelet aggregation in human studies; additive bleeding risk
+  - Diabetes medications — additive glucose lowering
   life_stages: []
 interactions:
   with_supplements: []
@@ -22,12 +25,23 @@ linked_to_topics:
 - dyslipidemia
 - hair-loss
 - immune-support
+- type-2-diabetes
+- cardiovascular-disease-prevention
 linked_to_mechanisms:
 - oxidative-stress
 - chronic-inflammation
+- endothelial-dysfunction
+linked_to_symptoms:
+- elevated-cholesterol
+- elevated-triglycerides
 linked_to_claims: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
-  before clinical use.
+notes_for_coach: |-
+  Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+
+  Best used for: Strongest human evidence is cardiometabolic: modest lowering of LDL,
+  triglycerides and blood glucose, plus endothelial benefit — a good food-first fit for
+  Indian clients with dyslipidemia or prediabetes. Hair-loss and 'immunity' claims are
+  traditional rather than trial-backed.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
@@ -56,9 +70,9 @@ ayurvedic_actions:
 - astringent
 - hemostatic
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - indian-gooseberry

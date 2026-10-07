@@ -14,13 +14,19 @@ linked_to_topics:
 - testosterone-health
 - benign-prostatic-hyperplasia
 - testosterone-dht-conversion
+linked_to_symptoms:
+- prostate-symptoms
 linked_to_claims:
 - stinging-nettle-modulates-shbg-and-5ar
 - stinging-nettle-decreases-shbg
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
-notes_for_coach: Nettle root may lower SHBG and inhibit 5-α reductase. Dual mechanism
-  makes it relevant for both SHBG management and BPH/DHT concerns. Clinician should
-  determine dose.
+notes_for_coach: |-
+  Nettle root may lower SHBG and inhibit 5-α reductase. Dual mechanism makes it relevant
+  for both SHBG management and BPH/DHT concerns. Clinician should determine dose.
+
+  Best used for: Best evidence is in men with BPH urinary symptoms, alone or combined
+  with saw palmetto. For women, note that lowering SHBG raises free androgens — it is
+  not appropriate for PCOS or hirsutism.
 notes_for_client: Stinging nettle root is an herb traditionally used for prostate
   health and hormone balance. It may help free up bound testosterone and reduce DHT
   production.
@@ -37,7 +43,12 @@ sources:
     Levels: 5-a Reductase Inhibitors'
   quote: Stinging nettle (Urtica dioica) [listed under factors that Decrease SHBG
     and Herbs that Inhibit 5-a Reductase]
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy (hormonally active root extract; avoid)

@@ -31,15 +31,23 @@ linked_to_topics:
 linked_to_mechanisms:
 - h-pylori-mucosal-defense-breakdown
 - gut-dysbiosis
+- nitric-oxide-bioavailability
+- fungal-overgrowth-toxin-production
 linked_to_claims:
 - garlic-allicin-suppresses-h-pylori-and-supports-gut-flora
 - murray-garlic-allicin-standardized-dose
-notes_for_coach: Active anti-H. pylori compound is allicin (released when raw garlic
-  is crushed/chopped). Standardised supplement — 5,000-10,000 mcg allicin potential
-  daily, divided. Whole-food path — 2-3 raw cloves daily (chop, rest 10 min for allicin
-  formation, take with food). Caution — bleeding risk before surgery; GI irritation
-  in some clients; avoid in severe gastritis flare. Strong odor often a turnoff for
+notes_for_coach: |-
+  Active anti-H. pylori compound is allicin (released when raw garlic is
+  crushed/chopped). Standardised supplement — 5,000-10,000 mcg allicin potential daily,
+  divided. Whole-food path — 2-3 raw cloves daily (chop, rest 10 min for allicin
+  formation, take with food). Caution — bleeding risk before surgery; GI irritation in
+  some clients; avoid in severe gastritis flare. Strong odor often a turnoff for
   clients; aged garlic extract is odorless alternative but loses some allicin activity.
+
+  Best used for: Allicin-standardised garlic is best supported for modest BP and
+  cholesterol lowering, with antifungal/antimicrobial use as an adjunct in candida or
+  dysbiosis protocols. Human evidence for eradicating H. pylori is weak — in vitro
+  activity has not translated into reliable eradication.
 notes_for_client: Garlic contains allicin, which fights H. pylori bacteria. Either
   crush 2-3 raw garlic cloves and let rest 10 minutes before eating with food, or
   take a standardised garlic supplement at 5,000-10,000 mcg allicin daily.
@@ -47,6 +55,8 @@ contraindications:
   conditions:
   - bleeding-disorders
   - severe-gastritis-flare
+  - Scheduled surgery or dental extraction — stop concentrated garlic products 7–10 days beforehand
+    (antiplatelet effect, post-operative bleeding reports)
   medications:
   - warfarin
   - antiplatelet-drugs
@@ -65,7 +75,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

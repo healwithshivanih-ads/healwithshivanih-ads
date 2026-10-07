@@ -17,14 +17,22 @@ linked_to_topics:
 - autoimmune-dermatitis
 - atopic-dermatitis
 - ibd
-- autoimmune
+- prediabetes
+linked_to_symptoms:
+- acid-reflux-heartburn
+- elevated-blood-glucose
 linked_to_claims:
 - aloe-vera-repairs-gut-lining
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - murray-topical-aloe-vera-psoriasis
-notes_for_coach: Listed under 'Repair' in PPI tapering protocol. Aloe vera juice/gel
-  may soothe the GI lining. Use decolorized (anthraquinone-free) form to avoid laxative
-  effects.
+notes_for_coach: |-
+  Listed under 'Repair' in PPI tapering protocol. Aloe vera juice/gel may soothe the GI
+  lining. Use decolorized (anthraquinone-free) form to avoid laxative effects.
+
+  Best used for: Decolourised inner-leaf gel has small-trial support for reflux
+  symptoms, mild ulcerative colitis and modest glucose lowering; topical gel for skin.
+  Avoid whole-leaf/latex products (laxative, potassium loss). Not worth it for IBS —
+  trials are mixed.
 rasa:
 - bitter
 - astringent
@@ -47,7 +55,9 @@ ayurvedic_actions:
 - vulnerary
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- gut-lining-support
+- mucosal-inflammation
 notes_for_client: Aloe vera can help soothe and repair the lining of the stomach and
   esophagus during acid reflux recovery.
 sources:
@@ -64,9 +74,22 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - aloe-vera-extract
+contraindications:
+  conditions:
+  - Intestinal obstruction, acute IBD flare, appendicitis or unexplained abdominal pain —
+    for whole-leaf/latex (anthraquinone) forms, a stimulant laxative
+  - Liver disease — case reports of acute hepatitis with oral aloe extracts
+  medications:
+  - Diuretics, digoxin and corticosteroids — latex-induced potassium loss raises hypokalaemia
+    and digoxin toxicity risk
+  - Diabetes medications (insulin, sulfonylureas) — additive glucose lowering
+  - Stimulant laxatives — additive effect with latex-containing products
+  life_stages:
+  - Pregnancy — latex/anthraquinone forms can stimulate uterine contractions
+  - Lactation — anthraquinones pass into breast milk

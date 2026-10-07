@@ -18,15 +18,21 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Supports bone health, testosterone metabolism, and cognition; often
-  overlooked trace mineral in functional protocols.
+notes_for_coach: |-
+  Supports bone health, testosterone metabolism, and cognition; often overlooked trace
+  mineral in functional protocols.
+
+  Best used for: A small, cheap add-on to a bone-health stack (with vitamin D, K2,
+  magnesium and protein) for peri- and postmenopausal women. Human evidence is limited
+  and indirect; it is not a stand-alone osteoporosis treatment.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - osteoporosis
 - bone-health
 - perimenopause-and-menopause
 - menopause
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
 linked_to_claims:
 - murray-boron-bone-vitamin-d-estrogen
 notes_for_client: ''
@@ -37,7 +43,14 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Kidney disease — boron is renally excreted and can accumulate
+  - Hormone-sensitive conditions (ER-positive breast cancer, endometriosis, fibroids) — boron
+    raises circulating estradiol in postmenopausal women
+  medications: []
+  life_stages: []

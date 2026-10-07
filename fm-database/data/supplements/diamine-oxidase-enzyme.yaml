@@ -41,14 +41,21 @@ interactions:
 evidence_tier: plausible_emerging
 linked_to_topics:
 - histamine-intolerance
+- migraine-headache
 linked_to_mechanisms:
 - histamine-metabolism
+- histamine-catabolism-dao
+- diamine-oxidase-deficiency
 sources:
 - id: vinmec
   location: Benefits of DAO Supplements
   quote: DAO supplements are available over-the-counter and aim to restore levels
     of this enzyme.
-version: 2
+version: 3
 status: active
-updated_at: '2024-05-22'
+updated_at: '2026-10-07'
 updated_by: shivani
+linked_to_symptoms:
+- migraine
+- intolerance-fermented-high-histamine-foods
+- histamine-intolerance

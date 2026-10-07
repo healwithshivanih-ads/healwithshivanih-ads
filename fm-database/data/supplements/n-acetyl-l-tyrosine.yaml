@@ -19,8 +19,14 @@ timing_options:
 - with_breakfast
 - with_lunch
 take_with_food: optional
-notes_for_coach: More soluble form of L-Tyrosine; dopamine precursor useful for ADHD,
-  fatigue, and mental performance.
+notes_for_coach: |-
+  More soluble form of L-Tyrosine; dopamine precursor useful for ADHD, fatigue, and
+  mental performance.
+
+  Best used for: Evidence supports L-tyrosine for acute, demanding situations (stress,
+  sleep deprivation, heavy multitasking) rather than chronic daily use. Not shown to
+  help age-related cognitive decline or hypothyroidism, and the N-acetyl form converts
+  to tyrosine less efficiently than plain L-tyrosine.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - cognitive-decline
@@ -28,6 +34,7 @@ linked_to_topics:
 linked_to_mechanisms:
 - dopaminergic-dysfunction
 - neurotransmitter-synthesis-impairment
+- dopamine-norepinephrine-regulation
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -35,7 +42,16 @@ sources:
   location: Page 3 - Supplement Table
   quote: N-Acetyl L-Tyrosine - Focus, dopamine precursor - 350–700 mg/day - With or
     without food
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Hyperthyroidism / Graves' disease — tyrosine is a thyroid hormone precursor; standard
+    monograph caution
+  medications:
+  - MAO inhibitors (e.g., selegiline, phenelzine) — catecholamine precursor; risk of hypertensive
+    reaction
+  - Levodopa — tyrosine competes for the same intestinal/BBB transporter; separate dosing
+  life_stages: []

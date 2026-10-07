@@ -14,11 +14,22 @@ timing_options:
 take_with_food: avoid
 linked_to_topics:
 - diabetic-neuropathy
+- osteoarthritis
+- knee-pain
+linked_to_symptoms:
+- diabetic-nerve-pain
+- joint-pain
 linked_to_claims:
 - capsaicin-topical-relieves-neuropathic-pain-80-percent
-notes_for_coach: Over-the-counter 0.075% cream; apply b.i.d. to affected area (not open wounds). Use gloves/plastic
-  wrap to protect hands. Burning sensation expected initially; consistent daily use required for sustained
-  effect.
+notes_for_coach: |-
+  Over-the-counter 0.075% cream; apply b.i.d. to affected area (not open wounds). Use
+  gloves/plastic wrap to protect hands. Burning sensation expected initially; consistent
+  daily use required for sustained effect.
+
+  Best used for: A topical option for localised nerve pain (diabetic neuropathy) and
+  knee or hand osteoarthritis pain, requiring consistent daily use for 2–4 weeks before
+  benefit. Not for widespread pain, and the initial burning makes adherence the main
+  limit.
 notes_for_client: Capsaicin cream from chilli peppers blocks pain signals in nerves when applied to the
   skin. It works best when used every day.
 evidence_tier: strong
@@ -28,7 +39,13 @@ sources:
   location: Recommendations for Specific Long-Term Complications / Neuropathy
   quote: Topical capsaicin relieves pain of neuropathy in 80% of patients. Apply over-the-counter 0.075%
     capsaicin cream b.i.d. to affected area.
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Broken, irritated or inflamed skin and open wounds — severe burning; avoid contact with
+    eyes and mucous membranes
+  medications: []
+  life_stages: []

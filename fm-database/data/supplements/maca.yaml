@@ -30,36 +30,30 @@ linked_to_topics:
 - perimenopause-and-menopause
 - menopause
 - hpa-axis-cortisol-regulation
+- ssri-induced-sexual-dysfunction
+- sperm-quality
 linked_to_mechanisms: []
-notes_for_coach: 'Adaptogen from the Peruvian Andes. Mechanism distinct from phytoestrogenic
-  herbs —
-
+notes_for_coach: |-
+  Adaptogen from the Peruvian Andes. Mechanism distinct from phytoestrogenic herbs —
   Maca contains no plant estrogens or hormones; its plant sterols stimulate the
-
   HPA axis directly (hypothalamus, pituitary, adrenal). Result: the body produces
-
   more of its own estradiol while cortisol drops.
 
-
   Forms — gelatinized (heat-treated, easier on digestion + more concentrated) preferred
-
   over raw powder for menopausal symptoms. Standardised Maca-GO extract has the most
-
   trial evidence (Meissner 2006).
 
-
   Dose — Maca-GO trial used 2 g/day (1,000 mg × 2). Raw powdered maca trials use
-
   3.5 g/day for 6 weeks. Effects typically appear within 2 months.
 
-
   Multi-symptom — works across hot flushes, insomnia, depression, nervousness,
-
   concentration, sexual dysfunction. Small bone density benefit. Less narrowly
-
   targeted than black cohosh.
 
-  '
+  Best used for: Small trials support it for low libido, including SSRI-related sexual
+  side effects, and possibly for mood and sexual symptoms around menopause; evidence for
+  hot flushes is weak. Gelatinised maca is preferred. Use caution in thyroid clients
+  (raw maca contains glucosinolates) and with hormone-sensitive cancers.
 notes_for_client: 'Maca is a Peruvian root that helps your body make its own estrogen
   rather than
 
@@ -87,7 +81,9 @@ sources:
   quote: Maca can increase the body's production of estrogen — vs. simply adding estrogen
     replacement to the body — and reduce levels of cortisol. The herb appears not
     to contain plant estrogens or hormones.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+linked_to_symptoms:
+- low-libido

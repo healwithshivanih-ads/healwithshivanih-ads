@@ -22,18 +22,27 @@ take_with_food: optional
 linked_to_topics:
 - immune-support
 - immune-support-covid-19
+- common-cold
+linked_to_symptoms:
+- upper-respiratory-infections
 linked_to_claims:
 - elderberry-reduces-upper-respiratory-symptoms
 - elderberry-prevents-and-reduces-influenza-symptoms
-notes_for_coach: Elderberry has the best evidence base of the botanicals in this toolkit
-  for upper respiratory symptoms (Hawkins 2019 meta-analysis). Safe for most adults
-  and children. Caution in severe COVID-19 due to theoretical cytokine-stimulating
-  effects. Standardized extracts preferred.
+notes_for_coach: |-
+  Elderberry has the best evidence base of the botanicals in this toolkit for upper
+  respiratory symptoms (Hawkins 2019 meta-analysis). Safe for most adults and children.
+  Caution in severe COVID-19 due to theoretical cytokine-stimulating effects.
+  Standardized extracts preferred.
+
+  Best used for: Strongest evidence is short-term use at the first sign of a cold or flu
+  to shorten duration and ease symptoms. Not supported as daily year-round prevention,
+  and not a reason to stimulate immunity in clients with active autoimmune disease.
 notes_for_client: Elderberry is a safe and well-researched natural remedy for cold
   and flu symptoms. It works best when taken at the start of illness. Available as
   syrup, capsules, or gummies.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- innate-immune-modulation
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
@@ -43,7 +52,13 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Elderberry is packed with vitamin C, dietary fiber, and antioxidants. It
     has been used extensively in the prevention of influenza.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Immunosuppressants (post-transplant drugs, biologics, high-dose corticosteroids) — elderberry
+    is immunostimulatory and may counteract them
+  life_stages: []

@@ -17,16 +17,27 @@ linked_to_topics:
 - dyslipidemia
 - atherogenic-dyslipidemia
 - familial-hypercholesterolemia
+- cardiovascular-disease-prevention
+linked_to_symptoms:
+- elevated-cholesterol
+- elevated-apob
 linked_to_claims:
 - plant-sterols-2g-reduce-ldl-10pct
 - murray-plant-sterols-2g-ldl-10pct
-notes_for_coach: Effective at 2 g/day with food; additive to diet and statins. Higher
-  doses may reduce carotenoid absorption — ensure adequate fruit/vegetable intake.
-  Best for high cholesterol absorbers (vs. overproducers).
+notes_for_coach: |-
+  Effective at 2 g/day with food; additive to diet and statins. Higher doses may reduce
+  carotenoid absorption — ensure adequate fruit/vegetable intake. Best for high
+  cholesterol absorbers (vs. overproducers).
+
+  Best used for: Raised LDL, especially in clients who absorb a lot of cholesterol, as
+  an add-on taken with meals alongside diet or statins (LDL down roughly 6-12% at
+  studied intakes). LDL lowering is well proven, but no reduction in heart attacks or
+  strokes has been shown, so it complements rather than replaces proven therapy.
 notes_for_client: Plant sterols block cholesterol absorption in the gut and can lower
   LDL by 10–20% when used consistently with meals.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Plant Sterols and Stanols
@@ -34,7 +45,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Sitosterolaemia (phytosterolaemia) — absorbs plant sterols excessively; contraindicated
+  medications: []
+  life_stages:
+  - Pregnancy and lactation — not recommended (EU labelling; lowers carotenoid levels, no
+    benefit shown)
+  - Children under 5 — not recommended (EU labelling)

@@ -21,7 +21,12 @@ notes_for_client: ''
 sources:
 - id: amy-myers-autoimmune-solution
   location: Chapter 7
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-08'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Coconut allergy
+  medications: []
+  life_stages: []

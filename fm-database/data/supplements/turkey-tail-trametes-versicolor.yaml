@@ -31,8 +31,9 @@ linked_to_topics:
   - immune-function
   - gut-health
 linked_to_mechanisms:
-  - chronic-inflammation
-  - microbial-diversity-decline
+- chronic-inflammation
+- microbial-diversity-decline
+- innate-immune-modulation
 linked_to_claims:
   - herbalgram-turkey-tail-psk-cancer-survival
 notes_for_coach: "The PSK (polysaccharide-K) extract from Trametes versicolor is
@@ -55,7 +56,13 @@ sources:
     location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
     quote: "PSK 3g/day adjuvant: meta-analysis 13 clinical trials, 2,587 subjects —
       9% absolute 5-year overall survival benefit. No known herb-drug interactions."
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-07'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy — no safety data
+  - lactation — no safety data

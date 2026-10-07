@@ -12,16 +12,23 @@ take_with_food: required
 linked_to_topics:
 - gut-microbiome
 - gut-dysfunction
+- probiotic-and-prebiotic-support
 linked_to_claims:
 - prebiotic-fiber-feeds-beneficial-bacteria
-notes_for_coach: Cited as a prebiotic supplement source. Feeds beneficial gut bacteria
-  in the colon. Start low and slow to avoid gas/bloating in sensitive individuals.
+notes_for_coach: |-
+  Cited as a prebiotic supplement source. Feeds beneficial gut bacteria in the colon.
+  Start low and slow to avoid gas/bloating in sensitive individuals.
+
+  Best used for: A gentle bifidobacteria-feeding prebiotic for clients whose gut is
+  already settled; start low and build slowly. Not worth using — and often
+  counterproductive — in IBS, SIBO or clients with marked bloating.
 notes_for_client: FOS is a prebiotic fiber that feeds the good bacteria in your gut.
   It's found in foods like garlic, onions, and chicory, and is also available as a
   supplement.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- butyrate-production
 sources:
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Reinoculate
@@ -31,9 +38,15 @@ sources:
   location: The 5R Framework for Gut Restoration
   quote: Another good prebiotic source is a supplement called 'fructo-oligosaccharide'
     or FOS.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - fos-prebiotic-supplement
+contraindications:
+  conditions:
+  - IBS, SIBO or bloating-predominant gut symptoms — FOS is a fructan FODMAP and commonly
+    worsens gas, bloating and pain; avoid during a low-FODMAP phase
+  medications: []
+  life_stages: []

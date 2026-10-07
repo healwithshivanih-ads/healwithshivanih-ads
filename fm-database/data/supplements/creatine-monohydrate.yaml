@@ -33,6 +33,13 @@ notes_for_coach: |-
   Lab note: creatine raises serum creatinine (and so lowers calculated eGFR)
   without harming the kidneys. Ask the client to mention it before kidney tests.
   With existing kidney disease, clear it with the clinician first.
+
+  Best used for: Strongest evidence is for preserving muscle mass and strength in
+  midlife and older adults, including peri/postmenopausal women, when combined with
+  resistance training. Smaller trials support it alongside exercise for glucose control
+  in type 2 diabetes, and as an add-on to SSRI treatment in depression (coordinate with
+  the prescriber). Vegetarians may benefit more because their baseline stores are lower.
+  For muscle goals it works with strength training, not instead of it.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - sarcopenia-skeletal-muscle-loss
@@ -41,12 +48,19 @@ linked_to_topics:
 - comt-slow-catechol-clearance
 - perimenopause
 - menopause
+- type-2-diabetes
+- major-depressive-disorder
 linked_to_symptoms:
 - fatigue
 - muscle-weakness
 - brain-fog
+- decreased-muscle-mass
+- low-lean-muscle-mass
 linked_to_mechanisms:
 - mitochondrial-energy-production
+- sarcopenia
+- skeletal-muscle-glucose-uptake
+- anabolic-resistance-aging
 linked_to_claims:
 - creatine-conserves-same-spares-methylation
 notes_for_client: Creatine is best known for muscle energy, but it also takes pressure
@@ -61,7 +75,15 @@ sources:
   location: Chapter 15 — Supplements for Your Slow COMT
   quote: When you take supplemental creatine, you conserve methyl donors and SAMe,
     leaving your SAMe free for other things, like helping your slow COMT.
-version: 4
+version: 5
 status: active
 updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Pre-existing kidney disease or reduced eGFR — clear with the clinician first; creatine
+    also raises serum creatinine and can falsely lower calculated eGFR
+  - Bipolar disorder — case reports of hypomania/mania switch with creatine (relevant now
+    that a depression link is proposed); clinician to coordinate
+  medications: []
+  life_stages: []

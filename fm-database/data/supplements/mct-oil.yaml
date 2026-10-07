@@ -25,13 +25,21 @@ linked_to_topics:
 linked_to_claims:
 - mct-oil-enhances-brain-ketone-supply-in-cognitive-decline
 - mct-oil-provides-rapid-energy-low-fatigue
-notes_for_coach: Added to smoothies or meals for rapid, clean energy. May also support
-  bowel motility. Start with a small amount (1 tsp) to assess GI tolerance; some people
-  experience loose stools at higher doses.
+notes_for_coach: |-
+  Added to smoothies or meals for rapid, clean energy. May also support bowel motility.
+  Start with a small amount (1 tsp) to assess GI tolerance; some people experience loose
+  stools at higher doses.
+
+  Best used for: Best supported as a ketone source for the brain in mild cognitive
+  impairment / early cognitive decline (small trials, modest effects) and as a tool to
+  ease low-carb adaptation. Evidence for general fatigue or weight loss is weak. Start
+  low and build up slowly to avoid loose stools and GI upset; it is a saturated fat, so
+  watch lipids in clients with dyslipidaemia.
 notes_for_client: MCT oil is a type of fat that your body converts quickly into energy
   — great for a mid-morning boost without the crash you get from caffeine or carbohydrates.
 evidence_tier: fm_specific_thin
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- ketone-metabolism
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
@@ -40,7 +48,7 @@ sources:
   location: Personal Case Study / Diet Section
   quote: Those who are going through a low energy, adding some of the MCT oil gives
     a lot of energy immediately.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani

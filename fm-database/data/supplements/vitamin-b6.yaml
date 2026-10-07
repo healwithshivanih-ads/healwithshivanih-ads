@@ -5,17 +5,24 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: strong
-notes_for_coach: 'Clinical trial used 5 mg/kg body weight — this is a prescription-level dose and must
-  be clinician-supervised. Also lowers homocysteine synergistically with folate. Long-term high-dose B6
-  risk of peripheral neuropathy.
+notes_for_coach: |-
+  Clinical trial used 5 mg/kg body weight — this is a prescription-level dose and must
+  be clinician-supervised. Also lowers homocysteine synergistically with folate.
+  Long-term high-dose B6 risk of peripheral neuropathy.
 
+  MERGED 2026-08-02: vitamin-b6-pyridoxine, pyridoxine-b6 and vitamin-b6-b12 were
+  duplicate entries for this same compound and have been merged in; all three survive as
+  aliases so existing plan and catalogue references still resolve. Pyridoxal-5-phosphate
+  (P5P) is deliberately kept as a SEPARATE entry — it is the active coenzyme form, the
+  same reasoning that keeps folate and methylfolate separate. SAFETY: pyridoxine
+  neuropathy is dose-dependent and presents as hand numbness/tingling that can be
+  mistaken for the very symptom being treated; do not escalate above the stated range.
 
-  MERGED 2026-08-02: vitamin-b6-pyridoxine, pyridoxine-b6 and vitamin-b6-b12 were duplicate entries for
-  this same compound and have been merged in; all three survive as aliases so existing plan and catalogue
-  references still resolve. Pyridoxal-5-phosphate (P5P) is deliberately kept as a SEPARATE entry — it
-  is the active coenzyme form, the same reasoning that keeps folate and methylfolate separate. SAFETY:
-  pyridoxine neuropathy is dose-dependent and presents as hand numbness/tingling that can be mistaken
-  for the very symptom being treated; do not escalate above the stated range.'
+  Best used for: Best evidence is for PMS (especially premenstrual mood and
+  irritability) and for lowering homocysteine alongside folate and B12. Nausea of
+  pregnancy is a use only under the obstetrician's guidance. Keep long-term doses
+  modest, because high-dose B6 can cause the very tingling and numbness it is sometimes
+  taken for. Not worth high doses for general stress or energy.
 notes_for_client: B6 may help lower blood pressure by calming the nervous system and reducing stress hormones.
   Discuss dosing with your healthcare provider.
 timing_options:
@@ -32,16 +39,11 @@ linked_to_topics:
 - hpa-axis-dysregulation
 - emotional-healing-in-chronic-disease
 - nervous-system-regulation
-- mthfr-polymorphisms
-- methylation-cycle
-- hyperhomocysteinemia
 - atherosclerosis
 - diabetic-neuropathy
-- type-2-diabetes-mellitus
 - essential-hypertension
 - premenstrual-syndrome
 - chronic-inflammation
-- mthfr-gene-variant
 - homocysteine-and-methylation
 - methylation
 - carpal-tunnel-syndrome
@@ -49,6 +51,8 @@ linked_to_topics:
 - drug-induced-nutrient-depletion-cardiovascular
 linked_to_mechanisms:
 - elevated-homocysteine
+- transsulfuration-pathway
+- neurotransmitter-synthesis-impairment
 typical_dose_range:
   capsule:
     min: 25
@@ -58,6 +62,10 @@ typical_dose_range:
     min: 25
     max: 200
     unit: mg
+linked_to_symptoms:
+- pms
+- premenstrual-mood-changes
+- elevated-homocysteine
 linked_to_claims:
 - vitamin-b6-folate-support-serotonin-gaba
 - b6-folate-support-serotonin-gaba-synthesis
@@ -107,10 +115,10 @@ sources:
   location: Carpal Tunnel Syndrome — Supplements
   quote: 'Pyridoxine: 50 to 200 mg q.d. in divided doses of 25 to 50 mg b.i.d. to q.i.d. If no response
     to pyridoxine, try P5P: 10 mg b.i.d. to q.i.d.'
-version: 9
+version: 10
 status: active
-updated_at: '2026-08-02'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - pyridoxine-b6
 - vitamin-b6-b12
@@ -118,3 +126,11 @@ aliases:
 cycle_phases:
 - early_luteal
 - late_luteal
+contraindications:
+  conditions:
+  - existing peripheral neuropathy — pyridoxine above ~50–100 mg/day long-term can cause or
+    worsen sensory neuropathy
+  medications:
+  - levodopa (without carbidopa) — pyridoxine reduces its effect
+  - phenytoin and phenobarbital — high-dose B6 can lower anticonvulsant levels
+  life_stages: []

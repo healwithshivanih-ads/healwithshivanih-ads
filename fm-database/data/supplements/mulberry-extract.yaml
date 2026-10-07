@@ -15,23 +15,42 @@ timing_options:
 - with_dinner
 take_with_food: required
 linked_to_topics:
-- type-2-diabetes-mellitus
+- type-2-diabetes
+- prediabetes
+- insulin-resistance
+linked_to_symptoms:
+- elevated-blood-glucose
 linked_to_claims:
 - mulberry-superior-to-glyburide-fasting-glucose
-notes_for_coach: Alpha-glucosidase inhibitor; 1000 mg dried leaf equivalent t.i.d.
-  with meals at Level 2 T2DM. Also antioxidant — reduces RBC membrane lipid peroxidation.
-  Monitor glucose when combining with insulin/sulfonylureas.
+notes_for_coach: |-
+  Alpha-glucosidase inhibitor; 1000 mg dried leaf equivalent t.i.d. with meals at Level
+  2 T2DM. Also antioxidant — reduces RBC membrane lipid peroxidation. Monitor glucose
+  when combining with insulin/sulfonylureas.
+
+  Best used for: Best evidence is for flattening post-meal glucose spikes when taken
+  just before carbohydrate-containing meals, in prediabetes, insulin resistance and type
+  2 diabetes. Not useful taken away from food or for clients without a glycaemic issue;
+  can cause bloating/flatulence like acarbose.
 notes_for_client: Mulberry leaf blocks the enzyme that converts starchy food into
   glucose, helping to flatten blood sugar spikes after meals.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- postprandial-glucose-spike
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Nutritional and Herbal Supplements / Mulberry plant
   quote: Mulberry lowers fasting glucose 27% in diabetics; no significant differences
     were observed in the blood glucose between before and after glyburide. Mulberry
     is superior to glyburide.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Insulin and sulfonylureas (glimepiride, gliclazide, glyburide) — additive glucose lowering;
+    risk of hypoglycaemia, monitor glucose
+  - Acarbose / voglibose — same alpha-glucosidase mechanism; additive GI effects and glucose
+    lowering
+  life_stages: []

@@ -19,18 +19,26 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Resveratrol has poor bioavailability; trans-resveratrol or liposomal forms are preferred. Evidence for antiviral
-  effects is largely preclinical. May interact with anticoagulants (warfarin), antiplatelet drugs, and some chemotherapy agents.
-  Caution in pregnancy (Roberts et al. 2014 FASEB J adverse outcomes in primates).
+notes_for_coach: |-
+  Resveratrol has poor bioavailability; trans-resveratrol or liposomal forms are
+  preferred. Evidence for antiviral effects is largely preclinical. May interact with
+  anticoagulants (warfarin), antiplatelet drugs, and some chemotherapy agents. Caution
+  in pregnancy (Roberts et al. 2014 FASEB J adverse outcomes in primates).
+
+  Best used for: Modest human evidence: small improvements in insulin sensitivity in
+  type 2 diabetes and lower testosterone/insulin in PCOS (one RCT at high dose). Poorly
+  absorbed; low priority versus diet, inositol or berberine, and not worth it for
+  'immune' or antiviral use where data are preclinical.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - inflammation
-- hpa-axis-dysregulation
 - chronic-inflammation
 - autoimmune-disease
 - immune-support
 - immune-support-covid-19
-linked_to_mechanisms: []
+- insulin-resistance
+linked_to_mechanisms:
+- ampk-activation
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - quercetin-boswellia-resveratrol-anti-inflammatory
@@ -56,7 +64,17 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Resveratrol, a natural compound found in red grapes, has many beneficial health effects and has been shown in the
     lab to attack a relative of the COVID-19 virus.
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Bleeding disorders or surgery within 2 weeks — antiplatelet effect
+  medications:
+  - Anticoagulants and antiplatelet drugs (warfarin, clopidogrel, aspirin) — additive bleeding
+    risk
+  - CYP3A4/CYP2C9 substrates with narrow therapeutic range (e.g. some calcium-channel blockers,
+    cyclosporine) — resveratrol inhibits these enzymes
+  life_stages:
+  - Pregnancy — adverse fetal pancreatic findings in primate studies (noted in coach notes)

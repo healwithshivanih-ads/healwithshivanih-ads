@@ -31,9 +31,16 @@ linked_to_claims:
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - 5rs-repair-includes-l-glutamine
 - vitamin-a-protective-chronic-gastric-ulcer
-notes_for_coach: 'High-dose vitamin A cited for chronic GU protection. CRITICAL: teratogenic
-  — use beta-carotene if pregnancy is possible (explicitly stated in treatment algorithm).
-  Therapeutic dose supervision required.'
+notes_for_coach: |-
+  High-dose vitamin A cited for chronic GU protection. CRITICAL: teratogenic — use
+  beta-carotene if pregnancy is possible (explicitly stated in treatment algorithm).
+  Therapeutic dose supervision required.
+
+  Best used for: Useful mainly where intake or absorption is genuinely low (fat
+  malabsorption, pancreatic insufficiency, very restricted diets). Food sources and
+  beta-carotene are the safer default; supplemental retinol needs a clear reason and
+  supervision, and should not be used by anyone who is pregnant or could become
+  pregnant.
 notes_for_client: Vitamin A supports the lining of your stomach. If there's any chance
   you could be pregnant, use beta-carotene instead — high-dose vitamin A is not safe
   in pregnancy.
@@ -51,7 +58,8 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mucosal-immune-dysfunction
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 7
@@ -89,9 +97,18 @@ sources:
   quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help
     maintain integrity of mucosal barrier. High-dose vitamin A may have a useful protective
     effect on chronic GUs.'
-version: 11
+version: 12
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - vitamin a 2000 iu
+contraindications:
+  conditions:
+  - chronic liver disease or heavy alcohol use — retinol hepatotoxicity
+  - osteoporosis — chronic high retinol intake associated with fracture risk
+  medications:
+  - isotretinoin, acitretin or other oral retinoids — additive toxicity
+  life_stages:
+  - pregnancy and women who may conceive — high-dose retinol is teratogenic (notes say this,
+    but it is not in the structured list)

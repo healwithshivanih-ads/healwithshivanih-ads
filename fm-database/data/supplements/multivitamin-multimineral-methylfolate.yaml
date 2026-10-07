@@ -14,8 +14,11 @@ timing_options:
 - with_lunch
 take_with_food: required
 linked_to_topics:
-- mthfr-methylation
 - clean-genes-protocol
+- methylation
+- homocysteine-and-methylation
+linked_to_symptoms:
+- elevated-homocysteine
 linked_to_claims:
 - methylfolate-preferred-over-folic-acid
 - b-vitamins-stimulating-near-bedtime
@@ -27,14 +30,26 @@ notes_for_client: Look for 'methylfolate' or '5-MTHF' on the label, not 'folic a
   Take with breakfast or lunch only — never at night. Start with a quarter of the
   suggested dose.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mthfr-enzyme-dysfunction
+- elevated-homocysteine
 sources:
 - id: dirty-genes-lynch
   location: Supplements — Multivitamin, Week 1
   quote: choose a multivitamin with methylfolate and folinic acid, which are the best
     forms of supplemental folate available. Iron can be inflammatory, so ideally find
     a multi without iron.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Haemochromatosis / iron overload — use an iron-free formula
+  medications:
+  - Levothyroxine — minerals (calcium/iron/magnesium) bind thyroxine; separate by at least
+    4 hours
+  - Quinolone and tetracycline antibiotics — mineral chelation; separate by 2–6 hours
+  - Warfarin — formulas containing vitamin K can alter INR; keep intake consistent and inform
+    prescriber
+  life_stages: []

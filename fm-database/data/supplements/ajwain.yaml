@@ -30,14 +30,29 @@ linked_to_topics:
 - asthma
 - chronic-inflammation
 - gut-dysfunction
-notes_for_coach: 'Latin: Apium graveolens; Umbelliferae. Sanskrit: Ajamoda. Traditional indications: colds,
-  flus, laryngitis, bronchitis, asthma, cough, colic, indigestion, edema, arthritis. Precautions: hyperacidity,
-  high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Apium graveolens; Umbelliferae. Sanskrit: Ajamoda. Traditional indications:
+  colds, flus, laryngitis, bronchitis, asthma, cough, colic, indigestion, edema,
+  arthritis. Precautions: hyperacidity, high Pitta. Ayurvedic energetics from The Yoga
+  of Herbs (Frawley & Lad).
+
+  Best used for: Culinary/traditional carminative for gas and sluggish digestion; human
+  evidence is thin. Fine as a kitchen remedy (ajwain water after heavy meals), not a
+  supplement to rely on for a diagnosed GI condition.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — AJWAN
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- flatulence
+contraindications:
+  conditions:
+  - Active GERD, peptic ulcer or hyperacidity — heating/pungent, can aggravate (noted as Pitta
+    precaution in source)
+  medications: []
+  life_stages:
+  - Pregnancy — medicinal (non-culinary) doses; traditionally used as an emmenagogue

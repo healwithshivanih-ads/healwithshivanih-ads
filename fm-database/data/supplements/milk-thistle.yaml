@@ -20,27 +20,27 @@ timing_options:
 - with_dinner
 - morning
 take_with_food: optional
-notes_for_coach: 'Supports hepatocyte repair and liver detoxification — useful for Candida
-  die-off reactions and sluggish bile. 200-400mg/day of standardized silymarin extract. Best
-  choice if diabetic patient shows impaired liver function (common in overweight diabetics
-  with fatty liver). Important given high-dose niacin liver risk and fatty liver prevalence.
-  Source (IFM Fig 3.5) names silymarin as an antioxidant protective
-
+notes_for_coach: |-
+  Supports hepatocyte repair and liver detoxification — useful for Candida die-off
+  reactions and sluggish bile. 200-400mg/day of standardized silymarin extract. Best
+  choice if diabetic patient shows impaired liver function (common in overweight
+  diabetics with fatty liver). Important given high-dose niacin liver risk and fatty
+  liver prevalence. Source (IFM Fig 3.5) names silymarin as an antioxidant protective
   plant derivative buffering Phase 1 intermediates but does NOT give
-
   dosing. Silymarin is the standardized flavonoid complex (silybin,
-
   silydianin, silychristin) from Silybum marianum (milk thistle seed).
-
   Hepatoprotective via glutathione preservation, membrane stabilization,
-
   and antioxidant activity. Standardized extracts (typically 70-80%
-
   silymarin) are preferred; bioavailability is improved with
+  phosphatidylcholine-complexed forms (silybin-phytosome). Listed as a Phase I
+  antioxidant protective nutrient in the document's detox diagram. Specific doses not
+  provided — verify with clinician. Well-known hepatoprotective herb in functional
+  medicine.
 
-  phosphatidylcholine-complexed forms (silybin-phytosome). Listed as a Phase I antioxidant
-  protective nutrient in the document''s detox diagram. Specific doses not provided — verify
-  with clinician. Well-known hepatoprotective herb in functional medicine.'
+  Best used for: Strongest human evidence is modest improvement in liver enzymes in
+  fatty liver (NAFLD), and as an adjunct in type 2 diabetes with fatty liver. Trials in
+  viral hepatitis were negative. Not worth adding for thyroid or adrenal goals without a
+  liver indication.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -63,6 +63,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - phase-1-biotransformation
+- glutathione-depletion
+- hepatic-insulin-sensitivity
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
 - estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
@@ -117,9 +119,9 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Phase 1 and Phase 2 Detoxification
   quote: Silymarin
-version: 12
+version: 13
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution
@@ -129,3 +131,9 @@ aliases:
 - milk-thistle-extract-diabetes
 - silymarin
 - silymarin-milk-thistle
+contraindications:
+  conditions:
+  - Allergy to Asteraceae/daisy family (ragweed, marigold, chamomile) — cross-reactivity
+  medications:
+  - Diabetes medications — silymarin lowers glucose in T2D trials; monitor for additive hypoglycaemia
+  life_stages: []

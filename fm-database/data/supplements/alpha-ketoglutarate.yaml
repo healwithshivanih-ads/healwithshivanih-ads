@@ -30,18 +30,22 @@ linked_to_topics:
 linked_to_mechanisms:
 - dna-methylation-adaptogen-rebalancing
 - methylation-cycle
-notes_for_coach: Listed by Fitzgerald among the nutrient-class DNA methylation adaptogens
-  — a required cofactor for the TET demethylase enzymes that actively remove errant
-  methyl marks, and an emerging longevity supplement. Evidence is largely animal/cell;
-  treat as plausible-emerging, food-and-lifestyle first. Endogenous to the citric-acid
-  cycle.
+notes_for_coach: |-
+  Listed by Fitzgerald among the nutrient-class DNA methylation adaptogens — a required
+  cofactor for the TET demethylase enzymes that actively remove errant methyl marks, and
+  an emerging longevity supplement. Evidence is largely animal/cell; treat as
+  plausible-emerging, food-and-lifestyle first. Endogenous to the citric-acid cycle.
+
+  Best used for: No human outcome trials — evidence is animal/cell and one uncontrolled
+  epigenetic-age study. Not worth recommending to clients; food, sleep and exercise come
+  first.
 sources:
 - id: fitzgerald-younger-you-2022
   location: Ch 3 — nutrient adaptogens (vitamins A, C, D3, alpha-ketoglutarate)
   quote: 'for the nutrients: vitamins A, C, and D3, and alpha ketoglutarate... the
     nutrients help actively remove unfavorable methylation marks.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-04'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 evidence_tier: plausible_emerging

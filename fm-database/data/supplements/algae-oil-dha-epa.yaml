@@ -20,25 +20,43 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - omega-3-fatty-acids
+- dyslipidemia
+- omega-3-omega-6-balance
+linked_to_symptoms:
+- elevated-triglycerides
 linked_to_claims:
 - algae-oil-is-vegan-alternative-to-fish-oil
 - dha-retro-converts-to-epa
-notes_for_coach: Ideal for vegan or vegetarian clients. Derived from Schizochytrium
-  species of marine microalgae — the same primary source that fish bioaccumulate.
-  Some brands contain low EPA as well as DHA. DHA can retro-convert to EPA in the
-  body. Verify EPA content on the supplement label.
+notes_for_coach: |-
+  Ideal for vegan or vegetarian clients. Derived from Schizochytrium species of marine
+  microalgae — the same primary source that fish bioaccumulate. Some brands contain low
+  EPA as well as DHA. DHA can retro-convert to EPA in the body. Verify EPA content on
+  the supplement label.
+
+  Best used for: The go-to omega-3 for vegetarian/vegan clients who will not take fish
+  oil; good for low omega-3 index, raised triglycerides and general cardiometabolic
+  support. TG lowering needs gram-level doses — 200-500 mg capsules are maintenance
+  only.
 notes_for_client: If you avoid fish, algae-based omega-3 oil is a clean, sustainable,
   and effective alternative to fish oil. It provides DHA (and sometimes EPA) directly
   without the mercury concern.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- epa-dha-cell-membrane-incorporation
+- omega-3-omega-6-imbalance
+- resolvin-spm-production
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Omega-3 Sources for Vegans Slide
   quote: there's a new dietary supplement with omega-3 oil derived straight from marine
     alga called as schizocytrium species. Freshwater microalgae can completely replace
     taking of fish oil if someone is a vegan.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Anticoagulants/antiplatelets at doses above ~3 g/day EPA+DHA — additive bleeding tendency
+  life_stages: []

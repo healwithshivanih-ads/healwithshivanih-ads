@@ -5,8 +5,15 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: Methylfolate is the active form; preferred over folic acid especially in MTHFR polymorphism. Critical for
-  methylation, neurotransmitter synthesis, and myelin integrity. Clinician should assess MTHFR status and B12 levels.
+notes_for_coach: |-
+  Methylfolate is the active form; preferred over folic acid especially in MTHFR
+  polymorphism. Critical for methylation, neurotransmitter synthesis, and myelin
+  integrity. Clinician should assess MTHFR status and B12 levels.
+
+  Best used for: Best when homocysteine is raised, in MTHFR variants or folate
+  deficiency, and as a prescriber-guided adjunct in antidepressant-resistant depression
+  (L-methylfolate). Not needed by clients with normal folate and homocysteine; always
+  check or co-supplement B12.
 notes_for_client: Folate (especially as methylfolate) helps your brain produce mood-regulating chemicals and supports nervous
   system health. Most people do well with the active methylfolate form.
 timing_options:
@@ -17,9 +24,12 @@ linked_to_topics:
 - drug-induced-nutrient-depletion
 - cardiovascular-dysfunction
 - vitamin-b-complex-deficiency
-- mitochondrial-health-nutrition
 - emotional-healing-in-chronic-disease
 - nervous-system-regulation
+- methylation
+- homocysteine-and-methylation
+linked_to_symptoms:
+- elevated-homocysteine
 linked_to_claims:
 - high-homocysteine-triples-heart-attack-risk
 - metformin-depletes-b12-folate-coq10
@@ -29,6 +39,9 @@ linked_to_claims:
 - b6-folate-support-serotonin-gaba-synthesis
 linked_to_mechanisms:
 - elevated-homocysteine
+- methylation-cycle-disruption
+- mthfr-enzyme-dysfunction
+- impaired-folate-to-5-mthf-conversion
 typical_dose_range:
   capsule:
     min: 400
@@ -49,7 +62,18 @@ sources:
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
   quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS, mood swings, chronic anxiety.'
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Untreated or unconfirmed B12 deficiency / pernicious anaemia — folate (especially >1 mg/day)
+    can correct the anaemia and mask B12 deficiency while nerve damage progresses; check B12
+    first or co-supplement
+  medications:
+  - Methotrexate used for cancer — folate can blunt its effect (low-dose folate alongside
+    RA/psoriasis methotrexate is usually prescribed deliberately; leave that to the prescriber)
+  - Phenytoin, phenobarbital, primidone and other enzyme-inducing anticonvulsants — folate
+    supplementation can lower drug levels and seizure control; prescriber should monitor
+  life_stages: []

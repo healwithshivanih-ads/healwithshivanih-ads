@@ -54,13 +54,14 @@ linked_to_topics:
   - sarcopenia-skeletal-muscle-loss
   - heavy-metal-toxicity
 linked_to_mechanisms:
-  - oxidative-stress
-  - mitochondrial-dysfunction
+- oxidative-stress
+- bone-resorption-formation-imbalance
 linked_to_symptoms:
-  - fatigue
-  - fatigue-from-low-testosterone
-  - low-libido
-  - muscle-weakness
+- fatigue-from-low-testosterone
+- low-libido
+- muscle-weakness
+- low-testosterone-symptoms
+- decreased-bone-mineral-density
 linked_to_claims:
   - shilajit-raises-testosterone-middle-aged-men
   - shilajit-attenuates-postmenopausal-bone-loss
@@ -106,7 +107,7 @@ sources:
     location: Abstract / results
   - id: kamgar-shilajit-metal-composition-2026
     location: Abstract / results
-version: 1
+version: 2
 status: active
-updated_at: 2026-08-09
+updated_at: '2026-10-07'
 updated_by: shivani

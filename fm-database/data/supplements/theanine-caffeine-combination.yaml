@@ -57,8 +57,12 @@ contraindications:
   - panic disorder
   - cardiac arrhythmia
   - palpitations
+  - uncontrolled hypertension — caffeine acutely raises blood pressure, more so in caffeine-naive
+    clients
   medications:
   - pseudoephedrine
+  - clozapine — caffeine competes for CYP1A2 and can raise clozapine levels; changes in caffeine
+    intake destabilise dosing
   life_stages:
   - pregnancy
   - lactation
@@ -83,17 +87,19 @@ interactions:
       for an iron-deficient client, who should keep it clear of iron-rich meals and any iron supplement.
 linked_to_topics:
 - cognitive-decline
-- hpa-axis-dysregulation
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_symptoms:
+- poor-concentration
 linked_to_claims: []
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — nootropic combinations
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-08-04
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 notes_for_client: 'Steady alertness without the jitter or the crash of coffee alone.
 
   Mornings only — later in the day it sits on your sleep.'

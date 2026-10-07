@@ -5,8 +5,15 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Contains reserpine-like alkaloids with antihypertensive
-  properties. This is a potent herb; use only under direct clinician supervision. Out of coaching scope for specific dosing.
+notes_for_coach: |-
+  Listed as nutraceutical support during beta blocker tapering. Contains reserpine-like
+  alkaloids with antihypertensive properties. This is a potent herb; use only under
+  direct clinician supervision. Out of coaching scope for specific dosing.
+
+  Best used for: Contains reserpine, a prescription-strength blood-pressure drug; any
+  use belongs to a supervising clinician, typically within a medically managed
+  antihypertensive plan. Not a coach-recommended supplement, and unsafe with a history
+  of depression.
 notes_for_client: Rauwolfia is a traditional botanical used for blood pressure support. It should only be used under the direct
   supervision of your clinician.
 timing_options:
@@ -26,9 +33,23 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients — Supplement Schedule'
   quote: Rauwolfia serpentine
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - rauwolfia-serpentine
+contraindications:
+  conditions:
+  - History of depression or suicidal ideation — reserpine can cause severe depression
+  - Active peptic ulcer or ulcerative colitis — increases gastric acid and GI motility
+  - Parkinson's disease — dopamine depletion worsens symptoms
+  medications:
+  - MAO inhibitors — risk of excitation and hypertensive reaction
+  - Other antihypertensives and beta-blockers — additive hypotension and bradycardia
+  - Digoxin and antiarrhythmics — increased arrhythmia/bradycardia risk
+  - Levodopa — reserpine opposes its effect
+  - Antidepressants (SSRIs, TCAs) — additive CNS/mood effects; avoid unsupervised
+  life_stages:
+  - Pregnancy — reserpine crosses the placenta (neonatal respiratory and nasal congestion)
+  - Breastfeeding — passes into breast milk

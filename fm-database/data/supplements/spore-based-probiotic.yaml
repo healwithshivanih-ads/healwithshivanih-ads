@@ -20,6 +20,9 @@ linked_to_topics:
 - chronic-inflammation
 - autoimmunity-leaky-gut-triad
 - immune-support
+- ibs
+linked_to_symptoms:
+- ibs-diarrhea-predominant
 linked_to_claims:
 - spore-based-probiotic-6-9-month-protocol-dysbiosis
 - spore-based-probiotics-can-change-gut-lining-long-term
@@ -34,6 +37,7 @@ notes_for_client: Spore-based probiotics are more resilient than regular probiot
 evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - leaky-gut
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: coconote-fm-approach-inflammation
   location: Probiotics – Spore-Based Probiotic
@@ -48,9 +52,15 @@ sources:
   location: Page 1 - Supplement Table
   quote: Probiotic (Spore-based) - Gut health, microbiome balance - 4-10 billion CFU/day -
     Empty stomach or before meal
-version: 3
+version: 4
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - probiotic-spore-based
+contraindications:
+  conditions:
+  - severely immunocompromised, critically ill or with central venous catheters (rare Bacillus
+    bacteraemia reports)
+  medications: []
+  life_stages: []

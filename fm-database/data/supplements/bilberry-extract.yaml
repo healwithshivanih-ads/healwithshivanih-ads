@@ -17,12 +17,20 @@ take_with_food: optional
 linked_to_topics:
 - diabetic-retinopathy
 - type-1-diabetes-mellitus
-- type-2-diabetes-mellitus
+linked_to_symptoms:
+- eye-strain
 linked_to_claims:
 - bilberry-retinopathy-cataracts
-notes_for_coach: Best flavonoid choice for retinopathy or cataracts. Inhibits aldose
-  reductase and improves ocular microcirculation. 25% anthocyanidin standardisation
-  required.
+notes_for_coach: |-
+  Best flavonoid choice for retinopathy or cataracts. Inhibits aldose reductase and
+  improves ocular microcirculation. 25% anthocyanidin standardisation required.
+
+  Best used for: Modest evidence from small trials for screen-related eye fatigue and as
+  an adjunct in early diabetic retinopathy, using an extract standardised for
+  anthocyanins. Cataract and macular-degeneration claims rest on weak or
+  combination-product data, and 'night vision' claims failed controlled trials. It is
+  not a blood-sugar supplement. High-dose extract has antiplatelet activity, so check
+  with the client's doctor if they take blood thinners or have a bleeding disorder.
 notes_for_client: Bilberry is the top choice for protecting eyesight in diabetes —
   its anthocyanidins target the exact mechanism that damages retinal blood vessels.
 evidence_tier: plausible_emerging
@@ -46,7 +54,7 @@ sources:
     very high doses should be used cautiously in patients with haemorrhagic disorders.
     If diarrhoea persists more than 3–4 days or is associated with abdominal pain or
     rectal bleeding, consult a health-care professional.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-07-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

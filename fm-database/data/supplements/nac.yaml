@@ -28,15 +28,21 @@ timing_options:
 - mid_morning
 - evening
 take_with_food: optional
-notes_for_coach: 'NAC is a glutathione precursor used in antioxidant protocols for
-  male fertility and immune support. Part of antioxidant rotation strategy for sperm
-  DNA protection. Dosing requires clinician direction. Mucolytic dosing runs lower:
-  200 mg t.i.d. for sinusitis/bronchitis (intranasal use is a 10% solution diluted
-  with saline and sodium bicarbonate — clinician-directed only). Also used in ADHD
-  detox protocol (Step 3). CAUTION — NAC is a sulfur-containing supplement: Lynch
-  warns it can worsen symptoms in clients with microbiome-driven hydrogen sulfide
-  excess or sulfur intolerance (rotten-egg body odour, loose stool from cruciferous
-  veg). Not appropriate for those clients; clinician guidance before initiating.'
+notes_for_coach: |-
+  NAC is a glutathione precursor used in antioxidant protocols for male fertility and
+  immune support. Part of antioxidant rotation strategy for sperm DNA protection. Dosing
+  requires clinician direction. Mucolytic dosing runs lower: 200 mg t.i.d. for
+  sinusitis/bronchitis (intranasal use is a 10% solution diluted with saline and sodium
+  bicarbonate — clinician-directed only). Also used in ADHD detox protocol (Step 3).
+  CAUTION — NAC is a sulfur-containing supplement: Lynch warns it can worsen symptoms in
+  clients with microbiome-driven hydrogen sulfide excess or sulfur intolerance
+  (rotten-egg body odour, loose stool from cruciferous veg). Not appropriate for those
+  clients; clinician guidance before initiating.
+
+  Best used for: Strongest human evidence is for chronic bronchitis/COPD (fewer
+  exacerbations, thinner mucus), PCOS ovulation (often with clomiphene) and male
+  fertility sperm parameters; smaller trials in NAFLD. It is not worth using as a
+  generic 'detox' supplement, and should be avoided in clients with sulfur intolerance.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -47,7 +53,6 @@ linked_to_topics:
 - autoimmune
 - nafld
 - liver-detoxification
-- methylation-mthfr
 - heavy-metal-toxicity
 - low-carb-diet
 - candida-overgrowth
@@ -61,8 +66,15 @@ linked_to_topics:
 - detoxification
 - bacterial-sinusitis
 - gst-gpx-glutathione-detox
+- copd
+- pcos-fertility
 linked_to_mechanisms:
 - phase-2-conjugation
+- glutathione-depletion
+- oxidative-stress
+- glutathione-conjugation
+linked_to_symptoms:
+- chronic-cough
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
 - nac-boosts-glutathione-phase-ii-detox-estrogen
@@ -160,9 +172,9 @@ sources:
   location: Chapter 9 — Balancing Your Sulfur
   quote: Cut back on any sulfur-based supplements you're taking, such as MSM (methylsulfonylmethane)
     or NAC (N-acetyl cysteine).
-version: 11
+version: 12
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution
@@ -174,3 +186,9 @@ aliases:
 - n-acetylcysteine
 - n-acetyl-cysteine
 - acetylcysteine
+contraindications:
+  conditions: []
+  medications:
+  - Nitroglycerin / nitrates — NAC potentiates nitrate vasodilation; risk of severe hypotension
+    and headache
+  life_stages: []

@@ -16,18 +16,26 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - chronic-inflammation
-- fasting-immune-health
 - anxiety
 - chronic-stress
 - hpa-axis-cortisol-regulation
+linked_to_symptoms:
+- burnout
+- fatigue
 linked_to_claims:
 - murray-adaptogens-anxiety-mild-moderate
-notes_for_coach: Stimulating adaptogen — best taken in the morning. May worsen insomnia
-  if taken late. Useful in fatigue-dominant presentations with stress axis involvement.
+notes_for_coach: |-
+  Stimulating adaptogen — best taken in the morning. May worsen insomnia if taken late.
+  Useful in fatigue-dominant presentations with stress axis involvement.
+
+  Best used for: Best evidence is for stress-related fatigue and burnout; data for
+  concentration and mood are small and inconsistent. Take in the morning; avoid in
+  bipolar disorder, and it can worsen insomnia or anxiety in already-wired clients.
 notes_for_client: Rhodiola is an energizing adaptogen best taken in the morning to
   support your stress response and reduce fatigue.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- hpa-axis-dysregulation
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
@@ -57,9 +65,9 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution
@@ -68,3 +76,8 @@ pregnancy_safety_note: Insufficient pregnancy safety data; use only with clinici
 aliases:
 - rhodiola-rosea
 - rhodiola 200-600mg
+contraindications:
+  conditions:
+  - Bipolar disorder — stimulating/antidepressant adaptogen; risk of triggering hypomania
+  medications: []
+  life_stages: []

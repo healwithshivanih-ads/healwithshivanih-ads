@@ -11,6 +11,8 @@ take_with_food: optional
 linked_to_topics:
 - cardiovascular-risk-assessment
 - hypertension
+- insulin-resistance
+- type-2-diabetes
 linked_to_claims:
 - cholesterol-not-primary-driver-of-cvd
 - fm-intervention-improved-insulin-resistance-lipids-homocysteine
@@ -23,12 +25,21 @@ notes_for_client: Magnesium is essential for healthy blood pressure, muscle rela
   continued as a maintenance supplement after your other markers improved.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance-magnesium
+- vascular-smooth-muscle-dysregulation
 sources:
 - id: vitaone-cvs-risk-assessment
   location: After 10 months (Slide 26)
   quote: Continue with maintenance dose of B vitamins and Magnesium
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Severe renal impairment — risk of hypermagnesaemia
+  medications:
+  - Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine — magnesium
+    chelates them and cuts their absorption; separate by at least 2-4 hours
+  life_stages: []

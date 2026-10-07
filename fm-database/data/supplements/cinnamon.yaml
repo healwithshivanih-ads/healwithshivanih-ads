@@ -32,17 +32,44 @@ linked_to_topics:
 - digestion-and-nutrient-absorption
 - blood-sugar-regulation
 - sinusitis
-notes_for_coach: 'Latin: Cinnamomum zeylanicum; Lauraceae. Sanskrit: Twak. Traditional indications: colds,
-  sinus congestion, bronchitis, dyspepsia. Precautions: high Pitta, bleeding disorders. Ayurvedic energetics
-  from The Yoga of Herbs (Frawley & Lad).'
+- type-2-diabetes
+- insulin-resistance
+- pcos
+- prediabetes
+- dyslipidemia
+notes_for_coach: |-
+  Latin: Cinnamomum zeylanicum; Lauraceae. Sanskrit: Twak. Traditional indications:
+  colds, sinus congestion, bronchitis, dyspepsia. Precautions: high Pitta, bleeding
+  disorders. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Small benefits for fasting glucose and insulin resistance in type 2
+  diabetes, prediabetes and insulin-resistant PCOS, and small falls in triglycerides and
+  cholesterol; HbA1c results are inconsistent. An add-on to diet, not a replacement for
+  medication. Most trials used cassia; for regular supplemental use choose Ceylon
+  cinnamon, because cassia's coumarin can harm the liver.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CINNAMON
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 cycle_phases:
 - early_luteal
 - late_luteal
+linked_to_symptoms:
+- elevated-blood-glucose
+linked_to_mechanisms:
+- insulin-resistance
+- postprandial-glucose-spike
+contraindications:
+  conditions:
+  - Liver disease — cassia cinnamon is high in coumarin, which is hepatotoxic at supplemental
+    doses; use Ceylon (C. zeylanicum) if supplementing
+  medications:
+  - Diabetes medications (insulin, sulfonylureas, metformin) — additive glucose lowering;
+    monitor
+  life_stages:
+  - Pregnancy — avoid supplemental doses (insufficient safety data, EMA); culinary amounts
+    are fine

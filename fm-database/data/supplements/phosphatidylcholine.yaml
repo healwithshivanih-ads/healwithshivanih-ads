@@ -15,15 +15,26 @@ linked_to_topics:
 - gallstones
 - pemt-choline-cell-membrane
 - comt-slow-catechol-clearance
+- nafld
+linked_to_symptoms:
+- elevated-liver-enzymes
 linked_to_claims:
 - phosphatidylcholine-bile-flow-support
 - pemt-phosphatidylcholine-deficiency-causes-fatty-liver
 - choline-deficiency-worsens-with-menopause
 - phosphatidylcholine-supports-pemt-conserves-same
-notes_for_coach: Use non-GMO, soy-free (preferably sunflower-derived) form. Can cause
-  depression in excess — essential to use Pulse Method and stop when feeling well.
-  Conserves SAMe (important for slow COMT). Store liquid form in cool dry area (not
-  refrigerator). Monitor for depressive mood changes as a stopping signal.
+notes_for_coach: |-
+  Use non-GMO, soy-free (preferably sunflower-derived) form. Can cause depression in
+  excess — essential to use Pulse Method and stop when feeling well. Conserves SAMe
+  (important for slow COMT). Store liquid form in cool dry area (not refrigerator).
+  Monitor for depressive mood changes as a stopping signal.
+
+  Best used for: Reasonable for fatty liver (modest trial data for
+  polyenylphosphatidylcholine) and as choline/bile support in vegetarian or
+  postmenopausal women with low choline intake or suspected PEMT limitation. The
+  gallstone/bile rationale is mainly mechanistic. Delayed-release PC for ulcerative
+  colitis is a specific pharmaceutical form, so ordinary PC capsules should not be
+  assumed to replicate those trials.
 notes_for_client: Provides the building blocks for healthy cell membranes, liver function,
   and gut lining. Because it can occasionally cause low mood if taken too long, stop
   when you feel good and resume only if symptoms return.
@@ -37,7 +48,10 @@ typical_dose_range:
     min: 420
     max: 2400
     unit: mg
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- pemt-phosphatidylcholine-synthesis
+- bile-cholesterol-supersaturation
+- liver-bile-emulsification
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
@@ -46,7 +60,7 @@ sources:
   location: Chapter 11 — Key Nutrients for a Healthy PEMT
   quote: In the Clean Genes Protocol, I'll also suggest ways to supplement with choline
     and/or phosphatidylcholine, especially if you're a vegan or vegetarian.
-version: 4
+version: 5
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani

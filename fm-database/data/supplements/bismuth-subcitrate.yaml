@@ -18,25 +18,41 @@ timing_options:
 - with_dinner
 take_with_food: avoid
 linked_to_topics:
-- helicobacter-pylori-infection
 - peptic-ulcer-disease
+- h-pylori-infection
 linked_to_claims:
 - bismuth-subcitrate-superior-h-pylori-eradication
 - flavonoids-inhibit-h-pylori-concentration-dependent
-notes_for_coach: 'Dose: 240 mg b.i.d. before meals. Bismuth subcitrate (not subsalicylate)
-  produces best results vs. H. pylori. Available via compounding pharmacies. May darken
-  tongue/stool — harmless. Do NOT use bismuth subsalicylate in children with viral
-  illness (Reye''s syndrome risk). Lower resistance risk than antibiotics.'
+notes_for_coach: |-
+  Dose: 240 mg b.i.d. before meals. Bismuth subcitrate (not subsalicylate) produces best
+  results vs. H. pylori. Available via compounding pharmacies. May darken tongue/stool —
+  harmless. Do NOT use bismuth subsalicylate in children with viral illness (Reye's
+  syndrome risk). Lower resistance risk than antibiotics.
+
+  Best used for: Its real role is as one component of physician-prescribed bismuth
+  quadruple therapy for H. pylori (first-line where clarithromycin resistance is high,
+  as in India). Used alone it does not reliably eradicate H. pylori, so it is not a
+  coach-led stand-alone protocol.
 notes_for_client: Bismuth is a natural mineral that can help fight H. pylori bacteria
   in your stomach. It may temporarily turn your stool or tongue dark — this is harmless.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- h-pylori-urease-ammonia-production
+- gastric-mucosal-barrier-disruption
 sources:
 - id: pizzorno-textbook-hpylori
   location: Nutritional Factors — Bismuth subcitrate, p. 783
   quote: Bismuth subcitrate produces the best results against H. pylori and treating
     PUs. Dose for bismuth subcitrate is 240 mg b.i.d. before meals.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Kidney disease / impaired renal function — bismuth is renally cleared; accumulation can
+    cause encephalopathy
+  medications: []
+  life_stages:
+  - pregnancy — avoid (bismuth absorption; not recommended)
+  - breastfeeding — avoid (insufficient safety data)

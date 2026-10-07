@@ -11,8 +11,14 @@ linked_to_topics:
 - hpa-axis-cortisol-regulation
 linked_to_claims:
 - anthocyanins-modulate-hpa-axis-cortisol
-notes_for_coach: 'Blueberries and raspberries cited. Mechanism and dose not well-specified
-  in source — flag as emerging/dietary. Source: Coach Shivani clinical observations.'
+notes_for_coach: |-
+  Blueberries and raspberries cited. Mechanism and dose not well-specified in source —
+  flag as emerging/dietary. Source: Coach Shivani clinical observations.
+
+  Best used for: A food recommendation, not a supplement: daily berries are a sensible
+  part of a cardiometabolic, anti-inflammatory diet. The HPA/cortisol benefit this entry
+  was built on is speculative. Gout data are specific to cherries and observational —
+  they do not transfer to blueberries or raspberries.
 notes_for_client: Berries like blueberries and raspberries contain anthocyanins —
   natural pigments that may help support a healthier stress response.
 evidence_tier: fm_specific_thin
@@ -23,7 +29,7 @@ sources:
   location: Coach Observation — Microbial and Dietary Compounds
   quote: Fruits such as blueberries and raspberries contain anthocyanins that may
     influence HPA axis activity and ultimately affect cortisol levels.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

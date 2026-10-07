@@ -32,12 +32,14 @@ contraindications:
   - elevated-ferritin
   - vitamin-a-toxicity
   medications: []
-  life_stages: []
+  life_stages:
+  - pregnancy — liver and liver products are a concentrated source of preformed vitamin A
+    (teratogenic in excess); national guidance (e.g. NHS) advises avoiding them in pregnancy
 linked_to_topics:
 - biological-age-reversal
 - methylation
 linked_to_mechanisms:
-- methylation-cycle
+- methylation
 notes_for_coach: Fitzgerald's stand-in for clients who won't eat liver 2-3x/week —
   'a methylation multivitamin in a food matrix' (folate, B12, choline, vitamin A,
   iron). Use clean-sourced, nondefatted, freeze-dried, third-party tested product.
@@ -48,8 +50,8 @@ sources:
   location: Ch 8 — Younger You Intensive supplements (liver supplement)
   quote: Take a clean-sourced, nondefatted, freeze-dried liver supplement... up to
     1,500 mg per day.
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-04'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 evidence_tier: fm_specific_thin

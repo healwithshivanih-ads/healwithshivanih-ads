@@ -36,16 +36,37 @@ linked_to_topics:
 - rheumatoid-arthritis
 - joint-pain
 - chronic-inflammation
-notes_for_coach: 'Latin: Commiphora mukul; Burseraceae. Sanskrit: Guggulu. Traditional indications: arthritis,
-  rheumatism, gout, lumbago, nervous disorders, neurasthenia, debility, diabetes, obesity, bronchitis,
-  whooping cough, dyspepsia, hemorrhoids, pyorrhea, skin diseases, sores and ulcers, cystitis, endometritis,
-  leucorrhea, tumors. Precautions: acute kidney infections, acute stage of rashes; only mildly aggravates
-  Pitta after long-term usage. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Commiphora mukul; Burseraceae. Sanskrit: Guggulu. Traditional indications:
+  arthritis, rheumatism, gout, lumbago, nervous disorders, neurasthenia, debility,
+  diabetes, obesity, bronchitis, whooping cough, dyspepsia, hemorrhoids, pyorrhea, skin
+  diseases, sores and ulcers, cystitis, endometritis, leucorrhea, tumors. Precautions:
+  acute kidney infections, acute stage of rashes; only mildly aggravates Pitta after
+  long-term usage. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Evidence for lowering cholesterol is conflicting: the best Western
+  trial (JAMA 2003) found LDL went slightly UP, and a 2020 Indian RCT of guggulu
+  combined with triphala did not beat placebo. Joint-pain use is traditional, with only
+  small, weak trials. Not a first-line lipid option; keep it to traditional joint
+  formulations under Ayurvedic guidance, and avoid it in thyroid clients, pregnancy and
+  anyone on blood thinners or propranolol/diltiazem.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — GUGGUL
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Hyperthyroidism — guggulsterones may increase thyroid hormone output (catalogue claim
+    guggul-thyroid-medication-interaction-caveat-levothyroxine)
+  medications:
+  - Levothyroxine / thyroid medication — guggul may change T4→T3 conversion and thyroid output;
+    monitor TSH if combined (catalogue claim guggul-thyroid-medication-interaction-caveat-levothyroxine)
+  - Propranolol and diltiazem — guggulsterones reduce their absorption in a human pharmacokinetic
+    study (WHO monograph; catalogue claim who-guggul-drug-interactions-pregnancy-safety)
+  - Anticoagulants / antiplatelets — guggul has antiplatelet activity; additive bleeding risk
+  life_stages:
+  - 'Pregnancy — contraindicated: uterine-stimulant activity (WHO monograph)'

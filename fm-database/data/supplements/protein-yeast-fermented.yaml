@@ -26,24 +26,31 @@ contraindications:
   - mast-cell-activation-syndrome
   - sibo
   - candida-overgrowth
+  - Yeast allergy or known Saccharomyces sensitivity
   medications: []
   life_stages: []
-notes_for_coach: 'Protein top-up for the dairy-free client who also reacts to
-  legume / plant proteins — the most allergen-free of the three (no dairy, soy,
-  gluten or common plant allergens), gut-friendly and heat-stable so it mixes
-  into cooked Indian food. NARROW NICHE: do NOT recommend for histamine
-  intolerance / MCAS (fermented + yeast = plausible histamine trigger) or for
-  clients on a 5R / SIBO / anti-candida protocol (yeast is the wrong signal when
-  treating dysbiosis — most anti-candida diets cut yeast). Use the plant blend
-  for those clients instead. Do NOT raise the protein target for clients with
-  kidney disease or high uric acid / gout — keep moderate and refer to
-  physician. Source / affiliate link added via the catalogue queue once sign-up
-  clears.'
+notes_for_coach: |-
+  Protein top-up for the dairy-free client who also reacts to legume / plant proteins —
+  the most allergen-free of the three (no dairy, soy, gluten or common plant allergens),
+  gut-friendly and heat-stable so it mixes into cooked Indian food. NARROW NICHE: do NOT
+  recommend for histamine intolerance / MCAS (fermented + yeast = plausible histamine
+  trigger) or for clients on a 5R / SIBO / anti-candida protocol (yeast is the wrong
+  signal when treating dysbiosis — most anti-candida diets cut yeast). Use the plant
+  blend for those clients instead. Do NOT raise the protein target for clients with
+  kidney disease or high uric acid / gout — keep moderate and refer to physician. Source
+  / affiliate link added via the catalogue queue once sign-up clears.
+
+  Best used for: A narrow niche: vegetarian clients who need extra protein but react to
+  both dairy and legume powders. Avoid in histamine intolerance, MCAS, SIBO or
+  anti-candida protocols, where the plant blend is the better choice.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - insulin-resistance
 - weight-management
+- protein-adequacy-vegetarian
 linked_to_mechanisms: []
+linked_to_symptoms:
+- protein-deficiency
 linked_to_claims: []
 notes_for_client: A dairy-free, soy-free protein powder made from fermented
   yeast, with a complete amino profile. It is gentle on the gut and heat-stable,
@@ -51,7 +58,7 @@ notes_for_client: A dairy-free, soy-free protein powder made from fermented
 sources:
 - id: protein-intake-guidance
   location: Powder track — fermented yeast (dairy-free, legume-sensitive)
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-20'
+updated_at: '2026-10-07'
 updated_by: shivani

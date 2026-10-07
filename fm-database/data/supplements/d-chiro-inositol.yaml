@@ -1,6 +1,6 @@
 slug: d-chiro-inositol
 display_name: D-Chiro-Inositol
-category: vitamin
+category: other
 forms_available:
 - capsule
 - powder
@@ -21,15 +21,27 @@ take_with_food: optional
 linked_to_topics:
 - pcos
 - insulin-resistance
+- pcos-insulin-resistant
+linked_to_symptoms:
+- irregular-periods
+- elevated-fasting-insulin
 linked_to_claims:
 - myo-inositol-d-chiro-inositol-40-1-restores-ovulation-pcos
 - inositol-glucose-uptake-pcos
-notes_for_coach: Typically used in combination with myo-inositol (40:1 ratio). Specifically
-  cited for PCOS-related insulin resistance.
+notes_for_coach: |-
+  Typically used in combination with myo-inositol (40:1 ratio). Specifically cited for
+  PCOS-related insulin resistance.
+
+  Best used for: Strongest evidence is for insulin-resistant PCOS, usually as the 40:1
+  myo-inositol:D-chiro-inositol combination, to improve insulin sensitivity and cycle
+  regularity. Myo-inositol alone is generally preferred for fertility; DCI on its own at
+  high dose is not a good choice for women trying to conceive.
 notes_for_client: D-chiro-inositol is a form of inositol with particular benefits
   for insulin regulation in PCOS.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance
+- insulin-resistance-sex-hormone
 sources:
 - id: vitaone-practice-guide
   location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
@@ -43,7 +55,14 @@ sources:
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Insulin Resistance
   quote: Inositol (esp. D-chiro) — Improves glucose uptake & insulin sensitivity.
     Inositol helpful in metabolic syndrome and PCOS-related insulin issues.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - PCOS clients trying to conceive or preparing for IVF — high-dose DCI alone may impair
+    oocyte/embryo quality (catalogue claim d-chiro-inositol-may-harm-egg-quality-in-pcos);
+    use only in the 40:1 myo:DCI ratio or myo-inositol alone
+  medications: []
+  life_stages: []

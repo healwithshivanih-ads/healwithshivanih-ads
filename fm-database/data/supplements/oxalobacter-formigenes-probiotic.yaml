@@ -18,12 +18,19 @@ linked_to_mechanisms:
 - calcium-oxalate-crystal-formation
 linked_to_claims:
 - oxalobacter-formigenes-reduces-urinary-oxalate
-notes_for_coach: Specific anaerobic gut bacterium that uses oxalate as its sole energy
-  source — colonization protects against Ca-oxalate stones by degrading dietary oxalate
-  before intestinal absorption. Depleted by repeated antibiotic exposure. Commercial
-  preparations exist but viability and colonisation success vary; combine with low-oxalate
-  diet and prebiotic fibre. Most useful in patients with confirmed hyperoxaluria +
-  antibiotic history.
+notes_for_coach: |-
+  Specific anaerobic gut bacterium that uses oxalate as its sole energy source —
+  colonization protects against Ca-oxalate stones by degrading dietary oxalate before
+  intestinal absorption. Depleted by repeated antibiotic exposure. Commercial
+  preparations exist but viability and colonisation success vary; combine with
+  low-oxalate diet and prebiotic fibre. Most useful in patients with confirmed
+  hyperoxaluria + antibiotic history.
+
+  Best used for: A niche option for recurrent calcium-oxalate stone formers with
+  documented hyperoxaluria and heavy past antibiotic use, alongside a low-oxalate diet
+  and citrate. Commercial products have inconsistent colonisation and the controlled
+  trials (Oxabact in primary hyperoxaluria) were largely negative, so it is not a
+  first-line stone-prevention supplement.
 notes_for_client: A specific friendly bacterium that eats oxalate in your gut so less
   gets into your urine. Helpful if you make calcium-oxalate kidney stones and have
   had a lot of antibiotics.
@@ -40,7 +47,7 @@ sources:
   quote: Oxalate homeostasis depends in part on the colon anaerobic bacterium Oxalobacter
     formigenes. Its absence (from prolonged antibiotic use) predisposes idiopathic
     Ca oxalate KSs from increased hyperoxaluria and Ca-oxalate stone formation.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

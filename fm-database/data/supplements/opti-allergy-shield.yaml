@@ -21,14 +21,20 @@ linked_to_mechanisms:
 - mast-cell-degranulation
 linked_to_symptoms: []
 linked_to_claims: []
-notes_for_coach: 'Practitioner-dispensed COMBINATION capsule, not a single compound —
-  catalogued so plans that prescribe it resolve. Label composition: stinging nettle
-  extract, quercetin, rutin, bromelain, broccoli extract, astragalus, grape seed
-  extract. Amounts are NOT stated. Label suggested use is 2 capsules away from food.
-  Used as a natural antihistamine layer; replaces a standalone quercetin script.
-  CAUTION: because no amounts are given you cannot claim a therapeutic quercetin dose —
-  if that is the intent, prescribe [[quercetin]] alongside and record why. Clinical
-  rationale per ingredient lives on its own entry — see [[quercetin]], [[bromelain]].'
+notes_for_coach: |-
+  Practitioner-dispensed COMBINATION capsule, not a single compound — catalogued so
+  plans that prescribe it resolve. Label composition: stinging nettle extract,
+  quercetin, rutin, bromelain, broccoli extract, astragalus, grape seed extract. Amounts
+  are NOT stated. Label suggested use is 2 capsules away from food. Used as a natural
+  antihistamine layer; replaces a standalone quercetin script. CAUTION: because no
+  amounts are given you cannot claim a therapeutic quercetin dose — if that is the
+  intent, prescribe [[quercetin]] alongside and record why. Clinical rationale per
+  ingredient lives on its own entry — see [[quercetin]], [[bromelain]].
+
+  Best used for: A practitioner combination used as a gentle antihistamine layer for
+  allergic rhinitis and histamine-intolerance symptoms. Because amounts are not stated,
+  it cannot be relied on for a therapeutic quercetin or nettle dose; human evidence is
+  ingredient-level and weak.
 notes_for_client: A plant-based capsule that helps calm histamine reactions. Take it
   away from food.
 evidence_tier: fm_specific_thin
@@ -37,7 +43,15 @@ sources:
   location: VitaOne — Opti-Allergy Shield, product page ingredient list
   quote: Stinging nettle extract, quercetin, rutin, bromelain, broccoli extract, astragalus,
     and grape seed extract.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Pineapple or bromelain allergy
+  medications:
+  - Warfarin, DOACs and antiplatelets — bromelain and grape seed extract have antiplatelet
+    effects; bleeding risk
+  life_stages:
+  - Pregnancy and lactation — no ingredient amounts or safety data for the combination

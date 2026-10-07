@@ -33,14 +33,20 @@ linked_to_claims:
 - licorice-root-supports-immune-and-reduces-viral-growth
 - herbal-antimicrobials-effective-in-sibo
 - murray-topical-glycyrrhetinic-acid-eczema
-notes_for_coach: 'This entry is WHOLE / glycyrrhizinated licorice root (Glycyrrhiza
-  glabra) — the form used for immune, antiviral and adrenal/HPA support. It carries
-  real blood-pressure and potassium risks (see contraindications): AVOID in
-  hypertension, hypokalaemia, renal or cholestatic/liver disease, and pregnancy, and
-  do not combine with diuretics, digoxin, antihypertensives, corticosteroids or
-  spironolactone. For gut mucosal healing use the separate DGL (deglycyrrhizinated)
-  entries instead — those have the glycyrrhizin removed and are BP-safe. Confirm form
-  and duration with clinician.'
+notes_for_coach: |-
+  This entry is WHOLE / glycyrrhizinated licorice root (Glycyrrhiza glabra) — the form
+  used for immune, antiviral and adrenal/HPA support. It carries real blood-pressure and
+  potassium risks (see contraindications): AVOID in hypertension, hypokalaemia, renal or
+  cholestatic/liver disease, and pregnancy, and do not combine with diuretics, digoxin,
+  antihypertensives, corticosteroids or spironolactone. For gut mucosal healing use the
+  separate DGL (deglycyrrhizinated) entries instead — those have the glycyrrhizin
+  removed and are BP-safe. Confirm form and duration with clinician.
+
+  Best used for: FM-specific, short-term (weeks, not months) support for low-cortisol
+  HPA patterns, only under clinician oversight with blood pressure and potassium
+  checked; human evidence for this use is thin. Not for gut-lining repair (use DGL). Not
+  for anyone with high BP, low potassium, heart, kidney or liver disease, or in
+  pregnancy.
 notes_for_client: Licorice root helps soothe and repair the gut lining while also
   having mild antibacterial effects.
 rasa:
@@ -64,13 +70,15 @@ ayurvedic_actions:
 - sedative
 - emetic
 evidence_tier: fm_specific_thin
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- hpa-axis-dysregulation
 contraindications:
   conditions:
   - hypertension / high blood pressure (glycyrrhizin raises BP — WHO Monographs Vol 1)
   - hypokalaemia / low potassium (WHO Monographs Vol 1)
   - chronic renal insufficiency (WHO Monographs Vol 1)
   - cholestatic liver disorders or cirrhosis (WHO Monographs Vol 1)
+  - congestive heart failure / oedema — glycyrrhizin causes sodium and water retention (pseudoaldosteronism)
   medications:
   - thiazide or loop diuretics — added potassium loss (WHO Monographs Vol 1)
   - digoxin / cardiac glycosides — hypokalaemia raises toxicity risk (WHO Monographs Vol 1)
@@ -101,7 +109,7 @@ sources:
     cause pseudoaldosteronism (potassium loss, sodium/water retention, raised BP). Do
     not use with thiazide/loop diuretics, cardiac glycosides, spironolactone/amiloride
     or corticosteroids; may reduce antihypertensive drug effect.'
-version: 6
+version: 7
 status: active
-updated_at: '2026-07-13'
+updated_at: '2026-10-07'
 updated_by: shivani

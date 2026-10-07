@@ -25,10 +25,12 @@ linked_to_topics:
 - detoxification
 - peptic-ulcer-disease
 - type-1-diabetes-mellitus
-- type-2-diabetes-mellitus
 - diabetic-neuropathy
 - diabetic-retinopathy
 - premenstrual-syndrome
+linked_to_symptoms:
+- elevated-liver-enzymes
+- dysmenorrhea
 linked_to_claims:
 - vitamin-e-antioxidant-nafld
 - vitamin-e-antioxidant-gi-protection
@@ -40,9 +42,15 @@ linked_to_claims:
 - vitamin-a-protective-chronic-gastric-ulcer
 - vitamin-e-lowers-cv-events-hp-2-2-diabetics
 - murray-vitamin-e-400iu-pms
-notes_for_coach: Prefer mixed tocopherols. Monitor blood pressure — some T2DM patients
-  show 6–7 mmHg systolic increase with 500 mg alpha-tocopherol. Hp 2-2 genotype patients
-  benefit most for CVD outcomes. Ensures magnesium entry into cells when co-administered.
+notes_for_coach: |-
+  Prefer mixed tocopherols. Monitor blood pressure — some T2DM patients show 6–7 mmHg
+  systolic increase with 500 mg alpha-tocopherol. Hp 2-2 genotype patients benefit most
+  for CVD outcomes. Ensures magnesium entry into cells when co-administered.
+
+  Best used for: Strongest evidence is for non-diabetic fatty liver (NASH) under
+  clinician care and for painful periods; otherwise food sources (nuts, seeds) are
+  preferable. High-dose long-term use has not shown heart benefit and carries bleeding
+  and prostate cancer risks.
 notes_for_client: Vitamin E protects cell membranes, nerve cells, and blood vessels
   from diabetes-related damage. Take with a fat-containing meal.
 evidence_tier: strong
@@ -54,6 +62,7 @@ typical_dose_range:
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
+- ldl-oxidation
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — NAFLD
@@ -90,16 +99,22 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 12
+version: 13
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases: []
 contraindications:
   conditions:
   - high doses (>400 IU/day) may increase bleeding risk with anticoagulants or antiplatelet
     medications — coordinate with prescriber
-  medications: []
+  - 'men with or at high risk of prostate cancer — SELECT trial: 400 IU/day alpha-tocopherol
+    raised prostate cancer incidence by ~17%'
+  - history of haemorrhagic stroke or bleeding disorder — meta-analysis (Schürks 2010) found
+    vitamin E raised haemorrhagic stroke risk
+  medications:
+  - warfarin and other anticoagulants/antiplatelets — above ~400 IU/day raises bleeding risk
+    (currently only stated as a condition, so the medication check will not catch it)
   life_stages: []
 interactions:
   with_supplements: []

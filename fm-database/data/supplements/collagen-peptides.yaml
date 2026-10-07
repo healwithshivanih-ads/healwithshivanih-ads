@@ -17,20 +17,37 @@ take_with_food: optional
 linked_to_topics:
 - hairfall
 - knee-pain
+- osteoarthritis
+- osteoporosis
+linked_to_symptoms:
+- dry-skin
+- decreased-bone-mineral-density
 linked_to_claims:
 - collagen-glucosamine-chondroitin-cartilage
-notes_for_coach: Marine collagen (type I) preferred for hair and skin; bovine (type
-  I+III) for joint and gut. Pair with vitamin C to support collagen synthesis. Evidence
-  growing for OA knee pain and skin elasticity.
+notes_for_coach: |-
+  Marine collagen (type I) preferred for hair and skin; bovine (type I+III) for joint
+  and gut. Pair with vitamin C to support collagen synthesis. Evidence growing for OA
+  knee pain and skin elasticity.
+
+  Best used for: Best evidence is for skin hydration and elasticity, knee osteoarthritis
+  pain, and bone density in postmenopausal women with low bone density (one year-long
+  trial of specific peptides). It is an incomplete protein, so it does not count towards
+  a client's protein target. Hair-loss evidence is weak.
 notes_for_client: Collagen powder dissolves easily in coffee, smoothies, or water.
   Pair with a vitamin C source for best results.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Hairfall – Supplement Stack
   quote: Marine/Bovine Collagen, Liposomal Vitamin C, L-Lysine
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Fish allergy — avoid marine collagen; use bovine
+  medications: []
+  life_stages: []

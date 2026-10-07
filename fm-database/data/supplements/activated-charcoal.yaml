@@ -20,14 +20,23 @@ linked_to_claims:
 - activated-charcoal-binds-ingested-mercury
 - activated-charcoal-binds-ingested-mercury-post-amalgam-removal
 - ac-coach-experience-alcohol-gluten-binding
-notes_for_coach: 'Used specifically around dental amalgam removal: 800-1000mg immediately
-  before procedure, immediately after, and next morning/afternoon. Discontinue by
-  day 2 post-procedure. Do not take within 2 hours of chlorella. Adult doses only.'
+notes_for_coach: |-
+  Used specifically around dental amalgam removal: 800-1000mg immediately before
+  procedure, immediately after, and next morning/afternoon. Discontinue by day 2
+  post-procedure. Do not take within 2 hours of chlorella. Adult doses only.
+
+  Best used for: There is no good human evidence for the amalgam-removal use — charcoal
+  binds metals poorly (the catalogue's own claim says so); its established evidence base
+  is emergency poisoning, which is outside coaching scope. Gas relief trials are mixed.
+  If used at all, keep it to a short, one-off window and keep it at least 2 hours away
+  from all medicines and supplements. Not a daily 'detox' supplement: it binds nutrients
+  and medicines indiscriminately and constipates.
 notes_for_client: Activated charcoal works like a sponge in your gut to bind and remove
   mercury and other toxins before they can be absorbed. Only use for the short window
   around your dental appointment as directed.
 evidence_tier: fm_specific_thin
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
 sources:
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol
@@ -39,7 +48,17 @@ sources:
   quote: 'Activated charcoal: Take 800–1000 mg right before your dental visit, then
     800–1000 mg more immediately after the visit... The charcoal can help bind ingested
     mercury.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Bowel obstruction, ileus or markedly slowed gut transit — charcoal can impact/form bezoars
+    (claim ac-aspiration-pneumonitis-bezoar-major-risks)
+  - Chronic constipation — commonly worsens it; avoid regular use
+  - GI bleeding or suspected perforation — can obscure endoscopy and worsen obstruction
+  medications:
+  - Any oral medication (levothyroxine, oral contraceptives, metformin, antiepileptics, antidepressants
+    etc.) — adsorbs drugs and cuts absorption; separate by at least 2 hours (claim ac-medication-spacing-rule-1-2-hours)
+  life_stages: []

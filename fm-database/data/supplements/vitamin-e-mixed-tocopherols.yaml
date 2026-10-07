@@ -24,7 +24,9 @@ notes_for_coach: 'Use natural d-alpha tocopherol (or mixed tocopherols) — NOT 
 notes_for_client: Natural vitamin E (mixed tocopherols) protects LDL cholesterol from
   oxidation and supports heart and immune function. Take with a fatty meal.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- ldl-oxidation
+- oxidative-stress
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Therapeutic Approach — Supplements
@@ -32,7 +34,15 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - bleeding disorder or history of haemorrhagic stroke — vitamin E above ~400 IU/day inhibits
+    platelets (catalogue claim vitamin-e-dose-above-200-iu-may-increase-stroke-risk)
+  medications:
+  - warfarin and other anticoagulants/antiplatelets — vitamin E above ~400 IU/day raises bleeding
+    risk
+  life_stages: []

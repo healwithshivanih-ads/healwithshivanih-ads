@@ -24,9 +24,14 @@ linked_to_claims:
 - berberine-antimicrobial-blood-sugar
 - broad-spectrum-herbal-antimicrobials-effective-against-bacteria-fungi-parasites
 - herbal-antimicrobials-effective-in-sibo
-notes_for_coach: Caprylic acid (C8 medium-chain fatty acid) has antifungal properties
-  particularly against Candida species. Used in SIFO and mixed SIBO/SIFO protocols.
-  Confirm dose with clinician.
+notes_for_coach: |-
+  Caprylic acid (C8 medium-chain fatty acid) has antifungal properties particularly
+  against Candida species. Used in SIFO and mixed SIBO/SIFO protocols. Confirm dose with
+  clinician.
+
+  Best used for: An antifungal used in Candida/SIFO protocols, usually alongside dietary
+  change and other antimicrobials. Evidence is mostly laboratory-based; not useful for
+  bacterial SIBO on its own or for clients without signs of fungal overgrowth.
 notes_for_client: Caprylic acid is a naturally occurring fatty acid that can help
   control fungal overgrowth in the gut.
 evidence_tier: plausible_emerging
@@ -45,7 +50,7 @@ sources:
   quote: oil, oregano oil, uva, ursi, caprylic acid. Probiotics like lactobacillus
     and if so, we have to maintain different strains of bacterial species as well,
     daily for a period of 6 weeks.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani

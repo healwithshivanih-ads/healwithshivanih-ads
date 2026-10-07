@@ -27,21 +27,39 @@ linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
 - mthfr-variants
+- vitamin-b12
+- b12-folate-anemia
+- methylation
+- homocysteine-and-methylation
+- drug-induced-nutrient-depletion
+linked_to_symptoms:
+- methyl-donor-sensitivity
+- functional-b12-deficiency-symptoms
+- megaloblastic-anemia
 linked_to_claims:
 - serum-b12-may-not-reflect-cellular-utilization
 - methylcobalamin-preferred-over-cyanocobalamin-in-mthfr-protocols
 - active-folate-forms-preferred-in-mthfr
-notes_for_coach: An alternative to methylcobalamin; preferred for clients who are sensitive to methyl donors, as hydroxocobalamin
-  is a non-methyl B12 form that the body can convert as needed. Avoids the methyl-donor loading effect of methylcobalamin.
+notes_for_coach: |-
+  An alternative to methylcobalamin; preferred for clients who are sensitive to methyl
+  donors, as hydroxocobalamin is a non-methyl B12 form that the body can convert as
+  needed. Avoids the methyl-donor loading effect of methylcobalamin.
+
+  Best used for: Best for clients with documented low or functional B12 deficiency (low
+  B12, raised MMA or homocysteine) — vegetarians, metformin or long-term PPI users —
+  especially those who feel wired or anxious on methylcobalamin. Not worth adding when
+  B12 status is already replete.
 notes_for_client: Hydroxocobalamin is a form of B12 that's gentle on the system — it's a good option if you find you're sensitive
   to methyl donors or react to methylcobalamin.
 evidence_tier: fm_specific_thin
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- homocysteine-remethylation
+- methylmalonyl-coa-pathway
 sources:
 - id: coach-shivani
   location: Coach Observation
   quote: consider methylcobalamin or hydroxocobalamin rather than cyanocobalamin
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

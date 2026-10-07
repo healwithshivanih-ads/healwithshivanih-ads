@@ -22,7 +22,6 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - pcos
-- hpa-axis-dysregulation
 - insulin-resistance
 - low-carb-diet
 - hypothyroidism
@@ -30,6 +29,12 @@ linked_to_topics:
 - thyroid-dysfunction
 - hairfall
 - maoa-fast-serotonin-depletion
+- pcos-insulin-resistant
+- pcos-fertility
+- metabolic-syndrome
+linked_to_symptoms:
+- irregular-periods
+- elevated-fasting-insulin
 linked_to_claims:
 - myo-inositol-d-chiro-inositol-40-1-restores-ovulation-pcos
 - stress-disrupts-hpo-axis-pcos
@@ -37,18 +42,29 @@ linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - myo-inositol-regulates-tsh-fsh-insulin-signaling
 - myo-inositol-supports-tsh-signal-transduction
-notes_for_coach: Myo-inositol is involved in TSH, FSH, and insulin signal transduction. Found naturally
-  in fruits, vegetables, cereals, legumes, and nuts. The document does not specify a dose — dose range
-  above reflects commonly used research doses and should be verified with clinician. Thin evidence
-  base for thyroid specifically. Lynch recommends for fast MAOA to regulate serotonin and improve
-  mood. However, inositol burdens and slows MAOA in the slow variant — causes overstimulation. Lynch
-  notes lithium orotate and inositol act opposite to each other — if one worsens, the other may help.
-  Use as a MAOA discriminator. Start low.
+notes_for_coach: |-
+  Myo-inositol is involved in TSH, FSH, and insulin signal transduction. Found naturally
+  in fruits, vegetables, cereals, legumes, and nuts. The document does not specify a
+  dose — dose range above reflects commonly used research doses and should be verified
+  with clinician. Thin evidence base for thyroid specifically. Lynch recommends for fast
+  MAOA to regulate serotonin and improve mood. However, inositol burdens and slows MAOA
+  in the slow variant — causes overstimulation. Lynch notes lithium orotate and inositol
+  act opposite to each other — if one worsens, the other may help. Use as a MAOA
+  discriminator. Start low.
+
+  Best used for: Strongest evidence is in PCOS, especially the insulin-resistant type:
+  more regular cycles and ovulation, better insulin sensitivity, and possibly better egg
+  quality. Smaller trials support it as an adjunct with selenium in subclinical
+  hypothyroidism or Hashimoto's. It is not a general mood or stress supplement. The
+  clinician should set the dose and any D-chiro-inositol ratio.
 notes_for_client: 'Supports how your body responds to its own insulin, and helps cycle regularity.
 
   A fine powder that dissolves in water and tastes faintly sweet. Give it three months.'
 evidence_tier: fm_specific_thin
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- insulin-resistance
+- myo-inositol-tsh-signaling
+- insulin-resistance-sex-hormone
 sources:
 - id: vitaone-practice-guide
   location: Seven Clinical Focus Areas > 3. PCOS > Coaching interventions
@@ -83,9 +99,9 @@ sources:
   location: Chapter 15 — Supplements for Your Fast MAOA
   quote: Inositol. Start with a small dose to regulate serotonin and improve mood, and increase as
     tolerated.
-version: 9
+version: 10
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - inositol

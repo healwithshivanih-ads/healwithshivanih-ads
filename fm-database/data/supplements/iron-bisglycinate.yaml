@@ -23,15 +23,28 @@ linked_to_topics:
 - hair-loss-women
 - hair-loss
 - menorrhagia
-notes_for_coach: Bisglycinate form preferred for tolerability and absorption. Critically,
-  iron supplementation should be deferred until gut lining is healing and symptoms
-  are improving — absorption will be poor and potentially counterproductive if initiated
+- iron-deficiency-anemia
+notes_for_coach: |-
+  Bisglycinate form preferred for tolerability and absorption. Critically, iron
+  supplementation should be deferred until gut lining is healing and symptoms are
+  improving — absorption will be poor and potentially counterproductive if initiated
   during active gut inflammation. Confirm iron deficiency anaemia with clinician before
   prescribing.
+
+  Best used for: Best for confirmed iron deficiency (ferritin below about 30-50) with or
+  without anaemia — heavy periods, vegetarians, hair shedding, restless legs, fatigue —
+  when the client cannot tolerate inorganic iron salts. Not worth it, and potentially
+  harmful, when ferritin is normal or high.
 notes_for_client: Iron is best absorbed once your gut is healing. Your practitioner
   will time this carefully so your body can actually take it in.
 evidence_tier: confirm_with_clinician
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- ferritin-storage-depletion
+linked_to_symptoms:
+- iron-deficiency
+- anemia
+- restless-legs
+- pica
 linked_to_claims:
 - iron-not-absorbed-with-damaged-gut-lining
 sources:
@@ -56,9 +69,9 @@ sources:
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support T4→T3 Conversion
   quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
@@ -69,3 +82,14 @@ aliases:
 - iron-ferrous-bisglycinate
 cycle_phases:
 - menstrual
+contraindications:
+  conditions:
+  - Haemochromatosis or iron overload (raised ferritin / transferrin saturation) — supplemental
+    iron worsens organ iron deposition
+  - Thalassaemia trait or other non-iron-deficiency microcytosis (common in India) — low MCV/Hb
+    is not proof of iron deficiency; iron without a low ferritin risks overload
+  medications:
+  - Levothyroxine — iron binds it in the gut; separate by at least 4 hours
+  - Tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin) — chelation
+    lowers absorption of both; separate by 2-4 hours
+  life_stages: []

@@ -22,9 +22,16 @@ linked_to_topics:
 - hairfall
 linked_to_mechanisms: []
 linked_to_claims: []
-notes_for_coach: Traditional ayurvedic hair tonic — topical oil scalp massage, internal
-  powder for shedding. Stub created from mindmap-agent shortlist 2026-05-13 — flesh
-  out before clinical use.
+notes_for_coach: |-
+  Traditional ayurvedic hair tonic — topical oil scalp massage, internal powder for
+  shedding. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before
+  clinical use.
+
+  Best used for: Traditional Ayurvedic hair herb (mostly as a scalp oil) and liver
+  rasayana; human evidence for hair regrowth is essentially absent — supporting data are
+  animal studies. Reasonable as a low-risk traditional adjunct, not as the primary
+  intervention for hair loss, which needs its drivers (iron, thyroid, androgens, stress)
+  addressed.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
@@ -51,9 +58,9 @@ ayurvedic_actions:
 - laxative
 - vulnerary
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - eclipta-alba

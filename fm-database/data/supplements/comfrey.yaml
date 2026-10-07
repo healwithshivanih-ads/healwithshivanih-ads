@@ -29,16 +29,32 @@ linked_to_topics:
 - bone-health
 - chronic-inflammation
 - chronic-pain-and-fatigue
-- digestion-and-nutrient-absorption
-notes_for_coach: 'Latin: Symphytum officinale; Boraginaceae. Traditional indications: cough, lung infections,
-  coughing blood, lung hemorrhage, gastrointestinal ulcers, blood in urine, diarrhea, dysentery, sprains,
-  fractures, wounds, sores, boils. Precautions: edema, malabsorption, obesity, high Ama. Ayurvedic energetics
-  from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Symphytum officinale; Boraginaceae. Traditional indications: cough, lung
+  infections, coughing blood, lung hemorrhage, gastrointestinal ulcers, blood in urine,
+  diarrhea, dysentery, sprains, fractures, wounds, sores, boils. Precautions: edema,
+  malabsorption, obesity, high Ama. Ayurvedic energetics from The Yoga of Herbs (Frawley
+  & Lad).
+
+  Best used for: Only for topical use: comfrey cream or ointment has good trial evidence
+  for ankle sprains, back pain and knee osteoarthritis pain, applied to unbroken skin
+  for limited periods. Never take it by mouth.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — COMFREY
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - ANY internal/oral use — pyrrolizidine alkaloids cause liver damage (veno-occlusive disease);
+    topical use only
+  - Liver disease — avoid all forms
+  - Broken or open skin — do not apply topically to wounds (alkaloid absorption)
+  medications: []
+  life_stages:
+  - Pregnancy — avoid all forms (alkaloids hepatotoxic and potentially teratogenic)
+  - Breastfeeding — avoid
+  - Children — avoid

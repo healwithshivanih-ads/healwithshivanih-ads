@@ -14,18 +14,32 @@ timing_options:
 - with_breakfast
 take_with_food: optional
 linked_to_topics:
-- mthfr-gene-variant
 - folate-nutrition
 - homocysteine-and-methylation
+- migraine-headache
+- riboflavin-and-blood-pressure-mthfr
+- methylation
+linked_to_symptoms:
+- migraine
+- headache-migraine
+- elevated-homocysteine
 linked_to_claims:
 - b6-b2-support-folate-cycle-and-homocysteine
-notes_for_coach: Riboflavin is a cofactor for MTHFR enzyme itself; evidence suggests
-  riboflavin supplementation may be particularly important for lowering homocysteine
-  in C677T MTHFR variant carriers.
+notes_for_coach: |-
+  Riboflavin is a cofactor for MTHFR enzyme itself; evidence suggests riboflavin
+  supplementation may be particularly important for lowering homocysteine in C677T MTHFR
+  variant carriers.
+
+  Best used for: Strongest evidence is for migraine prevention (allow about 3 months to
+  judge) and for homocysteine and blood pressure in MTHFR 677TT carriers. It turns urine
+  bright yellow, which is harmless. Little reason to add it on its own for general
+  energy.
 notes_for_client: Vitamin B2 helps the MTHFR enzyme work better, supporting your body's
   ability to activate folate and manage homocysteine levels.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mthfr-enzyme-dysfunction
+- mitochondrial-energy-production
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Supplementation for MTHFR section
@@ -53,9 +67,9 @@ sources:
   quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced
     with stub source for validation compliance. Coach should re-verify and link to
     a peer-reviewed source when next reviewing this entry.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - riboflavin-b2

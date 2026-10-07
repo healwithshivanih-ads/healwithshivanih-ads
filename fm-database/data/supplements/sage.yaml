@@ -30,17 +30,35 @@ ayurvedic_actions:
 linked_to_topics:
 - perimenopause-and-menopause
 - immune-support
-- gut-brain-axis
 - nervous-system-regulation
-notes_for_coach: 'Latin: Salvia officinalis; Labiatae. Traditional indications: colds, flu, sore throat,
-  laryngitis, swollen lymph glands, night sweats, spermatorrhea, hair loss, nervous dysfunction. Precautions:
-  high Vata (excessive dryness), nursing mothers. Ayurvedic energetics from The Yoga of Herbs (Frawley
-  & Lad).'
+- menopause
+notes_for_coach: |-
+  Latin: Salvia officinalis; Labiatae. Traditional indications: colds, flu, sore throat,
+  laryngitis, swollen lymph glands, night sweats, spermatorrhea, hair loss, nervous
+  dysfunction. Precautions: high Vata (excessive dryness), nursing mothers. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Best evidence is for menopausal hot flushes and sweating (small
+  open-label trials of standardised fresh-leaf extract) and as a gargle/spray for sore
+  throat. Culinary amounts are fine; it is not worth using for mood, immunity or
+  'nervous system' support beyond that, and long-term high-dose or essential-oil use
+  should be avoided because of thujone.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — SAGE
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- hot-flashes
+- night-sweats
+contraindications:
+  conditions:
+  - epilepsy / seizure disorders (thujone in sage essential oil and concentrated extracts
+    is pro-convulsant)
+  medications: []
+  life_stages:
+  - pregnancy (thujone; avoid medicinal doses)
+  - lactation (traditionally used to dry up breast milk — reduces supply)

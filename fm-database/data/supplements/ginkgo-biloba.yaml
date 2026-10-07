@@ -19,6 +19,8 @@ contraindications:
   conditions:
   - bleeding-disorder
   - upcoming-surgery
+  - Epilepsy / seizure disorder — seizures reported with ginkgo use (ginkgotoxin); NCCIH and
+    monographs advise caution
   medications:
   - warfarin
   - anticoagulants
@@ -47,24 +49,33 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Avoid in pregnancy and lactation — inadequate human safety
   data and bleeding-risk concern.
-linked_to_symptoms:
-- depression-mood-disorder
+linked_to_symptoms: []
 linked_to_topics:
 - atherosclerosis
 - adhd
 - premenstrual-syndrome
 - major-depressive-disorder
+- cognitive-decline
 linked_to_claims:
 - ginkgo-biloba-stroke-recovery
 - ginkgo-biloba-enhances-stroke-recovery
 - murray-ginkgo-pms-congestive-symptoms
-notes_for_coach: Use extract standardized to 24% ginkgoflavonglycosides and 6% terpenoids.
+notes_for_coach: |-
+  Use extract standardized to 24% ginkgoflavonglycosides and 6% terpenoids.
   Anti-platelet effect — caution with anticoagulants. For secondary stroke prevention
   and cerebrovascular insufficiency.
+
+  Best used for: Strongest for older clients with cerebrovascular insufficiency or
+  already-established cognitive decline, using a standardised 24%/6% (EGb 761-type)
+  extract; benefits in trials are modest. Not worth it for everyday brain fog in younger
+  clients or for dementia prevention (the GEM prevention trial was null). The
+  bleeding-interaction list is long and seizures have been reported — check every
+  medication and any seizure history first.
 notes_for_client: Standardized Ginkgo biloba supports brain circulation and may aid
   recovery after stroke. Always use a standardized extract.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- cerebral-perfusion
 sources:
 - id: pizzorno-textbook-gi-2
   location: Atherosclerosis — Preventing a Subsequent Stroke
@@ -84,7 +95,7 @@ sources:
   quote: 'Contraindicated in hypersensitivity to G. biloba preparations. Possible
     adverse effects: headache, gastrointestinal disturbance, allergic skin reactions.
     (Antiplatelet potential — bleeding risk with anticoagulants is widely documented.)'
-version: 5
+version: 6
 status: active
-updated_at: '2026-07-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

@@ -9,9 +9,21 @@ typical_dose_range: {}
 timing_options: []
 take_with_food: optional
 contraindications:
-  conditions: []
-  medications: []
-  life_stages: []
+  conditions:
+  - Autoimmune disease (incl. Hashimoto's, RA, lupus) — immunostimulant herb; an Indian multicentre
+    case series (2020-21, post-COVID self-use) linked giloy to autoimmune-like hepatitis,
+    some unmasking latent autoimmunity
+  - Liver disease or prior herb-induced liver injury — giloy-associated drug-induced liver
+    injury is documented in Indian hepatology case series; stop if jaundice, dark urine or
+    itching appear
+  medications:
+  - Antidiabetic drugs (metformin, sulfonylureas, insulin) — additive glucose lowering reported;
+    monitor for hypoglycaemia
+  - Immunosuppressants (e.g. tacrolimus, cyclosporine, azathioprine, methotrexate) — immunostimulant
+    action may oppose them
+  life_stages:
+  - Pregnancy — insufficient human safety data
+  - Lactation — insufficient human safety data
 interactions:
   with_supplements: []
   with_foods: []
@@ -25,15 +37,21 @@ linked_to_topics:
 linked_to_mechanisms:
 - anti-inflammatory-signaling
 linked_to_claims: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
-  before clinical use.
+notes_for_coach: |-
+  Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+
+  Best used for: Human evidence is thin: a few small Indian trials (allergic rhinitis,
+  immune markers, adjunct glucose lowering). Reasonable only as a short-course
+  traditional immune tonic in a client with no autoimmune or liver history. Not worth it
+  for the thyroid/autoimmune cohort — Indian case series tie giloy to autoimmune-like
+  liver injury.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - tinospora-cordifolia

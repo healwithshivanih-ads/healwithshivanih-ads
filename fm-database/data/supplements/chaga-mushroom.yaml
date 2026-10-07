@@ -19,8 +19,13 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Potent antioxidant medicinal mushroom; used for immunity, detox,
-  and anti-aging; morning dosing preferred.
+notes_for_coach: |-
+  Potent antioxidant medicinal mushroom; used for immunity, detox, and anti-aging;
+  morning dosing preferred.
+
+  Best used for: There are no meaningful human trials for chaga; its immune and
+  antioxidant claims come from lab and animal studies. Not worth recommending over
+  better-studied options. Never for clients with kidney disease or kidney stones.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - immune-support
@@ -35,7 +40,13 @@ sources:
   location: Page 3 - Supplement Table
   quote: Chaga Mushroom - Antioxidant, immune health - 500–1000 mg/day - Morning or
     with meals
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-29'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Chronic kidney disease or history of oxalate kidney stones — chaga is extremely high in
+    oxalate; published case reports of oxalate nephropathy with daily chaga powder
+  medications: []
+  life_stages: []

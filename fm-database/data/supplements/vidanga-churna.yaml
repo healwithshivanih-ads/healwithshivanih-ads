@@ -17,7 +17,7 @@ take_with_food: required
 linked_to_topics:
 - h-pylori-infection
 - peptic-ulcer-disease
-- intestinal-parasites
+- parasite-infection
 linked_to_mechanisms:
 - h-pylori-mucosal-defense-breakdown
 linked_to_claims:
@@ -48,7 +48,7 @@ sources:
   quote: Vidanga Churna 2g powder twice daily with honey after food for 60 days as
     part of Ayurvedic H. pylori protocol. Case report resulted in 100% eradication
     confirmed by negative RUT.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

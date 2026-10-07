@@ -13,22 +13,38 @@ linked_to_topics:
 - sibo
 - gut-dysbiosis
 - ibs
+- iron-deficiency-anemia
+linked_to_symptoms:
+- abdominal-pain
 linked_to_claims:
 - fodmap-4-phase-fm-protocol
-notes_for_coach: Recommended during the Elimination Phase of the low-FODMAP protocol.
-  Has research support in IBS symptom reduction. Clinician should confirm strain and
-  dosing.
+notes_for_coach: |-
+  Recommended during the Elimination Phase of the low-FODMAP protocol. Has research
+  support in IBS symptom reduction. Clinician should confirm strain and dosing.
+
+  Best used for: Best studied (strain 299v) for IBS-related abdominal pain and as a
+  helper for non-haem iron absorption in vegetarian women with low ferritin. It is not a
+  substitute for iron repletion. IBS trials are mixed (one large negative trial), and
+  probiotics are best avoided where SIBO is suspected.
 notes_for_client: A well-studied beneficial bacteria that helps restore gut balance
   during your elimination phase.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- heme-vs-nonheme-iron-absorption
 sources:
 - id: vitaone-elimination-diet-cheatsheet
   location: Functional Medicine Approach to Using Low-FODMAP Clinically — Elimination
     Phase
   quote: Strict low-FODMAP diet + probiotics (S. boulardii, L. plantarum).
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - severely immunocompromised, critically ill or central venous catheter in place — rare
+    but documented Lactobacillus bacteraemia/sepsis with live probiotics
+  medications: []
+  life_stages: []

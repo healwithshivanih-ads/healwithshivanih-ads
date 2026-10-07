@@ -22,14 +22,21 @@ timing_options:
 - evening
 - bedtime
 take_with_food: optional
-notes_for_coach: Peripheral GABA supplementation has limited CNS penetration; PharmaGABA
-  form may have better effects. Pairs with L-theanine and magnesium. Generally low
-  side effect profile at typical doses.
+notes_for_coach: |-
+  Peripheral GABA supplementation has limited CNS penetration; PharmaGABA form may have
+  better effects. Pairs with L-theanine and magnesium. Generally low side effect profile
+  at typical doses.
+
+  Best used for: Possibly helpful for mild situational stress and trouble falling
+  asleep, but the evidence is small and short-term. Magnesium, L-theanine and sleep
+  habits carry better evidence; not worth it for clinical anxiety or chronic insomnia on
+  its own.
 evidence_tier: fm_specific_thin
 linked_to_topics:
 - anxiety
 - insomnia
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- gabaergic-modulation
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 notes_for_client: GABA is your brain's natural calm signal. Supplementing it in the
@@ -41,7 +48,14 @@ sources:
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — GABA row (p.6)
   quote: '↓ Anxiety, insomnia, restlessness. Solution: GABA support, Mg, L-theanine.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Benzodiazepines, z-drugs, sedating antihistamines and other CNS depressants — possible
+    additive sedation
+  life_stages:
+  - Pregnancy and breastfeeding — no safety data

@@ -29,16 +29,36 @@ linked_to_topics:
 - inflammation
 - chronic-inflammation
 - blood-sugar-dysfunction
-notes_for_coach: 'Latin: Gentiana spp.; Gentianaceae. Sanskrit: Kirata, Katuki, Trayamana. Traditional
-  indications: fever, debility after fevers, jaundice, hepatitis, enlargement of liver and spleen, genital
-  herpes, acne, rash, obesity, ulcers, venereal sores, diabetes, cancer. Precautions: general debility,
-  nervousness, muscle spasms, high Vata; not where there is no fever/inflammation. Ayurvedic energetics
-  from The Yoga of Herbs (Frawley & Lad).'
+- functional-dyspepsia
+notes_for_coach: |-
+  Latin: Gentiana spp.; Gentianaceae. Sanskrit: Kirata, Katuki, Trayamana. Traditional
+  indications: fever, debility after fevers, jaundice, hepatitis, enlargement of liver
+  and spleen, genital herpes, acne, rash, obesity, ulcers, venereal sores, diabetes,
+  cancer. Precautions: general debility, nervousness, muscle spasms, high Vata; not
+  where there is no fever/inflammation. Ayurvedic energetics from The Yoga of Herbs
+  (Frawley & Lad).
+
+  Best used for: A classic digestive bitter for poor appetite, heaviness after meals and
+  sluggish digestion, taken 15–30 minutes before meals. Not suitable for clients with
+  reflux, gastritis or ulcers, and not evidenced for inflammation or blood sugar.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — GENTIAN
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- loss-of-appetite
+- epigastric-fullness
+- indigestion
+linked_to_mechanisms:
+- hypochlorhydria
+contraindications:
+  conditions:
+  - Active gastric or duodenal ulcer, gastritis or GERD — bitters increase gastric acid secretion
+    (Commission E contraindication)
+  medications: []
+  life_stages:
+  - Pregnancy and breastfeeding — no safety data; avoid

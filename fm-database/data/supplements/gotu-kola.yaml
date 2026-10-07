@@ -15,9 +15,13 @@ timing_options:
 - evening
 take_with_food: optional
 contraindications:
-  conditions: []
+  conditions:
+  - Liver disease or prior herb-induced liver injury — case reports of hepatotoxicity with
+    prolonged oral use (WHO notes); keep to 6-8 week courses with breaks
   medications: []
-  life_stages: []
+  life_stages:
+  - Pregnancy — insufficient human safety data
+  - Lactation — insufficient human safety data
 interactions:
   with_supplements: []
   with_foods: []
@@ -27,12 +31,21 @@ lactation_safety: unknown
 linked_to_topics:
 - hpa-axis-cortisol-regulation
 - sleep-quality
-linked_to_mechanisms: []
+- varicose-veins
+linked_to_mechanisms:
+- microvascular-damage
 linked_to_claims:
 - gotu-kola-improves-rem-sleep-reduces-stress-sensitivity
-notes_for_coach: 'Active constituents: asiaticoside and madecassoside (triterpenes).
-  Shown to improve REM sleep architecture and reduce stress sensitivity. Source: Coach
-  Shivani clinical observations.'
+notes_for_coach: |-
+  Active constituents: asiaticoside and madecassoside (triterpenes). Shown to improve
+  REM sleep architecture and reduce stress sensitivity. Source: Coach Shivani clinical
+  observations.
+
+  Best used for: Strongest evidence is for chronic venous insufficiency and
+  varicose-vein symptoms (leg heaviness, ankle swelling) using a titrated extract; the
+  wound-healing evidence is mostly for topical use. The stress and sleep evidence is
+  thin (small trials and coach observation). Use in courses rather than continuously
+  because of rare liver-injury reports.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
@@ -57,10 +70,10 @@ ayurvedic_actions:
 - febrifuge
 - diuretic
 evidence_tier: fm_specific_thin
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-13'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - centella-asiatica
 - mandukaparni

@@ -24,13 +24,21 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Iodine is necessary for thyroid hormone synthesis. However, excess iodine
-  can be harmful in Hashimoto's patients and may worsen antibody activity. Supplementation
-  should be cautious and ideally clinician-supervised in autoimmune thyroid disease. Routine
-  supplementation at 150 mcg is considered safe for most. Iodine maintains the architectural
-  integrity of hormone receptor binding pocket domains throughout the body — not just in the
-  thyroid. Deficiency affects all hormone receptors. High-dose iodine supplementation (Lugol's
-  etc.) should be clinician-supervised.
+notes_for_coach: |-
+  Iodine is necessary for thyroid hormone synthesis. However, excess iodine can be
+  harmful in Hashimoto's patients and may worsen antibody activity. Supplementation
+  should be cautious and ideally clinician-supervised in autoimmune thyroid disease.
+  Routine supplementation at 150 mcg is considered safe for most. Iodine maintains the
+  architectural integrity of hormone receptor binding pocket domains throughout the body
+  — not just in the thyroid. Deficiency affects all hormone receptors. High-dose iodine
+  supplementation (Lugol's etc.) should be clinician-supervised.
+
+  Best used for: Strongest case is documented or likely deficiency (non-iodised salt,
+  strict vegan diets, low urinary iodine) and pregnancy/breastfeeding needs under the
+  obstetrician's guidance. Evidence for cyclic breast pain is limited and uses molecular
+  iodine at doses that need clinician supervision. In India, iodised salt makes
+  deficiency uncommon, so routine iodine for Hashimoto's clients is not worth the risk
+  of worsening thyroid antibodies or function.
 evidence_tier: strong
 linked_to_topics:
 - thyroid
@@ -38,7 +46,11 @@ linked_to_topics:
 - autoimmune-thyroiditis
 - thyroid-dysfunction
 - hormonal-nutrition-foundations
-linked_to_mechanisms: []
+- fibrocystic-breast-disease
+linked_to_mechanisms:
+- thyroid-nutrient-synergy
+linked_to_symptoms:
+- fibrocystic-breasts
 linked_to_claims:
 - iodine-supplementation-requires-testing-and-selenium-balance
 - iodine-excess-can-worsen-hashimotos
@@ -86,11 +98,24 @@ sources:
     know that in the thyroid. If you don't have enough iodine in your thyroid, it grows out
     of control into a goiter. Iodine is a growth controller, an architect controller, and
     it does the same thing in the binding pocket domain.
-version: 7
+version: 8
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - iodine (hormone synthesis)
 - iodine 150 mcg
 - iodine-hormone-receptor
+contraindications:
+  conditions:
+  - Hashimoto's / autoimmune thyroiditis — supra-physiological iodine can raise TPO antibodies
+    and induce hypothyroidism; keep to about 150 mcg unless clinician-supervised
+  - Hyperthyroidism, Graves' disease or toxic nodular goitre — iodine can trigger or worsen
+    thyrotoxicosis (Jod-Basedow effect)
+  - Dermatitis herpetiformis — iodine aggravates the skin lesions
+  medications:
+  - Lithium — additive risk of hypothyroidism
+  - Amiodarone — already delivers a very large iodine load; do not add more
+  - Antithyroid drugs (methimazole, carbimazole, propylthiouracil) — iodine alters thyroid
+    function and response to treatment; clinician-supervised only
+  life_stages: []

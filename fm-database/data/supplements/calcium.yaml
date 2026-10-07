@@ -23,7 +23,12 @@ contraindications:
   conditions:
   - hypercalcemia
   - history_of_calcium_kidney_stones
-  medications: []
+  - Primary hyperparathyroidism
+  medications:
+  - Levothyroxine — calcium binds it; separate by at least 4 hours
+  - Tetracycline and fluoroquinolone antibiotics — chelation; separate by 2–4 hours
+  - Bisphosphonates — markedly reduce absorption; separate per prescriber instructions
+  - Thiazide diuretics — reduce calcium excretion; hypercalcaemia risk with supplements
   life_stages: []
 interactions:
   with_supplements:
@@ -58,8 +63,10 @@ linked_to_topics:
 - calcium-deficiency
 - calcium-metabolism
 linked_to_mechanisms:
-- bone-mineral-density
-- calcium-magnesium-balance
+- calcium-trafficking-and-bone-mineralization
+- bone-resorption-formation-imbalance
+linked_to_symptoms:
+- pms
 linked_to_claims:
 - murray-calcium-1200mg-pms
 - murray-calcium-alone-insufficient-osteoporosis
@@ -110,7 +117,7 @@ sources:
   quote: If you find out the low calcium in the serum, that doesn't mean that patient is deficient in
     calcium and they require calcium supplementation.
 evidence_tier: confirm_with_clinician
-version: 4
+version: 5
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani

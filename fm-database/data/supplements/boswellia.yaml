@@ -21,21 +21,35 @@ linked_to_topics:
 - ibd
 - autoimmune
 - osteoarthritis
+- joint-pain
+linked_to_symptoms:
+- joint-pain
+- joint-stiffness-and-swelling
 linked_to_claims:
 - quercetin-boswellia-resveratrol-anti-inflammatory
 - curcumin-boswellia-joint-inflammation
-notes_for_coach: AKBA-standardized extract (e.g., 5-Loxin, AprèsFlex) has RCT evidence
-  for OA knee pain. Combine with curcumin for synergistic anti-inflammatory effect.
-  Generally well tolerated.
+notes_for_coach: |-
+  AKBA-standardized extract (e.g., 5-Loxin, AprèsFlex) has RCT evidence for OA knee
+  pain. Combine with curcumin for synergistic anti-inflammatory effect. Generally well
+  tolerated.
+
+  Best used for: Strongest evidence is for knee osteoarthritis pain and stiffness using
+  standardised AKBA extracts (e.g. 5-Loxin/AprèsFlex), often with curcumin. Smaller
+  trials support use in ulcerative colitis and asthma; evidence for autoimmune disease
+  generally is thin.
 notes_for_client: Boswellia is a resin from Indian frankincense tree with anti-inflammatory
   properties. Best taken with a fatty meal.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- eicosanoid-metabolism
+- chronic-inflammation
+- nf-kb-activation
 contraindications:
   conditions:
   - hypersensitivity or allergy to Boswellia (WHO Monographs Vol 4)
   medications: []
-  life_stages: []
+  life_stages:
+  - pregnancy — avoid (traditional emmenagogue; no safety data)
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Autoimmune Disease Cheatsheet — Page 25
@@ -47,7 +61,7 @@ sources:
   location: Vol 4 (2009) — Gummi Boswellii, Adverse reactions / Contraindications (pp. 56–60)
   quote: 'Minor gastrointestinal side-effects reported in clinical trials. Contraindicated
     in hypersensitivity or allergy to the crude drug. No drug interactions found.'
-version: 6
+version: 7
 status: active
-updated_at: '2026-07-13'
+updated_at: '2026-10-07'
 updated_by: shivani

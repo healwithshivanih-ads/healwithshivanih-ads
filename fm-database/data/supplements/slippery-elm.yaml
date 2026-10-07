@@ -18,12 +18,19 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - gerd-ppi-tapering
+- sore-throat
 linked_to_claims:
 - slippery-elm-protects-gi-lining
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - abrupt-ppi-discontinuation-causes-rebound-reflux
-notes_for_coach: Listed under 'Protect' in PPI tapering. A mucilaginous herb that
-  coats and soothes the GI tract. Often taken as a porridge or powder in water.
+notes_for_coach: |-
+  Listed under 'Protect' in PPI tapering. A mucilaginous herb that coats and soothes the
+  GI tract. Often taken as a porridge or powder in water.
+
+  Best used for: A gentle demulcent for soothing an irritated throat, oesophagus or gut
+  lining (e.g., during PPI tapering or reflux flares); human evidence is largely
+  traditional and small combination studies. Not a treatment for the cause of reflux and
+  not a substitute for addressing it.
 rasa:
 - sweet
 virya: cooling
@@ -57,9 +64,16 @@ sources:
   quote: There's a herb called slippery elm. And slippery elm is the pounded bark
     of the slippery elm tree. And slippery elm coats, soothes and heals the lining
     of the gut.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - slippery-elm-bark
+contraindications:
+  conditions: []
+  medications:
+  - oral medications generally — mucilage can slow/reduce absorption; take 1-2 hours apart
+  life_stages:
+  - pregnancy (use inner-bark preparations only; whole/outer bark has a traditional abortifacient
+    reputation)

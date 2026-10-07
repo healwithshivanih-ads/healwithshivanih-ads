@@ -28,15 +28,34 @@ linked_to_topics:
 - digestion-and-nutrient-absorption
 - ibs
 - cystitis-and-interstitial-cystitis
-notes_for_coach: 'Latin: Foeniculum vulgare; Umbelliferae. Sanskrit: Shatapushpa. Traditional indications:
-  indigestion, low agni, abdominal pain, cramps or gas, difficult or burning urination, children''s colic.
-  Precautions: a good general herb and spice for all constitutions. Ayurvedic energetics from The Yoga
-  of Herbs (Frawley & Lad).'
+- functional-dyspepsia
+notes_for_coach: |-
+  Latin: Foeniculum vulgare; Umbelliferae. Sanskrit: Shatapushpa. Traditional
+  indications: indigestion, low agni, abdominal pain, cramps or gas, difficult or
+  burning urination, children's colic. Precautions: a good general herb and spice for
+  all constitutions. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: Best for gas, cramping and post-meal indigestion, and as a gentle
+  option for menstrual cramps. Culinary/tea amounts are safe for nearly everyone; the
+  urinary indication is traditional only.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — FENNEL SEEDS
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- flatulence
+- indigestion
+- dysmenorrhea
+contraindications:
+  conditions:
+  - Allergy to Apiaceae plants (celery, carrot, mugwort, coriander) — cross-reactive allergy
+  - Oestrogen-sensitive cancers (e.g. ER+ breast cancer) — anethole is weakly oestrogenic;
+    avoid concentrated extracts/oil (culinary use is fine)
+  medications: []
+  life_stages:
+  - Pregnancy and breastfeeding — EMA advises against medicinal fennel preparations, especially
+    the essential oil (estragole content); culinary amounts and occasional seed tea are fine

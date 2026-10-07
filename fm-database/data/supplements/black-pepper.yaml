@@ -28,15 +28,29 @@ linked_to_topics:
 - digestion-and-nutrient-absorption
 - detoxification
 - sinusitis
-notes_for_coach: 'Latin: Piper nigrum; Piperaceae. Sanskrit: Marich. Traditional indications: chronic
-  indigestion, toxins in colon, degenerated metabolism, obesity, sinus congestion, fever, intermittent
-  fever, cold extremities. Precautions: inflammatory conditions of the digestive organs, high Pitta. Ayurvedic
-  energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Piper nigrum; Piperaceae. Sanskrit: Marich. Traditional indications: chronic
+  indigestion, toxins in colon, degenerated metabolism, obesity, sinus congestion,
+  fever, intermittent fever, cold extremities. Precautions: inflammatory conditions of
+  the digestive organs, high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley
+  & Lad).
+
+  Best used for: A culinary digestive spice; its main supplement role is as piperine
+  added to curcumin and other poorly absorbed compounds to boost absorption. Not a
+  stand-alone therapeutic supplement, and piperine extracts can raise levels of several
+  medications.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — BLACK PEPPER
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Narrow-therapeutic-index drugs metabolised by CYP3A4 / P-glycoprotein (phenytoin, cyclosporine/tacrolimus,
+    theophylline, propranolol) — piperine extracts raise their blood levels in human studies;
+    culinary amounts are fine
+  life_stages: []

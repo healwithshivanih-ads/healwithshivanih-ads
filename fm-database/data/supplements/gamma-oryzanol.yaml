@@ -18,16 +18,20 @@ linked_to_symptoms:
 linked_to_topics:
 - perimenopause-and-menopause
 - menopause
-- menopausal-migraine
 - atherogenic-dyslipidemia
 - dyslipidemia
 - estrogen-signaling
 linked_to_mechanisms: []
 linked_to_claims:
 - murray-gamma-oryzanol-dual-menopause-lipid
-notes_for_coach: Mixture of ferulic acid esters from rice bran oil. Pizzorno includes
-  gamma-oryzanol among supplements for menopausal vasomotor symptoms and menopausal
-  migraine. Typical research dose 300 mg/day. Generally well tolerated.
+notes_for_coach: |-
+  Mixture of ferulic acid esters from rice bran oil. Pizzorno includes gamma-oryzanol
+  among supplements for menopausal vasomotor symptoms and menopausal migraine. Typical
+  research dose 300 mg/day. Generally well tolerated.
+
+  Best used for: Most relevant for menopausal women who also have raised cholesterol —
+  older trials suggest it may ease hot flashes and modestly lower TC/TG. The evidence is
+  dated (mostly 1960s–80s Japanese studies), so it is a second-line option.
 notes_for_client: A plant-derived antioxidant from rice bran that may ease menopausal
   hot flashes and migraines.
 contraindications:
@@ -44,7 +48,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

@@ -28,16 +28,21 @@ linked_to_topics:
 - female-infertility
 - male-infertility-oxidative-stress
 - bone-health
-- chronic-fatigue-syndrome
-notes_for_coach: 'Latin: Polygonatum spp.; Liliaceae. Sanskrit: Meda / Mahameda. Traditional indications:
-  debility, infertility, impotence, chronic bleeding disorders, diabetes, consumption, dry cough, dehydration,
-  malnutrition, burning sensation, broken bones, inflamed mucous membranes. Precautions: severe congestion,
-  high Ama. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Polygonatum spp.; Liliaceae. Sanskrit: Meda / Mahameda. Traditional
+  indications: debility, infertility, impotence, chronic bleeding disorders, diabetes,
+  consumption, dry cough, dehydration, malnutrition, burning sensation, broken bones,
+  inflamed mucous membranes. Precautions: severe congestion, high Ama. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: A traditional Ayurvedic ashtavarga rejuvenative with essentially no
+  human trial evidence; not worth placing in a protocol beyond traditional tonic use
+  under an Ayurvedic practitioner.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — SOLOMON'S SEAL
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

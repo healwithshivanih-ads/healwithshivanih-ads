@@ -33,6 +33,13 @@ linked_to_topics:
 - anxiety
 - premenstrual-syndrome
 - asthma
+- migraine-headache
+- kidney-stones
+- constipation
+linked_to_symptoms:
+- constipation
+- headache-migraine
+- pms
 linked_to_claims:
 - magnesium-supports-gut-motility-constipation
 - magnesium-reduces-migraine-frequency
@@ -44,12 +51,20 @@ linked_to_claims:
 - fix-nutritional-foundations-first-in-sibo
 - murray-magnesium-pyruvate-anxiety
 - murray-b6-magnesium-pms-foundation
-notes_for_coach: Magnesium citrate supports bowel motility and is particularly useful
-  in methane-dominant SIBO with constipation. Also supports HPA axis and sleep.
+notes_for_coach: |-
+  Magnesium citrate supports bowel motility and is particularly useful in
+  methane-dominant SIBO with constipation. Also supports HPA axis and sleep.
+
+  Best used for: The go-to magnesium form for constipation (including methane-dominant
+  SIBO) and a good choice for migraine prevention and calcium kidney-stone prevention.
+  For sleep or anxiety in clients with loose stools, glycinate is the better-tolerated
+  form.
 notes_for_client: Magnesium citrate supports healthy gut movement and can help relieve
   constipation associated with bacterial overgrowth.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- altered-gi-motility
+- calcium-oxalate-crystal-formation
 sources:
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Constipation
@@ -86,8 +101,17 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 10
+version: 11
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases: []
+contraindications:
+  conditions:
+  - severe renal impairment / CKD — risk of hypermagnesaemia
+  - diarrhoea-predominant IBS / chronic diarrhoea — citrate form is laxative and will worsen
+    loose stools
+  medications:
+  - levothyroxine, bisphosphonates, tetracycline and fluoroquinolone antibiotics — magnesium
+    chelates them; separate by at least 4 hours
+  life_stages: []

@@ -15,8 +15,15 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - hairfall
-- knee-pain
 - celiac-disease
+- acne-vulgaris
+- zinc-nutrition
+- pcos
+linked_to_symptoms:
+- acne
+- poor-wound-healing
+- taste-changes
+- hair-loss
 linked_to_claims:
 - zinc-copper-ratio-balance-required
 notes_for_coach: Bisglycinate has superior absorption vs sulfate/oxide. Always balance
@@ -25,12 +32,20 @@ notes_for_coach: Bisglycinate has superior absorption vs sulfate/oxide. Always b
 notes_for_client: Zinc bisglycinate is easy on the stomach. Always take with food.
   If taking zinc long-term, make sure you're getting some copper too.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- phytate-zinc-chelation
+- zinc-immune-cell-maturation
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
   quote: 'Zinc Bisglycinate: Bisglycinate has superior absorption'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - tetracycline and fluoroquinolone antibiotics (doxycycline, ciprofloxacin), penicillamine
+    — zinc chelates them and cuts absorption; separate by at least 2 h (4-6 h for quinolones)
+  life_stages: []

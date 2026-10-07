@@ -22,10 +22,16 @@ linked_to_topics:
 - estrogen-signaling
 linked_to_mechanisms: []
 linked_to_claims: []
-notes_for_coach: Phytoestrogen-rich root (puerarin, daidzein, genistein) traditionally
-  used in Chinese medicine. Pizzorno cites kudzu among supplements supporting hot
-  flash relief. Standardised extracts deliver 40-100 mg isoflavones per dose. Avoid
-  in hormone-sensitive cancers and with anticoagulants.
+notes_for_coach: |-
+  Phytoestrogen-rich root (puerarin, daidzein, genistein) traditionally used in Chinese
+  medicine. Pizzorno cites kudzu among supplements supporting hot flash relief.
+  Standardised extracts deliver 40-100 mg isoflavones per dose. Avoid in
+  hormone-sensitive cancers and with anticoagulants.
+
+  Best used for: Evidence for hot flushes is weak and inconsistent (isoflavone content
+  is low compared with soy or red clover); its best human evidence is actually for
+  reducing alcohol intake. Reasonable to skip for menopausal symptoms in favour of
+  better-studied options.
 notes_for_client: A traditional Chinese herb that may help with hot flashes via mild
   plant-estrogen activity.
 contraindications:
@@ -45,7 +51,7 @@ sources:
   location: Menopause — Hot Flashes (pp 625)
   quote: Kudzu is listed among the natural interventions for hot flashes alongside
     soy, fennel, celery, flaxseed.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani

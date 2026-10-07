@@ -13,8 +13,15 @@ timing_options:
 - evening
 take_with_food: avoid
 contraindications:
-  conditions: []
-  medications: []
+  conditions:
+  - Bleeding disorders or active bleeding (including peptic ulcer)
+  - History of haemorrhagic stroke or cerebral microbleeds — case reports of intracerebral
+    haemorrhage
+  - Surgery or dental extraction — stop at least 1–2 weeks before
+  medications:
+  - Warfarin, DOACs (apixaban, rivaroxaban, dabigatran), heparin — additive anticoagulation;
+    bleeding risk
+  - Aspirin, clopidogrel and other antiplatelets — additive bleeding risk
   life_stages: []
 interactions:
   with_supplements: []
@@ -24,13 +31,26 @@ pregnancy_safety: unknown
 lactation_safety: unknown
 linked_to_topics:
 - atherosclerosis
-linked_to_mechanisms: []
+- hypertension
+- coagulation-imbalance
+linked_to_mechanisms:
+- elevated-fibrinogen
+- prothrombotic-state
+linked_to_symptoms:
+- elevated-fibrinogen
+- elevated-blood-pressure
 linked_to_claims:
 - nattokinase-reduces-fibrinogen-factor-vii-viii
-notes_for_coach: 'Dosed in fibrinolysis units (FU) not mg — 2000 FU per capsule standard.
-  Take on empty stomach for fibrinolytic activity. Caution: do NOT combine with warfarin,
-  aspirin, or antiplatelet drugs without clinician supervision. Natural alternative
-  to antiplatelet therapy for eligible patients.'
+notes_for_coach: |-
+  Dosed in fibrinolysis units (FU) not mg — 2000 FU per capsule standard. Take on empty
+  stomach for fibrinolytic activity. Caution: do NOT combine with warfarin, aspirin, or
+  antiplatelet drugs without clinician supervision. Natural alternative to antiplatelet
+  therapy for eligible patients.
+
+  Best used for: Best supported for lowering fibrinogen and modestly lowering blood
+  pressure. The 3-year NAPS RCT found no slowing of subclinical atherosclerosis
+  progression, so it is not worth using for 'plaque dissolving' claims. Never combine
+  with blood thinners without the prescriber.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
@@ -39,10 +59,10 @@ sources:
   quote: Nattokinase is a serine proteinase isolated from natto with potent fibrinolytic
     and thrombolytic activity.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-18'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 notes_for_client: Nattokinase is an enzyme from fermented soybeans that helps break
   down blood clots and lower fibrinogen — a blood-clotting protein linked to heart
   disease.

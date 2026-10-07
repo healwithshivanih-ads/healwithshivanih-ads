@@ -27,15 +27,38 @@ linked_to_topics:
 - liver-detoxification
 - inflammation
 - hemorrhoids
-notes_for_coach: 'Latin: Rheum spp.; Polygonaceae. Sanskrit: Amla-vetasa. Traditional indications: constipation
-  (especially with fevers, ulcers or infections), diarrhea and dysentery (Pitta-type), jaundice, liver
-  problems, skin inflammations. Precautions: pregnancy, chronic diarrhea, chills; use with caution on
-  hemorrhoids. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Rheum spp.; Polygonaceae. Sanskrit: Amla-vetasa. Traditional indications:
+  constipation (especially with fevers, ulcers or infections), diarrhea and dysentery
+  (Pitta-type), jaundice, liver problems, skin inflammations. Precautions: pregnancy,
+  chronic diarrhea, chills; use with caution on hemorrhoids. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).
+
+  Best used for: A stimulant purgative for short-term relief of constipation only;
+  long-term use risks electrolyte loss and laxative dependence. Gentler options
+  (psyllium, hydration, magnesium) come first.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — RHUBARB
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- constipation
+linked_to_mechanisms:
+- altered-gi-motility
+contraindications:
+  conditions:
+  - Intestinal obstruction, inflammatory bowel disease flare, appendicitis or undiagnosed
+    abdominal pain — stimulant laxative
+  - Kidney stones / hyperoxaluria — rhubarb is high in oxalate
+  - Chronic diarrhoea or electrolyte imbalance (low potassium)
+  medications:
+  - Digoxin and antiarrhythmics — stimulant-laxative-induced low potassium increases toxicity
+  - Diuretics and corticosteroids — additive potassium loss
+  life_stages:
+  - Pregnancy — stimulant purgative (uterine stimulation)
+  - Breastfeeding — anthraquinones pass into milk
+  - Children under 12

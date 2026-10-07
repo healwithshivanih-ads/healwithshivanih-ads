@@ -21,8 +21,14 @@ timing_options:
 - with_breakfast
 - with_lunch
 take_with_food: optional
-notes_for_coach: Adaptogenic herb with cognitive-enhancing and stress-reducing properties;
-  effects are best seen with consistent use over 4–6 weeks.
+notes_for_coach: |-
+  Adaptogenic herb with cognitive-enhancing and stress-reducing properties; effects are
+  best seen with consistent use over 4–6 weeks.
+
+  Best used for: Evidence is for memory and learning speed in healthy and older adults
+  after 8–12 weeks of daily use, with some reduction in anxiety in the same trials. It
+  is not a quick fix for brain fog or acute focus, and GI upset (nausea, loose stools)
+  is common — take with food.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - cognitive-decline
@@ -38,7 +44,13 @@ sources:
   location: Page 2 - Supplement Table
   quote: Bacopa Monnieri - Cognitive enhancement, stress - 300–600 mg/day - Morning
     or with meals
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications:
+  - Cholinesterase inhibitors (donepezil, rivastigmine) — additive cholinergic effect (API-cited)
+  life_stages:
+  - pregnancy — insufficient safety data

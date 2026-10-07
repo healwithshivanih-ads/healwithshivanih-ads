@@ -22,19 +22,34 @@ linked_to_topics:
 - menorrhagia
 - testosterone-health
 - testosterone-dht-conversion
+- fibrocystic-breast-disease
+- low-progesterone
+linked_to_symptoms:
+- pms
+- breast-tenderness
+- premenstrual-mood-changes
+- short-luteal-phase
 linked_to_claims:
 - dim-and-chasteberry-naturally-support-progesterone-and-lower-estrogen
 - murray-chasteberry-most-important-pms-herb
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
-notes_for_coach: Chasteberry (Vitex) acts on the pituitary to support LH secretion and may help
-  normalize progesterone production in the luteal phase. Used in cycle syncing protocols. Effects
-  are gradual (may take 3+ cycles). Suitable for long-term use.
+notes_for_coach: |-
+  Chasteberry (Vitex) acts on the pituitary to support LH secretion and may help
+  normalize progesterone production in the luteal phase. Used in cycle syncing
+  protocols. Effects are gradual (may take 3+ cycles). Suitable for long-term use.
+
+  Best used for: Strongest evidence is for PMS — particularly breast tenderness,
+  irritability and mood swings — and for cyclical breast pain, with some evidence for a
+  short luteal phase linked to mildly raised prolactin. Effects build over about 3
+  cycles. Not a general hormone balancer and not useful once periods have stopped; use
+  cautiously in PCOS, where raising LH may not help.
 notes_for_client: Chasteberry is an herb traditionally used to support hormonal balance. It may
   help boost your progesterone levels naturally over time, which can ease symptoms like spotting,
   PMS, and mood swings.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- low-progesterone
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Q&A
@@ -50,10 +65,10 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
   quote: Chaste Tree Berry (Vitex agnus-castus) [listed under Herbs that Inhibit 5-a Reductase]
-version: 4
+version: 5
 status: active
-updated_at: 2026-07-28
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - chaste-tree-berry
 - chaste-berry-vitex-agnus-castus
@@ -61,3 +76,18 @@ aliases:
 - vitex-agnus-castus
 - chaste tree berry
 - chaste berry
+contraindications:
+  conditions:
+  - Prolactinoma or other pituitary disorder — can mask/alter prolactin; needs medical management
+  - Oestrogen- or hormone-sensitive cancer (breast, uterine, ovarian) — hormonal effects;
+    avoid unless oncologist agrees (EMA monograph)
+  medications:
+  - Dopamine agonists or antagonists (bromocriptine, cabergoline, antipsychotics, metoclopramide,
+    domperidone) — vitex acts on dopamine D2 receptors
+  - IVF / ovulation-induction drugs (clomiphene, gonadotropins) — case reports of ovarian
+    hyperstimulation
+  - Hormonal contraceptives and HRT — may interfere with effect (EMA monograph)
+  life_stages:
+  - Pregnancy — avoid
+  - Breastfeeding — lowers prolactin and may reduce milk supply
+  - Under 18 — not recommended (EMA monograph; HPO axis still maturing)

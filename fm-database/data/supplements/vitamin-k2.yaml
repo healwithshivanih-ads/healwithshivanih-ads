@@ -19,17 +19,31 @@ linked_to_topics:
 - osteoporosis
 - bone-health
 - perimenopause-and-menopause
-- atherogenic-dyslipidemia
+- vitamin-k2-calcium-direction
+- vitamin-d3-k2-synergy
+linked_to_symptoms:
+- decreased-bone-mineral-density
+- bone-loss
+- vascular-calcification
 linked_to_claims:
 - vitamin-d3-k2-magnesium-boron-calcium-absorption
 - vitamin-d-supports-reproductive-health-and-bone
 - murray-vitamin-k2-mk7-osteocalcin
-notes_for_coach: Recommended alongside Vitamin D3 for bone and cardiovascular support
-  in menopausal women. K2 directs calcium to bones and away from arterial walls.
+notes_for_coach: |-
+  Recommended alongside Vitamin D3 for bone and cardiovascular support in menopausal
+  women. K2 directs calcium to bones and away from arterial walls.
+
+  Best used for: Best evidence is for slowing postmenopausal bone loss (an MK-7 trial
+  over 3 years). It is commonly paired with vitamin D3 for bone support in women in
+  perimenopause and menopause. Evidence that it prevents or reverses arterial
+  calcification is mixed, and it does not lower cholesterol or help pain or fatigue. Not
+  for anyone on warfarin or acenocoumarol unless the prescriber knows.
 notes_for_client: Vitamin K2 works with Vitamin D to help keep calcium in your bones
   where it belongs, rather than in your arteries.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- calcium-trafficking-and-bone-mineralization
+- bone-resorption-formation-imbalance
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
@@ -54,10 +68,16 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - vitamin-k2-supplement
 - vitamin-k2-mk7
+contraindications:
+  conditions: []
+  medications:
+  - warfarin / acenocoumarol (vitamin K antagonists) — vitamin K directly opposes the anticoagulant
+    effect and shifts INR; only with the prescriber's knowledge and a stable daily dose
+  life_stages: []

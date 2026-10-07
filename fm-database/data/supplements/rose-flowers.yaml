@@ -32,14 +32,22 @@ linked_to_topics:
 - menorrhagia
 - chronic-inflammation
 - perimenopause-and-menopause
-notes_for_coach: 'Latin: Rosa spp.; Rosaceae. Sanskrit: Shatapatri. Traditional indications: amenorrhea,
-  dysmenorrhea, uterine hemorrhage, inflamed eyes, dizziness, headaches, sore throat, enlarged tonsils.
-  Precautions: high Kapha. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+notes_for_coach: |-
+  Latin: Rosa spp.; Rosaceae. Sanskrit: Shatapatri. Traditional indications: amenorrhea,
+  dysmenorrhea, uterine hemorrhage, inflamed eyes, dizziness, headaches, sore throat,
+  enlarged tonsils. Precautions: high Kapha. Ayurvedic energetics from The Yoga of Herbs
+  (Frawley & Lad).
+
+  Best used for: Gentle food-grade herb; the one human trial supports rose tea for
+  period pain. Fine as a calming, cooling tea; not a treatment for heavy bleeding or
+  menopause on current evidence.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — ROSE FLOWERS
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+linked_to_symptoms:
+- dysmenorrhea

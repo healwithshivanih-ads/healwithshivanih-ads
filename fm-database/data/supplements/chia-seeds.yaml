@@ -12,17 +12,24 @@ timing_options:
 - with_breakfast
 - with_lunch
 take_with_food: optional
-linked_to_topics:
-- chronic-pain-and-fatigue
+linked_to_topics: []
+linked_to_symptoms:
+- constipation
 linked_to_claims:
 - chia-flaxseed-first-line-constipation
-notes_for_coach: First-line fibre intervention for constipation before escalating
-  to magnesium citrate. Also provides ALA omega-3, protein, and minerals. Ensure adequate
-  hydration when using.
+notes_for_coach: |-
+  First-line fibre intervention for constipation before escalating to magnesium citrate.
+  Also provides ALA omega-3, protein, and minerals. Ensure adequate hydration when
+  using.
+
+  Best used for: A food-based fibre for constipation and for blunting post-meal
+  blood-sugar rises; works only with enough water. Little evidence for meaningful weight
+  loss or cholesterol lowering on its own.
 notes_for_client: Two tablespoons of chia seeds daily is a simple, gentle way to get
   your bowels moving regularly and feed the good bacteria in your gut.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- postprandial-glucose-spike
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Constipation Protocol
@@ -30,9 +37,15 @@ sources:
     of chia seeds and the flat seeds.
 - id: thurlow-microbiome-session-7
   location: Session 7 — Fiber Gap & Feeding the Microbiome
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - chia-seed
+contraindications:
+  conditions:
+  - Difficulty swallowing or oesophageal narrowing/stricture — dry chia swells; case report
+    of oesophageal obstruction. Always eat soaked, never as a dry spoonful
+  medications: []
+  life_stages: []

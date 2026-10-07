@@ -23,14 +23,22 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Bioavailable sulfur compound for joint support, detox, and pain;
-  commonly used in arthritis and connective tissue protocols.
+notes_for_coach: |-
+  Bioavailable sulfur compound for joint support, detox, and pain; commonly used in
+  arthritis and connective tissue protocols.
+
+  Best used for: Best evidence is modest pain and function improvement in knee
+  osteoarthritis, often combined with glucosamine; little evidence for other uses.
+  Effect sizes are small — worth a 8-12 week trial, not a must-have.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - joint-pain
 - osteoarthritis
+- knee-pain
 linked_to_mechanisms:
 - synovial-inflammation
+linked_to_symptoms:
+- joint-stiffness-and-swelling
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -38,7 +46,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: MSM (Methylsulfonylmethane) - Joint pain, inflammation - 1000–3000 mg/day
     - With meals
-version: 2
+version: 3
 status: active
-updated_at: '2026-06-18'
+updated_at: '2026-10-07'
 updated_by: shivani

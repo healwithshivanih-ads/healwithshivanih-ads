@@ -50,6 +50,14 @@ linked_to_topics:
 - comt-gene-catechol-clearance
 - hormonal-nutrition-foundations
 - hippocampal-volume-and-hormones
+- type-2-diabetes
+- migraine-headache
+- heart-arrhythmias
+linked_to_symptoms:
+- headache-migraine
+- constipation
+- pms
+- palpitations
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -77,13 +85,21 @@ linked_to_claims:
 - magnesium-enables-hormone-transcription
 - rbc-magnesium-targets-hormone-signaling
 - nutrient-cofactors-required-for-hormone-signaling
-notes_for_coach: 'Essential cofactor for both the methylation cycle and COMT enzyme function. Approx.
-  50% of US adults are deficient. Common causes of depletion: high caffeine intake and long-term PPI
-  use. Food sources: dark leafy greens, nuts, seeds, fish, beans, avocados, whole grains. Supplement
-  form (glycinate, malate) matters for tolerability. Magnesium is required for transcription of the
-  hormonal signal at the receptor. Target RBC (red blood cell) magnesium in the high 5s to low 6s
-  mg/dL — standard serum magnesium is a poor proxy. Magnesium is chronically depleted by stress, toxicity,
-  and aging. Also linked to hippocampal volume maintenance.'
+notes_for_coach: |-
+  Essential cofactor for both the methylation cycle and COMT enzyme function. Approx.
+  50% of US adults are deficient. Common causes of depletion: high caffeine intake and
+  long-term PPI use. Food sources: dark leafy greens, nuts, seeds, fish, beans,
+  avocados, whole grains. Supplement form (glycinate, malate) matters for tolerability.
+  Magnesium is required for transcription of the hormonal signal at the receptor. Target
+  RBC (red blood cell) magnesium in the high 5s to low 6s mg/dL — standard serum
+  magnesium is a poor proxy. Magnesium is chronically depleted by stress, toxicity, and
+  aging. Also linked to hippocampal volume maintenance.
+
+  Best used for: One of the highest-value basics: best supported for migraine
+  prevention, insulin sensitivity/type 2 diabetes, PMS and constipation (citrate/oxide
+  forms), with a modest blood-pressure-lowering effect. Commonly depleted by stress,
+  PPIs, diuretics and metformin. Match the form to the goal (glycinate for calm/sleep
+  support, citrate/oxide for bowels) and avoid in significant kidney disease.
 notes_for_client: 'Magnesium — for muscles, nerves and settling at night.
 
   Evening is the best time. If it loosens your stools, drop back to a smaller amount.'
@@ -103,6 +119,10 @@ typical_dose_range:
     unit: mg
 linked_to_mechanisms:
 - parasympathetic-restoration-failure
+- insulin-resistance-magnesium
+- gaba-receptor-modulation
+- calcium-magnesium-imbalance
+- vascular-smooth-muscle-dysregulation
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Functional Detox Phases
@@ -174,10 +194,10 @@ sources:
   quote: magnesium, which allows transcription of the message to occur... magnesium is constantly
     rinsed out of the body by any state of stress or toxicity... you want to keep your red blood cell
     magnesium in the high fives or the low sixes.
-version: 25
+version: 26
 status: active
-updated_at: '2026-08-09'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - magnesium 400-600mg
 - magnesium-hormone-support
@@ -185,7 +205,9 @@ contraindications:
   conditions:
   - severe renal impairment — coordinate with clinician
   - high doses may cause loose stools (form-dependent)
-  medications: []
+  medications:
+  - Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine — magnesium
+    chelates them and cuts their absorption; separate by at least 2-4 hours
   life_stages: []
 interactions:
   with_supplements: []

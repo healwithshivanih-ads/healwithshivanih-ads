@@ -23,7 +23,9 @@ contraindications:
   conditions:
   - severe_dysphagia
   - bowel_obstruction
-  medications: []
+  medications:
+  - Oral medications generally — high-fibre mucilage can reduce absorption; take medicines
+    1–2 hours apart
   life_stages:
   - pregnancy_first_trimester
 interactions:
@@ -45,23 +47,37 @@ interactions:
 
       '
 linked_to_topics:
-- microbiome
 - gut-dysbiosis
 - perimenopause
 - estrobolome
 - estrogen-dominance
 - perimenopause-and-menopause
 - menopause
+- gut-microbiome
+- hypertension
+- dyslipidemia
+- constipation
 linked_to_mechanisms:
-- lignan-estrogen-modulation
 - butyrate-production
+- estrogen-clearance-liver-gut
+- dietary-fiber-modulation
+linked_to_symptoms:
+- constipation
+- elevated-blood-pressure
+- elevated-cholesterol
 linked_to_claims:
 - flax-and-chia-combo-gentle-constipation-support
 - fiber-binds-estrogen-prevents-enterohepatic-recirculation
 - murray-flaxseed-halves-hot-flashes
-notes_for_coach: 1–2 tbsp/day ground flax. Lignans act as weak phytoestrogens competing
-  at estrogen receptors and increasing SHBG. Avoid in high-histamine patients without
-  tolerance testing.
+notes_for_coach: |-
+  1–2 tbsp/day ground flax. Lignans act as weak phytoestrogens competing at estrogen
+  receptors and increasing SHBG. Avoid in high-histamine patients without tolerance
+  testing.
+
+  Best used for: Best as a daily food, freshly ground, for constipation, modest BP and
+  LDL lowering, and fibre that supports oestrogen clearance. Must be ground; whole seeds
+  pass through. Evidence for hot flashes is weak — the larger placebo-controlled trial
+  (Pruthi 2012) found no benefit.
 notes_for_client: Ground flaxseed provides fiber and plant compounds that gently regulate
   estrogen activity — especially helpful during perimenopause.
 sources:
@@ -113,9 +129,9 @@ ayurvedic_actions:
 - expectorant
 - nutritive tonic
 evidence_tier: plausible_emerging
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - flaxseed-ground

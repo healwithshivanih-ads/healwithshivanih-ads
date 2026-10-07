@@ -33,6 +33,8 @@ contraindications:
   - hormone-sensitive-cancer
   - upcoming-surgery
   - heavy-menstrual-bleeding
+  - Photosensitivity disorders / high sun exposure — contains furocoumarins that can cause
+    photosensitivity
   medications:
   - warfarin
   - anticoagulants
@@ -54,22 +56,23 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Strong uterine stimulant — explicitly contraindicated in pregnancy.
 interactions: {}
-linked_to_symptoms:
-- menstrual-irregularity
+linked_to_symptoms: []
 linked_to_topics:
 - perimenopause
-- pms
-linked_to_mechanisms:
-- estrogen-receptor-modulation
+linked_to_mechanisms: []
 linked_to_claims: []
-notes_for_coach: >-
-  Traditional Chinese herb for menstrual and perimenopausal complaints.
-  Strong antiplatelet / anticoagulant effect — never combine with warfarin
-  or other blood thinners (additive bleeding risk). Uterine stimulant —
-  contraindicated in pregnancy. Mild estrogenic effects — avoid in
-  estrogen-sensitive conditions (breast cancer, fibroids exacerbated by
-  estrogen). Often used in TCM formulas rather than as a single herb.
-  Discontinue 2 weeks before any surgery.
+notes_for_coach: |-
+  Traditional Chinese herb for menstrual and perimenopausal complaints. Strong
+  antiplatelet / anticoagulant effect — never combine with warfarin or other blood
+  thinners (additive bleeding risk). Uterine stimulant — contraindicated in pregnancy.
+  Mild estrogenic effects — avoid in estrogen-sensitive conditions (breast cancer,
+  fibroids exacerbated by estrogen). Often used in TCM formulas rather than as a single
+  herb. Discontinue 2 weeks before any surgery.
+
+  Best used for: Evidence for dong quai on its own is weak: the main RCT for menopausal
+  hot flushes found no benefit over placebo, and it is traditionally used in combination
+  formulas for period pain and PMS. Given its bleeding-risk and uterine-stimulant
+  cautions, it is a low-priority option.
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
@@ -78,7 +81,7 @@ sources:
     and perimenopausal complaints; strong antiplatelet effect contraindicated with
     anticoagulants, and uterine stimulant contraindicated in pregnancy.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-10-07'
 updated_by: shivani

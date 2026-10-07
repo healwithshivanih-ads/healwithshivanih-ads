@@ -12,24 +12,43 @@ linked_to_topics:
 - vaginal-microbiome
 - sibo
 - gut-microbiome
+- visceral-adiposity
+- endometriosis
+- h-pylori-infection
+linked_to_symptoms:
+- increased-waist-circumference
 linked_to_claims:
 - sibo-yogurt-protocol-reduces-fecal-overgrowth
-notes_for_coach: L. gasseri is identified as part of both vaginal microbiome restoration
-  (alongside L. crispatus) and the SIBO yogurt protocol (alongside L. reuteri and
-  B. subtilis). It colonizes the small intestine and produces bacteriocins. Used in
-  Dr. Davis's SIBO yogurt formulation.
+notes_for_coach: |-
+  L. gasseri is identified as part of both vaginal microbiome restoration (alongside L.
+  crispatus) and the SIBO yogurt protocol (alongside L. reuteri and B. subtilis). It
+  colonizes the small intestine and produces bacteriocins. Used in Dr. Davis's SIBO
+  yogurt formulation.
+
+  Best used for: Effects are strain-specific: SBT2055 for modest visceral-fat reduction
+  in overweight adults, OLL2716 as an H. pylori adjunct, OLL2809 for endometriosis pain.
+  A generic 'gasseri' product without a named strain is unlikely to reproduce these
+  results.
 notes_for_client: This probiotic strain supports both vaginal health and gut health.
   It is used in a special homemade yogurt that may help address small intestinal bacterial
   overgrowth (SIBO).
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- bacteriocin-production
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: SIBO yogurt formulation discussion
   quote: I'd pick Lactobacillus reuteri, Lactobacillus gasseri, and my most recent
     recipe, I replaced the Bacillus coagulans.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - severely immunocompromised, critically ill or central venous catheter in place — rare
+    but documented Lactobacillus bacteraemia/sepsis with live probiotics
+  medications: []
+  life_stages: []

@@ -16,21 +16,39 @@ take_with_food: optional
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-disease-prevention
+- h-pylori-infection
+linked_to_symptoms:
+- elevated-cholesterol
+- constipation
 linked_to_claims:
 - lactobacillus-reuteri-lowers-cholesterol-9-percent
-notes_for_coach: Some evidence for ~9% cholesterol reduction. Clinician uses when clinically indicated. Thin evidence base
-  — categorized as plausible_emerging.
+notes_for_coach: |-
+  Some evidence for ~9% cholesterol reduction. Clinician uses when clinically indicated.
+  Thin evidence base — categorized as plausible_emerging.
+
+  Best used for: Best supported for modest LDL lowering (strain NCIMB 30242), functional
+  constipation, and reducing side effects during H. pylori treatment (DSM 17938).
+  Benefits are strain-specific; do not expect statin-level lipid effects. Bone, oxytocin
+  and skin claims rest on single small trials or animal data.
 notes_for_client: Lactobacillus reuteri is a probiotic strain with some research suggesting it may modestly lower cholesterol.
   It supports gut health, which is linked to systemic inflammation.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: LDL-Lowering Nutraceuticals
   quote: There's at least some research on lactobacillus rudi, lowering cholesterol about 9%.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - lactobacillus-reuteri-fermented-yogurt
+contraindications:
+  conditions:
+  - severely immunocompromised, critically ill or central venous catheter in place — rare
+    but documented Lactobacillus bacteraemia/sepsis with live probiotics
+  medications: []
+  life_stages: []

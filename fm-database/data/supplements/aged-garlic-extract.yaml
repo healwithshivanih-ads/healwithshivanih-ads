@@ -21,17 +21,29 @@ linked_to_topics:
 - candida-overgrowth
 - fungal-overgrowth
 - high-blood-pressure
+- atherosclerosis
+linked_to_symptoms:
+- elevated-blood-pressure
+- vascular-calcification
 linked_to_claims:
 - aged-garlic-slows-coronary-calcification-progression
 - murray-garlic-allicin-standardized-dose
-notes_for_coach: Budoff's research cited showing 600mg twice daily slowed progression
-  of coronary calcification. Anti-inflammatory and anti-thrombotic properties also
-  described.
+notes_for_coach: |-
+  Budoff's research cited showing 600mg twice daily slowed progression of coronary
+  calcification. Anti-inflammatory and anti-thrombotic properties also described.
+
+  Best used for: Strongest evidence is cardiovascular: modest BP lowering in
+  uncontrolled hypertension and slower coronary calcium progression. Good fit for a
+  client with raised BP, family CVD history or a positive CAC score. Not worth it as an
+  antifungal — candida evidence is for raw garlic/allicin in vitro, not aged extract.
 notes_for_client: Aged garlic extract is different from raw garlic supplements. Research
   by Dr. Budoff suggests it may help slow the buildup of calcium in the arteries.
   Take with meals.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- plaque-progression
+- arterial-stiffness
+- endothelial-dysfunction
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Nutraceuticals — Aged Garlic Extract
@@ -40,7 +52,16 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Scheduled surgery or dental extraction — stop 7 days before (antiplatelet effect)
+  - Bleeding disorders
+  medications:
+  - Anticoagulants/antiplatelets (warfarin, clopidogrel, aspirin) — additive antiplatelet
+    effect; AGE appears safer than raw garlic supplements in trials, but monitor
+  - HIV protease inhibitors (saquinavir) — garlic supplements lower drug levels
+  life_stages: []

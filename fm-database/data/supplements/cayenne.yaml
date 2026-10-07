@@ -32,15 +32,27 @@ linked_to_topics:
 - agni-digestive-fire
 - joint-pain
 - cardiovascular-health
-notes_for_coach: Whole cayenne / red pepper (Capsicum spp.). A pungent, heating circulatory and digestive
-  stimulant — strong dispeller of cold, kindles agni, and enhances the action of other herbs. Best for
-  vata/kapha; aggravates pitta. The topical pain-relief product is catalogued separately as 'capsaicin-topical'.
-  Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+notes_for_coach: |-
+  Whole cayenne / red pepper (Capsicum spp.). A pungent, heating circulatory and
+  digestive stimulant — strong dispeller of cold, kindles agni, and enhances the action
+  of other herbs. Best for vata/kapha; aggravates pitta. The topical pain-relief product
+  is catalogued separately as 'capsaicin-topical'. Ayurvedic energetics from The Yoga of
+  Herbs (Frawley & Lad).
+
+  Best used for: A warming culinary spice that supports digestion and circulation in
+  food amounts; small studies suggest modest effects on appetite and thermogenesis.
+  Joint-pain benefit belongs to topical capsaicin (separate entry), not oral cayenne.
 sources:
 - id: frawley-lad-yoga-of-herbs-2001
   location: Materia Medica — CAYENNE PEPPER
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
+contraindications:
+  conditions:
+  - Severe GERD/reflux or active IBD flare — concentrated cayenne or capsaicin supplements
+    commonly worsen heartburn and gut irritation (food amounts per tolerance)
+  medications: []
+  life_stages: []

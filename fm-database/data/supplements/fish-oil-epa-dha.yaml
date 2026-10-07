@@ -22,7 +22,6 @@ linked_to_topics:
 - atherosclerosis
 - dyslipidemia
 - type-1-diabetes-mellitus
-- type-2-diabetes-mellitus
 - atherogenic-dyslipidemia
 - perimenopause-and-menopause
 - menopause
@@ -38,7 +37,6 @@ linked_to_topics:
 - menorrhagia
 - adhd
 - chronic-fatigue-syndrome
-- benign-prostatic-hyperplasia
 - essential-hypertension
 - thyroid
 - inflammation
@@ -49,7 +47,15 @@ linked_to_topics:
 - gut-brain-axis
 - insulin-resistance
 - essential-fatty-acids
-- mitochondrial-health-nutrition
+- type-2-diabetes
+- major-depressive-disorder
+- nafld
+linked_to_symptoms:
+- elevated-triglycerides
+- morning-stiffness
+- dysmenorrhea
+- depression-symptoms
+- elevated-blood-pressure
 linked_to_claims:
 - omega-3-index-8pct-greatest-cvd-protection
 - omega-3s-reduce-cvd-mortality-45pct
@@ -71,17 +77,30 @@ linked_to_claims:
 - omega3-curcumin-reduce-il6-tnfa-insulin-signalling
 - omega-3-ratio-4-to-1-reduces-inflammation
 - omega-3-supplementation-muscle-mass-elderly
-notes_for_coach: 'Use pharmaceutical-grade (free of mercury, PCBs, solvents). Recently diagnosed T1DM:
-  1000 mg each EPA + DHA. Level 1 T1DM/T2DM: 600 mg each. Combined EPA+DHA target 1100–1600 mg/day.
-  DHA-rich formulas preferred over EPA-dominant products for BP reduction. 3000 mg total EPA+DHA recommended
-  in therapeutic approach. Ensure lab-certified purity against pollutants and peroxides. Take with
-  a meal for absorption and to reduce fishy aftertaste. Quality varies greatly — advise clients to
-  choose brands tested for heavy metals. High doses may affect bleeding; refer to clinician.'
+notes_for_coach: |-
+  Use pharmaceutical-grade (free of mercury, PCBs, solvents). Recently diagnosed T1DM:
+  1000 mg each EPA + DHA. Level 1 T1DM/T2DM: 600 mg each. Combined EPA+DHA target
+  1100–1600 mg/day. DHA-rich formulas preferred over EPA-dominant products for BP
+  reduction. 3000 mg total EPA+DHA recommended in therapeutic approach. Ensure
+  lab-certified purity against pollutants and peroxides. Take with a meal for absorption
+  and to reduce fishy aftertaste. Quality varies greatly — advise clients to choose
+  brands tested for heavy metals. High doses may affect bleeding; refer to clinician.
+
+  Best used for: Strongest evidence is for lowering high triglycerides (at higher,
+  clinician-guided intakes), as an adjunct in rheumatoid arthritis, and EPA-rich
+  formulas as an add-on for depression; it also helps period pain and modestly lowers
+  BP. Generic heart protection in healthy people, hot flashes and dry eye have not held
+  up in large trials. Clients with atrial fibrillation or on blood thinners need
+  clinician input before higher intakes.
 notes_for_client: 'The good fats your body can''t make — for your heart, your brain and calming inflammation.
 
   Always with food. If you notice an aftertaste, keep the bottle in the fridge.'
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- arachidonic-acid-cascade
+- epa-dha-cell-membrane-incorporation
+- chronic-inflammation
+- hepatic-lipogenesis
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Olive Oil and Omega-3 Fatty Acids / Therapeutic Approach — Supplements
@@ -172,12 +191,21 @@ sources:
   location: Omega-3 and vaginal microbiome discussion
   quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a woman takes omega-3s
     during pregnancy, the likelihood of premature labor drops precipitously.
-version: 12
+version: 13
 status: active
-updated_at: '2026-08-09'
-updated_by: Shivani
+updated_at: '2026-10-07'
+updated_by: shivani
 aliases:
 - fish-oil
 - epa-dha-fish-oil
 - omega-3-fish-oil
 - fish-oil-omega-3
+contraindications:
+  conditions:
+  - Fish or shellfish allergy — use algae-derived EPA/DHA instead
+  - Atrial fibrillation or high AF risk — meta-analyses of RCTs show omega-3 supplementation
+    (especially ≥1 g/day, more at 4 g) increases new-onset AF; discuss with cardiologist
+  medications:
+  - Warfarin, other anticoagulants and antiplatelets (clopidogrel, chronic aspirin) at intakes
+    above ~3 g/day EPA+DHA — additive bleeding tendency; prescriber should monitor INR
+  life_stages: []

@@ -17,18 +17,26 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - h-pylori-infection
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- h-pylori-biofilm-coccoid-treatment-resistance
+- h-pylori-mucosal-defense-breakdown
 linked_to_symptoms: []
 linked_to_claims: []
-notes_for_coach: 'Practitioner-dispensed COMBINATION product, not a single compound —
-  catalogued so plans that prescribe it resolve. Label composition per 2 capsules:
-  mastic gum 1,300 mg + bismuth citrate 140 mg + berberine 320 mg + zinc carnosine
-  8.5 mg. Replaces standalone mastic gum + bismuth in a Phase 1 antimicrobial protocol
-  and disrupts the H. pylori biofilm. IMPORTANT: the berberine and zinc carnosine
-  inside it are SUB-THERAPEUTIC — if either is clinically needed at full dose, keep the
-  standalone alongside and say so in coach_rationale (plan-check will flag the overlap;
-  that note is the answer to the flag). Clinical rationale for each ingredient lives on
-  its own catalogue entry — see [[mastic-gum]], [[berberine]], [[zinc-carnosine]].'
+notes_for_coach: |-
+  Practitioner-dispensed COMBINATION product, not a single compound — catalogued so
+  plans that prescribe it resolve. Label composition per 2 capsules: mastic gum 1,300 mg
+  + bismuth citrate 140 mg + berberine 320 mg + zinc carnosine 8.5 mg. Replaces
+  standalone mastic gum + bismuth in a Phase 1 antimicrobial protocol and disrupts the
+  H. pylori biofilm. IMPORTANT: the berberine and zinc carnosine inside it are
+  SUB-THERAPEUTIC — if either is clinically needed at full dose, keep the standalone
+  alongside and say so in coach_rationale (plan-check will flag the overlap; that note
+  is the answer to the flag). Clinical rationale for each ingredient lives on its own
+  catalogue entry — see [[mastic-gum]], [[berberine]], [[zinc-carnosine]].
+
+  Best used for: A practitioner combination used as Phase 1 adjunct support alongside
+  (or after) medically confirmed and treated H. pylori. The berberine and zinc carnosine
+  doses are sub-therapeutic on their own. Not for general bloating or reflux without a
+  positive test.
 notes_for_client: A combination capsule that brings together several gut-supportive
   ingredients in one, so you take fewer separate supplements during the first phase.
   Take it with food.
@@ -37,7 +45,21 @@ sources:
 - id: practitioner-product-pages
   location: FM Nutrition — H. Pylori Care 90 caps, product page label copy
   quote: Mastic gum, bismuth citrate, berberine and zinc carnosine combination capsule.
-version: 1
+version: 2
 status: active
-updated_at: '2026-07-28'
+updated_at: '2026-10-07'
 updated_by: shivani
+contraindications:
+  conditions:
+  - Kidney impairment — bismuth is renally excreted and can accumulate; avoid prolonged courses
+  medications:
+  - Prescribed bismuth quadruple therapy — avoid doubling the bismuth dose; coordinate with
+    the prescriber
+  - Cyclosporine / tacrolimus — the berberine component raises their blood levels (CYP3A4
+    inhibition)
+  - Tetracycline and quinolone antibiotics (doxycycline, ciprofloxacin) — bismuth and zinc
+    chelate them and reduce absorption; separate by at least 2-3 hours
+  life_stages:
+  - Pregnancy — contains berberine (contraindicated in pregnancy) and bismuth
+  - Lactation — contains berberine
+  - Infancy / children — not for use

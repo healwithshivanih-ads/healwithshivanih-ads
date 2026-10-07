@@ -16,23 +16,33 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - vitamin-b-complex-deficiency
+- congestive-heart-failure
+- drug-induced-nutrient-depletion
 linked_to_claims:
 - thiamin-carbohydrate-metabolism-signal
-notes_for_coach: Start with thiamin HCl for cost-effectiveness. If poor response,
-  consider benfotiamine (fat-soluble, better absorbed) or TPP forms. Retention improves
-  when spread throughout the day with meals.
+notes_for_coach: |-
+  Start with thiamin HCl for cost-effectiveness. If poor response, consider benfotiamine
+  (fat-soluble, better absorbed) or TPP forms. Retention improves when spread throughout
+  the day with meals.
+
+  Best used for: Best evidence is for correcting deficiency: clients on long-term loop
+  diuretics (furosemide), heavy alcohol use, bariatric surgery, or very high
+  refined-carbohydrate diets. For diabetic neuropathy use the separate benfotiamine
+  entry, which is the form with the trial data. Not worth adding as a general energy
+  supplement in a client with an adequate diet.
 notes_for_client: Thiamin helps your body use carbohydrates for energy. Best absorbed
   when spread across meals.
 evidence_tier: strong
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- mitochondrial-energy-production
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin B1 (Thiamin)
   quote: Start with thiamin HCl for cost-effectiveness; explore benfotiamine, TPP,
     or TTFD if clinical response is inadequate.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - thiamin

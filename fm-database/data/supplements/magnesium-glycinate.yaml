@@ -32,7 +32,9 @@ take_with_food: optional
 contraindications:
   conditions:
   - severe_kidney_disease
-  medications: []
+  medications:
+  - Tetracycline / fluoroquinolone antibiotics, bisphosphonates and levothyroxine — magnesium
+    chelates them and cuts their absorption; separate by at least 2-4 hours
   life_stages: []
 interactions:
   with_supplements:
@@ -93,7 +95,14 @@ linked_to_topics:
 - bone-health
 - asthma
 - comt-slow-catechol-clearance
-linked_to_mechanisms: []
+- migraine-headache
+- type-2-diabetes
+linked_to_mechanisms:
+- gaba-receptor-modulation
+- insulin-resistance-magnesium
+linked_to_symptoms:
+- headache-migraine
+- pms
 linked_to_claims:
 - magnesium-glycinate-improves-sleep-quality
 - chronic-stress-elevates-rt3-functional-hypothyroidism
@@ -130,11 +139,19 @@ linked_to_claims:
 - murray-b6-magnesium-pms-foundation
 - murray-calcium-alone-insufficient-osteoporosis
 - magnesium-calms-slow-comt-supports-liver
-notes_for_coach: Lynch specifies magnesium glycinate chelate for COMT support (calming,
-  liver function). Also lists magnesium taurate, malate, and threonate as effective
+notes_for_coach: |-
+  Lynch specifies magnesium glycinate chelate for COMT support (calming, liver
+  function). Also lists magnesium taurate, malate, and threonate as effective
   alternatives. If magnesium levels remain low despite supplementation, consider low
   taurine (often from gut dysbiosis) as a limiting factor. Intracellular RBC magnesium
   is more accurate than serum magnesium for assessing status.
+
+  Best used for: Best supported for migraine prevention, PMS and blood-sugar/insulin
+  sensitivity, particularly when magnesium intake or status is low (stress, PPIs,
+  diuretics, metformin, few greens/nuts/seeds). Glycinate is a well-tolerated, gentle
+  form often chosen for calm and sleep support, though the sleep evidence for magnesium
+  is modest. Not the form to choose for constipation (citrate/oxide). Avoid in
+  significant kidney disease.
 notes_for_client: Magnesium helps your nervous system wind down, supports liver detox
   pathways, and can improve sleep quality. The glycinate form is gentle on digestion.
 sources:
@@ -225,10 +242,10 @@ sources:
     supports liver fiction. Three other effective forms are magnesium taurate, magnesium
     malate, and magnesium threonate.
 evidence_tier: plausible_emerging
-version: 30
+version: 31
 status: active
-updated_at: '2026-07-14'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Glycinate form well-tolerated. 400 mg/day OK throughout. Helps

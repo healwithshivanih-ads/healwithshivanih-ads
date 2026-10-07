@@ -17,14 +17,23 @@ linked_to_topics:
 - anti-inflammatory-diet
 - type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
+- dyslipidemia
+linked_to_symptoms:
+- elevated-cholesterol
 linked_to_claims:
 - phytonutrient-smoothies-support-cardiometabolic-health
-notes_for_coach: 'Used as a smoothie base liquid across multiple recipes (Cardio Smoothie,
-  Detox Smoothie, Rainbow Smoothie). Green tea catechins (EGCG) are well-studied for antioxidant,
-  metabolic, and cardiovascular benefits. 4–8 oz brewed per smoothie. Decaffeinated, 80% polyphenol
-  content preferred. Foundation supplement for recently diagnosed T1DM due to antiviral (rotavirus/enterovirus)
-  and epicatechin beta-cell protective effects. Adults: 150–300 mg/day. Children <6y: 50–150
-  mg; 6–12y: 100–200 mg.'
+notes_for_coach: |-
+  Used as a smoothie base liquid across multiple recipes (Cardio Smoothie, Detox
+  Smoothie, Rainbow Smoothie). Green tea catechins (EGCG) are well-studied for
+  antioxidant, metabolic, and cardiovascular benefits. 4–8 oz brewed per smoothie.
+  Decaffeinated, 80% polyphenol content preferred. Foundation supplement for recently
+  diagnosed T1DM due to antiviral (rotavirus/enterovirus) and epicatechin beta-cell
+  protective effects. Adults: 150–300 mg/day. Children <6y: 50–150 mg; 6–12y: 100–200
+  mg.
+
+  Best used for: Best as brewed tea or a modest extract for small improvements in LDL
+  and blood pressure and for general antioxidant support. Effects on weight and blood
+  sugar are small. Not worth it as a high-dose fat-burner extract (liver risk).
 notes_for_client: Using brewed green tea as your smoothie base adds antioxidants that support
   heart and metabolic health — with less caffeine than coffee. Green tea extract provides
   protective plant compounds that may help preserve insulin-producing cells, especially in
@@ -35,7 +44,8 @@ typical_dose_range:
     min: 150
     max: 300
     unit: mg
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- nrf2-pathway-activation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Building a Better Smoothie — Base Liquids
@@ -52,10 +62,21 @@ sources:
   location: Early Treatment and Possible Reversal of Type 1 Diabetes Mellitus
   quote: Green tea polyphenols have antiviral activity against rotavirus and enterovirus,
     suspected of causing T1DM.
-version: 2
+version: 3
 status: active
-updated_at: '2026-08-09'
+updated_at: '2026-10-07'
 updated_by: shivani
 aliases:
 - green-tea-egcg
 - green-tea-extract-diabetes
+contraindications:
+  conditions:
+  - Liver disease or prior liver injury — concentrated green tea extract (EGCG ≥800 mg/day,
+    especially taken fasting) is linked to hepatotoxicity (EFSA 2018); brewed tea is not the
+    concern
+  - Iron-deficiency anaemia under active correction — tea catechins block non-haem iron absorption;
+    take between meals, never with iron supplements
+  medications:
+  - Nadolol — green tea reduced nadolol blood levels by ~85% in a human study (Misaka 2014);
+    avoid the combination
+  life_stages: []

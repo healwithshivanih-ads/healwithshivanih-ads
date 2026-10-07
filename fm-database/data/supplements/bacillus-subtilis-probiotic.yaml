@@ -13,22 +13,29 @@ linked_to_topics:
 - gut-microbiome
 linked_to_claims:
 - sibo-yogurt-protocol-reduces-fecal-overgrowth
-notes_for_coach: B. subtilis is a spore-forming, bacteriocin-producing microbe used
-  in Dr. Davis's SIBO yogurt to kill fecal microbes in the small intestine. Dr. Davis
-  considers it underappreciated. It may take up permanent residence in the GI tract.
-  Added to SIBO yogurt as a replacement for B. coagulans in the latest formulation.
+notes_for_coach: |-
+  B. subtilis is a spore-forming, bacteriocin-producing microbe used in Dr. Davis's SIBO
+  yogurt to kill fecal microbes in the small intestine. Dr. Davis considers it
+  underappreciated. It may take up permanent residence in the GI tract. Added to SIBO
+  yogurt as a replacement for B. coagulans in the latest formulation.
+
+  Best used for: A spore-based probiotic that survives stomach acid; small human trials
+  (mostly multi-strain spore blends) suggest benefit for general GI comfort and reduced
+  post-meal endotoxaemia. Its SIBO use rests on one practitioner's yogurt protocol
+  rather than trials — treat it as an option, not an evidence-backed SIBO treatment.
 notes_for_client: This spore-forming probiotic helps fight off harmful bacteria in
   your small intestine and supports gut microbiome balance. It is included in the
   SIBO yogurt protocol.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- spore-based-gut-flora-recolonization
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Spore-based probiotics and B. subtilis discussion
   quote: Bacillus subtilis is really a very much underappreciated microbe. It's a
     really cool microbe.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-10-07'
 updated_by: shivani

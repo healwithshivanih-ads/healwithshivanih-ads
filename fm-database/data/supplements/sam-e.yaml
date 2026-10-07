@@ -23,16 +23,19 @@ timing_options:
 - morning
 take_with_food: avoid
 linked_to_symptoms:
-- depression-mood-disorder
+- depression-symptoms
 linked_to_topics:
 - major-depressive-disorder
 - osteoarthritis
 - gallstones
-- mthfr-methylation-gene
-- comt-gene-catechol-clearance
 - liver-detoxification
-- methylation-mthfr
-linked_to_mechanisms: []
+- methylation
+- comt-catechol-clearance
+- fibromyalgia
+linked_to_mechanisms:
+- methylation
+- catechol-clearance-comt-maoa
+- glutathione-depletion
 notes_for_coach: 'The universal methyl donor produced by the methylation cycle. Available
   OTC in the US; prescription only in several European countries. Highly context-dependent:
   beneficial for slow COMT under stress load; can cause depression, fatigue, or mood destabilization
@@ -55,6 +58,8 @@ contraindications:
   - MAOIs (serotonin syndrome risk)
   - SSRIs (clinician-supervised only)
   - L-DOPA (Parkinson's medication interaction)
+  - SNRIs, tramadol, triptans, St John's wort and other serotonergic agents (additive serotonergic
+    effect — the notes flag this but the list only names SSRIs/MAOIs)
   life_stages:
   - pregnancy (limited data; consult clinician)
 sources:
@@ -71,9 +76,9 @@ sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Alcoholic Liver Disease
   quote: Silymarin (Milk thistle), NAC, B-complex, SAMe
-version: 5
+version: 6
 status: active
-updated_at: '2026-08-09'
-updated_by: claude-dirty-genes-ingest
+updated_at: '2026-10-07'
+updated_by: shivani
 linked_to_claims:
 - same-methylation-liver-support
