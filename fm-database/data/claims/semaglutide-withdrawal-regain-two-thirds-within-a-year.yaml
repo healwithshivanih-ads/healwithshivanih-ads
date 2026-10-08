@@ -1,0 +1,27 @@
+slug: semaglutide-withdrawal-regain-two-thirds-within-a-year
+statement: After 68 weeks of semaglutide 2.4 mg plus lifestyle intervention (mean loss 17.3%), participants who
+  stopped both regained about two-thirds of the lost weight within one year (net 5.6% below baseline), and cardiometabolic
+  improvements largely reverted.
+evidence_tier: strong
+rationale: Pre-specified off-treatment extension of a large phase 3 RCT (STEP 1); exploratory but consistent with
+  SURMOUNT-4 and the 2026 BMJ meta-analysis.
+coaching_translation: In the main semaglutide trial, people who stopped regained about two-thirds of the weight
+  within a year. That is biology, not a willpower failure, and it is why the plan for life after the medicine matters.
+caveats:
+- Lifestyle support was withdrawn at the same time as the drug.
+- Subset of 327 STEP 1 completers; exploratory analyses.
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: wilding-2022-step1-extension-semaglutide-withdrawal
+  location: Abstract — results and conclusions
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

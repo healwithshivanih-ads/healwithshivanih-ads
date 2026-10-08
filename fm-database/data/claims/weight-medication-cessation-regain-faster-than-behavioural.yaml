@@ -1,0 +1,29 @@
+slug: weight-medication-cessation-regain-faster-than-behavioural
+statement: Across 37 studies (9,341 participants), weight regained at about 0.4 kg/month after stopping weight-management
+  medication (about 0.8 kg/month for semaglutide/tirzepatide), with weight projected back to baseline at ~1.7 years
+  (~1.5 years for the newer drugs) and cardiometabolic markers back to baseline within ~1.4 years. Regain was faster
+  than after behavioural programmes by about 0.3 kg/month, independent of initial weight loss.
+evidence_tier: strong
+rationale: Systematic review and meta-analysis in The BMJ (2026) with PROSPERO registration; newer-drug subgroup
+  based on 8 studies with at most 12 months of follow-up.
+coaching_translation: When the medicine stops, the weight tends to come back faster than after a diet-and-exercise
+  programme, because a programme leaves you with skills while a drug does the work for you. Building those skills
+  alongside the medicine is the point.
+caveats:
+- Time-to-baseline figures beyond 12 months are model projections.
+- Pools heterogeneous drugs, durations and follow-up lengths.
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: west-2026-bmj-weight-regain-after-wmm-cessation
+  location: Abstract + Results (newer incretin subgroup) + Discussion
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

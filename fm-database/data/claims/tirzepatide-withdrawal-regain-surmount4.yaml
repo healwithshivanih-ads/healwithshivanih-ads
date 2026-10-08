@@ -1,0 +1,26 @@
+slug: tirzepatide-withdrawal-regain-surmount4
+statement: In SURMOUNT-4, after a 20.9% loss on tirzepatide, switching to placebo led to 14.0% weight regain over
+  52 weeks, while continued tirzepatide produced a further 5.5% loss; only 16.6% on placebo kept at least 80% of
+  their initial loss vs 89.5% on drug.
+evidence_tier: strong
+rationale: Double-blind randomised withdrawal RCT (n=670) in JAMA.
+coaching_translation: With tirzepatide (Mounjaro, Zepbound), people switched to a dummy injection regained roughly
+  half of what they had lost within a year.
+caveats:
+- Industry-funded.
+- Excluded people with diabetes.
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: aronne-2024-surmount4-tirzepatide-maintenance
+  location: Abstract — results
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

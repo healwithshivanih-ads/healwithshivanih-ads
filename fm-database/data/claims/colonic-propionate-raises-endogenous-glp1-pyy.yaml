@@ -1,0 +1,29 @@
+slug: colonic-propionate-raises-endogenous-glp1-pyy
+statement: Delivering the short-chain fatty acid propionate to the human colon (10 g inulin-propionate ester) acutely
+  increased postprandial GLP-1 and PYY and reduced energy intake, and over 24 weeks reduced weight gain and intra-abdominal
+  fat in overweight adults.
+evidence_tier: plausible_emerging
+rationale: Single RCT programme using an engineered propionate ester, not ordinary dietary fibre; supports the fibre
+  → SCFA → endogenous GLP-1 pathway but not its size from food.
+coaching_translation: Your gut bacteria turn fibre into short-chain fatty acids, which help your body release its
+  own GLP-1 and PYY fullness signals. It is much weaker than a GLP-1 drug and will not replace it, but it works
+  with your own appetite system.
+caveats:
+- Used a purpose-built propionate ester, not whole foods.
+- Endogenous GLP-1 effects are far smaller than pharmacological doses.
+linked_to_topics:
+- scfa-short-chain-fatty-acids
+- fiber-gap
+- gut-hormone-axis
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: chambers-2015-colonic-propionate-glp1-pyy
+  location: Abstract — results
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani

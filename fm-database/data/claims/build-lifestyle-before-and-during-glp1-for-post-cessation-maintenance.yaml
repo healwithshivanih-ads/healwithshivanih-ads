@@ -1,0 +1,28 @@
+slug: build-lifestyle-before-and-during-glp1-for-post-cessation-maintenance
+statement: Because weight regain is common when GLP-1s are stopped (typically nearly to baseline within a year),
+  clinicians should help people establish positive nutrition and other lifestyle practices before and during GLP-1
+  therapy, to increase success at maintaining them if the drug is stopped.
+evidence_tier: plausible_emerging
+rationale: Joint-advisory recommendation; the advisory itself lists nutritional priorities for post-cessation maintenance
+  as an emerging area needing more study.
+coaching_translation: The best time to build your habits is while the medicine is quieting your appetite, not after
+  you stop. Think of it as training wheels you use to learn the bike.
+caveats:
+- Direct trial evidence on which lifestyle approach best prevents post-cessation regain is still limited.
+linked_to_topics:
+- midlife-weight-gain
+- strength-training
+out_of_scope_notes: Coach does not advise starting, stopping, tapering or dosing any medication; that is the prescriber's
+  decision.
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: mozaffarian-2025-glp1-nutrition-joint-advisory
+  location: Sections 2.1 and 7.3
+  quote: clinicians should help individuals establish positive nutrition and other lifestyle practices before and
+    during GLP-1 therapy, to increase success at maintaining such practices if the drug is stopped.
+version: 1
+status: active
+updated_at: '2026-10-07'
+updated_by: shivani
