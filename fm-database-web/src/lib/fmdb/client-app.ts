@@ -279,6 +279,13 @@ import { scrubAuthors } from "./client-app-authors";
 import { formatIngredientChip } from "./ingredient-chip";
 import { remedySlots, REMEDY_SLOT_LABEL } from "./remedy-slots";
 import { remediesForReminders } from "./remedy-reminder-source";
+import {
+  FEEDBACK_STAGES,
+  parseClientGoals,
+  resolveFeedbackDue,
+  type AppFeedback,
+  type FeedbackStage,
+} from "./programme-feedback";
 
 /**
  * The client-facing "when" label for a remedy — derived from the SAME parser
@@ -1211,6 +1218,9 @@ export interface ClientAppData {
   swapGroups: SwapGroupT[];
   /** MSQ submissions, oldest → newest (empty until the first check) */
   msqEntries: AppMsqEntry[];
+  /** Programme feedback: which stage to ask now (if any) + her own goals.
+   *  Optional — only the package build fills it; other tiers never ask. */
+  feedback?: AppFeedback | null;
   /** Weekly check-in pre-fill derived from the daily tick log (trailing 7
    *  days) — the app should never make her re-type what it already knows.
    *  Values index the check-in's adherence segments: 0 = steady, 1 =
@@ -5099,6 +5109,8 @@ export async function loadClientAppData(
   const pollPoints: { wk: number; v: number }[] = [];
   const checkinPoints: { wk: number; v: number }[] = [];
   const msqEntries: AppMsqEntry[] = [];
+  // Programme-feedback stages she has already answered (see programme-feedback.ts).
+  const feedbackDone = new Set<FeedbackStage>();
   // latest travel flag wins (a later "cancelled" entry clears the window)
   let latestTravel: { from: string; to: string; kind: string; location: string; context: string; cancelled: boolean; at: string; localFoodsRaw: unknown } | null = null;
   try {
@@ -5111,6 +5123,12 @@ export async function loadClientAppData(
       const checkin = s.checkin_response as Dict | undefined;
       const msq = s.msq_response as Dict | undefined;
       const travelResp = s.travel_response as Dict | undefined;
+      const feedbackResp = s.feedback_response as Dict | undefined;
+      if (feedbackResp) {
+        const st = asStr(feedbackResp.stage) as FeedbackStage;
+        if (FEEDBACK_STAGES.includes(st)) feedbackDone.add(st);
+        continue;
+      }
       const dateStr = asStr(s.date);
       if (!dateStr) continue;
       if (travelResp) {
@@ -6069,6 +6087,21 @@ export async function loadClientAppData(
   // movement lead + list entirely in MAINTENANCE.
   const exerciseSessionsVisible = appMode === "MAINTENANCE" ? [] : exerciseSessions;
 
+  // Programme feedback — ask once at each stage (midpoint / end / 3-month).
+  const feedback: AppFeedback = {
+    due: resolveFeedbackDue({
+      mode: appMode,
+      approaching: endgame?.approaching ?? false,
+      week,
+      totalWeeks,
+      recheckDate: endgame?.recheckDate ?? null,
+      todayYmd: tzTodayYmd(appTz),
+      done: feedbackDone,
+    }),
+    done: FEEDBACK_STAGES.filter((s) => feedbackDone.has(s)),
+    goals: parseClientGoals(client.goals),
+  };
+
   return {
     clientId,
     planSlug,
@@ -6127,6 +6160,7 @@ export async function loadClientAppData(
     grocery,
     swapGroups,
     msqEntries,
+    feedback,
     checkinPrefill: await loadCheckinPrefill(clientDir),
     travel,
     supplements,

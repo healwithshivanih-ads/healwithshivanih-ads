@@ -56,6 +56,7 @@ export const PUBLIC_PATH_PREFIXES = [
   "/app/",
   "/api/app-checkin",
   "/api/app-msq",
+  "/api/app-feedback",
   "/api/app-copilot",
   "/api/app-travel",
   "/api/app-body",

@@ -39,6 +39,7 @@ import { SomaticOverlay } from "./ochre-somatic";
 import { ExerciseOverlay } from "./ochre-exercise";
 import { GroceryOverlay } from "./ochre-week-menu";
 import { MsqOverlay } from "./ochre-msq";
+import { FeedbackBanner, FeedbackOverlay } from "./ochre-feedback";
 import { OrderOverlay } from "./ochre-order";
 import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
 
@@ -114,6 +115,7 @@ type Overlay =
   | { type: "exercise"; practiceId: string }
   | { type: "grocery" }
   | { type: "msq" }
+  | { type: "feedback" }
   | { type: "order" }
   | { type: "portions" }
   | { type: "account" }
@@ -235,6 +237,22 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     }
     setHydrated(true);
   }, [STORE, data.priorLocalStoreId, data.body.history]);
+
+  // `/app/<token>?feedback=1` — the coach's feedback link (sent over WhatsApp,
+  // e.g. to a client whose plan has already ended) opens the form directly.
+  // The param is stripped so a reload doesn't reopen it.
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get("feedback") !== "1") return;
+      url.searchParams.delete("feedback");
+      window.history.replaceState(null, "", url.pathname + url.search + url.hash);
+      if (data.tier === "package") setOverlay({ type: "feedback" });
+    } catch {
+      /* no URL API — the Today banner still asks */
+    }
+  }, [hydrated, data.tier]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -452,6 +470,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     setOverlay({ type: "exercise", practiceId });
   const openGrocery = () => setOverlay({ type: "grocery" });
   const openMsq = () => setOverlay({ type: "msq" });
+  const openFeedback = () => setOverlay({ type: "feedback" });
   const openOrder = () => setOverlay({ type: "order" });
   const openPortions = () => setOverlay({ type: "portions" });
   const openLabs = () => setOverlay({ type: "labs" });
@@ -905,6 +924,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
             </div>
           )}
           {!inCheckin && !((graduationTakeover || data.mode === "MAINTENANCE") && tab === "today") && <EndgameBanner goCoach={() => go("coach")} onRenew={() => setMaintOpen(true)} />}
+          {!inCheckin && !onboarding && !discovery && tab === "today" && <FeedbackBanner onOpen={openFeedback} />}
           <main className="screen-scroll" key={onboarding ? "onboarding" : inCheckin ? "checkin" : tab}>
             {screen}
           </main>
@@ -928,6 +948,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               )}
               {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
+              {overlay.type === "feedback" && <FeedbackOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}
               {overlay.type === "portions" && <PortionsOverlay onClose={closeOverlay} />}
               {overlay.type === "account" && (

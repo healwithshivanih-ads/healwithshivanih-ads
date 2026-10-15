@@ -63,6 +63,18 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.85 — the client grades the programme.** Everything else the coach saw was measured by us (MSQ, weight, labs, adherence); nothing asked the client how we did. Programme feedback is now asked in the app at three stages, each once — **midpoint** (≥ 8-week plans, from halfway), **graduation** (once the end is actually reached, never in the final-stretch lead-in, and kept open afterwards so a lapsed client is still asked), **followup** (90 days after the end). Coach sees it on the dashboard as **💬 How are we doing**.
+
+**Key invariants (v0.85):**
+- **One definition:** `src/lib/fmdb/programme-feedback.ts` — stages, the 5 rated parts (ids are storage keys, never rename), goal-change scale (−1 worse … 3 resolved), `parseClientGoals` (splits + de-dupes the messy `client.goals` field), `resolveFeedbackDue`, `sanitiseFeedback` (the API route's validator), `summariseFeedback`. Midpoint answers are listed but kept OUT of NPS + goal figures — a progress check is not a verdict.
+- **Storage = a session**, `sessions/<date>-NNN-app-feedback.yaml` with a `feedback_response` block (`scripts/save-app-feedback.py`, via `POST /api/app-feedback`). It rides the check-in sync path, so `app-staging-action.py` carries it BOTH ways: `*-app-feedback.yaml` in the reverse-mirror pattern AND `feedback_response` in the forward-copy key test. Drop either and the app re-asks a client who already answered.
+- **Reaching finished clients:** `/app/<token>?feedback=1` opens the form directly (the param is stripped after). The dashboard panel lists every client whose programme ENDED (all published plans past effective end, within 365 days) with no end-of-programme answer, each with a pre-filled WhatsApp ask carrying that link. No auto-send — the coach taps it.
+- **Testimonial consent** (named / anonymous / no) is asked only at graduation + followup, defaults to "no", and the panel quotes only `biggest_change` from consenting answers.
+- `renewal-brief.py` now reads app check-ins by their structured `checkin_response` (the old text test for "adherence"/"poll" silently dropped every one) and includes any `feedback`. Renewal letters can now cite what the client reported in the app.
+- **Acumen retest add-ons:** `homocysteine`, `insulin-fasting`, `insulin-pp` (each with glucose), `iron-studies`, `ferritin` at DOS list price (2026-10-15), so a 12-week retest no longer means re-buying the ₹12,500 Base panel. Listed in Base's `covered_addon_slugs`.
+
+---
+
 **v0.84 — a lapsed client costs nothing.** Dhanishta (cl-004) and Archana (cl-007) — `engagement_status: lapsed`, plan windows closed 2026-08-04 / 2026-08-12 — were still listed on the dashboard as "⏸ Menu paused — not opening the app", still scanned daily by the grocery/recipe backfill (Haiku), still pushed reminders, and the app co-pilot + travel guide were still live for them.
 
 **Key invariants (v0.84):**

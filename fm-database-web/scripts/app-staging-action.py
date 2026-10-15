@@ -512,7 +512,14 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
                 sdata = yaml.safe_load(f.read_text()) or {}
             except Exception:
                 continue
-            if sdata.get("poll_response") or sdata.get("checkin_response") or sdata.get("msq_response"):
+            if (
+                sdata.get("poll_response")
+                or sdata.get("checkin_response")
+                or sdata.get("msq_response")
+                # programme feedback: the app reads it to know which stage is
+                # already answered, so it must not re-ask after a restage.
+                or sdata.get("feedback_response")
+            ):
                 shutil.copy2(f, dest)
                 counts["sessions_staged"] += 1
 
@@ -778,13 +785,13 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         client_id = m.get("client_id") or sdir.name
         plan_slug = m.get("plan_slug") or ""
 
-        # reverse-mirror: app check-ins + MSQ submissions written on Fly →
+        # reverse-mirror: app check-ins, MSQ + feedback submissions written on Fly →
         # authoritative store
         ssess = sdir / "sessions"
         auth_sess = _auth_person(auth, client_id) / "sessions"
         if ssess.exists() and (_auth_person(auth, client_id)).exists():
             auth_sess.mkdir(parents=True, exist_ok=True)
-            for pattern in ("*-app-checkin.yaml", "*-app-msq.yaml", "*-app-travel.yaml"):
+            for pattern in ("*-app-checkin.yaml", "*-app-msq.yaml", "*-app-travel.yaml", "*-app-feedback.yaml"):
                 for f in sorted(ssess.glob(pattern)):
                     dest = auth_sess / f.name
                     if not dest.exists():

@@ -51,7 +51,7 @@ profiles_final:
     # add-on slugs already inside this panel — hidden from the add-on picker (and
     # dropped server-side) when this profile is chosen, so a test is never
     # recommended + charged twice. Gender/age profiles inherit this Base set.
-    covered_addon_slugs: [apob, apoa1, lp-a, am-cortisol, folate-serum, magnesium-serum, lft, rft]
+    covered_addon_slugs: [apob, apoa1, lp-a, am-cortisol, folate-serum, magnesium-serum, lft, rft, homocysteine, insulin-fasting, insulin-pp, iron-studies, ferritin]
   - id: 2
     name: "Women's Reproductive"
     audience: "women <45"
@@ -250,6 +250,16 @@ addon_tests:
   - { slug: magnesium-serum,   name: "Magnesium (serum)",    quoted_inr: null, dos_list_inr: 610 }
   - { slug: lft,               name: "Liver function (LFT)", quoted_inr: null, dos_list_inr: 1000 }
   - { slug: rft,               name: "Kidney function (RFT)", quoted_inr: null, dos_list_inr: 1400 }
+  # Retest add-ons for a 12-week recheck, so a client re-tests only the markers
+  # that were off instead of re-buying the whole Base panel. All five are inside
+  # the Base panel (listed in its covered_addon_slugs). Prices = "Acumen DOS.pdf"
+  # list, 2026-10-15. Glucose is paired with each insulin draw so the insulin can
+  # be read against it.
+  - { slug: homocysteine,      name: "Homocysteine",                       quoted_inr: null, dos_list_inr: 1450 }
+  - { slug: insulin-fasting,   name: "Insulin + glucose (fasting)",        quoted_inr: null, dos_list_inr: 1170 }
+  - { slug: insulin-pp,        name: "Insulin + glucose (2 hours after lunch)", quoted_inr: null, dos_list_inr: 1240 }
+  - { slug: iron-studies,      name: "Iron studies",                       quoted_inr: null, dos_list_inr: 880 }
+  - { slug: ferritin,          name: "Ferritin",                           quoted_inr: null, dos_list_inr: 1000 }
   # Acumen asked (2026-09-25) for ₹250 on top of each booking's final price.
   # A charge, not a test (`fee: true` keeps it out of "What we'll check");
   # passed straight through — we pay Acumen 250, the client pays 250.

@@ -91,7 +91,7 @@ def main(cid):
         if ends is None or end > ends:
             plan, ends, slug = d, end, re.sub(r"-v\d+\.yaml$", "", pathlib.Path(f).name)
 
-    msq, adherence = [], []
+    msq, adherence, feedback = [], [], []
     for f in sorted(glob.glob(str(cdir / "sessions" / "*.yaml"))) if cdir else []:
         d = yaml.safe_load(open(f)) or {}
         pc = str(d.get("presenting_complaints") or "")
@@ -101,7 +101,30 @@ def main(cid):
             if m:
                 msq.append({"week": int(w.group(1)) if w else None,
                             "total": int(m.group(1)), "top": m.group(2).strip()})
-        if "adherence" in pc.lower() or "poll" in pc.lower():
+        ci = d.get("checkin_response")
+        fb = d.get("feedback_response")
+        if isinstance(fb, dict):
+            # Her own verdict on the programme (save-app-feedback.py).
+            feedback.append({
+                "date": str(d.get("date")), "stage": fb.get("stage"),
+                "recommend_0_10": fb.get("recommend"),
+                "goals": [g for g in (fb.get("goals") or []) if g.get("change") is not None],
+                "biggest_change": fb.get("biggest_change") or "",
+                "hardest": fb.get("hardest") or "",
+                "change_one_thing": fb.get("change_one_thing") or "",
+            })
+        elif isinstance(ci, dict):
+            # In-app weekly check-in. Matched on the structured block, not on
+            # words in the text: the app's summary never says "adherence" or
+            # "poll", so the old text test silently dropped every app check-in.
+            slipped = [f"{i.get('name')}: {i.get('status')}"
+                       for i in (ci.get("supplements") or []) + (ci.get("practices") or [])
+                       if i.get("status") not in (None, "Still taking", "Keeping up")]
+            adherence.append({"date": str(d.get("date")), "week": ci.get("week"),
+                              "rating_of_5": ci.get("rating"),
+                              "in_her_words": str(ci.get("feel") or "")[:300],
+                              "not_steady": slipped})
+        elif "adherence" in pc.lower() or "poll" in pc.lower():
             adherence.append({"date": str(d.get("date")),
                               "note": (str(d.get("coach_notes") or pc))[:220]})
 
@@ -137,7 +160,7 @@ def main(cid):
         "plan": {"slug": slug, "weeks": (plan or {}).get("plan_period_weeks"),
                  "ends_on": str(ends) if ends else None,
                  "days_left": (ends - TODAY).days if ends else None},
-        "msq": msq, "adherence": adherence[-4:], "weights": weights,
+        "msq": msq, "adherence": adherence[-4:], "feedback": feedback, "weights": weights,
         "labs_ordered": labs, "calls": nbhwc_calls(name),
         "household_also_renewing": household,
         "supplements": len((plan or {}).get("supplement_protocol") or []),

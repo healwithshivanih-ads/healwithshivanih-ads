@@ -47,6 +47,7 @@ import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
 import { ArchiveCandidatesPanel } from "@/components/archive-candidates-panel";
 import { RenewalQueuePanel } from "@/components/renewal-queue-panel";
+import { ProgrammeFeedbackPanel } from "@/components/programme-feedback-panel";
 import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
 import { listRenewalLettersAction } from "@/lib/server-actions/renewal-letters";
 import { WinbackDripPanel } from "@/components/winback-drip-panel";
@@ -57,6 +58,7 @@ import {
   listWinbackScheduledAction,
 } from "@/lib/server-actions/winback-drip";
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
+import { loadProgrammeFeedback } from "@/lib/fmdb/programme-feedback-loader";
 import {
   FmAlertGroup,
   FmAppShell,
@@ -547,6 +549,14 @@ export default async function DashboardV2() {
   const archiveCandidates = await getArchiveCandidates(
     clients as unknown as Parameters<typeof getArchiveCandidates>[0],
     plansByClient as unknown as Parameters<typeof getArchiveCandidates>[1],
+    todayStr,
+  );
+
+  // 💬 How are we doing — client feedback responses + finished clients not
+  // yet asked (programme-feedback-loader.ts). Reads only *-app-feedback.yaml.
+  const programmeFeedback = await loadProgrammeFeedback(
+    clients as unknown as Parameters<typeof loadProgrammeFeedback>[0],
+    plansByClient as unknown as Parameters<typeof loadProgrammeFeedback>[1],
     todayStr,
   );
 
@@ -1173,6 +1183,7 @@ export default async function DashboardV2() {
           do it. Deliberately does not self-hide — "nobody is ending soon" is a
           real answer worth seeing. */}
       <RenewalQueuePanel rows={renewalRows} letters={renewalLetters} />
+      <ProgrammeFeedbackPanel data={programmeFeedback} />
 
       {/* ✉️ Win-back drafts — sits directly under "plans ending" because it is
           the continuation of that list, not a separate concern: these are the
