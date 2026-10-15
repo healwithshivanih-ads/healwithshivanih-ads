@@ -225,6 +225,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
   const lines: LabOrderLine[] = [];
   const includes: string[] = [];
   const chargedAddonSlugs: string[] = [];
+  let fastingAddon = false;
   const coveredByProfile = new Set<string>();
   let amountInr = 0;
   let ourCostInr = 0;
@@ -256,6 +257,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
     lines.push({ label: cat.name, inr: a.inr, slug: a.slug });
     if (!cat.isFee) includes.push(cat.name);
     chargedAddonSlugs.push(a.slug);
+    if (cat.fasting) fastingAddon = true;
     amountInr += a.inr;
     ourCostInr += cat.ourCostInr ?? 0;
   }
@@ -289,9 +291,10 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       booked_with_acumen_at: null,
       sample_collected_on: null,
       results_snapshot_date: null,
-      // All Acumen FM profiles are fasting; a pure add-on order defaults non-fasting
-      // (coach can note exceptions). profiles_final carries no per-profile flag.
-      fasting_required: input.profileId != null,
+      // All Acumen FM profiles are fasting. An add-on-only order is fasting when
+      // any add-on is flagged `fasting: true` in the catalogue (a 12-week insulin
+      // or homocysteine retest) — otherwise the app hid the fasting line on it.
+      fasting_required: input.profileId != null || fastingAddon,
       notes: null,
     },
   };

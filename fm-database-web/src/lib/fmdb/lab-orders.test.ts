@@ -17,6 +17,7 @@ const provider = parseAcumen({
   ],
   addon_tests: [
     { slug: "c-peptide", name: "C-Peptide", quoted_inr: 1400, dos_list_inr: 1400 },
+    { slug: "homocysteine", name: "Homocysteine", dos_list_inr: 1450, fasting: true },
     { slug: "acumen-booking-fee", name: "Collection & handling", fee: true, our_cost_inr: 250, client_inr: 250 },
   ],
 });
@@ -61,6 +62,15 @@ describe("buildOrder — coach-approved, server-derived amount", () => {
   it("pure add-on order (no profile) → non-fasting, amount = add-on price", () => {
     const r = buildOrder(provider, { ...REC, profileId: null, addons: [{ slug: "c-peptide", inr: 900 }] });
     expect(r.ok && r.order).toMatchObject({ amount_inr: 900, fasting_required: false, profile_id: null });
+  });
+
+  it("an add-on-only order with a fasting add-on is a fasting draw (12-week retest)", () => {
+    const r = buildOrder(provider, {
+      ...REC,
+      profileId: null,
+      addons: [{ slug: "c-peptide", inr: 900 }, { slug: "homocysteine", inr: 1450 }],
+    });
+    expect(r.ok && r.order).toMatchObject({ amount_inr: 2350, fasting_required: true, profile_id: null });
   });
 
   it("rejects an empty recommendation", () => {

@@ -58,6 +58,9 @@ export interface LabAddon {
   /** A charge, not a test (e.g. Acumen's per-booking collection fee): priced and
    *  billed like an add-on, but never listed under "What we'll check". */
   isFee?: boolean;
+  /** Needs a fasting draw (catalogue `fasting: true`). An order carrying one is
+   *  marked fasting even with no profile, so the app shows the fasting line. */
+  fasting?: boolean;
 }
 
 export interface LabProvider {
@@ -166,6 +169,7 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
         // file (e.g. DHEA-S / total testosterone / CEA) → not bookable until priced.
         clientInr: asNum(o.client_inr) ?? cat,
         isFee: o.fee === true,
+        fasting: o.fasting === true,
       };
     })
     .filter((a) => a.slug);
