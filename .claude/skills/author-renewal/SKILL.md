@@ -79,18 +79,35 @@ default and what closes the "nowhere to approve" gap. Staging writes the letter
 as a `drafted` record the dashboard "Plans ending" panel reads:
 
 ```bash
-node fm-database-web/scripts/stage-renewal-letter.mjs <plan-slug> <client-id> <draft-file> "<offer label>"
+node fm-database-web/scripts/stage-renewal-letter.mjs <plan-slug> <client-id> <draft-file> "<offer label>" <maintenance|continue|letter_only>
 ```
 
-`<offer label>` is a short display string like `Continue — 12 weeks · ₹85,000`
-(shown on the panel + digest; never parsed). Recipient name + email are read
-from the client's own `client.yaml`, not passed in.
+`<offer label>` is a short display string like `Maintenance — 6 months · ₹12,000`
+(shown on the panel + digest; never parsed). The last argument is the
+**decision on the account** and changes what goes out:
+
+- `maintenance` — the send cron mints a LIVE Razorpay payment link at send time
+  and writes it into the email. Put `{{payment_link}}` in the draft where it
+  belongs; without it the link is added as its own paragraph above the
+  sign-off. Never paste a link into the draft yourself — a link minted days
+  early can outlive a price change. If the client is already on maintenance,
+  nothing is sent.
+- `continue` — the full programme. Its payment runs through the funnel app, so
+  there is no link: close with a call.
+- `letter_only` — the letter exactly as written.
+
+The coach can change the offer on the dashboard before approving.
+Recipient name + email are read from the client's own `client.yaml`, not
+passed in.
 
 Once staged, the letter surfaces in her dashboard renewal panel with a **Read &
-approve** expander. When she approves there, it is scheduled to send on the
-**plan-end day** — the `renewal-send` cron mails it that morning from
+approve** expander. When she approves there, it is scheduled to send **two days
+before the plan ends** (never earlier than the next run, if approved late) —
+the `renewal-send` cron (09:30 IST, Mac) mails it from
 `shivani@theochretree.com` and records `offer_sent` so the queue and the
 win-back drip both leave the plan alone until she records renewed/not_renewing.
+If a maintenance link can't be minted, the letter is held and retried the next
+morning rather than sent without a way to pay.
 
 **Immediate send stays available** only when the coach explicitly asks to send
 now (e.g. she is looking at the draft with you and says "send it"): use

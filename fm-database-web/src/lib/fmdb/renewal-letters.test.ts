@@ -65,6 +65,16 @@ describe("renewal letter lifecycle", () => {
     expect(l.scheduled_for).toBeNull();
   });
 
+  it("records the offer chosen at approval; an older letter with none reads as letter_only", () => {
+    stage("epsilon-plan-1-cl-999");
+    expect(loadRenewalLetter("epsilon-plan-1-cl-999")!.offer_kind).toBe("letter_only");
+    expect(approveRenewalLetter("epsilon-plan-1-cl-999", "2026-09-06", "maintenance").ok).toBe(true);
+    expect(loadRenewalLetter("epsilon-plan-1-cl-999")!.offer_kind).toBe("maintenance");
+    // Re-approving without an offer keeps the one already chosen.
+    expect(approveRenewalLetter("epsilon-plan-1-cl-999", "2026-09-07").ok).toBe(true);
+    expect(loadRenewalLetter("epsilon-plan-1-cl-999")!.offer_kind).toBe("maintenance");
+  });
+
   it("approve rejects a malformed date and a missing letter", () => {
     stage("gamma-plan-1-cl-999");
     expect(approveRenewalLetter("gamma-plan-1-cl-999", "08/09/2026").ok).toBe(false);
@@ -113,6 +123,7 @@ describe("renewalLettersDue", () => {
     subject: "s",
     body: "b",
     offer_label: "",
+    offer_kind: "letter_only" as const,
     drafted_at: "",
     approved_at: null,
     sent_at: null,

@@ -171,7 +171,7 @@ export async function POST(req: NextRequest) {
   // order to approve things.
   const renewalLink = `${appUrl}/dashboard-v2`;
   const renewalHtml = renewals.length
-    ? `<p style="margin-top:22px;"><strong>📩 Plans ending (${renewals.length})</strong> — read and approve each letter on the dashboard; approved letters send on the plan-end day:</p><ul>${renewals
+    ? `<p style="margin-top:22px;"><strong>📩 Plans ending (${renewals.length})</strong> — read and approve each letter on the dashboard; approved letters send two days before the plan ends:</p><ul>${renewals
         .map((r) => {
           const when =
             r.daysLeft < 0
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
           const letter = renewalLetters[r.planSlug];
           const status =
             letter?.status === "approved"
-              ? `<span style="color:#4a6b4a;">✅ letter approved · sends ${esc(letter.scheduled_for || "on end date")}</span>`
+              ? `<span style="color:#4a6b4a;">✅ letter approved · sends ${esc(letter.scheduled_for || "two days before the end")}</span>`
               : letter?.status === "drafted"
                 ? `<span style="color:#4a6b4a;">📝 draft ready — read &amp; approve</span>`
                 : `<span style="color:#b3402a;">no letter yet — author it</span>`;
@@ -193,7 +193,7 @@ export async function POST(req: NextRequest) {
           return `<li><a href="${renewalLink}"><strong>${esc(r.clientName)}</strong></a> — ${when} (${r.weeks}wk) · ${status}${house}</li>`;
         })
         .join("")}</ul>
-       <p style="color:#8d99ae;font-size:12px;">Letters are authored in chat, not automatically. Approve on the dashboard to send on the day, or mark anyone not continuing and they stop appearing.</p>`
+       <p style="color:#8d99ae;font-size:12px;">Letters are authored in chat, not automatically. Approve on the dashboard and they send two days before the plan ends, or mark anyone not continuing and they stop appearing.</p>`
     : "";
 
   // Plan-change emails awaiting approval. Folded in here for the same reason
@@ -297,12 +297,12 @@ export async function POST(req: NextRequest) {
           .join("\n")}\n\n`
       : "") +
     (renewals.length
-      ? `PLANS ENDING (read & approve on the dashboard; approved letters send on the plan-end day):\n${renewals
+      ? `PLANS ENDING (read & approve on the dashboard; approved letters send two days before the plan ends):\n${renewals
           .map((r) => {
             const letter = renewalLetters[r.planSlug];
             const status =
               letter?.status === "approved"
-                ? `letter approved · sends ${letter.scheduled_for || "on end date"}`
+                ? `letter approved · sends ${letter.scheduled_for || "two days before the end"}`
                 : letter?.status === "drafted"
                   ? "draft ready — read & approve"
                   : "no letter yet — author it";

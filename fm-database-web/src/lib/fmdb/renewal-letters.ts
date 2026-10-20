@@ -11,7 +11,7 @@ import "server-only";
  * directory that no code ever read. This is the structured record that closes
  * that loop: a letter is authored in chat (staged as `drafted`), the coach
  * reads and approves it on the dashboard (`approved`, with a send date), and a
- * daily cron mails it on the plan-end day (`sent`).
+ * daily cron mails it two days before the plan ends (`sent`; see renewal-offer.ts).
  *
  * Deliberately a sidecar keyed by plan slug, exactly like _renewal_decisions.
  * The decision ("did they renew?") and the letter ("what did we send and
@@ -29,6 +29,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { dumpYaml } from "./yaml-dump";
 import { getPlansRoot } from "./paths";
+import { isRenewalOfferKind, type RenewalOfferKind } from "./renewal-offer";
 
 export type RenewalLetterStatus = "drafted" | "approved" | "sent";
 
@@ -43,9 +44,12 @@ export interface RenewalLetter {
   /** Human label for the offer, shown in the panel + digest, e.g.
    *  "Continue — 12 weeks · ₹85,000". Never parsed; display only. */
   offer_label: string;
+  /** The decision on the account — drives what the send cron adds (a live
+   *  payment link for maintenance). Absent on older records → letter_only. */
+  offer_kind: RenewalOfferKind;
   status: RenewalLetterStatus;
-  /** YYYY-MM-DD the letter is due to send. Set on approval to the plan-end
-   *  date; null while still a draft. */
+  /** YYYY-MM-DD the letter is due to send. Set on approval to SEND_LEAD_DAYS
+   *  before the plan end (renewalSendDate); null while still a draft. */
   scheduled_for: string | null;
   drafted_at: string;
   approved_at: string | null;
@@ -78,6 +82,7 @@ function asLetter(v: unknown): RenewalLetter | null {
     subject: String(o.subject ?? ""),
     body: o.body,
     offer_label: String(o.offer_label ?? ""),
+    offer_kind: isRenewalOfferKind(o.offer_kind) ? o.offer_kind : "letter_only",
     status,
     scheduled_for: typeof o.scheduled_for === "string" ? o.scheduled_for : null,
     drafted_at: String(o.drafted_at ?? ""),
@@ -139,6 +144,7 @@ export interface StageRenewalLetterInput {
   subject: string;
   body: string;
   offerLabel: string;
+  offerKind?: RenewalOfferKind;
 }
 
 /**
@@ -159,6 +165,7 @@ export function stageRenewalLetter(input: StageRenewalLetterInput): { ok: boolea
     subject: input.subject,
     body: input.body,
     offer_label: input.offerLabel,
+    offer_kind: input.offerKind ?? "letter_only",
     status: "drafted",
     scheduled_for: null,
     drafted_at: new Date().toISOString(),
@@ -169,12 +176,14 @@ export function stageRenewalLetter(input: StageRenewalLetterInput): { ok: boolea
 }
 
 /**
- * Approve a drafted letter for sending on `scheduledFor` (YYYY-MM-DD — the
- * plan-end date). Idempotent on an already-approved letter (updates the date).
+ * Approve a drafted letter for sending on `scheduledFor` (YYYY-MM-DD — see
+ * renewalSendDate) with the offer the coach chose. Idempotent on an
+ * already-approved letter (updates the date + offer).
  */
 export function approveRenewalLetter(
   planSlug: string,
   scheduledFor: string,
+  offerKind?: RenewalOfferKind,
 ): { ok: boolean; error?: string } {
   const letter = loadRenewalLetter(planSlug);
   if (!letter) return { ok: false, error: "no letter on file to approve" };
@@ -185,6 +194,7 @@ export function approveRenewalLetter(
   const ok = write({
     ...letter,
     status: "approved",
+    offer_kind: offerKind ?? letter.offer_kind,
     scheduled_for: scheduledFor,
     approved_at: letter.approved_at ?? new Date().toISOString(),
   });

@@ -30,6 +30,16 @@ import {
 import type { RenewalRow, RenewalDecision } from "@/lib/fmdb/renewal-queue";
 import type { RenewalLetter, RenewalLetterStatus } from "@/lib/fmdb/renewal-letters";
 import { FmPanel } from "@/components/fm";
+import {
+  RENEWAL_OFFER_KINDS,
+  RENEWAL_OFFER_LABEL,
+  renewalSendDate,
+  type RenewalOfferKind,
+} from "@/lib/fmdb/renewal-offer";
+
+function todayIst(): string {
+  return new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" });
+}
 
 const CHOICES: { key: RenewalDecision; label: string; hint: string }[] = [
   { key: "renewed", label: "✅ Renewed", hint: "They're continuing — next phase to build" },
@@ -65,6 +75,8 @@ export function RenewalQueuePanel({
   const [decided, setDecided] = useState<Record<string, RenewalDecision>>({});
   const [letterMarks, setLetterMarks] = useState<Record<string, LetterMark>>({});
   const [openLetter, setOpenLetter] = useState<string | null>(null);
+  // The decision taken on the account, per plan — preset from the staged letter.
+  const [offerKinds, setOfferKinds] = useState<Record<string, RenewalOfferKind>>({});
   // Snapshot the rows ONCE — see the long note in git history: recording a
   // decision removes the row from the server queue by design, so rendering from
   // the live prop would make a row (and its Undo) vanish the instant it's
@@ -110,13 +122,14 @@ export function RenewalQueuePanel({
     });
   }
 
-  function approveLetter(r: RenewalRow) {
+  function approveLetter(r: RenewalRow, offerKind: RenewalOfferKind) {
     startTransition(async () => {
-      const res = await approveRenewalLetterAction(r.planSlug, r.endsOn);
-      if (res.ok) {
-        setLetterMarks((p) => ({ ...p, [r.planSlug]: { status: "approved", scheduled_for: r.endsOn } }));
+      const res = await approveRenewalLetterAction(r.planSlug, r.endsOn, offerKind);
+      if (res.ok && res.scheduledFor) {
+        const when = res.scheduledFor;
+        setLetterMarks((p) => ({ ...p, [r.planSlug]: { status: "approved", scheduled_for: when } }));
         setOpenLetter(null);
-        toast.success(`${r.clientName} — approved, sends ${humanDate(r.endsOn)}`);
+        toast.success(`${r.clientName} — approved, sends ${humanDate(when)}`);
       } else {
         toast.error(res.error || "Could not approve the letter");
       }
@@ -179,7 +192,7 @@ export function RenewalQueuePanel({
         <div style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)", marginTop: 3 }}>
           {visible.length === 0
             ? "Nobody is inside their final fortnight. Nothing to decide."
-            : "Read each letter and approve it — approved letters send on the plan-end day. Or mark anyone not continuing and they clear from here."}
+            : "Read each letter and approve it — approved letters send two days before the plan ends. Or mark anyone not continuing and they clear from here."}
         </div>
       </div>
 
@@ -231,7 +244,7 @@ export function RenewalQueuePanel({
                   {lf && (
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--fm-text-tertiary)" }}>
                       · {lf.mark.status === "approved"
-                        ? `✅ letter sends ${lf.mark.scheduled_for ? humanDate(lf.mark.scheduled_for) : "on end date"}`
+                        ? `✅ letter sends ${lf.mark.scheduled_for ? humanDate(lf.mark.scheduled_for) : "two days before the end"}`
                         : "📝 draft ready"}
                       {lf.letter.offer_label ? ` · ${lf.letter.offer_label}` : ""}
                     </span>
@@ -312,18 +325,43 @@ export function RenewalQueuePanel({
                     {lf.letter.body}
                   </div>
                   {lf.mark.status === "drafted" ? (
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                      <button type="button" onClick={() => approveLetter(r)} disabled={pending}
-                        style={{ ...btnBase, background: "#4a6b4a", color: "#fff", borderColor: "#4a6b4a", padding: "6px 14px" }}>
-                        Approve — sends {humanDate(r.endsOn)}
-                      </button>
-                      <span style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)" }}>
-                        Nothing goes out until the plan-end day. Undo anytime before then.
-                      </span>
-                    </div>
+                    (() => {
+                      const kind = offerKinds[r.planSlug] ?? lf.letter.offer_kind;
+                      const sendsOn = renewalSendDate(r.endsOn, todayIst());
+                      return (
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                          <label style={{ fontSize: 12, color: "var(--fm-text-secondary)", display: "flex", alignItems: "center", gap: 6 }}>
+                            Offer
+                            <select
+                              value={kind}
+                              onChange={(e) =>
+                                setOfferKinds((p) => ({ ...p, [r.planSlug]: e.target.value as RenewalOfferKind }))
+                              }
+                              disabled={pending}
+                              style={{ fontSize: 12, padding: "4px 6px", borderRadius: 6, border: "1px solid var(--fm-border-light)" }}
+                            >
+                              {RENEWAL_OFFER_KINDS.map((k) => (
+                                <option key={k} value={k}>
+                                  {RENEWAL_OFFER_LABEL[k]}
+                                </option>
+                              ))}
+                            </select>
+                          </label>
+                          <button type="button" onClick={() => approveLetter(r, kind)} disabled={pending}
+                            style={{ ...btnBase, background: "#4a6b4a", color: "#fff", borderColor: "#4a6b4a", padding: "6px 14px" }}>
+                            Approve — sends {humanDate(sendsOn)}
+                          </button>
+                          <span style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)" }}>
+                            Goes out two days before the plan ends
+                            {kind === "maintenance" ? ", with a live payment link added at send time" : ""}. Undo anytime before then.
+                          </span>
+                        </div>
+                      );
+                    })()
                   ) : (
                     <div style={{ fontSize: 12, fontWeight: 600, color: "#4a6b4a" }}>
-                      ✅ Approved — sends {lf.mark.scheduled_for ? humanDate(lf.mark.scheduled_for) : "on the plan-end day"}.
+                      ✅ Approved — sends {lf.mark.scheduled_for ? humanDate(lf.mark.scheduled_for) : "two days before the plan ends"}
+                      {lf.letter.offer_kind === "maintenance" ? " · with payment link" : ""}.
                     </div>
                   )}
                 </div>

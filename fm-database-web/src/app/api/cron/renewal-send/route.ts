@@ -10,6 +10,13 @@
  * the `offer_sent` decision so the plan drops out of the renewal queue and the
  * win-back drip leaves it alone until the coach records renewed/not_renewing.
  *
+ * Letters are scheduled SEND_LEAD_DAYS (2) before the plan end (renewal-offer.ts).
+ * A `maintenance` letter gets a LIVE payment link minted here, at send time, via
+ * Fly (the Mac holds only test keys) and written into the body. If the link
+ * cannot be minted the letter is NOT sent — a maintenance offer with no way to
+ * pay is worse than one a day late — and it retries on the next run. A client
+ * already covered by maintenance is not sent an offer at all.
+ *
  * Idempotent: a sent letter is no longer `approved`, so a repeat run mails
  * nothing. A send failure leaves the letter `approved` to retry tomorrow.
  *
@@ -20,9 +27,17 @@ import {
   loadAllRenewalLetters,
   renewalLettersDue,
   markRenewalLetterSent,
+  unapproveRenewalLetter,
 } from "@/lib/fmdb/renewal-letters";
 import { setDecision } from "@/lib/fmdb/renewal-queue";
 import { sendClientEmailAction } from "@/app/api/email/actions";
+import { generateMaintenanceLinkAction } from "@/lib/server-actions/maintenance-link";
+import {
+  DEFAULT_MAINTENANCE_TERM_MONTHS,
+  maintenancePrice,
+  effectiveExistingThrough,
+} from "@/lib/fmdb/maintenance-orders";
+import { withPaymentLink } from "@/lib/fmdb/renewal-offer";
 
 export const dynamic = "force-dynamic";
 
@@ -38,7 +53,14 @@ function bodyToHtml(body: string): string {
     .filter(Boolean);
   return (
     `<div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.6;color:#2b2b2b;max-width:620px">` +
-    paras.map((p) => `<p style="margin:0 0 1em 0">${esc(p).replace(/\n/g, "<br>")}</p>`).join("") +
+    paras
+      .map(
+        (p) =>
+          `<p style="margin:0 0 1em 0">${esc(p)
+            .replace(/(https:\/\/[^\s<]+)/g, '<a href="$1">$1</a>')
+            .replace(/\n/g, "<br>")}</p>`,
+      )
+      .join("") +
     `</div>`
   );
 }
@@ -62,11 +84,31 @@ export async function POST(req: NextRequest) {
       notes.push(`${letter.client_name}: no recipient on the letter — skipped`);
       continue;
     }
+    let body = letter.body;
+    if (letter.offer_kind === "maintenance") {
+      const through = await effectiveExistingThrough(letter.client_id).catch(() => null);
+      if (through && through >= today) {
+        // Already paid — an offer now would ask her to pay twice.
+        unapproveRenewalLetter(letter.plan_slug);
+        setDecision(letter.plan_slug, "renewed", `already on maintenance through ${through} — renewal letter not sent`);
+        notes.push(`${letter.client_name}: already on maintenance through ${through} — not sent`);
+        continue;
+      }
+      const term = DEFAULT_MAINTENANCE_TERM_MONTHS;
+      const link = await generateMaintenanceLinkAction(letter.client_id, term);
+      const inr = link.amountInr ?? maintenancePrice(term);
+      if (!link.ok || !link.shortUrl || !inr) {
+        failed++;
+        notes.push(`${letter.client_name}: payment link failed — ${link.error ?? "no link"} (not sent; will retry tomorrow)`);
+        continue;
+      }
+      body = withPaymentLink(body, link.shortUrl, `₹${inr.toLocaleString("en-IN")} for ${term} months`);
+    }
     const res = await sendClientEmailAction({
       to: letter.to,
       subject: letter.subject,
-      htmlBody: bodyToHtml(letter.body),
-      textBody: letter.body,
+      htmlBody: bodyToHtml(body),
+      textBody: body,
     });
     if (!res.ok) {
       failed++;

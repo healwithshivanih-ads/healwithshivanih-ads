@@ -6,7 +6,7 @@
  * This is the hand-off between the author-renewal skill (which writes the letter
  * in Shivani's voice and gates it) and the app: instead of sending in chat, the
  * skill stages the letter here. The coach then reads + approves it on the
- * dashboard, and the renewal-send cron mails it on the plan-end day.
+ * dashboard, and the renewal-send cron mails it two days before the plan ends.
  *
  * usage: stage-renewal-letter.mjs <plan-slug> <client-id> <draft-file> [offer-label]
  *
@@ -19,9 +19,18 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 
-const [planSlug, clientId, draftFile, offerLabel = ""] = process.argv.slice(2);
+const [planSlug, clientId, draftFile, offerLabel = "", offerKind = "letter_only"] = process.argv.slice(2);
 if (!planSlug || !clientId || !draftFile) {
-  console.error("usage: stage-renewal-letter.mjs <plan-slug> <client-id> <draft-file> [offer-label]");
+  console.error(
+    "usage: stage-renewal-letter.mjs <plan-slug> <client-id> <draft-file> [offer-label] [maintenance|continue|letter_only]",
+  );
+  process.exit(2);
+}
+// Mirrors RENEWAL_OFFER_KINDS in src/lib/fmdb/renewal-offer.ts. `maintenance`
+// makes the send cron mint a live payment link into the email (at the
+// {{payment_link}} placeholder, or above the sign-off).
+if (!["maintenance", "continue", "letter_only"].includes(offerKind)) {
+  console.error(`bad offer kind: ${offerKind} (maintenance | continue | letter_only)`);
   process.exit(2);
 }
 if (!/^[a-z0-9][a-z0-9-]{0,120}$/i.test(planSlug)) {
@@ -77,6 +86,7 @@ const record = {
   subject,
   body,
   offer_label: offerLabel,
+  offer_kind: offerKind,
   status: "drafted",
   scheduled_for: null,
   drafted_at: new Date().toISOString(),
@@ -87,4 +97,4 @@ const record = {
 fs.mkdirSync(dir, { recursive: true });
 fs.writeFileSync(`${file}.tmp`, yaml.dump(record, { lineWidth: 100, noRefs: true }), { mode: 0o600 });
 fs.renameSync(`${file}.tmp`, file);
-console.log(`staged: ${planSlug} → drafted (to ${to}) — read & approve on the dashboard`);
+console.log(`staged: ${planSlug} → drafted · ${offerKind} (to ${to}) — read & approve on the dashboard`);
