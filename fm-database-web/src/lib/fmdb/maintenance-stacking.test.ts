@@ -54,3 +54,16 @@ describe("paidThroughOnPayment — arrears orders settle their fixed window", ()
     expect(paidThroughOnPayment({ term_months: 6 }, null, "2026-10-20")).toBe("2027-04-20");
   });
 });
+
+describe("payment-link reference ids are unique across clients", () => {
+  it("prefixes the client id, and the webhook recovers the order id", async () => {
+    const { maintenanceLinkReference, orderIdFromLinkReference } = await import("./maintenance-orders");
+    // 2026-10-20: cl-022 and cl-013 both had maint-2026-10-20-01 → Razorpay rejected the second.
+    const a = maintenanceLinkReference("cl-022", "maint-2026-10-20-01");
+    const b = maintenanceLinkReference("cl-013", "maint-2026-10-20-01");
+    expect(a).not.toBe(b);
+    expect(orderIdFromLinkReference(b, "cl-013")).toBe("maint-2026-10-20-01");
+    // Links minted before the prefix still resolve.
+    expect(orderIdFromLinkReference("maint-20260905-01", "cl-014")).toBe("maint-20260905-01");
+  });
+});

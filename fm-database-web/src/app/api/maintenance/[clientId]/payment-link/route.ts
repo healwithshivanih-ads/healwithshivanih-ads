@@ -31,6 +31,7 @@ import {
   patchMaintenanceOrder,
   nextMaintenanceOrderId,
   loadMaintenanceOrder,
+  maintenanceLinkReference,
   DEFAULT_MAINTENANCE_TERM_MONTHS,
   type MaintenanceOrder,
 } from "@/lib/fmdb/maintenance-orders";
@@ -127,7 +128,11 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
       currency: "INR",
       accept_partial: false,
       description: `The Ochre Tree — maintenance (${built.order.term_months} months)`,
-      reference_id: built.order.order_id, // unique; echoed back on payment_link.paid
+      // Razorpay requires reference_id unique ACROSS THE ACCOUNT, but order ids
+      // are only unique per client (maint-<date>-01) — two clients raising a
+      // link on the same day collided (2026-10-20). Prefix the client id; the
+      // webhook resolves by notes first and strips this prefix on fallback.
+      reference_id: maintenanceLinkReference(clientId, built.order.order_id),
       customer: { name: name || undefined, email: email || undefined, contact },
       notify: { email: !!email, sms: !!contact },
       reminder_enable: true,
@@ -141,6 +146,13 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     console.error(
       `[maint-link] razorpay payment link failed (status ${rzp?.statusCode ?? "?"}, code ${rzp?.error?.code ?? "?"}): ${detail}`,
     );
+    // A NEW order with no link is an orphan: remove it so it doesn't sit as a
+    // phantom pending block. A settled arrears order is left exactly as it was.
+    if (!body?.settleOrderId) {
+      await fs
+        .unlink(path.join(getPlansRoot(), "clients", clientId, "maintenance", `${built.order.order_id}.yaml`))
+        .catch(() => {});
+    }
     return NextResponse.json({ ok: false, error: "could not create payment link" }, { status: 502 });
   }
 

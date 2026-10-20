@@ -84,6 +84,19 @@ export function paidThroughOnPayment(
   return extendPaidThrough(existing, today, order.term_months);
 }
 
+/** Razorpay payment-link reference_id: must be unique across the whole account,
+ *  while order ids are only unique per client — so the client id is prefixed. */
+export function maintenanceLinkReference(clientId: string, orderId: string): string {
+  return `${clientId}-${orderId}`;
+}
+
+/** Recover our order id from a payment-link reference_id: strips the client
+ *  prefix when present (new links), passes older un-prefixed ids through. */
+export function orderIdFromLinkReference(ref: string, clientId: string): string | undefined {
+  if (!ref) return undefined;
+  return clientId && ref.startsWith(`${clientId}-`) ? ref.slice(clientId.length + 1) : ref;
+}
+
 /** The fixed price for a term, or null if the term isn't offered. Pure. */
 export function maintenancePrice(termMonths: number): number | null {
   return MAINTENANCE_PRICING[termMonths] ?? null;

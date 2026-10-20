@@ -18,6 +18,7 @@ import {
   findMaintenanceOrderByRazorpayOrderId,
   effectiveExistingThrough,
   paidThroughOnPayment,
+  orderIdFromLinkReference,
 } from "@/lib/fmdb/maintenance-orders";
 import {
   subscriptionEventOutcome,
@@ -177,7 +178,7 @@ export async function POST(req: Request) {
     orderEntity?.notes?.order_id ??
     paymentEntity?.notes?.order_id ??
     linkEntity?.notes?.order_id ??
-    linkEntity?.reference_id ??
+    orderIdFromLinkReference(linkEntity?.reference_id ?? "", clientId) ??
     "";
   const notedKind = orderEntity?.notes?.kind ?? paymentEntity?.notes?.kind ?? linkEntity?.notes?.kind;
   if (notedKind && notedKind !== "maintenance") {
