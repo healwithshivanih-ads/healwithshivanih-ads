@@ -204,9 +204,18 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, skipped: `status ${order.status}` });
   }
 
-  // Authoritative paid_through at capture: stack on the live effective window.
-  const existing = await effectiveExistingThrough(clientId);
+  // Authoritative paid_through at capture: stack on the live effective window,
+  // EXCLUDING this order — a duplicate delivery racing the first must compute
+  // the same date, not stack on the record the first one just stamped.
+  const existing = await effectiveExistingThrough(clientId, { excludeOrderId: orderId });
   const paidThrough = extendPaidThrough(existing, istToday(), order.term_months);
+
+  // Re-read just before writing: if a concurrent delivery already marked this
+  // payment paid, it is done — never write a second time.
+  const fresh = await loadMaintenanceOrder(clientId, orderId);
+  if (fresh && fresh.status === "paid" && fresh.razorpay_payment_id === rzpPaymentId) {
+    return NextResponse.json({ ok: true, already: true });
+  }
 
   const next = await patchMaintenanceOrder(clientId, orderId, {
     status: "paid",

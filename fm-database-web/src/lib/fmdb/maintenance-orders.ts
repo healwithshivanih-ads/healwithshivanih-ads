@@ -209,14 +209,20 @@ export async function findMaintenanceOrderByRazorpayOrderId(
  * record shape. null if nothing paid. Used by the app projection to reflect a
  * payment immediately, before the Mac reconcile folds it into client.yaml.
  */
-export async function latestPaidMaintenanceThrough(clientId: string): Promise<string | null> {
+export async function latestPaidMaintenanceThrough(
+  clientId: string,
+  opts: { excludeOrderId?: string } = {},
+): Promise<string | null> {
   const dir = await maintenanceDir(clientId);
   let best: string | null = null;
   try {
     const files = await fs.readdir(dir);
     for (const f of files.filter((x) => x.endsWith(".yaml"))) {
       try {
-        const rec = yaml.load(await fs.readFile(path.join(dir, f), "utf8")) as { paid_through?: unknown } | null;
+        const rec = yaml.load(await fs.readFile(path.join(dir, f), "utf8")) as
+          | { paid_through?: unknown; order_id?: unknown }
+          | null;
+        if (opts.excludeOrderId && rec?.order_id === opts.excludeOrderId) continue;
         const pt = rec?.paid_through;
         if (typeof pt === "string" && /^\d{4}-\d{2}-\d{2}$/.test(pt) && (!best || pt > best)) best = pt;
       } catch {
@@ -234,8 +240,17 @@ export async function latestPaidMaintenanceThrough(clientId: string): Promise<st
  * client.yaml#maintenance_paid_through and the latest PAID record (records may be
  * ahead on Fly before the Mac reconcile folds them into client.yaml). Drives
  * renewal stacking. Returns null when the client has never had maintenance.
+ *
+ * `excludeOrderId`: the order being paid RIGHT NOW must never count as existing
+ * cover for itself. Razorpay delivers a Payment Link payment as two events
+ * (payment_link.paid + payment.captured); when the second reads the record the
+ * first has just stamped, stacking on it doubled the term — Nazneen (cl-022)
+ * paid for 6 months on 2026-10-20 and was stamped through 2027-10-20.
  */
-export async function effectiveExistingThrough(clientId: string): Promise<string | null> {
+export async function effectiveExistingThrough(
+  clientId: string,
+  opts: { excludeOrderId?: string } = {},
+): Promise<string | null> {
   let fromClient: string | null = null;
   try {
     const { getPlansRoot } = await import("@/lib/fmdb/paths");
@@ -246,7 +261,7 @@ export async function effectiveExistingThrough(clientId: string): Promise<string
   } catch {
     /* no client record → treat as none */
   }
-  const fromRecord = await latestPaidMaintenanceThrough(clientId);
+  const fromRecord = await latestPaidMaintenanceThrough(clientId, opts);
   if (!fromClient) return fromRecord;
   if (!fromRecord) return fromClient;
   return fromRecord > fromClient ? fromRecord : fromClient;
