@@ -52,6 +52,42 @@ export interface FeedbackAsk {
   whatsapp: string | null;
   /** the raw feedback link, for copy-paste */
   link: string;
+  /** when she was last asked (YYYY-MM-DD) and how; null when never. She stays
+   *  on the list until she answers — this only stops it reading "not asked". */
+  asked_at: string | null;
+  asked_via: FeedbackAskChannel | null;
+}
+
+export type FeedbackAskChannel = "email" | "whatsapp";
+
+/** `~/fm-plans/_feedback_asks.yaml` — client_id → the last time she was asked.
+ *  Written by the panel's WhatsApp button and by any email ask. */
+function asksFile(): string {
+  return path.join(getPlansRoot(), "_feedback_asks.yaml");
+}
+
+async function loadAskLog(): Promise<Record<string, { at: string; via: FeedbackAskChannel }>> {
+  try {
+    const raw = yaml.load(await fs.readFile(asksFile(), "utf-8"));
+    return raw && typeof raw === "object" ? (raw as Record<string, { at: string; via: FeedbackAskChannel }>) : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Record that a client was asked for feedback (last ask wins). */
+export async function recordFeedbackAsk(clientId: string, via: FeedbackAskChannel): Promise<boolean> {
+  if (!/^[A-Za-z0-9_-]+$/.test(clientId)) return false;
+  const log = await loadAskLog();
+  log[clientId] = { at: new Date().toISOString(), via };
+  try {
+    const f = asksFile();
+    await fs.writeFile(`${f}.tmp`, yaml.dump(log, { sortKeys: true }), { mode: 0o600 });
+    await fs.rename(`${f}.tmp`, f);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export interface ProgrammeFeedbackData {
@@ -167,6 +203,7 @@ export async function loadProgrammeFeedback(
   cutoff.setUTCDate(cutoff.getUTCDate() - ASK_WINDOW_DAYS);
   const cutoffStr = cutoff.toISOString().slice(0, 10);
 
+  const askLog = await loadAskLog();
   const asks: FeedbackAsk[] = [];
   for (const c of clients) {
     if (c.archived === true || answeredEnd.has(c.client_id)) continue;
@@ -184,6 +221,8 @@ export async function loadProgrammeFeedback(
       whatsapp: phone
         ? `https://wa.me/${phone}?text=${encodeURIComponent(feedbackAskMessage(name.split(" ")[0], link))}`
         : null,
+      asked_at: typeof askLog[c.client_id]?.at === "string" ? askLog[c.client_id].at.slice(0, 10) : null,
+      asked_via: askLog[c.client_id]?.via ?? null,
     });
   }
   asks.sort((a, b) => b.ended_on.localeCompare(a.ended_on));

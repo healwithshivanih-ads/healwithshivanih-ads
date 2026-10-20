@@ -9,6 +9,7 @@
  */
 import Link from "next/link";
 import { FmPanel } from "@/components/fm";
+import { FeedbackAskButton } from "@/components/feedback-ask-button";
 import { FEEDBACK_PARTS, GOAL_CHANGE } from "@/lib/fmdb/programme-feedback";
 import type { ProgrammeFeedbackData } from "@/lib/fmdb/programme-feedback-loader";
 
@@ -140,7 +141,7 @@ export function ProgrammeFeedbackPanel({ data }: { data: ProgrammeFeedbackData }
 
       {asks.length > 0 && (
         <>
-          <div style={sectionHead}>Finished, not asked yet</div>
+          <div style={sectionHead}>Finished, no answer yet</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {asks.map((a) => (
               <div
@@ -151,26 +152,13 @@ export function ProgrammeFeedbackPanel({ data }: { data: ProgrammeFeedbackData }
                   <Link href={`/clients-v2/${a.client_id}`} style={{ fontWeight: 700, color: "var(--fm-text-primary)", textDecoration: "none" }}>
                     {a.display_name}
                   </Link>
-                  <span style={{ fontSize: 11, color: "var(--fm-text-secondary)", fontWeight: 600 }}> · finished {fmtDate(a.ended_on)}</span>
+                  <span style={{ fontSize: 11, color: "var(--fm-text-secondary)", fontWeight: 600 }}>
+                    {" "}· finished {fmtDate(a.ended_on)}
+                    {a.asked_at ? ` · asked ${fmtDate(a.asked_at)} by ${a.asked_via === "email" ? "email" : "WhatsApp"}` : " · not asked"}
+                  </span>
                 </div>
                 {a.whatsapp ? (
-                  <a
-                    href={a.whatsapp}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      flexShrink: 0,
-                      border: "1px solid rgba(37, 211, 102, 0.5)",
-                      color: "#128c4b",
-                      borderRadius: "var(--fm-radius-pill)",
-                      padding: "4px 12px",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      textDecoration: "none",
-                    }}
-                  >
-                    💬 Ask on WhatsApp
-                  </a>
+                  <FeedbackAskButton clientId={a.client_id} href={a.whatsapp} asked={!!a.asked_at} />
                 ) : (
                   <code style={{ fontSize: 11, wordBreak: "break-all" }}>{a.link}</code>
                 )}
