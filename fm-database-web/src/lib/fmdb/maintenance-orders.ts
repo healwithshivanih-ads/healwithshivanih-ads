@@ -48,6 +48,11 @@ export interface MaintenanceOrder {
   /** the window this payment extends coverage to, computed at pay time from the
    *  client's existing paid-through (so back-to-back renewals stack cleanly). */
   paid_through: string | null; // YYYY-MM-DD
+  /** ARREARS: the fixed window this order settles, when coverage was already
+   *  granted on credit (e.g. a client signed up and was given maintenance before
+   *  paying). When set, payment stamps exactly this as paid_through instead of
+   *  stacking another term on the client's current cover. See paidThroughOnPayment. */
+  covers_through?: string;
   razorpay_order_id?: string;
   razorpay_payment_id?: string;
   /** Set when the order is fulfilled via a shareable Razorpay Payment Link
@@ -59,6 +64,24 @@ export interface MaintenanceOrder {
   /** Stamped once a receipt is generated. See fm-database-web/src/lib/fmdb/invoices.ts. */
   invoice_number?: string;
   invoice_generated_at?: string;
+}
+
+/**
+ * The paid_through a payment stamps. An arrears order (covers_through set)
+ * settles exactly the window it was raised for — the cover already exists, the
+ * client is paying for it, not buying more. Every other order stacks a term on
+ * the existing window (early renewal), anchored at today when nothing is live.
+ * Pure.
+ */
+export function paidThroughOnPayment(
+  order: Pick<MaintenanceOrder, "term_months" | "covers_through">,
+  existing: string | null,
+  today: string,
+): string {
+  if (typeof order.covers_through === "string" && /^\d{4}-\d{2}-\d{2}$/.test(order.covers_through)) {
+    return order.covers_through;
+  }
+  return extendPaidThrough(existing, today, order.term_months);
 }
 
 /** The fixed price for a term, or null if the term isn't offered. Pure. */

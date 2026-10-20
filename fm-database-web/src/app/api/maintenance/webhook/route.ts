@@ -17,7 +17,7 @@ import {
   patchMaintenanceOrder,
   findMaintenanceOrderByRazorpayOrderId,
   effectiveExistingThrough,
-  extendPaidThrough,
+  paidThroughOnPayment,
 } from "@/lib/fmdb/maintenance-orders";
 import {
   subscriptionEventOutcome,
@@ -207,8 +207,9 @@ export async function POST(req: Request) {
   // Authoritative paid_through at capture: stack on the live effective window,
   // EXCLUDING this order — a duplicate delivery racing the first must compute
   // the same date, not stack on the record the first one just stamped.
+  // An arrears order (covers_through) settles its fixed window instead.
   const existing = await effectiveExistingThrough(clientId, { excludeOrderId: orderId });
-  const paidThrough = extendPaidThrough(existing, istToday(), order.term_months);
+  const paidThrough = paidThroughOnPayment(order, existing, istToday());
 
   // Re-read just before writing: if a concurrent delivery already marked this
   // payment paid, it is done — never write a second time.

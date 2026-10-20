@@ -30,7 +30,9 @@ import {
   createMaintenanceOrder,
   patchMaintenanceOrder,
   nextMaintenanceOrderId,
+  loadMaintenanceOrder,
   DEFAULT_MAINTENANCE_TERM_MONTHS,
+  type MaintenanceOrder,
 } from "@/lib/fmdb/maintenance-orders";
 
 export const dynamic = "force-dynamic";
@@ -59,7 +61,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
   if (!SAFE_ID.test(clientId)) {
     return NextResponse.json({ ok: false, error: "bad id" }, { status: 400 });
   }
-  const body = (await req.json().catch(() => null)) as { termMonths?: number } | null;
+  const body = (await req.json().catch(() => null)) as { termMonths?: number; settleOrderId?: string } | null;
   const termMonths = Number(body?.termMonths ?? DEFAULT_MAINTENANCE_TERM_MONTHS);
   if (maintenancePrice(termMonths) == null) {
     return NextResponse.json({ ok: false, error: "term not offered" }, { status: 400 });
@@ -88,14 +90,33 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     return NextResponse.json({ ok: false, error: "client not found" }, { status: 404 });
   }
 
-  const built = buildMaintenanceOrder(
-    await nextMaintenanceOrderId(clientId, istToday()),
-    clientId,
-    termMonths,
-    new Date().toISOString(),
-  );
-  if (!built.ok) return NextResponse.json({ ok: false, error: built.error }, { status: 400 });
-  await createMaintenanceOrder(built.order);
+  // settleOrderId: collect payment for an EXISTING arrears order (cover already
+  // granted, covers_through fixed) instead of raising a new block — so paying
+  // settles that window rather than stacking another term on top of it.
+  let built: { ok: true; order: MaintenanceOrder } | { ok: false; error: string };
+  if (body?.settleOrderId) {
+    if (!SAFE_ID.test(body.settleOrderId)) {
+      return NextResponse.json({ ok: false, error: "bad order id" }, { status: 400 });
+    }
+    const existingOrder = await loadMaintenanceOrder(clientId, body.settleOrderId);
+    if (!existingOrder) return NextResponse.json({ ok: false, error: "order not found" }, { status: 404 });
+    if (existingOrder.status !== "pending" || !existingOrder.covers_through) {
+      return NextResponse.json(
+        { ok: false, error: "only a pending arrears order (with covers_through) can be settled by link" },
+        { status: 400 },
+      );
+    }
+    built = { ok: true, order: existingOrder };
+  } else {
+    built = buildMaintenanceOrder(
+      await nextMaintenanceOrderId(clientId, istToday()),
+      clientId,
+      termMonths,
+      new Date().toISOString(),
+    );
+    if (!built.ok) return NextResponse.json({ ok: false, error: built.error }, { status: 400 });
+    await createMaintenanceOrder(built.order);
+  }
 
   let shortUrl: string;
   let linkId: string;
@@ -105,7 +126,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
       amount: Math.round(built.order.amount_inr * 100), // paise
       currency: "INR",
       accept_partial: false,
-      description: `The Ochre Tree — maintenance (${termMonths} months)`,
+      description: `The Ochre Tree — maintenance (${built.order.term_months} months)`,
       reference_id: built.order.order_id, // unique; echoed back on payment_link.paid
       customer: { name: name || undefined, email: email || undefined, contact },
       notify: { email: !!email, sms: !!contact },
@@ -133,7 +154,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ clientId: stri
     short_url: shortUrl,
     payment_link_id: linkId,
     amount_inr: built.order.amount_inr,
-    term_months: termMonths,
+    term_months: built.order.term_months,
     order_id: built.order.order_id,
     live: keyId.startsWith("rzp_live_"),
   });

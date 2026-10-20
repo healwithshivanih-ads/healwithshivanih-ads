@@ -39,3 +39,18 @@ describe("maintenance stacking never counts the order being paid", () => {
     expect(await effectiveExistingThrough("cl-x", { excludeOrderId: "maint-2027-04-01-01" })).toBe("2027-04-20");
   });
 });
+
+describe("paidThroughOnPayment — arrears orders settle their fixed window", () => {
+  it("an arrears order stamps covers_through, never stacking on the live cover", async () => {
+    const { paidThroughOnPayment } = await import("./maintenance-orders");
+    // Niti (cl-014): given cover 2026-09-05 → 2027-03-05 on credit, pays on 2026-10-20.
+    expect(paidThroughOnPayment({ term_months: 6, covers_through: "2027-03-05" }, "2027-03-05", "2026-10-20")).toBe(
+      "2027-03-05",
+    );
+  });
+  it("a normal order still stacks (early renewal) or anchors at today", async () => {
+    const { paidThroughOnPayment } = await import("./maintenance-orders");
+    expect(paidThroughOnPayment({ term_months: 6 }, "2027-03-05", "2026-10-20")).toBe("2027-09-05");
+    expect(paidThroughOnPayment({ term_months: 6 }, null, "2026-10-20")).toBe("2027-04-20");
+  });
+});
