@@ -91,4 +91,10 @@ video public since 18 Oct (library said 28 Feb 2027) and the belly video since
 |---|---|---|---|
 | A | Content status from YouTube itself | Daily `content-status` job: every library video checked on its watch page (public = playable AND not unlisted AND not upcoming; private/scheduled = LOGIN_REQUIRED), publish date taken from YouTube; guide pages checked for HTTP 200. New long videos (≥3 min) found in the channel feed are added automatically, concerns classified from title + description. Results in `~/fm-plans/_content_status.yaml`. A video is live ONLY when the latest check (≤3 days old) says public — `live_from` is gone from videos. | Pure tests on page parsing (fixtures from real pages: public, private); real run shows HRT + belly + protein public, the scheduled ones not. |
 | B | Replies caught automatically | Hourly `email-replies` job reads the coach mailbox over IMAP (read-only), takes replies from prospects' addresses, records each in their thread as an inbound email (so the follow-ups hold for "in conversation"), and when the reply says "no more"/"unsubscribe"/"stop"/"remove me"/"not interested", sets `marketing_opt_out`, stops the call follow-up and skips anything pending. Quoted text below the reply is ignored. | Pure tests on the phrase detector incl. quoted-text and false friends ("no more bloating!"); real read-only run over the last 30 days lists what it would do before applying. |
-| C | ochre-funnel | (see the survey; filled in below) | |
+| C | ochre-funnel | Evergreen week 1/2 carry a concern-matched live video (auto-tagged videos, lead's guides + IG keyword); ₹999 notice carries `interests`; fm-coach records them. No migration. | Funnel 2283 tests; real CHANNEL_VIDEOS all get ≥1 concern; triage-paid test. |
+
+Round 2 log:
+- A done: real run 25 checked, 16 public (HRT, belly, protein + shorts), 9 scheduled held back, 9 guides up; shorts excluded (<180s).
+- B done: dry run on the real mailbox found Rashmi's 2 replies (15/16 Oct) to touch 2 — never seen by the drip until now. The 18:05 hourly run recorded both; thread parser shows them inbound/email.
+- C done: PR #80 merged + deployed (coordinated with two sessions deploying the same app; both confirmed their work was on main).
+- Shipped: coach main 990c6000 + Fly; cron runner restarted (new schedules confirmed in its log).
