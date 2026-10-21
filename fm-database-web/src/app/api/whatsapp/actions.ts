@@ -416,7 +416,7 @@ export async function recordInboundEmailAction(input: {
   receivedAt: string;
 }): Promise<{ ok: boolean; session_id?: string; error?: string }> {
   if (!input.clientId || !input.body.trim()) return { ok: false, error: "clientId + body required" };
-  const subject = input.subject.replace(/[\[\]\n]/g, " ").trim().slice(0, 140);
+  const subject = input.subject.replace(/[[\]\n]/g, " ").trim().slice(0, 140);
   const tags = `${EMAIL_INBOUND_TAG}${subject ? ` [subject: ${subject}]` : ""} [sent_at: ${input.receivedAt}]`;
   return appendThreadSegment(input.clientId, tags, input.body.trim());
 }

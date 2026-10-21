@@ -59,7 +59,7 @@ const ANYWHERE: RegExp[] = [
   /\b(do not|don'?t|dont) (e-?mail|mail|contact|message|send)( me)?\b/,
 ];
 
-const WHOLE_REPLY = /^(please\s+)?(no more|stop|no thanks?|not interested|unsubscribe)(\s+(please|thanks?|thank you))?[\s.!🙏😊]*$/;
+const WHOLE_REPLY = /^(please\s+)?(no more|stop|no thanks?|not interested|unsubscribe)(\s+(please|thanks?|thank you))?[\s.!🙏😊]*$/u;
 
 /**
  * The phrase that makes this reply an opt-out, or null. Checks only what they
