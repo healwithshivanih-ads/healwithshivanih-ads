@@ -145,6 +145,30 @@ describe("ensureClientForBooking", () => {
     expect(sessions.length).toBe(1);
     expect(sessions[0]).toContain("Migraine, iron and vitamin deficiency");
     expect(sessions[0]).toContain("booking_form");
+
+    // What she wrote is tagged as interests, so the follow-up can match a
+    // video or guide to it. Her own words ride along as the detail.
+    const interests = (readClient(res.clientId!).interests ?? []) as Array<Record<string, unknown>>;
+    expect(interests.map((i) => i.concern)).toEqual(["nutrients", "sleep"]);
+    expect(interests[0].source).toBe("booking_form");
+    expect(interests[0].detail).toBe("Migraine, iron and vitamin deficiency, sleep");
+  });
+
+  it("puts the concern answer in the note's complaint, not the duration answer", { timeout: 40000 }, async () => {
+    const res = await ensureClientForBooking({
+      ...RASHMI,
+      uid: "calcom-order-test",
+      email: "someone-else@example.com",
+      phone: "+910000000001",
+      formFields: [
+        { question: "How long has this been going on?", answer: "1 to 3 years" },
+        { question: "What is your main area of concern?", answer: "High BP and Mental health" },
+      ],
+    });
+    // Parsed, not grepped: PyYAML may fold the line.
+    const session = yaml.load(readSessions(res.clientId!)[0]) as { presenting_complaints?: string };
+    expect(session.presenting_complaints).toContain("[source: booking_form] High BP and Mental health");
+    expect(session.presenting_complaints).not.toContain("1 to 3 years");
   });
 
   it("does not write the same booking's note twice", { timeout: 40000 }, async () => {

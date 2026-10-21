@@ -26,7 +26,7 @@ import { promisify } from "node:util";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { PYTHON } from "@/lib/fmdb/shim";
-import { bookingConcern } from "@/lib/fmdb/booking-form";
+import { bookingConcern, bookingFreeText } from "@/lib/fmdb/booking-form";
 
 const execFileP = promisify(execFile);
 const FMDB_REPO = path.resolve(process.cwd(), "..", "fm-database");
@@ -212,6 +212,7 @@ export async function ensureClientForBooking(lead: BookingLead): Promise<LeadInt
       return { clientId, created, noteSaved: false, skipped: "already_noted" };
     }
     noteSaved = await saveBookingNote(clientId, lead);
+    if (noteSaved) await recordBookingInterests(clientId, lead);
     return { clientId, created, noteSaved };
   } catch (err) {
     return {
@@ -299,4 +300,26 @@ async function saveBookingNote(clientId: string, lead: BookingLead): Promise<boo
     coach_notes: buildBookingNote(lead),
   });
   return Boolean(res?.ok);
+}
+
+/**
+ * Tag what they wrote on the booking form with concerns (client.yaml#interests),
+ * so the dashboard and the follow-up know what to send them. Best-effort: a
+ * failure here must never cost the booking note.
+ */
+async function recordBookingInterests(clientId: string, lead: BookingLead): Promise<void> {
+  try {
+    const { signalsFromText } = await import("@/lib/fmdb/interests");
+    const { addInterestSignals } = await import("@/lib/fmdb/interests-store");
+    const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" });
+    const signals = signalsFromText(
+      bookingFreeText(lead.formFields),
+      "booking_form",
+      today,
+      bookingConcern(lead.formFields),
+    );
+    await addInterestSignals(clientId, signals);
+  } catch (err) {
+    console.error("[booking-lead-intake] could not record interests:", err);
+  }
 }
