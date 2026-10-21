@@ -66,6 +66,11 @@ export function MonthlyCardButton({ clientId }: { clientId: string }) {
       {card && (
         <div style={{ border: `1px solid ${LINE}`, borderRadius: 10, padding: "10px 12px", marginBottom: 10, background: "var(--fm-surface-2, #faf8f3)" }}>
           <div style={{ fontSize: 13, fontWeight: 600, color: FOREST }}>{card.title}</div>
+          {(card.flags ?? []).length > 0 && (
+            <ul style={{ margin: "6px 0 0", paddingLeft: 16, fontSize: 12, color: "#a8472f", lineHeight: 1.45 }}>
+              {(card.flags ?? []).map((f, i) => <li key={i}>⚠ {f}</li>)}
+            </ul>
+          )}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 6 }}>
             <div>
               <div style={{ fontSize: 11, fontWeight: 600, color: FOREST, textTransform: "uppercase", letterSpacing: 0.4 }}>Do</div>

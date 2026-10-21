@@ -25,6 +25,7 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
 import { openRenewals } from "@/lib/fmdb/renewal-queue";
 import { loadAllRenewalLetters } from "@/lib/fmdb/renewal-letters";
+import { loadHeldMonthlyCards } from "@/lib/fmdb/monthly-cards-store";
 import { splitByDraftWindow, draftDayLabel } from "@/lib/fmdb/menu-cadence";
 import {
   scanPlanChangesAction,
@@ -68,6 +69,9 @@ export async function POST(req: NextRequest) {
   // the one thing that is time-critical.
   const renewals = openRenewals();
   const renewalLetters = loadAllRenewalLetters();
+  // Monthly cards the cron held because something stood out. Rare, and a held
+  // card is invisible to the client until she acts, so it forces the mail.
+  const heldCards = await loadHeldMonthlyCards();
 
   // Scan for plan edits the client has to act on. Runs BEFORE the quiet-day
   // guard for the same reason renewals do: a week with no menus due is exactly
@@ -102,7 +106,13 @@ export async function POST(req: NextRequest) {
   // a quiet morning, and mailing about it is the nag this whole section exists
   // to stop. Renewals and plan-changes still force the mail — those are
   // time-critical and nothing else watches them.
-  if (needsYou === 0 && renewals.length === 0 && planChanges.length === 0 && winback.length === 0) {
+  if (
+    needsYou === 0 &&
+    renewals.length === 0 &&
+    planChanges.length === 0 &&
+    winback.length === 0 &&
+    heldCards.length === 0
+  ) {
     return NextResponse.json({
       ok: true,
       sent: 0,
@@ -270,6 +280,13 @@ export async function POST(req: NextRequest) {
       ${renewalHtml}
       ${winbackHtml}
       ${planChangeHtml}
+      ${
+        heldCards.length
+          ? `<p style="margin-top:22px;"><strong>🗓 Monthly cards to check (${heldCards.length})</strong>, held back because something stood out. Everyone else's went out on their own:</p><ul>${heldCards
+              .map((h) => `<li><strong>${esc(h.clientName)}</strong> (${esc(h.month)}): ${esc((h.card.flags ?? []).join(" "))}</li>`)
+              .join("")}</ul>`
+          : ""
+      }
       <p style="margin-top:18px;"><a href="${appUrl}/dashboard-v2"
         style="background:#6b8e6b;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;">Open the dashboard →</a></p>
       <p style="color:#8d99ae;font-size:12px;margin-top:20px;">Automated digest from your FM coach app · nothing reaches a client until you approve.</p>
@@ -320,6 +337,11 @@ export async function POST(req: NextRequest) {
               `  - ${d.clientName} — touch ${d.touch} of 3 (${d.kind.replace("_", " ")}) · ended ${d.daysSinceEnd}d ago` +
               (d.needsPrice ? " [needs a price]" : ""),
           )
+          .join("\n")}\n\n`
+      : "") +
+    (heldCards.length
+      ? `MONTHLY CARDS TO CHECK (held because something stood out):\n${heldCards
+          .map((h) => `  - ${h.clientName} (${h.month}): ${(h.card.flags ?? []).join(" ")}`)
           .join("\n")}\n\n`
       : "") +
     `Dashboard: ${appUrl}/dashboard-v2`;

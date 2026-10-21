@@ -12,13 +12,27 @@ Two paths (spec PLAN_END_GAME_SPEC.md):
   B (deterministic) — seasonal + condition template, zero API. The reliable
               fallback (and what ships today).
 
-Input (stdin JSON):  {"client_id": "cl-007", "month": "2026-07", "dry_run": false}
-Output (stdout JSON): {"ok": bool, "card": {month,title,dos,donts} | null, "error": str | null}
+Input (stdin JSON):
+  {"client_id": "cl-007", "month": "2026-07", "dry_run": false,
+   "plan_slug": "<optional — the exact plan to write to>",
+   "review": false,          # true (the monthly cron): HOLD the card for the
+                             #   coach when anything stands out, instead of
+                             #   putting it live
+   "only_if_missing": false} # true (the monthly cron): leave an existing card
+                             #   for that month untouched
+Output (stdout JSON):
+  {"ok": bool, "card": {...} | null, "flags": [str], "status": "live" |
+   "pending_review" | null, "skipped": str | null, "error": str | null}
+
+A stored card carries `status`. "pending_review" never renders in the app; an
+absent status (cards written before this field) or "live" does. `flags` says
+why a card was held, in the coach's words — see review_flags().
 """
 import sys
 import json
 import os
 import glob
+import re
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -122,9 +136,13 @@ def _season(month: int) -> str:
 
 # ── condition keyword → one do + one don't ───────────────────────────────────
 _CONDITION_RULES = [
+    # Food-only on purpose. This read "Take your thyroid support consistently"
+    # until 2026-10-21, which told a client on no thyroid supplement or
+    # medicine to take one. A card line must be true of every client its
+    # keyword matches, and a keyword says nothing about what they take.
     (("thyroid", "hashimoto", "hypothyroid"),
-     "Take your thyroid support consistently, at the same time each day",
-     "Large amounts of raw goitrogens (raw cabbage, cauliflower) — cook them instead"),
+     "Cook your cabbage, cauliflower and broccoli rather than eating them raw",
+     "One millet flour every single day — rotate your flours through the week"),
     (("gut", "ibs", "sibo", "bloat", "reflux", "acid"),
      "Chew slowly and finish dinner a little earlier",
      "Late, heavy or rushed meals"),
@@ -167,11 +185,26 @@ def _build_card(month_str: str, conditions: list) -> dict:
     }
 
 
-def _latest_published_plan_file(root: Path, client_id: str):
+def _version_of(path: str) -> int:
+    tail = path.rsplit("-v", 1)
+    if len(tail) == 2 and tail[1].split(".")[0].isdigit():
+        return int(tail[1].split(".")[0])
+    return 0
+
+
+def _current_plan_file(root: Path, client_id: str, plan_slug: str = ""):
+    """The plan the app actually shows this client.
+
+    Was "highest version wins", which is a tie for almost every client (each
+    plan is v1) and then fell to glob order — Niti has both plan-1 and its
+    maintenance successor in published/, and the card could land on the dead
+    one. Now: the named slug when given; otherwise maintenance first, then the
+    newest programme start, then the version.
+    """
     import yaml  # type: ignore
 
     best = None
-    best_v = -1
+    best_key = None
     for p in glob.glob(str(root / "published" / "*.yaml")):
         try:
             d = yaml.safe_load(open(p)) or {}
@@ -179,14 +212,165 @@ def _latest_published_plan_file(root: Path, client_id: str):
             continue
         if d.get("client_id") != client_id:
             continue
-        v = 0
-        tail = p.rsplit("-v", 1)
-        if len(tail) == 2 and tail[1].split(".")[0].isdigit():
-            v = int(tail[1].split(".")[0])
-        if v >= best_v:
-            best_v = v
+        if plan_slug and d.get("slug") != plan_slug:
+            continue
+        key = (
+            bool(d.get("is_maintenance")),
+            str(d.get("plan_period_start") or ""),
+            _version_of(p),
+        )
+        if best_key is None or key > best_key:
+            best_key = key
             best = (p, d)
     return best
+
+
+def _prev_month(month_str: str) -> str:
+    dt = datetime.strptime(month_str, "%Y-%m")
+    y, m = (dt.year, dt.month - 1) if dt.month > 1 else (dt.year - 1, 12)
+    return f"{y:04d}-{m:02d}"
+
+
+_INDIA = {"india", "in", "ind", "bharat"}
+
+# Words in a DO line that a diet rules out. Do-lines only: a don't line that
+# names meat ("avoid fried chicken") is advice against it, not a prescription.
+_DIET_WORDS = {
+    "vegetarian": ["chicken", "mutton", "fish", "prawn", "meat", "bone broth", "egg"],
+    "eggetarian": ["chicken", "mutton", "fish", "prawn", "meat", "bone broth"],
+    "vegan": ["ghee", "curd", "chaas", "buttermilk", "doodh", "milk", "paneer", "honey",
+              "chicken", "mutton", "fish", "prawn", "meat", "egg"],
+    "jain": ["garlic", "onion", "ginger", "potato", "root vegetable", "carrot", "beetroot",
+             "radish", "chicken", "mutton", "fish", "prawn", "meat", "egg"],
+}
+
+
+_AVOID_STOPWORDS = {
+    "raw", "based", "products", "product", "foods", "food", "any", "all", "and", "the",
+    "too", "much", "very", "with", "from", "eating", "meals", "meal", "missing", "skipping",
+    "delayed", "missed", "late", "days", "day", "school", "brings", "causes", "sometimes",
+    "used", "get", "kid", "since", "childhood", "itchy", "tongue", "dry", "mouth", "pain",
+    "stomach", "breakfast", "lunch", "dinner", "night", "work", "stress",
+}
+
+
+def _text_list(v) -> list:
+    if isinstance(v, list):
+        return [str(x) for x in v if str(x).strip()]
+    if isinstance(v, str) and v.strip():
+        return [x for x in re.split(r"[;\n]", v) if x.strip()]
+    return []
+
+
+def review_flags(card: dict, client: dict, plan: dict, prev_card) -> list:
+    """Why this card should wait for the coach, or [] when it can go live.
+
+    Deterministic and deliberately narrow — each flag names something the
+    template genuinely cannot know, so a clean card stays automatic and a held
+    one says exactly what to look at.
+    """
+    flags: list = []
+    dos = [str(x) for x in card.get("dos") or []]
+    do_text = " ".join(dos).lower()
+
+    country = str(client.get("country") or "").strip()
+    if country and country.lower() not in _INDIA:
+        flags.append(
+            f"Lives in {country}. The card is written for the Indian season, "
+            f"festivals and markets, so check it fits where they are."
+        )
+
+    diet = str(client.get("dietary_preference") or "").lower()
+    for kind, words in _DIET_WORDS.items():
+        # "non-vegetarian" contains "vegetarian" — the trap the app's diet
+        # regex fell into (reference_app_supplement_phasing_diet). Anchor it.
+        if not re.search(rf"(?<![a-z-]){kind}", diet):
+            continue
+        hit = sorted({w for w in words if re.search(rf"\b{re.escape(w)}", do_text)})
+        if hit:
+            flags.append(f"Their diet is {client.get('dietary_preference')}, and a 'do' names {', '.join(hit)}.")
+
+    preg = str(client.get("pregnancy_status") or "").lower()
+    if preg and preg not in ("not_pregnant", "not_applicable", "no", "none"):
+        flags.append(f"Pregnancy status is '{client.get('pregnancy_status')}'. Check every line is right for that.")
+
+    try:
+        from food_cautions import foods_named_in, live_cautions, screen_text, plain_food_names
+    except Exception:
+        foods_named_in = None  # type: ignore
+
+    if foods_named_in is not None:
+        avoid_texts = _text_list(client.get("foods_to_avoid")) + [
+            a for a in _text_list(client.get("known_allergies")) + _text_list(client.get("allergies"))
+            if a.strip().lower() not in ("none", "nil", "no", "na", "n/a")
+        ] + _text_list(client.get("reported_triggers"))
+        avoid_keys = foods_named_in(avoid_texts)
+        named = foods_named_in(dos)
+        clash = plain_food_names(sorted(avoid_keys & named))
+        # The nutrient table only knows ~200 foods (no sesame, no brinjal), so
+        # also match the plain head words of each entry — "Sesame (rash)" →
+        # "sesame". A missed allergy is the one miss this screen must not make.
+        for t in avoid_texts:
+            head = re.split(r"\(|\s[-–—:]\s|:", t, maxsplit=1)[0].lower()
+            for w in re.findall(r"[a-z]{3,}", head):
+                if w not in _AVOID_STOPWORDS and re.search(rf"\b{w}", do_text) and w not in clash:
+                    clash.append(w)
+        if clash:
+            flags.append(
+                f"A 'do' names {', '.join(clash)}, which is on their "
+                f"avoid / allergy / trigger list."
+            )
+        live = live_cautions(client, plan)
+        seen = set()
+        for line in dos:
+            for h in screen_text(line, live):
+                if h.effective_severity in ("avoid", "moderate") and h.id not in seen:
+                    seen.add(h.id)
+                    flags.append(f"Food caution for their condition: {h.line()}.")
+
+    if isinstance(prev_card, dict) and prev_card.get("dos") == card.get("dos") and \
+            prev_card.get("donts") == card.get("donts"):
+        flags.append("Identical to last month's card.")
+
+    return flags
+
+
+def _decide(client_id: str, month: str, plan_slug: str, action: str, drop) -> int:
+    """The coach's call on a held card: approve it (optionally without some
+    lines) so it goes live, or skip the month. Skipped is remembered so the
+    cron does not write the card again tomorrow."""
+    import yaml  # type: ignore
+
+    found = _current_plan_file(_plans_root(), client_id, plan_slug)
+    if not found:
+        json.dump({"ok": False, "card": None, "error": "no published plan"}, sys.stdout)
+        return 1
+    ppath, plan = found
+    cards = plan.get("monthly_cards") if isinstance(plan.get("monthly_cards"), dict) else {}
+    card = cards.get(month)
+    if not isinstance(card, dict):
+        json.dump({"ok": False, "card": None, "error": f"no card for {month}"}, sys.stdout)
+        return 1
+    drop_set = {str(x).strip() for x in drop if str(x).strip()}
+    if action == "approve":
+        card["dos"] = [x for x in card.get("dos") or [] if str(x).strip() not in drop_set]
+        card["donts"] = [x for x in card.get("donts") or [] if str(x).strip() not in drop_set]
+        if not card["dos"] and not card["donts"]:
+            json.dump({"ok": False, "card": None, "error": "every line removed — skip the month instead"}, sys.stdout)
+            return 1
+        card["status"] = "live"
+    else:
+        card["status"] = "skipped"
+    card["decided_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    cards[month] = card
+    plan["monthly_cards"] = cards
+    tmp = ppath + ".tmp"
+    with open(tmp, "w") as f:
+        yaml.safe_dump(plan, f, sort_keys=False, allow_unicode=True)
+    os.replace(tmp, ppath)
+    json.dump({"ok": True, "card": card, "flags": card.get("flags") or [], "status": card["status"],
+               "skipped": None, "error": None}, sys.stdout)
+    return 0
 
 
 def main() -> int:
@@ -204,6 +388,11 @@ def main() -> int:
         json.dump({"ok": False, "card": None, "error": "client_id required"}, sys.stdout)
         return 2
 
+    action = str(payload.get("action") or "generate")
+    if action in ("approve", "skip"):
+        return _decide(client_id, month, str(payload.get("plan_slug") or "").strip(), action,
+                       payload.get("drop") or [])
+
     try:
         import yaml  # type: ignore
     except ImportError as e:
@@ -218,26 +407,49 @@ def main() -> int:
     client = yaml.safe_load(open(cpath)) or {}
     conditions = _strs(client.get("active_conditions")) + _strs(client.get("goals"))
 
-    # Path B (deterministic) ships today. Path A (Haiku) is a future layer behind
-    # FM_API_OK — kept deliberately simple here for reliability + zero cap risk.
-    card = _build_card(month, conditions)
+    try:
+        datetime.strptime(month, "%Y-%m")
+    except ValueError:
+        json.dump({"ok": False, "card": None, "error": f"bad month: {month}"}, sys.stdout)
+        return 2
 
-    found = _latest_published_plan_file(root, client_id)
+    found = _current_plan_file(root, client_id, str(payload.get("plan_slug") or "").strip())
     if not found:
         json.dump({"ok": False, "card": None, "error": "no published plan"}, sys.stdout)
         return 1
     ppath, plan = found
+    cards = plan.get("monthly_cards")
+    if not isinstance(cards, dict):
+        cards = {}
+
+    if payload.get("only_if_missing") and isinstance(cards.get(month), dict):
+        existing = cards[month]
+        json.dump({"ok": True, "card": existing, "flags": existing.get("flags") or [],
+                   "status": existing.get("status") or "live", "skipped": "exists",
+                   "error": None}, sys.stdout)
+        return 0
+
+    # Path B (deterministic) ships today. Path A (Haiku) is a future layer behind
+    # FM_API_OK — kept deliberately simple here for reliability + zero cap risk.
+    card = _build_card(month, conditions)
+    flags = review_flags(card, client, plan, cards.get(_prev_month(month)))
+    # The coach saving a card herself IS the review; the cron holds on a flag.
+    status = "pending_review" if (payload.get("review") and flags) else "live"
+    card["status"] = status
+    card["flags"] = flags
+    card["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    card["generated_by"] = "auto" if payload.get("review") else "coach"
 
     if not dry:
-        cards = plan.get("monthly_cards")
-        if not isinstance(cards, dict):
-            cards = {}
         cards[month] = card
         plan["monthly_cards"] = cards
-        with open(ppath, "w") as f:
+        tmp = ppath + ".tmp"
+        with open(tmp, "w") as f:
             yaml.safe_dump(plan, f, sort_keys=False, allow_unicode=True)
+        os.replace(tmp, ppath)
 
-    json.dump({"ok": True, "card": card, "error": None}, sys.stdout)
+    json.dump({"ok": True, "card": card, "flags": flags, "status": status,
+               "skipped": None, "error": None}, sys.stdout)
     return 0
 
 

@@ -1038,6 +1038,11 @@ function parseMonthlyCard(raw: unknown, ym: string): MonthlyCard | null {
   const c = (raw as Record<string, unknown>)[ym];
   if (!c || typeof c !== "object") return null;
   const o = c as Record<string, unknown>;
+  // Only a LIVE card reaches the client. The monthly cron holds a card for the
+  // coach ("pending_review", see generate-monthly-card.py review_flags) and she
+  // may skip a month ("skipped"). No status = written before the field
+  // existed = live.
+  if (o.status !== undefined && o.status !== null && o.status !== "live") return null;
   const dos = asStrArr(o.dos).map((s) => s.trim()).filter(Boolean);
   const donts = asStrArr(o.donts).map((s) => s.trim()).filter(Boolean);
   if (dos.length === 0 && donts.length === 0) return null;

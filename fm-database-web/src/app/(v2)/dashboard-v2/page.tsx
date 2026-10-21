@@ -59,6 +59,8 @@ import {
 } from "@/lib/server-actions/winback-drip";
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import { loadProgrammeFeedback } from "@/lib/fmdb/programme-feedback-loader";
+import { loadHeldMonthlyCards } from "@/lib/fmdb/monthly-cards-store";
+import { MonthlyCardReviewPanel } from "@/components/monthly-card-review-panel";
 import {
   FmAlertGroup,
   FmAppShell,
@@ -559,6 +561,10 @@ export default async function DashboardV2() {
     plansByClient as unknown as Parameters<typeof loadProgrammeFeedback>[1],
     todayStr,
   );
+
+  // 🗓 Monthly cards the cron held for review (monthly-cards cron). Usually
+  // empty — a clean card goes live on its own.
+  const heldMonthlyCards = await loadHeldMonthlyCards();
 
   // 📩 Plans ending — the end of a plan is the most commercially significant
   // moment in the relationship, and until 3 Aug 2026 nothing watched it. The
@@ -1184,6 +1190,7 @@ export default async function DashboardV2() {
           real answer worth seeing. */}
       <RenewalQueuePanel rows={renewalRows} letters={renewalLetters} />
       <ProgrammeFeedbackPanel data={programmeFeedback} />
+      <MonthlyCardReviewPanel held={heldMonthlyCards} />
 
       {/* ✉️ Win-back drafts — sits directly under "plans ending" because it is
           the continuation of that list, not a separate concern: these are the

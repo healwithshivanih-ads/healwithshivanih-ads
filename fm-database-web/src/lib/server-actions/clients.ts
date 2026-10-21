@@ -124,6 +124,11 @@ export interface MonthlyCard {
   title: string;
   dos: string[];
   donts: string[];
+  /** What stands out about this card for this client (generate-monthly-card.py
+   *  review_flags). The coach saving it herself is the review, so a flagged
+   *  card she saves still goes live — the flags are shown so she can see why
+   *  the monthly cron would have held it. */
+  flags?: string[];
 }
 
 /**

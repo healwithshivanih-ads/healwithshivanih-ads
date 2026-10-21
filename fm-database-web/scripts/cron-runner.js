@@ -267,6 +267,17 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 06:20 IST daily — maintenance clients' monthly do's & don'ts card. Writes
+// this month's when missing and, from the 25th, next month's, so it is on the
+// app on the 1st. Deterministic, no API. A clean card goes live; one where
+// something stands out is held for the coach (dashboard + 07:30 digest).
+// Runs before the digest so a card held today is in today's mail.
+cron.schedule(
+  "20 6 * * *",
+  () => fire("monthly-cards"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // 06:15 IST daily — keep MAINTENANCE menus in season. Maintenance plans are
 // exempt from the weekly drafter; this regenerates a season-aware menu when one
 // is due (never refreshed, ≥7 weeks old, or the season turned) and auto-applies
@@ -434,6 +445,7 @@ cron.schedule(
 
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
+    + "\n  · 06:20 IST  monthly-cards"
     + "\n  · 06:45 IST  client-yaml-integrity"
     + "\n  · 07:00 IST  weekly-menu-drafts"
     + "\n  · 07:30 IST  menu-approval-digest"
