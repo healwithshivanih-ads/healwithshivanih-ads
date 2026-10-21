@@ -45,7 +45,7 @@ profiles_final:
       - "Blood sugar — fasting & post-meal glucose and insulin, HbA1c, HOMA-IR"
       - "Heart — full lipids, ApoB, ApoA1, Lp(a)"
       - "Inflammation — hs-CRP, ESR"
-      - "Homocysteine & methylation"
+      - "Homocysteine — the blood marker for methylation"
       - "Liver & kidney function, full blood count"
       - "Morning cortisol"
     # add-on slugs already inside this panel — hidden from the add-on picker (and

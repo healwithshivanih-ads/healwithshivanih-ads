@@ -2972,7 +2972,7 @@ def action_finalise(payload: dict) -> dict:
         data = _load_client(client_id)
     except FileNotFoundError as e:
         return {"ok": False, "error": str(e)}
-    if not data.get("intake_submitted_at"):
+    if not (data.get("intake_submitted_at") or data.get("intake_last_submitted_at")):
         return {"ok": False, "error": "cannot finalise — client has not submitted yet"}
     data["intake_token"] = None
     data["intake_token_expires_at"] = None
@@ -2985,6 +2985,51 @@ def action_finalise(payload: dict) -> dict:
     except Exception as e:
         print(f"[intake-token-action] finalise purge failed for {client_id}: {e}", file=sys.stderr)
     return {"ok": True, "client_id": client_id, "intake_finalised_at": data["intake_finalised_at"]}
+
+
+# ── auto-finalise once the coach has acted on the intake (2026-10-21) ───────
+#
+# A submitted intake stays open (Path A) until the coach presses 🔒 Lock. In
+# practice the coach moved on to the assessment and the plan and never came
+# back to press it: 12 clients sat "submitted, not finalised" for weeks to
+# months, still raising the dashboard's review-the-intake signals. Once an
+# assessment is saved or a plan is published, the intake has been read and
+# used — lock it. A client who never submitted is left alone (they may still
+# be filling it in), and Reopen still undoes this.
+
+def auto_finalise_after(client_id: str, trigger: str) -> dict:
+    """Finalise a submitted, un-finalised intake. Never raises.
+
+    Returns {"finalised": bool, "reason": str}. `trigger` is a short label
+    for the log line ("assessment", "plan_publish").
+    """
+    try:
+        data = _load_client(client_id)
+    except Exception as e:  # noqa: BLE001 — caller's write must not fail on this
+        return {"finalised": False, "reason": f"load failed: {type(e).__name__}"}
+    if data.get("intake_finalised_at"):
+        return {"finalised": False, "reason": "already_finalised"}
+    if not (data.get("intake_submitted_at") or data.get("intake_last_submitted_at")):
+        return {"finalised": False, "reason": "not_submitted"}
+    try:
+        out = action_finalise({"client_id": client_id})
+    except Exception as e:  # noqa: BLE001
+        return {"finalised": False, "reason": f"finalise failed: {type(e).__name__}: {e}"}
+    if not out.get("ok"):
+        return {"finalised": False, "reason": out.get("error") or "finalise failed"}
+    print(
+        f"[intake-token-action] auto-finalised {client_id} intake after {trigger}",
+        file=sys.stderr,
+    )
+    return {"finalised": True, "reason": trigger}
+
+
+def action_auto_finalise(payload: dict) -> dict:
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    res = auto_finalise_after(client_id, (payload.get("trigger") or "manual").strip())
+    return {"ok": True, "client_id": client_id, **res}
 
 
 # ── action: reopen_finalised_intake (B9 fix 2026-05-23) ─────────────────────
@@ -3184,6 +3229,7 @@ ACTIONS = {
     "submit": action_submit,
     "promote_draft": action_promote_draft,
     "finalise": action_finalise,
+    "auto_finalise": action_auto_finalise,
     "reopen_finalised_intake": action_reopen_finalised_intake,
     "revoke": action_revoke,
     # v0.75 — two-stage intake flow + discovery journey markers
