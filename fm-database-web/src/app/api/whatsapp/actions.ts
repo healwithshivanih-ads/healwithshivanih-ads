@@ -7,6 +7,7 @@ import os from "node:os";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
+import { resolvePersonDir } from "@/lib/fmdb/person-dir";
 import {
   isOutboundSegment,
   indexOfOutboundTag,
@@ -615,7 +616,7 @@ export async function loadCommunicationThreadAction(
   clientId: string,
   daysBack = 90,
 ): Promise<ChatThreadMessage[]> {
-  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  const dir = path.join(resolvePersonDir(clientId), "sessions");
   let names: string[];
   try {
     names = await fs.readdir(dir);
@@ -1115,7 +1116,7 @@ export async function getLastSentAtAction(
   const daysBack = opts?.daysBack ?? 180;
   const isPrefix = opts?.prefix ?? false;
 
-  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  const dir = path.join(resolvePersonDir(clientId), "sessions");
   let names: string[];
   try {
     names = await fs.readdir(dir);
@@ -1178,7 +1179,7 @@ export async function getLastSentAtBatchAction(
   const daysBack = opts?.daysBack ?? 180;
   const isPrefix = opts?.prefix ?? false;
 
-  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  const dir = path.join(resolvePersonDir(clientId), "sessions");
   let names: string[];
   try {
     names = await fs.readdir(dir);

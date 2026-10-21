@@ -124,8 +124,12 @@ def main() -> int:
 
     root = fmdb_plans_root()
 
-    # Verify client exists
-    client_yaml = root / "clients" / client_id / "client.yaml"
+    # Verify client exists — wherever they live. A prospect parked by the
+    # sweep sits in prospects/<id>/, and a follow-up email sent to them must
+    # still be recorded in their thread.
+    from fmdb.plan.storage import client_dir  # type: ignore
+    person_dir = client_dir(root, client_id)
+    client_yaml = person_dir / "client.yaml"
     if not client_yaml.exists():
         json.dump({"ok": False, "session_id": None, "error": f"client not found: {client_id}"}, sys.stdout)
         return 2
@@ -160,7 +164,7 @@ def main() -> int:
     if append_marker and isinstance(append_marker, str):
         try:
             import yaml as _yaml  # type: ignore
-            sessions_dir = root / "clients" / client_id / "sessions"
+            sessions_dir = person_dir / "sessions"
             if sessions_dir.exists():
                 if match_anywhere:
                     candidates = sorted(

@@ -50,6 +50,7 @@ import { giftedSessionOf } from "@/lib/fmdb/founding";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { bookingConcern, parseBookingFormNote } from "@/lib/fmdb/booking-form";
 import { resolvePersonDir } from "@/lib/fmdb/person-dir";
+import { clientsWithPlans } from "@/lib/fmdb/plan-index";
 import { activeConcerns, parseInterests } from "@/lib/fmdb/interests";
 import { classifyConcerns, type ConcernId } from "@/lib/fmdb/concerns";
 import { pickContent, unknownLinks, type ContentItem } from "@/lib/fmdb/content-library";
@@ -211,33 +212,6 @@ const daysBetween = (a: string, b: string) =>
   Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 864e5);
 
 // ── facts ──────────────────────────────────────────────────────────────────
-
-/** client_ids with ANY plan (draft, ready, published). */
-async function clientsWithPlans(): Promise<Set<string>> {
-  const root = getPlansRoot();
-  const out = new Set<string>();
-  for (const bucket of ["drafts", "ready", "published"]) {
-    let files: string[] = [];
-    try {
-      files = await fs.readdir(path.join(root, bucket));
-    } catch {
-      continue;
-    }
-    for (const f of files) {
-      if (!/\.ya?ml$/.test(f)) continue;
-      try {
-        // client_id sits near the top of every plan; a regex read avoids
-        // parsing ~50 large YAML files on every scan.
-        const head = (await fs.readFile(path.join(root, bucket, f), "utf-8")).slice(0, 4000);
-        const m = head.match(/^client_id:\s*['"]?([A-Za-z0-9_-]+)/m);
-        if (m) out.add(m[1]);
-      } catch {
-        /* one unreadable plan must not empty the scan */
-      }
-    }
-  }
-  return out;
-}
 
 async function loadCalcomBookings(): Promise<Record<string, Dict[]>> {
   const d = await readYaml(path.join(getPlansRoot(), "_calcom_bookings.yaml"));
