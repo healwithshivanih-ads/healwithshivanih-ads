@@ -26,6 +26,7 @@ import { promisify } from "node:util";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { PYTHON } from "@/lib/fmdb/shim";
+import { bookingConcern } from "@/lib/fmdb/booking-form";
 
 const execFileP = promisify(execFile);
 const FMDB_REPO = path.resolve(process.cwd(), "..", "fm-database");
@@ -287,7 +288,9 @@ export async function createProspectRecord(opts: {
 /** Write the booking-form answers as a quick note on the client record. */
 async function saveBookingNote(clientId: string, lead: BookingLead): Promise<boolean> {
   const { saveSessionAction } = await import("@/lib/server-actions/assess");
-  const primary = lead.formFields?.[0]?.answer?.trim();
+  // The concern answer, wherever it sits in the form. It used to be the FIRST
+  // answer, which on the cal.com form is "How long has this been going on?".
+  const primary = bookingConcern(lead.formFields)?.replace(/\s+/g, " ").trim();
   const res = await saveSessionAction({
     client_id: clientId,
     session_type: "quick_note",

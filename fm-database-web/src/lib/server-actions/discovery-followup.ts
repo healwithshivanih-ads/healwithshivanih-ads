@@ -47,6 +47,7 @@ import { sendClientEmailAction } from "@/app/api/email/actions";
 import { foundationSessionPaid } from "@/lib/fmdb/foundation-orders";
 import { giftedSessionOf } from "@/lib/fmdb/founding";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
+import { bookingConcern, parseBookingFormNote } from "@/lib/fmdb/booking-form";
 import type { UnplacedTriagePayment } from "@/lib/fmdb/triage-payment-intake";
 
 type Dict = Record<string, unknown>;
@@ -229,9 +230,16 @@ async function sessionFacts(id: string): Promise<SessionFacts> {
     if (!s) continue;
     const pc = String(s.presenting_complaints ?? "");
     if (!pc.includes("[source: booking_form]")) continue;
-    const d = parseBookedCallDate(String(s.coach_notes ?? ""));
+    const notes = String(s.coach_notes ?? "");
+    const d = parseBookedCallDate(notes);
     if (d) out.bookedFreeCalls.push(d);
-    const concern = pc.replace(/\[[^\]]*\]/g, "").trim();
+    // Re-read the form from the note rather than trusting presenting_complaints:
+    // older records stored the FIRST answer there ("1 to 3 years"). The
+    // stripped complaint is the fallback, and bookingConcern refuses durations
+    // and yes/no answers in either.
+    const concern =
+      bookingConcern(parseBookingFormNote(notes)) ??
+      bookingConcern([{ question: "", answer: pc.replace(/\[[^\]]*\]/g, "").trim() }]);
     if (concern) out.concern = concern;
   }
   return out;
