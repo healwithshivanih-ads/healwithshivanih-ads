@@ -161,6 +161,26 @@ describe("active-care gates", () => {
     expect(rows[0].upcoming_in_days).toBe(2);
   });
 
+  it("labels an open-token client as SUBMITTED when only intake_last_submitted_at is set", async () => {
+    // Path A keeps the token live after submit, so token-without-first-stamp
+    // must not read as "Intake not yet submitted".
+    const rows = await getSchedulingDueRows(
+      [
+        client("cl-sub", {
+          intake_token: "tok",
+          intake_last_submitted_at: "2026-08-10T07:35:04+00:00",
+          next_contact_date: daysAgo(-2),
+        }),
+      ],
+      [],
+      TODAY,
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].recommended_type).toBe("programme-intake");
+    expect(rows[0].reason).toContain("Intake submitted, no plan yet");
+    expect(rows[0].reason).not.toContain("not yet submitted");
+  });
+
   it("drops paused / prospect lifecycle states entirely", async () => {
     writeSession("cl-paused", daysAgo(40));
     const rows = await getSchedulingDueRows(

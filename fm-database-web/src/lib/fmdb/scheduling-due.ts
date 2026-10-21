@@ -88,6 +88,8 @@ interface ClientDictForScan {
   mobile_number?: string;
   intake_token?: string | null;
   intake_submitted_at?: string | null;
+  /** Set on every submit; a reconcile can carry it without the first stamp. */
+  intake_last_submitted_at?: string | null;
   intake_finalised_at?: string | null;
   lifecycle_state?: string | null;
   /** lapsed / declined clients are out of active care — never flagged. */
@@ -210,8 +212,11 @@ function pickRecommendedType(
     return { type: "coaching", reason: "Active programme" };
   }
   // Has intake token (issued or submitted) but no plan → programme intake
-  if (c.intake_token || c.intake_submitted_at) {
-    if (!c.intake_submitted_at) {
+  // Submitted = EITHER stamp (same rule as the intake-reminder cron); an
+  // open token alone does not mean unfilled — Path A keeps it live for edits.
+  const submitted = !!(c.intake_submitted_at || c.intake_last_submitted_at);
+  if (c.intake_token || submitted) {
+    if (!submitted) {
       return {
         type: "programme-intake",
         reason: "Intake not yet submitted",
