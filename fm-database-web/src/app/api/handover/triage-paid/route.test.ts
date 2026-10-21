@@ -62,6 +62,25 @@ describe("POST /api/handover/triage-paid", () => {
     expect(again.body).toMatchObject({ outcome: "already_recorded" });
   });
 
+  it("records what they signed up for in the funnel as interests (and drops unknown ids)", async () => {
+    person("clients", "cl-i", "ira@example.com", "+919844444444");
+    const r = await post({
+      ...base,
+      payment_id: "pay_INT001",
+      first_name: "Ira",
+      email: "ira@example.com",
+      interests: [
+        { concern: "gut", source: "bloat_guide" },
+        { concern: "astrology", source: "x" },
+      ],
+    });
+    expect(r.body).toMatchObject({ ok: true, clientId: "cl-i" });
+    const doc = read("clients", "cl-i");
+    expect(doc).toContain("concern: gut");
+    expect(doc).toContain("source: funnel:bloat_guide");
+    expect(doc).not.toContain("astrology");
+  });
+
   it("matches on phone alone (last 10 digits)", async () => {
     const r = await post({ ...base, payment_id: "pay_B00001", first_name: "Bina", phone: "9822222222" });
     expect(r.body).toMatchObject({ outcome: "recorded", clientId: "cl-b" });

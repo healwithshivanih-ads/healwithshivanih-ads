@@ -53,3 +53,10 @@ describe("vocabulary integrity", () => {
     for (const v of Object.values(SOURCE_CONCERN)) expect(isConcernId(v)).toBe(true);
   });
 });
+
+describe("concern ids match ochre-funnel (lib/interests/concerns.ts there)", () => {
+  it("the list is the same, in the same order — change BOTH files together", () => {
+    // The ids cross the wire: the funnel's ₹999 notice carries them.
+    expect([...CONCERN_IDS]).toEqual(["blood_sugar", "gut", "thyroid", "hormones", "energy", "nutrients", "liver", "weight", "heart", "joints", "skin_hair", "sleep", "mood", "autoimmune", "labs"]);
+  });
+});
