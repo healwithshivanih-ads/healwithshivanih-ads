@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Generate this month's do's & don'ts card for a maintenance client.
 
-The one living thing in the maintenance tier. Keyed to the Indian season (by
-month) + the client's conditions. Cached on the plan as
+The one living thing in the maintenance tier. Keyed to the month of the year
+WHERE THE CLIENT LIVES (a table per region — India, the US; see
+_REGION_TABLES) + the client's conditions. Cached on the plan as
 `plan.monthly_cards["YYYY-MM"] = {title, dos, donts}` and rendered by the app's
 maintenance home.
 
@@ -57,7 +58,7 @@ def _strs(v) -> list:
 #
 # India-keyed: the festival calendar, the monsoon, and the wedding/travel season
 # move Indian eating more than the meteorological season does.
-_MONTHS = {
+_MONTHS_INDIA = {
     1: (["Warm, cooked breakfasts — the cold makes raw food harder to digest",
          "Sesame, jaggery and ghee in small amounts — the traditional winter foods, and they earn it",
          "Get out into the winter sun for 15 minutes; vitamin D is at its lowest now"],
@@ -121,6 +122,97 @@ _MONTHS = {
 }
 
 
+# ── United States: a temperate four-season year (2026-10-21) ────────────────
+# Written for Krittika in Fairfax, VA, whose India cards were all Diwali and
+# mithai. The year is shaped by different things there: the clock changes,
+# a real winter, the farmers' markets, and Halloween / Thanksgiving / the
+# December party season rather than the Indian festival calendar. No Indian
+# festivals on purpose — a diaspora client may well keep Diwali, but that is
+# the coach's line to add, not the template's to assume.
+#
+# Assumes the four-season pattern most of the country has. The Gulf Coast and
+# the Southwest have a different summer; give them their own table if a client
+# lives there rather than stretching this one.
+_MONTHS_US = {
+    1: (["Warm, cooked, savoury breakfasts rather than cold cereal",
+         "Get outside in daylight for 15 minutes even when it's cold; winter sun is at its weakest now",
+         "Soups and stews built on winter vegetables — squash, carrots, beans"],
+        ["Letting the new-year reset become an all-or-nothing crash diet",
+         "Staying indoors and sitting all day because it's cold out"]),
+    2: (["Keep the warm, cooked meals going while winter holds",
+         "Citrus is at its best now — oranges and clementines with your meals",
+         "Move indoors on icy days rather than skipping movement altogether"],
+        ["Game-day snacking stretching into the whole weekend",
+         "Skipping breakfast because the mornings are dark"]),
+    3: (["Protect your sleep the week the clocks go forward — same wake time, earlier lights-out",
+         "Bring in the first spring greens as they reach the stores",
+         "Lighten dinners as the evenings warm up"],
+        ["Letting the clock change cost you a week of sleep",
+         "Carrying winter comfort eating on into spring"]),
+    4: (["Asparagus, peas and fresh greens while they're in season",
+         "Longer days — take a walk after dinner while it's still light",
+         "Drink more water as you get more active outdoors"],
+        ["Doing too much too soon once the weather turns — build up gently",
+         "Holiday candy lingering in the house for weeks"]),
+    5: (["The farmers' markets reopen — buy what's local and in season",
+         "Protein at every meal, especially breakfast",
+         "Morning walks while it's cool and bright"],
+        ["Long weekend cookouts turning into an afternoon of grazing",
+         "Sitting for hours without a break as work picks up"]),
+    6: (["Hydrate steadily as it warms — water first, through the day",
+         "Berries, cucumbers and zucchini while they're cheap and good",
+         "Move early in the morning or after sundown, out of the midday heat"],
+        ["Sweet tea, lemonade and iced coffees as the daily drinks",
+         "Skipping meals on busy summer days and catching up at night"]),
+    7: (["Salt AND water on the hottest days — plain water alone isn't enough",
+         "Keep meals light and fresh; summer produce is at its peak",
+         "Find shade or air conditioning for any exercise in a heatwave"],
+        ["Ice cream and ice-cold drinks as the everyday answer to the heat",
+         "Late summer nights cutting into your sleep"]),
+    8: (["Tomatoes, corn and peaches — the best of the year, eaten fresh",
+         "Start getting back to a school-and-work routine before it starts",
+         "Keep your bedroom cool so the hot nights don't wreck your sleep"],
+        ["Vacation eating stretching past the vacation",
+         "Letting the late-summer rush push dinner later and later"]),
+    9: (["Plan the week's meals on Sunday as routines restart",
+         "Apples and the first squash of the season",
+         "Keep the walking habit as the days get shorter"],
+        ["Snacking at your desk in place of a proper lunch",
+         "Dropping movement once the summer routine ends"]),
+    10: (["Pumpkin, squash and warming spices — cinnamon, ginger, turmeric",
+          "Get morning daylight as the days shorten; it steadies your sleep",
+          "Decide in advance how much Halloween candy comes into the house"],
+         ["A bowl of candy sitting out for weeks after Halloween",
+          "Giving up outdoor movement as it gets cold"]),
+    11: (["Keep the same wake time when the clocks go back",
+          "At Thanksgiving, vegetables and protein first; dessert after, on a fuller stomach",
+          "A walk after the big meal — it's what protects your sugars"],
+         ["Treating the whole long weekend as one long meal",
+          "Waiting for January to restart what you can restart now"]),
+    12: (["Warm, grounding food — the cold and the party season both ask a lot of digestion",
+          "Get outside in daylight every day you can",
+          "Hold your basics through the parties; one good meal a day anchors the rest"],
+         ["Back-to-back late nights and rich food with no recovery day between",
+          "Treating December as a write-off before it's even started"]),
+}
+
+# Which table a client gets, by `client.country`. A country with no table
+# falls back to India's AND the card is held for the coach (review_flags),
+# so a new country is a held card until someone writes its lines here.
+_REGION_TABLES = {"india": _MONTHS_INDIA, "us": _MONTHS_US}
+_COUNTRY_REGION = {
+    "": "india",  # unset country = an Indian client (the roster default)
+    "india": "india", "in": "india", "ind": "india", "bharat": "india",
+    "united states": "us", "united states of america": "us", "usa": "us", "us": "us",
+    "u.s.": "us", "u.s.a.": "us", "america": "us",
+}
+
+
+def region_for(country):
+    """The month table for this client's country, or None when we have none."""
+    return _COUNTRY_REGION.get(str(country or "").strip().lower())
+
+
 
 def _season(month: int) -> str:
     if month in (4, 5, 6):
@@ -158,9 +250,9 @@ _CONDITION_RULES = [
 ]
 
 
-def _build_card(month_str: str, conditions: list) -> dict:
+def _build_card(month_str: str, conditions: list, region: str = "india") -> dict:
     dt = datetime.strptime(month_str, "%Y-%m")
-    dos, donts = _MONTHS[dt.month]
+    dos, donts = _REGION_TABLES.get(region, _MONTHS_INDIA)[dt.month]
     dos = list(dos)
     donts = list(donts)
 
@@ -182,6 +274,7 @@ def _build_card(month_str: str, conditions: list) -> dict:
         "title": f"{dt.strftime('%B')} — your do's & don'ts",
         "dos": dos,
         "donts": donts,
+        "region": region if region in _REGION_TABLES else "india",
     }
 
 
@@ -231,7 +324,6 @@ def _prev_month(month_str: str) -> str:
     return f"{y:04d}-{m:02d}"
 
 
-_INDIA = {"india", "in", "ind", "bharat"}
 
 # Words in a DO line that a diet rules out. Do-lines only: a don't line that
 # names meat ("avoid fried chicken") is advice against it, not a prescription.
@@ -274,10 +366,10 @@ def review_flags(card: dict, client: dict, plan: dict, prev_card) -> list:
     do_text = " ".join(dos).lower()
 
     country = str(client.get("country") or "").strip()
-    if country and country.lower() not in _INDIA:
+    if region_for(country) is None:
         flags.append(
-            f"Lives in {country}. The card is written for the Indian season, "
-            f"festivals and markets, so check it fits where they are."
+            f"Lives in {country}, and there are no seasonal lines for there yet, so this "
+            f"card uses the Indian season, festivals and markets. Check it fits where they are."
         )
 
     diet = str(client.get("dietary_preference") or "").lower()
@@ -431,7 +523,7 @@ def main() -> int:
 
     # Path B (deterministic) ships today. Path A (Haiku) is a future layer behind
     # FM_API_OK — kept deliberately simple here for reliability + zero cap risk.
-    card = _build_card(month, conditions)
+    card = _build_card(month, conditions, region_for(client.get("country")) or "india")
     flags = review_flags(card, client, plan, cards.get(_prev_month(month)))
     # The coach saving a card herself IS the review; the cron holds on a flag.
     status = "pending_review" if (payload.get("review") and flags) else "live"
