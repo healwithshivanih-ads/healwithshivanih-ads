@@ -121,6 +121,11 @@ function maxYmd(...xs: Array<string | null | undefined>): string | null {
   return best;
 }
 
+function humanYmd(ymd: string): string {
+  const d = new Date(`${ymd}T00:00:00Z`);
+  return Number.isNaN(d.getTime()) ? ymd : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+}
+
 function firstNameOf(doc: Dict, fallback: string): string {
   const n = String(doc.display_name ?? "").trim();
   return (n.split(/\s+/)[0] || fallback).replace(/[^\p{L}'-]/gu, "") || fallback;
@@ -346,7 +351,7 @@ export async function loadInterestedPeopleAction(): Promise<{ rows: InterestedPe
       : f.exited
         ? "follow-up stopped"
         : followupRunning(f, today)
-          ? `call follow-up running (${f.track}, call ${f.call_date})`
+          ? `call follow-up running (${f.track === "foundation" ? "paid Foundation" : f.track === "triage" ? "₹999 call" : "free call"} on ${humanYmd(f.call_date)})`
           : "call follow-up finished";
     rows.push({
       clientId: p.clientId,

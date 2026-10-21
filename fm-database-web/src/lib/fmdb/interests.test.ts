@@ -65,7 +65,7 @@ describe("activeConcerns / lastInterestAt", () => {
 describe("signalsFromText", () => {
   it("makes one signal per concern with the words kept as detail", () => {
     const s = signalsFromText("Hashimoto's and tiredness", "booking_form", "2026-10-21", "Hashimoto's and tiredness");
-    expect(s.map((x) => x.concern)).toEqual(["thyroid", "energy", "autoimmune"]);
+    expect(s.map((x) => x.concern)).toEqual(["thyroid", "autoimmune", "energy"]);
     expect(s[0].detail).toBe("Hashimoto's and tiredness");
   });
 });

@@ -34,7 +34,9 @@ items:
     kind: video
     title: "Belly Fat After 40? It's Not Just Calories"
     url: https://youtu.be/AvTIYcitW10
-    concerns: [weight, hormones, blood_sugar]
+    # Not tagged `hormones`: it is about the after-40 years, and the cycles tag
+    # also covers young women with irregular periods.
+    concerns: [weight, blood_sugar]
     live_from: 2026-10-18
     stage: first
     line: "Why belly fat changes after 40, and what helps more than eating less."

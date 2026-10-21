@@ -84,13 +84,22 @@ export function isConcernId(v: unknown): v is ConcernId {
 }
 
 /**
- * The concerns named in a piece of free text, in CONCERN_IDS order, no
- * duplicates. Empty when nothing matches — the caller keeps the text anyway.
+ * The concerns named in a piece of free text, in the order the person named
+ * them (first mention first), no duplicates. Order matters: it decides which
+ * concern their first video or guide is about, and people lead with what
+ * bothers them most ("Hashimoto's, fatigue, possible insulin resistance" is a
+ * thyroid person first). Ties fall back to CONCERN_IDS order. Empty when
+ * nothing matches — the caller keeps the text anyway.
  */
 export function classifyConcerns(text: string | null | undefined): ConcernId[] {
   if (typeof text !== "string" || !text.trim()) return [];
   const t = text.toLowerCase().replace(/[’']/g, "'");
-  return CONCERN_IDS.filter((id) => RULES[id].test(t));
+  const hits: Array<{ id: ConcernId; at: number; rank: number }> = [];
+  CONCERN_IDS.forEach((id, rank) => {
+    const m = RULES[id].exec(t);
+    if (m) hits.push({ id, at: m.index, rank });
+  });
+  return hits.sort((a, b) => a.at - b.at || a.rank - b.rank).map((h) => h.id);
 }
 
 /**

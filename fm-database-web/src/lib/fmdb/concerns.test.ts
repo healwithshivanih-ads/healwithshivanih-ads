@@ -6,19 +6,26 @@ describe("classifyConcerns — the real booking concerns on file (Oct 2026)", ()
     ["Migraine, iron and vitamin deficiency, sleep", ["nutrients", "sleep"]],
     ["Bowl movement", ["gut"]],
     ["Gut health", ["gut"]],
-    ["Autoimmune disorders (Hashimoto’s thyroid and MS), fatigue, ", ["thyroid", "energy", "autoimmune"]],
+    ["Autoimmune disorders (Hashimoto’s thyroid and MS), fatigue, ", ["autoimmune", "thyroid", "energy"]],
     [
       "High BP and Mental health\nMigraine, high bp and currently diagnosed with hb1c 6.2. Also want to take care of mental health.",
-      ["blood_sugar", "heart", "mood"],
+      ["heart", "mood", "blood_sugar"],
     ],
-    ["Ulcerative Colitis & Asthma", ["gut", "autoimmune"]],
+    ["Ulcerative Colitis & Asthma", ["autoimmune", "gut"]],
     ["Period irregularities", ["hormones"]],
     ["Perimenopausal", ["hormones"]],
-    ["Depression, H Pylori", ["gut", "mood"]],
+    ["Depression, H Pylori", ["mood", "gut"]],
     ["Severe headaches, Back Pain and sciatica, Tinnitus", ["joints"]],
   ];
   it.each(cases)("%s", (text, want) => {
     expect(classifyConcerns(text)).toEqual(want);
+  });
+});
+
+describe("classifyConcerns — order", () => {
+  it("lists concerns in the order the person named them", () => {
+    expect(classifyConcerns("fatigue and then thyroid")).toEqual(["energy", "thyroid"]);
+    expect(classifyConcerns("thyroid and then fatigue")).toEqual(["thyroid", "energy"]);
   });
 });
 

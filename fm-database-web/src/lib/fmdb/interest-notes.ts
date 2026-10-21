@@ -92,7 +92,7 @@ export function renderNoteEmail(firstName: string, item: ContentItem): NoteEmail
     subject: item.kind === "guide" ? "A guide I thought you'd find useful" : "A video I thought you'd find useful",
     body: [
       `Hi ${firstName},`,
-      `I've just put out a new ${what} and thought of you: ${item.line}\n${item.url}`,
+      `I've just put out a new ${what} and thought of you. ${item.line}\n${item.url}`,
       "No need to reply, but if it raises any questions, I'm always happy to hear them.",
       "Warmly,\nShivani",
       `—\n${OPT_OUT_LINE}`,

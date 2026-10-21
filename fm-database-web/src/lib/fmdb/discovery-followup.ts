@@ -354,7 +354,7 @@ export function renderFollowupEmail(
           ...(track === "triage"
             ? [`The ₹${TRIAGE_CREDIT_INR} you paid for our call comes off the Foundation session, so it isn't lost.`]
             : []),
-          ...(f.content ? [`In the meantime, this might help: ${f.content.line}\n${f.content.url}`] : []),
+          ...(f.content ? [`In the meantime, this might help. ${f.content.line}\n${f.content.url}`] : []),
           "Would you like me to send you the details? Just reply to this email.",
         ]),
       };
@@ -374,7 +374,7 @@ export function renderFollowupEmail(
         subject: "Checking in",
         body: letter(name, [
           "It's been a couple of weeks since we spoke, and I wanted to check in on how you are doing.",
-          ...(f.content ? [`I thought you might find this useful: ${f.content.line}\n${f.content.url}`] : []),
+          ...(f.content ? [`I thought you might find this useful. ${f.content.line}\n${f.content.url}`] : []),
           "If something is holding you back from the next step (timing, cost, or questions about how it works), tell me honestly and we can talk it through.",
           ...(track === "triage"
             ? [`Your ₹${TRIAGE_CREDIT_INR} from our call still counts towards the Foundation session whenever you're ready.`]

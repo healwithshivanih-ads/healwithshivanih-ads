@@ -52,7 +52,9 @@ import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
 import { listRenewalLettersAction } from "@/lib/server-actions/renewal-letters";
 import { WinbackDripPanel } from "@/components/winback-drip-panel";
 import { DiscoveryFollowupPanel } from "@/components/discovery-followup-panel";
+import { InterestedPeoplePanel } from "@/components/interested-people-panel";
 import { loadDiscoveryFollowupAction } from "@/lib/server-actions/discovery-followup";
+import { loadInterestedPeopleAction } from "@/lib/server-actions/interest-tracking";
 import {
   listWinbackDraftsAction,
   listWinbackScheduledAction,
@@ -589,6 +591,7 @@ export default async function DashboardV2() {
   // 🌱 Call follow-ups — people who had a free discovery call or a paid
   // Foundation session and have not signed up. Auto-drafted, coach-approved.
   const discoveryFollowup = await loadDiscoveryFollowupAction();
+  const interestedPeople = await loadInterestedPeopleAction().catch(() => ({ rows: [], libraryLive: 0 }));
 
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
@@ -1206,6 +1209,12 @@ export default async function DashboardV2() {
         unanchored={discoveryFollowup.unanchored}
         unplacedTriage={discoveryFollowup.unplacedTriage}
       />
+
+      {/* 💬 Interested people — what each prospect came in with, the video or
+          guide that suits them next, and "thought of you" notes waiting for
+          approval. Directly under the call follow-ups: same people, the
+          giving half rather than the asking half. Self-hides when empty. */}
+      <InterestedPeoplePanel rows={interestedPeople.rows} />
 
       {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never
           miss a menu waiting for approval (clients stay frozen until she
