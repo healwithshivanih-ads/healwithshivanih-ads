@@ -32,6 +32,7 @@ import {
   parseBookedCallDate,
   isFreeCallEventSlug,
   quotableConcern,
+  CONTENT_TOUCHES,
   addDaysYmd,
   creditExpiresOn,
   FOLLOWUP_BACKFILL_DAYS,
@@ -48,6 +49,11 @@ import { foundationSessionPaid } from "@/lib/fmdb/foundation-orders";
 import { giftedSessionOf } from "@/lib/fmdb/founding";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { bookingConcern, parseBookingFormNote } from "@/lib/fmdb/booking-form";
+import { resolvePersonDir } from "@/lib/fmdb/person-dir";
+import { activeConcerns, parseInterests } from "@/lib/fmdb/interests";
+import { classifyConcerns, type ConcernId } from "@/lib/fmdb/concerns";
+import { pickContent, unknownLinks, type ContentItem } from "@/lib/fmdb/content-library";
+import { linkIsPublic, loadContentLibrary } from "@/lib/fmdb/content-library-store";
 import type { UnplacedTriagePayment } from "@/lib/fmdb/triage-payment-intake";
 
 type Dict = Record<string, unknown>;
@@ -71,6 +77,10 @@ export interface FollowupTouchRecord {
   skipped_at?: string;
   subject?: string;
   body?: string;
+  /** Content-library item this draft carries (content-library.ts). */
+  content_id?: string;
+  /** Library items in the email as it was finally SENT (the coach may cut it). */
+  content_sent?: string[];
 }
 
 export interface FollowupState {
@@ -101,6 +111,8 @@ export interface FollowupDraftRow {
   missingStartingMap: boolean;
   /** Read off a 15-min booking — nobody has confirmed free vs the paid ₹999. */
   unconfirmedKind: boolean;
+  /** Title of the video/guide the draft carries, if any. */
+  contentTitle: string | null;
 }
 
 export interface FollowupScheduledRow {
@@ -124,8 +136,31 @@ export interface FollowupUnanchoredRow {
 
 // ── disk ───────────────────────────────────────────────────────────────────
 
+/** clients/<id> or, once parked by the prospects sweep, prospects/<id>. */
 function clientDir(id: string) {
-  return path.join(getPlansRoot(), "clients", id);
+  return resolvePersonDir(id);
+}
+
+/** Every library item already sent to this person by any follow-up touch. */
+function sentContentIds(state: FollowupState | null): string[] {
+  const out = new Set<string>();
+  for (const t of state?.touches ?? []) {
+    for (const id of t.content_sent ?? []) out.add(id);
+    // A pending or sent draft has also claimed its item: don't pick it twice.
+    if (t.content_id && (t.status === "pending" || t.status === "sent")) out.add(t.content_id);
+  }
+  return [...out];
+}
+
+/**
+ * What this person cares about, most recent first. The recorded interests win;
+ * the booking concern is classified only for someone with no interests on file
+ * at all, so a concern the coach dismissed never comes back this way.
+ */
+function concernsOf(doc: Dict, bookingConcernText: string | null): ConcernId[] {
+  const signals = parseInterests(doc.interests);
+  if (signals.length) return activeConcerns(signals);
+  return classifyConcerns(bookingConcernText);
 }
 
 async function readState(id: string): Promise<FollowupState | null> {
@@ -287,6 +322,8 @@ interface Candidate {
   state: FollowupState | null;
   handled: number[];
   concern: string | null;
+  /** Their concerns, most recent first — what content is matched against. */
+  concerns: ConcernId[];
   upcomingBookingAt: string | null;
   hasPlan: boolean;
   decision: FollowupDecision;
@@ -310,13 +347,18 @@ interface Collected {
  *      → free, from the latest such call.
  */
 async function collect(today: string): Promise<Collected> {
-  const root = path.join(getPlansRoot(), "clients");
-  let ids: string[] = [];
-  try {
-    ids = await fs.readdir(root);
-  } catch {
-    return { candidates: [], unanchored: [] };
+  // BOTH buckets: the prospects sweep parks anyone quiet for 15 days, which is
+  // inside this sequence (touches run to day 25). Scanning clients/ alone
+  // silently dropped the last touch for everyone parked in time.
+  const seen = new Set<string>();
+  for (const bucket of ["clients", "prospects"]) {
+    try {
+      for (const id of await fs.readdir(path.join(getPlansRoot(), bucket))) seen.add(id);
+    } catch {
+      /* bucket missing */
+    }
   }
+  const ids = [...seen].sort();
   const [plans, bookings] = await Promise.all([clientsWithPlans(), loadCalcomBookings()]);
   const nowIso = new Date().toISOString();
 
@@ -325,7 +367,7 @@ async function collect(today: string): Promise<Collected> {
 
   for (const id of ids) {
     if (!SAFE_ID.test(id)) continue;
-    const doc = await readYaml(path.join(root, id, "client.yaml"));
+    const doc = await readYaml(path.join(clientDir(id), "client.yaml"));
     if (!doc) continue;
     if (doc.archived === true) continue;
     const es = String(doc.engagement_status ?? "").trim();
@@ -430,6 +472,7 @@ async function collect(today: string): Promise<Collected> {
       state,
       handled,
       concern: quotableConcern(sf.concern),
+      concerns: concernsOf(doc, sf.concern),
       upcomingBookingAt: upcoming,
       hasPlan,
       decision: followupDecision({
@@ -483,6 +526,7 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
   const { candidates } = await collect(today);
   const notes: string[] = [];
   let drafted = 0;
+  let library: ContentItem[] | null = null;
 
   for (const c of candidates) {
     // Keep state files in step with the resolved track even on quiet days, so
@@ -514,6 +558,18 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
       continue;
     }
 
+    // Something useful to watch or read, matched to what they came in with.
+    let content: ContentItem | null = null;
+    if (CONTENT_TOUCHES.includes(decision.touch.kind) && c.concerns.length) {
+      library ??= await loadContentLibrary();
+      content = pickContent(library, {
+        concerns: c.concerns,
+        today,
+        sentIds: sentContentIds(c.state),
+        prefer: decision.touch.n === 1 ? "first" : "deeper",
+      });
+    }
+
     const email = renderFollowupEmail(
       decision.touch.kind,
       {
@@ -521,6 +577,7 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
         concern: c.concern,
         appUrl: appUrlFor(c.doc),
         callDate: c.callDate,
+        content: content ? { line: content.line, url: content.url } : null,
       },
       c.track,
     );
@@ -556,6 +613,7 @@ export async function scanDiscoveryFollowupAction(): Promise<FollowupScanResult>
       drafted_at: new Date().toISOString(),
       subject: email.subject,
       body: email.body,
+      ...(content ? { content_id: content.id } : {}),
     });
     await writeState(state);
     drafted++;
@@ -579,6 +637,8 @@ export interface FollowupOverview {
 export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
   const today = todayIst();
   const { candidates, unanchored } = await collect(today);
+  const library = await loadContentLibrary();
+  const titleOf = new Map(library.map((i) => [i.id, i.title]));
   const drafts: FollowupDraftRow[] = [];
   const scheduled: FollowupScheduledRow[] = [];
 
@@ -601,6 +661,7 @@ export async function loadDiscoveryFollowupAction(): Promise<FollowupOverview> {
         creditExpiresOn: c.track === "foundation" ? creditExpiresOn(c.callDate) : null,
         missingStartingMap: c.track === "foundation" && pending.kind === "fdn_recap" && !appUrlFor(c.doc),
         unconfirmedKind: c.source === "booking",
+        contentTitle: pending.content_id ? (titleOf.get(pending.content_id) ?? null) : null,
       });
       continue;
     }
@@ -690,6 +751,12 @@ export async function approveFollowupDraftAction(
   const gate = checkFollowupEmail(subject, body, state.track);
   if (!gate.ok) return { ok: false, error: gate.refuse.join(" · ") };
 
+  // Links: only live content-library items or their own app link may go out,
+  // and each library link must actually be public right now (a premiere can
+  // move in YouTube Studio after the library was written).
+  const linkCheck = await checkEmailLinks(body);
+  if (!linkCheck.ok) return { ok: false, error: linkCheck.error };
+
   const to = String(doc.email ?? "").trim();
   if (!to) return { ok: false, error: "no email address on file" };
 
@@ -722,10 +789,43 @@ export async function approveFollowupDraftAction(
   t.sent_at = new Date().toISOString();
   t.subject = subject;
   t.body = body;
+  t.content_sent = linkCheck.contentIds;
   await writeState(state);
   revalidatePath("/dashboard-v2");
   revalidatePath(`/clients-v2/${clientId}`);
   return { ok: true, warnings: gate.warn.length ? gate.warn : undefined };
+}
+
+function appLinkPrefix(): string {
+  const origin = (process.env.NEXT_PUBLIC_APP_URL || "https://intake.theochretree.com").replace(/\/+$/, "");
+  return `${origin}/app/`;
+}
+
+/**
+ * The send-time link gate shared by every email that may carry content.
+ * Refuses a URL that is not a live library item (or the person's own app
+ * link), and a library link that is not public yet. Returns the library ids
+ * the email carries so they are never sent to this person again.
+ */
+export async function checkEmailLinks(
+  body: string,
+): Promise<{ ok: true; contentIds: string[] } | { ok: false; error: string }> {
+  const today = todayIst();
+  const library = await loadContentLibrary();
+  const unknown = unknownLinks(body, library, today, [appLinkPrefix()]);
+  if (unknown.length) {
+    return {
+      ok: false,
+      error: `this link isn't in the content library or isn't public yet, so it can't be sent: ${unknown.join(", ")}`,
+    };
+  }
+  const carried = library.filter((i) => body.includes(i.url));
+  for (const item of carried) {
+    if (!(await linkIsPublic(item.url))) {
+      return { ok: false, error: `"${item.title}" isn't public yet (${item.url}) — take that paragraph out or wait until it's live` };
+    }
+  }
+  return { ok: true, contentIds: carried.map((i) => i.id) };
 }
 
 /** Skip one touch. The sequence carries on to the next. */
