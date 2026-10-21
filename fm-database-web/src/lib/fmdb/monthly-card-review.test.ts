@@ -52,13 +52,13 @@ function cards(root: string, file = "t-maint-cl-t-v1.yaml") {
 
 describe("monthly card review", () => {
   it(
-    "holds a card for a client outside India, and the app does not show it",
+    "holds a card for a country with no seasonal lines, and the app does not show it",
     () => {
-      const root = setup({ country: "United States of America", dietary_preference: "Eggetarian" });
+      const root = setup({ country: "Australia", dietary_preference: "Eggetarian" });
       const out = run(root, { month: "2026-11", review: true, only_if_missing: true });
       expect(out.ok).toBe(true);
       expect(out.status).toBe("pending_review");
-      expect(out.flags.join(" ")).toMatch(/United States/);
+      expect(out.flags.join(" ")).toMatch(/Australia/);
       expect(cards(root)["2026-11"].status).toBe("pending_review");
       expect(cards(root, "t-plan-1-cl-t-v1.yaml")).toEqual({}); // not the old plan
 
@@ -87,6 +87,35 @@ describe("monthly card review", () => {
       const again = run(root, { month: "2026-11", review: true, only_if_missing: true });
       expect(again.ok).toBe(true);
       expect(cards(root)["2026-11"].generated_at).toBe(first);
+    },
+    PY_TEST_TIMEOUT_MS,
+  );
+
+  it(
+    "a US client gets the US year, live, with no Indian festivals in it",
+    () => {
+      const root = setup({ country: "United States of America", dietary_preference: "Eggetarian" });
+      for (const month of ["2026-10", "2026-11", "2027-02"]) {
+        const out = run(root, { month, review: true });
+        expect(out.status).toBe("live");
+        expect(out.flags).toEqual([]);
+        const c = cards(root)[month];
+        expect(c.region).toBe("us");
+        const text = [...(c.dos as string[]), ...(c.donts as string[])].join(" ");
+        expect(text).not.toMatch(/diwali|mithai|festival|monsoon|sarson|holi/i);
+      }
+      expect((cards(root)["2026-11"].dos as string[]).join(" ")).toMatch(/Thanksgiving/);
+    },
+    PY_TEST_TIMEOUT_MS,
+  );
+
+  it(
+    "an Indian client (or no country on file) keeps the India year",
+    () => {
+      const root = setup({});
+      run(root, { month: "2026-10", review: true });
+      expect(cards(root)["2026-10"].region).toBe("india");
+      expect((cards(root)["2026-10"].dos as string[]).join(" ")).toMatch(/festival/);
     },
     PY_TEST_TIMEOUT_MS,
   );
