@@ -74,11 +74,14 @@ export async function dismissInterest(
 export async function setMarketingOptOut(
   clientId: string,
   optOut: boolean,
+  /** Why, in words the coach will read: "coach", "replied by email: no more". */
+  source = "coach",
 ): Promise<{ ok: boolean; error?: string }> {
   const doc = await readRecord(clientId);
   if (!doc) return { ok: false, error: "client record not found" };
   doc.marketing_opt_out = optOut;
   doc.marketing_opt_out_at = optOut ? new Date().toISOString() : null;
+  doc.marketing_opt_out_source = optOut ? source : null;
   await writeRecord(clientId, doc);
   return { ok: true };
 }

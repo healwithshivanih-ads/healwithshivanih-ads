@@ -205,7 +205,7 @@ function PersonRow({ row }: { row: InterestedPersonRow }) {
         <span>{row.followupStatus}</span>
         {row.optedOut ? (
           <span>
-            · no content notes{" "}
+            · no content notes{row.optOutSource && row.optOutSource !== "coach" ? ` (${row.optOutSource})` : ""}{" "}
             <button
               type="button"
               disabled={pending}

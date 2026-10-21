@@ -136,8 +136,10 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
   // message. Meta allows free-text only within 24h of client's last
   // message; outside it requires an approved template.
   const within24h = useMemo(() => {
+    // Only a WhatsApp message opens Meta's window — an email reply in the
+    // same thread ([source: email_inbound]) must not.
     const lastInbound = messages
-      .filter((m) => m.direction === "inbound")
+      .filter((m) => m.direction === "inbound" && m.channel !== "email")
       .sort((a, b) => b.date.localeCompare(a.date))[0];
     if (!lastInbound?.date) return false;
     try {

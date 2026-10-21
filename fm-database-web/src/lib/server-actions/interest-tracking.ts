@@ -327,6 +327,8 @@ export interface InterestedPersonRow {
   /** One line on where their call follow-up stands. */
   followupStatus: string;
   optedOut: boolean;
+  /** Why they are opted out, when they are ("coach", "replied by email: …"). */
+  optOutSource: string | null;
   /** The best library item for them right now, if one is live and unsent. */
   suggestion: { title: string; url: string; kind: string } | null;
   pendingNote: { subject: string; body: string; title: string } | null;
@@ -369,6 +371,7 @@ export async function loadInterestedPeopleAction(): Promise<{
       lastActivityOn: activity,
       followupStatus,
       optedOut: p.doc.marketing_opt_out === true,
+      optOutSource: p.doc.marketing_opt_out === true ? String(p.doc.marketing_opt_out_source ?? "coach") : null,
       suggestion: pick ? { title: pick.title, url: pick.url, kind: pick.kind } : null,
       pendingNote: pending
         ? { subject: pending.subject, body: pending.body, title: titleOf.get(pending.content_id)?.title ?? pending.content_id }
@@ -478,10 +481,26 @@ export async function removeConcernAction(clientId: string, concern: string): Pr
   return r;
 }
 
-/** "Stop these" — no more content notes. Also clears a note waiting. */
-export async function setNotesOptOutAction(clientId: string, optOut: boolean): Promise<{ ok: boolean; error?: string }> {
+/**
+ * "Stop these" — no more content notes. Also clears a note waiting.
+ *
+ * `source` says why ("coach" for the dashboard button; the email-replies job
+ * passes `replied by email: "<their words>"`). Undoing an opt-out that came
+ * from an email reply also restarts the call follow-up the reply stopped —
+ * the undo exists for the case where the reply was misread.
+ */
+export async function setNotesOptOutAction(
+  clientId: string,
+  optOut: boolean,
+  source = "coach",
+): Promise<{ ok: boolean; error?: string }> {
   if (!SAFE_ID.test(clientId)) return { ok: false, error: "bad client id" };
-  const r = await setMarketingOptOut(clientId, optOut);
+  const before = await readYaml(path.join(resolvePersonDir(clientId), "client.yaml"));
+  const r = await setMarketingOptOut(clientId, optOut, source);
+  if (r.ok && !optOut && String(before?.marketing_opt_out_source ?? "").startsWith("replied by email")) {
+    const { resumeFollowupAction } = await import("@/lib/server-actions/discovery-followup");
+    await resumeFollowupAction(clientId).catch(() => ({ ok: false }));
+  }
   if (r.ok && optOut) {
     const notes = await readNotes(clientId);
     let changed = false;

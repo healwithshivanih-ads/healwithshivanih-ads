@@ -1004,6 +1004,8 @@ class Client(BaseModel):
     # a call they had are separate and governed by the follow-up's own Stop.
     marketing_opt_out: bool = False
     marketing_opt_out_at: Optional[datetime] = None
+    #: Why: "coach" (dashboard button) or "replied by email: <their phrase>".
+    marketing_opt_out_source: Optional[str] = None
     handover_source: Optional[str] = None       # "ochre-followup" | "legacy-manual" | None
     handover_received_at: Optional[datetime] = None
     discovery_completed_at: Optional[datetime] = None
