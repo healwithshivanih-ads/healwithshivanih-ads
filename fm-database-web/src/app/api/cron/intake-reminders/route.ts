@@ -6,6 +6,9 @@
  * Rules (slice a — Path A questionnaire):
  *   - Client has intake_token set (link still active)
  *   - intake_finalised_at NOT set (coach hasn't locked yet)
+ *   - intake NOT submitted (intake_submitted_at / intake_last_submitted_at
+ *     unset) — a submitted form stays open for re-edits but is not
+ *     "still waiting"; see src/lib/fmdb/intake-reminder.ts
  *   - intake_token_expires_at in the future (link not expired)
  *   - Last reminder (or token generation) ≥5d ago — no spam
  *   - Cap at 2 reminders per token, then stop (coach must intervene)
@@ -28,21 +31,16 @@ import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
+import { intakeReminderDecision } from "@/lib/fmdb/intake-reminder";
 
 export const dynamic = "force-dynamic";
 
 const TEMPLATE_NAME = "fm_intake_reminder";
-const MIN_DAYS_BETWEEN_REMINDERS = 5;
-const MAX_REMINDERS_PER_TOKEN = 2;
 
 function buildPublicUrl(token: string): string | null {
   const origin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
   if (!origin || /localhost|127\.0\.0\.1/.test(origin)) return null;
   return `${origin}/intake/${token}`;
-}
-
-function daysBetween(a: Date, b: Date): number {
-  return Math.round((b.getTime() - a.getTime()) / 86_400_000);
 }
 
 export async function POST(req: NextRequest) {
@@ -67,48 +65,11 @@ export async function POST(req: NextRequest) {
   }> = [];
 
   for (const c of clients) {
-    const token = c.intake_token as string | undefined;
-    if (!token) continue;
-    if (c.intake_finalised_at) continue;
-    // Coach-opt-in: only nudge clients where the coach explicitly
-    // generated a fresh intake link via the SendIntakeFormButton (which
-    // sets intake_reminder_enabled=true). Legacy clients onboarded
-    // before the intake form existed, or those who don't need to fill it,
-    // are skipped. Coach can also flip the flag off via the UI to stop
-    // future reminders mid-cycle.
-    if (c.intake_reminder_enabled !== true) continue;
-
+    const decision = intakeReminderDecision(c, today);
+    if (!decision.send) continue;
+    const token = c.intake_token as string;
     const expiresIso = c.intake_token_expires_at as string | undefined;
-    if (expiresIso) {
-      const exp = new Date(expiresIso);
-      if (!Number.isNaN(exp.getTime()) && exp < today) continue; // expired
-    }
-
-    const remindersSentAt = (c.intake_reminders_sent_at as string[] | undefined) ?? [];
-    if (remindersSentAt.length >= MAX_REMINDERS_PER_TOKEN) continue;
-
-    // Anchor for "days since last nudge" = most recent of (token issued,
-    // last reminder sent, last submit). If anything happened in the last
-    // 5d, skip.
-    const anchorCandidates: string[] = [];
-    if (typeof c.intake_token_expires_at === "string") {
-      // Derive token-issue-at: expires_at - default TTL (14d). Coarse but ok.
-      const exp = new Date(c.intake_token_expires_at as string);
-      if (!Number.isNaN(exp.getTime())) {
-        const issued = new Date(exp.getTime() - 14 * 86_400_000);
-        anchorCandidates.push(issued.toISOString());
-      }
-    }
-    if (remindersSentAt.length > 0) anchorCandidates.push(remindersSentAt[remindersSentAt.length - 1]);
-    if (typeof c.intake_last_submitted_at === "string") {
-      anchorCandidates.push(c.intake_last_submitted_at as string);
-    }
-
-    const anchor = anchorCandidates
-      .map((s) => new Date(s))
-      .filter((d) => !Number.isNaN(d.getTime()))
-      .sort((a, b) => b.getTime() - a.getTime())[0];
-    if (anchor && daysBetween(anchor, today) < MIN_DAYS_BETWEEN_REMINDERS) continue;
+    const anchor = decision.anchor;
 
     const mobile = (c.mobile_number as string | undefined) || (c.mobile as string | undefined) || "";
     if (!mobile.trim()) continue; // no number to nudge
@@ -120,7 +81,7 @@ export async function POST(req: NextRequest) {
       token,
       expires_at: expiresIso || "",
       last_nudge_at: anchor ? anchor.toISOString() : null,
-      reminders_sent: remindersSentAt.length,
+      reminders_sent: decision.remindersSent,
     });
   }
 
