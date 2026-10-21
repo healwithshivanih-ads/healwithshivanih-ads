@@ -1915,9 +1915,17 @@ def main() -> int:
         )
         plan_storage.write_session(root, sess)
 
+    # The assessment has read and used the intake → lock it (it stays open
+    # for edits until then). Never on a dry run; never fails the save.
+    intake_lock: dict | None = None
+    if not dry_run:
+        from intake_autofinalise import auto_finalise_after
+        intake_lock = auto_finalise_after(client_id, "assessment")
+
     json.dump({
         "ok": True,
         "session_id": sid,
+        "intake_finalised": bool(intake_lock and intake_lock.get("finalised")),
         "suggestions": suggestions.model_dump(),
         "gate": (gate_report.as_dict() if gate_report is not None else None),
         "computed_ratios": computed_ratios,

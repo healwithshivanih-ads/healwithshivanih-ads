@@ -57,6 +57,16 @@ def _emit(payload: dict) -> int:
     return 0 if payload.get("ok") else 1
 
 
+def _lock_intake(client_id: str) -> None:
+    """A published plan means the intake has been used → lock it.
+    Non-fatal: the publish already happened."""
+    try:
+        from intake_autofinalise import auto_finalise_after
+        auto_finalise_after(client_id, "plan_publish")
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -109,6 +119,7 @@ def main() -> int:
             plan, written, sha = plan_transitions.publish_plan(
                 root, slug, by=by, catalogue_dir=data_dir, reason=reason
             )
+            _lock_intake(plan.client_id)
             return _emit({
                 "ok": True, "error": None,
                 "plan": plan.model_dump(mode="json"),
@@ -141,6 +152,7 @@ def main() -> int:
             new_plan, _old_plan, written = plan_transitions.supersede_plan(
                 root, slug, by=by, catalogue_dir=data_dir, reason=reason
             )
+            _lock_intake(new_plan.client_id)
             return _emit({
                 "ok": True, "error": None,
                 "plan": new_plan.model_dump(mode="json"),
