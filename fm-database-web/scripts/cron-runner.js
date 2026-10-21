@@ -26,6 +26,13 @@
  *                                    resolved. Runs after 10:00 graduation-
  *                                    notice so it can see that send and stay
  *                                    quiet around it.
+ *   10:35  content-status         — ask YouTube which library videos are public
+ *                                    (and since when), find new long videos on
+ *                                    the channel, check guide pages. Only a fresh
+ *                                    answer lets a link into an email.
+ *   :05    email-replies          — hourly. Read prospects' email replies
+ *                                    (IMAP, read-only); record them in their
+ *                                    thread; "no more" → opt out + stop.
  *   10:45  discovery-followup     — DRAFT (never send) follow-up EMAILS for
  *                                    people who had a free discovery call or a
  *                                    paid Foundation session and have not
@@ -360,6 +367,24 @@ cron.schedule(
 // credit) and the paid Foundation session (→ programme, inside its 15-day
 // ₹12,000 credit window). DRAFTS ONLY — each one waits for her approval in the
 // dashboard before anything reaches the person.
+// 10:35 IST daily — what YouTube says about each library video (public? since
+// when?) and whether each guide page is up. The follow-up drafts at 10:45 and
+// every approval read this; with no fresh answer, nothing is linked.
+cron.schedule(
+  "35 10 * * *",
+  () => fire("content-status"),
+  { timezone: "Asia/Kolkata" },
+);
+
+// Hourly at :05 — prospects' email replies: recorded in their thread (so the
+// follow-ups hold while they are in conversation) and a "no more" opts them out
+// of content notes and stops their call follow-up. Reads the mailbox only.
+cron.schedule(
+  "5 * * * *",
+  () => fire("email-replies"),
+  { timezone: "Asia/Kolkata" },
+);
+
 cron.schedule(
   "45 10 * * *",
   () => fire("discovery-followup"),
@@ -456,7 +481,9 @@ console.log(
     + "\n  · 09:30 IST  renewal-send"
     + "\n  · 10:00 IST  graduation-notice"
     + "\n  · 10:30 IST  winback-drip"
+    + "\n  · 10:35 IST  content-status"
     + "\n  · 10:45 IST  discovery-followup"
+    + "\n  · 5 * * * *  email-replies"
     + "\n  · 21:00 IST  revenue-export"
     + "\n  · Sun 05:30  recipe-image-qc (source → commit → deploy)"
     + "\n  · * * * * *  pending-sends"

@@ -232,9 +232,18 @@ function PersonRow({ row }: { row: InterestedPersonRow }) {
   );
 }
 
-export function InterestedPeoplePanel({ rows }: { rows: InterestedPersonRow[] }) {
+export function InterestedPeoplePanel({
+  rows,
+  contentCheckedAt,
+}: {
+  rows: InterestedPersonRow[];
+  contentCheckedAt: string | null;
+}) {
   const [done, setDone] = useState<Set<string>>(new Set());
   if (rows.length === 0) return null;
+  // The only failure that would make this quietly stop suggesting anything.
+  const checkedMs = contentCheckedAt ? Date.parse(contentCheckedAt) : NaN;
+  const stale = Number.isNaN(checkedMs) || Date.now() - checkedMs > 2 * 864e5;
   const notes = rows.filter((r) => r.pendingNote && !done.has(r.clientId));
 
   return (
@@ -250,6 +259,13 @@ export function InterestedPeoplePanel({ rows }: { rows: InterestedPersonRow[] })
           with. When a new video or guide matches a quiet person, a short note waits here. Nothing goes out until you send it.
         </div>
       </div>
+
+      {stale && (
+        <div style={{ fontSize: 12, color: "#8a5a12", background: "rgba(217,131,36,0.10)", border: "1px solid rgba(217,131,36,0.35)", borderRadius: "var(--fm-radius-sm)", padding: "7px 10px", marginBottom: 10 }}>
+          The daily YouTube check hasn&rsquo;t run since {contentCheckedAt ? contentCheckedAt.slice(0, 10) : "it was set up"}, so no
+          videos are being suggested. It runs at 10:35 — if this stays, the cron needs a look.
+        </div>
+      )}
 
       {notes.length > 0 && (
         <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 10 }}>

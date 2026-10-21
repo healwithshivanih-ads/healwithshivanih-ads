@@ -52,17 +52,16 @@ const NEW_VIDEO = {
   id: "belly",
   kind: "video",
   title: "Belly Fat After 40",
-  url: "https://youtu.be/BELLY",
+  url: "https://youtu.be/BELLY000001",
   concerns: ["weight"],
   stage: "first",
   line: "Why belly fat changes after 40.",
 };
 
 function setup(opts: { followup?: unknown; extra?: Dict; liveDaysAgo?: number } = {}) {
-  fs.writeFileSync(
-    path.join(cat, "_content_library.yaml"),
-    yaml.dump({ items: [{ ...NEW_VIDEO, live_from: daysAgo(opts.liveDaysAgo ?? 3) }] }),
-  );
+  const lib = [{ ...NEW_VIDEO, live_from: daysAgo(opts.liveDaysAgo ?? 3) }];
+  fs.writeFileSync(path.join(cat, "_content_library.yaml"), yaml.dump({ items: lib }));
+  writeStatus(root, lib);
   const dir = path.join(root, "prospects", "cl-960");
   fs.mkdirSync(path.join(dir, "sessions"), { recursive: true });
   fs.writeFileSync(
@@ -79,6 +78,19 @@ function setup(opts: { followup?: unknown; extra?: Dict; liveDaysAgo?: number } 
   if (opts.followup) fs.writeFileSync(path.join(dir, "_discovery_followup.yaml"), yaml.dump(opts.followup));
 }
 type Dict = Record<string, unknown>;
+
+/** What the content-status job would have written for these items today. */
+function writeStatus(plansRoot: string, items: Array<{ url: string; live_from: string }>) {
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" });
+  const videos: Record<string, unknown> = {};
+  for (const i of items) {
+    const id = i.url.match(/youtu\.be\/(.+)$/)?.[1];
+    if (!id) continue;
+    const isPublic = i.live_from <= today;
+    videos[id] = { state: isPublic ? "public" : "private", published_on: isPublic ? i.live_from : null, checked_at: new Date().toISOString() };
+  }
+  fs.writeFileSync(path.join(plansRoot, "_content_status.yaml"), yaml.dump({ videos }));
+}
 
 const FINISHED_FOLLOWUP = {
   client_id: "cl-960",
@@ -119,7 +131,7 @@ describe("scanInterestNotesAction", () => {
     const n = notesFile()!.notes[0];
     expect(n.status).toBe("pending");
     expect(n.content_id).toBe("belly");
-    expect(String(n.body)).toContain("https://youtu.be/BELLY");
+    expect(String(n.body)).toContain("https://youtu.be/BELLY000001");
     // Idempotent: a second run the same day adds nothing.
     expect((await scanInterestNotesAction()).drafted).toBe(0);
   });
@@ -156,7 +168,7 @@ describe("approve + opt-out", () => {
     setup({ followup: FINISHED_FOLLOWUP });
     await scanInterestNotesAction();
     const n = notesFile()!.notes[0];
-    const body = String(n.body).replace("https://youtu.be/BELLY", "https://example.com/made-up");
+    const body = String(n.body).replace("https://youtu.be/BELLY000001", "https://example.com/made-up");
     const r = await approveInterestNoteAction("cl-960", { subject: String(n.subject), body });
     expect(r.ok).toBe(false);
     expect(sent).toHaveLength(0);

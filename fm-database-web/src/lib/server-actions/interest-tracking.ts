@@ -27,7 +27,7 @@ import { CONCERN_LABEL, isConcernId, type ConcernId } from "@/lib/fmdb/concerns"
 import { activeConcerns, lastInterestAt, parseInterests } from "@/lib/fmdb/interests";
 import { addInterestSignals, dismissInterest, setMarketingOptOut } from "@/lib/fmdb/interests-store";
 import { newlyLiveFor, pickContent, type ContentItem } from "@/lib/fmdb/content-library";
-import { loadContentLibrary } from "@/lib/fmdb/content-library-store";
+import { loadContentLibrary, loadContentStatus } from "@/lib/fmdb/content-library-store";
 import {
   checkNoteEmail,
   noteDecision,
@@ -332,9 +332,14 @@ export interface InterestedPersonRow {
   pendingNote: { subject: string; body: string; title: string } | null;
 }
 
-export async function loadInterestedPeopleAction(): Promise<{ rows: InterestedPersonRow[]; libraryLive: number }> {
+export async function loadInterestedPeopleAction(): Promise<{
+  rows: InterestedPersonRow[];
+  libraryLive: number;
+  /** ISO time YouTube + guide pages were last checked, or null if never. */
+  contentCheckedAt: string | null;
+}> {
   const today = todayIst();
-  const [people, library] = await Promise.all([collectPeople(), loadContentLibrary()]);
+  const [people, library, status] = await Promise.all([collectPeople(), loadContentLibrary(), loadContentStatus()]);
   const titleOf = new Map(library.map((i) => [i.id, i]));
   const rows: InterestedPersonRow[] = [];
   for (const p of people) {
@@ -374,7 +379,11 @@ export async function loadInterestedPeopleAction(): Promise<{ rows: InterestedPe
     if (Boolean(a.pendingNote) !== Boolean(b.pendingNote)) return a.pendingNote ? -1 : 1;
     return (b.lastActivityOn ?? "").localeCompare(a.lastActivityOn ?? "");
   });
-  return { rows, libraryLive: library.filter((i: ContentItem) => i.liveFrom <= today).length };
+  return {
+    rows,
+    libraryLive: library.filter((i: ContentItem) => i.liveFrom <= today).length,
+    contentCheckedAt: typeof status?.checked_at === "string" ? status.checked_at : null,
+  };
 }
 
 // ── coach actions ──────────────────────────────────────────────────────────

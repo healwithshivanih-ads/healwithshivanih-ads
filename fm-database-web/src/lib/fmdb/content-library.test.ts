@@ -7,6 +7,7 @@ import {
   newlyLiveFor,
   parseContentLibrary,
   pickContent,
+  resolveLiveness,
   unknownLinks,
   type ContentItem,
 } from "./content-library";
@@ -109,5 +110,47 @@ describe("unknownLinks", () => {
   it("flags invented links and not-yet-live library links", () => {
     const text = "https://youtu.be/MADEUP and https://youtu.be/BBB";
     expect(unknownLinks(text, lib, "2026-10-21")).toEqual(["https://youtu.be/MADEUP", "https://youtu.be/BBB"]);
+  });
+});
+
+describe("resolveLiveness — YouTube decides, not the file", () => {
+  const vid = (id: string): ContentItem => item({ id, url: `https://youtu.be/${id}`, liveFrom: "9999-12-31" });
+  const idOf = (u: string) => u.match(/youtu\.be\/(.+)$/)?.[1] ?? null;
+  const today = "2026-10-21";
+  const fresh = "2026-10-21T05:00:00Z";
+
+  it("a video is live from YouTube's publish date when the fresh answer is public", () => {
+    const [v] = resolveLiveness([vid("HRT")], { videos: { HRT: { state: "public", published_on: "2026-10-18", checked_at: fresh } } }, today, 3, idOf);
+    expect(v.liveFrom).toBe("2026-10-18");
+    expect(isLive(v, today)).toBe(true);
+  });
+
+  it.each(["private", "unlisted", "upcoming", "unknown"])("a %s video is never live", (state) => {
+    const [v] = resolveLiveness([vid("X")], { videos: { X: { state, published_on: "2026-10-01", checked_at: fresh } } }, today, 3, idOf);
+    expect(isLive(v, today)).toBe(false);
+  });
+
+  it("a stale answer fails closed (the job stopped running)", () => {
+    const [v] = resolveLiveness([vid("X")], { videos: { X: { state: "public", published_on: "2026-10-01", checked_at: "2026-10-10T05:00:00Z" } } }, today, 3, idOf);
+    expect(isLive(v, today)).toBe(false);
+  });
+
+  it("no status file at all → nothing is live, guides included", () => {
+    const g = item({ id: "g", kind: "guide", liveFrom: "2026-09-01" });
+    expect(resolveLiveness([vid("X"), g], null, today, 3, idOf).some((i) => isLive(i, today))).toBe(false);
+  });
+
+  it("a guide is live while its page answers 200, dated by the file", () => {
+    const g = item({ id: "g", kind: "guide", url: "https://x/g.html", liveFrom: "2026-09-01" });
+    const [ok] = resolveLiveness([g], { guides: { "https://x/g.html": { ok: true, checked_at: fresh } } }, today, 3, idOf);
+    expect(ok.liveFrom).toBe("2026-09-01");
+    const [down] = resolveLiveness([g], { guides: { "https://x/g.html": { ok: false, checked_at: fresh } } }, today, 3, idOf);
+    expect(isLive(down, today)).toBe(false);
+  });
+
+  it("the real library file carries no dates on videos", () => {
+    const raw = yaml.load(fs.readFileSync(REAL_FILE, "utf-8")) as { items: Array<Record<string, unknown>> };
+    const dated = raw.items.filter((i) => i.kind === "video" && i.live_from);
+    expect(dated.map((i) => i.id)).toEqual([]);
   });
 });

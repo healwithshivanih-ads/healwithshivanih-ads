@@ -33,6 +33,9 @@ export interface ContentItem {
 
 const YMD = /^\d{4}-\d{2}-\d{2}$/;
 
+/** The liveFrom of anything not (yet) confirmed live. isLive is false for it. */
+export const NEVER = "9999-12-31";
+
 function ymd(v: unknown): string | null {
   if (v instanceof Date && !Number.isNaN(v.getTime())) return v.toISOString().slice(0, 10);
   if (typeof v === "string" && YMD.test(v.trim())) return v.trim();
@@ -59,8 +62,13 @@ export function parseContentLibrary(raw: unknown): { items: ContentItem[]; probl
     if (ids.has(id)) { problems.push(`${id}: duplicate id`); continue; }
     const url = typeof o.url === "string" ? o.url.trim() : "";
     if (!/^https:\/\/\S+$/.test(url)) { problems.push(`${id}: url must be https`); continue; }
-    const liveFrom = ymd(o.live_from);
-    if (!liveFrom) { problems.push(`${id}: no live_from date`); continue; }
+    // Videos carry NO date: YouTube says when they went public (content-status).
+    // Guides may carry the day they became available, used only to tell "new"
+    // from "old". Without a date an item stays unresolved — never live — until
+    // resolveLiveness gives it one.
+    const kindRaw = o.kind === "guide" ? "guide" : "video";
+    const liveFrom = ymd(o.live_from) ?? NEVER;
+    if (kindRaw === "guide" && liveFrom === NEVER) { problems.push(`${id}: a guide needs live_from`); continue; }
     const rawConcerns = Array.isArray(o.concerns) ? o.concerns : [];
     const bad = rawConcerns.filter((c) => !isConcernId(c));
     if (bad.length) { problems.push(`${id}: unknown concern ${bad.join(", ")}`); continue; }
@@ -70,7 +78,7 @@ export function parseContentLibrary(raw: unknown): { items: ContentItem[]; probl
     if (!line) { problems.push(`${id}: no line`); continue; }
     const title = typeof o.title === "string" ? o.title.trim() : "";
     if (!title) { problems.push(`${id}: no title`); continue; }
-    const kind: ContentKind = o.kind === "guide" ? "guide" : "video";
+    const kind: ContentKind = kindRaw;
     const stage: ContentStage = o.stage === "deeper" ? "deeper" : "first";
     ids.add(id);
     items.push({ id, kind, title, url, concerns, liveFrom, until: ymd(o.until), stage, line });
@@ -165,4 +173,67 @@ export function unknownLinks(
   return found
     .map((u) => u.replace(/[.,;:!?]+$/, ""))
     .filter((u) => !live.has(u) && !allowedPrefixes.some((p) => p && u.startsWith(p)));
+}
+
+// ── liveness from the content-status job ───────────────────────────────────
+
+export interface VideoStatus {
+  state: string;
+  /** YYYY-MM-DD YouTube made it public. */
+  published_on?: string | null;
+  /** ISO instant of the last successful check. */
+  checked_at: string;
+}
+
+export interface GuideStatus {
+  ok: boolean;
+  checked_at: string;
+  /** YYYY-MM-DD the page first answered 200. */
+  first_ok_on?: string | null;
+}
+
+export interface ContentStatus {
+  videos?: Record<string, VideoStatus>;
+  guides?: Record<string, GuideStatus>;
+  /** Long videos found on the channel that are not in the curated file. */
+  auto_items?: unknown[];
+}
+
+function freshWithin(iso: string | undefined, today: string, maxDays: number): boolean {
+  if (!iso) return false;
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return false;
+  return Date.parse(`${today}T23:59:59Z`) - t <= maxDays * 864e5;
+}
+
+/**
+ * Give every item the liveFrom the WORLD says it has, not what a file says:
+ *
+ *   - a video is live only when YouTube's latest answer (≤ maxDays old) is
+ *     "public"; its liveFrom is YouTube's own publish date;
+ *   - a guide is live only when its page last answered 200 (≤ maxDays old);
+ *     its liveFrom stays the file's "available since" date;
+ *   - no answer, a stale answer, private, unlisted or upcoming → NEVER.
+ *
+ * Fails closed: if the job stops running, nothing is sent rather than
+ * something dead.
+ */
+export function resolveLiveness(
+  items: readonly ContentItem[],
+  status: ContentStatus | null,
+  today: string,
+  maxDays: number,
+  videoIdOf: (url: string) => string | null,
+): ContentItem[] {
+  return items.map((i) => {
+    if (i.kind === "video") {
+      const vid = videoIdOf(i.url);
+      const s = vid ? status?.videos?.[vid] : undefined;
+      const live = s && s.state === "public" && freshWithin(s.checked_at, today, maxDays);
+      return { ...i, liveFrom: live ? (s.published_on ?? today) : NEVER };
+    }
+    const g = status?.guides?.[i.url];
+    const live = g && g.ok && freshWithin(g.checked_at, today, maxDays);
+    return { ...i, liveFrom: live ? (i.liveFrom !== NEVER ? i.liveFrom : (g.first_ok_on ?? today)) : NEVER };
+  });
 }

@@ -591,7 +591,7 @@ export default async function DashboardV2() {
   // 🌱 Call follow-ups — people who had a free discovery call or a paid
   // Foundation session and have not signed up. Auto-drafted, coach-approved.
   const discoveryFollowup = await loadDiscoveryFollowupAction();
-  const interestedPeople = await loadInterestedPeopleAction().catch(() => ({ rows: [], libraryLive: 0 }));
+  const interestedPeople = await loadInterestedPeopleAction().catch(() => ({ rows: [], libraryLive: 0, contentCheckedAt: null }));
 
   // Stranded intake drafts — substantial answers sitting in
   // intake_form_draft, never promoted to a real submit. (Pranati cl-009
@@ -1214,7 +1214,7 @@ export default async function DashboardV2() {
           guide that suits them next, and "thought of you" notes waiting for
           approval. Directly under the call follow-ups: same people, the
           giving half rather than the asking half. Self-hides when empty. */}
-      <InterestedPeoplePanel rows={interestedPeople.rows} />
+      <InterestedPeoplePanel rows={interestedPeople.rows} contentCheckedAt={interestedPeople.contentCheckedAt} />
 
       {/* 🗓 Weekly menu approvals — pinned to the TOP so the coach can never
           miss a menu waiting for approval (clients stay frozen until she

@@ -72,9 +72,24 @@ function writePerson(bucket: "clients" | "prospects", id: string, callYmd: strin
   );
 }
 
-function writeLibrary(items: unknown[]) {
+function writeLibrary(items: Array<{ url: string; live_from: string }>) {
   fs.writeFileSync(path.join(cat, "_content_library.yaml"), yaml.dump({ items }));
+  writeStatus(root, items);
 }
+
+/** What the content-status job would have written for these items today. */
+function writeStatus(plansRoot: string, items: Array<{ url: string; live_from: string }>) {
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" });
+  const videos: Record<string, unknown> = {};
+  for (const i of items) {
+    const id = i.url.match(/youtu\.be\/(.+)$/)?.[1];
+    if (!id) continue;
+    const isPublic = i.live_from <= today;
+    videos[id] = { state: isPublic ? "public" : "private", published_on: isPublic ? i.live_from : null, checked_at: new Date().toISOString() };
+  }
+  fs.writeFileSync(path.join(plansRoot, "_content_status.yaml"), yaml.dump({ videos }));
+}
+
 
 const LIVE_GUT_VIDEO = {
   id: "gut-video",

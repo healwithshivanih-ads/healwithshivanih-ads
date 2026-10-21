@@ -77,3 +77,18 @@ Agreed with the coach on 2026-10-21. Builds on the discovery follow-up drip
   everyone still has a follow-up draft waiting. Many drafts have waited 1-3
   weeks; notes stay blocked until those are sent or skipped.
 - Gate: lint 0, type-check, 2329 web tests, 167 Python tests.
+
+## Round 2 (2026-10-21, same day): no hand-maintenance
+
+Coach: "do the ochre-funnel side, make the no-more reply catch automatically,
+fix the YouTube date issue — should not require my intervention."
+
+Found while planning: the dates WERE wrong. The channel feed shows the HRT
+video public since 18 Oct (library said 28 Feb 2027) and the belly video since
+11 Oct (library said 18 Oct). Hand-kept dates cannot be trusted.
+
+| # | Stage | Output | Failable check |
+|---|---|---|---|
+| A | Content status from YouTube itself | Daily `content-status` job: every library video checked on its watch page (public = playable AND not unlisted AND not upcoming; private/scheduled = LOGIN_REQUIRED), publish date taken from YouTube; guide pages checked for HTTP 200. New long videos (≥3 min) found in the channel feed are added automatically, concerns classified from title + description. Results in `~/fm-plans/_content_status.yaml`. A video is live ONLY when the latest check (≤3 days old) says public — `live_from` is gone from videos. | Pure tests on page parsing (fixtures from real pages: public, private); real run shows HRT + belly + protein public, the scheduled ones not. |
+| B | Replies caught automatically | Hourly `email-replies` job reads the coach mailbox over IMAP (read-only), takes replies from prospects' addresses, records each in their thread as an inbound email (so the follow-ups hold for "in conversation"), and when the reply says "no more"/"unsubscribe"/"stop"/"remove me"/"not interested", sets `marketing_opt_out`, stops the call follow-up and skips anything pending. Quoted text below the reply is ignored. | Pure tests on the phrase detector incl. quoted-text and false friends ("no more bloating!"); real read-only run over the last 30 days lists what it would do before applying. |
+| C | ochre-funnel | (see the survey; filled in below) | |
