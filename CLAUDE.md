@@ -63,6 +63,21 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.86 — what a prospect came in with, and something useful to send them (2026-10-21).** Plan + work log: `docs/INTEREST_TRACKING_PLAN.md`.
+
+**Key invariants (v0.86):**
+- **The concern is the "main concern" answer, never the first form answer.** The cal.com form asks "How long has this been going on?" first, so follow-ups read "what you shared about 1 to 3 years" (cl-907, cl-909). `lib/fmdb/booking-form.ts::bookingConcern` refuses durations and yes/no answers; the drip re-reads the form from the booking note, so old records heal.
+- **15 fixed concern ids** (`lib/fmdb/concerns.ts`; storage keys — never rename). `classifyConcerns` is keyword-only ($0) and returns concerns **in the order the person named them** — that order decides what they are sent first.
+- **`client.yaml#interests`** = append-only `{concern, source, at, detail}` (Python `Client.interests` / `InterestSignal`). The coach removing a concern sets `dismissed`, and nothing automatic re-adds it. Written by booking intake, the coach (dashboard chips), and a one-off backfill (done 2026-10-21, 11 prospects).
+- **Links reach a person ONLY from `fm-database/data/_content_library.yaml`, and only after `live_from`.** Scheduled YouTube videos are private until premiere — when a premiere moves in Studio, move `live_from` too. The approve step (`checkEmailLinks`) refuses any other URL and oEmbed-checks YouTube links. Add each new video/guide there with concern tags.
+- Day-1 thank-you and day-12 check-in carry one matched item (`CONTENT_TOUCHES`); never the price touch or the final door-open.
+- **"Thought of you" notes** (`lib/fmdb/interest-notes.ts`): drafted by the 10:45 `discovery-followup` cron AFTER the follow-up scan, when a new item (live ≤21 days) matches a quiet prospect. At most one per 30 days, only after the call follow-up finished, never to stopped/declined/signed-up/`marketing_opt_out` people. No price ever (gate refuses ₹/credit/"free call"); opt-out line required. "Stop these notes" sets `marketing_opt_out`. A "no more" reply is NOT auto-detected — the coach presses Stop.
+- **The drip and the thread now reach parked prospects** (`prospects/`). The scan read `clients/` only, so the sweep silently ended sequences that run to day 25; `save-session.py` returned "client not found" for parked people, so their sent emails and inbound messages were never recorded.
+- Dashboard: **💬 Interested people** panel under 🌱 Call follow-ups.
+- Not built: ochre-funnel side (branching its evergreen nurture by lead source, carrying the concern at handover) — plan stage 9.
+
+---
+
 **v0.85 — the client grades the programme.** Everything else the coach saw was measured by us (MSQ, weight, labs, adherence); nothing asked the client how we did. Programme feedback is now asked in the app at three stages, each once — **midpoint** (≥ 8-week plans, from halfway), **graduation** (once the end is actually reached, never in the final-stretch lead-in, and kept open afterwards so a lapsed client is still asked), **followup** (90 days after the end). Coach sees it on the dashboard as **💬 How are we doing**.
 
 **Key invariants (v0.85):**

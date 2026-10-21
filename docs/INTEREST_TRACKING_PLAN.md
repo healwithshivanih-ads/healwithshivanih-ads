@@ -57,3 +57,23 @@ Agreed with the coach on 2026-10-21. Builds on the discovery follow-up drip
 ## Work log
 
 - 2026-10-21: research + plan. Stage 1 starts.
+- Stage 1 done: bookingConcern; 7/7 real booking notes now give the right
+  concern; 3 bad pending drafts corrected (backups `.bak-concern-20261021`).
+- Stages 2-3 done: 15 concerns; backfill tagged 11 prospects / 35 signals
+  (backups `client.yaml.bak-interests-20261021`); only `interests` changed,
+  all records still load in Python, re-run is a no-op.
+- Stage 4 done: 21 library items (12 videos, 9 guides). Checked live: guides
+  all 200; of the videos only protein (4 Oct) and belly (18 Oct) are public.
+  oEmbed returns 200 for the HRT video too (unlisted) — `live_from` is the
+  real gate, oEmbed only the backstop.
+- Stage 5 done: content in day-1/day-12 touches; scan covers prospects/;
+  mutation-checked (old scan fails the parked test). 3 waiting drafts got
+  their matched item (backups `.bak-content-20261021`).
+- Stage 7 done: notes + opt-out. save-session.py + thread readers resolve
+  prospects/.
+- Stage 6 done: panel verified in the browser on real data; add/remove chip
+  verified writing to disk (cl-901 restored after).
+- Real-data dry run of both scans (copy of fm-plans): 0 new drafts today —
+  everyone still has a follow-up draft waiting. Many drafts have waited 1-3
+  weeks; notes stay blocked until those are sent or skipped.
+- Gate: lint 0, type-check, 2329 web tests, 167 Python tests.
