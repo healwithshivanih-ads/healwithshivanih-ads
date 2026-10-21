@@ -81,6 +81,8 @@ shows up as untracked and gets committed by accident.
 - **Plan pick:** the card lands on the plan the app shows — maintenance first, then newest `plan_period_start` — not "highest version", which tied at v1 and could write onto Niti's dead plan-1 still sitting in `published/`.
 - **Condition lines must be true of EVERY client the keyword matches.** The thyroid line said "take your thyroid support" and reached a client on no thyroid supplement. They are food-only now.
 
+**Intake forms lock themselves (2026-10-21).** A submitted intake stays open for re-edits until it is finalised, and the coach never came back to press 🔒 Lock — 12 clients sat "submitted, not finalised" for months, and the reminder cron kept telling ten of them their form was "still waiting" (`intake-reminder.ts` now skips any submitted client). Saving an assessment (`assess.py`, API or chat-authored, never a dry run) or publishing/superseding a plan (`plan-lifecycle.py`) now finalises a SUBMITTED intake via `auto_finalise_after()` in `intake-token-action.py` (reached through `scripts/intake_autofinalise.py`). A never-submitted form is left open; Reopen undoes it; the lock never fails the save. The CLI `fmdb plan-publish` does not trigger it.
+
 ---
 
 **v0.84 — a lapsed client costs nothing.** Dhanishta (cl-004) and Archana (cl-007) — `engagement_status: lapsed`, plan windows closed 2026-08-04 / 2026-08-12 — were still listed on the dashboard as "⏸ Menu paused — not opening the app", still scanned daily by the grocery/recipe backfill (Haiku), still pushed reminders, and the app co-pilot + travel guide were still live for them.
