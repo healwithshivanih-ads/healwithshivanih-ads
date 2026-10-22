@@ -275,7 +275,20 @@ export interface FollowupFacts {
   /** The client's app link, only when a Starting Map exists to show there. */
   appUrl: string | null;
   callDate: string;
+  /**
+   * One video or guide from the content library, matched to their concerns
+   * (content-library.ts). Only the touches in CONTENT_TOUCHES carry it. The
+   * URL always comes from the library — never typed into a template.
+   */
+  content?: { line: string; url: string } | null;
 }
+
+/**
+ * The touches that carry something useful to watch or read. The thank-you
+ * (day 1) and the check-in (day 12): a message that gives before it asks.
+ * Never the price touch or the final door-open.
+ */
+export const CONTENT_TOUCHES: readonly FollowupTouchKind[] = ["free_thanks", "free_check_in"];
 
 /** "5 October" — the form every client-facing date in these messages uses. */
 export function humanDate(ymd: string): string {
@@ -341,6 +354,7 @@ export function renderFollowupEmail(
           ...(track === "triage"
             ? [`The ₹${TRIAGE_CREDIT_INR} you paid for our call comes off the Foundation session, so it isn't lost.`]
             : []),
+          ...(f.content ? [`In the meantime, this might help. ${f.content.line}\n${f.content.url}`] : []),
           "Would you like me to send you the details? Just reply to this email.",
         ]),
       };
@@ -360,6 +374,7 @@ export function renderFollowupEmail(
         subject: "Checking in",
         body: letter(name, [
           "It's been a couple of weeks since we spoke, and I wanted to check in on how you are doing.",
+          ...(f.content ? [`I thought you might find this useful. ${f.content.line}\n${f.content.url}`] : []),
           "If something is holding you back from the next step (timing, cost, or questions about how it works), tell me honestly and we can talk it through.",
           ...(track === "triage"
             ? [`Your ₹${TRIAGE_CREDIT_INR} from our call still counts towards the Foundation session whenever you're ready.`]

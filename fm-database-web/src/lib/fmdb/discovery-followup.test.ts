@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   followupDecision,
   renderFollowupEmail,
+  CONTENT_TOUCHES,
   checkFollowupEmail,
   parseBookedCallDate,
   isFreeCallEventSlug,
@@ -131,6 +132,26 @@ describe("copy", () => {
 
   it("recap without a Starting Map does not link an empty app", () => {
     expect(renderFollowupEmail("fdn_recap", { ...facts, appUrl: null }, "foundation").body).not.toContain("http");
+  });
+});
+
+describe("matched content", () => {
+  const content = { line: "Why bloating happens and what eases it.", url: "https://youtu.be/AAA" };
+  it.each(["free", "triage"] as const)("%s day 1 and day 12 carry the item and still pass the gate", (track) => {
+    for (const k of CONTENT_TOUCHES) {
+      const e = renderFollowupEmail(k, { ...facts, content }, track);
+      expect(e.body).toContain("https://youtu.be/AAA");
+      expect(e.body).toContain("Why bloating happens");
+      expect(checkFollowupEmail(e.subject, e.body, track).refuse).toEqual([]);
+    }
+  });
+  it("the price touch and the final door-open never carry content", () => {
+    for (const k of ["free_foundation_offer", "door_open"] as const) {
+      expect(renderFollowupEmail(k, { ...facts, content }, "free").body).not.toContain("youtu.be");
+    }
+  });
+  it("no content → no stray paragraph", () => {
+    expect(renderFollowupEmail("free_thanks", { ...facts, content: null }, "free").body).not.toMatch(/meantime|http/);
   });
 });
 

@@ -142,6 +142,19 @@ export function isOutboundSegment(s: string): boolean {
   return s.includes("[source: whatsapp_outbound]") || s.includes("[source: email_outbound]");
 }
 
+/** An email reply from the person, read off the coach's mailbox. */
+export const EMAIL_INBOUND_TAG = "[source: email_inbound]";
+
+/** A message FROM the person: a WhatsApp webhook segment or an email reply. */
+export function isInboundSegment(s: string): boolean {
+  return s.includes("[source: whatsapp_webhook]") || s.includes(EMAIL_INBOUND_TAG);
+}
+
+/** Which channel an inbound segment arrived on. */
+export function inboundChannelOf(s: string): OutboundChannel {
+  return s.includes(EMAIL_INBOUND_TAG) ? "email" : "whatsapp";
+}
+
 /** Which channel a segment was sent on — defaults to whatsapp for the years of
  *  history written before email existed. */
 export function outboundChannelOf(s: string): OutboundChannel {

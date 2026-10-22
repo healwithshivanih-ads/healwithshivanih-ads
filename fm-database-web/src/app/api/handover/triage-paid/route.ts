@@ -20,6 +20,8 @@
 import { NextResponse } from "next/server";
 import { verifySignedRequest } from "../_auth";
 import { recordTriagePayment, type TriagePaymentNotice } from "@/lib/fmdb/triage-payment-intake";
+import { isConcernId, type ConcernId } from "@/lib/fmdb/concerns";
+import { addInterestSignals } from "@/lib/fmdb/interests-store";
 
 export const dynamic = "force-dynamic";
 
@@ -46,6 +48,23 @@ export async function POST(req: Request) {
   };
   try {
     const r = await recordTriagePayment(notice);
+    // What they signed up for in the funnel (2026-10-21; optional — older
+    // funnel builds don't send it). Best-effort: never fails the notice.
+    if (r.ok && Array.isArray(b.interests)) {
+      const at = notice.paid_at.slice(0, 10);
+      const signals = (b.interests as unknown[])
+        .map((i) => (i && typeof i === "object" ? (i as Record<string, unknown>) : {}))
+        .filter((i) => isConcernId(i.concern))
+        .slice(0, 15)
+        .map((i) => ({
+          concern: i.concern as ConcernId,
+          source: `funnel:${str(i.source, 60) || "lead"}`,
+          at,
+        }));
+      await addInterestSignals(r.clientId, signals).catch((e) =>
+        console.error("[triage-paid] could not record interests:", e),
+      );
+    }
     return NextResponse.json(r, { status: r.ok || r.outcome !== "error" ? 200 : 400 });
   } catch (err) {
     return NextResponse.json(

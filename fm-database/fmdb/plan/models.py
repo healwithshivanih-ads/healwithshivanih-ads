@@ -369,6 +369,25 @@ class GiftedFoundationSession(BaseModel):
 KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined", "lapsed")
 
 
+class InterestSignal(BaseModel):
+    """One thing a prospect has shown they care about (2026-10-21).
+
+    Written by the coach app (lib/fmdb/interests.ts): booking-form answers,
+    the discovery call, or the coach tagging by hand. `concern` is one of the
+    fixed ids in lib/fmdb/concerns.ts::CONCERN_IDS (kept a str here so a new
+    id never breaks loading). Append-only: the coach removing a concern sets
+    `dismissed` rather than deleting, so nothing automatic re-adds it.
+    """
+
+    model_config = ConfigDict(extra="allow")
+
+    concern: str
+    source: str = ""
+    at: Optional[date] = None
+    detail: Optional[str] = None
+    dismissed: bool = False
+
+
 class Client(BaseModel):
     """Minimal client record. Lives at ~/fm-plans/clients/<client_id>.yaml.
 
@@ -976,6 +995,17 @@ class Client(BaseModel):
     # programme payment lands, at which point /api/handover/programme-signup
     # flips to `programme_active` + fires the onboarding kit.
     lifecycle_state: str = "programme_active"   # back-compat default for manually-created clients
+
+    # ── Interest tracking (2026-10-21) ──────────────────────────────────────
+    # What a prospect has shown interest in, so follow-ups can send them the
+    # video or guide that matches. See lib/fmdb/interests.ts.
+    interests: list[InterestSignal] = Field(default_factory=list)
+    # They asked not to get "thought of you" content emails. Follow-ups about
+    # a call they had are separate and governed by the follow-up's own Stop.
+    marketing_opt_out: bool = False
+    marketing_opt_out_at: Optional[datetime] = None
+    #: Why: "coach" (dashboard button) or "replied by email: <their phrase>".
+    marketing_opt_out_source: Optional[str] = None
     handover_source: Optional[str] = None       # "ochre-followup" | "legacy-manual" | None
     handover_received_at: Optional[datetime] = None
     discovery_completed_at: Optional[datetime] = None

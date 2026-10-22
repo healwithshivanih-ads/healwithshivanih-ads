@@ -1,0 +1,208 @@
+# Content library — the videos and guides follow-up emails may point people to.
+#
+# Read by fm-database-web/src/lib/fmdb/content-library-store.ts. Underscore-
+# prefixed, so `fmdb validate` skips it (same footing as _food_cautions.yaml).
+#
+# NOTHING HERE NEEDS HAND-MAINTENANCE TO STAY SAFE (2026-10-21).
+#   - Videos carry NO date. The daily `content-status` job asks YouTube itself
+#     whether each video is public and when it went public, and only a fresh
+#     "public" answer lets a video into an email. Hand-typed dates were wrong
+#     within a day (the HRT video went public 18 Oct; the file said 28 Feb).
+#   - New long videos on the channel are found by the same job and added
+#     automatically (concerns read from the title + description, the title as
+#     the line). An entry here is CURATION ONLY: better concern tags and a
+#     better line for a video the job would find anyway.
+#   - Guides are checked daily too (the page must answer 200). Their
+#     `live_from` only says since when they exist, to tell new from old.
+#
+# RULES (content-library.test.ts fails if any is broken):
+#   - A link may reach a person ONLY from this file or the job's auto list.
+#   - `until` (optional) retires seasonal items.
+#   - `concerns` use the ids in lib/fmdb/concerns.ts.
+#   - `stage`: `first` = good as the first thing someone gets; `deeper` = for
+#     someone who has already engaged.
+#   - `line` is client-facing, one sentence, her voice. No "free call", no
+#     evidence-hedging, no programme name before its reveal.
+
+items:
+  # ── YouTube long-form ────────────────────────────────────────────────────
+  - id: yt-protein-ranked
+    kind: video
+    title: "Your Dal Has Less Protein Than One Egg"
+    url: https://youtu.be/OI-nOJ8vzRg
+    concerns: [nutrients, weight]
+    stage: first
+    line: "Twelve vegetarian foods ranked by the protein they really carry, with the numbers."
+
+  - id: yt-belly-after-40
+    kind: video
+    title: "Belly Fat After 40? It's Not Just Calories"
+    url: https://youtu.be/AvTIYcitW10
+    # Not tagged `hormones`: it is about the after-40 years, and the cycles tag
+    # also covers young women with irregular periods.
+    concerns: [weight, blood_sugar]
+    stage: first
+    line: "Why belly fat changes after 40, and what helps more than eating less."
+
+  - id: yt-diwali-sweets
+    kind: video
+    title: "Enjoy Diwali Sweets Without the Sugar Spike"
+    url: https://youtu.be/t6m91Ny18Nc
+    concerns: [blood_sugar]
+    until: 2026-11-20
+    stage: first
+    line: "Ten festive sweets ranked by how hard they hit your blood sugar, and how to enjoy them anyway."
+
+  - id: yt-iron-ranked
+    kind: video
+    title: "Tired All the Time? 12 Vegetarian Foods Ranked by Real Iron"
+    url: https://youtu.be/anfF_KQRKjs
+    concerns: [nutrients, energy]
+    stage: first
+    line: "Twelve vegetarian foods ranked by the iron your body can actually use."
+
+  - id: yt-insulin-signs
+    kind: video
+    title: "Insulin Resistance After 40: 9 Signs Your Body Is Warning You"
+    url: https://youtu.be/DpyRFrMN8lg
+    concerns: [blood_sugar, weight, energy]
+    stage: first
+    line: "Nine early signs of insulin resistance that show up long before the sugar numbers do."
+
+  - id: yt-fatty-liver
+    kind: video
+    title: "Fatty Liver on Your Report? What It Means, and How to Reverse It"
+    url: https://youtu.be/FOg2ZYHYno8
+    concerns: [liver, labs]
+    stage: first
+    line: "What a fatty liver line on your report means, and the steps that reverse it."
+
+  - id: yt-thyroid-tsh
+    kind: video
+    title: "TSH Is Only 1 of 4 Thyroid Numbers"
+    url: https://youtu.be/97t_99WkSS8
+    concerns: [thyroid, labs, energy]
+    stage: first
+    line: "Why a normal TSH does not always mean a happy thyroid, and the other three numbers to ask for."
+
+  - id: yt-millet-thyroid
+    kind: video
+    title: "Thyroid? Don't Give Up Ragi. The Millet That Matters Is a Different One"
+    url: https://youtu.be/bBIyLa_oIAY
+    concerns: [thyroid]
+    stage: deeper
+    line: "Which millets to keep and which one to go easy on when you have a thyroid condition."
+
+  - id: yt-lab-report
+    kind: video
+    title: "Your Report Says Normal. Here's What It's Missing"
+    url: https://youtu.be/l4ZSOkpg-WA
+    concerns: [labs, energy]
+    stage: first
+    line: "How to read a 'normal' blood report, and the numbers worth a second look."
+
+  - id: yt-knee-map
+    kind: video
+    title: "Where Exactly Does Your Knee Hurt?"
+    url: https://youtu.be/Fdr6ZjPYazE
+    concerns: [joints]
+    stage: first
+    line: "What each spot of knee pain usually points to, and what to do about it."
+
+  - id: yt-stopping-ozempic
+    kind: video
+    title: "Stopping Ozempic? Watch This Before You Do"
+    url: https://youtu.be/T4JtSlPIn5A
+    concerns: [blood_sugar, weight]
+    stage: deeper
+    line: "What to put in place before coming off Ozempic so the weight and sugar don't bounce back."
+
+  - id: yt-hrt-perimenopause
+    kind: video
+    title: "The Hormone Therapy Warning Is Gone. Now What for Perimenopause?"
+    url: https://youtu.be/bxEvoBq5wl4
+    concerns: [hormones]
+    stage: first
+    line: "What changed about hormone therapy, and how to think about it for your own perimenopause."
+
+  # ── Guides (sign-up pages on grow.theochretree.com) ──────────────────────
+  - id: guide-thyroid
+    kind: guide
+    title: "The Thyroid Reset Guide"
+    url: https://grow.theochretree.com/thyroid-guide.html
+    concerns: [thyroid]
+    live_from: 2026-09-01
+    stage: first
+    line: "A short guide to what supports your thyroid day to day."
+
+  - id: guide-sugar
+    kind: guide
+    title: "The Blood Sugar Reset Guide"
+    url: https://grow.theochretree.com/sugar-guide.html
+    concerns: [blood_sugar, weight]
+    live_from: 2026-09-01
+    stage: first
+    line: "A short guide to steadier blood sugar, built around everyday Indian meals."
+
+  - id: guide-bloat
+    kind: guide
+    title: "The Beat the Bloat Guide"
+    url: https://grow.theochretree.com/bloat-guide.html
+    concerns: [gut]
+    live_from: 2026-09-01
+    stage: first
+    line: "A short guide to what usually drives bloating and the simple changes that ease it."
+
+  - id: guide-calm-gut
+    kind: guide
+    title: "The Calm Gut Guide"
+    url: https://grow.theochretree.com/gut-guide.html
+    concerns: [gut]
+    live_from: 2026-09-01
+    stage: deeper
+    line: "A guide to settling your digestion, one meal and one habit at a time."
+
+  - id: guide-cycle
+    kind: guide
+    title: "The 3-Month Cycle Tracker"
+    url: https://grow.theochretree.com/cycle-guide.html
+    concerns: [hormones]
+    live_from: 2026-09-01
+    stage: first
+    line: "A simple tracker that shows what your cycle is telling you over three months."
+
+  - id: guide-fog
+    kind: guide
+    title: "The Brain Fog Reset Guide"
+    url: https://grow.theochretree.com/fog-guide.html
+    concerns: [energy, sleep]
+    live_from: 2026-09-01
+    stage: first
+    line: "A short guide to clearing brain fog and getting your energy back."
+
+  - id: guide-liver
+    kind: guide
+    title: "The Liver Night-Off Checklist"
+    url: https://grow.theochretree.com/liver-guide.html
+    concerns: [liver]
+    live_from: 2026-09-01
+    stage: first
+    line: "A one-page checklist that gives your liver a real night off."
+
+  - id: guide-lab-report
+    kind: guide
+    title: "Reading Your Lab Report"
+    url: https://grow.theochretree.com/lab-report-guide.html
+    concerns: [labs]
+    live_from: 2026-10-07
+    stage: first
+    line: "A guide to reading your own blood report, line by line."
+
+  - id: guide-hrt
+    kind: guide
+    title: "Your HRT Conversation Guide"
+    url: https://grow.theochretree.com/hrt-guide.html
+    concerns: [hormones]
+    live_from: 2026-10-18
+    stage: deeper
+    line: "The questions to take to your doctor if you are weighing hormone therapy."

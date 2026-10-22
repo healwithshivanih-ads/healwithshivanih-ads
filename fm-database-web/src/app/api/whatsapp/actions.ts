@@ -7,8 +7,12 @@ import os from "node:os";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
+import { resolvePersonDir } from "@/lib/fmdb/person-dir";
 import {
   isOutboundSegment,
+  isInboundSegment,
+  inboundChannelOf,
+  EMAIL_INBOUND_TAG,
   indexOfOutboundTag,
   outboundSourceTag,
   outboundChannelOf,
@@ -394,8 +398,38 @@ export async function recordOutboundMessageAction(input: {
   // when PM2 holds a reference across the build). That threw, BOTH call
   // sites swallowed silently → message went out fine but never landed in
   // the rolling thread (durable bug surfaced 2026-05-24).
+  return appendThreadSegment(input.clientId, tags, input.renderedBody);
+}
+
+/**
+ * Record an email REPLY from the person in their thread (2026-10-21) — read
+ * off the coach's mailbox by the hourly email-replies job. Tagged
+ * `[source: email_inbound]`, so the thread shows it as theirs, the follow-ups
+ * hold while they are in conversation, and the WhatsApp 24-hour window
+ * (which only an inbound WhatsApp opens) is NOT opened by it.
+ */
+export async function recordInboundEmailAction(input: {
+  clientId: string;
+  subject: string;
+  body: string;
+  /** ISO time the email was received. */
+  receivedAt: string;
+}): Promise<{ ok: boolean; session_id?: string; error?: string }> {
+  if (!input.clientId || !input.body.trim()) return { ok: false, error: "clientId + body required" };
+  const subject = input.subject.replace(/[[\]\n]/g, " ").trim().slice(0, 140);
+  const tags = `${EMAIL_INBOUND_TAG}${subject ? ` [subject: ${subject}]` : ""} [sent_at: ${input.receivedAt}]`;
+  return appendThreadSegment(input.clientId, tags, input.body.trim());
+}
+
+/** Append one tagged message to the person's rolling thread session. */
+async function appendThreadSegment(
+  clientId: string,
+  tags: string,
+  body: string,
+): Promise<{ ok: boolean; session_id?: string; error?: string }> {
+  const input = { clientId };
   const { marker } = await getActivePlanSlugForClient(input.clientId);
-  const presenting = `${marker} ${tags}\n\n${input.renderedBody}`;
+  const presenting = `${marker} ${tags}\n\n${body}`;
   const payload = JSON.stringify({
     client_id: input.clientId,
     session_type: "quick_note",
@@ -594,8 +628,8 @@ export interface ChatThreadMessage {
   };
   /** Which channel carried this message. Outbound segments carry an explicit
    *  [source: whatsapp_outbound]/[source: email_outbound] tag (see
-   *  outboundChannelOf); inbound is always "whatsapp" today — there is no
-   *  inbound email pipeline yet. */
+   *  outboundChannelOf); inbound is "email" for a reply read off the coach's
+   *  mailbox ([source: email_inbound]) and "whatsapp" otherwise. */
   channel?: "whatsapp" | "email";
 }
 
@@ -615,7 +649,7 @@ export async function loadCommunicationThreadAction(
   clientId: string,
   daysBack = 90,
 ): Promise<ChatThreadMessage[]> {
-  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  const dir = path.join(resolvePersonDir(clientId), "sessions");
   let names: string[];
   try {
     names = await fs.readdir(dir);
@@ -660,7 +694,7 @@ export async function loadCommunicationThreadAction(
       segments.forEach((segment, idx) => {
         const seg = segment.trim();
         if (!seg) return;
-        const segInbound = seg.includes("[source: whatsapp_webhook]");
+        const segInbound = isInboundSegment(seg);
         const segOutbound = isOutboundSegment(seg);
         // If no direction tag, fall back to whichever tag appears first
         // in the whole session (covers very-old sessions with the tag
@@ -784,9 +818,9 @@ export async function loadCommunicationThreadAction(
           template_name: templateName ?? emailSubject,
           session_id: sessionId,
           attachment,
-          // Inbound has no email pipeline yet, so it's always whatsapp;
-          // outbound reads the segment's own [source: ...] tag.
-          channel: direction === "inbound" ? "whatsapp" : outboundChannelOf(seg),
+          // Inbound email replies carry [source: email_inbound]; every other
+          // inbound is WhatsApp. Outbound reads the segment's own tag.
+          channel: direction === "inbound" ? inboundChannelOf(seg) : outboundChannelOf(seg),
         });
       });
     } catch {
@@ -1115,7 +1149,7 @@ export async function getLastSentAtAction(
   const daysBack = opts?.daysBack ?? 180;
   const isPrefix = opts?.prefix ?? false;
 
-  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  const dir = path.join(resolvePersonDir(clientId), "sessions");
   let names: string[];
   try {
     names = await fs.readdir(dir);
@@ -1178,7 +1212,7 @@ export async function getLastSentAtBatchAction(
   const daysBack = opts?.daysBack ?? 180;
   const isPrefix = opts?.prefix ?? false;
 
-  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  const dir = path.join(resolvePersonDir(clientId), "sessions");
   let names: string[];
   try {
     names = await fs.readdir(dir);

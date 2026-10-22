@@ -107,6 +107,11 @@ function DraftCard({ row, onDone }: { row: FollowupDraftRow; onDone: (k: string)
           · call {humanDate(row.callDate)} ({row.daysSinceCall}d ago)
           {row.creditExpiresOn ? ` · credit until ${humanDate(row.creditExpiresOn)}` : ""}
         </span>
+        {row.contentTitle && (
+          <span style={{ fontSize: 11, color: "var(--fm-text-secondary)" }} title="Matched to what they told us they care about">
+            · 🎬 {row.contentTitle}
+          </span>
+        )}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
