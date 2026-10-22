@@ -11,6 +11,7 @@ import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { runShim } from "@/lib/fmdb/shim";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { sanitiseFeedback } from "@/lib/fmdb/programme-feedback";
+import { notifyCoachOfFeedback } from "@/lib/fmdb/feedback-notify";
 
 export const dynamic = "force-dynamic";
 
@@ -46,6 +47,11 @@ export async function POST(req: NextRequest) {
     if (!out.ok) {
       return NextResponse.json({ ok: false, error: out.error ?? "save failed" }, { status: 500 });
     }
+    // Tell the coach. Fire-and-forget: the client's submit must not wait on
+    // Gmail, and a failed email must never turn a saved answer into an error.
+    void notifyCoachOfFeedback(lookup.client_id, response)
+      .then((r) => console.log(`[app-feedback] coach notified: email=${r.email} push=${r.push}`))
+      .catch((e) => console.error("[app-feedback] coach notify failed:", e));
     return NextResponse.json({ ok: true, session_id: out.session_id });
   } catch (err) {
     console.error("[app-feedback] save failed:", err);
