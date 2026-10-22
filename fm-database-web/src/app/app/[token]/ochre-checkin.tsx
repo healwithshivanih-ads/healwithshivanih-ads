@@ -51,6 +51,23 @@ export function CheckinScreen({
   const steadyNames = [...steadyS.map((x) => x.name.split(" (")[0]), ...steadyP.map((p) => p.name)];
   const askS = showSteady ? supps : supps.filter((x) => !steadyS.includes(x));
   const askP = showSteady ? data.practices : data.practices.filter((p) => !steadyP.includes(p));
+  // One question per group first. Most weeks the answer is "all of them", and
+  // thirteen identical taps to say so was the longest part of the form. The
+  // per-item list opens only when something did not go to plan.
+  const [suppAll, setSuppAll] = useState<"" | "all" | "some">("");
+  const [pracAll, setPracAll] = useState<"" | "all" | "some">("");
+  const setGroup = (
+    which: "s" | "p",
+    v: "all" | "some",
+  ) => {
+    if (which === "s") {
+      setSuppAll(v);
+      if (v === "all") setSuppAdh((prev) => ({ ...prev, ...Object.fromEntries(askS.map((x) => [x.id, 0])) }));
+    } else {
+      setPracAll(v);
+      if (v === "all") setPracAdh((prev) => ({ ...prev, ...Object.fromEntries(askP.map((x) => [x.id, 0])) }));
+    }
+  };
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
@@ -170,8 +187,14 @@ export function CheckinScreen({
       {askS.length > 0 && (
         <div className="q-block">
           <div className="q-label">Your supplements</div>
-          <div className="q-hint">How did each one go this week?</div>
-          <div className="card" style={{ padding: "4px 14px" }}>
+          <GroupAsk
+            value={suppAll}
+            allLabel={askS.length === 1 ? "Taking it" : `Taking all ${askS.length}`}
+            someLabel="Missed or stopped some"
+            onChange={(v) => setGroup("s", v)}
+          />
+          {suppAll === "some" && (
+          <div className="card" style={{ padding: "4px 14px", marginTop: 10 }}>
             {askS.map((s) => (
               <div className="adh-item" key={s.id}>
                 <div className="an">{s.name}</div>
@@ -185,13 +208,21 @@ export function CheckinScreen({
               </div>
             ))}
           </div>
+          )}
         </div>
       )}
 
       {askP.length > 0 && (
         <div className="q-block">
           <div className="q-label">Your practices</div>
-          <div className="card" style={{ padding: "4px 14px" }}>
+          <GroupAsk
+            value={pracAll}
+            allLabel={askP.length === 1 ? "Kept it up" : `Kept up all ${askP.length}`}
+            someLabel="Some slipped"
+            onChange={(v) => setGroup("p", v)}
+          />
+          {pracAll === "some" && (
+          <div className="card" style={{ padding: "4px 14px", marginTop: 10 }}>
             {askP.map((p) => (
               <div className="adh-item" key={p.id}>
                 <div className="an">{p.name}</div>
@@ -205,6 +236,7 @@ export function CheckinScreen({
               </div>
             ))}
           </div>
+          )}
         </div>
       )}
 
@@ -237,6 +269,30 @@ export function CheckinScreen({
       <div className="muted" style={{ textAlign: "center", fontSize: 12, marginTop: 12, paddingBottom: 4 }}>
         Only {data.coach.name.split(" ")[0]} sees this
       </div>
+    </div>
+  );
+}
+
+/** "All of them" vs "some didn't" — the per-item list opens on the second. */
+function GroupAsk({
+  value,
+  allLabel,
+  someLabel,
+  onChange,
+}: {
+  value: "" | "all" | "some";
+  allLabel: string;
+  someLabel: string;
+  onChange: (v: "all" | "some") => void;
+}) {
+  return (
+    <div className="seg group-ask">
+      <button className={value === "all" ? "on" : ""} onClick={() => onChange("all")}>
+        {allLabel}
+      </button>
+      <button className={value === "some" ? "on" : ""} onClick={() => onChange("some")}>
+        {someLabel}
+      </button>
     </div>
   );
 }
