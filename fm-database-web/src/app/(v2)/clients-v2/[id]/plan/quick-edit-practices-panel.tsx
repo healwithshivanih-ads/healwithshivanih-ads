@@ -23,6 +23,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FmPanel } from "@/components/fm";
 import { quickEditActivePlanPractice, listSomaticPractices, type SomaticOption } from "@/lib/server-actions/plan-lifecycle";
+import { classifyPracticeKind, type PracticeKind } from "@/lib/fmdb/practice-kind";
 import { PracticeAddresses } from "@/components/plan-editor/practice-addresses";
 import { ExerciseSessionEditor } from "@/components/plan-editor/exercise-session-editor";
 import { phaseOpensAtWeek, type PlanPriorities } from "@/lib/fmdb/practice-phasing";
@@ -31,6 +32,8 @@ import { useEffect } from "react";
 export interface QuickEditPracticeRow {
   /** catalogue somatic_practice slug, when the practice is a guided session */
   somatic_practice?: string;
+  /** coach override of how the app treats it ("" = automatic) */
+  app_kind?: string;
   name: string;
   cadence: string;
   details?: string;
@@ -164,7 +167,17 @@ export function QuickEditPracticesPanel({ planSlug, clientId, practices, priorit
               <PracticeReadRow
                 key={`${i}-${p.name}`}
                 name={p.name}
-                when={p.cadence}
+                when={[
+                  p.cadence,
+                  KIND_LABEL[
+                    classifyPracticeKind(p.name, p.cadence, {
+                      override: p.app_kind,
+                      guided: !!p.somatic_practice || (p.exercises?.length ?? 0) > 0,
+                    }).kind
+                  ],
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
                 duplicateOf={dupFlags.get(i) ?? null}
               />
             ))
@@ -217,6 +230,14 @@ function PracticeReadRow({
   );
 }
 
+/** How each kind reads to the coach (practice-kind.ts). */
+const KIND_LABEL: Record<PracticeKind, string> = {
+  daily: "daily tick",
+  weekly: "a few times a week",
+  as_needed: "as needed (not ticked)",
+  guideline: "guideline (not ticked)",
+};
+
 const inputStyle: React.CSSProperties = {
   fontSize: 11.5,
   padding: "4px 8px",
@@ -259,12 +280,17 @@ function PracticeRow({
   const [cadence, setCadence] = useState(row.cadence);
   const [details, setDetails] = useState(row.details ?? "");
   const [somatic, setSomatic] = useState(row.somatic_practice ?? "");
+  const [appKind, setAppKind] = useState(row.app_kind ?? "");
   const [phase, setPhase] = useState<number>(row.phase && row.phase > 1 ? row.phase : 1);
   const [addresses, setAddresses] = useState<string[]>(row.addresses ?? []);
   const [confirmRemove, setConfirmRemove] = useState(false);
   const [exercises, setExercises] = useState<
     { exercise: string; level?: string | null; note?: string; cadence?: string }[]
   >(row.exercises ?? []);
+  // What the app would do on its own, so the coach overrides knowingly.
+  const autoKind = classifyPracticeKind(name, cadence, {
+    guided: !!somatic || exercises.length > 0,
+  }).kind;
 
   // A reorder is a change, so the comparison is order-sensitive.
   const exKey = (
@@ -276,6 +302,7 @@ function PracticeRow({
     cadence.trim() !== row.cadence ||
     details.trim() !== (row.details ?? "").trim() ||
     somatic !== (row.somatic_practice ?? "") ||
+    appKind !== (row.app_kind ?? "") ||
     phase !== (row.phase && row.phase > 1 ? row.phase : 1) ||
     addresses.join("|") !== (row.addresses ?? []).join("|") ||
     exKey(exercises) !== exKey(row.exercises ?? []);
@@ -290,6 +317,7 @@ function PracticeRow({
         cadence: cadence.trim(),
         details: details.trim(),
         somatic_practice: somatic,
+        app_kind: appKind || "auto",
         phase,
         addresses,
         exercises,
@@ -353,6 +381,17 @@ function PracticeRow({
           <label style={labelStyle}>When / cadence</label>
           <input value={cadence} onChange={(e) => setCadence(e.target.value)} disabled={pending} style={inputStyle} placeholder="e.g. daily, after meals" />
         </div>
+      </div>
+      <div style={{ marginBottom: 8 }}>
+        <label style={labelStyle}>In the client&apos;s app</label>
+        <select value={appKind} onChange={(e) => setAppKind(e.target.value)} disabled={pending} style={inputStyle}>
+          <option value="">Automatic — {KIND_LABEL[autoKind]}</option>
+          {(Object.keys(KIND_LABEL) as PracticeKind[]).map((k) => (
+            <option key={k} value={k}>
+              {KIND_LABEL[k]}
+            </option>
+          ))}
+        </select>
       </div>
       <div style={{ marginBottom: 8 }}>
         <label style={labelStyle}>

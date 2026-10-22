@@ -23,7 +23,7 @@ const block = (h: number, extra?: React.CSSProperties): React.CSSProperties => (
 
 export default function ClientAppLoading() {
   return (
-    <div className="ochre-app">
+    <div className="ochre-app sequoya">
       <style>{`@keyframes ochre-skel-pulse { 0%,100% { opacity: 1 } 50% { opacity: .55 } }`}</style>
       <div
         className="app"

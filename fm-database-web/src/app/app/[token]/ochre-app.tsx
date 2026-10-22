@@ -536,8 +536,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const ticksBaselineRef = useRef(false);
   useEffect(() => {
     if (!hydrated) return;
+    // Items that are not owed every day (weekly practices, once-a-week
+    // supplements) are reported only on the days they ARE done — sent unticked
+    // every day, they would read as six skipped days a week in the coach's
+    // adherence view.
+    const owed = (done: boolean, everyDay: boolean) => everyDay || done;
     const items: TickItem[] = [
-      ...data.supplements.map((s) => ({
+      ...data.supplements.filter((s) => !s.asNeeded && owed(!!logged[s.id], !s.notDaily)).map((s) => ({
         kind: "supplement" as const,
         id: s.id,
         name: s.name,
@@ -553,7 +558,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       })),
       // Only practices due today — a weekly one on a day it was not due would
       // read as "skipped" in the coach's adherence view.
-      ...data.practices.filter((p) => p.dueToday !== false).map((p) => ({
+      ...data.practices
+        .filter((p) => p.dueToday !== false && owed(!!practicesDone[p.id], p.kind !== "weekly"))
+        .map((p) => ({
         kind: "practice" as const,
         id: p.id,
         name: p.name,

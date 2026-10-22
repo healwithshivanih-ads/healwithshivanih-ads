@@ -1,5 +1,6 @@
 "use server";
 
+import { parseAppKind, type PracticeKind } from "@/lib/fmdb/practice-kind";
 import { revalidatePath } from "next/cache";
 import { spawn } from "node:child_process";
 import path from "node:path";
@@ -538,6 +539,13 @@ export async function editCoachRecommendation(
   }
 }
 
+const APP_KIND_CHANGE: Record<PracticeKind, string> = {
+  daily: "now a daily tick in your app",
+  weekly: "now a few-times-a-week practice in your app",
+  as_needed: "now kept for when you need it",
+  guideline: "now a guideline to keep in mind",
+};
+
 export interface QuickPracticeEdit {
   /** add a brand-new practice */
   add?: boolean;
@@ -578,6 +586,12 @@ export interface QuickPracticeEdit {
    * ORDER IS THE PRESCRIPTION and is preserved exactly as given. Nothing sorts.
    */
   exercises?: { exercise: string; level?: string | null; note?: string; cadence?: string }[];
+  /**
+   * How the client app treats this practice (practice-kind.ts). "auto" (or "")
+   * clears the override and lets the wording decide; otherwise one of
+   * "daily" | "weekly" | "as_needed" | "guideline".
+   */
+  app_kind?: string;
   remove?: boolean;
   reason?: string;
 }
@@ -736,6 +750,16 @@ export async function quickEditActivePlanPractice(
             );
             if (next) item.phase = next;
             else delete item.phase;
+          }
+        }
+        if (edit.app_kind !== undefined) {
+          const next = parseAppKind(edit.app_kind);
+          const prev = parseAppKind(item.app_kind);
+          if (next !== prev) {
+            // status_history reasons are shown to the client — plain words.
+            changes.push(next ? APP_KIND_CHANGE[next] : "shown the usual way in your app");
+            if (next) item.app_kind = next;
+            else delete item.app_kind;
           }
         }
         if (edit.addresses !== undefined) {

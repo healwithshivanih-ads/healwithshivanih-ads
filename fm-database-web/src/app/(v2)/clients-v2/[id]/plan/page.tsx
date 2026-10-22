@@ -503,6 +503,7 @@ export default async function PlanTabPage({
       cadence: (it.cadence as string | undefined) ?? "",
       details: (it.details as string | undefined) ?? "",
       somatic_practice: (it.somatic_practice as string | undefined) ?? "",
+      app_kind: (it.app_kind as string | undefined) ?? "",
       phase: (it.phase as number | undefined) ?? null,
       addresses: (it.addresses as string[] | undefined) ?? [],
       // Carried through deliberately. The panel sends the session back on every
