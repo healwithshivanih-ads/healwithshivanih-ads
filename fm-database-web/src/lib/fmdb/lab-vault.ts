@@ -76,8 +76,17 @@ const _escRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
  *  "Potassium". Min 3 chars: 1–2 char aliases never fuzzy-match. */
 function tokenIncludes(hay: string, sub: string): boolean {
   if (sub.length < 3) return false;
-  return new RegExp(`(?:^|[^a-z0-9])${_escRe(sub)}(?:[^a-z0-9]|$)`, "i").test(hay);
+  // One compiled pattern per key (speed only — a non-global RegExp keeps no
+  // state between .test calls). Every marker is tried against every catalogue
+  // key, so compiling afresh each time dominated the vault build.
+  let re = _tokenRe.get(sub);
+  if (!re) {
+    re = new RegExp(`(?:^|[^a-z0-9])${_escRe(sub)}(?:[^a-z0-9]|$)`, "i");
+    _tokenRe.set(sub, re);
+  }
+  return re.test(hay);
 }
+const _tokenRe = new Map<string, RegExp>();
 /** Ratio / compound test names — a marker like "Creatinine" or "Albumin" must
  *  not fuzzy-match a compound entry ("spot urine calcium/creatinine ratio",
  *  "albumin/globulin ratio") just because its name is a token inside it. */

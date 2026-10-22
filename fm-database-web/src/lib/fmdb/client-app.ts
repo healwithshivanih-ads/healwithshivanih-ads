@@ -1924,10 +1924,34 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
     return [];
   }
   const out: { slug: string; recipe: LetterRecipe }[] = [];
-  for (const f of files) {
-    if (!f.endsWith(".yaml") || f.startsWith("_")) continue;
+  const yamlFiles = files.filter((f) => f.endsWith(".yaml") && !f.startsWith("_"));
+  // Parsing ~300 recipe YAMLs was a fixed ~50 ms+ on every app open. Reuse the
+  // last parse while NOTHING in the folder has changed — the signature is every
+  // file's name, size and mtime, so an added, removed or edited recipe (a coach
+  // approval, a Mutagen sync) is picked up on the very next call. The array is
+  // copied on the way out; the recipe objects themselves are never mutated by
+  // any caller (each consumer builds new objects from them).
+  const stats = await Promise.all(
+    yamlFiles.map((f) => fs.stat(path.join(dir, f)).catch(() => null)),
+  );
+  const sig =
+    dir +
+    "\n" +
+    yamlFiles
+      .map((f, i) => `${f}:${stats[i] ? `${stats[i]!.size}:${stats[i]!.mtimeMs}` : "-"}`)
+      .join("\n");
+  if (libraryRecipesCache && libraryRecipesCache.sig === sig) return libraryRecipesCache.recipes.slice();
+  // Read every file at once (order kept — results land by index), then parse in
+  // directory order exactly as before.
+  const texts = await Promise.all(
+    yamlFiles.map((f) => fs.readFile(path.join(dir, f), "utf8").catch(() => null)),
+  );
+  for (let fi = 0; fi < yamlFiles.length; fi++) {
+    const f = yamlFiles[fi];
+    const text = texts[fi];
+    if (text === null) continue; // unreadable file — skipped, as before
     try {
-      const r = yaml.load((await fs.readFile(path.join(dir, f), "utf8")) ?? "") as Dict;
+      const r = yaml.load(text ?? "") as Dict;
       if (!r || !asStr(r.name) || !Array.isArray(r.steps) || !r.steps.length) continue;
       const ingStruct = (asArr(r.ingredients) as Dict[])
         .map((i) => ({ qty: asStr(i.qty), unit: asStr(i.unit), item: asStr(i.item) }))
@@ -1987,8 +2011,11 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
       /* one malformed library file never breaks the app */
     }
   }
-  return out;
+  libraryRecipesCache = { sig, recipes: out };
+  return out.slice();
 }
+let libraryRecipesCache: { sig: string; recipes: { slug: string; recipe: LetterRecipe }[] } | null =
+  null;
 
 // ── Per-client recipe gate (diet + avoid list) ───────────────────────────────
 // Extracted from loadClientAppData 2026-07-28. It had to become reusable when
@@ -2195,8 +2222,18 @@ interface NamedCandidate<T> {
 function containsWord(key: string, token: string): boolean {
   const stem = token.replace(/(?:es|s)$/, "");
   if (!stem) return false;
-  return new RegExp(`(?:^| )${stem}(?:e?s)?(?: |$)`).test(key);
+  // One compiled pattern per stem (speed only — a non-global RegExp keeps no
+  // state between .test calls). The remedy resolver asks this for every name
+  // of every remedy on every dish, and compiling afresh each time was a large
+  // share of the app's server render.
+  let re = containsWordRe.get(stem);
+  if (!re) {
+    re = new RegExp(`(?:^| )${stem}(?:e?s)?(?: |$)`);
+    containsWordRe.set(stem, re);
+  }
+  return re.test(key);
 }
+const containsWordRe = new Map<string, RegExp>();
 
 /** The legacy containment the library resolver has always used: raw substring.
  *  Loose (it also matches inside a longer word), but it is what buys stem
@@ -2255,7 +2292,17 @@ export function buildNameResolver<T>(
         width: new Set(c.names.flatMap(recipeLibToks)).size,
       }))
     : [];
-  return (dish: string): T | undefined => {
+  // Every name's tokens + key, worked out once per resolver rather than once per
+  // name per dish (speed only — both are pure functions of the name). A client
+  // menu asks this resolver hundreds of times over a ~300-recipe library.
+  const prepared = candidates.map((c) => ({
+    value: c.value,
+    names: c.names.map((name) => ({ rt: recipeLibToks(name), rk: recipeLibKey(name) })),
+  }));
+  // The answer is a pure function of the dish text, and the same dishes recur
+  // across a menu's weeks — remember each one for the life of this resolver.
+  const memo = new Map<string, T | undefined>();
+  const resolveOnce = (dish: string): T | undefined => {
     // A slot's recipe may come ONLY from the component that gives the dish its
     // identity — its first substantive one (primaryDishPart; bracket-aware, so
     // a " + " inside a portion annotation no longer shreds it, and a tempering
@@ -2272,12 +2319,10 @@ export function buildNameResolver<T>(
     if (!pt.length) return undefined;
     const pk = recipeLibKey(pill);
     let best: { r: T; hit: number; slack: number; pos: number } | undefined;
-    for (const c of candidates) {
-      for (const name of c.names) {
-        const rt = recipeLibToks(name);
+    for (const c of prepared) {
+      for (const { rt, rk } of c.names) {
         if (!rt.length) continue;
         const hit = rt.filter((t) => contains(pk, t)).length;
-        const rk = recipeLibKey(name);
         const extra = pt.filter((t) => !contains(rk, t)).length;
         // (a) near-equality (≥2 title tokens hit, ≤1 missed, ≤1 extra), or
         // (b) the ENTIRE multi-token recipe title appears in the primary
@@ -2362,6 +2407,12 @@ export function buildNameResolver<T>(
       if (owns && (!alt || width < alt.width)) alt = { r: c.value, width };
     }
     return alt?.r;
+  };
+  return (dish: string): T | undefined => {
+    if (memo.has(dish)) return memo.get(dish);
+    const r = resolveOnce(dish);
+    memo.set(dish, r);
+    return r;
   };
 }
 
@@ -2541,13 +2592,23 @@ export function buildDishRecipeResolver(sources: {
   // information — a catalogue remedy carries contraindications and cautions the
   // generated recipe has no way to know about, so the AI version winning meant a
   // client could read a method with the warnings stripped off.
-  return (dish: string): LetterRecipe | undefined => {
+  const resolveOnce = (dish: string): LetterRecipe | undefined => {
     const head = primaryDishPart(dish);
     const libR = sources.fromLibrary(dish);
     if (libR && recipeConsistentWithDish(head, libR)) return libR;
     const remR = sources.fromRemedy(dish);
     if (remR) return remR;
     return matchPackRecipe(head, sources.packRecipes);
+  };
+  // Pure in the dish text for a given set of sources, and the payload asks the
+  // same dishes again and again (today's meals, every week's nourishment note,
+  // the recipe pack) — answer each once. Speed only; same object returned.
+  const memo = new Map<string, LetterRecipe | undefined>();
+  return (dish: string): LetterRecipe | undefined => {
+    if (memo.has(dish)) return memo.get(dish);
+    const r = resolveOnce(dish);
+    memo.set(dish, r);
+    return r;
   };
 }
 
@@ -3231,10 +3292,39 @@ async function priorPlansForClient(clientId: string): Promise<Dict[]> {
     } catch {
       continue;
     }
-    for (const name of entries) {
-      if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
-      const d = await readYamlIfExists(path.join(dir, name));
-      if (d && d.client_id === clientId) out.push(d);
+    for (const { d } of await readYamlsMentioning(dir, entries, clientId)) {
+      if (d.client_id === clientId) out.push(d);
+    }
+  }
+  return out;
+}
+
+/**
+ * The `.yaml`/`.yml` files among `entries` whose text mentions `needle`,
+ * parsed, in `entries` order. Speed only: every file is read at once, and a
+ * file that never mentions the id/token being looked for is not parsed at all —
+ * it cannot hold `client_id: <id>` or `app_token: <token>` without containing
+ * the string (ids and tokens are plain, unquoted-safe text). A plan YAML runs to
+ * hundreds of KB, so parsing every one per app open was most of the token
+ * lookup. Unreadable or non-mapping files are skipped, exactly as
+ * readYamlIfExists does.
+ */
+async function readYamlsMentioning(
+  dir: string,
+  entries: string[],
+  needle: string,
+): Promise<{ name: string; d: Dict }[]> {
+  const names = entries.filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"));
+  const raws = await Promise.all(names.map((n) => readIfExists(path.join(dir, n))));
+  const out: { name: string; d: Dict }[] = [];
+  for (let i = 0; i < names.length; i++) {
+    const raw = raws[i];
+    if (raw == null || !raw.includes(needle)) continue;
+    try {
+      const d = yaml.load(raw);
+      if (d && typeof d === "object") out.push({ name: names[i], d: d as Dict });
+    } catch {
+      /* malformed — skipped, as readYamlIfExists would */
     }
   }
   return out;
@@ -3251,10 +3341,8 @@ async function latestPublishedPlanForClient(
     return null;
   }
   let best: Dict | null = null;
-  for (const name of entries) {
-    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
-    const d = await readYamlIfExists(path.join(dir, name));
-    if (!d || d.client_id !== clientId) continue;
+  for (const { d } of await readYamlsMentioning(dir, entries, clientId)) {
+    if (d.client_id !== clientId) continue;
     if (!best || isNewerPublishedPlan(d, best)) best = d;
   }
   return best ? { plan: best } : null;
@@ -3294,9 +3382,23 @@ async function allPersonDirs(): Promise<Array<[string, string]>> {
 async function resolveClientAppToken(
   token: string,
 ): Promise<{ plan: Dict; clientId: string } | null> {
-  for (const [id, personDir] of await allPersonDirs()) {
-    const yml = path.join(personDir, "client.yaml");
-    const d = await readYamlIfExists(yml);
+  // Every client.yaml read at once (order kept); only a file that actually
+  // contains the token is parsed — the rest cannot match (speed only).
+  const people = await allPersonDirs();
+  const raws = await Promise.all(
+    people.map(([, personDir]) => readIfExists(path.join(personDir, "client.yaml"))),
+  );
+  for (let i = 0; i < people.length; i++) {
+    const [id] = people[i];
+    const raw = raws[i];
+    if (raw == null || !raw.includes(token)) continue;
+    let d: Dict | null = null;
+    try {
+      const parsed = yaml.load(raw);
+      d = parsed && typeof parsed === "object" ? (parsed as Dict) : null;
+    } catch {
+      d = null;
+    }
     if (!d || d.app_token !== token) continue;
     const found = await latestPublishedPlanForClient(id);
     if (!found) return null;
@@ -3335,10 +3437,7 @@ async function loadPublishedPlan(slugOrToken: { token: string }): Promise<{ plan
   } catch {
     return null;
   }
-  for (const name of entries) {
-    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
-    const d = await readYamlIfExists(path.join(dir, name));
-    if (!d) continue;
+  for (const { name, d } of await readYamlsMentioning(dir, entries, slugOrToken.token)) {
     if (d.letter_token === slugOrToken.token) return { plan: d, file: name };
   }
   return null;

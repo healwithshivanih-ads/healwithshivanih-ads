@@ -266,14 +266,16 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     }
   }, [hydrated, logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug, lastSeenUpdatedAt, loggedDays, lastSeenWeek, lastSeenDay, STORE]);
 
+  // The splash covers the page only until hydration (local state restored) —
+  // it used to hold for a fixed 1.3 s on EVERY open, on top of the server
+  // render. Now it fades the moment the app is ready; the 400 ms is the CSS
+  // fade-out itself (.fade-out in app.css), not a wait.
   useEffect(() => {
-    const t1 = setTimeout(() => setFading(true), 900);
-    const t2 = setTimeout(() => setBooting(false), 1300);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, []);
+    if (!hydrated) return;
+    setFading(true);
+    const t = setTimeout(() => setBooting(false), 400);
+    return () => clearTimeout(t);
+  }, [hydrated]);
 
   // Adoption: report when the app is running INSTALLED (home-screen /
   // standalone) or an install completes — a truer signal than an "open".
