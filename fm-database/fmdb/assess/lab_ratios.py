@@ -439,12 +439,30 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # bogus "verify units" ratio. NOTE: the AI extractor path hits the SAME
     # code — this fix corrects both manual + API ingestion.
     if t4_free and t3_free and t4_free > 0:
-        conv = t3_free / t4_free
+        # The 0.2–0.35 band is a MOLAR ratio (pmol/L ÷ pmol/L). Indian labs
+        # mostly report FT4 in ng/dL (0.9–1.8) and FT3 in pg/mL — dividing those
+        # raw gives ~3 and read as "hyperthyroid" for a client with a TSH of
+        # 12.7 (cl-906, Oct 2026). FT4 in pmol/L runs ~10–25, so an FT4 under 5
+        # means the conventional units: convert both (FT3 ×1.536, FT4 ×12.87).
+        if t4_free < 5:
+            conv = (t3_free * 1.536) / (t4_free * 12.87)
+        else:
+            conv = t3_free / t4_free
         flag = "low" if conv < 0.2 else ("optimal" if conv < 0.35 else "suboptimal")
+        if conv < 0.2:
+            conv_msg = "Poor conversion — check selenium, zinc, cortisol, liver, iron"
+        elif conv < 0.35:
+            conv_msg = "Good conversion efficiency"
+        elif tsh is not None and tsh > 2.5:
+            conv_msg = ("High ratio with a raised TSH — the thyroid is being pushed to "
+                        "make relatively more T3; conversion is not the limiting step, "
+                        "hormone output is")
+        else:
+            conv_msg = "High — check units, T3 medication, or a hyperthyroid pattern"
         add("T3/T4 conversion ratio", conv, "",
-            "0.2–0.35 fT3/fT4; low = poor peripheral conversion",
+            "0.2–0.35 fT3/fT4 (molar); low = poor peripheral conversion",
             flag,
-            f"T3/T4 {round(conv,3)}: {'Poor conversion — check selenium, zinc, cortisol, liver, iron' if conv<0.2 else 'Good conversion efficiency' if conv<0.35 else 'High — verify or hyperthyroid'}",
+            f"T3/T4 {round(conv,3)}: {conv_msg}",
             PANEL_THYROID, computed=True)
 
     if tsh is not None and t3_free and t3_free > 0:
@@ -786,7 +804,14 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     if tg is not None and hdl is not None and hdl > 0:
         import math as _math
         try:
-            aip = _math.log10(tg / hdl)
+            # AIP is defined on MOLAR concentrations. Indian labs report TG and
+            # HDL in mg/dL; log10 of the mg/dL quotient overstates AIP by
+            # log10(38.67/88.57) ≈ 0.36 (cl-906: 0.63 shown vs 0.27 true).
+            # mmol/L values are small (TG < ~20, HDL < ~5).
+            if tg > 20 or hdl > 5:
+                aip = _math.log10((tg / 88.57) / (hdl / 38.67))
+            else:
+                aip = _math.log10(tg / hdl)
             flag = "high" if aip > 0.24 else ("suboptimal" if aip > 0.1 else "optimal")
             add("Atherogenic Index of Plasma (AIP)", aip, "",
                 "<0.10 low risk; 0.10–0.24 medium; >0.24 high (small dense LDL)",
@@ -1230,8 +1255,34 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         f"reserve / the menopause transition.",
         PANEL_HORMONES_F)
 
-    h_pylori = _find(extracted_labs,
-        r"helicobacter|h\.?\s?pylori|pylori antigen|pylori.stool")
+    # A BLOOD ANTIBODY (IgG/IgA) and a STOOL ANTIGEN are different tests with
+    # different cutoffs and meanings. Both used to land in the antigen branch,
+    # so a NEGATIVE IgG of 18 EIU (cutoff 30) read as "Positive — active
+    # infection" against the antigen's 1.1 index cutoff (cl-906, Oct 2026).
+    _HP_PAT = r"helicobacter|h\.?\s?pylori|pylori antigen|pylori.stool"
+    _HP_AB = re.compile(r"\big[agm]\b|antibod|serolog|igg|iga|igm", re.I)
+    _hp_ab_labs = [l for l in extracted_labs
+                   if re.search(_HP_PAT, str(l.get("test_name", "")).lower().replace(".", ""))
+                   and _HP_AB.search(str(l.get("test_name", "")))]
+    _hp_ag_labs = [l for l in extracted_labs if l not in _hp_ab_labs]
+    hp_ab = _find(_hp_ab_labs, _HP_PAT)
+    if hp_ab is not None:
+        hp_cut = _range_upper(_find_range(_hp_ab_labs, _HP_PAT))
+        if hp_cut is None:
+            hp_ab_flag, hp_ab_msg = "normal", "Compare with the lab's own cutoff"
+        elif hp_ab >= hp_cut:
+            hp_ab_flag = "high"
+            hp_ab_msg = ("Antibodies present — past or current exposure. Blood antibodies "
+                         "stay positive long after the infection clears, so confirm active "
+                         "infection with a stool antigen or breath test before acting")
+        else:
+            hp_ab_flag, hp_ab_msg = "optimal", "Non-reactive — no evidence of H. pylori exposure"
+        add("H. pylori antibody (blood)", hp_ab, "",
+            (f"<{hp_cut:g} non-reactive (lab cutoff)" if hp_cut is not None
+             else "assay-dependent — use the lab's cutoff"),
+            hp_ab_flag, f"H. pylori antibody {hp_ab}: {hp_ab_msg}", "Gut & Digestive")
+
+    h_pylori = _find(_hp_ag_labs, _HP_PAT)
     if h_pylori is not None:
         hp_flag = "high" if h_pylori >= 1.1 else ("suboptimal" if h_pylori >= 0.9 else "optimal")
         add("H. pylori (stool antigen)", h_pylori, "index",
