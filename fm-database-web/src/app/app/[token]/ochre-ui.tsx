@@ -474,67 +474,6 @@ export function SuppRow({
   );
 }
 
-export function SupplementSlots({
-  logged,
-  onToggle,
-  onLogAll,
-  onOpenRemedy,
-}: {
-  logged: Record<string, string>;
-  onToggle: (id: string) => void;
-  onLogAll: () => void;
-  onOpenRemedy?: (r: AppRemedy) => void;
-}) {
-  const { supplements, slotOrder, remedies } = useOchre();
-  const slotGlyph: Record<string, string> = { Morning: "sun", "With meals": "bowl", Bedtime: "moon" };
-  const suppRemedies = remedies.filter((r) => r.supplementLike && r.assigned && r.daily);
-  return (
-    <div className="card" style={{ padding: "4px 4px 12px" }}>
-      {slotOrder.map((slot) => {
-        const items = supplements
-          .filter((s) => s.slot === slot && !s.asNeeded)
-          .sort((a, b) => a.chronoRank - b.chronoRank);
-        const rems = suppRemedies.filter((r) => (r.suppSlot ?? r.when) === slot);
-        if (!items.length && !rems.length) return null;
-        return (
-          <div key={slot}>
-            <div className="slot-label">
-              <span className="glyph">
-                <Icon name={slotGlyph[slot]} size={15} />
-              </span>
-              {slot}
-            </div>
-            <div style={{ padding: "0 10px" }}>
-              {items.map((s) => (
-                <SuppRow key={s.id} supp={s} logged={!!logged[s.id]} takenAt={logged[s.id]} onToggle={onToggle} />
-              ))}
-              {rems.map((r) => {
-                const id = "rx-" + r.slug;
-                return (
-                  <SuppRow
-                    key={id}
-                    isRemedy
-                    supp={{ id, name: r.name, dose: r.dose, slot, timing: r.suppTiming ?? r.when ?? "" }}
-                    logged={!!logged[id]}
-                    takenAt={logged[id]}
-                    onToggle={onToggle}
-                    onOpen={onOpenRemedy ? () => onOpenRemedy(r) : undefined}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}
-      <div style={{ padding: "0 10px" }}>
-        <button className="log-all" onClick={onLogAll}>
-          <Icon name="check" size={17} /> Log everything for today
-        </button>
-      </div>
-    </div>
-  );
-}
-
 // ── phase ribbon ─────────────────────────────────────────────────────────────
 
 export function PhaseRibbon() {

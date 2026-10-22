@@ -12,6 +12,7 @@
  * stays deliberately empty. That emptiness is the ₹85,000 boundary, not a gap.
  */
 
+import { partOfDay } from "./practice-kind";
 import type { AppMeal, AppRecipe, AppWeekMenu, ClientAppData } from "./client-app";
 import { loadLibraryRecipes, splitDishComponents } from "./client-app";
 import { deriveSomatic } from "./somatic";
@@ -111,11 +112,16 @@ export async function buildGuidedAppData(
   // same "staging protects, must not read as withholding" rule as package.
   const openDefs = protocol.practices.filter((p) => (p.startWeek ?? 1) <= week);
   const practicesComingLater = protocol.practices.length - openDefs.length;
+  // Guided protocols are authored as daily practices (each is a session the
+  // app runs), so they are never reclassified — only placed in the day.
   const practices = openDefs.map((p, i) => ({
     id: `gp-${i}`,
     name: p.name,
     when: p.cadence,
     ...(p.details ? { details: p.details } : {}),
+    kind: "daily" as const,
+    part: partOfDay(p.name, p.cadence),
+    dueToday: true,
   }));
   const practiceRaw: Dict[] = openDefs.map((p) => ({
     name: p.name,
@@ -344,6 +350,7 @@ export async function buildGuidedAppData(
     allSupplements: [],
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices,
+    guidelines: [],
     practicesComingLater,
     seedCycling: null,
     periodCare: null,

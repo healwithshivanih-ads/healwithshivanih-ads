@@ -21,7 +21,7 @@ from __future__ import annotations
 import sys
 
 from datetime import date, datetime
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -1266,6 +1266,16 @@ class PracticeItem(BaseModel):
     # as a plain 4-in/6-out breathing session, losing the hand pressure that IS
     # the practice). Leave None for ordinary freeform practices.
     somatic_practice: Optional[str] = None
+    # How the client app treats this practice. None = decided automatically
+    # from the wording (fm-database-web/src/lib/fmdb/practice-kind.ts):
+    #   "daily"     — a tick on Today, counted in the day's ring
+    #   "weekly"    — N times a week; offered on its days, never counted against
+    #                 a day it was not due
+    #   "as_needed" — a tool for a moment (EFT, a reset); lives in Practices
+    #   "guideline" — a standing rule ("one coffee, before noon"). Shown as
+    #                 guidance, asked about in the weekly check-in, never ticked.
+    # Set it only to correct the automatic call.
+    app_kind: Optional[Literal["daily", "weekly", "as_needed", "guideline"]] = None
     # Which layer of the plan this practice belongs to. 1 (or None) is the
     # foundation the client starts with; higher numbers open later in the plan,
     # roughly every three weeks. The plan stays whole either way — this only

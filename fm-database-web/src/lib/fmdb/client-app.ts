@@ -1,3 +1,4 @@
+import { classifyPracticeKind, supplementCadence, weeklyDueToday, type DayPart } from "./practice-kind";
 import "server-only";
 
 /**
@@ -380,6 +381,9 @@ export interface AppSupplement {
    *  week" heads-up so the client can order it in time. Not part of today's
    *  routine until it actually starts. */
   startsNextWeek?: boolean;
+  /** Taken less than daily ("once weekly", "alternate days"). Offered on Today
+   *  but never counted against the day — see practice-kind.ts. */
+  notDaily?: "weekly" | "alternate";
   /** Phase metadata — drives the Plan tab's "whole plan, by week" grouping. */
   startWeek?: number;
   durationWeeks?: number | null;
@@ -1133,6 +1137,28 @@ export function buildEndgame(
   };
 }
 
+/** A practice the client can tick today. `part` places it on the day
+ *  timeline; `kind` "weekly" items are offered but never counted against the
+ *  day (see practice-kind.ts). */
+export interface AppPractice {
+  id: string;
+  name: string;
+  when: string;
+  details?: string;
+  kind: "daily" | "weekly";
+  part: DayPart;
+  /** false for a weekly practice with named days that are not today */
+  dueToday: boolean;
+  perWeek?: number;
+}
+
+export interface AppGuideline {
+  id: string;
+  name: string;
+  details?: string;
+  kind: "guideline" | "as_needed";
+}
+
 export interface ClientAppData {
   clientId: string;
   planSlug: string;
@@ -1261,7 +1287,13 @@ export interface ClientAppData {
    *  tab's "whole plan, by week" view. Today's surfaces use `supplements`. */
   allSupplements: AppSupplement[];
   slotOrder: string[];
-  practices: { id: string; name: string; when: string; details?: string }[];
+  /** Tickable practices: daily ones, and weekly ones (`dueToday` says whether
+   *  today is one of their days). Standing rules and as-needed tools are NOT
+   *  here — see `guidelines`. */
+  practices: AppPractice[];
+  /** Standing rules ("one coffee, before noon") and as-needed tools. Shown as
+   *  guidance, asked about in the weekly check-in, never ticked daily. */
+  guidelines: AppGuideline[];
   /** Practices on the plan that have not opened yet. The client sees a
    *  single warm line, never a count of what they are "missing" — the
    *  staging exists to protect them, and must not read as withholding. */
@@ -3633,6 +3665,7 @@ async function buildDiscoveryAppData(
     allSupplements: [],
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: [],
+    guidelines: [],
     practicesComingLater: 0,
     seedCycling: null,
     periodCare: null,
@@ -4360,8 +4393,13 @@ export async function loadClientAppData(
     // 'current'; the next-week heads-up reads 'upcoming'. 'later'/'past' live in
     // allSupplements so the Plan tab can show the whole plan but they never leak
     // into today's slots / check-in / counts.
+    const cad = asNeeded ? null : supplementCadence(dose, timing);
+    if (cad) (suppItem as AppSupplement).notDaily = cad.cadence;
     allSupplements.push(suppItem);
-    if (status === "current") supplements.push(suppItem);
+    // A supplement with named days ("Mon/Wed/Fri") is on Today only on those
+    // days; one that just says "once weekly" is offered every day, uncounted.
+    const dueToday = !cad?.days || cad.days.includes(refUTC.getUTCDay());
+    if (status === "current" && dueToday) supplements.push(suppItem);
     else if (status === "upcoming") upcomingSupplements.push(suppItem);
   }
   // Order each list by when it's taken (stable: authored order is kept within
@@ -5050,7 +5088,44 @@ export async function loadClientAppData(
   }
   // Drop any locked technique from the daily checklist too — don't surface a
   // to-do the client has no way to do yet.
-  const practicesVisible = hideIds.length ? practices.filter((p) => !hideIds.includes(p.id)) : practices;
+  const practicesOpen = hideIds.length ? practices.filter((p) => !hideIds.includes(p.id)) : practices;
+
+  // ---- what kind of thing each practice is (practice-kind.ts) --------------
+  // Rules leave the daily checklist; weekly items appear on their days; as-
+  // needed tools go to the guidance card. The FULL list above still feeds the
+  // guided-session matchers (EFT, breathwork, sleep) — this split is display
+  // only, so an as-needed EFT practice keeps its player in the Practices tab.
+  const rawById = new Map(practices.map((p, i) => [p.id, practiceRaw[i]] as const));
+  const todayDowNum = refUTC.getUTCDay();
+  const practicesVisible: AppPractice[] = [];
+  const guidelines: AppGuideline[] = [];
+  for (const p of practicesOpen) {
+    const raw = rawById.get(p.id) ?? {};
+    const guided =
+      !!asStr(raw.somatic_practice) ||
+      asArr(raw.exercises).length > 0 ||
+      somatic.some((sm) => sm.practiceId === p.id) ||
+      exerciseSessions.some((ex) => ex.practiceId === p.id);
+    const kind = classifyPracticeKind(asStr(raw.name) || p.name, asStr(raw.cadence), {
+      override: raw.app_kind,
+      guided,
+    });
+    if (kind.kind === "daily" || kind.kind === "weekly") {
+      practicesVisible.push({
+        ...p,
+        kind: kind.kind,
+        part: kind.part,
+        // Weekly items not due today stay in the list (the check-in asks about
+        // them) but the day view leaves them off.
+        dueToday: kind.kind === "daily" || weeklyDueToday(kind, todayDowNum),
+        ...(kind.perWeek ? { perWeek: kind.perWeek } : {}),
+      });
+    } else if (kind.kind === "guideline" || (kind.kind === "as_needed" && !guided)) {
+      // A guided as-needed tool (EFT) already has its home and its player on
+      // the Practices tab; only the plain ones need the guidance card.
+      guidelines.push({ id: p.id, name: p.name, ...(p.details ? { details: p.details } : {}), kind: kind.kind });
+    }
+  }
 
   // ---- principles (from the letter's meals note + plan meal_timing) --------
   const principles: { t: string; b: string }[] = [];
@@ -6173,6 +6248,7 @@ export async function loadClientAppData(
     allSupplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices: practicesVisible,
+    guidelines,
     practicesComingLater,
     seedCycling,
     periodCare,

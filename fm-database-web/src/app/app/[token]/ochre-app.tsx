@@ -11,6 +11,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isGrowingTreeEnabled } from "./growing-tree-flag";
 import { queueTicks, type TickItem } from "./daily-ticks";
+import { buildDay, dayTotals } from "./day-plan";
+import { TodayDaySections } from "./ochre-day";
 import type { AppRemedy, ClientAppData } from "@/lib/fmdb/client-app";
 import { Icon, Mark, OchreContext } from "./ochre-context";
 import { BottomNav, Header } from "./ochre-ui";
@@ -419,11 +421,6 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     }
   }, [hydrated, lastSeenPlanSlug, lastSeenUpdatedAt, data.planSlug, data.planUpdatedAt]);
 
-  const practices = useMemo(
-    () => data.practices.map((p) => ({ ...p, done: !!practicesDone[p.id] })),
-    [data.practices, practicesDone],
-  );
-
   const toggleSupp = (id: string) =>
     setLogged((prev) => {
       const next = { ...prev };
@@ -431,18 +428,23 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       else next[id] = nowTime();
       return next;
     });
-  const logAll = () => {
+  // "Done with the morning — tick all": marks only what is still open, and
+  // never UN-ticks anything (the old "Log everything" overwrote the whole map,
+  // so a time taken earlier was replaced by the time of the button press).
+  const markDone = ({ logIds, practiceIds }: { logIds: string[]; practiceIds: string[] }) => {
     const tt = nowTime();
-    const next: Record<string, string> = {};
-    data.supplements.forEach((s) => {
-      next[s.id] = tt;
-    });
-    data.remedies
-      .filter((r) => r.assigned && r.daily)
-      .forEach((r) => {
-        next["rx-" + r.slug] = tt;
+    if (logIds.length)
+      setLogged((prev) => {
+        const next = { ...prev };
+        for (const id of logIds) if (!next[id]) next[id] = tt;
+        return next;
       });
-    setLogged(next);
+    if (practiceIds.length)
+      setPracticesDone((prev) => {
+        const next = { ...prev };
+        for (const id of practiceIds) next[id] = true;
+        return next;
+      });
   };
   const togglePractice = (id: string) => setPracticesDone((prev) => ({ ...prev, [id]: !prev[id] }));
   const addMove = (m: { label: string; kind: string; mins: number; day: string }) =>
@@ -509,9 +511,17 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // with a single ten-second tap), and it is what makes "log today" a
   // one-action habit rather than a checklist-only one.
   const feelToday = feel[todayIso()] != null;
-  const dailyTotal = data.supplements.length + practices.length + dailyRemedies.length + 1;
-  const dailyDone =
-    Object.keys(logged).length + practices.filter((p) => p.done).length + (feelToday ? 1 : 0);
+  // The ring counts what is due EVERY day (day-plan.ts): standing rules,
+  // weekly items and as-needed supplements are not owed by any one day. The
+  // old sum counted all of them, so a day could not be completed — one
+  // client's best days read about a third.
+  const dayBands = useMemo(
+    () => buildDay({ meals: data.meals, supplements: data.supplements, remedies: data.remedies, practices: data.practices }),
+    [data.meals, data.supplements, data.remedies, data.practices],
+  );
+  const dayCount = dayTotals(dayBands, logged, practicesDone);
+  const dailyTotal = dayCount.total + 1;
+  const dailyDone = dayCount.done + (feelToday ? 1 : 0);
 
   // Send today's checklist to the coach. These ticks are the richest adherence
   // signal the app has — per supplement, per practice, every day — and they
@@ -539,7 +549,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         done: !!logged["rx-" + r.slug],
         at: logged["rx-" + r.slug] ?? null,
       })),
-      ...data.practices.map((p) => ({
+      // Only practices due today — a weekly one on a day it was not due would
+      // read as "skipped" in the coach's adherence view.
+      ...data.practices.filter((p) => p.dueToday !== false).map((p) => ({
         kind: "practice" as const,
         id: p.id,
         name: p.name,
@@ -770,7 +782,22 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   } else if (data.mode === "MAINTENANCE" && tab === "today") {
     // Hands-free maintenance — the home surfaces the month's card + back-on-track;
     // menus / recipes / tracking stay open via the other tabs.
-    screen = <MaintenanceHome goTab={go} onRenew={() => setMaintOpen(true)} />;
+    screen = (
+      <MaintenanceHome goTab={go} onRenew={() => setMaintOpen(true)}>
+        <TodayDaySections
+          logged={logged}
+          practicesDone={practicesDone}
+          onToggleSupp={toggleSupp}
+          onTogglePractice={togglePractice}
+          onMarkDone={markDone}
+          openMeal={openMeal}
+          openRemedy={openRemedy}
+          openBreath={openBreath}
+          openSomatic={openSomatic}
+          openExercise={openExercise}
+        />
+      </MaintenanceHome>
+    );
   } else if (data.mode === "LIBRARY" && tab === "today") {
     // Programme complete with no continuation — the home becomes the frozen
     // library floor. Plan / Progress / Labs / Coach stay reachable as-is.
@@ -787,8 +814,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         )}
       <TodayScreen
         logged={logged}
+        practicesDone={practicesDone}
         onToggleSupp={toggleSupp}
-        onLogAll={logAll}
+        onMarkDone={markDone}
         dailyDone={dailyDone}
         dailyTotal={dailyTotal}
         streak={streak}
@@ -804,7 +832,6 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         openSleep={openSleep}
         openSomatic={openSomatic}
         openExercise={openExercise}
-        practices={practices}
         onTogglePractice={togglePractice}
         openGrocery={openGrocery}
         feelToday={feelToday}
@@ -852,9 +879,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   return (
     <OchreContext.Provider value={data}>
-      {/* Sequoya Lite: same app, Sequoya voice — a second class flips the tokens. */}
-      <div className={"ochre-app" + (guided ? " sequoya" : "")}>
-        {guided && <SequoyaFonts />}
+      {/* The Sequoya palette (ash / charcoal / fireweed, Fraunces + Instrument
+          Sans) for every client since 2026-10-22 — it began as the guided
+          tier's theme and is now the app's look. Colours and type only: the
+          wordmark still follows the tier (ochre-ui Header), so no client sees
+          the Sequoya NAME before its launch. */}
+      <div className="ochre-app sequoya">
+        <SequoyaFonts />
         <div className={"app" + (textLarge ? " text-lg" : "")}>
           <Header alert={!submitted && !onHold} onAccount={() => setOverlay({ type: "account" })} />
           {showPlanUpdatedBanner && (
@@ -1004,7 +1035,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 /** Friendly error state for invalid / expired links. */
 export function OchreAppError() {
   return (
-    <div className="ochre-app">
+    <div className="ochre-app sequoya">
+      <SequoyaFonts />
       <div className="app">
         <div className="token-screen" style={{ position: "relative", height: "100dvh" }}>
           <span className="big-mark">

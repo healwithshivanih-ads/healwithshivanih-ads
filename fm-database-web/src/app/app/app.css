@@ -2710,3 +2710,153 @@ video.ex-stepfig { object-fit: contain; border-radius: 4px; }
 .rn-cta { background: #c94a77; }
 .rn-cta:active { background: #a93a62; }
 }
+
+/* ========================================================================
+   "Your day" (ochre-day.tsx) — one time-ordered list per part of the day,
+   replacing the separate meals / supplements / practices / remedies cards.
+   Folded bands are one line each; the part of the day she is in is open.
+   ======================================================================== */
+.ochre-app {
+.day { display: flex; flex-direction: column; gap: 10px; }
+.day-band {
+  background: var(--paper-2);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.day-band.now { box-shadow: var(--shadow-card), inset 0 0 0 1.5px var(--forest-tint-2); }
+.db-head { display: flex; align-items: center; }
+.db-toggle {
+  flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px;
+  padding: 13px 14px; background: none; border: none; cursor: pointer;
+  font: inherit; text-align: left; color: inherit;
+}
+.db-quick {
+  display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0;
+  margin-right: 12px; padding: 8px 12px;
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--forest-deep);
+  background: var(--forest-tint); border: none; border-radius: var(--r-pill); cursor: pointer;
+}
+.db-quick:active { background: var(--forest-tint-2); }
+.db-glyph {
+  width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--paper); color: var(--ochre);
+  box-shadow: inset 0 0 0 1px var(--line-soft);
+}
+.day-band.complete .db-glyph { background: var(--forest); color: #fff; box-shadow: none; }
+.db-titles { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.db-title {
+  font-family: var(--serif); font-size: 17px; color: var(--forest-deep);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.db-now {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: #fff; background: var(--forest);
+  padding: 3px 7px; border-radius: var(--r-pill);
+}
+.db-sub {
+  font-size: 12.5px; color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.db-count {
+  font-size: 12.5px; font-weight: 600; color: var(--muted);
+  font-variant-numeric: tabular-nums; flex-shrink: 0;
+}
+.db-count.done { color: var(--forest); }
+.db-chev { color: var(--muted); display: inline-flex; transform: rotate(90deg); transition: transform .2s ease; }
+.db-chev.up { transform: rotate(-90deg); }
+.db-body { border-top: 1px solid var(--line-soft); }
+.db-body .supp, .db-body .practice, .db-body .meal-lite { border-bottom: 1px solid var(--line-soft); }
+.db-body > :last-child { border-bottom: none; }
+.day-meal { background: var(--paper); }
+.db-markall {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: calc(100% - 24px); margin: 10px 12px 12px; padding: 12px;
+  font: inherit; font-size: 14px; font-weight: 600; color: var(--forest-deep);
+  background: var(--forest-tint); border: none; border-radius: 12px; cursor: pointer;
+}
+.db-markall:active { background: var(--forest-tint-2); }
+.day-practice { cursor: default; }
+.day-practice .check-sq { cursor: pointer; }
+.day-practice .p-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.day-practice .p-name { flex: none; }
+.day-practice .p-guide { font: inherit; border: none; cursor: pointer; }
+
+/* Guidelines — read, never ticked. A dot, not a checkbox, so nothing reads
+   as undone. */
+.guide-card { padding: 14px 6px 8px; }
+.guide-head {
+  display: flex; align-items: center; gap: 7px; padding: 0 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ochre-deep);
+}
+.guide-note { margin: 5px 10px 6px; font-size: 13px; color: var(--muted); line-height: 1.45; }
+.guide-row { border-bottom: 1px solid var(--line-soft); }
+.guide-row:last-child { border-bottom: none; }
+.guide-main {
+  width: 100%; display: flex; align-items: flex-start; gap: 11px;
+  padding: 11px 10px; background: none; border: none; cursor: pointer;
+  font: inherit; text-align: left; color: inherit;
+}
+.guide-dot {
+  width: 7px; height: 7px; border-radius: 50%; margin-top: 7px; flex-shrink: 0;
+  background: var(--forest);
+}
+.guide-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.guide-name { font-size: 14.5px; line-height: 1.4; color: var(--ink); }
+.guide-sub { font-size: 12.5px; color: var(--muted); }
+.guide-more { font-size: 12px; color: var(--ochre); padding-top: 3px; }
+.guide-details {
+  padding: 0 14px 12px 28px; font-size: 13px; line-height: 1.55; color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.app.text-lg .db-title { font-size: 19px; }
+.app.text-lg .db-sub, .app.text-lg .guide-sub, .app.text-lg .guide-details { font-size: 14px; }
+.app.text-lg .guide-name { font-size: 16px; }
+}
+.ochre-app {
+.steady-card {
+  display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+  color: var(--forest);
+}
+.steady-names { flex: 1; min-width: 0; font-size: 13.5px; line-height: 1.45; color: var(--ink); }
+.steady-change {
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--forest-deep);
+  background: var(--forest-tint); border: none; border-radius: var(--r-pill);
+  padding: 6px 12px; cursor: pointer; flex-shrink: 0;
+}
+}
+/* Crisp bullets (crisp.ts) — maintenance home's monthly card + reset. */
+.ochre-app {
+.crisp-label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+.crisp-ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.crisp-li { border-bottom: 1px solid var(--line-soft); }
+.crisp-li:last-child { border-bottom: none; }
+.crisp-btn {
+  width: 100%; display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; background: none; border: none; cursor: pointer;
+  font: inherit; text-align: left; color: var(--ink);
+}
+.crisp-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+.crisp-head { flex: 1; font-size: 14.5px; line-height: 1.4; }
+.crisp-more { font-size: 12px; color: var(--muted); padding-top: 3px; }
+.crisp-rest { display: block; padding: 0 0 9px 16px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.crisp-all {
+  margin-top: 6px; padding: 0; background: none; border: none; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: var(--forest-deep);
+}
+.bot-toggle {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  background: none; border: none; padding: 0; cursor: pointer; font: inherit; text-align: left;
+}
+.maint-link {
+  display: flex; justify-content: space-between; width: 100%; margin-top: 14px;
+  padding: 14px 16px; border: none; border-radius: var(--r-card); cursor: pointer;
+  font: inherit; font-size: 14.5px; font-weight: 600; color: var(--forest-deep);
+  background: var(--paper-2); box-shadow: var(--shadow-card);
+}
+.app.text-lg .crisp-head { font-size: 16px; }
+.app.text-lg .crisp-rest { font-size: 14.5px; }
+}

@@ -178,8 +178,10 @@ export function Icon({
 export function Mark({ size = 26 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 26 26" aria-hidden>
-      <rect x="2" y="11" width="14" height="4" rx="2" fill="#2D3047" />
-      <circle cx="21" cy="13" r="4" fill="#C08080" />
+      {/* Theme colours (charcoal + fireweed under Sequoya), with the original
+          ink + rose as the fallback outside the app shell. */}
+      <rect x="2" y="11" width="14" height="4" rx="2" style={{ fill: "var(--ink, #2D3047)" }} />
+      <circle cx="21" cy="13" r="4" style={{ fill: "var(--forest, #C08080)" }} />
     </svg>
   );
 }

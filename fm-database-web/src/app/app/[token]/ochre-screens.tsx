@@ -8,8 +8,10 @@ import { useState } from "react";
 import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
 import { remedySlots, type RemedySlot } from "@/lib/fmdb/remedy-slots";
-import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
+import { DailyRing, RemedyCard, Section, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { MindBodyNudge } from "./ochre-eft";
+import { DayTimeline, GuidanceCard } from "./ochre-day";
+import { bandForHour } from "./day-plan";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 import { GrowingTree } from "./growing-tree";
@@ -17,12 +19,6 @@ import { isGrowingTreeEnabled } from "./growing-tree-flag";
 import { dailySeed } from "./daily-seed";
 import { FoundingMemberMark } from "@/components/sequoya/sequoya-brand";
 
-/** How many meal components the compact "today" row lists before it collapses
- *  the rest into "+N more". The row is two lines on a phone (.ml-dishes), which
- *  fits about five short items. Anything past this is COUNTED, never silently
- *  dropped — a capped-and-silent row hid a client's prescribed before-3pm juice
- *  entirely, and she had no way to know the row was incomplete. */
-const ML_MAX_COMPONENTS = 5;
 
 // ── time-of-day phase → the one thing to focus on right now ─────────────────
 
@@ -383,8 +379,9 @@ function SeedCyclingSection() {
 
 export function TodayScreen({
   logged,
+  practicesDone,
   onToggleSupp,
-  onLogAll,
+  onMarkDone,
   dailyDone,
   dailyTotal,
   streak,
@@ -400,7 +397,6 @@ export function TodayScreen({
   // longer consumed here — the mind-body entry card moved to the Practices tab.
   openSomatic,
   openExercise,
-  practices,
   onTogglePractice,
   openGrocery,
   feelToday,
@@ -408,8 +404,9 @@ export function TodayScreen({
   openLabs,
 }: {
   logged: Record<string, string>;
+  practicesDone: Record<string, boolean>;
   onToggleSupp: (id: string) => void;
-  onLogAll: () => void;
+  onMarkDone: (ids: { logIds: string[]; practiceIds: string[] }) => void;
   dailyDone: number;
   dailyTotal: number;
   streak: number;
@@ -426,7 +423,6 @@ export function TodayScreen({
   /** Opens one specific prescribed practice — a plan can carry several. */
   openSomatic: (practiceId: string) => void;
   openExercise: (practiceId: string) => void;
-  practices: { id: string; name: string; when: string; details?: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
   /** today's 1-5 energy tap is already in — hides the grow-today row */
@@ -438,20 +434,10 @@ export function TodayScreen({
   const data = useOchre();
   const hour = new Date().getHours();
   const ph = usePhaseNow(hour);
-  const externalRemedies = data.remedies.filter((r) => r.assigned && r.route === "external");
-  // Which practice cards have their "How" details expanded.
-  const [openPractice, setOpenPractice] = useState<Set<string>>(new Set());
-  const togglePracticeDetail = (id: string) =>
-    setOpenPractice((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
 
   const onCta = () => {
     if (ph.target === "supps") {
-      const el = document.getElementById("today-supps");
+      const el = document.getElementById("day-" + bandForHour(new Date().getHours())) ?? document.getElementById("today-day");
       if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
     } else if (ph.target === "guided-week") {
       const el = document.getElementById("guided-week");
@@ -526,23 +512,6 @@ export function TodayScreen({
         </div>
       </div>
 
-      {/* Today's seed — one line, different every day, gone tomorrow. The
-          daily-return hook: asks for nothing, ticks nothing. Personal
-          material (mind-body questions, already depth-gated server-side)
-          surfaces ~1 day in 3 when it exists; evergreen house-voice lines
-          otherwise. */}
-      {(() => {
-        const seed = dailySeed(data.clientId, new Date().toLocaleDateString("en-CA"), data.mindBodyReads);
-        return (
-          <div className="daily-seed">
-            <span className="daily-seed-kicker">
-              <Icon name="sparkle" size={12} /> Today&apos;s seed
-            </span>
-            <p className="daily-seed-line">{seed.text}</p>
-          </div>
-        );
-      })()}
-
       {/* THE daily action — one ten-second tap that grows the tree, keeps the
           streak alive, and gives the coach a mood datapoint. Shown until
           today's tap is in, then it simply isn't there. Not dismissible and
@@ -600,23 +569,12 @@ export function TodayScreen({
         </div>
       )}
 
-      {/* coach micro-copy — only when the coach actually wrote one */}
-      {data.client.coachLine && (
-        <div className="coach-line" style={{ marginTop: 14 }}>
-          <Icon name="sparkle" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
-          <div>
-            <div className="q">{data.client.coachLine}</div>
-            <div className="who">— {data.coach.name}</div>
-          </div>
-        </div>
-      )}
-
-      <Section title={data.meals.length ? "Your meals for today" : "How to eat today"}>
-        {data.meals.length === 0 && (
+      {data.meals.length === 0 && (
+        <Section title="How to eat today">
           <button
             className="tile"
             onClick={() => goTab("plan")}
-            style={{ width: "100%", textAlign: "left", border: "none", cursor: "pointer", font: "inherit", marginBottom: 8 }}
+            style={{ width: "100%", textAlign: "left", border: "none", cursor: "pointer", font: "inherit" }}
           >
             <span className="ico">
               <Icon name="forkKnife" size={21} />
@@ -633,9 +591,67 @@ export function TodayScreen({
               <Icon name="chev" size={18} />
             </span>
           </button>
+        </Section>
+      )}
+
+      {/* THE DAY — every meal, supplement, drink, remedy and practice on one
+          time-ordered list (day-plan.ts). Replaced four separate cards that
+          split each moment of the day across the screen. */}
+      <Section title="Your day">
+        <DayTimeline
+          logged={logged}
+          practicesDone={practicesDone}
+          onToggleSupp={onToggleSupp}
+          onTogglePractice={onTogglePractice}
+          onMarkDone={onMarkDone}
+          openMeal={openMeal}
+          openRemedy={openRemedy}
+          openBreath={openBreath}
+          openSomatic={openSomatic}
+          openExercise={openExercise}
+        />
+        {data.practicesComingLater > 0 && (
+          <p className="muted" style={{ margin: "10px 2px 0", fontSize: 13 }}>
+            These come first. A few more open up later in your plan.
+          </p>
         )}
-        <MealList openMeal={openMeal} logged={logged} onToggle={onToggleSupp} openRemedy={openRemedy} />
+        {data.mindBody?.locked && (
+          <MindBodyNudge
+            nextUp={data.mindBody.nextUp}
+            priorLabel={data.mindBody.priorLabel}
+            doneCount={data.mindBody.doneCount}
+            needed={data.mindBody.needed}
+          />
+        )}
       </Section>
+
+      {/* coach micro-copy — only when the coach actually wrote one */}
+      {data.client.coachLine && (
+        <div className="coach-line" style={{ marginTop: 14 }}>
+          <Icon name="sparkle" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
+          <div>
+            <div className="q">{data.client.coachLine}</div>
+            <div className="who">— {data.coach.name}</div>
+          </div>
+        </div>
+      )}
+
+      {/* Today's seed — one line, different every day, gone tomorrow. The
+          daily-return hook: asks for nothing, ticks nothing. Personal
+          material (mind-body questions, already depth-gated server-side)
+          surfaces ~1 day in 3 when it exists; evergreen house-voice lines
+          otherwise. */}
+      {(() => {
+        const seed = dailySeed(data.clientId, new Date().toLocaleDateString("en-CA"), data.mindBodyReads);
+        return (
+          <div className="daily-seed">
+            <span className="daily-seed-kicker">
+              <Icon name="sparkle" size={12} /> Today&apos;s seed
+            </span>
+            <p className="daily-seed-line">{seed.text}</p>
+          </div>
+        );
+      })()}
 
       {data.cyclePhase && (
         <Section title="Your cycle today">
@@ -665,138 +681,10 @@ export function TodayScreen({
         </Section>
       )}
 
-      {!data.guidedWeekly && (
-      <Section title="Your supplements">
-        <div id="today-supps" />
-        <SupplementSlots logged={logged} onToggle={onToggleSupp} onLogAll={onLogAll} onOpenRemedy={openRemedy} />
-      </Section>
-      )}
-
-      {externalRemedies.length > 0 && (
-        <Section title="Ayurvedic remedies">
-          <RemedyToday openRemedy={openRemedy} />
-        </Section>
-      )}
-
-      {/* The section used to gate on practices.length alone, which hid the
-          reset link AND the mind-body unlock nudge for any client whose plan
-          had no checkbox practices but did have breath/EFT/sleep/somatic
-          content (2026-08-05 audit). Mind-body availability now opens it too. */}
-      {(practices.length > 0 ||
-        !!data.breathwork ||
-        !!data.eft ||
-        !!data.sleep ||
-        data.somatic.length > 0 ||
-        !!data.mindBody?.locked) && (
-        <Section title={practices.length > 0 ? "Daily practices" : "Mind & body"}>
-          {practices.length > 0 && (
-          <div className="card" style={{ overflow: "hidden" }}>
-            {practices.map((p) => {
-              const on = !!p.done;
-              const isBreath = data.breathwork?.practiceId === p.id;
-              // A somatic-linked practice launches from ITS OWN row — the same
-              // pattern as breathing. It used to also render a separate
-              // "Chosen for you" card below, so every guided practice appeared
-              // TWICE on Today: once to tick, once to start. One row does both.
-              const somaticHere = data.somatic.find((sm) => sm.practiceId === p.id);
-              // Same one-row-does-both rule as somatic: the session starts from
-              // its own row, and its generated "do these in order" details line
-              // would only restate what the player already shows.
-              const exerciseHere = data.exerciseSessions.find((ex) => ex.practiceId === p.id);
-              const hasDetails = !!p.details && !isBreath && !somaticHere && !exerciseHere;
-              const expanded = openPractice.has(p.id);
-              return (
-                <div key={p.id} className="practice-item">
-                  <button
-                    className="practice"
-                    onClick={() => onTogglePractice(p.id)}
-                    style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
-                  >
-                    <span className={"check-sq" + (on ? " on" : "")}>
-                      <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
-                    </span>
-                    <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
-                    {isBreath ? (
-                      <span
-                        className="p-guide"
-                        role="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openBreath();
-                        }}
-                      >
-                        <Icon name="breath" size={13} /> Guide
-                      </span>
-                    ) : somaticHere ? (
-                      <span
-                        className="p-guide"
-                        role="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openSomatic(p.id);
-                        }}
-                      >
-                        <Icon name="sprout" size={13} /> Guide
-                      </span>
-                    ) : exerciseHere ? (
-                      <span
-                        className="p-guide"
-                        role="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openExercise(p.id);
-                        }}
-                      >
-                        <Icon name="sprout" size={13} /> Start
-                      </span>
-                    ) : (
-                      <span className="p-trailing">
-                        {p.when && <span className="p-when">{p.when}</span>}
-                        {hasDetails && (
-                          <span
-                            className="p-guide"
-                            role="button"
-                            aria-expanded={expanded}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              togglePracticeDetail(p.id);
-                            }}
-                          >
-                            {expanded ? "Hide ▲" : "How ▾"}
-                          </span>
-                        )}
-                      </span>
-                    )}
-                  </button>
-                  {hasDetails && expanded && <div className="p-details">{p.details}</div>}
-                </div>
-              );
-            })}
-          </div>
-          )}
-          {/* The plan arrives in layers, and this is the only place the client
-              hears about it. Deliberately NOT a count: "3 more locked" turns
-              staging — which exists to protect them from a fourteen-item day —
-              into a list of what they are not doing yet. No number, no lock
-              icon, no progress bar to complete. Just: this is the start. */}
-          {practices.length > 0 && data.practicesComingLater > 0 && (
-            <p className="muted" style={{ margin: "10px 2px 0", fontSize: 13 }}>
-              These come first. A few more open up later in your plan.
-            </p>
-          )}
-          {/* The mind-body entry line lives on the PRACTICES tab only.
-              It was rendered here as well, so the same card — same six chips,
-              identical for every client — appeared twice in one session. Today
-              is a landing screen; the resets belong with the other things the
-              client is meant to DO. Component and routing untouched. */}
-          {data.mindBody?.locked && (
-            <MindBodyNudge
-              nextUp={data.mindBody.nextUp}
-              priorLabel={data.mindBody.priorLabel}
-              doneCount={data.mindBody.doneCount}
-              needed={data.mindBody.needed}
-            />
-          )}
+      {/* Standing rules + as-needed tools: read, never ticked. */}
+      {(data.guidelines.length > 0 || data.supplements.some((x) => x.asNeeded)) && (
+        <Section title="Your guidelines">
+          <GuidanceCard />
         </Section>
       )}
 
@@ -838,193 +726,6 @@ export function TodayScreen({
           )}
         </div>
       </Section>
-    </div>
-  );
-}
-
-/** Daily remedies box — EXTERNAL only (oil packs, steam, compresses). */
-function RemedyToday({ openRemedy }: { openRemedy: (r: AppRemedy) => void }) {
-  const { remedies } = useOchre();
-  const external = remedies.filter((r) => r.assigned && r.route === "external");
-  return (
-    <div className="card" style={{ padding: "6px 6px 8px" }}>
-      {external.map((r) => (
-        <button key={r.slug} className="remedy-opt" onClick={() => openRemedy(r)} style={{ borderTop: "none" }}>
-          <span className="ro-ico">
-            <Icon name={r.icon || "hand"} size={17} />
-          </span>
-          <span className="ro-body">
-            <span className="ro-name">{r.name}</span>
-            <span className="ro-sub">{r.when} · tap for how to use it</span>
-          </span>
-          <span className="ro-tag ext">Apply</span>
-          <span className="rc-chev">
-            <Icon name="chev" size={17} />
-          </span>
-        </button>
-      ))}
-      <div className="rmd-box-note">
-        <Icon name="hand" size={13} /> Applied or inhaled — not taken by mouth. Your edible Ayurvedic drinks sit with your meals above.
-      </div>
-    </div>
-  );
-}
-
-/** Compact meal rows; edible daily Ayurvedic drinks fold in by timing.
- *  Exported only so the render-parity test can mount this row on its own —
- *  mounting the whole TodayScreen would couple that test to twenty unrelated
- *  fields of ClientAppData and go red for reasons that aren't the meal row. */
-export function MealList({
-  openMeal,
-  logged,
-  onToggle,
-  openRemedy,
-}: {
-  openMeal: (slot: string) => void;
-  logged: Record<string, string>;
-  onToggle: (id: string) => void;
-  openRemedy: (r: AppRemedy) => void;
-}) {
-  const { meals, mealExtra, remedies } = useOchre();
-  const drinks = remedies.filter((r) => r.assigned && r.daily && r.route !== "external" && !r.supplementLike);
-
-  // THE DAY IN THE ORDER IT IS LIVED. Every remedy is placed at its own time
-  // (remedy-slots.ts, one shared parser) instead of listed separately for the
-  // client to cross-reference against the menu. Two rules keep it to one screen:
-  //
-  //   - a remedy whose slot ALREADY has a meal rides that meal's row, so
-  //     mid-morning tea appears with the mid-morning snack rather than twice;
-  //   - a remedy whose slot has no meal gets its own row, inserted in the right
-  //     place — on waking, after lunch, after dinner, before bed. Those four are
-  //     exactly the moments that had nowhere to live, which is how an
-  //     after-dinner remedy ended up written into the dinner slot as the meal.
-  //
-  // A slot with nothing in it renders nothing at all.
-  // PARSE `timing`, NOT `when`. `when` is a coarse display label — "Bedtime" |
-  // "Between meals" | "Morning" | "Daily" — already lossily derived from the
-  // catalogue text by another regex. Parsing the label loses everything it
-  // threw away: hibiscus tea ("mid-morning or afternoon") flattens to "Daily"
-  // and lands at the end of the day, after dinner, which is exactly where it
-  // should not be. `timing` is the catalogue's own words.
-  const slotsOf = (r: AppRemedy) => remedySlots(r.timing || r.when || "");
-  const bySlot = new Map<RemedySlot, AppRemedy[]>();
-  for (const r of drinks) {
-    for (const s of slotsOf(r)) {
-      const list = bySlot.get(s) ?? [];
-      if (!list.some((x) => x.slug === r.slug)) list.push(r);
-      bySlot.set(s, list);
-    }
-  }
-  // Which meal row (if any) each slot attaches to. Slots absent from this map
-  // stand alone; `after_*` deliberately follow their meal rather than merge.
-  const SLOT_ON_MEAL: Partial<Record<RemedySlot, RegExp>> = {
-    mid_morning: /mid.?morning/i,
-    mid_afternoon: /evening snack|mid.?afternoon|afternoon/i,
-  };
-  const slotsAfterMeal: [RegExp, RemedySlot][] = [
-    [/lunch/i, "after_lunch"],
-    [/dinner/i, "after_dinner"],
-  ];
-  const attachedSlots = new Set(Object.keys(SLOT_ON_MEAL) as RemedySlot[]);
-  const take = (s: RemedySlot) => bySlot.get(s) ?? [];
-  // Anything the parser could not place still has to reach the client — it goes
-  // after the meals rather than being dropped, because a remedy nobody can see
-  // is a remedy nobody takes.
-  const unplaced = drinks.filter((r) => slotsOf(r).length === 0);
-  const placed = new Set<string>();
-  const drinkRow = (r: AppRemedy) => {
-    const id = "rx-" + r.slug;
-    placed.add(r.slug);
-    return (
-      <div className="meal-rx" key={id}>
-        <button
-          className={"rx-tick" + (logged[id] ? " on" : "")}
-          onClick={() => onToggle(id)}
-          aria-pressed={!!logged[id]}
-          aria-label={"Mark " + r.name + " taken"}
-        >
-          <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
-        </button>
-        <button className="rx-info" onClick={() => openRemedy(r)}>
-          <span className="rx-top">
-            <span className="rx-name">{r.name}</span>
-            <span className="rx-ayur">
-              <Icon name="leaf" size={10} /> Ayurveda
-            </span>
-          </span>
-          <span className="rx-sub">
-            {r.when}
-            {r.dose ? " · " + r.dose : ""}
-          </span>
-        </button>
-        <span className="rx-chev">
-          <Icon name="chev" size={16} />
-        </span>
-      </div>
-    );
-  };
-  return (
-    <div className="card" style={{ overflow: "hidden" }}>
-      {/* On waking — before the first meal of the day. */}
-      {take("on_waking").map((r) => drinkRow(r))}
-      {meals.map((m, i) => {
-        const ex = mealExtra[m.slot];
-        // Remedies that ride this meal's own moment, and those that follow it.
-        const withMeal = ([...attachedSlots] as RemedySlot[])
-          .filter((s) => SLOT_ON_MEAL[s]?.test(m.slot))
-          .flatMap((s) => take(s));
-        const after = [
-          ...withMeal,
-          ...slotsAfterMeal.filter(([re]) => re.test(m.slot)).flatMap(([, s]) => take(s)),
-        ].filter((r, k, arr) => arr.findIndex((x) => x.slug === r.slug) === k);
-        return (
-          <div key={i}>
-            <button className="meal-lite" onClick={() => openMeal(m.slot)}>
-              <MealThumb slot={m.slot} size={52} radius={13} kind={mealThumbKind(m.components.map((c) => c.title).join(" "))} />
-              <span className="ml-body">
-                <span className="ml-top">
-                  <span className="label">{m.slot}</span>
-                  <span className="ml-meta">
-                    {m.ayurveda && (
-                      <span className="rx-ayur" style={{ marginRight: 6 }}>
-                        <Icon name="leaf" size={10} /> Ayurveda recommends
-                      </span>
-                    )}
-                    {ex?.mins ?? ""}
-                  </span>
-                </span>
-                <span className="ml-dishes">
-                  {m.components.slice(0, ML_MAX_COMPONENTS).map((c, ci) => (
-                    <span key={ci}>
-                      {c.title}
-                      {c.portion && <span className="ml-portion">{c.portion}</span>}
-                      {ci < Math.min(m.components.length, ML_MAX_COMPONENTS) - 1 && " · "}
-                    </span>
-                  ))}
-                  {/* The line caps to stay readable on a phone, but the cap used
-                      to be SILENT: a 4-item slot simply lost its tail, so a
-                      prescribed item was invisible (cl-022's before-3pm vegetable
-                      juice — the whole point of moving it off her evening). The
-                      row opens the full meal, so the fix is to say something is
-                      there, not to overflow the line. Conservation is pinned by
-                      ochre-screens-render.test.tsx. */}
-                  {m.components.length > ML_MAX_COMPONENTS && (
-                    <span className="ml-more"> · +{m.components.length - ML_MAX_COMPONENTS} more</span>
-                  )}
-                </span>
-              </span>
-              <span className="chev">
-                <Icon name="chev" size={18} />
-              </span>
-            </button>
-            {after.map(drinkRow)}
-          </div>
-        );
-      })}
-      {/* Before bed — after everything else in the day. */}
-      {take("bedtime").map((r) => drinkRow(r))}
-      {unplaced.filter((r) => !placed.has(r.slug)).map((r) => drinkRow(r))}
-      {drinks.filter((r) => !placed.has(r.slug)).map(drinkRow)}
     </div>
   );
 }

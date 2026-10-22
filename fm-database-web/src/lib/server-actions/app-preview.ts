@@ -204,7 +204,9 @@ export async function loadAppPreviewAction(clientId: string): Promise<AppPreview
         })),
       })),
     })),
-    practices: data.practices.map((p) => p.name),
+    // Rules are no longer daily ticks in the app, but the coach preview must
+    // still show everything the client sees — guidelines included.
+    practices: [...data.practices.map((p) => p.name), ...data.guidelines.map((g) => `${g.name} (guideline)`)],
     resources: data.resources.map((r) => ({ title: r.title, kind: r.kind })),
     lessons: data.lessons.map((l) => l.title),
     access: {
