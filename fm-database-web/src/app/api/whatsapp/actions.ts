@@ -8,6 +8,8 @@ import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
 import { resolvePersonDir } from "@/lib/fmdb/person-dir";
+import { checkContactGate, type ContactGateOpts } from "@/lib/fmdb/contact-gate-server";
+import type { ContactPurpose } from "@/lib/fmdb/contact-gate";
 import {
   isOutboundSegment,
   isInboundSegment,
@@ -247,15 +249,30 @@ export async function listWhatsAppTemplateStatusAction(): Promise<{
 // ── Single send ───────────────────────────────────────────────────────────────
 
 /**
+ * Options every WhatsApp send accepts. `purpose` + `clientId` are what the
+ * send door gates on (contact-gate.ts) — a client-facing caller passes both;
+ * a coach / staff alert passes neither and is logged as ungated.
+ */
+export type WaSendOpts = ContactGateOpts & {
+  name?: string;
+  templateLanguage?: string;
+  buttonUrlParam?: string;
+};
+
+/**
  * Send a templated WhatsApp message via the self-hosted WhatsApp Cloud API
  * server. `campaignName` is the Meta-approved template name (parameter name
  * kept for back-compat with existing call sites).
+ *
+ * THE SEND DOOR (2026-10-23): when `opts.clientId` + `opts.purpose` are set,
+ * the contact gate runs first and a refused send returns `{ok:false, error}`
+ * without touching the network. See contact-gate.ts for the matrix.
  */
 export async function sendWhatsAppAction(
   phone: string,
   campaignName: string,
   templateParams: string[],
-  opts?: { name?: string; templateLanguage?: string; buttonUrlParam?: string }
+  opts?: WaSendOpts
 ): Promise<{ ok: boolean; error?: string; backend?: "wa_server" }> {
   if (!phone?.trim()) return { ok: false, error: "Phone number required" };
 
@@ -266,6 +283,9 @@ export async function sendWhatsAppAction(
         "WhatsApp not configured. Set WHATSAPP_SERVER_URL and WHATSAPP_SERVER_API_KEY in .env.local.",
     };
   }
+
+  const gate = await checkContactGate(campaignName, opts);
+  if (!gate.ok) return { ok: false, error: gate.error };
 
   return sendViaWaServer(phone, campaignName, templateParams, opts);
 }
@@ -316,7 +336,7 @@ async function sendViaWaServer(
 export async function sendWhatsAppTextAction(
   phone: string,
   text: string,
-  opts?: { name?: string }
+  opts?: ContactGateOpts & { name?: string }
 ): Promise<{ ok: boolean; error?: string }> {
   if (!phone?.trim()) return { ok: false, error: "Phone number required" };
   if (!text?.trim()) return { ok: false, error: "Message text required" };
@@ -326,6 +346,8 @@ export async function sendWhatsAppTextAction(
       error: "WhatsApp not configured. Set WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY in .env.local.",
     };
   }
+  const gate = await checkContactGate("(free text)", opts);
+  if (!gate.ok) return { ok: false, error: gate.error };
   const body = {
     phone: cleanWaPhone(phone),
     name: opts?.name,
@@ -494,13 +516,16 @@ export async function sendAndRecordOutboundAction(input: {
   templateName: string;        // Meta template name
   templateParams: string[];    // params to fill {{1}}, {{2}}, ...
   renderedBody: string;        // the message text with vars substituted, exactly as Meta rendered
+  /** Why this is going out — the send door gates on it (contact-gate.ts).
+   *  Omitting it sends as "transactional" and logs the caller as ungated. */
+  purpose?: ContactPurpose;
   opts?: { name?: string; templateLanguage?: string; buttonUrlParam?: string };
 }): Promise<{ ok: boolean; error?: string; recorded?: boolean }> {
   const send = await sendWhatsAppAction(
     input.phone,
     input.templateName,
     input.templateParams,
-    input.opts,
+    { ...input.opts, clientId: input.clientId, purpose: input.purpose },
   );
   if (!send.ok) {
     return { ok: false, error: send.error, recorded: false };

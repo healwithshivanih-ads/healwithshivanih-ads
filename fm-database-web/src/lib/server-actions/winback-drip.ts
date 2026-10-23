@@ -730,6 +730,8 @@ export async function approveWinbackDraftAction(
     subject,
     textBody: body,
     htmlBody: html,
+    clientId,
+    purpose: "winback",
   });
   if (!sent.ok) return { ok: false, error: sent.error };
 

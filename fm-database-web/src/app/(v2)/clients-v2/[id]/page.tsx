@@ -48,9 +48,6 @@ import { Tier1AdvisoryCard } from "./tier1-advisory-card";
 import { UnsupervisedMedicationCard } from "./unsupervised-medication-card";
 import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
 import { detectUnsupervisedMedication } from "@/lib/fmdb/unsupervised-medication";
-import { DirtyGenesOverviewCard } from "./dirty-genes-overview-card";
-import { computePrefill, extractPrefillInput } from "@/lib/fmdb/dirty-genes-prefill";
-import { loadLatestDirtyGenesAssessment } from "@/lib/server-actions/dirty-genes";
 import { LiverDetoxAdvisoryCard } from "./liver-detox-advisory-card";
 import { detectLiverDetoxAdvisory } from "@/lib/fmdb/liver-detox-advisory";
 import { IntakeProgressCard } from "./intake-progress-card";
@@ -112,7 +109,6 @@ import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 // (above in the left column). File `./memory-panel.tsx` left on disk in
 // case we want to revive a read-only twin later; not imported anywhere
 // after this change.
-import { SOAPNotePanel } from "@/components/client-widgets/soap-note-panel";
 import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
 import { PregnancySafetyPanel } from "@/components/client-widgets/pregnancy-safety-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
@@ -747,8 +743,6 @@ export default async function ClientV2Page({
   // Dirty Genes: proactive Overview card. Prefill from the client's own record
   // (labs/conditions/diet) + last saved screen date. Card self-hides if nothing
   // flags AND no prior screen.
-  const dgLatest = await loadLatestDirtyGenesAssessment(id);
-  const dgPrefill = computePrefill(extractPrefillInput(client as unknown as Record<string, unknown>));
 
   const plansForClient = (allPlans as unknown as PlanRow[]).filter(
     (p) => p.client_id === id,
@@ -906,8 +900,8 @@ export default async function ClientV2Page({
     !_u1 && !_u2 ? null : (_u1 || "") > (_u2 || "") ? _u1 : _u2;
 
   // Most-recent discovery session that has a parsed requested_labs list —
-  // feeds the OverviewSendLabsCard so the coach can send labs straight from
-  // Overview without bouncing to the Analyse tab. Older sessions embed labs
+  // feeds the "send labs" collapsible further down so the coach can send
+  // labs straight from Overview without bouncing to the Analyse tab. Older sessions embed labs
   // inside coach_notes as "[Requested labs: A, B, C]"; we parse that shape
   // (the only shape on disk right now) and the future top-level field too.
   const latestDiscoveryWithLabs: {
@@ -1857,15 +1851,6 @@ export default async function ClientV2Page({
                         one-click "Reissue Tier 1" button (fires the existing
                         fm_intake_topup_v1 template). Self-hides cleanly when
                         no signals OR when client already filled Tier 1. */}
-                    {/* Gene-pathway screen — proactive, self-hiding: shows only
-                        when the client's labs/conditions flag a pathway or a
-                        screen was already run. Coach-side; no gene language to
-                        clients. */}
-                    <DirtyGenesOverviewCard
-                      clientId={client.client_id}
-                      prefill={dgPrefill}
-                      lastScreenDate={dgLatest.screenDate ?? null}
-                    />
                     {/* Dependence-forming psychoactive med with NO clinical
                         supervision. Mounted ABOVE the other advisories on
                         purpose: it is not a prompt, it is a constraint on what
@@ -2399,16 +2384,6 @@ export default async function ClientV2Page({
         </div>
       </div>
 
-      {/* SOAP notes — full-width below the two columns. Auto-generated
-          from the latest session's data; coach can edit + persist. */}
-      <div style={{ marginTop: 24 }}>
-        <SOAPNotePanel
-          client={client as unknown as Record<string, unknown>}
-          clientName={client.display_name ?? client.client_id}
-          clientId={id}
-          sessions={sessionSummaries}
-        />
-      </div>
     </FmAppShell>
   );
 }

@@ -111,7 +111,6 @@ export async function saveDirtyGenesAssessment(
     const fp = path.join(dir, `dirty-genes-${date}.yaml`);
     await fs.writeFile(fp, dumpYaml(record), "utf-8");
     revalidatePath(`/clients-v2/${clientId}`);
-    revalidatePath(`/clients-v2/${clientId}/dirty-genes`);
     return { ok: true, filePath: fp };
   } catch (e) {
     return { ok: false, error: String(e) };

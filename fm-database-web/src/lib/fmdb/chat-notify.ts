@@ -20,6 +20,7 @@ import { sendPushToClient } from "./push-server";
 import { sendPushToCoach } from "./coach-push";
 import { loadClientById } from "./loader-extras";
 import { pushStatus } from "./push-server";
+import { sendWhatsAppTextAction } from "@/app/api/whatsapp/actions";
 
 export type NotifyOutcome = {
   channel: "push" | "whatsapp" | "none";
@@ -69,7 +70,7 @@ export async function notifyClientOfCoachReply(
         ...(opts.messageId
           ? { receipt: { client: clientId, id: opts.messageId } }
           : {}),
-      });
+      }, { purpose: "reply" });
       if (sent) return { channel: "push", ok: true };
     }
   } catch (e) {
@@ -77,42 +78,29 @@ export async function notifyClientOfCoachReply(
   }
 
   // ── fallback: WhatsApp ──────────────────────────────────────────────────
-  const url = (process.env.WHATSAPP_SERVER_URL ?? "").replace(/\/$/, "");
-  const apiKey = process.env.WHATSAPP_SERVER_API_KEY ?? "";
+  // Through the one WhatsApp sender (2026-10-23) rather than its own fetch:
+  // that is what gives it cleanWaPhone (a "+65…" number used to be mangled
+  // here), the transport retry, the 24-hour-window error wording, and the
+  // send door. Purpose "reply" — this exists because the client wrote first.
   const phone = (opts.phone ?? "").trim();
-  if (!url || !apiKey || !phone) {
+  if (!phone) {
     return { channel: "none", ok: false, error: "no push and no WhatsApp route" };
   }
-
   try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 8000);
-    try {
-      const res = await fetch(`${url}/api/send`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-api-key": apiKey },
-        body: JSON.stringify({
-          phone,
-          type: "text",
-          text: `${body}${opts.appUrl ? ` ${opts.appUrl}` : ""}`,
-          origin: "api",
-          originRef: "chat-nudge",
-        }),
-        signal: ctrl.signal,
-      });
-      if (!res.ok) {
-        return { channel: "whatsapp", ok: false, error: `WhatsApp HTTP ${res.status}` };
+    const res = await sendWhatsAppTextAction(
+      phone,
+      `${body}${opts.appUrl ? ` ${opts.appUrl}` : ""}`,
+      { clientId, purpose: "reply" },
+    );
+    if (!res.ok) {
+      const err = res.error ?? "WhatsApp refused";
+      // "not configured" is the one case the old code reported as no route.
+      if (/not configured/i.test(err)) {
+        return { channel: "none", ok: false, error: "no push and no WhatsApp route" };
       }
-      // Outside Meta's 24-hour window a free-text send is refused; the server
-      // reports that in the body rather than the status.
-      const json = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-      if (json.ok === false) {
-        return { channel: "whatsapp", ok: false, error: json.error ?? "WhatsApp refused" };
-      }
-      return { channel: "whatsapp", ok: true };
-    } finally {
-      clearTimeout(timer);
+      return { channel: "whatsapp", ok: false, error: err };
     }
+    return { channel: "whatsapp", ok: true };
   } catch (e) {
     return { channel: "whatsapp", ok: false, error: (e as Error).message };
   }

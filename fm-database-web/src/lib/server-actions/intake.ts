@@ -450,7 +450,14 @@ export async function sendIntakeInviteViaApi(
   const shortCode = (c.intake_short_code as string | undefined) ?? "";
   const url = shortCode ? `${rawOrigin}/s/${shortCode}` : `${rawOrigin}/intake/${token}`;
 
-  const sendRes = await sendWhatsAppAction(phone, "fm_intake_invite", [firstName, url]);
+  // Purpose "transactional", not "intake": the coach pressed this, and the
+  // first intake link routinely goes to a PROSPECT (Tier 1 form before
+  // engagement_status flips) — "intake" is onboarding-only and would refuse
+  // that real flow. Automated intake chasing (the reminder cron) is "intake".
+  const sendRes = await sendWhatsAppAction(phone, "fm_intake_invite", [firstName, url], {
+    clientId,
+    purpose: "transactional",
+  });
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };
 
   // Log the send into the client's WhatsApp thread so it appears in the
@@ -544,9 +551,12 @@ export async function reissueTierOneIntakeAction(
   // together") or fm_intake_unlocked_v1 ("opened the longer form") —
   // both have wrong copy for a Tier 1 top-up.
   let via: "template" | "free_text" = "template";
-  const tpl = await sendWhatsAppAction(phone, "fm_intake_topup_v1", [firstName, url]);
+  // "transactional" — coach-pressed, and a Tier 1 top-up goes to a prospect
+  // (see sendIntakeInviteViaApi).
+  const gated = { clientId, purpose: "transactional" as const };
+  const tpl = await sendWhatsAppAction(phone, "fm_intake_topup_v1", [firstName, url], gated);
   if (!tpl.ok) {
-    const ft = await sendWhatsAppTextAction(phone, freeText, { name: displayName });
+    const ft = await sendWhatsAppTextAction(phone, freeText, { name: displayName, ...gated });
     if (!ft.ok) {
       return {
         ok: false,
@@ -620,9 +630,11 @@ export async function reissueDoshaQuizAction(
     `saved:\n\n${url}\n\n— Shivani Hari / Your Functional Health Coach`;
 
   let via: "template" | "free_text" = "template";
-  const tpl = await sendWhatsAppAction(phone, "fm_intake_topup_v1", [firstName, url]);
+  // "transactional" — coach-pressed; the dosha quiz can go to a prospect too.
+  const gated = { clientId, purpose: "transactional" as const };
+  const tpl = await sendWhatsAppAction(phone, "fm_intake_topup_v1", [firstName, url], gated);
   if (!tpl.ok) {
-    const ft = await sendWhatsAppTextAction(phone, freeText, { name: displayName });
+    const ft = await sendWhatsAppTextAction(phone, freeText, { name: displayName, ...gated });
     if (!ft.ok) {
       return {
         ok: false,
@@ -741,7 +753,11 @@ export async function sendIntakeUnlockedViaApi(
     (process.env.FM_INTAKE_UNLOCKED_TEMPLATE_APPROVED || "").trim() === "1";
   const templateName = useUnlockedTemplate ? "fm_intake_unlocked_v1" : "fm_intake_invite";
 
-  const sendRes = await sendWhatsAppAction(phone, templateName, [firstName, url]);
+  // "transactional": the unlock the coach pressed (contact-gate.ts).
+  const sendRes = await sendWhatsAppAction(phone, templateName, [firstName, url], {
+    clientId,
+    purpose: "transactional",
+  });
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };
 
   // Log the send into the client's WhatsApp thread (mirrors

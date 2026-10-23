@@ -1104,7 +1104,6 @@ export default async function PlanTabPage({
                 icon="✏️"
                 label="Edit plan"
               />
-              <ActionLink href={`/clients-v2/${id}/soap`} icon="📋" label="SOAP note (1-pager)" />
             </div>
           </FmPanel>
 
@@ -1634,8 +1633,8 @@ export default async function PlanTabPage({
                 from 2026-05-15 brainstorm). The "next big thing to do"
                 primary action lives in the workflow banner at the top
                 of the page (computed from plan stage), so this panel
-                is just the everyday verbs. SOAP note + handoff packet +
-                run-another-assessment are reachable via the FAB.
+                is just the everyday verbs. Run-another-assessment is
+                reachable via the FAB.
                 Quick note is the highest-frequency action (capture a
                 thought / call / message) so it leads. */}
             <FmPanel
@@ -1661,11 +1660,6 @@ export default async function PlanTabPage({
                   href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
                   icon="✏️"
                   label="Edit plan"
-                />
-                <ActionLink
-                  href={`/clients-v2/${id}/soap`}
-                  icon="📋"
-                  label="SOAP note (1-pager)"
                 />
               </div>
             </FmPanel>

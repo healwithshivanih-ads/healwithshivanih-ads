@@ -27,9 +27,7 @@
 // each route still enforces its OWN auth (token or HMAC) at the handler.
 export const PUBLIC_PATH_PREFIXES = [
   "/intake/", // client-facing intake form (intake_token = auth)
-  "/start/", // client-facing plan-start confirmation
   "/foundation/", // client-facing foundation-session pay page (app_token = auth)
-  "/guide/",
   // Public letter page: clients open the consolidated plan letter via a
   // token-based URL (plan.letter_token). Generated at publish; cleared
   // on revoke. Behaviour mirrors /intake/.
@@ -45,10 +43,6 @@ export const PUBLIC_PATH_PREFIXES = [
   // letter_token server-side (TOKEN-ONLY since 2026-06-11) — plan slugs are
   // guessable, so the old slug fallback was removed.
   "/supplements/",
-  // Recipe pack: full ingredients + method for every ✦ dish in the meal
-  // plan. Same TOKEN-ONLY gate as /supplements/ — the route resolves a
-  // letter_token before reading any plan file.
-  "/recipes/",
   // Client companion app ("The Ochre Tree" PWA): /app/<letter_token>.
   // Token = the same plan letter_token that gates /letter/. The /api/app-*
   // routes are the app's write-backs + co-pilot — all re-verify the token
@@ -139,7 +133,6 @@ export const PUBLIC_PATH_PREFIXES = [
   // Inbound WhatsApp (self-hosted Fly app). HMAC-verified at the route via
   // WHATSAPP_WEBHOOK_SECRET.
   "/api/whatsapp-webhook",
-  "/api/whatsapp-poll-webhook",
   "/api/health", // Fly health check
   // Token-scoped public file upload for the intake form ("photo your medicine
   // strips"). Resolves the intake token → client_id server-side; refuses
@@ -149,8 +142,7 @@ export const PUBLIC_PATH_PREFIXES = [
   // (CRON_SECRET) at the route; no Basic-auth session in the cron process.
   "/api/cron/",
   // Handover endpoints — HMAC-signed POST from ochre-followup
-  // (x-handover-signature + HANDOVER_SECRET). /api/handover/test uses
-  // x-cron-secret (coach-only smoke test).
+  // (x-handover-signature + HANDOVER_SECRET).
   "/api/handover/",
   // Coach-app AI bridge: the Fly copy of /m asks the MAC to answer a client
   // question, because the answer needs the full record that deliberately does
@@ -160,8 +152,6 @@ export const PUBLIC_PATH_PREFIXES = [
   "/api/m-bridge/",
   // Cal.com booking webhook — HMAC-verified via CAL_COM_SIGNING_SECRET.
   "/api/cal-com-webhook",
-  // Zoom Cloud Recording webhook — HMAC-verified via ZOOM_WEBHOOK_SECRET_TOKEN.
-  "/api/zoom-webhook",
 ];
 
 /**

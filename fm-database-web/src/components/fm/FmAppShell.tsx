@@ -82,7 +82,6 @@ const NAV: FmNavSection[] = [
     label: "Settings",
     items: [
       { id: "settings", label: "Settings", icon: "⚙️", href: "/settings" },
-      { id: "token-admin", label: "Token links", icon: "🔑", href: "/token-admin" },
       { id: "help", label: "Help", icon: "❔", href: "/help" },
     ],
   },

@@ -488,6 +488,8 @@ export async function createBookingAction(
           templateName: "appt_confirmation",
           templateParams: [firstName, dateStr, timeStr, opt.label || "coaching"],
           renderedBody,
+          // A booking the coach just made — confirming it is transactional.
+          purpose: "transactional",
         });
         whatsappSent = waRes.ok;
         if (!waRes.ok) {

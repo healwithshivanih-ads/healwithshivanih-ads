@@ -90,7 +90,6 @@ async function applyClientPatch(
   await fs.writeFile(clientFile, yaml, "utf-8");
 
   // Invalidate every surface that reads client preferences.
-  revalidatePath(`/clients/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}/plan`);
   revalidatePath(`/clients-v2/${clientId}/communicate`);

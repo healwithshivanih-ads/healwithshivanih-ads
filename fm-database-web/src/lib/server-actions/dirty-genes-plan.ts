@@ -147,7 +147,6 @@ export async function applyDirtyGenesToPlan(input: {
     await writePlan(plan as unknown as Plan);
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/plan`);
-    revalidatePath(`/plans/${slug}`);
 
     return {
       ok: true,

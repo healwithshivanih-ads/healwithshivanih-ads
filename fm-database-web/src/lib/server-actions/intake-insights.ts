@@ -112,7 +112,6 @@ export async function generateIntakeInsights(
     if ((res as GenerateOk).ok) {
       revalidatePath(`/clients-v2/${clientId}`);
       revalidatePath(`/clients-v2/${clientId}/intake-view`);
-      revalidatePath(`/clients/${clientId}`);
     }
     return res;
   } catch (e) {

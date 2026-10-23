@@ -344,8 +344,7 @@ export async function regeneratePlanFromSessionAction(
     picks: {},
   });
   if (result.ok && result.slug) {
-    revalidatePath("/assess");
-    revalidatePath("/plans");
+    revalidatePath(`/clients-v2/${clientId}/plan`);
   }
   return result;
 }
@@ -1033,7 +1032,7 @@ export async function applyTranscriptDataAction(
           /* sidecar bookkeeping must never fail the apply itself */
         }
       }
-      revalidatePath(`/clients/${input.client_id}`);
+      revalidatePath(`/clients-v2/${input.client_id}`);
     }
     return result;
   } catch {
@@ -1115,7 +1114,7 @@ export async function saveSessionAction(input: SaveSessionInput): Promise<SaveSe
     // "invalid JSON: {"ok": true, ...}" — an error message that contradicts
     // itself and sends you looking at the Python.
     try {
-      revalidatePath(`/clients/${input.client_id}`);
+      revalidatePath(`/clients-v2/${input.client_id}`);
     } catch { /* not in a request context — the session is still saved */ }
   }
   return result;
@@ -1221,7 +1220,7 @@ export async function appendCheckInToPlanAction(
 
     await writePlan({ ...rest, notes_for_coach: updated });
 
-    revalidatePath(`/plans/${planSlug}`);
+    if (plan.client_id) revalidatePath(`/clients-v2/${plan.client_id}/plan`);
     return { ok: true };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
@@ -1353,7 +1352,6 @@ export async function updateSessionFieldsAction(
   }
 
   revalidatePath(`/clients-v2/${input.client_id}/sessions`);
-  revalidatePath(`/clients-v2/${input.client_id}/timeline`);
   revalidatePath(`/clients-v2/${input.client_id}/analyse`);
   revalidatePath(`/clients-v2/${input.client_id}`);
 

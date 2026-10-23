@@ -28,6 +28,9 @@ export function clientSubnavTabs(clientId: string): ClientSubnavTab[] {
   // and doesn't collide with the History bucket that shows past sessions.
   return [
     { id: "overview", label: "Overview", href: `/clients-v2/${clientId}` },
+    // Brief (2026-10-23): the same brief the /client chat skill reads —
+    // lifecycle, plan + week, last messages in/out, app usage, do-not list.
+    { id: "brief", label: "Brief", href: `/clients-v2/${clientId}/brief` },
     { id: "analyse", label: "Record", href: `/clients-v2/${clientId}/analyse` },
     { id: "plan", label: "Plan", href: `/clients-v2/${clientId}/plan` },
     {

@@ -120,7 +120,10 @@ export async function sendCalcomLinkAction(
   // Free-text send via the 24h conversation window. If the window is
   // closed, Meta returns code 131047 and sendWhatsAppTextAction bubbles
   // up a recognisable error string — the UI surfaces a wa.me fallback.
-  const res = await sendWhatsAppTextAction(phone, body);
+  // "transactional", not "session_booking": the coach pressed this from the
+  // client page. session_booking is reserved for AUTOMATED chasing, which the
+  // gate always refuses.
+  const res = await sendWhatsAppTextAction(phone, body, { clientId, purpose: "transactional" });
   if (!res.ok) return { ok: false, error: res.error || "Send failed" };
 
   // Log to per-client session timeline so the WhatsApp thread renders
@@ -212,7 +215,11 @@ export async function sendCalcomLinkTemplateAction(
     `Pick a time that works for you. Reply here if you cannot find a slot that suits, and I will add availability.\n\n` +
     `— ${process.env.COACH_NAME || "Shivani Hari"}\nYour Functional Health Coach`;
 
-  const res = await sendWhatsAppAction(phone, "fm_book_session_v2", [firstName, url]);
+  // "transactional" — coach-pressed (see sendCalcomLinkAction).
+  const res = await sendWhatsAppAction(phone, "fm_book_session_v2", [firstName, url], {
+    clientId,
+    purpose: "transactional",
+  });
   if (!res.ok) return { ok: false, error: res.error || "Send failed" };
 
   try {

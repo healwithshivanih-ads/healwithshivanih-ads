@@ -10,6 +10,8 @@ import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { PYTHON, SCRIPTS_DIR, excerpt } from "@/lib/fmdb/shim";
+import { checkContactGate } from "@/lib/fmdb/contact-gate-server";
+import type { ContactPurpose } from "@/lib/fmdb/contact-gate";
 
 // Send log re-restored 2026-05-19 — the new V2 Communicate panel needs
 // to distinguish Drafted (file on disk) from Sent (email actually went
@@ -187,6 +189,12 @@ function runShim(scriptName: string, payload: unknown, timeoutMs = 60_000): Prom
 
 export interface SendEmailInput {
   to: string;
+  /** Why this is going out — the send door gates on it (contact-gate.ts).
+   *  With `clientId` set and `purpose` omitted the send is treated as
+   *  transactional and logged as ungated; with neither it is a coach /
+   *  staff email and only logged. */
+  purpose?: ContactPurpose;
+  clientId?: string;
   cc?: string;
   /** Blind copy — the coach keeping her own record of what went to a client
    *  without the client seeing an internal address. */
@@ -222,6 +230,9 @@ export async function sendClientEmailAction(
     };
   }
   const { user, pass } = creds;
+
+  const gate = await checkContactGate(`email "${input.subject.slice(0, 60)}"`, input);
+  if (!gate.ok) return { ok: false, error: gate.error };
 
   try {
     const transporter = nodemailer.createTransport({
@@ -266,6 +277,8 @@ export interface EducationPackInput {
   clientEmail: string;
   clientName?: string;
   topicSlugs: string[];   // selected topic slugs to include
+  /** Defaults to "plan" — an education pack is part of the programme. */
+  purpose?: ContactPurpose;
 }
 
 export interface EducationPackResult {
@@ -288,6 +301,10 @@ export async function sendEducationPackAction(
     return { ok: false, error: "Email not configured. Add GMAIL_USER and GMAIL_APP_PASSWORD to .env.local" };
   }
   const { user, pass } = creds;
+
+  // Gate BEFORE the Sonnet calls — a refused send should cost nothing.
+  const gate = await checkContactGate("education pack", { clientId: input.clientId, purpose: input.purpose }, "plan");
+  if (!gate.ok) return { ok: false, error: gate.error };
 
   // Generate briefs for each selected topic (sequentially to avoid rate limits)
   const briefs: Array<{ slug: string; markdown: string }> = [];
@@ -431,10 +448,8 @@ export async function updateClientFieldsAction(
     data.updated_at = new Date().toISOString();
 
     await fs.writeFile(clientFile, dumpYaml(data), "utf-8");
-    revalidatePath(`/clients/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/analyse`);
-    revalidatePath("/clients");
     revalidatePath("/");
     return { ok: true };
   } catch (err) {

@@ -37,6 +37,7 @@ import {
 import { touchesFor, FOLLOWUP_BACKFILL_DAYS, type FollowupTrack } from "@/lib/fmdb/discovery-followup";
 import { loadCommunicationThreadAction, recordOutboundMessageAction } from "@/app/api/whatsapp/actions";
 import { sendClientEmailAction } from "@/app/api/email/actions";
+import { gateForClient } from "@/lib/fmdb/contact-gate-server";
 import { checkEmailLinks } from "@/lib/server-actions/discovery-followup";
 
 type Dict = Record<string, unknown>;
@@ -402,9 +403,11 @@ export async function approveInterestNoteAction(
   if (!note) return { ok: false, error: "no note waiting for them" };
   const doc = await readYaml(path.join(resolvePersonDir(clientId), "client.yaml"));
   if (!doc) return { ok: false, error: "client record not found" };
-  const es = String(doc.engagement_status ?? "").trim();
-  if (es !== "" && es !== "pending") return { ok: false, error: `they are now "${es}" — this note no longer applies` };
-  if (doc.marketing_opt_out === true) return { ok: false, error: "they asked not to get these notes" };
+  // The send door decides who may get a note (prospect only, never opted out,
+  // never declined) — it replaced this action's own engagement_status +
+  // marketing_opt_out checks on 2026-10-23 so every sender agrees.
+  const door = await gateForClient(clientId, "content_note");
+  if (!door.ok) return { ok: false, error: door.reason };
   const inbound = await lastInboundOn(clientId);
   if (inbound && inbound > note.drafted_at.slice(0, 10)) {
     return { ok: false, error: `they got in touch on ${inbound}, after this was drafted — reply to them personally` };
@@ -429,6 +432,8 @@ export async function approveInterestNoteAction(
     subject,
     textBody: body,
     htmlBody: html,
+    clientId,
+    purpose: "content_note",
   });
   if (!sent.ok) return { ok: false, error: sent.error };
 

@@ -114,6 +114,8 @@ export function EmailComposePanel({ clientId, clientEmail, clientName }: Props) 
       subject: trimmedSubject,
       htmlBody: htmlWrap(trimmedBody),
       textBody: trimmedBody,
+      clientId,
+      purpose: "reply",
     });
     setSending(false);
     setSendResult(res);
