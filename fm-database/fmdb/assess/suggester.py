@@ -1471,6 +1471,13 @@ HARD RULES (violating these breaks the downstream system):
       patterns.
     - Reference specific dishes the client eats: "Your lunch dal is a great
       base — add a cup of vegetables and reduce the white rice portion."
+    - `client_context.food_diary_summary`, when present, IS a food journal:
+      a photo diary the client kept in the app, each plate read and the
+      coach's corrections applied, with per-day protein/fibre estimates vs
+      the client's floor and a meal-by-meal list. Use it exactly as an
+      uploaded food journal. Its gram figures are rough (photo estimates);
+      lean on the patterns (which meals carry no protein, carb-heavy plates)
+      more than the numbers.
     - If no food journal: default to client's location and dietary preference
       to build practical culturally-appropriate suggestions. Ask the coach
       to request a 3-day food diary for the next session.

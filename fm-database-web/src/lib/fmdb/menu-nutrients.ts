@@ -299,7 +299,7 @@ export interface MenuNutrition {
   coverage: number;
 }
 
-const FIBRE_FLOOR_G = 25;
+export const FIBRE_FLOOR_G = 25;
 
 // ── protein floor, mirroring scripts/protein_logic.py calc_protein_target ──
 // Baseline 1.4-1.6 g/kg (lifted from the old flat 1.2-1.5 — for this practice's

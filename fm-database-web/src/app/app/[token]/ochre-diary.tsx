@@ -64,7 +64,79 @@ export function FoodDiaryCard() {
   const data = useOchre();
   const view = data.foodDiary;
   if (!view) return null;
+  if (view.finished) return <DiaryFinished view={view} />;
   return <DiaryCard view={view} />;
+}
+
+/** One strength, at most one fix — observations in the client's own food
+ *  words (food-diary-balance.ts::diaryTip). */
+function TipLines({ tip }: { tip: NonNullable<ClientDiaryView["tip"]> }) {
+  return (
+    <div className="diary-tip">
+      <p>
+        <Icon name="star" size={14} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 3 }} />
+        <span>{tip.strength}</span>
+      </p>
+      {tip.fix && (
+        <p>
+          <Icon name="sprout" size={14} style={{ color: "var(--ochre)", flexShrink: 0, marginTop: 3 }} />
+          <span>{tip.fix}</span>
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** The diary is over: thank-you, and the tip once the photos have been read. */
+function DiaryFinished({ view }: { view: ClientDiaryView }) {
+  const data = useOchre();
+  const coachFirst = (data.coach?.name || "Your coach").split(" ")[0];
+  return (
+    <div className="diary" id="food-diary">
+      <div className="diary-head">
+        <span className="diary-glyph done">
+          <Icon name="check" size={16} />
+        </span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div className="diary-title">Food diary done — thank you</div>
+          <div className="diary-sub">{coachFirst} will go through it with you.</div>
+        </div>
+      </div>
+      {view.tip && <TipLines tip={view.tip} />}
+    </div>
+  );
+}
+
+const PROTEIN_WORD = { present: "Protein ✓", light: "Light on protein", none: "No protein" } as const;
+const VEG_WORD = { present: "Veg ✓", light: "Light on veg", none: "No veg" } as const;
+
+/** "Protein ✓ · Veg ✓ · Carb-heavy" — words only, never a number. */
+function Marks({ marks }: { marks: NonNullable<ClientDiaryEntry["marks"]> }) {
+  return (
+    <span className="diary-marks">
+      <span className={"diary-mark p-" + marks.protein}>{PROTEIN_WORD[marks.protein]}</span>
+      {marks.veg && <span className={"diary-mark v-" + marks.veg}>{VEG_WORD[marks.veg]}</span>}
+      {marks.carbs === "heavy" && <span className="diary-mark carb">Carb-heavy</span>}
+    </span>
+  );
+}
+
+/** One dot per photo today, in time order: filled when the plate had protein,
+ *  half when a little, open when none, dashed while it is still being read. */
+function ProteinDots({ entries }: { entries: ClientDiaryEntry[] }) {
+  if (entries.length === 0) return null;
+  return (
+    <div className="diary-dots" aria-label="Protein at each meal today">
+      {entries.map((e) => (
+        <span
+          key={e.entry_id}
+          className={"diary-dot " + (e.marks ? e.marks.protein : "pending")}
+          title={e.marks ? PROTEIN_WORD[e.marks.protein] : "Not looked at yet"}
+        />
+      ))}
+      <span className="diary-dots-label">Protein today</span>
+    </div>
+  );
 }
 
 function DiaryCard({ view }: { view: ClientDiaryView }) {
@@ -199,6 +271,7 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
             Add more
           </button>
         </div>
+        {view.isLastDay && view.tip && <TipLines tip={view.tip} />}
         <input ref={fileRef} type="file" accept="image/*" hidden onChange={pick} />
       </div>
     );
@@ -217,6 +290,12 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
           <div className="diary-sub">Snap everything you eat and drink today.</div>
         </div>
       </div>
+      <ProteinDots entries={todays} />
+      {typeof view.gramsToday === "number" && (
+        <p className="diary-sub" style={{ margin: "6px 2px 0" }}>
+          About {view.gramsToday} g of protein today, from what you photographed.
+        </p>
+      )}
 
       {!draft && (
         <button className="diary-add" onClick={() => fileRef.current?.click()} disabled={busy}>
@@ -251,6 +330,7 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
                   <span className="diary-band">
                     {DIARY_BAND_LABEL[e.band]} · {clock(e.time)}
                   </span>
+                  {e.marks && <Marks marks={e.marks} />}
                   {e.note && <span className="diary-note">{e.note}</span>}
                 </span>
                 <Icon name="pen" size={15} style={{ color: "var(--muted)", flexShrink: 0 }} />

@@ -63,6 +63,18 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.90 — food diary, phase 2: AI reads every photo; clients see plate balance (2026-10-23).** As built: `docs/FOOD_DIARY_PLAN.md` → "Phase 2 as built".
+
+**Key invariants (v0.90):**
+- **The coach is not the interpreter.** `/api/cron/food-diary` (every 5 min, Mac only, quiet in pm2) runs `read-diary-photos.py`: one Haiku call per unread photo through `build_client`, written as an `op:"read"` line to `_food_diary.mac.jsonl`. Confidence < 0.5 / not food / no dish → unreadable → the ONLY thing that reaches her (`diary_photo` inbox item). `FM_API_OK` unset → nothing read, nothing written, photos stay queued.
+- **Coach estimate = the menu engine**, never a hand-rolled number: `food-diary-estimate.ts` feeds dishes (coach label wins, else reading with count/size) to `componentNutrients`, the floor from `clientProteinFloor` (suppressed for kidney / liver / urate), the protein powder from `supplementProteinPerDay`, reported separately.
+- **Summary goes on the record by itself** when a diary finishes and its photos are read (or after a day): `sessions/<date>-NNN-app-fooddiary.yaml`, `[source: app_food_diary]`, `food_diary_summary` with a `fingerprint` (rewritten in place only when something changed). Read by `assess.py` (`client_context.food_diary_summary`, suggester rule 24 treats it as the food journal), `client-brief.py`, `renewal-brief.py`.
+- **Client sees words, never numbers (§5b):** per photo `marks {protein, veg?, carbs?}` (Protein ✓ / Light on protein / No protein · Veg · Carb-heavy), protein dots, and at the end ONE strength + at most ONE fix from `food-diary-balance.ts::diaryTip`. The swap list is deterministic and filtered by diet + `resolveDairy` + allergies / foods to avoid. No fix is better than one she cannot eat. Observational wording is pinned by a test.
+- **Gentle clients** (`diaryGentle`: anxiety, SSRI/SNRI/benzo incl. Indian brands, eating-disorder history) get protein marks + the tip, worded about adding protein. `food_diary.show_balance` (default on, off for gentle) and `food_diary.show_grams` (default off, refused for gentle) are on the Pydantic `FoodDiary` and staged. Grams = food protein today, rounded to 5.
+- `clientDiaryView` key pin changed deliberately: entries now carry `marks`; the view carries `finished`, `tip`, optional `gramsToday`. Still no dish names, confidence or reading reach the client.
+
+---
+
 **v0.89 — food diary, phase 1 (2026-10-23).** Plan + as-built notes: `docs/FOOD_DIARY_PLAN.md`. The coach starts a time-boxed photo food diary on the **Record** tab (start date, days, a private "looking for" note) and gets a WhatsApp line to send herself; the client sees "Food diary · Day N of M" at the top of Today → Your day, one big add-photo button, slot inferred from the clock (changeable, "Earlier" with a time), optional note, "Done for today".
 
 **Key invariants (v0.89):**

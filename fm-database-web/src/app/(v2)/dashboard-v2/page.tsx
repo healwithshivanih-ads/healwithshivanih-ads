@@ -35,8 +35,8 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import { resolveLifecycles, LIFECYCLE_META, type Lifecycle } from "@/lib/fmdb/lifecycle";
 import { collectDecisions, KIND_META, KIND_ORDER, type DecisionItem, type DiaryLike } from "@/lib/fmdb/decisions";
-import { parseDiaryConfig } from "@/lib/fmdb/food-diary";
-import { loadDiary } from "@/lib/fmdb/food-diary-store";
+import { entryReadState, parseDiaryConfig } from "@/lib/fmdb/food-diary";
+import { loadDiary, readDiarySummary } from "@/lib/fmdb/food-diary-store";
 import { loadDecisions as loadRenewalDecisions } from "@/lib/fmdb/renewal-queue";
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import { loadProgrammeFeedback } from "@/lib/fmdb/programme-feedback-loader";
@@ -215,11 +215,14 @@ export default async function DashboardV2() {
   for (const c of clients) {
     const cfg = parseDiaryConfig((c as unknown as { food_diary?: unknown }).food_diary);
     if (!cfg) continue;
+    const entries = loadDiary(c.client_id, cfg).entries;
     diaries.push({
       client_id: c.client_id,
       display_name: c.display_name ?? c.client_id,
       config: cfg,
-      photos: loadDiary(c.client_id, cfg).entries.length,
+      photos: entries.length,
+      unreadable: entries.filter((e) => entryReadState(e) === "unreadable").length,
+      summaryLine: readDiarySummary(c.client_id, cfg.id)?.line ?? null,
     });
   }
 
@@ -261,7 +264,7 @@ export default async function DashboardV2() {
   const interestedRows = interestedPeople.rows.filter((r) => f.noteClientIds.has(r.clientId) && r.pendingNote);
   const onboardingItems = decisions.items.filter((i) => i.kind === "onboarding");
   const flagItems = decisions.items.filter((i) => i.kind === "flag");
-  const diaryItems = decisions.items.filter((i) => i.kind === "diary");
+  const diaryItems = decisions.items.filter((i) => i.kind === "diary" || i.kind === "diary_photo");
 
   // Lifecycle roll-up for the header line.
   const stateCounts = new Map<string, number>();

@@ -13,6 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { clientDir, currentHost } from "./client-thread";
+import { getPlansRoot } from "./paths";
 import {
   foldDiary,
   parseDiaryConfig,
@@ -74,4 +75,98 @@ export function readDiaryConfig(clientId: string): FoodDiaryConfig | null {
 
 export function loadDiary(clientId: string, cfg: FoodDiaryConfig): FoldedDiary {
   return foldDiary(readDiaryLines(clientId), cfg.id);
+}
+
+/** The client's calendar day — client.yaml#timezone, else IST. */
+export function diaryToday(doc: Record<string, unknown> | null | undefined): string {
+  const tz = typeof doc?.timezone === "string" && doc.timezone.trim() ? doc.timezone.trim() : "Asia/Kolkata";
+  try {
+    return new Date().toLocaleDateString("en-CA", { timeZone: tz });
+  } catch {
+    return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  }
+}
+
+/** Everyone with a diary switch on client.yaml (clients + parked prospects). */
+export function listDiaryClients(): { clientId: string; doc: Record<string, unknown>; cfg: FoodDiaryConfig }[] {
+  const out: { clientId: string; doc: Record<string, unknown>; cfg: FoodDiaryConfig }[] = [];
+  const root = getPlansRoot();
+  for (const bucket of ["clients", "prospects"]) {
+    let names: string[] = [];
+    try {
+      names = fs.readdirSync(path.join(root, bucket));
+    } catch {
+      continue;
+    }
+    for (const id of names) {
+      const file = path.join(root, bucket, id, "client.yaml");
+      let raw: string;
+      try {
+        raw = fs.readFileSync(file, "utf8");
+      } catch {
+        continue;
+      }
+      if (!raw.includes("food_diary:")) continue; // cheap skip before parsing
+      try {
+        const doc = (yaml.load(raw) ?? {}) as Record<string, unknown>;
+        const cfg = parseDiaryConfig(doc.food_diary);
+        if (cfg) out.push({ clientId: id, doc, cfg });
+      } catch {
+        /* a client.yaml js-yaml cannot parse is the integrity cron's job */
+      }
+    }
+  }
+  return out;
+}
+
+/** The client's published plan (for a prescribed protein powder), or null. */
+export function publishedPlanFor(clientId: string): Record<string, unknown> | null {
+  const dir = path.join(getPlansRoot(), "published");
+  let files: string[] = [];
+  try {
+    files = fs.readdirSync(dir).filter((f) => f.endsWith(".yaml"));
+  } catch {
+    return null;
+  }
+  let best: Record<string, unknown> | null = null;
+  for (const f of files) {
+    try {
+      const d = yaml.load(fs.readFileSync(path.join(dir, f), "utf8")) as Record<string, unknown> | null;
+      if (!d || d.client_id !== clientId) continue;
+      if (!best || String(d.plan_period_start ?? "") > String(best.plan_period_start ?? "")) best = d;
+    } catch {
+      /* skip malformed */
+    }
+  }
+  return best;
+}
+
+export interface StoredDiarySummary {
+  session_id: string;
+  line: string;
+  fingerprint: string;
+}
+
+/** The summary session already written for this diary, if any. */
+export function readDiarySummary(clientId: string, diaryId: string): StoredDiarySummary | null {
+  const dir = clientDir(clientId);
+  if (!dir) return null;
+  let names: string[] = [];
+  try {
+    names = fs.readdirSync(path.join(dir, "sessions")).filter((n) => n.endsWith("-app-fooddiary.yaml"));
+  } catch {
+    return null;
+  }
+  for (const n of names) {
+    try {
+      const d = yaml.load(fs.readFileSync(path.join(dir, "sessions", n), "utf8")) as Record<string, unknown> | null;
+      const s = d?.food_diary_summary as Record<string, unknown> | undefined;
+      if (s && s.diary_id === diaryId) {
+        return { session_id: String(d?.session_id ?? n.replace(/\.yaml$/, "")), line: String(s.line ?? ""), fingerprint: String(s.fingerprint ?? "") };
+      }
+    } catch {
+      /* skip */
+    }
+  }
+  return null;
 }

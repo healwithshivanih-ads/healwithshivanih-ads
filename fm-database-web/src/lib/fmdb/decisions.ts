@@ -19,7 +19,7 @@
  */
 
 import { type Lifecycle, type LifecycleState, PROSPECT_FOLLOWUP_DAYS, LAPSED_WINBACK_DAYS } from "./lifecycle";
-import { DIARY_INBOX_DAYS, diaryFinishedOn, diaryInboxAge, diaryLastDay, type FoodDiaryConfig } from "./food-diary";
+import { DIARY_INBOX_DAYS, diaryFinishedOn, diaryInboxAge, diaryLastDay, diaryPhase, type FoodDiaryConfig } from "./food-diary";
 
 /** Days a prospect's follow-up draft may wait before it is dropped. */
 export const FOLLOWUP_DRAFT_MAX_AGE_DAYS = PROSPECT_FOLLOWUP_DAYS + 5; // 35
@@ -44,6 +44,7 @@ export type DecisionKind =
   | "flag"
   | "feedback"
   | "diary"
+  | "diary_photo"
   | "archive";
 
 export interface DecisionItem {
@@ -135,6 +136,10 @@ export interface DiaryLike {
   display_name: string;
   config: FoodDiaryConfig;
   photos: number;
+  /** Photos the AI could not read and the coach has not labelled. */
+  unreadable?: number;
+  /** The summary line once it is on the record, else null. */
+  summaryLine?: string | null;
 }
 export interface ArchiveLike {
   client_id: string;
@@ -203,6 +208,7 @@ const emptyCounts = (): Record<DecisionKind, number> => ({
   flag: 0,
   feedback: 0,
   diary: 0,
+  diary_photo: 0,
   archive: 0,
 });
 
@@ -219,6 +225,7 @@ export const KIND_STATES: Record<DecisionKind, ReadonlySet<LifecycleState>> = {
   // A diary is started by the coach for whoever has the app, so anyone not
   // archived may have one finishing.
   diary: new Set(["prospect", "onboarding", "active", "ending", "maintenance", "lapsed"]),
+  diary_photo: new Set(["prospect", "onboarding", "active", "ending", "maintenance", "lapsed"]),
   archive: new Set(["prospect", "lapsed"]),
 };
 
@@ -418,28 +425,54 @@ export function collectDecisions(input: DecisionInputs): Decisions {
     });
   }
 
-  // 9. Food diary finished — once, until the coach marks it reviewed or
-  //    DIARY_INBOX_DAYS pass. Never "N photos to label": she is not the
-  //    interpreter (decision 2026-10-23); this says the diary is ready to see.
+  // 9. Food diaries. The AI reads every photo (coach decision 2026-10-23), so
+  //    the coach hears about a diary twice at most: once when its summary is
+  //    on the record, and — only if there are any — once for the photos the
+  //    AI could not read. Never "N photos to label".
   for (const d of input.diaries ?? []) {
     const s = allowed("diary", d.client_id);
     if (!s) continue;
     const age = diaryInboxAge(d.config, todayYmd);
-    if (age === null) continue;
-    const label =
-      d.config.status === "ended" && diaryFinishedOn(d.config) < diaryLastDay(d.config)
-        ? "food diary ended early"
-        : `${d.config.days}-day food diary finished`;
-    items.push({
-      kind: "diary",
-      clientId: d.client_id,
-      name: d.display_name,
-      state: s,
-      why: d.photos === 0 ? `${label} — no photos came in` : `${label} — ready to look at`,
-      href: `/clients-v2/${d.client_id}/analyse#food-diary`,
-      ageDays: age,
-      expiresInDays: DIARY_INBOX_DAYS - age,
-    });
+    if (age !== null) {
+      const label =
+        d.config.status === "ended" && diaryFinishedOn(d.config) < diaryLastDay(d.config)
+          ? "food diary ended early"
+          : `${d.config.days}-day food diary finished`;
+      const why =
+        d.photos === 0
+          ? `${label} — no photos came in`
+          : d.summaryLine
+            ? `food diary summary is ready — ${d.summaryLine.length > 110 ? `${d.summaryLine.slice(0, 110)}…` : d.summaryLine}`
+            : `${label} — reading the photos`;
+      items.push({
+        kind: "diary",
+        clientId: d.client_id,
+        name: d.display_name,
+        state: s,
+        why,
+        href: `/clients-v2/${d.client_id}/analyse#food-diary`,
+        ageDays: age,
+        expiresInDays: DIARY_INBOX_DAYS - age,
+      });
+    }
+    // Unreadable photos — while the diary runs, or inside the same window
+    // after it. Exits when she says what each one is, marks the diary
+    // reviewed, or the window passes.
+    const unread = d.unreadable ?? 0;
+    const phase = diaryPhase(d.config, todayYmd);
+    const inWindow = phase === "running" || age !== null;
+    if (unread > 0 && inWindow && !d.config.reviewed_at && allowed("diary_photo", d.client_id)) {
+      items.push({
+        kind: "diary_photo",
+        clientId: d.client_id,
+        name: d.display_name,
+        state: s,
+        why: `${unread} diary photo${unread === 1 ? "" : "s"} the AI couldn't read — say what ${unread === 1 ? "it is" : "they are"}`,
+        href: `/clients-v2/${d.client_id}/analyse#food-diary`,
+        ageDays: age ?? 0,
+        expiresInDays: age === null ? null : DIARY_INBOX_DAYS - age,
+      });
+    }
   }
 
   // 10. Archive — prospects quiet > 45d, lapsed quiet > 70d (the candidate
@@ -478,6 +511,7 @@ export const KIND_META: Record<DecisionKind, { label: string; icon: string; blur
   flag: { label: "Flags", icon: "🔔", blurb: "Something in the data stands out." },
   feedback: { label: "Feedback", icon: "⭐", blurb: "A client graded the programme." },
   diary: { label: "Food diaries", icon: "🍽", blurb: "A food diary you started has finished." },
+  diary_photo: { label: "Diary photos to name", icon: "📷", blurb: "Only the photos the AI couldn't read." },
   archive: { label: "Archive", icon: "🗄", blurb: "Quiet for long enough to tidy away." },
 };
 
@@ -491,5 +525,6 @@ export const KIND_ORDER: DecisionKind[] = [
   "flag",
   "feedback",
   "diary",
+  "diary_photo",
   "archive",
 ];

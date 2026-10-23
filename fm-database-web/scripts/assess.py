@@ -472,6 +472,40 @@ def _load_dirty_genes_screen(plans_root: Path, client_id: str) -> dict | None:
     }
 
 
+def _load_food_diary_summary(plans_root: Path, client_id: str) -> "dict | None":
+    """Newest photo-food-diary summary (save-food-diary-summary.py) within
+    180 days, or None. It is what the client actually ate over a few days,
+    read from photos and corrected by the coach — the suggester treats it as
+    the food journal (rule 24) without the coach re-uploading anything."""
+    import yaml  # local import, as in _load_functional_tests
+    from datetime import date as _date, timedelta
+
+    sdir = plans_root / "clients" / client_id / "sessions"
+    if not sdir.exists():
+        return None
+    cutoff = (_date.today() - timedelta(days=180)).isoformat()
+    for fp in sorted(sdir.glob("*-app-fooddiary.yaml"), reverse=True):
+        try:
+            d = yaml.safe_load(fp.read_text()) or {}
+        except Exception:
+            continue
+        fd = d.get("food_diary_summary")
+        if not isinstance(fd, dict) or str(d.get("date") or "") < cutoff:
+            continue
+        return {
+            "date": str(d.get("date")),
+            "days": fd.get("days"),
+            "photos": fd.get("photos"),
+            "summary": fd.get("line"),
+            "avg_protein_g": fd.get("avg_protein_g"),
+            "protein_floor_g": fd.get("protein_floor_g"),
+            "avg_fibre_g": fd.get("avg_fibre_g"),
+            "per_day": fd.get("per_day") or [],
+            "meals": (fd.get("meals") or [])[:40],
+        }
+    return None
+
+
 def _load_functional_tests(plans_root: Path, client_id: str) -> list[dict]:
     """Walk clients/<id>/functional_tests/*.yaml and return a compact
     summary per file. Skip anything unreadable. Coach uploads DUTCH /
@@ -961,6 +995,9 @@ def main() -> int:
         # mentioned gut. Inject the parsed summaries so the AI can weight
         # them as primary drivers.
         "functional_test_findings": _load_functional_tests(root, client.client_id),
+        # Photo food diary summary (docs/FOOD_DIARY_PLAN.md) — read as the
+        # food journal by suggester rule 24. None when no diary on record.
+        "food_diary_summary": _load_food_diary_summary(root, client.client_id),
         # Dirty Genes pathway-burden screen (coach-run, clients/<id>/dirty_genes/).
         # Flagged pathways + the coach-only note (sequencing/safety). Until now
         # the screen was coach-side only and the initial draft was generated

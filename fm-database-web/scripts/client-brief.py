@@ -321,6 +321,7 @@ def build(root: Path, needle: str, today: dt.date) -> dict:
     last_feedback = None
     last_session = None
     last_msq = None
+    last_food_diary = None
     for f, d in sessions:
         pc = str(d.get("presenting_complaints") or "")
         date = str(d.get("date") or "")[:10]
@@ -331,6 +332,10 @@ def build(root: Path, needle: str, today: dt.date) -> dict:
                        if isinstance(i, dict) and i.get("status") not in (None, "Still taking", "Keeping up")]
             last_checkin = {"date": date, "week": ci.get("week"), "rating_of_5": ci.get("rating"),
                             "in_her_words": str(ci.get("feel") or "")[:240], "slipped": slipped}
+        elif isinstance(d.get("food_diary_summary"), dict):
+            fd = d["food_diary_summary"]
+            last_food_diary = {"date": date, "days": fd.get("days"), "photos": fd.get("photos"),
+                               "summary": str(fd.get("line") or "")[:300], "session_id": d.get("session_id")}
         elif isinstance(d.get("feedback_response"), dict):
             fb = d["feedback_response"]
             last_feedback = {"date": date, "stage": fb.get("stage"), "recommend_0_10": fb.get("recommend"),
@@ -402,6 +407,13 @@ def build(root: Path, needle: str, today: dt.date) -> dict:
             "thread": thread_messages(sessions),
             "last_checkin": last_checkin,
             "last_msq": last_msq,
+            # Photo food diary (docs/FOOD_DIARY_PLAN.md): the summary once one
+            # has finished; `food_diary_running` when one is open now.
+            "last_food_diary": last_food_diary,
+            "food_diary_running": (
+                {k: c["food_diary"].get(k) for k in ("start", "days", "status")}
+                if isinstance(c.get("food_diary"), dict) and c["food_diary"].get("status") == "active" else None
+            ),
             "last_coach_session": last_session,
             "labs_on_file_dates": lab_dates[-3:],
             "labs_flagged": flagged,
@@ -490,6 +502,12 @@ def render(b: dict) -> str:
                      + (f"; slipped: {', '.join(ci['slipped'])}" if ci["slipped"] else ""))
     if r["last_msq"]:
         lines.append(f"- last MSQ {r['last_msq']['date']}: total {r['last_msq']['total']}")
+    if r.get("food_diary_running"):
+        fr = r["food_diary_running"]
+        lines.append(f"- food diary OPEN: {fr.get('days')} days from {fr.get('start')}")
+    if r.get("last_food_diary"):
+        fd = r["last_food_diary"]
+        lines.append(f"- food diary {fd['date']} ({fd.get('days')} days, {fd.get('photos')} photos): {fd['summary']}")
     if r["last_coach_session"]:
         lines.append(f"- last coach session: {r['last_coach_session']['date']} ({r['last_coach_session']['type']})")
     if r["labs_on_file_dates"]:

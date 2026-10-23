@@ -264,7 +264,9 @@ export interface AppMsqEntry {
 import { swapTermMatches, type AppSwapGroup as SwapGroupT, type SwapMember as SwapMemberT } from "./swaps";
 import { deriveReminders, effectiveReminders } from "./reminders-derive";
 import { readOverrides } from "./reminders-server";
-import { clientDiaryView, parseDiaryConfig, type ClientDiaryView } from "./food-diary";
+import { clientDiaryView, diaryDisplay, parseDiaryConfig, type ClientDiaryView } from "./food-diary";
+import { diaryGentle } from "./food-diary-balance";
+import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
 import {
   isNonVegPref,
@@ -5834,10 +5836,19 @@ export async function loadClientAppData(
   );
 
   // Food diary — only while the coach's diary is running on the client's day.
+  // The view gets the client record for her diet / allergies (the end-of-diary
+  // swap) and the gentle rule; grams are computed ONLY when the coach switched
+  // them on and the client is not a gentle one (diaryDisplay).
   const diaryCfg = parseDiaryConfig(client.food_diary);
-  const foodDiary = diaryCfg
-    ? clientDiaryView(diaryCfg, loadDiary(clientId, diaryCfg), tzTodayYmd(appTz))
-    : null;
+  let foodDiary: ClientDiaryView | null = null;
+  if (diaryCfg) {
+    const folded = loadDiary(clientId, diaryCfg);
+    const gramsOn = diaryDisplay(diaryCfg, diaryGentle(client)).grams;
+    foodDiary = clientDiaryView(diaryCfg, folded, tzTodayYmd(appTz), {
+      client,
+      gramsByDate: gramsOn ? gramsByDate(diaryEstimate(diaryCfg, folded.entries, client, null)) : undefined,
+    });
+  }
 
   const faq = [
     {

@@ -384,6 +384,11 @@ class FoodDiary(BaseModel):
     started_at: Optional[datetime] = None
     ended_at: Optional[datetime] = None
     reviewed_at: Optional[datetime] = None
+    # What the client card shows (§5b). None = default: balance marks on
+    # unless the client is "gentle" (anxiety / SSRI-benzo / ED risk), grams
+    # off. Grams are never shown to a gentle client whatever this says.
+    show_balance: Optional[bool] = None
+    show_grams: Optional[bool] = None
 
 
 #: The values TypeScript writes today. Documentation, not enforcement — see

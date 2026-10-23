@@ -27,6 +27,18 @@
  * same entry with no migration: they are just more lines.
  */
 
+import {
+  diaryGentle,
+  diaryTip,
+  parseBalance,
+  type CarbMark,
+  type DietContext,
+  type DiaryTip,
+  type PlateForTip,
+  type ProteinMark,
+  type VegMark,
+} from "./food-diary-balance";
+
 /** Parts of the day a photo can belong to. Same keys as the app's "Your day"
  *  bands (day-plan.ts) minus "anytime" — a meal always happened at a time. */
 export const DIARY_BANDS = ["waking", "morning", "midday", "evening", "bedtime"] as const;
@@ -72,15 +84,43 @@ export interface FoodDiaryConfig {
   ended_at?: string;
   /** Coach opened the finished diary — clears the inbox item. */
   reviewed_at?: string;
+  /** Plate-balance marks on the client card (§5b). Unset = the default:
+   *  on, except for a gentle client (see diaryGentle). */
+  show_balance?: boolean;
+  /** Rough protein grams on the client card. Unset/false = off. Never shown
+   *  to a gentle client, whatever this says. */
+  show_grams?: boolean;
 }
 
-/** What phase 2 writes per photo. Declared now so the reader carries it. */
+/** What the photo reader (scripts/read-diary-photos.py) writes per photo. */
 export interface DiaryAiReading {
   readable: boolean;
   confidence?: number;
-  dishes?: { name: string; portion?: string }[];
+  /** count = pieces for breads/idli/eggs, katoris/bowls/glasses otherwise. */
+  dishes?: { name: string; count?: number; size?: "small" | "regular" | "large"; portion?: string }[];
+  /** Plate proportions (§5b) — what the client may see. */
+  balance?: { protein: string; veg: string; carbs: string };
+  /** Why it could not be read ("blurry", "not food", "packet label"). */
+  reason?: string;
   read_at?: string;
   model?: string;
+}
+
+/** Below this the reader's answer is treated as unreadable and the photo goes
+ *  to the coach. Mirrored in read-diary-photos.py (pinned by a test). */
+export const DIARY_READ_MIN_CONFIDENCE = 0.5;
+
+/** Did the reader actually identify this plate? */
+export function readingUsable(r: DiaryAiReading | undefined | null): boolean {
+  return !!r && r.readable && (r.confidence ?? 0) >= DIARY_READ_MIN_CONFIDENCE && (r.dishes?.length ?? 0) > 0;
+}
+
+/** Entry state for the coach and the cron: needs a read, read fine, or the AI
+ *  could not read it and the coach has not said what it is. */
+export function entryReadState(e: DiaryEntry): "pending" | "read" | "unreadable" | "labelled" {
+  if (e.coach_label) return "labelled";
+  if (!e.ai_reading) return "pending";
+  return readingUsable(e.ai_reading) ? "read" : "unreadable";
 }
 
 export type DiaryOp = "add" | "edit" | "delete" | "day_done" | "label" | "read";
@@ -169,6 +209,17 @@ export function parseDiaryConfig(raw: unknown): FoodDiaryConfig | null {
     ...(iso(r.started_at) ? { started_at: iso(r.started_at) } : {}),
     ...(iso(r.ended_at) ? { ended_at: iso(r.ended_at) } : {}),
     ...(iso(r.reviewed_at) ? { reviewed_at: iso(r.reviewed_at) } : {}),
+    ...(typeof r.show_balance === "boolean" ? { show_balance: r.show_balance } : {}),
+    ...(typeof r.show_grams === "boolean" ? { show_grams: r.show_grams } : {}),
+  };
+}
+
+/** What the client card may show, after the gentle rule (§5b): a gentle
+ *  client gets protein dots + the tip, never carb tags and never grams. */
+export function diaryDisplay(cfg: FoodDiaryConfig, gentle: boolean): { balance: boolean; grams: boolean } {
+  return {
+    balance: cfg.show_balance ?? !gentle,
+    grams: !gentle && cfg.show_grams === true,
   };
 }
 
@@ -350,6 +401,10 @@ export interface ClientDiaryEntry {
   band: DiaryBand;
   note: string;
   file: string;
+  /** Plate-balance words (§5b) once the photo has been read. `protein` is
+   *  always there when read; `veg` and `carbs` only when balance marks are
+   *  on for this client. Words, never numbers. */
+  marks?: { protein: ProteinMark; veg?: VegMark; carbs?: CarbMark };
 }
 
 export interface ClientDiaryView {
@@ -358,36 +413,91 @@ export interface ClientDiaryView {
   dayNumber: number;
   today: string;
   isLastDay: boolean;
+  /** The diary is over — the card shows the thank-you and the tip. */
+  finished: boolean;
   /** Diary days up to today — where an "earlier" photo may go. */
   openDates: string[];
   entries: ClientDiaryEntry[];
   daysDone: string[];
+  /** One strength + at most one fix, once enough plates are read. */
+  tip: DiaryTip | null;
+  /** Rough protein grams for today — ONLY when the coach switched grams on
+   *  for this client and they are not a gentle client. Rounded to 5. */
+  gramsToday?: number;
+}
+
+/** Days the end-of-diary card (thank-you + tip) stays on Today. */
+export const DIARY_TIP_DAYS = 7;
+
+/** Dish names for an entry — the coach's correction wins over the reading. */
+export function entryDishes(e: DiaryEntry): string[] {
+  if (e.coach_label) return e.coach_label.split(/\s*(?:\+|,|\band\b)\s*/i).map((x) => x.trim()).filter(Boolean);
+  if (readingUsable(e.ai_reading)) return (e.ai_reading?.dishes ?? []).map((d) => d.name).filter(Boolean);
+  return [];
 }
 
 export function clientDiaryView(
   cfg: FoodDiaryConfig | null,
   folded: FoldedDiary | null,
   todayYmd: string,
+  opts: { client?: (DietContext & Record<string, unknown>) | null; gramsByDate?: Record<string, number> } = {},
 ): ClientDiaryView | null {
-  if (!cfg || diaryPhase(cfg, todayYmd) !== "running") return null;
-  const entries = (folded?.entries ?? []).map((e) => ({
-    entry_id: e.entry_id,
-    date: e.date,
-    time: e.time,
-    band: e.band,
-    note: e.note,
-    file: e.photo,
-  }));
-  return {
+  if (!cfg) return null;
+  const phase = diaryPhase(cfg, todayYmd);
+  const finishedOn = diaryFinishedOn(cfg);
+  const finished = phase === "finished";
+  if (phase === "upcoming") return null;
+  if (finished && daysBetween(finishedOn, todayYmd) > DIARY_TIP_DAYS) return null;
+
+  const gentle = diaryGentle(opts.client);
+  const show = diaryDisplay(cfg, gentle);
+  const live = folded?.entries ?? [];
+
+  const entries: ClientDiaryEntry[] = finished
+    ? []
+    : live.map((e) => {
+        const out: ClientDiaryEntry = {
+          entry_id: e.entry_id,
+          date: e.date,
+          time: e.time,
+          band: e.band,
+          note: e.note,
+          file: e.photo,
+        };
+        const bal = readingUsable(e.ai_reading) ? parseBalance(e.ai_reading?.balance) : null;
+        if (bal) {
+          out.marks = { protein: bal.protein };
+          if (show.balance && bal.veg) out.marks.veg = bal.veg;
+          if (show.balance && bal.carbs) out.marks.carbs = bal.carbs;
+        }
+        return out;
+      });
+
+  // The tip waits until every photo has been read (or corrected) — a tip
+  // from half a diary would name the wrong meal.
+  const pending = live.some((e) => entryReadState(e) === "pending");
+  const plates: PlateForTip[] = [];
+  for (const e of live) {
+    const bal = readingUsable(e.ai_reading) ? parseBalance(e.ai_reading?.balance) : null;
+    if (bal) plates.push({ band: e.band, date: e.date, balance: bal, dishes: entryDishes(e) });
+  }
+  const tip = pending ? null : diaryTip(plates, opts.client, { gentle });
+
+  const view: ClientDiaryView = {
     id: cfg.id,
     days: cfg.days,
     dayNumber: diaryDayNumber(cfg, todayYmd),
     today: todayYmd,
     isLastDay: todayYmd === diaryLastDay(cfg),
+    finished,
     openDates: diaryOpenDates(cfg, todayYmd),
     entries,
     daysDone: [...(folded?.daysDone ?? [])].sort(),
+    tip,
   };
+  const g = opts.gramsByDate?.[todayYmd];
+  if (show.grams && !finished && typeof g === "number" && g > 0) view.gramsToday = Math.round(g / 5) * 5;
+  return view;
 }
 
 /**

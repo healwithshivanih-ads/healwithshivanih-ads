@@ -22,6 +22,8 @@ import {
   DIARY_BAND_LABEL,
   DIARY_DEFAULT_DAYS,
   DIARY_MAX_DAYS,
+  entryDishes,
+  entryReadState,
   type DiaryEntry,
 } from "@/lib/fmdb/food-diary";
 import {
@@ -30,6 +32,7 @@ import {
   labelDiaryEntryAction,
   loadFoodDiaryAction,
   markFoodDiaryReviewedAction,
+  setDiaryDisplayAction,
   startFoodDiaryAction,
   type DiaryPanelData,
 } from "@/lib/server-actions/food-diary";
@@ -190,6 +193,12 @@ export function FoodDiaryPanel({ clientId, initial }: { clientId: string; initia
         </div>
       )}
 
+      {cfg && <DisplaySwitches clientId={clientId} data={data} onChanged={(err) => {
+        setError(err);
+        void loadFoodDiaryAction(clientId).then((fresh) => fresh.ok && setData(fresh));
+      }} />}
+      {cfg && <EstimateBlock clientId={clientId} data={data} />}
+
       {cfg && data.grid.length > 0 && (
         <div style={{ overflowX: "auto", marginTop: 14 }}>
           <table style={{ borderCollapse: "collapse", width: "100%", fontSize: 12 }}>
@@ -204,6 +213,14 @@ export function FoodDiaryPanel({ clientId, initial }: { clientId: string; initia
                         ✓
                       </span>
                     )}
+                    {(() => {
+                      const day = data.estimate?.days.find((x) => x.date === d.date);
+                      return day && day.photos > 0 ? (
+                        <div style={{ fontWeight: 500, fontSize: 11, color: "var(--fm-text-secondary)" }}>
+                          ~{day.protein_g} g protein · ~{day.fibre_g} g fibre
+                        </div>
+                      ) : null;
+                    })()}
                   </th>
                 ))}
               </tr>
@@ -230,16 +247,22 @@ export function FoodDiaryPanel({ clientId, initial }: { clientId: string; initia
                               <img
                                 src={`/api/client-file/${clientId}/${e.photo}?dir=diary`}
                                 alt={e.coach_label || e.note || "diary photo"}
-                                style={{ width: 76, height: 76, objectFit: "cover", borderRadius: 6, border: "1px solid var(--fm-border-light)", display: "block" }}
+                                style={{
+                                  width: 76,
+                                  height: 76,
+                                  objectFit: "cover",
+                                  borderRadius: 6,
+                                  border:
+                                    entryReadState(e) === "unreadable"
+                                      ? "2px solid var(--fm-danger, #b42318)"
+                                      : "1px solid var(--fm-border-light)",
+                                  display: "block",
+                                }}
                               />
                               <span style={{ display: "block", fontSize: 10.5, color: "var(--fm-text-tertiary)", marginTop: 2 }}>
                                 {clock(e.time)}
                               </span>
-                              {(e.coach_label || e.note) && (
-                                <span style={{ display: "block", fontSize: 10.5, color: "var(--fm-text-secondary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                                  {e.coach_label || e.note}
-                                </span>
-                              )}
+                              <PhotoCaption e={e} />
                             </button>
                           ))}
                         </div>
@@ -361,9 +384,12 @@ function PhotoViewer({
             {DIARY_BAND_LABEL[entry.band]} · {fmtDay(entry.date)} · {clock(entry.time)}
           </strong>
           {entry.note && <div style={{ color: "var(--fm-text-secondary)", marginTop: 4 }}>Client: “{entry.note}”</div>}
+          <ReadingLine e={entry} />
         </div>
         <label style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 12, color: "var(--fm-text-secondary)", marginTop: 12 }}>
-          What this is — optional, only if you want to correct it
+          {entryReadState(entry) === "unreadable"
+            ? "What this is — the AI couldn't tell"
+            : "What this is — optional, only if you want to correct the AI"}
           <input
             value={label}
             onChange={(e) => setLabel(e.target.value)}
@@ -391,6 +417,131 @@ function PhotoViewer({
           </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Under each thumbnail: the coach's correction, else what the AI read, else
+ *  its state. Unreadable photos say so in red — those are the only ones that
+ *  need her (coach decision 2026-10-23). */
+function PhotoCaption({ e }: { e: DiaryEntry }) {
+  const state = entryReadState(e);
+  const base: React.CSSProperties = {
+    display: "block",
+    fontSize: 10.5,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  };
+  if (state === "pending") return <span style={{ ...base, color: "var(--fm-text-tertiary)" }}>reading…</span>;
+  if (state === "unreadable") return <span style={{ ...base, color: "var(--fm-danger, #b42318)", fontWeight: 600 }}>⚠ couldn&apos;t read</span>;
+  const text = entryDishes(e).join(", ");
+  return (
+    <span style={{ ...base, color: "var(--fm-text-secondary)" }} title={text}>
+      {state === "labelled" ? "✎ " : ""}
+      {text}
+    </span>
+  );
+}
+
+/** The AI's reading in full, for the enlarged photo. */
+function ReadingLine({ e }: { e: DiaryEntry }) {
+  const r = e.ai_reading;
+  if (!r) return <div style={{ color: "var(--fm-text-tertiary)", marginTop: 4 }}>Not read yet — the reader runs every few minutes.</div>;
+  if (!r.readable || !(r.dishes?.length)) {
+    return (
+      <div style={{ color: "var(--fm-danger, #b42318)", marginTop: 4 }}>
+        AI couldn&apos;t read it{r.reason ? ` — ${r.reason}` : ""}.
+      </div>
+    );
+  }
+  const dishes = (r.dishes ?? [])
+    .map((d) => `${d.size && d.size !== "regular" ? d.size + " " : ""}${d.name}${d.count && d.count > 1 ? ` ×${d.count}` : ""}`)
+    .join(", ");
+  const b = r.balance;
+  return (
+    <div style={{ color: "var(--fm-text-secondary)", marginTop: 4 }}>
+      AI read: {dishes}
+      {typeof r.confidence === "number" && <> · {Math.round(r.confidence * 100)}% sure</>}
+      {b && (
+        <>
+          {" "}· protein {b.protein}, veg {b.veg}, carbs {b.carbs}
+        </>
+      )}
+    </div>
+  );
+}
+
+/** What the client sees (§5b): plate balance on by default, grams off; a
+ *  gentle client keeps protein dots + the tip only, and never grams. */
+function DisplaySwitches({
+  clientId,
+  data,
+  onChanged,
+}: {
+  clientId: string;
+  data: DiaryPanelData;
+  onChanged: (error: string | null) => void;
+}) {
+  const [pending, start] = useTransition();
+  const set = (patch: { show_balance?: boolean; show_grams?: boolean }) =>
+    start(async () => {
+      const r = await setDiaryDisplayAction(clientId, patch);
+      onChanged(r.ok ? null : r.error);
+    });
+  return (
+    <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", fontSize: 12, marginTop: 10, color: "var(--fm-text-secondary)" }}>
+      <span style={{ fontWeight: 700 }}>Client sees:</span>
+      <label style={{ display: "inline-flex", gap: 6, alignItems: "center" }}>
+        <input type="checkbox" checked={data.display.balance} disabled={pending} onChange={(e) => set({ show_balance: e.target.checked })} />
+        plate balance (veg, carb-heavy)
+      </label>
+      <label style={{ display: "inline-flex", gap: 6, alignItems: "center" }} title={data.gentle ? "Off for this client — anxiety / SSRI-benzo / eating-disorder signal" : ""}>
+        <input
+          type="checkbox"
+          checked={data.display.grams}
+          disabled={pending || data.gentle}
+          onChange={(e) => set({ show_grams: e.target.checked })}
+        />
+        rough protein grams
+      </label>
+      <span>Protein dots and the end-of-diary tip always show.</span>
+      {data.gentle && <span style={{ color: "var(--fm-warning, #8a5a08)" }}>Gentle version for this client.</span>}
+    </div>
+  );
+}
+
+function EstimateBlock({ clientId, data }: { clientId: string; data: DiaryPanelData }) {
+  const est = data.estimate;
+  if (!est || est.photos === 0) return null;
+  return (
+    <div
+      style={{
+        marginTop: 12,
+        padding: "10px 12px",
+        background: "var(--fm-bg-cool)",
+        border: "1px solid var(--fm-border-light)",
+        borderRadius: "var(--fm-radius-sm)",
+        fontSize: 12.5,
+      }}
+    >
+      <div style={{ fontSize: 11, fontWeight: 700, color: "var(--fm-text-tertiary)", textTransform: "uppercase", letterSpacing: 0.6 }}>
+        Estimate — only you see this
+      </div>
+      <div style={{ marginTop: 4 }}>{est.line}</div>
+      {data.summary ? (
+        <div style={{ marginTop: 6, fontSize: 11.5 }}>
+          Saved to the record —{" "}
+          <a href={`/clients-v2/${clientId}/sessions?sid=${data.summary.session_id}`} style={{ color: "var(--fm-primary)" }}>
+            open the session
+          </a>
+          . The next assessment reads it.
+        </div>
+      ) : data.phase === "finished" ? (
+        <div style={{ marginTop: 6, fontSize: 11.5, color: "var(--fm-text-tertiary)" }}>
+          Goes on the record by itself once the photos are read.
+        </div>
+      ) : null}
     </div>
   );
 }

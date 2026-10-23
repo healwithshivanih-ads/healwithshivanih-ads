@@ -1,7 +1,7 @@
 # Food diary in the client app — plan
 
-Status: **phase 1 built 2026-10-23** (diary + review, no AI — see "Phase 1 as built" at the end).
-Phase 2 (automatic AI reading) not built. Prompted by Shweta (cl-906): her BUN was low twice and
+Status: **phases 1 and 2 built 2026-10-23** — see "Phase 1 as built" and "Phase 2 as built" at
+the end. Phase 3 (comparisons, other focuses) not built. Prompted by Shweta (cl-906): her BUN was low twice and
 we were guessing at her protein intake. The coach asked her for a 3-day photo food diary on
 WhatsApp and wants it to be an app feature instead.
 
@@ -151,7 +151,7 @@ added: "it should also show if protein is too little and carbs are too much". De
    chat photos render (`components/client-widgets/whatsapp-thread-panel.tsx`: kind `photo`
    missing from its attachment kinds, and `/api/client-file` looks in `files/` not
    `files/chat/`) — the coach reviews on desktop, so this matters here too.
-2. **Automatic reading + estimate** — every photo read by AI on the Mac, only unreadable ones to the coach, summary saved to the record automatically when the diary ends, assess input.
+2. ✅ **Automatic reading + estimate** (built 2026-10-23, incl. §5b plate balance) — every photo read by AI on the Mac, only unreadable ones to the coach, summary saved to the record automatically when the diary ends, assess input.
 3. Comparisons / other focuses.
 
 ## Tests that must exist
@@ -229,3 +229,60 @@ Where it differs from the design above, and why:
 Also fixed (phase 1 scope): in-app chat photos now render in the desktop thread
 (`whatsapp-thread-panel.tsx` maps kind `photo` → image and asks `/api/client-file` for `?dir=chat`;
 the route accepts a closed `dir` list of `chat | diary`).
+
+
+## Phase 2 as built (2026-10-23)
+
+| Piece | File |
+| --- | --- |
+| Vision reader (Haiku, forced tool, through `build_client`) | `fm-database-web/scripts/read-diary-photos.py` |
+| Summary session writer (one per diary, upserted) | `scripts/save-food-diary-summary.py` |
+| Cron (every 5 min, Mac only, quiet) | `src/app/api/cron/food-diary/route.ts`, `scripts/cron-runner.js` |
+| Coach estimate (deterministic engine) | `src/lib/fmdb/food-diary-estimate.ts` |
+| Client plate balance, gentle rule, end-of-diary tip | `src/lib/fmdb/food-diary-balance.ts` |
+| Read states, display switches, client view | `src/lib/fmdb/food-diary.ts` |
+| Assessment input | `scripts/assess.py::_load_food_diary_summary` → `client_context.food_diary_summary`, suggester rule 24 |
+| Briefs | `scripts/client-brief.py` (`last_food_diary`, `food_diary_running`), `scripts/renewal-brief.py` (`food_diary`) |
+| Tests | `food-diary-phase2.test.ts`, `food-diary.test.ts`, `fm-database/tests/test_food_diary_reader.py` |
+
+How it runs:
+
+1. Every 5 minutes the cron lists diaries that are running or finished within 14 days. Any photo with
+   no reading → one `read-diary-photos.py` run. Each photo → one Haiku call → one `{"op":"read"}`
+   line in `_food_diary.mac.jsonl` with `dishes [{name, count, size}]`, `balance {protein, veg?,
+   carbs?}`, `confidence`, `readable`, `reason`. Below 0.5 confidence, not food, or no dish named →
+   **unreadable**. `FM_API_OK` unset → no call, nothing written, photos stay queued.
+   ~2k input tokens a photo (Haiku) — well under a cent each. Usage is logged per client.
+2. Coach-labelled photos are still read, because the client's balance marks come from the reading.
+   The coach's label wins for dishes everywhere (estimate, summary, captions).
+3. When a diary finishes, and once its photos are read (or a day has passed), the estimate goes to
+   `sessions/<date>-NNN-app-fooddiary.yaml` (`[source: app_food_diary]`, `food_diary_summary` with a
+   `fingerprint`). Later reads or corrections rewrite the same session; a run with no change writes
+   nothing.
+4. Readings reach Fly through the existing `_food_diary.mac.jsonl` forward, so the client's marks
+   appear a few minutes after the photo.
+
+Decisions made while building, and why:
+
+- **The swap in the tip is deterministic, not AI-written.** A curated table filtered by diet
+  (vegetarian / eggetarian / vegan / Jain / non-veg; an unknown diet is treated as vegetarian), by
+  the dairy resolver (`resolveDairy` — a milk-protein allergy or an unrecorded "milk" removes curd
+  and paneer, lactose intolerance keeps them), and by any food named in allergies / foods to avoid /
+  triggers. If nothing is left, there is no fix rather than one she cannot eat. $0, and testable.
+- **The tip waits** until every photo is read or named — a tip from half a diary names the wrong
+  meal. It shows on the last day after "Done for today", and for 7 days after the diary ends.
+- **Gentle** = anxiety / panic, SSRIs / SNRIs / benzodiazepines (generic and common Indian brands),
+  or eating-disorder history, in conditions / history / medications (`diaryGentle`). Gentle clients
+  get protein marks + the tip worded about adding protein (never "leaned on" or carbs). The coach's
+  explicit `show_balance` still wins; `show_grams` is refused for them.
+- **Grams to the client** (`show_grams`) are food protein for today, rounded to 5, from the same
+  estimate. The protein powder is not included, and the card says "from what you photographed".
+- **Inbox:** `diary` says "reading the photos" until the summary exists, then "food diary summary is
+  ready — <line>". A separate `diary_photo` item appears only when a photo is unreadable and not yet
+  named ("2 diary photos the AI couldn't read — say what they are"). A readable photo never creates
+  an item.
+- Measured on test photos: dal + 2 rotis read correctly; upma read as poha (close enough for
+  balance); a blank image was correctly unreadable. A besan chilla was read as anda bhurji for an
+  **eggetarian** client — allowed by her diet. The prompt now tells the model to prefer the dish the
+  diet allows when two look alike. One reply came back without veg/carbs, so `balance` now keeps any
+  valid axis (protein required).

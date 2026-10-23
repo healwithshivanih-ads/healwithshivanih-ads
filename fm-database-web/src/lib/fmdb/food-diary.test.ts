@@ -145,39 +145,88 @@ describe("fold across hosts", () => {
   });
 });
 
-describe("the client sees photos, never numbers", () => {
+describe("the client sees photos and plate-balance WORDS — never a number (§5b)", () => {
+  const readLine = (id: string, balance: { protein: string; veg: string; carbs: string }, ts = "2026-10-24T05:00:00Z"): DiaryLine => ({
+    op: "read",
+    diary_id: "fd-1",
+    ts,
+    entry_id: id,
+    reading: { readable: true, confidence: 0.9, dishes: [{ name: "chilla", count: 2, size: "regular" }], balance },
+  });
   const folded = foldDiary(
     [
       add("a", { note: "homemade" }),
       { op: "label", diary_id: "fd-1", ts: "2026-10-24T05:00:00Z", entry_id: "a", label: "2 chilla" },
-      {
-        op: "read",
-        diary_id: "fd-1",
-        ts: "2026-10-24T05:00:00Z",
-        entry_id: "a",
-        reading: { readable: true, confidence: 0.9, dishes: [{ name: "chilla", portion: "2 pieces" }] },
-      },
+      readLine("a", { protein: "present", veg: "light", carbs: "heavy" }),
     ],
     "fd-1",
   );
+  const KEYS = ["band", "date", "entry_id", "file", "marks", "note", "time"];
 
-  it("carries exactly the photo fields — no label, no reading", () => {
+  it("DELIBERATE pin: photo fields + `marks`, and nothing from the reading but its three words", () => {
     const v = clientDiaryView(CFG, folded, "2026-10-23")!;
-    expect(Object.keys(v.entries[0]).sort()).toEqual(["band", "date", "entry_id", "file", "note", "time"]);
-    expect(JSON.stringify(v)).not.toMatch(/chilla|confidence|dishes|portion|coach_label|ai_reading/);
+    expect(Object.keys(v.entries[0]).sort()).toEqual(KEYS);
+    expect(v.entries[0].marks).toEqual({ protein: "present", veg: "light", carbs: "heavy" });
+    const json = JSON.stringify(v);
+    expect(json).not.toMatch(/chilla|confidence|dishes|portion|coach_label|ai_reading|count|kcal|protein_g|fibre/);
+    expect(v.gramsToday).toBeUndefined();
   });
-  it("exists only while the diary runs", () => {
+  it("a gentle client gets protein dots only — no veg, no carb-heavy", () => {
+    const anxious = { active_conditions: ["Anxiety"], dietary_preference: "Vegetarian" };
+    const v = clientDiaryView(CFG, folded, "2026-10-23", { client: anxious })!;
+    expect(v.entries[0].marks).toEqual({ protein: "present" });
+    const onSsri = { current_medications: ["Nexito 10 mg"] };
+    expect(clientDiaryView(CFG, folded, "2026-10-23", { client: onSsri })!.entries[0].marks).toEqual({ protein: "present" });
+  });
+  it("show_balance off → protein only; on for a gentle client → the coach's choice wins", () => {
+    expect(clientDiaryView({ ...CFG, show_balance: false }, folded, "2026-10-23")!.entries[0].marks).toEqual({ protein: "present" });
+    const anxious = { active_conditions: ["Health anxiety"] };
+    expect(clientDiaryView({ ...CFG, show_balance: true }, folded, "2026-10-23", { client: anxious })!.entries[0].marks?.carbs).toBe("heavy");
+  });
+  it("grams only behind show_grams, never for a gentle client, rounded to 5", () => {
+    const grams = { "2026-10-23": 43 };
+    expect(clientDiaryView(CFG, folded, "2026-10-23", { gramsByDate: grams })!.gramsToday).toBeUndefined();
+    expect(clientDiaryView({ ...CFG, show_grams: true }, folded, "2026-10-23", { gramsByDate: grams })!.gramsToday).toBe(45);
+    const ed = { medical_history: ["Anorexia nervosa, 2015"] };
+    expect(
+      clientDiaryView({ ...CFG, show_grams: true }, folded, "2026-10-23", { client: ed, gramsByDate: grams })!.gramsToday,
+    ).toBeUndefined();
+  });
+  it("an unreadable or unread photo carries no marks", () => {
+    const f = foldDiary(
+      [
+        add("a"),
+        add("b", { ts: "2026-10-23T04:00:00Z" }),
+        { op: "read", diary_id: "fd-1", ts: "2026-10-24T05:00:00Z", entry_id: "a", reading: { readable: false, confidence: 0.2, reason: "blurry" } },
+      ],
+      "fd-1",
+    );
+    const v = clientDiaryView(CFG, f, "2026-10-23")!;
+    expect(v.entries.every((e) => e.marks === undefined)).toBe(true);
+  });
+  it("runs while the diary runs, then shows the thank-you + tip for a week", () => {
     expect(clientDiaryView(CFG, folded, "2026-10-22")).toBeNull();
-    expect(clientDiaryView(CFG, folded, "2026-10-26")).toBeNull();
-    expect(clientDiaryView({ ...CFG, status: "ended" }, folded, "2026-10-24")).toBeNull();
     expect(clientDiaryView(CFG, folded, "2026-10-25")?.isLastDay).toBe(true);
+    const after = clientDiaryView(CFG, folded, "2026-10-26")!;
+    expect(after.finished).toBe(true);
+    expect(after.entries).toEqual([]);
+    expect(clientDiaryView(CFG, folded, "2026-11-01")).not.toBeNull(); // 7 days after the last day
+    expect(clientDiaryView(CFG, folded, "2026-11-02")).toBeNull();
   });
-  it("the card never reads a reading, a correction or a nutrient", () => {
+  it("the card never reads a reading, a correction or a nutrient figure", () => {
     // Code only — the header comment explains the rule in these very words.
+    // Strip only real comments: block comments that open a line, JSX {/* */}
+    // and // lines. A bare /\*…\*\/ pass would eat code ("image/*").
     const card = read("app/app/[token]/ochre-diary.tsx")
-      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/^\s*\/\*[\s\S]*?\*\//gm, "")
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
       .replace(/^\s*\/\/.*$/gm, "");
-    expect(card).not.toMatch(/coach_label|ai_reading|reading\.|protein|kcal|calorie|grams|\bfibre\b/i);
+    expect(card).toMatch(/FoodDiaryCard/); // the strip left the code
+    expect(card).not.toMatch(/coach_label|ai_reading|\.reading|dishes|confidence|kcal|calorie|fibre|protein_g/i);
+    // Grams reach the card through ONE field, which clientDiaryView sets only
+    // behind show_grams and never for a gentle client.
+    expect(card.match(/gramsToday/g)?.length).toBeGreaterThan(0);
+    expect(card).not.toMatch(/\bgrams\b(?!Today)/);
   });
 });
 
@@ -206,6 +255,9 @@ describe("nothing is sent unless the client asked", () => {
       "app/api/app-diary/route.ts",
       "lib/fmdb/food-diary.ts",
       "lib/fmdb/food-diary-store.ts",
+      "lib/fmdb/food-diary-balance.ts",
+      "lib/fmdb/food-diary-estimate.ts",
+      "app/api/cron/food-diary/route.ts",
       "app/app/[token]/ochre-diary.tsx",
     ]) {
       expect(read(f), f).not.toMatch(SEND);
@@ -250,12 +302,27 @@ describe("the coach's inbox", () => {
   it("says nothing while the diary runs", () => {
     expect(diaryItems(inputs("2026-10-25", CFG))).toEqual([]);
   });
-  it("one item the day after it finishes — ready to look at, not photos to label", () => {
+  it("one item the day after it finishes — reading, then the summary; never photos to label", () => {
     const items = diaryItems(inputs("2026-10-26", CFG));
     expect(items).toHaveLength(1);
-    expect(items[0].why).toMatch(/ready to look at/);
+    expect(items[0].why).toMatch(/reading the photos/);
     expect(items[0].why).not.toMatch(/label/i);
     expect(items[0].href).toBe("/clients-v2/c/analyse#food-diary");
+    const withSummary = inputs("2026-10-26", CFG);
+    withSummary.diaries = [{ client_id: "c", display_name: "Shweta", config: CFG, photos: 9, summaryLine: "~38 g protein/day" }];
+    expect(diaryItems(withSummary)[0].why).toBe("food diary summary is ready — ~38 g protein/day");
+  });
+  it("a readable photo never makes a coach item; only unreadable ones do, as ONE item", () => {
+    const photoItems = (unreadable: number, today = "2026-10-24") => {
+      const i = inputs(today, CFG);
+      i.diaries = [{ client_id: "c", display_name: "Shweta", config: CFG, photos: 9, unreadable }];
+      return collectDecisions(i).items.filter((x) => x.kind === "diary_photo");
+    };
+    expect(photoItems(0)).toEqual([]);
+    const two = photoItems(2);
+    expect(two).toHaveLength(1);
+    expect(two[0].why).toBe("2 diary photos the AI couldn't read — say what they are");
+    expect(photoItems(2, "2026-11-10")).toEqual([]); // past the window
   });
   it("ended early by the coach → ready that day", () => {
     const ended: FoodDiaryConfig = { ...CFG, status: "ended", ended_at: "2026-10-24T10:00:00Z" };

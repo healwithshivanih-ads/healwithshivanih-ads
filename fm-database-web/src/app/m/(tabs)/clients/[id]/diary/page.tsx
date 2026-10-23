@@ -11,7 +11,15 @@
 import { notFound } from "next/navigation";
 import { loadCoachCard } from "@/lib/fmdb/coach-mobile";
 import { readDiaryConfig, loadDiary } from "@/lib/fmdb/food-diary-store";
-import { DIARY_BAND_LABEL, diaryFinishedOn, diaryGrid, diaryLastDay } from "@/lib/fmdb/food-diary";
+import {
+  DIARY_BAND_LABEL,
+  diaryFinishedOn,
+  diaryGrid,
+  diaryLastDay,
+  entryDishes,
+  entryReadState,
+} from "@/lib/fmdb/food-diary";
+import { readDiarySummary } from "@/lib/fmdb/food-diary-store";
 import { BackLink, Card, Eyebrow } from "../../../../ui";
 
 export const dynamic = "force-dynamic";
@@ -33,6 +41,9 @@ export default async function DiaryView({ params }: { params: Promise<{ id: stri
   const cfg = readDiaryConfig(card.id);
   const folded = cfg ? loadDiary(card.id, cfg) : null;
   const grid = cfg && folded ? diaryGrid(cfg, folded.entries) : [];
+  // The summary line once it is on the record (written on the Mac; on Fly the
+  // session file is not projected, so this shows on the Mac's /m only).
+  const summary = cfg ? readDiarySummary(card.id, cfg.id) : null;
 
   return (
     <main className="m-page">
@@ -47,6 +58,7 @@ export default async function DiaryView({ params }: { params: Promise<{ id: stri
           {cfg.focus ? ` · looking for: ${cfg.focus}` : ""}
         </p>
       )}
+      {summary && <Card>{summary.line}</Card>}
 
       {grid.map((d) => (
         <section key={d.date}>
@@ -81,8 +93,17 @@ export default async function DiaryView({ params }: { params: Promise<{ id: stri
                           <span className="m-subtle" style={{ display: "block", fontSize: 11 }}>
                             {clock(e.time)}
                           </span>
-                          {(e.coach_label || e.note) && (
-                            <span style={{ display: "block", fontSize: 11 }}>{e.coach_label || e.note}</span>
+                          {entryReadState(e) === "unreadable" ? (
+                            <span style={{ display: "block", fontSize: 11, color: "var(--fm-danger)" }}>couldn&apos;t read</span>
+                          ) : entryReadState(e) === "pending" ? (
+                            <span className="m-subtle" style={{ display: "block", fontSize: 11 }}>reading…</span>
+                          ) : (
+                            <span style={{ display: "block", fontSize: 11 }}>{entryDishes(e).join(", ")}</span>
+                          )}
+                          {e.note && (
+                            <span className="m-subtle" style={{ display: "block", fontSize: 11 }}>
+                              “{e.note}”
+                            </span>
                           )}
                         </a>
                       ))}

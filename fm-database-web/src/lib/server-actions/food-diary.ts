@@ -26,6 +26,7 @@ import {
   DIARY_LABEL_MAX,
   DIARY_MAX_DAYS,
   DIARY_MIN_DAYS,
+  diaryDisplay,
   diaryFinishedOn,
   diaryGrid,
   diaryLastDay,
@@ -36,7 +37,16 @@ import {
   type DiaryPhase,
   type FoodDiaryConfig,
 } from "@/lib/fmdb/food-diary";
-import { appendDiaryLine, loadDiary } from "@/lib/fmdb/food-diary-store";
+import {
+  appendDiaryLine,
+  diaryToday,
+  loadDiary,
+  publishedPlanFor,
+  readDiarySummary,
+  type StoredDiarySummary,
+} from "@/lib/fmdb/food-diary-store";
+import { diaryGentle } from "@/lib/fmdb/food-diary-balance";
+import { diaryEstimate, type DiaryEstimate } from "@/lib/fmdb/food-diary-estimate";
 
 const SAFE_ID = /^[a-z0-9][a-z0-9-]{0,63}$/i;
 type Fail = { ok: false; error: string };
@@ -63,15 +73,6 @@ function writeClient(file: string, doc: Record<string, unknown>) {
   fs.renameSync(tmp, file);
 }
 
-/** The client's calendar day — client.yaml#timezone, else IST. */
-function clientToday(doc: Record<string, unknown>): string {
-  const tz = typeof doc.timezone === "string" && doc.timezone.trim() ? doc.timezone.trim() : "Asia/Kolkata";
-  try {
-    return new Date().toLocaleDateString("en-CA", { timeZone: tz });
-  } catch {
-    return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
-  }
-}
 
 /** Store only what the model knows, dropping empty optionals. */
 function toYaml(cfg: FoodDiaryConfig): Record<string, unknown> {
@@ -80,6 +81,8 @@ function toYaml(cfg: FoodDiaryConfig): Record<string, unknown> {
   if (cfg.started_at) out.started_at = cfg.started_at;
   if (cfg.ended_at) out.ended_at = cfg.ended_at;
   if (cfg.reviewed_at) out.reviewed_at = cfg.reviewed_at;
+  if (typeof cfg.show_balance === "boolean") out.show_balance = cfg.show_balance;
+  if (typeof cfg.show_grams === "boolean") out.show_grams = cfg.show_grams;
   return out;
 }
 
@@ -121,16 +124,25 @@ export interface DiaryPanelData {
   appUrl: string | null;
   mobile: string | null;
   message: string | null;
+  /** Coach-only estimate from the AI readings + her corrections. */
+  estimate: DiaryEstimate | null;
+  /** The summary session on the record, once the diary has finished. */
+  summary: StoredDiarySummary | null;
+  /** Anxious / benzo-SSRI / eating-disorder signals on the record. */
+  gentle: boolean;
+  /** What the client card shows, after the gentle rule. */
+  display: { balance: boolean; grams: boolean };
 }
 
 export async function loadFoodDiaryAction(clientId: string): Promise<DiaryPanelData | Fail> {
   const c = readClient(clientId);
   if (!c) return { ok: false, error: "client not found" };
-  const today = clientToday(c.doc);
+  const today = diaryToday(c.doc);
   const cfg = parseDiaryConfig(c.doc.food_diary);
   const appUrl = clientAppUrl(typeof c.doc.app_token === "string" ? c.doc.app_token : null);
   const first = String(c.doc.display_name ?? "").split(" ")[0];
   const folded = cfg ? loadDiary(clientId, cfg) : null;
+  const gentle = diaryGentle(c.doc);
   return {
     ok: true,
     config: cfg,
@@ -144,6 +156,10 @@ export async function loadFoodDiaryAction(clientId: string): Promise<DiaryPanelD
     appUrl,
     mobile: typeof c.doc.mobile_number === "string" ? c.doc.mobile_number : c.doc.mobile_number ? String(c.doc.mobile_number) : null,
     message: cfg ? sendLine(first, cfg, today, appUrl) : null,
+    estimate: cfg && folded ? diaryEstimate(cfg, folded.entries, c.doc, publishedPlanFor(clientId)) : null,
+    summary: cfg ? readDiarySummary(clientId, cfg.id) : null,
+    gentle,
+    display: cfg ? diaryDisplay(cfg, gentle) : { balance: !gentle, grams: false },
   };
 }
 
@@ -154,7 +170,7 @@ export async function startFoodDiaryAction(
   const c = readClient(clientId);
   if (!c) return { ok: false, error: "client not found" };
   if (!c.doc.app_token) return { ok: false, error: "This client has no app link yet — send the app first." };
-  const today = clientToday(c.doc);
+  const today = diaryToday(c.doc);
   const existing = parseDiaryConfig(c.doc.food_diary);
   if (existing && diaryPhase(existing, today) !== "finished") {
     return { ok: false, error: "A diary is already open — end it before starting another." };
@@ -191,7 +207,7 @@ async function patchDiary(
   if (!c) return { ok: false, error: "client not found" };
   const cfg = parseDiaryConfig(c.doc.food_diary);
   if (!cfg) return { ok: false, error: "No diary on this client." };
-  const next = fn(cfg, clientToday(c.doc));
+  const next = fn(cfg, diaryToday(c.doc));
   if (typeof next === "string") return { ok: false, error: next };
   c.doc.food_diary = toYaml(next);
   writeClient(c.file, c.doc);
@@ -215,6 +231,31 @@ export async function endFoodDiaryAction(clientId: string): Promise<{ ok: true }
   return patchDiary(clientId, (cfg) =>
     cfg.status === "ended" ? "Already ended." : { ...cfg, status: "ended", ended_at: new Date().toISOString() },
   );
+}
+
+/**
+ * What the client card shows (§5b). `null` puts a switch back to its default
+ * (balance on unless gentle; grams off). Grams cannot be switched on for a
+ * gentle client — the card would never show them anyway (diaryDisplay), and
+ * refusing here keeps the record honest.
+ */
+export async function setDiaryDisplayAction(
+  clientId: string,
+  patch: { show_balance?: boolean | null; show_grams?: boolean | null },
+): Promise<{ ok: true } | Fail> {
+  const c = readClient(clientId);
+  if (!c) return { ok: false, error: "client not found" };
+  if (patch.show_grams === true && diaryGentle(c.doc)) {
+    return { ok: false, error: "Grams stay off for this client (anxiety / SSRI-benzo / eating-disorder signal on the record)." };
+  }
+  return patchDiary(clientId, (cfg) => {
+    const next = { ...cfg };
+    if (patch.show_balance === null) delete next.show_balance;
+    else if (typeof patch.show_balance === "boolean") next.show_balance = patch.show_balance;
+    if (patch.show_grams === null) delete next.show_grams;
+    else if (typeof patch.show_grams === "boolean") next.show_grams = patch.show_grams;
+    return next;
+  });
 }
 
 /** Clears the inbox item. */

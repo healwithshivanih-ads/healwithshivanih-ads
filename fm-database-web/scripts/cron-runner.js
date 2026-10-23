@@ -84,7 +84,7 @@ if (!SECRET) {
 // do must never look the same, so the hourly heartbeat further down always
 // reports run counts — `runs 0` there is the alarm. (2026-08-22)
 // ---------------------------------------------------------------------------
-const QUIET_JOBS = ["pending-sends", "intake-reconcile", "app-reminders", "infra-health"];
+const QUIET_JOBS = ["pending-sends", "intake-reconcile", "app-reminders", "infra-health", "food-diary"];
 
 // Shape guard. If a payload does not carry the field the predicate reads, we
 // do NOT get to call it noise — otherwise renaming a response field (say
@@ -95,6 +95,7 @@ const REQUIRED_KEYS = {
   "app-reminders": ["sent"],
   "intake-reconcile": ["reconciled"],
   "infra-health": ["problems", "repaired"],
+  "food-diary": ["read", "summaries"],
 };
 
 // intake-reconcile per-client outcomes that mean "steady state, nothing done".
@@ -125,6 +126,16 @@ const HAS_ACTIVITY = {
   // counts as quiet too: nothing to watch is a config choice, not an event.
   "infra-health": (p) =>
     (p.problems || []).length > 0 || p.repaired === true || (p.alerted || 0) > 0,
+
+  // Steady state is "no diary running" (diaries 0) or "nothing new to read".
+  // A blocked reader (FM_API_OK unset) with photos waiting IS activity — it
+  // means photos are piling up unread.
+  "food-diary": (p) =>
+    (p.read || 0) > 0 ||
+    (p.unreadable || 0) > 0 ||
+    (p.summaries || []).length > 0 ||
+    (p.errors || []).length > 0 ||
+    (p.api_blocked === true && (p.queued || 0) > 0),
 
   "intake-reconcile": (p) => {
     const app = p.app_staging || {};
@@ -414,6 +425,16 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// Every 5 minutes — food diary (docs/FOOD_DIARY_PLAN.md): read new diary
+// photos with Haiku through the cost guard (Mac only), and keep each finished
+// diary's summary on the record. Cheap when no diary is running: a directory
+// scan, no shim spawned. Quiet unless something was read or written.
+cron.schedule(
+  "*/5 * * * *",
+  () => fire("food-diary"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // 21:00 IST daily — revenue export to ochre-funnel (growth-system Loop 1):
 // graduation sweep + active_client_count snapshot + outbox drain. Idempotent;
 // no-op when OCHRE_FUNNEL_REVENUE_URL / FM_REVENUE_EXPORT_SECRET are unset.
@@ -502,6 +523,7 @@ console.log(
     + "\n  · * * * * *  pending-sends"
     + "\n  · * * * * *  intake-reconcile"
     + "\n  · * * * * *  app-reminders"
+    + "\n  · */5 * * * * food-diary"
     + "\n  · 0 * * * *  hourly heartbeat"
     + `\n  quiet (log only on activity/error): ${QUIET_JOBS.join(", ")}`,
 );

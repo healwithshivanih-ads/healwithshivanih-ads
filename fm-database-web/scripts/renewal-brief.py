@@ -91,7 +91,7 @@ def main(cid):
         if ends is None or end > ends:
             plan, ends, slug = d, end, re.sub(r"-v\d+\.yaml$", "", pathlib.Path(f).name)
 
-    msq, adherence, feedback = [], [], []
+    msq, adherence, feedback, food_diary = [], [], [], []
     for f in sorted(glob.glob(str(cdir / "sessions" / "*.yaml"))) if cdir else []:
         d = yaml.safe_load(open(f)) or {}
         pc = str(d.get("presenting_complaints") or "")
@@ -103,7 +103,13 @@ def main(cid):
                             "total": int(m.group(1)), "top": m.group(2).strip()})
         ci = d.get("checkin_response")
         fb = d.get("feedback_response")
-        if isinstance(fb, dict):
+        fd = d.get("food_diary_summary")
+        if isinstance(fd, dict):
+            # Photo food diary summary (save-food-diary-summary.py) — what she
+            # actually ate over a few days, AI-read, coach-corrected.
+            food_diary.append({"date": str(d.get("date")), "days": fd.get("days"),
+                               "summary": str(fd.get("line") or "")[:300]})
+        elif isinstance(fb, dict):
             # Her own verdict on the programme (save-app-feedback.py).
             feedback.append({
                 "date": str(d.get("date")), "stage": fb.get("stage"),
@@ -160,7 +166,7 @@ def main(cid):
         "plan": {"slug": slug, "weeks": (plan or {}).get("plan_period_weeks"),
                  "ends_on": str(ends) if ends else None,
                  "days_left": (ends - TODAY).days if ends else None},
-        "msq": msq, "adherence": adherence[-4:], "feedback": feedback, "weights": weights,
+        "msq": msq, "adherence": adherence[-4:], "feedback": feedback, "food_diary": food_diary[-2:], "weights": weights,
         "labs_ordered": labs, "calls": nbhwc_calls(name),
         "household_also_renewing": household,
         "supplements": len((plan or {}).get("supplement_protocol") or []),
