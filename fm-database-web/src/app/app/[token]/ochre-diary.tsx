@@ -317,6 +317,46 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
     setOpenEntry(null);
   }
 
+  // Today's photos — on the open card AND under "Done for today", so a
+  // misread can still be corrected after the day is closed.
+  const todayList =
+    todays.length > 0 ? (
+      <ul className="diary-list">
+          {todays.map((e) => (
+            <li key={e.entry_id}>
+              <button className="diary-item" onClick={() => setOpenEntry(openEntry === e.entry_id ? null : e.entry_id)}>
+                {/* eslint-disable-next-line @next/next/no-img-element -- the client's own photo, served token-scoped */}
+                <img src={photoUrl(e.file)} alt="" className="diary-thumb" />
+                <span className="diary-meta">
+                  <span className="diary-band">
+                    {DIARY_BAND_LABEL[e.band]} · {clock(e.time)}
+                  </span>
+                  {e.looksLike && (
+                    <span className="diary-looks">
+                      {e.yours ? e.looksLike : `Looks like ${e.looksLike}`}
+                      {!e.yours && <span className="diary-fix"> · Not right?</span>}
+                    </span>
+                  )}
+                  {e.marks && <Marks marks={e.marks} />}
+                  {e.feedback && <span className="diary-feedback">{e.feedback}</span>}
+                  {e.note && <span className="diary-note">{e.note}</span>}
+                </span>
+                <Icon name="pen" size={15} style={{ color: "var(--muted)", flexShrink: 0 }} />
+              </button>
+              {openEntry === e.entry_id && (
+                <EntryEditor
+                  entry={e}
+                  busy={busy}
+                  onSave={(patch) => saveEntry(e, patch)}
+                  onDelete={() => removeEntry(e)}
+                  onCancel={() => setOpenEntry(null)}
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+    ) : null;
+
   // ── "Done for today" — the card folds to one line ──────────────────────
   if (doneToday && !draft) {
     return (
@@ -340,6 +380,9 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
           </button>
         </div>
         <ProteinDots entries={todays} />
+        {flash && <p className="diary-flash">{flash}</p>}
+        {error && <p className="diary-error">{error}</p>}
+        {todayList}
         {view.isLastDay && tip && <TipLines tip={tip} />}
         <input ref={fileRef} type="file" accept="image/*" hidden onChange={pick} />
       </div>
@@ -388,42 +431,7 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
       {flash && <p className="diary-flash">{flash}</p>}
       {error && <p className="diary-error">{error}</p>}
 
-      {todays.length > 0 && (
-        <ul className="diary-list">
-          {todays.map((e) => (
-            <li key={e.entry_id}>
-              <button className="diary-item" onClick={() => setOpenEntry(openEntry === e.entry_id ? null : e.entry_id)}>
-                {/* eslint-disable-next-line @next/next/no-img-element -- the client's own photo, served token-scoped */}
-                <img src={photoUrl(e.file)} alt="" className="diary-thumb" />
-                <span className="diary-meta">
-                  <span className="diary-band">
-                    {DIARY_BAND_LABEL[e.band]} · {clock(e.time)}
-                  </span>
-                  {e.looksLike && (
-                    <span className="diary-looks">
-                      {e.yours ? e.looksLike : `Looks like ${e.looksLike}`}
-                      {!e.yours && <span className="diary-fix"> · Not right?</span>}
-                    </span>
-                  )}
-                  {e.marks && <Marks marks={e.marks} />}
-                  {e.feedback && <span className="diary-feedback">{e.feedback}</span>}
-                  {e.note && <span className="diary-note">{e.note}</span>}
-                </span>
-                <Icon name="pen" size={15} style={{ color: "var(--muted)", flexShrink: 0 }} />
-              </button>
-              {openEntry === e.entry_id && (
-                <EntryEditor
-                  entry={e}
-                  busy={busy}
-                  onSave={(patch) => saveEntry(e, patch)}
-                  onDelete={() => removeEntry(e)}
-                  onCancel={() => setOpenEntry(null)}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      {todayList}
 
       {!draft && todays.length > 0 && (
         <button className="diary-donebtn" onClick={markDone} disabled={busy}>
