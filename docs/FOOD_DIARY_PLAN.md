@@ -115,6 +115,31 @@ starts it, for the days she picks, and then stops by itself.
   assessment.
 - Still coach-only: nothing from the reading reaches the client.
 
+### 5b. What the CLIENT sees — plate balance, never grams (phase 2, coach decision 2026-10-23)
+The coach asked whether clients should see their protein intake to help them stay on plan, and
+added: "it should also show if protein is too little and carbs are too much". Decided shape:
+- **Per meal, three marks, read from the plate's proportions** (the AI reading gains a
+  `balance: {protein: present|light|none, veg: present|light|none, carbs: balanced|heavy}`
+  field): e.g. "Protein ✓ · Veg ✓ · Carbs heavy". Proportions are what a photo can judge; grams
+  are not (a photo protein estimate can be 30–50% off, and dish coverage is ~55%).
+- **During the diary:** under today's photos, a row of meal dots — filled when that meal had a
+  protein, with a soft "carb-heavy" tag on plates that leaned on rice / roti / poha / biscuits
+  with little protein or veg.
+- **At the end:** one strength + one fix, in plain food words from THIS client's diet
+  ("Dinner was well balanced every day — breakfast leaned on poha with no protein. Try a moong
+  chilla or a bowl of curd."). Swaps must respect her foods_to_avoid / allergies / diet (no
+  wheat for a gluten-free client, no paneer for Shweta).
+- **No numbers on any client screen** — no grams, calories or percentages. The gram estimates
+  stay in the coach summary.
+- **Tone:** observations, never verdicts ("leaned on", "light on", never "bad", "too much",
+  "failed"). One fix per diary, not one per meal.
+- **Gentler for flagged clients:** where the app already treats a client as anxious / on
+  benzodiazepines-SSRIs / ED-risk, show only the protein dots and the end-of-diary tip — no
+  "carb-heavy" tags. Coach can switch the balance marks on or off per client
+  (`food_diary.show_balance`, default on, default off for flagged clients).
+- **Optional grams for clients who want numbers** (e.g. a numbers-driven gym-goer):
+  `food_diary.show_grams`, default OFF, never available for flagged clients.
+
 ### 6. Later (phase 3, only if useful)
 - Repeat diaries to compare (week 1 vs week 8).
 - Focus presets beyond protein: fibre, triggers vs symptoms (the pending v0.78 item).
@@ -137,6 +162,7 @@ starts it, for the days she picks, and then stops by itself.
 - No client-facing component renders a number from the estimate (grep-style test on the
   diary card props).
 - A readable photo never creates a coach review item; only an unreadable one does.
+- The client diary view shows balance marks but no number unless `show_grams` is on; flagged clients never get `carbs` tags or grams.
 - The vision call goes through `build_client` (FM_API_OK off → no call, photo queued, not lost).
 - No push or WhatsApp is sent by the system when a diary starts, runs or ends (unless the
   client switched on their own reminder).
