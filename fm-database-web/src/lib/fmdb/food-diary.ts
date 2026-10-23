@@ -54,12 +54,22 @@ export const DIARY_BAND_LABEL: Record<DiaryBand, string> = {
   bedtime: "Late night",
 };
 
-/** Same boundaries as day-plan.ts::bandForHour — pinned equal by a test. */
+/**
+ * Which meal a photo belongs to, from the hour it was eaten.
+ *
+ * NOT day-plan.ts::bandForHour, on purpose. That one is about the routine
+ * (9 pm is "before bed" — the magnesium and the wind-down). For FOOD, dinner
+ * at 9–10:30 pm is ordinary in India: cl-900's 9:21 pm dinner landed in
+ * "Late night" (2026-10-23), which also kept it out of the end-of-diary tip,
+ * since the tip only weighs breakfast, lunch and dinner. Dinner runs to 11 pm;
+ * late night is 11 pm to 5 am.
+ */
 export function diaryBandForHour(hour: number): DiaryBand {
+  if (hour < 5) return "bedtime";
   if (hour < 8) return "waking";
   if (hour < 12) return "morning";
   if (hour < 16) return "midday";
-  if (hour < 21) return "evening";
+  if (hour < 23) return "evening";
   return "bedtime";
 }
 

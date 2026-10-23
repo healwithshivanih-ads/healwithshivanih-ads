@@ -56,8 +56,19 @@ const add = (id: string, over: Partial<DiaryLine> = {}): DiaryLine => ({
 });
 
 describe("bands", () => {
-  it("infers the same part of the day as the app's 'Your day'", () => {
-    for (let h = 0; h < 24; h++) expect(diaryBandForHour(h)).toBe(bandForHour(h));
+  it("dinner runs to 11 pm — a 9:21 pm dinner is dinner, not 'late night' (cl-900, 2026-10-23)", () => {
+    expect(diaryBandForHour(21)).toBe("evening");
+    expect(diaryBandForHour(22)).toBe("evening");
+    expect(diaryBandForHour(23)).toBe("bedtime");
+    expect(diaryBandForHour(1)).toBe("bedtime");
+    expect(diaryBandForHour(6)).toBe("waking");
+    expect(diaryBandForHour(9)).toBe("morning");
+    expect(diaryBandForHour(13)).toBe("midday");
+  });
+  it("matches 'Your day' through the afternoon, and differs only where food does", () => {
+    // The routine's 9 pm is "before bed"; the meal's 9 pm is dinner.
+    for (const h of [8, 10, 12, 15, 16, 20]) expect(diaryBandForHour(h)).toBe(bandForHour(h));
+    expect(bandForHour(21)).toBe("bedtime");
   });
   it("never offers 'any time' — a meal happened at a time", () => {
     expect(DIARY_BANDS as readonly string[]).not.toContain("anytime");

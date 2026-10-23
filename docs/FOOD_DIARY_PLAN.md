@@ -286,3 +286,13 @@ Decisions made while building, and why:
   **eggetarian** client — allowed by her diet. The prompt now tells the model to prefer the dish the
   diet allows when two look alike. One reply came back without veg/carbs, so `balance` now keeps any
   valid axis (protein required).
+
+### Fixes after the first live use (2026-10-23, cl-900)
+
+- **Dinner runs to 11 pm.** `diaryBandForHour` no longer mirrors `day-plan.ts::bandForHour`: a
+  9:21 pm dinner was filed as "Late night" (9 pm is "before bed" for the routine, not for food),
+  which also kept it out of the tip. Late night is now 11 pm – 5 am.
+- **The card shows the result without a reload.** After a photo it says "Added — its marks show
+  here in a few minutes" and polls `GET /api/app-diary?view=1` about once a minute (visible tab
+  only, ≤ 20 tries) until the marks arrive. Not a page refresh: a refresh logs an app open each time.
+- **"Done for today" keeps the day's protein dots** instead of folding to a bare line.

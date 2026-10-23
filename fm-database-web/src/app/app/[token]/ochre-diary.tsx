@@ -15,7 +15,7 @@
  * Every line the client reads is in the second person.
  */
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icon, useOchre } from "./ochre-context";
 import { shrinkPhoto } from "./photo-shrink";
@@ -31,6 +31,9 @@ import {
 } from "@/lib/fmdb/food-diary";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+/** Poll for a photo's marks about once a minute, for up to ~20 minutes. */
+const POLL_MS = 60_000;
+const POLL_MAX = 20;
 const nowHHMM = () => {
   const d = new Date();
   return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -152,11 +155,47 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
   const [error, setError] = useState<string | null>(null);
   const [flash, setFlash] = useState<string | null>(null);
 
+  // Marks arrive a few minutes after a photo (the AI reads it on the Mac).
+  // They come from three places, newest last: the page load, the local copy of
+  // a photo just added (none yet), and the poll below.
+  const [liveMarks, setLiveMarks] = useState<Record<string, ClientDiaryEntry["marks"]>>({});
+  const [liveTip, setLiveTip] = useState<ClientDiaryView["tip"]>(null);
+  const pollsLeft = useRef(POLL_MAX);
+
   const doneToday = doneDays.has(view.today);
   const todays = useMemo(
-    () => entries.filter((e) => e.date === view.today).sort((a, b) => a.time.localeCompare(b.time)),
-    [entries, view.today],
+    () =>
+      entries
+        .filter((e) => e.date === view.today)
+        .sort((a, b) => a.time.localeCompare(b.time))
+        .map((e) => (e.marks || !liveMarks[e.entry_id] ? e : { ...e, marks: liveMarks[e.entry_id] })),
+    [entries, view.today, liveMarks],
   );
+  const waiting = todays.some((e) => !e.marks);
+
+  // While a photo has no marks yet, ask for them about once a minute — only
+  // while the app is on screen, and for at most POLL_MAX tries after the last
+  // photo (an unreadable photo never gets marks; the coach names it). A small
+  // read, not a page refresh: a refresh logs an app open each time.
+  useEffect(() => {
+    if (!waiting) return;
+    const t = setInterval(async () => {
+      if (document.visibilityState !== "visible" || pollsLeft.current <= 0) return;
+      pollsLeft.current -= 1;
+      try {
+        const res = await fetch(`/api/app-diary?token=${encodeURIComponent(data.token)}&view=1`, { cache: "no-store" });
+        const j = (await res.json()) as { ok?: boolean; marks?: Record<string, ClientDiaryEntry["marks"]>; tip?: ClientDiaryView["tip"] };
+        if (j.ok) {
+          setLiveMarks(j.marks ?? {});
+          if (j.tip) setLiveTip(j.tip);
+        }
+      } catch {
+        /* offline for a moment — the next tick tries again */
+      }
+    }, POLL_MS);
+    return () => clearInterval(t);
+  }, [waiting, data.token]);
+  const tip = liveTip ?? view.tip;
   const photoUrl = (file: string) =>
     `/api/app-diary?token=${encodeURIComponent(data.token)}&file=${encodeURIComponent(file)}`;
 
@@ -210,8 +249,12 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
     setBusy(false);
     if (!j) return;
     setEntries((prev) => [...prev, j.entry as ClientDiaryEntry]);
-    if (date !== view.today) setFlash(`Added to ${dayLabel(view, date)}.`);
-    else setFlash(null);
+    pollsLeft.current = POLL_MAX;
+    setFlash(
+      date !== view.today
+        ? `Added to ${dayLabel(view, date)}.`
+        : "Added — its marks show here in a few minutes.",
+    );
     // A new photo after "done" re-opens the day — she is still eating.
     if (doneDays.has(date)) {
       const next = new Set(doneDays);
@@ -271,7 +314,8 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
             Add more
           </button>
         </div>
-        {view.isLastDay && view.tip && <TipLines tip={view.tip} />}
+        <ProteinDots entries={todays} />
+        {view.isLastDay && tip && <TipLines tip={tip} />}
         <input ref={fileRef} type="file" accept="image/*" hidden onChange={pick} />
       </div>
     );

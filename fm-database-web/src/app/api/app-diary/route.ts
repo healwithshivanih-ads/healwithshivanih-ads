@@ -29,12 +29,20 @@ import { saveChatPhoto, readChatPhoto, MAX_UPLOAD_BYTES } from "@/lib/fmdb/chat-
 import {
   DIARY_NOTE_MAX,
   acceptClientDiaryDate,
+  clientDiaryView,
   foldDiary,
   isDiaryBand,
   isHhmm,
   type DiaryLine,
 } from "@/lib/fmdb/food-diary";
-import { appendDiaryLine, readDiaryConfig, readDiaryLines } from "@/lib/fmdb/food-diary-store";
+import {
+  appendDiaryLine,
+  diaryToday,
+  loadDiary,
+  readClientDoc,
+  readDiaryConfig,
+  readDiaryLines,
+} from "@/lib/fmdb/food-diary-store";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -150,6 +158,25 @@ export async function GET(req: NextRequest) {
   if (token.length < 16) return new NextResponse(null, { status: 401 });
   const lookup = await resolveAppToken(token);
   if (!lookup.ok) return new NextResponse(null, { status: 401 });
+
+  // ?view=1 — the card asks for its marks while a photo is still being read.
+  // A small read instead of a page refresh: a refresh re-runs the whole app
+  // load AND logs an app open every time, which would count one evening's
+  // waiting as a dozen visits. Same builder as the page (clientDiaryView), so
+  // the client gets exactly the words it would get on a reload — never the
+  // reading itself.
+  if (req.nextUrl.searchParams.get("view") === "1") {
+    const cfg = readDiaryConfig(lookup.client_id);
+    const doc = readClientDoc(lookup.client_id);
+    const view = cfg ? clientDiaryView(cfg, loadDiary(lookup.client_id, cfg), diaryToday(doc), { client: doc }) : null;
+    const marks: Record<string, unknown> = {};
+    for (const e of view?.entries ?? []) if (e.marks) marks[e.entry_id] = e.marks;
+    return NextResponse.json(
+      { ok: true, marks, tip: view?.tip ?? null },
+      { headers: { "Cache-Control": "private, no-store" } },
+    );
+  }
+
   const buf = await readChatPhoto(lookup.client_id, file, "diary");
   if (!buf) return new NextResponse(null, { status: 404 });
   return new NextResponse(new Uint8Array(buf), {
