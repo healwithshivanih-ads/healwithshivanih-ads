@@ -366,6 +366,7 @@ async function fireOnboardingKit(
         templateName: "fm_programme_welcome",
         templateParams: [firstName, result.intake_url, result.calcom_url],
         renderedBody,
+        purpose: "plan",
         opts: { name: identity.display_name },
       });
       if (wa.ok) {

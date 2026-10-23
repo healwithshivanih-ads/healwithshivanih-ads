@@ -487,7 +487,7 @@ export async function approveWeekMenuAction(
           "Your new week is live — tap to see what's cooking.",
         url: tok ? `/app/${tok}` : "/",
         tag: "menu-live",
-      });
+      }, { purpose: "plan" });
     } catch {
       /* push is optional — never affects approval */
     }

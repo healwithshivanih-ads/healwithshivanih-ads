@@ -26,6 +26,18 @@ artefacts, then submit through something that can refuse.** For a plan the refus
 
 ## The workflow
 
+### 0. Read the client brief first
+
+```bash
+cd /Users/shivani/code/healwithshivanih-ads
+fm-database/.venv/bin/python fm-database-web/scripts/client-brief.py <client_id>
+```
+
+Lifecycle state, live plan and week, last messages in and out, app usage, and
+the "do not" list — the things the coach used to re-type every time (skill
+`client`). Respect the lifecycle: a `maintenance` or `lapsed` client is not
+mid-programme however the files look, and a `marketing opt-out` is reply-only.
+
 ### 1. Read the real predecessor and the real client — no summaries
 
 ```bash

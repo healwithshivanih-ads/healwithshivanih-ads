@@ -14,7 +14,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import { relativeRedirect } from "@/lib/fmdb/http-redirect";
-import { sendWhatsAppTextAction } from "@/app/api/whatsapp/actions";
+import { sendWhatsAppTextAction, recordOutboundMessageAction } from "@/app/api/whatsapp/actions";
 import { loadAuth } from "@/lib/fmdb/coach-auth";
 
 export const dynamic = "force-dynamic";
@@ -38,6 +38,20 @@ export async function POST(req: NextRequest) {
     return back(`error=${encodeURIComponent("Message can't be empty.")}`);
   }
 
-  const res = await sendWhatsAppTextAction(phone, text);
-  return res.ok ? back("sent=1") : back(`error=${encodeURIComponent(res.error ?? "Send failed.")}`);
+  // Coach-typed from the phone: a reply. Gated + recorded like every other
+  // send (2026-10-23) — this route used to record nothing, so a message sent
+  // from the mobile card never showed in the client's thread.
+  const res = await sendWhatsAppTextAction(phone, text, { clientId, purpose: "reply" });
+  if (!res.ok) return back(`error=${encodeURIComponent(res.error ?? "Send failed.")}`);
+  try {
+    const rec = await recordOutboundMessageAction({
+      clientId,
+      templateName: "(free-text reply)",
+      renderedBody: text,
+    });
+    if (!rec.ok) console.error(`[m/wa] sent to ${clientId} but could not record it: ${rec.error}`);
+  } catch (e) {
+    console.error(`[m/wa] sent to ${clientId} but record threw: ${(e as Error).message}`);
+  }
+  return back("sent=1");
 }

@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
-import { SidebarNav } from "@/components/sidebar-nav";
 import { Toaster } from "sonner";
 
 const geistSans = Geist({
@@ -43,14 +42,9 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <div className="flex min-h-screen">
-          {/* Legacy chrome — only wraps the few remaining root-layout pages
-              (/sources, /dashboard-legacy) + redirect shims. The 224px rail
-              squished content to ~160px on phones, so hide it below md; the
-              v2 surfaces (the daily-use app) have their own responsive shell
-              and cover this layout entirely. */}
-          <aside className="hidden md:block w-56 shrink-0 border-r bg-muted/30">
-            <SidebarNav />
-          </aside>
+          {/* The legacy left rail (SidebarNav) was removed 2026-10-23 with the
+              v1 redirect shims; the v2 surfaces have their own responsive
+              shell and cover this layout entirely. */}
           <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8 overflow-x-auto">{children}</main>
         </div>
         <Toaster richColors closeButton position="top-right" />

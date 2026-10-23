@@ -82,6 +82,7 @@ export async function sendAppInviteLinkAction(
     templateName: "fm_app_invite_v1",
     templateParams: [firstName, url],
     renderedBody: renderInviteBody(firstName, url),
+    purpose: "plan",
     opts: { name: client.display_name },
   });
 }

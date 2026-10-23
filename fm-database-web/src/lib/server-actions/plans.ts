@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { execFile, spawn } from "node:child_process";
+import { spawn } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
@@ -191,8 +191,10 @@ export async function updatePlan(
   const next: Plan = { ...rest, ...patch, slug } as Plan;
   await writePlan(next);
 
-  revalidatePath(`/plans/${slug}`);
-  revalidatePath("/plans");
+  if (current.client_id) {
+    revalidatePath(`/clients-v2/${current.client_id}/plan`);
+    revalidatePath(`/clients-v2/${current.client_id}/plan/edit/${slug}`);
+  }
   return { ok: true };
 }
 
@@ -235,9 +237,7 @@ export async function updatePlanStartDates(
 
   await writePlan(next);
 
-  revalidatePath(`/plans/${slug}`);
-  revalidatePath("/plans");
-  // Also revalidate the client-facing pages that show recheck dates
+  // Revalidate the client-facing pages that show recheck dates
   if (current.client_id) {
     revalidatePath(`/clients-v2/${current.client_id}`);
     revalidatePath(`/clients-v2/${current.client_id}/plan`);
@@ -283,8 +283,10 @@ export async function updatePlanForChat(
   } as Plan;
 
   await writePlan(next);
-  revalidatePath(`/plans/${slug}`);
-  revalidatePath("/plans");
+  if (current.client_id) {
+    revalidatePath(`/clients-v2/${current.client_id}/plan`);
+    revalidatePath(`/clients-v2/${current.client_id}/plan/edit/${slug}`);
+  }
   return { ok: true, revertedToDraft };
 }
 
@@ -587,147 +589,9 @@ export async function deletePlan(
   }
 
   await fs.unlink(plan._file);
-  revalidatePath("/plans");
+  revalidatePath(`/clients-v2/${plan.client_id}/plan`);
   // redirect() throws internally — it must not be inside try/catch
-  redirect("/plans");
-}
-
-// ─── Client-facing start-date confirmation token (/start/<token>) ──────────
-//
-// Pattern C of the brainstormed three-pattern approach to capturing the
-// client's actual meal-plan start date: a tokenised public link, no auth, no
-// WhatsApp webhook needed. Companion shim is scripts/start-date-action.py.
-// Mirrors the intake-token pattern but the token lives on the Plan (one
-// confirmation per plan) rather than the Client.
-
-const START_DATE_SCRIPT = "start-date-action.py";
-const FMDB_REPO = path.resolve(process.cwd(), "..", "fm-database");
-
-async function runStartDateScript(payload: unknown, timeoutMs = 15_000): Promise<unknown> {
-  const scriptPath = path.join(SCRIPTS_DIR, START_DATE_SCRIPT);
-  const child = execFile(PYTHON, [scriptPath], {
-    timeout: timeoutMs,
-    maxBuffer: 4 * 1024 * 1024,
-    cwd: FMDB_REPO,
-  });
-  child.stdin?.end(JSON.stringify(payload));
-
-  let stdout = "";
-  let stderr = "";
-  child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
-  child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
-
-  await new Promise<void>((resolve, reject) => {
-    child.on("error", reject);
-    child.on("close", () => resolve());
-  });
-
-  if (!stdout.trim()) {
-    throw new Error(`start-date-action produced no output. stderr: ${excerpt(stderr, 600)}`);
-  }
-  try {
-    return JSON.parse(stdout);
-  } catch {
-    throw new Error(`start-date-action returned invalid JSON: ${stdout.slice(0, 400)}`);
-  }
-}
-
-export type StartDateLookupOk = {
-  ok: true;
-  plan_slug: string;
-  client_id: string;
-  display_name: string;
-  plan_period_start: string | null;
-  plan_period_weeks: number | null;
-  current_meal_plan_started_on: string | null;
-  default_meal_plan_start: string | null;
-};
-export type StartDateLookupErr = { ok: false; error: string; message?: string };
-
-export async function generateStartConfirmToken(
-  planSlug: string,
-  ttlDays = 14,
-): Promise<
-  { ok: true; token: string; url_path: string; expires_at: string } | { ok: false; error: string }
-> {
-  try {
-    const res = (await runStartDateScript({
-      action: "generate",
-      plan_slug: planSlug,
-      ttl_days: ttlDays,
-    })) as
-      | { ok: true; token: string; url_path: string; expires_at: string }
-      | { ok: false; error: string };
-    return res;
-  } catch (e) {
-    return { ok: false, error: e instanceof Error ? e.message : String(e) };
-  }
-}
-
-export async function lookupStartConfirmToken(
-  token: string,
-): Promise<StartDateLookupOk | StartDateLookupErr> {
-  try {
-    const res = (await runStartDateScript({
-      action: "lookup",
-      token,
-    })) as StartDateLookupOk | StartDateLookupErr;
-    return res;
-  } catch (e) {
-    return { ok: false, error: "script_error", message: e instanceof Error ? e.message : String(e) };
-  }
-}
-
-/**
- * Client-facing confirmation. Writes meal_plan_started_on + marks the token
- * used in one Python call, then calls the existing updatePlanStartDates to
- * fire the normal revalidation paths (dashboard / calendar / client overview).
- */
-export async function confirmStartDate(
-  token: string,
-  date: string,
-): Promise<
-  | { ok: true; plan_slug: string; client_id: string }
-  | { ok: false; error: string }
-> {
-  try {
-    const res = (await runStartDateScript({
-      action: "confirm",
-      token,
-      date,
-    })) as
-      | { ok: true; plan_slug: string; client_id: string; confirmed_date: string }
-      | { ok: false; error: string };
-    if (!res.ok) return res;
-
-    // Mirror the update through updatePlanStartDates so the standard
-    // revalidation set (clients-v2, dashboard-v2, calendar) fires. The shim
-    // already wrote the value; this call is idempotent on the YAML side.
-    await updatePlanStartDates(res.plan_slug, {
-      meal_plan_started_on: date,
-    });
-
-    return { ok: true, plan_slug: res.plan_slug, client_id: res.client_id };
-  } catch (e) {
-    return { ok: false, error: e instanceof Error ? e.message : String(e) };
-  }
-}
-
-export async function revokeStartConfirmToken(
-  planSlug: string,
-): Promise<{ ok: true } | { ok: false; error: string }> {
-  try {
-    const res = (await runStartDateScript({
-      action: "revoke",
-      plan_slug: planSlug,
-    })) as { ok: true } | { ok: false; error: string };
-    if (res.ok) {
-      revalidatePath(`/plans/${planSlug}`);
-    }
-    return res;
-  } catch (e) {
-    return { ok: false, error: e instanceof Error ? e.message : String(e) };
-  }
+  redirect(`/clients-v2/${plan.client_id}/plan`);
 }
 
 // ── Recipe library (Phase 1) ──────────────────────────────────────────────
@@ -773,39 +637,6 @@ export async function listRecipesAction(
       ok: false,
       recipes: [],
       total: 0,
-      error: e instanceof Error ? e.message : String(e),
-    };
-  }
-}
-
-/** Project-2 mobile-app recipe export. Drops any photo not marked licensed/original. */
-export async function exportRecipesAction(
-  slugs?: string[],
-  requireImage = false,
-): Promise<{
-  ok: boolean;
-  recipes: unknown[];
-  total: number;
-  images_dropped: number;
-  error?: string;
-}> {
-  try {
-    return (await runShim(
-      "export-recipes-json.py",
-      { slugs: slugs ?? [], require_image: requireImage },
-      30_000,
-    )) as {
-      ok: boolean;
-      recipes: unknown[];
-      total: number;
-      images_dropped: number;
-    };
-  } catch (e) {
-    return {
-      ok: false,
-      recipes: [],
-      total: 0,
-      images_dropped: 0,
       error: e instanceof Error ? e.message : String(e),
     };
   }

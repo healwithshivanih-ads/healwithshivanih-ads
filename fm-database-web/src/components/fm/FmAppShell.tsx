@@ -51,7 +51,8 @@ const NAV: FmNavSection[] = [
   {
     label: "Workspace",
     items: [
-      { id: "dashboard", label: "Dashboard", icon: "📊", href: "/dashboard-v2" },
+      { id: "dashboard", label: "Dashboard", icon: "📥", href: "/dashboard-v2" },
+      { id: "practice", label: "Practice", icon: "📊", href: "/practice" },
       { id: "clients", label: "All clients", icon: "👥", href: "/clients-v2" },
       { id: "calendar", label: "Calendar", icon: "🗓️", href: "/calendar" },
     ],
@@ -81,7 +82,6 @@ const NAV: FmNavSection[] = [
     label: "Settings",
     items: [
       { id: "settings", label: "Settings", icon: "⚙️", href: "/settings" },
-      { id: "token-admin", label: "Token links", icon: "🔑", href: "/token-admin" },
       { id: "help", label: "Help", icon: "❔", href: "/help" },
     ],
   },

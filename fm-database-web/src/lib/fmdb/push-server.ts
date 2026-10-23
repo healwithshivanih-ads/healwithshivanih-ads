@@ -23,6 +23,8 @@ import yaml from "js-yaml";
 import webpush from "web-push";
 import { getPlansRoot } from "./paths";
 import { VAPID_PUBLIC_KEY } from "./push-public";
+import { checkContactGate } from "./contact-gate-server";
+import type { ContactPurpose } from "./contact-gate";
 
 const SUBJECT = process.env.VAPID_SUBJECT || "mailto:reachochretree@gmail.com";
 const PRIVATE = process.env.VAPID_PRIVATE_KEY || "";
@@ -175,11 +177,19 @@ export async function sendPushToClient(
      *  them, like the subscribe-time check. */
     receipt?: { client: string; id: string };
   },
+  opts: {
+    /** Why this is going out. Push only ever reaches a client, so it is
+     *  gated by default as "plan" (contact-gate.ts); a reply nudge passes
+     *  "reply", the subscribe-time check passes "transactional". */
+    purpose?: ContactPurpose;
+  } = {},
 ): Promise<boolean> {
   if (!ensureConfigured()) {
     console.error("[push] VAPID_PRIVATE_KEY not set — cannot notify", clientId);
     return false;
   }
+  const gate = await checkContactGate(`push "${payload.tag ?? payload.title}"`, { clientId, purpose: opts.purpose }, "plan");
+  if (!gate.ok) return false;
   const devices = await readDevices(clientId);
   if (!devices.length) return false;
 

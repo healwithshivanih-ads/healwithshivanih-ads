@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
         body: "Notifications are on — this is how a message from Shivani will look.",
         url: "/",
         tag: "push-check",
-      });
+      }, { purpose: "transactional" }); // they just pressed "turn on"
       return NextResponse.json({ ok: true, verified, ...(await pushStatus(clientId)) });
     }
     if (action === "unsubscribe") {

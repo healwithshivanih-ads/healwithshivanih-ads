@@ -21,6 +21,12 @@
       "autoPort": true
     },
     {
+      "name": "fm-web-dev-worktree",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd fm-database-web && CRON_SECRET=devtest FMDB_PYTHON=/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python exec ./node_modules/.bin/next dev --webpack -p 3012"],
+      "port": 3012
+    },
+    {
       "name": "hypno-dev",
       "runtimeExecutable": "sh",
       "runtimeArgs": ["-c", "cd /Users/shivani/code/hypno-scripts && exec npm run dev -- --port 5191 --strictPort"],

@@ -47,6 +47,9 @@ PROSPECT_QUIET_DAYS = 15
 
 #: The one engagement_status that means "this is a real client".
 SIGNED_UP = "signed_up"
+#: A client whose programme ended. They stay in clients/ (renewals.py says so);
+#: parking is for people who never signed up.
+LAPSED = "lapsed"
 
 _DATE_IN_NAME = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
 
@@ -152,7 +155,10 @@ def sweep(
     apply: bool = False,
     quiet_after_days: int = PROSPECT_QUIET_DAYS,
 ) -> dict[str, Any]:
-    """Park every non-signed-up person who has been quiet long enough.
+    """Park every never-signed-up person who has been quiet long enough.
+
+    Lapsed clients are NOT parked — they stay in ``clients/`` (see
+    renewals.py); only prospects (pending / blank / declined) move.
 
     Dry-run by default — pass ``apply=True`` to actually move directories.
     Idempotent: already-parked people are left alone, and a person who signs up
@@ -215,7 +221,7 @@ def sweep(
         status = _engagement(data)
         name = str(data.get("display_name") or cid)
 
-        if status == SIGNED_UP:
+        if status in (SIGNED_UP, LAPSED):
             continue
 
         gift_until = _gift_open_until(data)

@@ -32,6 +32,8 @@ import { loadClientSessions, loadAllProspects } from "@/lib/fmdb/loader-extras";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
+import { resolveLifecycles, type LifecycleState } from "@/lib/fmdb/lifecycle";
+import { loadDecisions as loadRenewalDecisions } from "@/lib/fmdb/renewal-queue";
 import type { Client } from "@/lib/fmdb/types";
 import { FmAppShell, FmPanel, FmPageHeader } from "@/components/fm";
 import { ClientCard, ClientFilters } from "./list-client";
@@ -41,10 +43,11 @@ export const dynamic = "force-dynamic";
 type FilterId =
   | "all"
   | "active"
-  | "draft"
-  | "no_plan"
-  | "recheck"
-  | "alumni"
+  | "ending"
+  | "maintenance"
+  | "onboarding"
+  | "prospect"
+  | "lapsed"
   | "archived";
 
 const ACTIVE_BUCKETS = new Set(["draft", "ready_to_publish", "published"]);
@@ -76,26 +79,16 @@ export interface ClientRow {
   last_session?: SessionLite;
   /** Whether a client.jpg / .png exists in the per-client photo dir. */
   has_photo: boolean;
-  /** Workflow stage same as Overview / Plan tab: no_plan / draft /
-   *  active / recheck. `alumni` = client has a graduated plan + no
-   *  active plan. */
-  stage: "no_plan" | "draft" | "active" | "recheck" | "alumni";
+  /** Lifecycle state from the one resolver (lib/fmdb/lifecycle.ts). */
+  stage: LifecycleState;
+  /** One line on why — shown as the card's hover title. */
+  stage_reason?: string;
   /** Sign-up state from client.yaml: "signed_up" | "declined" | "pending". */
   engagement_status?: string;
   next_contact_date?: string;
   /** Coach-archived (inactive/never-converted). Hidden from every view
    *  except the "🗄 Archived" filter, where it can be unarchived. */
   archived?: boolean;
-}
-
-function deriveStage(
-  activePlan: PlanLite | undefined,
-  todayStr: string,
-): ClientRow["stage"] {
-  if (!activePlan) return "no_plan";
-  if (activePlan.status !== "published") return "draft";
-  if (activePlan.recheckDate && activePlan.recheckDate < todayStr) return "recheck";
-  return "active";
 }
 
 function deriveAge(client: Client): number | undefined {
@@ -145,7 +138,7 @@ export default async function ClientsListV2Page({
 }) {
   const { q = "", filter = "all" } = await searchParams;
   const filterId = (
-    ["all", "active", "draft", "no_plan", "recheck", "alumni", "archived"].includes(
+    ["all", "active", "ending", "maintenance", "onboarding", "prospect", "lapsed", "archived"].includes(
       filter,
     )
       ? filter
@@ -165,37 +158,20 @@ export default async function ClientsListV2Page({
   ]);
 
   // Unread-activity counts (drives the numbered chip on each client card).
-  // Reuses scheduling-due for the alerts bucket so behaviour is identical
-  // to dashboard-v2.
-  const { getSchedulingDueRows: getDueRows } = await import("@/lib/fmdb/scheduling-due");
+  // No "alerts" bucket any more — the session-chasing scanner that fed it was
+  // retired 2026-10-23 (the coach does not auto-chase clients).
   const { getClientUnreadCounts } = await import("@/lib/fmdb/loader-extras");
-  const dueRowsForAlerts = await getDueRows(
-    clients as Array<Record<string, unknown> & { client_id: string }>,
-    allPlans as Array<Record<string, unknown>>,
-    todayStr,
-  );
-  const alertTriggeredAt = new Map<string, string>();
-  for (const r of dueRowsForAlerts) {
-    const candidates: string[] = [];
-    if (r.last_session_date) {
-      const t = new Date(r.last_session_date + "T00:00:00Z");
-      t.setUTCDate(t.getUTCDate() + 12);
-      candidates.push(t.toISOString());
-    }
-    if (r.plan_period_recheck_date) {
-      candidates.push(new Date(r.plan_period_recheck_date + "T00:00:00Z").toISOString());
-    }
-    if (candidates.length > 0) {
-      candidates.sort();
-      alertTriggeredAt.set(r.client_id, candidates[candidates.length - 1]);
-    }
-  }
   const unreadMap = await getClientUnreadCounts(
     clients as Array<Record<string, unknown>>,
-    {
-      alertClientIds: new Set(dueRowsForAlerts.map((r) => r.client_id)),
-      alertTriggeredAt,
-    },
+    {},
+  );
+
+  // One lifecycle state per person — the only "where are they" answer.
+  const lifecycle = resolveLifecycles(
+    [...clients, ...parkedProspects] as unknown as Parameters<typeof resolveLifecycles>[0],
+    allPlans as unknown as Parameters<typeof resolveLifecycles>[1],
+    todayStr,
+    { decisions: loadRenewalDecisions() },
   );
 
   // Build per-client active plan lookup + most-recent session + photo
@@ -248,18 +224,6 @@ export default async function ClientsListV2Page({
         activePlan = { slug: activeRaw.slug as string, status, recheckDate };
       }
 
-      // Alumni detection: client has a graduated plan AND no active plan.
-      // Graduated plans get bucketed via `_bucket: "graduated"` from the
-      // loader. A client with both an active plan + an older graduated
-      // plan stays "active" — graduation only applies when there's no
-      // current protocol.
-      const hasGraduatedPlan = clientPlans.some(
-        (p) =>
-          ((p.status as string | undefined) ??
-            (p._bucket as string | undefined)) === "graduated",
-      );
-      const isAlumni = hasGraduatedPlan && !activePlan;
-
       // Last session — read the per-client sessions dir + pick the newest
       // by filename date. Avoid the SessionSummary action (which does extra
       // synthesis-notes / plan-exists work we don't need here).
@@ -295,7 +259,8 @@ export default async function ClientsListV2Page({
         active_plan: activePlan,
         last_session: lastSession,
         has_photo: hasPhoto,
-        stage: isAlumni ? "alumni" : deriveStage(activePlan, todayStr),
+        stage: c.archived === true ? "archived" : (lifecycle.get(id)?.state ?? "prospect"),
+        stage_reason: lifecycle.get(id)?.reason,
         engagement_status: (c.engagement_status as string | undefined) ?? undefined,
         next_contact_date:
           (c.next_contact_date as string | undefined) ?? undefined,
@@ -316,15 +281,7 @@ export default async function ClientsListV2Page({
       // every other view (including "all" + search) hides them.
       if (filterId === "archived") return r.archived === true;
       if (r.archived) return false;
-      if (filterId === "active") return r.stage === "active";
-      if (filterId === "draft") return r.stage === "draft";
-      if (filterId === "no_plan") return r.stage === "no_plan";
-      if (filterId === "recheck") return r.stage === "recheck";
-      if (filterId === "alumni") return r.stage === "alumni";
-      // "all" filter hides alumni by default — coach explicitly chooses
-      // the Alumni chip to see graduated clients. Keeps the default
-      // view focused on active roster.
-      if (filterId === "all" && r.stage === "alumni") return false;
+      if (filterId !== "all") return r.stage === filterId;
       return true;
     })
     .sort((a, b) =>
@@ -342,12 +299,13 @@ export default async function ClientsListV2Page({
   // what each filtered view actually shows.
   const live = rows.filter((r) => !r.archived);
   const counts: Record<FilterId, number> = {
-    all: live.filter((r) => r.stage !== "alumni").length,
+    all: live.length,
     active: live.filter((r) => r.stage === "active").length,
-    draft: live.filter((r) => r.stage === "draft").length,
-    no_plan: live.filter((r) => r.stage === "no_plan").length,
-    recheck: live.filter((r) => r.stage === "recheck").length,
-    alumni: live.filter((r) => r.stage === "alumni").length,
+    ending: live.filter((r) => r.stage === "ending").length,
+    maintenance: live.filter((r) => r.stage === "maintenance").length,
+    onboarding: live.filter((r) => r.stage === "onboarding").length,
+    prospect: live.filter((r) => r.stage === "prospect").length,
+    lapsed: live.filter((r) => r.stage === "lapsed").length,
     archived: rows.filter((r) => r.archived).length,
   };
 
@@ -362,11 +320,7 @@ export default async function ClientsListV2Page({
   const parkedIds = new Set(
     parkedProspects.map((c) => (c as { client_id?: string }).client_id).filter(Boolean)
   );
-  const isProspect = (r: ClientRow) =>
-    parkedIds.has(r.client_id) ||
-    (r.stage === "no_plan" &&
-      r.engagement_status !== "signed_up" &&
-      r.engagement_status !== "declined");
+  const isProspect = (r: ClientRow) => parkedIds.has(r.client_id) || r.stage === "prospect";
   const mainRows = splitProspects ? filtered.filter((r) => !isProspect(r)) : filtered;
   const prospectRows = splitProspects ? filtered.filter(isProspect) : [];
 

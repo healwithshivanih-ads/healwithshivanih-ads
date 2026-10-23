@@ -26,7 +26,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { isLapsed } from "@/lib/fmdb/engagement";
+import { gateForClient } from "@/lib/fmdb/contact-gate-server";
 import { deriveReminders, effectiveReminders } from "@/lib/fmdb/reminders-derive";
 import { remediesForReminders } from "@/lib/fmdb/remedy-reminder-source";
 import { readOverrides, readFired, writeFired } from "@/lib/fmdb/reminders-server";
@@ -164,7 +164,14 @@ export async function POST(req: NextRequest) {
     // The plan above is still on disk for a lapsed client — the renewal
     // sweep never unpublishes it — so a daily "take your supplements" push
     // kept firing a month after the programme ended (cl-004, 2026-09-13).
-    if (isLapsed(client)) continue;
+    // The send door (contact-gate.ts) decides: "plan" reaches active /
+    // ending / maintenance / onboarding only. Asked once here, before any
+    // reminder I/O; sendPushToClient asks again per push.
+    const gate = await gateForClient(clientId, "plan");
+    if (!gate.ok) {
+      skipped.push({ clientId, id: "*", reason: gate.reason });
+      continue;
+    }
     // Reminder times fire on the CLIENT's wall clock (client.yaml#timezone,
     // IST default) — and the idempotence day-stamp uses her day, not IST's.
     const tz = clientTz(client);
@@ -202,7 +209,7 @@ export async function POST(req: NextRequest) {
         body: r.label,
         url,
         tag: `reminder:${r.id}`,
-      });
+      }, { purpose: "plan" });
       if (ok) {
         fired[r.id] = clientToday;
         dirty = true;

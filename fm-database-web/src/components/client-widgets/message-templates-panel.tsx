@@ -319,6 +319,8 @@ function ComposeView({
       clientPhone,
       template.whatsapp_template_name,
       params,
+      // Coach-chosen, coach-pressed — a reply in the gate's terms.
+      { clientId, purpose: "reply" },
     );
     setSending(false);
     setSendResult({ ...res, channel: "whatsapp" });
@@ -379,6 +381,8 @@ function ComposeView({
       subject: emailSubject.trim() || defaultSubject,
       htmlBody,
       textBody: filled,
+      clientId,
+      purpose: "reply",
     });
     setSending(false);
     setSendResult({ ...res, channel: "email" });

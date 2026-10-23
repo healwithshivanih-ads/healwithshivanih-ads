@@ -159,6 +159,5 @@ export async function setClientRemedies(
   // client app is force-dynamic; revalidate coach surfaces
   revalidatePath(`/clients-v2/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}/plan`);
-  revalidatePath(`/plans/${plan.slug}`);
   return { ok: true, planSlug: plan.slug };
 }

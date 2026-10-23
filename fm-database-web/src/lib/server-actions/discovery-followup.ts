@@ -744,6 +744,8 @@ export async function approveFollowupDraftAction(
     subject,
     textBody: body,
     htmlBody: html,
+    clientId,
+    purpose: "followup_drip",
   });
   if (!sent.ok) return { ok: false, error: sent.error };
 

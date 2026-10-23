@@ -10,8 +10,7 @@
  *     workflow, not a side-action).
  *   - Past sessions → the Sessions tab (`?tab=sessions`).
  *   - Send letters → Plan tab → 📤 Send package.
- *   - Doctor handoff packet — wired into the FAB itself 2026-05-20 (was
- *     coach-unreachable from the v2 UI; only accessible via direct URL).
+ *   - SOAP note / doctor handoff / Dirty Genes screen — retired 2026-10-23.
  */
 import type { FmFloatingActionItem } from "@/components/fm";
 
@@ -58,31 +57,6 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       label: "Quick message",
       hint: "Templated WhatsApp — one-tap send",
       href: `/clients-v2/${clientId}/communicate`,
-    },
-    {
-      id: "soap",
-      icon: "📋",
-      label: "SOAP Note",
-      hint: "One-page S/O/A/P record — print or share for the file",
-      href: `/clients-v2/${clientId}/soap`,
-    },
-    {
-      id: "handoff",
-      icon: "🩺",
-      label: "Doctor handoff",
-      hint: "Full referral packet — print-ready PDF for the clinician",
-      href: `/clients-v2/${clientId}/handoff`,
-    },
-    {
-      // Ad-hoc nutrigenomics screen for complex multi-system cases — scores
-      // functional burden across the 7 "Dirty Genes" pathways from symptoms +
-      // lifestyle (genetics overlaid if a report is on file). Coaching tool,
-      // not a genetic diagnosis. See dirty-genes/page.tsx.
-      id: "dirty-genes",
-      icon: "🧬",
-      label: "Dirty Genes screen",
-      hint: "7-pathway functional burden — for complex multi-system cases",
-      href: `/clients-v2/${clientId}/dirty-genes`,
     },
   ];
 }

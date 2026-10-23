@@ -9,7 +9,7 @@ Internal functional medicine catalogue used by coaches to author structured
 client plans. A future client-facing mobile app (Project 2) will consume
 published plans as JSON artifacts.
 
-**Active branch:** `claude/setup-fm-coach-laptop-7GFhK`
+**Active branch:** `claude/coach-dashboard-restructure-90ee02` (v0.87 restructure; base `main`)
 **Licensing:** Proprietary (all rights reserved, internal-only)
 
 ## Web CI — READ BEFORE pushing `fm-database-web`
@@ -62,6 +62,22 @@ the worktree instead: `.gitignore`'s `.venv/` is directory-only, so the symlink
 shows up as untracked and gets committed by accident.
 
 ## Status
+
+**v0.87 — one lifecycle state, a decisions inbox, no chasing (2026-10-23).** Review + plan: `fm-database-web/docs/COACH_APP_RESTRUCTURE_REVIEW.md`. Branch `claude/coach-dashboard-restructure-90ee02`.
+
+**Key invariants (v0.87):**
+- **ONE lifecycle resolver.** `src/lib/fmdb/lifecycle.ts::resolveLifecycle(client, plans, today, {decisions})` ↔ `fmdb/plan/lifecycle.py::resolve_lifecycle` (parity-pinned by `lifecycle.test.ts`). States, first match wins: `archived` → `maintenance` (paid through ≥ today or a live `is_maintenance` plan) → `active` (newest programme plan in flight; ALSO "between phases" when a successor sits in draft/ready or the decision is `renewed`) → `ending` (end −15..+14d, no decision, no successor) → `onboarding` (signed up, nothing started) → `lapsed` → `prospect` (`declined` is a flag). Plan evidence beats a blank `engagement_status` for ACTIVE. **Nothing reads `engagement_status` / `lifecycle_state` / "has a published plan" for a who-is-in-care decision any more**; `Client.lifecycle_state` is retired (still on the model for back-compat, never read).
+- The 06:30 `renewal-sweep` stamps `lifecycle` + `lifecycle_since` on every `clients/*/client.yaml` (surgical line edit, `lifecycle.py::stamp_lifecycles`) and **clears `next_contact_date`** for anyone lapsed / maintenance / archived. `scripts/lifecycle-report.py` prints the resolved states (read-only; chat uses it).
+- **The dashboard is an inbox** (`dashboard-v2/page.tsx` + `src/lib/fmdb/decisions.ts::collectDecisions`). Nine item kinds, each with the lifecycle states it applies to (`KIND_STATES`) and an age cap: message ≤7d · renewal (ending only) · onboarding · follow-up draft (prospect, ≤35d after the call; listed ≤45d) · win-back draft (lapsed, ≤70d after the end) · thought-of-you note (prospect, pending note only) · flag (plateau/regression, in care, ≤14d) · feedback ≤14d · archive (prospect quiet >45d, lapsed quiet >70d). **No rule may emit an item without an exit.** Roster-level views (lifecycle tiles, practice overview, MSQ, app links, menu pause roster, interests list, catalogue chips) are on **/practice**. `/clients-v2` filters by lifecycle state.
+- **The coach does not chase clients.** Deleted: the booking-link scanner (`scheduling-due.ts`) + bulk send + per-client booking banner, check-in nudges, review nudges, start-date reminders + confirmation tokens + `/start/<token>`, the weekly poll, the broadcast panel, the cycle-date reminder panel, the dormant strip, the feedback "asks". Booking a session is coach-initiated from the header button. Dormancy is no longer a "stalled" signal anywhere.
+- **One gate at the send door.** `src/lib/fmdb/contact-gate.ts::mayContact(lifecycle, purpose)` — purposes `reply | transactional | plan | session_booking | intake | followup_drip | renewal | winback | content_note | marketing`; `session_booking` is refused for EVERY state. `marketing_opt_out` blocks every marketing purpose; `declined` allows reply + transactional only. Enforced inside `sendWhatsAppAction` / `sendWhatsAppTextAction` / `sendAndRecordOutboundAction`, `sendClientEmailAction` / `sendEducationPackAction`, `sendPushToClient` (pass `clientId` + `purpose`; a clientId without a purpose is gated as transactional and warned `[contact-gate] ungated send` in pm2). Intake reminders are `transactional` on purpose (coach opts each person in; a ₹999 prospect is a prospect by lifecycle).
+- **`scripts/client-brief.py <id|name>`** is the one briefing: who / lifecycle / plan + week / recent (thread in+out, check-in, MSQ, labs, weights, queued sends) / app (opens, ticks, practices, feedback) / do-not. The `/client` skill runs it; `author-assessment` / `author-plan` / `author-renewal` start with it; `/clients-v2/<id>/brief` renders it. **A client now lands on Brief.** Subnav: Brief · Record · Plan · Communicate · History · More (= the old 56-component overview, parked at `/clients-v2/<id>/overview` until the coach says which widgets survive).
+- `prospects-sweep` is scheduled (06:35, `/api/cron/prospects-sweep`) and parks **never-signed-up people only**; lapsed clients stay in `clients/`.
+- Two superseded plans that still sat in `published/` (`niti-plan-1`, `ochre-plan-2`) were moved to `~/fm-plans/_retired/published-stale-20261023/`.
+- Deleted ~20k lines (list in the review doc §5 and the commit `b8af02da`). `render-client-letter.py` (8.6k) is still imported by `generate-app-menu.py` for four helpers — extract, then delete. `zoom-recording.ts` is orphaned. The `com.healwithshivanih.vitaone-covers-audit` LaunchAgent still points at a deleted script — unload after merge.
+- **Not done:** the Ochre Social-style redesign of the mobile coach app (`/m`, kept on purpose); pruning the "More" tab; collapsing the 6 phone normalisers / 38 date formatters / 9 session-type re-parses listed in the review doc.
+
+---
 
 **v0.86 — what a prospect came in with, and something useful to send them (2026-10-21).** Plan + work log: `docs/INTEREST_TRACKING_PLAN.md`.
 
@@ -1779,14 +1795,8 @@ fm-database/
     resources/                    # Resources Toolkit (separate ~/fm-resources/)
       models.py                   # Resource entity
       storage.py                  # CRUD; files referenced by absolute path
-  fmdb_ui/
-    app.py                        # Streamlit single-file UI (Path A — primary
-                                  #   surface through v0.25; still maintained as
-                                  #   fallback). 7 sidebar pages: Assess & Suggest,
-                                  #   Plans, Clients, Mind Map, Resources Toolkit,
-                                  #   Catalogue Browser, Catalogue Backlog.
-                                  #   Auto-evicts stale fmdb modules from
-                                  #   sys.modules on each rerun.
+  fmdb_ui/                        # REMOVED 2026-10-23 (Streamlit "Path A" retired;
+                                  #   run-fmdb.sh + the streamlit dep went with it)
   data/
     sources/                      # 82 entries (as of v0.43)
     topics/                       # 318 entries
@@ -1804,9 +1814,7 @@ fm-database/
                                   #   (612 items: 167 auto-rejected, 1 promoted,
                                   #   444 open awaiting triage)
   README.md
-  requirements.txt                # pydantic, pyyaml, anthropic, python-dotenv, streamlit
-  run-fmdb.sh                     # robust launcher — kills zombies, clears pycache,
-                                  #   disables runOnSave, then starts streamlit
+  requirements.txt                # pydantic, pyyaml, anthropic, python-dotenv
   .env                            # gitignored — ANTHROPIC_API_KEY, FMDB_EXTRACTOR,
                                   #   FMDB_USER, FMDB_EXTRACTOR_MODEL
   .venv/                          # gitignored — local virtualenv
@@ -1830,7 +1838,7 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   /mindmap (+ detail with Mermaid), /backlog (with
                                   #   bulk actions + Supplement Links tab), /sources
                                   #   (Add Source), /search, /ingest.
-    components/                   # sidebar-nav, evidence-tier-badge,
+    components/                   # evidence-tier-badge,
                                   #   plan-status-badge, catalogue-table,
                                   #   multi-select (shared), + 7 shadcn ui/.
     lib/fmdb/                     # paths.ts (resolves to ../fm-database/data and
@@ -1968,17 +1976,10 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   counts as skipped not failed.
   src/app/catalogue-commit-action.ts  # getCatalogueStatus() + commitCatalogueData()
                                   #   Author: Shivani <shivanihari@gmail.com> via env vars.
-  src/app/catalogue-commit-button.tsx # Amber banner "📚 N uncommitted". Auto-hides.
   src/app/backlog/supplement-links-actions.ts  # CRUD for ~/fm-plans/supplement_links.yaml
   src/app/backlog/supplement-links-client.tsx  # Table + AddLinkForm for affiliate URLs
-  src/app/sources/
-    page.tsx                      # RSC — /sources route; renders <SourceClient />
-    source-client.tsx             # "use client" — full source form (ID, title, type,
-                                  #   quality, authors, year, publisher, URL, DOI,
-                                  #   notes). On save: calls saveSourceAction, shows
-                                  #   success badge linking to /catalogue/sources/{id}.
-    actions.ts                    # saveSourceAction — uses runShim from shim.ts.
-                                  #   Revalidates /catalogue + /sources.
+  src/app/sources/                # REMOVED 2026-10-23 (v1 redirect shim; Add Source
+                                  #   lives on the /ingest tab)
   src/app/clients/[id]/
     send-package-button.tsx       # "use client" — SendPackageButton component:
                                   #   "📤 Send package" collapsible trigger. 4 letter
@@ -1997,8 +1998,6 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
     preferences-editor.tsx        # "use client" — dietary_preference + location +
                                   #   food non-negotiables. Saved to client.yaml.
                                   #   Used by render-client-letter.py for meal plan.
-    client-contact-widget.tsx     # inline-editable email + mobile + next_contact_date
-    health-trends.tsx             # SVG sparklines + snapshot timeline
     client-tabs.tsx               # main client detail tabbed layout.
                                   #   Tabs: Overview | 🗓 Sessions | 📋 Plan (3 tabs)
                                   #   type Tab = "overview"|"sessions"|"plan"
@@ -2015,18 +2014,10 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   Accepts defaultTab ("overview"|"sessions"|"plan").
                                   #   Backward compat: timeline→sessions, protocol→plan,
                                   #   send→plan, documents→plan.
-    check-in-form.tsx             # Check-in workflow (adherence rating, lab orders,
-                                  #   Five Pillars capture, appends to plan.notes_for_coach)
     five-pillars-capture.tsx      # "use client" — compact 5-col widget (😴🧘🏃🥗🤝).
                                   #   RatingChips (1–5, color-tiered, invert=true for stress)
                                   #   + DayChips (0–7). FivePillarsData type exported.
                                   #   Shows info message when non-empty. Clear button.
-    follow-up-draft-panel.tsx     # "use client" — post-session WhatsApp draft panel.
-                                  #   States: idle→loading→done|error. idle: green banner
-                                  #   + "Draft message" button. done: editable <textarea>
-                                  #   pre-filled with Haiku draft + "📋 Copy" (clipboard)
-                                  #   + "Regenerate" link. Shown in client-tabs.tsx below
-                                  #   "Session saved" banner for non-full-assessment types.
     session-brief-modal.tsx       # "use client" — fixed overlay modal (max-w-2xl). (v0.61)
                                   #   Sections: header, presenting complaints (tags stripped),
                                   #   AI drivers (numbered + confidence %), supplements,
@@ -2150,6 +2141,8 @@ npm run build && npm run type-check          # before committing
 ```
 **23 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/catalogue/cleanup` (Haiku duplicate / miscategorisation finder — see v0.64), `/plans` (+ 3-tab editor: Protocol/Documents/Lifecycle + plan-check sidebar + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail with `?tab=overview|sessions|plan` deep-linking + add-client form + contact widget + check-in form + 📤 SendPackageButton + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
 
+**Removed 2026-10-23 (coach app restructure, Phase 4):** the v1 redirect shims `/clients`, `/clients/[id]`, `/plans`, `/plans/new`, `/plans/[slug]`, `/assess`, `/sources`, `/dashboard-legacy` and the legacy `SidebarNav` rail; `/start/<token>` (client start-date confirmation + `start-date-action.py` + the webhook's Pattern-B branch); `/clients-v2/[id]/{soap,handoff,dirty-genes,timeline}`; `/token-admin`; `/api/zoom-webhook`; `/api/handover/test`; `/api/invoice/maintenance-{order,charge}`; the token `/recipes/[planSlug]` pack and `/guide/thyroid`; the Streamlit "Path A" UI (`fmdb_ui/`, `run-fmdb.sh`); 32 zero-importer components (`src/components/client-widgets/*`, `meal-plan-drip-panel`, `catalogue-commit-button`, …) and 20 one-off Python scripts. The v2 routes under `(v2)/` are the whole coach app now.
+
 **Key invariants:**
 - `ingest-action.py` calls `python -m fmdb.cli` (NOT `python fmdb/cli.py` — causes ImportError).
 - `html2text` installed in fm-database/.venv (needed for URL ingest HTML→markdown).
@@ -2200,11 +2193,8 @@ npm run build && npm run type-check          # before committing
 - **Coach-friendly entity labels** (v0.64): UI labels live in `src/lib/fmdb/kinds.ts` (`KIND_LABELS`, `kindLabel`, `kindEmoji`). YAML field names + Pydantic models + Python CLI commands + the URL path segment (`/catalogue/topics/...`) all keep the original taxonomy. Internal slug → display mapping: topics=Conditions, mechanisms=Root causes, protocols=Healing programs, titration_protocols=Dose schedules, lab_tests=Lab markers, claims=Evidence notes, sources=References. Symptoms / supplements / lab_panels unchanged.
 - **`.md`/`.txt` uploads** (v0.64): five frontend `accept` attrs include `.md,.txt,text/markdown,text/plain` alongside PDF. `parse-functional-test.py` and `parse-genetic-report.py` detect `.md/.txt/.markdown` by `path.suffix.lower()` and skip the PDF document attachment — sending a single text content block instead. PDF path unchanged. Test-type detection in functional-test still runs against the text content.
 
-### Path A — Streamlit UI (fallback, still maintained)
-```bash
-./run-fmdb.sh                                # opens http://localhost:8501
-```
-Same 7 sidebar pages — useful if Path B breaks during a turn.
+### Path A — Streamlit UI
+Removed 2026-10-23 (`fmdb_ui/` + `run-fmdb.sh` deleted; `streamlit` dropped from requirements). The Next.js app is the only coach UI.
 
 ### CLI — read commands
 ```bash

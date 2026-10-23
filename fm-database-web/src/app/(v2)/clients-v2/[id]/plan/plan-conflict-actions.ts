@@ -6,40 +6,7 @@ import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { loadClientById } from "@/lib/fmdb/loader-extras";
-import { loadPlanBySlug } from "@/lib/fmdb/loader";
-import {
-  detectPlanConflicts,
-  type ConflictFix,
-  type PlanConflict,
-} from "@/lib/fmdb/plan-conflicts";
-import { resolveFoodCautionFindings } from "@/lib/fmdb/food-cautions";
-
-/**
- * Run the rules-based conflict detector for a client + their active plan.
- * Server-only because it reads YAML directly off disk.
- */
-export async function runConflictCheckAction(
-  clientId: string,
-  planSlug: string | undefined,
-): Promise<{ ok: true; conflicts: PlanConflict[] } | { ok: false; error: string }> {
-  try {
-    const client = await loadClientById(clientId);
-    if (!client) return { ok: false, error: "Client not found" };
-    const plan = planSlug ? await loadPlanBySlug(planSlug) : null;
-    const conflicts = detectPlanConflicts(
-      client as unknown as Parameters<typeof detectPlanConflicts>[0],
-      (plan as unknown as Record<string, unknown>) ?? null,
-      await resolveFoodCautionFindings(
-        client as unknown as Parameters<typeof resolveFoodCautionFindings>[0],
-        plan as unknown as Parameters<typeof resolveFoodCautionFindings>[1],
-      ),
-    );
-    return { ok: true, conflicts };
-  } catch (err) {
-    return { ok: false, error: (err as Error).message ?? String(err) };
-  }
-}
+import { type ConflictFix } from "@/lib/fmdb/plan-conflicts";
 
 /**
  * Apply a single ConflictFix to the underlying YAML. Returns ok:true on
@@ -96,7 +63,6 @@ export async function applyConflictFixAction(
     );
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/plan`);
-    revalidatePath(`/clients/${clientId}`);
     return { ok: true };
   } catch (err) {
     return { ok: false, error: (err as Error).message ?? String(err) };

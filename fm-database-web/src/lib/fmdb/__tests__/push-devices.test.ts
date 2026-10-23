@@ -29,6 +29,12 @@ const device = (n: string) => ({
 beforeEach(() => {
   root = fs.mkdtempSync(path.join(os.tmpdir(), "push-"));
   fs.mkdirSync(path.join(root, "clients", "cl-x"), { recursive: true });
+  // sendPushToClient goes through the send door (contact-gate.ts), which
+  // needs a record to resolve a lifecycle — a signed-up client is in care.
+  fs.writeFileSync(
+    path.join(root, "clients", "cl-x", "client.yaml"),
+    "client_id: cl-x\ndisplay_name: X\nengagement_status: signed_up\n",
+  );
 });
 afterEach(() => fs.rmSync(root, { recursive: true, force: true }));
 

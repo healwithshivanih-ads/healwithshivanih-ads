@@ -255,6 +255,8 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
     setReplyStatus(null);
     const res = await sendWhatsAppTextAction(clientPhone, replyText.trim(), {
       name: clientName,
+      clientId,
+      purpose: "reply",
     });
     if (res.ok) {
       // Log the outbound to the rolling thread session. If THIS fails,

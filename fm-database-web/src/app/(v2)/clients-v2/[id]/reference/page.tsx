@@ -213,7 +213,6 @@ export default async function ReferencePage({
         lifestyle={lifestyle}
         notesForCoach={(activePlan?.notes_for_coach as string | undefined) ?? null}
         letterSections={letterSections}
-        hasMealPlanLetter={false}
         hasConsolidatedLetter={false}
       />
     </FmAppShell>
