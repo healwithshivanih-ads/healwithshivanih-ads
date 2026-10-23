@@ -3,7 +3,7 @@
  *
  * Adding a 7th tab? Add it here once, not 4 times across page shells.
  * Used by:
- *   /clients-v2/[id]/page.tsx           (Overview)
+ *   /clients-v2/[id]/overview/page.tsx  (More — the old overview)
  *   /clients-v2/[id]/analyse/page.tsx   (Analyse)
  *   /clients-v2/[id]/plan/plan-page-shell.tsx
  *   /clients-v2/[id]/communicate/communicate-page-shell.tsx
@@ -27,22 +27,15 @@ export function clientSubnavTabs(clientId: string): ClientSubnavTab[] {
   // the action-verb tab (Record) is unambiguous about what's behind it
   // and doesn't collide with the History bucket that shows past sessions.
   return [
-    { id: "overview", label: "Overview", href: `/clients-v2/${clientId}` },
-    // Brief (2026-10-23): the same brief the /client chat skill reads —
+    // Brief first (2026-10-23): the same brief the /client chat skill reads —
     // lifecycle, plan + week, last messages in/out, app usage, do-not list.
     { id: "brief", label: "Brief", href: `/clients-v2/${clientId}/brief` },
     { id: "analyse", label: "Record", href: `/clients-v2/${clientId}/analyse` },
     { id: "plan", label: "Plan", href: `/clients-v2/${clientId}/plan` },
-    {
-      id: "communicate",
-      label: "Communicate",
-      href: `/clients-v2/${clientId}/communicate`,
-    },
+    { id: "communicate", label: "Communicate", href: `/clients-v2/${clientId}/communicate` },
     { id: "sessions", label: "History", href: `/clients-v2/${clientId}/sessions` },
-    {
-      id: "catalogue",
-      label: "Catalogue",
-      href: `/clients-v2/${clientId}/catalogue`,
-    },
+    // The old overview, parked. Its widgets are candidates for removal; the
+    // coach decides which survive (COACH_APP_RESTRUCTURE_REVIEW.md §4E).
+    { id: "overview", label: "More", href: `/clients-v2/${clientId}/overview` },
   ];
 }

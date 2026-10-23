@@ -126,7 +126,7 @@ export function FmMaintenanceBlurChip() {
             {status.items.map((c) => (
               <Link
                 key={c.client_id}
-                href={`/clients-v2/${c.client_id}?tab=plan`}
+                href={`/clients-v2/${c.client_id}/plan`}
                 style={{
                   display: "flex",
                   alignItems: "baseline",

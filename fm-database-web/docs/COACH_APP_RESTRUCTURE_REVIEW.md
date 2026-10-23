@@ -1,5 +1,11 @@
 # Coach app restructure review — 2026-10-23
 
+> **Status (same day):** approved in full by the coach; phases 0–6 implemented on
+> branch `claude/coach-dashboard-restructure-90ee02` (commits `f1c4da45`,
+> `b8af02da` and the client-page landing change). Decisions taken: no automated
+> chasing of clients at all; the mobile coach app stays for a later redesign.
+> What remains open is listed in CLAUDE.md under v0.87 "Not done".
+
 Read-only audit of `fm-database-web` (the coach UI on localhost:3002) plus the
 crons and the data under `~/fm-plans`. Four agents traced the dashboard logic,
 the automations, actual usage over six months, and dead code. Nothing was

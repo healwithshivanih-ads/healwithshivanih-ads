@@ -9,7 +9,7 @@ Internal functional medicine catalogue used by coaches to author structured
 client plans. A future client-facing mobile app (Project 2) will consume
 published plans as JSON artifacts.
 
-**Active branch:** `claude/setup-fm-coach-laptop-7GFhK`
+**Active branch:** `claude/coach-dashboard-restructure-90ee02` (v0.87 restructure; base `main`)
 **Licensing:** Proprietary (all rights reserved, internal-only)
 
 ## Web CI — READ BEFORE pushing `fm-database-web`
@@ -62,6 +62,22 @@ the worktree instead: `.gitignore`'s `.venv/` is directory-only, so the symlink
 shows up as untracked and gets committed by accident.
 
 ## Status
+
+**v0.87 — one lifecycle state, a decisions inbox, no chasing (2026-10-23).** Review + plan: `fm-database-web/docs/COACH_APP_RESTRUCTURE_REVIEW.md`. Branch `claude/coach-dashboard-restructure-90ee02`.
+
+**Key invariants (v0.87):**
+- **ONE lifecycle resolver.** `src/lib/fmdb/lifecycle.ts::resolveLifecycle(client, plans, today, {decisions})` ↔ `fmdb/plan/lifecycle.py::resolve_lifecycle` (parity-pinned by `lifecycle.test.ts`). States, first match wins: `archived` → `maintenance` (paid through ≥ today or a live `is_maintenance` plan) → `active` (newest programme plan in flight; ALSO "between phases" when a successor sits in draft/ready or the decision is `renewed`) → `ending` (end −15..+14d, no decision, no successor) → `onboarding` (signed up, nothing started) → `lapsed` → `prospect` (`declined` is a flag). Plan evidence beats a blank `engagement_status` for ACTIVE. **Nothing reads `engagement_status` / `lifecycle_state` / "has a published plan" for a who-is-in-care decision any more**; `Client.lifecycle_state` is retired (still on the model for back-compat, never read).
+- The 06:30 `renewal-sweep` stamps `lifecycle` + `lifecycle_since` on every `clients/*/client.yaml` (surgical line edit, `lifecycle.py::stamp_lifecycles`) and **clears `next_contact_date`** for anyone lapsed / maintenance / archived. `scripts/lifecycle-report.py` prints the resolved states (read-only; chat uses it).
+- **The dashboard is an inbox** (`dashboard-v2/page.tsx` + `src/lib/fmdb/decisions.ts::collectDecisions`). Nine item kinds, each with the lifecycle states it applies to (`KIND_STATES`) and an age cap: message ≤7d · renewal (ending only) · onboarding · follow-up draft (prospect, ≤35d after the call; listed ≤45d) · win-back draft (lapsed, ≤70d after the end) · thought-of-you note (prospect, pending note only) · flag (plateau/regression, in care, ≤14d) · feedback ≤14d · archive (prospect quiet >45d, lapsed quiet >70d). **No rule may emit an item without an exit.** Roster-level views (lifecycle tiles, practice overview, MSQ, app links, menu pause roster, interests list, catalogue chips) are on **/practice**. `/clients-v2` filters by lifecycle state.
+- **The coach does not chase clients.** Deleted: the booking-link scanner (`scheduling-due.ts`) + bulk send + per-client booking banner, check-in nudges, review nudges, start-date reminders + confirmation tokens + `/start/<token>`, the weekly poll, the broadcast panel, the cycle-date reminder panel, the dormant strip, the feedback "asks". Booking a session is coach-initiated from the header button. Dormancy is no longer a "stalled" signal anywhere.
+- **One gate at the send door.** `src/lib/fmdb/contact-gate.ts::mayContact(lifecycle, purpose)` — purposes `reply | transactional | plan | session_booking | intake | followup_drip | renewal | winback | content_note | marketing`; `session_booking` is refused for EVERY state. `marketing_opt_out` blocks every marketing purpose; `declined` allows reply + transactional only. Enforced inside `sendWhatsAppAction` / `sendWhatsAppTextAction` / `sendAndRecordOutboundAction`, `sendClientEmailAction` / `sendEducationPackAction`, `sendPushToClient` (pass `clientId` + `purpose`; a clientId without a purpose is gated as transactional and warned `[contact-gate] ungated send` in pm2). Intake reminders are `transactional` on purpose (coach opts each person in; a ₹999 prospect is a prospect by lifecycle).
+- **`scripts/client-brief.py <id|name>`** is the one briefing: who / lifecycle / plan + week / recent (thread in+out, check-in, MSQ, labs, weights, queued sends) / app (opens, ticks, practices, feedback) / do-not. The `/client` skill runs it; `author-assessment` / `author-plan` / `author-renewal` start with it; `/clients-v2/<id>/brief` renders it. **A client now lands on Brief.** Subnav: Brief · Record · Plan · Communicate · History · More (= the old 56-component overview, parked at `/clients-v2/<id>/overview` until the coach says which widgets survive).
+- `prospects-sweep` is scheduled (06:35, `/api/cron/prospects-sweep`) and parks **never-signed-up people only**; lapsed clients stay in `clients/`.
+- Two superseded plans that still sat in `published/` (`niti-plan-1`, `ochre-plan-2`) were moved to `~/fm-plans/_retired/published-stale-20261023/`.
+- Deleted ~20k lines (list in the review doc §5 and the commit `b8af02da`). `render-client-letter.py` (8.6k) is still imported by `generate-app-menu.py` for four helpers — extract, then delete. `zoom-recording.ts` is orphaned. The `com.healwithshivanih.vitaone-covers-audit` LaunchAgent still points at a deleted script — unload after merge.
+- **Not done:** the Ochre Social-style redesign of the mobile coach app (`/m`, kept on purpose); pruning the "More" tab; collapsing the 6 phone normalisers / 38 date formatters / 9 session-type re-parses listed in the review doc.
+
+---
 
 **v0.86 — what a prospect came in with, and something useful to send them (2026-10-21).** Plan + work log: `docs/INTEREST_TRACKING_PLAN.md`.
 

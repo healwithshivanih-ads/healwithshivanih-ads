@@ -227,7 +227,7 @@ export function RenewalQueuePanel({
               >
                 <div style={{ minWidth: 0, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                   <Link
-                    href={`/clients-v2/${r.clientId}?tab=plan`}
+                    href={`/clients-v2/${r.clientId}/plan`}
                     style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)", textDecoration: "none" }}
                   >
                     {r.clientName}

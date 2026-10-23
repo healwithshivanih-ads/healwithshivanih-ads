@@ -377,7 +377,10 @@ function BriefBody({ b }: { b: Brief }) {
         {dn.anxious_client_flags.length > 0 && <div style={row}>anxious-client flags present — prune urgency in anything client-facing</div>}
         {dn.notes && <div style={{ ...row, ...muted, whiteSpace: "pre-wrap" }}>{dn.notes}</div>}
         <div style={{ ...row, ...muted, marginTop: 10, fontSize: 11 }}>
-          Same script as the <code>/client</code> chat skill (scripts/client-brief.py). Read-only.
+          Same script as the <code>/client</code> chat skill (scripts/client-brief.py). Read-only.{" "}
+          <Link href={`/clients-v2/${who.client_id}/catalogue`} style={{ color: "var(--fm-primary)" }}>
+            Catalogue for this client →
+          </Link>
         </div>
       </FmPanel>
     </div>
