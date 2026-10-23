@@ -437,6 +437,11 @@ class Client(BaseModel):
     #: Date the renewal sweep marked this client lapsed. Cleared on reactivation.
     #: Declared (unlike engagement_status' vocabulary) because only Python writes it.
     lapsed_on: Optional[date] = None
+    #: Resolved lifecycle state, stamped nightly by the renewal sweep from
+    #: fmdb.plan.lifecycle (mirror of lib/fmdb/lifecycle.ts). READ-ONLY cache:
+    #: the resolver is the truth; this is so chat/grep can see it.
+    lifecycle: str = ""
+    lifecycle_since: Optional[date] = None
     assigned_coach: str = ""            # coach name, e.g. "Shivani" — populates client-facing copy dynamically
     intake_date: date
     date_of_birth: Optional[date] = None   # preferred; used to compute exact age

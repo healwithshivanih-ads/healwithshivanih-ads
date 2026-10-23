@@ -15,6 +15,9 @@
  *                                    on purpose: it is the only cron that
  *                                    writes client.yaml, so the guard checks
  *                                    its work the same morning.
+ *   06:35  prospects-sweep        — park never-signed-up people quiet 15+
+ *                                    days into prospects/. Lapsed clients
+ *                                    stay in clients/.
  *   06:45  client-yaml-integrity  — validates every client.yaml.
  *   08:30  intake-reminders        — nudge clients whose intake token is open,
  *                                    not submitted, ≥5d since last reminder.
@@ -216,6 +219,16 @@ async function fire(job) {
 cron.schedule(
   "30 6 * * *",
   () => fire("renewal-sweep"),
+  { timezone: "Asia/Kolkata" },
+);
+
+// 06:35 IST daily — park never-signed-up people quiet for 15+ days into
+// prospects/. Runs right after the renewal sweep (which stamps lifecycle on
+// every record) and before client-yaml-integrity. Until 2026-10-23 this was a
+// hand-run CLI nothing scheduled, so cold leads never left the roster.
+cron.schedule(
+  "35 6 * * *",
+  () => fire("prospects-sweep"),
   { timezone: "Asia/Kolkata" },
 );
 

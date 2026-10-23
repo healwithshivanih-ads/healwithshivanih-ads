@@ -327,6 +327,15 @@ def sweep(
         else:
             kept.append({**entry, "reason": info["state"]})
 
+    # Stamp the resolved lifecycle on EVERY record (not just the signed-up /
+    # lapsed ones this loop looked at) so chat, Python and the dashboard read
+    # the same word, and clear stale hand-set follow-up dates on anyone who has
+    # left. Runs after the engagement flips above so it sees today's writes.
+    from .lifecycle import stamp_lifecycles
+
+    stamp = stamp_lifecycles(root, today, apply=apply)
+    errors.extend(stamp.get("errors", []))
+
     return {
         "ok": True,
         "applied": apply,
@@ -336,6 +345,8 @@ def sweep(
         "restored": restored,
         "renewal_due": due,
         "kept": kept,
+        "lifecycle_stamped": stamp.get("stamped", []),
+        "next_contact_cleared": stamp.get("next_contact_cleared", []),
         "errors": errors,
     }
 

@@ -342,7 +342,7 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
       {pausedRows.length > 0 && (
         <FmPanel
           title={`⏸ Menu paused — not opening the app (${pausedRows.length})`}
-          subtitle="Auto-drafting is stopped for these clients because they haven't opened the Ochre Tree app recently. Nothing is being generated and nothing reaches them. It resumes on its own the moment they open the app — but a client who has gone quiet is usually one worth chasing."
+          subtitle="Auto-drafting is stopped for these clients because they haven't opened the Ochre Tree app recently. Nothing is being generated and nothing reaches them. It resumes on its own the moment they open the app."
         >
           <div style={{ display: "grid", gap: 6 }}>
             {pausedRows.map((r) => (

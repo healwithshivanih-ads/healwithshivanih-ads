@@ -116,7 +116,6 @@ import { SOAPNotePanel } from "@/components/client-widgets/soap-note-panel";
 import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
 import { PregnancySafetyPanel } from "@/components/client-widgets/pregnancy-safety-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
-import { BookingDueBanner } from "@/components/client-widgets/booking-due-banner";
 import { ClientBookingsPanel } from "@/components/client-widgets/client-bookings-panel";
 import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
 import { loadClientSessionsAction } from "@/lib/server-actions/assess";
@@ -1456,18 +1455,6 @@ export default async function ClientV2Page({
         </div>
       )}
 
-      {/* 📅 Booking-due banner — surfaces when this client is ≥12 days
-          since their last session OR plan_period_recheck_date is overdue.
-          Same scanner the dashboard's bulk panel uses; per-client view
-          gives a one-click route to the booking picker with the
-          recommended event type pre-selected. Renders null when not
-          due, so most pageviews see nothing. */}
-      <BookingDueBanner
-        clientId={id}
-        clientYaml={client as unknown as Record<string, unknown>}
-        plansForClient={plansForClient as unknown as Array<Record<string, unknown>>}
-        todayStr={todayStr}
-      />
 
       <ClientBookingsPanel rows={clientBookings} />
 

@@ -106,6 +106,26 @@ out["client_bucket"] = bucket("client")
   );
 
   it(
+    "never parks a LAPSED client — they stay in clients/ for the win-back drip",
+    () => {
+      // renewals.py says a lapsed client "stays in clients/"; until 2026-10-23
+      // this sweep contradicted it by parking anyone not signed_up, which also
+      // silently dropped them out of the win-back drip (it reads clients/ only).
+      const out = runScenario(`
+mk("gone",    "lapsed",  "2026-03-01")   # 150d quiet, programme ended
+mk("cold",    "pending", "2026-05-01")
+mk("nope",    "declined","2026-05-01")   # declined prospects DO get parked
+rep = sweep()
+out["parked"] = ids(rep, "moved")
+out["gone_bucket"] = bucket("gone")
+`);
+      expect(out.parked).toEqual(["cold", "nope"]);
+      expect(out.gone_bucket).toBe("clients");
+    },
+    PY_TEST_TIMEOUT_MS
+  );
+
+  it(
     "treats a missing engagement_status as NOT signed up",
     () => {
       // cl-014 and cl-017 really did have no such field. Absence must not be
