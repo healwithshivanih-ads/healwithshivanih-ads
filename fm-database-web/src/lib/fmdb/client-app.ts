@@ -1,5 +1,6 @@
 import { classifyPracticeKind, supplementCadence, weeklyDueToday, type DayPart } from "./practice-kind";
 import { type DairyClient, resolveDairy, treatsAsAllergy } from "./dairy-reaction";
+import { buildPlate, resolvePlateShape } from "./plate-shapes";
 import "server-only";
 
 /**
@@ -1379,6 +1380,11 @@ export interface ClientAppData {
     phase: { currentIdx: number; list: { name: string; weeks: string; note: string }[] };
     plate: PlateItem[];
     accents: PlateItem[];
+    /** "Eat in this order" labels — set by plate shapes that sequence the meal
+     *  (blood sugar); empty otherwise. */
+    plateOrder: string[];
+    /** One warm line about this plate shape, under the diagram. */
+    plateLine: string;
     oils: { use: string[]; avoid: string[]; note: string };
     foods: { eat: string[]; sometimes: string[]; avoid: string[] };
     /** when the issued letter spells out its own food groups, render THOSE
@@ -3808,6 +3814,8 @@ async function buildDiscoveryAppData(
       phase: { currentIdx: 0, list: [] },
       plate: [],
       accents: [],
+      plateOrder: [],
+      plateLine: "",
       oils: { use: [], avoid: [], note: "" },
       foods: { eat: [], sometimes: [], avoid: [] },
       avoidWhy: "",
@@ -5516,73 +5524,36 @@ export async function loadClientAppData(
       }));
   }
 
-  const pickAdds = (re: RegExp, max: number): string[] =>
-    addShort.filter((s) => re.test(s)).slice(0, max);
-  const vegExamples = pickAdds(/greens|palak|methi|amaranth|gourd|lauki|bhindi|veget/i, 6);
-  const proteinExamples = pickAdds(/egg|dal|moong|curd|paneer|seed|legume/i, 6);
-  const carbExamples = pickAdds(/ragi|millet|jowar|bajra/i, 5);
-  const fatExamples = pickAdds(/ghee|coconut|walnut|flax|sesame|seed/i, 6);
-  const fermentExamples = pickAdds(/curd|dahi|buttermilk|ferment/i, 4);
-
-  const plate: PlateItem[] = [
-    {
-      key: "veg",
-      label: "Vegetables",
-      portion: "Half your plate",
-      pct: 50,
-      tone: "forest",
-      examples: vegExamples.length ? vegExamples : ["Leafy greens", "Seasonal sabzi", "Salad vegetables"],
-      note: "Cooked or raw, the more colour the better. Half of every plate, every meal.",
-    },
-    {
-      key: "protein",
-      label: "Protein",
-      portion: "A quarter",
-      pct: 25,
-      tone: "ochre",
-      examples: proteinExamples.length ? proteinExamples : ["Dal & legumes", "Curd", "Paneer"],
-      note: `A palm-sized portion at every meal keeps energy even${dietPref ? ` — built around your ${dietPref} diet` : ""}.`,
-    },
-    {
-      key: "carb",
-      label: "Smart carbs",
-      portion: "A quarter",
-      pct: 25,
-      tone: "sand",
-      examples: carbExamples.length ? carbExamples : ["Millets", "Whole grains"],
-      note: "Millets over refined grains — same comfort, steadier blood sugar.",
-    },
-  ];
-  const accents: PlateItem[] = [
-    {
-      key: "fats",
-      label: "Healthy fats",
-      portion: "A thumb",
-      pct: 0,
-      tone: "gold",
-      icon: "droplet",
-      examples: fatExamples.length ? fatExamples : ["Ghee", "Nuts", "Seeds"],
-      note: "About a thumb-sized amount per meal — cook in ghee or cold-pressed oil. Fats help you absorb vitamins and stay full.",
-    },
-    {
-      key: "ferments",
-      label: "Fermented",
-      portion: "A spoon",
-      pct: 0,
-      tone: "clay",
-      icon: "leaf",
-      examples: fermentExamples.length ? fermentExamples : ["Curd / dahi", "Buttermilk"],
-      note: "A small katori of curd or a glass of buttermilk most days feeds the good bacteria in your gut.",
-    },
-  ];
+  // The SHAPE of the plate follows the plan (plate-shapes.ts): the coach's pin
+  // on nutrition.plate_shape, else the attached protocol, else keywords in the
+  // free-text pattern, else balanced. The builder filters every example chip
+  // through the dairy resolver + allergies + foods_to_avoid, so a milk-protein
+  // allergy never sees "Curd / dahi" and a low-histamine plan has no ferments.
+  const plateShape = resolvePlateShape({
+    plateShape: nutrition.plate_shape,
+    attachedProtocols: plan.attached_protocols,
+    pattern: nutrition.pattern,
+    isMaintenance: plan.is_maintenance,
+  });
+  const dairyForPlate = resolveDairy(client as DairyClient);
+  const built = buildPlate(plateShape.shape, {
+    addShort,
+    dietPref,
+    dairy: dairyForPlate,
+    avoidTerms: [...clientAvoid, ...asStrArr(client.known_allergies)],
+    holdFerments: plateShape.holdFerments,
+  });
+  const plate: PlateItem[] = built.plate;
+  const accents: PlateItem[] = built.accents;
 
   const seedOilItem = reduceList.find((r) => /seed oils|sunflower|soybean|canola/i.test(r));
+  const gheeOkForOils = dairyForPlate ? dairyForPlate.gheeOk : true;
   const oils = {
-    use: ["Ghee", "Cold-pressed coconut", "Cold-pressed groundnut", "Mustard oil"],
+    use: [...(gheeOkForOils ? ["Ghee"] : []), "Cold-pressed coconut", "Cold-pressed groundnut", "Mustard oil"],
     avoid: ["Refined sunflower", "Refined soybean", "Canola", "Vanaspati / margarine"],
     note: seedOilItem
       ? seedOilItem.split(":").slice(1).join(":").trim() || firstSentence(seedOilItem)
-      : "Cook in ghee or cold-pressed oils, which hold up to heat. Refined seed oils oxidise when heated and quietly nudge inflammation.",
+      : `Cook in ${gheeOkForOils ? "ghee or " : ""}cold-pressed oils, which hold up to heat. Refined seed oils oxidise when heated and quietly nudge inflammation.`,
   };
 
   const sometimes: string[] = [];
@@ -6416,6 +6387,8 @@ export async function loadClientAppData(
       phase: { currentIdx: ribbonIdx >= 0 ? ribbonIdx : 0, list: ribbon },
       plate,
       accents,
+      plateOrder: built.eatOrder,
+      plateLine: built.clientLine,
       oils,
       foods,
       letterFoods: null,
