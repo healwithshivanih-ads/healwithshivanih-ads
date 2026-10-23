@@ -24,6 +24,7 @@ import { PracticeAddresses } from "./practice-addresses";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
 import { RecipeSuggestionsCard } from "./recipe-suggestions-card";
+import { PLATE_SHAPES, SHAPE_DEFS, isPlateShape, resolvePlateShape } from "@/lib/fmdb/plate-shapes";
 import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
 import {
   DURATION_OPTIONS,
@@ -1763,6 +1764,40 @@ export function PlanEditor(props: PlanEditorProps) {
                     onChange={(e) => patchNutrition("pattern", e.target.value)}
                     placeholder="e.g. gentle anti-inflammatory"
                   />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Plate shape</label>
+                  {(() => {
+                    const pinned = isPlateShape(nutrition.plate_shape) ? nutrition.plate_shape : null;
+                    const auto = resolvePlateShape({
+                      attachedProtocols: plan.attached_protocols,
+                      pattern: nutrition.pattern,
+                      isMaintenance: plan.is_maintenance,
+                    });
+                    const shown = pinned ?? auto.shape;
+                    const srcLabel =
+                      auto.source === "protocol" ? "from the attached protocol" : auto.source === "pattern" ? "from the pattern text" : auto.source === "maintenance" ? "maintenance plan" : "default";
+                    return (
+                      <>
+                        <select
+                          className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+                          value={pinned ?? ""}
+                          disabled={effectiveLocked}
+                          onChange={(e) => patchNutrition("plate_shape", e.target.value || null)}
+                        >
+                          <option value="">Auto — {SHAPE_DEFS[auto.shape].label} ({srcLabel})</option>
+                          {PLATE_SHAPES.map((k) => (
+                            <option key={k} value={k}>
+                              {SHAPE_DEFS[k].label}
+                            </option>
+                          ))}
+                        </select>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          {SHAPE_DEFS[shown].coachNote} This is the plate the client sees on the app&apos;s Plan tab.
+                        </p>
+                      </>
+                    );
+                  })()}
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1.5">Meal timing</label>

@@ -1185,6 +1185,7 @@ export function PlanScreen({
         )}
         <PlateDiagram />
         <div className="muted" style={{ fontSize: 12.5, marginTop: 8, paddingLeft: 2 }}>
+          {pr.plateLine && <>{pr.plateLine} </>}
           Your pattern: <strong style={{ color: "var(--forest-deep)" }}>{pr.pattern}</strong> · {pr.forNote.toLowerCase()}. Tap any part of the plate.
         </div>
         {data.principles.length > 0 && (

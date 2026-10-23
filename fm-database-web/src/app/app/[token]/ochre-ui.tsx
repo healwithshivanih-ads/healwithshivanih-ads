@@ -7,6 +7,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { fractionGlyph } from "@/lib/fmdb/plate-shapes";
 import type { AppRemedy, PlateItem } from "@/lib/fmdb/client-app";
 import { Icon, Mark, useOchre, REMEDY_CAT, DOSHA_LABEL } from "./ochre-context";
 import { SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
@@ -565,7 +566,7 @@ export function PlateDiagram() {
             const y = cy + rr * Math.sin(((mid - 90) * Math.PI) / 180);
             return (
               <text key={i} x={x} y={y + 4} textAnchor="middle" fontFamily="Georgia, serif" fontSize={s.pct >= 50 ? 19 : 14} fill="#fff" style={{ pointerEvents: "none" }}>
-                {s.pct === 50 ? "½" : "¼"}
+                {fractionGlyph(s.pct)}
               </text>
             );
           })}
@@ -585,6 +586,18 @@ export function PlateDiagram() {
           );
         })}
       </div>
+
+      {planRef.plateOrder.length > 0 && (
+        <div className="plate-order" aria-label="Eat in this order">
+          <span className="plate-order-k">Eat in this order</span>
+          {planRef.plateOrder.map((o, i) => (
+            <span key={o} className="plate-order-step">
+              <span className="plate-order-n">{i + 1}</span>
+              {o}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="plate-legend">
         {items.map((s, i) => (
