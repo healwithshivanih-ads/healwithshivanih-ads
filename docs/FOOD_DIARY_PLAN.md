@@ -24,8 +24,11 @@ starts it, for the days she picks, and then stops by itself.
   (`docs/MEAL_PHOTO_CHECK_SPEC.md`, v0.76 nourishment note). Estimates are coach-only.
 - **Crisp client screens** — headline first, one action, reasoning a tap away
   (`feedback_client_screens_crisp_bullets`).
-- **No AI spend without the coach asking.** Estimates run only when she presses the button,
-  on the Mac, through the cost guard (`scripts/anthropic_client.py::build_client`, FM_API_OK).
+- **AI reads every photo automatically — the coach is NOT the interpreter** (coach decision
+  2026-10-23: "let AI process the photos unless it really can't understand it. Don't send them
+  to me for manual interpretation"). Calls run on the Mac through the cost guard
+  (`scripts/anthropic_client.py::build_client`, FM_API_OK) so the switch still works; Haiku,
+  one call per photo, never on Fly.
 - **Protein floor suppressed** for renal/urate-flagged clients (CLAUDE.md v0.76) — the estimate
   must use `clientProteinFloor` and its suppression, never a hand-rolled number.
 
@@ -93,19 +96,23 @@ starts it, for the days she picks, and then stops by itself.
 - **Decisions inbox:** one item when a diary finishes — "Shweta's 3-day food diary is ready"
   (add a `diary` kind to `lib/fmdb/decisions.ts`).
 
-### 5. Estimate (phase 2, coach-pressed only)
-- "Estimate protein" button on the diary panel. For photos without a coach label, a Haiku
-  vision call names the dishes and rough portions (Mac-side Python shim via `build_client`,
-  forced tool output, never free text to the client). Coach can correct any line.
+### 5. Automatic reading + estimate (phase 2)
+- **Every photo is read automatically** once it reaches the Mac (a cron step after the staging
+  mirror, or the sync itself): one Haiku vision call names the dishes and rough portions with a
+  forced tool output and a confidence. No coach button.
+- **Only a photo the AI truly cannot read** (blurry, not food, a packet with no label, confidence
+  below a threshold) goes to the coach as ONE decisions-inbox item listing those photos. Everything
+  else never needs her. The coach can still correct any line, and her label always wins.
 - Dish names + portions → the deterministic engine (`dayNutrition` / recipe nutrients /
-  fallback table) → per-day protein + fibre, per meal, with a coverage %.
-- Shown against `clientProteinFloor` (honouring its renal/urate suppression) and
-  `supplementProteinPerDay`. Output is a short coach read: "~38 g/day vs floor 86 g; breakfast
-  and dinner carry almost none".
-- "Save to record" writes a session `sessions/<date>-NNN-app-fooddiary.yaml`
-  (`session_type: quick_note`, `[source: app_food_diary]`, a `food_diary_summary` block) so
-  the assessment, renewal brief and `/client` brief can read it. Also offer "Use in next
-  assessment" which passes it as the `food_journal` input.
+  fallback table) → per-day protein + fibre, per meal, with a coverage %. Shown against
+  `clientProteinFloor` (honouring its renal/urate suppression) and `supplementProteinPerDay`.
+- **When the diary ends, the summary is written by itself**: a session
+  `sessions/<date>-NNN-app-fooddiary.yaml` (`session_type: quick_note`, `[source: app_food_diary]`,
+  a `food_diary_summary` block — e.g. "~38 g/day vs floor 86 g; breakfast and dinner carry almost
+  none") so the assessment, renewal brief and `/client` brief read it, and the decisions-inbox item
+  becomes "Shweta's food diary summary is ready". Offered as the `food_journal` input to the next
+  assessment.
+- Still coach-only: nothing from the reading reaches the client.
 
 ### 6. Later (phase 3, only if useful)
 - Repeat diaries to compare (week 1 vs week 8).
@@ -118,7 +125,7 @@ starts it, for the days she picks, and then stops by itself.
    chat photos render (`components/client-widgets/whatsapp-thread-panel.tsx`: kind `photo`
    missing from its attachment kinds, and `/api/client-file` looks in `files/` not
    `files/chat/`) — the coach reviews on desktop, so this matters here too.
-2. **Estimate** — coach-pressed vision + deterministic nutrients + save-to-record + assess input.
+2. **Automatic reading + estimate** — every photo read by AI on the Mac, only unreadable ones to the coach, summary saved to the record automatically when the diary ends, assess input.
 3. Comparisons / other focuses.
 
 ## Tests that must exist
@@ -128,6 +135,8 @@ starts it, for the days she picks, and then stops by itself.
 - Staging mirror carries `_food_diary.*.jsonl` + `files/diary/*.jpg` Fly → Mac and never deletes.
 - No client-facing component renders a number from the estimate (grep-style test on the
   diary card props).
+- A readable photo never creates a coach review item; only an unreadable one does.
+- The vision call goes through `build_client` (FM_API_OK off → no call, photo queued, not lost).
 - No push or WhatsApp is sent by the system when a diary starts, runs or ends (unless the
   client switched on their own reminder).
 - Estimate uses `clientProteinFloor` and returns the suppressed floor for a urate/renal-flagged
