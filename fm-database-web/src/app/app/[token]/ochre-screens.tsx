@@ -11,6 +11,7 @@ import { remedySlots, type RemedySlot } from "@/lib/fmdb/remedy-slots";
 import { DailyRing, RemedyCard, Section, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { MindBodyNudge } from "./ochre-eft";
 import { DayTimeline, GuidanceCard } from "./ochre-day";
+import { FoodDiaryCard } from "./ochre-diary";
 import { bandForHour } from "./day-plan";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
@@ -598,6 +599,8 @@ export function TodayScreen({
           time-ordered list (day-plan.ts). Replaced four separate cards that
           split each moment of the day across the screen. */}
       <Section title="Your day">
+        {/* The coach's food diary, while it runs — nothing otherwise. */}
+        <FoodDiaryCard />
         <DayTimeline
           logged={logged}
           practicesDone={practicesDone}

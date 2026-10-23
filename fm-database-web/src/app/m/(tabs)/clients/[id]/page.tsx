@@ -10,6 +10,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { clientAppUrl, loadCoachCard } from "@/lib/fmdb/coach-mobile";
 import { resolveAllergies } from "@/lib/fmdb/allergies";
+import { readDiaryConfig } from "@/lib/fmdb/food-diary-store";
 import {
   Avatar,
   BackLink,
@@ -67,6 +68,7 @@ export default async function ClientCard({
   const allergyState = resolveAllergies(g);
   const allergies = allergyState.items;
   // Her own app, on the production host — see clientAppUrl for why absolute.
+  const hasDiary = readDiaryConfig(card.id) !== null;
   const appUrl = clientAppUrl(
     (g.app_token as string | undefined) ?? card.plan?.letter_token,
   );
@@ -183,6 +185,16 @@ export default async function ClientCard({
             Opens in here, with a way back — the live app at their own address,
             not a preview.
           </p>
+        </>
+      ) : null}
+
+      {hasDiary ? (
+        <>
+          <Eyebrow>Food diary</Eyebrow>
+          <Link className="fm-btn block" href={`/m/clients/${card.id}/diary`}>
+            <Icon name="camera" size="sm" />
+            Open food diary
+          </Link>
         </>
       ) : null}
 

@@ -37,9 +37,19 @@ import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 const ATTACHMENT_KINDS = ["image", "document", "audio", "video", "other"] as const;
 type AttachmentKind = (typeof ATTACHMENT_KINDS)[number];
 function narrowAttachmentKind(kind: string): AttachmentKind {
+  // An in-app chat photo carries kind "photo" (client-thread.ts) — it is an
+  // image. Without this it fell through to "other" and rendered as a bare
+  // filename link instead of the picture.
+  if (kind === "photo") return "image";
   return (ATTACHMENT_KINDS as readonly string[]).includes(kind)
     ? (kind as AttachmentKind)
     : "other";
+}
+
+/** Where /api/client-file should look. In-app photos live in files/chat/,
+ *  WhatsApp downloads in files/ itself (chat-media.ts vs the webhook). */
+function attachmentHref(clientId: string, a: { name: string; dir?: "chat" }): string {
+  return `/api/client-file/${clientId}/${a.name}${a.dir ? `?dir=${a.dir}` : ""}`;
 }
 
 interface Props {
@@ -173,7 +183,13 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
         // the panel's attachment type is a closed union, so narrow rather
         // than cast — an unknown kind renders as a generic file, not a crash.
         ...(m.file
-          ? { attachment: { name: m.file, kind: narrowAttachmentKind(m.kind) } }
+          ? {
+              attachment: {
+                name: m.file,
+                kind: narrowAttachmentKind(m.kind),
+                ...(m.via === "app" ? { dir: "chat" as const } : {}),
+              },
+            }
           : {}),
       }));
       setMessages(res);
@@ -534,13 +550,13 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                       <div style={{ marginTop: m.text ? 6 : 0 }}>
                         {m.attachment.kind === "image" ? (
                           <a
-                            href={`/api/client-file/${clientId}/${m.attachment.name}`}
+                            href={attachmentHref(clientId, m.attachment)}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             {/* eslint-disable-next-line @next/next/no-img-element -- user-uploaded attachment of unknown intrinsic size */}
                             <img
-                              src={`/api/client-file/${clientId}/${m.attachment.name}`}
+                              src={attachmentHref(clientId, m.attachment)}
                               alt={m.attachment.name}
                               style={{
                                 display: "block",
@@ -553,7 +569,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                           </a>
                         ) : (
                           <a
-                            href={`/api/client-file/${clientId}/${m.attachment.name}`}
+                            href={attachmentHref(clientId, m.attachment)}
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{

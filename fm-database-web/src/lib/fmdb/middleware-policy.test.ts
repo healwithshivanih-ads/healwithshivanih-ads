@@ -73,6 +73,8 @@ const PUBLIC_ROUTES = [
   "/api/app-photo",
   "/api/app-travel",
   "/api/app-travel-guide",
+  // Food diary — photo upload + the client's own thumbnails (FOOD_DIARY_PLAN.md).
+  "/api/app-diary",
   "/api/lab-order/123/pay",
   "/api/lab-order/webhook",
   "/api/maintenance/cl-005/pay",

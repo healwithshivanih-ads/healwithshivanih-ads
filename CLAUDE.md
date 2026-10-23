@@ -63,6 +63,20 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.88 — food diary, phase 1 (2026-10-23).** Plan + as-built notes: `docs/FOOD_DIARY_PLAN.md`. The coach starts a time-boxed photo food diary on the **Record** tab (start date, days, a private "looking for" note) and gets a WhatsApp line to send herself; the client sees "Food diary · Day N of M" at the top of Today → Your day, one big add-photo button, slot inferred from the clock (changeable, "Earlier" with a time), optional note, "Done for today".
+
+**Key invariants (v0.88):**
+- **Coach-initiated, nothing sent.** No push / WhatsApp / email when a diary starts, runs or ends. The only push is one of three meal-time reminders the CLIENT switches on in the card (`diary-*` in `reminders-derive.ts`, `defaultOn: false`, only while the diary runs). `food-diary.test.ts` greps every diary file for a send import.
+- **No numbers on the client.** `clientDiaryView()` builds the client payload field by field — no coach correction, no AI reading can ride along. Test pins the key set.
+- **`client.yaml#food_diary` is the switch** (`{id, start, days, focus?, status, started_at, ended_at?, reviewed_at?}`, Pydantic `FoodDiary`), in `_APP_CLIENT_KEYS` with `focus` stripped. **What happened lives in `_food_diary.<host>.jsonl`** — append-only EVENT lines (`add | edit | delete | day_done | label | read`) folded in `ts` order; Fly writes the client's, the Mac the coach's corrections. Phase 2's AI reading is just more `read` lines. Photos in `files/diary/` (chat-media `scope: "diary"`, same strip/re-encode, outside the chat sweep).
+- **Sync:** `_mirror_food_diary` in `app-staging-action.py` — Fly → Mac every non-mac JSONL + `files/diary/*.jpg` (copy, never delete); Mac → Fly `_food_diary.mac.jsonl`.
+- **`/api/app-diary`** is token-scoped and in `PUBLIC_PATH_PREFIXES`; refuses every write unless the coach's diary is active and the date is one of its days. Daily cap 40 photos.
+- **Inbox:** `diary` kind in `decisions.ts` — "N-day food diary finished — ready to look at", never "photos to label" (coach decision: she is not the interpreter). Exit: Mark reviewed, or 14 days.
+- **Desktop thread now renders in-app chat photos** (`kind: photo` → image, `/api/client-file?dir=chat`).
+- **Next: phase 2** — every photo read by Haiku on the Mac through `build_client`, only unreadable ones to the coach, summary auto-saved when the diary ends.
+
+---
+
 **v0.87 — one lifecycle state, a decisions inbox, no chasing (2026-10-23).** Review + plan: `fm-database-web/docs/COACH_APP_RESTRUCTURE_REVIEW.md`. Branch `claude/coach-dashboard-restructure-90ee02`.
 
 **Key invariants (v0.87):**

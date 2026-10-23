@@ -28,8 +28,17 @@ const EXT_MIME: Record<string, string> = {
   "3gp": "video/3gpp",
 };
 
+/**
+ * Sub-folders a photo may live in, besides files/ itself. In-app chat photos
+ * are written to files/chat/ and food-diary photos to files/diary/
+ * (lib/fmdb/chat-media.ts) — without this the desktop thread showed a link to
+ * a file it then looked for in the wrong folder. Closed list: the value is
+ * never used as a path unless it is one of these.
+ */
+const SUBDIRS = new Set(["chat", "diary"]);
+
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string; name: string }> }
 ) {
   const { id, name } = await params;
@@ -47,9 +56,13 @@ export async function GET(
   // stay downloadable after they're aged out of the active roster.
   const personDir = resolvePersonDir(id);
 
-  const filePath = path.join(personDir, "files", name);
+  const sub = req.nextUrl.searchParams.get("dir") ?? "";
+  if (sub && !SUBDIRS.has(sub)) {
+    return new NextResponse("Bad request", { status: 400 });
+  }
+  const filesDir = sub ? path.join(personDir, "files", sub) : path.join(personDir, "files");
+  const filePath = path.join(filesDir, name);
   // Defence-in-depth: ensure the resolved path is still inside files/.
-  const filesDir = path.join(personDir, "files");
   if (!path.resolve(filePath).startsWith(path.resolve(filesDir) + path.sep)) {
     return new NextResponse("Bad request", { status: 400 });
   }

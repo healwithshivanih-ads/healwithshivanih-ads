@@ -85,6 +85,10 @@ export const PUBLIC_PATH_PREFIXES = [
   // exists and serves the client's AVATAR.
   "/api/chat-photo",
   "/api/chat-media",
+  // Food diary (docs/FOOD_DIARY_PLAN.md): photo upload, note/edit/delete,
+  // "done for today", and serving the client's own diary photos. Token-scoped
+  // inside the handler; refuses every write unless the coach's diary is open.
+  "/api/app-diary",
   "/api/app-push",
   // App reports it's running installed (adoption signal). Token-scoped.
   "/api/app-installed",

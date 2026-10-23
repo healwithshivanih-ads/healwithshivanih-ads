@@ -7,7 +7,7 @@
  * will one day accept neither properly.
  */
 import { NextRequest, NextResponse } from "next/server";
-import { readChatPhoto } from "@/lib/fmdb/chat-media";
+import { readChatPhoto, type MediaScope } from "@/lib/fmdb/chat-media";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -15,7 +15,9 @@ export const runtime = "nodejs";
 export async function GET(req: NextRequest) {
   const client = req.nextUrl.searchParams.get("client") ?? "";
   const file = req.nextUrl.searchParams.get("file") ?? "";
-  const buf = await readChatPhoto(client, file);
+  // Chat photos by default; food-diary photos live in their own folder.
+  const scope: MediaScope = req.nextUrl.searchParams.get("scope") === "diary" ? "diary" : "chat";
+  const buf = await readChatPhoto(client, file, scope);
   if (!buf) return new NextResponse(null, { status: 404 });
   return new NextResponse(new Uint8Array(buf), {
     headers: {

@@ -1,6 +1,7 @@
 # Food diary in the client app — plan
 
-Status: planned 2026-10-23, not built. Prompted by Shweta (cl-906): her BUN was low twice and
+Status: **phase 1 built 2026-10-23** (diary + review, no AI — see "Phase 1 as built" at the end).
+Phase 2 (automatic AI reading) not built. Prompted by Shweta (cl-906): her BUN was low twice and
 we were guessing at her protein intake. The coach asked her for a 3-day photo food diary on
 WhatsApp and wants it to be an app feature instead.
 
@@ -120,7 +121,7 @@ starts it, for the days she picks, and then stops by itself.
 
 ## Phases
 
-1. **Diary + review, no AI** — coach start/end, client card + capture + notes, storage + sync,
+1. ✅ **Diary + review, no AI** (built 2026-10-23) — coach start/end, client card + capture + notes, storage + sync,
    desktop + phone review, decisions-inbox item. Also fix the desktop thread panel so in-app
    chat photos render (`components/client-widgets/whatsapp-thread-panel.tsx`: kind `photo`
    missing from its attachment kinds, and `/api/client-file` looks in `files/` not
@@ -147,3 +148,58 @@ starts it, for the days she picks, and then stops by itself.
   with no cost guard — fix separately.
 - `docs/MEAL_PHOTO_CHECK_SPEC.md` still says "specified, not built" and `client-thread.ts` says
   "shadow mode"; both are stale.
+
+
+## Phase 1 as built (2026-10-23)
+
+Where it lives:
+
+| Piece | File |
+| --- | --- |
+| Shape, window, fold, client view, inbox age, reminder ids (pure) | `fm-database-web/src/lib/fmdb/food-diary.ts` |
+| Disk: append/read `_food_diary.<host>.jsonl`, read the switch | `src/lib/fmdb/food-diary-store.ts` |
+| Coach actions: start / +1 day / end / mark reviewed / correct a photo / load | `src/lib/server-actions/food-diary.ts` |
+| Client route (add / edit / delete / done; GET = own thumbnails) | `src/app/api/app-diary/route.ts` (in `PUBLIC_PATH_PREFIXES`) |
+| Client card, top of Today → "Your day" (and the maintenance home) | `src/app/app/[token]/ochre-diary.tsx` |
+| Desktop panel, Record tab | `src/app/(v2)/clients-v2/[id]/analyse/food-diary-panel.tsx` |
+| Phone view (read-only) | `src/app/m/(tabs)/clients/[id]/diary/page.tsx` |
+| Inbox item | `lib/fmdb/decisions.ts` kind `diary` |
+| Switch on the model | `fmdb/plan/models.py::FoodDiary`, `Client.food_diary` |
+| Sync | `scripts/app-staging-action.py` `_APP_CLIENT_KEYS` + `_mirror_food_diary` |
+| Tests | `src/lib/fmdb/food-diary.test.ts`, `fm-database/tests/test_food_diary_staging.py`, `middleware-policy.test.ts` |
+
+Where it differs from the design above, and why:
+
+- **Each JSONL line is an EVENT, not a row snapshot**: `{op, diary_id, ts, entry_id, …only the
+  fields that event changes}` with `op` ∈ `add | edit | delete | day_done | label | read`. The
+  reader folds them in `ts` order across every host's file. This is what lets phase 2 append an AI
+  reading (`op: "read"`, `{readable, confidence, dishes[{name, portion}]}`) and the coach correct it
+  (`op: "label"`, always wins) on the same entry with no migration.
+- **Coach corrections live in `_food_diary.mac.jsonl`** and are forwarded Mac → Fly (like
+  `_thread.mac.jsonl`) so `/m` on Fly shows them. Client lines come back Fly → Mac. Photos are
+  copy-only Fly → Mac, never deleted by the mirror.
+- **`focus` is stripped** from the staged `client.yaml` — it is the coach's own note.
+- **Client times/dates are the phone's own**: the card sends `date` + `time`; the route accepts a
+  date only if it is a diary day and not more than a day ahead of UTC (`acceptClientDiaryDate`).
+- **Thumbnails**: GET on `/api/app-diary` (token-scoped), not a mode of `/api/chat-media`.
+  Desktop uses `/api/client-file/<id>/<file>?dir=diary`; `/m` uses `/api/m/media?scope=diary`.
+  `chat-media.ts` gained a `scope` ("chat" | "diary") — same re-encode/strip path, separate folder,
+  so the chat's 365-day sweep can never reach a diary.
+- **Reminders** are three opt-in reminders (`diary-breakfast` 09:00, `diary-lunch` 14:00,
+  `diary-dinner` 21:00) derived in `reminders-derive.ts` only while a diary runs, `defaultOn: false`,
+  stored and fired through the existing override file + `app-reminders` cron. The card has one
+  "Remind me at meal times" switch and editable times. Nothing fires unless the client turns it on.
+- **Client band names** are food words: Early morning / Breakfast / Lunch / Evening / Late night
+  (same boundaries as `day-plan.ts::bandForHour`, pinned by a test).
+- **"Done for today"** is recorded (`op: "day_done"`) so the coach sees which days the client
+  called complete; a new photo that day re-opens it.
+- **Inbox exit**: "Mark reviewed" on the panel (`food_diary.reviewed_at`) or 14 days. Ending early
+  reads "food diary ended early".
+- **One diary at a time.** Starting a new one replaces the switch; the old diary's lines stay in
+  the JSONL under its own `diary_id` (phase 3 comparisons can list them).
+- **Not built in phase 1:** sweeping staging copies of photos off the Fly volume once a diary is
+  closed; any AI reading.
+
+Also fixed (phase 1 scope): in-app chat photos now render in the desktop thread
+(`whatsapp-thread-panel.tsx` maps kind `photo` → image and asks `/api/client-file` for `?dir=chat`;
+the route accepts a closed `dir` list of `chat | diary`).

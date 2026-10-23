@@ -198,6 +198,11 @@ _APP_CLIENT_KEYS = (
     # the travel card). Coach-only subfields (notes_for_coach + each override's
     # `reason`) are stripped below before staging.
     "weight_loss",
+    # The coach's food diary switch (docs/FOOD_DIARY_PLAN.md). The client card
+    # and /api/app-diary on Fly read it; without it here a diary started on the
+    # Mac never opens in the app. Its `focus` is the coach's own note and is
+    # stripped below.
+    "food_diary",
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —
@@ -471,6 +476,11 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
                 for o in ovs
             ]
         merged["weight_loss"] = wl
+    # food_diary: `focus` is the coach's private note ("protein", "what she
+    # snacks on") — the app needs only the dates and status.
+    fd = merged.get("food_diary")
+    if isinstance(fd, dict):
+        merged["food_diary"] = {k: v for k, v in fd.items() if k != "focus"}
     s_client.write_text(yaml.safe_dump(merged, sort_keys=False, allow_unicode=True))
 
     # 3. letters (md + html + sidecars) + the send log. The app trusts ONLY
@@ -698,6 +708,46 @@ def _mirror_self_logged_vitals(yaml, src: Path, dest: Path) -> int:
     tmp.write_text(yaml.safe_dump(local, sort_keys=False, allow_unicode=True))
     tmp.replace(dest)
     return 1
+
+
+def _mirror_food_diary(sdir: Path, auth_person: Path) -> "tuple[int, list[str]]":
+    """Fly → Mac: every _food_diary.<host>.jsonl except the Mac's own, plus
+    files/diary/*.jpg. Mac → Fly: _food_diary.mac.jsonl. Never deletes.
+    Returns (files copied, errors)."""
+    copied = 0
+    errors: list = []
+    for jf in sorted(sdir.glob("_food_diary.*.jsonl")):
+        if jf.name == "_food_diary.mac.jsonl":
+            continue  # the Mac owns that one; never copy it backwards
+        dest = auth_person / jf.name
+        try:
+            if (not dest.exists()) or jf.stat().st_size > dest.stat().st_size:
+                shutil.copy2(jf, dest)
+                copied += 1
+        except Exception as e:
+            errors.append(f"diary-mirror: {e}")
+    s_photos = sdir / "files" / "diary"
+    if s_photos.is_dir():
+        a_photos = auth_person / "files" / "diary"
+        try:
+            a_photos.mkdir(parents=True, exist_ok=True)
+            for img in s_photos.glob("*.jpg"):
+                dest = a_photos / img.name
+                if not dest.exists():
+                    shutil.copy2(img, dest)
+                    copied += 1
+        except Exception as e:
+            errors.append(f"diary-photo-mirror: {e}")
+    mac = auth_person / "_food_diary.mac.jsonl"
+    if mac.exists():
+        dest = sdir / mac.name
+        try:
+            if (not dest.exists()) or mac.stat().st_size > dest.stat().st_size:
+                shutil.copy2(mac, dest)
+                copied += 1
+        except Exception as e:
+            errors.append(f"diary-stage: {e}")
+    return copied, errors
 
 
 def _merge_jsonl(src: Path, dest: Path, key: "str | None") -> int:
@@ -974,6 +1024,17 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                             out["checkins_mirrored"] += 1
                 except Exception as e:
                     out["errors"].append(f"{client_id} media-mirror: {e}")
+
+            # Food diary (docs/FOOD_DIARY_PLAN.md) — same two halves as the
+            # chat. The client's photos + entries are written on Fly
+            # (_food_diary.fly.jsonl, files/diary/*.jpg) and come back here;
+            # the coach's corrections are written on the Mac
+            # (_food_diary.mac.jsonl) and go out, so /m on Fly shows them.
+            # One file per writing host, append-only, so a size-newer copy
+            # is always right. Photos: copy-only, never delete.
+            n, errs = _mirror_food_diary(sdir, auth_person)
+            out["checkins_mirrored"] += n
+            out["errors"].extend(f"{client_id} {e}" for e in errs)
 
         # reverse-mirror: push subscription (written on Fly when the client
         # toggles notifications on/off in settings) → authoritative store.

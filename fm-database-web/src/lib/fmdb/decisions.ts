@@ -19,6 +19,7 @@
  */
 
 import { type Lifecycle, type LifecycleState, PROSPECT_FOLLOWUP_DAYS, LAPSED_WINBACK_DAYS } from "./lifecycle";
+import { DIARY_INBOX_DAYS, diaryFinishedOn, diaryInboxAge, diaryLastDay, type FoodDiaryConfig } from "./food-diary";
 
 /** Days a prospect's follow-up draft may wait before it is dropped. */
 export const FOLLOWUP_DRAFT_MAX_AGE_DAYS = PROSPECT_FOLLOWUP_DAYS + 5; // 35
@@ -42,6 +43,7 @@ export type DecisionKind =
   | "note"
   | "flag"
   | "feedback"
+  | "diary"
   | "archive";
 
 export interface DecisionItem {
@@ -128,6 +130,12 @@ export interface FeedbackLike {
   stage: string;
   answered_on: string;
 }
+export interface DiaryLike {
+  client_id: string;
+  display_name: string;
+  config: FoodDiaryConfig;
+  photos: number;
+}
 export interface ArchiveLike {
   client_id: string;
   display_name: string;
@@ -154,6 +162,9 @@ export interface DecisionInputs {
   regressed: readonly FlagLike[];
   feedback: readonly FeedbackLike[];
   archiveCandidates: readonly ArchiveLike[];
+  /** Food diaries on client.yaml (any phase — the rule decides). Optional so
+   *  callers that predate the diary need not pass it. */
+  diaries?: readonly DiaryLike[];
   /** Onboarding detail, by client id: what is missing. */
   onboardingStep: ReadonlyMap<string, { why: string; href: string; sinceYmd: string | null }>;
 }
@@ -191,6 +202,7 @@ const emptyCounts = (): Record<DecisionKind, number> => ({
   note: 0,
   flag: 0,
   feedback: 0,
+  diary: 0,
   archive: 0,
 });
 
@@ -204,6 +216,9 @@ export const KIND_STATES: Record<DecisionKind, ReadonlySet<LifecycleState>> = {
   note: new Set(["prospect"]),
   flag: new Set(["active", "ending", "maintenance"]),
   feedback: new Set(["active", "ending", "maintenance", "lapsed"]),
+  // A diary is started by the coach for whoever has the app, so anyone not
+  // archived may have one finishing.
+  diary: new Set(["prospect", "onboarding", "active", "ending", "maintenance", "lapsed"]),
   archive: new Set(["prospect", "lapsed"]),
 };
 
@@ -403,7 +418,31 @@ export function collectDecisions(input: DecisionInputs): Decisions {
     });
   }
 
-  // 9. Archive — prospects quiet > 45d, lapsed quiet > 70d (the candidate
+  // 9. Food diary finished — once, until the coach marks it reviewed or
+  //    DIARY_INBOX_DAYS pass. Never "N photos to label": she is not the
+  //    interpreter (decision 2026-10-23); this says the diary is ready to see.
+  for (const d of input.diaries ?? []) {
+    const s = allowed("diary", d.client_id);
+    if (!s) continue;
+    const age = diaryInboxAge(d.config, todayYmd);
+    if (age === null) continue;
+    const label =
+      d.config.status === "ended" && diaryFinishedOn(d.config) < diaryLastDay(d.config)
+        ? "food diary ended early"
+        : `${d.config.days}-day food diary finished`;
+    items.push({
+      kind: "diary",
+      clientId: d.client_id,
+      name: d.display_name,
+      state: s,
+      why: d.photos === 0 ? `${label} — no photos came in` : `${label} — ready to look at`,
+      href: `/clients-v2/${d.client_id}/analyse#food-diary`,
+      ageDays: age,
+      expiresInDays: DIARY_INBOX_DAYS - age,
+    });
+  }
+
+  // 10. Archive — prospects quiet > 45d, lapsed quiet > 70d (the candidate
   //    scanner's own 21-day floor applies first).
   for (const a of input.archiveCandidates) {
     const s = allowed("archive", a.client_id);
@@ -438,6 +477,7 @@ export const KIND_META: Record<DecisionKind, { label: string; icon: string; blur
   note: { label: "Thought of you", icon: "💡", blurb: "A video or guide that suits a prospect." },
   flag: { label: "Flags", icon: "🔔", blurb: "Something in the data stands out." },
   feedback: { label: "Feedback", icon: "⭐", blurb: "A client graded the programme." },
+  diary: { label: "Food diaries", icon: "🍽", blurb: "A food diary you started has finished." },
   archive: { label: "Archive", icon: "🗄", blurb: "Quiet for long enough to tidy away." },
 };
 
@@ -450,5 +490,6 @@ export const KIND_ORDER: DecisionKind[] = [
   "note",
   "flag",
   "feedback",
+  "diary",
   "archive",
 ];

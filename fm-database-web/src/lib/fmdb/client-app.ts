@@ -263,6 +263,8 @@ export interface AppMsqEntry {
 import { swapTermMatches, type AppSwapGroup as SwapGroupT, type SwapMember as SwapMemberT } from "./swaps";
 import { deriveReminders, effectiveReminders } from "./reminders-derive";
 import { readOverrides } from "./reminders-server";
+import { clientDiaryView, parseDiaryConfig, type ClientDiaryView } from "./food-diary";
+import { loadDiary } from "./food-diary-store";
 import {
   isNonVegPref,
   isVegetarianPref,
@@ -1442,6 +1444,10 @@ export interface ClientAppData {
       moodScore: number | null;
     }[];
   };
+  /** The coach's food diary, while it is running — photos only, never a
+   *  coach correction or an AI reading (see clientDiaryView). Absent on the
+   *  discovery / guided tiers. */
+  foodDiary?: ClientDiaryView | null;
   reminders: {
     id: string;
     label: string;
@@ -5817,12 +5823,20 @@ export async function loadClientAppData(
   const reminders = effectiveReminders(
     deriveReminders(plan, client, {
       lastMsqDate: msqEntries.length ? msqEntries[msqEntries.length - 1].date : null,
+      // The client's own day — the diary reminders exist only on diary days.
+      todayIso: tzTodayYmd(appTz),
       // Resolved through the shared source so the app can never offer a switch
       // for a push the cron does not send.
       remedies: await remediesForReminders(plan),
     }),
     (await readOverrides(clientId)).overrides,
   );
+
+  // Food diary — only while the coach's diary is running on the client's day.
+  const diaryCfg = parseDiaryConfig(client.food_diary);
+  const foodDiary = diaryCfg
+    ? clientDiaryView(diaryCfg, loadDiary(clientId, diaryCfg), tzTodayYmd(appTz))
+    : null;
 
   const faq = [
     {
@@ -6405,5 +6419,6 @@ export async function loadClientAppData(
     },
     body,
     reminders,
+    foodDiary,
   };
 }

@@ -49,14 +49,27 @@ const SAFE_ID = /^[a-z0-9][a-z0-9-]{0,63}$/i;
 /** Only ever the names WE generate. */
 const SAFE_FILE = /^[a-f0-9-]{36}\.jpg$/;
 
-function chatDir(clientId: string): string | null {
+/**
+ * Which folder a photo belongs to. Chat photos and food-diary photos share the
+ * whole privacy path (re-encode, strip GPS, our own filenames) but not a
+ * folder: the chat sweep below deletes after a year, and diary photos are
+ * study material the coach decides about separately (docs/FOOD_DIARY_PLAN.md).
+ * Keeping them apart means the sweep can never reach a diary.
+ */
+export type MediaScope = "chat" | "diary";
+
+function scopeDir(clientId: string, scope: MediaScope): string | null {
   if (!SAFE_ID.test(clientId)) return null;
-  return path.join(getPlansRoot(), "clients", clientId, "files", "chat");
+  return path.join(getPlansRoot(), "clients", clientId, "files", scope);
+}
+
+function chatDir(clientId: string): string | null {
+  return scopeDir(clientId, "chat");
 }
 
 /** Resolve a stored photo, refusing anything that escapes its client. */
-export function mediaPath(clientId: string, file: string): string | null {
-  const dir = chatDir(clientId);
+export function mediaPath(clientId: string, file: string, scope: MediaScope = "chat"): string | null {
+  const dir = scopeDir(clientId, scope);
   if (!dir || !SAFE_FILE.test(file)) return null;
   const full = path.join(dir, file);
   // Belt and braces: the regex already forbids separators, but a resolved
@@ -76,8 +89,9 @@ export type SavedMedia = { file: string; bytes: number; width: number; height: n
 export async function saveChatPhoto(
   clientId: string,
   input: Buffer,
+  scope: MediaScope = "chat",
 ): Promise<SavedMedia | null> {
-  const dir = chatDir(clientId);
+  const dir = scopeDir(clientId, scope);
   if (!dir || input.byteLength === 0 || input.byteLength > MAX_UPLOAD_BYTES) return null;
 
   let out: Buffer;
@@ -107,8 +121,12 @@ export async function saveChatPhoto(
   return { file, bytes: out.byteLength, width, height };
 }
 
-export async function readChatPhoto(clientId: string, file: string): Promise<Buffer | null> {
-  const full = mediaPath(clientId, file);
+export async function readChatPhoto(
+  clientId: string,
+  file: string,
+  scope: MediaScope = "chat",
+): Promise<Buffer | null> {
+  const full = mediaPath(clientId, file, scope);
   if (!full) return null;
   try {
     return await fs.readFile(full);

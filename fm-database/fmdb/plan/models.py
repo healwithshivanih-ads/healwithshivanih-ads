@@ -364,6 +364,28 @@ class GiftedFoundationSession(BaseModel):
     joined_on: Optional[date] = None   # joined Sequoya
 
 
+class FoodDiary(BaseModel):
+    """The coach's time-boxed photo food diary for this client
+    (docs/FOOD_DIARY_PLAN.md). The coach starts it on the Record tab; while it
+    runs the client app shows a "Food diary · Day N of M" card. The photos and
+    entries themselves live in clients/<id>/_food_diary.<host>.jsonl and
+    files/diary/, not here — this is only the switch.
+
+    Projected to Fly (app-staging-action.py _APP_CLIENT_KEYS) minus `focus`,
+    which is the coach's own note. Shape owned by
+    fm-database-web/src/lib/fmdb/food-diary.ts::FoodDiaryConfig."""
+    model_config = ConfigDict(extra="ignore")
+
+    id: str
+    start: date
+    days: int = Field(ge=1, le=14)
+    focus: Optional[str] = None
+    status: Literal["active", "ended"] = "active"
+    started_at: Optional[datetime] = None
+    ended_at: Optional[datetime] = None
+    reviewed_at: Optional[datetime] = None
+
+
 #: The values TypeScript writes today. Documentation, not enforcement — see
 #: Client.engagement_status for why this is not an Enum.
 KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined", "lapsed")
@@ -665,6 +687,9 @@ class Client(BaseModel):
     founding_splus_rate_inr: Optional[int] = None
     founding_gift: Optional[FoundingGift] = None
     gifted_foundation_session: Optional[GiftedFoundationSession] = None
+    # Coach-started photo food diary (docs/FOOD_DIARY_PLAN.md). Projected to
+    # Fly minus `focus`. See FoodDiary.
+    food_diary: Optional[FoodDiary] = None
     # The coach-authored Starting Map shown in the consult-tier app after the
     # discovery call. Authored on /analyse/discovery (post-results stage). The
     # client app reads it via parseDiscoverySummary. Optional — pre-call clients

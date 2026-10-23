@@ -15,6 +15,7 @@ import type { AppMeal, AppPractice, AppRemedy } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
 import { MealThumb, mealThumbKind, Section, SuppRow } from "./ochre-ui";
 import { crisp } from "./crisp";
+import { FoodDiaryCard } from "./ochre-diary";
 import { BAND_META, bandForHour, buildDay, slotLabel, type BandKey, type DayBand, type DayItem } from "./day-plan";
 
 /** Same cap as the old meal row (ochre-screens.tsx ML_MAX_COMPONENTS): the
@@ -314,8 +315,14 @@ export function TodayDaySections(props: DayActions) {
     data.remedies.some((r) => r.assigned && r.daily);
   return (
     <>
+      {data.foodDiary && !hasDay && (
+        <Section title="Your day">
+          <FoodDiaryCard />
+        </Section>
+      )}
       {hasDay && (
         <Section title="Your day">
+          <FoodDiaryCard />
           <DayTimeline {...props} />
         </Section>
       )}

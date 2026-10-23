@@ -34,7 +34,9 @@ import {
   loadRecentCancellations,
 } from "@/lib/fmdb/loader-extras";
 import { resolveLifecycles, LIFECYCLE_META, type Lifecycle } from "@/lib/fmdb/lifecycle";
-import { collectDecisions, KIND_META, KIND_ORDER, type DecisionItem } from "@/lib/fmdb/decisions";
+import { collectDecisions, KIND_META, KIND_ORDER, type DecisionItem, type DiaryLike } from "@/lib/fmdb/decisions";
+import { parseDiaryConfig } from "@/lib/fmdb/food-diary";
+import { loadDiary } from "@/lib/fmdb/food-diary-store";
 import { loadDecisions as loadRenewalDecisions } from "@/lib/fmdb/renewal-queue";
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import { loadProgrammeFeedback } from "@/lib/fmdb/programme-feedback-loader";
@@ -208,6 +210,19 @@ export default async function DashboardV2() {
     }),
   );
 
+  // ── 3b. food diaries the coach started (any phase — the rule decides) ────
+  const diaries: DiaryLike[] = [];
+  for (const c of clients) {
+    const cfg = parseDiaryConfig((c as unknown as { food_diary?: unknown }).food_diary);
+    if (!cfg) continue;
+    diaries.push({
+      client_id: c.client_id,
+      display_name: c.display_name ?? c.client_id,
+      config: cfg,
+      photos: loadDiary(c.client_id, cfg).entries.length,
+    });
+  }
+
   // ── 4. the decisions ─────────────────────────────────────────────────────
   const repliedTo = new Set<string>();
   unreadMap.forEach((v, k) => {
@@ -235,6 +250,7 @@ export default async function DashboardV2() {
       answered_on: r.date,
     })),
     archiveCandidates: archiveCandidatesRaw,
+    diaries,
     onboardingStep,
   });
   const f = decisions.filtered;
@@ -245,6 +261,7 @@ export default async function DashboardV2() {
   const interestedRows = interestedPeople.rows.filter((r) => f.noteClientIds.has(r.clientId) && r.pendingNote);
   const onboardingItems = decisions.items.filter((i) => i.kind === "onboarding");
   const flagItems = decisions.items.filter((i) => i.kind === "flag");
+  const diaryItems = decisions.items.filter((i) => i.kind === "diary");
 
   // Lifecycle roll-up for the header line.
   const stateCounts = new Map<string, number>();
@@ -360,6 +377,14 @@ export default async function DashboardV2() {
         <section id="feedback">
           <SectionLabel kind="feedback" count={decisions.counts.byKind.feedback} />
           <ProgrammeFeedbackPanel data={{ ...programmeFeedback, asks: [] }} />
+        </section>
+      )}
+
+      {/* 🍽 Food diaries — one you started has finished; open it to look. */}
+      {diaryItems.length > 0 && (
+        <section id="diaries">
+          <SectionLabel kind="diary" count={diaryItems.length} />
+          <ItemList items={diaryItems} />
         </section>
       )}
 

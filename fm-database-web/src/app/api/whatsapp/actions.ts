@@ -650,6 +650,8 @@ export interface ChatThreadMessage {
   attachment?: {                // present when the message carried a media file
     name: string;               // filename under clients/<id>/files/
     kind: "image" | "document" | "audio" | "video" | "other";
+    /** In-app chat photos live in files/chat/, not files/ (chat-media.ts). */
+    dir?: "chat";
   };
   /** Which channel carried this message. Outbound segments carry an explicit
    *  [source: whatsapp_outbound]/[source: email_outbound] tag (see

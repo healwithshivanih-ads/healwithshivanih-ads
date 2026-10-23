@@ -22,6 +22,7 @@
  *    screen says the reply time plainly, and an acute cue gets an immediate
  *    answer telling them to call for help rather than a queued message.
  */
+import { shrinkPhoto } from "./photo-shrink";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon, useOchre } from "./ochre-context";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
@@ -118,41 +119,13 @@ export function OchreChat({ firstName }: { firstName: string }) {
     }
   }
 
-  /**
-   * Shrink on the phone before uploading.
-   *
-   * A modern phone camera produces 3–6 MB per shot. On Indian mobile data
-   * that is a slow upload the client watches fail, and it is the single
-   * biggest lever on what this feature costs to run — roughly ten times.
-   * Canvas re-encoding also drops EXIF, so the GPS coordinates of someone's
-   * kitchen never leave their phone. The server strips it again; neither
-   * side trusts the other to have done it.
-   */
-  async function shrink(file: File): Promise<Blob> {
-    const bitmap = await createImageBitmap(file);
-    const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
-    const w = Math.round(bitmap.width * scale);
-    const h = Math.round(bitmap.height * scale);
-    const canvas = document.createElement("canvas");
-    canvas.width = w;
-    canvas.height = h;
-    canvas.getContext("2d")?.drawImage(bitmap, 0, 0, w, h);
-    bitmap.close?.();
-    const blob = await new Promise<Blob | null>((res) =>
-      canvas.toBlob(res, "image/jpeg", 0.8),
-    );
-    // If the browser refuses to encode, send the original rather than
-    // nothing — the server will shrink it anyway.
-    return blob ?? file;
-  }
-
   async function pick(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     e.target.value = ""; // let them re-pick the same photo after cancelling
     if (!file) return;
     setError(null);
     try {
-      const blob = await shrink(file);
+      const blob = await shrinkPhoto(file);
       setPhoto({ blob, preview: URL.createObjectURL(blob) });
     } catch {
       setError("Couldn't read that photo — try another one.");

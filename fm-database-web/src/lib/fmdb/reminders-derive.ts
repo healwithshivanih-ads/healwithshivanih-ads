@@ -16,6 +16,7 @@
 import { timingSlot } from "@/lib/fmdb/client-app-format";
 import { remedySlots, REMEDY_SLOT_LABEL, type RemedySlot } from "@/lib/fmdb/remedy-slots";
 import { isGrowingTreeEnabled } from "@/app/app/[token]/growing-tree-flag";
+import { DIARY_REMINDERS, diaryPhase, parseDiaryConfig } from "@/lib/fmdb/food-diary";
 
 export interface DerivedReminder {
   id: string;
@@ -206,6 +207,19 @@ export function deriveReminders(
         time: "09:30",
         cadence: "daily",
       });
+    }
+  }
+
+  // Food diary — only while the coach's diary is running, and OFF by default.
+  // The coach starts a diary and tells the client herself; the system never
+  // pushes about it unless the client switches these on in the diary card
+  // (decision 2026-10-23: no auto-chasing). Transient like the MSQ nudge, so
+  // it rides above the standing cap.
+  const diary = parseDiaryConfig(client.food_diary);
+  const diaryToday = opts?.todayIso ?? new Date().toISOString().slice(0, 10);
+  if (diary && diaryPhase(diary, diaryToday) === "running") {
+    for (const r of DIARY_REMINDERS) {
+      capped.push({ id: r.id, label: r.label, time: r.time, cadence: "daily", defaultOn: false });
     }
   }
 

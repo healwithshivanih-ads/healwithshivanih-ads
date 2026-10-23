@@ -42,6 +42,8 @@ import { clientQuickActions } from "../client-quick-actions";
 import { BookSessionButton } from "@/components/client-widgets/book-session-modal";
 import { clientSubnavTabs } from "../client-subnav";
 import { formatLongDate } from "@/lib/fmdb/format-date";
+import { loadFoodDiaryAction } from "@/lib/server-actions/food-diary";
+import { FoodDiaryPanel } from "./food-diary-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -127,12 +129,13 @@ export default async function AnalysePage({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions, journey, allPlans, clientBookings] = await Promise.all([
+  const [client, sessions, journey, allPlans, clientBookings, foodDiary] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadClientJourney(id, todayStr),
     loadAllPlans(),
     loadClientBookings(id),
+    loadFoodDiaryAction(id),
   ]);
   if (!client) notFound();
 
@@ -554,6 +557,9 @@ export default async function AnalysePage({
               />
             </>
           )}
+
+          {/* Food diary — start / review (docs/FOOD_DIARY_PLAN.md). */}
+          {foodDiary.ok && <FoodDiaryPanel clientId={id} initial={foodDiary} />}
 
           {/* The v2 forms have been live since Phase 3.5 — each session
               type tile above is a direct link to its own /analyse/<type>
