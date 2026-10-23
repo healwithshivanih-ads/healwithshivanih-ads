@@ -382,6 +382,22 @@ def review_flags(card: dict, client: dict, plan: dict, prev_card) -> list:
         if hit:
             flags.append(f"Their diet is {client.get('dietary_preference')}, and a 'do' names {', '.join(hit)}.")
 
+    # Dairy: a milk-protein allergy (or an unconfirmed dairy reaction) rules
+    # out curd / buttermilk / paneer too; lactose intolerance rules out only
+    # milk and cream. The avoid-list scan below sees the word "milk" only.
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "fm-database"))
+        from fmdb.plan.dairy import resolve_dairy, text_is_dairy_safe
+        _dairy = resolve_dairy(client)
+        bad = [d for d in dos if not text_is_dairy_safe(d, _dairy)]
+        if bad:
+            flags.append(
+                f"A 'do' has dairy this client can't have ({_dairy['kind'].replace('_', ' ')}): "
+                f"{bad[0][:80]!r}."
+            )
+    except Exception:
+        pass
+
     preg = str(client.get("pregnancy_status") or "").lower()
     if preg and preg not in ("not_pregnant", "not_applicable", "no", "none"):
         flags.append(f"Pregnancy status is '{client.get('pregnancy_status')}'. Check every line is right for that.")

@@ -32,6 +32,8 @@
  * consumers act on them differently, so they stay separate fields.
  */
 
+import { type DairyClient, dairyPromptLine, isDairyTerm, resolveDairy } from "./dairy-reaction";
+
 /** Values a human writes to mean "I have none". Matched whole, after
  *  lowercasing and stripping punctuation — never as a substring, or
  *  "none of the nuts" would read as a negative screen. */
@@ -117,15 +119,30 @@ export function resolveAllergies(
  * to a model exactly like a cleared one, which is the failure this whole
  * module exists to stop.
  */
-export function allergyPromptLine(client: Parameters<typeof resolveAllergies>[0]): string {
-  const { status, items } = resolveAllergies(client);
-  if (status === "declared") {
-    return `Allergies (ABSOLUTE — never suggest or serve these, at any dose): ${items.join(", ")}`;
+export function allergyPromptLine(
+  client: Parameters<typeof resolveAllergies>[0] & DairyClient,
+): string {
+  const { status } = resolveAllergies(client);
+  let { items } = resolveAllergies(client);
+  // Dairy is the allergen clients most often mislabel — "milk allergy" is
+  // usually lactose intolerance. For lactose intolerance the milk entry comes
+  // OFF the absolute list; the dairy line says what is and isn't fine.
+  // Mirror of allergy_prompt_line in fmdb/plan/allergies.py.
+  const dairy = resolveDairy(client);
+  const dairyLine = dairyPromptLine(client);
+  if (dairy?.kind === "lactose_intolerance") items = items.filter((i) => !isDairyTerm(i));
+  let line: string;
+  if (status === "declared" && items.length > 0) {
+    line = `Allergies (ABSOLUTE — never suggest or serve these, at any dose): ${items.join(", ")}`;
+  } else if (status === "declared") {
+    line = "Allergies: no true allergy recorded.";
+  } else if (status === "none") {
+    line = "Allergies: the client was asked and reported none.";
+  } else {
+    line =
+      "Allergies: NOT RECORDED — nobody has asked. Absence here is not clearance; do not treat this client as allergy-free.";
   }
-  if (status === "none") {
-    return "Allergies: the client was asked and reported none.";
-  }
-  return "Allergies: NOT RECORDED — nobody has asked. Absence here is not clearance; do not treat this client as allergy-free.";
+  return dairyLine ? `${line}\n${dairyLine}` : line;
 }
 
 /**

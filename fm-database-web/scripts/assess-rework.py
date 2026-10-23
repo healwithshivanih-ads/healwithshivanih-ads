@@ -51,7 +51,9 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "fm-database"))
 
+from fmdb.plan.dairy import dairy_prompt_line as _dairy_prompt_line  # noqa: E402
 from model_output import usable_dicts  # noqa: E402
 
 
@@ -291,6 +293,9 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
     lines.append(f"- Medical history: {', '.join(client.get('medical_history', []) or []) or '—'}")
     lines.append(f"- Medications: {', '.join(client.get('current_medications', []) or []) or '—'}")
     lines.append(f"- Allergies: {', '.join(client.get('known_allergies', []) or []) or '—'}")
+    _dairy_line = _dairy_prompt_line(client)
+    if _dairy_line:
+        lines.append(f"- {_dairy_line}")
     lines.append(f"- Goals: {', '.join(client.get('goals', []) or []) or '—'}")
     lines.append("")
 

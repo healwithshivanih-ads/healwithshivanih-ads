@@ -66,6 +66,8 @@ FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
 
+from fmdb.plan.dairy import dairy_context as _dairy_context  # noqa: E402
+
 from model_output import usable_dicts  # noqa: E402
 
 # VitaOne inventory JSON (refreshed by scripts/vitaone-scrape.py). Loaded
@@ -948,6 +950,9 @@ def main() -> int:
         "current_medications": client.current_medications,
         "current_supplements": getattr(client, "current_supplements", None) or [],
         "known_allergies": client.known_allergies,
+        # Milk-protein allergy vs lactose intolerance (suggester rule 20).
+        # None when dairy is not an issue. fmdb/plan/dairy.py.
+        "dairy_reaction": _dairy_context(client.model_dump(mode="json")),
         # Functional-test findings parsed via parse-functional-test.py and
         # saved to ~/fm-plans/clients/<id>/functional_tests/<type>-<date>.yaml.
         # Previously the suggester never saw these — Nidhi's Sova/BugSpeaks

@@ -43,6 +43,8 @@ import yaml
 FMDB_ROOT = Path(__file__).resolve().parents[2] / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 
+from fmdb.plan.dairy import coach_label as _dairy_coach_label  # noqa: E402
+
 from fmdb.plan.lifecycle import (  # noqa: E402
     effective_meal_plan_start,
     effective_recheck_date,
@@ -382,6 +384,8 @@ def build(root: Path, needle: str, today: dt.date) -> dict:
             "medical_history": _as_list(c.get("medical_history")),
             "medications": _as_list(c.get("current_medications") or c.get("medications")),
             "allergies": _as_list(c.get("known_allergies") or c.get("allergies")),
+            # Milk-protein allergy vs lactose intolerance — fmdb/plan/dairy.py.
+            "dairy": _dairy_coach_label(c),
             "goals": c.get("goals"),
         },
         "lifecycle": {
@@ -438,6 +442,8 @@ def render(b: dict) -> str:
     lines.append(f"**Medications:** {', '.join(map(str, w['medications'])) or '—'}")
     if w["allergies"]:
         lines.append(f"**Allergies:** {', '.join(map(str, w['allergies']))}")
+    if w.get("dairy"):
+        lines.append(f"**Dairy:** {w['dairy']}")
     if w.get("goals"):
         lines.append(f"**Goals:** {w['goals'] if isinstance(w['goals'], str) else ', '.join(map(str, w['goals']))}")
     lines += ["", f"## Lifecycle: {lc['state'].upper()}" + (f" since {lc['since']}" if lc.get("since") else ""),

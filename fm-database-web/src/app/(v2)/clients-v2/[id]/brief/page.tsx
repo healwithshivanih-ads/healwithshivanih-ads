@@ -38,6 +38,8 @@ interface Brief {
     medical_history: string[];
     medications: string[];
     allergies: string[];
+    /** Milk-protein allergy vs lactose intolerance (client-brief.py). */
+    dairy?: string;
     goals: string | string[] | null;
   };
   lifecycle: {
@@ -231,6 +233,11 @@ function BriefBody({ b }: { b: Brief }) {
         {who.allergies.length > 0 && (
           <div style={{ ...row, marginTop: 6 }}>
             <strong>Allergies:</strong> {who.allergies.join(", ")}
+          </div>
+        )}
+        {who.dairy && (
+          <div style={{ ...row, marginTop: 6 }}>
+            <strong>Dairy:</strong> {who.dairy}
           </div>
         )}
         {goals && (

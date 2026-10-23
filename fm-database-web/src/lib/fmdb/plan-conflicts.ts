@@ -20,6 +20,7 @@ import "server-only";
  */
 
 import type { FoodCautionFinding } from "@/lib/fmdb/food-cautions";
+import { DAIRY_TYPE_GUIDANCE, isDairyTerm, resolveDairy, treatsAsAllergy } from "@/lib/fmdb/dairy-reaction";
 
 export type ConflictSeverity = "info" | "warning" | "critical";
 
@@ -153,6 +154,10 @@ interface ClientLike {
   medications?: string[];
   active_conditions?: string[];
   medical_history?: string[];
+  reported_triggers?: string;
+  /** Milk-protein allergy vs lactose intolerance — see dairy-reaction.ts. */
+  dairy_reaction_type?: string;
+  tolerates_ghee?: string;
   /** Intake chips, promoted onto client.yaml by the intake submit handler. */
   oral_signs?: string[];
   eye_signs?: string[];
@@ -351,12 +356,16 @@ export function detectPlanConflicts(
   }
 
   // ── Rule 4: allergy vs non-negotiable / foods-to-avoid duplication ─
+  // A lactose-intolerant "Milk" is not an allergy: "chai with milk" can stay
+  // as a non-negotiable (lactose-free milk), so dairy words leave this rule.
+  const dairy = resolveDairy(client);
   const allergies = [
     ...(client.allergies ?? []),
     ...(client.known_allergies ?? []),
   ]
     .map((a) => a.toLowerCase().trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter((a) => !(dairy?.kind === "lactose_intolerance" && isDairyTerm(a)));
   if (allergies.length > 0 && nonNeg) {
     const conflicts = allergies.filter((a) =>
       nonNeg.toLowerCase().includes(a),
@@ -373,6 +382,46 @@ export function detectPlanConflicts(
           `line — an allergy always wins over a preference.`,
       });
     }
+  }
+
+  // ── Rule 4b: milk-protein allergy (or unconfirmed) vs dairy the client
+  // won't give up. Rule 4 only sees the literal allergy word — "Milk" never
+  // matched "curd with lunch" or "paneer". ──
+  if (treatsAsAllergy(dairy) && nonNeg) {
+    const lc = nonNeg.toLowerCase();
+    const hits = DAIRY_TOKENS.filter(
+      (t) => (dairy?.gheeOk ? t !== "ghee" && t !== "butter" : true) && new RegExp(`\\b${t}\\b`).test(lc),
+    );
+    if (hits.length > 0) {
+      out.push({
+        id: `dairy-allergy-non-neg-${slug(hits.join("-"))}`,
+        severity: dairy?.kind === "milk_protein_allergy" ? "critical" : "warning",
+        kind: "dairy_allergy_vs_nonnegotiable",
+        summary: `Non-negotiables mention ${hits.join(", ")}, but dairy is ${
+          dairy?.kind === "milk_protein_allergy" ? "a milk-protein allergy" : "an unconfirmed reaction"
+        }`,
+        details:
+          `${DAIRY_TYPE_GUIDANCE[dairy!.kind]} If it is really lactose intolerance, ` +
+          `record that on the intake view and this clears.`,
+      });
+    }
+  }
+
+  // ── Rule 4c: dairy is on the record but nobody asked which kind. ──
+  if (dairy?.kind === "unsure") {
+    out.push({
+      id: "dairy-type-unconfirmed",
+      severity: "warning",
+      kind: "dairy_type_unconfirmed",
+      summary:
+        dairy.source === "inferred"
+          ? "Dairy is on the allergy / avoid list, but it was never asked whether it is an allergy or lactose intolerance"
+          : "The client's dairy answers didn't settle allergy vs lactose intolerance",
+      details:
+        "Until it's confirmed, every menu, recipe filter and supplement check treats it as a " +
+        "milk-protein allergy — no curd, paneer, whey or lactose-free milk. Ask whether curd, " +
+        "paneer and ghee cause symptoms, then record the answer on the intake view.",
+    });
   }
 
   // ── Rule 5: foods-to-avoid vs non-negotiable (mild contradiction) ──

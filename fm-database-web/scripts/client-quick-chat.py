@@ -99,6 +99,9 @@ def _client_context(client: dict, sessions: list[dict]) -> str:
     _lst("current_medications", "Medications")
     _lst("current_supplements", "Current supplements")
     _lst("known_allergies", "Allergies")
+    from fmdb.plan.dairy import dairy_prompt_line
+    if dairy_prompt_line(client):
+        lines.append(dairy_prompt_line(client))
     _lst("goals", "Goals")
     if g("reported_triggers"):
         lines.append(f"Reported triggers: {g('reported_triggers')}")

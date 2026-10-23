@@ -1154,6 +1154,83 @@ def _clean_int_dict(incoming: object, allowed_keys: tuple, lo: int, hi: int) -> 
             out[k] = n
     return out
 
+# Dairy follow-up (2026-10-23) — milk-PROTEIN allergy vs LACTOSE intolerance.
+# Asked only when milk / dairy / lactose appears in the allergies or the
+# foods-to-avoid answer. Each value is checked against its own key set
+# (fmdb/plan/dairy.py) and OVERWRITES on submit, blanks included: the form
+# posts all five every time, empty when the question is hidden, so a client
+# who takes "milk" back out of her allergies also takes the answers with it.
+# `dairy_reaction_type` is deliberately NOT here — the client never posts it.
+# It is derived from these answers below, unless the coach has set it.
+from fmdb.plan.dairy import (  # noqa: E402
+    SYMPTOM_KEYS as _DAIRY_SYMPTOM_KEYS,
+    TIMING_KEYS as _DAIRY_TIMING_KEYS,
+    TOLERANCE_KEYS as _DAIRY_TOLERANCE_KEYS,
+    derive_dairy_reaction_type as _derive_dairy_type,
+)
+
+_DAIRY_SCALAR_FIELDS: dict[str, tuple[str, ...]] = {
+    "dairy_reaction_timing": _DAIRY_TIMING_KEYS,
+    "tolerates_curd": _DAIRY_TOLERANCE_KEYS,
+    "tolerates_paneer": _DAIRY_TOLERANCE_KEYS,
+    "tolerates_ghee": _DAIRY_TOLERANCE_KEYS,
+}
+_DAIRY_LIST_FIELDS: dict[str, tuple[str, ...]] = {
+    "dairy_reaction_symptoms": _DAIRY_SYMPTOM_KEYS,
+}
+
+
+def _apply_dairy_answers(data: dict, submitted: dict) -> list[str]:
+    """Write the dairy follow-up answers and (re)derive `dairy_reaction_type`.
+    Returns the fields that changed. A coach-set type is never overwritten."""
+    changed: list[str] = []
+    touched = False
+    for field, allowed in _DAIRY_SCALAR_FIELDS.items():
+        if field not in submitted:
+            continue
+        touched = True
+        v = submitted.get(field)
+        v = v.strip() if isinstance(v, str) else ""
+        v = v if v in allowed else ""
+        if v:
+            if data.get(field) != v:
+                data[field] = v
+                changed.append(field)
+        elif data.get(field):
+            data.pop(field, None)
+            changed.append(field)
+    for field, allowed in _DAIRY_LIST_FIELDS.items():
+        if field not in submitted:
+            continue
+        touched = True
+        incoming = submitted.get(field)
+        vals = [str(x) for x in incoming] if isinstance(incoming, list) else []
+        cleaned = [k for k in allowed if k in vals]   # canonical order, deduped
+        if cleaned:
+            if data.get(field) != cleaned:
+                data[field] = cleaned
+                changed.append(field)
+        elif data.get(field):
+            data.pop(field, None)
+            changed.append(field)
+    if not touched or data.get("dairy_reaction_source") == "coach":
+        return changed
+    derived = _derive_dairy_type(
+        data.get("dairy_reaction_symptoms"), data.get("dairy_reaction_timing"),
+        data.get("tolerates_curd"), data.get("tolerates_paneer"), data.get("tolerates_ghee"),
+    )
+    if derived:
+        if data.get("dairy_reaction_type") != derived or data.get("dairy_reaction_source") != "intake":
+            data["dairy_reaction_type"] = derived
+            data["dairy_reaction_source"] = "intake"
+            changed.append("dairy_reaction_type")
+    elif data.get("dairy_reaction_type"):
+        data.pop("dairy_reaction_type", None)
+        data.pop("dairy_reaction_source", None)
+        changed.append("dairy_reaction_type")
+    return changed
+
+
 # Repeater fields — list of structured dicts. Overwrite-on-submit (not
 # additive merge) because the form is the source of truth for these.
 _INTAKE_REPEATER_FIELDS = [
@@ -2562,6 +2639,10 @@ def _apply_submit(client_id: str, data: dict, submitted: dict, notify: bool = Tr
             elif field in data:
                 data.pop(field, None)
                 fields_updated.append(field)
+
+    # ── dairy follow-up (allergy vs lactose intolerance) — after the list
+    # fields above, which merge `known_allergies`. ──
+    fields_updated.extend(_apply_dairy_answers(data, submitted))
 
     # ── repeater fields (medication category entries, contraception,
     # pregnancies). Form submits a list of dicts; we accept it verbatim

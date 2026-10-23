@@ -11,6 +11,7 @@
  */
 import { FmPanel } from "@/components/fm";
 import { resolveAllergies } from "@/lib/fmdb/allergies";
+import { DAIRY_TYPE_GUIDANCE, DAIRY_TYPE_LABEL, resolveDairy } from "@/lib/fmdb/dairy-reaction";
 import { cyclePhaseForDisplay, PHASE_LABELS } from "@/lib/fmdb/cycle-phase";
 
 interface LabValue {
@@ -47,6 +48,9 @@ interface Props {
     medical_history?: string[];
     current_medications?: string[];
     known_allergies?: string[];
+    dairy_reaction_type?: string;
+    tolerates_ghee?: string;
+    reported_triggers?: string;
     goals?: string[];
     dietary_preference?: string;
     foods_to_avoid?: string;
@@ -318,6 +322,23 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
                       not screened — never asked
                     </span>
                   )}
+                </div>
+              </div>
+            );
+          })()}
+          {/* Milk-protein allergy vs lactose intolerance — whey isolate and
+              lactose-free milk are fine for one, unsafe for the other. */}
+          {(() => {
+            const d = resolveDairy(client);
+            if (!d) return null;
+            return (
+              <div>
+                <div style={kvLabel()}>Dairy</div>
+                <div>
+                  <span style={chip(DAIRY_TYPE_LABEL[d.kind], d.kind === "lactose_intolerance" ? "info" : "warn")}>
+                    {DAIRY_TYPE_LABEL[d.kind]}
+                  </span>
+                  <span style={{ fontSize: 11, opacity: 0.8 }}>{DAIRY_TYPE_GUIDANCE[d.kind]}</span>
                 </div>
               </div>
             );

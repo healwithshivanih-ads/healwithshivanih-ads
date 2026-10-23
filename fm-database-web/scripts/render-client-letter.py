@@ -2185,6 +2185,14 @@ def _build_client_avoid_set(client: dict) -> set[str]:
     # both directions — so a screened-negative client would have had products
     # rejected for containing "none".
     _, allergens = resolve_allergies(client)
+    # Milk-protein allergy vs lactose intolerance (fmdb/plan/dairy.py): a
+    # lactose-intolerant "Milk" leaves the set (whey isolate is fine); an
+    # allergy adds the milk-protein words product labels actually use.
+    from fmdb.plan.dairy import allergen_items_for_matching, resolve_dairy, treats_as_allergy
+    dairy = resolve_dairy(client)
+    allergens = allergen_items_for_matching(allergens, dairy)
+    if treats_as_allergy(dairy):
+        allergens = [*allergens, "whey", "casein", "milk protein"]
     out.update(a.strip().lower() for a in allergens if a.strip())
     for field in ("foods_to_avoid", "reported_triggers"):
         val = client.get(field) or []
