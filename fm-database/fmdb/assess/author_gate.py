@@ -146,6 +146,14 @@ def _resolve(idx: dict, slug: Any) -> Optional[str]:
     return idx.get(_norm(slug))
 
 
+# Milk-protein supplements, matched on slug + display name (hyphens → spaces).
+# "milk thistle" is a herb, not dairy.
+_DAIRY_SUPPLEMENT = re.compile(
+    r"\b(?:whey|casein|caseinate|lactoferrin|colostrum|dairy|beta lactoglobulin|blg"
+    r"|milk protein)\b|\bmilk\b(?! thistle)"
+)
+
+
 def _allergen_tokens(client: dict) -> set:
     """Allergen words worth scanning supplement names for.
 
@@ -532,8 +540,17 @@ def _check_allergies(rep: GateReport, payload: dict, cat: Any, client: Optional[
             "next contact and record it (an explicit 'no known allergies' counts).",
         ))
 
-    tokens = _allergen_tokens(client)
-    if not tokens:
+    # Dairy is judged by fmdb.plan.dairy, not by the word scan: "Milk" on the
+    # allergy list scanned as the token "milk" never matched
+    # protein-whey-isolate (so whey passed for a milk-allergic client) and DID
+    # match milk-thistle. A milk-protein allergy — or a dairy word with no type
+    # recorded — blocks every milk-protein supplement; lactose intolerance
+    # blocks none of them (whey isolate is fine).
+    from fmdb.plan.dairy import is_dairy_term, resolve_dairy, treats_as_allergy
+
+    dairy = resolve_dairy(client)
+    tokens = {t for t in _allergen_tokens(client) if not is_dairy_term(t)}
+    if not tokens and not treats_as_allergy(dairy):
         return
 
     by_slug: dict = {}
@@ -553,6 +570,18 @@ def _check_allergies(rep: GateReport, payload: dict, cat: Any, client: Optional[
         text = _norm(slug).replace("-", " ")
         if supp is not None:
             text += " " + _norm(getattr(supp, "display_name", "")).replace("-", " ")
+
+        if treats_as_allergy(dairy) and _DAIRY_SUPPLEMENT.search(text):
+            which = ("a milk-protein allergy" if dairy["kind"] == "milk_protein_allergy"
+                     else "a dairy reaction of unconfirmed type (treated as a milk-protein "
+                          "allergy until the coach confirms it)")
+            rep.hard_failures.append(GateFinding(
+                "HARD", "supplement_suggestions", "client_allergy",
+                f"{slug!r} is a milk-protein product and this client has {which}. "
+                "Use a pea / rice / yeast protein instead.",
+                target=str(slug),
+            ))
+            continue
 
         for tok in sorted(tokens):
             word = tok.replace("-", " ")

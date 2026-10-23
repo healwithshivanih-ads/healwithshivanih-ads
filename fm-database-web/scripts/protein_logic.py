@@ -19,6 +19,14 @@ See fm-database/data/sources/protein-intake-guidance.yaml.
 
 from __future__ import annotations
 
+import sys as _sys
+from pathlib import Path as _Path
+
+_FMDB = _Path(__file__).resolve().parent.parent.parent / "fm-database"
+if str(_FMDB) not in _sys.path:
+    _sys.path.insert(0, str(_FMDB))
+from fmdb.plan.dairy import resolve_dairy as _resolve_dairy  # noqa: E402
+
 _PROTEIN_KIDNEY_TERMS = (
     "kidney disease", "chronic kidney", "ckd", "renal failure",
     "renal insufficiency", "renal disease", "nephropathy", "dialysis",
@@ -316,12 +324,23 @@ def pick_protein_source(client: dict, plan: dict | None = None) -> dict:
         nutrition_reduce = " ".join(
             str(x) for x in ((plan.get("nutrition") or {}).get("reduce") or [])
         ).lower()
-    dairy_avoid_text = " ".join((avoid, allergies, reported_triggers,
-                                 nutrition_reduce))
+    # Milk-protein allergy vs lactose intolerance (fmdb/plan/dairy.py). A
+    # lactose-intolerant client's "milk" in the allergies / avoid text is NOT a
+    # reason to refuse whey isolate (<1 g lactose a scoop); only the plan
+    # eliminating dairy or a vegan diet still is. An allergy — or a dairy word
+    # with no type recorded — always routes away from whey.
+    dairy = _resolve_dairy(client)
+    if dairy and dairy["kind"] == "lactose_intolerance":
+        dairy_avoid_text = nutrition_reduce
+    else:
+        dairy_avoid_text = " ".join((avoid, allergies, reported_triggers,
+                                     nutrition_reduce))
     dairy_free = (
         any(t in diet for t in _PROTEIN_DAIRY_FREE_TERMS)
         or any(t in dairy_avoid_text for t in _PROTEIN_DAIRY_AVOID_TERMS)
+        or bool(dairy and dairy["kind"] != "lactose_intolerance")
     )
+    lactose_only = bool(dairy and dairy["kind"] == "lactose_intolerance")
 
     histamine = any(t in cond_text for t in _PROTEIN_HISTAMINE_TERMS)
 
@@ -360,6 +379,11 @@ def pick_protein_source(client: dict, plan: dict | None = None) -> dict:
             reason = ("Whey isolate — dairy is still tolerated, and "
                       "fermented yeast is avoided during a gut-dysbiosis "
                       "protocol.")
+    elif not dairy_free and lactose_only:
+        slug, display = WHEY
+        reason = ("Whey isolate — the client is lactose-intolerant, not "
+                  "milk-allergic, and isolate carries under 1 g of lactose a "
+                  "scoop.")
     elif not dairy_free:
         slug, display = WHEY
         reason = ("Whey isolate — dairy is tolerated; whey isolate is the "

@@ -163,6 +163,12 @@ _APP_CLIENT_KEYS = (
     # app-read fields beyond the original intake-stub set (audited across
     # client-app.ts + recipes.ts on 2026-06-15 — these ARE consumed by the app)
     "known_allergies",
+    # Milk-protein allergy vs lactose intolerance (fmdb/plan/dairy.py). Read by
+    # the app's Dairy-free / Lactose-free chip and by the meal-photo check's
+    # allergy line (allergyPromptLine). Without these, Fly reads a "Milk"
+    # allergy with no type and treats it as an unconfirmed milk allergy.
+    "dairy_reaction_type",
+    "tolerates_ghee",
     "medical_history",
     # What they are actually taking. Sits in the same class as known_allergies and
     # medical_history, both already projected — and it is the list a client or their

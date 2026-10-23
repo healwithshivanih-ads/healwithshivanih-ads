@@ -41,6 +41,9 @@ sys.path.insert(
     ),
 )
 from fmdb.plan.allergies import resolve_allergies  # noqa: E402
+from fmdb.plan.dairy import (  # noqa: E402
+    allergen_items_for_matching, recipe_dairy_ok, resolve_dairy,
+)
 
 DOSHAS = {"vata", "pitta", "kapha"}
 MEAL_TYPES = ("breakfast", "lunch", "dinner", "snack", "side", "drink")
@@ -219,7 +222,14 @@ def diet_ok(recipe: dict, dietary_preference: str) -> bool:
         return bool({"vegetarian", "vegan"} & diets)
     return True                                       # unspecified → no diet filter
 
-def is_safe(recipe: dict, allergies: list, avoid_tokens: set[str]) -> bool:
+def is_safe(recipe: dict, allergies: list, avoid_tokens: set[str],
+            dairy: dict | None = None) -> bool:
+    # dairy: milk-protein allergy (or unconfirmed) → no milk protein at all;
+    # lactose intolerance → no lactose-heavy ingredients, curd/paneer/ghee fine.
+    # See fmdb/plan/dairy.py. Before this, an allergy written "Milk" never
+    # matched the library's "dairy" tag and paneer went straight through.
+    if not recipe_dairy_ok(recipe, _full_ingredient_text(recipe), dairy):
+        return False
     # allergens: match client allergy terms against the recipe's curated allergen set
     rec_allergens = set(a.lower() for a in (recipe.get("contains_allergens") or []))
     for a in (allergies or []):
@@ -390,6 +400,8 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
     doshas = client_doshas(client)
     dp = client.get("dietary_preference") or ""
     _, allergies = resolve_allergies(client)   # real allergens only; "None" is not one
+    dairy = resolve_dairy(client)
+    allergies = allergen_items_for_matching(allergies, dairy)
     avoid = _tokens(client.get("foods_to_avoid"), client.get("reported_triggers"))
     # plan-level binding exclusions, if the caller routed them onto the plan
     nut = (plan or {}).get("nutrition") or {}
@@ -413,7 +425,7 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
     for r in recipes:
         if not diet_ok(r, dp):
             continue
-        if not is_safe(r, allergies, avoid):
+        if not is_safe(r, allergies, avoid, dairy):
             continue
         eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss,
                                       lab_priorities, gf_weights, cautions_live,
@@ -458,13 +470,15 @@ def pinned_safety_warnings(client: dict, pinned: list, plan: dict | None = None)
     """
     dp = client.get("dietary_preference") or ""
     _, allergies = resolve_allergies(client)   # real allergens only; "None" is not one
+    dairy = resolve_dairy(client)
+    allergies = allergen_items_for_matching(allergies, dairy)
     avoid = _tokens(client.get("foods_to_avoid"), client.get("reported_triggers"))
     cautions_live = _live_food_cautions(client, plan)
     warns = []
     for r in pinned:
         if not diet_ok(r, dp):
             warns.append(f"{r.get('name')}: may not fit the '{dp}' diet")
-        elif not is_safe(r, allergies, avoid):
+        elif not is_safe(r, allergies, avoid, dairy):
             warns.append(f"{r.get('name')}: contains an allergen or avoided ingredient")
         for note in _food_caution_notes(r, cautions_live):
             warns.append(f"{r.get('name')}: {note}")

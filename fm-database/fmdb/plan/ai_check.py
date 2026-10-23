@@ -25,6 +25,7 @@ import os
 from typing import Any
 
 from ..validator import Loaded
+from .dairy import dairy_context
 from .models import Client, Plan
 
 
@@ -211,6 +212,9 @@ def _client_snapshot(client: Client | None) -> dict[str, Any]:
         "medical_history": client.medical_history,
         "current_medications": client.current_medications,
         "known_allergies": client.known_allergies,
+        # Milk-protein allergy vs lactose intolerance (fmdb/plan/dairy.py) —
+        # whey isolate / lactose-free milk are fine for one and not the other.
+        "dairy_reaction": dairy_context(client.model_dump(mode="json")),
         "goals": client.goals,
         "notes": (client.notes or "")[:500],
         # Diet + region — used for regional_availability checks

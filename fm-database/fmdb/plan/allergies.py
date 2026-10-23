@@ -108,15 +108,30 @@ def allergy_prompt_line(client: Optional[dict]) -> str:
     ``'Allergies: none known'`` fallback, which asserted a screen that had
     never happened.
     """
+    # Dairy is the one allergen clients routinely mislabel: "milk allergy" is
+    # usually lactose intolerance. fmdb.plan.dairy decides which, and for
+    # lactose intolerance the milk entry comes OFF the absolute list — its
+    # own line below says what is and isn't fine. Lazy import: dairy.py has no
+    # deps, but keep this module importable on its own.
+    from fmdb.plan.dairy import dairy_prompt_line, is_dairy_term, resolve_dairy
+
     status, items = resolve_allergies(client)
-    if status == "declared":
-        return (
+    dairy = resolve_dairy(client)
+    dairy_line = dairy_prompt_line(client)
+    if dairy and dairy["kind"] == "lactose_intolerance":
+        items = [i for i in items if not is_dairy_term(i)]
+    if status == "declared" and items:
+        line = (
             "Allergies (ABSOLUTE — never suggest or serve these, at any dose): "
             + ", ".join(items)
         )
-    if status == "none":
-        return "Allergies: the client was asked and reported none."
-    return (
-        "Allergies: NOT RECORDED — nobody has asked. Absence here is not "
-        "clearance; do not treat this client as allergy-free."
-    )
+    elif status == "declared":   # the only "allergy" was lactose intolerance
+        line = "Allergies: no true allergy recorded."
+    elif status == "none":
+        line = "Allergies: the client was asked and reported none."
+    else:
+        line = (
+            "Allergies: NOT RECORDED — nobody has asked. Absence here is not "
+            "clearance; do not treat this client as allergy-free."
+        )
+    return f"{line}\n{dairy_line}" if dairy_line else line

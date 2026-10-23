@@ -14,6 +14,8 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { computeMrsScore, MRS_ITEMS } from "@/lib/fmdb/mrs-score";
 import { FmAppShell } from "@/components/fm";
 import { clientQuickActions } from "../client-quick-actions";
+import { resolveDairy, type DairyClient } from "@/lib/fmdb/dairy-reaction";
+import { DairyReactionPanel } from "./dairy-reaction-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -346,6 +348,30 @@ export default async function IntakeViewPage({
         <Field label="COVID vaccine reactions" value={src.covid_vaccine_reactions} />
         <Field label="COVID vaccine reaction detail" value={src.covid_vaccine_reaction_detail} />
       </Section>
+
+      {/* Milk-protein allergy vs lactose intolerance — shown whenever dairy is
+          on the record (answers from `src`, type from the saved client). */}
+      {(() => {
+        const resolved = resolveDairy({ ...src, dairy_reaction_type: client.dairy_reaction_type, tolerates_ghee: src.tolerates_ghee ?? client.tolerates_ghee } as DairyClient);
+        if (!resolved) return null;
+        const str = (v: Val) => (typeof v === "string" && v ? v : undefined);
+        return (
+          <DairyReactionPanel
+            clientId={id}
+            resolved={resolved}
+            recordedSource={str(client.dairy_reaction_source)}
+            answers={{
+              symptoms: Array.isArray(src.dairy_reaction_symptoms)
+                ? (src.dairy_reaction_symptoms as unknown[]).map(String)
+                : [],
+              timing: str(src.dairy_reaction_timing),
+              curd: str(src.tolerates_curd),
+              paneer: str(src.tolerates_paneer),
+              ghee: str(src.tolerates_ghee),
+            }}
+          />
+        );
+      })()}
 
       <Section num={4} title="Medications, current and past">
         <Field label="Current medications" value={src.current_medications} />

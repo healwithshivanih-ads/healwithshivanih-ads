@@ -1,4 +1,5 @@
 import { classifyPracticeKind, supplementCadence, weeklyDueToday, type DayPart } from "./practice-kind";
+import { type DairyClient, resolveDairy, treatsAsAllergy } from "./dairy-reaction";
 import "server-only";
 
 /**
@@ -5975,12 +5976,22 @@ export async function loadClientAppData(
       resourceId: findRes("gluten"),
     });
   }
+  // Milk-protein allergy vs lactose intolerance (dairy-reaction.ts). A
+  // lactose-intolerant client is NOT dairy-free — curd, paneer and ghee stay —
+  // so they get their own chip, and a "milk" in their allergies doesn't flip
+  // the dairy-free one. Only the plan eliminating dairy still does.
+  const dairyStatus = resolveDairy(client as DairyClient);
+  const lactoseOnly = dairyStatus?.kind === "lactose_intolerance";
   const dairyFree =
     !isVegan &&
     (/dairy.?free/.test(dietPrefLc) ||
-      /dairy|lactose|casein|\bmilk\b/.test(allergiesLc) ||
-      /\bdairy\b|lactose|casein/.test(curatedAvoidLc) ||
+      (!lactoseOnly && /dairy|lactose|casein|\bmilk\b/.test(allergiesLc)) ||
+      (!lactoseOnly && /\bdairy\b|lactose|casein/.test(curatedAvoidLc)) ||
+      treatsAsAllergy(dairyStatus) ||
       /\bdairy\b|lactose|casein|\bmilk\b|paneer|curd/.test(eliminatedText));
+  if (!isVegan && !dairyFree && lactoseOnly) {
+    flags.push({ label: "Lactose-free", detail: "Swap ordinary milk for lactose-free milk — curd, paneer, buttermilk and ghee are all fine.", resourceId: findRes("dairy", "lactose") });
+  }
   if (dairyFree) {
     flags.push({ label: "Dairy-free", detail: "No milk, curd or paneer — your calcium and protein come from other sources in the plan.", resourceId: findRes("dairy", "calcium") });
   }
