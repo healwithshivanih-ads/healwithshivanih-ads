@@ -192,6 +192,8 @@ export async function POST(req: NextRequest) {
       templateName: TEMPLATE,
       templateParams: [cand.firstName],
       renderedBody: renderGraduationNotice(cand.firstName),
+      // The programme's own close — "plan" (ending / active within grace).
+      purpose: "plan",
       opts: { name: cand.name },
     });
     if (r.ok) {

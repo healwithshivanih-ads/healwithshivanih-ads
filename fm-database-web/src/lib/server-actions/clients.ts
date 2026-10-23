@@ -511,8 +511,6 @@ export async function createClient(
   // /clients-v2/<id> by default, so v1-only revalidation was leaving the
   // v2 detail page serving a stale "client not found" 404 right after
   // creation. (Reported 2026-05-13.)
-  revalidatePath("/clients");
-  revalidatePath(`/clients/${clientId}`);
   revalidatePath("/clients-v2");
   revalidatePath(`/clients-v2/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}/sessions`);
@@ -622,7 +620,6 @@ export async function updateClientFromTranscriptAction(
     rec.updated_at = new Date().toISOString();
 
     await fs.writeFile(clientYaml, dumpYaml(rec, { noRefs: true, sortKeys: false }), "utf8");
-    revalidatePath(`/clients/${clientId}`);
     return { ok: true, updated_fields: updated };
   } catch (err) {
     const e = err as { message?: string };
@@ -657,7 +654,6 @@ export async function deleteClient(
     return { ok: false, error: e.message ?? "Failed to delete client directory" };
   }
 
-  revalidatePath("/clients");
   return { ok: true };
 }
 
@@ -1038,7 +1034,6 @@ export async function updateClientProfile(
 
     // Revalidate both v1 + v2 client routes so the new name / DOB / contact
     // fields refresh in the header, journey strip, and dashboard listings.
-    revalidatePath(`/clients/${input.client_id}`);
     revalidatePath(`/clients-v2/${input.client_id}`);
     revalidatePath(`/clients-v2/${input.client_id}/plan`);
     revalidatePath(`/clients-v2/${input.client_id}/sessions`);
@@ -1067,7 +1062,6 @@ export type ArchiveClientResult =
   | { ok: false; error: string };
 
 function revalidateClientEverywhere(clientId: string): void {
-  revalidatePath(`/clients/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}`);
   revalidatePath("/clients-v2");
   revalidatePath("/dashboard-v2");
@@ -1297,7 +1291,6 @@ export async function updateClientTimeline(
       dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8",
     );
-    revalidatePath(`/clients/${input.client_id}`);
     return { ok: true };
   } catch (err) {
     const e = err as { message?: string };
@@ -1454,7 +1447,6 @@ export async function updateClientPreferences(
       "utf8"
     );
 
-    revalidatePath(`/clients/${input.client_id}`);
     return { ok: true };
   } catch (err) {
     const e = err as { message?: string };
@@ -1581,7 +1573,6 @@ export async function uploadReportAction(input: UploadReportInput): Promise<Uplo
       "utf8"
     );
 
-    revalidatePath(`/clients/${input.clientId}`);
     return { ok: true, report };
   } catch (err) {
     return { ok: false, error: String(err) };
@@ -1688,7 +1679,6 @@ export async function addMeasurementAction(
     // the v2 paths was the original reason "+ Log entry" appeared to do
     // nothing in the UI (data saved, page kept showing the stale flat
     // measurements). Bug surfaced 2026-05-18 for cl-004.
-    revalidatePath(`/clients/${input.client_id}`);
     revalidatePath(`/clients-v2/${input.client_id}`);
     revalidatePath(`/clients-v2/${input.client_id}/plan`);
     revalidatePath(`/clients-v2/${input.client_id}/analyse`);
@@ -1763,7 +1753,6 @@ export async function deleteMeasurementSnapshotAction(
       dumpYaml(data, { noRefs: true, sortKeys: false }),
       "utf8",
     );
-    revalidatePath(`/clients/${input.client_id}`);
     revalidatePath(`/clients-v2/${input.client_id}`);
     revalidatePath(`/clients-v2/${input.client_id}/plan`);
     revalidatePath(`/clients-v2/${input.client_id}/analyse`);
@@ -1878,7 +1867,6 @@ async function writeClientYaml(
   revalidatePath(`/clients-v2/${clientId}`);
   revalidatePath(`/clients-v2/${clientId}/communicate`);
   revalidatePath(`/clients-v2/${clientId}/plan`);
-  revalidatePath(`/clients/${clientId}`);
 }
 
 /** Create or update the entire weight_loss goal block.
@@ -2140,7 +2128,6 @@ export async function deleteReportAction(clientId: string, reportId: string): Pr
     data.external_reports = reports.filter((r) => r.id !== reportId);
     await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
 
-    revalidatePath(`/clients/${clientId}`);
     return { ok: true };
   } catch (err) {
     return { ok: false, error: String(err) };
@@ -2305,7 +2292,6 @@ export async function uploadClientPhotoAction(
     await fs.mkdir(dir, { recursive: true });
     const buf = Buffer.from(await file.arrayBuffer());
     await fs.writeFile(dest, buf);
-    revalidatePath(`/clients/${clientId}`);
     return { ok: true, ext };
   } catch (err) {
     return { ok: false, error: String(err).slice(0, 200) };
@@ -2388,7 +2374,6 @@ export async function saveLabReferenceRangesAction(
     data.lab_reference_ranges = ranges;
     data.updated_at = new Date().toISOString();
     await fs.writeFile(clientYaml, dumpYaml(data, { noRefs: true, sortKeys: false }), "utf8");
-    revalidatePath(`/clients/${clientId}`);
     return { ok: true };
   } catch (err) {
     const e = err as { message?: string };
@@ -2784,7 +2769,6 @@ export async function recomputeLabMarkersAction(clientId: string): Promise<{
     if (res.ok) {
       // Refresh any page using the client's lab_markers.
       revalidatePath(`/clients-v2/${clientId}`);
-      revalidatePath(`/clients/${clientId}`);
     }
     return res;
   } catch (err) {
@@ -3054,7 +3038,6 @@ export async function parseFunctionalTestAction(
       }
     }
 
-    revalidatePath(`/clients/${clientId}`);
     return result;
   } catch (e) {
     return { ok: false, error: String(e) };
@@ -3211,9 +3194,6 @@ export async function assessReworkBenefitAction(input: {
       },
       90_000,
     )) as ReworkSuggestionResult;
-    if (result.ok) {
-      revalidatePath(`/clients/${input.clientId}`);
-    }
     return result;
   } catch (e) {
     return { ok: false, error: String(e) };
@@ -3239,7 +3219,6 @@ export async function dismissReworkSuggestionAction(
     // actually uses) cached the old banner. Revalidate every place
     // the rework banner renders: v1 client, v2 overview, v2 analyse,
     // v2 sessions (which mounts ReworkBanner via SessionsBrowser).
-    revalidatePath(`/clients/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/analyse`);
     revalidatePath(`/clients-v2/${clientId}/sessions`);
@@ -3310,13 +3289,10 @@ export async function applyReworkSuggestionAction(input: {
          * lingers and the coach dismisses it manually. */
       }
       // Same v2 fix as the dismiss action — coach lives on v2.
-      revalidatePath(`/clients/${input.clientId}`);
       revalidatePath(`/clients-v2/${input.clientId}`);
       revalidatePath(`/clients-v2/${input.clientId}/analyse`);
       revalidatePath(`/clients-v2/${input.clientId}/sessions`);
       revalidatePath(`/clients-v2/${input.clientId}/plan`);
-      revalidatePath("/plans");
-      if (result.slug) revalidatePath(`/plans/${result.slug}`);
     }
     return result;
   } catch (e) {
@@ -3342,7 +3318,6 @@ export async function snoozeReworkSuggestionAction(
     data.rework_suggestion = sug;
     await fs.writeFile(clientYaml, dumpYaml(data, { sortKeys: false }));
     // Same v2 revalidation fix as dismiss/apply actions (2026-05-19).
-    revalidatePath(`/clients/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/analyse`);
     revalidatePath(`/clients-v2/${clientId}/sessions`);
@@ -3411,7 +3386,6 @@ export async function parseGeneticReportAction(
       }
     }
 
-    revalidatePath(`/clients/${clientId}`);
     return result;
   } catch (e) {
     return { ok: false, error: String(e) };

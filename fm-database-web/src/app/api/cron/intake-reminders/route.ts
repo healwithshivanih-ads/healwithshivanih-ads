@@ -113,6 +113,12 @@ export async function POST(req: NextRequest) {
       templateName: TEMPLATE_NAME,
       templateParams: [firstName, expiresLabel, url],
       renderedBody,
+      // Automated intake chasing: onboarding (signed-up, no plan started)
+      // only — the gate refuses a prospect, a lapsed or an active client.
+      // "transactional", not "intake": the coach opts each person in
+      // (intake_reminder_enabled) and a ₹999 prospect filling the pre-call
+      // form is still a prospect by lifecycle — the gate would refuse them.
+      purpose: "transactional",
       opts: { name: cand.display_name },
     });
 

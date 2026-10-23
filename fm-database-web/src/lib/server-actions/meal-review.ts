@@ -7,13 +7,8 @@
  * judgement on photos, so the only writes are her verdict and a pin.
  */
 import { reviewPhoto } from "@/lib/fmdb/client-thread";
-import { loadMealQueue, type MealRow } from "@/lib/fmdb/meal-queue";
 
 const SAFE_ID = /^[a-z0-9][a-z0-9-]{0,63}$/i;
-
-export async function loadMealQueueAction(): Promise<MealRow[]> {
-  return loadMealQueue();
-}
 
 export async function reviewMealAction(
   clientId: string,

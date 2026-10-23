@@ -181,6 +181,8 @@ export async function emailLabRequisitionAction(input: {
     subject,
     htmlBody,
     textBody: `${intro}\n\n${req.markdown}`,
+    clientId: input.clientId,
+    purpose: "transactional",
   });
 
   // Persist a thread record so the labs-send button can render
@@ -306,6 +308,8 @@ export async function emailLabBookingAction(input: {
     subject: `🔬 Your labs — ${date}`,
     htmlBody,
     textBody: textLines.join("\n"),
+    clientId: input.clientId,
+    purpose: "transactional",
   });
   if (sent.ok) {
     try {
@@ -400,7 +404,10 @@ export async function sendDiscoveryLabsViaWhatsappAction(input: {
   // Hard guard — keep well under Meta's 1024-char param limit.
   if (labsLabel.length > 700) labsLabel = labsLabel.slice(0, 690) + "…";
 
-  const res = await sendWhatsAppAction(phoneRaw, "fm_lab_reminder", [firstName, labsLabel]);
+  const res = await sendWhatsAppAction(phoneRaw, "fm_lab_reminder", [firstName, labsLabel], {
+    clientId: input.clientId,
+    purpose: "transactional",
+  });
   if (!res.ok) return { ok: false, error: res.error ?? "WhatsApp send failed" };
 
   // Persist a thread record (durable rule feedback-send-buttons-persist-state).

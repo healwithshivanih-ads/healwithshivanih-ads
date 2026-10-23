@@ -183,22 +183,11 @@ This applies to (at minimum, based on ochre's secrets):
 
 ## Manual smoke test (during dev)
 
-fm-coach exposes a coach-only test route:
-
-```bash
-curl -X POST $APP_URL/api/handover/test \
-  -H "Content-Type: application/json" \
-  -H "x-cron-secret: $CRON_SECRET" \
-  -d '{
-    "display_name": "Test Handover",
-    "email": "test-handover@example.com",
-    "phone_e164": "919999999999"
-  }'
-```
-
-This bypasses HMAC verification (auth via cron secret instead) and runs
-both stages back-to-back against a synthetic client. Use to verify the
-flow end-to-end before ochre wires up its half.
+The coach-only `/api/handover/test` route (cron-secret auth, synthetic
+client, both stages back-to-back) was removed 2026-10-23 — no callers once
+ochre's half shipped. Smoke-test by POSTing a signed payload to the real
+`/api/handover/discovery-complete` + `/api/handover/programme-signup`
+routes instead (see `triage-paid/route.test.ts` for the signing shape).
 
 ## Open items (won't block Phase 2)
 

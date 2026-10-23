@@ -29,7 +29,7 @@
 
 import { describe, it, expect } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
-import { MealList } from "./ochre-screens";
+import { DayTimeline } from "./ochre-day";
 import { EndgameBanner, LibraryFloorScreen } from "./ochre-endgame";
 import { OchreContext } from "./ochre-context";
 import type { AppMeal, AppSupplement, ClientAppData, DishComponent } from "@/lib/fmdb/client-app";
@@ -51,15 +51,32 @@ function meal(slot: string, titles: string[]): AppMeal {
 }
 
 function ctx(meals: AppMeal[]): ClientAppData {
-  // MealList reads exactly three fields; the rest of ClientAppData is
-  // irrelevant to the meal row and is deliberately not faked.
-  return { meals, mealExtra: {}, remedies: [] } as unknown as ClientAppData;
+  // The day view reads these fields for a meals-only day; the rest of
+  // ClientAppData is irrelevant to the meal row and is deliberately not faked.
+  return { meals, mealExtra: {}, remedies: [], supplements: [], practices: [] } as unknown as ClientAppData;
 }
 
+const noop = () => {};
+
+/** The meal row now lives in the day view (ochre-day.tsx) — Today's single
+ *  time-ordered list. Every band is opened so the row is drawn whatever the
+ *  hour the test runs at. */
 function renderMeals(meals: AppMeal[]): string {
   return renderToStaticMarkup(
     <OchreContext.Provider value={ctx(meals)}>
-      <MealList openMeal={() => {}} logged={{}} onToggle={() => {}} openRemedy={() => {}} />
+      <DayTimeline
+        openAll
+        logged={{}}
+        practicesDone={{}}
+        onToggleSupp={noop}
+        onTogglePractice={noop}
+        onMarkDone={noop}
+        openMeal={noop}
+        openRemedy={noop}
+        openBreath={noop}
+        openSomatic={noop}
+        openExercise={noop}
+      />
     </OchreContext.Provider>,
   );
 }

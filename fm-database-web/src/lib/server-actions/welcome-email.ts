@@ -70,6 +70,8 @@ export async function sendWelcomeEmailAction(
     subject: welcomeEmailSubject(firstName, variant),
     htmlBody: buildWelcomeEmailHtml(firstName, appUrl, variant),
     attachments,
+    clientId,
+    purpose: "plan",
   });
   if (!res.ok) return res;
 

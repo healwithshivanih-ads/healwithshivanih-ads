@@ -31,6 +31,7 @@ import {
 } from "@/lib/fmdb/renewal-letters";
 import { setDecision } from "@/lib/fmdb/renewal-queue";
 import { sendClientEmailAction } from "@/app/api/email/actions";
+import { recordOutboundMessageAction } from "@/app/api/whatsapp/actions";
 import { generateMaintenanceLinkAction } from "@/lib/server-actions/maintenance-link";
 import {
   DEFAULT_MAINTENANCE_TERM_MONTHS,
@@ -109,6 +110,8 @@ export async function POST(req: NextRequest) {
       subject: letter.subject,
       htmlBody: bodyToHtml(body),
       textBody: body,
+      clientId: letter.client_id,
+      purpose: "renewal",
     });
     if (!res.ok) {
       failed++;
@@ -116,6 +119,19 @@ export async function POST(req: NextRequest) {
       continue;
     }
     markRenewalLetterSent(letter.plan_slug);
+    // Thread record (2026-10-23): the renewal letter was the one scheduled
+    // client email with no bubble in the Communicate tab.
+    try {
+      const rec = await recordOutboundMessageAction({
+        clientId: letter.client_id,
+        templateName: "(renewal letter)",
+        renderedBody: `[subject: ${letter.subject}]\n\n${body}`,
+        channel: "email",
+      });
+      if (!rec.ok) console.error(`[renewal-send] emailed ${letter.client_id} but could not record it: ${rec.error}`);
+    } catch (e) {
+      console.error(`[renewal-send] emailed ${letter.client_id} but record threw: ${(e as Error).message}`);
+    }
     // offer_sent: winbackDecision() fails closed on it and openRenewals() drops
     // any non-null decision, so the plan leaves the queue and the drip stays off
     // until the coach records renewed / not_renewing.

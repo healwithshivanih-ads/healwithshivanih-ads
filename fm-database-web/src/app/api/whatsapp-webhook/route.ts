@@ -44,9 +44,8 @@
  *      LOUDLY (not silent) and acknowledged as `skipped: true`.
  *   4. Match phone → client. Unmatched → _whatsapp_unmatched.yaml.
  *   5. Detect structured intents from the body in order:
- *      a. start-date intent ("✅ START: 2026-05-19 [plan: …]")
- *      b. cycle date ("LMP 2026-05-19")
- *      c. weekly poll button-label ("All good" / "Struggling" / …)
+ *      a. cycle date ("LMP 2026-05-19")
+ *      b. weekly poll button-label ("All good" / "Struggling" / …)
  *         → also write a dedicated <date>-NNN-poll.yaml session via
  *           save-poll-response.py so detectAdherenceDropsAction can
  *           iterate the structured `poll_response: {dim, score}` field.
@@ -75,7 +74,6 @@ import { execFile } from "child_process";
 import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { findClientByPhoneAction } from "@/lib/server-actions/clients";
-import { parseInboundStartDateIntent } from "@/lib/start-date-parser";
 import { recordInboundCycleDate } from "@/lib/server-actions/cycle-date-collector";
 import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
 import {
@@ -301,8 +299,6 @@ async function saveMediaAttachment(
   };
 }
 
-// ── Apply structured start-date intent ────────────────────────────────────────
-//
 // ── Poll-reply structured save (Fix 2026-05-24) ──────────────────────────────
 //
 // When classifyPollReply matches a known weekly-poll button label, we
@@ -413,70 +409,6 @@ async function writeDerivedPillar(
   } catch (e) {
     console.warn(`[whatsapp-webhook] update-derived-pillar.py threw: ${(e as Error).message}`);
     return false;
-  }
-}
-
-// ── Apply structured start-date intent ────────────────────────────────────────
-//
-// When the letter's WhatsApp buttons get tapped, the client's reply lands
-// here as e.g. "✅ START: 2026-05-17 [plan: nidhi-plan-1-…]". The
-// parseInboundStartDateIntent() helper recognises it; we call into the
-// start-date-action.py shim's `apply_inbound` to actually update
-// plan.meal_plan_started_on / plan.supplements_started_on. The PLAN
-// SLUG (when included via [plan: <slug>]) gets pulled out separately so
-// the right plan gets stamped even if the client has multiple drafts.
-
-const PLAN_TAG_RE = /\[plan:\s*([a-z0-9][a-z0-9-]*)\s*\]/i;
-
-interface ApplyInboundResult {
-  ok: boolean;
-  plan_slug?: string;
-  field_updated?: "meal_plan_started_on" | "supplements_started_on";
-  previous_value?: string | null;
-  new_value?: string;
-  error?: string;
-}
-
-async function applyStartDateIntent(
-  clientId: string,
-  rawText: string,
-): Promise<ApplyInboundResult | null> {
-  const intent = parseInboundStartDateIntent(rawText);
-  if (!intent) return null;
-  const slugMatch = PLAN_TAG_RE.exec(rawText);
-  const planSlug = slugMatch ? slugMatch[1] : "";
-
-  const payload = {
-    action: "apply_inbound",
-    client_id: clientId,
-    kind: intent.kind,
-    date: intent.date,
-    plan_slug: planSlug,
-  };
-
-  const scriptPath = path.join(SCRIPTS_DIR, "start-date-action.py");
-  const child = execFile(PYTHON, [scriptPath], {
-    timeout: 15_000,
-    maxBuffer: 1024 * 1024,
-    cwd: FMDB_REPO,
-  });
-  child.stdin?.end(JSON.stringify(payload));
-  let stdout = "";
-  let stderr = "";
-  child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
-  child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
-  await new Promise<void>((resolve, reject) => {
-    child.on("error", reject);
-    child.on("close", () => resolve());
-  });
-
-  if (!stdout.trim()) {
-    return { ok: false, error: `start-date-action.py: ${excerpt(stderr, 200)}` };
-  }
-  try {
-    return JSON.parse(stdout) as ApplyInboundResult;
-  } catch {
-    return { ok: false, error: `start-date-action.py invalid JSON: ${stdout.slice(0, 200)}` };
   }
 }
 
@@ -1034,7 +966,7 @@ export async function POST(req: NextRequest) {
   // ── Outbound branch ─────────────────────────────────────────────────────────
   // A coach reply typed in the WA admin Inbox. Record it on the SAME side of
   // the thread as fm-coach's own sends, then return — none of the inbound
-  // intent parsers (start-date / cycle / poll) apply to coach-authored text.
+  // intent parsers (cycle / poll) apply to coach-authored text.
   if (direction === "outbound") {
     const templateName = (body.template_name ?? null) as string | null;
     const sentAtISO =
@@ -1057,35 +989,18 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  // Detect structured start-date / supplements-arrived intent BEFORE
-  // saving the note — so the note can carry an "auto-applied" footer.
-  const applied = await applyStartDateIntent(match.client_id, messageText);
-
+  // (The Pattern-B start-date intent branch — "✅ START: <date>" replies to
+  // the retired letter buttons — was removed 2026-10-23 with /start/.)
   const noteLines = [
     `WhatsApp message from ${senderName || match.display_name || match.client_id} (${rawPhone})`,
     `Received: ${ts}`,
     "",
     messageText.trim(),
   ];
-  if (applied?.ok && applied.field_updated && applied.plan_slug) {
-    noteLines.push(
-      "",
-      `🤖 Auto-applied: ${applied.field_updated} = ${applied.new_value} on plan ${applied.plan_slug}` +
-        (applied.previous_value ? ` (was ${applied.previous_value})` : "") + ".",
-    );
-  } else if (applied && !applied.ok) {
-    noteLines.push(
-      "",
-      `⚠ Recognised as a start-date signal but couldn't auto-apply: ${applied.error}. Manual review needed.`,
-    );
-  }
 
   // Cycle-date reply — a client answering the fm_cycle_date_check_v1 ask.
-  // Only attempted when the start-date handler didn't already claim the
-  // message; recordInboundCycleDate returns null for non-cycle messages.
-  const cycleApplied = applied?.ok
-    ? null
-    : await recordInboundCycleDate(match.client_id, messageText);
+  // recordInboundCycleDate returns null for non-cycle messages.
+  const cycleApplied = await recordInboundCycleDate(match.client_id, messageText);
   if (cycleApplied?.ok && cycleApplied.applied) {
     noteLines.push(
       "",
@@ -1107,11 +1022,11 @@ export async function POST(req: NextRequest) {
   //   2. ALSO falls through to saveQuickNote below so the reply lands
   //      in the rolling WhatsApp thread for the chat panel.
   //
-  // Only attempted when start-date + cycle handlers didn't already
-  // claim the message (those are more specific patterns).
+  // Only attempted when the cycle handler didn't already claim the
+  // message (a more specific pattern).
   let pollMatched: { dim: string; score: string } | null = null;
   let pollSessionId: string | null = null;
-  if (!applied?.ok && !cycleApplied?.applied) {
+  if (!cycleApplied?.applied) {
     pollMatched = classifyPollReply(messageText);
     if (pollMatched) {
       try {
@@ -1169,9 +1084,6 @@ export async function POST(req: NextRequest) {
   }
 
   const extras: string[] = [];
-  if (applied?.ok) {
-    extras.push(`auto-applied ${applied.field_updated}=${applied.new_value} on ${applied.plan_slug}`);
-  }
   if (cycleApplied?.applied) {
     extras.push(`cycle ${cycleApplied.date}`);
   }
@@ -1187,13 +1099,6 @@ export async function POST(req: NextRequest) {
     ok: true,
     client_id: match.client_id,
     session_id: saveResult.session_id,
-    applied: applied?.ok
-      ? {
-          field: applied.field_updated,
-          new_value: applied.new_value,
-          plan_slug: applied.plan_slug,
-        }
-      : null,
   });
 }
 

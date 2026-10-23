@@ -187,7 +187,6 @@ export async function notifySupplementChangeAction(input: {
     revalidatePath(`/clients-v2/${clientId}`);
     revalidatePath(`/clients-v2/${clientId}/plan`);
     revalidatePath(`/clients-v2/${clientId}/plan/edit/${planSlug}`);
-    revalidatePath(`/plans/${planSlug}`);
   } catch (e) {
     errors.push(`flag: ${(e as Error).message}`);
   }
@@ -260,6 +259,8 @@ export async function notifySupplementChangeAction(input: {
         subject: built.subject,
         htmlBody: built.html,
         textBody: built.text,
+        clientId,
+        purpose: "plan",
       });
       if (res.ok) {
         emailSent = true;
@@ -311,7 +312,7 @@ export async function notifySupplementChangeAction(input: {
         phone,
         detailedTemplate,
         [fname, whatChanged, why],
-        { name: displayName || fname, buttonUrlParam: tokRes.token },
+        { name: displayName || fname, buttonUrlParam: tokRes.token, clientId, purpose: "plan" },
       );
       if (res.ok) {
         whatsappSent = true;
@@ -330,7 +331,7 @@ export async function notifySupplementChangeAction(input: {
         phone,
         "fm_supplement_order_v2",
         [fname, suppUrl],
-        { name: displayName || fname },
+        { name: displayName || fname, clientId, purpose: "plan" },
       );
       if (res.ok) {
         whatsappSent = true;

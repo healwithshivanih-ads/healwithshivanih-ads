@@ -5,7 +5,7 @@
  *   - ClientFilters: search input + stage chips (controlled via URL).
  *   - ClientCard: one card per client. Photo (or initials), name, ID,
  *     bio line, active plan slug + status badge, last session date,
- *     stage tag with workflow-coloured tone.
+ *     lifecycle tag (one resolver: lib/fmdb/lifecycle.ts).
  *
  * Stage-tone palette mirrors FmWorkflowBanner so a coach who knows
  * the colours from the Plan tab reads the list at a glance.
@@ -21,10 +21,11 @@ import { unarchiveClient } from "@/lib/server-actions/clients";
 type FilterId =
   | "all"
   | "active"
-  | "draft"
-  | "no_plan"
-  | "recheck"
-  | "alumni"
+  | "ending"
+  | "maintenance"
+  | "onboarding"
+  | "prospect"
+  | "lapsed"
   | "archived";
 
 const STAGE_META: Record<
@@ -32,34 +33,46 @@ const STAGE_META: Record<
   { label: string; bg: string; fg: string; border: string }
 > = {
   active: {
-    label: "Plan active",
+    label: "🟢 Active",
     bg: "rgba(46, 204, 113, 0.10)",
     fg: "#1E8449",
     border: "rgba(46, 204, 113, 0.40)",
   },
-  draft: {
-    label: "Draft plan",
-    bg: "rgba(110, 76, 200, 0.10)",
-    fg: "#5a3fb0",
-    border: "rgba(110, 76, 200, 0.40)",
-  },
-  no_plan: {
-    label: "No plan yet",
-    bg: "rgba(255, 107, 53, 0.10)",
-    fg: "var(--fm-primary)",
-    border: "rgba(255, 107, 53, 0.35)",
-  },
-  recheck: {
-    label: "Recheck due",
+  ending: {
+    label: "🟠 Plan ending",
     bg: "rgba(184, 119, 10, 0.10)",
     fg: "#B8770A",
     border: "rgba(184, 119, 10, 0.45)",
   },
-  alumni: {
-    label: "🎓 Alumni",
+  maintenance: {
+    label: "🌿 Maintenance",
     bg: "rgba(15, 118, 110, 0.10)",
     fg: "#0f766e",
     border: "rgba(15, 118, 110, 0.40)",
+  },
+  onboarding: {
+    label: "🌱 Onboarding",
+    bg: "rgba(110, 76, 200, 0.10)",
+    fg: "#5a3fb0",
+    border: "rgba(110, 76, 200, 0.40)",
+  },
+  prospect: {
+    label: "💬 Prospect",
+    bg: "rgba(255, 107, 53, 0.10)",
+    fg: "var(--fm-primary)",
+    border: "rgba(255, 107, 53, 0.35)",
+  },
+  lapsed: {
+    label: "⏸ Lapsed",
+    bg: "rgba(120, 113, 108, 0.10)",
+    fg: "#57534e",
+    border: "rgba(120, 113, 108, 0.35)",
+  },
+  archived: {
+    label: "🗄 Archived",
+    bg: "rgba(120, 120, 128, 0.12)",
+    fg: "#5b6472",
+    border: "rgba(120, 120, 128, 0.4)",
   },
 };
 
@@ -126,11 +139,12 @@ export function ClientFilters({
 
   const chips: { id: FilterId; label: string }[] = [
     { id: "all", label: "All" },
-    { id: "recheck", label: "🔁 Recheck due" },
-    { id: "active", label: "✅ Active plan" },
-    { id: "draft", label: "📋 Draft" },
-    { id: "no_plan", label: "🔍 No plan yet" },
-    { id: "alumni", label: "🎓 Alumni" },
+    { id: "active", label: "🟢 Active" },
+    { id: "ending", label: "🟠 Plan ending" },
+    { id: "maintenance", label: "🌿 Maintenance" },
+    { id: "onboarding", label: "🌱 Onboarding" },
+    { id: "prospect", label: "💬 Prospects" },
+    { id: "lapsed", label: "⏸ Lapsed" },
     // Archived chip only appears once there's something archived (or while
     // viewing the archived filter) — keeps the bar clean otherwise.
     ...(counts.archived > 0 || active === "archived"

@@ -120,7 +120,10 @@ export async function sendCalcomLinkAction(
   // Free-text send via the 24h conversation window. If the window is
   // closed, Meta returns code 131047 and sendWhatsAppTextAction bubbles
   // up a recognisable error string — the UI surfaces a wa.me fallback.
-  const res = await sendWhatsAppTextAction(phone, body);
+  // "transactional", not "session_booking": the coach pressed this from the
+  // client page. session_booking is reserved for AUTOMATED chasing, which the
+  // gate always refuses.
+  const res = await sendWhatsAppTextAction(phone, body, { clientId, purpose: "transactional" });
   if (!res.ok) return { ok: false, error: res.error || "Send failed" };
 
   // Log to per-client session timeline so the WhatsApp thread renders
@@ -212,7 +215,11 @@ export async function sendCalcomLinkTemplateAction(
     `Pick a time that works for you. Reply here if you cannot find a slot that suits, and I will add availability.\n\n` +
     `— ${process.env.COACH_NAME || "Shivani Hari"}\nYour Functional Health Coach`;
 
-  const res = await sendWhatsAppAction(phone, "fm_book_session_v2", [firstName, url]);
+  // "transactional" — coach-pressed (see sendCalcomLinkAction).
+  const res = await sendWhatsAppAction(phone, "fm_book_session_v2", [firstName, url], {
+    clientId,
+    purpose: "transactional",
+  });
   if (!res.ok) return { ok: false, error: res.error || "Send failed" };
 
   try {
@@ -252,74 +259,4 @@ export async function sendCalcomLinkTemplateAction(
   }
 
   return { ok: true, rendered: renderedBody };
-}
-
-/**
- * Bulk-send booking links — used by the dashboard's "📅 Time to schedule"
- * panel. Coach reviews a list of overdue clients (each with a pre-picked
- * recommended event type, overridable per row) and fires sends in one
- * batch.
- *
- * Each row is sent INDEPENDENTLY via sendCalcomLinkTemplateAction —
- * one failure doesn't abort the rest. Returns per-row results so the UI
- * can show ✓ / ✗ chips.
- *
- * Safe-by-default rules baked in here:
- *   - Skips rows missing client_id or slug.
- *   - 250ms throttle between sends so the WA server isn't hammered
- *     (Fly app is small; coach broadcasts to ~5 clients today, but the
- *     throttle scales fine for 20-30 batches in future).
- */
-export async function sendBookingLinkBulkAction(
-  rows: Array<{ clientId: string; slug: string }>,
-): Promise<{
-  ok: boolean;
-  results: Array<{
-    clientId: string;
-    slug: string;
-    ok: boolean;
-    error?: string;
-  }>;
-  summary: { sent: number; failed: number };
-}> {
-  const results: Array<{
-    clientId: string;
-    slug: string;
-    ok: boolean;
-    error?: string;
-  }> = [];
-
-  for (const row of rows) {
-    if (!row.clientId || !row.slug) {
-      results.push({
-        clientId: row.clientId || "?",
-        slug: row.slug || "?",
-        ok: false,
-        error: "Missing clientId or slug",
-      });
-      continue;
-    }
-    try {
-      const r = await sendCalcomLinkTemplateAction(row.clientId, row.slug);
-      results.push({
-        clientId: row.clientId,
-        slug: row.slug,
-        ok: r.ok,
-        error: r.ok ? undefined : r.error,
-      });
-    } catch (e) {
-      results.push({
-        clientId: row.clientId,
-        slug: row.slug,
-        ok: false,
-        error: e instanceof Error ? e.message : String(e),
-      });
-    }
-    // Light throttle between sends
-    await new Promise((resolve) => setTimeout(resolve, 250));
-  }
-
-  const sent = results.filter((r) => r.ok).length;
-  const failed = results.length - sent;
-  return { ok: failed === 0, results, summary: { sent, failed } };
 }

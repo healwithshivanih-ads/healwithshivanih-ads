@@ -80,7 +80,8 @@ export async function POST(req: NextRequest) {
         : "") +
       `Today's meals — ${data.meals.map((m) => `${m.slot}: ${m.pills.join(", ")}`).join("; ")}. ` +
       `Supplements — ${data.supplements.map((s) => `${s.name} ${s.dose} (${s.slot}, ${s.timing})`).join("; ")}. ` +
-      `Daily practices — ${data.practices.map((p) => p.name).join("; ")}. ` +
+      `Practices — ${data.practices.map((p) => (p.kind === "weekly" ? `${p.name} (${p.perWeek ? `${p.perWeek}× a week` : "weekly"})` : p.name)).join("; ")}. ` +
+      `Her standing guidelines — ${data.guidelines.map((g) => g.name).join("; ") || "none"}. ` +
       `Daily remedies — ${data.remedies.filter((r) => r.assigned && r.daily).map((r) => `${r.name} (${r.when})`).join("; ")}. ` +
       `Eat freely: ${data.planRef.foods.eat.join(", ")}. Sometimes: ${data.planRef.foods.sometimes.join(", ")}. ` +
       `Leave out: ${data.planRef.foods.avoid.join(", ")}. Cooking oils: ${data.planRef.oils.use.join(", ")} (avoid ${data.planRef.oils.avoid.join(", ")}).`;

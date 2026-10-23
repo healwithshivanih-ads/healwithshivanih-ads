@@ -26,7 +26,6 @@ import {
 } from "@/lib/fmdb/token-admin-types";
 import { stageClientAppArtifacts, stageDiscoveryClientArtifacts } from "./letter-token";
 import { revokeIntakeToken } from "./intake";
-import { revokeStartConfirmToken } from "./plans";
 
 function publicBaseUrl(): string {
   return (process.env.NEXT_PUBLIC_APP_URL || "https://intake.theochretree.com").replace(/\/+$/, "");
@@ -166,7 +165,8 @@ export async function revokeToken(
       res = await revokeIntakeToken(input.clientId ?? "");
       break;
     case "start_confirmation":
-      res = await revokeStartConfirmToken(input.planSlug ?? "");
+      // /start/<token> confirmation retired 2026-10-23 — nothing to revoke.
+      res = { ok: false, error: "start_confirmation_retired" };
       break;
     default:
       res = { ok: false, error: "unknown_kind" };

@@ -109,7 +109,7 @@ function DraftCard({ row, onDone }: { row: WinbackDraftRow; onDone: (k: string) 
     >
       <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
         <Link
-          href={`/clients-v2/${row.clientId}?tab=plan`}
+          href={`/clients-v2/${row.clientId}/plan`}
           style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)", textDecoration: "none" }}
         >
           {row.clientName}
@@ -361,7 +361,7 @@ export function WinbackDripPanel({
             {scheduled.map((s) => (
               <li key={s.clientId} style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
                 <Link
-                  href={`/clients-v2/${s.clientId}?tab=plan`}
+                  href={`/clients-v2/${s.clientId}/plan`}
                   style={{ color: "var(--fm-text-primary)", fontWeight: 600, textDecoration: "none" }}
                 >
                   {s.clientName}

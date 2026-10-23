@@ -204,7 +204,9 @@ export async function loadAppPreviewAction(clientId: string): Promise<AppPreview
         })),
       })),
     })),
-    practices: data.practices.map((p) => p.name),
+    // Rules are no longer daily ticks in the app, but the coach preview must
+    // still show everything the client sees — guidelines included.
+    practices: [...data.practices.map((p) => p.name), ...data.guidelines.map((g) => `${g.name} (guideline)`)],
     resources: data.resources.map((r) => ({ title: r.title, kind: r.kind })),
     lessons: data.lessons.map((l) => l.title),
     access: {
@@ -368,29 +370,5 @@ export async function saveBuyLinkAction(
     return { ok: true };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "write failed" };
-  }
-}
-/** Generate (or regenerate) the structured app menu straight onto the
- *  published plan — NO letter. Reuses the meal-plan letter's full
- *  constraint engine via scripts/generate-app-menu.py; first generation
- *  anchors meal_plan_started_on (Day 1 = menu goes live in the app,
- *  coach decision 2026-06-12). ~1–2 min Sonnet call. */
-export async function generateAppMenuAction(
-  clientId: string,
-  planSlug: string,
-  weeks: number[] = [1, 2],
-): Promise<{ ok: boolean; weeks?: number; dishes?: number; day1?: string | null; error?: string }> {
-  try {
-    const { runShim } = await import("@/lib/fmdb/shim");
-    const res = (await runShim(
-      "generate-app-menu.py",
-      { client_id: clientId, plan_slug: planSlug, weeks },
-      360_000,
-    )) as { ok: boolean; weeks?: number; dishes?: number; day1_anchored?: string | null; error?: string };
-    if (!res.ok) return { ok: false, error: res.error || "generation failed" };
-    revalidatePath(`/clients-v2/${clientId}`);
-    return { ok: true, weeks: res.weeks, dishes: res.dishes, day1: res.day1_anchored ?? null };
-  } catch (e) {
-    return { ok: false, error: e instanceof Error ? e.message : "generation failed" };
   }
 }

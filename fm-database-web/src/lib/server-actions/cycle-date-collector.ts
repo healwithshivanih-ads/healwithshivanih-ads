@@ -146,6 +146,7 @@ export async function sendCycleDateCheckAction(
       templateName: CYCLE_TEMPLATE,
       templateParams: [firstName],
       renderedBody,
+      purpose: "plan",
     });
     if (!sent.ok) return { ok: false, error: sent.error ?? "WhatsApp send failed" };
 

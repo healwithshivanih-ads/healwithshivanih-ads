@@ -12,6 +12,7 @@
  *                    guides stay open, with a gentle re-engage path.
  */
 
+import { crisp } from "./crisp";
 import { useState } from "react";
 import { useOchre } from "./ochre-context";
 import { FoundingMemberMark } from "@/components/sequoya/sequoya-brand";
@@ -543,70 +544,115 @@ export function GraduationReport({ onContinue, onMaintain }: { onContinue: () =>
 }
 
 /** This month's do's & don'ts — the living thing in maintenance. */
+/** One bullet: the instruction, with its reasoning a tap away (crisp.ts). */
+function CrispBullet({ text, tone }: { text: string; tone: string }) {
+  const [open, setOpen] = useState(false);
+  const { head, rest } = crisp(text);
+  return (
+    <li className="crisp-li">
+      <button
+        className="crisp-btn"
+        onClick={() => rest && setOpen((v) => !v)}
+        aria-expanded={rest ? open : undefined}
+        style={rest ? undefined : { cursor: "default" }}
+      >
+        <span className="crisp-dot" style={{ background: tone }} aria-hidden="true" />
+        <span className="crisp-head">{head}</span>
+        {rest && <span className="crisp-more">{open ? "▴" : "▾"}</span>}
+      </button>
+      {rest && open && <span className="crisp-rest">{rest}</span>}
+    </li>
+  );
+}
+
+/** Up to `max` bullets, the rest behind one "+N more". */
+function CrispList({ items, tone, max = 3 }: { items: string[]; tone: string; max?: number }) {
+  const [all, setAll] = useState(false);
+  const shown = all ? items : items.slice(0, max);
+  return (
+    <ul className="crisp-ul">
+      {shown.map((d, i) => (
+        <CrispBullet key={i} text={d} tone={tone} />
+      ))}
+      {items.length > max && (
+        <li>
+          <button className="crisp-all" onClick={() => setAll((v) => !v)}>
+            {all ? "Show fewer" : `+${items.length - max} more`}
+          </button>
+        </li>
+      )}
+    </ul>
+  );
+}
+
 function MonthlyCardView({ card }: { card: { title: string; dos: string[]; donts: string[] } }) {
   return (
     <div style={cardStyle}>
-      <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>{card.title}</div>
+      <div style={{ fontSize: 15, fontWeight: 600, color: INK }}>{card.title}</div>
       {card.dos.length > 0 && (
-        <div style={{ marginTop: 9 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: FOREST, textTransform: "uppercase", letterSpacing: 0.5 }}>Lean into</div>
-          <ul style={{ margin: "4px 0 0", paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.55 }}>
-            {card.dos.map((d, i) => (
-              <li key={i}>{d}</li>
-            ))}
-          </ul>
+        <div style={{ marginTop: 10 }}>
+          <div className="crisp-label" style={{ color: FOREST }}>Lean into</div>
+          <CrispList items={card.dos} tone={FOREST} />
         </div>
       )}
       {card.donts.length > 0 && (
-        <div style={{ marginTop: 9 }}>
-          <div style={{ fontSize: 11, fontWeight: 600, color: OCHRE, textTransform: "uppercase", letterSpacing: 0.5 }}>Ease off</div>
-          <ul style={{ margin: "4px 0 0", paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.55 }}>
-            {card.donts.map((d, i) => (
-              <li key={i}>{d}</li>
-            ))}
-          </ul>
+        <div style={{ marginTop: 10 }}>
+          <div className="crisp-label" style={{ color: OCHRE }}>Ease off</div>
+          <CrispList items={card.donts} tone={OCHRE} />
         </div>
       )}
     </div>
   );
 }
 
-/** The back-on-track (flare-reset) card — shared by maintenance + library. */
+/** The back-on-track (flare-reset) card — shared by maintenance + library.
+ *  Folded to one line: it is for the day something slips, and printed in full
+ *  every day it was most of the home screen. Opened, it shows everything —
+ *  the "when a reset isn't enough" safety lines are never shortened. */
 function BackOnTrackCard({
   bot,
 }: {
   bot: { title: string; intro: string; steps: string[]; redFlags: string[] };
 }) {
+  const [open, setOpen] = useState(false);
   return (
     <div style={cardStyle}>
-      <div style={{ fontSize: 14.5, fontWeight: 500, color: FOREST }}>{bot.title}</div>
-      {bot.intro && <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 8px" }}>{bot.intro}</p>}
-      {bot.steps.length > 0 && (
-        <ol style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: INK, lineHeight: 1.6 }}>
-          {bot.steps.map((s, i) => (
-            <li key={i}>{s}</li>
-          ))}
-        </ol>
-      )}
-      {bot.redFlags.length > 0 && (
-        <div
-          style={{
-            marginTop: 11,
-            padding: "9px 11px",
-            borderRadius: 9,
-            background: "rgba(155, 59, 48, 0.07)",
-            border: "1px solid rgba(155, 59, 48, 0.22)",
-          }}
-        >
-          <div style={{ fontSize: 12, fontWeight: 600, color: "#9b3b30", marginBottom: 4 }}>
-            When a reset isn&apos;t enough
-          </div>
-          <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12.5, color: INK, lineHeight: 1.55 }}>
-            {bot.redFlags.map((s, i) => (
-              <li key={i}>{s}</li>
-            ))}
-          </ul>
-        </div>
+      <button className="bot-toggle" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
+        <span style={{ flex: 1 }}>
+          <span style={{ display: "block", fontSize: 15, fontWeight: 600, color: FOREST }}>Off track? {bot.title}</span>
+          {!open && bot.steps.length > 0 && (
+            <span style={{ display: "block", fontSize: 13, color: MUTED, marginTop: 2 }}>
+              {bot.steps.length} simple steps — open when you need them
+            </span>
+          )}
+        </span>
+        <span style={{ color: MUTED, fontSize: 13 }}>{open ? "▴" : "▾"}</span>
+      </button>
+      {open && (
+        <>
+          {bot.intro && <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "8px 0 6px" }}>{bot.intro}</p>}
+          {bot.steps.length > 0 && <CrispList items={bot.steps} tone={FOREST} max={99} />}
+          {bot.redFlags.length > 0 && (
+            <div
+              style={{
+                marginTop: 11,
+                padding: "9px 11px",
+                borderRadius: 9,
+                background: "rgba(155, 59, 48, 0.07)",
+                border: "1px solid rgba(155, 59, 48, 0.22)",
+              }}
+            >
+              <div style={{ fontSize: 12, fontWeight: 600, color: "#9b3b30", marginBottom: 4 }}>
+                When a reset isn&apos;t enough
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 16, fontSize: 12.5, color: INK, lineHeight: 1.55 }}>
+                {bot.redFlags.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
@@ -636,7 +682,18 @@ function KeepsakeLink({ recipeCount }: { recipeCount: number }) {
 /** MAINTENANCE — the hands-free lighter home. The full app (menus, recipes,
  *  tracking) stays open via the tabs; this home surfaces the month's card, the
  *  back-on-track reset, and a calm "everything's here" framing. */
-export function MaintenanceHome({ goTab, onRenew }: { goTab: (t: string) => void; onRenew: () => void }) {
+export function MaintenanceHome({
+  goTab,
+  onRenew,
+  children,
+}: {
+  goTab: (t: string) => void;
+  onRenew: () => void;
+  /** The day view + guidelines (ochre-day.tsx). A maintenance plan still has
+   *  a nightly magnesium and a bedtime practice; this home used to show none
+   *  of them. */
+  children?: React.ReactNode;
+}) {
   const { endgame, client } = useOchre();
   const monthly = endgame?.monthlyCard ?? null;
   const bot = endgame?.backOnTrack ?? null;
@@ -648,10 +705,8 @@ export function MaintenanceHome({ goTab, onRenew }: { goTab: (t: string) => void
         <h2 style={{ fontSize: 19, color: INK, margin: "10px 0 6px", fontWeight: 500 }}>
           You&apos;re holding your gains, {client.firstName}
         </h2>
-        <p style={{ fontSize: 14, color: MUTED, lineHeight: 1.55, margin: 0 }}>
-          {endgame?.paidThroughLabel
-            ? `Lighter touch, same support — your maintenance runs through ${endgame.paidThroughLabel}.`
-            : "Lighter touch, same support."}
+        <p style={{ fontSize: 13.5, color: MUTED, lineHeight: 1.5, margin: 0 }}>
+          {endgame?.paidThroughLabel ? `Maintenance · until ${endgame.paidThroughLabel}` : "Maintenance"}
         </p>
         {client.founding && (
           <div style={{ marginTop: 10 }}>
@@ -671,15 +726,12 @@ export function MaintenanceHome({ goTab, onRenew }: { goTab: (t: string) => void
       )}
 
       {monthly && <MonthlyCardView card={monthly} />}
+      {children}
       {bot && <BackOnTrackCard bot={bot} />}
 
-      <div style={cardStyle}>
-        <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Everything stays open</div>
-        <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55, margin: "5px 0 0" }}>
-          Your menus, recipes and tracking are all here whenever you want them.
-        </p>
-        <CtaButton label="Open my plan + recipes" onClick={() => goTab("plan")} />
-      </div>
+      <button className="maint-link" onClick={() => goTab("plan")}>
+        Menus, recipes and your full plan <span aria-hidden="true">→</span>
+      </button>
     </div>
   );
 }

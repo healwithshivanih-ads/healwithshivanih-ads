@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
 
   const row = (r: (typeof queue)[number]) => {
     const name = esc(nameOf.get(r.clientId) || r.clientId);
-    const link = `${appUrl}/clients-v2/${encodeURIComponent(r.clientId)}?tab=plan`;
+    const link = `${appUrl}/clients-v2/${encodeURIComponent(r.clientId)}/plan`;
     const wk = `wk ${r.targetWeek}`;
     const tag = r.behind ? " · ⚠️ current week missing" : "";
     const note = r.changeNote ? ` — ${esc(r.changeNote.slice(0, 90))}` : "";

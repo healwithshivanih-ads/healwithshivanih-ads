@@ -330,6 +330,8 @@ async function sendNoShowNudge(opts: {
     templateName: "appt_noshow_probe_client",
     templateParams: [firstName, sessionType],
     renderedBody,
+    // About a booking that exists — transactional (contact-gate.ts).
+    purpose: "transactional",
     opts: { name: opts.name },
   });
   console.log(`[cal-com-webhook] no-show nudge sent to ${opts.clientId}`);

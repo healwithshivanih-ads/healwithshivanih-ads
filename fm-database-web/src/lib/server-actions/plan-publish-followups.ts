@@ -32,6 +32,7 @@ import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { ensureLetterToken } from "./letter-token";
 import { sendWhatsAppAction } from "@/app/api/whatsapp/actions";
+import type { ContactPurpose } from "@/lib/fmdb/contact-gate";
 import { cleanSessionLabel } from "@/lib/fmdb/appointment-utils";
 
 /**
@@ -242,7 +243,7 @@ export async function firePlanPublishFollowups(input: {
       input.phone,
       "fm_plan_letter_link_v1",
       [fname, letterUrl],
-      { name: input.displayName },
+      { name: input.displayName, clientId: input.clientId, purpose: "plan" },
     );
     if (res.ok) {
       letterSent = true;
@@ -361,9 +362,25 @@ export async function tickPendingSends(): Promise<{
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")}</div>`,
+          clientId: r.client_id,
+          purpose: "plan",
         });
         if (sent.ok) {
           fired++;
+          // Thread record (2026-10-23) — queued emails used to be the one
+          // client-facing send with no bubble in the Communicate tab.
+          try {
+            const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+            const rec = await recordOutboundMessageAction({
+              clientId: r.client_id,
+              templateName: "(scheduled email)",
+              renderedBody: `[subject: ${r.email.subject}]\n\n${body}`,
+              channel: "email",
+            });
+            if (!rec.ok) console.error(`[pending-sends] emailed ${r.client_id} but could not record it: ${rec.error}`);
+          } catch (e) {
+            console.error(`[pending-sends] emailed ${r.client_id} but record threw: ${(e as Error).message}`);
+          }
         } else {
           failed++;
           errors.push({ id: r.id, kind: r.kind, error: sent.error });
@@ -378,11 +395,16 @@ export async function tickPendingSends(): Promise<{
         failedRows.push({ ...r, error: "malformed row", failed_at: new Date().toISOString() });
         continue;
       }
+      // Purpose by row kind: a reminder for a booking that exists and the
+      // "did you join" probe are transactional; the supplement-order link,
+      // handouts and anything else queued off a plan are the plan itself.
+      const purpose: ContactPurpose =
+        r.kind === "appt_reminder_1h" || r.kind === "no_join_check" ? "transactional" : "plan";
       const res = await sendWhatsAppAction(
         r.phone,
         r.template_name,
         r.template_params ?? [],
-        { name: r.name ?? "", buttonUrlParam: r.button_url_param },
+        { name: r.name ?? "", buttonUrlParam: r.button_url_param, clientId: r.client_id, purpose },
       );
       if (res.ok) {
         fired++;

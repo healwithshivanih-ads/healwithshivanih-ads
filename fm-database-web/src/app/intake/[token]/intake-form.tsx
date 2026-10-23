@@ -112,6 +112,7 @@ import {
 } from "./intake-form-options";
 import { MRS_ITEMS } from "@/lib/fmdb/mrs-score";
 import { showCycleChangesOnIntake, showMrsOnIntake } from "@/lib/fmdb/mrs-intake-gate";
+import { isMinorOnIntake } from "@/lib/fmdb/minor-intake-gate";
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
@@ -1762,6 +1763,8 @@ export function IntakeForm({
 
   const mobileNumber = asString(prefill.mobile_number);
   const isFemale = state.sex === "F" || state.sex === "f";
+  // Under-18 (from the DOB in section 1): hide the adult-only questions.
+  const isMinor = isMinorOnIntake(state.date_of_birth);
 
   // Section count is variable:
   // 1 About you · 2 Concerns · 3 Diagnoses/meds/allergies/COVID · 4 Medications layered
@@ -2596,6 +2599,12 @@ export function IntakeForm({
             onChange={(e) => set("date_of_birth", e.target.value)}
           />
         </FG>
+        {isMinor ? (
+          <p className="fm-microcopy" style={{ marginTop: -6, marginBottom: 14 }}>
+            Filling this in with a parent is perfect. A few questions meant for adults
+            won&apos;t appear, and you can skip anything you&apos;re not sure about.
+          </p>
+        ) : null}
         <FG label="Sex">
           <RadiosRow<"F" | "M" | "other">
             name="sex"
@@ -2734,6 +2743,7 @@ export function IntakeForm({
 
         {/* v2.2 — Weight */}
         <h3 className="fm-section__sub" style={{ marginTop: 16 }}>Weight history</h3>
+        {isMinor ? null : (
         <div className="fm-row-2">
           <FG label="Highest adult weight (kg)" optional="optional">
             <TextInput
@@ -2760,6 +2770,7 @@ export function IntakeForm({
             />
           </FG>
         </div>
+        )}
         <FG label="Weight trend right now" optional="optional">
           <RadiosColumn
             name="weight_trend_current"
@@ -2779,7 +2790,8 @@ export function IntakeForm({
           </FG>
         ) : null}
 
-        {/* v2.2 — Work pattern */}
+        {/* v2.2 — Work pattern (not asked of under-18s) */}
+        {isMinor ? null : (
         <FG
           label="Work pattern"
           optional="tick all that apply"
@@ -2791,6 +2803,7 @@ export function IntakeForm({
             onChange={(v) => set("work_pattern", v)}
           />
         </FG>
+        )}
 
         <p className="fm-foot">
           Private. Used only by your coach to design your plan.
@@ -2976,6 +2989,7 @@ export function IntakeForm({
             onChange={(v) => set("covid_vaccine_history", v)}
           />
         </FG>
+        {isMinor ? null : (
         <FG label="Vaccine brand(s)" optional="optional">
           <ChipMulti
             value={state.covid_vaccine_brand}
@@ -2983,6 +2997,7 @@ export function IntakeForm({
             onChange={(v) => set("covid_vaccine_brand", v)}
           />
         </FG>
+        )}
         <FG label="Reactions you noticed" optional="optional">
           <ChipMulti
             value={state.covid_vaccine_reactions}
@@ -2990,6 +3005,7 @@ export function IntakeForm({
             onChange={(v) => set("covid_vaccine_reactions", v)}
           />
         </FG>
+        {isMinor ? null : (
         <FG
           label="Which dose, roughly when, and what happened?"
           optional="skip if not relevant"
@@ -3001,6 +3017,7 @@ export function IntakeForm({
             placeholder="e.g. Second dose, July 2021 — period went haywire for 4 months"
           />
         </FG>
+        )}
       </FormSection>
 
       {/* 4. Medications layered */}
@@ -4252,7 +4269,8 @@ export function IntakeForm({
             </button>
           </div>
 
-          {/* Pregnancies repeater */}
+          {/* Pregnancies repeater (not asked of under-18s) */}
+          {isMinor ? null : (
           <div className="fm-fg">
             <label className="fm-fg__label">Pregnancies</label>
             <span className="fm-fg__hint">
@@ -4350,6 +4368,7 @@ export function IntakeForm({
               add another pregnancy
             </button>
           </div>
+          )}
 
           <hr className="fm-divider-thin" style={{ margin: "24px 0 8px" }} />
 

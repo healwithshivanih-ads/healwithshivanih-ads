@@ -238,6 +238,8 @@ export async function POST(req: NextRequest) {
         templateName,
         templateParams,
         renderedBody,
+        // A reminder for a booking that exists — transactional.
+        purpose: "transactional",
         opts: sendOpts,
       });
 

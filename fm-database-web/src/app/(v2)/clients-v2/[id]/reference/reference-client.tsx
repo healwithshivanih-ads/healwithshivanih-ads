@@ -68,7 +68,6 @@ interface Props {
   lifestyle: PracticeItem[];
   notesForCoach: string | null;
   letterSections: LetterSections | null;
-  hasMealPlanLetter: boolean;
   hasConsolidatedLetter: boolean;
 }
 
@@ -324,7 +323,6 @@ export function ReferenceClient({
   lifestyle,
   notesForCoach,
   letterSections,
-  hasMealPlanLetter,
   hasConsolidatedLetter,
 }: Props) {
   const [modal, setModal] = useState<
@@ -499,7 +497,7 @@ export function ReferenceClient({
             >
               <div style={{ fontSize: 28, marginBottom: 6 }}>📅</div>
               <div style={{ fontSize: 17, fontWeight: 700, marginBottom: 4 }}>
-                {hasMealPlanLetter || hasConsolidatedLetter
+                {hasConsolidatedLetter
                   ? `Weekly meals${currentWeek ? ` — currently Week ${currentWeek}` : ""}`
                   : "Nutrition guidelines"}
               </div>
@@ -589,19 +587,17 @@ export function ReferenceClient({
               <h2 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 4px" }}>
                 🥗 What we&apos;re eating &amp; pulling back
               </h2>
-              {!hasMealPlanLetter && (
-                <p
-                  style={{
-                    fontSize: 12,
-                    color: "#94a3b8",
-                    margin: "0 0 14px",
-                    fontStyle: "italic",
-                  }}
-                >
-                  {firstName} prefers guidelines over daily menus — this is
-                  the menu reference.
-                </p>
-              )}
+              <p
+                style={{
+                  fontSize: 12,
+                  color: "#94a3b8",
+                  margin: "0 0 14px",
+                  fontStyle: "italic",
+                }}
+              >
+                {firstName} prefers guidelines over daily menus — this is
+                the menu reference.
+              </p>
               {nutrition.pattern && (
                 <div style={{ fontSize: 14, marginBottom: 14, color: "#475569" }}>
                   <strong>Pattern:</strong> {nutrition.pattern}
@@ -775,20 +771,6 @@ export function ReferenceClient({
             )}
             {planUpdatedAt && (
               <span>· updated {planUpdatedAt.slice(0, 10)}</span>
-            )}
-            {activePlanSlug && (hasMealPlanLetter || hasConsolidatedLetter) && (
-              <a
-                href={`/api/letter/${clientId}/${activePlanSlug}/${hasMealPlanLetter ? "meal_plan" : "consolidated"}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  marginLeft: "auto",
-                  color: "#6b7280",
-                  textDecoration: "underline",
-                }}
-              >
-                Open full plan ↗
-              </a>
             )}
             <Link
               href={`/clients-v2/${clientId}/plan`}
