@@ -37,6 +37,12 @@ import { PainBodyMap } from "./pain-body-map";
 import { DOSHA_QUIZ } from "@/lib/fmdb/dosha-quiz";
 import { NO_KNOWN_ALLERGIES, resolveAllergies } from "@/lib/fmdb/allergies";
 import {
+  DAIRY_SYMPTOMS,
+  DAIRY_TIMING,
+  DAIRY_TOLERANCE,
+  hasDairySignal,
+} from "@/lib/fmdb/dairy-reaction";
+import {
   BRISTOL_TYPES,
   BOWEL_PATTERN,
   CONTRACEPTION_TYPES,
@@ -271,6 +277,15 @@ interface FormState {
   foods_to_avoid: string;
   non_negotiables: string;
   reported_triggers: string;
+  // Dairy follow-up (2026-10-23) — shown only when milk / dairy / lactose is
+  // named in the allergies, foods-to-avoid or triggers. Tells a milk-PROTEIN
+  // allergy from LACTOSE intolerance; the type is derived server-side.
+  // Keys: lib/fmdb/dairy-reaction.ts (mirrors fmdb/plan/dairy.py).
+  dairy_reaction_symptoms: string[];
+  dairy_reaction_timing: string;
+  tolerates_curd: string;
+  tolerates_paneer: string;
+  tolerates_ghee: string;
 
   // v2.2 — eating reactivity
   postprandial_pattern: string[];
@@ -654,6 +669,11 @@ function mergeInitial(
     foods_to_avoid: asString(get("foods_to_avoid")),
     non_negotiables: asString(get("non_negotiables")),
     reported_triggers: asString(get("reported_triggers")),
+    dairy_reaction_symptoms: asStringArray(get("dairy_reaction_symptoms")),
+    dairy_reaction_timing: asString(get("dairy_reaction_timing")),
+    tolerates_curd: asString(get("tolerates_curd")),
+    tolerates_paneer: asString(get("tolerates_paneer")),
+    tolerates_ghee: asString(get("tolerates_ghee")),
     postprandial_pattern: asStringArray(get("postprandial_pattern")),
     cold_heat_tolerance: asString(get("cold_heat_tolerance")),
     bristol_stool_typical: asNumberArray(get("bristol_stool_typical")),
@@ -860,6 +880,24 @@ function buildPayload(s: FormState): Record<string, unknown> {
     foods_to_avoid: s.foods_to_avoid,
     non_negotiables: s.non_negotiables,
     reported_triggers: s.reported_triggers,
+    // Always posted — blank when the follow-up is hidden, so a client who
+    // takes "milk" back out also clears the answers (the submit handler
+    // overwrites these, blanks included).
+    ...(showDairyFollowUp(s)
+      ? {
+          dairy_reaction_symptoms: s.dairy_reaction_symptoms,
+          dairy_reaction_timing: s.dairy_reaction_timing,
+          tolerates_curd: s.tolerates_curd,
+          tolerates_paneer: s.tolerates_paneer,
+          tolerates_ghee: s.tolerates_ghee,
+        }
+      : {
+          dairy_reaction_symptoms: [],
+          dairy_reaction_timing: "",
+          tolerates_curd: "",
+          tolerates_paneer: "",
+          tolerates_ghee: "",
+        }),
     cycle_status: s.cycle_status,
     last_menstrual_period: s.last_menstrual_period,
     cycle_length_days: s.cycle_length_days,
@@ -1210,6 +1248,92 @@ function ChipInput({
  *  the radio-row primitive stacks into five full-width rows on a phone,
  *  which turned 11 items into 55 rows. Buttons are keyboard-reachable
  *  natively (Tab + Space/Enter). */
+/** The dairy follow-up shows when milk / dairy / lactose is named anywhere a
+ *  client would write it. Section 3 hosts it when the allergy list names it,
+ *  otherwise the Diet section does, so it sits under the answer that raised it. */
+function showDairyFollowUp(s: Pick<FormState, "known_allergies" | "foods_to_avoid" | "reported_triggers">): boolean {
+  return hasDairySignal(s.known_allergies, s.foods_to_avoid, s.reported_triggers);
+}
+
+/**
+ * Milk-protein ALLERGY or LACTOSE intolerance? Clients call both "milk
+ * allergy", and they are treated very differently: lactose-free milk, curd,
+ * paneer and whey isolate are fine for one and unsafe for the other. Curd is
+ * the tell — it has the whole milk protein and little lactose.
+ */
+function DairyFollowUp({
+  state,
+  set,
+}: {
+  state: FormState;
+  set: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
+}) {
+  const toggle = (key: string) =>
+    set(
+      "dairy_reaction_symptoms",
+      state.dairy_reaction_symptoms.includes(key)
+        ? state.dairy_reaction_symptoms.filter((k) => k !== key)
+        : [...state.dairy_reaction_symptoms, key],
+    );
+  const foods = [
+    { field: "tolerates_curd", label: "Curd / dahi" },
+    { field: "tolerates_paneer", label: "Paneer" },
+    { field: "tolerates_ghee", label: "Ghee" },
+  ] as const;
+  return (
+    <div className="fm-subcard" data-testid="dairy-follow-up">
+      <FG
+        label="You mentioned milk or dairy — what happens when you have it?"
+        optional="tick all that apply"
+        hint="This tells us whether it's the milk sugar (lactose) or the milk protein your body reacts to. They need very different plans."
+      >
+        <div className="fm-chips">
+          {DAIRY_SYMPTOMS.map((opt) => {
+            const on = state.dairy_reaction_symptoms.includes(opt.key);
+            return (
+              <button
+                key={opt.key}
+                type="button"
+                className={"fm-chip" + (on ? " fm-chip--on" : "")}
+                aria-pressed={on}
+                onClick={() => toggle(opt.key)}
+              >
+                {opt.label}
+                {on ? <span className="fm-chip__x" aria-hidden="true">×</span> : null}
+              </button>
+            );
+          })}
+        </div>
+      </FG>
+      <FG label="How soon after?" optional="optional">
+        <ScaleChips
+          name="dairy_reaction_timing"
+          label="How soon after"
+          value={state.dairy_reaction_timing}
+          options={DAIRY_TIMING.map((t) => ({ value: t.key, label: t.label }))}
+          onChange={(v) => set("dairy_reaction_timing", v)}
+        />
+      </FG>
+      <FG label="And these — how do they sit with you?" optional="optional">
+        <div className="fm-medstack">
+          {foods.map((f) => (
+            <div key={f.field} className="fm-fg" style={{ marginBottom: 8 }}>
+              <span className="fm-medcard__minilabel">{f.label}</span>
+              <ScaleChips
+                name={f.field}
+                label={f.label}
+                value={state[f.field]}
+                options={DAIRY_TOLERANCE.map((t) => ({ value: t.key, label: t.label }))}
+                onChange={(v) => set(f.field, v)}
+              />
+            </div>
+          ))}
+        </div>
+      </FG>
+    </div>
+  );
+}
+
 function ScaleChips({
   label,
   value,
@@ -2912,6 +3036,7 @@ export function IntakeForm({
             </FG>
           );
         })()}
+        {hasDairySignal(state.known_allergies) ? <DairyFollowUp state={state} set={set} /> : null}
         <FG
           label="Current medications"
           optional="optional"
@@ -3611,6 +3736,9 @@ export function IntakeForm({
             placeholder="e.g. Gluten → bloating; afternoon coffee → poor sleep"
           />
         </FG>
+        {!hasDairySignal(state.known_allergies) && showDairyFollowUp(state) ? (
+          <DairyFollowUp state={state} set={set} />
+        ) : null}
 
         <hr className="fm-divider-thin" style={{ margin: "20px 0 8px" }} />
 

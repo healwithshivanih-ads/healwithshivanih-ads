@@ -109,6 +109,7 @@ def main() -> int:
     from fmdb.assess.subgraph import build_subgraph
     from fmdb.plan import storage as plan_storage
     from fmdb.plan.models import ChatTurn
+    from fmdb.plan.dairy import dairy_context as _dairy_context
 
     data_dir = FMDB_ROOT / "data"
     cat = load_all(data_dir)
@@ -146,6 +147,7 @@ def main() -> int:
         "medical_history": client.medical_history,
         "current_medications": client.current_medications,
         "known_allergies": client.known_allergies,
+        "dairy_reaction": _dairy_context(client.model_dump(mode="json")),
         "goals": client.goals,
         "notes": client.notes,
         "measurements": {

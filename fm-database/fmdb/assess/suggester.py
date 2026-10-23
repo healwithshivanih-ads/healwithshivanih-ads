@@ -1378,9 +1378,25 @@ HARD RULES (violating these breaks the downstream system):
       will not fix iron-deficiency fatigue.
 
 20. PROTEIN POWDER RULES (STRICT — check before recommending any protein shake):
-    - Whey protein: CONTRAINDICATED if client has lactose intolerance, dairy
-      allergy, is Vegan, is on an elimination diet (dairy removed). Use pea
-      protein, rice protein, or hemp protein instead.
+    - DAIRY: read client.dairy_reaction (absent = dairy is not an issue).
+      It separates a milk-PROTEIN allergy from LACTOSE intolerance, which
+      clients routinely both call "milk allergy":
+      - type "lactose_intolerance": whey ISOLATE (<1 g lactose a scoop),
+        lactose-free milk, curd, paneer and ghee are FINE — do not refuse
+        them, and do not treat "milk" in known_allergies as an absolute block
+        on dairy. Avoid ordinary milk and whey CONCENTRATE.
+      - type "milk_protein_allergy": NO whey (isolate included), casein,
+        milk-protein shots (beta-lactoglobulin / BLG), lactose-free or
+        high-protein milk (still milk protein), curd or paneer. Ghee only if
+        dairy_reaction.ghee_ok is true.
+      - type "unsure" (including source "inferred": a dairy word in the
+        record, never asked): treat exactly as milk_protein_allergy, and put
+        "Confirm the dairy reaction — do curd / paneer / ghee cause
+        symptoms?" under "## Coach reminders" in synthesis_notes.
+    - Whey protein: CONTRAINDICATED for a milk-protein allergy (or unsure, per
+      above), a Vegan diet, or an elimination diet removing dairy. Use pea,
+      rice or hemp protein instead. Lactose intolerance alone is NOT a
+      contraindication to whey isolate.
     - Yeast protein (nutritional yeast / Saccharomyces cerevisiae): excellent
       complete protein + B-vitamins; suitable for vegetarians and vegans;
       add to shakes, dals, or soups; 2–3 tbsp = ~8 g protein.
@@ -1393,7 +1409,8 @@ HARD RULES (violating these breaks the downstream system):
     - If none of the above contraindications: protein smoothies are a helpful
       practical intervention for clients who skip meals or are rebuilding after
       illness — include pea/rice/hemp for vegetarians or yeast protein;
-      whey only for non-veg / eggetarians without dairy issues.
+      whey (dairy is vegetarian) for any client without a milk-protein
+      allergy, a vegan diet or a dairy elimination.
     - For NON-VEGETARIAN clients: if the food journal or diet history shows
       adequate animal protein at multiple meals (e.g. eggs + chicken + dal),
       do NOT suggest protein powders at all. Whole food protein is superior

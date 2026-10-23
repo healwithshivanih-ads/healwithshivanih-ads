@@ -474,6 +474,25 @@ class Client(BaseModel):
     # contraindications or building the supplement protocol).
     current_supplements: list[str] = Field(default_factory=list)
     known_allergies: list[str] = Field(default_factory=list)
+    # Milk-protein ALLERGY vs LACTOSE intolerance (2026-10-23). Asked on the
+    # intake only when milk / dairy / lactose appears in the allergies or the
+    # foods-to-avoid answer. Raw answers (storage keys in fmdb/plan/dairy.py):
+    #   dairy_reaction_symptoms — bloating_gas | loose_stools | stomach_cramps |
+    #     nausea | hives_rash | itching_mouth_throat | swelling |
+    #     wheezing_breathless | vomiting | eczema_flare
+    #   dairy_reaction_timing — within_minutes | within_2_hours | several_hours | not_sure
+    #   tolerates_curd / _paneer / _ghee — "yes" | "no" | "unsure"
+    # dairy_reaction_type is DERIVED at submit (derive_dairy_reaction_type) or
+    # set by the coach (source "coach", never overwritten by a re-submit):
+    #   lactose_intolerance | milk_protein_allergy | unsure.
+    # Read through fmdb.plan.dairy.resolve_dairy, never directly.
+    dairy_reaction_symptoms: list[str] = Field(default_factory=list)
+    dairy_reaction_timing: str = ""
+    tolerates_curd: str = ""
+    tolerates_paneer: str = ""
+    tolerates_ghee: str = ""
+    dairy_reaction_type: Optional[str] = None
+    dairy_reaction_source: Optional[str] = None   # "intake" | "coach"
     goals: list[str] = Field(default_factory=list)
     notes: str = ""
     # Dietary preferences — used when generating the client-facing meal plan letter

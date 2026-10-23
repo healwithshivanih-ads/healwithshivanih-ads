@@ -332,7 +332,8 @@ HARD RULES:
     (b) menstrual days: warm, cooked, comforting, iron-forward food (whole foods only — dals, palak, beetroot, dates, til/jaggery within the framework); gentler days, no aggressive variety.
     (c) follicular days: the lighter, fresher end of the framework — more sprouts, fresh preparations, lighter grains.
     (d) ovulatory days: bright fresh meals; favour cruciferous vegetables (cabbage, cauliflower, broccoli — cooked if a thyroid caution applies) to support estrogen clearance.
-    Blend transitions naturally — a week that crosses from late_luteal into menstrual should soften as it goes, not flip styles mid-week. NEVER name phases, hormones, or cycle days in the change_note; if the phase shaped the week, say it food-first ("kept dinners heartier this week", "leaned into lighter fresh meals")."""
+    Blend transitions naturally — a week that crosses from late_luteal into menstrual should soften as it goes, not flip styles mid-week. NEVER name phases, hormones, or cycle days in the change_note; if the phase shaped the week, say it food-first ("kept dinners heartier this week", "leaned into lighter fresh meals").
+17. ALLERGIES + DAIRY ARE HARD RULES — the CLIENT block carries an ALLERGIES line and, when dairy is an issue, a DAIRY line. Never use an allergen, in any form. Follow the DAIRY line EXACTLY and let it override rule 10's protein anchors: for LACTOSE INTOLERANCE keep curd, paneer, buttermilk and ghee (and use lactose-free milk wherever milk is needed) — do not strip dairy wholesale; for a MILK-PROTEIN ALLERGY or an UNCONFIRMED dairy reaction use NO milk (lactose-free milk included), curd, buttermilk, raita, paneer, cheese or milk sweets — anchor protein with dal, sprouts, tofu, eggs/meat if eaten — and ghee only if the line says ghee is OK (otherwise cook in oil)."""
 
 
 def _plans_root() -> Path:
@@ -594,12 +595,20 @@ def main() -> None:
         _caution_lines = ""
     cat_names = catalogue_dish_names(client.get("dietary_preference") or "")
 
+    # Rule 17. This drafter used to see `foods_to_avoid` only — never the
+    # allergy list — while rule 10 told it to anchor protein with paneer and
+    # curd. allergy_prompt_line also carries the dairy line (milk-protein
+    # allergy vs lactose intolerance, fmdb/plan/dairy.py).
+    from fmdb.plan.allergies import allergy_prompt_line  # noqa: E402
+    allergy_lines = allergy_prompt_line(client).splitlines()
+
     user = "\n".join(
         [
             f"CLIENT: dietary preference: {client.get('dietary_preference') or 'not stated'}; "
             f"avoid: {client.get('foods_to_avoid') or 'none listed'}; "
             f"non-negotiables (keep these): {client.get('non_negotiables') or 'none'}; "
             f"city: {client.get('city') or 'India'}",
+            *[f"{ln} (rule 17)" for ln in allergy_lines],
             "",
             f"PLAN FRAMEWORK — pattern: {nutrition.get('pattern') or ''}",
             f"EAT FREELY: {', '.join(nutrition.get('add') or [])}",

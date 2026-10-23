@@ -222,6 +222,9 @@ def _build_intake_payload(client_dict: dict[str, Any]) -> str:
     mh += _format_list("Active conditions", c.get("active_conditions"))
     mh += _format_list("Past medical history", c.get("medical_history"))
     mh += _format_list("Known allergies", c.get("known_allergies"))
+    from fmdb.plan.dairy import dairy_prompt_line
+    if dairy_prompt_line(c):
+        mh += dairy_prompt_line(c) + "\n"
     mh += _format_list("Current medications (free)", c.get("current_medications"))
     mh += _format_list("Current supplements (OTC — vitamins / minerals / herbs / probiotics)", c.get("current_supplements"))
     mh += _format_list("COVID history", c.get("covid_history"))

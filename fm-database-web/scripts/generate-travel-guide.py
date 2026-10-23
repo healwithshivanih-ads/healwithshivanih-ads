@@ -146,7 +146,10 @@ def main() -> int:
     # ---- gating context from the plan -------------------------------------
     diet = str(client.get("dietary_preference") or "").strip()
     avoid = str(client.get("foods_to_avoid") or "").strip()
-    allergies = ", ".join(client.get("known_allergies") or [])
+    # allergy_prompt_line: the tri-state (never "none" over an unasked
+    # question) plus the dairy line — milk-protein allergy vs lactose.
+    from fmdb.plan.allergies import allergy_prompt_line
+    allergies = allergy_prompt_line(client)
     conditions = ", ".join(client.get("active_conditions") or [])
     nonneg = str(client.get("non_negotiables") or "").strip()
 
@@ -175,7 +178,7 @@ def main() -> int:
         f"PLACE / SITUATION: {where} (kind: {kind})\n"
         f"DIETARY PREFERENCE: {diet or 'not specified'}\n"
         f"MUST AVOID: {avoid or 'none listed'}\n"
-        f"ALLERGIES: {allergies or 'none'}\n"
+        f"{allergies}\n"
         f"CONDITIONS: {conditions or 'none listed'}\n"
         f"NON-NEGOTIABLES: {nonneg or 'none'}\n\n"
         "Return 5-7 local eat options + a short go_easy list via the tool."

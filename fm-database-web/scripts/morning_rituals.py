@@ -88,12 +88,28 @@ def _is_weight_loss(plan: dict, client: dict, topics_blob: str) -> bool:
     return "weight loss" in goals or "lose weight" in goals or "weight-loss" in goals
 
 
+def _milk_protein_allergic(client: dict) -> bool:
+    """A milk-protein allergy — or a dairy word with no type recorded — makes
+    the client dairy-free for rituals (golden milk). Lactose intolerance does
+    not: lactose-free milk works. fmdb/plan/dairy.py; optional import so a
+    stripped checkout still runs."""
+    try:
+        import sys as _sys
+        if str(FMDB_ROOT) not in _sys.path:
+            _sys.path.insert(0, str(FMDB_ROOT))
+        from fmdb.plan.dairy import resolve_dairy, treats_as_allergy
+    except Exception:  # pragma: no cover
+        return False
+    return treats_as_allergy(resolve_dairy(client))
+
+
 def _compute_flags(plan: dict, client: dict, topics_blob: str) -> dict[str, bool]:
     diet = str(client.get("dietary_preference") or "").lower()
     vegan = "vegan" in diet
     return {
         "vegan": vegan,
-        "dairy_free": vegan or "dairy-free" in diet or "dairy free" in diet,
+        "dairy_free": vegan or "dairy-free" in diet or "dairy free" in diet
+                      or _milk_protein_allergic(client),
         "metabolic": any(m in topics_blob for m in _METABOLIC_TOPIC_MARKERS),
         "fatty_liver": "fatty-liver" in topics_blob or "nafld" in topics_blob,
         "dyslipidemia": any(m in topics_blob for m in ("dyslipidem", "hypertriglycerid", "hyperlipidem")),

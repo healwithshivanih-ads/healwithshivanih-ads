@@ -23,6 +23,8 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 FMDB_ROOT = SCRIPT_DIR.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 
+from fmdb.plan.dairy import dairy_context as _dairy_context  # noqa: E402
+
 from dotenv import load_dotenv
 load_dotenv(FMDB_ROOT / ".env", override=True)
 
@@ -241,6 +243,8 @@ def main():
         "active_conditions": client_data.get("active_conditions", []),
         "current_medications": client_data.get("current_medications", client_data.get("medications", [])),
         "known_allergies": client_data.get("known_allergies", client_data.get("allergies", [])),
+        # Milk-protein allergy vs lactose intolerance — fmdb/plan/dairy.py.
+        "dairy_reaction": _dairy_context(client_data),
         "dietary_preference": client_data.get("dietary_preference", ""),
         "animal_derived_supplements_ok": client_data.get("animal_derived_supplements_ok", ""),
         "goals": client_data.get("goals", []),
