@@ -47,11 +47,26 @@ function itemName(it: DayItem): string {
   return it.practice.name;
 }
 
-export function DayTimeline(props: DayActions & { /** tests: open every band, independent of the clock */ openAll?: boolean }) {
+export function DayTimeline(
+  props: DayActions & {
+    /** tests: open every band, independent of the clock */
+    openAll?: boolean;
+    /** false = leave the menu's meals out of the day (maintenance — see
+     *  TodayDaySections). Default true. */
+    withMeals?: boolean;
+  },
+) {
   const data = useOchre();
+  const withMeals = props.withMeals !== false;
   const bands = useMemo(
-    () => buildDay({ meals: data.meals, supplements: data.supplements, remedies: data.remedies, practices: data.practices }),
-    [data.meals, data.supplements, data.remedies, data.practices],
+    () =>
+      buildDay({
+        meals: withMeals ? data.meals : [],
+        supplements: data.supplements,
+        remedies: data.remedies,
+        practices: data.practices,
+      }),
+    [withMeals, data.meals, data.supplements, data.remedies, data.practices],
   );
   const now = bandForHour(new Date().getHours());
   // Open ONLY the part of the day she is in. Everything else is one line —
@@ -308,10 +323,18 @@ export function GuidanceCard() {
 }
 
 /** "Your day" + "Your guidelines" as two sections — for homes other than
- *  Today (maintenance) that should still show the day. */
-export function TodayDaySections(props: DayActions) {
+ *  Today (maintenance) that should still show the day.
+ *
+ *  `withMeals={false}` on maintenance (coach decision 2026-10-23): a
+ *  maintenance plan carries ONE seasonal SAMPLE menu (app_menu.is_sample,
+ *  refreshed by the maintenance-menu-seasonal cron) — mix-and-match ideas, not
+ *  a daily meal plan. Laid out in "Your day" it read as "today's breakfast,
+ *  lunch, dinner". The day keeps supplements, drinks, remedies and practices;
+ *  the sample menu stays in the menu section. */
+export function TodayDaySections(props: DayActions & { withMeals?: boolean }) {
   const data = useOchre();
-  const hasDay = data.meals.length + data.supplements.length + data.practices.length > 0 ||
+  const withMeals = props.withMeals !== false;
+  const hasDay = (withMeals ? data.meals.length : 0) + data.supplements.length + data.practices.length > 0 ||
     data.remedies.some((r) => r.assigned && r.daily);
   return (
     <>
