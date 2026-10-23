@@ -74,7 +74,8 @@ const SIZE_WORD = { small: "small ", regular: "", large: "large " } as const;
 
 /** The component strings the engine sees for one photo. */
 export function entryComponents(e: DiaryEntry): string[] {
-  if (e.coach_label) return entryDishes(e);
+  // A correction — the coach's, else the client's — is the plate.
+  if (e.coach_label || e.client_label) return entryDishes(e);
   if (!readingUsable(e.ai_reading)) return [];
   return (e.ai_reading?.dishes ?? [])
     .filter((d) => d && d.name)

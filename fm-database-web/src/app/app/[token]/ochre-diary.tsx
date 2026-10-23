@@ -22,6 +22,7 @@ import { shrinkPhoto } from "./photo-shrink";
 import {
   DIARY_BANDS,
   DIARY_BAND_LABEL,
+  DIARY_NAME_MAX,
   DIARY_NOTE_MAX,
   DIARY_REMINDERS,
   diaryBandForHour,
@@ -31,6 +32,7 @@ import {
 } from "@/lib/fmdb/food-diary";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+type LiveFields = Pick<ClientDiaryEntry, "marks" | "looksLike" | "yours" | "feedback">;
 /** Poll for a photo's marks about once a minute, for up to ~20 minutes. */
 const POLL_MS = 60_000;
 const POLL_MAX = 20;
@@ -158,7 +160,7 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
   // Marks arrive a few minutes after a photo (the AI reads it on the Mac).
   // They come from three places, newest last: the page load, the local copy of
   // a photo just added (none yet), and the poll below.
-  const [liveMarks, setLiveMarks] = useState<Record<string, ClientDiaryEntry["marks"]>>({});
+  const [live, setLive] = useState<Record<string, LiveFields>>({});
   const [liveTip, setLiveTip] = useState<ClientDiaryView["tip"]>(null);
   const pollsLeft = useRef(POLL_MAX);
 
@@ -168,8 +170,9 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
       entries
         .filter((e) => e.date === view.today)
         .sort((a, b) => a.time.localeCompare(b.time))
-        .map((e) => (e.marks || !liveMarks[e.entry_id] ? e : { ...e, marks: liveMarks[e.entry_id] })),
-    [entries, view.today, liveMarks],
+        // The poll is the newest word on marks / what it looks like / feedback.
+        .map((e) => (live[e.entry_id] ? { ...e, ...live[e.entry_id] } : e)),
+    [entries, view.today, live],
   );
   const waiting = todays.some((e) => !e.marks);
 
@@ -184,9 +187,9 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
       pollsLeft.current -= 1;
       try {
         const res = await fetch(`/api/app-diary?token=${encodeURIComponent(data.token)}&view=1`, { cache: "no-store" });
-        const j = (await res.json()) as { ok?: boolean; marks?: Record<string, ClientDiaryEntry["marks"]>; tip?: ClientDiaryView["tip"] };
+        const j = (await res.json()) as { ok?: boolean; entries?: Record<string, LiveFields>; tip?: ClientDiaryView["tip"] };
         if (j.ok) {
-          setLiveMarks(j.marks ?? {});
+          setLive(j.entries ?? {});
           if (j.tip) setLiveTip(j.tip);
         }
       } catch {
@@ -272,13 +275,35 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
     if (j) setDoneDays(new Set(doneDays).add(view.today));
   }
 
-  async function saveEntry(e: ClientDiaryEntry, patch: { note: string; band: DiaryBand }) {
+  async function saveEntry(e: ClientDiaryEntry, patch: { note: string; band: DiaryBand; name: string }) {
     if (busy) return;
+    const renamed = patch.name.trim() !== (e.looksLike ?? "").trim() && patch.name.trim() !== "";
     setBusy(true);
-    const j = await post({ action: "edit", entry_id: e.entry_id, note: patch.note, band: patch.band });
+    const fields: Record<string, string> = { action: "edit", entry_id: e.entry_id, note: patch.note, band: patch.band };
+    if (renamed) fields.name = patch.name.trim();
+    const j = await post(fields);
     setBusy(false);
     if (!j) return;
-    setEntries((prev) => prev.map((x) => (x.entry_id === e.entry_id ? { ...x, ...patch } : x)));
+    setEntries((prev) =>
+      prev.map((x) =>
+        x.entry_id !== e.entry_id
+          ? x
+          : renamed
+            ? // Re-read with her words: the old marks described the misread
+              // plate, so they go until the new read lands.
+              { ...x, note: patch.note, band: patch.band, looksLike: patch.name.trim(), yours: true, marks: undefined, feedback: undefined }
+            : { ...x, note: patch.note, band: patch.band },
+      ),
+    );
+    if (renamed) {
+      setLive((prev) => {
+        const next = { ...prev };
+        delete next[e.entry_id];
+        return next;
+      });
+      pollsLeft.current = POLL_MAX;
+      setFlash("Thanks — the marks update in a few minutes.");
+    }
     setOpenEntry(null);
   }
 
@@ -374,7 +399,14 @@ function DiaryCard({ view }: { view: ClientDiaryView }) {
                   <span className="diary-band">
                     {DIARY_BAND_LABEL[e.band]} · {clock(e.time)}
                   </span>
+                  {e.looksLike && (
+                    <span className="diary-looks">
+                      {e.yours ? e.looksLike : `Looks like ${e.looksLike}`}
+                      {!e.yours && <span className="diary-fix"> · Not right?</span>}
+                    </span>
+                  )}
                   {e.marks && <Marks marks={e.marks} />}
+                  {e.feedback && <span className="diary-feedback">{e.feedback}</span>}
                   {e.note && <span className="diary-note">{e.note}</span>}
                 </span>
                 <Icon name="pen" size={15} style={{ color: "var(--muted)", flexShrink: 0 }} />
@@ -510,14 +542,25 @@ function EntryEditor({
 }: {
   entry: ClientDiaryEntry;
   busy: boolean;
-  onSave: (patch: { note: string; band: DiaryBand }) => void;
+  onSave: (patch: { note: string; band: DiaryBand; name: string }) => void;
   onDelete: () => void;
   onCancel: () => void;
 }) {
   const [note, setNote] = useState(entry.note);
   const [band, setBand] = useState<DiaryBand>(entry.band);
+  const [name, setName] = useState(entry.looksLike ?? "");
   return (
     <div className="diary-draft">
+      <label className="diary-label">
+        What is it?
+        <input
+          className="diary-input"
+          placeholder="e.g. spaghetti in tomato sauce"
+          maxLength={DIARY_NAME_MAX}
+          value={name}
+          onChange={(ev) => setName(ev.target.value)}
+        />
+      </label>
       <BandChips value={band} onPick={setBand} />
       <input
         className="diary-input"
@@ -534,7 +577,7 @@ function EntryEditor({
         <button className="diary-ghost" onClick={onCancel} disabled={busy}>
           Cancel
         </button>
-        <button className="diary-save" onClick={() => onSave({ note: note.trim(), band })} disabled={busy}>
+        <button className="diary-save" onClick={() => onSave({ note: note.trim(), band, name })} disabled={busy}>
           Save
         </button>
       </div>

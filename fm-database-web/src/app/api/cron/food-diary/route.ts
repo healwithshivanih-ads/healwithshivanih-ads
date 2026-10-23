@@ -19,7 +19,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { runShim } from "@/lib/fmdb/shim";
 import { currentHost } from "@/lib/fmdb/client-thread";
-import { DIARY_INBOX_DAYS, diaryFinishedOn, diaryPhase, entryReadState } from "@/lib/fmdb/food-diary";
+import { DIARY_INBOX_DAYS, diaryFinishedOn, diaryPhase, entryNeedsRead, entryReadState } from "@/lib/fmdb/food-diary";
 import {
   diaryToday,
   listDiaryClients,
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
 
   // 1. read
   const toRead = eligible
-    .filter(({ clientId, cfg }) => loadDiary(clientId, cfg).entries.some((e) => !e.ai_reading))
+    .filter(({ clientId, cfg }) => loadDiary(clientId, cfg).entries.some(entryNeedsRead))
     .map(({ clientId, cfg }) => ({ client_id: clientId, diary_id: cfg.id }));
   let reader: { read?: number; unreadable?: number; queued?: number; api_blocked?: boolean; errors?: string[] } = {};
   if (toRead.length) {

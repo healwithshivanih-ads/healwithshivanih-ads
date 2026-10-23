@@ -30,6 +30,7 @@
 import {
   diaryGentle,
   diaryTip,
+  mealFeedback,
   parseBalance,
   type CarbMark,
   type DietContext,
@@ -79,6 +80,7 @@ export const DIARY_DEFAULT_DAYS = 3;
 /** Days a finished diary stays on the coach's inbox if she never opens it. */
 export const DIARY_INBOX_DAYS = 14;
 export const DIARY_NOTE_MAX = 200;
+export const DIARY_NAME_MAX = 120;
 export const DIARY_LABEL_MAX = 300;
 
 /** The coach's switch, as stored on client.yaml. */
@@ -112,6 +114,10 @@ export interface DiaryAiReading {
   balance?: { protein: string; veg: string; carbs: string };
   /** Why it could not be read ("blurry", "not food", "packet label"). */
   reason?: string;
+  /** One protein addition that suits THIS dish and the client's diet
+   *  ("chickpeas tossed through"). Shown to the client only after
+   *  ideaAllowed() — a hard filter, not the model's word. */
+  protein_idea?: string;
   read_at?: string;
   model?: string;
 }
@@ -129,8 +135,26 @@ export function readingUsable(r: DiaryAiReading | undefined | null): boolean {
  *  could not read it and the coach has not said what it is. */
 export function entryReadState(e: DiaryEntry): "pending" | "read" | "unreadable" | "labelled" {
   if (e.coach_label) return "labelled";
-  if (!e.ai_reading) return "pending";
-  return readingUsable(e.ai_reading) ? "read" : "unreadable";
+  if (entryNeedsRead(e)) return "pending";
+  if (readingUsable(e.ai_reading)) return "read";
+  // The AI could not read it, but the client said what it is — that is enough;
+  // the coach does not need to name it.
+  return e.client_label ? "labelled" : "unreadable";
+}
+
+const tsOf = (s: string | undefined) => (s ? Date.parse(s) || 0 : 0);
+
+/**
+ * Does this photo need (another) AI read? Yes when it was never read, or when
+ * the client or the coach said what it is AFTER the last read — the plate's
+ * balance must be judged for what it really is, not for the misread (a
+ * "spaghetti with egg" that was spaghetti alone is not a protein plate).
+ * Mirrored in read-diary-photos.py::unread_entries.
+ */
+export function entryNeedsRead(e: DiaryEntry): boolean {
+  if (!e.ai_reading) return true;
+  const readAt = tsOf(e.ai_reading.read_at);
+  return Math.max(tsOf(e.client_labelled_at), tsOf(e.coach_labelled_at)) > readAt;
 }
 
 export type DiaryOp = "add" | "edit" | "delete" | "day_done" | "label" | "read";
@@ -150,6 +174,10 @@ export interface DiaryLine {
   note?: string;
   /** label — the coach's correction. Always wins over any AI reading. */
   label?: string;
+  /** edit — the CLIENT's correction of what the photo is ("spaghetti, no
+   *  egg"). Wins over the AI reading; the coach's label wins over it. An
+   *  empty string clears it. */
+  name?: string;
   /** read — phase 2. */
   reading?: DiaryAiReading;
 }
@@ -167,6 +195,9 @@ export interface DiaryEntry {
   deleted?: boolean;
   coach_label?: string;
   coach_labelled_at?: string;
+  /** The client said what it is (see DiaryLine.name). */
+  client_label?: string;
+  client_labelled_at?: string;
   ai_reading?: DiaryAiReading;
 }
 
@@ -328,6 +359,16 @@ export function foldDiary(lines: readonly DiaryLine[], diaryId: string): FoldedD
       if (isHhmm(l.time)) e.time = l.time;
       if (isDiaryBand(l.band)) e.band = l.band;
       if (typeof l.note === "string") e.note = l.note;
+      if (typeof l.name === "string") {
+        const name = l.name.trim();
+        if (name) {
+          e.client_label = name;
+          e.client_labelled_at = l.ts;
+        } else {
+          delete e.client_label;
+          delete e.client_labelled_at;
+        }
+      }
       e.edited_at = l.ts;
     } else if (l.op === "delete") {
       e.deleted = true;
@@ -342,7 +383,8 @@ export function foldDiary(lines: readonly DiaryLine[], diaryId: string): FoldedD
         delete e.coach_labelled_at;
       }
     } else if (l.op === "read" && l.reading && typeof l.reading.readable === "boolean") {
-      e.ai_reading = l.reading;
+      // read_at drives entryNeedsRead; a reading without one dates from its line.
+      e.ai_reading = { read_at: l.ts, ...l.reading };
     }
   }
   const entries = [...byId.values()]
@@ -415,6 +457,13 @@ export interface ClientDiaryEntry {
    *  always there when read; `veg` and `carbs` only when balance marks are
    *  on for this client. Words, never numbers. */
   marks?: { protein: ProteinMark; veg?: VegMark; carbs?: CarbMark };
+  /** What the photo is, as the client sees it: their own correction, the
+   *  coach's, or the AI's dish names. Lets them say "not right". */
+  looksLike?: string;
+  /** True when `looksLike` is the client's own words. */
+  yours?: boolean;
+  /** One observational line about this meal (mealFeedback) — words only. */
+  feedback?: string;
 }
 
 export interface ClientDiaryView {
@@ -441,7 +490,8 @@ export const DIARY_TIP_DAYS = 7;
 
 /** Dish names for an entry — the coach's correction wins over the reading. */
 export function entryDishes(e: DiaryEntry): string[] {
-  if (e.coach_label) return e.coach_label.split(/\s*(?:\+|,|\band\b)\s*/i).map((x) => x.trim()).filter(Boolean);
+  const label = e.coach_label || e.client_label;
+  if (label) return label.split(/\s*(?:\+|,|\band\b)\s*/i).map((x) => x.trim()).filter(Boolean);
   if (readingUsable(e.ai_reading)) return (e.ai_reading?.dishes ?? []).map((d) => d.name).filter(Boolean);
   return [];
 }
@@ -474,8 +524,23 @@ export function clientDiaryView(
           note: e.note,
           file: e.photo,
         };
-        const bal = readingUsable(e.ai_reading) ? parseBalance(e.ai_reading?.balance) : null;
+        const pending = entryNeedsRead(e);
+        const named = entryDishes(e);
+        if (named.length) {
+          out.looksLike = named.join(", ");
+          if (!e.coach_label && e.client_label) out.yours = true;
+        }
+        // While a corrected photo is being re-read, its old marks describe
+        // the misread plate — show none until the new read lands.
+        const bal = !pending && readingUsable(e.ai_reading) ? parseBalance(e.ai_reading?.balance) : null;
         if (bal) {
+          // Balance marks off (gentle, or the coach turned them off) → the line
+          // speaks only of protein, never of carbs.
+          const fb = mealFeedback(bal, e.band, opts.client, {
+            gentle: gentle || !show.balance,
+            idea: e.ai_reading?.protein_idea,
+          });
+          if (fb) out.feedback = fb;
           out.marks = { protein: bal.protein };
           if (show.balance && bal.veg) out.marks.veg = bal.veg;
           if (show.balance && bal.carbs) out.marks.carbs = bal.carbs;
@@ -488,8 +553,8 @@ export function clientDiaryView(
   const pending = live.some((e) => entryReadState(e) === "pending");
   const plates: PlateForTip[] = [];
   for (const e of live) {
-    const bal = readingUsable(e.ai_reading) ? parseBalance(e.ai_reading?.balance) : null;
-    if (bal) plates.push({ band: e.band, date: e.date, balance: bal, dishes: entryDishes(e) });
+    const bal = !entryNeedsRead(e) && readingUsable(e.ai_reading) ? parseBalance(e.ai_reading?.balance) : null;
+    if (bal) plates.push({ band: e.band, date: e.date, balance: bal, dishes: entryDishes(e), idea: e.ai_reading?.protein_idea });
   }
   const tip = pending ? null : diaryTip(plates, opts.client, { gentle });
 

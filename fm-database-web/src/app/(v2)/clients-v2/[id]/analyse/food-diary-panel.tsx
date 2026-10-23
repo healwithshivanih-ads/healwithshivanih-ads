@@ -436,9 +436,11 @@ function PhotoCaption({ e }: { e: DiaryEntry }) {
   if (state === "pending") return <span style={{ ...base, color: "var(--fm-text-tertiary)" }}>reading…</span>;
   if (state === "unreadable") return <span style={{ ...base, color: "var(--fm-danger, #b42318)", fontWeight: 600 }}>⚠ couldn&apos;t read</span>;
   const text = entryDishes(e).join(", ");
+  // Whose words: ✎ = yours, "client:" = the client corrected the AI.
+  const who = e.coach_label ? "✎ " : e.client_label ? "client: " : "";
   return (
     <span style={{ ...base, color: "var(--fm-text-secondary)" }} title={text}>
-      {state === "labelled" ? "✎ " : ""}
+      {who}
       {text}
     </span>
   );
@@ -447,6 +449,21 @@ function PhotoCaption({ e }: { e: DiaryEntry }) {
 /** The AI's reading in full, for the enlarged photo. */
 function ReadingLine({ e }: { e: DiaryEntry }) {
   const r = e.ai_reading;
+  const said = e.client_label ? (
+    <div style={{ color: "var(--fm-text-secondary)", marginTop: 4 }}>Client says it&apos;s: {e.client_label}</div>
+  ) : null;
+  if (said && !e.coach_label) {
+    return (
+      <>
+        {said}
+        <ReadingDetail r={r} />
+      </>
+    );
+  }
+  return <ReadingDetail r={r} />;
+}
+
+function ReadingDetail({ r }: { r: DiaryEntry["ai_reading"] }) {
   if (!r) return <div style={{ color: "var(--fm-text-tertiary)", marginTop: 4 }}>Not read yet — the reader runs every few minutes.</div>;
   if (!r.readable || !(r.dishes?.length)) {
     return (

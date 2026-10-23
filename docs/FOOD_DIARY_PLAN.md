@@ -296,3 +296,24 @@ Decisions made while building, and why:
   here in a few minutes" and polls `GET /api/app-diary?view=1` about once a minute (visible tab
   only, ≤ 20 tries) until the marks arrive. Not a page refresh: a refresh logs an app open each time.
 - **"Done for today" keeps the day's protein dots** instead of folding to a bare line.
+
+### The client corrects the AI, and gets a line per meal (2026-10-23, coach)
+
+Coach, testing as cl-900: "I took a picture of spaghetti only. If the AI identified it as with egg I
+need the option to correct it, else the whole thing will be wrong. Also as the client I want some
+feedback on my meals." Then: "it needs to be diet aware — no one will add dal to spaghetti."
+
+- **The client sees what the photo was read as** ("Looks like spaghetti with egg · Not right?") and
+  can say what it is. That is an `edit` line with `name` → `client_label`. The coach's label still
+  wins; the client's wins over the AI. The rule "nothing from the reading reaches the client" is
+  relaxed to "the dish names, never confidence, portions or numbers".
+- **A correction re-reads the photo** with the client's words in the prompt
+  (`entryNeedsRead` ↔ `read-diary-photos.py::unread_entries`: never read, or labelled after the last
+  read). The balance is judged for the real plate. While it is re-read, the old marks are hidden.
+- **One feedback line per meal** (`mealFeedback`), breakfast / lunch / dinner only, from the plate
+  balance. Observational, no numbers; gentle (or balance off) → protein only.
+- **The suggestion comes from the reader, not a list.** The reader returns `protein_idea`: one
+  addition that suits THIS dish's cuisine, given the client's diet, allergies, avoid list and dairy
+  line. `ideaAllowed` is a hard filter on render (diet / dairy / soy / gluten / nut words + every
+  avoid/allergy token). No safe idea → "Adding some protein would help", never a mismatched dish. The
+  end-of-diary fix uses the plates' ideas first; the fixed swap list is only the backstop.

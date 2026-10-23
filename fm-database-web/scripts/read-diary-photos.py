@@ -105,8 +105,16 @@ TOOL = {
                 "required": ["protein", "veg", "carbs"],
             },
             "reason": {"type": "string", "description": "If not readable: why, in 2-4 words. Else empty."},
+            "protein_idea": {
+                "type": "string",
+                "description": "If the plate is light on protein or has none: ONE addition that would bring "
+                "protein to THIS dish — something a person would actually eat WITH it, in the same cuisine "
+                "(spaghetti → 'chickpeas tossed through' or 'grilled paneer', never dal), and allowed by the "
+                "client's diet, allergies and foods to avoid. A short noun phrase, no quantities, no advice "
+                "words. Empty if the plate already has protein or nothing suitable fits.",
+            },
         },
-        "required": ["is_food_or_drink", "readable", "confidence", "dishes", "balance", "reason"],
+        "required": ["is_food_or_drink", "readable", "confidence", "dishes", "balance", "reason", "protein_idea"],
     },
 }
 
@@ -122,6 +130,9 @@ SYSTEM = "\n".join(
         "When two dishes look alike, prefer the one the client's diet allows: for a vegetarian a yellow",
         "pancake is a besan or moong chilla, not an omelette; a curry is paneer or soya, not chicken.",
         "Always fill `balance` for a readable plate, even when unsure.",
+        "If the client or coach has said what the plate is, that IS the plate — name those dishes and",
+        "judge `balance` for them, even if you would have guessed something else.",
+        "`protein_idea` must suit the dish and respect every diet, allergy and avoid line given.",
         "`balance` is about proportions you can see, never grams. Do not judge the food; describe it.",
     ]
 )
@@ -156,6 +167,31 @@ def _load_dotenv() -> None:
                     os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
+def _as_text(v) -> str:
+    if isinstance(v, list):
+        return ", ".join(str(x) for x in v if x)
+    return str(v or "")
+
+
+def _diet_context(doc: dict) -> str:
+    """Everything the reader needs so `protein_idea` is something THIS client
+    can eat. The client app filters the idea again before showing it."""
+    lines = [f"Client's diet: {doc.get('dietary_preference') or 'not recorded (treat as vegetarian)'}."]
+    if _as_text(doc.get("known_allergies")).strip():
+        lines.append(f"Allergies: {_as_text(doc.get('known_allergies'))}.")
+    if _as_text(doc.get("foods_to_avoid")).strip():
+        lines.append(f"Foods to avoid: {_as_text(doc.get('foods_to_avoid'))}.")
+    try:
+        from fmdb.plan.dairy import dairy_prompt_line
+
+        d = dairy_prompt_line(doc)
+        if d:
+            lines.append(d)
+    except Exception:
+        pass
+    return "\n".join(lines)
+
+
 def read_lines(person: Path) -> list:
     out = []
     for f in sorted(person.glob("_food_diary.*.jsonl")):
@@ -176,24 +212,54 @@ def read_lines(person: Path) -> list:
     return out
 
 
+def _ts(s) -> float:
+    try:
+        return datetime.fromisoformat(str(s).replace("Z", "+00:00")).timestamp()
+    except Exception:
+        return 0.0
+
+
 def unread_entries(lines: list, diary_id: str) -> list:
-    """Live photos of this diary with no `read` line yet, oldest first.
-    The same fold as food-diary.ts::foldDiary, reduced to what this needs."""
+    """Live photos of this diary that need a read, oldest first: never read,
+    or the client / coach said what it is AFTER the last read (the balance
+    must be judged for the real plate). Mirrors food-diary.ts::entryNeedsRead.
+
+    Each returned add-line carries `label` — the coach's correction, else the
+    client's — so the reader can be told what the plate is."""
     mine = sorted((l for l in lines if l.get("diary_id") == diary_id), key=lambda l: l["ts"])
     added: dict = {}
     deleted: set = set()
-    read: set = set()
+    read_at: dict = {}
+    coach: dict = {}
+    client: dict = {}
     for l in mine:
         eid = l.get("entry_id")
         if not eid:
             continue
-        if l["op"] == "add" and eid not in added and l.get("photo"):
-            added[eid] = l
-        elif l["op"] == "delete":
+        op = l["op"]
+        if op == "add" and eid not in added and l.get("photo"):
+            added[eid] = dict(l)
+        elif op == "delete":
             deleted.add(eid)
-        elif l["op"] == "read":
-            read.add(eid)
-    return [a for eid, a in added.items() if eid not in deleted and eid not in read]
+        elif op == "read":
+            read_at[eid] = max(read_at.get(eid, 0.0), _ts((l.get("reading") or {}).get("read_at") or l["ts"]))
+        elif op == "label":
+            lab = str(l.get("label") or "").strip()
+            coach[eid] = (lab, _ts(l["ts"])) if lab else None
+        elif op == "edit" and isinstance(l.get("name"), str):
+            nm = l["name"].strip()
+            client[eid] = (nm, _ts(l["ts"])) if nm else None
+    out = []
+    for eid, a in added.items():
+        if eid in deleted:
+            continue
+        c, k = coach.get(eid), client.get(eid)
+        labelled_at = max((c or ("", 0.0))[1], (k or ("", 0.0))[1])
+        if eid in read_at and labelled_at <= read_at[eid]:
+            continue
+        a["label"] = (c or k or ("", 0.0))[0]
+        out.append(a)
+    return out
 
 
 def normalise_reading(raw: dict) -> dict:
@@ -227,6 +293,9 @@ def normalise_reading(raw: dict) -> dict:
     # when the model gave a valid word for them (it occasionally omits one).
     if readable and balance["protein"]:
         out["balance"] = {k: v for k, v in balance.items() if v}
+    idea = str(raw.get("protein_idea") or "").strip().strip(".")[:100]
+    if readable and idea and balance["protein"] in ("light", "none"):
+        out["protein_idea"] = idea
     reason = str(raw.get("reason") or "").strip()[:80]
     if not readable:
         out["reason"] = reason or ("not food" if not raw.get("is_food_or_drink") else "unclear")
@@ -278,7 +347,7 @@ def main() -> int:
             doc = yaml.safe_load((person / "client.yaml").read_text(encoding="utf-8")) or {}
         except Exception:
             doc = {}
-        diet = str(doc.get("dietary_preference") or "not recorded")
+        diet = _diet_context(doc)
         for e in unread_entries(read_lines(person), did):
             work.append((cid, person, did, e, diet))
 
@@ -314,8 +383,9 @@ def main() -> int:
             str(e.get("band")), "a meal"
         )
         context = (
-            f"Meal: {band}, around {e.get('time')}. Client's diet: {diet}.\n"
+            f"Meal: {band}, around {e.get('time')}.\n{diet}\n"
             f"Client's note: {e.get('note') or '(none)'}"
+            + (f"\nThe client / coach says this plate is: {e['label']}" if e.get("label") else "")
         )
         if dry_run:
             reading_raw = {

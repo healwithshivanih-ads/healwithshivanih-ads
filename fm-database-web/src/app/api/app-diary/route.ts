@@ -3,7 +3,8 @@
  *
  * POST (multipart — the photo rides along on "add"):
  *   action=add     photo, date, time, band, note?   → a new photo entry
- *   action=edit    entry_id, note? / band? / time? / date?
+ *   action=edit    entry_id, note? / name? / band? / time? / date?
+ *                  (name = the client's correction of what the photo is)
  *   action=delete  entry_id
  *   action=done    date                            → "done for today"
  * GET  ?token=…&file=…                             → one of the client's own
@@ -27,6 +28,7 @@ import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { saveChatPhoto, readChatPhoto, MAX_UPLOAD_BYTES } from "@/lib/fmdb/chat-media";
 import {
+  DIARY_NAME_MAX,
   DIARY_NOTE_MAX,
   acceptClientDiaryDate,
   clientDiaryView,
@@ -130,6 +132,10 @@ export async function POST(req: NextRequest) {
     }
     const line: DiaryLine = { op: "edit", diary_id: cfg.id, ts, entry_id: entryId };
     if (form.has("note")) line.note = note;
+    // The client's own correction of what the photo is. The photo is then
+    // re-read with these words (entryNeedsRead), so the marks describe the
+    // real plate, not the misread one.
+    if (form.has("name")) line.name = String(form.get("name") ?? "").trim().slice(0, DIARY_NAME_MAX);
     const band = form.get("band");
     if (band !== null) {
       if (!isDiaryBand(band)) return fail("Unknown part of the day.", 400);
@@ -169,10 +175,14 @@ export async function GET(req: NextRequest) {
     const cfg = readDiaryConfig(lookup.client_id);
     const doc = readClientDoc(lookup.client_id);
     const view = cfg ? clientDiaryView(cfg, loadDiary(lookup.client_id, cfg), diaryToday(doc), { client: doc }) : null;
-    const marks: Record<string, unknown> = {};
-    for (const e of view?.entries ?? []) if (e.marks) marks[e.entry_id] = e.marks;
+    // Per photo: the same words a reload would show (marks, what it looks
+    // like, the one feedback line). Never the reading itself.
+    const entries: Record<string, unknown> = {};
+    for (const e of view?.entries ?? []) {
+      entries[e.entry_id] = { marks: e.marks, looksLike: e.looksLike, yours: e.yours, feedback: e.feedback };
+    }
     return NextResponse.json(
-      { ok: true, marks, tip: view?.tip ?? null },
+      { ok: true, entries, tip: view?.tip ?? null },
       { headers: { "Cache-Control": "private, no-store" } },
     );
   }
