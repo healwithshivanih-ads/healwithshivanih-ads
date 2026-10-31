@@ -111,7 +111,14 @@ Each cycle it probes, and:
 | tunnel not answering 200 | `launchctl kickstart` the service, re-probe, and only email after ~15 min of failed repairs |
 | a coach route answering **200 publicly** | emails immediately — that is the whole dashboard served with no auth |
 | no auth on localhost | warning only; that is the correct state with no tunnel in front |
-| Fly not answering 200 | emails — clients cannot open their forms |
+| Fly not answering 200 | emails after ~15 min — clients cannot open their forms |
+| this Mac off the internet | no reading that cycle: logged, never emailed |
+| tunnel **and** Fly both silent, while another site answers | patchy internet on this Mac, so no reading: logged, not emailed, no restart. Emails "cannot confirm remote access" only after ~30 min of it |
+
+Why the last row: every probe leaves from this Mac, and the tunnel and Fly share
+nothing except its connection. On 2026-10-30 a patchy connection let Google answer
+while both went silent, and that mailed "remote access is down" while the app and
+Fly were fine.
 
 It never takes the tunnel **down** on its own, even on an exposure. Closing that
 hole means removing your own remote access, which is your call, not a cron's —
@@ -121,7 +128,7 @@ so it sends the command instead.
 
 The service lives in `/Library/LaunchDaemons`, so restarting it needs root, and
 the cron runs as you. Without this the watchdog still detects and emails, but
-cannot fix anything — it reports the failure rather than pretending:
+cannot fix anything — the alert email says so, in place of claiming a restart:
 
 ```bash
 sudo visudo -f /etc/sudoers.d/fmcoach-tunnel
