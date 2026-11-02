@@ -170,6 +170,13 @@ def test_widget_meets_a_home_remedy_drug_named_only_in_brackets(cat, widget):
         assert got and {c["severity"] for c in got} == {"caution"}, slug
 
 
+def test_widget_asks_an_unnamed_blood_thinner_about_aspirin(cat, widget):
+    # cl-023: "blood thinner" and nothing more; the tea line names aspirin.
+    who = client(current_medications=["blood thinner"])
+    tea = remedy(cat, "ginger-cinnamon-lemongrass-cold-tea")
+    assert widget.clash_cautions(tea, "home_remedy", who, cat)
+
+
 def test_widget_a_home_remedy_never_says_avoid(cat, widget):
     who = client(active_conditions=["Type 2 diabetes", "GERD"], current_medications=["Omez 20"])
     for h in cat.home_remedies:

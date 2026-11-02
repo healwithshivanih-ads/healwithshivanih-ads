@@ -59,8 +59,9 @@ _BLOCKING_KINDS = {"contraindicated", "avoid_together"}
 # "Blood thinner" names a class and no drug, so it could be any of them and the
 # only safe answer is to ask. cl-023's list says exactly that and the plan carries
 # K2, which opposes warfarin and does nothing to clopidogrel. The word also appears
-# as a catalogue term, where it covers both records.
-_BLOOD_THINNER_RECORDS = {"vitamin-k-antagonists", "anticoagulants-antiplatelets"}
+# as a catalogue term, where it covers every record here. Daily aspirin is one:
+# people call it a blood thinner, and a remedy line naming aspirin must reach them.
+_BLOOD_THINNER_RECORDS = {"vitamin-k-antagonists", "anticoagulants-antiplatelets", "aspirin-chronic"}
 _BLOOD_THINNER_WORD = re.compile(r"\bblood[ -]thinners?\b|\banticoagulants?\b")
 
 _NOT_SWALLOWED = re.compile(
@@ -288,7 +289,9 @@ def medication_hit(
         for med in meds:
             if _BLOOD_THINNER_WORD.search(med):
                 return found(med)
-            if _BLOOD_THINNER_WORD.search(term.lower()) and any(
+            # The label, not the narrative: "warfarin ... opposes the anticoagulant
+            # effect" is about warfarin, and K2 is no question for clopidogrel.
+            if _BLOOD_THINNER_WORD.search(_catalogue_head(term).lower()) and any(
                 d["slug"] in _BLOOD_THINNER_RECORDS for d in match_drugs(med, drugs)
             ):
                 return found(med)

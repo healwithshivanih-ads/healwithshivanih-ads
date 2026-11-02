@@ -319,6 +319,24 @@ def test_vitamin_k_reaches_an_unnamed_blood_thinner_but_not_clopidogrel(drugs):
     assert medication_hit("blood thinners", ["acitrom 2 mg"], drugs, ["blood thinners"])
 
 
+def test_daily_aspirin_is_a_blood_thinner(drugs):
+    # People call it one. An unnamed thinner meets a line naming aspirin, and a
+    # client on Ecosprin meets a line about blood thinners.
+    assert medication_hit("aspirin", ["blood thinner"], drugs, ["aspirin"])
+    assert medication_hit("blood thinners", ["ecosprin 75"], drugs, ["blood thinners"])
+
+
+@pytest.mark.parametrize("med", ["clopilet 75", "ecosprin 75", "xarelto 20"])
+def test_k2_is_a_question_for_warfarin_only(cat, drugs, med):
+    # The K2 line ends "... opposes the anticoagulant effect". That word sits in the
+    # narrative, so it does not make the line about every blood thinner.
+    k2 = next(s for s in cat.supplements if s.slug == "vitaone-d3")
+    term = k2.contraindications.medications[0]
+    assert "warfarin" in term
+    assert medication_hit(term, [med], drugs, [term]) is None
+    assert medication_hit(term, ["acitrom 2 mg"], drugs, [term])
+
+
 def test_a_list_of_one_class_reports_once(cat, drugs):
     slug = next(
         s.slug for s in cat.supplements
