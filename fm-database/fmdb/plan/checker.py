@@ -24,7 +24,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from ..validator import Loaded, _resolve_index
-from .client_fit import check_client_fit
+from .client_fit import _GATED_STATUSES, check_client_fit
 from .exercise_screen import screen_all as _screen_all
 from .models import Client, Plan, HypothesizedDriver
 from .supplement_clash import active_medications, already_spaced, drug_records, medication_hit
@@ -1304,7 +1304,13 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
             ))
 
     # ---------- Supplement protocol ----------
-    _client_meds = active_medications(client) if client else []
+    # A lapsed client's plan stays in published/ forever and is not being taken
+    # (same rule as check_client_fit). A new draft for a returning client is tested.
+    _not_being_taken = (
+        str(getattr(plan.status, "value", plan.status)) not in _GATED_STATUSES
+        and getattr(client, "engagement_status", "") == "lapsed"
+    )
+    _client_meds = active_medications(client) if client and not _not_being_taken else []
     _drugs = drug_records(catalogue) if _client_meds else []
     for item in plan.supplement_protocol:
         # start_week sanity — phased protocols set this; it must land

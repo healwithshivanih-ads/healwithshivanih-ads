@@ -147,6 +147,38 @@ def test_published_plan_never_gets_a_critical(cat):
     assert [f.severity for f in found] == ["WARNING"]
 
 
+def _spacing_slug(cat):
+    return next(
+        s.slug for s in cat.supplements
+        if any(
+            m.medication == "levothyroxine" and m.type.value == "space_by_hours"
+            for m in s.interactions.with_medications
+        )
+    )
+
+
+def test_a_lapsed_clients_old_plan_raises_nothing(cat):
+    # Their plan sits in published/ forever and nobody is taking it.
+    gone = client(
+        engagement_status="lapsed",
+        active_conditions=["GERD / acid reflux"],
+        current_medications=["Thyronorm 50"],
+    )
+    for slug in ("betaine-hcl", _spacing_slug(cat)):
+        found = check_plan(plan(slug, status="published"), gone, cat)
+        assert [
+            f for f in found
+            if f.field in ("contraindications", "interactions.with_medications")
+        ] == []
+
+
+def test_a_returning_lapsed_client_is_still_tested_on_a_new_draft(cat):
+    back = client(engagement_status="lapsed", active_conditions=["GERD / acid reflux"])
+    assert [f.severity for f in clash_findings(check_plan(plan("betaine-hcl"), back, cat))] == [
+        "CRITICAL"
+    ]
+
+
 def test_a_hit_is_a_row_in_the_panel_and_an_answer_clears_it(cat):
     who = client(active_conditions=["GERD / acid reflux"])
     p = plan("betaine-hcl")
