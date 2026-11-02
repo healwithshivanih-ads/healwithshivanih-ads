@@ -54,6 +54,8 @@ _MEMBERS_NEEDED: dict[str, int | None] = {
     "calcium-channel-blockers": 2,
 }
 
+_BLOCKING_KINDS = {"contraindicated", "avoid_together"}
+
 # "Blood thinner" names a class and no drug, so it could be any of them and the
 # only safe answer is to ask. cl-023's list says exactly that and the plan carries
 # K2, which opposes warfarin and does nothing to clopidogrel. The word also appears
@@ -235,6 +237,13 @@ def _term_parts(term: str) -> list[str]:
     return [p.strip() for p in parts if len(p.strip()) >= 3]
 
 
+def prose_terms(line: str) -> list[str]:
+    """A free-text line, then whatever its brackets name. `_term_parts` drops
+    brackets on purpose: a supplement's "(furosemide, torsemide)" only illustrates
+    its class. A home remedy's line often names the drug nowhere else."""
+    return [line, *re.findall(r"\(([^)]*)\)", _catalogue_head(line))]
+
+
 def _forms(part: str) -> list[str]:
     # A plural is not an alias: "statins" must reach "atorvastatin".
     return [part, part[:-1]] if part.endswith("s") else [part]
@@ -296,6 +305,43 @@ def medication_hit(
         if any(d["slug"] == record["slug"] for d in match_drugs(med, drugs)):
             return found(med)
     return None
+
+
+def medication_clashes(supp: Any, meds: list[str], drugs: list[dict]) -> list[dict]:
+    """What one supplement's own entry says about this client's medications, one
+    hit per drug or class. Contraindicated and avoid-together lines are `blocking`
+    and come first, so a drug named on both reads as the stronger line. A hedged
+    line is `soft`, and soft never blocks. `monitor` and `space_by_hours` are told,
+    not gated.
+
+    `unnamed` means the record says "blood thinner" and no drug. check_plan can gate
+    that because the coach has a row to answer it in. A surface with no such row
+    must ask, not refuse.
+    """
+    if not meds:
+        return []
+    with_meds = supp.interactions.with_medications
+    contra = list(supp.contraindications.medications)
+    named = [m.medication for m in with_meds] + contra
+    lines = [(term, "contraindicated", "") for term in contra]
+    lines += [(m.medication, m.type.value, m.reason) for m in with_meds if m.type.value == "avoid_together"]
+    lines += [(m.medication, m.type.value, m.reason) for m in with_meds if m.type.value != "avoid_together"]
+    hits: list[dict] = []
+    seen: set[str] = set()
+    for term, kind, reason in lines:
+        hit = medication_hit(term, meds, drugs, named)
+        if hit is None or hit["group"] in seen:
+            continue
+        seen.add(hit["group"])
+        hits.append({
+            **hit,
+            "kind": kind,
+            "reason": reason or "",
+            "blocking": kind in _BLOCKING_KINDS,
+            "soft": is_hedged(term),
+            "unnamed": _BLOOD_THINNER_WORD.search(hit["med"]) is not None,
+        })
+    return hits
 
 
 def already_spaced(timing: str, hit: dict) -> bool:

@@ -29,20 +29,64 @@ def _doshas_in(text: str) -> list[str]:
     return [d for d in ("vata", "pitta", "kapha") if d in t]
 
 
-def _hits(needles: list[str], haystack_items: list[str]) -> list[str]:
-    """Case-insensitive bidirectional substring match. Returns the client-side
-    items that matched any needle."""
-    out = []
-    lows = [(h, h.lower()) for h in haystack_items if h]
-    for n in needles:
-        nl = (n or "").strip().lower()
-        if not nl:
-            continue
-        for orig, hl in lows:
-            if nl in hl or hl in nl:
-                if orig not in out:
-                    out.append(orig)
-    return out
+def clash_cautions(entry, kind: str, client, cat) -> list[dict]:
+    """The catalogue's contraindications against this client, through the matcher
+    check_plan uses (fmdb/plan/supplement_clash.py), so this widget and the gate
+    give one answer. Only a FIRM hit says avoid; a soft hit is a question."""
+    from fmdb.plan.supplement_clash import (
+        active_medications,
+        condition_clashes,
+        drug_records,
+        medication_clashes,
+        medication_hit,
+        prose_terms,
+    )
+
+    meds = active_medications(client)
+    drugs = drug_records(cat)
+    cautions: list[dict] = []
+
+    if kind != "supplement":  # home_remedy: free text, conditions and drugs mixed
+        contra = list(entry.contraindications or [])
+        for hit in condition_clashes(contra, client):
+            cautions.append({"severity": "caution", "kind": "contraindication",
+                             "detail": f"Listed contraindication may apply: {hit['contraindication']} (client's record: {hit['record']})"})
+        seen: set[str] = set()
+        named = [term for line in contra for term in prose_terms(line)]
+        for line in contra:
+            for term in prose_terms(line):
+                hit = medication_hit(term, meds, drugs, named)
+                if hit and hit["group"] not in seen:
+                    seen.add(hit["group"])
+                    cautions.append({"severity": "caution", "kind": "contraindication",
+                                     "detail": f"Listed contraindication may apply: {line} (client's medication: {hit['med']})"})
+        return cautions
+
+    for hit in condition_clashes(entry.contraindications.conditions, client):
+        cautions.append({
+            "severity": "caution" if hit["soft"] else "avoid",
+            "kind": "contraindication",
+            "detail": (
+                f"Check whether this applies: {hit['contraindication']} (client's record: {hit['record']})"
+                if hit["soft"]
+                else f"Contraindicated with the client's condition: {hit['record']} ({hit['contraindication']})"
+            ),
+        })
+    for hit in medication_clashes(entry, meds, drugs):
+        contraindicated = hit["kind"] == "contraindicated"
+        avoid = hit["blocking"] and not hit["soft"] and not hit["unnamed"]
+        lead = "Contraindicated with" if avoid else "Check whether this applies to"
+        cautions.append({
+            "severity": "avoid" if avoid else "caution",
+            "kind": "contraindication" if contraindicated else "med_interaction",
+            "detail": (
+                f"{lead} the client's medication: {hit['med']} ({hit['term']})"
+                + (" Find out which drug it is." if hit["unnamed"] else "")
+                if contraindicated
+                else f"Interacts with {hit['med']} ({hit['term']}): {hit['reason'] or hit['kind']}"
+            ),
+        })
+    return cautions
 
 
 def main() -> int:
@@ -102,27 +146,10 @@ def main() -> int:
         json.dump({"ok": False, "error": f"client load failed: {e}"}, sys.stdout)
         return 1
 
-    conditions = list(client.active_conditions or []) + list(client.medical_history or [])
-    meds = list(client.current_medications or [])
-
-    cautions: list[dict] = []   # {severity, kind, detail}
+    cautions: list[dict] = clash_cautions(entry, kind, client, cat)   # {severity, kind, detail}
     supports: list[str] = []
 
-    # ---- contraindications + interactions ----
     if kind == "supplement":
-        cond_hits = _hits(list(entry.contraindications.conditions or []), conditions)
-        for c in cond_hits:
-            cautions.append({"severity": "avoid", "kind": "contraindication",
-                             "detail": f"Contraindicated with the client's condition: {c}"})
-        med_hits = _hits(list(entry.contraindications.medications or []), meds)
-        for m in med_hits:
-            cautions.append({"severity": "avoid", "kind": "contraindication",
-                             "detail": f"Contraindicated with the client's medication: {m}"})
-        for mi in (entry.interactions.with_medications or []):
-            if _hits([mi.medication], meds):
-                sev = "avoid" if mi.type.value == "avoid_together" else "caution"
-                cautions.append({"severity": sev, "kind": "med_interaction",
-                                 "detail": f"Interacts with {mi.medication}: {mi.reason or mi.type.value}"})
         bal = [d.value for d in entry.balances_dosha]
         agg = [d.value for d in entry.aggravates_dosha]
         evidence_tier = entry.evidence_tier.value
@@ -130,15 +157,10 @@ def main() -> int:
         virya = getattr(entry, "virya", None)
         virya = virya.value if virya else ""
     else:  # home_remedy — contraindications are free-text
-        contra = list(entry.contraindications or [])
-        ch = _hits(contra, conditions + meds)
-        for c in ch:
-            cautions.append({"severity": "caution", "kind": "contraindication",
-                             "detail": f"Listed contraindication may apply (matches client's {c})"})
         bal = [d.value for d in entry.balances_dosha]
         agg = [d.value for d in entry.aggravates_dosha]
         evidence_tier = entry.evidence_tier.value
-        contraindication_list = contra
+        contraindication_list = list(entry.contraindications or [])
         virya = ""
 
     # ---- dosha match (vikruti + prakruti) ----

@@ -361,12 +361,9 @@ def test_concepts_are_well_formed():
 
 def test_every_concept_is_used_by_the_catalogue(cat):
     concepts = load_concepts()
-    used = {
-        c["id"]
-        for s in cat.supplements
-        for text in s.contraindications.conditions
-        for c in concepts_in_contraindication(text, concepts)
-    }
+    texts = [t for s in cat.supplements for t in s.contraindications.conditions]
+    texts += [t for h in cat.home_remedies for t in h.contraindications]
+    used = {c["id"] for text in texts for c in concepts_in_contraindication(text, concepts)}
     assert {c["id"] for c in concepts} - used == set()
 
 
