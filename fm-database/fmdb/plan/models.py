@@ -1312,10 +1312,6 @@ class PracticeItem(BaseModel):
     # marker values, no drug names, no promises, no diagnosis — what it is for,
     # in a sentence or two they would recognise as being about them.
     client_note: str = ""
-    # She already has it, so show no order button. Without this the matcher links
-    # whatever covers the slug: Shweta's Becosules resolved to a different B-vitamin
-    # product she should not buy.
-    no_buy_link: bool = False
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
     # Optional link to a catalogue somatic_practice. When set, the client app
     # resolves the practice BY SLUG and renders its real timed steps, instead of
@@ -1548,6 +1544,10 @@ class SupplementItem(BaseModel):
     # marker values, no drug names, no promises, no diagnosis — what it is for,
     # in a sentence or two they would recognise as being about them.
     client_note: str = ""
+    # She already has it, so show no order button. Without this the matcher links
+    # whatever covers the slug: Shweta's Becosules resolved to a different B-vitamin
+    # product she should not buy.
+    no_buy_link: bool = False
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
     # Per-supplement display + buy-link overrides (2026-05-19). When the
     # supplement_slug points at a brand (vitaone-omega-3) but the actual

@@ -139,6 +139,11 @@ def test_screens_read_the_real_product_not_the_plan_line():
     }
 
 
+def test_a_plan_can_mark_a_product_she_already_has():
+    """The field has to live on SupplementItem: extra=forbid rejects it anywhere else."""
+    assert SupplementItem(supplement_slug="b-complex", no_buy_link=True).no_buy_link
+
+
 def test_term_matching_does_not_catch_lookalikes():
     screens = load_screens()
     panel = client(
