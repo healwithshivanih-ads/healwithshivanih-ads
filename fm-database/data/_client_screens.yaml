@@ -1,0 +1,106 @@
+# ============================================================================
+# Client screens — known clashes between what a plan gives and who is taking it.
+#
+# Read by fmdb/plan/client_fit.py. Underscore-prefixed, so `fmdb validate` skips
+# it (same footing as _food_cautions.yaml).
+#
+# WHY THIS EXISTS
+# Supplement `contraindications.conditions` are matched to a client by EXACT
+# string, and both sides are free text ("GERD / acid reflux" against "Active
+# peptic or gastric ulcer, gastritis or erosive oesophagitis…"). They do not meet,
+# so those checks fire almost never. These screens match on terms instead, and
+# they read the real INGREDIENTS of the product the client is sent to, because a
+# plan line saying "protein powder" tells you nothing about the enzyme blend
+# inside it.
+#
+# RULES
+# - A screen ASKS. It does not ban. A hit needs an answer in plan.client_fit: keep
+#   with a reason, change it, or drop it. Ragi for a thyroid client is the model.
+# - `basis` says why the screen exists and how strong that is. Thin is fine as
+#   long as it says so; a screen costs one sentence from the coach.
+# - Match ingredients by what the label says, including brand names (DigeZyme).
+# ============================================================================
+
+_upper_gi_terms: &upper_gi_terms
+  - reflux
+  - gerd
+  - gord
+  - acidity
+  - heartburn
+  - gastritis
+  - ulcer
+  - oesophagitis
+  - esophagitis
+  - omez
+  - omeprazole
+  - pantoprazole
+  - pantop
+  - pan
+  - rabeprazole
+  - rablet
+  - esomeprazole
+  - nexpro
+
+_upper_gi_fields: &upper_gi_fields
+  - active_conditions
+  - medical_history
+  - current_medications
+  - goals
+  - digestion_notes
+
+_allergy_fields: &allergy_fields
+  - known_allergies
+  - foods_to_avoid
+
+screens:
+  - id: enzymes-reflux-or-irritated-stomach
+    status: active
+    supplements: [digestive-enzymes]
+    ingredients: [digezyme, protease, pancreatin, bromelain, papain, digestive enzyme]
+    client_fields: *upper_gi_fields
+    client_terms: *upper_gi_terms
+    reason: Digestive enzymes can aggravate reflux or an inflamed stomach lining.
+    ask: >-
+      Is there evidence of poor digestion itself (fatty or undigested stools, low
+      stool elastase), not only bloating? Has the upper-GI cause been looked at?
+    basis: >-
+      Clinical caution, not a trial finding. Shweta (cl-906): one capsule at 900 PC
+      protease with food on 1 Nov 2026 brought severe burning and reflux and two
+      doses of Omez overnight.
+
+  - id: mould-fermented-enzymes-with-fungal-allergy
+    status: active
+    supplements: [digestive-enzymes]
+    ingredients: [digezyme, aspergillus, fungal enzyme, fungal protease, koji]
+    client_fields: *allergy_fields
+    client_terms: [yeast, mushroom, mushrooms, mould, mold, fungal, fungus, aspergillus]
+    reason: >-
+      These enzymes are grown from moulds such as Aspergillus and Rhizopus, and this
+      client reports a yeast, mushroom or mould allergy.
+    ask: >-
+      Ask what her reaction to yeast or mushrooms looks like, and treat any reaction
+      to the product as a possible allergy.
+    basis: >-
+      Aspergillus alpha-amylase is a documented allergen, heat-stable, with a reaction
+      reported from eating it in bread. A link to mushroom or yeast allergy specifically
+      is NOT established; the shared fungal source is reason to ask, not proof.
+
+  - id: yeast-probiotic-with-yeast-allergy
+    status: active
+    supplements: [saccharomyces-boulardii]
+    ingredients: [saccharomyces, boulardii, nutritional yeast, "brewer's yeast", yeast extract]
+    client_fields: *allergy_fields
+    client_terms: [yeast]
+    reason: This product is, or contains, a yeast and the client reports a yeast allergy.
+    ask: Use a bacterial-only product, and read the label for yeast.
+    basis: Direct conflict with a recorded allergy.
+
+  - id: acid-supplement-with-reflux-or-ppi
+    status: active
+    supplements: [betaine-hcl]
+    ingredients: [betaine hcl, betaine hydrochloride, pepsin]
+    client_fields: *upper_gi_fields
+    client_terms: *upper_gi_terms
+    reason: Supplemental acid works directly against a PPI and can worsen an irritated lining.
+    ask: Do not combine with a PPI without her doctor.
+    basis: Already a catalogue contraindication on betaine-hcl; repeated here so it can fire.

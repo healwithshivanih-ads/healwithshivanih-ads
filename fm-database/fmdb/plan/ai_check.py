@@ -332,7 +332,6 @@ is to surface issues a deterministic checker CANNOT catch.
 A separate deterministic checker has already run and handles all of the
 following — DO NOT re-flag any of these:
 - Missing or unknown slug references
-- Supplement contraindications against client's active_conditions / medications
 - Supplements tagged `evidence_tier: confirm_with_clinician` without acknowledgement
 - Form/dose-unit mismatches against the supplement entity
 - Fasting / intermittent-fasting language for a menstruating client
@@ -348,6 +347,11 @@ You should focus on SEVEN categories of concern:
    - Does the plan_period_weeks make sense for the protocol's intensity?
 
 2. CLIENT_FIT — does anything in client context raise a flag?
+   - An attached protocol is a template, not evidence. For each item ask whether
+     THIS client's record supports it and whether anything on her record makes it
+     risky, including when the protocol lists the item.
+   - Contraindications against her conditions, medications and allergies. The
+     deterministic check matches these on exact wording, so read them yourself.
    - Conditions in `medical_history` that should temper a suggestion
      (e.g., Hashimoto's + adaptogens like ashwagandha; PCOS + high-dose
      iodine; history of kidney stones + high-dose vitamin C).

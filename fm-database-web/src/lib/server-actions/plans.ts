@@ -117,7 +117,17 @@ export interface PlanCheckResult {
   slug?: string;
   findings?: PlanCheckFinding[];
   counts?: { CRITICAL: number; WARNING: number; INFO: number };
+  /** What has to be tested against this client before the plan can leave
+   *  draft. Same list the gate in fmdb/plan/client_fit.py enforces. */
+  fit_required?: FitRequirement[];
   error?: string | null;
+}
+
+export interface FitRequirement {
+  item: string;
+  kind: "protocol" | "supplement";
+  label: string;
+  flags: { id: string; reason: string; ask: string; matched: string[] }[];
 }
 
 /**

@@ -73,6 +73,26 @@ A continuation is not a re-issue and not a restart. For every item, one of:
 Prefer a smaller, sharper change. A returning client has already absorbed one
 protocol's worth of load; stacking another on top is how a plan becomes unfollowable.
 
+### 2b. Test every protocol item against THIS client
+
+A protocol is a template. "The protocol lists it" is not a reason to give it to her.
+On 2026-11-01 Shweta (cl-906) took a digestive enzyme because the 5R Replace step lists
+one: no record showed she lacked enzymes, she has daily reflux on Omez, she is allergic
+to mushrooms and yeast and the capsule is mould-fermented. Her reaction was the first
+test that item had.
+
+For the protocol as a whole and for every supplement, write a `client_fit` row:
+
+- `client_evidence` — what in HER record says she needs it (a marker, a symptom pattern,
+  a depletion). No evidence means leave it out.
+- `risk_check` — what in her record could make it go wrong (conditions, medications,
+  allergies, what she has reacted to before), and what you did about it.
+- `decision` — keep, change or drop. Look up the product's real ingredients in
+  `supplement_links.yaml`; the plan line does not tell you what is in the capsule.
+
+`plan-check` refuses a plan until this is done, and `data/_client_screens.yaml` raises
+known clashes from the product's ingredients. Rows do not carry to a successor.
+
 ### 3. Build the successor — never hand-write the YAML
 
 The successor must be a **clone of the predecessor plus a patch**, so nothing is
@@ -112,7 +132,8 @@ findings here rather than discovering them at activation. WARNINGs are advisory 
 each one deserves a sentence in `notes_for_coach` saying why it stands, or the next
 reviewer will undo your reasoning.
 
-The gate catches, among others: unknown catalogue slugs (alias-aware); a supplement
+The gate catches, among others: a protocol or supplement not tested against this client
+(`client_fit`); unknown catalogue slugs (alias-aware); a supplement
 contraindicated against an active condition or current medication; combo-product
 nutrient overlap (a standalone alongside a blend that already contains it); a
 supplement with **no order link** in `supplement_links.yaml` and no pinned `buy_link`,

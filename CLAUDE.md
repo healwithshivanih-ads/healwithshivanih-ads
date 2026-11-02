@@ -63,6 +63,17 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.86 — a protocol is a template, so every plan is tested against the client.** Shweta (cl-906) took a digestive enzyme because the 5R Replace step lists one. Nothing in her record showed she lacked enzymes, she has daily reflux on Omez, and she is allergic to mushrooms and yeast while the capsule is mould-fermented. Severe burning and reflux was the first test that item had. Nothing had asked: the template picker, `generate-draft` and the chat path all took the protocol's word, and no product was ever chosen for that line (it resolved to the default link).
+
+**Key invariants (v0.86):**
+- **`Plan.client_fit` + `fmdb/plan/client_fit.py`.** A plan with a protocol attached needs a row for the protocol and for EVERY supplement: `client_evidence` (what in HER record says she needs it) and `risk_check` (what could go wrong for her, and what was done). Missing, or under 20 characters, is CRITICAL in draft / ready, so `submit_plan` refuses. It lives in `check_plan` because that is the one place every route passes through. The gate cannot judge the answer; it makes the question impossible to skip.
+- **`data/_client_screens.yaml` reads the REAL product.** It matches the `ingredients` of the product the client is sent to, because a plan line saying "protein powder" hides the DigeZyme inside it. A hit applies to any plan, protocol or not. Published plans are not re-gated: a hit is a WARNING.
+- **Rows never carry to a successor** (`client_fit: []` in `generateFollowUpPlan`). A new phase is tested against who she is by then.
+- **Plan editor must not save `client_fit`.** `ClientFitPanel` owns those rows; the editor holds the plan it loaded with and would wipe newer answers, hence `withoutClientFit`.
+- **Why the old checks missed it:** `contraindications.conditions` is matched by exact string against free text, so it almost never fires, and `ai_check` was told not to re-flag contraindications because "the deterministic checker handles them". The AI prompt no longer says that. Fixing the matcher itself is separate work.
+
+---
+
 **v0.90 — food diary, phase 2: AI reads every photo; clients see plate balance (2026-10-23).** As built: `docs/FOOD_DIARY_PLAN.md` → "Phase 2 as built".
 
 **Key invariants (v0.90):**

@@ -20,6 +20,12 @@ timing_options:
 - with_dinner
 take_with_food: required
 notes_for_coach: |-
+  Not a default step. Bloating alone is not a reason: look for signs of poor digestion
+  itself first. With reflux, gastritis or a PPI, find the upper-GI cause before adding
+  enzymes (one client on Omez with daily reflux had severe burning and reflux from a
+  single 150 mg capsule with food, Nov 2026). Most capsule enzymes, DigeZyme included,
+  are mould-fermented: ask about mould, yeast and mushroom allergy.
+
   Prioritize enzyme support early in gut healing protocols before introducing complex
   herbals or probiotics. Fecal elastase-1 on GI map indicates deficiency. Recommend
   broad-spectrum formulas containing lipase, protease, and amylase taken with main
@@ -118,6 +124,7 @@ contraindications:
     with enzymes
   - Pork allergy or religious/dietary avoidance — many pancreatin products are porcine; check
     the source
+  - Active gastritis or ulcer, or unexplained upper-abdominal pain — have it looked at first
   medications: []
   life_stages: []
 interactions:

@@ -352,6 +352,14 @@ function IntakeEvidenceChips({
   );
 }
 
+/** The fit answers are saved by ClientFitPanel. This editor holds the plan it
+ *  loaded with, so saving those rows from here would wipe newer answers. */
+function withoutClientFit(plan: Plan): Plan {
+  const rest = { ...plan };
+  delete rest.client_fit;
+  return rest;
+}
+
 function clone<T>(x: T): T {
   return JSON.parse(JSON.stringify(x ?? null));
 }
@@ -1099,7 +1107,7 @@ export function PlanEditor(props: PlanEditorProps) {
     setSaveResult(null);
     startTransition(async () => {
       const [planRes, srcRes] = await Promise.all([
-        updatePlan(plan.slug, plan),
+        updatePlan(plan.slug, withoutClientFit(plan)),
         saveSupplementSources(sources),
       ]);
       if (planRes.ok && srcRes.ok) {

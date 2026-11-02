@@ -24,6 +24,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from ..validator import Loaded, _resolve_index
+from .client_fit import check_client_fit
 from .exercise_screen import screen_all as _screen_all
 from .models import Client, Plan, HypothesizedDriver
 
@@ -1430,6 +1431,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Can the client actually buy it? ----------
     _check_orderable(plan, findings)
+
+    # ---------- Protocols are templates: tested against THIS client? ----------
+    check_client_fit(plan, client, findings, Finding, _load_supplement_links(), _resolve_product)
 
     # ---------- Same remedy assigned by slug AND written as a practice ----------
     _check_remedy_practice_duplication(plan, catalogue, findings)
