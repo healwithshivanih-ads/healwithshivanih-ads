@@ -1,0 +1,23 @@
+slug: vitamin-k-antagonists
+drug_name: Vitamin K antagonists
+drug_aliases:
+  - warfarin
+  - acenocoumarol
+  - nicoumalone
+  - acitrom
+  - coumadin
+  - sintrom
+drug_class: other
+summary: |
+  Kept apart from other blood thinners because vitamin K opposes these drugs
+  specifically. K2 in a D3 product shifts INR on warfarin or acenocoumarol and
+  does not on apixaban or clopidogrel.
+coach_notes: |
+  Any change in vitamin K intake on these drugs is a conversation with the
+  prescriber, who manages INR. Never advise changing the drug.
+sources: []
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: 2026-11-02
+updated_by: claude

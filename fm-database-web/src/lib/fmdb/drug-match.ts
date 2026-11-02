@@ -94,3 +94,18 @@ export function matchDrug<T extends DrugAliasRecord>(
   }
   return best ? { drug: best.drug, alias: best.alias } : null;
 }
+
+/**
+ * Every catalogue record a medication string names. `matchDrug` keeps one, which
+ * silently drops the rest of "Shell cal 500, omez 20, restil 0.25" or "Tazloc AM
+ * (telmisartan + amlodipine)".
+ */
+export function matchDrugs<T extends DrugAliasRecord>(
+  medText: string,
+  drugs: readonly T[],
+  opts: { minLen?: number } = {},
+): T[] {
+  const text = (medText ?? "").trim().toLowerCase();
+  if (text.length < (opts.minLen ?? MIN_MED_TEXT_LEN)) return [];
+  return drugs.filter((d) => drugAliases(d).some((a) => aliasMatches(a, text)));
+}

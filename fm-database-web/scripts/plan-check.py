@@ -106,7 +106,9 @@ def main() -> int:
     findings = check_plan(plan, client, cat)
     from fmdb.plan.checker import _load_supplement_links, _resolve_product
     from fmdb.plan.client_fit import fit_requirements
-    fit_required = fit_requirements(plan, client, _load_supplement_links(), _resolve_product)
+    fit_required = fit_requirements(
+        plan, client, _load_supplement_links(), _resolve_product, catalogue=cat
+    )
     counts = {"CRITICAL": 0, "WARNING": 0, "INFO": 0}
     out = []
     for f in findings:
