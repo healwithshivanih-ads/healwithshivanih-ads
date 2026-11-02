@@ -319,6 +319,24 @@ def test_vitamin_k_reaches_an_unnamed_blood_thinner_but_not_clopidogrel(drugs):
     assert medication_hit("blood thinners", ["acitrom 2 mg"], drugs, ["blood thinners"])
 
 
+def test_daily_aspirin_is_a_blood_thinner(drugs):
+    # People call it one. An unnamed thinner meets a line naming aspirin, and a
+    # client on Ecosprin meets a line about blood thinners.
+    assert medication_hit("aspirin", ["blood thinner"], drugs, ["aspirin"])
+    assert medication_hit("blood thinners", ["ecosprin 75"], drugs, ["blood thinners"])
+
+
+@pytest.mark.parametrize("med", ["clopilet 75", "ecosprin 75", "xarelto 20"])
+def test_k2_is_a_question_for_warfarin_only(cat, drugs, med):
+    # The K2 line ends "... opposes the anticoagulant effect". That word sits in the
+    # narrative, so it does not make the line about every blood thinner.
+    k2 = next(s for s in cat.supplements if s.slug == "vitaone-d3")
+    term = k2.contraindications.medications[0]
+    assert "warfarin" in term
+    assert medication_hit(term, [med], drugs, [term]) is None
+    assert medication_hit(term, ["acitrom 2 mg"], drugs, [term])
+
+
 def test_a_list_of_one_class_reports_once(cat, drugs):
     slug = next(
         s.slug for s in cat.supplements
@@ -361,12 +379,9 @@ def test_concepts_are_well_formed():
 
 def test_every_concept_is_used_by_the_catalogue(cat):
     concepts = load_concepts()
-    used = {
-        c["id"]
-        for s in cat.supplements
-        for text in s.contraindications.conditions
-        for c in concepts_in_contraindication(text, concepts)
-    }
+    texts = [t for s in cat.supplements for t in s.contraindications.conditions]
+    texts += [t for h in cat.home_remedies for t in h.contraindications]
+    used = {c["id"] for text in texts for c in concepts_in_contraindication(text, concepts)}
     assert {c["id"] for c in concepts} - used == set()
 
 

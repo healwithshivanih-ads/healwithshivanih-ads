@@ -132,8 +132,17 @@ concepts:
   # --- metabolic ------------------------------------------------------------
   - id: diabetes
     contra: [diabetes]
+    contra_not: [gestational diabetes, type 1 diabetes]
     client: [diabetes, diabetic, t2dm, t1dm]
     client_not: [pre diabetes, prediabetes]
+  - id: gestational-diabetes
+    contra: [gestational diabetes]
+  - id: type-1-diabetes
+    contra: [type 1 diabetes]
+    client: [type 1 diabetes, t1dm]
+  - id: obesity
+    contra: [obesity]
+    client: [obesity, obese]
   - id: hypoglycemia
     contra: [hypoglycemia]
     client: [hypoglycemia, insulinoma]
@@ -194,7 +203,7 @@ concepts:
              estrogen positive, er positive, breast cancer, endometrial cancer]
     client: [breast cancer, breast carcinoma, endometrial cancer, ovarian cancer, uterine cancer]
   - id: hormone-sensitive-benign
-    contra: [hormone sensitive conditions]
+    contra: [hormone sensitive conditions, estrogen sensitive condition, estrogen sensitive conditions]
     client: [endometriosis, fibroid, fibroids, adenomyosis]
   - id: prostate-cancer
     contra: [prostate cancer]

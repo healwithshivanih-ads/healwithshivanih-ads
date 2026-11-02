@@ -42,9 +42,8 @@ from .supplement_clash import (
     condition_clashes,
     drug_records,
     has_term,
-    is_hedged,
     load_concepts,
-    medication_hit,
+    medication_clashes,
 )
 
 SCREENS_PATH = Path(__file__).resolve().parents[2] / "data" / "_client_screens.yaml"
@@ -118,29 +117,16 @@ def catalogue_flags(supp, client: Client | None, catalogue) -> list[dict]:
         for hit in condition_clashes(supp.contraindications.conditions, client, load_concepts())
     ]
 
-    meds = active_medications(client)
-    if not meds:
-        return flags
-    drugs = drug_records(catalogue)
-    terms = [m.medication for m in supp.interactions.with_medications]
-    named = terms + list(supp.contraindications.medications)
-    blocking = list(supp.contraindications.medications) + [
-        m.medication for m in supp.interactions.with_medications
-        if m.type.value == "avoid_together"
-    ]
-    seen: set[str] = set()
-    for term in blocking:
-        hit = medication_hit(term, meds, drugs, named)
-        if hit is None or hit["group"] in seen:
-            continue
-        seen.add(hit["group"])
+    for hit in medication_clashes(supp, active_medications(client), drug_records(catalogue)):
+        if not hit["blocking"]:
+            continue  # spacing and monitoring are check_plan's plain WARNINGs
         flags.append({
             "id": f"med-{hit['group']}",
             "field": "contraindications",
-            "reason": f"The catalogue says do not combine with: {term}",
+            "reason": f"The catalogue says do not combine with: {hit['term']}",
             "ask": "Has their prescriber agreed to this combination?",
             "matched": [hit["med"]],
-            "soft": is_hedged(term),
+            "soft": hit["soft"],
         })
     return flags
 
