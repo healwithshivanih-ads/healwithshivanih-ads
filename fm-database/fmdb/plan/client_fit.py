@@ -20,7 +20,8 @@ Two parts, both reported through check_plan so every authoring route passes them
      record. A hit raises its question on ANY plan, protocol or not.
 
 Plans already published are not re-gated: a hit there is a WARNING, because it
-describes something the client may be taking today.
+describes something the client may be taking today. A lapsed client's plan stays
+in published/ forever and she is not taking it, so it raises nothing.
 """
 
 from __future__ import annotations
@@ -131,6 +132,8 @@ def fit_requirements(
 
 def check_client_fit(plan, client, findings, finding_cls, links, resolve_product) -> None:
     gated = str(getattr(plan.status, "value", plan.status)) in _GATED_STATUSES
+    if not gated and getattr(client, "engagement_status", "") == "lapsed":
+        return
     rows = {row.item: row for row in plan.client_fit}
     supplement_slugs = {s.supplement_slug for s in plan.supplement_protocol}
 

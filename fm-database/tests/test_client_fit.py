@@ -114,6 +114,17 @@ def test_live_plans_warn_and_are_not_re_gated(monkeypatch):
     assert all(f.field == "screen" for f in got)
 
 
+def test_a_lapsed_clients_old_plan_raises_nothing(monkeypatch):
+    gone = client(engagement_status="lapsed")
+    assert findings(plan(status="published"), gone, monkeypatch) == []
+
+
+def test_lapsing_does_not_excuse_a_new_draft(monkeypatch):
+    """A win-back plan is a new plan and is tested like any other."""
+    gone = client(engagement_status="lapsed")
+    assert findings(plan(), gone, monkeypatch)
+
+
 def test_screens_read_the_real_product_not_the_plan_line():
     """The protein powder says nothing about enzymes on the plan."""
     need = fit_requirements(
