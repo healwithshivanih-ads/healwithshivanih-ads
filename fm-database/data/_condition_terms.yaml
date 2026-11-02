@@ -1,0 +1,318 @@
+# ============================================================================
+# Condition terms — the shared vocabulary between a supplement's contraindication
+# text and a client's record.
+#
+# Read by fmdb/plan/supplement_clash.py. Underscore-prefixed, so `fmdb validate`
+# skips it (same footing as _client_screens.yaml and _food_cautions.yaml).
+#
+# WHY THIS EXISTS
+# `contraindications.conditions` and `active_conditions` are both free text and
+# used to be compared by exact string. "Active peptic or gastric ulcer, gastritis
+# or erosive oesophagitis — supplemental acid can worsen mucosal injury" can never
+# equal "GERD / acid reflux", so the check fired zero times across 370 supplements.
+# Neither side can be a term list of its own: the two sides describe the same
+# illness in different words. A concept here is what joins them.
+#
+# HOW A CONCEPT MATCHES
+# - `contra`  terms looked for in the HEAD of the catalogue string, the part before
+#             " — ". The tail is explanation and names other illnesses in passing
+#             ("(used therapeutically in hyperthyroidism)").
+# - `client`  terms looked for on the client's record. Defaults to `contra`.
+# - `contra_not` / `client_not`  a hit here cancels the concept.
+# - `fields: allergies`  read known_allergies instead of the condition lists.
+#
+# RULES
+# - Terms are FOLDED before matching: lowercase, hyphen/underscore/slash/apostrophe
+#   to a space, -aem- to -em-, oesoph/oestr to esoph/estr, diarrhoea to diarrhea,
+#   coeliac to celiac. Write terms folded ("hemochromatosis", "esophagitis").
+# - Letter boundaries, so "ulcer" does not hit "ulcerative", and a digit may end a
+#   term. List plurals separately.
+# - A concept joins only what is truly the same clinical question. "Kidney stones"
+#   is not "kidney disease"; bajra and ragi taught this file's sibling that lesson.
+# - No dairy concept: read milk through fmdb/plan/dairy.py, never the raw fields.
+# - A string with no concept stays silent. Silence is the old behaviour, a false
+#   alarm is a new cost. What stays silent on purpose: surgery timing, pending
+#   blood tests, dose and route notes, alcohol and smoking (no client field).
+# ============================================================================
+
+concepts:
+  # --- kidney ---------------------------------------------------------------
+  - id: kidney-disease
+    contra: [chronic kidney disease, kidney disease, ckd, renal impairment, renal insufficiency,
+             renal failure, kidney impairment, impaired kidney function, impaired renal function,
+             reduced egfr, kidney failure, nephritis, dialysis]
+    client: [chronic kidney disease, kidney disease, ckd, renal impairment, renal insufficiency,
+             renal failure, kidney failure, nephropathy, dialysis]
+  - id: kidney-stones
+    contra: [kidney stones, kidney stone, hyperoxaluria]
+    client: [kidney stones, kidney stone, renal stone, renal stones, renal calculi, nephrolithiasis]
+
+  # --- liver and bile -------------------------------------------------------
+  - id: liver-disease
+    contra: [liver disease, liver disorders, hepatitis, cirrhosis, raised liver enzymes,
+             elevated liver enzymes]
+    contra_not: [cholestatic]
+    client: [liver disease, fatty liver, nafld, masld, nash, cirrhosis, hepatitis,
+             raised liver enzymes, elevated liver enzymes]
+  - id: drug-induced-liver-injury
+    contra: [liver injury]
+    client: [liver injury, dili]
+  - id: gallstones-biliary
+    contra: [gallstones, gallstone, bile duct obstruction, bile ducts, biliary obstruction,
+             biliary tract, cholecystitis, cholestatic]
+    client: [gallstones, gallstone, cholelithiasis, cholecystitis, biliary obstruction]
+
+  # --- upper gut ------------------------------------------------------------
+  - id: reflux
+    contra: [gerd, reflux, hyperacidity, erosive esophagitis, hiatus hernia]
+    client: [gerd, gord, reflux, acidity, hyperacidity, heartburn, esophagitis, hiatus hernia]
+  - id: peptic-ulcer-gastritis
+    contra: [peptic ulcer, gastric ulcer, duodenal ulcer, gastritis]
+    client: [peptic ulcer, gastric ulcer, duodenal ulcer, ulcer, gastritis]
+  - id: h-pylori
+    contra: [h. pylori, h pylori]
+    client: [h. pylori, h pylori, helicobacter]
+  - id: gastroparesis
+    contra: [gastroparesis, delayed gastric emptying]
+  - id: swallowing-difficulty
+    contra: [swallowing difficulty, difficulty swallowing, esophageal stricture, esophageal narrowing,
+             dysphagia]
+    client: [swallowing difficulty, difficulty swallowing, dysphagia, esophageal stricture]
+
+  # --- lower gut ------------------------------------------------------------
+  - id: inflammatory-bowel-disease
+    contra: [inflammatory bowel disease, ibd, crohn, crohns, ulcerative colitis]
+  - id: ibs-sibo
+    contra: [ibs, sibo, irritable bowel]
+    contra_not: [ibs d]
+    client: [ibs, sibo, irritable bowel]
+  - id: diarrhea
+    contra: [chronic diarrhea, diarrhea, ibs d, bile acid diarrhea]
+    client: [chronic diarrhea, ibs d, bile acid diarrhea]
+  - id: chronic-constipation
+    contra: [chronic constipation]
+    client: [constipation]
+  - id: bowel-obstruction
+    contra: [bowel obstruction, intestinal obstruction, ileus]
+  - id: pancreatitis
+    contra: [pancreatitis]
+  - id: celiac
+    contra: [celiac disease, gluten sensitivity]
+    client: [celiac, gluten sensitivity]
+
+  # --- heart and circulation ------------------------------------------------
+  - id: hypertension
+    contra: [hypertension, high blood pressure]
+    client: [hypertension, hypertensive, high blood pressure]
+  - id: low-blood-pressure
+    contra: [low blood pressure, hypotension]
+  - id: heart-failure
+    contra: [heart failure]
+  - id: heart-attack
+    contra: [heart attack, myocardial infarction]
+  - id: arrhythmia
+    contra: [atrial fibrillation, arrhythmia, tachycardia, palpitations]
+    client: [atrial fibrillation, afib, arrhythmia, tachycardia, palpitations]
+  - id: heart-disease
+    contra: [heart disease, cardiovascular disease]
+    client: [heart disease, coronary artery disease, ischemic heart disease, angina]
+  - id: bleeding-disorder
+    contra: [bleeding disorder, bleeding disorders, coagulation disorders, hemorrhagic conditions,
+             active bleeding]
+    client: [bleeding disorder, hemophilia, von willebrand, thrombocytopenia]
+  - id: hemorrhagic-stroke
+    contra: [hemorrhagic stroke]
+  - id: venous-thromboembolism
+    contra: [venous thromboembolism]
+    client: [venous thromboembolism, deep vein thrombosis, dvt, pulmonary embolism]
+  - id: raised-lipids
+    contra: [dyslipidemia, raised ldl]
+    client: [dyslipidemia, hyperlipidemia, raised ldl, elevated ldl, high cholesterol]
+
+  # --- metabolic ------------------------------------------------------------
+  - id: diabetes
+    contra: [diabetes]
+    client: [diabetes, diabetic, t2dm, t1dm]
+    client_not: [pre diabetes, prediabetes]
+  - id: hypoglycemia
+    contra: [hypoglycemia]
+    client: [hypoglycemia, insulinoma]
+  - id: gout-urate
+    contra: [gout, hyperuricemia]
+    client: [gout, hyperuricemia, high uric acid, elevated uric acid]
+  - id: elevated-homocysteine
+    contra: [elevated homocysteine]
+    client: [elevated homocysteine, hyperhomocysteinemia]
+
+  # --- thyroid, adrenal, pituitary ------------------------------------------
+  - id: hypothyroidism
+    contra: [hypothyroidism]
+    client: [hypothyroidism, hypothyroid, underactive thyroid, hashimoto]
+  - id: hashimoto
+    contra: [hashimoto, autoimmune thyroiditis]
+  - id: hyperthyroidism
+    contra: [hyperthyroidism, graves, toxic nodular goitre]
+    client: [hyperthyroidism, hyperthyroid, graves, thyrotoxicosis]
+  - id: thyroid-any
+    contra: [thyroid disease]
+    client: [thyroid disease, hypothyroidism, hypothyroid, underactive thyroid, hashimoto,
+             hyperthyroidism, graves]
+  - id: adrenal-insufficiency
+    contra: [adrenal insufficiency, addison]
+  - id: pituitary
+    contra: [prolactinoma, pituitary disorder]
+    client: [prolactinoma, pituitary adenoma, pituitary disorder]
+  - id: hypercalcemia
+    contra: [hypercalcemia, hyperparathyroidism]
+  - id: hyperkalemia
+    contra: [hyperkalemia]
+    client: [hyperkalemia, high potassium]
+  - id: hypokalemia
+    contra: [hypokalemia, low potassium]
+
+  # --- immune ---------------------------------------------------------------
+  - id: autoimmune
+    contra: [autoimmune disease]
+    client: [autoimmune, hashimoto, graves, rheumatoid, lupus, psoriasis, psoriatic,
+             multiple sclerosis, celiac, crohn, crohns, ulcerative colitis, vitiligo, sjogren,
+             ankylosing spondylitis, scleroderma, type 1 diabetes, t1dm]
+    client_not: [non autoimmune]
+  - id: immunocompromise
+    contra: [immunocompromised, immunocompromise, immunosuppression, organ transplant]
+    client: [immunocompromised, immunosuppressed, organ transplant, chemotherapy]
+  - id: mast-cell-histamine
+    contra: [histamine intolerance, mast cell activation syndrome]
+    client: [histamine intolerance, mcas, mast cell]
+  - id: granulomatous
+    contra: [sarcoidosis, granulomatous disease, tuberculosis]
+    client: [sarcoidosis, tuberculosis]
+
+  # --- hormones and cancer --------------------------------------------------
+  - id: hormone-sensitive-cancer
+    contra: [hormone sensitive cancer, hormone sensitive cancers, hormone sensitive breast cancer,
+             hormone sensitive endometrial cancer, hormone sensitive conditions, estrogen sensitive,
+             estrogen positive, er positive, breast cancer, endometrial cancer]
+    client: [breast cancer, breast carcinoma, endometrial cancer, ovarian cancer, uterine cancer]
+  - id: hormone-sensitive-benign
+    contra: [hormone sensitive conditions]
+    client: [endometriosis, fibroid, fibroids, adenomyosis]
+  - id: prostate-cancer
+    contra: [prostate cancer]
+  - id: active-cancer
+    contra: [active cancer]
+    client: [cancer, carcinoma, lymphoma, leukemia]
+  - id: estrogen-dominance
+    contra: [estrogen dominance, elevated estradiol]
+  - id: pcos
+    contra: [pcos]
+    client: [pcos, polycystic]
+  - id: heavy-menstrual-bleeding
+    contra: [heavy menstrual bleeding, menorrhagia]
+    client: [heavy menstrual bleeding, heavy periods, menorrhagia]
+  - id: enlarged-prostate
+    contra: [enlarged prostate]
+    client: [enlarged prostate, bph]
+
+  # --- blood and iron -------------------------------------------------------
+  - id: iron-overload
+    contra: [hemochromatosis, iron overload, elevated ferritin]
+    client: [hemochromatosis, iron overload]
+  - id: iron-deficiency
+    contra: [iron deficiency]
+    contra_not: [non iron deficiency]
+    client: [iron deficiency, low ferritin]
+  - id: thalassemia
+    contra: [thalassemia]
+  - id: b12-deficiency
+    contra: [b12 deficiency, pernicious anemia]
+  - id: g6pd
+    contra: [g6pd]
+
+  # --- brain and nerves -----------------------------------------------------
+  - id: bipolar
+    contra: [bipolar, manic episode]
+    client: [bipolar, mania]
+  - id: psychosis
+    contra: [psychosis, psychiatric illness]
+    client: [psychosis, schizophrenia]
+  - id: depression
+    contra: [history of depression]
+    client: [depression, depressive]
+  - id: anxiety
+    contra: [anxiety, anxiety disorders, panic disorder]
+    client: [anxiety, panic disorder, panic attacks]
+  - id: insomnia
+    contra: [insomnia]
+    client: [insomnia, sleeplessness]
+  - id: seizure
+    contra: [seizure disorder, seizure disorders, epilepsy]
+    client: [seizure disorder, seizure disorders, seizures, epilepsy]
+  - id: parkinsons
+    contra: [parkinson, parkinsons]
+  - id: peripheral-neuropathy
+    contra: [peripheral neuropathy]
+    client: [peripheral neuropathy, neuropathy]
+  - id: glaucoma
+    contra: [glaucoma]
+
+  # --- bone -----------------------------------------------------------------
+  - id: osteoporosis
+    contra: [osteoporosis]
+
+  # --- rare and inherited ---------------------------------------------------
+  - id: wilson
+    contra: [wilson]
+  - id: sitosterolemia
+    contra: [sitosterolemia]
+  - id: phenylketonuria
+    contra: [phenylketonuria]
+
+  # --- allergies (read known_allergies; dairy is not here, see RULES) -------
+  - id: fish-allergy
+    fields: allergies
+    contra: [fish allergy, fish or shellfish allergy]
+    client: [fish, seafood]
+  - id: shellfish-allergy
+    fields: allergies
+    contra: [shellfish allergy, fish or shellfish allergy, crustacean, seafood or algae allergy]
+    client: [shellfish, prawn, prawns, shrimp, crab, lobster, seafood]
+  - id: soy-allergy
+    fields: allergies
+    contra: [soy allergy, soy or other legume allergy]
+    client: [soy, soya]
+  - id: peanut-legume-allergy
+    fields: allergies
+    contra: [peanut, legume allergy, legume (pea) allergy]
+    client: [peanut, peanuts, groundnut, groundnuts, chickpea, chickpeas, legume, legumes]
+  - id: yeast-allergy
+    fields: allergies
+    contra: [yeast allergy]
+    client: [yeast]
+  - id: sesame-allergy
+    fields: allergies
+    contra: [sesame allergy]
+    client: [sesame, til]
+  - id: coconut-allergy
+    fields: allergies
+    contra: [coconut allergy]
+    client: [coconut]
+  - id: pineapple-allergy
+    fields: allergies
+    contra: [pineapple allergy, pineapple or bromelain allergy]
+    client: [pineapple, bromelain]
+  - id: papaya-allergy
+    fields: allergies
+    contra: [papaya allergy]
+    client: [papaya, papain]
+  - id: garlic-onion-allergy
+    fields: allergies
+    contra: [garlic onion (allium) allergy, allergy to garlic]
+    client: [garlic, onion]
+  - id: mushroom-allergy
+    fields: allergies
+    contra: [mushroom allergy]
+    client: [mushroom, mushrooms]
+  - id: asteraceae-allergy
+    fields: allergies
+    contra: [asteraceae, compositae, ragweed]
+    client: [asteraceae, compositae, ragweed, chamomile, marigold, chrysanthemum, daisy]

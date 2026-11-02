@@ -5,13 +5,11 @@
 # it (same footing as _food_cautions.yaml).
 #
 # WHY THIS EXISTS
-# Supplement `contraindications.conditions` are matched to a client by EXACT
-# string, and both sides are free text ("GERD / acid reflux" against "Active
-# peptic or gastric ulcer, gastritis or erosive oesophagitis…"). They do not meet,
-# so those checks fire almost never. These screens match on terms instead, and
-# they read the real INGREDIENTS of the product the client is sent to, because a
-# plan line saying "protein powder" tells you nothing about the enzyme blend
-# inside it.
+# A supplement's own contraindications are matched through _condition_terms.yaml
+# (fmdb/plan/supplement_clash.py), but those lines only know the supplement by its
+# catalogue slug. These screens read the real INGREDIENTS of the product the client
+# is sent to, because a plan line saying "protein powder" tells you nothing about
+# the enzyme blend inside it.
 #
 # RULES
 # - A screen ASKS. It does not ban. A hit needs an answer in plan.client_fit: keep
@@ -103,4 +101,4 @@ screens:
     client_terms: *upper_gi_terms
     reason: Supplemental acid works directly against a PPI and can worsen an irritated lining.
     ask: Do not combine with a PPI without her doctor.
-    basis: Already a catalogue contraindication on betaine-hcl; repeated here so it can fire.
+    basis: Also a catalogue contraindication on betaine-hcl. This screen adds the PPI.

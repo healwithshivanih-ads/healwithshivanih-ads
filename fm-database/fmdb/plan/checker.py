@@ -6,7 +6,7 @@ What this checks (no AI required):
 - Catalogue entries with `evidence_tier: confirm_with_clinician` flagged
   as authored without explicit clinician acknowledgement
 - Supplement contraindications cross-referenced against the client's
-  active conditions and current medications
+  conditions, allergies and current medications (supplement_clash.py)
 
 Findings have severities:
 - CRITICAL  blocks transition out of draft
@@ -27,6 +27,7 @@ from ..validator import Loaded, _resolve_index
 from .client_fit import check_client_fit
 from .exercise_screen import screen_all as _screen_all
 from .models import Client, Plan, HypothesizedDriver
+from .supplement_clash import active_medications, already_spaced, drug_records, medication_hit
 
 
 Severity = Literal["CRITICAL", "WARNING", "INFO"]
@@ -1303,6 +1304,8 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
             ))
 
     # ---------- Supplement protocol ----------
+    _client_meds = active_medications(client) if client else []
+    _drugs = drug_records(catalogue) if _client_meds else []
     for item in plan.supplement_protocol:
         # start_week sanity — phased protocols set this; it must land
         # inside the plan window or the supplement never gets introduced.
@@ -1347,27 +1350,29 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
                 target=item.supplement_slug,
             ))
 
-        # Contraindication check vs client conditions
+        # Medications that need spacing or watching. They do not gate: the coach
+        # is told and can time the doses. Contraindications and avoid-together
+        # drugs are raised through client_fit, which gives her a row to answer.
         if client:
-            client_conditions_lower = {c.lower() for c in client.active_conditions}
-            client_meds_lower = {m.lower() for m in client.current_medications}
-            for cond in supp.contraindications.conditions:
-                if cond.lower() in client_conditions_lower:
-                    findings.append(Finding(
-                        "CRITICAL", "supplement_protocol", "contraindications",
-                        f"{item.supplement_slug!r} is contraindicated with client's "
-                        f"active condition {cond!r}",
-                        target=item.supplement_slug,
-                    ))
+            _named = [m.medication for m in supp.interactions.with_medications] + list(
+                supp.contraindications.medications
+            )
+            _reported: set[str] = set()
             for med_inter in supp.interactions.with_medications:
-                if med_inter.medication.lower() in client_meds_lower:
-                    findings.append(Finding(
-                        "WARNING" if med_inter.type.value != "avoid_together" else "CRITICAL",
-                        "supplement_protocol", "interactions.with_medications",
-                        f"{item.supplement_slug!r} interacts with client's medication "
-                        f"{med_inter.medication!r}: {med_inter.reason}",
-                        target=item.supplement_slug,
-                    ))
+                if med_inter.type.value == "avoid_together":
+                    continue
+                hit = medication_hit(med_inter.medication, _client_meds, _drugs, _named)
+                if hit is None or hit["group"] in _reported:
+                    continue
+                if med_inter.type.value == "space_by_hours" and already_spaced(item.timing, hit):
+                    continue
+                _reported.add(hit["group"])
+                findings.append(Finding(
+                    "WARNING", "supplement_protocol", "interactions.with_medications",
+                    f"{item.supplement_slug!r} interacts with client's medication "
+                    f"{hit['med']!r} ({med_inter.medication}): {med_inter.reason}",
+                    target=f"{item.supplement_slug}:{hit['group']}",
+                ))
 
         # Form sanity: declared form contains at least one catalogue form word.
         # The AI often writes descriptive strings like "KSM-66 standardized
@@ -1433,7 +1438,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     _check_orderable(plan, findings)
 
     # ---------- Protocols are templates: tested against THIS client? ----------
-    check_client_fit(plan, client, findings, Finding, _load_supplement_links(), _resolve_product)
+    check_client_fit(
+        plan, client, findings, Finding, _load_supplement_links(), _resolve_product, catalogue
+    )
 
     # ---------- Same remedy assigned by slug AND written as a practice ----------
     _check_remedy_practice_duplication(plan, catalogue, findings)

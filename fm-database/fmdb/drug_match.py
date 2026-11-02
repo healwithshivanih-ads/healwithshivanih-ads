@@ -102,6 +102,25 @@ def match_drug(
     return best[1] if best else None
 
 
+def match_drugs(
+    med_text: str,
+    drugs: Iterable[dict[str, Any]],
+    *,
+    min_len: int = MIN_MED_TEXT_LEN,
+) -> list[dict[str, Any]]:
+    """Every catalogue record a medication string names.
+
+    `match_drug` answers "which one drug is this?" and is right for a line that
+    holds one drug. Client records also hold "Shell cal 500, omez 20, restil
+    0.25" and "Tazloc AM (telmisartan + amlodipine)", where longest-alias-wins
+    keeps one drug and silently drops the rest.
+    """
+    text = (med_text or "").strip().lower()
+    if len(text) < min_len:
+        return []
+    return [d for d in drugs if any(alias_matches(a, text) for a in drug_aliases(d))]
+
+
 def match_drug_with_alias(
     med_text: str,
     drugs: Iterable[dict[str, Any]],
