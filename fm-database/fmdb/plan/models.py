@@ -1552,6 +1552,10 @@ class SupplementItem(BaseModel):
     # marker values, no drug names, no promises, no diagnosis — what it is for,
     # in a sentence or two they would recognise as being about them.
     client_note: str = ""
+    # She already has it, so show no order button. Without this the matcher links
+    # whatever covers the slug: Shweta's Becosules resolved to a different B-vitamin
+    # product she should not buy.
+    no_buy_link: bool = False
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
     # Per-supplement display + buy-link overrides (2026-05-19). When the
     # supplement_slug points at a brand (vitaone-omega-3) but the actual
@@ -1707,6 +1711,28 @@ class Session(BaseModel):
         if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
             raise ValueError(f"session_id must be lowercase alphanumeric with hyphens, got {v!r}")
         return v
+
+
+class ClientFitItem(BaseModel):
+    """The record that one item of a plan was tested against THIS client.
+
+    A protocol is a template. Shweta (cl-906, Nov 2026) was given digestive
+    enzymes because the 5R "Replace" step lists them: nothing in her record
+    showed she lacked enzymes, she has daily reflux, and she is allergic to
+    mushrooms and yeast while the capsule is mould-fermented. Each item now
+    has to answer both questions below before a plan can leave draft, whoever
+    authored it (template, AI draft, chat, rework). See fmdb/plan/client_fit.py.
+    """
+    model_config = ConfigDict(extra="forbid")
+    # A supplement slug from supplement_protocol, or an attached protocol's
+    # slug for the protocol taken as a whole (its foods, phases and cautions).
+    item: str
+    decision: Literal["keep", "change", "drop"] = "keep"
+    # What in THIS client's record says she needs it. "The protocol lists it"
+    # is exactly the answer this field exists to refuse.
+    client_evidence: str = ""
+    # What in her record could make it go wrong, and what was done about it.
+    risk_check: str = ""
 
 
 class Plan(BaseModel):
@@ -1878,6 +1904,9 @@ class Plan(BaseModel):
     # foods_to_remove, supplements_typically_used, phases, and cautions are
     # injected into the letter prompts as binding constraints.
     attached_protocols: list[str] = Field(default_factory=list)
+    # One row per item tested against this client. Never carried to a
+    # successor: a new phase is tested afresh against who she is by then.
+    client_fit: list[ClientFitItem] = Field(default_factory=list)
 
     # ---- provenance ----
     status: PlanStatus = PlanStatus.draft

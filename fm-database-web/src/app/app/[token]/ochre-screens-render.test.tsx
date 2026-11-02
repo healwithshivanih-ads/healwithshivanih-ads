@@ -249,6 +249,65 @@ function renderLibraryFloor(allSupplements: AppSupplement[]): string {
   );
 }
 
+describe("Maintenance day — the seasonal sample menu is not a daily meal plan", () => {
+  // Coach decision 2026-10-23: a maintenance plan's one seasonal SAMPLE menu
+  // was being laid out in "Your day" as today's breakfast / lunch / dinner.
+  // The maintenance home passes withMeals={false}; supplements stay.
+  const supp = {
+    id: "s1",
+    name: "Magnesium Glycinate Zephyrlike",
+    dose: "1 capsule",
+    slot: "Bedtime",
+    timing: "at bedtime",
+    chronoRank: 70,
+    why: "Synthetic fixture",
+  } as AppSupplement;
+  const data = {
+    meals: [meal("Breakfast", ["Quokka Poha Platter"]), meal("Dinner", ["Narwhal Bhakri Plate"])],
+    mealExtra: {},
+    remedies: [],
+    supplements: [supp],
+    practices: [],
+  } as unknown as ClientAppData;
+  const draw = (withMeals?: boolean) =>
+    renderToStaticMarkup(
+      <OchreContext.Provider value={data}>
+        <DayTimeline
+          openAll
+          withMeals={withMeals}
+          logged={{}}
+          practicesDone={{}}
+          onToggleSupp={noop}
+          onTogglePractice={noop}
+          onMarkDone={noop}
+          openMeal={noop}
+          openRemedy={noop}
+          openBreath={noop}
+          openSomatic={noop}
+          openExercise={noop}
+        />
+      </OchreContext.Provider>,
+    );
+
+  it("withMeals={false} draws the supplements and no meal", () => {
+    const html = draw(false);
+    expect(html).toContain("Magnesium Glycinate Zephyrlike");
+    expect(html).not.toContain("Quokka Poha Platter");
+    expect(html).not.toContain("Narwhal Bhakri Plate");
+  });
+  it("the full plan's day still carries its meals", () => {
+    const html = draw();
+    expect(html).toContain("Quokka Poha Platter");
+    expect(html).toContain("Magnesium Glycinate Zephyrlike");
+  });
+  it("the maintenance home passes withMeals={false}", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync(new URL("./ochre-app.tsx", import.meta.url), "utf8");
+    const block = src.slice(src.indexOf("<MaintenanceHome"), src.indexOf("</MaintenanceHome>"));
+    expect(block).toMatch(/<TodayDaySections\s+withMeals=\{false\}/);
+  });
+});
+
 describe("Library-floor supplements — every re-orderable supplement stays reachable", () => {
   // Eight buyable items: past any small cap, and a realistic size for a
   // protocol that ran a full programme before graduating.

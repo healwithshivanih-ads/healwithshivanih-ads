@@ -106,6 +106,8 @@ def main() -> int:
         json.dump({"ok": False, "error": f"invalid JSON input: {e}"}, sys.stdout)
         return 2
 
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(payload.get("client_id") or "", "parse-client-message.py")
     message_text = payload.get("message_text", "").strip()
     dry_run = payload.get("dry_run", False)
 

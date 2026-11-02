@@ -76,6 +76,10 @@ def main() -> int:
         return 2
 
     client_id = (payload.get("client_id") or "").strip()
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "app-copilot.py")
     context = (payload.get("context") or "").strip()[:6000]
     question = (payload.get("question") or "").strip()[:500]
     if not question or not context:

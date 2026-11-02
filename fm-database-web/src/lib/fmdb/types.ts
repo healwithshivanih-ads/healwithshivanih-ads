@@ -373,6 +373,13 @@ export type PlanStatus =
  * Strict declared shape for Plan — every field the editor reads or writes.
  * No index signature here, so unknown keys fail at type-check.
  */
+export interface ClientFitItem {
+  item: string;
+  decision: "keep" | "change" | "drop";
+  client_evidence: string;
+  risk_check: string;
+}
+
 export interface PlanFields {
   slug: string;
   client_id?: string;
@@ -409,6 +416,9 @@ export interface PlanFields {
   tracking?: Record<string, unknown>;
   attached_resources?: string[];
   attached_protocols?: string[];
+  /** One row per item tested against this client. Mirrors the Python
+   *  ClientFitItem; required before a protocol plan can leave draft. */
+  client_fit?: ClientFitItem[];
   notes_for_coach?: string;
   status?: PlanStatus;
   version?: number;

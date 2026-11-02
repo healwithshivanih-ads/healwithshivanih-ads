@@ -23,12 +23,15 @@ import path from "node:path";
 import nodemailer from "nodemailer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import {
+  alertHeadline,
   decide,
   evaluate,
   EMPTY_STATE,
   isQuiet,
+  repairNote,
   type Probe,
   type ProbeSet,
+  type RepairAttempt,
   type WatchdogState,
 } from "@/lib/fmdb/infra-health";
 
@@ -123,7 +126,7 @@ async function probeReachable(url: string, attempts = 2): Promise<Probe> {
  * look identical to one that repaired successfully.
  * See docs/COACH_REMOTE_ACCESS.md for the one-line sudoers entry.
  */
-function restartTunnel(): Promise<{ ok: boolean; detail: string }> {
+function restartTunnel(): Promise<RepairAttempt> {
   return new Promise((resolve) => {
     execFile(
       "sudo",
@@ -132,15 +135,17 @@ function restartTunnel(): Promise<{ ok: boolean; detail: string }> {
       (err, _stdout, stderr) => {
         if (err) {
           const msg = (stderr || String(err)).trim().slice(0, 300);
-          resolve({
-            ok: false,
-            detail: /password is required|sudo:/i.test(msg)
-              ? `sudo needs a password — add the NOPASSWD rule from docs/COACH_REMOTE_ACCESS.md (${msg})`
-              : msg,
-          });
+          resolve(
+            /password is required|sudo:/i.test(msg)
+              ? {
+                  outcome: "no_permission",
+                  detail: `sudo needs a password — add the NOPASSWD rule from docs/COACH_REMOTE_ACCESS.md (${msg})`,
+                }
+              : { outcome: "failed", detail: msg },
+          );
           return;
         }
-        resolve({ ok: true, detail: "kickstart issued" });
+        resolve({ outcome: "restarted", detail: "kickstart issued" });
       },
     );
   });
@@ -153,6 +158,7 @@ async function readState(): Promise<WatchdogState> {
     return {
       consecutiveTunnelFailures: Number(parsed.consecutiveTunnelFailures) || 0,
       consecutiveFlyFailures: Number(parsed.consecutiveFlyFailures) || 0,
+      consecutiveSilentCycles: Number(parsed.consecutiveSilentCycles) || 0,
       lastAlertAt:
         parsed.lastAlertAt && typeof parsed.lastAlertAt === "object"
           ? parsed.lastAlertAt
@@ -228,16 +234,15 @@ export async function POST(req: NextRequest) {
 
   let evaluation = evaluate(probes);
   let repaired = false;
-  let repairDetail = "";
+  let repair: RepairAttempt | null = null;
 
   // Repair, then re-probe. Only the tunnel is auto-repairable: Fly needs a
   // machine restart (a judgement call), and closing an exposed dashboard means
   // taking the coach's own remote access away — which is her decision to make,
   // not a cron's, so it alerts instead. The manual command is in the email.
   if (evaluation.tunnelNeedsRepair) {
-    const r = await restartTunnel();
-    repairDetail = r.detail;
-    if (r.ok) {
+    repair = await restartTunnel();
+    if (repair.outcome === "restarted") {
       // cloudflared needs a moment to register with Cloudflare's edge.
       await new Promise((res) => setTimeout(res, 8_000));
       const after: ProbeSet = {
@@ -260,7 +265,13 @@ export async function POST(req: NextRequest) {
 
   // Suppression must be visible, or a Mac that is permanently off the internet
   // becomes a watchdog that reports nothing and looks healthy doing it.
-  if (evaluation.networkUncertain) {
+  if (evaluation.uplinkSuspect) {
+    console.error(
+      `[infra-health] tunnel and Fly both silent while ${INTERNET_CHECK_URL} answered — ` +
+        `treating this as patchy internet, NO READING this cycle, not as an outage ` +
+        `(${state.consecutiveSilentCycles} in a row)`,
+    );
+  } else if (evaluation.networkUncertain) {
     console.error(
       `[infra-health] this Mac could not reach ${INTERNET_CHECK_URL} — ` +
         `treating the tunnel/Fly probes as NO READING this cycle, not as an outage`,
@@ -268,9 +279,9 @@ export async function POST(req: NextRequest) {
   }
 
   if (repaired) {
-    console.log(`[infra-health] tunnel was down — restarted, now healthy (${repairDetail})`);
-  } else if (repairDetail && evaluation.tunnelNeedsRepair) {
-    console.error(`[infra-health] tunnel down, repair did not stick: ${repairDetail}`);
+    console.log(`[infra-health] tunnel was down — restarted, now healthy (${repair?.detail})`);
+  } else if (repair && evaluation.tunnelNeedsRepair) {
+    console.error(`[infra-health] tunnel down, repair did not stick: ${repair.detail}`);
   }
 
   let emailed = false;
@@ -283,6 +294,8 @@ export async function POST(req: NextRequest) {
     if (user && pass) {
       const to = process.env.COACH_DIGEST_EMAIL || user;
       const critical = alert.some((p) => p.severity === "critical");
+      const { subject, banner } = alertHeadline(alert);
+      const note = repairNote(alert, repair);
       const rows = alert
         .map(
           (p) =>
@@ -296,11 +309,12 @@ export async function POST(req: NextRequest) {
       const html = `
       <div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.55;color:#2b2d42;">
         <p style="background:${critical ? "#c1121f" : "#E8A87C"};color:#fff;padding:10px 14px;border-radius:8px;font-weight:600;">
-          ${critical ? "⚠️ Something needs you now" : "⚠️ Remote access is down"}
+          ${esc(banner)}
         </p>
         <ul>${rows}</ul>
+        ${note ? `<p>${esc(note)}</p>` : ""}
         <p style="color:#8d99ae;font-size:12px;margin-top:20px;">
-          Automated infra watchdog · it already tried restarting the tunnel itself before sending this.
+          Automated infra watchdog.
         </p>
       </div>`;
       try {
@@ -308,8 +322,8 @@ export async function POST(req: NextRequest) {
         await transporter.sendMail({
           from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
           to,
-          subject: critical ? "⚠️ FM Coach — needs attention now" : "⚠️ FM Coach — remote access is down",
-          text: `${summary}\n\n${alert.map((p) => p.fix).filter(Boolean).join("\n\n")}`,
+          subject,
+          text: [summary, ...alert.map((p) => p.fix), note].filter(Boolean).join("\n\n"),
           html,
         });
         emailed = true;
@@ -323,6 +337,7 @@ export async function POST(req: NextRequest) {
     ok: true,
     problems: evaluation.problems.map((p) => ({ key: p.key, severity: p.severity })),
     networkUncertain: evaluation.networkUncertain,
+    uplinkSuspect: evaluation.uplinkSuspect,
     repaired,
     alerted: alert.length,
     emailed,

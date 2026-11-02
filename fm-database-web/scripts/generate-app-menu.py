@@ -232,6 +232,10 @@ def main() -> int:
         return 2
 
     client_id = payload.get("client_id", "")
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "generate-app-menu.py")
     plan_slug = payload.get("plan_slug", "")
     weeks_wanted = payload.get("weeks") or [1, 2]
     weight_loss = payload.get("weight_loss") if isinstance(payload.get("weight_loss"), dict) else {}

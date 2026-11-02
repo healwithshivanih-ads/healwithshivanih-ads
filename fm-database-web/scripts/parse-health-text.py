@@ -78,6 +78,8 @@ def main() -> int:
     text: str = (payload.get("text") or "").strip()
     dry_run: bool = bool(payload.get("dry_run"))
     client_id: str = (payload.get("client_id") or "").strip()  # optional, for usage tracking
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(client_id, "parse-health-text.py")
 
     if not text:
         json.dump({"ok": False, "error": "text is required"}, sys.stdout)

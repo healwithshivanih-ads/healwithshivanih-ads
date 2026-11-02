@@ -231,6 +231,9 @@ def main():
     plan_data = data.get("plan_data", {})
     client_data = data.get("client_data", {})
 
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(plan_data.get("client_id") or client_data.get("client_id") or "", "plan-chat.py")
+
     if not message:
         print(json.dumps({"ok": False, "error": "No message provided"}))
         sys.exit(0)

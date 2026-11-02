@@ -21,9 +21,10 @@ from fmdb.plan.checker import _check_orderable
 
 
 class _Item:
-    def __init__(self, slug, buy_link=None):
+    def __init__(self, slug, buy_link=None, no_buy_link=False):
         self.supplement_slug = slug
         self.buy_link = buy_link
+        self.no_buy_link = no_buy_link
 
 
 class _Plan:
@@ -57,6 +58,11 @@ def main() -> None:
 
         # 1. Resolves by its own key → silent.
         assert _run([_Item("nac")], links, use) == [], "a linked supplement must not warn"
+
+        # A product she already has needs no route to buy it.
+        assert _run([_Item("not-sold-anywhere", no_buy_link=True)], links, use) == [], (
+            "no_buy_link must not warn"
+        )
 
         # 2. Resolves through `covers` → silent. This is the tier that carries
         #    most of the roster; if it regressed, the check would warn on plans

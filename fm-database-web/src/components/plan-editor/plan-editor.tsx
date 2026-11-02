@@ -353,6 +353,14 @@ function IntakeEvidenceChips({
   );
 }
 
+/** The fit answers are saved by ClientFitPanel. This editor holds the plan it
+ *  loaded with, so saving those rows from here would wipe newer answers. */
+function withoutClientFit(plan: Plan): Plan {
+  const rest = { ...plan };
+  delete rest.client_fit;
+  return rest;
+}
+
 function clone<T>(x: T): T {
   return JSON.parse(JSON.stringify(x ?? null));
 }
@@ -1008,6 +1016,7 @@ export function PlanEditor(props: PlanEditorProps) {
       if (!cancelled && res.ok) {
         setSupplementInteractions(res.interactions);
         setDrugCautions(res.drug_cautions ?? []);
+        if (res.error) toast.error(`Could not check this plan against the client: ${res.error}`);
       }
     });
     return () => { cancelled = true; };
@@ -1100,7 +1109,7 @@ export function PlanEditor(props: PlanEditorProps) {
     setSaveResult(null);
     startTransition(async () => {
       const [planRes, srcRes] = await Promise.all([
-        updatePlan(plan.slug, plan),
+        updatePlan(plan.slug, withoutClientFit(plan)),
         saveSupplementSources(sources),
       ]);
       if (planRes.ok && srcRes.ok) {
@@ -1444,7 +1453,7 @@ export function PlanEditor(props: PlanEditorProps) {
                   </Badge>
                 )}
                 {supplementInteractions.length > 0 && (
-                  <span className="text-amber-600 text-xs font-semibold">⚠ {supplementInteractions.length} interaction{supplementInteractions.length !== 1 ? "s" : ""}</span>
+                  <span className="text-amber-600 text-xs font-semibold">⚠ {supplementInteractions.length} clash{supplementInteractions.length !== 1 ? "es" : ""}</span>
                 )}
                 {drugCautions.length > 0 && (
                   <span className="text-rose-600 text-xs font-semibold">⚠ {drugCautions.length} drug caution{drugCautions.length !== 1 ? "s" : ""}</span>
@@ -1493,26 +1502,26 @@ export function PlanEditor(props: PlanEditorProps) {
                     </details>
                   );
                 })()}
-                {/* ── Medication interaction warnings ── */}
+                {/* ── Clashes with the client's record, from check_plan ── */}
                 {supplementInteractions.length > 0 && (
                   <details className="group/warn">
                     <summary className="flex items-center gap-2 cursor-pointer select-none list-none rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-900 hover:bg-amber-100">
                       <span className="transition-transform group-open/warn:rotate-90 text-amber-600 text-xs">▶</span>
-                      ⚠ Potential medication interactions detected ({supplementInteractions.length})
+                      ⚠ Clashes with the client&apos;s record ({supplementInteractions.length})
                     </summary>
                     <div className="mt-2 space-y-2 rounded-md border border-amber-200 bg-amber-50/60 px-3 py-2">
                       <p className="text-[11px] text-amber-800">
-                        The following supplements may interact with the client&apos;s current medications. Review with the client before proceeding.
+                        Each one is a question. Answer it under &quot;Tested against this client&quot; on the Plan tab and it clears.
                       </p>
                       {supplementInteractions.map((interaction) => (
-                        <div key={interaction.supplement_slug} className="text-[11px] border border-amber-200 rounded bg-white px-2.5 py-2 space-y-1">
+                        <div key={`${interaction.supplement_slug}:${interaction.flag_id}`} className="text-[11px] border border-amber-200 rounded bg-white px-2.5 py-2 space-y-1">
                           <div className="font-semibold text-amber-900">
                             {stripBrand(interaction.supplement_name)}{" "}
-                            <span className="text-amber-500">may interact with</span>{" "}
-                            {interaction.matched_medications.join(", ")}
+                            <span className="text-amber-500">may clash with</span>{" "}
+                            {interaction.matched.join(", ")}
                           </div>
                           <div className="text-muted-foreground text-[10px]">
-                            Contraindication note: {interaction.contraindication_text}
+                            {interaction.contraindication_text} {interaction.ask}
                           </div>
                         </div>
                       ))}

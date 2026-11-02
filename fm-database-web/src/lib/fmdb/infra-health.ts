@@ -40,6 +40,20 @@
  * this cycle — say so in the log and stay silent, rather than telling the coach
  * her clients are locked out of an app that is serving them fine.
  *
+ * WHY ONE ANSWER FROM THE CONTROL HOST IS NOT ENOUGH. On 2026-10-30 this Mac's
+ * connection was patchy from 23:10 to 23:47 IST rather than cleanly gone, and
+ * the watchdog mailed "remote access is down" at 23:40 while the app and Fly
+ * were both fine. A patchy link lets the odd request through, so the control
+ * host answered in the very cycles where the tunnel and Fly went silent. The
+ * control only proves that ONE request got out. Our two hosts share nothing but
+ * this Mac's uplink, so when NEITHER answers at all, that is the reading: no
+ * verdict this cycle. A status code means the other end was reached, so a 530
+ * or a 500 never counts as silence.
+ *
+ * That cannot be allowed to hide a real double outage forever, so sustained
+ * silence still mails after SILENT_ALERT_AFTER cycles, worded as what we know
+ * ("cannot confirm"), not what we do not ("is down").
+ *
  * This module is pure — no fetch, no exec, no fs — so the escalation rules are
  * unit-testable without a Mac, a tunnel, or a mail server. The I/O lives in
  * app/api/cron/infra-health/route.ts. Same split as middleware-policy.ts.
@@ -79,7 +93,8 @@ export interface Problem {
     | "dashboard_exposed"
     | "auth_off_locally"
     | "fly_down"
-    | "local_network_down";
+    | "local_network_down"
+    | "both_unreachable";
   severity: Severity;
   detail: string;
   /** One line the coach can paste. Empty when there is nothing mechanical. */
@@ -92,9 +107,18 @@ export interface Evaluation {
   tunnelNeedsRepair: boolean;
   /** Something is serving coach routes publicly WITHOUT the auth wall. */
   exposed: boolean;
-  /** This Mac could not reach the internet, so no remote probe means anything
+  /** This Mac's uplink cannot be trusted, so no remote probe means anything
    *  this cycle. Callers should log it; it must never become an email. */
   networkUncertain: boolean;
+  /** The narrower case: the control host answered, yet neither of our two hosts
+   *  did. Counted across cycles, because sustained silence may be real. */
+  uplinkSuspect: boolean;
+}
+
+/** What happened when the watchdog tried to restart the tunnel. */
+export interface RepairAttempt {
+  outcome: "restarted" | "no_permission" | "failed";
+  detail: string;
 }
 
 const TUNNEL_FIX = "sudo launchctl kickstart -k system/com.cloudflare.cloudflared";
@@ -127,15 +151,34 @@ export function evaluate(p: ProbeSet): Evaluation {
   const publiclyOpen = p.tunnelCoachRoute.status === 200;
 
   // No answer from a host we do not run = our uplink is down, not theirs.
-  const networkUncertain = p.internet.status === null;
+  const controlSilent = p.internet.status === null;
 
-  if (networkUncertain) {
+  // Both of ours silent while the control answered = a patchy uplink. Only
+  // `null` counts: a status code means the other end was actually reached.
+  const uplinkSuspect =
+    !controlSilent &&
+    p.tunnelHealth.status === null &&
+    p.flyHealth.status === null;
+
+  const networkUncertain = controlSilent || uplinkSuspect;
+
+  if (controlSilent) {
     problems.push({
       key: "local_network_down",
       severity: "warning",
       detail:
         "this Mac could not reach the internet at all, so the tunnel and Fly " +
         "probes prove nothing this cycle — not reporting them as outages",
+      fix: "",
+    });
+  } else if (uplinkSuspect) {
+    problems.push({
+      key: "local_network_down",
+      severity: "warning",
+      detail:
+        "neither the tunnel nor Fly answered, and this Mac's connection is the " +
+        "only thing they share, so this reads as patchy internet — not " +
+        "reporting them as outages",
       fix: "",
     });
   }
@@ -194,6 +237,7 @@ export function evaluate(p: ProbeSet): Evaluation {
     tunnelNeedsRepair: !tunnelUp && !networkUncertain,
     exposed: publiclyOpen,
     networkUncertain,
+    uplinkSuspect,
   };
 }
 
@@ -204,6 +248,9 @@ export interface WatchdogState {
   /** Consecutive cycles in which Fly was unreachable FROM A MACHINE THAT COULD
    *  reach the internet. Offline cycles neither add to it nor clear it. */
   consecutiveFlyFailures: number;
+  /** Consecutive cycles in which the tunnel and Fly were both silent while the
+   *  control host answered. Fully offline cycles neither add to it nor clear it. */
+  consecutiveSilentCycles: number;
   /** ISO of the last alert email, per problem key — for re-alert throttling. */
   lastAlertAt: Record<string, string>;
 }
@@ -211,6 +258,7 @@ export interface WatchdogState {
 export const EMPTY_STATE: WatchdogState = {
   consecutiveTunnelFailures: 0,
   consecutiveFlyFailures: 0,
+  consecutiveSilentCycles: 0,
   lastAlertAt: {},
 };
 
@@ -225,6 +273,21 @@ export const TUNNEL_ALERT_AFTER = 3;
  *  machine we have PROVEN is online. A genuine outage still reaches her within
  *  the quarter hour; a sleep/wake cycle no longer reaches her at all. */
 export const FLY_ALERT_AFTER = 3;
+
+/** Half an hour of the tunnel and Fly both silent, with the Mac provably online,
+ *  stops being a blip. Patchy internet alone rarely reaches this, because any
+ *  cycle that gets a real answer resets it; a genuine double outage always does. */
+export const SILENT_ALERT_AFTER = 6;
+
+const BOTH_UNREACHABLE: Problem = {
+  key: "both_unreachable",
+  severity: "warning",
+  detail:
+    "neither the tunnel nor Fly has answered this Mac for half an hour, though " +
+    "it can reach other sites — usually this Mac's connection, but it could not " +
+    "be confirmed either way",
+  fix: "flyctl status -a theochretree-coach   # Fly fine = it is this Mac's internet",
+};
 
 /** Don't re-send the same alert more often than this. An unfixed problem should
  *  nag daily, not every five minutes. */
@@ -251,6 +314,7 @@ export function decide(
   const state: WatchdogState = {
     consecutiveTunnelFailures: prev.consecutiveTunnelFailures,
     consecutiveFlyFailures: prev.consecutiveFlyFailures,
+    consecutiveSilentCycles: prev.consecutiveSilentCycles,
     lastAlertAt: { ...prev.lastAlertAt },
   };
 
@@ -272,8 +336,19 @@ export function decide(
     state.consecutiveFlyFailures = 0;
   }
 
+  if (evaluation.uplinkSuspect) {
+    state.consecutiveSilentCycles = prev.consecutiveSilentCycles + 1;
+  } else if (!evaluation.networkUncertain) {
+    state.consecutiveSilentCycles = 0;
+  }
+
+  const candidates =
+    state.consecutiveSilentCycles >= SILENT_ALERT_AFTER && evaluation.uplinkSuspect
+      ? [...evaluation.problems, BOTH_UNREACHABLE]
+      : evaluation.problems;
+
   const alert: Problem[] = [];
-  for (const problem of evaluation.problems) {
+  for (const problem of candidates) {
     // The tunnel gets to fail a few times before it earns an email; repair
     // usually wins first, which is the entire point of the watchdog.
     if (
@@ -312,6 +387,49 @@ export function decide(
   }
 
   return { alert, state };
+}
+
+/**
+ * The email's sentence about the restart. It reports what actually happened: the
+ * footer used to say "it already tried restarting the tunnel" on every alert,
+ * while all 17 attempts logged from 15 to 30 Oct 2026 had failed for want of a
+ * password and the tunnel had not been touched. An alert with no tunnel problem
+ * says nothing.
+ */
+export function repairNote(alert: Problem[], repair: RepairAttempt | null): string {
+  if (!alert.some((p) => p.key === "tunnel_down")) return "";
+  if (!repair) return "The watchdog did not try restarting the tunnel.";
+  if (repair.outcome === "restarted") {
+    return "The watchdog restarted the tunnel, but it is still down.";
+  }
+  if (repair.outcome === "no_permission") {
+    return (
+      "The watchdog could not restart the tunnel, because restarting needs your " +
+      "Mac password, so it has not been restarted. docs/COACH_REMOTE_ACCESS.md " +
+      "has the one-line rule that fixes this."
+    );
+  }
+  return `The watchdog tried to restart the tunnel and that failed: ${repair.detail}`;
+}
+
+/** Headline wording, so "cannot confirm" never goes out worded as "is down". */
+export function alertHeadline(alert: Problem[]): { subject: string; banner: string } {
+  if (alert.some((p) => p.severity === "critical")) {
+    return {
+      subject: "⚠️ FM Coach — needs attention now",
+      banner: "⚠️ Something needs you now",
+    };
+  }
+  if (alert.some((p) => p.key === "tunnel_down")) {
+    return {
+      subject: "⚠️ FM Coach — remote access is down",
+      banner: "⚠️ Remote access is down",
+    };
+  }
+  return {
+    subject: "⚠️ FM Coach — cannot confirm remote access",
+    banner: "⚠️ Cannot confirm remote access",
+  };
 }
 
 /** Everything is fine — used by the cron-runner quiet predicate and the route's

@@ -18,7 +18,7 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { aliasMatches, drugAliases, matchDrug } from "./drug-match";
+import { aliasMatches, drugAliases, matchDrug, matchDrugs } from "./drug-match";
 import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
 
 /** Trimmed stand-ins for the real catalogue records. */
@@ -155,6 +155,21 @@ print(json.dumps({p: (match_drug(p, drugs) or {}).get("slug") for p in phrases})
   );
 });
 
+describe("matchDrugs keeps every drug on a line", () => {
+  it("one comma-joined string, several records", () => {
+    const slugs = matchDrugs("Telma 40, omez 20, Ecosprin 75", [
+      ...DRUGS,
+      { ...PPI, slug: "omez", drug_aliases: ["omez"] },
+    ]).map((d) => d.slug);
+    expect(slugs).toEqual(["ace-inhibitors-arbs", "aspirin-chronic", "omez"]);
+  });
+
+  it("same boundary and floor as matchDrug", () => {
+    expect(matchDrugs("recheck thyroid panel", DRUGS)).toEqual([]);
+    expect(matchDrugs("a", DRUGS)).toEqual([]);
+  });
+});
+
 describe("TS and Python matchers agree", () => {
   const CASES = [
     "recheck thyroid panel",
@@ -170,6 +185,7 @@ describe("TS and Python matchers agree", () => {
     "ASA 75mg",
     "Janumet 50/500 BD",
     "Pantoprazole 40mg",
+    "Telma 40, Pantoprazole 40mg, Ecosprin 75",
   ];
 
   it(
@@ -178,10 +194,13 @@ describe("TS and Python matchers agree", () => {
       const script = `
 import json, sys, pathlib
 sys.path.insert(0, ${JSON.stringify(path.resolve(process.cwd(), "..", "fm-database"))})
-from fmdb.drug_match import match_drug
+from fmdb.drug_match import match_drug, match_drugs
 drugs = json.loads(sys.argv[1])
 cases = json.loads(sys.argv[2])
-print(json.dumps({c: (match_drug(c, drugs) or {}).get("slug") for c in cases}))
+print(json.dumps({
+  "one": {c: (match_drug(c, drugs) or {}).get("slug") for c in cases},
+  "all": {c: [d["slug"] for d in match_drugs(c, drugs)] for c in cases},
+}))
 `;
       const out = spawnSync(
         TEST_PYTHON,
@@ -189,9 +208,14 @@ print(json.dumps({c: (match_drug(c, drugs) or {}).get("slug") for c in cases}))
         { encoding: "utf-8" },
       );
       expect(out.status, out.stderr).toBe(0);
-      const py = JSON.parse(out.stdout.trim()) as Record<string, string | null>;
-      const ts = Object.fromEntries(CASES.map((c) => [c, slugFor(c)]));
-      expect(py).toEqual(ts);
+      const py = JSON.parse(out.stdout.trim()) as {
+        one: Record<string, string | null>;
+        all: Record<string, string[]>;
+      };
+      expect(py.one).toEqual(Object.fromEntries(CASES.map((c) => [c, slugFor(c)])));
+      expect(py.all).toEqual(
+        Object.fromEntries(CASES.map((c) => [c, matchDrugs(c, DRUGS).map((d) => d.slug)])),
+      );
     },
     PY_TEST_TIMEOUT_MS,
   );

@@ -793,7 +793,10 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     // menus / recipes / tracking stay open via the other tabs.
     screen = (
       <MaintenanceHome goTab={go} onRenew={() => setMaintOpen(true)}>
+        {/* No meals: the maintenance menu is a seasonal SAMPLE, not a daily
+            plan (coach decision 2026-10-23). It stays in the menu section. */}
         <TodayDaySections
+          withMeals={false}
           logged={logged}
           practicesDone={practicesDone}
           onToggleSupp={toggleSupp}

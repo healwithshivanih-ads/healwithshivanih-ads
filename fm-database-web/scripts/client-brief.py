@@ -441,10 +441,18 @@ def _li(items: list[Any]) -> str:
     return "\n".join(f"- {x}" for x in items) if items else "- (none)"
 
 
-def render(b: dict) -> str:
+def render(b: dict, full: bool = False) -> str:
     if not b.get("ok"):
         return f"**{b.get('error')}**"
     w, lc, p, r, a, dn = b["who"], b["lifecycle"], b["plan"], b["recent"], b["app"], b["do_not"]
+    # Care is over: three lines, so reading about an expired plan costs nothing.
+    # --full is for when she asks about this client specifically.
+    if lc.get("state") in ("lapsed", "archived") and not full:
+        return (
+            f"# {w['name']} · {w['client_id']}\n"
+            f"{str(lc.get('state')).upper()} since {lc.get('since')} — {lc.get('reason')}\n"
+            "Not in care: no reviews, sweeps or flags. Rerun with --full only if the coach asks about them."
+        )
     lines = [f"# {w['name']} · {w['client_id']}{' (parked in prospects/)' if w['parked'] else ''}", ""]
     bits = [f"{w['age']}" if w.get("age") else None, w.get("sex"), w.get("city"), w.get("diet")]
     lines.append("**Who:** " + " · ".join(str(x) for x in bits if x))
@@ -552,6 +560,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("client", nargs="?", default="")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--full", action="store_true")
     ap.add_argument("--today", default="")
     args = ap.parse_args()
     needle = args.client
@@ -573,7 +582,7 @@ def main() -> int:
     if as_json:
         print(json.dumps(brief, indent=2, default=str))
     else:
-        print(render(brief))
+        print(render(brief, full=args.full))
     return 0 if brief.get("ok") else 1
 
 

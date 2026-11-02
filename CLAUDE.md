@@ -12,6 +12,14 @@ published plans as JSON artifacts.
 **Active branch:** `claude/coach-dashboard-restructure-90ee02` (v0.87 restructure; base `main`)
 **Licensing:** Proprietary (all rights reserved, internal-only)
 
+## Expired plans cost nothing — READ THIS FIRST
+
+Not one credit on a lapsed or archived client, in the app or in chat.
+
+- **In chat:** never brief, review, survey, flag or mention lapsed clients unless the coach names them. Having a file in `published/` does NOT mean a client is in care; a lapsed client's plan stays there forever. Start every roster sweep from `fm-database-web/scripts/in-care.py`, and do not run a sweep she did not ask for. `client-brief.py` prints three lines for an expired client; `--full` only when she asks about that person.
+- **In the app:** every paid script calls `refuse_if_expired(client_id, script)` from `scripts/_api_guard.py` right after reading its client, so spend stops even if a button or cron misses it. `fm-database/tests/test_expired_spend_guard.py` fails if a paid script skips the call. A script that is not about one client goes in that test's list with a reason.
+- **The way back** is the lifecycle's own: a new plan in draft or a `renewed` decision takes the client out of `lapsed`, and the guard stops refusing. Measured 2 Nov 2026: $0.055 logged against lapsed clients since they lapsed, so the app was barely leaking; the waste was chat sweeps.
+
 ## Web CI — READ BEFORE pushing `fm-database-web`
 
 `.github/workflows/ci.yml` (`web-ci`) runs on any push touching `fm-database-web/**`
@@ -63,9 +71,9 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
-**v0.91 — the plate follows the diet (2026-10-23).** Every client saw the same plate on the app's Plan tab (½ veg · ¼ protein · ¼ carbs + fixed fats + ferments accents); only the example chips varied. Now `src/lib/fmdb/plate-shapes.ts` owns six shapes (`balanced` · `blood_sugar` · `gut_soothing` · `anti_inflammatory` · `low_histamine` · `maintenance` — ids are storage keys) and ONE resolver.
+**v0.92 — the plate follows the diet (2026-10-23).** Every client saw the same plate on the app's Plan tab (½ veg · ¼ protein · ¼ carbs + fixed fats + ferments accents); only the example chips varied. Now `src/lib/fmdb/plate-shapes.ts` owns six shapes (`balanced` · `blood_sugar` · `gut_soothing` · `anti_inflammatory` · `low_histamine` · `maintenance` — ids are storage keys) and ONE resolver.
 
-**Key invariants (v0.91):**
+**Key invariants (v0.92):**
 - **Storage = `plan.nutrition.plate_shape`** (Pydantic `NutritionPlan`, Literal; plan editor → Nutrition → "Plate shape" dropdown, default "Auto" shows what resolves). Unset → `resolvePlateShape`: attached protocol (`PROTOCOL_PLATE`) → keywords in `nutrition.pattern` (`PATTERN_RULES`, order = priority) → `is_maintenance` → balanced. That chain is what gave every published plan the right plate without re-publishing. Checked 2026-10-23 through `resolve_lifecycle` (NOT by listing `published/` — nine of its 20 files belong to lapsed clients): in care = Hariharan, Geetika (no ferments), Niti, Krittika, Siddhartth, Gopi, Nidhi → blood_sugar · Shweta → gut_soothing · Nazneen → maintenance · Smita → balanced. Pin a shape to overrule it.
 - **A histamine brief is a MODIFIER, not a shape.** `holdFerments` is true when the pattern or any attached protocol says histamine/MCAS, and it removes the ferments accent on WHATEVER shape wins (Geetika: blood-sugar-regulation + mcas-gentle → blood_sugar plate, no ferments). `gut_soothing` and `low_histamine` hold ferments by definition.
 - **Every chip goes through the record** (`buildPlate`): `resolveDairy` (allergy/unsure → no curd/paneer/buttermilk/milk anywhere, non-dairy ferments; `gheeOk` false → no ghee, also in the oils card; lactose intolerance keeps curd + ghee), `known_allergies` + `foods_to_avoid` word-level both directions, fallback lists filtered too. Fixed on the way: cl-004 (low-histamine) was told to have curd most days; cl-906 (milk-protein allergy) got "Curd / dahi · Buttermilk" fallback chips.
@@ -73,6 +81,36 @@ shows up as untracked and gets committed by accident.
 - "gut-supportive" / "gut-healing" as one adjective among many is NOT the cooked-only gut plate — the rule needs an active gut-repair brief (gastric, 5R, FODMAP, H. pylori, manda agni, reflux, SIBO, IBS). Archana + Pranati read as anti_inflammatory because of this.
 - Guided programmes now show a plate too (`GUIDED_PLATE` by programme slug; no allergy record → generic, the allergy-override line does the rest). `planRef` gained `plateOrder` + `plateLine`.
 - `plate-shapes.test.ts` (20 tests) pins the chain, the two client cases, the histamine modifier and that no client line names grams / % / a diagnosis.
+
+---
+
+**v0.91 — a supplement's contraindications are tested against the real record (2026-11-02).** `check_plan` compared them by exact string, so "Active peptic or gastric ulcer, gastritis or erosive oesophagitis — ..." never met "GERD / acid reflux" and "Shell cal 500, omez 20, restil 0.25" never met "omeprazole": zero hits across 20 published plans. Measured after, on the same data: +11 WARNINGs, 0 CRITICAL. The one that mattered: cl-023's list says only "blood thinner" and the plan carries K2, which opposes warfarin.
+
+**Key invariants (v0.91):**
+- **Conditions join on a concept, never on the strings.** `data/_condition_terms.yaml` (underscore-prefixed, `fmdb validate` skips it) maps catalogue wording and record wording to one concept; `fmdb/plan/supplement_clash.py` reads it. A new spelling is a term on the concept. A string with no concept stays silent on purpose (surgery timing, route of use, alcohol, smoking). 359 of 444 strings map; a test ratchets the coverage.
+- **Only the LABEL counts, both sides.** Text after " — " is narrative, and cl-013's hypothyroid entry goes on to say "until H. pylori and ulcer are excluded". The folded search text is not what the coach sees: findings quote the record's own wording.
+- **Medications go through `drug_match.py`.** `match_drugs` (TS `matchDrugs`) returns every record on a line; `match_drug` keeps one and loses the rest of "Tazloc AM (telmisartan + amlodipine)". Eye drops and anything stopped are dropped first, including "Taken in place of Janumet."
+- **Same class is not same drug.** `_MEMBERS_NEEDED`: antibiotics never expand (23 of the first 37 hits were amoxicillin inheriting doxycycline's chelation rule, all false); beta blockers and CCBs expand only when the supplement names 2+ members, because `propranolol` or `diltiazem` alone is a drug-specific line. Vitamin K antagonists are their own record, since K2 matters for warfarin and not clopidogrel. An unnamed "blood thinner" could be either, so it is asked. Daily aspirin counts as a blood thinner too (`_BLOOD_THINNER_RECORDS`). The class word is read from a line's LABEL only: the K2 line's narrative says "anticoagulant effect", and reading that had put the K2 question in front of every clopidogrel and rivaroxaban client.
+- **Firm or soft.** Firm = the record states the diagnosis and the catalogue states the contraindication flatly. `Suspected:`, history, and a hedged catalogue line ("uncontrolled", "monitor", "consult a physician", "may") are soft and never block. A record saying "mild" is no hit on a severe/advanced line.
+- **Every hit is a question with somewhere to answer it.** Contraindications and avoid-together drugs are flags in `fit_requirements`, so they appear in `ClientFitPanel` and an answered row clears them. CRITICAL only in draft / ready; published plans get a WARNING (v0.86 rule). `monitor` and `space_by_hours` stay plain WARNINGs, and a spacing warning is dropped when the plan's `timing` line already names the drug. `contraindications.medications` was never read by check_plan; it is now.
+- **Dairy is not a concept.** Milk goes through `plan/dairy.py`.
+- **One answer on every surface.** `assess/author_gate.py`, `check-supplement-for-client.py` and `checkSupplementInteractionsAction` compare nothing themselves any more; they read `supplement_clash.py` (`condition_clashes`, `medication_clashes`, `active_medications`), and `test_contraindication_surfaces.py` fails if one goes back. `medication_clashes` is the one place that says what blocks, one hit per drug or class.
+- **Each surface keeps its own meaning of severity.** Gate: firm = HARD, soft = WARN, because HARD refuses the save and the chat path has no override. A `continue_or_change: stop` row is never refused: taking it off IS the answer. Widget: `avoid` only on a firm hit; a home remedy only ever says `caution`.
+- **`unnamed` is not `soft`.** "Blood thinner" with no drug stays a blocking flag in `check_plan`, where the coach has a row to answer it. The gate and the widget have no row, so there it is a WARN / `caution`. Do not fold it into `soft`: that would drop cl-023's K2 question from CRITICAL on a draft.
+- **The plan-editor banner matches nothing in TS.** `open-contraindications.ts` takes `fit_required` from `plan-check.py` and keeps a flag only if `check_plan` raised a `client_fit` finding with target `<slug>:<flag id>`, so an answered row and a lapsed client are decided in Python alone. If `plan-check.py` fails the editor toasts rather than showing a clean banner: a plan the model cannot load has no answer.
+- **Home remedies use the same vocabulary, and only about a quarter of their 848 lines map.** They are prose ("poor fluid intake — fibre without water worsens constipation"), and an unmapped line stays silent, which is what removed the old substring false hits. The widget still lists every line. `prose_terms` reads a drug named only inside brackets, which is how cl-019's Dinogest reaches ashokarishta and seed cycling; `_term_parts` drops brackets on purpose for supplements.
+- **Survey clients in care only** (`lifecycle.py::IN_CARE`, `resolve_all`), not every file in `published/`. A roster survey on lapsed clients is time and credits the coach does not want spent.
+
+---
+
+**v0.86 — a protocol is a template, so every plan is tested against the client.** Shweta (cl-906) took a digestive enzyme because the 5R Replace step lists one. Nothing in her record showed she lacked enzymes, she has daily reflux on Omez, and she is allergic to mushrooms and yeast while the capsule is mould-fermented. Severe burning and reflux was the first test that item had. Nothing had asked: the template picker, `generate-draft` and the chat path all took the protocol's word, and no product was ever chosen for that line (it resolved to the default link).
+
+**Key invariants (v0.86):**
+- **`Plan.client_fit` + `fmdb/plan/client_fit.py`.** A plan with a protocol attached needs a row for the protocol and for EVERY supplement: `client_evidence` (what in HER record says she needs it) and `risk_check` (what could go wrong for her, and what was done). Missing, or under 20 characters, is CRITICAL in draft / ready, so `submit_plan` refuses. It lives in `check_plan` because that is the one place every route passes through. The gate cannot judge the answer; it makes the question impossible to skip.
+- **`data/_client_screens.yaml` reads the REAL product.** It matches the `ingredients` of the product the client is sent to, because a plan line saying "protein powder" hides the DigeZyme inside it. A hit applies to any plan, protocol or not. Published plans are not re-gated: a hit is a WARNING.
+- **Rows never carry to a successor** (`client_fit: []` in `generateFollowUpPlan`). A new phase is tested against who she is by then.
+- **Plan editor must not save `client_fit`.** `ClientFitPanel` owns those rows; the editor holds the plan it loaded with and would wipe newer answers, hence `withoutClientFit`.
+- **Why the old checks missed it:** `contraindications.conditions` was matched by exact string against free text, and `ai_check` was told not to re-flag contraindications because "the deterministic checker handles them". The AI prompt no longer says that. The matcher is fixed in v0.91.
 
 ---
 

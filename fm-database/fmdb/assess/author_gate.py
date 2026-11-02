@@ -34,7 +34,16 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from types import SimpleNamespace
 from typing import Any, Optional
+
+from fmdb.plan.supplement_clash import (
+    active_medications,
+    condition_clashes,
+    drug_records,
+    load_concepts,
+    medication_clashes,
+)
 
 # ── Severity-bearing finding ─────────────────────────────────────────────────
 
@@ -349,6 +358,67 @@ def _check_slugs(rep: GateReport, payload: dict, cat: Any, subgraph: Optional[di
 # ── 3. Supplement safety ─────────────────────────────────────────────────────
 
 
+def _clash_record(client: dict) -> SimpleNamespace:
+    """client.yaml as a dict, in the shape the shared matcher reads."""
+    return SimpleNamespace(
+        active_conditions=client.get("active_conditions") or [],
+        medical_history=client.get("medical_history") or [],
+        known_allergies=client.get("known_allergies") or [],
+        current_medications=[
+            *(client.get("current_medications") or []),
+            *(client.get("medications") or []),
+        ],
+    )
+
+
+def _report_clashes(
+    rep: GateReport,
+    slug: Any,
+    supp: Any,
+    record: SimpleNamespace,
+    concepts: tuple,
+    meds: list,
+    drugs: list,
+) -> None:
+    """Same answer as check_plan (plan/supplement_clash.py). HARD refuses the write,
+    so only a FIRM hit may reach it; a soft hit is a question and stays a WARN."""
+    for hit in condition_clashes(supp.contraindications.conditions, record, concepts):
+        message = (
+            f"{slug!r}: the catalogue lists {hit['contraindication']!r} and the "
+            f"client's record says {hit['record']!r}."
+        )
+        if hit["soft"]:
+            rep.warnings.append(GateFinding(
+                "WARN", "supplement_suggestions", "contraindication_to_check",
+                f"{message} Check whether it applies to them.",
+                target=str(slug),
+            ))
+        else:
+            rep.hard_failures.append(GateFinding(
+                "HARD", "supplement_suggestions", "contraindicated_condition",
+                f"{message} Remove it or mark it stop.",
+                target=str(slug),
+            ))
+
+    for hit in medication_clashes(supp, meds, drugs):
+        hard = hit["blocking"] and not hit["soft"] and not hit["unnamed"]
+        contraindicated = hit["kind"] == "contraindicated"
+        finding = GateFinding(
+            "HARD" if hard else "WARN",
+            "supplement_suggestions",
+            "contraindicated_medication" if contraindicated else "medication_interaction",
+            f"{slug!r} and the client's medication {hit['med']!r}: "
+            + (
+                f"the catalogue lists {hit['term']!r}."
+                if contraindicated
+                else f"{hit['term']}: {hit['reason'] or hit['kind']}"
+            )
+            + (" Find out which drug it is." if hit["unnamed"] else ""),
+            target=str(slug),
+        )
+        (rep.hard_failures if hard else rep.warnings).append(finding)
+
+
 def _check_supplements(
     rep: GateReport,
     payload: dict,
@@ -382,11 +452,10 @@ def _check_supplements(
 
         supp_idx = _resolve_index(cat.supplements)
         by_slug = {getattr(x, "slug", ""): x for x in cat.supplements}
-        conds = {_norm(c) for c in (client.get("active_conditions") or [])}
-        meds_raw = list(client.get("current_medications") or []) + list(
-            client.get("medications") or []
-        )
-        meds = {_norm(m) for m in meds_raw if m}
+        record = _clash_record(client)
+        concepts = load_concepts()
+        meds = active_medications(record)
+        drugs = drug_records(cat)
         pregnant, lactating = _life_stage_flags(client)
 
         for s in supps:
@@ -397,28 +466,9 @@ def _check_supplements(
                 continue  # unknown slug already reported as HARD in _check_slugs
 
             contra = getattr(supp, "contraindications", None)
-            for cond in (getattr(contra, "conditions", []) or []):
-                if _norm(cond) in conds:
-                    rep.hard_failures.append(GateFinding(
-                        "HARD", "supplement_suggestions", "contraindicated_condition",
-                        f"{slug!r} is contraindicated with the client's active "
-                        f"condition {cond!r}. Remove it or justify explicitly.",
-                        target=str(slug),
-                    ))
-
-            # Same substring-both-ways rule the interaction scan below uses, so
-            # "metformin" still matches "Janumet 50/500 (metformin)".
-            for cmed in (getattr(contra, "medications", []) or []):
-                cname = _norm(cmed)
-                if len(cname) < 4:
-                    continue
-                if any(cname in m or m in cname for m in meds if len(m) > 3):
-                    rep.hard_failures.append(GateFinding(
-                        "HARD", "supplement_suggestions", "contraindicated_medication",
-                        f"{slug!r} is contraindicated with the client's medication "
-                        f"{cmed!r}. Remove it or justify explicitly.",
-                        target=str(slug),
-                    ))
+            # Taking something OFF is the right answer to a clash, never a refusal.
+            if _norm(s.get("continue_or_change")) != "stop":
+                _report_clashes(rep, slug, supp, record, concepts, meds, drugs)
 
             for stage in (getattr(contra, "life_stages", []) or []):
                 low_stage = _norm(stage)
@@ -449,24 +499,6 @@ def _check_supplements(
                     "this client is lactating. Remove it.",
                     target=str(slug),
                 ))
-
-            inter = getattr(supp, "interactions", None)
-            for mi in (getattr(inter, "with_medications", []) or []):
-                med_name = _norm(getattr(mi, "medication", ""))
-                if not med_name:
-                    continue
-                # substring both ways: "metformin" vs "Janumet 50/500 (metformin)"
-                if any(med_name in m or m in med_name for m in meds if len(m) > 3):
-                    itype = _norm(getattr(getattr(mi, "type", None), "value", ""))
-                    sev = "HARD" if itype == "avoid_together" else "WARN"
-                    bucket = rep.hard_failures if sev == "HARD" else rep.warnings
-                    bucket.append(GateFinding(
-                        sev, "supplement_suggestions", "medication_interaction",
-                        f"{slug!r} interacts with the client's medication "
-                        f"{getattr(mi, 'medication', '')!r}: "
-                        f"{getattr(mi, 'reason', '') or itype or 'interaction on file'}",
-                        target=str(slug),
-                    ))
 
             tier = _norm(getattr(getattr(supp, "evidence_tier", None), "value", ""))
             if tier in ("confirm_with_clinician", "fm_specific_thin") and not _norm(

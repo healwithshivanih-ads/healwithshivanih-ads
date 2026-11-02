@@ -31,6 +31,7 @@ interface SupplementRow {
   name: string;
   dose?: string;
   timing?: string;
+  alreadyHas: boolean;
   link: SupplementLink;
 }
 
@@ -183,19 +184,24 @@ export default async function SupplementsPage({
         describeDose(s) ??
         (s.dose_summary as string | undefined) ??
         (typeof s.dose === "string" ? (s.dose as string) : undefined);
+      // Catalogue slug binds the product deterministically (covers/slug),
+      // never by a coincidental name substring.
+      const resolved = await resolveSupplementLink(
+        name,
+        (s.supplement_slug as string | undefined) ?? undefined,
+        { international },
+      );
+      // A product the coach pinned on the plan wins, as it does in the app.
+      const pinned = typeof s.buy_link === "string" ? s.buy_link.trim() : "";
+      const alreadyHas = s.no_buy_link === true;
       return {
         name,
         // Strip "titrate by N mg" verbs + coach-only clauses — clients
         // can't dose in mg increments, only in capsule counts.
         dose: clientifyDose(rawDose),
         timing: (s.timing as string | undefined) ?? (s.when as string | undefined),
-        // Catalogue slug binds the product deterministically (covers/slug),
-        // never by a coincidental name substring.
-        link: await resolveSupplementLink(
-          name,
-          (s.supplement_slug as string | undefined) ?? undefined,
-          { international },
-        ),
+        alreadyHas,
+        link: pinned ? { ...resolved, url: pinned, source: pinnedSource(pinned), notes: undefined } : resolved,
       };
     }),
   );
@@ -217,10 +223,16 @@ export default async function SupplementsPage({
             </div>
             {r.dose && <div style={META}>{r.dose}</div>}
             {r.timing && <div style={META}>🕐 {r.timing}</div>}
-            <a href={r.link.url} target="_blank" rel="noopener noreferrer" style={BTN}>
-              Order on {sourceLabel(r.link.source, r.link.url)} →
-            </a>
-            {r.link.notes && <div style={NOTE}>{r.link.notes}</div>}
+            {r.alreadyHas ? (
+              <div style={NOTE}>You already have this one, no need to order.</div>
+            ) : (
+              <>
+                <a href={r.link.url} target="_blank" rel="noopener noreferrer" style={BTN}>
+                  Order on {sourceLabel(r.link.source, r.link.url)} →
+                </a>
+                {r.link.notes && <div style={NOTE}>{r.link.notes}</div>}
+              </>
+            )}
           </li>
         ))}
       </ul>
@@ -232,6 +244,14 @@ export default async function SupplementsPage({
       </footer>
     </Wrap>
   );
+}
+
+function pinnedSource(url: string): SupplementLink["source"] {
+  if (url.includes("vitaone.in")) return "vitaone";
+  if (url.includes("fmnutrition.in")) return "fmnutrition";
+  if (/amazon\.|amzn\.to/.test(url)) return "amazon";
+  if (url.includes("iherb.com")) return "iherb";
+  return "custom";
 }
 
 function sourceLabel(s: SupplementLink["source"], url?: string): string {

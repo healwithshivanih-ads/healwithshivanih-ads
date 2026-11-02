@@ -450,6 +450,8 @@ def main() -> int:
     except json.JSONDecodeError as e:
         return emit({"ok": False, "error": f"JSON parse: {e}"})
 
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(inp.get("client_id") or "", "extract-report.py")
     file_path_str = inp.get("file_path", "")
     report_type = inp.get("report_type", "other")
     file_name = inp.get("file_name", "")

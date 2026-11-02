@@ -14,15 +14,19 @@
  */
 import { describe, it, expect } from "vitest";
 import {
+  alertHeadline,
   decide,
   evaluate,
   EMPTY_STATE,
   isQuiet,
+  repairNote,
   FLY_ALERT_AFTER,
   REALERT_AFTER_HOURS,
+  SILENT_ALERT_AFTER,
   TUNNEL_ALERT_AFTER,
   type Evaluation,
   type ProbeSet,
+  type RepairAttempt,
   type WatchdogState,
 } from "./infra-health";
 
@@ -46,6 +50,11 @@ const offline = (over: Partial<ProbeSet> = {}): ProbeSet =>
     internet: { status: null },
     ...over,
   });
+
+/** A patchy Mac: the odd request gets out, so the control host answers, while
+ *  both of ours go silent. This is the 2026-10-30 23:30 and 23:40 shape. */
+const patchy = (over: Partial<ProbeSet> = {}): ProbeSet =>
+  offline({ internet: { status: 204 }, ...over });
 
 const keys = (p: Evaluation) => p.problems.map((x) => x.key).sort();
 
@@ -146,11 +155,56 @@ describe("evaluate — an offline Mac is not a remote outage", () => {
     expect(evaluate(offline()).tunnelNeedsRepair).toBe(false);
   });
 
-  it("ANY answer from the control host proves the uplink — even a 500", () => {
+  it("ANY answer from the control host counts as reaching it — even a 500", () => {
     // The control tests our uplink, not the other end's health.
-    const e = evaluate(offline({ internet: { status: 500 } }));
+    const e = evaluate(healthy({ flyHealth: { status: null }, internet: { status: 500 } }));
     expect(e.networkUncertain).toBe(false);
-    expect(keys(e)).toEqual(["fly_down", "tunnel_down"]);
+    expect(keys(e)).toEqual(["fly_down"]);
+  });
+
+  /**
+   * THE 2026-10-30 CASE. The connection was patchy, not gone, so the control
+   * host answered in the same cycles where the tunnel and Fly went silent. The
+   * two share nothing but this Mac's uplink, so that is a reading about the
+   * uplink. This reverses the old rule that one control answer settles it.
+   */
+  it("both of ours silent is NO READING even when the control host answered", () => {
+    const e = evaluate(patchy());
+    expect(keys(e)).toEqual(["local_network_down"]);
+    expect(e.networkUncertain).toBe(true);
+    expect(e.uplinkSuspect).toBe(true);
+    expect(e.tunnelNeedsRepair).toBe(false);
+    expect(e.problems[0].detail).toContain("patchy internet");
+  });
+
+  it("a truly offline Mac is not the patchy case", () => {
+    const e = evaluate(offline());
+    expect(e.networkUncertain).toBe(true);
+    expect(e.uplinkSuspect).toBe(false);
+    expect(e.problems[0].detail).toContain("could not reach the internet at all");
+  });
+
+  it("a status code is an answer: a 530 tunnel or a 500 Fly is never silence", () => {
+    // Cloudflare or Fly really answered, so the uplink carried the request and
+    // the outage is real. Treating these as silence would hide genuine failures.
+    const tunnel530 = evaluate(patchy({ tunnelHealth: { status: 530 } }));
+    expect(tunnel530.uplinkSuspect).toBe(false);
+    expect(keys(tunnel530)).toEqual(["fly_down", "tunnel_down"]);
+
+    const fly500 = evaluate(patchy({ flyHealth: { status: 500 } }));
+    expect(fly500.uplinkSuspect).toBe(false);
+    expect(keys(fly500)).toEqual(["fly_down", "tunnel_down"]);
+  });
+
+  it("the tunnel alone going silent is still a real tunnel problem", () => {
+    const e = evaluate(healthy({ tunnelHealth: { status: null } }));
+    expect(e.uplinkSuspect).toBe(false);
+    expect(e.tunnelNeedsRepair).toBe(true);
+  });
+
+  it("an exposure is still reported on a patchy connection", () => {
+    const e = evaluate(patchy({ tunnelCoachRoute: { status: 200 } }));
+    expect(keys(e)).toContain("dashboard_exposed");
   });
 
   it("an exposure is still reported while offline — it needs no uplink to be true", () => {
@@ -227,6 +281,7 @@ describe("decide — repair first, escalate late", () => {
     const state: WatchdogState = {
       consecutiveTunnelFailures: 0,
       consecutiveFlyFailures: FLY_ALERT_AFTER - 1,
+      consecutiveSilentCycles: 0,
       lastAlertAt: { fly_down: "not-a-date" },
     };
     expect(decide(e, state, { repairAttempted: false, now }).alert).toHaveLength(1);
@@ -306,5 +361,122 @@ describe("decide — Fly gets the same cushion the tunnel has", () => {
     const e = evaluate(offline());
     expect(keys(e)).toEqual(["local_network_down"]);
     expect(cycles(e, 10, now, EMPTY_STATE, true).alert).toEqual([]);
+  });
+});
+
+describe("decide — patchy internet does not mail, sustained silence does", () => {
+  const now = new Date("2026-10-30T18:10:00Z");
+
+  /** Replay a night, one evaluation per 5-minute cycle, threading state. */
+  function replay(night: ProbeSet[], start: WatchdogState = EMPTY_STATE) {
+    let state = start;
+    const mailed: string[] = [];
+    for (const probes of night) {
+      const e = evaluate(probes);
+      const d = decide(e, state, { repairAttempted: e.tunnelNeedsRepair, now });
+      mailed.push(...d.alert.map((p) => p.key));
+      state = d.state;
+    }
+    return { mailed, state };
+  }
+
+  it("THE 30 OCT EMAIL: last night's exact run of cycles mails nothing", () => {
+    // 23:15, 23:20 offline · 23:25 tunnel alone · 23:30 both · 23:35 offline ·
+    // 23:40 both, which is the cycle that actually sent the email.
+    const { mailed, state } = replay([
+      offline(),
+      offline(),
+      healthy({ tunnelHealth: { status: null }, tunnelCoachRoute: { status: null } }),
+      patchy(),
+      offline(),
+      patchy(),
+    ]);
+    expect(mailed).toEqual([]);
+    expect(state.consecutiveTunnelFailures).toBe(1);
+    expect(state.consecutiveFlyFailures).toBe(0);
+    expect(state.consecutiveSilentCycles).toBe(2);
+  });
+
+  it("the silent edge: both hosts gone for half an hour still reaches her", () => {
+    // Without this, a real double outage would read as bad Wi-Fi forever.
+    const night = Array.from({ length: SILENT_ALERT_AFTER }, () => patchy());
+    expect(replay(night.slice(0, -1)).mailed).toEqual([]);
+    expect(replay(night).mailed).toEqual(["both_unreachable"]);
+  });
+
+  it("an offline cycle neither counts towards the silence nor clears it", () => {
+    const d = replay([patchy(), patchy(), offline()]);
+    expect(d.state.consecutiveSilentCycles).toBe(2);
+  });
+
+  it("any cycle with a real answer resets the silence", () => {
+    const d = replay([patchy(), patchy(), healthy()]);
+    expect(d.state.consecutiveSilentCycles).toBe(0);
+  });
+
+  it("the sustained-silence alert is throttled like every other", () => {
+    const night = Array.from({ length: SILENT_ALERT_AFTER + 3 }, () => patchy());
+    expect(replay(night).mailed).toEqual(["both_unreachable"]);
+  });
+});
+
+describe("repairNote — the email says what really happened", () => {
+  const tunnel = evaluate(healthy({ tunnelHealth: { status: null } })).problems;
+  const fly = evaluate(healthy({ flyHealth: { status: null } })).problems;
+  const attempt = (outcome: RepairAttempt["outcome"]): RepairAttempt => ({
+    outcome,
+    detail: "launchctl: no such service",
+  });
+
+  it("THE FALSE FOOTER: a restart that needs a password says it did not happen", () => {
+    const note = repairNote(tunnel, attempt("no_permission"));
+    expect(note).toContain("could not restart");
+    expect(note).toContain("has not been restarted");
+    expect(note).toContain("docs/COACH_REMOTE_ACCESS.md");
+    expect(note).not.toContain("already tried");
+  });
+
+  it("a restart that ran but did not help says so", () => {
+    expect(repairNote(tunnel, attempt("restarted"))).toBe(
+      "The watchdog restarted the tunnel, but it is still down.",
+    );
+  });
+
+  it("any other failure carries the real reason", () => {
+    expect(repairNote(tunnel, attempt("failed"))).toContain("launchctl: no such service");
+  });
+
+  it("no attempt on record is stated, never implied", () => {
+    expect(repairNote(tunnel, null)).toContain("did not try");
+  });
+
+  it("an alert with no tunnel problem makes no claim about the tunnel", () => {
+    expect(repairNote(fly, attempt("no_permission"))).toBe("");
+  });
+});
+
+describe("alertHeadline", () => {
+  const now = new Date("2026-10-30T18:10:00Z");
+  const silentAlert = () => {
+    const e = evaluate(patchy());
+    return cycles(e, SILENT_ALERT_AFTER, now).alert;
+  };
+
+  it("cannot-confirm is never worded as remote access being down", () => {
+    const { subject, banner } = alertHeadline(silentAlert());
+    expect(subject).toContain("cannot confirm");
+    expect(`${subject} ${banner}`).not.toMatch(/is down/i);
+  });
+
+  it("a real tunnel outage keeps its plain headline", () => {
+    const e = evaluate(healthy({ tunnelHealth: { status: null } }));
+    const { alert } = cycles(e, TUNNEL_ALERT_AFTER, now, EMPTY_STATE, true);
+    expect(alertHeadline(alert).subject).toBe("⚠️ FM Coach — remote access is down");
+  });
+
+  it("anything critical outranks both", () => {
+    const e = evaluate(healthy({ tunnelCoachRoute: { status: 200 } }));
+    const { alert } = decide(e, EMPTY_STATE, { repairAttempted: false, now });
+    expect(alertHeadline(alert).subject).toBe("⚠️ FM Coach — needs attention now");
   });
 });

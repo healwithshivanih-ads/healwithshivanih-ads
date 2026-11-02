@@ -1249,6 +1249,8 @@ export async function generateFollowUpPlan(
     is_maintenance: intent === "maintenance",
     // EXPLICIT carry — defensive, in case `patch` shadows it.
     attached_protocols: inheritedProtocols,
+    // Never carried: a new phase is tested afresh against who she is now.
+    client_fit: [],
     // Prepend AI summary + protocols-carried note to notes_for_coach.
     // Header reflects intent so coach can scan and see whether this
     // draft is a next-phase continuation or a maintenance graduation.

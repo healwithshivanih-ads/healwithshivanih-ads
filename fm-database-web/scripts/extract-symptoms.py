@@ -179,6 +179,12 @@ def main() -> int:
     symptom_catalogue: list[dict] = payload.get("symptom_catalogue") or []
     dry_run: bool = bool(payload.get("dry_run"))
 
+    # Uploads live at ~/fm-plans/clients/<id>/files/...; a URL upload has no client.
+    _path_parts = Path(transcript_path).parts if transcript_path else ()
+    if "clients" in _path_parts[:-1]:
+        from _api_guard import refuse_if_expired
+        refuse_if_expired(_path_parts[_path_parts.index("clients") + 1], "extract-symptoms.py")
+
     if dry_run:
         json.dump({
             "ok": True,

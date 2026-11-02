@@ -156,3 +156,40 @@ def test_assess_reads_the_summary(tmp_path):
     )
     got = mod._load_food_diary_summary(tmp_path, "cl-1")
     assert got and got["summary"] == "~38 g"
+
+
+def test_client_correction_after_a_read_queues_a_reread_with_her_words(tmp_path):
+    mod = _load("read-diary-photos")
+    person = _client(tmp_path)
+    # "b" was read at 10:00; the client says what it really is at 11:00.
+    with (person / "_food_diary.fly.jsonl").open("a") as fh:
+        fh.write(json.dumps({"op": "edit", "diary_id": "fd-1", "ts": "2026-10-23T11:00:00Z", "entry_id": "b",
+                             "name": "spaghetti"}) + "\n")
+    unread = {e["entry_id"]: e for e in mod.unread_entries(mod.read_lines(person), "fd-1")}
+    assert set(unread) == {"a", "b"}
+    assert unread["b"]["label"] == "spaghetti"
+    # A correction OLDER than the read does not re-queue it.
+    person2 = _client(tmp_path / "x")
+    with (person2 / "_food_diary.fly.jsonl").open("a") as fh:
+        fh.write(json.dumps({"op": "edit", "diary_id": "fd-1", "ts": "2026-10-23T09:30:00Z", "entry_id": "b",
+                             "name": "spaghetti"}) + "\n")
+    assert [e["entry_id"] for e in mod.unread_entries(mod.read_lines(person2), "fd-1")] == ["a"]
+
+
+def test_protein_idea_kept_only_for_a_low_protein_plate():
+    mod = _load("read-diary-photos")
+    base = {"is_food_or_drink": True, "readable": True, "confidence": 0.9,
+            "dishes": [{"name": "spaghetti", "count": 1, "size": "large"}], "reason": ""}
+    low = mod.normalise_reading({**base, "balance": {"protein": "none", "veg": "none", "carbs": "heavy"},
+                                 "protein_idea": "chickpeas tossed through."})
+    assert low["protein_idea"] == "chickpeas tossed through"
+    high = mod.normalise_reading({**base, "balance": {"protein": "present", "veg": "none", "carbs": "heavy"},
+                                  "protein_idea": "more paneer"})
+    assert "protein_idea" not in high
+
+
+def test_reader_is_told_allergies_avoid_list_and_dairy():
+    mod = _load("read-diary-photos")
+    ctx = mod._diet_context({"dietary_preference": "Vegetarian", "known_allergies": ["Milk"], "foods_to_avoid": "paneer"})
+    assert "Vegetarian" in ctx and "Milk" in ctx and "paneer" in ctx
+    assert "treat as vegetarian" in mod._diet_context({})

@@ -194,6 +194,10 @@ def main() -> int:
         return 2
 
     client_id: str = payload.get("client_id") or ""
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "draft-followup-message.py")
     session_id: str = payload.get("session_id") or ""
     session_type: str = payload.get("session_type") or "check_in"
     dry_run: bool = bool(payload.get("dry_run"))

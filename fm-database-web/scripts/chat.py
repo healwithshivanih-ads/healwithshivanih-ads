@@ -75,6 +75,10 @@ def main() -> int:
         return 2
 
     client_id = payload.get("client_id") or ""
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "chat.py")
     session_id = payload.get("session_id") or ""
     history = payload.get("history") or []
     user_message = payload.get("user_message") or ""

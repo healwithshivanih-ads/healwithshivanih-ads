@@ -61,16 +61,20 @@ export function readDiaryLines(clientId: string): DiaryLine[] {
   return out;
 }
 
-/** The diary switch on client.yaml, or null. */
-export function readDiaryConfig(clientId: string): FoodDiaryConfig | null {
+/** client.yaml as a plain object, or null. */
+export function readClientDoc(clientId: string): Record<string, unknown> | null {
   const dir = clientDir(clientId);
   if (!dir) return null;
   try {
-    const doc = yaml.load(fs.readFileSync(path.join(dir, "client.yaml"), "utf8")) as Record<string, unknown> | null;
-    return parseDiaryConfig(doc?.food_diary);
+    return (yaml.load(fs.readFileSync(path.join(dir, "client.yaml"), "utf8")) as Record<string, unknown> | null) ?? null;
   } catch {
     return null;
   }
+}
+
+/** The diary switch on client.yaml, or null. */
+export function readDiaryConfig(clientId: string): FoodDiaryConfig | null {
+  return parseDiaryConfig(readClientDoc(clientId)?.food_diary);
 }
 
 export function loadDiary(clientId: string, cfg: FoodDiaryConfig): FoldedDiary {

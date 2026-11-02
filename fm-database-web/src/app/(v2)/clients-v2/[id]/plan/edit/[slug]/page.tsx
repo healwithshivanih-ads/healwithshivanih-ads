@@ -49,6 +49,7 @@ import { loadSupplementSources } from "@/lib/server-actions/plans";
 import { PlanStatusBadge } from "@/components/plan-status-badge";
 import { PlanPageShell } from "../../plan-page-shell";
 import { AttachedProtocolsPanel } from "../../attached-protocols-panel";
+import { ClientFitPanel } from "../../client-fit-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -341,6 +342,10 @@ export default async function V2PlanEditorPage({
                 lab_orders: (plan as { lab_orders?: unknown[] }).lab_orders ?? [],
               }}
             />
+          </div>
+
+          <div style={{ marginBottom: 16 }}>
+            <ClientFitPanel planSlug={plan.slug} locked={locked} rows={plan.client_fit ?? []} />
           </div>
 
           {/* `.fm-v2-host` re-skins the shadcn+Tailwind primitives inside

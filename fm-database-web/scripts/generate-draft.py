@@ -153,6 +153,10 @@ def main() -> int:
         return 2
 
     client_id = payload.get("client_id") or ""
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "generate-draft.py")
     session_id = payload.get("session_id") or ""
     picks: dict = payload.get("picks") or {}
     plan_brief: dict = payload.get("plan_brief") or {}

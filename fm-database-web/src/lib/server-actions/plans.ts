@@ -12,6 +12,7 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
 import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { matchDrug } from "@/lib/fmdb/drug-match";
+import { openContraindications } from "@/lib/fmdb/open-contraindications";
 
 // ─── Supplement sources ────────────────────────────────────────────────────────
 
@@ -117,7 +118,26 @@ export interface PlanCheckResult {
   slug?: string;
   findings?: PlanCheckFinding[];
   counts?: { CRITICAL: number; WARNING: number; INFO: number };
+  /** What has to be tested against this client before the plan can leave
+   *  draft. Same list the gate in fmdb/plan/client_fit.py enforces. */
+  fit_required?: FitRequirement[];
   error?: string | null;
+}
+
+export interface FitRequirement {
+  item: string;
+  kind: "protocol" | "supplement";
+  label: string;
+  flags: {
+    id: string;
+    reason: string;
+    ask: string;
+    matched: string[];
+    /** "contraindications" on a catalogue flag; a screen carries none. */
+    field?: string;
+    /** A question, not a refusal: never blocks. See fmdb/plan/supplement_clash.py. */
+    soft?: boolean;
+  }[];
 }
 
 /**
@@ -297,8 +317,12 @@ export async function updatePlanForChat(
 export interface SupplementInteraction {
   supplement_slug: string;
   supplement_name: string;
+  flag_id: string;
   contraindication_text: string;
-  matched_medications: string[];
+  ask: string;
+  /** The client's own wording: a condition or a medication. */
+  matched: string[];
+  soft: boolean;
 }
 
 export interface SupplementInteractionsResult {
@@ -325,9 +349,9 @@ export interface DrugCaution {
 }
 
 /**
- * For each supplement in the plan, load its catalogue entry and check whether
- * any of the client's medications appear in the supplement's contraindications.
- * Uses case-insensitive substring matching.
+ * The supplements on this plan that clash with the client's record, plus the
+ * drug-derived cautions. Clashes come from check_plan, so the banner and the gate
+ * give one answer (fmdb/plan/supplement_clash.py). No matching happens in TS.
  */
 export async function checkSupplementInteractionsAction(
   planSlug: string
@@ -338,6 +362,10 @@ export async function checkSupplementInteractionsAction(
 
     const clientId = plan.client_id as string | undefined;
     if (!clientId) return { ok: true, interactions: [] };
+
+    const check = await runPlanCheck(planSlug);
+    const interactions = check.ok ? openContraindications(check) : [];
+    const checkError = check.ok ? {} : { error: check.error ?? "plan-check failed" };
 
     // Load client to get medications
     const clientFile = path.join(
@@ -351,82 +379,14 @@ export async function checkSupplementInteractionsAction(
       const raw = await fs.readFile(clientFile, "utf-8");
       clientData = (yaml.load(raw) as Record<string, unknown>) ?? {};
     } catch {
-      return { ok: true, interactions: [] }; // no client file — can't check
+      return { ok: true, interactions, ...checkError }; // no client file — can't check
     }
 
     const medications: string[] = [
       ...((clientData.medications as string[] | undefined) ?? []),
       ...((clientData.current_medications as string[] | undefined) ?? []),
     ];
-    if (medications.length === 0) return { ok: true, interactions: [] };
-
-    // Load each supplement from catalogue
-    interface SupplementItem { supplement_slug: string }
-    const supplements = (plan.supplement_protocol as SupplementItem[] | undefined) ?? [];
-    const catalogueDir = path.join(
-      path.resolve(process.cwd(), "..", "fm-database", "data"),
-      "supplements"
-    );
-
-    const interactions: SupplementInteraction[] = [];
-
-    await Promise.all(
-      supplements.map(async (s) => {
-        const slug = s.supplement_slug;
-        if (!slug) return;
-
-        let suppData: Record<string, unknown> | null = null;
-        try {
-          const raw = await fs.readFile(path.join(catalogueDir, `${slug}.yaml`), "utf-8");
-          suppData = yaml.load(raw) as Record<string, unknown>;
-        } catch {
-          return; // supplement not in catalogue — skip
-        }
-        if (!suppData) return;
-
-        const contraindications = suppData.contraindications;
-        if (!contraindications) return;
-
-        // Build a text blob for substring matching
-        let contraindicationText = "";
-        const matchedMeds: string[] = [];
-
-        if (typeof contraindications === "string") {
-          contraindicationText = contraindications;
-        } else if (typeof contraindications === "object") {
-          const c = contraindications as Record<string, unknown>;
-          const parts: string[] = [];
-          if (Array.isArray(c.conditions)) parts.push(...(c.conditions as string[]));
-          if (Array.isArray(c.medications)) parts.push(...(c.medications as string[]));
-          if (Array.isArray(c.life_stages)) parts.push(...(c.life_stages as string[]));
-          // Also handle plain string fields
-          if (typeof c.conditions === "string") parts.push(c.conditions);
-          if (typeof c.medications === "string") parts.push(c.medications);
-          contraindicationText = parts.join("; ");
-        }
-
-        if (!contraindicationText) return;
-
-        const lowerText = contraindicationText.toLowerCase();
-        for (const med of medications) {
-          if (!med) continue;
-          const normalised = med.toLowerCase().replace(/\s*\d+\s*mg.*/i, "").trim();
-          if (normalised.length < 3) continue;
-          if (lowerText.includes(normalised)) {
-            matchedMeds.push(med);
-          }
-        }
-
-        if (matchedMeds.length > 0) {
-          interactions.push({
-            supplement_slug: slug,
-            supplement_name: (suppData.display_name as string | undefined) ?? slug,
-            contraindication_text: contraindicationText,
-            matched_medications: matchedMeds,
-          });
-        }
-      })
-    );
+    if (medications.length === 0) return { ok: true, interactions, ...checkError };
 
     // ── v0.74: drug_depletions → protocol_cautions pass ──
     // Match every client medication against the drug catalogue (alias-aware)
@@ -493,7 +453,7 @@ export async function checkSupplementInteractionsAction(
       console.error("[plans] drug_depletions caution pass failed:", e);
     }
 
-    return { ok: true, interactions, drug_cautions: drugCautions };
+    return { ok: true, interactions, drug_cautions: drugCautions, ...checkError };
   } catch (e) {
     return { ok: false, interactions: [], error: String(e) };
   }

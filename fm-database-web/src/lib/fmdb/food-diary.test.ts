@@ -56,8 +56,19 @@ const add = (id: string, over: Partial<DiaryLine> = {}): DiaryLine => ({
 });
 
 describe("bands", () => {
-  it("infers the same part of the day as the app's 'Your day'", () => {
-    for (let h = 0; h < 24; h++) expect(diaryBandForHour(h)).toBe(bandForHour(h));
+  it("dinner runs to 11 pm — a 9:21 pm dinner is dinner, not 'late night' (cl-900, 2026-10-23)", () => {
+    expect(diaryBandForHour(21)).toBe("evening");
+    expect(diaryBandForHour(22)).toBe("evening");
+    expect(diaryBandForHour(23)).toBe("bedtime");
+    expect(diaryBandForHour(1)).toBe("bedtime");
+    expect(diaryBandForHour(6)).toBe("waking");
+    expect(diaryBandForHour(9)).toBe("morning");
+    expect(diaryBandForHour(13)).toBe("midday");
+  });
+  it("matches 'Your day' through the afternoon, and differs only where food does", () => {
+    // The routine's 9 pm is "before bed"; the meal's 9 pm is dinner.
+    for (const h of [8, 10, 12, 15, 16, 20]) expect(diaryBandForHour(h)).toBe(bandForHour(h));
+    expect(bandForHour(21)).toBe("bedtime");
   });
   it("never offers 'any time' — a meal happened at a time", () => {
     expect(DIARY_BANDS as readonly string[]).not.toContain("anytime");
@@ -161,14 +172,18 @@ describe("the client sees photos and plate-balance WORDS — never a number (§5
     ],
     "fd-1",
   );
-  const KEYS = ["band", "date", "entry_id", "file", "marks", "note", "time"];
+  const KEYS = ["band", "date", "entry_id", "feedback", "file", "looksLike", "marks", "note", "time"];
 
-  it("DELIBERATE pin: photo fields + `marks`, and nothing from the reading but its three words", () => {
+  it("DELIBERATE pin: photo fields + marks + what it looks like + one feedback line — never the reading's numbers", () => {
+    // Changed 2026-10-23 (coach): the client sees what the photo was read as,
+    // so a misread ("spaghetti with egg") can be corrected, and one line of
+    // feedback per meal. Still no confidence, portions, counts or nutrients.
     const v = clientDiaryView(CFG, folded, "2026-10-23")!;
     expect(Object.keys(v.entries[0]).sort()).toEqual(KEYS);
     expect(v.entries[0].marks).toEqual({ protein: "present", veg: "light", carbs: "heavy" });
+    expect(v.entries[0].looksLike).toBe("2 chilla"); // the coach's correction wins
     const json = JSON.stringify(v);
-    expect(json).not.toMatch(/chilla|confidence|dishes|portion|coach_label|ai_reading|count|kcal|protein_g|fibre/);
+    expect(json).not.toMatch(/confidence|dishes|portion|coach_label|ai_reading|"count"|kcal|protein_g|fibre|\d+ ?g\b/);
     expect(v.gramsToday).toBeUndefined();
   });
   it("a gentle client gets protein dots only — no veg, no carb-heavy", () => {

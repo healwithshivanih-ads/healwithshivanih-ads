@@ -157,6 +157,51 @@ export function allowedSwaps(client: DietContext | null | undefined, band: "morn
   ).map((s) => s.text);
 }
 
+// ── the AI's protein idea, checked before a client sees it ──────────────────
+
+const TAG_WORDS: Record<Tag, string[]> = {
+  nonveg: [
+    "chicken", "fish", "mutton", "lamb", "prawn", "shrimp", "meat", "keema", "pork", "beef", "bacon",
+    "ham", "turkey", "tuna", "salmon", "sardine", "crab", "seafood", "anchov", "sausage", "salami",
+  ],
+  egg: ["egg", "omelet", "anda"],
+  dairy: [
+    "paneer", "curd", "yogurt", "yoghurt", "cheese", "milk", "dahi", "raita", "whey", "ricotta",
+    "cottage", "cream", "kefir", "labneh", "feta", "lassi", "chaas", "buttermilk", "mozzarella", "parmesan",
+  ],
+  soy: ["tofu", "soy", "soya", "edamame", "tempeh"],
+  legume: ["dal", "lentil", "chickpea", "chana", "rajma", "bean", "moong", "besan", "hummus", "sprout"],
+  gluten: ["wheat", "seitan", "bread", "roti", "chapati", "couscous", "bulgur", "pasta"],
+  nuts: ["almond", "cashew", "walnut", "peanut", "pistachio", "nut"],
+  root: ["potato", "onion", "garlic", "carrot", "beet", "radish", "ginger"],
+};
+
+const STOP = new Set(["with", "and", "only", "free", "avoid", "none", "food", "foods", "less", "more", "very", "from"]);
+
+/**
+ * May this client be shown this idea? A HARD filter, applied on render: the
+ * model was told the diet, allergies and avoid list, but its word is not what
+ * keeps meat off a vegetarian's screen. Rejects anything naming a food her
+ * diet / dairy reaction / allergies / avoid list rule out.
+ */
+export function ideaAllowed(idea: string | undefined | null, client: DietContext | null | undefined): boolean {
+  const text = String(idea ?? "").toLowerCase().trim();
+  if (!text || text.length > 100) return false;
+  const c = client ?? {};
+  const excluded = dietExcludes(c.dietary_preference);
+  if (treatsAsAllergy(resolveDairy(c))) excluded.add("dairy");
+  const avoid = [c.known_allergies, c.foods_to_avoid, c.reported_triggers].map(flatText).join(" ").toLowerCase();
+  if (/\b(soy|soya|tofu)/.test(avoid)) excluded.add("soy");
+  if (/\begg/.test(avoid)) excluded.add("egg");
+  if (/\b(dairy|milk protein|casein)\b/.test(avoid)) excluded.add("dairy");
+  if (/\b(legume|pulse|lentil)s?\b/.test(avoid)) excluded.add("legume");
+  if (/\b(gluten|wheat)\b/.test(avoid)) excluded.add("gluten");
+  if (/\b(nut|nuts|peanut|almond|cashew)\b/.test(avoid)) excluded.add("nuts");
+  for (const tag of excluded) if (TAG_WORDS[tag].some((w) => text.includes(w))) return false;
+  const tokens = avoid.split(/[^a-z]+/).filter((t) => t.length >= 4 && !STOP.has(t));
+  return !tokens.some((t) => text.includes(t));
+}
+
 // ── the end-of-diary strength + fix ─────────────────────────────────────────
 
 /** Meals the tip talks about. Early-morning drinks and late-night snacks are
@@ -172,6 +217,8 @@ export interface PlateForTip {
   balance: PlateBalance;
   /** Dish names, for "leaned on poha". Coach correction first if any. */
   dishes: string[];
+  /** The reader's protein addition for this plate, if any (unfiltered). */
+  idea?: string;
 }
 
 export interface DiaryTip {
@@ -247,7 +294,18 @@ export function diaryTip(
     .sort((a, b) => a.share - b.share || b.ps.length - a.ps.length)[0];
   let fix: string | null = null;
   if (weakest && weakest.share <= 0.5) {
-    const swaps = allowedSwaps(client, weakest.band).slice(0, 2);
+    // The reader's own ideas for those plates first — they suit the actual
+    // dish ("chickpeas tossed through" for spaghetti, never "dal"); the fixed
+    // list is only the backstop. Every idea passes ideaAllowed.
+    const fromPlates = [
+      ...new Set(
+        weakest.ps
+          .filter((p) => p.balance.protein !== "present")
+          .map((p) => (p.idea ?? "").trim())
+          .filter((i) => ideaAllowed(i, client)),
+      ),
+    ];
+    const swaps = (fromPlates.length ? fromPlates : allowedSwaps(client, weakest.band)).slice(0, 2);
     if (swaps.length) {
       const name = MEAL_NAME[weakest.band];
       const heavy = weakest.ps.filter((p) => p.balance.carbs === "heavy").length >= weakest.ps.length / 2;
@@ -259,4 +317,50 @@ export function diaryTip(
     }
   }
   return { strength, fix };
+}
+
+// ── one line per meal (coach decision 2026-10-23: "as the client I want some
+//    feedback on my meals") ─────────────────────────────────────────────────
+
+const SWAP_BAND: Record<string, "morning" | "midday" | "evening" | null> = {
+  waking: null,
+  morning: "morning",
+  midday: "midday",
+  evening: "evening",
+  bedtime: null,
+};
+
+/**
+ * One observational line about a meal, from its plate balance. Same rules as
+ * the tip: food words, never numbers, never a verdict, and any swap comes from
+ * allowedSwaps — so it is something this client can eat. Gentle (or balance
+ * marks off): protein only, never carbs. Early-morning drinks and late-night
+ * items get no line — "no protein" under a cup of tea is not useful.
+ */
+export function mealFeedback(
+  balance: PlateBalance,
+  band: string,
+  client: DietContext | null | undefined,
+  opts: { gentle: boolean; idea?: string | null },
+): string | null {
+  if (!SWAP_BAND[band]) return null;
+  // ONLY the reader's idea for this dish — a fixed list cannot know that
+  // nobody adds dal to spaghetti (coach, 2026-10-23). No safe idea → a plain
+  // "some protein", never a mismatched dish.
+  const idea = opts.idea && ideaAllowed(opts.idea, client) ? opts.idea.trim().replace(/\.$/, "") : null;
+  const { protein, veg, carbs } = balance;
+
+  if (opts.gentle) {
+    if (protein === "present") return "Protein ✓ — nice.";
+    return idea ? `Next time, try adding ${idea} for some protein.` : "Next time, adding some protein would help.";
+  }
+  if (protein === "present") {
+    if (carbs === "heavy") return "Good protein. The plate leans on carbs — a little more veg would even it out.";
+    if (veg === "none" || veg === "light") return "Good protein here. Some veg or a salad on the side would round it out.";
+    return "Well balanced — protein, veg and carbs all there.";
+  }
+  const add = idea ? `Try adding ${idea}.` : "Adding some protein would help.";
+  if (protein === "light") return `A little protein here. ${add}`;
+  if (carbs === "heavy") return `Mostly carbs on this plate. ${add}`;
+  return `No protein on this plate. ${add}`;
 }

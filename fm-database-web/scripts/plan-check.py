@@ -14,6 +14,8 @@ Writes JSON to stdout:
      "ack_id": str}
   ],
   "counts": {"CRITICAL": int, "WARNING": int, "INFO": int},
+  "fit_required": [{"item": str, "kind": "protocol"|"supplement", "label": str,
+                    "flags": [{"id": str, "reason": str, "ask": str, "matched": [str]}]}],
   "error": str | null
 }
 
@@ -102,6 +104,11 @@ def main() -> int:
             client = None
 
     findings = check_plan(plan, client, cat)
+    from fmdb.plan.checker import _load_supplement_links, _resolve_product
+    from fmdb.plan.client_fit import fit_requirements
+    fit_required = fit_requirements(
+        plan, client, _load_supplement_links(), _resolve_product, catalogue=cat
+    )
     counts = {"CRITICAL": 0, "WARNING": 0, "INFO": 0}
     out = []
     for f in findings:
@@ -119,7 +126,7 @@ def main() -> int:
         "ok": True,
         "slug": slug,
         "findings": out,
-        "counts": counts,
+        "counts": counts, "fit_required": fit_required,
         "error": None,
     }, sys.stdout)
     return 0

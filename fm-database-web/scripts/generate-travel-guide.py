@@ -98,6 +98,10 @@ def main() -> int:
         return 2
 
     client_id = (payload.get("client_id") or "").strip()
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "generate-travel-guide.py")
     source = payload.get("source") or "copilot"
     if source not in ("pre_authored", "copilot"):
         source = "copilot"
