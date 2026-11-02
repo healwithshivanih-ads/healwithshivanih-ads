@@ -808,6 +808,10 @@ def main() -> int:
         return 2
 
     client_id = payload.get("client_id") or ""
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "assess.py")
     symptoms = payload.get("symptoms") or []
     topics = payload.get("topics") or []
     complaints = payload.get("complaints") or ""

@@ -182,6 +182,8 @@ def main() -> None:
     _load_dotenv()
     payload = json.loads(sys.stdin.read() or "{}")
     client_id = payload.get("client_id") or ""
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(client_id, "generate-grocery-list.py")
     plan_slug = payload.get("plan_slug") or ""
     weeks = payload.get("weeks") or []
     keep_weeks = [w for w in (payload.get("keep_weeks") or []) if isinstance(w, dict)]

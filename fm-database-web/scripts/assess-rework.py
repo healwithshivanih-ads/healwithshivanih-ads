@@ -671,6 +671,10 @@ def main() -> int:
         return 1
 
     client_id = payload.get("client_id", "").strip()
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "assess-rework.py")
     triggered_by = payload.get("triggered_by", "unknown")
     event_summary = (payload.get("event_summary") or "").strip()[:2000]
     dry_run = bool(payload.get("dry_run", False))

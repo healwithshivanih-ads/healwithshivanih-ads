@@ -238,6 +238,10 @@ def main() -> int:
         return 0
 
     client_id = (payload.get("client_id") or "").strip()
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "client-quick-chat.py")
     question = (payload.get("question") or "").strip()
     history = payload.get("history") or []
     dry_run = bool(payload.get("dry_run"))

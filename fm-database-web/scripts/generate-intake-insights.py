@@ -848,6 +848,10 @@ def main() -> int:
         return 2
 
     client_id: str = (payload.get("client_id") or "").strip()
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "generate-intake-insights.py")
     dry_run: bool = bool(payload.get("dry_run"))
 
     if not client_id:

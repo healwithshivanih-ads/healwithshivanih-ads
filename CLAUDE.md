@@ -12,6 +12,14 @@ published plans as JSON artifacts.
 **Active branch:** `claude/coach-dashboard-restructure-90ee02` (v0.87 restructure; base `main`)
 **Licensing:** Proprietary (all rights reserved, internal-only)
 
+## Expired plans cost nothing — READ THIS FIRST
+
+Not one credit on a lapsed or archived client, in the app or in chat.
+
+- **In chat:** never brief, review, survey, flag or mention lapsed clients unless the coach names them. Having a file in `published/` does NOT mean a client is in care; a lapsed client's plan stays there forever. Start every roster sweep from `fm-database-web/scripts/in-care.py`, and do not run a sweep she did not ask for. `client-brief.py` prints three lines for an expired client; `--full` only when she asks about that person.
+- **In the app:** every paid script calls `refuse_if_expired(client_id, script)` from `scripts/_api_guard.py` right after reading its client, so spend stops even if a button or cron misses it. `fm-database/tests/test_expired_spend_guard.py` fails if a paid script skips the call. A script that is not about one client goes in that test's list with a reason.
+- **The way back** is the lifecycle's own: a new plan in draft or a `renewed` decision takes the client out of `lapsed`, and the guard stops refusing. Measured 2 Nov 2026: $0.055 logged against lapsed clients since they lapsed, so the app was barely leaking; the waste was chat sweeps.
+
 ## Web CI — READ BEFORE pushing `fm-database-web`
 
 `.github/workflows/ci.yml` (`web-ci`) runs on any push touching `fm-database-web/**`

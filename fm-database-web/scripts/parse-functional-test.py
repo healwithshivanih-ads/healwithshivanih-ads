@@ -477,6 +477,8 @@ def main() -> int:
 
     file_path = Path(payload.get("file_path", "")).expanduser()
     client_id = (payload.get("client_id") or "").strip()
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(client_id, "parse-functional-test.py")
     dry_run = bool(payload.get("dry_run"))
     forced_type = (payload.get("test_type") or "").strip().lower()
 

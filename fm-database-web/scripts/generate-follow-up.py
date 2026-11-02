@@ -167,6 +167,8 @@ def main():
 
     old_plan = data.get("old_plan_data", {})
     client_data = data.get("client_data", {})
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(old_plan.get("client_id") or client_data.get("client_id") or "", "generate-follow-up.py")
     new_slug = data.get("new_slug", "")
     phase_weeks = data.get("phase_weeks", "")
     check_in_notes = data.get("check_in_notes", "")

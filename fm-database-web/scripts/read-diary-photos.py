@@ -336,12 +336,14 @@ def main() -> int:
 
     import yaml  # type: ignore
 
+    from _api_guard import client_is_expired
+
     work = []  # (client_id, person, diary_id, entry, diet)
     for c in clients:
         cid = str((c or {}).get("client_id") or "")
         did = str((c or {}).get("diary_id") or "")
         person = _person_dir(cid) if cid else None
-        if not person or not did:
+        if not person or not did or client_is_expired(cid):
             continue
         try:
             doc = yaml.safe_load((person / "client.yaml").read_text(encoding="utf-8")) or {}

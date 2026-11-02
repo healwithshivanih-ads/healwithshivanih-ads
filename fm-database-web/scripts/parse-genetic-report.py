@@ -184,6 +184,10 @@ def main() -> int:
         return 1
 
     client_id = payload.get("client_id", "").strip()
+
+    from _api_guard import refuse_if_expired
+
+    refuse_if_expired(client_id, "parse-genetic-report.py")
     file_path = payload.get("file_path", "").strip()
     dry_run = bool(payload.get("dry_run", False))
 

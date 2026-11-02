@@ -525,6 +525,8 @@ def main() -> None:
     _load_dotenv()
     payload = json.loads(sys.stdin.read() or "{}")
     client_id = payload.get("client_id") or ""
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(client_id, "generate-week-menu.py")
     plan_slug = payload.get("plan_slug") or ""
     target_week = int(payload.get("target_week") or 0)
     # Maintenance seasonal regen (2026-09-07): `season` injects a seasonal rule

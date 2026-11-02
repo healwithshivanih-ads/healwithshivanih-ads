@@ -38,6 +38,9 @@ the "do not" list — the things the coach used to re-type every time (skill
 `client`). Respect the lifecycle: a `maintenance` or `lapsed` client is not
 mid-programme however the files look, and a `marketing opt-out` is reply-only.
 
+If the brief says LAPSED or ARCHIVED, stop and tell the coach before reading anything
+else. Work starts only once she has a new plan in draft or a `renewed` decision.
+
 ### 1. Read the real predecessor and the real client — no summaries
 
 ```bash

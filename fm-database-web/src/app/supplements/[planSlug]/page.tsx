@@ -183,19 +183,22 @@ export default async function SupplementsPage({
         describeDose(s) ??
         (s.dose_summary as string | undefined) ??
         (typeof s.dose === "string" ? (s.dose as string) : undefined);
+      // Catalogue slug binds the product deterministically (covers/slug),
+      // never by a coincidental name substring.
+      const resolved = await resolveSupplementLink(
+        name,
+        (s.supplement_slug as string | undefined) ?? undefined,
+        { international },
+      );
+      // A product the coach pinned on the plan wins, as it does in the app.
+      const pinned = typeof s.buy_link === "string" ? s.buy_link.trim() : "";
       return {
         name,
         // Strip "titrate by N mg" verbs + coach-only clauses — clients
         // can't dose in mg increments, only in capsule counts.
         dose: clientifyDose(rawDose),
         timing: (s.timing as string | undefined) ?? (s.when as string | undefined),
-        // Catalogue slug binds the product deterministically (covers/slug),
-        // never by a coincidental name substring.
-        link: await resolveSupplementLink(
-          name,
-          (s.supplement_slug as string | undefined) ?? undefined,
-          { international },
-        ),
+        link: pinned ? { ...resolved, url: pinned, source: pinnedSource(pinned), notes: undefined } : resolved,
       };
     }),
   );
@@ -232,6 +235,14 @@ export default async function SupplementsPage({
       </footer>
     </Wrap>
   );
+}
+
+function pinnedSource(url: string): SupplementLink["source"] {
+  if (url.includes("vitaone.in")) return "vitaone";
+  if (url.includes("fmnutrition.in")) return "fmnutrition";
+  if (/amazon\.|amzn\.to/.test(url)) return "amazon";
+  if (url.includes("iherb.com")) return "iherb";
+  return "custom";
 }
 
 function sourceLabel(s: SupplementLink["source"], url?: string): string {

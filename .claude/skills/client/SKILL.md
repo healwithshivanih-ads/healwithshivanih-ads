@@ -49,6 +49,11 @@ person refuses and lists them; pick the id and run again. Parked prospects
 
 ## 3. Rules
 
+- **Expired means stop.** If the brief says LAPSED or ARCHIVED, you get three lines
+  on purpose. Report that and stop, unless the coach asked about this person. Never
+  bring lapsed clients up yourself, and never sweep rosters from `published/`: start
+  from `fm-database-web/scripts/in-care.py`.
+
 - **Run this before** `author-assessment`, `author-plan`, `author-renewal`,
   drafting a message, or answering "how is X doing". Those skills say so too.
 - **If a fact is not in the brief, say you do not have it.** Do not guess a

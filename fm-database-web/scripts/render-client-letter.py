@@ -7521,6 +7521,8 @@ def main() -> int:
     _step("start")
     plan_slug = payload.get("plan_slug", "")
     client_id = payload.get("client_id", "")
+    from _api_guard import refuse_if_expired
+    refuse_if_expired(client_id, "render-client-letter.py")
     # Coach can send None / undefined / {} when weight loss isn't a goal.
     # Defensively coerce to an empty dict so downstream `.get()` calls
     # never blow up — `_calc_calorie_targets` already returns None for
