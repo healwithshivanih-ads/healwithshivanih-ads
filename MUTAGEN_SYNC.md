@@ -287,6 +287,8 @@ The volume on Fly retains whatever was synced. Coach's Mac is unchanged. Re-crea
 
 ## Ongoing ops — three things that need attention
 
+**Self-healing (2 Nov 2026):** `~/bin/fly-sync-watchdog.sh` runs every 5 minutes (launchd `com.shivani.fly-sync-watchdog`). A Fly deploy restarts the machine, and `fly-ssh-proxy` keeps running but stops carrying traffic, so client apps silently show old data. The watchdog restarts the tunnel when SSH through it is dead, refreshes the cert only if that did not work, waits for Mutagen to reconnect, and flushes. Log: `~/Library/Logs/fly-sync-watchdog.log`.
+
 ### 1. SSH cert refresh (72-hour expiry)
 
 `flyctl ssh issue --agent` writes a short-lived cert (typically 72h)

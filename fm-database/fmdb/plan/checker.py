@@ -470,7 +470,7 @@ def _check_orderable(plan: Plan, findings: list[Finding]) -> None:
     if not links:
         return  # file missing → say nothing rather than warn on everything
     for item in plan.supplement_protocol:
-        if str(getattr(item, "buy_link", "") or "").strip():
+        if getattr(item, "no_buy_link", False) or str(getattr(item, "buy_link", "") or "").strip():
             continue
         if _resolve_product(item.supplement_slug, links):
             continue

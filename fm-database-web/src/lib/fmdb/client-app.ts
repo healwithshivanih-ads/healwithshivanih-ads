@@ -4458,6 +4458,8 @@ export async function loadClientAppData(
       } catch {
         /* no catalogue link — the override (if any) still applies; else the button hides */
       }
+      // She already has this one: no order button, whatever the catalogue matches.
+      if ((p as Dict).no_buy_link === true) buyUrl = undefined;
     }
     const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
     const emptyStomach = !asNeeded && /empty stomach|before breakfast|first thing in the morning|on empty|upon waking/i.test(timing);
