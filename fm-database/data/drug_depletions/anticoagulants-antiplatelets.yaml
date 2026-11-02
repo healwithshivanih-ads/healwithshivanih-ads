@@ -1,0 +1,38 @@
+slug: anticoagulants-antiplatelets
+drug_name: Other anticoagulants / antiplatelets (blood thinners)
+drug_aliases:
+  - apixaban
+  - eliquis
+  - rivaroxaban
+  - xarelto
+  - dabigatran
+  - pradaxa
+  - clopidogrel
+  - clopilet
+  - plavix
+  - deplatt
+  - ticagrelor
+  - brilinta
+  - prasugrel
+  - blood thinner
+  - blood thinners
+  - blood-thinner
+  - anticoagulant
+  - anticoagulants
+  - antiplatelet
+drug_class: other
+summary: |
+  Exists so the medication matcher can resolve these drugs and their Indian
+  brands, and so a record that says only "blood thinner" is recognised at all.
+  Warfarin and acenocoumarol have their own entry, vitamin-k-antagonists.
+coach_notes: |
+  Grouped for matching, not because the drugs behave alike. When a client's list
+  says only "blood thinner", find out which one before keeping anything that
+  carries vitamin K or adds to bleeding risk. Never advise changing the drug;
+  that belongs to the prescriber.
+sources: []
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: 2026-11-02
+updated_by: claude

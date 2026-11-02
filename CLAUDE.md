@@ -71,6 +71,21 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**v0.91 — a supplement's contraindications are tested against the real record (2026-11-02).** `check_plan` compared them by exact string, so "Active peptic or gastric ulcer, gastritis or erosive oesophagitis — ..." never met "GERD / acid reflux" and "Shell cal 500, omez 20, restil 0.25" never met "omeprazole": zero hits across 20 published plans. Measured after, on the same data: +11 WARNINGs, 0 CRITICAL. The one that mattered: cl-023's list says only "blood thinner" and the plan carries K2, which opposes warfarin.
+
+**Key invariants (v0.91):**
+- **Conditions join on a concept, never on the strings.** `data/_condition_terms.yaml` (underscore-prefixed, `fmdb validate` skips it) maps catalogue wording and record wording to one concept; `fmdb/plan/supplement_clash.py` reads it. A new spelling is a term on the concept. A string with no concept stays silent on purpose (surgery timing, route of use, alcohol, smoking). 359 of 444 strings map; a test ratchets the coverage.
+- **Only the LABEL counts, both sides.** Text after " — " is narrative, and cl-013's hypothyroid entry goes on to say "until H. pylori and ulcer are excluded". The folded search text is not what the coach sees: findings quote the record's own wording.
+- **Medications go through `drug_match.py`.** `match_drugs` (TS `matchDrugs`) returns every record on a line; `match_drug` keeps one and loses the rest of "Tazloc AM (telmisartan + amlodipine)". Eye drops and anything stopped are dropped first, including "Taken in place of Janumet."
+- **Same class is not same drug.** `_MEMBERS_NEEDED`: antibiotics never expand (23 of the first 37 hits were amoxicillin inheriting doxycycline's chelation rule, all false); beta blockers and CCBs expand only when the supplement names 2+ members, because `propranolol` or `diltiazem` alone is a drug-specific line. Vitamin K antagonists are their own record, since K2 matters for warfarin and not clopidogrel. An unnamed "blood thinner" could be either, so it is asked.
+- **Firm or soft.** Firm = the record states the diagnosis and the catalogue states the contraindication flatly. `Suspected:`, history, and a hedged catalogue line ("uncontrolled", "monitor", "consult a physician", "may") are soft and never block. A record saying "mild" is no hit on a severe/advanced line.
+- **Every hit is a question with somewhere to answer it.** Contraindications and avoid-together drugs are flags in `fit_requirements`, so they appear in `ClientFitPanel` and an answered row clears them. CRITICAL only in draft / ready; published plans get a WARNING (v0.86 rule). `monitor` and `space_by_hours` stay plain WARNINGs, and a spacing warning is dropped when the plan's `timing` line already names the drug. `contraindications.medications` was never read by check_plan; it is now.
+- **Dairy is not a concept.** Milk goes through `plan/dairy.py`.
+- **Not changed:** `assess/author_gate.py`, `check-supplement-for-client.py` and `checkSupplementInteractionsAction` keep their own weaker matching. `check_plan` is the gate every route passes through; those three are earlier, softer surfaces.
+- **Survey clients in care only** (`lifecycle.py::IN_CARE`, `resolve_all`), not every file in `published/`. A roster survey on lapsed clients is time and credits the coach does not want spent.
+
+---
+
 **v0.86 — a protocol is a template, so every plan is tested against the client.** Shweta (cl-906) took a digestive enzyme because the 5R Replace step lists one. Nothing in her record showed she lacked enzymes, she has daily reflux on Omez, and she is allergic to mushrooms and yeast while the capsule is mould-fermented. Severe burning and reflux was the first test that item had. Nothing had asked: the template picker, `generate-draft` and the chat path all took the protocol's word, and no product was ever chosen for that line (it resolved to the default link).
 
 **Key invariants (v0.86):**
@@ -78,7 +93,7 @@ shows up as untracked and gets committed by accident.
 - **`data/_client_screens.yaml` reads the REAL product.** It matches the `ingredients` of the product the client is sent to, because a plan line saying "protein powder" hides the DigeZyme inside it. A hit applies to any plan, protocol or not. Published plans are not re-gated: a hit is a WARNING.
 - **Rows never carry to a successor** (`client_fit: []` in `generateFollowUpPlan`). A new phase is tested against who she is by then.
 - **Plan editor must not save `client_fit`.** `ClientFitPanel` owns those rows; the editor holds the plan it loaded with and would wipe newer answers, hence `withoutClientFit`.
-- **Why the old checks missed it:** `contraindications.conditions` is matched by exact string against free text, so it almost never fires, and `ai_check` was told not to re-flag contraindications because "the deterministic checker handles them". The AI prompt no longer says that. Fixing the matcher itself is separate work.
+- **Why the old checks missed it:** `contraindications.conditions` was matched by exact string against free text, and `ai_check` was told not to re-flag contraindications because "the deterministic checker handles them". The AI prompt no longer says that. The matcher is fixed in v0.91.
 
 ---
 
