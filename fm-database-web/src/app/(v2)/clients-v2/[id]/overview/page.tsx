@@ -1825,6 +1825,10 @@ export default async function ClientV2Page({
                                 (client as unknown as { intake_reminders_sent_at?: string[] | null })
                                   .intake_reminders_sent_at
                               }
+                              intakeReminderEnabled={
+                                (client as unknown as { intake_reminder_enabled?: boolean | null })
+                                  .intake_reminder_enabled
+                              }
                               intakeFullUnlockedAt={
                                 (client as unknown as { intake_full_unlocked_at?: string | null })
                                   .intake_full_unlocked_at

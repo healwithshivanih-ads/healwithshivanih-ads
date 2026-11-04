@@ -349,6 +349,27 @@ export async function unlockFullIntake(
 }
 
 /**
+ * Coach turns the automatic intake reminders on or off for one client.
+ * New links start with reminders off (see action_generate); this is the
+ * only way to switch them on.
+ */
+export async function setIntakeReminders(
+  clientId: string,
+  enabled: boolean,
+): Promise<{ ok: true; intake_reminder_enabled: boolean } | { ok: false; error: string }> {
+  try {
+    const res = (await runScript("intake-token-action.py", {
+      action: "set_reminders",
+      client_id: clientId,
+      enabled,
+    })) as { ok: true; intake_reminder_enabled: boolean } | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
  * v0.75 — coach marks that the discovery call has happened. Stamps
  * `discovery_session_completed_at`. Pure journey-visibility marker —
  * no side effects on the intake form or engagement status.

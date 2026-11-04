@@ -751,12 +751,14 @@ def action_generate(payload: dict) -> dict:
     #
     # The token + expiry change alone is enough to re-open the form
     # for editing; we DON'T need to lie about submission status.
-    # Enable the auto-reminder cron for this client — coach is actively
-    # sending an intake link, so the daily nudge is appropriate until they
-    # submit. Reset reminder history so the new token gets its own 2-strike
-    # quota. Coach can disable per-client via the SendIntakeFormButton UI
-    # (intake_reminder_enabled toggle).
-    data["intake_reminder_enabled"] = True
+    # Reminders start OFF. The coach turns them on per person from the intake
+    # progress card (action_set_reminders). Issuing a link used to switch them
+    # on, so Krishiv (cl-910) — a one-off Foundation client whose call was
+    # already done — was told twice that his form was "still waiting" (27 Oct,
+    # 1 Nov 2026), on his mother's number. Nothing in the reminder rule can
+    # tell a one-off from someone still being onboarded; the coach can.
+    # Reset reminder history so a new token gets its own 2-strike quota.
+    data["intake_reminder_enabled"] = False
     data["intake_reminders_sent_at"] = []
     # v0.75 — DO NOT auto-flip engagement_status here. Sending an intake
     # link used to imply signup, but with the two-stage form (pre-discovery
@@ -3217,6 +3219,28 @@ def action_mark_discovery_lab_pack_sent(payload: dict) -> dict:
     return {"ok": True, "client_id": client_id, "discovery_lab_pack_sent_at": data["discovery_lab_pack_sent_at"]}
 
 
+# ── action: set_reminders (coach opt-in for the intake-reminder cron) ────────
+
+def action_set_reminders(payload: dict) -> dict:
+    """Coach turns the automatic intake reminders on or off for one client.
+    The cron (`/api/cron/intake-reminders`) sends only while this is true.
+    Reminder history is left alone, so switching on again never lifts the
+    2-per-link cap."""
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    enabled = payload.get("enabled")
+    if not isinstance(enabled, bool):
+        return {"ok": False, "error": "enabled must be true or false"}
+    try:
+        data = _load_client(client_id)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+    data["intake_reminder_enabled"] = enabled
+    _save_client(client_id, data)
+    return {"ok": True, "client_id": client_id, "intake_reminder_enabled": enabled}
+
+
 # ── action: revoke ───────────────────────────────────────────────────────────
 
 def action_revoke(payload: dict) -> dict:
@@ -3313,6 +3337,7 @@ ACTIONS = {
     "auto_finalise": action_auto_finalise,
     "reopen_finalised_intake": action_reopen_finalised_intake,
     "revoke": action_revoke,
+    "set_reminders": action_set_reminders,
     # v0.75 — two-stage intake flow + discovery journey markers
     "unlock_full_intake": action_unlock_full_intake,
     "mark_discovery_session_complete": action_mark_discovery_session_complete,

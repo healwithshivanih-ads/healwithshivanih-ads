@@ -4,6 +4,8 @@
  * Fired daily by scripts/cron-runner.js at 08:30 IST.
  *
  * Rules (slice a — Path A questionnaire):
+ *   - The coach switched reminders on for this client
+ *     (intake_reminder_enabled; a new link starts with it off)
  *   - Client has intake_token set (link still active)
  *   - intake_finalised_at NOT set (coach hasn't locked yet)
  *   - intake NOT submitted (intake_submitted_at / intake_last_submitted_at
@@ -113,11 +115,10 @@ export async function POST(req: NextRequest) {
       templateName: TEMPLATE_NAME,
       templateParams: [firstName, expiresLabel, url],
       renderedBody,
-      // Automated intake chasing: onboarding (signed-up, no plan started)
-      // only — the gate refuses a prospect, a lapsed or an active client.
-      // "transactional", not "intake": the coach opts each person in
-      // (intake_reminder_enabled) and a ₹999 prospect filling the pre-call
-      // form is still a prospect by lifecycle — the gate would refuse them.
+      // "transactional", not "intake": a ₹999 prospect filling the pre-call
+      // form is still a prospect by lifecycle and the "intake" purpose would
+      // refuse them. So the gate does NOT filter here — the coach's per-person
+      // switch (intake_reminder_enabled, off by default) is the only gate.
       purpose: "transactional",
       opts: { name: cand.display_name },
     });
