@@ -26,6 +26,7 @@ import {
   type GuidedProtocol,
   type GuidedSampleWeek,
 } from "./guided-protocols";
+import { buildPlate, GUIDED_PLATE } from "./plate-shapes";
 
 const DIET_CHIP: Record<string, { label: string; detail: string }> = {
   vegetarian: {
@@ -98,6 +99,15 @@ export async function buildGuidedAppData(
 ): Promise<ClientAppData | null> {
   const protocol: GuidedProtocol | null = getGuidedProtocol(sub.protocol_slug);
   if (!protocol) return null;
+  // The programme's plate shape (plate-shapes.ts). Guided subscribers carry a
+  // diet preference but no allergy record — the plate stays generic and the
+  // ALLERGY_OVERRIDE_LINE on every food surface does the rest.
+  const guidedPlate = buildPlate(GUIDED_PLATE[protocol.slug] ?? "balanced", {
+    addShort: protocol.foods.eat,
+    dietPref: sub.dietary_preference === "non_vegetarian" ? "non-vegetarian" : sub.dietary_preference === "vegetarian_egg" ? "eggetarian" : (sub.dietary_preference ?? ""),
+    dairy: null,
+    avoidTerms: [],
+  });
 
   const t = tzParts(now, tz);
   const rawWeek = guidedWeek(sub.start_date, t.ymd);
@@ -388,8 +398,10 @@ export async function buildGuidedAppData(
           note: p.note,
         })),
       },
-      plate: [],
-      accents: [],
+      plate: guidedPlate.plate,
+      accents: guidedPlate.accents,
+      plateOrder: guidedPlate.eatOrder,
+      plateLine: guidedPlate.clientLine,
       oils: { use: [], avoid: [], note: "" },
       foods: protocol.foods,
       letterFoods: null,
