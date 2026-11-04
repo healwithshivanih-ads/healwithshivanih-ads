@@ -44,9 +44,10 @@ export function intakeReminderDecision(
   // Submitted but not yet finalised: the link stays open for re-edits, but
   // there is nothing "waiting" — the coach's Finalise is the next step.
   if (hasSubmittedIntake(c)) return { send: false, reason: "submitted" };
-  // Coach-opt-in: only clients whose link was issued via the
-  // SendIntakeFormButton (sets intake_reminder_enabled=true). The coach can
-  // flip it off to stop reminders mid-cycle.
+  // Coach opt-in: a new link starts with reminders OFF; the coach switches
+  // them on per person from the intake progress card. Krishiv (cl-910), a
+  // one-off Foundation client, was nudged twice after his call because a new
+  // link used to switch them on by itself.
   if (c.intake_reminder_enabled !== true) return { send: false, reason: "not_enabled" };
 
   const expiresIso = c.intake_token_expires_at as string | undefined;

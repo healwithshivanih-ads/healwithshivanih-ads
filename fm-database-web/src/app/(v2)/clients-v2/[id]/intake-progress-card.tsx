@@ -20,6 +20,7 @@
 import Link from "next/link";
 import { FmPanel } from "@/components/fm";
 import { PromoteDraftButton } from "./promote-draft-button";
+import { IntakeReminderToggle } from "./intake-reminder-toggle";
 
 /** Minimum non-empty draft fields before we treat a stranded draft as
  *  worth a coach recovery prompt. Below this it's noise (client tapped
@@ -39,6 +40,8 @@ interface Props {
   intakeLastSubmittedAt?: string | null;
   intakeFinalisedAt?: string | null;
   intakeRemindersSentAt?: string[] | null;
+  /** Coach opt-in for the automatic reminders. Off unless she turns it on. */
+  intakeReminderEnabled?: boolean | null;
   /** v0.75 two-stage flow signals — let the card disambiguate
    *  "pre-discovery submitted; full intake re-opened for follow-up"
    *  from "never submitted." */
@@ -282,6 +285,14 @@ export function IntakeProgressCard(props: Props) {
     draftFieldCount >= ORPHAN_DRAFT_MIN_FIELDS &&
     (!everSubmitted || draftNewerThanSubmit);
 
+  // The reminder switch only means something while the form is still
+  // waiting: a live link, never submitted, not locked. Same conditions the
+  // cron checks (src/lib/fmdb/intake-reminder.ts).
+  const expiresTs = props.intakeTokenExpiresAt ? Date.parse(props.intakeTokenExpiresAt) : NaN;
+  const linkLive =
+    !!props.intakeToken && (Number.isNaN(expiresTs) || expiresTs > Date.now());
+  const showReminderToggle = linkLive && !everSubmitted && !props.intakeFinalisedAt;
+
   return (
     <FmPanel
       title="📝 Intake form progress"
@@ -380,6 +391,13 @@ export function IntakeProgressCard(props: Props) {
             />
           )}
         </div>
+
+        {showReminderToggle && (
+          <IntakeReminderToggle
+            clientId={props.clientId}
+            enabled={props.intakeReminderEnabled === true}
+          />
+        )}
 
         {(stage.label === "Submitted — still editable" ||
           stage.label === "In progress") && (
