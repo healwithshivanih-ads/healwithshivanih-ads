@@ -44,6 +44,7 @@ import { loadHeldMonthlyCards } from "@/lib/fmdb/monthly-cards-store";
 import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
 import { listRenewalLettersAction } from "@/lib/server-actions/renewal-letters";
 import { listWinbackDraftsAction, listWinbackScheduledAction } from "@/lib/server-actions/winback-drip";
+import { listPlanChangeDraftsAction } from "@/lib/server-actions/plan-change-notify";
 import { loadDiscoveryFollowupAction } from "@/lib/server-actions/discovery-followup";
 import { loadInterestedPeopleAction } from "@/lib/server-actions/interest-tracking";
 import { listDeferredItemsAction } from "@/lib/server-actions/deferred-items";
@@ -52,6 +53,7 @@ import { RenewalQueuePanel } from "@/components/renewal-queue-panel";
 import { ProgrammeFeedbackPanel } from "@/components/programme-feedback-panel";
 import { MonthlyCardReviewPanel } from "@/components/monthly-card-review-panel";
 import { WinbackDripPanel } from "@/components/winback-drip-panel";
+import { PlanUpdateDraftsPanel } from "@/components/plan-update-drafts-panel";
 import { DiscoveryFollowupPanel } from "@/components/discovery-followup-panel";
 import { InterestedPeoplePanel } from "@/components/interested-people-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
@@ -135,6 +137,7 @@ export default async function DashboardV2() {
     renewalLetters,
     winbackDrafts,
     winbackScheduled,
+    planChangeDrafts,
     discoveryFollowup,
     interestedPeople,
     programmeFeedback,
@@ -152,6 +155,7 @@ export default async function DashboardV2() {
     listRenewalLettersAction(),
     listWinbackDraftsAction(),
     listWinbackScheduledAction(),
+    listPlanChangeDraftsAction(),
     loadDiscoveryFollowupAction(),
     loadInterestedPeopleAction().catch(() => ({ rows: [], libraryLive: 0, contentCheckedAt: null })),
     loadProgrammeFeedback(
@@ -254,6 +258,7 @@ export default async function DashboardV2() {
     })),
     archiveCandidates: archiveCandidatesRaw,
     diaries,
+    planUpdates: planChangeDrafts,
     onboardingStep,
   });
   const f = decisions.filtered;
@@ -324,6 +329,14 @@ export default async function DashboardV2() {
         <section id="renewals">
           <SectionLabel kind="renewal" count={decisions.counts.byKind.renewal} />
           <RenewalQueuePanel rows={f.renewals as typeof renewalRows} letters={renewalLetters} />
+        </section>
+      )}
+
+      {/* ✏️ Plan updates — a live plan changed; the client has to be told. */}
+      {f.planUpdates.length > 0 && (
+        <section id="plan-updates">
+          <SectionLabel kind="plan_update" count={decisions.counts.byKind.plan_update} />
+          <PlanUpdateDraftsPanel drafts={f.planUpdates as typeof planChangeDrafts} />
         </section>
       )}
 

@@ -23,7 +23,11 @@ import yaml from "js-yaml";
 import nodemailer from "nodemailer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
-import { openRenewals } from "@/lib/fmdb/renewal-queue";
+import { openRenewals, loadDecisions as loadRenewalDecisions } from "@/lib/fmdb/renewal-queue";
+import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
+import { resolveLifecycles } from "@/lib/fmdb/lifecycle";
+import { collectDecisions } from "@/lib/fmdb/decisions";
+import { describeChange } from "@/lib/fmdb/plan-change-diff";
 import { loadAllRenewalLetters } from "@/lib/fmdb/renewal-letters";
 import { loadHeldMonthlyCards } from "@/lib/fmdb/monthly-cards-store";
 import { splitByDraftWindow, draftDayLabel } from "@/lib/fmdb/menu-cadence";
@@ -31,7 +35,7 @@ import {
   scanPlanChangesAction,
   listPlanChangeDraftsAction,
 } from "@/lib/server-actions/plan-change-notify";
-import { listWinbackDraftsAction } from "@/lib/server-actions/winback-drip";
+import { listWinbackDraftsAction, listWinbackScheduledAction } from "@/lib/server-actions/winback-drip";
 
 export const dynamic = "force-dynamic";
 
@@ -67,7 +71,7 @@ export async function POST(req: NextRequest) {
   // Computed BEFORE the quiet-day return. A week with no menus due is exactly
   // when a plan quietly runs out, and the guard below would otherwise swallow
   // the one thing that is time-critical.
-  const renewals = openRenewals();
+  const openRows = openRenewals();
   const renewalLetters = loadAllRenewalLetters();
   // Monthly cards the cron held because something stood out. Rare, and a held
   // card is invisible to the client until she acts, so it forces the mail.
@@ -78,14 +82,55 @@ export async function POST(req: NextRequest) {
   // when a quick-edit goes unannounced. The scan is idempotent — it advances a
   // per-plan snapshot, so a change is drafted once and never re-raised.
   await scanPlanChangesAction();
-  const planChanges = await listPlanChangeDraftsAction();
+  const allPlanChanges = await listPlanChangeDraftsAction();
 
   // ── win-back drafts ─────────────────────────────────────────────────────
   // Read only — the 10:30 winback-drip cron does the drafting. Folded in here
   // for the same reason renewals are: this is the mail she opens in order to
   // approve things, and these emails are the ones most easily forgotten,
   // because by definition they are for clients who have already gone quiet.
-  const winback = await listWinbackDraftsAction();
+  const [allWinback, winbackScheduled] = await Promise.all([
+    listWinbackDraftsAction(),
+    listWinbackScheduledAction(),
+  ]);
+
+  // Every row below must be one the dashboard will show with a button next to
+  // it. The email used to list the raw queues while the dashboard filtered by
+  // lifecycle, age and live plan, so the coach was told about renewals,
+  // win-backs and plan updates she then could not find (2026-11-04). Running
+  // the inbox's own rules here makes the two the same list by construction.
+  const todayYmd = new Date().toISOString().slice(0, 10);
+  const [allClients, allPlans] = await Promise.all([loadAllClients(), loadAllPlans()]);
+  const liveClients = allClients.filter((c) => (c as { archived?: boolean }).archived !== true);
+  const lifecycle = resolveLifecycles(
+    liveClients as unknown as Parameters<typeof resolveLifecycles>[0],
+    allPlans as unknown as Parameters<typeof resolveLifecycles>[1],
+    todayYmd,
+    { decisions: loadRenewalDecisions() },
+  );
+  const inbox = collectDecisions({
+    todayYmd,
+    lifecycle,
+    nameOf: (id) => id,
+    inbound: [],
+    repliedTo: new Set(),
+    renewals: openRows,
+    followupDrafts: [],
+    followupScheduled: [],
+    followupUnanchored: [],
+    winbackDrafts: allWinback,
+    winbackScheduled,
+    notes: [],
+    plateaued: [],
+    regressed: [],
+    feedback: [],
+    archiveCandidates: [],
+    planUpdates: allPlanChanges,
+    onboardingStep: new Map(),
+  });
+  const renewals = inbox.filtered.renewals as typeof openRows;
+  const winback = inbox.filtered.winbackDrafts as typeof allWinback;
+  const planChanges = inbox.filtered.planUpdates as typeof allPlanChanges;
 
   const ready = actionable.filter((r) => r.pending);
   // Rows with no draft are two different things and must not share a heading.
@@ -179,7 +224,7 @@ export async function POST(req: NextRequest) {
   // Folded into this email rather than sent as its own: a separate weekly mail
   // is one more thing to notice, and this is already the message she opens in
   // order to approve things.
-  const renewalLink = `${appUrl}/dashboard-v2`;
+  const renewalLink = `${appUrl}/dashboard-v2#renewals`;
   const renewalHtml = renewals.length
     ? `<p style="margin-top:22px;"><strong>📩 Plans ending (${renewals.length})</strong> — read and approve each letter on the dashboard; approved letters send two days before the plan ends:</p><ul>${renewals
         .map((r) => {
@@ -196,14 +241,14 @@ export async function POST(req: NextRequest) {
               ? `<span style="color:#4a6b4a;">✅ letter approved · sends ${esc(letter.scheduled_for || "two days before the end")}</span>`
               : letter?.status === "drafted"
                 ? `<span style="color:#4a6b4a;">📝 draft ready — read &amp; approve</span>`
-                : `<span style="color:#b3402a;">no letter yet — author it</span>`;
+                : `<span style="color:#b3402a;">no letter yet — write it in chat: <code>/author-renewal ${esc(r.clientName)}</code></span>`;
           const house = r.household.length
             ? ` <span style="color:#b3402a;">· also renewing: ${esc(r.household.join(", "))}</span>`
             : "";
           return `<li><a href="${renewalLink}"><strong>${esc(r.clientName)}</strong></a> — ${when} (${r.weeks}wk) · ${status}${house}</li>`;
         })
         .join("")}</ul>
-       <p style="color:#8d99ae;font-size:12px;">Letters are authored in chat, not automatically. Approve on the dashboard and they send two days before the plan ends, or mark anyone not continuing and they stop appearing.</p>`
+       <p style="color:#8d99ae;font-size:12px;">On the dashboard each name has the buttons: read &amp; approve a drafted letter (it sends two days before the plan ends), or mark Renewed / Not renewing / Deferred. A letter that does not exist yet is written in chat with the command shown, then appears there as a draft.</p>`
     : "";
 
   // Plan-change emails awaiting approval. Folded in here for the same reason
@@ -214,30 +259,13 @@ export async function POST(req: NextRequest) {
   // a published plan; approving it hands the email to the pending-sends queue.
   // Rows that stop something are held until she types a line of context.
   const planChangeHtml = planChanges.length
-    ? `<p style="margin-top:22px;"><strong>✉️ Plan updates to send (${planChanges.length})</strong> — a published plan changed in a way the client has to act on:</p><ul>${planChanges
+    ? `<p style="margin-top:22px;"><strong>✏️ Plan updates to send (${planChanges.length})</strong> — a live plan changed in a way the client has to act on. <a href="${appUrl}/dashboard-v2#plan-updates">Read and send them on the dashboard</a>:</p><ul>${planChanges
         .map((d) => {
-          const what = d.changes
-            .map((c) => {
-              switch (c.kind) {
-                case "supplement_added":
-                  return `+ ${esc(c.label)}`;
-                case "supplement_stopped":
-                  return `− ${esc(c.label)}`;
-                case "supplement_dose_changed":
-                  return `${esc(c.label)} — new amount`;
-                case "supplement_timing_changed":
-                  return `${esc(c.label)} — new timing`;
-                case "practice_added":
-                  return `+ ${esc(c.label)}`;
-                case "practice_stopped":
-                  return `− ${esc(c.label)}`;
-              }
-            })
-            .join(", ");
+          const what = d.changes.map((c) => esc(describeChange(c))).join(", ");
           const held = d.needs_reason
             ? ` <span style="color:#b3402a;">· needs a line of context before it can go</span>`
             : "";
-          return `<li><strong>${esc(d.client_name)}</strong> — ${what}${held}</li>`;
+          return `<li><a href="${appUrl}/dashboard-v2#plan-updates"><strong>${esc(d.client_name)}</strong></a> — ${what}${held}</li>`;
         })
         .join("")}</ul>
        <p style="color:#8d99ae;font-size:12px;">Nothing is sent automatically. Preview and approve each one; anything that stops a supplement or practice is held until you add a reason.</p>`
@@ -259,7 +287,7 @@ export async function POST(req: NextRequest) {
           const price = d.needsPrice
             ? ` <span style="color:#b3402a;">· needs a price before it can go</span>`
             : "";
-          return `<li><strong>${esc(d.clientName)}</strong> — touch ${d.touch} of 3 (${what}) · ended ${d.daysSinceEnd}d ago${price}</li>`;
+          return `<li><a href="${appUrl}/dashboard-v2#winback"><strong>${esc(d.clientName)}</strong></a> — touch ${d.touch} of 3 (${what}) · ended ${d.daysSinceEnd}d ago${price}</li>`;
         })
         .join("")}</ul>
        <p style="color:#8d99ae;font-size:12px;">Drafted automatically; nothing is sent until you approve it on the dashboard.</p>`
@@ -322,7 +350,7 @@ export async function POST(req: NextRequest) {
                 ? `letter approved · sends ${letter.scheduled_for || "two days before the end"}`
                 : letter?.status === "drafted"
                   ? "draft ready — read & approve"
-                  : "no letter yet — author it";
+                  : `no letter yet — write it in chat: /author-renewal ${r.clientName}`;
             return (
               `  - ${r.clientName} — ${r.daysLeft < 0 ? `ended ${Math.abs(r.daysLeft)}d ago` : r.daysLeft === 0 ? "ends today" : `in ${r.daysLeft}d`} (${r.weeks}wk) · ${status}` +
               (r.household.length ? ` [also renewing: ${r.household.join(", ")}]` : "")
@@ -337,6 +365,11 @@ export async function POST(req: NextRequest) {
               `  - ${d.clientName} — touch ${d.touch} of 3 (${d.kind.replace("_", " ")}) · ended ${d.daysSinceEnd}d ago` +
               (d.needsPrice ? " [needs a price]" : ""),
           )
+          .join("\n")}\n\n`
+      : "") +
+    (planChanges.length
+      ? `PLAN UPDATES TO SEND (read & send on the dashboard):\n${planChanges
+          .map((d) => `  - ${d.client_name} — ${d.changes.map(describeChange).join(", ")}${d.needs_reason ? " [needs a line of context]" : ""}`)
           .join("\n")}\n\n`
       : "") +
     (heldCards.length
