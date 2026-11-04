@@ -203,3 +203,20 @@ export function diffPlanForClient(before: Dict | null, after: Dict | null): Mate
 export function requiresReason(changes: MaterialChange[]): boolean {
   return changes.some((c) => c.kind === "supplement_stopped" || c.kind === "practice_stopped");
 }
+
+/** One short line for a change, as the coach reads it in the digest and on the
+ *  dashboard. Not client copy: the email itself is plan-change-email.ts. */
+export function describeChange(c: MaterialChange): string {
+  switch (c.kind) {
+    case "supplement_added":
+    case "practice_added":
+      return `+ ${c.label}`;
+    case "supplement_stopped":
+    case "practice_stopped":
+      return `− ${c.label}`;
+    case "supplement_dose_changed":
+      return `${c.label}: new amount${c.to ? ` (${c.to})` : ""}`;
+    case "supplement_timing_changed":
+      return `${c.label}: new timing${c.to ? ` (${c.to})` : ""}`;
+  }
+}

@@ -33,10 +33,14 @@ export const MESSAGE_MAX_AGE_DAYS = 7;
 export const FLAG_MAX_AGE_DAYS = 14;
 /** Days a feedback response stays on the inbox after it lands. */
 export const FEEDBACK_LISTED_DAYS = 14;
+/** Days a drafted plan-update email stays an item. Past this the client has
+ *  been living with the change for weeks; telling them now is noise. */
+export const PLAN_UPDATE_MAX_AGE_DAYS = 14;
 
 export type DecisionKind =
   | "message"
   | "renewal"
+  | "plan_update"
   | "onboarding"
   | "followup"
   | "winback"
@@ -149,6 +153,15 @@ export interface ArchiveLike {
   reason: string;
 }
 
+/** A drafted "your plan changed" email (`_plan_change_drafts.yaml`, pending). */
+export interface PlanUpdateLike {
+  id: string;
+  client_id: string;
+  client_name: string;
+  plan_slug: string;
+  created_at: string;
+}
+
 export interface DecisionInputs {
   todayYmd: string;
   lifecycle: ReadonlyMap<string, Lifecycle>;
@@ -170,6 +183,8 @@ export interface DecisionInputs {
   /** Food diaries on client.yaml (any phase — the rule decides). Optional so
    *  callers that predate the diary need not pass it. */
   diaries?: readonly DiaryLike[];
+  /** Pending plan-update drafts. Optional for the same reason. */
+  planUpdates?: readonly PlanUpdateLike[];
   /** Onboarding detail, by client id: what is missing. */
   onboardingStep: ReadonlyMap<string, { why: string; href: string; sinceYmd: string | null }>;
 }
@@ -182,6 +197,7 @@ export interface DecisionFilters {
   followupUnanchored: FollowupUnanchoredLike[];
   winbackDrafts: WinbackDraftLike[];
   winbackScheduled: WinbackScheduledLike[];
+  planUpdates: PlanUpdateLike[];
   noteClientIds: Set<string>;
   archiveCandidates: ArchiveLike[];
 }
@@ -201,6 +217,7 @@ const daysBetween = (fromYmd: string, toYmd: string): number =>
 const emptyCounts = (): Record<DecisionKind, number> => ({
   message: 0,
   renewal: 0,
+  plan_update: 0,
   onboarding: 0,
   followup: 0,
   winback: 0,
@@ -216,6 +233,7 @@ const emptyCounts = (): Record<DecisionKind, number> => ({
 export const KIND_STATES: Record<DecisionKind, ReadonlySet<LifecycleState>> = {
   message: new Set(["prospect", "onboarding", "active", "ending", "maintenance", "lapsed"]),
   renewal: new Set(["ending"]),
+  plan_update: new Set(["active", "ending", "maintenance"]),
   onboarding: new Set(["onboarding"]),
   followup: new Set(["prospect"]),
   winback: new Set(["lapsed"]),
@@ -244,6 +262,7 @@ export function collectDecisions(input: DecisionInputs): Decisions {
     followupUnanchored: [],
     winbackDrafts: [],
     winbackScheduled: [],
+    planUpdates: [],
     noteClientIds: new Set(),
     archiveCandidates: [],
   };
@@ -291,6 +310,28 @@ export function collectDecisions(input: DecisionInputs): Decisions {
       href: `/clients-v2/${r.clientId}/plan`,
       ageDays: Math.max(0, 15 - r.daysLeft),
       expiresInDays: null,
+    });
+  }
+
+  // 2b. Plan updates — a drafted email about an edit to the plan the client is
+  // on NOW. A draft for a plan that has since been replaced, or for someone no
+  // longer in care, describes a plan nobody is following, so it never lists.
+  for (const d of input.planUpdates ?? []) {
+    const s = allowed("plan_update", d.client_id);
+    if (!s) continue;
+    if (lifecycle.get(d.client_id)?.planSlug !== d.plan_slug) continue;
+    const age = daysBetween(d.created_at, todayYmd);
+    if (age > PLAN_UPDATE_MAX_AGE_DAYS) continue;
+    filtered.planUpdates.push(d);
+    items.push({
+      kind: "plan_update",
+      clientId: d.client_id,
+      name: d.client_name,
+      state: s,
+      why: "the plan changed — read the email, then send or dismiss",
+      href: "/dashboard-v2#plan-updates",
+      ageDays: age,
+      expiresInDays: PLAN_UPDATE_MAX_AGE_DAYS - age,
     });
   }
 
@@ -504,6 +545,7 @@ export function collectDecisions(input: DecisionInputs): Decisions {
 export const KIND_META: Record<DecisionKind, { label: string; icon: string; blurb: string }> = {
   message: { label: "Messages waiting", icon: "💬", blurb: "Someone wrote and has not heard back." },
   renewal: { label: "Renewal decisions", icon: "📩", blurb: "A plan is ending. Decide what comes next." },
+  plan_update: { label: "Plan updates to send", icon: "✏️", blurb: "You changed a live plan. Tell the client." },
   onboarding: { label: "Onboarding", icon: "🌱", blurb: "Paid, and something is still missing." },
   followup: { label: "Call follow-ups", icon: "🌿", blurb: "Prospects, drafts ready to approve." },
   winback: { label: "Win-back", icon: "✉️", blurb: "Lapsed clients, drafts ready to approve." },
@@ -518,6 +560,7 @@ export const KIND_META: Record<DecisionKind, { label: string; icon: string; blur
 export const KIND_ORDER: DecisionKind[] = [
   "message",
   "renewal",
+  "plan_update",
   "onboarding",
   "followup",
   "winback",
