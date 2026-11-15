@@ -30,6 +30,10 @@ common_symptoms:
 - tachycardia
 - visceral-hypersensitivity
 - migraine
+- dermographism
+- brain-fog
+- irritable-bowel
+- drug-hypersensitivity
 red_flags:
 - anaphylaxis
 - severe orthostatic hypotension
@@ -38,9 +42,17 @@ red_flags:
 related_topics:
 - histamine-intolerance
 - systemic-mastocytosis
+- hereditary-alpha-tryptasemia
+- ibs
+- functional-dyspepsia
+- migraine-headache
+- post-exertional-malaise-mecfs
+- hives-urticaria
 key_mechanisms:
 - mast-cell-degranulation
 - histamine-receptor-signaling
+- mast-cell-activation
+- visceral-mast-cell-pain-amplification
 coaching_scope_notes: 'Coach focuses on trigger identification (foods, heat, stress, friction),
 
   total-load reduction, and natural mast cell stabilizer education (quercetin,
@@ -68,7 +80,19 @@ sources:
 - id: notebooklm-mast-cell-histamine-synthesis
   location: Roadmap to Relief infographic
   quote: MCAS is a multi-system, hyper-reactive immune response.
-version: 2
+- id: ifm-article-mcas-2026
+  location: Introduction
+  quote: a multisystem and chronic disorder of inappropriate mast cell activation
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Treatment, step one
+  quote: identify their triggers as precisely as they can
+version: 3
 status: active
-updated_at: '2024-05-22'
-updated_by: shivani
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest
+notes_for_coach: 'IFM teaching (Plotnikoff 2022, Afrin 2023): step one is a flare diary and trigger avoidance,
+  including medication and supplement excipients; a normal tryptase does not rule MCAS out; change one
+  thing at a time and judge each change after about a month. IBS clients are at least 4x more likely to
+  have a mast cell disorder.
+
+  '

@@ -1,0 +1,32 @@
+slug: mcas-two-pronged-nutrition-avoid-triggers-add-stabilisers
+statement: 'IFM''s nutrition approach to MCAS has two parts: find and avoid the person''s dietary triggers,
+  then build an anti-inflammatory diet with foods that may calm mast cells, such as nettle, quercetin-rich
+  foods, turmeric, ginger and omega-3 sources.'
+evidence_tier: fm_specific_thin
+rationale: Keeps the plan from being removal-only. In India this maps onto haldi, adrak, onion skins,
+  apples, flax and fish where diet allows.
+coaching_translation: 'We''ll do two things with food: take out what sets you off, and add foods that
+  help calm your immune system, like turmeric, ginger and omega-3 rich foods.'
+out_of_scope_notes: ''
+caveats:
+- IFM editorial position; the individual foods have mostly in-vitro or small-trial mast cell data.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- histamine-intolerance
+linked_to_mechanisms:
+- mast-cell-degranulation
+linked_to_symptoms: []
+linked_to_supplements:
+- stinging-nettle-root
+- quercetin
+- turmeric-curcumin
+- ginger-root
+- omega-3
+sources:
+- id: ifm-article-mcas-2026
+  location: Clinical Applications
+  quote: a two-pronged nutritional approach to MCAS
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

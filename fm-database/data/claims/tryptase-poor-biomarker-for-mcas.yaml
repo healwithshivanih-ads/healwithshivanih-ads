@@ -1,0 +1,32 @@
+slug: tryptase-poor-biomarker-for-mcas
+statement: 'Tryptase is a poor stand-alone biomarker for MCAS: the conventional criterion (a rise of 20%
+  plus 2 ng/mL over baseline within 1-4 hours of an event) is almost never captured in practice, and a
+  normal tryptase does not rule MCAS out.'
+evidence_tier: plausible_emerging
+rationale: Stops the 'your tryptase was normal so it isn't mast cells' dead end; the coach can encourage
+  a broader mediator workup with the clinician.
+coaching_translation: A normal tryptase blood test doesn't rule out a mast cell problem. Your doctor can
+  look at other markers too.
+out_of_scope_notes: Interpreting labs is clinician scope.
+caveats:
+- Allergy bodies (AAAAI) regard the 20%+2 rule as the standard; Plotnikoff and Afrin dispute it. A very
+  high baseline tryptase points instead to mastocytosis or hereditary alpha-tryptasemia.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- systemic-mastocytosis
+- hereditary-alpha-tryptasemia
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diagnosis
+  quote: tryptase is a poor biomarker
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Testing
+  quote: nothing about a set of negative results on one round
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

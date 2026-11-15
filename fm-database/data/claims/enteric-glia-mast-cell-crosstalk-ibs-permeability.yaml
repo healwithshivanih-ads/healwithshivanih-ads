@@ -1,0 +1,28 @@
+slug: enteric-glia-mast-cell-crosstalk-ibs-permeability
+statement: In colon biopsies from women with IBS, altered communication between enteric glial cells and
+  mast cells was linked to increased colonic permeability.
+evidence_tier: plausible_emerging
+rationale: Gives the mechanistic bridge between mast cells and the leaky-gut picture in IBS, which supports
+  gut-barrier work alongside trigger reduction.
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- Meira de-Faria et al., Neurogastroenterol Motil 2021; small human biopsy study.
+linked_to_topics:
+- ibs
+- mast-cell-activation-syndrome
+- leaky-gut
+linked_to_mechanisms:
+- gut-barrier-dysfunction
+- mast-cell-activation
+linked_to_symptoms:
+- irritable-bowel
+linked_to_supplements: []
+sources:
+- id: ifm-article-mcas-2026
+  location: 'MCAS: Mast Cell Mediators & Chronic Disease'
+  quote: altered communication during IBS contributing to colonic permeability
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

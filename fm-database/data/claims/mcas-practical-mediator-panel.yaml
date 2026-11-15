@@ -1,0 +1,30 @@
+slug: mcas-practical-mediator-panel
+statement: A practical MCAS mediator panel combines serum tryptase and chromogranin A (easy blood draws),
+  plasma prostaglandin D2 and histamine (need a refrigerated centrifuge), and chilled 24-hour or spot
+  urine for N-methylhistamine, leukotriene E4 and 2,3-dinor-11-beta-prostaglandin F2-alpha. Only about
+  ten mast-cell-relatively-specific mediators are measurable clinically.
+evidence_tier: plausible_emerging
+rationale: Gives the coach the names to bring to a clinician; cold-chain handling is covered by the cold-chain
+  claim.
+coaching_translation: ''
+out_of_scope_notes: Ordering and interpreting the panel is clinician scope.
+caveats:
+- Chromogranin A also rises with PPI use, kidney impairment and neuroendocrine tumours, so it is non-specific.
+  Consensus-2 (Afrin 2020) accepts elevated mediators without biopsy.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Biomarkers
+  quote: everyone can get a serum tryptase and should, and a chromogranin A
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Testing
+  quote: only roughly 10 that we can measure in the clinical laboratory
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

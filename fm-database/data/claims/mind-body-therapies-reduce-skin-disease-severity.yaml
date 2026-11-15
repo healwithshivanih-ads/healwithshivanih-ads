@@ -1,0 +1,29 @@
+slug: mind-body-therapies-reduce-skin-disease-severity
+statement: Systematic reviews in skin disease found CBT, mindfulness-based interventions and habit-reversal
+  therapy the most promising psychological approaches, and in psoriasis five of six RCTs showed lower
+  severity after 8-12 weeks of guided meditation.
+evidence_tier: plausible_emerging
+rationale: Gives an evidence base for prescribing a daily mindfulness practice to psoriasis, eczema and
+  hives clients.
+coaching_translation: Ten minutes of guided meditation a day, kept up for two to three months, has been
+  shown to calm psoriasis. It's one of the practices we can build in.
+out_of_scope_notes: ''
+caveats:
+- Rafidi 2022 (40 studies, n=3,112, mostly psoriasis and atopic dermatitis); Bartholomew 2022 (6 RCTs).
+linked_to_topics:
+- psoriasis
+- stress-management
+- mindfulness
+linked_to_mechanisms: []
+linked_to_symptoms:
+- psoriasis-skin-patches
+- eczema-psoriasis-skin
+linked_to_supplements: []
+sources:
+- id: ifm-article-mast-cells-stress-2025
+  location: 'Lifestyle Approaches: The Mind-Body Connection'
+  quote: cognitive behavioral therapy, mindfulness-based interventions, and habit reversal therapy
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

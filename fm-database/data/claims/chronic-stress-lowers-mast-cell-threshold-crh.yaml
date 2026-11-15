@@ -1,0 +1,33 @@
+slug: chronic-stress-lowers-mast-cell-threshold-crh
+statement: 'Chronic psychological stress lowers the threshold for mast cell reactivity: stress hormones
+  such as corticotropin-releasing hormone (CRH) bind mast cells and promote degranulation, and stress
+  is one of the most common flare triggers patients report.'
+evidence_tier: plausible_emerging
+rationale: Makes stress work a core MCAS intervention, not an add-on.
+coaching_translation: Stress isn't 'in your head' here. Stress hormones can make your immune cells more
+  trigger-happy, which is why calming your nervous system is part of the plan.
+out_of_scope_notes: ''
+caveats:
+- Hamilton 2018 and Jennings 2018 (patient perception survey); CRH-mast cell data are partly animal (Kanamori
+  2022 mouse model). Plotnikoff frames this as cortisol; the better-supported link is CRH.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- mast-cell-activation
+linked_to_symptoms:
+- stress-sensitivity
+linked_to_supplements: []
+sources:
+- id: ifm-article-mast-cells-stress-2025
+  location: Introduction
+  quote: Chronic psychological stress is one lifestyle component that may lower the threshold for mast
+    cell reactivity
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Triggers
+  quote: the lower the threshold for mast cell reactivity
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,26 @@
+slug: mcas-one-change-at-a-time-one-month-verdict
+statement: Treatment trials in MCAS should change one thing at a time, and most agents show within about
+  a month whether they help; anything that only makes the person 'a little better' should be dropped and
+  the next tried. The realistic goal is to feel significantly better than baseline most of the time, not
+  cure.
+evidence_tier: fm_specific_thin
+rationale: 'The same discipline applies to supplements: one new supplement at a time, ~4 weeks, keep only
+  clear winners. Fits the coach''s ''fewer supplements'' rule.'
+coaching_translation: We'll add one new thing at a time and give each about a month. If it isn't clearly
+  helping, we drop it. The aim is for you to feel much better most of the time.
+out_of_scope_notes: ''
+caveats:
+- Afrin's clinical method.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Treatment
+  quote: as much as possible, one change at a time
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

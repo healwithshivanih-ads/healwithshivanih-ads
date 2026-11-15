@@ -1,0 +1,30 @@
+slug: new-medication-reaction-usually-excipient-not-drug
+statement: When someone with MCAS reacts soon after starting a new medicine, the trigger is usually an
+  excipient (filler, binder, dye or preservative), not the drug itself; the fix is to find a formulation
+  of the same drug and dose without the suspect excipient, then list that excipient, not the drug, as
+  the allergy.
+evidence_tier: fm_specific_thin
+rationale: 'The same logic applies to supplements: a reaction to one brand of magnesium does not mean
+  the client cannot take magnesium. Try a cleaner product before abandoning the nutrient.'
+coaching_translation: If you react to a new tablet or capsule, it's often the filler, not the medicine.
+  Tell your doctor and pharmacist — a different brand may suit you fine.
+out_of_scope_notes: The coach never advises stopping or switching a prescribed medicine; flag to the prescriber
+  and pharmacist. Severe reactions are emergencies.
+caveats:
+- Afrin's clinical experience across thousands of patients; not trial data. Even refills can switch formulation
+  without notice.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- drug-hypersensitivity
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Treatment, step one
+  quote: it's almost always one or more of what we call the excipients
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

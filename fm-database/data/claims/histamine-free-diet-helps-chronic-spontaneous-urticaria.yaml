@@ -1,0 +1,26 @@
+slug: histamine-free-diet-helps-chronic-spontaneous-urticaria
+statement: Adults with chronic spontaneous urticaria improved on a histamine-free diet in a clinical study.
+evidence_tier: plausible_emerging
+rationale: A low-histamine trial is a reasonable coaching step for chronic hives alongside the dermatologist's
+  care.
+coaching_translation: For hives that keep coming back, a few weeks of lower-histamine eating is worth
+  a try alongside your doctor's treatment.
+out_of_scope_notes: ''
+caveats:
+- Son et al., Ann Dermatol 2018.
+linked_to_topics:
+- hives-urticaria
+- histamine-intolerance
+linked_to_mechanisms:
+- histamine-receptor-signaling
+linked_to_symptoms:
+- urticaria-hives
+linked_to_supplements: []
+sources:
+- id: ifm-article-inflammation-activated-mast-cells-2025
+  location: Histamine & a Low-Histamine Diet
+  quote: patients with urticaria
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

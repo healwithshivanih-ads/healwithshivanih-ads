@@ -1,0 +1,19 @@
+id: ifm-podcast-afrin-mast-cell-disease-2023
+title: Root Causes & Treatment of Mast Cell Disease (IFM Pathways to Well-Being podcast)
+source_type: expert_consensus
+quality: moderate
+authors:
+- Lawrence B. Afrin
+- Kalea Wattles
+year: 2023
+publisher: The Institute for Functional Medicine
+url: https://www.ifm.org/podcast/root-causes-treatment-of-mast-cell-disease
+notes: 57-minute interview recorded 27 Feb 2023, full transcript read. Afrin (hematologist, author of
+  Never Bet Against Occam, lead author of the consensus-2 MCAS criteria) covers acquired mast-cell mutations,
+  the inflammation / allergic / dystrophism pattern, mediator testing, CD117 restaining of archived biopsies,
+  and his stepwise treatment method (triggers, then H1+H2, then one-at-a-time trials). He states his own
+  prevalence estimate (17-20%) is preliminary; it is contested by allergy bodies.
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

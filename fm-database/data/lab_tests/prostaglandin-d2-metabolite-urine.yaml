@@ -1,0 +1,35 @@
+slug: prostaglandin-d2-metabolite-urine
+display_name: 11β-PGF2α (urine)
+full_name: Urinary 2,3-dinor-11β-Prostaglandin F2α
+aliases:
+- 2,3-dinor-11beta-PGF2alpha
+- 11-beta-PGF2-alpha
+- 11β-prostaglandin F2α
+- prostaglandin D2 metabolite
+- PGD2 metabolite
+- prostaglandin D2
+units: ng/mg creatinine
+sample_type: urine
+interpretation_low: ''
+interpretation_high: Elevated values support mast cell activation (prostaglandin D2 is largely mast-cell
+  derived).
+when_to_order: MCAS mediator workup; chilled urine collection. Plasma PGD2 needs a refrigerated centrifuge.
+fasting_required: false
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- flushing
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Biomarkers
+  quote: 2,3-Dinor-11beta-prostaglandin F2 alpha, perfect for Scrabble
+evidence_tier: plausible_emerging
+notes_for_coach: Aspirin and NSAIDs suppress prostaglandin output and can mask an elevation — record their
+  use at collection.
+client_visible: false
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

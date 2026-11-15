@@ -1,0 +1,29 @@
+slug: gluten-free-plant-based-watch-methionine
+statement: A diet that is both gluten-free (or grain-free) and fully plant-based can run low in methionine,
+  which methylation depends on; anyone combining the two needs deliberate attention to protein quality.
+evidence_tier: fm_specific_thin
+rationale: Directly relevant to vegetarian and Jain clients asked to drop wheat. Pair dals with rice/millets,
+  include dairy where allowed, and watch homocysteine.
+coaching_translation: If you're vegetarian and also cutting out wheat, we'll make sure you still get enough
+  good-quality protein from dals, dairy, nuts and seeds.
+out_of_scope_notes: ''
+caveats:
+- 'Plotnikoff states there is ''no methionine'' in such a diet, which is an overstatement: legumes, nuts
+  and seeds supply it, though pulses are relatively low. Kept as a prompt to check protein adequacy, not
+  as fact.'
+linked_to_topics:
+- protein-adequacy-vegetarian
+- methylation
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- methylation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diet
+  quote: one has to pay close attention to that if one is going to be gluten-free
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

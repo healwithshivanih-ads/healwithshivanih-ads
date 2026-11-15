@@ -1,0 +1,26 @@
+slug: mcas-check-vitamin-d-and-homocysteine
+statement: In patients with mast cell hyperactivity, keeping vitamin D replete and homocysteine in the
+  normal range is a basic, low-cost priority.
+evidence_tier: fm_specific_thin
+rationale: Two routine labs the coach already tracks; supports correcting them in any mast-cell client.
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- Clinical opinion (Plotnikoff); no MCAS-specific trial cited.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- vitamin-d3
+- homocysteine-and-methylation
+linked_to_mechanisms:
+- immunomodulation-via-vitamin-d
+linked_to_symptoms: []
+linked_to_supplements:
+- vitamin-d3
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Biomarkers
+  quote: ensuring a very good vitamin D level, ensuring a normal homocysteine level
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,31 @@
+slug: empiric-h1-h2-trial-each-antihistamine-separately
+statement: When other causes of flushing (carcinoid, pancreatic neuroendocrine tumours) are excluded,
+  an empiric trial of H1 plus H2 blockade is a reasonable first pharmacological step in suspected MCAS.
+  Individual response is unpredictable, so trying cetirizine, loratadine and fexofenadine for about three
+  weeks each, and different H2 blockers, finds the best fit.
+evidence_tier: confirm_with_clinician
+rationale: Coach awareness only, so the coach can support the client in the systematic trial the clinician
+  sets up.
+coaching_translation: ''
+out_of_scope_notes: Choosing, dosing and switching antihistamines is entirely the prescriber's decision;
+  the coach never suggests a medicine.
+caveats:
+- Plotnikoff and Afrin clinical experience; quercetin is not equivalent to an antihistamine drug.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- histamine-receptor-signaling
+linked_to_symptoms: []
+linked_to_supplements:
+- quercetin
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Empiric treatment
+  quote: first line treatment is H1 blockade and H2 blockade
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Treatment, step two
+  quote: identify their optimal antihistamine regimen
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,32 @@
+slug: n-methylhistamine-urine
+display_name: N-Methylhistamine (urine)
+full_name: Urinary N-Methylhistamine
+aliases:
+- NMH
+- N-MH
+- methylhistamine
+- 1-methylhistamine
+units: mcg/g creatinine
+sample_type: urine
+interpretation_low: ''
+interpretation_high: Elevated values support mast cell activation.
+when_to_order: MCAS mediator workup; 24-hour or spot urine collected chilled, ideally during symptoms.
+fasting_required: false
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- flushing
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Biomarkers
+  quote: 24-hour urine collections, or maybe in spot collections for N-methylhistamine
+evidence_tier: plausible_emerging
+notes_for_coach: Histamine breakdown product. Keep the sample refrigerated from collection to lab; warm
+  handling gives false negatives. High-histamine meals before collection can confound.
+client_visible: false
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

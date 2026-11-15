@@ -1,0 +1,26 @@
+slug: short-term-elimination-diet-identifies-migraine-triggers
+statement: A short-term diagnostic elimination diet is the reference method for identifying food triggers
+  in migraine and food reactions, and each person's triggers, dose and timing differ.
+evidence_tier: plausible_emerging
+rationale: Supports a structured elimination-reintroduction over generic avoid-lists.
+coaching_translation: We'll take a few foods out for a short time, then bring them back one by one, so
+  we learn what really affects you instead of avoiding everything.
+out_of_scope_notes: ''
+caveats:
+- Nguyen & Schytz 2024 review; elimination diets need nutritional supervision.
+linked_to_topics:
+- migraine-headache
+- elimination-diet
+linked_to_mechanisms: []
+linked_to_symptoms:
+- migraine
+- food-intolerance-reactions
+linked_to_supplements: []
+sources:
+- id: ifm-article-migraine-mast-cells-2025
+  location: Histamine Intolerance, Food Triggers, & Dietary Approaches
+  quote: a short-term diagnostic elimination diet
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

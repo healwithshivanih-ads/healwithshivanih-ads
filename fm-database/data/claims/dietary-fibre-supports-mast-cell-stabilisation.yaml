@@ -1,0 +1,29 @@
+slug: dietary-fibre-supports-mast-cell-stabilisation
+statement: Fibre-rich plant foods feed beneficial gut microbes, and fibre and its metabolites (such as
+  short-chain fatty acids) appear to dampen mast cell activation.
+evidence_tier: plausible_emerging
+rationale: Argues against over-restricting a histamine client into a low-plant diet; tolerated fibre should
+  be protected.
+coaching_translation: Fibre from vegetables, dals and whole grains feeds the good bacteria in your gut,
+  and that seems to help keep immune cells calmer.
+out_of_scope_notes: ''
+caveats:
+- Folkerts et al., Front Immunol 2018 (review, largely preclinical).
+linked_to_topics:
+- mast-cell-activation-syndrome
+- histamine-intolerance
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-article-inflammation-activated-mast-cells-2025
+  location: Anti-Inflammatory Foods, Nutrients, & Gut-Immune Health
+  quote: a positive impact on mast cell stabilization
+- id: ifm-article-migraine-mast-cells-2025
+  location: Histamine Intolerance, Food Triggers, & Dietary Approaches
+  quote: help feed beneficial microbes located in the gut
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,25 @@
+slug: dash-mind-diet-lower-migraine-severity
+statement: Women who followed a DASH or MIND-style diet more closely reported shorter and less severe
+  migraine headaches in observational studies.
+evidence_tier: plausible_emerging
+rationale: A whole-diet pattern adds to trigger removal; these are close to a balanced Indian thali with
+  more vegetables, dals, nuts and less salt.
+coaching_translation: Eating plenty of vegetables, dals, nuts and whole grains, with less salt and fewer
+  packaged foods, is linked with milder migraines.
+out_of_scope_notes: ''
+caveats:
+- Mirzababaei 2020 and Askarpour 2020 — cross-sectional, Iranian cohorts; no RCT.
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms: []
+linked_to_symptoms:
+- migraine
+linked_to_supplements: []
+sources:
+- id: ifm-article-migraine-mast-cells-2025
+  location: Histamine Intolerance, Food Triggers, & Dietary Approaches
+  quote: associated with lower headache severity and duration
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest
