@@ -1422,6 +1422,14 @@ class NutritionPlan(BaseModel):
     # compose other dishes too. The recipe library is a preferred palette, never
     # a restriction. Default empty so existing plans load unchanged.
     recipes: list[str] = Field(default_factory=list)              # Recipe slugs (data/_recipes/)
+    # WHICH plate the client sees on the app's Plan tab (2026-10-23). Ids are
+    # storage keys mirrored in fm-database-web/src/lib/fmdb/plate-shapes.ts.
+    # None = resolve from the attached protocol, then keywords in `pattern`,
+    # then balanced — so existing plans pick up the right shape without being
+    # re-published; the coach pins one here to overrule that.
+    plate_shape: Optional[Literal[
+        "balanced", "blood_sugar", "gut_soothing", "anti_inflammatory", "low_histamine", "maintenance",
+    ]] = None
 
 
 class AyurvedaSection(BaseModel):
