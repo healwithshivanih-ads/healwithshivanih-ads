@@ -1,0 +1,29 @@
+slug: mast-cell-mediators-functional-dyspepsia
+statement: A meta-analysis of case-control studies found raised duodenal mast cells and eosinophils in
+  functional dyspepsia; an upper-GI scope that comes back normal, or gastritis with no known cause, is
+  a reason to consider mast cell activation.
+evidence_tier: plausible_emerging
+rationale: Functional dyspepsia is common in the roster. A 'normal scope' does not end the enquiry.
+coaching_translation: A normal scope doesn't mean nothing is going on. Some upper-gut discomfort is driven
+  by immune cells in the gut lining, and your doctor can look for that.
+out_of_scope_notes: Ordering or interpreting biopsies is clinician scope.
+caveats:
+- Shah et al., Clin Gastroenterol Hepatol 2022; the 'think mast cell' rule is Plotnikoff's clinical opinion.
+linked_to_topics:
+- functional-dyspepsia
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-article-mcas-2026
+  location: 'MCAS: Mast Cell Mediators & Chronic Disease'
+  quote: Mast cell mediators are also present in other gastrointestinal disorders such as functional dyspepsia
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: GI biopsy discussion
+  quote: if there's some kind of gastritis present without any known trigger
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

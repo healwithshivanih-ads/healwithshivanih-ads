@@ -1,0 +1,30 @@
+slug: leukotriene-e4-urine
+display_name: Leukotriene E4 (urine)
+full_name: Urinary Leukotriene E4
+aliases:
+- LTE4
+- LT-E4
+units: pg/mg creatinine
+sample_type: urine
+interpretation_low: ''
+interpretation_high: Elevated values support mast cell activation; also raised in aspirin-exacerbated
+  respiratory disease and asthma flares.
+when_to_order: MCAS mediator workup; chilled urine collection.
+fasting_required: false
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- flushing
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Biomarkers
+  quote: N-methylhistamine, leukotriene E4
+evidence_tier: plausible_emerging
+notes_for_coach: Leukotriene inhibitors (montelukast) and zileuton lower it, so note medicines at collection.
+client_visible: false
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

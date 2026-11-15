@@ -1,0 +1,29 @@
+slug: leftovers-raise-histamine-especially-meat-fish
+statement: Histamine rises as food ages, so leftovers — especially leftover meat and fish — are a common
+  hidden trigger; in one case simply stopping reheated leftovers resolved a long list of symptoms. Fermented
+  foods (kombucha, yoghurt, sauerkraut) may also worsen a reactive person.
+evidence_tier: fm_specific_thin
+rationale: In Indian homes leftover dal, curry and fish are routine; cooking fresh or freezing portions
+  immediately is a practical lever. Curd and idli/dosa batter are fermented.
+coaching_translation: Food builds up histamine as it sits, especially meat and fish. Cooking fresh, or
+  freezing portions straight after cooking, can make a real difference.
+out_of_scope_notes: ''
+caveats:
+- Single case story plus general food-histamine chemistry; freezing promptly limits histamine formation.
+linked_to_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- bacterial-histamine-production
+linked_to_symptoms:
+- intolerance-fermented-high-histamine-foods
+- food-intolerance-reactions
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diet
+  quote: The older the foods, the higher the histamines
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

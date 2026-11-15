@@ -1,0 +1,28 @@
+slug: mcas-flare-diary-captures-trigger-context
+statement: Trigger avoidance is step one in managing MCAS, ahead of medication. After each flare, a short
+  diary entry on where the person was, what they were doing, what they last ate or took, the weather,
+  any odours or strong sensory input and any physical or emotional stressor lets patterns emerge over
+  time.
+evidence_tier: fm_specific_thin
+rationale: A structured flare diary is squarely coach scope and the highest-yield first task.
+coaching_translation: After a flare, once you feel better, jot down where you were, what you'd just eaten
+  or taken, the weather, any smells, and how stressed you were. Over a few weeks the pattern shows up.
+out_of_scope_notes: ''
+caveats:
+- Afrin's clinical method; Plotnikoff likewise relies on food-and-symptom diaries over published lists.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- histamine-intolerance
+linked_to_mechanisms: []
+linked_to_symptoms:
+- food-intolerance-reactions
+- flushing
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Treatment, step one
+  quote: Many, many patients, what they find helpful is just maintaining a little diary
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

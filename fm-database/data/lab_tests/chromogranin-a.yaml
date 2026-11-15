@@ -1,0 +1,31 @@
+slug: chromogranin-a
+display_name: Chromogranin A
+full_name: Serum Chromogranin A
+aliases:
+- CgA
+- chromogranin
+units: ng/mL
+sample_type: blood
+interpretation_low: ''
+interpretation_high: Supports mast cell activation in the right history; also raised by PPIs, kidney impairment
+  and neuroendocrine tumours.
+when_to_order: Part of a basic MCAS mediator screen alongside tryptase.
+fasting_required: false
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- flushing
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Biomarkers
+  quote: a chromogranin A. Those are easily done with a blood test
+evidence_tier: plausible_emerging
+notes_for_coach: 'Easy blood draw, but non-specific: stop-PPI timing and kidney function change the reading.
+  Also used to screen for carcinoid/neuroendocrine tumours, one of the conditions to exclude in flushing.'
+client_visible: false
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

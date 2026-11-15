@@ -1,0 +1,27 @@
+slug: mindfulness-cbt-ibs-quality-of-life
+statement: Mindfulness-based cognitive therapy and meditation-plus-yoga programmes reduced symptoms and
+  improved quality of life in randomised trials of people with IBS.
+evidence_tier: strong
+rationale: Supports gut-directed mind-body work for IBS clients, including those with a mast-cell picture.
+coaching_translation: Mindfulness and gentle yoga have been shown in trials to ease IBS symptoms, and
+  they're things you can do at home.
+out_of_scope_notes: ''
+caveats:
+- Henrich 2020 (women, MBCT RCT); D'Silva 2023 (meditation and yoga RCT).
+linked_to_topics:
+- ibs
+- mindfulness
+- mind-body-yoga
+linked_to_mechanisms:
+- gut-brain-axis-disruption
+linked_to_symptoms:
+- irritable-bowel
+linked_to_supplements: []
+sources:
+- id: ifm-article-mast-cells-stress-2025
+  location: 'Lifestyle Approaches: The Mind-Body Connection'
+  quote: mindfulness-based cognitive therapy have also shown benefit
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,35 @@
+slug: ibs-four-times-more-likely-mast-cell-disorder
+statement: In a US database of over 53 million patients, people with IBS were at least four times more
+  likely than the general population to carry a primary or idiopathic mast cell disorder diagnosis, the
+  strongest association found.
+evidence_tier: plausible_emerging
+rationale: IBS is the most common door into MCAS. A client with IBS plus flushing, hives, reactions to
+  medicines or multisystem symptoms is worth flagging to the clinician.
+coaching_translation: IBS and mast cell problems often travel together. If your gut symptoms come with
+  skin, sinus or whole-body reactions, mention that to your doctor.
+out_of_scope_notes: Coach flags the pattern; diagnosis belongs to the clinician.
+caveats:
+- Kurin et al., Neurogastroenterol Motil 2022 (database association, not causation); diagnosis coding
+  of mast cell disorders is uneven.
+linked_to_topics:
+- ibs
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+- visceral-mast-cell-pain-amplification
+linked_to_symptoms:
+- irritable-bowel
+- bloating
+- abdominal-pain
+linked_to_supplements: []
+sources:
+- id: ifm-article-mcas-2026
+  location: 'MCAS: Mast Cell Mediators & Chronic Disease'
+  quote: those with IBS were at least four times more likely to have a mast cell disorder
+- id: ifm-article-mast-cells-stress-2025
+  location: 'Stress & Mast Cells: A Gut-Brain Perspective'
+  quote: Irritable bowel syndrome is strongly associated with the primary and idiopathic mast cell disorders
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

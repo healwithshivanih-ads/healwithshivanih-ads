@@ -1,0 +1,28 @@
+slug: mcas-pattern-inflammation-allergy-dystrophism
+statement: MCAS typically shows as chronic waxing-and-waning multisystem inflammation, with or without
+  allergic-type reactions and with or without odd growth or development changes in tissues (dystrophisms).
+  A long problem list of '-itis' diagnoses plus puzzling allergies and drug sensitivities is the clue.
+evidence_tier: fm_specific_thin
+rationale: 'Gives the coach a timeline pattern to spot: many unrelated-looking diagnoses may be one process.'
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- Afrin's clinical synthesis. He reports acquired (not inherited) mast-cell gene mutations in research
+  labs, and estimates prevalence at 17-20% of the population — both preliminary and contested.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+- chronic-inflammation
+linked_to_symptoms:
+- drug-hypersensitivity
+- food-intolerance-reactions
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Clinical pattern
+  quote: chronic multisystem inflammation is the universal constant clinical feature
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

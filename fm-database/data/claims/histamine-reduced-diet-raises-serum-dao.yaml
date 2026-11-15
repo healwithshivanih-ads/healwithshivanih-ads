@@ -1,0 +1,28 @@
+slug: histamine-reduced-diet-raises-serum-dao
+statement: In histamine intolerance, following a histamine-reduced diet was linked with symptom improvement
+  and a rise in serum DAO that tracked how closely the diet was followed.
+evidence_tier: plausible_emerging
+rationale: Supports a time-limited low-histamine trial with good adherence before deciding it 'doesn't
+  work'.
+coaching_translation: Sticking closely to the lower-histamine foods for a few weeks gives your body the
+  best chance to settle, and it's how we learn whether histamine is part of the picture.
+out_of_scope_notes: ''
+caveats:
+- Lackner 2019 (small study) and Cucca 2022 (retrospective) as cited by IFM.
+linked_to_topics:
+- histamine-intolerance
+- migraine-headache
+linked_to_mechanisms:
+- diamine-oxidase-deficiency
+linked_to_symptoms:
+- histamine-intolerance
+linked_to_supplements: []
+sources:
+- id: ifm-article-inflammation-activated-mast-cells-2025
+  location: Histamine & a Low-Histamine Diet
+  quote: individuals have reported improved symptoms after clinical interventions that included a prescribed
+    low-histamine diet
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,33 @@
+slug: mast-cell-activation-symptoms-common-in-long-covid
+statement: Mast cell activation symptoms are prevalent in long COVID, and acute and post-COVID illness
+  may be partly rooted in mast cell activation; clinicians see brain fog, fatigue and gut symptoms overlapping
+  in both groups.
+evidence_tier: plausible_emerging
+rationale: For long-COVID clients, histamine and mast-cell triggers are one layer worth screening, alongside
+  mitochondrial and viral-reactivation work.
+coaching_translation: After COVID, some people's immune system stays on high alert. Noticing what makes
+  symptoms flare can help your team choose what to try.
+out_of_scope_notes: ''
+caveats:
+- Weinstock 2021 (symptom survey) and Wechsler 2022 (Allergy) as cited by IFM; Afrin 2020 is a hypothesis
+  paper. No validated long-COVID mast cell panel exists yet (Vojdani).
+linked_to_topics:
+- post-exertional-malaise-mecfs
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- brain-fog
+- fatigue
+linked_to_supplements: []
+sources:
+- id: ifm-article-mcas-2026
+  location: 'MCAS: Mast Cell Mediators & Chronic Disease'
+  quote: acute COVID-19 infection and chronic post-COVID-19 illness
+- id: ifm-podcast-vojdani-long-covid-2024
+  location: Long COVID and mast cells
+  quote: we're seeing a lot of brain fog, we're seeing a lot of fatigue
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

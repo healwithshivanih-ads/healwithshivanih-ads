@@ -1,0 +1,29 @@
+slug: earring-nickel-test-low-nickel-diet-trial
+statement: Asking whether costume jewellery or cheap earrings cause redness, itching or crusting is a
+  quick screen for nickel reactivity; in such people, nickel-rich foods may trigger similar reactions
+  in the gut and skin, and a two-week low-nickel diet trial can be informative. In one case, nine years
+  of unexplained rashes cleared in two weeks.
+evidence_tier: fm_specific_thin
+rationale: A zero-cost history question. Many Indian staples are nickel-rich (whole grains, dals and pulses,
+  nuts, cocoa, some leafy greens), so a trial needs dietitian-level planning for veg clients.
+coaching_translation: Do cheap earrings or metal buttons make your skin itchy or red? If so, nickel in
+  some foods may be bothering you too, and we can test that with a short food change.
+out_of_scope_notes: Diagnosis of nickel allergy (patch testing) is clinician scope.
+caveats:
+- Single dramatic case report; systemic nickel allergy syndrome is recognised but trial data are limited.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- food-sensitivities
+linked_to_mechanisms: []
+linked_to_symptoms:
+- skin-rash
+- itching
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diet
+  quote: I ask people about the nickel test
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

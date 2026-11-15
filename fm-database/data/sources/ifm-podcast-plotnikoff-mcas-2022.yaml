@@ -1,0 +1,19 @@
+id: ifm-podcast-plotnikoff-mcas-2022
+title: 'Mast Cell Activation Syndrome: The Functional Medicine Approach (IFM Pathways to Well-Being podcast)'
+source_type: expert_consensus
+quality: moderate
+authors:
+- Gregory A. Plotnikoff
+- Kalea Wattles
+year: 2022
+publisher: The Institute for Functional Medicine
+url: https://www.ifm.org/podcast/mast-cell-activation-syndrome-functional-medicine-approach
+notes: 44-minute interview recorded 1 Feb 2022, full transcript read. Plotnikoff (MD, internist-paediatrician,
+  IFMCP, Minnesota Personalized Medicine) covers triggers incl. medication excipients, why tryptase is
+  a poor biomarker, the practical mediator panel, CD117 biopsy staining, empiric H1/H2 trials, low-histamine
+  / low-nickel / low-FODMAP diets and limbic-retraining approaches. Clinical experience and case stories,
+  so most claims are fm_specific_thin.
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,49 @@
+slug: hereditary-alpha-tryptasemia
+display_name: Hereditary Alpha-Tryptasemia
+aliases:
+- HαT
+- hereditary alpha tryptasemia
+- alpha-tryptasemia
+summary: 'An inherited (autosomal dominant) trait in which extra copies of the TPSAB1 gene cause over-production
+  of alpha-tryptase, giving a persistently raised baseline serum tryptase. Unlike systemic mastocytosis
+  there is no clonal mast cell expansion and the mast cells are round, not spindle-shaped. Carriers may
+  have flushing, itching, GI symptoms, dysautonomia, joint hypermobility and severe reactions, and it
+  can run in families. Described by NIH researchers in 2016.
+
+  '
+common_symptoms:
+- flushing
+- itching
+- irritable-bowel
+- tachycardia
+red_flags:
+- anaphylaxis
+- baseline serum tryptase persistently high
+related_topics:
+- mast-cell-activation-syndrome
+- systemic-mastocytosis
+- ehlers-danlos-hypermobility
+- postural-orthostatic-tachycardia-syndrome
+key_mechanisms:
+- mast-cell-activation
+coaching_scope_notes: 'Coach notices a family pattern of flushing, hives, reactions and hypermobility,
+  and supports trigger diaries. A raised baseline tryptase goes back to the clinician.
+
+  '
+clinician_scope_notes: 'Diagnosis is by TPSAB1 copy-number genetic testing; distinguish from systemic
+  mastocytosis (bone marrow, KIT D816V). Management mirrors mast cell mediator care.
+
+  '
+notes_for_coach: 'A persistently high tryptase does not always mean mastocytosis; HaT is the commoner
+  explanation and is benign but symptomatic.
+
+  '
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diagnosis discussion
+  quote: very high tryptase levels, but there is no evidence of clonal expansion
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

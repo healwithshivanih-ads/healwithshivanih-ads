@@ -1,0 +1,27 @@
+slug: histamine-food-lists-disagree-use-symptom-diary
+statement: 'Published high-histamine food lists disagree with each other, so the person''s own food-and-symptom
+  diary is a better guide than any single list. Tolerance is dose-dependent: several moderate-histamine
+  foods in one meal can add up to a reaction even when each alone is fine.'
+evidence_tier: fm_specific_thin
+rationale: Coach builds the avoid-list from the client's diary, and teaches total-load thinking rather
+  than permanent bans.
+coaching_translation: There isn't one correct histamine list. What matters is what your body reacts to,
+  and how much is on the plate at once — a little of something may be fine.
+out_of_scope_notes: ''
+caveats:
+- Clinical opinion (Plotnikoff).
+linked_to_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+linked_to_mechanisms: []
+linked_to_symptoms:
+- food-intolerance-reactions
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diet
+  quote: there are a zillion different lists of high histamine foods, none of them agree
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

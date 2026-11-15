@@ -1,0 +1,30 @@
+slug: low-fodmap-histamine-and-colonic-mast-cells
+statement: One trial in diarrhoea-predominant IBS found a low-FODMAP diet lowered plasma histamine, and
+  high-FODMAP intake is linked with visceral hypersensitivity and more colonic mast cells; low-FODMAP
+  is short-term only because it starves butyrate production.
+evidence_tier: plausible_emerging
+rationale: Low-FODMAP is a time-limited tool in a mast-cell IBS client, followed by reintroduction.
+coaching_translation: A low-FODMAP phase can calm a reactive gut, but it's meant for a few weeks, not
+  for life — your gut bacteria need the fibre back.
+out_of_scope_notes: ''
+caveats:
+- Single trial; mast-cell density data partly from animal models. Clinical opinion (Plotnikoff).
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- fodmap-fermentation
+- visceral-mast-cell-pain-amplification
+linked_to_symptoms:
+- ibs-diarrhea-predominant
+- visceral-hypersensitivity
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diet
+  quote: a high-FODMAP diet results in visceral hypersensitivity and increased mast cell density
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

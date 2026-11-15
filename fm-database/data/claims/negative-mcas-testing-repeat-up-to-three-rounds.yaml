@@ -1,0 +1,24 @@
+slug: negative-mcas-testing-repeat-up-to-three-rounds
+statement: One round of negative mediator testing does not refute a history that strongly suggests MCAS;
+  some specialists repeat non-invasive testing up to three times, ideally during symptoms, before moving
+  to biopsy. Documented lab evidence matters because the patient must convince every future local doctor.
+evidence_tier: fm_specific_thin
+rationale: Helps the coach support a client through repeat testing rather than accepting one negative.
+coaching_translation: One normal result doesn't close the question. Testing during a flare, and sometimes
+  more than once, gives a better chance of catching it.
+out_of_scope_notes: ''
+caveats:
+- Afrin's personal practice style; other clinicians treat empirically.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms: []
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Testing
+  quote: I tend to go up to about three rounds of non-invasive testing
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

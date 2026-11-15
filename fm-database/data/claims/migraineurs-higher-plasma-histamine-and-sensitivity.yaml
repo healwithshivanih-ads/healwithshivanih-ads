@@ -1,0 +1,26 @@
+slug: migraineurs-higher-plasma-histamine-and-sensitivity
+statement: People with migraine tend to have higher plasma histamine and may be more sensitive to it,
+  which may make dietary histamine and allergy-type triggers more likely to set off attacks.
+evidence_tier: plausible_emerging
+rationale: Explains why low-histamine trials and DAO work show up in migraine plans.
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- Yuan & Silberstein, Headache 2018.
+linked_to_topics:
+- migraine-headache
+- histamine-intolerance
+linked_to_mechanisms:
+- histamine-receptor-signaling
+linked_to_symptoms:
+- migraine
+linked_to_supplements:
+- dao-enzyme
+sources:
+- id: ifm-article-migraine-mast-cells-2025
+  location: Mast Cell Activation & Histamine in Migraine
+  quote: migraineurs have increased plasma histamine levels
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

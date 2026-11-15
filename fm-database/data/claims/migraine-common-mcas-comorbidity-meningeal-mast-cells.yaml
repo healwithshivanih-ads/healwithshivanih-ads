@@ -1,0 +1,30 @@
+slug: migraine-common-mcas-comorbidity-meningeal-mast-cells
+statement: Migraine is one of the most frequent comorbidities of MCAS. Meningeal mast cells sit next to
+  trigeminal sensory nerves and release histamine and other mediators that drive neuroinflammation and
+  pain signalling.
+evidence_tier: plausible_emerging
+rationale: A migraine client with flushing, hives, IBS or dysautonomia is a mast-cell pattern worth naming
+  to the clinician.
+coaching_translation: Migraines can be partly driven by immune cells near the nerves in your head. Food
+  and other triggers can set them off, so we'll track what comes before an attack.
+out_of_scope_notes: ''
+caveats:
+- Blitshteyn 2023 (dysautonomia, hypermobility and MCAS as migraine comorbidities); Guan 2023 and Koyuncu
+  Irmak 2019 are largely mechanistic/animal.
+linked_to_topics:
+- migraine-headache
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-degranulation
+- histamine-receptor-signaling
+linked_to_symptoms:
+- migraine
+linked_to_supplements: []
+sources:
+- id: ifm-article-migraine-mast-cells-2025
+  location: Mast Cell Activation & Histamine in Migraine
+  quote: migraine as one of the most encountered comorbidities of mast cell activation syndrome
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

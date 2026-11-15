@@ -1,0 +1,18 @@
+id: ifm-article-mcas-2026
+title: Mast Cell Activation Syndrome (IFM practitioner article)
+source_type: website
+quality: moderate
+authors:
+- IFM Medical and Editorial Content Team
+year: 2026
+publisher: The Institute for Functional Medicine
+url: https://www.ifm.org/articles/mast-cell-activation-syndrome
+notes: Short practitioner article (updated 9 Nov 2026) introducing MCAS, its overlap with IBS, functional
+  dyspepsia, migraine and long COVID, and IFM's two-pronged nutrition approach. Embeds a 2-minute video
+  with Gillian Ehrlich, DNP, FMCP-M (no transcript available, not ingested). Evidence weight comes from
+  the primary papers it cites (Kurin 2022, Weinstock 2021, Valent 2020); claims here name those papers
+  in caveats.
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

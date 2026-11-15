@@ -1,0 +1,31 @@
+slug: limbic-retraining-trauma-informed-care-mcas
+statement: Many MCAS patients carry physical, emotional or medical trauma and a history of being dismissed.
+  Limbic and nervous-system retraining programmes (Gupta Program, DNRS, polyvagal approaches) have produced
+  striking improvements in some, such as expanding a diet from three foods to 28, but should be offered
+  as one part of the plan, not the first prescription.
+evidence_tier: fm_specific_thin
+rationale: Fits the coach's hypnotherapy and NLP skills; framing matters — leading with 'try meditation'
+  can feel dismissive to someone seeking a diagnosis.
+coaching_translation: Your nervous system and immune system talk to each other. Alongside the food and
+  medical side, calming the alarm system in your brain can help your body feel safe enough to react less.
+out_of_scope_notes: Trauma processing beyond coaching scope goes to a qualified therapist.
+caveats:
+- Unsolicited patient letters and case stories; DNRS and Gupta lack controlled MCAS trials.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- polyvagal-theory
+- neuroplasticity
+linked_to_mechanisms:
+- limbic-system-overactivation
+linked_to_symptoms:
+- food-intolerance-reactions
+- chemical-sensitivity
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Mind-body
+  quote: the Gupta Program, Annie Hopper's DNRS, polyvagal approaches
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,24 @@
+slug: atopic-conditions-raise-headache-risk
+statement: Eczema and allergic rhinitis, both driven by mast cell histamine, are associated with a higher
+  risk of headache disorders and migraine.
+evidence_tier: plausible_emerging
+rationale: Atopy in the history strengthens the case for treating a migraine client's histamine load.
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- Yang 2024 meta-analysis (atopic dermatitis); Bernstein 2024 review (rhinitis). Associations only.
+linked_to_topics:
+- migraine-headache
+- hay-fever
+linked_to_mechanisms: []
+linked_to_symptoms:
+- migraine
+linked_to_supplements: []
+sources:
+- id: ifm-article-migraine-mast-cells-2025
+  location: Mast Cell Activation & Histamine in Migraine
+  quote: associated with an increased risk of headache disorders or migraine
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

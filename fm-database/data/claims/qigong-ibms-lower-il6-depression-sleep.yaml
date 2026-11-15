@@ -1,0 +1,25 @@
+slug: qigong-ibms-lower-il6-depression-sleep
+statement: In a three-arm RCT (n=281) of adults with depressive symptoms and poor sleep, eight weekly
+  integrative body-mind-spirit or Qigong sessions eased depression and sleep problems and lowered IL-6
+  and IL-1-beta compared with controls.
+evidence_tier: plausible_emerging
+rationale: Mind-body practice moves measurable inflammatory cytokines, not just mood.
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- Ng et al., Brain Behav Immun 2022; not a mast-cell population.
+linked_to_topics:
+- stress-management
+- chronic-stress
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-article-mast-cells-stress-2025
+  location: 'Lifestyle Approaches: The Mind-Body Connection'
+  quote: IBMS and Qigong were effective for relieving depression symptoms
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

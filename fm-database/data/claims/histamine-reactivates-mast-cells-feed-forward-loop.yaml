@@ -1,0 +1,28 @@
+slug: histamine-reactivates-mast-cells-feed-forward-loop
+statement: Mast cells are long-lived and keep re-making their mediators, and released histamine can re-activate
+  mast cells, so a flare can become a self-sustaining loop; breaking it often needs more than diet and
+  supplements.
+evidence_tier: fm_specific_thin
+rationale: Sets client expectations and justifies pairing dietary work with the clinician's mast-cell
+  medication.
+coaching_translation: Once these immune cells get going they can keep each other going. That's why food
+  changes alone sometimes aren't enough, and why your doctor's treatment matters too.
+out_of_scope_notes: ''
+caveats:
+- Clinical teaching (Plotnikoff); mechanism simplified.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-degranulation
+- histamine-receptor-signaling
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diet
+  quote: Mast cells degranulate and release histamine, histamine comes right around and reactivates the
+    mast cell
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

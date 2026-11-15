@@ -1,0 +1,26 @@
+slug: mcas-primary-secondary-idiopathic-classes
+statement: MCAS is a chronic multisystem disorder of inappropriate mast cell activation, sub-classified
+  as primary (clonal), secondary (driven by another condition such as allergy) or idiopathic.
+evidence_tier: strong
+rationale: The classification tells the coach whether there is a driver worth looking for; in secondary
+  MCAS the upstream condition is the lever.
+coaching_translation: Mast cell problems come in different kinds. Sometimes something else is setting
+  them off, and finding that thing is part of the work.
+out_of_scope_notes: Classification is a clinician diagnosis.
+caveats:
+- Classification per Valent 2020 and Weinstock 2021, as cited by IFM.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- systemic-mastocytosis
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-article-mcas-2026
+  location: Introduction
+  quote: MCAS may be further classified as primary, secondary, or idiopathic
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

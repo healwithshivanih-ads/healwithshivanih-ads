@@ -31,6 +31,7 @@ red_flags:
 - organ infiltration on imaging
 related_topics:
 - mast-cell-activation-syndrome
+- hereditary-alpha-tryptasemia
 key_mechanisms:
 - mast-cell-degranulation
 coaching_scope_notes: 'This is a hematologic/oncologic diagnosis — strictly out of coaching scope
@@ -57,7 +58,7 @@ sources:
 - id: mastokids
   location: Pediatric Mastocytosis Overview
   quote: Mastocytosis is defined by abnormal accumulation of mast cells in tissues.
-version: 2
+version: 3
 status: active
-updated_at: '2024-05-22'
-updated_by: shivani
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

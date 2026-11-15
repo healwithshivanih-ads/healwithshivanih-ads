@@ -1,0 +1,31 @@
+slug: crh-skin-mast-cells-urticaria-psoriasis
+statement: Under stress, skin mast cells and keratinocytes release more IL-6, CRH and cortisol. CRH-activated
+  skin mast cells widen and leak blood vessels in urticaria, and mast cells beside psoriatic plaques carry
+  CRH receptors that drive IL-6 into the lesion.
+evidence_tier: plausible_emerging
+rationale: Links stress flares in hives and psoriasis to a mechanism the client can work with.
+coaching_translation: Your skin reacts to stress through the same immune cells that cause hives and flares,
+  so calming your stress response can calm your skin.
+out_of_scope_notes: ''
+caveats:
+- Konstantinou 2020 systematic review (urticaria); Marek-Jozefowicz 2022 and Wozniak 2021 (psoriasis,
+  largely mechanistic).
+linked_to_topics:
+- hives-urticaria
+- psoriasis
+- chronic-stress
+linked_to_mechanisms:
+- mast-cell-degranulation
+- hpa-axis-dysregulation
+linked_to_symptoms:
+- urticaria-hives
+- psoriasis-skin-patches
+linked_to_supplements: []
+sources:
+- id: ifm-article-mast-cells-stress-2025
+  location: Skin, Stress, & Mast Cell Activation
+  quote: a significant association exists between chronic urticaria, mast cell mediators
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

@@ -1,0 +1,32 @@
+slug: gi-biopsy-cd117-stain-over-20-mast-cells-hpf
+statement: Routine H&E staining hides mast cells among other cell types; a CD117 (c-KIT) immunostain counted
+  over at least 10 high-power fields shows them, with more than about 20 mast cells per high-power field
+  a reasonable threshold for abnormal. Archived biopsies are kept for 10-20 years and can be restained.
+evidence_tier: plausible_emerging
+rationale: A client with past endoscopies may already have tissue that can answer the question — worth
+  raising with the gastroenterologist.
+coaching_translation: If you've had a gut biopsy before, your doctor may be able to ask the lab to re-check
+  that old sample for mast cells, without a new procedure.
+out_of_scope_notes: Requesting stains is the gastroenterologist's or pathologist's call.
+caveats:
+- Both Plotnikoff and Afrin cite ~20/hpf; the threshold rests on imperfect studies and some pathologists
+  reject any count threshold. Counts show number, not activation state.
+linked_to_topics:
+- mast-cell-activation-syndrome
+- ibs
+- functional-dyspepsia
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-afrin-mast-cell-disease-2023
+  location: Biopsy
+  quote: CD117 staining tends to be the best
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: GI biopsy discussion
+  quote: anything greater than 20 per high-power field was an increased amount
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

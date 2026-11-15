@@ -1,0 +1,31 @@
+slug: mast-cell-triggers-broad-list-incl-excipients
+statement: 'Mast cell triggers reach far beyond IgE allergy: IgG reactions, infections, toxins, an altered
+  microbiome, heat, chemicals, mould, barometric pressure changes, many foods, alcohol, and the inactive
+  ingredients in medicines (lactose, polyethylene glycols, dyes), plus physical, emotional and dietary
+  stress.'
+evidence_tier: fm_specific_thin
+rationale: Coach screens supplements and medicines for excipients as well as actives; lactose fillers
+  are common in Indian generic tablets.
+coaching_translation: Lots of things can set off reactive immune cells — heat, smells, weather changes,
+  alcohol, stress, and even the fillers inside tablets and capsules. We'll look at all of them.
+out_of_scope_notes: Changing a prescribed medicine's formulation is the prescriber's and pharmacist's
+  call.
+caveats:
+- Clinical experience (Plotnikoff); consistent with Afrin's teaching.
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_symptoms:
+- drug-hypersensitivity
+- chemical-sensitivity
+- food-intolerance-reactions
+linked_to_supplements: []
+sources:
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Triggers
+  quote: excipients in medications. Lactose is readily found and often not reported
+version: 1
+status: active
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest

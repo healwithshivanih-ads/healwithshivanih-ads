@@ -1,21 +1,37 @@
 slug: tryptase
 display_name: Tryptase
 full_name: Serum Tryptase
-aliases: []
+aliases:
+- baseline tryptase
+- mast cell tryptase
+- serum tryptase
+- total tryptase
 units: ng/mL
 sample_type: blood
-interpretation_low: ''
-interpretation_high: MCAS / anaphylaxis / mastocytosis
-when_to_order: Mast cell activation workup — MCAS, anaphylaxis, mastocytosis.
+interpretation_low: A normal tryptase does NOT rule out MCAS — it is a poor stand-alone marker.
+interpretation_high: 'Very high baseline: consider systemic mastocytosis or hereditary alpha-tryptasemia.
+  An acute rise of 20% + 2 ng/mL over baseline within 1-4 h of an event meets the conventional MCAS criterion.'
+when_to_order: Mast cell workup — MCAS, anaphylaxis, mastocytosis, HaT. Draw a baseline when well and
+  a second sample within 1-4 h of a flare. Pair with chromogranin A and chilled urine mediators.
 fasting_required: false
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- mast-cell-activation-syndrome
+- systemic-mastocytosis
+- hereditary-alpha-tryptasemia
+linked_to_mechanisms:
+- mast-cell-activation
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-notes_for_coach: Mast cell activation marker. Elevated in MCAS. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
-version: 1
+- id: ifm-podcast-plotnikoff-mcas-2022
+  location: Diagnosis
+  quote: tryptase is a poor biomarker
+evidence_tier: plausible_emerging
+notes_for_coach: Commonly reported upper reference ~11.4 ng/mL (labs vary). Emergency departments rarely
+  draw it during a reaction, so the 20%+2 criterion is seldom captured. Most MCAS patients have a normal
+  baseline tryptase.
+version: 2
 status: active
-updated_at: '2026-05-13'
-updated_by: shivani
+updated_at: '2026-11-15'
+updated_by: claude-ifm-mcas-ingest
+conventional_high: 11.4
