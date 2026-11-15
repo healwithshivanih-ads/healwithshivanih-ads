@@ -71,6 +71,8 @@ shows up as untracked and gets committed by accident.
 
 ## Status
 
+**Catalogue ingest — IFM mast-cell content (2026-11-15, PR #168, chat-authored at $0).** 4 IFM articles + 3 Pathways to Well-Being podcasts (Plotnikoff 2022, Afrin 2023, Vojdani 2024 MCAS passage) → 7 sources (`ifm-article-*`, `ifm-podcast-*`), 37 claims, topic `hereditary-alpha-tryptasemia`, lab tests `chromogranin-a` / `n-methylhistamine-urine` / `leukotriene-e4-urine` / `prostaglandin-d2-metabolite-urine`; `tryptase` stub filled in. ifm.org returns 403 to WebFetch, so read it through Chrome. The embedded IFM videos (video.ifm.org player) have no transcript. Contested speaker claims are tiered down with caveats (Afrin's 17–20% prevalence; Plotnikoff's "no methionine in gluten-free plant diets"). 3-letter aliases (`HAT`) left off on purpose: short aliases false-match.
+
 **v0.91 — a supplement's contraindications are tested against the real record (2026-11-02).** `check_plan` compared them by exact string, so "Active peptic or gastric ulcer, gastritis or erosive oesophagitis — ..." never met "GERD / acid reflux" and "Shell cal 500, omez 20, restil 0.25" never met "omeprazole": zero hits across 20 published plans. Measured after, on the same data: +11 WARNINGs, 0 CRITICAL. The one that mattered: cl-023's list says only "blood thinner" and the plan carries K2, which opposes warfarin.
 
 **Key invariants (v0.91):**
