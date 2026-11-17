@@ -1,0 +1,16 @@
+id: kdigo-2024-ckd-guideline
+title: KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease
+source_type: clinical_guideline
+quality: high
+authors:
+- Kidney Disease Improving Global Outcomes (KDIGO) CKD Work Group
+year: 2024
+publisher: Kidney International 105(4S):S117-S314
+doi: 10.1016/j.kint.2023.10.018
+notes: Chronic kidney disease is defined and staged on BOTH eGFR and albuminuria (urine albumin-to-creatinine ratio).
+  People at risk (diabetes, high blood pressure, heart disease) should be tested with both measures. Metadata confirmed
+  on PubMed 17 Nov 2026 (PMID 38490803); recommendations as widely reported, full text not re-read here.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: kidney-check-needs-egfr-and-uacr
+statement: Kidney health is assessed on two measures, eGFR (how well the kidneys filter) and the urine albumin-to-creatinine
+  ratio (whether protein is leaking); KDIGO 2024 defines and stages chronic kidney disease on both and advises testing both
+  in people at risk, such as those with diabetes or high blood pressure.
+evidence_tier: strong
+rationale: International clinical practice guideline (KDIGO 2024); consistent with the catalogue's uacr lab test entry.
+coaching_translation: The creatinine and eGFR on a blood report show how well your kidneys are filtering. A small urine
+  test, UACR, shows whether they are starting to leak protein. A kidney check needs both, and the urine one is often left off.
+caveats:
+- One raised UACR is not a diagnosis; guidelines want it confirmed on repeat tests over three months.
+- A urine infection, hard exercise the day before, a fever or a period can raise it for a while.
+linked_to_topics:
+- diabetic-nephropathy
+- hypertension
+- type-2-diabetes
+out_of_scope_notes: Interpreting a result and staging kidney disease is the doctor's job; coaching stops at asking for the test.
+linked_to_mechanisms:
+- endothelial-dysfunction
+linked_to_supplements: []
+sources:
+- id: kdigo-2024-ckd-guideline
+  location: CKD definition and staging (eGFR and albuminuria categories)
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
