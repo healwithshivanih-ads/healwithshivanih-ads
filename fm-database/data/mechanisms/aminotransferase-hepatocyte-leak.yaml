@@ -1,0 +1,67 @@
+slug: aminotransferase-hepatocyte-leak
+display_name: ALT and AST leaking from stressed liver and muscle cells
+aliases:
+- transaminase leak
+- hepatocellular enzyme leak
+- aminotransferase release
+- sgpt sgot leak
+category: metabolic
+summary: |
+  ALT and AST are working enzymes INSIDE cells. They move amino groups between
+  amino acids so the cell can turn protein into fuel and glucose, and both
+  need vitamin B6 (as P5P) to work. Normally only a trickle reaches the blood.
+  When cells are stressed or damaged, their membranes leak and more enzyme
+  spills out, so the blood level is a measure of cell injury, not of how well
+  the liver "works".
+
+  ALT sits almost only in the liver's cell fluid, so it is the more
+  liver-specific of the two. AST sits in the liver too, but also in muscle,
+  heart, kidney and red cells, and much of it is inside mitochondria. That is
+  why AST rises with hard exercise, muscle injury and haemolysis, and why
+  AST climbing above ALT points to deeper (mitochondrial) liver damage such as
+  alcohol injury or fibrosis.
+
+  In fatty liver, fat and insulin resistance overload the liver cell
+  (lipotoxicity), which leaks ALT first; that is why ALT is the classic
+  liver-fat marker and AST/ALT stays below 1 in early fatty liver. Because
+  the enzymes need B6, a B6-deficient or frail person can show a falsely low
+  reading.
+upstream_drivers:
+- lipotoxicity
+- insulin-resistance
+- hepatic-lipogenesis
+- oxidative-stress
+- mitochondrial-dysfunction
+downstream_effects: []
+related_mechanisms:
+- ggt-glutathione-salvage
+- hepatic-insulin-sensitivity
+linked_to_topics:
+- nafld
+- hepatitis
+- liver-detoxification
+- insulin-resistance
+- sarcopenia-skeletal-muscle-loss
+linked_to_symptoms:
+- elevated-liver-enzymes
+- fatty-liver
+notes_for_coach: |
+  Use this to explain to yourself why the two enzymes disagree. ALT up more
+  than AST = liver-cell (often fat) stress. AST up more than ALT = think
+  alcohol, muscle (exercise, injury, statin myalgia), or more advanced liver
+  disease; check CK if muscle is possible.
+sources:
+- id: kwo-2017-acg-abnormal-liver-chemistries
+  location: Abstract
+  quote: Hepatocellular injury is defined as disproportionate elevation of AST and ALT levels compared with alkaline phosphatase levels.
+- id: pettersson-2008-weightlifting-raises-liver-tests
+  location: Abstract
+  quote: Intensive muscular exercise, e.g. weightlifting, should also be considered as a cause of asymptomatic elevations of liver function tests
+- id: cohen-1979-ast-alt-ratio-alcoholic-liver
+  location: Abstract
+  quote: An SGOT/SGPT ratio greater than 2 is highly suggestive of alcoholic hepatitis and cirrhosis.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

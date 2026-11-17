@@ -1,0 +1,26 @@
+slug: aminotransferases-within-normal-predict-liver-death
+statement: Higher ALT and AST inside the normal range predict death from liver disease. In 142,000 Korean adults, ALT of 30-39 U/L carried about 9.5 times the risk of liver death in men compared with ALT under 20.
+evidence_tier: strong
+rationale: Supports the FM-optimal ceiling of about 20 U/L and the advice to act on high-normal values rather than wait for an "abnormal" flag.
+coaching_translation: The lowest-risk ALT and AST are under about 20. A client sitting in the high 20s or 30s has real room to improve, and re-testing after lifestyle change shows them the result.
+out_of_scope_notes: Never present this as a client's personal risk of dying; it is a population pattern.
+caveats:
+- Korean adults aged 35-59; death-certificate outcomes; hepatitis B was common in this population and may explain part of the effect.
+- Relative risks are large but absolute liver-death rates are low.
+linked_to_topics:
+- nafld
+- hepatitis
+- liver-detoxification
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- elevated-liver-enzymes
+linked_to_supplements: []
+sources:
+- id: kim-2004-aminotransferase-liver-mortality-korea
+  location: Results
+  quote: There was a positive association between the aminotransferase concentration, even within normal range (35-40 IU/l), and mortality from liver disease.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

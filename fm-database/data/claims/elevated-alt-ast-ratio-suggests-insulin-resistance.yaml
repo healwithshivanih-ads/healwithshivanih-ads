@@ -2,10 +2,9 @@ slug: elevated-alt-ast-ratio-suggests-insulin-resistance
 statement: An ALT:AST ratio greater than 1, with ALT elevated and AST relatively lower,
   suggests insulin resistance and hepatic metabolic dysfunction.
 evidence_tier: plausible_emerging
-rationale: The document states that ALT higher than AST (ratio >1) points toward insulin
-  resistance, and that GGT elevation in the upper-normal range (~47) also correlates
-  with metabolic dysfunction. This is consistent with functional medicine liver biomarker
-  interpretation.
+rationale: ALT higher than AST (AST/ALT below 1) is the usual pattern of early fatty
+  liver, which travels with insulin resistance; this matches standard liver-enzyme
+  reading. The ratio only means something when ALT is raised.
 coaching_translation: Liver enzymes can be an early warning sign of insulin resistance—before
   blood sugar even looks abnormal. A slightly elevated ALT compared to AST is one
   such clue that the liver may be under metabolic stress.
@@ -13,22 +12,32 @@ caveats:
 - ALT:AST ratio interpretation is a functional medicine lens; conventional medicine
   uses different cut-offs for liver disease diagnosis.
 - Source is expert lecture (moderate quality).
+- Only meaningful when ALT is raised; with both enzymes low the ratio is noise.
+- In fatty liver, AST creeping up toward or above ALT can signal scarring; run FIB-4
+  rather than reading the ratio alone.
+- The old rationale called a GGT of about 47 "upper-normal"; in FM terms 47 is
+  elevated (see the GGT entry, optimal up to 16 U/L). Corrected 17 Nov 2026.
 linked_to_topics:
 - insulin-resistance
 - cardiometabolic-disease
+- nafld
 out_of_scope_notes: ''
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- insulin-resistance
 linked_to_supplements: []
 linked_to_symptoms:
 - insulin-resistance
+- fatty-liver
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Metabolic Dysfunction
-  quote: So if your ALT is slightly on the higher side, and your ASD, that is on the
-    lower side, compared to the ASD, that is, you know, that is pointing toward the
-    insulin resistance. And if you look at the ratio of ALTSD, if it is more than
-    one, then it's just typically showing an issue in resistance.
-version: 1
+  quote: if your ALT is slightly on the higher side, and your ASD, that is on the
+    lower side, ... that is pointing toward the insulin resistance.
+- id: mcpherson-2010-fib4-nafld-exclude-fibrosis
+  location: Results
+  quote: The FIB-4 score had the best diagnostic accuracy for advanced fibrosis (AUROC 0.86), followed by AST/ALT ratio (AUROC 0.83)
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-11-17'
 updated_by: shivani

@@ -1,0 +1,23 @@
+slug: low-alt-in-older-adults-marks-frailty
+statement: In adults over 65, a low ALT goes with frailty, low muscle mass, disability and low vitamin B6, and the lowest ALT levels predict higher death rates.
+evidence_tier: plausible_emerging
+rationale: Stops a coach praising a very low ALT in an older client as a "great liver" when it may be a muscle-and-reserve warning.
+coaching_translation: In an older client, a very low ALT (single digits) is a prompt to look at protein intake, strength work and B6, not a sign the liver is perfect.
+out_of_scope_notes: Frailty assessment is the doctor's; the coach supports protein and strength.
+caveats:
+- One Italian cohort of 765 older adults; association, not cause.
+- Not relevant to younger, active clients, for whom a low ALT is simply healthy.
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms: []
+linked_to_supplements: []
+sources:
+- id: vespasiani-gentilucci-2018-low-alt-frailty-elderly
+  location: Conclusions
+  quote: reduced ALT levels in older individuals can be considered as a marker of frailty, disability, and sarcopenia
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

@@ -1,0 +1,21 @@
+id: cohen-1979-ast-alt-ratio-alcoholic-liver
+title: The SGOT/SGPT ratio - an indicator of alcoholic liver disease
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Cohen JA
+  - Kaplan MM
+year: 1979
+publisher: Dig Dis Sci 24(11):835-838
+url: https://pubmed.ncbi.nlm.nih.gov/520102/
+doi: 10.1007/BF01324898
+notes: |
+  The original AST/ALT ("De Ritis") ratio paper. Mean ratio 2.85 in alcoholic
+  hepatitis and cirrhosis versus 0.74 in viral hepatitis. A ratio above 2 was
+  found in 70% of alcoholic liver disease but only 4-8% of viral or chronic
+  hepatitis. Old, hospital patients with established disease. Read from the
+  PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

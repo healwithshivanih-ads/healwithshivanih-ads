@@ -1,0 +1,30 @@
+slug: healthy-alt-upper-limit-lower-than-printed
+statement: The upper limit of a truly healthy ALT is lower than most lab reports print, about 29-33 U/L for men and 19-25 U/L for women, because old reference ranges were built on populations that included people with hidden fatty liver.
+evidence_tier: strong
+rationale: Stops a coach reading "ALT 38, normal" as healthy in a client with metabolic risk; a gastroenterology guideline and a large donor study agree.
+coaching_translation: An ALT inside the printed range can still be higher than ideal. For a client with central weight, high triglycerides or prediabetes, an ALT in the high 20s or 30s is worth working on with food, movement and alcohol, and re-testing.
+out_of_scope_notes: Deciding whether a raised ALT needs investigation is the doctor's call; the coach flags and supports.
+caveats:
+- Limits differ by lab method; always read the client's own report.
+- Lower cut-offs catch more liver disease but also flag more people who turn out to be fine.
+linked_to_topics:
+- nafld
+- insulin-resistance
+- liver-detoxification
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- elevated-liver-enzymes
+- fatty-liver
+linked_to_supplements: []
+sources:
+- id: kwo-2017-acg-abnormal-liver-chemistries
+  location: Abstract
+  quote: A true healthy normal ALT level ranges from 29 to 33 IU/l for males, 19 to 25 IU/l for females
+- id: prati-2002-alt-healthy-ranges
+  location: Background
+  quote: Current standards for "normal" ALT level were defined by using populations that included persons with subclinical liver disease.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

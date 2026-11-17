@@ -1,0 +1,26 @@
+id: kim-2004-aminotransferase-liver-mortality-korea
+title: 'Normal serum aminotransferase concentration and risk of mortality from liver diseases: prospective cohort study'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Kim HC
+  - Nam CM
+  - Jee SH
+  - Han KH
+  - Oh DK
+  - Suh I
+year: 2004
+publisher: BMJ 328(7446):983
+url: https://pubmed.ncbi.nlm.nih.gov/15028636/
+doi: 10.1136/bmj.38050.593634.63
+notes: |
+  142,055 Korean adults aged 35-59, eight years of follow-up. Against a value
+  under 20 U/L, ALT of 30-39 (still "normal") carried about 9.5 times the
+  risk of death from liver disease in men; AST 30-39 about 8 times. Best
+  cut-offs for predicting liver disease in men were about 30 U/L for both.
+  Korean men, death-certificate outcome. Read from the PubMed abstract
+  (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: normal-alt-does-not-rule-out-fatty-liver
+statement: A normal ALT does not rule out fatty liver. The full range of fatty-liver disease, including scarring, has been found on biopsy in people whose ALT was normal, and diabetes was the strongest pointer to advanced scarring.
+evidence_tier: strong
+rationale: Prevents false reassurance in exactly the clients most at risk (type 2 diabetes, central weight), and is the reason to run FIB-4 rather than trust ALT alone.
+coaching_translation: Don't tell a client with diabetes or a big waist that their liver is fine because ALT is normal. Work on liver-fat habits anyway, and if age, AST, ALT and platelets are on the report, work out FIB-4.
+out_of_scope_notes: Imaging and fibrosis staging are the doctor's to arrange.
+caveats:
+- Small biopsy series from a referral centre; the people biopsied were not a random sample.
+linked_to_topics:
+- nafld
+- type-2-diabetes
+- insulin-resistance
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- lipotoxicity
+linked_to_symptoms:
+- fatty-liver
+linked_to_supplements: []
+sources:
+- id: mofrad-2003-nafld-normal-alt
+  location: Conclusion
+  quote: the entire histologic spectrum of NAFLD can be seen in individuals with normal ALT values
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

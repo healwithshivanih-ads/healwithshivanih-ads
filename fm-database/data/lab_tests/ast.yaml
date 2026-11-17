@@ -1,21 +1,121 @@
 slug: ast
 display_name: AST
 full_name: Aspartate Aminotransferase
-aliases: []
+aliases:
+- sgot
+- s.g.o.t
+- aspartate transaminase
+- aspartate aminotransferase
+- asat
+- serum ast
 units: U/L
 sample_type: blood
-interpretation_low: ''
-interpretation_high: Liver / muscle injury
-when_to_order: 'Liver function panel — paired with ALT (AST:ALT ratio informative).'
+# Typical printed upper limit is about 40 U/L (some labs 32-35 for women).
+conventional_high: 40
+# FM-optimal ceiling 20 U/L matches the assess engine
+# (fmdb/assess/lab_ratios.py: <=20 optimal, 21-25 borderline, >25 high).
+# Kim 2004: against AST under 20, AST 20-29 already carried 2.5-3.3 times the
+# risk of liver death.
+fm_optimal_high: 20
+interpretation_low: |
+  A low AST is the usual healthy result. Like ALT it needs vitamin B6, so
+  very low readings can reflect low B6, and in older adults low muscle mass.
+  Not worth acting on alone.
+interpretation_high: |
+  AST is less liver-specific than ALT. It sits in liver, muscle, heart,
+  kidney and red cells, and much of it is inside mitochondria. So a raised
+  AST means "some cells are leaking"; the job is to find which.
+
+  Common reasons it rises:
+    - Liver fat (NAFLD / MASLD): AST usually rises less than ALT early on
+    - Alcohol: AST rises MORE than ALT; AST/ALT above 2 is the classic
+      alcohol pattern
+    - Muscle: hard or unaccustomed exercise (stays up for about a week),
+      muscle injury, statin muscle aches; check CK
+    - Medicines and herbal supplements (as for ALT)
+    - Thyroid disease (both under- and over-active), coeliac disease
+    - Haemolysis: a sample that sat too long or was drawn badly can read high
+    - More advanced liver disease: as fibrosis builds, AST climbs relative to
+      ALT, which is why AST drives the FIB-4 score
+
+  Bands used here:
+    - up to 20 U/L: FM optimal
+    - 21-25 U/L: borderline; read with ALT and CK
+    - above 25 U/L: elevated in FM terms
+    - above the lab's upper limit, or AST higher than ALT with both raised:
+      a clinician's question
+when_to_order: |
+  On every baseline panel, always with ALT (never alone). Add CK when AST is
+  up more than ALT and the client exercises hard or takes a statin. Needed
+  for FIB-4 together with ALT, platelets and age.
+  Re-test 8-12 weeks after a lifestyle change, with no hard exercise for
+  3-7 days before the draw.
 fasting_required: false
-linked_to_topics: []
-linked_to_mechanisms: []
+typical_cost_inr: 200
+linked_to_topics:
+- nafld
+- liver-detoxification
+- insulin-resistance
+- hepatitis
+- celiac-disease
+- hypothyroidism
+- statin-side-effects
+- exercise-prescription
+- herbal-medicine-evidence
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- mitochondrial-dysfunction
+- lipotoxicity
+- oxidative-stress
+linked_to_symptoms:
+- elevated-liver-enzymes
+- fatty-liver
+- muscle-pain
 sources:
+- id: cohen-1979-ast-alt-ratio-alcoholic-liver
+  location: Abstract
+  quote: An SGOT/SGPT ratio greater than 2 is highly suggestive of alcoholic hepatitis and cirrhosis.
+- id: pettersson-2008-weightlifting-raises-liver-tests
+  location: Results
+  quote: The liver function parameters, AST and ALT, were significantly increased for at least 7 days after the exercise.
+- id: kim-2004-aminotransferase-liver-mortality-korea
+  location: Results
+  quote: the best cut-off values for the prediction of liver disease in men were 31 IU/l for aspartate aminotransferase
+- id: mcpherson-2010-fib4-nafld-exclude-fibrosis
+  location: Results
+  quote: The FIB-4 score had the best diagnostic accuracy for advanced fibrosis (AUROC 0.86), followed by AST/ALT ratio (AUROC 0.83)
+- id: kwo-2017-acg-abnormal-liver-chemistries
+  location: Abstract
+  quote: Hepatocellular injury is defined as disproportionate elevation of AST and ALT levels compared with alkaline phosphatase levels.
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
-version: 1
+evidence_tier: strong
+notes_for_coach: |
+  How to read it, step by step:
+
+  1. Look at AST/ALT (the assess engine computes it).
+       - under 1 with ALT raised: early fatty-liver pattern
+       - about 1-2 with both raised: watch; in fatty liver a ratio creeping
+         toward 1 can mean fibrosis is building, so run FIB-4
+       - above 2: alcohol pattern until proven otherwise; ask about drinking
+         honestly and specifically
+  2. AST up alone (ALT normal): think muscle first. Ask about the gym in the
+     last week; look at CK. Also thyroid, and a possibly haemolysed sample.
+  3. Run FIB-4 with ALT, platelets and age.
+
+  What a coach can work on: the same levers as ALT (weight, sugar, alcohol,
+  movement, supplement review). For a muscle-only rise, simply re-test after
+  a week with no hard training.
+
+  Refer: AST above the lab's upper limit on two tests, AST/ALT above 2 with
+  raised enzymes, AST higher than ALT with low platelets, jaundice, dark
+  urine, muscle pain with weakness or dark urine on a statin (needs the
+  doctor the same day), or FIB-4 of 1.3 or more.
+
+  Corrected 17 Nov 2026: this entry was a stub.
+
+  India context: in every standard LFT; many labs print "SGOT".
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-11-17'
 updated_by: shivani

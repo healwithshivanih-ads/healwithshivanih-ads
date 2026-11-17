@@ -1,0 +1,28 @@
+slug: ast-alt-ratio-above-2-suggests-alcohol
+statement: When liver enzymes are raised, an AST/ALT ratio above 2 strongly suggests alcohol-related liver disease; fatty liver and viral hepatitis usually show a ratio below 1.
+evidence_tier: strong
+rationale: The ratio is already computed by the assess engine; this gives the coach the reading and the reason to ask about alcohol specifically.
+coaching_translation: If AST is more than twice ALT, ask about alcohol gently and specifically (drinks per week, weekend pattern). Whatever the answer, this pattern goes to the doctor.
+out_of_scope_notes: Diagnosing alcohol-related liver disease is the doctor's; the coach supports cutting down.
+caveats:
+- Only meaningful when the enzymes are raised; with both enzymes low, the ratio is noise.
+- Muscle injury, advanced fibrosis of any cause and B6 deficiency can also push the ratio up.
+- Original study in hospital patients with established disease (1979).
+linked_to_topics:
+- nafld
+- hepatitis
+- liver-detoxification
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- mitochondrial-dysfunction
+linked_to_symptoms:
+- elevated-liver-enzymes
+linked_to_supplements: []
+sources:
+- id: cohen-1979-ast-alt-ratio-alcoholic-liver
+  location: Abstract
+  quote: An SGOT/SGPT ratio greater than 2 is highly suggestive of alcoholic hepatitis and cirrhosis.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

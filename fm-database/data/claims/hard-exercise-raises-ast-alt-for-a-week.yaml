@@ -1,0 +1,25 @@
+slug: hard-exercise-raises-ast-alt-for-a-week
+statement: A single bout of hard, unaccustomed exercise such as weightlifting can raise AST and ALT (with CK) well above normal in healthy people, and they stay raised for at least a week, while GGT, ALP and bilirubin stay normal.
+evidence_tier: strong
+rationale: Avoids a false liver alarm (and an anxious client) when the real cause was the gym; tells the coach how to time a re-test.
+coaching_translation: If AST/ALT come back high and GGT, ALP and bilirubin are normal, ask about the last week's training. Re-test after 7 days of only light activity before reading it as a liver problem.
+out_of_scope_notes: Very high CK, dark urine or severe muscle pain after exercise is a same-day medical issue (possible rhabdomyolysis).
+caveats:
+- Small study of 15 men; the size of the rise varies with fitness and type of exercise.
+linked_to_topics:
+- exercise-prescription
+- liver-detoxification
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- elevated-liver-enzymes
+- muscle-pain
+linked_to_supplements: []
+sources:
+- id: pettersson-2008-weightlifting-raises-liver-tests
+  location: Results
+  quote: The liver function parameters, AST and ALT, were significantly increased for at least 7 days after the exercise.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

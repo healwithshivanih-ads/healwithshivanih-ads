@@ -1,21 +1,157 @@
 slug: alt
 display_name: ALT
 full_name: Alanine Aminotransferase
-aliases: []
+aliases:
+- sgpt
+- s.g.p.t
+- alanine transaminase
+- alanine aminotransferase
+- alat
+- serum alt
 units: U/L
 sample_type: blood
-interpretation_low: ''
-interpretation_high: Liver injury (NAFLD, hepatitis, drug effect)
-when_to_order: Liver function panel — primary marker of hepatocellular injury.
+# Typical printed upper limits are 40 (women) to 56 (men) U/L; 40 is used for
+# a report that prints one range. Always read the client's own report first.
+# The ACG guideline puts a truly healthy ALT at 29-33 men / 19-25 women.
+conventional_high: 40
+# FM-optimal ceiling 20 U/L matches the assess engine
+# (fmdb/assess/lab_ratios.py: <=20 optimal, 21-25 borderline, >25 high) so the
+# catalogue and the lab read never disagree. Prati 2002 healthy limit for
+# women is 19; Kim 2004 lowest-risk group was under 20.
+# No FM-optimal LOW: a low ALT is only a signal in older or frail clients.
+fm_optimal_high: 20
+interpretation_low: |
+  Usually a healthy result. Two exceptions worth knowing:
+    - In older adults (65+), a very low ALT goes with frailty, muscle loss and
+      lower survival, so read it as a muscle-and-reserve signal, not a
+      "perfect liver"
+    - ALT needs vitamin B6 to work; low B6 can pull the reading down
+  Neither is a reason to act on ALT alone; look at protein intake, muscle mass
+  and B6 status.
+interpretation_high: |
+  ALT lives almost only inside liver cells, so a raised ALT means liver cells
+  are under stress and leaking. It measures injury, not liver "function".
+
+  Common reasons it rises (most to least common in coaching practice):
+    - Liver fat (NAFLD / MASLD) with insulin resistance, central weight,
+      high triglycerides: by far the most common
+    - Alcohol (AST usually rises more than ALT here)
+    - Medicines and supplements: paracetamol, statins (usually mild), some
+      antibiotics and anti-TB drugs, and herbal products (ashwagandha, green
+      tea extract, turmeric, multi-herb blends)
+    - Hard or unaccustomed exercise in the last week (AST and CK rise too)
+    - Coeliac disease, thyroid disease, haemochromatosis
+    - Viral hepatitis (B, C, also A and E in India) and autoimmune hepatitis
+
+  Higher ALT inside the "normal" range already predicts diabetes and death
+  from liver disease. A normal ALT does NOT rule out fatty liver.
+
+  Bands used here:
+    - up to 20 U/L: FM optimal
+    - 21-25 U/L: borderline; look at liver fat, sugar and alcohol
+    - above 25 U/L: elevated in FM terms, even when the lab prints "normal"
+    - above the lab's own upper limit, or rising between tests: a clinician's
+      question, not a coaching one
+when_to_order: |
+  On every baseline panel; it sits inside the standard LFT. Always read it
+  with AST, GGT, ALP and bilirubin, and with the platelet count (for FIB-4).
+  Especially useful for:
+    - Insulin resistance, prediabetes, PCOS, central weight gain
+    - Any client who drinks, or who takes several supplements or herbs
+    - Before and 4-12 weeks after starting a new herb or supplement stack
+    - Clients on statins, anti-TB drugs, methotrexate or other liver-watched
+      medicines (the prescriber orders those checks; we read them)
+    - Unexplained fatigue with bloating or weight loss (think coeliac)
+  Re-test 8-12 weeks after a lifestyle change. Avoid heavy exercise for 3-7
+  days before the draw, or the result can read high.
 fasting_required: false
-linked_to_topics: []
-linked_to_mechanisms: []
+typical_cost_inr: 200
+linked_to_topics:
+- nafld
+- liver-detoxification
+- insulin-resistance
+- prediabetes-metabolic-syndrome
+- type-2-diabetes
+- hepatitis
+- celiac-disease
+- hypothyroidism
+- statin-side-effects
+- herbal-medicine-evidence
+- sarcopenia-skeletal-muscle-loss
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- lipotoxicity
+- hepatic-lipogenesis
+- insulin-resistance
+- hepatic-insulin-sensitivity
+linked_to_symptoms:
+- elevated-liver-enzymes
+- fatty-liver
 sources:
+- id: kwo-2017-acg-abnormal-liver-chemistries
+  location: Abstract
+  quote: A true healthy normal ALT level ranges from 29 to 33 IU/l for males, 19 to 25 IU/l for females
+- id: prati-2002-alt-healthy-ranges
+  location: Results
+  quote: Serum ALT activity was independently related to body mass index and to laboratory indicators of abnormal lipid or carbohydrate metabolism.
+- id: kim-2004-aminotransferase-liver-mortality-korea
+  location: Results
+  quote: There was a positive association between the aminotransferase concentration, even within normal range (35-40 IU/l), and mortality from liver disease.
+- id: mofrad-2003-nafld-normal-alt
+  location: Conclusion
+  quote: a low normal ALT value does not guarantee freedom from underlying steatohepatitis with advanced fibrosis.
+- id: fraser-2009-alt-ggt-incident-diabetes-meta
+  location: Results / Conclusions
+  quote: GGT may be a better diabetes predictor than ALT
+- id: vespasiani-gentilucci-2018-low-alt-frailty-elderly
+  location: Results
+  quote: ALT activity was inversely associated with frailty, sarcopenia, disability, and pyridoxine deficiency
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
-version: 1
+evidence_tier: strong
+notes_for_coach: |
+  How to read it, step by step:
+
+  1. Compare with AST. ALT higher than AST (AST/ALT under 1) with high
+     triglycerides, waist or fasting insulin = liver-fat / insulin-resistance
+     pattern. AST higher than ALT = think alcohol, muscle, or more advanced
+     liver disease.
+  2. Compare with ALP and GGT. ALT/AST up more than ALP = liver-cell pattern.
+     ALP and GGT up more = bile-flow pattern (see the GGT entry).
+  3. Ask about the last week: hard gym session, new herb or supplement,
+     paracetamol, alcohol. Each can push ALT up for days.
+  4. Run FIB-4 if age, AST, ALT and platelets are all on the report (see the
+     fib-4 entry). A raised ALT with FIB-4 under 1.3 is reassuring; 1.3 or
+     more needs the doctor.
+  5. Do not be reassured by a normal ALT in a client with diabetes, high
+     triglycerides and a big waist; fatty liver, even fibrosis, can sit
+     behind a normal ALT.
+
+  What a coach can work on (in scope):
+    - Weight: about 5% body-weight loss improves liver fat; 10% resolves
+      NASH in most people who reach it
+    - Cut sugar-sweetened drinks, juices and refined carbs; more fibre
+    - Alcohol down or out; re-test in 8-12 weeks
+    - Movement: regular walking and resistance work (but not a hard session
+      the week before the blood draw)
+    - Supplement review: fewer products, no new herbs while ALT is being
+      watched; flag any rise after a new product to the doctor
+    - Coffee is fine for most and goes with better liver enzymes
+
+  Refer: ALT above the lab's upper limit on two tests, any ALT over about
+  3 times the upper limit, ALT with raised bilirubin or jaundice, dark urine,
+  pain under the right ribs, a rise after a new medicine or supplement, or
+  FIB-4 of 1.3 or more. Coeliac, hepatitis and iron-overload tests are the
+  doctor's to order.
+
+  Do NOT tell a client ALT measures their "toxins" or "detox". It is a
+  liver-cell stress signal.
+
+  Corrected 17 Nov 2026: this entry was a stub.
+
+  India context: in every standard LFT (Acumen base panel covers it);
+  stand-alone ₹150-250. Many Indian labs still print "SGPT".
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-11-17'
 updated_by: shivani

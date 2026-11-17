@@ -1,0 +1,73 @@
+slug: fib-4
+display_name: FIB-4
+full_name: Fibrosis-4 Index (age, AST, ALT and platelets)
+aliases:
+- fib4
+- fib-4 index
+- fib-4 score
+- fibrosis-4
+units: score
+sample_type: blood (calculated)
+# FIB-4 = (age in years x AST U/L) / (platelets 10^9/L x square root of ALT U/L)
+# Low-risk cut-off in fatty-liver guidance: below 1.3. Above 2.67 = high risk.
+# Under 35 the score is unreliable; over 65 a cut-off of 2.0 is often used.
+fm_optimal_high: 1.3
+interpretation_high: |
+  FIB-4 is not a separate blood test. It is worked out from four things
+  already on most reports: age, AST, ALT and platelet count. It estimates the
+  chance that a fatty or damaged liver has already scarred (fibrosis).
+
+    - under 1.3: low risk of advanced fibrosis; lifestyle work and re-check
+      every 1-2 years if risk factors stay
+    - 1.3 to 2.67: indeterminate; needs a liver stiffness scan (FibroScan)
+      or the doctor
+    - above 2.67: high risk; the doctor, promptly
+
+  Its strength is ruling scarring OUT (over 90% reliable below the low
+  cut-off). A high score is a reason for a scan, not a diagnosis.
+when_to_order: |
+  Calculate it whenever age, AST, ALT and platelets are on the same report
+  and the client has insulin resistance, prediabetes, type 2 diabetes,
+  central weight, raised ALT, or drinks. Nothing extra to order.
+  Not reliable under 35; over 65 it reads high, so 2.0 is used as the
+  low-risk line.
+fasting_required: false
+linked_to_topics:
+- nafld
+- type-2-diabetes
+- insulin-resistance
+- hepatitis
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- lipotoxicity
+linked_to_symptoms:
+- fatty-liver
+- elevated-liver-enzymes
+sources:
+- id: sterling-2006-fib4-index
+  location: Results
+  quote: At a cutoff of <1.45 in the validation set, the negative predictive value to exclude advanced fibrosis (stage 4-6) was 90%
+- id: mcpherson-2010-fib4-nafld-exclude-fibrosis
+  location: Results
+  quote: The FIB-4 score had the best diagnostic accuracy for advanced fibrosis (AUROC 0.86)
+- id: rinella-2023-aasld-nafld-guidance
+  location: Primary-care risk stratification (full text)
+evidence_tier: strong
+notes_for_coach: |
+  Worked example: a 48-year-old with AST 30, ALT 36, platelets 250.
+  48 x 30 = 1440; square root of 36 = 6; 250 x 6 = 1500; 1440 / 1500 = 0.96.
+  Under 1.3, so low risk of scarring.
+
+  Platelets must be in 10^9/L. Indian reports often print "lakhs/cumm":
+  2.5 lakhs = 250.
+
+  Why it matters for coaching: a normal ALT can hide fatty liver, and a
+  raised ALT is often harmless fat stress. FIB-4 tells which clients need
+  the doctor's scan now and which can simply do the lifestyle work.
+
+  Never tell a client they "have fibrosis" or "don't have fibrosis" from this
+  number; say whether it suggests a scan is worth discussing with the doctor.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
