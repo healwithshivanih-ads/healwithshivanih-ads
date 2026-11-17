@@ -1,0 +1,25 @@
+slug: albuminuria-predicts-risk-with-normal-egfr
+statement: In general-population cohorts, a higher urine albumin-to-creatinine ratio predicts higher all-cause and
+  cardiovascular mortality independently of eGFR, including when eGFR is in the normal range; risk rises steadily with ACR
+  with no safe threshold.
+evidence_tier: strong
+rationale: Collaborative meta-analysis of 14 cohorts, 105,872 people (Matsushita 2010, Lancet, CKD Prognosis Consortium).
+coaching_translation: Your blood report can say your kidneys are filtering normally while protein is already leaking into
+  your urine, and that leak is linked to heart risk as well as kidney risk.
+caveats:
+- Observational; it shows risk, not that lowering ACR alone changes outcomes.
+- General-population cohorts, mostly outside India.
+linked_to_topics:
+- hypertension
+- type-2-diabetes
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- endothelial-dysfunction
+linked_to_supplements: []
+sources:
+- id: matsushita-2010-ckd-pc-egfr-albuminuria-mortality
+  location: Abstract, findings and interpretation
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
