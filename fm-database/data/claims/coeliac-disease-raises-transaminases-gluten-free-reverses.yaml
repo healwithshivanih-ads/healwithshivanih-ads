@@ -1,0 +1,24 @@
+slug: coeliac-disease-raises-transaminases-gluten-free-reverses
+statement: Raised ALT and AST are common in untreated coeliac disease (42% of adults at diagnosis in one series) and return to normal on a strict gluten-free diet in almost all of them.
+evidence_tier: strong
+rationale: Coeliac is a treatable, often-missed cause of unexplained raised liver enzymes, especially in lean clients with gut symptoms, anaemia or thyroid autoimmunity.
+coaching_translation: A lean client with unexplained raised ALT/AST plus bloating, loose stools, low iron or Hashimoto's may be worth a coeliac test. Suggest they ask their doctor for it BEFORE going gluten-free, or the test can read falsely negative.
+out_of_scope_notes: Coeliac testing and diagnosis are the doctor's; never start a gluten-free trial before the test is done.
+caveats:
+- Single Italian centre; when enzymes stayed high on the diet, another liver disease was usually present.
+linked_to_topics:
+- celiac-disease
+- hepatitis
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- elevated-liver-enzymes
+linked_to_supplements: []
+sources:
+- id: bardella-1995-celiac-hypertransaminasemia
+  location: Abstract
+  quote: in adult celiac patients elevated serum transaminases are a frequent finding and normalize in most cases after GFD
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

@@ -1,0 +1,24 @@
+id: bjornsson-2020-ashwagandha-liver-injury
+title: 'Ashwagandha-induced liver injury: A case series from Iceland and the US Drug-Induced Liver Injury Network'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Björnsson HK
+  - Björnsson ES
+  - Avula B
+  - Khan IA
+  - Navarro V
+year: 2020
+publisher: Liver Int 40(4):825-829
+url: https://pubmed.ncbi.nlm.nih.gov/31991029/
+doi: 10.1111/liv.14393
+notes: |
+  Five cases of liver injury from ashwagandha supplements, after 2-12 weeks
+  of use: jaundice, nausea, itching, tiredness. Injury was cholestatic or
+  mixed, so ALP and bilirubin rise alongside ALT. All recovered; liver tests
+  normalised in 1-5 months. Rare, but relevant in India where ashwagandha is
+  common. Case series only. Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

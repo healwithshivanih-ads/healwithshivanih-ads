@@ -5,21 +5,63 @@ aliases:
 - liver damage on statins
 - raised AST/ALT
 - liver stress
+- raised liver enzymes
+- high sgpt
+- high sgot
+- raised transaminases
+- hypertransaminasemia
+- deranged lft
 category: metabolic
 severity: concerning
-description: Statin therapy is associated with hepatotoxicity in a subset of patients.
-  The document cites an 11% incidence of liver damage at standard doses in the calculator-based
-  risk analysis.
-when_to_refer: Refer to clinician if liver enzymes are elevated on routine monitoring
-  or if patient has pre-existing liver disease.
+description: |
+  ALT and/or AST above the FM-optimal ceiling (about 20 U/L) or above the
+  lab's own limit. It means liver (or, for AST, muscle) cells are leaking
+  enzyme; it is a signal of cell stress, not a diagnosis.
+
+  Most common causes in coaching practice: liver fat with insulin
+  resistance, alcohol, medicines and herbal supplements, hard exercise in the
+  last week, coeliac disease, thyroid disease. Statins can raise ALT, usually
+  mildly; serious statin liver injury is rare.
+
+  The pattern matters: ALT above AST points to fatty liver; AST above ALT
+  (ratio over 2) to alcohol; AST alone with high CK to muscle. FIB-4 (age,
+  AST, ALT, platelets) tells whether scarring needs checking.
+when_to_refer: |
+  Refer to the clinician if ALT or AST are above the lab's upper limit on two
+  tests, more than about 3 times the limit once, rising between tests, or
+  come with jaundice, dark urine, itching, pain under the right ribs, or a
+  new medicine or herb. Also refer when AST/ALT is above 2, or FIB-4 is 1.3
+  or more. Same day for muscle pain with weakness or dark urine.
 linked_to_topics:
+- nafld
+- liver-detoxification
 - statin-therapy-risks-and-benefits
-linked_to_mechanisms: []
+- statin-side-effects
+- hepatitis
+- celiac-disease
+- herbal-medicine-evidence
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- lipotoxicity
+- oxidative-stress
+linked_to_symptoms:
+- fatty-liver
+- elevated-ggt
+notes_for_coach: |
+  Corrected 17 Nov 2026: the old description said statins cause "11% liver
+  damage"; that figure came from a garbled lecture transcript and is wrong.
+  Read the ALT, AST, GGT and FIB-4 entries for the step-by-step read.
 sources:
-- id: coconote-fm-stopping-anti-cholesterol-meds
-  location: Statin side effects section
-  quote: We are inviting 2% of this for liver, 11% for liver damage.
-version: 1
+- id: kwo-2017-acg-abnormal-liver-chemistries
+  location: Abstract
+  quote: In addition, a history of prescribed and over-the-counter medicines should be sought.
+- id: navarro-2014-dilin-herbal-supplement-liver-injury
+  location: Results
+  quote: Liver injury caused by HDS increased from 7% to 20% (P < 0.001) during the study period.
+- id: pettersson-2008-weightlifting-raises-liver-tests
+  location: Results
+  quote: The liver function parameters, AST and ALT, were significantly increased for at least 7 days after the exercise.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-11-17'
 updated_by: shivani

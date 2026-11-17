@@ -1,0 +1,25 @@
+id: prati-2002-alt-healthy-ranges
+title: Updated definitions of healthy ranges for serum alanine aminotransferase levels
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Prati D
+  - Taioli E
+  - Zanella A
+  - Colombo M
+  - Sirchia G
+year: 2002
+publisher: Ann Intern Med 137(1):1-10
+url: https://pubmed.ncbi.nlm.nih.gov/12093239/
+doi: 10.7326/0003-4819-137-1-200207020-00006
+notes: |
+  6,835 low-risk first-time blood donors in Milan. Old "normal" ALT limits
+  were set on populations that included people with hidden liver disease.
+  Healthy upper limits came out at 30 U/L for men and 19 U/L for women, lower
+  than the 40/30 then in use, and caught more liver disease. ALT tracked BMI
+  and abnormal lipid and glucose markers. Read from the PubMed abstract
+  (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

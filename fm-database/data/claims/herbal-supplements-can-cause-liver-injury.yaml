@@ -1,0 +1,31 @@
+slug: herbal-supplements-can-cause-liver-injury
+statement: Herbal and dietary supplements cause a growing share of drug-induced liver injury (about 20% of cases in the US network by 2013), and non-bodybuilding supplement injury is more often severe than injury from medicines. Ashwagandha is among the herbs with documented cases, typically 2-12 weeks after starting.
+evidence_tier: strong
+rationale: A coach who recommends herbs must be able to recognise when a rise in liver enzymes may be the supplement, and act on it.
+coaching_translation: If ALT, AST, ALP or bilirubin rise after a new herb or supplement, or the client gets itching, dark urine, yellow eyes or nausea, the product stops and the doctor is told. Keep stacks short, add one new product at a time, and re-check liver enzymes 4-12 weeks after starting a herb in anyone with a liver history.
+out_of_scope_notes: Diagnosing drug- or herb-induced liver injury is the doctor's; the coach stops recommending the product and refers.
+caveats:
+- Serious injury is rare relative to how many people take these products.
+- Ashwagandha evidence is a five-case series; the injury was cholestatic (ALP and bilirubin high) and recovered in 1-5 months.
+- Product quality and adulteration vary; the cause is not always the named herb.
+linked_to_topics:
+- herbal-medicine-evidence
+- hepatitis
+- liver-detoxification
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- elevated-liver-enzymes
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: navarro-2014-dilin-herbal-supplement-liver-injury
+  location: Results
+  quote: Liver injury caused by HDS increased from 7% to 20% (P < 0.001) during the study period.
+- id: bjornsson-2020-ashwagandha-liver-injury
+  location: Conclusions
+  quote: These cases illustrate the hepatotoxic potential of ashwagandha.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

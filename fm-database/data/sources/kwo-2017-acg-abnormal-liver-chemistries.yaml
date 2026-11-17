@@ -1,0 +1,25 @@
+id: kwo-2017-acg-abnormal-liver-chemistries
+title: 'ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries'
+source_type: clinical_guideline
+quality: high
+authors:
+  - Kwo PY
+  - Cohen SM
+  - Lim JK
+year: 2017
+publisher: Am J Gastroenterol 112(1):18-35
+url: https://pubmed.ncbi.nlm.nih.gov/27995906/
+doi: 10.1038/ajg.2016.517
+notes: |
+  American College of Gastroenterology guideline. A truly healthy ALT is
+  29-33 U/L for men and 19-25 U/L for women; above that should be assessed.
+  Hepatocellular pattern = AST/ALT up out of proportion to ALP; cholestatic =
+  ALP up out of proportion. Work-up for raised ALT: viral hepatitis, fatty
+  liver, alcohol, haemochromatosis, autoimmune hepatitis, Wilson's,
+  alpha-1 antitrypsin, plus prescribed and over-the-counter medicines.
+  Raised ALT goes with higher liver-related death. Read from the PubMed
+  abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

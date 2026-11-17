@@ -1,0 +1,24 @@
+id: mcpherson-2010-fib4-nafld-exclude-fibrosis
+title: Simple non-invasive fibrosis scoring systems can reliably exclude advanced fibrosis in patients with non-alcoholic fatty liver disease
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - McPherson S
+  - Stewart SF
+  - Henderson E
+  - Burt AD
+  - Day CP
+year: 2010
+publisher: Gut 59(9):1265-1269
+url: https://pubmed.ncbi.nlm.nih.gov/20801772/
+doi: 10.1136/gut.2010.216077
+notes: |
+  145 biopsy-proven NAFLD patients in Newcastle. FIB-4 had the best accuracy
+  for advanced fibrosis (AUROC 0.86), then the AST/ALT ratio (0.83). Both
+  ruled out advanced fibrosis with negative predictive values above 90%;
+  positive predictive values were modest, so a high score needs a proper
+  liver work-up, not a diagnosis. Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

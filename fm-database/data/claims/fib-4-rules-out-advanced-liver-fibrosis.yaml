@@ -1,0 +1,32 @@
+slug: fib-4-rules-out-advanced-liver-fibrosis
+statement: FIB-4, calculated from age, AST, ALT and platelet count, reliably rules out advanced liver scarring in fatty liver when it is low (below about 1.3), and is the recommended first check in primary care; a higher score calls for a liver stiffness scan, not a diagnosis.
+evidence_tier: strong
+rationale: Gives the coach a free, evidence-based way to sort which metabolic clients need the doctor's scan now, using numbers already on the report.
+coaching_translation: When a report has age, AST, ALT and platelets, work out FIB-4. Under 1.3 is reassuring; keep going with lifestyle work. 1.3 or more, suggest the client discusses a FibroScan with their doctor.
+out_of_scope_notes: Interpreting a high FIB-4 and arranging scans is the doctor's job.
+caveats:
+- Unreliable under 35; reads higher with age, so 2.0 is often used as the low-risk line over 65.
+- Positive predictive value is modest; many with a high score turn out not to have advanced fibrosis.
+- First built in HIV/hepatitis C patients (cut-off 1.45); the 1.3 fatty-liver cut-off comes from later work and guidance.
+linked_to_topics:
+- nafld
+- type-2-diabetes
+- insulin-resistance
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- fatty-liver
+linked_to_supplements: []
+sources:
+- id: sterling-2006-fib4-index
+  location: Results
+  quote: At a cutoff of <1.45 in the validation set, the negative predictive value to exclude advanced fibrosis (stage 4-6) was 90%
+- id: mcpherson-2010-fib4-nafld-exclude-fibrosis
+  location: Conclusion
+  quote: The ALT/AST ratio, FIB-4 and NAFLD fibrosis scores can reliably exclude advanced fibrosis in a high proportion of patients with NAFLD
+- id: rinella-2023-aasld-nafld-guidance
+  location: Primary-care risk stratification (full text)
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

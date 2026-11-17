@@ -1,0 +1,24 @@
+id: vespasiani-gentilucci-2018-low-alt-frailty-elderly
+title: 'Low Alanine Aminotransferase Levels in the Elderly Population: Frailty, Disability, Sarcopenia, and Reduced Survival'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Vespasiani-Gentilucci U
+  - De Vincentis A
+  - Ferrucci L
+  - Bandinelli S
+  - Picardi A
+year: 2018
+publisher: J Gerontol A Biol Sci Med Sci 73(7):925-930
+url: https://pubmed.ncbi.nlm.nih.gov/28633440/
+doi: 10.1093/gerona/glx126
+notes: |
+  765 Italians over 65 without liver disease (InCHIANTI). Lower ALT went with
+  frailty, sarcopenia, disability and low vitamin B6 (pyridoxine), and the
+  lowest fifth had sharply higher death rates (J-shaped curve). In older
+  adults a very low ALT is a muscle-and-reserve signal, not a "great liver".
+  Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

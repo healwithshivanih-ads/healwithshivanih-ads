@@ -1,0 +1,29 @@
+slug: weight-loss-10-percent-resolves-nash
+statement: In people with biopsy-proven fatty-liver inflammation (NASH), lifestyle weight loss improves the liver in proportion to the weight lost; 5% or more resolved NASH in 58%, and 10% or more resolved it in 90% and reversed scarring in 45%.
+evidence_tier: strong
+rationale: Gives the coach a concrete, motivating target for clients with fatty liver or raised ALT, backed by repeat biopsies.
+coaching_translation: For a client with fatty liver or a raised ALT and extra weight, the most powerful lever is steady weight loss; 5% starts to help and about 10% is where most people see the liver heal. Track ALT 8-12 weeks in as an early sign it is working.
+out_of_scope_notes: Medicines for fatty liver or weight are the doctor's call.
+caveats:
+- Only 30% of participants reached 5% weight loss in a year; the target is hard.
+- Single centre in Cuba; lean fatty liver needs a different approach (diet quality, alcohol, sugar) rather than weight loss.
+linked_to_topics:
+- nafld
+- insulin-resistance
+- midlife-weight-gain
+linked_to_mechanisms:
+- lipotoxicity
+- hepatic-lipogenesis
+- aminotransferase-hepatocyte-leak
+linked_to_symptoms:
+- fatty-liver
+- elevated-liver-enzymes
+linked_to_supplements: []
+sources:
+- id: vilar-gomez-2015-weight-loss-nash-resolution
+  location: Results
+  quote: All patients who lost ≥10% of their weight had reductions NAS, 90% had resolution of NASH, and 45% had regression of fibrosis.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

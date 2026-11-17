@@ -1,0 +1,24 @@
+id: rinella-2023-aasld-nafld-guidance
+title: AASLD Practice Guidance on the clinical assessment and management of nonalcoholic fatty liver disease
+source_type: clinical_guideline
+quality: high
+authors:
+  - Rinella ME
+  - Neuschwander-Tetri BA
+  - Siddiqui MS
+  - Loomba R
+year: 2023
+publisher: Hepatology 77(5):1797-1835
+url: https://pubmed.ncbi.nlm.nih.gov/36727674/
+doi: 10.1097/HEP.0000000000000323
+notes: |
+  American Association for the Study of Liver Diseases guidance on fatty
+  liver. Uses FIB-4 as the first-line risk check in primary care (below 1.3 =
+  low risk of advanced fibrosis; higher = elastography or specialist). PubMed
+  carries no abstract; the 1.3 cut-off is from the guidance itself and should
+  be checked against the full text (PMC10735173) before quoting it to anyone
+  outside the coaching team.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani
