@@ -406,6 +406,7 @@ def main() -> int:
     if snap_labs or any((s.get("lab_values") or []) for s in existing_snaps):
         try:
             from fmdb.assess.lab_ratios import compute_ratios  # type: ignore
+            from fmdb.assess.client_context import lab_client_context  # type: ignore
 
             # Walk all snapshots, flatten their lab_values. compute_ratios's
             # _find() uses date_drawn to pick the most-recent value per
@@ -423,7 +424,7 @@ def main() -> int:
                         lv["date_drawn"] = s["date"]
                     all_labs.append(lv)
             if all_labs:
-                markers = compute_ratios(all_labs)
+                markers = compute_ratios(all_labs, lab_client_context(data))
                 if markers:
                     data["lab_markers"] = markers
                     # Pick the newest date across all labs as the marker date

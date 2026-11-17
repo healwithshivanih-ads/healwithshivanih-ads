@@ -1,0 +1,26 @@
+id: bedogni-2006-fatty-liver-index
+title: 'The Fatty Liver Index: a simple and accurate predictor of hepatic steatosis in the general population'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Bedogni G
+  - Bellentani S
+  - Miglioli L
+  - Masutti F
+  - Passalacqua M
+  - Castiglione A
+  - Tiribelli C
+year: 2006
+publisher: BMC Gastroenterology 6:33
+url: https://pubmed.ncbi.nlm.nih.gov/17081293/
+doi: 10.1186/1471-230X-6-33
+notes: |
+  The paper that built the Fatty Liver Index from BMI, waist, triglycerides
+  and GGT (Dionysos study, 496 Italians, fatty liver by ultrasound).
+  Accuracy 0.84. FLI below 30 rules fatty liver out; 60 or more rules it in.
+  Authors ask for validation in other populations. Read from the PubMed
+  abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

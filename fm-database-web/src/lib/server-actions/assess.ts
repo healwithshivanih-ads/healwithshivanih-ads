@@ -619,6 +619,8 @@ export interface ApplyClientDataResult {
 
 export interface ComputeRatiosInput {
   lab_values: Array<{ test_name: string; value: string; unit: string; date_drawn?: string | null }>;
+  /** Optional: lets the script read age/sex/BMI/waist for the Liver & Metabolic Risk indices. */
+  client_id?: string;
 }
 
 export interface ComputeRatiosResult {

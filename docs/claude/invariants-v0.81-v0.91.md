@@ -180,3 +180,11 @@
 - **Worktree dev-server recipe:** `FMDB_PYTHON=<main venv python> next dev --webpack -p <port>` — Turbopack refuses a symlinked `node_modules` ("points out of the filesystem root"), webpack doesn't. After ANY dev-server restart, HARD-reload the tab: HMR drops and a soft navigation renders fresh server data with the stale client bundle, which looks exactly like a logic bug.
 
 ---
+
+## Liver & Metabolic Risk indices (17 Nov 2026)
+
+- `lab_ratios.compute_ratios(labs, client_context=None)` adds TyG, TyG-BMI, TyG-WC, HSI, FLI, LAP and FIB-4 under the panel **"Liver & Metabolic Risk"** (section 6b, `_add_liver_metabolic_indices`). Deterministic, $0. Each needs every input or is skipped silently; with no context only TyG appears.
+- **Client facts come from `fmdb/assess/client_context.py::lab_client_context(client)`** (dict or `Client`), never from a file read inside `compute_ratios`. Per field, the latest DATED value across `health_snapshots` / `measurements_log` / flat `measurements` wins (log beats snapshot on the same date), then the undated flat block, then the v2.3 top-level intake fields. Bounds mirror `measurements.ts`. Diabetes = a firm active condition through the `supplement_clash` concept matcher (so "prediabetes" never counts), or HbA1c ≥ 6.5 inside HSI.
+- All four callers pass it: `assess.py`, `update-client-data.py`, `recompute-lab-markers.py`, and `compute-ratios.py` (reads the client when the payload has `client_id`; the assess page sends it). Existing clients pick the new markers up on the next lab save or 🔄 rebuild — nothing was back-filled.
+- Every interpretation carries a read-with-care note: ALT/AST/GGT scores (HSI, FLI, FIB-4) are unreliable within ~4 weeks of paracetamol or acute illness and after hard resistance training the week before; TG/glucose scores (TyG family, LAP) need a true fast. TyG-BMI and TyG-WC have no agreed cut-off and are flagged `normal` (trend only); LAP's 30/50 bands are a rough guide.
+- Catalogue: one `lab_tests/*.yaml` per index; each slug is in the passthrough's `_coded_equivalent`, so a lab-printed score never duplicates the computed one. Overview groups them as "Liver & metabolic risk" (first in `groupLabMarkers`, since `find()` takes the first match). The intake IFM burden map does not include this panel on purpose — the inputs already count under Liver/Lipids.

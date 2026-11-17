@@ -3235,11 +3235,11 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     if (!labs.length) { setPreviewRatios([]); return; }
     let cancelled = false;
     startRatiosCompute(async () => {
-      const res = await computeRatiosAction({ lab_values: labs });
+      const res = await computeRatiosAction({ lab_values: labs, client_id: clientId || undefined });
       if (!cancelled && res.ok) setPreviewRatios(res.ratios as ComputedRatio[]);
     });
     return () => { cancelled = true; };
-  }, [labValuesKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [labValuesKey, clientId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Shared handler for both file and URL transcript results
   const applyTranscriptResult = (res: Awaited<ReturnType<typeof extractTranscriptAction>>, sourceName?: string) => {

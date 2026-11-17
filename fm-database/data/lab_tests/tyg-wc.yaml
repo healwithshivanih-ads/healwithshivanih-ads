@@ -1,0 +1,39 @@
+slug: tyg-wc
+display_name: TyG-WC
+full_name: Triglyceride-Glucose Index x Waist Circumference
+aliases:
+- tyg wc
+- tyg-wc index
+- triglyceride glucose waist circumference
+units: score
+sample_type: blood (calculated) + body measurement
+# TyG-WC = TyG x waist (cm). Computed automatically when a waist measurement
+# is on file. No settled cut-off, so no optimal range is set here.
+interpretation_high: |
+  TyG multiplied by waist in centimetres. Waist tracks liver and belly fat
+  more closely than BMI, so this is the TyG variant that follows central
+  fat. There is no agreed cut-off; use it to track change between reports:
+  lower is better.
+when_to_order: |
+  Nothing to order. Appears when fasting triglycerides and glucose are on a
+  report and a waist measurement is on file.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- nafld
+linked_to_mechanisms:
+- visceral-adipose-inflammation
+linked_to_symptoms:
+- abdominal-obesity
+sources:
+- id: er-2016-tyg-bmi
+  location: Abstract (TyG-WC compared alongside TyG-BMI)
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: TyG 7.84 and waist 80 cm give 7.84 x 80 = 627.
+  Waist must be in centimetres (inches x 2.54).
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

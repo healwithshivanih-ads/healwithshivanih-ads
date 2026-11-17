@@ -1,0 +1,25 @@
+id: er-2016-tyg-bmi
+title: Triglyceride Glucose-Body Mass Index Is a Simple and Clinically Useful Surrogate Marker for Insulin Resistance in Nondiabetic Individuals
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Er LK
+  - Wu S
+  - Chou HH
+  - Hsu LA
+  - Teng MS
+  - Sun YC
+  - Ko YL
+year: 2016
+publisher: PLoS One 11(3):e0149731
+url: https://pubmed.ncbi.nlm.nih.gov/26930652/
+doi: 10.1371/journal.pone.0149731
+notes: |
+  511 Taiwanese adults without diabetes. Compared lipid ratios, LAP, TyG,
+  TyG-BMI and TyG-WC against HOMA-IR. TyG-BMI had the largest area under
+  the curve (0.801) of the simple markers, ahead of TyG alone (0.708).
+  Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

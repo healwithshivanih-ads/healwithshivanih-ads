@@ -61,6 +61,12 @@ notes_for_coach: |
   Platelets must be in 10^9/L. Indian reports often print "lakhs/cumm":
   2.5 lakhs = 250.
 
+  The app computes FIB-4 automatically (Liver & Metabolic Risk panel) when
+  AST, ALT and platelets are on a report and the client has a date of birth
+  or age band. It is not reliable within about 4 weeks of a paracetamol
+  course or an acute illness, or after hard resistance training in the week
+  before the draw (weightlifting raises ALT and AST for 7 days or more).
+
   Why it matters for coaching: a normal ALT can hide fatty liver, and a
   raised ALT is often harmless fat stress. FIB-4 tells which clients need
   the doctor's scan now and which can simply do the lifestyle work.

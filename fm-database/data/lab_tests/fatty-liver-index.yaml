@@ -1,0 +1,59 @@
+slug: fatty-liver-index
+display_name: Fatty Liver Index (FLI)
+full_name: Fatty Liver Index
+aliases:
+- fli
+- fatty liver index
+- bedogni fatty liver index
+units: score (0-100)
+sample_type: blood (calculated) + body measurement
+# y = 0.953 ln(TG mg/dL) + 0.139 BMI + 0.718 ln(GGT U/L) + 0.053 waist cm - 15.745
+# FLI = 100 x e^y / (1 + e^y)   (Bedogni 2006)
+# Computed automatically when TG, GGT, BMI and waist are known.
+conventional_high: 60
+fm_optimal_high: 30
+interpretation_high: |
+  FLI is worked out from triglycerides, GGT, BMI and waist. It runs from 0
+  to 100 and screens for fatty liver.
+
+    - under 30: fatty liver unlikely
+    - 30 to 59: grey zone; cannot rule it in or out
+    - 60 or more: suggests fatty liver; an ultrasound is worth discussing
+      with the doctor
+
+  Not reliable within about 4 weeks of a paracetamol course or an acute
+  illness, or after hard resistance training in the week before the draw
+  (weightlifting raises ALT and AST for 7 days or more; GGT is not raised by
+  exercise). Ask before reading it.
+when_to_order: |
+  Nothing to order. Appears when triglycerides and GGT are on a report and
+  the client's height, weight and waist are on file.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- nafld
+- insulin-resistance
+- metabolic-syndrome
+linked_to_mechanisms:
+- hepatic-lipogenesis
+- visceral-adipose-inflammation
+linked_to_symptoms:
+- fatty-liver
+- abdominal-obesity
+sources:
+- id: bedogni-2006-fatty-liver-index
+  location: Abstract
+  quote: A FLI < 30 (negative likelihood ratio = 0.2) rules out and a FLI > or = 60 (positive likelihood ratio = 4.3) rules in fatty liver
+evidence_tier: strong
+notes_for_coach: |
+  Worked example: TG 150 mg/dL, GGT 40 U/L, BMI 30, waist 100 cm.
+  0.953 x ln 150 = 4.78; 0.139 x 30 = 4.17; 0.718 x ln 40 = 2.65;
+  0.053 x 100 = 5.30; sum minus 15.745 = 1.15; FLI = 100 x e^1.15 /
+  (1 + e^1.15) = 76. Sixty or more, so it suggests fatty liver.
+
+  Derived in Italian adults; waist cut-offs in South Asians sit lower, so a
+  grey-zone FLI deserves more weight here.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

@@ -9,6 +9,7 @@ Each returned dict includes:
 `computed` = False means it was read directly from the lab result.
 """
 from __future__ import annotations
+import math
 import re
 from datetime import datetime
 from pathlib import Path
@@ -200,8 +201,229 @@ def _range_upper(rng: str | None) -> float | None:
     return None
 
 
-def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Return list of FM-interpreted markers + computed ratios, grouped by panel."""
+PANEL_LIVER_METABOLIC = "Liver & Metabolic Risk"
+
+# Read-with-care notes appended to every Liver & Metabolic Risk interpretation.
+_ENZYME_CAVEAT = (
+    "Read with care: ALT/AST/GGT-based scores are unreliable within ~4 weeks of "
+    "a paracetamol course or an acute illness, and after hard resistance training "
+    "in the week before the draw (weightlifting raises ALT/AST for 7+ days; GGT "
+    "is not raised by exercise)."
+)
+_FASTING_CAVEAT = (
+    "Read with care: needs a true 8-12 h fasting sample; an acute illness, or a "
+    "heavy or alcohol-rich meal the day before, raises TG and glucose."
+)
+
+
+def _tg_mg_dl(tg: float) -> float:
+    """TG in mg/dL. A value under 15 can only be mmol/L (x 88.57)."""
+    return tg * 88.57 if tg < 15 else tg
+
+
+def _glucose_mg_dl(glucose: float) -> float:
+    """Glucose in mg/dL. A value under 30 can only be mmol/L (x 18.016)."""
+    return glucose * 18.016 if glucose < 30 else glucose
+
+
+def _platelets_10e9(platelets: float) -> float:
+    """Platelets in 10^9/L: cells/cumm (263000) -> 263; lakhs (2.63) -> 263."""
+    if platelets > 3000:
+        return platelets / 1000.0
+    if platelets < 10:
+        return platelets * 100.0
+    return platelets
+
+
+def _add_liver_metabolic_indices(
+    add: Any,
+    ctx: dict[str, Any],
+    *,
+    glucose: float | None,
+    tg: float | None,
+    hba1c: float | None,
+    alt: float | None,
+    ast: float | None,
+    ggt: float | None,
+    platelets: float | None,
+) -> None:
+    """TyG, TyG-BMI, TyG-WC, HSI, FLI, LAP and FIB-4.
+
+    Each is computed only when every input is present; otherwise it is
+    skipped silently. Deterministic arithmetic, no API. Lab inputs come from
+    `compute_ratios`; age/sex/BMI/waist/diabetes come from `ctx` (see
+    `fmdb.assess.client_context.lab_client_context`)."""
+    P = PANEL_LIVER_METABOLIC
+    age = ctx.get("age")
+    sex = ctx.get("sex") if ctx.get("sex") in ("F", "M") else None
+    bmi = ctx.get("bmi")
+    waist = ctx.get("waist_cm")
+    bmi_note = ""
+    if bmi:
+        bmi_note = f"BMI {round(bmi, 1)}" + (
+            f" (weight from {ctx['weight_date']})" if ctx.get("weight_date") else "")
+    waist_note = ""
+    if waist:
+        waist_note = f"waist {round(waist, 1)} cm" + (
+            f" (measured {ctx['waist_date']})" if ctx.get("waist_date") else "")
+
+    tg_mg = _tg_mg_dl(tg) if tg and tg > 0 else None
+    glu_mg = _glucose_mg_dl(glucose) if glucose and glucose > 0 else None
+
+    # ── TyG = ln(TG mg/dL x fasting glucose mg/dL / 2) ──────────────────────
+    tyg = math.log(tg_mg * glu_mg / 2) if (tg_mg and glu_mg) else None
+    if tyg is not None:
+        flag = "high" if tyg > 8.8 else ("suboptimal" if tyg >= 8.3 else "optimal")
+        msg = (
+            "High — insulin resistance and fatty-liver risk pattern; prioritise carb "
+            "quality, movement after meals, sleep and waist"
+            if tyg > 8.8 else
+            "Borderline — early insulin-resistance signal; worth addressing now"
+            if tyg >= 8.3 else
+            "Optimal — no insulin-resistance signal from TG and glucose"
+        )
+        add("TyG index", tyg, "",
+            "<8.3 optimal; 8.3-8.8 borderline; >8.8 high (IR / fatty-liver risk)",
+            flag,
+            f"TyG {tyg:.2f} (TG {tg_mg:.0f} mg/dL x fasting glucose {glu_mg:.0f} mg/dL): "
+            f"{msg}. Works without a fasting insulin, so it reads IR when HOMA-IR "
+            f"can't be computed. Cut-offs vary by population (several South Asian "
+            f"cohorts sit lower); watch the trend. {_FASTING_CAVEAT}",
+            P, computed=True)
+
+        if bmi:
+            tyg_bmi = tyg * bmi
+            add("TyG-BMI", tyg_bmi, "",
+                "No single agreed cut-off; track the trend (lower is better)",
+                "normal",
+                f"TyG-BMI {tyg_bmi:.0f} (TyG {tyg:.2f} x {bmi_note}): adds body size to "
+                f"the TyG signal; in several studies a better fatty-liver and IR "
+                f"predictor than TyG alone. No settled threshold, so use it to track "
+                f"change between reports. {_FASTING_CAVEAT}",
+                P, computed=True)
+        if waist:
+            tyg_wc = tyg * waist
+            add("TyG-WC", tyg_wc, "",
+                "No single agreed cut-off; track the trend (lower is better)",
+                "normal",
+                f"TyG-WC {tyg_wc:.0f} (TyG {tyg:.2f} x {waist_note}): adds central fat "
+                f"to the TyG signal; waist tracks liver fat more closely than BMI. "
+                f"No settled threshold, so use it to track change between reports. "
+                f"{_FASTING_CAVEAT}",
+                P, computed=True)
+
+    # ── HSI = 8 x ALT/AST + BMI (+2 female, +2 diabetes) — Lee 2010 ─────────
+    if alt and ast and ast > 0 and bmi and sex:
+        diabetic_lab = hba1c is not None and hba1c >= 6.5
+        diabetic = bool(ctx.get("diabetes")) or diabetic_lab
+        hsi = 8 * alt / ast + bmi + (2 if sex == "F" else 0) + (2 if diabetic else 0)
+        flag = "high" if hsi > 36 else ("optimal" if hsi < 30 else "suboptimal")
+        msg = (
+            "Above 36 — suggests fatty liver; liver-fat lifestyle work is a priority "
+            "and an ultrasound is worth discussing with the doctor"
+            if hsi > 36 else
+            "Below 30 — fatty liver unlikely"
+            if hsi < 30 else
+            "30-36 — grey zone; cannot rule fatty liver in or out"
+        )
+        if ctx.get("diabetes"):
+            dm_note = f"+2 for diabetes ({ctx.get('diabetes_record') or 'on record'})"
+        elif diabetic_lab:
+            dm_note = f"+2 for diabetes (HbA1c {hba1c}%)"
+        else:
+            dm_note = "no diabetes on record"
+        add("Hepatic Steatosis Index (HSI)", hsi, "",
+            "<30 rules out fatty liver; 30-36 grey zone; >36 suggests steatosis",
+            flag,
+            f"HSI {hsi:.1f} (8 x ALT {alt}/AST {ast} + {bmi_note}"
+            f"{' + 2 female' if sex == 'F' else ''}; {dm_note}): {msg}. {_ENZYME_CAVEAT}",
+            P, computed=True)
+
+    # ── FLI — Bedogni 2006 ──────────────────────────────────────────────────
+    if tg_mg and bmi and ggt and ggt > 0 and waist:
+        y = (0.953 * math.log(tg_mg) + 0.139 * bmi + 0.718 * math.log(ggt)
+             + 0.053 * waist - 15.745)
+        fli = 100 / (1 + math.exp(-y))
+        flag = "high" if fli >= 60 else ("optimal" if fli < 30 else "suboptimal")
+        msg = (
+            "60 or more — suggests fatty liver; liver-fat lifestyle work is a priority "
+            "and an ultrasound is worth discussing with the doctor"
+            if fli >= 60 else
+            "Below 30 — fatty liver unlikely"
+            if fli < 30 else
+            "30-60 — grey zone; cannot rule fatty liver in or out"
+        )
+        add("Fatty Liver Index (FLI)", fli, "",
+            "<30 rules out fatty liver; 30-60 grey zone; >=60 suggests steatosis",
+            flag,
+            f"FLI {fli:.0f} (TG {tg_mg:.0f} mg/dL, GGT {ggt} U/L, {bmi_note}, "
+            f"{waist_note}): {msg}. {_ENZYME_CAVEAT}",
+            P, computed=True)
+
+    # ── LAP = (waist - 65) x TG mmol/L men; (waist - 58) x TG women — Kahn 2005
+    if waist and tg_mg and sex:
+        base = 65 if sex == "M" else 58
+        lap = max(waist - base, 0.0) * (tg_mg / 88.57)
+        flag = "high" if lap > 50 else ("optimal" if lap < 30 else "suboptimal")
+        msg = (
+            "High — central fat plus raised TG; strong insulin-resistance and "
+            "fatty-liver signal"
+            if lap > 50 else
+            "Borderline — watch waist and TG together"
+            if lap >= 30 else
+            "Low — little central-fat / TG burden"
+        )
+        add("Lipid accumulation product (LAP)", lap, "",
+            "Rough guide: <30 low; 30-50 borderline; >50 high (cut-offs vary by "
+            "population and sex)",
+            flag,
+            f"LAP {lap:.1f} ((waist {round(waist, 1)} - {base}) x TG "
+            f"{tg_mg / 88.57:.2f} mmol/L, {'men' if sex == 'M' else 'women'}'s formula): "
+            f"{msg}. No single validated threshold — use the trend. {_FASTING_CAVEAT}",
+            P, computed=True)
+
+    # ── FIB-4 = (age x AST) / (platelets 10^9/L x sqrt(ALT)) — Sterling 2006 ─
+    if age and ast and alt and alt > 0 and platelets and platelets > 0:
+        plt = _platelets_10e9(platelets)
+        fib4 = (age * ast) / (plt * math.sqrt(alt))
+        low_cut = 2.0 if age >= 65 else 1.3
+        flag = "high" if fib4 > 2.67 else ("optimal" if fib4 < low_cut else "suboptimal")
+        msg = (
+            "Above 2.67 — high risk of advanced scarring; the doctor, promptly"
+            if fib4 > 2.67 else
+            f"Below {low_cut} — low risk of advanced liver scarring"
+            if fib4 < low_cut else
+            f"{low_cut}-2.67 — indeterminate; a liver stiffness scan (FibroScan) is "
+            f"worth discussing with the doctor"
+        )
+        notes = []
+        if age >= 65:
+            notes.append("age 65+ so the low-risk line is 2.0")
+        if age < 35:
+            notes.append("under 35 the score is unreliable")
+        if ctx.get("age_source") == "age_band":
+            notes.append("age estimated from the age band — add a date of birth for an exact score")
+        note = f" ({'; '.join(notes)})" if notes else ""
+        add("FIB-4", fib4, "",
+            "<1.3 low (<2.0 if 65+); 1.3-2.67 indeterminate; >2.67 high",
+            flag,
+            f"FIB-4 {fib4:.2f} (age {age} x AST {ast} / (platelets {plt:g} x "
+            f"sqrt ALT {alt})){note}: {msg}. A score, not a diagnosis. {_ENZYME_CAVEAT}",
+            P, computed=True)
+
+
+def compute_ratios(
+    extracted_labs: list[dict[str, Any]],
+    client_context: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """Return list of FM-interpreted markers + computed ratios, grouped by panel.
+
+    `client_context` (optional) carries the client facts some indices need —
+    age, sex, BMI, waist, diabetes — as built by
+    `fmdb.assess.client_context.lab_client_context(client)`. Callers pass the
+    record they already hold; this function never reads a file for it. Without
+    it, the lab-only indices (TyG) still compute and the rest are skipped.
+    """
     results: list[dict[str, Any]] = []
     _CONSUMED_IDS.clear()
 
@@ -968,6 +1190,16 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             PANEL_IRON, computed=True)
 
     # ══════════════════════════════════════════════════════════════════════════
+    # 6b. LIVER & METABOLIC RISK — computed fatty-liver / IR / fibrosis scores
+    # (after section 6 so `platelets` is already normalised to 10^9/L)
+    # ══════════════════════════════════════════════════════════════════════════
+    _add_liver_metabolic_indices(
+        add, client_context or {},
+        glucose=glucose, tg=tg, hba1c=hba1c,
+        alt=alt, ast=ast, ggt=ggt, platelets=platelets,
+    )
+
+    # ══════════════════════════════════════════════════════════════════════════
     # 7. KEY NUTRIENTS
     # ══════════════════════════════════════════════════════════════════════════
     vitd = _find(extracted_labs,
@@ -1333,6 +1565,14 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         "albumin-globulin-ratio": "Albumin/Globulin ratio",
         "cholesterol-hdl-ratio": "TC/HDL ratio",
         "ldl-hdl-ratio": "LDL/HDL ratio",
+        # Liver & Metabolic Risk indices (computed in section 6b)
+        "fib-4": "FIB-4",
+        "tyg-index": "TyG index",
+        "tyg-bmi": "TyG-BMI",
+        "tyg-wc": "TyG-WC",
+        "hepatic-steatosis-index": "Hepatic Steatosis Index (HSI)",
+        "fatty-liver-index": "Fatty Liver Index (FLI)",
+        "lipid-accumulation-product": "Lipid accumulation product (LAP)",
     }
     _coded_equivalent_keys = {
         slug: _norm_marker(name) for slug, name in _coded_equivalent.items()

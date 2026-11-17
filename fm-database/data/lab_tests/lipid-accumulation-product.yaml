@@ -1,0 +1,51 @@
+slug: lipid-accumulation-product
+display_name: Lipid accumulation product (LAP)
+full_name: Lipid Accumulation Product
+aliases:
+- lap index
+- lipid accumulation product
+- lipid accumulation product index
+units: score
+sample_type: blood (calculated) + body measurement
+# Men: (waist cm - 65) x TG mmol/L; women: (waist cm - 58) x TG mmol/L (Kahn 2005).
+# A waist at or below the minimum gives 0. Computed automatically when waist,
+# TG and sex are known.
+conventional_high: 50
+fm_optimal_high: 30
+interpretation_high: |
+  LAP combines waist and fasting triglycerides into one number for fat
+  stored in the wrong places (belly and liver). It flags insulin resistance
+  and cardiometabolic risk better than BMI.
+
+  The paper set no cut-off and later studies vary by population and sex.
+  As a rough guide: under 30 low, 30 to 50 borderline, above 50 high.
+  Track the trend.
+when_to_order: |
+  Nothing to order. Appears when fasting triglycerides are on a report and a
+  waist measurement and the client's sex are on file. Needs a true fast.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+- cardiometabolic-risk
+- nafld
+linked_to_mechanisms:
+- visceral-adipose-inflammation
+- lipotoxicity
+linked_to_symptoms:
+- abdominal-obesity
+sources:
+- id: kahn-2005-lipid-accumulation-product
+  location: Abstract
+  quote: LAP (describing lipid overaccumulation) performed better than BMI (describing weight overaccumulation)
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: a woman with waist 80 cm and TG 54 mg/dL (0.61 mmol/L).
+  80 - 58 = 22; 22 x 0.61 = 13.4. Low.
+
+  TG must be in mmol/L for this one (mg/dL / 88.57); the app converts.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

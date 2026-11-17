@@ -1,0 +1,22 @@
+id: simental-mendia-2008-tyg-index
+title: The product of fasting glucose and triglycerides as surrogate for identifying insulin resistance in apparently healthy subjects
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Simental-Mendía LE
+  - Rodríguez-Morán M
+  - Guerrero-Romero F
+year: 2008
+publisher: Metabolic Syndrome and Related Disorders 6(4):299-304
+url: https://pubmed.ncbi.nlm.nih.gov/19067533/
+doi: 10.1089/met.2008.0034
+notes: |
+  The first TyG paper: the product of fasting triglycerides and glucose as a
+  stand-in for HOMA-IR where insulin testing is unavailable (748 healthy
+  Mexican adults). The index is written ln(TG mg/dL x glucose mg/dL / 2).
+  Cut-offs used later (around 8.3-8.8) come from other populations and vary.
+  Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

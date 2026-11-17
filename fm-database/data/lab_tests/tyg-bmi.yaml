@@ -1,0 +1,41 @@
+slug: tyg-bmi
+display_name: TyG-BMI
+full_name: Triglyceride-Glucose Index x Body Mass Index
+aliases:
+- tyg bmi
+- tyg-bmi index
+- triglyceride glucose body mass index
+units: score
+sample_type: blood (calculated) + body measurement
+# TyG-BMI = TyG x BMI. Computed automatically when the client record has
+# height and weight. No settled cut-off, so no optimal range is set here.
+interpretation_high: |
+  TyG multiplied by BMI. It adds body size to the triglyceride-glucose
+  signal and, in several studies, picks out insulin resistance and fatty
+  liver better than TyG alone. There is no agreed cut-off, so use it to
+  track change between reports: lower is better.
+when_to_order: |
+  Nothing to order. Appears when fasting triglycerides and glucose are on a
+  report and the client's height and weight are on file.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- nafld
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_symptoms:
+- excess-body-weight
+sources:
+- id: er-2016-tyg-bmi
+  location: Abstract
+  quote: TyG-BMI is a simple, powerful, and clinically useful surrogate marker for early identification of IR
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: TyG 7.84 and BMI 24.0 give 7.84 x 24.0 = 188.
+  BMI comes from the latest height and weight on the client record (coach
+  log, client app or intake, whichever was measured last).
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
