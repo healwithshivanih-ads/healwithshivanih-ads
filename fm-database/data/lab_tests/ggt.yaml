@@ -1,21 +1,163 @@
 slug: ggt
 display_name: GGT
 full_name: Gamma-Glutamyl Transferase
-aliases: []
+aliases:
+- ggtp
+- gamma-gt
+- gamma gt
+- γ-gt
+- gamma-glutamyl transferase
+- gamma-glutamyltransferase
+- gamma glutamyl transpeptidase
+- gamma-glutamyl transpeptidase
+- serum ggt
 units: U/L
 sample_type: blood
-interpretation_low: ''
-interpretation_high: Alcohol / biliary / NAFLD / oxidative stress
-when_to_order: Liver detox capacity + biliary tract status — sensitive marker of oxidative stress and alcohol use.
+# Conventional upper limit varies by lab, method and sex. Typical printed
+# limits: men ~55-61 U/L, women ~36-40 U/L. 55 is a middle value for a
+# report that prints one range; always read the client's own report first.
+conventional_high: 55
+# FM-optimal ceiling 16 U/L matches the assess engine
+# (fmdb/assess/lab_ratios.py: <=16 optimal, 17-25 borderline, >25 high) so
+# the catalogue and the lab read never disagree. Risk in the cohorts rises
+# from the low teens upward (Lee 2003: reference group was under 9 U/L).
+# No FM-optimal LOW: a low GGT is not a finding in itself.
+fm_optimal_high: 16
+interpretation_low: |
+  A low GGT is the usual healthy result and needs nothing done. A few FM
+  texts link very low GGT to low magnesium or an underactive thyroid; that is
+  thin and not worth acting on alone.
+interpretation_high: |
+  GGT is the enzyme on the outside of cells that breaks down glutathione so
+  the cell can take the pieces back in and rebuild glutathione inside. Cells
+  make more of it when they are under oxidative stress, so serum GGT reads
+  like a smoke detector for the glutathione system and the liver.
+
+  Common reasons it rises (most to least common in coaching practice):
+    - Alcohol: even moderate, steady drinking pushes it up step by step
+    - Liver fat (NAFLD / MASLD) and insulin resistance: GGT tracks liver fat
+      and predicts diabetes better than ALT
+    - Bile flow problems (cholestasis, gallstones): GGT rises WITH ALP
+    - Enzyme-inducing medicines: phenytoin, carbamazepine, phenobarbital and
+      similar raise GGT without liver damage
+    - Low antioxidant intake / high oxidative load: lower fruit, vegetable
+      and carotenoid intake, higher heme-iron (red meat) intake, smoking,
+      possibly higher pollutant exposure
+
+  Within the normal range, higher GGT predicts diabetes, cardiovascular death
+  and death from any cause in a dose-response way. That is a risk signal,
+  not a diagnosis.
+
+  Bands used here:
+    - up to 16 U/L: FM optimal
+    - 17-25 U/L: borderline; look at alcohol, liver fat, diet quality
+    - above 25 U/L: elevated in FM terms, even when the lab prints "normal"
+    - above the lab's own upper limit: a clinician's question, not a coaching one
+when_to_order: |
+  On every baseline panel; it is cheap and sits inside the standard LFT. Read
+  it alongside ALT, AST, ALP and bilirubin, never alone. Especially useful
+  for:
+    - Insulin resistance, prediabetes, PCOS, central weight gain (early
+      liver-fat signal)
+    - Any client who drinks regularly, or under-reports drinking
+    - Suspected high toxic load (solvents, pesticides, smoking, mould)
+    - Fatigue with chemical sensitivity
+    - Cardiometabolic risk work, alongside ApoB, hs-CRP and HbA1c
+    - Clients on anticonvulsants or other enzyme-inducing medicines
+  Re-test 6-8 weeks after a lifestyle change. GGT turns over in a few weeks,
+  so it is one of the quickest liver markers to show a response.
 fasting_required: false
-linked_to_topics: []
-linked_to_mechanisms: []
+typical_cost_inr: 300
+linked_to_topics:
+- liver-detoxification
+- nafld
+- oxidative-stress
+- insulin-resistance
+- prediabetes-metabolic-syndrome
+- type-2-diabetes
+- cardiovascular-risk-assessment
+- chronic-toxicity-assessment
+- environmental-toxin-load
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+- glutathione-depletion
+- oxidative-stress
+- phase-1-phase-2-detox-imbalance
+- persistent-organic-pollutant-toxicity
+linked_to_symptoms:
+- elevated-ggt
+- elevated-liver-enzymes
+- fatty-liver
 sources:
+- id: whitfield-2001-ggt-review
+  location: Abstract
+  quote: Conditions that increase serum GGT, such as obstructive liver disease, high alcohol consumption, and use of enzyme-inducing drugs
+- id: lee-2004-ggt-oxidative-stress-marker
+  location: Abstract
+  quote: serum GGT within its normal range might be an early and sensitive enzyme related to oxidative stress
+- id: lee-2003-ggt-incident-diabetes-korean-men
+  location: Results
+  quote: There was a strong dose-response relation between serum GGT concentrations at baseline and the incidence of diabetes.
+- id: fraser-2009-alt-ggt-incident-diabetes-meta
+  location: Results / Conclusions
+  quote: GGT may be a better diabetes predictor than ALT
+- id: kunutsor-2014-liver-enzymes-mortality-meta
+  location: Results
+  quote: The pooled RRs per 5 U/l increment in GGT and ALP levels were 1.07 (1.04-1.10) and 1.03
+- id: ruttmann-2005-ggt-cvd-mortality-austria
+  location: Conclusions
+  quote: GGT is independently associated with cardiovascular mortality.
+- id: fmca-m11-metabolic-health-labs-saxena
+  location: Comprehensive metabolic panel — protein and liver enzymes
+  quote: GGT is a smoke detector for oxidative stress.
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
-version: 1
+evidence_tier: strong
+notes_for_coach: |
+  How to read it, step by step:
+
+  1. Pair it with ALP. GGT and ALP both high = bile-flow picture (GGT is not
+     made in bone, so it tells a liver ALP from a bone ALP). ALP high with
+     GGT normal = more likely bone or growth, not liver.
+  2. Pair it with ALT. GGT and ALT both creeping up with high triglycerides,
+     waist or fasting insulin = liver-fat / insulin-resistance pattern.
+     GGT up alone with a normal ALT = think alcohol, medicines, oxidative load.
+  3. Ask about alcohol honestly and specifically (drinks per week, weekend
+     pattern). It is the most common single cause.
+  4. Check the medicine list for enzyme inducers (anticonvulsants, some
+     TB and psychiatric medicines) before reading it as "toxic load".
+  5. Look at ferritin. GGT's reaction makes free radicals when iron is
+     around, and high ferritin plus high GGT is a stronger oxidative picture
+     than either alone.
+
+  What a coach can work on (in scope):
+    - Alcohol reduction; re-test in 6-8 weeks
+    - Colourful plants daily (carotenoid-rich: carrot, pumpkin, papaya,
+      tomato, greens) and fruit; food, not antioxidant pills (in CARDIA,
+      vitamin supplements went WITH higher GGT)
+    - Less red and processed meat (heme iron)
+    - Sulphur foods and glutathione building blocks (onion, garlic, crucifers,
+      protein with enough cysteine and glycine)
+    - Liver-fat levers: fibre, lower refined carbs and fructose, movement,
+      waist loss
+    - Coffee is fine for most; it goes with lower GGT, not higher
+    - Cut exposures: smoking, solvents, pesticide residue, plastics on heat
+
+  Refer: GGT above the lab's own upper limit, a sharp rise between tests,
+  GGT with raised bilirubin or ALP (possible blockage), jaundice, pain under
+  the right ribs, or very high values (several times the upper limit).
+
+  Do NOT say to a client that GGT measures their "toxins" or proves a detox
+  problem. It is a sensitive but non-specific stress signal.
+
+  Corrected 17 Nov 2026: this entry was a stub. The old claim that "under 70
+  is optimal" (ggt-above-70-indicates-phase-2-detox-impairment) is
+  deprecated; 70 sits above most labs' own upper limit and the cohort data
+  show risk climbing from the teens.
+
+  India context: GGT comes in every standard LFT (Acumen base panel covers
+  it); stand-alone it is ₹200-400.
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-11-17'
 updated_by: shivani

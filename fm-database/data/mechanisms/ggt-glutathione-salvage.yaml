@@ -1,0 +1,72 @@
+slug: ggt-glutathione-salvage
+display_name: GGT and the glutathione salvage cycle
+aliases:
+- gamma-glutamyl cycle
+- ggt glutathione recycling
+- glutathione salvage
+- serum ggt as oxidative stress marker
+category: metabolic
+summary: |
+  Gamma-glutamyl transferase (GGT) sits on the outer surface of liver, kidney,
+  bile-duct and many other cells. Its job is to break down glutathione OUTSIDE
+  the cell so that the pieces (above all cysteine, the scarce building block)
+  can be taken back in and used to rebuild glutathione INSIDE the cell. When a
+  cell is under oxidative stress (alcohol, liver fat, bile backing up,
+  enzyme-inducing medicines, pollutants), it makes more GGT to recover more
+  cysteine, and more GGT spills into the blood. That is why serum GGT, even
+  inside the lab's normal range, tracks oxidative stress, low antioxidant
+  status and later cardiometabolic disease. The same reaction has a darker
+  side: its product cysteinyl-glycine can reduce iron and so generate free
+  radicals, which is why high GGT together with high ferritin is a stronger
+  oxidative picture than either alone.
+upstream_drivers:
+- oxidative-stress
+- glutathione-depletion
+- lipotoxicity
+- insulin-resistance
+- exogenous-toxicant-load
+- persistent-organic-pollutant-toxicity
+downstream_effects:
+- oxidative-damage
+- ldl-oxidation
+related_mechanisms:
+- glutathione-depletion
+- glutathione-conjugation
+- oxidative-stress
+- phase-1-phase-2-detox-imbalance
+- persistent-organic-pollutant-toxicity
+linked_to_topics:
+- liver-detoxification
+- oxidative-stress
+- nafld
+- insulin-resistance
+- cardiovascular-risk-assessment
+- gst-gpx-glutathione-detox
+linked_to_symptoms:
+- elevated-ggt
+- elevated-liver-enzymes
+notes_for_coach: |
+  Use this to explain to yourself, not to the client, why one cheap liver
+  enzyme is so predictive. The client version: "GGT is a smoke alarm for how
+  hard your body is working to keep its main antioxidant topped up."
+
+  It also explains the levers: give the cycle less to do (less alcohol, less
+  liver fat, fewer exposures) and give it more raw material (protein with
+  cysteine and glycine, sulphur vegetables, colourful plants). It is a
+  reason to check ferritin when GGT is high, because iron turns the cycle
+  from protective to pro-oxidant.
+
+  GGT is non-specific. A high value says "stress on the glutathione system",
+  never which stress. Enzyme-inducing medicines raise it without harm.
+sources:
+- id: whitfield-2001-ggt-review
+  location: Abstract
+  quote: its physiological role in counteracting oxidative stress by breaking down extracellular glutathione and making its component amino acids available to the cells
+- id: lee-2004-ggt-oxidative-stress-marker
+  location: Abstract
+  quote: cellular GGT may also be involved in the generation of reactive oxygen species in the presence of iron or other transition metals
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

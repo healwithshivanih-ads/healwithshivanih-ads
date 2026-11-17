@@ -1,0 +1,31 @@
+slug: ggt-predicts-cardiovascular-and-all-cause-mortality
+statement: Higher GGT independently predicts death from cardiovascular disease and from any cause. In 9.2 million people across 19 cohorts, each 5 U/L of GGT added about 7% to all-cause mortality risk, and in 164,000 Austrians the link to cardiovascular death was strongest under age 60.
+evidence_tier: strong
+rationale: Lets the coach place GGT alongside ApoB, hs-CRP and HbA1c as a cardiometabolic risk marker rather than a liver-only number.
+coaching_translation: A GGT drifting upward is worth taking seriously even inside the normal range, especially in a younger client. Use it as one more reason for the heart-health basics (alcohol, waist, movement, plants, not smoking), and track it on re-test.
+out_of_scope_notes: Cardiovascular risk scoring and any treatment decision stay with the client's doctor.
+caveats:
+- Observational; GGT is a marker of risk, not shown to be a cause or a treatment target in trials.
+- Part of the link runs through other risk factors (alcohol, obesity, insulin resistance), though it holds after adjusting for them.
+- In Ruttmann 2005 the link was to chronic heart disease, heart failure and stroke, not to acute heart attack.
+linked_to_topics:
+- cardiovascular-risk-assessment
+- cardiometabolic-risk
+- oxidative-stress
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+- oxidative-stress
+linked_to_symptoms:
+- elevated-ggt
+linked_to_supplements: []
+sources:
+- id: kunutsor-2014-liver-enzymes-mortality-meta
+  location: Results
+  quote: relative risks (RRs) (95% confidence intervals) for all-cause mortality were 1.60 (1.42-1.80)
+- id: ruttmann-2005-ggt-cvd-mortality-austria
+  location: Results
+  quote: Hazard ratios for total CVD were 2.03 (1.53 to 2.69) in men and 2.60 (1.53 to 4.42) in women younger than 60 years.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

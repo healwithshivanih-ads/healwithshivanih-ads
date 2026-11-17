@@ -1,0 +1,25 @@
+slug: coffee-polyphenols-associated-with-lower-ggt
+statement: Higher polyphenol intake, mostly from coffee, goes with lower GGT and ALT, independent of alcohol, smoking and energy intake. Green tea polyphenols did not show the same link.
+evidence_tier: plausible_emerging
+rationale: Stops a coach from cutting a client's coffee in the name of "liver support" when GGT is raised; coffee is not the culprit.
+coaching_translation: A client with a raised GGT does not need to give up their usual coffee for the liver's sake. Keep it moderate, unsweetened or lightly sweetened, and not as a replacement for meals. Sleep, anxiety and reflux are better reasons to change coffee than GGT.
+out_of_scope_notes: ''
+caveats:
+- Cross-sectional; men only; Japanese health-checkup population; questionnaire diet.
+- Not a reason to start coffee or add more; sleep, anxiety, palpitations and reflux still decide.
+linked_to_topics:
+- nafld
+- liver-detoxification
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+linked_to_symptoms:
+- elevated-ggt
+linked_to_supplements: []
+sources:
+- id: taguchi-2017-ggt-coffee-polyphenols-japan
+  location: Results
+  quote: The GGT levels were inversely associated with the polyphenol intake from coffee, but not with that from green tea.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

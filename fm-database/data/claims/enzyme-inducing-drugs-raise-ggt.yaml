@@ -1,0 +1,26 @@
+slug: enzyme-inducing-drugs-raise-ggt
+statement: Medicines that induce liver enzymes (for example the anticonvulsants phenytoin, carbamazepine and phenobarbital) raise serum GGT, alongside obstructive liver disease and heavy drinking. A raised GGT in someone on these medicines is not, by itself, evidence of toxic load or poor detox.
+evidence_tier: strong
+rationale: Prevents a wrong "detox problem" story when the real reason for a raised GGT is on the medication list.
+coaching_translation: Before reading a raised GGT as toxic load, check the medicine list. If the client takes an anticonvulsant or another enzyme-inducing medicine, the GGT may simply reflect that; note it, keep the usual lifestyle basics, and leave the medicine question to the prescriber.
+out_of_scope_notes: Never suggest changing or stopping a medicine; that is the prescriber's call.
+caveats:
+- The size of the rise varies by drug and person; it is not always present.
+- Medicines can also cause true liver injury; a high or rising GGT with raised ALT, ALP or bilirubin still needs the doctor.
+linked_to_topics:
+- liver-detoxification
+- chronic-toxicity-assessment
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+linked_to_symptoms:
+- elevated-ggt
+- elevated-liver-enzymes
+linked_to_supplements: []
+sources:
+- id: whitfield-2001-ggt-review
+  location: Abstract
+  quote: Conditions that increase serum GGT, such as obstructive liver disease, high alcohol consumption, and use of enzyme-inducing drugs
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

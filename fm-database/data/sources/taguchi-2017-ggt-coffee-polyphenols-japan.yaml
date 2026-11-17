@@ -1,0 +1,25 @@
+id: taguchi-2017-ggt-coffee-polyphenols-japan
+title: Serum gamma-glutamyltransferase is inversely associated with dietary total and coffee-derived polyphenol intakes in apparently healthy Japanese men
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Taguchi C
+  - Kishimoto Y
+  - Kondo K
+  - Tohyama K
+  - Goda T
+year: 2017
+publisher: European Journal of Nutrition 57(8):2819-2826
+url: https://pubmed.ncbi.nlm.nih.gov/28988315/
+doi: 10.1007/s00394-017-1549-1
+notes: |
+  Cross-sectional health-checkup survey of 7,960 Japanese men. Higher total
+  polyphenol intake went with lower GGT and ALT after adjusting for age,
+  smoking, energy and alcohol. The GGT link came from coffee polyphenols, not
+  green tea. Men only, questionnaire diet, cross-sectional: supports "coffee
+  is not the liver's enemy", not "drink coffee to lower GGT". Read from the
+  PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani
