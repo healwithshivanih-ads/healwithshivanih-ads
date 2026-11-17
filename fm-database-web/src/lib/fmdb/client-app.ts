@@ -94,7 +94,7 @@ import { buildTenure, type TenurePlanLike } from "@/lib/fmdb/programme-tenure";
 import { phaseArcs, programmeLabel } from "@/lib/fmdb/phase-arcs";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import { loadClientOrders, type LabOrder } from "@/lib/fmdb/lab-orders";
-import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+import { loadLabProvider, orderProviderSlug } from "@/lib/fmdb/lab-providers";
 import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
 
 /** Project stored lab orders for the client app: (1) redact `our_cost_inr` (the
@@ -105,15 +105,23 @@ import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions
 async function projectClientLabOrders(clientId: string): Promise<LabOrder[]> {
   const orders = (await loadClientOrders(clientId)).map((o) => ({ ...o, our_cost_inr: 0 }));
   if (orders.length === 0) return orders;
-  const provider = await loadLabProvider().catch(() => null);
-  if (!provider) return orders;
-  const profileCat = new Map(provider.profiles.map((p) => [p.id, p.catalogueInr] as const));
-  const addonCat = new Map(provider.addons.map((a) => [a.slug, a.catalogueInr] as const));
+  // Each order is priced by the lab it was recommended from (Thyrocare or
+  // Acumen) — load each provider once.
+  const providers = new Map<string, Awaited<ReturnType<typeof loadLabProvider>>>();
+  for (const slug of new Set(orders.map((o) => orderProviderSlug(o)))) {
+    providers.set(slug, await loadLabProvider(slug).catch(() => null));
+  }
   return orders.map((o) => {
+    const provider = providers.get(orderProviderSlug(o)) ?? null;
+    if (!provider) return o;
+    // Client-facing "before your test" lines — display-only, never stored.
+    const prep = provider.pretestInstructions.length ? provider.pretestInstructions : undefined;
+    const profileCat = new Map(provider.profiles.map((p) => [p.id, p.catalogueInr] as const));
+    const addonCat = new Map(provider.addons.map((a) => [a.slug, a.catalogueInr] as const));
     const base = o.profile_id != null ? profileCat.get(o.profile_id) ?? null : null;
-    if (base == null) return { ...o, list_inr: null };
+    if (base == null) return { ...o, list_inr: null, pretest_instructions: prep };
     const addons = o.addon_slugs.reduce((sum, s) => sum + (addonCat.get(s) ?? 0), 0);
-    return { ...o, list_inr: base + addons };
+    return { ...o, list_inr: base + addons, pretest_instructions: prep };
   });
 }
 
@@ -1198,7 +1206,7 @@ export interface ClientAppData {
   mode: AppMode;
   /** Non-null only when mode !== "ACTIVE" — the data the end-game screens read. */
   endgame: EndgameInfo | null;
-  /** Coach-recommended lab orders (Acumen). `recommended` ones are payable in
+  /** Coach-recommended lab orders (Thyrocare primary, Acumen backup). `recommended` ones are payable in
    *  app; others show status. Universal across tiers (booking works in any mode). */
   labOrders: LabOrder[];
   client: {
@@ -6196,7 +6204,7 @@ export async function loadClientAppData(
     { mode: "plan", targetedMarkers, concernTerms },
   );
 
-  // Coach-recommended lab orders (Acumen) — payable in app. Redacts our_cost_inr
+  // Coach-recommended lab orders (Thyrocare / Acumen) — payable in app. Redacts our_cost_inr
   // and attaches list_inr (à-la-carte deal anchor); the coach dashboard reads the
   // un-redacted order separately.
   const labOrders = await projectClientLabOrders(clientId);

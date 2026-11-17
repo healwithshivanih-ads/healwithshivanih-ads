@@ -20,7 +20,7 @@ import { runShim } from "@/lib/fmdb/shim";
 import { sendClientEmailAction } from "@/app/api/email/actions";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadClientOrders } from "@/lib/fmdb/lab-orders";
-import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+import { loadLabProvider, orderProviderSlug } from "@/lib/fmdb/lab-providers";
 import { loadLabCoverage, checkCoverage } from "@/lib/fmdb/lab-coverage";
 import { groupsForMarkers } from "@/lib/fmdb/lab-panels";
 
@@ -206,7 +206,7 @@ export async function emailLabRequisitionAction(input: {
 
 /**
  * The discovery BOOKING email — matches the app booking exactly. Built from the
- * client's latest recommended Acumen order: it leads with "book + pay in your
+ * client's latest recommended lab order: it leads with "book + pay in your
  * app" (the package the order covers) and lists ONLY the markers our partner
  * can't run ("for your own lab"). No giant requisition sheet, no second lab
  * list that diverges from what the app books. NEVER names the partner.
@@ -235,12 +235,12 @@ export async function emailLabBookingAction(input: {
   // Own-lab extras = requested markers the chosen package can't cover and the
   // coach didn't add as an add-on (specialty / unmapped / un-added add-ons).
   let ownLab: string[] = [];
-  const provider = await loadLabProvider();
+  const provider = await loadLabProvider(orderProviderSlug(order));
   if (provider && Array.isArray(input.requestedLabs) && input.requestedLabs.length) {
     const profile = order.profile_id != null ? provider.profiles.find((p) => p.id === order.profile_id) ?? null : null;
-    const cov = checkCoverage(input.requestedLabs, profile, await loadLabCoverage(), provider.addons);
+    const cov = checkCoverage(input.requestedLabs, profile, await loadLabCoverage(provider.slug), provider.addons);
     ownLab = [
-      ...cov.notAtAcumen,
+      ...cov.notAtLab,
       ...cov.unknown,
       ...cov.availableAsAddon.filter((a) => !order.addon_slugs.includes(a.slug)).map((a) => a.marker),
     ];

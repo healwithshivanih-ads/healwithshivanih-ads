@@ -14,7 +14,7 @@
  * a different package than the one the client actually asked to repeat.
  */
 import { NextResponse } from "next/server";
-import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+import { loadLabProvider, orderProviderSlug } from "@/lib/fmdb/lab-providers";
 import { loadClientOrders, createRecommendedOrder, type RecommendAddon } from "@/lib/fmdb/lab-orders";
 import { verifyAppClient } from "@/lib/fmdb/app-auth";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
@@ -45,7 +45,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "you already have an order ready to book" }, { status: 409 });
   }
 
-  const provider = await loadLabProvider();
+  // Rebook with the SAME lab as the package being repeated: profile ids carry
+  // different tests at Thyrocare vs Acumen, so switching labs here would sell a
+  // different package. The coach moves a client to another lab by recommending.
+  const provider = await loadLabProvider(orderProviderSlug(last));
   if (!provider) return NextResponse.json({ ok: false, error: "lab catalogue unavailable" }, { status: 503 });
 
   const profileId =

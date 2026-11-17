@@ -15,7 +15,7 @@ import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import Razorpay from "razorpay";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+import { loadLabProvider, orderProviderSlug } from "@/lib/fmdb/lab-providers";
 import { loadOrder, validateOrderAmount, patchOrder, sanitizeLogistics, type LabOrderLogistics } from "@/lib/fmdb/lab-orders";
 import { verifyAppClient } from "@/lib/fmdb/app-auth";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
@@ -86,8 +86,9 @@ export async function POST(req: Request, ctx: { params: Promise<{ orderId: strin
     return NextResponse.json({ ok: false, error: "order is not payable" }, { status: 409 });
   }
 
-  // Bound-check the stored amount before charging (never trust it blindly).
-  const provider = await loadLabProvider();
+  // Bound-check the stored amount before charging (never trust it blindly) —
+  // against the catalogue of the lab this order was recommended from.
+  const provider = await loadLabProvider(orderProviderSlug(order));
   if (!provider) return NextResponse.json({ ok: false, error: "catalogue unavailable" }, { status: 503 });
   const check = validateOrderAmount(provider, order);
   if (!check.ok) return NextResponse.json({ ok: false, error: `refused: ${check.error}` }, { status: 409 });

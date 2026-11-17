@@ -35,7 +35,7 @@ describe("checkCoverage", () => {
     const r = checkCoverage(["TSH", "Total Testosterone", "Free Testosterone"], peri, registry, addons);
     expect(r.covered).toEqual(["TSH", "Total Testosterone"]); // peri carries total-testosterone
     expect(r.availableAsAddon).toEqual([{ marker: "Free Testosterone", slug: "free-testosterone", name: "Testosterone Free" }]);
-    expect(r.notAtAcumen).toEqual([]);
+    expect(r.notAtLab).toEqual([]);
   });
 
   it("Base panel: hormones fall to add-ons (Base carries none of them)", () => {
@@ -44,9 +44,9 @@ describe("checkCoverage", () => {
     expect(r.availableAsAddon.map((a) => a.slug)).toEqual(["total-testosterone", "amh"]);
   });
 
-  it("specialty markers route to notAtAcumen", () => {
+  it("specialty markers route to notAtLab", () => {
     const r = checkCoverage(["Reverse T3"], peri, registry, addons);
-    expect(r.notAtAcumen).toEqual(["Reverse T3"]);
+    expect(r.notAtLab).toEqual(["Reverse T3"]);
     expect(r.covered).toEqual([]);
   });
 
@@ -59,7 +59,7 @@ describe("checkCoverage", () => {
   it("profile_only marker: covered on an in_profiles panel, not addable elsewhere", () => {
     expect(checkCoverage(["17-OH Progesterone"], peri, registry, addons).covered).toEqual(["17-OH Progesterone"]);
     const onBase = checkCoverage(["17-OH Progesterone"], base, registry, addons);
-    expect(onBase.notAtAcumen).toEqual(["17-OH Progesterone"]); // base (id 1) not in [2,3], no à-la-carte
+    expect(onBase.notAtLab).toEqual(["17-OH Progesterone"]); // base (id 1) not in [2,3], no à-la-carte
   });
 
   it("no profile selected → in_base markers aren't counted as covered", () => {
@@ -68,9 +68,9 @@ describe("checkCoverage", () => {
     expect(r.unknown).toEqual(["TSH"]);
   });
 
-  it("an add-on slug with no catalogue entry → notAtAcumen (no phantom add-on)", () => {
+  it("an add-on slug with no catalogue entry → notAtLab (no phantom add-on)", () => {
     const r = checkCoverage(["Free Testosterone"], base, registry, []); // empty addons list
-    expect(r.notAtAcumen).toEqual(["Free Testosterone"]);
+    expect(r.notAtLab).toEqual(["Free Testosterone"]);
   });
 
   it("dedupes repeated markers", () => {
@@ -78,7 +78,7 @@ describe("checkCoverage", () => {
     expect(r.covered).toEqual(["TSH"]);
   });
 
-  it("isFullyCovered: true only when nothing is add-on/notAtAcumen/unknown", () => {
+  it("isFullyCovered: true only when nothing is add-on/notAtLab/unknown", () => {
     expect(isFullyCovered(checkCoverage(["TSH"], peri, registry, addons))).toBe(true);
     expect(isFullyCovered(checkCoverage(["TSH", "Free Testosterone"], peri, registry, addons))).toBe(false);
   });

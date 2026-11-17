@@ -3,8 +3,9 @@
 /**
  * LabRecommendCard — coach "Recommend labs" builder.
  *
- * The coach approves which Acumen profile + which add-ons are right for this
- * client → creates a `recommended` lab order the client then pays for in the app.
+ * The coach picks the lab (Thyrocare primary, Acumen backup), approves which
+ * profile + which add-ons are right for this client → creates a `recommended`
+ * lab order the client then pays for in the app.
  * The profile price is catalogue-fixed; the coach sets each add-on's client price.
  * See docs/LAB_BOOKING_SPEC.md ("Coach-approved booking").
  */
@@ -27,7 +28,7 @@ const SLOT_LABEL: Record<LogisticsSlot, string> = {
 
 const STATUS_META: Record<LabOrderStatus, { label: string; color: string }> = {
   recommended: { label: "Recommended · awaiting payment", color: "#b07b1e" },
-  paid: { label: "Paid · book with Acumen", color: "#1d6fb8" },
+  paid: { label: "Paid · book with the lab", color: "#1d6fb8" },
   booked: { label: "Booked", color: "#1d6fb8" },
   sample_collected: { label: "Sample collected", color: "#1d6fb8" },
   results_in: { label: "Results in", color: "#2f7a3f" },
@@ -61,6 +62,9 @@ export function LabRecommendCard({
   onRecommended?: () => void;
 }) {
   const [menu, setMenu] = useState<LabMenu | null>(null);
+  // The lab the menu is loaded for; undefined = let the server pick (Thyrocare,
+  // or Acumen while Thyrocare has no priced panel).
+  const [labSlug, setLabSlug] = useState<string | undefined>(undefined);
   const [orders, setOrders] = useState<LabOrder[]>([]);
   const [profileId, setProfileId] = useState<number | null>(null);
   const [addonPrices, setAddonPrices] = useState<Record<string, string>>({}); // slug → price string ("" = not selected)
@@ -93,11 +97,13 @@ export function LabRecommendCard({
     let live = true;
     (async () => {
       const { loadLabMenuAction, loadClientLabOrdersAction } = await import("@/lib/server-actions/lab-orders");
-      const m = await loadLabMenuAction(clientId);
+      const m = await loadLabMenuAction(clientId, labSlug);
       if (!live) return;
       if (m.ok) {
         setMenu(m);
         setProfileId(m.suggestedIds[0] ?? null);
+        setAddonPrices({}); // add-on slugs + prices are per lab — never carry over
+        setError("");
       } else {
         setError(m.error);
       }
@@ -106,7 +112,11 @@ export function LabRecommendCard({
     return () => {
       live = false;
     };
-  }, [clientId]);
+  }, [clientId, labSlug]);
+
+  /** Display name of the lab an order belongs to (for its status line). */
+  const labName = (slug: string | undefined) =>
+    menu?.providers.find((p) => p.slug === slug)?.displayName ?? (slug === "thyrocare" ? "Thyrocare" : "Acumen");
 
   const priceOk = (v: string | undefined) =>
     typeof v === "string" && v.trim() !== "" && Number.isFinite(Number(v)) && Number(v) > 0;
@@ -179,6 +189,7 @@ export function LabRecommendCard({
         profileId,
         addons: selectedAddons,
         coachNote: note.trim() || undefined,
+        providerSlug: menu?.provider.slug,
       });
       if (!r.ok) throw new Error(r.error);
       await refresh();
@@ -210,7 +221,7 @@ export function LabRecommendCard({
 
   if (error && !menu) {
     return (
-      <FmPanel title="🔬 Recommend labs" subtitle="Acumen — coach-approved booking">
+      <FmPanel title="🔬 Recommend labs" subtitle="Coach-approved booking">
         <div style={{ fontSize: 12.5, color: "#b3402a" }}>{error}</div>
       </FmPanel>
     );
@@ -228,9 +239,53 @@ export function LabRecommendCard({
               ⚠ Intake not submitted yet — recommending is disabled until it is. You can still send the lab list by email below.
             </div>
           )}
+          {/* lab switch — Thyrocare primary, Acumen backup */}
+          <div style={{ display: "grid", gap: 6 }}>
+            <Label>Lab</Label>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {menu.providers.map((p) => {
+                const on = p.slug === menu.provider.slug;
+                return (
+                  <button
+                    key={p.slug}
+                    type="button"
+                    className="fm-btn"
+                    onClick={() => setLabSlug(p.slug)}
+                    style={{
+                      fontSize: 12,
+                      padding: "4px 10px",
+                      border: "1px solid " + (on ? "var(--fm-accent, #2d5a3d)" : "var(--fm-border-light, #e6e1d6)"),
+                      background: on ? "rgba(45,90,61,0.08)" : "transparent",
+                      fontWeight: on ? 600 : 400,
+                    }}
+                  >
+                    {p.displayName}
+                    {p.role === "backup" ? " (backup)" : ""}
+                    {!p.bookable ? " · panel not priced" : ""}
+                  </button>
+                );
+              })}
+            </div>
+            {menu.fellBack && (
+              <div style={{ fontSize: 11.5, color: "#92600a", lineHeight: 1.45 }}>
+                Thyrocare&apos;s panel prices aren&apos;t set yet (fm-database/data/lab_providers/thyrocare.yaml), so this opened on Acumen, the backup.
+              </div>
+            )}
+            {menu.provider.booking === "manual" && (
+              <div style={{ fontSize: 11.5, color: "var(--fm-muted, #6f6a5d)", lineHeight: 1.45 }}>
+                When the client pays, you get a WhatsApp alert and book {menu.provider.displayName} yourself.
+              </div>
+            )}
+          </div>
+
           {/* profile picker */}
           <div style={{ display: "grid", gap: 6 }}>
             <Label>Profile</Label>
+            {menu.profiles.length === 0 && (
+              <div style={{ fontSize: 12, color: "#92600a" }}>
+                No priced panel at {menu.provider.displayName} yet. Pick add-ons only, or switch to the backup lab.
+              </div>
+            )}
             {menu.profiles.map((p) => {
               const suggested = menu.suggestedIds.includes(p.id);
               return (
@@ -270,11 +325,11 @@ export function LabRecommendCard({
 
           {/* coverage of the discovery call's lab list against the chosen package */}
           {coverage && profile && (() => {
-            const need = coverage.covered.length + coverage.availableAsAddon.length + coverage.notAtAcumen.length + coverage.unknown.length;
+            const need = coverage.covered.length + coverage.availableAsAddon.length + coverage.notAtLab.length + coverage.unknown.length;
             if (need === 0) return null; // nothing real to assess (e.g. empty / custom-only seed)
             // "all in" requires something actually covered — never a "✓ All 0 covered".
-            const allIn = coverage.covered.length > 0 && coverage.availableAsAddon.length === 0 && coverage.notAtAcumen.length === 0 && coverage.unknown.length === 0;
-            const reqList = [...coverage.notAtAcumen, ...coverage.unknown];
+            const allIn = coverage.covered.length > 0 && coverage.availableAsAddon.length === 0 && coverage.notAtLab.length === 0 && coverage.unknown.length === 0;
+            const reqList = [...coverage.notAtLab, ...coverage.unknown];
             return (
               <div
                 style={{
@@ -299,7 +354,7 @@ export function LabRecommendCard({
 
                 {coverage.availableAsAddon.length > 0 && (
                   <div style={{ display: "grid", gap: 4 }}>
-                    <div style={{ fontSize: 11, color: "var(--fm-text-tertiary, #8a8378)" }}>Add to this booking (our partner can run these):</div>
+                    <div style={{ fontSize: 11, color: "var(--fm-text-tertiary, #8a8378)" }}>Add to this booking ({menu.provider.displayName} can run these):</div>
                     {coverage.availableAsAddon.map((a) => {
                       const added = a.slug in addonPrices;
                       const cost = menu?.addons.find((x) => x.slug === a.slug)?.ourCostInr;
@@ -324,7 +379,7 @@ export function LabRecommendCard({
 
                 {reqList.length > 0 && (
                   <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary, #6f6a5d)", lineHeight: 1.5 }}>
-                    <strong>Send as a requisition</strong> (their own lab — not run by our partner): {reqList.join(", ")}.
+                    <strong>Send as a requisition</strong> (their own lab — {menu.provider.displayName} doesn&apos;t run these): {reqList.join(", ")}.
                     <span style={{ display: "block", fontSize: 11, marginTop: 2 }}>Use the &quot;Email the lab list&quot; option below for these.</span>
                   </div>
                 )}
@@ -414,7 +469,13 @@ export function LabRecommendCard({
             <div style={{ display: "grid", gap: 6, borderTop: "1px solid var(--fm-border-light, #e6e1d6)", paddingTop: 10 }}>
               <Label>Orders</Label>
               {orders.map((o) => {
-                const meta = STATUS_META[o.status] ?? { label: o.status, color: "#8a8378" };
+                const baseMeta = STATUS_META[o.status] ?? { label: o.status, color: "#8a8378" };
+                // Name the order's own lab — a Thyrocare order is booked by the coach,
+                // an Acumen one by the partner.
+                const meta =
+                  o.status === "paid"
+                    ? { ...baseMeta, label: `Paid · book with ${labName(o.provider)}` }
+                    : { ...baseMeta, label: `${baseMeta.label} · ${labName(o.provider)}` };
                 const profileName = o.lines[0]?.label ?? "Add-ons";
                 const cancellable = o.status === "recommended"; // paid orders need a refund flow, not a silent void
                 const hasReceipt = o.status !== "recommended" && o.status !== "cancelled";

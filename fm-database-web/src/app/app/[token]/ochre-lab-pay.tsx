@@ -2,7 +2,7 @@
 
 /**
  * LabOrdersCard — the client's lab-booking surface (shown atop the Labs tab).
- * Renders coach-recommended Acumen orders: a `recommended` order is payable
+ * Renders coach-recommended lab orders (Thyrocare / Acumen): a `recommended` order is payable
  * (in-app Razorpay Checkout); paid/booked/results show their status. "Paid" is
  * confirmed by the server webhook, not here — after Checkout we just show
  * "confirming". See docs/LAB_BOOKING_SPEC.md.
@@ -386,6 +386,19 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
           )}
           {o.fasting_required && (
             <div style={{ fontSize: 11.5, color: "var(--ochre, #b07b1e)", marginTop: 10 }}>Fasting sample · we&apos;ll arrange home collection</div>
+          )}
+          {o.pretest_instructions && o.pretest_instructions.length > 0 && (
+            <div style={{ marginTop: 10 }}>
+              <div style={{ fontSize: 11.5, fontWeight: 600, color: "var(--ink, #2c2a24)" }}>Before your test</div>
+              <ul style={{ margin: "5px 0 0", padding: 0, listStyle: "none", display: "grid", gap: 4 }}>
+                {o.pretest_instructions.map((line, i) => (
+                  <li key={i} style={{ fontSize: 12, color: "var(--muted, #6f6a5d)", display: "flex", gap: 7, lineHeight: 1.4 }}>
+                    <span style={{ flexShrink: 0 }}>·</span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--line, #e6e1d6)" }}>
             <PriceBlock listInr={o.list_inr} amountInr={o.amount_inr} />

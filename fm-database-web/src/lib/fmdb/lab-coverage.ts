@@ -1,15 +1,15 @@
 /**
- * Lab coverage — does the coach's chosen Acumen package cover the markers she
- * ordered on the discovery call?
+ * Lab coverage — does the coach's chosen lab package (Thyrocare primary,
+ * Acumen backup) cover the markers she ordered on the discovery call?
  *
  * The discovery form writes `requested_labs` (exact LAB_PANELS marker names). This
- * module maps each marker to its Acumen reality via a hand-reviewed registry
- * (`fm-database/data/lab_coverage.yaml`) — NOT by fuzzy-matching the panel's
+ * module maps each marker to that lab's reality via a hand-reviewed registry per
+ * provider (`lab_coverage_thyrocare.yaml`, `lab_coverage.yaml` for Acumen) — NOT by fuzzy-matching the panel's
  * free-text "includes" prose, which is brittle. `checkCoverage` then sorts the
  * requested markers, for a chosen profile, into:
  *   covered          — in the package (Base, or an add-on the package carries)
- *   availableAsAddon — Acumen can run it; one click adds it as a priced add-on
- *   notAtAcumen      — Acumen can't run it (specialty: DUTCH/OAT/etc.) → requisition
+ *   availableAsAddon — the lab can run it; one click adds it as a priced add-on
+ *   notAtLab         — the lab can't run it (specialty: DUTCH/OAT/etc.) → requisition
  *   unknown          — not in the registry → routed to requisition (safe default)
  *
  * Pure core (checkCoverage) is unit-tested without disk; loadLabCoverage()
@@ -24,7 +24,7 @@ import type { LabProfile } from "./lab-providers";
 type AddonLite = { slug: string; name: string };
 
 export interface MarkerCoverage {
-  /** "in_base" | "addon:<slug>" | "profile_only" | "not_at_acumen" */
+  /** "in_base" | "addon:<slug>" | "profile_only" | "not_at_lab" ("not_at_acumen" = legacy alias) */
   coverage: string;
   /** present on some in_base markers (ApoB etc.) — informational only. */
   slug?: string;
@@ -37,7 +37,7 @@ export type LabCoverageRegistry = Record<string, MarkerCoverage>;
 export interface CoverageResult {
   covered: string[];
   availableAsAddon: { marker: string; slug: string; name: string }[];
-  notAtAcumen: string[];
+  notAtLab: string[];
   unknown: string[];
 }
 
@@ -58,7 +58,7 @@ export function checkCoverage(
   registry: LabCoverageRegistry,
   addons: readonly AddonLite[],
 ): CoverageResult {
-  const out: CoverageResult = { covered: [], availableAsAddon: [], notAtAcumen: [], unknown: [] };
+  const out: CoverageResult = { covered: [], availableAsAddon: [], notAtLab: [], unknown: [] };
   const coveredSlugs = new Set(profile?.coveredAddonSlugs ?? []);
   const addonBySlug = new Map(addons.map((a) => [a.slug, a]));
   const seen = new Set<string>();
@@ -76,14 +76,14 @@ export function checkCoverage(
     const cov = entry.coverage;
 
     if (cov === "in_base") {
-      // Every Acumen profile includes Base; with no profile, nothing's covered.
+      // Every profile includes the base panel; with no profile, nothing's covered.
       if (profile) out.covered.push(marker);
       else out.unknown.push(marker);
-    } else if (cov === "not_at_acumen") {
-      out.notAtAcumen.push(marker);
+    } else if (cov === "not_at_lab" || cov === "not_at_acumen") {
+      out.notAtLab.push(marker);
     } else if (cov === "profile_only") {
       if (profile && (entry.in_profiles ?? []).includes(profile.id)) out.covered.push(marker);
-      else out.notAtAcumen.push(marker); // only via a panel, no à-la-carte option
+      else out.notAtLab.push(marker); // only via a panel, no à-la-carte option
     } else if (cov.startsWith("addon:")) {
       const slug = cov.slice("addon:".length);
       if (coveredSlugs.has(slug)) {
@@ -91,7 +91,7 @@ export function checkCoverage(
       } else {
         const a = addonBySlug.get(slug);
         if (a) out.availableAsAddon.push({ marker, slug, name: a.name });
-        else out.notAtAcumen.push(marker); // slug not a real add-on (shouldn't happen)
+        else out.notAtLab.push(marker); // slug not a real add-on (shouldn't happen)
       }
     } else {
       out.unknown.push(marker); // unrecognised coverage value
@@ -102,17 +102,24 @@ export function checkCoverage(
 
 /** True when every requested marker is in the package (nothing to add or requisition). */
 export function isFullyCovered(r: CoverageResult): boolean {
-  return r.availableAsAddon.length === 0 && r.notAtAcumen.length === 0 && r.unknown.length === 0;
+  return r.availableAsAddon.length === 0 && r.notAtLab.length === 0 && r.unknown.length === 0;
 }
 
-/** Load the coverage registry from disk (fs wrapper — not unit-tested). */
-export async function loadLabCoverage(): Promise<LabCoverageRegistry> {
+/** Provider slug → coverage registry file. Unknown slug → the primary's. */
+const COVERAGE_FILES: Record<string, string> = {
+  thyrocare: "lab_coverage_thyrocare.yaml",
+  "acumen-diagnostics": "lab_coverage.yaml",
+};
+
+/** Load one provider's coverage registry from disk (fs wrapper — not unit-tested).
+ *  Defaults to the primary lab (Thyrocare). */
+export async function loadLabCoverage(providerSlug: string = "thyrocare"): Promise<LabCoverageRegistry> {
   const fs = await import("node:fs/promises");
   const path = await import("node:path");
   const yaml = (await import("js-yaml")).default;
   const { getCataloguePath } = await import("@/lib/fmdb/paths");
   try {
-    const file = path.join(getCataloguePath(), "lab_coverage.yaml");
+    const file = path.join(getCataloguePath(), COVERAGE_FILES[providerSlug] ?? COVERAGE_FILES.thyrocare);
     const raw = await fs.readFile(file, "utf8");
     const doc = yaml.load(raw) as { markers?: LabCoverageRegistry } | null;
     return doc?.markers ?? {};

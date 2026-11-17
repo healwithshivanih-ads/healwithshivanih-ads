@@ -35,7 +35,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { loadOrder, patchOrder, type LabOrder } from "./lab-orders";
-import { loadLabProvider } from "./lab-providers";
+import { loadLabProvider, orderProviderSlug } from "./lab-providers";
 import { loadMaintenanceOrder, patchMaintenanceOrder, type MaintenanceOrder } from "./maintenance-orders";
 import {
   loadMaintenanceSubscription,
@@ -192,7 +192,7 @@ async function labOrderTestGroups(order: LabOrder): Promise<InvoiceTestGroup[]> 
 
   const groups: InvoiceTestGroup[] = [];
 
-  const provider = order.profile_id != null ? await loadLabProvider(order.provider).catch(() => null) : null;
+  const provider = order.profile_id != null ? await loadLabProvider(orderProviderSlug(order)).catch(() => null) : null;
   const profile = provider?.profiles.find((p) => p.id === order.profile_id) ?? null;
   const baseProfile = provider?.profiles.find((p) => p.id === 1) ?? null;
 
