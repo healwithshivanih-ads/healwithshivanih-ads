@@ -108,7 +108,7 @@ Each cycle it probes, and:
 
 | Finding | What it does |
 |---|---|
-| tunnel not answering 200 | `launchctl kickstart` the service, re-probe, and only email after ~15 min of failed repairs |
+| tunnel not answering 200 on 3 tries in a row | `launchctl kickstart` the service, re-probe, and only email after ~15 min of failed repairs |
 | a coach route answering **200 publicly** | emails immediately — that is the whole dashboard served with no auth |
 | no auth on localhost | warning only; that is the correct state with no tunnel in front |
 | Fly not answering 200 | emails after ~15 min — clients cannot open their forms |

@@ -208,7 +208,13 @@ export async function POST(req: NextRequest) {
   const COACH_ROUTE = "/clients-v2";
 
   const remote = {
-    tunnelHealth: await probe(`${coachUrl}/api/health`),
+    // Resilient too. Until 2026-11-17 this was a single attempt, so one
+    // dropped request (02:00 and 21:35 that day, each clear by the next cycle,
+    // cloudflared untouched since 13 Nov) counted as "tunnel down" and went
+    // straight to a repair. With the sudoers rule in place that repair is
+    // `kickstart -k`, which kills a working tunnel and drops the coach's
+    // live remote session over a blip.
+    tunnelHealth: await probeResilient(`${coachUrl}/api/health`),
     tunnelCoachRoute: await probe(`${coachUrl}${COACH_ROUTE}`),
     localCoachRoute: await probe(`${localUrl}${COACH_ROUTE}`),
     // Resilient: the cross-region Fly probe flaps on transient blips. This
@@ -281,7 +287,17 @@ export async function POST(req: NextRequest) {
   if (repaired) {
     console.log(`[infra-health] tunnel was down — restarted, now healthy (${repair?.detail})`);
   } else if (repair && evaluation.tunnelNeedsRepair) {
-    console.error(`[infra-health] tunnel down, repair did not stick: ${repair.detail}`);
+    // Say what actually happened. "repair did not stick" used to print even
+    // when sudo refused and nothing was restarted at all, and the probe result
+    // was never logged, so a timeout could not be told from a 530 / 1033.
+    const seen = evaluation.problems.find((p) => p.key === "tunnel_down")?.detail ?? "";
+    console.error(
+      repair.outcome === "restarted"
+        ? `[infra-health] tunnel down (${seen}); restarted, still down after re-probe`
+        : repair.outcome === "no_permission"
+          ? `[infra-health] tunnel down (${seen}); NOT restarted — ${repair.detail}`
+          : `[infra-health] tunnel down (${seen}); restart failed: ${repair.detail}`,
+    );
   }
 
   let emailed = false;
@@ -335,7 +351,13 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    problems: evaluation.problems.map((p) => ({ key: p.key, severity: p.severity })),
+    // `detail` carries the status each probe returned, so the cron-runner log
+    // line shows a timeout vs a 530 without anyone having to reproduce it.
+    problems: evaluation.problems.map((p) => ({
+      key: p.key,
+      severity: p.severity,
+      detail: p.detail,
+    })),
     networkUncertain: evaluation.networkUncertain,
     uplinkSuspect: evaluation.uplinkSuspect,
     repaired,
