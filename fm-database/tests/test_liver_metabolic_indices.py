@@ -237,9 +237,10 @@ def test_catalogue_has_an_entry_per_index():
     idx = _lab_test_index()
     slugs = {lt["slug"] for lt in idx.values()}
     for slug in ("tyg-index", "tyg-bmi", "tyg-wc", "hepatic-steatosis-index",
-                 "fatty-liver-index", "lipid-accumulation-product", "fib-4"):
+                 "fatty-liver-index", "lipid-accumulation-product", "fib-4",
+                 "waist-to-height-ratio"):
         assert slug in slugs
-    for name in NAMES:  # every coded display name resolves to its entry
+    for name in NAMES | {"Waist-to-height ratio"}:  # each coded name resolves to its entry
         assert _norm_marker(name) in idx, name
 
 
@@ -300,9 +301,67 @@ def test_context_undated_fallbacks_and_bounds():
     assert ctx["weight_kg"] == 60 and ctx["weight_date"] is None
     assert math.isclose(ctx["height_cm"], 162.56, abs_tol=0.01)
     assert math.isclose(ctx["waist_cm"], 81.28, abs_tol=0.01)
-    # an unconverted 36-inch "cm" waist is out of bounds, so no waist at all
-    ctx = lab_client_context({"sex": "F", "measurements": {"waist_cm": 36}}, today=TODAY)
+    # an impossible value is dropped, not guessed at
+    ctx = lab_client_context({"sex": "F", "measurements": {"waist_cm": 15}}, today=TODAY)
     assert ctx["waist_cm"] is None
+
+
+# ── inches typed into a cm field ─────────────────────────────────────────────
+
+def test_context_rescues_inch_waist_and_height_in_cm_fields():
+    ctx = lab_client_context({"sex": "F", "measurements": {"waist_cm": 34, "height_cm": 67,
+                              "weight_kg": 67}}, today=TODAY)
+    assert ctx["waist_cm"] == 86.4 and ctx["waist_from_inches"] is True
+    assert ctx["height_cm"] == 170.2 and ctx["height_from_inches"] is True
+    assert ctx["bmi"] == 23.1
+
+
+def test_context_keeps_real_cm_values():
+    ctx = lab_client_context({"sex": "F", "measurements": {"waist_cm": 62, "height_cm": 158}},
+                             today=TODAY)
+    assert ctx["waist_cm"] == 62 and ctx["waist_from_inches"] is False
+    assert ctx["height_cm"] == 158 and ctx["height_from_inches"] is False
+
+
+def test_context_does_not_double_convert_the_intake_inch_field():
+    ctx = lab_client_context({"sex": "F", "waist_in": 20}, today=TODAY)
+    assert math.isclose(ctx["waist_cm"], 50.8, abs_tol=0.01)
+    assert ctx["waist_from_inches"] is False
+
+
+def test_inch_waist_in_a_log_entry_reaches_the_scores():
+    c = {"sex": "F", "date_of_birth": "1975-06-01",
+         "measurements_log": [{"date": "2026-11-17", "waist_cm": 34, "height_cm": 67,
+                               "weight_kg": 67}]}
+    out = _risk(_labs(**COACH_LABS), lab_client_context(c, today=TODAY))
+    assert {"TyG-WC", "Fatty Liver Index (FLI)", "Lipid accumulation product (LAP)",
+            "Waist-to-height ratio"} <= set(out)
+    assert "converted from inches" in out["TyG-WC"]["fm_interpretation"]
+    assert math.isclose(out["Fatty Liver Index (FLI)"]["value"], _fli(54, 23.1, 20, 86.4),
+                        abs_tol=0.1)
+
+
+# ── waist-to-height ratio ────────────────────────────────────────────────────
+
+def test_whtr_value_flag_and_south_asian_line():
+    r = _risk(_labs(tg=54, glucose=93.75),
+              {"sex": "F", "waist_cm": 86.4, "height_cm": 170.2})["Waist-to-height ratio"]
+    assert math.isclose(r["value"], 86.4 / 170.2, abs_tol=0.001)
+    assert r["flag"] == "suboptimal"
+    assert "above the usual South Asian line of 80 cm for women" in r["fm_interpretation"]
+
+
+@pytest.mark.parametrize("waist,flag", [(84, "optimal"), (86, "suboptimal"),
+                                        (102, "suboptimal"), (103, "high")])
+def test_whtr_flag_bands(waist, flag):
+    r = _risk(_labs(tg=54, glucose=93.75), {"waist_cm": waist, "height_cm": 170})
+    assert r["Waist-to-height ratio"]["flag"] == flag
+    assert "South Asian line" not in r["Waist-to-height ratio"]["fm_interpretation"]  # no sex
+
+
+def test_whtr_needs_height_and_waist():
+    assert "Waist-to-height ratio" not in _risk(_labs(tg=54), {"waist_cm": 86})
+    assert "Waist-to-height ratio" not in _risk(_labs(tg=54), {"height_cm": 170})
 
 
 def test_context_diabetes_reads_firm_active_conditions_only():

@@ -247,7 +247,7 @@ def _add_liver_metabolic_indices(
     ggt: float | None,
     platelets: float | None,
 ) -> None:
-    """TyG, TyG-BMI, TyG-WC, HSI, FLI, LAP and FIB-4.
+    """TyG, TyG-BMI, TyG-WC, HSI, FLI, LAP, FIB-4 and waist-to-height ratio.
 
     Each is computed only when every input is present; otherwise it is
     skipped silently. Deterministic arithmetic, no API. Lab inputs come from
@@ -264,8 +264,12 @@ def _add_liver_metabolic_indices(
             f" (weight from {ctx['weight_date']})" if ctx.get("weight_date") else "")
     waist_note = ""
     if waist:
+        waist_bits = [b for b in (
+            "converted from inches" if ctx.get("waist_from_inches") else "",
+            f"measured {ctx['waist_date']}" if ctx.get("waist_date") else "",
+        ) if b]
         waist_note = f"waist {round(waist, 1)} cm" + (
-            f" (measured {ctx['waist_date']})" if ctx.get("waist_date") else "")
+            f" ({'; '.join(waist_bits)})" if waist_bits else "")
 
     tg_mg = _tg_mg_dl(tg) if tg and tg > 0 else None
     glu_mg = _glucose_mg_dl(glucose) if glucose and glucose > 0 else None
@@ -380,6 +384,36 @@ def _add_liver_metabolic_indices(
             f"LAP {lap:.1f} ((waist {round(waist, 1)} - {base}) x TG "
             f"{tg_mg / 88.57:.2f} mmol/L, {'men' if sex == 'M' else 'women'}'s formula): "
             f"{msg}. No single validated threshold — use the trend. {_FASTING_CAVEAT}",
+            P, computed=True)
+
+    # ── Waist-to-height ratio — no labs needed, but it is the input the other
+    # central-fat scores lean on, so it sits beside them. ─────────────────────
+    height = ctx.get("height_cm")
+    if waist and height and height > 0:
+        whtr = waist / height
+        flag = "high" if whtr > 0.6 else ("optimal" if whtr < 0.5 else "suboptimal")
+        msg = (
+            "Above 0.6 — high central-fat risk"
+            if whtr > 0.6 else
+            "0.5-0.6 — central fat above the healthy line; raises insulin-resistance "
+            "and fatty-liver risk even at a normal BMI"
+            if whtr >= 0.5 else
+            "Below 0.5 — waist in a healthy proportion to height"
+        )
+        line = ""
+        if sex:
+            cut = 80 if sex == "F" else 90
+            side = "above" if waist >= cut else "below"
+            line = (f" Waist {round(waist, 1)} cm is {side} the usual South Asian line "
+                    f"of {cut} cm for {'women' if sex == 'F' else 'men'}.")
+        h_note = " (height converted from inches)" if ctx.get("height_from_inches") else ""
+        add("Waist-to-height ratio", whtr, "",
+            "<0.5 healthy; 0.5-0.6 raised; >0.6 high (any sex)",
+            flag,
+            f"Waist-to-height {whtr:.2f} ({waist_note} / height {round(height, 1)} cm"
+            f"{h_note}): {msg}.{line} Waist is the input in FLI, LAP and TyG-WC that "
+            f"changes fastest with movement, strength work and sleep; measure at the "
+            f"navel, end of a normal breath out.",
             P, computed=True)
 
     # ── FIB-4 = (age x AST) / (platelets 10^9/L x sqrt(ALT)) — Sterling 2006 ─
@@ -1573,6 +1607,7 @@ def compute_ratios(
         "hepatic-steatosis-index": "Hepatic Steatosis Index (HSI)",
         "fatty-liver-index": "Fatty Liver Index (FLI)",
         "lipid-accumulation-product": "Lipid accumulation product (LAP)",
+        "waist-to-height-ratio": "Waist-to-height ratio",
     }
     _coded_equivalent_keys = {
         slug: _norm_marker(name) for slug, name in _coded_equivalent.items()

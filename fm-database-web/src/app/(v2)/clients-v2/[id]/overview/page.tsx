@@ -165,7 +165,7 @@ function groupLabMarkers(
     {
       title: "Liver & metabolic risk",
       icon: "🧮",
-      patterns: /^tyg\b|tyg-(bmi|wc)|hepatic steatosis|fatty liver index|lipid accumulation product|^fib-?4\b/i,
+      patterns: /^tyg\b|tyg-(bmi|wc)|hepatic steatosis|fatty liver index|lipid accumulation product|^fib-?4\b|^waist-to-height/i,
     },
     {
       title: "Metabolic & insulin",
