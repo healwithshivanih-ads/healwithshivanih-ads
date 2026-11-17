@@ -1,0 +1,32 @@
+slug: ggt-within-normal-range-predicts-incident-diabetes
+statement: GGT predicts who goes on to develop type 2 diabetes in a dose-response way, starting well inside the lab's normal range. Across 21 prospective studies the top quarter of GGT carried about three times the diabetes risk of the bottom quarter, a stronger signal than ALT.
+evidence_tier: strong
+rationale: Gives the coach an early, cheap, already-on-the-report signal of liver fat and insulin resistance years before glucose moves; a "normal" GGT of 30 is not reassuring.
+coaching_translation: When GGT sits in the upper part of normal, treat it as an early nudge on blood sugar and liver fat. Pair it with fasting insulin, triglycerides and waist, and work the usual levers (fibre, fewer refined carbs and less fructose, movement, alcohol). Re-test in 6-8 weeks.
+out_of_scope_notes: Diagnosing diabetes or fatty liver, and any medication decision, stay with the client's doctor.
+caveats:
+- An association, not proof that lowering GGT prevents diabetes.
+- The 8- to 26-fold relative risks in Lee 2003 compare against men with GGT under 9 U/L in a single Korean cohort of men; quote the meta-analysis figure (about 3-fold top vs bottom quarter) to keep it honest.
+- GGT also rises with alcohol and enzyme-inducing medicines; rule those out before reading it as a metabolic signal.
+linked_to_topics:
+- type-2-diabetes
+- prediabetes-metabolic-syndrome
+- insulin-resistance
+- nafld
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+- insulin-resistance
+linked_to_symptoms:
+- elevated-ggt
+linked_to_supplements: []
+sources:
+- id: fraser-2009-alt-ggt-incident-diabetes-meta
+  location: Results (meta-analysis of 21 prospective studies)
+  quote: for GGT the HR was 2.94 (1.98-3.88, I(2) = 20%), suggesting that GGT may be a better predictor
+- id: lee-2003-ggt-incident-diabetes-korean-men
+  location: Conclusions
+  quote: an increase in GGT concentration within its physiological range is a sensitive and early biomarker for the development of diabetes
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

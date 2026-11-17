@@ -8,6 +8,7 @@ coaching_translation: High liver enzyme GGTP may signal toxic load that is impai
   insulin function; reducing POP exposure (organic foods, water filtration) is a meaningful
   strategy.
 caveats:
+- The 20-fold figure compares GGT 40-49 U/L against men under 9 U/L in one Korean cohort (Lee 2003); across 21 cohorts the gap is about 3-fold, top vs bottom quarter (Fraser 2009).
 - Indirect biomarker; GGTP elevates for many reasons including alcohol and liver disease;
   direct POP measurement required for confirmation.
 linked_to_topics:
@@ -20,7 +21,10 @@ sources:
   location: Causes of Diabetes / POPs
   quote: An elevated GGTP is a strong predictor of diabetes risk. Those with levels
     above 40 IU/L have a 20-fold increased risk.
-version: 1
+- id: lee-2003-ggt-incident-diabetes-korean-men
+  location: Results
+  quote: adjusted relative risks for incidence of diabetes for GGT concentrations 10-19, 20-29, 30-39, 40-49, and over 50 U/l were 8.0, 13.3, 12.6, 19.6 and 25.8
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-11-17'
 updated_by: Shivani

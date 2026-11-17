@@ -1,0 +1,24 @@
+id: lee-2004-ggt-dietary-factors-cardia
+title: 'Association between serum gamma-glutamyltransferase and dietary factors: the Coronary Artery Risk Development in Young Adults (CARDIA) Study'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Lee DH
+  - Steffen LM
+  - Jacobs DR
+year: 2004
+publisher: American Journal of Clinical Nutrition 79(4):600-605
+url: https://pubmed.ncbi.nlm.nih.gov/15051603/
+doi: 10.1093/ajcn/79.4.600
+notes: |
+  CARDIA, 3,146 Black and white US adults aged 17-35 at entry, diet history at
+  years 0 and 7, GGT at year 10. GGT rose step by step with alcohol (geometric
+  means 17.7 to 24.8 U/L from 0 to 30+ g/day) and with meat intake, and fell
+  with fruit intake. Heme iron, not saturated fat, carried the meat link.
+  Vitamin supplements went the OTHER way (positively associated with GGT), so
+  the signal is from foods, not pills. Observational. Read from the PubMed
+  abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

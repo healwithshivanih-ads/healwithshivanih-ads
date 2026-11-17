@@ -1,0 +1,31 @@
+slug: ggt-inversely-tracks-antioxidant-status
+statement: People with higher GGT, even within the normal range, have lower blood levels of carotenoids (alpha- and beta-carotene, lycopene, lutein) and vitamin C, which fits GGT being an early marker of oxidative stress.
+evidence_tier: plausible_emerging
+rationale: Connects a routine liver number to a coachable behaviour (colourful plants) and explains why GGT is read as an oxidative-stress signal.
+coaching_translation: A borderline GGT is a good prompt to look at how many coloured vegetables and fruits the client eats each day. Aim for orange, red and dark-green foods daily (carrot, pumpkin, papaya, tomato, amla, greens) and re-check GGT in 6-8 weeks.
+out_of_scope_notes: ''
+caveats:
+- Cross-sectional (NHANES III); it does not show that eating more carotenoids lowers GGT.
+- Vitamin E showed no link.
+- Food, not pills; in CARDIA, vitamin supplement use went with HIGHER GGT.
+linked_to_topics:
+- oxidative-stress
+- phytonutrient-dense-diet
+- liver-detoxification
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+- oxidative-stress
+linked_to_symptoms:
+- elevated-ggt
+linked_to_supplements: []
+sources:
+- id: lim-2004-ggt-serum-antioxidants-nhanes
+  location: Results
+  quote: serum concentration of GGT across all deciles was inversely associated with serum concentrations of alpha-carotene, beta-carotene, beta-cryptoxanthin, zeaxanthin/lutein, lycopene, and vitamin C
+- id: lee-2004-ggt-oxidative-stress-marker
+  location: Abstract
+  quote: serum and dietary antioxidant vitamins had inverse, dose-response relations to serum GGT level within its normal range
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

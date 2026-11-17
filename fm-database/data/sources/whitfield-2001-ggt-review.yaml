@@ -1,0 +1,22 @@
+id: whitfield-2001-ggt-review
+title: Gamma glutamyl transferase
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Whitfield JB
+year: 2001
+publisher: Critical Reviews in Clinical Laboratory Sciences 38(4):263-355
+url: https://pubmed.ncbi.nlm.nih.gov/11563810/
+doi: 10.1080/20014091084227
+notes: |
+  The standard 90-page clinical-biochemistry review of GGT (Royal Prince Alfred
+  Hospital, Sydney). Covers its use as a liver and alcohol marker, its job of
+  breaking down extracellular glutathione so cells can reuse the amino acids,
+  the rise with obstructive liver disease, alcohol and enzyme-inducing drugs,
+  the pro-oxidant side of the reaction in the presence of iron, and GGT as an
+  independent predictor of heart disease, diabetes, stroke and mortality. Read
+  from the PubMed abstract (17 Nov 2026); full text not read.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

@@ -1,0 +1,26 @@
+id: lim-2004-ggt-serum-antioxidants-nhanes
+title: Is serum gamma-glutamyltransferase inversely associated with serum antioxidants as a marker of oxidative stress?
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Lim JS
+  - Yang JH
+  - Chun BY
+  - Kam S
+  - Jacobs DR
+  - Lee DH
+year: 2004
+publisher: Free Radical Biology and Medicine 37(7):1018-1023
+url: https://pubmed.ncbi.nlm.nih.gov/15336318/
+doi: 10.1016/j.freeradbiomed.2004.06.032
+notes: |
+  NHANES III cross-sectional analysis, 9,083 US adults. Across all deciles of
+  GGT, higher GGT went with lower serum alpha- and beta-carotene,
+  beta-cryptoxanthin, lutein/zeaxanthin, lycopene and vitamin C, after
+  adjusting for energy intake, BMI, smoking, alcohol and exercise. Vitamin E
+  showed no link. Cross-sectional, so it shows association, not that eating
+  more carotenoids lowers GGT. Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

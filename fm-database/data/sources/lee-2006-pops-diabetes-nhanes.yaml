@@ -1,0 +1,27 @@
+id: lee-2006-pops-diabetes-nhanes
+title: 'A strong dose-response relation between serum concentrations of persistent organic pollutants and diabetes: results from the National Health and Examination Survey 1999-2002'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Lee DH
+  - Lee IK
+  - Song K
+  - Steffes M
+  - Toscano W
+  - Baker BA
+  - Jacobs DR
+year: 2006
+publisher: Diabetes Care 29(7):1638-1644
+url: https://pubmed.ncbi.nlm.nih.gov/16801591/
+doi: 10.2337/dc06-0543
+notes: |
+  NHANES 1999-2002, 2,016 US adults. Six persistent organic pollutants measured
+  DIRECTLY in serum; diabetes prevalence rose steeply with their summed level
+  (adjusted odds ratios 1.0, 14.0, 14.7, 38.3, 37.7). Cross-sectional. It is the
+  same research group that framed GGT as a possible pollutant-burden signal,
+  but this paper measures the pollutants themselves, not GGT. Read from the
+  PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

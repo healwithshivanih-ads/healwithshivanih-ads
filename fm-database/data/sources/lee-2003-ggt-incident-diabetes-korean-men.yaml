@@ -1,0 +1,30 @@
+id: lee-2003-ggt-incident-diabetes-korean-men
+title: Gamma-glutamyltransferase and diabetes - a 4 year follow-up study
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Lee DH
+  - Ha MH
+  - Kim JH
+  - Christiani DC
+  - Gross MD
+  - Steffes M
+  - Blomhoff R
+  - Jacobs DR
+year: 2003
+publisher: Diabetologia 46(3):359-364
+url: https://pubmed.ncbi.nlm.nih.gov/12687334/
+doi: 10.1007/s00125-003-1036-5
+notes: |
+  Prospective cohort of 4,088 healthy Korean steelworkers (men only), 1994 to
+  1998. Against men with GGT under 9 U/L, adjusted relative risks of incident
+  diabetes were 8.0, 13.3, 12.6, 19.6 and 25.8 for GGT 10-19, 20-29, 30-39,
+  40-49 and 50+ U/L. This is the primary source behind the "above 40 = 20-fold"
+  figure Pizzorno quotes: the reference group is GGT under 9, not "normal".
+  One cohort, men only, small reference group, so the size of the relative
+  risks is less reliable than the dose-response shape. Read from the PubMed
+  abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

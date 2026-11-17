@@ -1,0 +1,26 @@
+id: fraser-2009-alt-ggt-incident-diabetes-meta
+title: 'Alanine aminotransferase, gamma-glutamyltransferase, and incident diabetes: the British Women''s Heart and Health Study and meta-analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Fraser A
+  - Harris R
+  - Sattar N
+  - Ebrahim S
+  - Davey Smith G
+  - Lawlor DA
+year: 2009
+publisher: Diabetes Care 32(4):741-750
+url: https://pubmed.ncbi.nlm.nih.gov/19131466/
+doi: 10.2337/dc08-1870
+notes: |
+  Cohort of 4,286 British women aged 60-79 plus a meta-analysis of 21
+  prospective population studies. Top versus bottom quarter of GGT carried a
+  fully adjusted hazard ratio for diabetes of 2.94, against 2.02 for ALT, so
+  GGT may be the better predictor. The authors read it as a liver-fat signal.
+  This is the realistic effect size to quote, far smaller than the 20-fold
+  single-cohort figure. Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

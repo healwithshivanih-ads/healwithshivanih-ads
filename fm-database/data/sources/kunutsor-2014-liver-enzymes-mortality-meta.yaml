@@ -1,0 +1,24 @@
+id: kunutsor-2014-liver-enzymes-mortality-meta
+title: 'Liver enzymes and risk of all-cause mortality in general populations: a systematic review and meta-analysis'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Kunutsor SK
+  - Apekey TA
+  - Seddoh D
+  - Walley J
+year: 2014
+publisher: International Journal of Epidemiology 43(1):187-201
+url: https://pubmed.ncbi.nlm.nih.gov/24585856/
+doi: 10.1093/ije/dyt192
+notes: |
+  Meta-analysis of 19 cohorts, over 9.24 million people and 242,953 deaths.
+  Top versus bottom third of GGT: relative risk of death from any cause 1.60.
+  Each 5 U/L of GGT added about 7% (RR 1.07), consistent with a straight-line
+  dose-response. AST showed no clear link; ALT went in opposite directions in
+  North American and Asian populations. Read from the PubMed abstract
+  (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

@@ -4,25 +4,41 @@ aliases:
 - high gamma-glutamyl transferase
 - raised GGT
 - GGT above 70
+- high GGT
+- raised GGTP
+- high gamma GT
+- borderline GGT
 category: metabolic
 severity: concerning
-description: GGT (gamma-glutamyl transferase) elevation above the functional medicine optimal threshold of 70 U/L is interpreted
-  as a primary marker of increased toxic load and impaired Phase 2 detoxification. May be asymptomatic or accompanied by fatigue
-  and chemical sensitivity.
-when_to_refer: Refer to clinician if GGT is significantly elevated, rising trend is observed, or accompanied by other liver
-  enzyme abnormalities suggesting hepatocellular damage.
+description: GGT (gamma-glutamyl transferase) above the functional-medicine optimal ceiling of about 16 U/L, read in bands
+  (17-25 borderline, above 25 elevated, above the lab's own upper limit for the clinician). Often silent; sometimes comes
+  with fatigue, chemical sensitivity or a fatty-liver picture. It signals stress on the glutathione system and the liver
+  (most often alcohol, liver fat and insulin resistance, bile-flow problems, enzyme-inducing medicines, or low antioxidant
+  intake and high toxic load) and, even inside the normal range, predicts diabetes and cardiovascular risk. It never says
+  which cause on its own.
+when_to_refer: Refer if GGT is above the lab's upper limit, rising between tests, several times the upper limit, or comes
+  with raised ALP or bilirubin, jaundice, dark urine, pale stools or pain under the right ribs.
 linked_to_topics:
 - chronic-toxicity-assessment
 - liver-detoxification
+- nafld
+- oxidative-stress
+- insulin-resistance
+- cardiovascular-risk-assessment
 linked_to_mechanisms:
+- ggt-glutathione-salvage
 - phase-1-phase-2-detox-imbalance
+- glutathione-depletion
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Lab Interpretation Section
   quote: The primary enzyme that is elevated in any kind of toxic load is your GTP. And the patient on the digital level is
     65. When you look at the digital level, it should be less than 70 optimal. If you find out any way that increase from
     70 means we have to work in this patient in a detoxification pathway.
-version: 1
+- id: lee-2004-ggt-oxidative-stress-marker
+  location: Abstract
+  quote: serum GGT within its normal range might be an early and sensitive enzyme related to oxidative stress
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-11-17'
 updated_by: shivani

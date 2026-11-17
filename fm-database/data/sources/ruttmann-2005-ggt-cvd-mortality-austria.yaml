@@ -1,0 +1,26 @@
+id: ruttmann-2005-ggt-cvd-mortality-austria
+title: 'Gamma-glutamyltransferase as a risk factor for cardiovascular disease mortality: an epidemiological investigation in a cohort of 163,944 Austrian adults'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Ruttmann E
+  - Brant LJ
+  - Concin H
+  - Diem G
+  - Rapp K
+  - Ulmer H
+year: 2005
+publisher: Circulation 112(14):2130-2137
+url: https://pubmed.ncbi.nlm.nih.gov/16186419/
+doi: 10.1161/CIRCULATIONAHA.105.552547
+notes: |
+  Vorarlberg cohort, 163,944 Austrian adults followed up to 17 years. GGT
+  predicted cardiovascular death in a dose-response way in both sexes after
+  adjusting for established risk factors: hazard ratio per log-unit GGT 1.66
+  in men and 1.64 in women. The link was stronger under 60 (HR 2.03 men, 2.60
+  women). Driven by chronic heart disease, heart failure and stroke, not acute
+  MI. Read from the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

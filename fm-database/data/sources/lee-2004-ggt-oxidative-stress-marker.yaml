@@ -1,0 +1,25 @@
+id: lee-2004-ggt-oxidative-stress-marker
+title: Is serum gamma glutamyltransferase a marker of oxidative stress?
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Lee DH
+  - Blomhoff R
+  - Jacobs DR
+year: 2004
+publisher: Free Radical Research 38(6):535-539
+url: https://pubmed.ncbi.nlm.nih.gov/15346644/
+doi: 10.1080/10715760410001694026
+notes: |
+  Short review by the group that produced most of the GGT-within-normal-range
+  epidemiology (Kyungpook / Minnesota). Summarises: cellular GGT breaks down
+  extracellular glutathione so its amino acids can be reused for intracellular
+  glutathione; it can also generate free radicals with iron; serum GGT within
+  the normal range tracks inversely with antioxidant vitamins, positively with
+  heme iron, and predicts F2-isoprostanes, fibrinogen and CRP years later.
+  Moderate because it reviews the authors' own observational work. Read from
+  the PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

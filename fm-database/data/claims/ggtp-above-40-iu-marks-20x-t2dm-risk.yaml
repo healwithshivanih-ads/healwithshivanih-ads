@@ -2,7 +2,7 @@ slug: ggtp-above-40-iu-marks-20x-t2dm-risk
 statement: Serum gamma-glutamyltransferase (GGTP) above 40 IU/L is a 20-fold predictor
   of T2DM risk — serves as a clinically accessible surrogate for body burden of persistent
   organic pollutants (POPs) that block insulin receptors and impair beta-cell function.
-evidence_tier: strong
+evidence_tier: plausible_emerging
 rationale: Pizzorno cites multiple cohort studies showing GGTP-T2DM dose-response
   relationships independent of alcohol intake. GGTP rises with hepatic detoxification
   load — including POP biotransformation. Effect size is much larger than most established
@@ -12,6 +12,8 @@ coaching_translation: GGTP is the cheapest lab marker for environmental toxin lo
   than weight alone. Look for it on routine liver panels and use it as a trigger for
   detox + organic-food strategies.
 caveats:
+- The 20-fold figure traces to Lee 2003 (4,088 Korean men), comparing GGT 40-49 U/L against men under 9 U/L, not against "normal". Across 21 cohorts the realistic gap is about 3-fold, top vs bottom quarter (Fraser 2009). Quote that one.
+- GGT as a stand-in for pollutant burden is a hypothesis; the pollutant-diabetes link (Lee 2006) measured the pollutants directly, not GGT. Tier lowered from strong on 17 Nov 2026 for this reason.
 - GGTP also rises with alcohol, hepatic congestion, and biliary disease — confirm
   the cause.
 - Reduction strategies — organic foods, fibre, brassicas, sulfur foods, glutathione
@@ -25,6 +27,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - pops-block-insulin-receptors
 - insulin-resistance
+linked_to_symptoms:
+- elevated-ggt
 linked_to_supplements: []
 out_of_scope_notes: ''
 sources:
@@ -32,7 +36,16 @@ sources:
   location: Diabetes Mellitus — POPs (pp 260)
   quote: An elevated GGTP is a strong predictor of diabetes risk. Those with levels
     above 40 IU/L have a 20-fold increased risk.
-version: 1
+- id: lee-2003-ggt-incident-diabetes-korean-men
+  location: Results
+  quote: adjusted relative risks for incidence of diabetes for GGT concentrations 10-19, 20-29, 30-39, 40-49, and over 50 U/l were 8.0, 13.3, 12.6, 19.6 and 25.8
+- id: fraser-2009-alt-ggt-incident-diabetes-meta
+  location: Results
+  quote: for GGT the HR was 2.94 (1.98-3.88, I(2) = 20%)
+- id: lee-2006-pops-diabetes-nhanes
+  location: Results
+  quote: diabetes prevalence was strongly positively associated with lipid-adjusted serum concentrations of all six POPs
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-11-17'
 updated_by: Shivani

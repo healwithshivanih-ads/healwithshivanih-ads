@@ -1,0 +1,31 @@
+slug: ggt-rises-with-alcohol-and-meat-falls-with-fruit
+statement: In young adults followed for ten years, GGT rose step by step with alcohol intake and with meat intake (the heme iron, not the saturated fat) and fell with fruit intake. Vitamin supplements went the other way, with higher GGT.
+evidence_tier: plausible_emerging
+rationale: Names the three dietary levers that move GGT most and warns the coach off reaching for antioxidant pills as the fix.
+coaching_translation: For a raised or rising GGT, start with drinks per week, then red and processed meat, then daily fruit. Even moderate drinking shows up in GGT, and it is one of the quickest markers to come back down when drinking falls. Prefer whole fruit and vegetables over antioxidant supplements.
+out_of_scope_notes: ''
+caveats:
+- Observational (CARDIA); dietary history by interview.
+- Alcohol gave the largest shift (about 18 to 25 U/L from none to 30+ g a day); the meat and fruit effects were smaller.
+- The supplement finding may reflect who takes supplements, not harm from them.
+linked_to_topics:
+- liver-detoxification
+- nafld
+- phytonutrient-dense-diet
+linked_to_mechanisms:
+- ggt-glutathione-salvage
+linked_to_symptoms:
+- elevated-ggt
+- elevated-liver-enzymes
+linked_to_supplements: []
+sources:
+- id: lee-2004-ggt-dietary-factors-cardia
+  location: Conclusions
+  quote: Serum GGT activity increased in a dose-response manner as alcohol and meat consumption increased and fruit consumption decreased.
+- id: lee-2004-ggt-dietary-factors-cardia
+  location: Results
+  quote: In contrast, vitamin supplements were positively associated with GGT.
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani
