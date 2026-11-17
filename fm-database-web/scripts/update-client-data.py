@@ -15,7 +15,8 @@ Reads JSON from stdin:
   },
   "medications": [str],      # optional — merged (deduplicated) with existing
   "conditions": [str],       # optional — merged (deduplicated) with existing
-  "source": str              # attribution note (e.g. "transcript-2026-05-03")
+  "source": str,             # attribution note (e.g. "transcript-2026-05-03")
+  "pretest": {...} | null    # optional — LabPretest answers for this draw
 }
 
 Writes JSON to stdout:
@@ -350,6 +351,17 @@ def main() -> int:
         snap["medications"] = new_medications
     if new_conditions:
         snap["conditions"] = new_conditions
+    # Pre-test answers for this draw (illness, paracetamol, exercise, biotin…),
+    # validated by fmdb.plan.models.LabPretest (extra="forbid").
+    pretest_in = payload.get("pretest")
+    if isinstance(pretest_in, dict) and snap_labs:
+        from fmdb.plan.models import LabPretest  # type: ignore
+        try:
+            snap["pretest"] = LabPretest(**pretest_in).model_dump(
+                mode="json", exclude_none=True, exclude_defaults=True)
+        except Exception as e:
+            json.dump({"ok": False, "error": f"invalid pretest: {e}"}, sys.stdout)
+            return 2
 
     existing_snaps: list = data.get("health_snapshots") or []
     # MERGE into an existing same-date + same-source snapshot rather than
@@ -391,6 +403,8 @@ def main() -> int:
                         combined.append(v)
                         low.add(str(v).lower())
                 prior[key] = combined
+        if snap.get("pretest"):
+            prior["pretest"] = snap["pretest"]
         if snap.get("linked_session_id") and not prior.get("linked_session_id"):
             prior["linked_session_id"] = snap["linked_session_id"]
     else:
@@ -424,9 +438,12 @@ def main() -> int:
                         lv["date_drawn"] = s["date"]
                     all_labs.append(lv)
             if all_labs:
-                markers = compute_ratios(all_labs, lab_client_context(data))
+                _ctx = lab_client_context(data)
+                markers = compute_ratios(all_labs, _ctx)
                 if markers:
                     data["lab_markers"] = markers
+                    from fmdb.assess.lab_synthesis import synthesise_labs  # type: ignore
+                    data["lab_synthesis"] = synthesise_labs(markers, _ctx)
                     # Pick the newest date across all labs as the marker date
                     all_dates = sorted(
                         [lv.get("date_drawn") or "" for lv in all_labs],

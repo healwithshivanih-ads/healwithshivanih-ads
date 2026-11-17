@@ -1,0 +1,27 @@
+id: katz-2000-quicki
+title: 'Quantitative insulin sensitivity check index: a simple, accurate method for assessing insulin
+  sensitivity in humans'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Katz A
+- Nambi SS
+- Mather K
+- Baron AD
+- Follmann DA
+- Sullivan G
+- Quon MJ
+year: 2000
+publisher: Journal of Clinical Endocrinology and Metabolism 85(7):2402-2410
+url: https://pubmed.ncbi.nlm.nih.gov/10902785/
+doi: 10.1210/jcem.85.7.6661
+notes: 'Defines QUICKI = 1 / (log fasting insulin + log fasting glucose) and validates it against the
+  glucose clamp (r=0.78) in lean, obese and type 2 diabetic adults. Lower QUICKI = more insulin resistant.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

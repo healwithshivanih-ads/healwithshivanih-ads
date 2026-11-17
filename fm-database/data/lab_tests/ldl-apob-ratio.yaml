@@ -1,0 +1,47 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: ldl-apob-ratio
+display_name: LDL-C/ApoB ratio
+full_name: LDL Cholesterol to Apolipoprotein B Ratio
+aliases:
+- ldl/apob
+- ldl-c/apob
+- ldl apob ratio
+- ldl-c/apob ratio
+- ldl cholesterol apob ratio
+units: ratio
+sample_type: blood (calculated)
+conventional_low: 1.2
+fm_optimal_low: 1.2
+interpretation_low: |
+  Cholesterol per ApoB particle (both mg/dL). Every LDL particle carries
+  one ApoB, so a low ratio means many small particles each carrying little
+  cholesterol — the small dense LDL pattern.
+
+    - 1.2 or more: normal cholesterol load per particle
+    - under 1.2: suggests small dense LDL; follow ApoB, not LDL-C
+
+  A surrogate: TG/HDL predicts small dense LDL at least as well, so the
+  app reads the two together.
+when_to_order: |
+  Needs ApoB on the panel (Aarogyam F Pro includes it).
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-risk-assessment
+linked_to_mechanisms:
+- small-dense-ldl-atherogenesis
+- apob-atherogenic-particle-burden
+sources:
+- id: king-2011-ldl-apob-ratio-pattern-b
+  location: Abstract
+- id: sniderman-2019-apob-narrative-review
+  location: Abstract
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: LDL 110, ApoB 85. 110 / 85 = 1.29 — normal. ApoB in g/L
+  (0.85) is converted to mg/dL by the app.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

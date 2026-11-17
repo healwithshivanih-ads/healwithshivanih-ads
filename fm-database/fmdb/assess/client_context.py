@@ -200,6 +200,29 @@ def _diabetes_record(c: dict) -> str | None:
     return None
 
 
+def _latest_pretest(c: dict) -> tuple[dict | None, str | None]:
+    """(pretest block, its draw date) for the LATEST lab draw on file.
+
+    Pre-test answers (illness, paracetamol, exercise, biotin, ...) describe one
+    draw; an older draw's answers never carry to a newer one. So find the
+    latest dated snapshot that holds lab values and return its `pretest` — or
+    None when that draw has no answers (same-date snapshots are merged: a CBC
+    and a biochemistry report from one morning share the answers)."""
+    latest: str | None = None
+    for snap in c.get("health_snapshots") or []:
+        if isinstance(snap, dict) and snap.get("lab_values"):
+            d = _iso(snap.get("date"))
+            if d and (latest is None or d > latest):
+                latest = d
+    if latest is None:
+        return None, None
+    for snap in c.get("health_snapshots") or []:
+        if (isinstance(snap, dict) and _iso(snap.get("date")) == latest
+                and isinstance(snap.get("pretest"), dict)):
+            return dict(snap["pretest"]), latest
+    return None, latest
+
+
 def lab_client_context(client: Any, today: date | None = None) -> dict:
     """The client facts `compute_ratios` uses for its derived indices.
 
@@ -217,6 +240,7 @@ def lab_client_context(client: Any, today: date | None = None) -> dict:
     waist, waist_d, waist_in = _latest_field(c, "waist_cm")
     bmi = round(weight / (height / 100) ** 2, 1) if (height and weight) else None
     dm = _diabetes_record(c)
+    pretest, pretest_date = _latest_pretest(c)
     return {
         "age": age,
         "age_source": age_source,
@@ -231,4 +255,7 @@ def lab_client_context(client: Any, today: date | None = None) -> dict:
         "waist_from_inches": waist_in,
         "diabetes": dm is not None,
         "diabetes_record": dm,
+        # Pre-test answers for the latest lab draw (see fmdb/assess/lab_confounders.py)
+        "pretest": pretest,
+        "pretest_date": pretest_date if pretest else None,
     }

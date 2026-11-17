@@ -201,6 +201,38 @@ def _range_upper(rng: str | None) -> float | None:
     return None
 
 
+def _parse_ref_range(rng: object) -> tuple[float | None, float | None]:
+    """(low, high) from a single printed range: "5 - 60", "0.6 to 1.1",
+    "< 100", "Up to 95", "> 40". Anything with more than one range in it
+    ("Males: 0.7-1.3; Females: 0.6-1.1", age bands) returns (None, None) — a
+    guess there would false-flag."""
+    s = str(rng or "").lower().replace(",", "").strip()
+    if not s:
+        return None, None
+    nums = re.findall(r"\d+(?:\.\d+)?", s)
+    if not nums or len(nums) > 2 or ";" in s or re.search(r"male|female|year|\by\b|age", s):
+        return None, None
+    m = re.search(r"(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)?)", s)
+    if m and len(nums) == 2:
+        lo, hi = float(m.group(1)), float(m.group(2))
+        return (lo, hi) if lo <= hi else (None, None)
+    if len(nums) == 1:
+        v = float(nums[0])
+        if re.search(r"<|≤|up\s*to|upto|less than|below", s):
+            return None, v
+        if re.search(r">|≥|more than|above|greater", s):
+            return v, None
+    return None, None
+
+
+def _range_flag(num: float, lo: float | None, hi: float | None) -> str:
+    if lo is not None and num < lo:
+        return "low"
+    if hi is not None and num > hi:
+        return "high"
+    return "normal"
+
+
 PANEL_LIVER_METABOLIC = "Liver & Metabolic Risk"
 
 # Read-with-care notes appended to every Liver & Metabolic Risk interpretation.
@@ -444,6 +476,609 @@ def _add_liver_metabolic_indices(
             f"FIB-4 {fib4:.2f} (age {age} x AST {ast} / (platelets {plt:g} x "
             f"sqrt ALT {alt})){note}: {msg}. A score, not a diagnosis. {_ENZYME_CAVEAT}",
             P, computed=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# Holistic read (Nov 2026): inflammation indices, lipid extras, insulin
+# sensitivity, thyroid structure parameters, minerals and PhenoAge. Every one
+# is deterministic arithmetic, computed only when all its inputs are present.
+# ══════════════════════════════════════════════════════════════════════════════
+
+PANEL_INFLAM = "Inflammation & Immune"
+PANEL_MINERALS = "Minerals & Electrolytes"
+PANEL_BIOAGE = "Biological Age"
+
+_INFLAM_CAVEAT = (
+    "Read with care: any infection, a cold, a vaccine or an injury in the 3 weeks "
+    "before the draw raises these counts; repeat when well before acting on them."
+)
+
+
+def _num_of(lab: dict | None) -> float | None:
+    if not lab:
+        return None
+    try:
+        return float(re.sub(r"[^0-9.\-]", "", str(lab.get("value", ""))))
+    except (TypeError, ValueError):
+        return None
+
+
+def _peek(labs: list[dict], *patterns: str) -> tuple[float | None, dict | None]:
+    """Like `_find` (most recent matching value) but does NOT claim the row, so
+    the passthrough still shows it with its catalogue interpretation. Used for
+    inputs to the new indices that have no coded handler of their own."""
+    best_v: float | None = None
+    best_lab: dict | None = None
+    best_ts = -1.0
+    for lab in labs:
+        if not isinstance(lab, dict):
+            continue
+        n = str(lab.get("test_name", "")).lower().replace(".", "")
+        if not any(re.search(p, n) for p in patterns):
+            continue
+        v = _num_of(lab)
+        if v is None:
+            continue
+        ts = _parse_lab_date(lab.get("date_drawn"))
+        if best_v is None or ts > best_ts:
+            best_v, best_lab, best_ts = v, lab, ts
+    return best_v, best_lab
+
+
+_DIFF_PATS = {
+    "neutrophil": r"neutrophil|\banc\b|polymorph",
+    "lymphocyte": r"lymphocyte",
+    "monocyte": r"monocyte",
+    "eosinophil": r"eosinophil|\baec\b",
+    "basophil": r"basophil",
+}
+_DIFF_EXCLUDE = re.compile(r"ratio|/|:|atypical|reactive|immature|large unstained|variant")
+# A unit that says the count is in thousands per microlitre (= 10^9/L).
+_THOUSANDS_UNIT = re.compile(r"10\s*[\^*e]?\s*[3³9]|x\s*10|thou|k\s*/|/\s*nl|10\^9|giga", re.I)
+_CELLS_UNIT = re.compile(r"cumm|cells|/\s*(u|µ|μ)l|/\s*mm", re.I)
+
+
+def _differential(labs: list[dict], cell: str) -> tuple[float | None, float | None]:
+    """(absolute count in 10^9/L, percent) for one white-cell type, latest draw.
+
+    Labs print both a % row and an absolute row ("Neutrophils 58 %" and
+    "Neutrophils - Absolute Count 3.6 X 10³/µL"). A row is a percent when its
+    unit or name says %; absolute when its name says absolute/count or its unit
+    is a count unit. Absolute values in cells/µL (3600) are scaled to 10^9/L
+    (3.6). Does not claim the rows."""
+    pat = _DIFF_PATS[cell]
+    best: dict[str, tuple[float | None, float]] = {"abs": (None, -1.0), "pct": (None, -1.0)}
+    for lab in labs:
+        if not isinstance(lab, dict):
+            continue
+        n = str(lab.get("test_name", "")).lower().replace(".", "")
+        if not re.search(pat, n) or _DIFF_EXCLUDE.search(n):
+            continue
+        v = _num_of(lab)
+        if v is None:
+            continue
+        unit = str(lab.get("unit") or "").lower()
+        is_pct = "%" in unit or "%" in n or "percent" in n
+        is_abs = bool(re.search(r"absolute|\babs\b|count|#", n)) or bool(
+            _THOUSANDS_UNIT.search(unit) or _CELLS_UNIT.search(unit))
+        if is_pct and is_abs:
+            is_abs = "%" not in unit
+            is_pct = not is_abs
+        if not (is_pct or is_abs):
+            is_abs = v < 10
+            is_pct = not is_abs
+        kind = "abs" if is_abs else "pct"
+        if kind == "abs":
+            if _THOUSANDS_UNIT.search(unit):
+                pass
+            elif _CELLS_UNIT.search(unit) or v >= 50:
+                v = v / 1000.0
+        ts = _parse_lab_date(lab.get("date_drawn"))
+        if best[kind][0] is None or ts > best[kind][1]:
+            best[kind] = (v, ts)
+    return best["abs"][0], best["pct"][0]
+
+
+def _rdw_cv(labs: list[dict]) -> float | None:
+    """RDW-CV (%) only. Many reports print RDW-SD (fL, ~39-46) as well; read
+    as RDW-CV it would always look 'high' (>14.5)."""
+    best_v: float | None = None
+    best_ts = -1.0
+    for lab in labs:
+        if not isinstance(lab, dict):
+            continue
+        n = str(lab.get("test_name", "")).lower().replace(".", "")
+        if not re.search(r"\brdw\b|red.cell.distribution|red.cell.width", n):
+            continue
+        v = _num_of(lab)
+        unit = str(lab.get("unit") or "").lower()
+        if v is None or re.search(r"\bsd\b|rdw.?sd", n) or "fl" in unit or v > 25:
+            continue
+        ts = _parse_lab_date(lab.get("date_drawn"))
+        if best_v is None or ts > best_ts:
+            best_v, best_ts = v, ts
+    return best_v
+
+
+def _rdw_sd(labs: list[dict]) -> float | None:
+    best_v: float | None = None
+    best_ts = -1.0
+    for lab in labs:
+        if not isinstance(lab, dict):
+            continue
+        n = str(lab.get("test_name", "")).lower().replace(".", "")
+        if not re.search(r"\brdw\b|red.cell.distribution|red.cell.width", n):
+            continue
+        v = _num_of(lab)
+        unit = str(lab.get("unit") or "").lower()
+        if v is None or not (re.search(r"\bsd\b|rdw.?sd", n) or "fl" in unit or v > 25):
+            continue
+        ts = _parse_lab_date(lab.get("date_drawn"))
+        if best_v is None or ts > best_ts:
+            best_v, best_ts = v, ts
+    return best_v
+
+
+def _albumin_g_dl(albumin: float | None) -> float | None:
+    """Albumin in g/dL; a value over 10 can only be g/L."""
+    if not albumin or albumin <= 0:
+        return None
+    return albumin / 10.0 if albumin > 10 else albumin
+
+
+def _add_inflammation_indices(
+    add: Any, *,
+    platelets: float | None,
+    neut_abs: float | None,
+    lymph_abs: float | None,
+    mono_abs: float | None,
+    crp_mg_l: float | None,
+    crp_label: str,
+    albumin_g_dl: float | None,
+    derived: set[str],
+) -> None:
+    """SII, PLR, MLR (absolute counts, 10^9/L) and the CRP/albumin ratio."""
+    P = PANEL_INFLAM
+    src = ""
+    if derived:
+        src = (" Absolute " + "/".join(sorted(derived))
+               + " worked out from the % and the total WBC.")
+
+    if platelets and neut_abs and lymph_abs and lymph_abs > 0:
+        sii = platelets * neut_abs / lymph_abs
+        flag = "high" if sii > 800 else ("suboptimal" if sii >= 500 else "optimal")
+        msg = (
+            "High — platelets and neutrophils up while lymphocytes are down: an active, "
+            "body-wide inflammatory load; find the driver (infection, gut, visceral fat, "
+            "sleep, stress)"
+            if sii > 800 else
+            "Borderline — a mild inflammatory tilt; watch the trend"
+            if sii >= 500 else
+            "Low inflammatory signal"
+        )
+        add("Systemic immune-inflammation index (SII)", sii, "x10^9/L",
+            "<500 FM working range; 500-800 borderline; >800 high (no agreed cut-off; "
+            "rises with age)",
+            flag,
+            f"SII {sii:.0f} (platelets {platelets:g} x neutrophils {neut_abs:.2f} / "
+            f"lymphocytes {lymph_abs:.2f}): {msg}. Population adults 45+ averaged 459 "
+            f"(95% range 189-1168).{src} {_INFLAM_CAVEAT}",
+            P, computed=True)
+
+    if platelets and lymph_abs and lymph_abs > 0:
+        plr = platelets / lymph_abs
+        flag = "high" if plr > 200 else ("suboptimal" if plr >= 150 else "optimal")
+        msg = (
+            "High — platelet-driven inflammation or low lymphocytes (chronic stress, "
+            "infection, iron deficiency can all push platelets up)"
+            if plr > 200 else
+            "Borderline — watch the trend"
+            if plr >= 150 else
+            "Balanced"
+        )
+        add("Platelet/Lymphocyte ratio (PLR)", plr, "",
+            "<150 FM working range; 150-200 borderline; >200 high",
+            flag,
+            f"PLR {plr:.0f} (platelets {platelets:g} / lymphocytes {lymph_abs:.2f}): "
+            f"{msg}. Population adults 45+ averaged 120 (95% range 61-239).{src} "
+            f"{_INFLAM_CAVEAT}",
+            P, computed=True)
+
+    if mono_abs is not None and lymph_abs and lymph_abs > 0:
+        mlr = mono_abs / lymph_abs
+        flag = "high" if mlr > 0.35 else ("suboptimal" if mlr >= 0.25 else "optimal")
+        msg = (
+            "High — monocyte-led (innate) inflammation relative to lymphocytes; seen with "
+            "chronic infection, visceral fat and atherosclerosis risk"
+            if mlr > 0.35 else
+            "Borderline — watch the trend"
+            if mlr >= 0.25 else
+            "Balanced"
+        )
+        add("Monocyte/Lymphocyte ratio (MLR)", mlr, "",
+            "<0.25 FM working range; 0.25-0.35 borderline; >0.35 high (no agreed cut-off)",
+            flag,
+            f"MLR {mlr:.2f} (monocytes {mono_abs:.2f} / lymphocytes {lymph_abs:.2f}): "
+            f"{msg}.{src} {_INFLAM_CAVEAT}",
+            P, computed=True)
+
+    if crp_mg_l is not None and albumin_g_dl:
+        car = crp_mg_l / (albumin_g_dl * 10.0)
+        flag = "high" if car > 0.075 else ("suboptimal" if car >= 0.025 else "optimal")
+        msg = (
+            "High — inflammation is outpacing the liver's protein output; find and "
+            "treat the driver"
+            if car > 0.075 else
+            "Borderline — low-grade inflammation, or albumin on the low side"
+            if car >= 0.025 else
+            "Low — little inflammation relative to protein reserve"
+        )
+        add("CRP/Albumin ratio", car, "",
+            "<0.025 FM working range; 0.025-0.075 borderline; >0.075 high "
+            "(CRP mg/L / albumin g/L)",
+            flag,
+            f"CRP/albumin {car:.3f} ({crp_label} {crp_mg_l:g} mg/L / albumin "
+            f"{albumin_g_dl * 10:.1f} g/L): {msg}. Reads CRP against albumin, which "
+            f"falls as inflammation rises, so it is steadier than CRP alone. The bands "
+            f"mirror the hsCRP 1 and 3 mg/L lines at a normal albumin; in hospital "
+            f"admissions a ratio above 2 predicted mortality. {_INFLAM_CAVEAT}",
+            P, computed=True)
+
+
+def _mg_dl_lipid(v: float | None) -> float | None:
+    """Cholesterol fractions in mg/dL; a value under 20 can only be mmol/L."""
+    if v is None or v <= 0:
+        return None
+    return v * 38.67 if v < 20 else v
+
+
+def _add_lipid_extras(
+    add: Any, *,
+    tc: float | None, ldl: float | None, hdl: float | None,
+    tg: float | None, apob: float | None, ldl_direct: bool,
+) -> None:
+    """Remnant cholesterol and the LDL-C/ApoB ratio."""
+    P = "Cardiovascular & Lipids"
+    tc_m, ldl_m, hdl_m = _mg_dl_lipid(tc), _mg_dl_lipid(ldl), _mg_dl_lipid(hdl)
+    if tc_m and ldl_m and hdl_m:
+        rem = tc_m - hdl_m - ldl_m
+        if rem >= 0:
+            flag = "high" if rem > 30 else ("suboptimal" if rem >= 20 else "optimal")
+            msg = (
+                "High — cholesterol carried in triglyceride-rich remnant particles; a "
+                "risk on top of LDL that tracks insulin resistance and high TG"
+                if rem > 30 else
+                "Borderline — tighten carb quality, alcohol and TG"
+                if rem >= 20 else
+                "Low remnant burden"
+            )
+            if ldl_direct:
+                how = "LDL was measured directly, so this is a real remnant estimate."
+            else:
+                how = ("If this report CALCULATED LDL (Friedewald), remnant is just "
+                       "TG/5 and adds nothing new — a direct LDL makes it meaningful.")
+            add("Remnant cholesterol", rem, "mg/dL",
+                "<20 FM optimal; 20-30 borderline; >30 high (TC - HDL - LDL)",
+                flag,
+                f"Remnant cholesterol {rem:.0f} mg/dL (TC {tc_m:.0f} - HDL {hdl_m:.0f} - "
+                f"LDL {ldl_m:.0f}): {msg}. Each 39 mg/dL rise roughly tripled heart-disease "
+                f"risk in Copenhagen genetic data. {how} {_FASTING_CAVEAT}",
+                P, computed=True)
+
+    if ldl_m and apob and apob > 0:
+        apob_m = apob * 100.0 if apob < 3 else apob   # g/L -> mg/dL
+        ratio = ldl_m / apob_m
+        flag = "low" if ratio < 1.2 else "optimal"
+        msg = (
+            "Below 1.2 — each ApoB particle carries little cholesterol, the pattern of "
+            "small dense LDL; particle count (ApoB) is the number to follow, not LDL-C"
+            if ratio < 1.2 else
+            "1.2 or more — LDL particles carry a normal cholesterol load (large, buoyant pattern)"
+        )
+        add("LDL-C/ApoB ratio", ratio, "",
+            ">=1.2 typical; <1.2 suggests small dense LDL",
+            flag,
+            f"LDL-C/ApoB {ratio:.2f} (LDL {ldl_m:.0f} / ApoB {apob_m:.0f} mg/dL): {msg}. "
+            f"A surrogate only — TG/HDL predicts small dense LDL at least as well, so "
+            f"read the two together.",
+            P, computed=True)
+
+
+def _add_insulin_sensitivity(
+    add: Any, *, glucose: float | None, insulin: float | None, tg: float | None,
+) -> None:
+    """QUICKI (Katz 2000) and the McAuley index (McAuley 2001)."""
+    P = "Metabolic & Insulin"
+    glu = _glucose_mg_dl(glucose) if glucose and glucose > 0 else None
+    if glu and insulin and insulin > 0:
+        denom = math.log10(insulin) + math.log10(glu)
+        if denom > 0:
+            q = 1.0 / denom
+            flag = "high" if q < 0.33 else ("suboptimal" if q < 0.35 else "optimal")
+            msg = (
+                "Below 0.33 — insulin resistance (the original study's obese group "
+                "averaged 0.33, type 2 diabetes 0.30)"
+                if q < 0.33 else
+                "0.33-0.35 — reduced insulin sensitivity; worth addressing now"
+                if q < 0.35 else
+                "0.35 or more — good insulin sensitivity (lean adults averaged 0.37)"
+            )
+            add("QUICKI", q, "",
+                ">=0.35 FM optimal; 0.33-0.35 reduced; <0.33 insulin resistance",
+                flag,
+                f"QUICKI {q:.3f} (1 / (log insulin {insulin:g} + log glucose {glu:.0f})): "
+                f"{msg}. Lower means more resistant — the opposite direction to HOMA-IR. "
+                f"{_FASTING_CAVEAT}",
+                P, computed=True)
+
+    tg_mg = _tg_mg_dl(tg) if tg and tg > 0 else None
+    if insulin and insulin > 0 and tg_mg:
+        tg_mmol = tg_mg / 88.57
+        mca = math.exp(2.63 - 0.28 * math.log(insulin) - 0.31 * math.log(tg_mmol))
+        flag = "high" if mca < 5.8 else ("suboptimal" if mca < 7.0 else "optimal")
+        msg = (
+            "Below 5.8 — insulin resistance (the study's screening cut-off)"
+            if mca < 5.8 else
+            "5.8-7.0 — near the line; early insulin-resistance signal"
+            if mca < 7.0 else
+            "Above 7 — insulin sensitive"
+        )
+        add("McAuley index", mca, "",
+            ">7 FM optimal; 5.8-7 borderline; <5.8 insulin resistance",
+            flag,
+            f"McAuley {mca:.2f} (exp(2.63 - 0.28 ln insulin {insulin:g} - 0.31 ln TG "
+            f"{tg_mmol:.2f} mmol/L)): {msg}. Uses insulin and TG, so it catches IR "
+            f"with a normal glucose. Lower means more resistant. {_FASTING_CAVEAT}",
+            P, computed=True)
+
+
+def _thyroid_si(ft4: float, ft3: float) -> tuple[float, float]:
+    """(FT4 pmol/L, FT3 pmol/L). FT4 under 5 means ng/dL and FT3 pg/mL, the
+    units most Indian labs print (same rule as the T3/T4 conversion ratio)."""
+    if ft4 < 5:
+        return ft4 * 12.87, ft3 * 1.536
+    return ft4, ft3
+
+
+_BIOTIN_NOTE = ("Biotin (hair/skin/nail supplements, B-complex) in the 3 days before "
+                "the draw distorts these immunoassays — TSH can read falsely low and "
+                "FT4/FT3 falsely high.")
+
+
+def _add_thyroid_structure(
+    add: Any, *, tsh: float | None, ft4: float | None, ft3: float | None,
+) -> None:
+    """SPINA-GD (deiodinase activity) and Jostel's TSH index."""
+    P = "Thyroid"
+    if ft4 and ft3 and ft4 > 0 and ft3 > 0:
+        ft4_p, ft3_p = _thyroid_si(ft4, ft3)
+        # GD = beta31 (KM1 + FT4) (1 + K30 TBG) FT3 / (alpha31 FT4), mol/L
+        # (Dietrich). (1 + K30 TBG) turns free T3 into total T3 at a standard
+        # TBG of 300 nmol/L (K30 = 2e9 L/mol) — about 601.
+        b31, km1, a31, k30, tbg = 8e-6, 5e-7, 0.026, 2e9, 3e-7
+        ft4_m, ft3_m = ft4_p * 1e-12, ft3_p * 1e-12
+        gd = b31 * (km1 + ft4_m) * (1 + k30 * tbg) * ft3_m / (a31 * ft4_m) * 1e9   # nmol/s
+        flag = "low" if gd < 20 else ("high" if gd > 40 else "optimal")
+        msg = (
+            "Low — the body converts little T4 to active T3: look at selenium, zinc, "
+            "iron, inflammation, cortisol, calorie restriction and liver health"
+            if gd < 20 else
+            "High — conversion is running hot; seen early in thyroid under-function "
+            "(compensation), with iodine shortage or on T3 medication"
+            if gd > 40 else
+            "Normal T4-to-T3 conversion"
+        )
+        add("SPINA-GD (deiodinase activity)", gd, "nmol/s",
+            "20-40 nmol/s",
+            flag,
+            f"SPINA-GD {gd:.1f} nmol/s (from FT4 {ft4_p:.1f} and FT3 {ft3_p:.2f} pmol/L): "
+            f"{msg}. A modelled estimate of total peripheral conversion, steadier than "
+            f"the simple FT3/FT4 ratio. {_BIOTIN_NOTE}",
+            P, computed=True)
+
+    if tsh and tsh > 0 and ft4 and ft4 > 0:
+        ft4_p = ft4 * 12.87 if ft4 < 5 else ft4
+        tshi = math.log(tsh) + 0.1345 * ft4_p
+        stshi = (tshi - 2.7) / 0.676
+        flag = "low" if tshi < 1.3 else ("high" if tshi > 4.1 else "optimal")
+        msg = (
+            "Low — the pituitary is under-driving the thyroid for this FT4 (central "
+            "pattern); worth raising with the doctor"
+            if tshi < 1.3 else
+            "High — TSH is high for this FT4: the gland needs a hard push "
+            "(primary under-function)"
+            if tshi > 4.1 else
+            "TSH is in proportion to FT4"
+        )
+        add("Jostel's TSH index (TSHI)", tshi, "",
+            "1.3-4.1 (standardised sTSHI -2 to +2)",
+            flag,
+            f"TSHI {tshi:.2f} (ln TSH {tsh:g} + 0.1345 x FT4 {ft4_p:.1f} pmol/L; "
+            f"sTSHI {stshi:+.1f}): {msg}. {_BIOTIN_NOTE}",
+            P, computed=True)
+
+
+def _mg_dl_calcium(v: float | None) -> float | None:
+    if v is None or v <= 0:
+        return None
+    return v * 4.008 if v < 4 else v
+
+
+def _mg_dl_phosphorus(v: float | None) -> float | None:
+    if v is None or v <= 0:
+        return None
+    return v * 3.097 if v < 1.8 else v
+
+
+def _ug_dl_trace(v: float | None, factor: float) -> float | None:
+    """Zinc / copper in µg/dL; a value under 40 is µmol/L (x factor)."""
+    if v is None or v <= 0:
+        return None
+    return v * factor if v < 40 else v
+
+
+def _add_minerals(
+    add: Any, *,
+    calcium: float | None, albumin_g_dl: float | None, phosphorus: float | None,
+    sodium: float | None, potassium: float | None,
+    zinc: float | None, copper: float | None,
+) -> None:
+    """Albumin-corrected calcium, Ca/P, Na/K and Zn/Cu."""
+    P = PANEL_MINERALS
+    ca = _mg_dl_calcium(calcium)
+    if ca and albumin_g_dl:
+        cca = ca + 0.8 * (4.0 - albumin_g_dl)
+        if cca < 8.5:
+            flag, msg = "low", "Low — check vitamin D, magnesium, PTH and kidney function"
+        elif cca > 10.2:
+            flag, msg = "high", ("High — check PTH, vitamin D dose (excess raises calcium) "
+                                 "and kidney function with the doctor")
+        elif 9.0 <= cca <= 10.0:
+            flag, msg = "optimal", "Normal once albumin is accounted for"
+        else:
+            flag, msg = "suboptimal", "Edge of the range once albumin is accounted for"
+        add("Calcium (albumin-corrected)", cca, "mg/dL",
+            "9.0-10.0 FM optimal; lab 8.5-10.2",
+            flag,
+            f"Corrected calcium {cca:.2f} (calcium {ca:.2f} + 0.8 x (4.0 - albumin "
+            f"{albumin_g_dl:.2f})): {msg}. About half of blood calcium rides on "
+            f"albumin, so a low albumin makes total calcium look falsely low. Ionised "
+            f"calcium is the direct measure if this is borderline.",
+            P, computed=True)
+
+    p = _mg_dl_phosphorus(phosphorus)
+    if ca and p:
+        cap = ca / p
+        flag = "low" if cap < 2.3 else ("high" if cap > 3.3 else "optimal")
+        msg = (
+            "Low — phosphorus high relative to calcium: high-phosphate diet (colas, "
+            "processed food), low calcium intake or kidney strain"
+            if cap < 2.3 else
+            "High — phosphorus low relative to calcium: low vitamin D, low protein "
+            "intake, or parathyroid over-activity"
+            if cap > 3.3 else
+            "Balanced"
+        )
+        add("Calcium/Phosphorus ratio", cap, "",
+            "2.3-3.3 FM working range (mg/dL ÷ mg/dL)",
+            flag,
+            f"Ca/P {cap:.2f} (calcium {ca:.2f} / phosphorus {p:.2f} mg/dL): {msg}. An "
+            f"FM working range, not a validated cut-off — read with vitamin D and PTH.",
+            P, computed=True)
+
+    if sodium and potassium and potassium > 0:
+        nak = sodium / potassium
+        if nak < 27 or nak > 40:
+            flag = "low" if nak < 27 else "high"
+        elif nak < 30 or nak > 36:
+            flag = "suboptimal"
+        else:
+            flag = "optimal"
+        msg = (
+            "Low — potassium high relative to sodium: in FM reading, an adrenal "
+            "(aldosterone) under-drive pattern; also dehydration-free causes such as "
+            "potassium-sparing drugs or a haemolysed sample"
+            if nak < 30 else
+            "High — sodium high relative to potassium: acute stress / high "
+            "aldosterone pattern, low potassium intake, or diuretics"
+            if nak > 36 else
+            "Balanced"
+        )
+        add("Sodium/Potassium ratio", nak, "",
+            "30-36 FM working range",
+            flag,
+            f"Na/K {nak:.1f} (sodium {sodium:g} / potassium {potassium:g}): {msg}. An "
+            f"FM heuristic without outcome data — never a diagnosis; a haemolysed "
+            f"sample falsely raises potassium.",
+            P, computed=True)
+
+    zn = _ug_dl_trace(zinc, 6.54)
+    cu = _ug_dl_trace(copper, 6.355)
+    if zn and cu:
+        zncu = zn / cu
+        if zncu < 0.7:
+            flag, msg = "low", ("Copper-dominant — inflammation, oestrogen (OCP/HRT) or "
+                                "low zinc pushes copper up relative to zinc")
+        elif zncu < 0.85:
+            flag, msg = "suboptimal", "Leaning copper-dominant"
+        elif zncu <= 1.25:
+            flag, msg = "optimal", "Balanced"
+        elif zncu <= 1.5:
+            flag, msg = "suboptimal", "Leaning zinc-dominant"
+        else:
+            flag, msg = "high", ("Zinc-dominant — long high-dose zinc can deplete copper; "
+                                 "check for low copper (anaemia, low WBC, neuropathy)")
+        add("Zinc/Copper ratio", zncu, "",
+            "0.85-1.25 FM working range (Cu/Zn ~0.8-1.2)",
+            flag,
+            f"Zn/Cu {zncu:.2f} (zinc {zn:.0f} / copper {cu:.0f} µg/dL; Cu/Zn "
+            f"{cu / zn:.2f}): {msg}. A rising Cu/Zn ratio tracks inflammation and "
+            f"ageing in European cohorts.",
+            P, computed=True)
+
+
+def _creatinine_umol(v: float) -> float:
+    """Creatinine in µmol/L; a value under 20 is mg/dL (x 88.4)."""
+    return v * 88.4 if v < 20 else v
+
+
+def phenoage(
+    *, albumin_g_dl: float, creatinine: float, glucose: float, crp_mg_l: float,
+    lymph_pct: float, mcv: float, rdw_cv: float, alp: float, wbc: float, age: float,
+) -> float:
+    """Levine 2018 Phenotypic Age in years. Inputs in the units Indian labs
+    print (albumin g/dL, creatinine mg/dL, glucose mg/dL, CRP mg/L, WBC
+    10^3/µL); converted here to the model's units (g/L, µmol/L, mmol/L,
+    ln CRP mg/dL)."""
+    crp_dl = max(crp_mg_l / 10.0, 0.01)
+    xb = (-19.907
+          - 0.0336 * albumin_g_dl * 10.0
+          + 0.0095 * _creatinine_umol(creatinine)
+          + 0.1953 * (_glucose_mg_dl(glucose) / 18.016)
+          + 0.0954 * math.log(crp_dl)
+          - 0.0120 * lymph_pct
+          + 0.0268 * mcv
+          + 0.3306 * rdw_cv
+          + 0.00188 * alp
+          + 0.0554 * wbc
+          + 0.0804 * age)
+    g = 0.0076927
+    m = 1 - math.exp(-math.exp(xb) * (math.exp(120 * g) - 1) / g)
+    m = min(max(m, 1e-12), 1 - 1e-12)
+    return 141.50225 + math.log(-0.00553 * math.log(1 - m)) / 0.090165
+
+
+def _add_phenoage(add: Any, ctx: dict[str, Any], **inp: Any) -> None:
+    age = ctx.get("age")
+    if not age or any(inp.get(k) in (None, 0) for k in (
+            "albumin_g_dl", "creatinine", "glucose", "lymph_pct", "mcv", "rdw_cv",
+            "alp", "wbc")) or inp.get("crp_mg_l") is None:
+        return
+    try:
+        pa = phenoage(age=age, **inp)
+    except (ValueError, OverflowError):
+        return
+    accel = pa - age
+    flag = "high" if accel > 3 else ("suboptimal" if accel > 0 else "optimal")
+    msg = (
+        f"{accel:+.1f} years vs calendar age — the blood is reading older; the inputs "
+        f"pulling it up are the ones to work on"
+        if accel > 3 else
+        f"{accel:+.1f} years vs calendar age — close to calendar age"
+        if accel > 0 else
+        f"{accel:+.1f} years vs calendar age — reading younger"
+    )
+    note = (" Age estimated from the age band — add a date of birth for an exact score."
+            if ctx.get("age_source") == "age_band" else "")
+    add("PhenoAge (research score)", pa, "years",
+        "Research score — compare with calendar age and track the trend",
+        flag,
+        f"PhenoAge {pa:.1f} at calendar age {age}: {msg}. Levine 2018 blood-based "
+        f"phenotypic age from albumin, creatinine, glucose, CRP, lymphocyte %, MCV, "
+        f"RDW, ALP and WBC. A research score shown as a trend between reports, not "
+        f"a diagnosis. An infection or a recent hard workout moves CRP, WBC and "
+        f"lymphocytes and so this score.{note}",
+        PANEL_BIOAGE, computed=True)
 
 
 def compute_ratios(
@@ -1106,8 +1741,13 @@ def compute_ratios(
         r"\btibc\b|total iron binding|iron binding capacity")
     mcv = _find(extracted_labs,
         r"\bmcv\b|mean corpuscular volume|mean cell volume")
-    rdw = _find(extracted_labs,
+    # Claims every RDW row (CV and SD), but reads only RDW-CV (%) as "RDW":
+    # many reports also print RDW-SD in fL (~39-46), which read as CV always
+    # looked "high". RDW-SD is surfaced as its own marker below.
+    _find(extracted_labs,
         r"\brdw\b|red.cell.distribution|red.cell.width|rdw[ -]?cv|rdw[ -]?sd")
+    rdw = _rdw_cv(extracted_labs)
+    rdw_sd = _rdw_sd(extracted_labs)
     mch = _find(extracted_labs,
         r"\bmch\b|mean corpuscular hemoglobin|mean cell hemoglobin")
     wbc = _find(extracted_labs,
@@ -1204,8 +1844,8 @@ def compute_ratios(
     if platelets is not None:
         # Indian labs report platelets in cells/cumm (e.g. 263000); FM thresholds
         # are in 10³/µL (e.g. 263). Auto-normalize when the value is in cells/cumm.
-        if platelets > 3000:
-            platelets = platelets / 1000.0
+        # Lakhs/cumm (2.63) too — the same rule FIB-4 uses.
+        platelets = _platelets_10e9(platelets)
         flag = "low" if platelets < 150 else ("high" if platelets > 450 else "optimal")
         add("Platelets", platelets, "10³/μL",
             "150–450 normal; >450 often reactive (inflammation/iron def)",
@@ -1213,7 +1853,36 @@ def compute_ratios(
             f"Platelets {platelets}: {'Low — viral, autoimmune, B12/folate, or splenic sequestration' if platelets<150 else 'High — often reactive: chronic inflammation or iron deficiency (most common); persistent >450 needs haematology' if platelets>450 else 'Normal'}",
             PANEL_IRON)
 
+    if rdw_sd is not None:
+        flag = "high" if rdw_sd > 46 else ("low" if rdw_sd < 39 else "optimal")
+        add("RDW-SD", rdw_sd, "fL",
+            "39-46 fL",
+            flag,
+            f"RDW-SD {rdw_sd}: {'Raised — mixed red-cell sizes; read with RDW-CV and MCV (iron, B12 or folate shortfall)' if rdw_sd > 46 else 'Low-normal variability' if rdw_sd < 39 else 'Normal red-cell size spread'}",
+            PANEL_IRON)
+
+    # White-cell differential: absolute counts (10^9/L) and % kept apart, so a
+    # ratio never divides a % by an absolute count. Absolute counts missing
+    # from the report are worked out from % x WBC.
+    _diff_derived: set[str] = set()
+    _diff: dict[str, tuple[float | None, float | None]] = {}
+    for _cell in ("neutrophil", "lymphocyte", "monocyte", "eosinophil"):
+        _abs, _pct = _differential(extracted_labs, _cell)
+        if _abs is None and _pct is not None and wbc:
+            _abs = _pct / 100.0 * wbc
+            _diff_derived.add(_cell + "s")
+        if _pct is None and _abs is not None and wbc:
+            _pct = _abs / wbc * 100.0
+        _diff[_cell] = (_abs, _pct)
+    neut_abs, neut_pct = _diff["neutrophil"]
+    lymph_abs, lymph_pct = _diff["lymphocyte"]
+    mono_abs, _ = _diff["monocyte"]
+
     # NLR — neutrophil/lymphocyte ratio: chronic inflammation + stress + CV mortality marker
+    if neut_abs is not None and lymph_abs:
+        neutrophils, lymphocytes = neut_abs, lymph_abs
+    elif neut_pct is not None and lymph_pct:
+        neutrophils, lymphocytes = neut_pct, lymph_pct
     if neutrophils is not None and lymphocytes is not None and lymphocytes > 0:
         nlr = neutrophils / lymphocytes
         flag = "high" if nlr > 3.0 else ("suboptimal" if nlr > 2.0 else "optimal")
@@ -1473,12 +2142,38 @@ def compute_ratios(
         PANEL_HORMONES_F)
 
     shbg = _find(extracted_labs, r"\bshbg\b|sex.hormone.binding")
-    add("SHBG", shbg, "nmol/L",
-        "Female ~20–130 nmol/L (assay-dependent)",
-        "normal",
-        f"SHBG {shbg}: low SHBG raises free androgen and is a classic marker of insulin "
-        f"resistance; high SHBG lowers free hormone availability.",
-        PANEL_HORMONES_F)
+    _sex = (client_context or {}).get("sex")
+    if shbg is not None and _sex in ("F", "M"):
+        # Sex-aware reading. The liver makes less SHBG when insulin is high, so a
+        # low SHBG is one of the earliest insulin-resistance / fatty-liver signs.
+        lo, sub, hi = (30, 50, 120) if _sex == "F" else (20, 30, 60)
+        if shbg < lo:
+            flag = "low"
+            msg = ("Low — insulin resistance and liver fat lower SHBG, which raises free "
+                   "androgen (PCOS pattern in women); read with fasting insulin, TyG, ALT")
+        elif shbg < sub:
+            flag = "suboptimal"
+            msg = "Low-normal — an early insulin-resistance signal worth tracking"
+        elif shbg > hi:
+            flag = "high"
+            msg = ("High — oral oestrogen (OCP/HRT), an over-active thyroid, low calorie "
+                   "intake or liver disease raise SHBG and lower free hormone")
+        else:
+            flag = "optimal"
+            msg = "In the healthy range — no insulin-resistance signal from SHBG"
+        add("SHBG", shbg, "nmol/L",
+            (f"Women {lo}-{hi} nmol/L FM working range (<{lo} low)" if _sex == "F"
+             else f"Men {lo}-{hi} nmol/L FM working range (<{lo} low)"),
+            flag,
+            f"SHBG {shbg}: {msg}. Assay-dependent — compare with the report's own range.",
+            PANEL_HORMONES_F)
+    else:
+        add("SHBG", shbg, "nmol/L",
+            "Female ~20–130 nmol/L (assay-dependent)",
+            "normal",
+            f"SHBG {shbg}: low SHBG raises free androgen and is a classic marker of insulin "
+            f"resistance; high SHBG lowers free hormone availability.",
+            PANEL_HORMONES_F)
 
     dheas = _find(extracted_labs, r"\bdhea\b|dhea.s|dheas|dehydro.?epiandrosterone")
     add("DHEA-S", dheas, "µg/dL",
@@ -1571,6 +2266,83 @@ def compute_ratios(
             "Hormones — Female", computed=True)
 
     # ══════════════════════════════════════════════════════════════════════════
+    # 8. HOLISTIC READ — inflammation indices, lipid extras, insulin
+    # sensitivity, thyroid structure, minerals, red-cell screens, PhenoAge.
+    # Inputs without a coded handler are read with _peek, so their own rows
+    # still reach the passthrough below with catalogue interpretation.
+    # ══════════════════════════════════════════════════════════════════════════
+    ctx = client_context or {}
+    # CRP: hsCRP wins; else a standard CRP row.
+    crp_mg_l, crp_label = hscrp, "hsCRP"
+    if crp_mg_l is None:
+        crp_mg_l, _ = _peek(extracted_labs,
+            r"^(?!.*sensitiv)(?!.*\bhs)(?!.*ratio).*(\bcrp\b|c.?reactive)")
+        crp_label = "CRP"
+    alb_g_dl = _albumin_g_dl(albumin)
+
+    _add_inflammation_indices(
+        add, platelets=platelets, neut_abs=neut_abs, lymph_abs=lymph_abs,
+        mono_abs=mono_abs, crp_mg_l=crp_mg_l, crp_label=crp_label,
+        albumin_g_dl=alb_g_dl, derived=_diff_derived,
+    )
+
+    _, _ldl_lab = _peek(extracted_labs,
+        r"^(?!.*ratio)(?!.*[:/])(?!.*\bhdl\b)(?!.*\bvldl\b).*(?:\bldl\b|low.density.lipoprotein)")
+    _add_lipid_extras(
+        add, tc=tc, ldl=ldl, hdl=hdl, tg=tg, apob=apob,
+        ldl_direct=bool(_ldl_lab and re.search(
+            r"direct|measured", str(_ldl_lab.get("test_name", "")), re.I)),
+    )
+
+    _add_insulin_sensitivity(add, glucose=glucose, insulin=insulin, tg=tg)
+    _add_thyroid_structure(add, tsh=tsh, ft4=t4_free, ft3=t3_free)
+
+    calcium, _ = _peek(extracted_labs,
+        r"^(?!.*ioni[sz])(?!.*urin)(?!.*24)(?!.*correct)(?!.*adjust)(?!.*ratio).*\bcalcium\b")
+    phosphorus, _ = _peek(extracted_labs,
+        r"^(?!.*alkaline)(?!.*phosphatase)(?!.*urin)(?!.*ratio).*\b(phosphorus|phosphate)\b")
+    sodium, _ = _peek(extracted_labs, r"^(?!.*urin)(?!.*ratio).*(\bsodium\b|^na\b|\(na\+?\))")
+    potassium, _ = _peek(extracted_labs, r"^(?!.*urin)(?!.*ratio).*(\bpotassium\b|^k\b|\(k\+?\))")
+    copper, _ = _peek(extracted_labs, r"^(?!.*urin)(?!.*ceruloplasmin)(?!.*ratio).*\bcopper\b")
+    _add_minerals(
+        add, calcium=calcium, albumin_g_dl=alb_g_dl, phosphorus=phosphorus,
+        sodium=sodium, potassium=potassium, zinc=zinc, copper=copper,
+    )
+
+    # Mentzer index (MCV / RBC count): only meaningful with small red cells.
+    rbc_count, _ = _peek(extracted_labs,
+        r"^(?!.*magnes)(?!.*folate)(?!.*zinc)(?!.*distribution)(?!.*morpholog)"
+        r"(?!.*nucleated)(?!.*urin)(?!.*indices).*(\brbc\b|red blood cell|erythrocyte)")
+    if rbc_count is not None and rbc_count > 100:
+        rbc_count = rbc_count / 1e6          # cells/µL -> 10^6/µL
+    if mcv is not None and mcv < 80 and rbc_count and rbc_count > 0:
+        mentzer = mcv / rbc_count
+        rdwi = (mcv * rdw / rbc_count) if rdw else None
+        thal = mentzer < 13
+        rdwi_txt = ""
+        if rdwi is not None:
+            rdwi_txt = (f" RDW index {rdwi:.0f} ({'<220 also favours thalassaemia trait' if rdwi < 220 else '>220 favours iron deficiency'}).")
+        add("Mentzer index", mentzer, "",
+            "<13 favours thalassaemia trait; >13 favours iron deficiency (small red cells only)",
+            "suboptimal",
+            f"Mentzer {mentzer:.1f} (MCV {mcv} / RBC {rbc_count:.2f}): "
+            + ("Below 13 — small cells with a HIGH red-cell count: thalassaemia trait is "
+               "more likely than iron deficiency (common in India). Iron will not fix it; "
+               "an HbA2 / Hb electrophoresis test confirms. Check ferritin before any iron."
+               if thal else
+               "Above 13 — small cells with a low red-cell count: iron deficiency is more "
+               "likely; confirm with ferritin and transferrin saturation.")
+            + rdwi_txt + " A screen, not a diagnosis.",
+            PANEL_IRON, computed=True)
+
+    _add_phenoage(
+        add, ctx,
+        albumin_g_dl=alb_g_dl, creatinine=creatinine, glucose=glucose,
+        crp_mg_l=crp_mg_l, lymph_pct=lymph_pct, mcv=mcv, rdw_cv=rdw, alp=alp,
+        wbc=wbc,
+    )
+
+    # ══════════════════════════════════════════════════════════════════════════
     # PASSTHROUGH — never silently drop an extracted lab.
     # Anything not claimed by a coded handler above is resolved against the
     # LabTest catalogue: a catalogue match becomes a properly interpreted
@@ -1608,6 +2380,24 @@ def compute_ratios(
         "fatty-liver-index": "Fatty Liver Index (FLI)",
         "lipid-accumulation-product": "Lipid accumulation product (LAP)",
         "waist-to-height-ratio": "Waist-to-height ratio",
+        # Holistic read (section 8)
+        "systemic-immune-inflammation-index": "Systemic immune-inflammation index (SII)",
+        "platelet-lymphocyte-ratio": "Platelet/Lymphocyte ratio (PLR)",
+        "monocyte-lymphocyte-ratio": "Monocyte/Lymphocyte ratio (MLR)",
+        "crp-albumin-ratio": "CRP/Albumin ratio",
+        "remnant-cholesterol": "Remnant cholesterol",
+        "ldl-apob-ratio": "LDL-C/ApoB ratio",
+        "quicki": "QUICKI",
+        "mcauley-index": "McAuley index",
+        "spina-gd": "SPINA-GD (deiodinase activity)",
+        "jostel-tsh-index": "Jostel's TSH index (TSHI)",
+        "corrected-calcium": "Calcium (albumin-corrected)",
+        "calcium-phosphorus-ratio": "Calcium/Phosphorus ratio",
+        "sodium-potassium-ratio": "Sodium/Potassium ratio",
+        "zinc-copper-ratio": "Zinc/Copper ratio",
+        "phenoage": "PhenoAge (research score)",
+        "mentzer-index": "Mentzer index",
+        "neutrophil-lymphocyte-ratio": "Neutrophil/Lymphocyte ratio (NLR)",
     }
     _coded_equivalent_keys = {
         slug: _norm_marker(name) for slug, name in _coded_equivalent.items()
@@ -1684,33 +2474,70 @@ def compute_ratios(
             num = float(re.sub(r"[^0-9.\-]", "", str(lab.get("value", ""))))
         except (ValueError, TypeError):
             continue  # non-numeric / qualitative result — not a panel marker
+        lab_rng = str(lab.get("reference_range") or "")
+        lab_lo, lab_hi = _parse_ref_range(lab_rng)
         if not lt:
+            # No catalogue entry: still judge it against the lab's own printed
+            # range, so a toxic metal or an uncatalogued enzyme outside range
+            # is not shown as "normal".
+            oflag = _range_flag(num, lab_lo, lab_hi)
             add(nm, num, str(lab.get("unit") or ""),
-                str(lab.get("reference_range") or ""), "normal",
-                "Captured from the lab report — not yet in the lab-test catalogue. "
+                lab_rng, oflag,
+                ("Outside the lab's reference range. " if oflag in ("low", "high") else "")
+                + "Captured from the lab report — not yet in the lab-test catalogue. "
                 "Add a LabTest entry or alias to give it FM interpretation.",
                 "Other")
             continue
+        # Count units: Thyrocare prints absolute counts as "0.15 X 10³/µL";
+        # the catalogue holds them in cells/µL (200-800). Read raw, 0.15 looked
+        # like 0.15 cells/µL. Scale thousands-per-µL to cells/µL first.
+        unit_note = ""
+        cat_unit = str(lt.get("units") or "").lower()
+        if re.search(r"cells\s*/\s*(u|µ|μ)l|/\s*cumm|/\s*mm", cat_unit):
+            lab_unit = str(lab.get("unit") or "")
+            ch_cat = lt.get("conventional_high")
+            if _THOUSANDS_UNIT.search(lab_unit) or (
+                    not _CELLS_UNIT.search(lab_unit) and num < 20
+                    and ch_cat is not None and ch_cat > 100):
+                unit_note = f" (reported as {num:g} x10³/µL; shown in cells/µL)"
+                num = num * 1000.0
+                lab_lo = lab_lo * 1000.0 if lab_lo is not None else None
+                lab_hi = lab_hi * 1000.0 if lab_hi is not None else None
         fl, fh = lt.get("fm_optimal_low"), lt.get("fm_optimal_high")
         cl, ch = lt.get("conventional_low"), lt.get("conventional_high")
         flag = "normal"
-        if fl is not None and fh is not None:
-            if num < fl:
+        range_src = ""
+        if fl is not None or fh is not None:
+            if fl is not None and num < fl:
                 flag = "suboptimal" if (cl is not None and num >= cl) else "low"
-            elif num > fh:
+            elif fh is not None and num > fh:
                 flag = "suboptimal" if (ch is not None and num <= ch) else "high"
             else:
                 flag = "optimal"
+        else:
+            # No FM-optimal range: fall back to the lab's own printed range
+            # (assay-specific), then the catalogue's conventional range. Before
+            # this a lipase of 65.5 against 5-60 read as "normal".
+            if lab_lo is not None or lab_hi is not None:
+                flag = _range_flag(num, lab_lo, lab_hi)
+                range_src = f"the lab's range ({lab_rng.strip()})"
+            elif cl is not None or ch is not None:
+                flag = _range_flag(num, cl, ch)
+                range_src = f"the conventional range ({_rng(cl, ch)})"
         parts = []
         if _rng(fl, fh):
             parts.append(f"FM optimal {_rng(fl, fh)}")
         if _rng(cl, ch):
             parts.append(f"conventional {_rng(cl, ch)}")
-        ref = "; ".join(parts) or str(lab.get("reference_range") or "")
+        ref = "; ".join(parts) or lab_rng
         if flag == "low":
             interp = lt.get("interpretation_low") or ""
+            if range_src:
+                interp = f"Below {range_src}. {interp}".strip()
         elif flag == "high":
             interp = lt.get("interpretation_high") or ""
+            if range_src:
+                interp = f"Above {range_src}. {interp}".strip()
         elif flag == "suboptimal":
             base = (lt.get("interpretation_low") if num < (fl or 0) else lt.get("interpretation_high")) or ""
             interp = ("Within the lab's normal range but outside FM-optimal. " + base).strip()
@@ -1721,10 +2548,15 @@ def compute_ratios(
             # THIS client's labs. State the value is in range instead, and only
             # append the catalogue note if it survives the off-panel scrub.
             _u = (" " + lt.get("units")) if lt.get("units") else ""
-            interp = f"{num}{_u} — within FM-optimal range"
-            if _rng(fl, fh):
-                interp += f" ({_rng(fl, fh)})"
-            interp += "."
+            if flag == "optimal":
+                interp = f"{num:g}{_u} — within FM-optimal range"
+                if _rng(fl, fh):
+                    interp += f" ({_rng(fl, fh)})"
+            elif range_src:
+                interp = f"{num:g}{_u} — within {range_src}; no FM-optimal range on file"
+            else:
+                interp = f"{num:g}{_u} — no reference range on file to judge it against"
+            interp += unit_note + "."
             _note = _scrub_offpanel(lt.get("notes_for_coach"))
             if _note:
                 interp = f"{interp} {_note}"
@@ -1733,8 +2565,25 @@ def compute_ratios(
         interp = _scrub_offpanel(interp)
         if not interp:
             interp = f"{lt.get('display_name') or nm} — {num}{(' ' + lt.get('units')) if lt.get('units') else ''}."
+        if unit_note and unit_note not in interp:
+            interp = f"{interp}{unit_note}"
         add(lt.get("display_name") or nm, num,
             lt.get("units") or str(lab.get("unit") or ""),
             ref, flag, interp, "Additional Markers")
 
+    # Pre-test confounders (illness, paracetamol, exercise, biotin, ...) lower
+    # the confidence of the markers they distort. No answers → no change.
+    # Answers describe ONE draw: apply them only when the newest lab here is
+    # from that draw (a preview of a fresh upload must not inherit the last
+    # report's answers).
+    from fmdb.assess.lab_confounders import apply_confounders
+    if ctx.get("pretest") and ctx.get("pretest_date"):
+        newest = max((_parse_lab_date(l.get("date_drawn")) for l in extracted_labs
+                      if isinstance(l, dict)), default=0.0)
+        if newest and newest != _parse_lab_date(str(ctx["pretest_date"])):
+            ctx = {**ctx, "pretest": None}
+            # Tell synthesise_labs (same context dict) the answers were set aside.
+            if isinstance(client_context, dict):
+                client_context["pretest_stale"] = True
+    apply_confounders(results, ctx)
     return results

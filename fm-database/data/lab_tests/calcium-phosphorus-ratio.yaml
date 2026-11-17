@@ -1,0 +1,37 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: calcium-phosphorus-ratio
+display_name: Calcium/Phosphorus ratio
+full_name: Calcium to Phosphorus Ratio
+aliases:
+- ca/p ratio
+- calcium phosphorus ratio
+- calcium/phosphorus ratio
+- ca:p ratio
+units: ratio
+sample_type: blood (calculated)
+fm_optimal_low: 2.3
+fm_optimal_high: 3.3
+interpretation_low: |
+  Phosphorus high relative to calcium: high-phosphate diet (colas,
+  processed food), low calcium intake or kidney strain.
+interpretation_high: |
+  Phosphorus low relative to calcium: low vitamin D, low protein intake,
+  or parathyroid over-activity.
+when_to_order: |
+  Nothing extra: calcium and phosphorus (both mg/dL).
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- calcium-metabolism
+- bone-health
+linked_to_mechanisms:
+- pth-calcium-regulation
+sources: []
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  An FM working range (2.3-3.3), not a validated cut-off — read with
+  vitamin D and PTH. Worked example: Ca 9.4 / P 3.5 = 2.69.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

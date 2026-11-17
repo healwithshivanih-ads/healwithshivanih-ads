@@ -1,0 +1,36 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: sodium-potassium-ratio
+display_name: Sodium/Potassium ratio
+full_name: Serum Sodium to Potassium Ratio
+aliases:
+- na/k ratio
+- sodium potassium ratio
+- sodium/potassium ratio
+- na:k ratio
+units: ratio
+sample_type: blood (calculated)
+fm_optimal_low: 30.0
+fm_optimal_high: 36.0
+interpretation_low: |
+  Potassium high relative to sodium: read in FM as an adrenal
+  (aldosterone) under-drive pattern; also potassium-sparing drugs or a
+  haemolysed sample (which falsely raises potassium).
+interpretation_high: |
+  Sodium high relative to potassium: an acute-stress / high-aldosterone
+  pattern, low potassium intake, or diuretics.
+when_to_order: |
+  Nothing extra: sodium and potassium (electrolytes).
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- adrenal-hormone-function
+linked_to_mechanisms: []
+sources: []
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  An FM heuristic without outcome data — never a diagnosis. Worked example:
+  Na 139 / K 4.3 = 32.3 — balanced.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

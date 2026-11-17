@@ -1,0 +1,45 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: platelet-lymphocyte-ratio
+display_name: PLR
+full_name: Platelet-to-Lymphocyte Ratio
+aliases:
+- plr
+- platelet lymphocyte ratio
+- platelet/lymphocyte ratio
+- platelet-to-lymphocyte ratio
+- platelet/lymphocyte ratio (plr)
+units: ratio
+sample_type: blood (calculated)
+conventional_high: 200.0
+fm_optimal_high: 150.0
+interpretation_high: |
+  Platelets divided by absolute lymphocytes.
+
+    - under 150: balanced
+    - 150 to 200: borderline
+    - above 200: high — platelet-driven inflammation or low lymphocytes
+      (chronic stress, infection; iron deficiency also pushes platelets up)
+
+  Adults 45+ in Rotterdam averaged 120 (95% range 61-239). FM working bands.
+  Any infection, cold, vaccine or injury in the 3 weeks before the draw
+  raises it; read it when the client is well.
+when_to_order: |
+  Nothing extra to order: any CBC with a differential.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: fest-2018-wbc-inflammatory-reference-values
+  location: Abstract
+  quote: 'for PLR: 120 (61-239)'
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: platelets 344 / lymphocytes 1.47 = 234 — high. Read it
+  with SII and NLR; one ratio alone means little.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

@@ -1,0 +1,28 @@
+id: fest-2018-wbc-inflammatory-reference-values
+title: 'Reference values for white blood-cell-based inflammatory markers in the Rotterdam Study: a population-based
+  prospective cohort study'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Fest J
+- Ruiter R
+- Ikram MA
+- Voortman T
+- van Eijck CHJ
+- Stricker BH
+year: 2018
+publisher: Scientific Reports 8(1):10566
+url: https://pubmed.ncbi.nlm.nih.gov/30002404/
+doi: 10.1038/s41598-018-28646-w
+notes: 'General-population reference values from 8,711 Dutch adults aged 45+ using absolute counts: NLR
+  mean 1.76 (95% range 0.83-3.92), PLR 120 (61-239), SII 459 (189-1168). All rise with age; PLR and SII
+  run higher in women, NLR in men. Gives context for the app''s SII and PLR bands, which are FM working
+  bands, not validated cut-offs.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

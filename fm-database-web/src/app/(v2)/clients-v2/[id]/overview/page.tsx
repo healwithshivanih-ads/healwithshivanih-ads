@@ -66,6 +66,7 @@ import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "../client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
 import { PendingExtractionsBanner } from "@/components/client-widgets/pending-extractions-banner";
+import { LabSynthesisPanel } from "@/components/client-widgets/lab-synthesis-panel";
 import { DailyLogPanel } from "../daily-log-panel";
 import { loadDailyTicks } from "@/lib/fmdb/daily-ticks";
 import { MindbodyDripPanel } from "../mindbody-drip-panel";
@@ -167,6 +168,28 @@ function groupLabMarkers(
       icon: "🧮",
       patterns: /^tyg\b|tyg-(bmi|wc)|hepatic steatosis|fatty liver index|lipid accumulation product|^fib-?4\b|^waist-to-height/i,
     },
+    // Holistic-read scores (lab_ratios.py section 8). Listed before the broad
+    // groups below for the same first-match reason.
+    {
+      title: "Biological age (research score)",
+      icon: "⏳",
+      patterns: /phenoage/i,
+    },
+    {
+      title: "Inflammation indices",
+      icon: "🔥",
+      patterns: /immune-inflammation|\(sii\)|platelet\/lymphocyte|monocyte\/lymphocyte|crp\/albumin/i,
+    },
+    {
+      title: "Insulin sensitivity",
+      icon: "🔀",
+      patterns: /quicki|mcauley/i,
+    },
+    {
+      title: "Minerals & electrolytes",
+      icon: "🧂",
+      patterns: /albumin-corrected|calcium\/phosphorus|sodium\/potassium|zinc\/copper/i,
+    },
     {
       title: "Metabolic & insulin",
       icon: "🔀",
@@ -180,7 +203,7 @@ function groupLabMarkers(
     {
       title: "Thyroid",
       icon: "🦋",
-      patterns: /tsh|free t[34]|reverse t3|rt3|tpo|tg ab|thyroglobulin|t3|t4/i,
+      patterns: /tsh|free t[34]|reverse t3|rt3|tpo|tg ab|thyroglobulin|t3|t4|spina-gd/i,
     },
     {
       title: "Inflammation",
@@ -195,7 +218,7 @@ function groupLabMarkers(
     {
       title: "Iron, B-vitamins, vitamin D",
       icon: "🧬",
-      patterns: /ferritin|iron|transferrin|hemoglobin|hgb|mch|rdw|b12|b-?12|folate|vitamin d|25-?oh|homocysteine|mma/i,
+      patterns: /ferritin|iron|transferrin|hemoglobin|hgb|mch|rdw|b12|b-?12|folate|vitamin d|25-?oh|homocysteine|mma|mentzer/i,
     },
     {
       title: "Liver, kidney, electrolytes",
@@ -1570,6 +1593,10 @@ export default async function ClientV2Page({
               markers look stale/empty precisely when an extraction is stranded
               here. Self-hides when nothing is pending. */}
           <PendingExtractionsBanner clientId={client.client_id} />
+
+          {/* Holistic read: system scores + cross-system patterns, built
+              with lab_markers by fmdb/assess/lab_synthesis.py ($0). */}
+          <LabSynthesisPanel synthesis={client.lab_synthesis} />
 
           {markerGroups.length > 0 ? (
             <MarkerPanelWithRecompute

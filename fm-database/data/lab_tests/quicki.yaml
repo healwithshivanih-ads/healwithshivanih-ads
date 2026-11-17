@@ -1,0 +1,40 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: quicki
+display_name: QUICKI
+full_name: Quantitative Insulin Sensitivity Check Index
+aliases:
+- quicki
+- quantitative insulin sensitivity check index
+- quicki index
+units: score
+sample_type: blood (calculated)
+conventional_low: 0.33
+fm_optimal_low: 0.35
+interpretation_low: |
+  1 / (log fasting insulin + log fasting glucose mg/dL). LOWER means more
+  insulin resistant — the opposite direction to HOMA-IR.
+
+    - 0.35 or more: good insulin sensitivity (lean adults averaged 0.37)
+    - 0.33 to 0.35: reduced
+    - under 0.33: insulin resistance (obese group 0.33, type 2 diabetes 0.30)
+when_to_order: |
+  Needs a fasting insulin (Aarogyam F Pro includes it) and fasting glucose.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- prediabetes
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: katz-2000-quicki
+  location: Abstract
+  quote: QUICKI = 1/[log(I(0)) + log(G(0))]
+evidence_tier: strong
+notes_for_coach: |
+  Worked example: insulin 5 uIU/mL, glucose 90 mg/dL.
+  log 5 = 0.699, log 90 = 1.954; 1 / 2.653 = 0.377 — good sensitivity.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

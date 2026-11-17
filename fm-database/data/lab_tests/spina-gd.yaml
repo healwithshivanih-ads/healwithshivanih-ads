@@ -1,0 +1,50 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: spina-gd
+display_name: SPINA-GD
+full_name: SPINA-GD (Sum Activity of Peripheral Deiodinases)
+aliases:
+- spina-gd
+- spina gd
+- sum activity of peripheral deiodinases
+- deiodinase activity
+- spina-gd (deiodinase activity)
+units: nmol/s
+sample_type: blood (calculated)
+conventional_low: 20.0
+conventional_high: 40.0
+fm_optimal_low: 20.0
+fm_optimal_high: 40.0
+interpretation_low: |
+  A modelled estimate of how much T4 the body converts to active T3,
+  from free T4 and free T3. Low conversion: look at selenium, zinc, iron,
+  inflammation, cortisol, calorie restriction and liver health.
+interpretation_high: |
+  Conversion running hot: seen early in thyroid under-function
+  (compensation), with iodine shortage, or on T3 medication.
+when_to_order: |
+  Needs FREE T4 and FREE T3. Total T3/T4 (the Aarogyam default) cannot be
+  used, so add free hormones when conversion is the question.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- thyroid
+- hypothyroidism
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+- selenium-thyroid-conversion
+sources:
+- id: dietrich-2016-spina-thyroid
+  location: Abstract
+  quote: sum activity of peripheral deiodinases (SPINA-GD)
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Formula (Dietrich): GD = 8e-6 x (5e-7 + FT4) x (1 + 2e9 x 3e-7) x FT3 /
+  (0.026 x FT4), concentrations in mol/L, result in nmol/s. The (1 + K30 x
+  TBG) term, about 601, turns free T3 into total T3 at a standard TBG.
+  Worked example: FT4 1.2 ng/dL (15.4 pmol/L), FT3 3.0 pg/mL (4.6 pmol/L)
+  gives 27.6 — normal. FT4 1.6 ng/dL with FT3 2.0 pg/mL gives 13.8 — low
+  conversion. Biotin in the 3 days before the draw distorts both inputs.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

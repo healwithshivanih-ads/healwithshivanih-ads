@@ -1,0 +1,53 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: systemic-immune-inflammation-index
+display_name: SII
+full_name: Systemic Immune-Inflammation Index
+aliases:
+- sii
+- systemic immune inflammation index
+- systemic immune-inflammation index
+- systemic immune-inflammation index (sii)
+units: x10^9/L
+sample_type: blood (calculated)
+conventional_high: 800.0
+fm_optimal_high: 500.0
+interpretation_high: |
+  SII = platelets x neutrophils / lymphocytes, all as absolute counts.
+  It rises when platelets and neutrophils go up and lymphocytes go down:
+  a body-wide inflammatory load.
+
+    - under 500: low inflammatory signal
+    - 500 to 800: borderline
+    - above 800: high; find the driver (infection, gut, visceral fat,
+      sleep, chronic stress)
+
+  These are FM working bands; there is no agreed cut-off. Adults 45+ in
+  Rotterdam averaged 459 (95% range 189-1168), and SII rises with age.
+  Any infection, cold, vaccine or injury in the 3 weeks before the draw
+  raises it; read it when the client is well.
+when_to_order: |
+  Nothing extra to order: any CBC with a differential. The app uses the
+  absolute counts, or works them out from the % and the total WBC.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- inflammation
+- inflammaging
+linked_to_mechanisms:
+- chronic-inflammation
+- inflammatory-cascade
+sources:
+- id: hu-2014-systemic-immune-inflammation-index
+  location: Abstract
+- id: fest-2018-wbc-inflammatory-reference-values
+  location: Abstract
+  quote: 'for SII: 459 (189-1168)'
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: platelets 344, neutrophils 4.15, lymphocytes 1.47
+  (x10^3/uL). 344 x 4.15 / 1.47 = 971 — high. Check the pre-test answers
+  first: a cold in the 3 weeks before is enough to do this.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

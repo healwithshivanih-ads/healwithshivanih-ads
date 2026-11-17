@@ -415,6 +415,40 @@ class InterestSignal(BaseModel):
     dismissed: bool = False
 
 
+class LabPretest(BaseModel):
+    """Pre-test answers for ONE blood draw, stored as `pretest` on that draw's
+    lab snapshot (`Client.health_snapshots[].pretest`).
+
+    Each answer names something done before the draw that distorts markers
+    (see fmdb/assess/lab_confounders.py): an answer of True lowers confidence
+    on the markers it affects. None means "not asked / not known" and changes
+    nothing. The coach records these on the lab-upload panel; the Thyrocare
+    booking flow sends the client the instructions but stores no answers.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    illness_3w: Optional[bool] = None          # cold / flu / fever / infection / vaccine, 3 weeks before
+    illness_note: str = ""                     # what and when ("cold, 10 days before")
+    paracetamol_48h: Optional[bool] = None
+    alcohol_48h: Optional[bool] = None
+    hard_exercise_72h: Optional[bool] = None   # weights, a long run, a new class
+    biotin_72h: Optional[bool] = None          # hair/skin/nail or B-complex supplements
+    high_dose_vitamin_d: Optional[bool] = None # weekly 60k IU sachets, bolus doses
+    # Hormone route matters: oral oestrogen (HRT pill or the combined pill)
+    # raises CRP and SHBG; transdermal and vaginal routes do not.
+    hormone_route: Optional[Literal[
+        "none", "oral_estrogen", "ocp", "transdermal_estrogen",
+        "vaginal_estrogen", "progestogen_only", "other",
+    ]] = None
+    creatine: Optional[bool] = None
+    fasted: Optional[bool] = None              # a true 8-12 h fast
+    cycle_day: Optional[int] = Field(default=None, ge=1, le=60)
+    no_cycle: Optional[bool] = None            # post-menopause / no periods / not applicable
+    notes: str = ""
+    recorded_at: Optional[str] = None          # ISO datetime
+    recorded_by: Optional[str] = None
+
+
 class Client(BaseModel):
     """Minimal client record. Lives at ~/fm-plans/clients/<client_id>.yaml.
 
@@ -1021,6 +1055,9 @@ class Client(BaseModel):
     photo_filename: Optional[str] = None    # filename relative to client dir; populated after dir restructure (next turn)
     lab_markers: list[dict] = Field(default_factory=list)  # computed FM ratios from most recent lab analysis
     lab_markers_date: Optional[str] = None
+    # Holistic read built from lab_markers by fmdb/assess/lab_synthesis.py:
+    # {version, systems[], patterns[], confounders{}}. Coach-only.
+    lab_synthesis: Optional[dict] = None
     # Longitudinal health data snapshots — one entry per appointment/data-entry event.
     # Each dict: {date, source, measurements:{...}, lab_values:[{test_name,value,unit}],
     #             medications:[str], conditions:[str]}

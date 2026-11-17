@@ -1,0 +1,38 @@
+id: levine-2018-phenoage
+title: An epigenetic biomarker of aging for lifespan and healthspan
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Levine ME
+- Lu AT
+- Quach A
+- Chen BH
+- Assimes TL
+- Bandinelli S
+- Hou L
+- Baccarelli AA
+- Stewart JD
+- Li Y
+- Whitsel EA
+- Wilson JG
+- Reiner AP
+- Aviv A
+- Lohman K
+- Liu Y
+- Ferrucci L
+- Horvath S
+year: 2018
+publisher: Aging (Albany NY) 10(4):573-591
+url: https://pubmed.ncbi.nlm.nih.gov/29676998/
+doi: 10.18632/aging.101414
+notes: 'Builds ''phenotypic age'' from nine routine blood markers (albumin, creatinine, glucose, CRP,
+  lymphocyte %, MCV, RDW, ALP, WBC) plus age, as the first step to the DNAm PhenoAge clock. The app uses
+  the blood-marker phenotypic age formula from this paper.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
