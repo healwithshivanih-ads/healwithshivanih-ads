@@ -1,0 +1,29 @@
+id: lee-2010-hepatic-steatosis-index
+title: 'Hepatic steatosis index: a simple screening tool reflecting nonalcoholic fatty liver disease'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+  - Lee JH
+  - Kim D
+  - Kim HJ
+  - Lee CH
+  - Yang JI
+  - Kim W
+  - Kim YJ
+  - Yoon JH
+  - Cho SH
+  - Sung MW
+  - Lee HS
+year: 2010
+publisher: Digestive and Liver Disease 42(7):503-508
+url: https://pubmed.ncbi.nlm.nih.gov/19766548/
+doi: 10.1016/j.dld.2009.08.002
+notes: |
+  10,724 Korean health check-up subjects. HSI = 8 x (ALT/AST) + BMI, plus 2
+  if female and plus 2 if diabetic. Below 30 ruled fatty liver out
+  (sensitivity 93%); above 36 detected it (specificity 92%). Read from the
+  PubMed abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

@@ -65,6 +65,7 @@ def main() -> int:
 
     try:
         from fmdb.assess.lab_ratios import compute_ratios  # type: ignore
+        from fmdb.assess.client_context import lab_client_context  # type: ignore
     except Exception as e:
         json.dump(
             {"ok": False, "error": f"lab_ratios import failed: {e}"},
@@ -99,7 +100,7 @@ def main() -> int:
         )
         return 0
 
-    markers = compute_ratios(all_labs)
+    markers = compute_ratios(all_labs, lab_client_context(data))
     data["lab_markers"] = markers
     # Newest date_drawn across all labs as the marker date
     all_dates = sorted(

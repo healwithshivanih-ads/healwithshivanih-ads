@@ -1804,8 +1804,16 @@ def main() -> int:
 
     # ----- compute FM lab ratios -----
     from fmdb.assess.lab_ratios import compute_ratios
+    from fmdb.assess.client_context import lab_client_context
     extracted_labs = [lab.model_dump() for lab in suggestions.extracted_labs]
-    computed_ratios = compute_ratios(extracted_labs)
+    # Age / sex / BMI / waist / diabetes for the Liver & Metabolic Risk
+    # indices (FIB-4, HSI, FLI, LAP, TyG-BMI, TyG-WC). Never fail the run on it.
+    try:
+        _lab_ctx = lab_client_context(client)
+    except Exception as _ce:  # pragma: no cover
+        print(f"WARN: lab client context skipped: {_ce}", file=sys.stderr)
+        _lab_ctx = None
+    computed_ratios = compute_ratios(extracted_labs, _lab_ctx)
 
     # ----- persist lab_markers + per-report health snapshots to client YAML -----
     try:

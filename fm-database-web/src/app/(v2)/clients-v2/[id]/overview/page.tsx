@@ -159,6 +159,14 @@ function groupLabMarkers(
   markers: NonNullable<ClientWithMeta["lab_markers"]>,
 ): FmMarkerGroup[] {
   const groups: { title: string; icon: string; patterns: RegExp }[] = [
+    // First, because groups.find() takes the first match: "TyG index" would
+    // otherwise never land here and "Fatty Liver Index" would fall to Other.
+    // These are the computed scores from lab_ratios.py section 6b.
+    {
+      title: "Liver & metabolic risk",
+      icon: "🧮",
+      patterns: /^tyg\b|tyg-(bmi|wc)|hepatic steatosis|fatty liver index|lipid accumulation product|^fib-?4\b/i,
+    },
     {
       title: "Metabolic & insulin",
       icon: "🔀",
@@ -251,7 +259,7 @@ function pickClientKeyMarkers(
     {
       label: "insulin resistance",
       driver: /insulin resist|metabolic|pcos|pcod|diabet|prediabet|blood sugar|glyca?emic|hyperinsulin|weight (gain|loss)|obes/i,
-      sig: /\bhoma\b|homa-?ir|insulin|hba1c|\bglucose\b|uric acid|tg\s*\/?\s*hdl|triglyceride.*hdl|c-?peptide|estimated average glucose/i,
+      sig: /\bhoma\b|homa-?ir|\btyg\b|insulin|hba1c|\bglucose\b|uric acid|tg\s*\/?\s*hdl|triglyceride.*hdl|c-?peptide|estimated average glucose/i,
     },
     {
       label: "thyroid",

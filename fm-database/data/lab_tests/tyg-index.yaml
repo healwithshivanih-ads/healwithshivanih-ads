@@ -1,0 +1,60 @@
+slug: tyg-index
+display_name: TyG index
+full_name: Triglyceride-Glucose Index
+aliases:
+- tyg
+- triglyceride glucose index
+- triglyceride-glucose index
+- tyg index
+units: score
+sample_type: blood (calculated)
+# TyG = ln(fasting TG mg/dL x fasting glucose mg/dL / 2)
+# Computed automatically by fmdb/assess/lab_ratios.py (Liver & Metabolic Risk).
+conventional_high: 8.8
+fm_optimal_high: 8.3
+interpretation_high: |
+  TyG is worked out from two numbers on almost every report: fasting
+  triglycerides and fasting glucose. It reads insulin resistance without a
+  fasting insulin test.
+
+    - under 8.3: no insulin-resistance signal
+    - 8.3 to 8.8: borderline; early insulin resistance
+    - above 8.8: insulin resistance and a fatty-liver risk pattern
+
+  Cut-offs vary by population, and several South Asian studies sit lower,
+  so the trend between reports matters more than one number.
+when_to_order: |
+  Nothing extra to order: any report with fasting triglycerides and fasting
+  glucose. Most useful when fasting insulin (and so HOMA-IR) is missing.
+  Needs a true 8-12 hour fast; an acute illness or a heavy or alcohol-rich
+  meal the night before raises both inputs.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- nafld
+- metabolic-syndrome
+- prediabetes
+linked_to_mechanisms:
+- insulin-resistance
+- hepatic-lipogenesis
+linked_to_symptoms:
+- fatty-liver
+sources:
+- id: simental-mendia-2008-tyg-index
+  location: Abstract
+  quote: The TyG index could be useful as surrogate to identify insulin resistance in apparently healthy subjects
+- id: er-2016-tyg-bmi
+  location: Abstract
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: TG 54 mg/dL, fasting glucose 93.75 mg/dL.
+  54 x 93.75 = 5062.5; half of that is 2531.25; ln(2531.25) = 7.84.
+  Under 8.3, so no insulin-resistance signal.
+
+  Units must be mg/dL. The app converts mmol/L itself (TG x 88.57,
+  glucose x 18).
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

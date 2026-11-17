@@ -1,0 +1,20 @@
+id: kahn-2005-lipid-accumulation-product
+title: 'The "lipid accumulation product" performs better than the body mass index for recognizing cardiovascular risk: a population-based comparison'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+  - Kahn HS
+year: 2005
+publisher: BMC Cardiovascular Disorders 5:26
+url: https://pubmed.ncbi.nlm.nih.gov/16150143/
+doi: 10.1186/1471-2261-5-26
+notes: |
+  Defines LAP = (waist - 65) x TG mmol/L for men and (waist - 58) x TG for
+  women, the 65 and 58 cm being the estimated population minimum waist.
+  In NHANES III adults it flagged adverse cardiovascular risk factors better
+  than BMI. No diagnostic cut-off is set in the paper. Read from the PubMed
+  abstract (17 Nov 2026).
+version: 1
+status: active
+updated_at: 2026-11-17
+updated_by: shivani

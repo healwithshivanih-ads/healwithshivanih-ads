@@ -1,0 +1,59 @@
+slug: hepatic-steatosis-index
+display_name: Hepatic Steatosis Index (HSI)
+full_name: Hepatic Steatosis Index
+aliases:
+- hsi
+- hepatic steatosis index
+- hsi score
+units: score
+sample_type: blood (calculated) + body measurement
+# HSI = 8 x ALT/AST + BMI, +2 if female, +2 if diabetic (Lee 2010).
+# Computed automatically when ALT, AST, BMI and sex are known.
+conventional_high: 36
+fm_optimal_high: 30
+interpretation_high: |
+  HSI is worked out from ALT, AST, BMI, sex and diabetes. It screens for
+  fatty liver.
+
+    - under 30: fatty liver unlikely
+    - 30 to 36: grey zone; cannot rule it in or out
+    - above 36: suggests fatty liver; an ultrasound is worth discussing with
+      the doctor
+
+  Not reliable within about 4 weeks of a paracetamol course or an acute
+  illness, or after hard resistance training in the week before the draw
+  (weightlifting raises ALT and AST for 7 days or more; GGT is not raised by
+  exercise). Ask before reading it.
+when_to_order: |
+  Nothing to order. Appears when ALT and AST are on a report and the
+  client's height, weight and sex are on file. Diabetes counts when it is an
+  active condition on the record or HbA1c is 6.5% or more.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- nafld
+- insulin-resistance
+- type-2-diabetes
+linked_to_mechanisms:
+- aminotransferase-hepatocyte-leak
+- hepatic-lipogenesis
+linked_to_symptoms:
+- fatty-liver
+- elevated-liver-enzymes
+sources:
+- id: lee-2010-hepatic-steatosis-index
+  location: Abstract
+  quote: At values of <30.0 or >36.0, HSI ruled out NAFLD with a sensitivity of 93.1%, or detected NAFLD with a specificity of 92.4%
+evidence_tier: strong
+notes_for_coach: |
+  Worked example: a woman with ALT 46.5, AST 26.7, BMI 24.0, no diabetes.
+  46.5 / 26.7 = 1.74; x 8 = 13.9; + 24.0 = 37.9; + 2 for female = 39.9.
+  Above 36, so it suggests fatty liver even at a normal BMI, because ALT is
+  well above AST.
+
+  Derived in Korean adults. Never tell a client they "have fatty liver" from
+  this number; say whether a scan is worth discussing with the doctor.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
