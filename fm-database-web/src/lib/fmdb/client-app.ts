@@ -80,6 +80,7 @@ import {
   type DiscoveryStage,
 } from "@/lib/fmdb/discovery-tier";
 import { resolveAppMode, resolveFinalStretch, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
+import { parseAppShell } from "@/lib/fmdb/app-shell";
 import { fallbackWeekFor } from "@/lib/fmdb/menu-weeks";
 import { dedupeRecipePack } from "@/lib/fmdb/recipe-pack-dedup";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
@@ -1206,6 +1207,11 @@ export interface ClientAppData {
   mode: AppMode;
   /** Non-null only when mode !== "ACTIVE" — the data the end-game screens read. */
   endgame: EndgameInfo | null;
+  /** Which front renders: "v2" = the new shell (sq-app.tsx), absent/null =
+   *  today's app. From client.yaml#app_shell; only the package builder fills
+   *  it. Never branch on this directly — app-shell.ts::pickAppShell is the one
+   *  place that decides, and it also requires an in-programme client. */
+  appShell?: "v2" | null;
   /** Coach-recommended lab orders (Thyrocare primary, Acumen backup). `recommended` ones are payable in
    *  app; others show status. Universal across tiers (booking works in any mode). */
   labOrders: LabOrder[];
@@ -6343,6 +6349,7 @@ export async function loadClientAppData(
     intakeUrl: null,
     mode: appMode,
     endgame,
+    appShell: parseAppShell(client.app_shell),
     labOrders,
     client: {
       firstName,

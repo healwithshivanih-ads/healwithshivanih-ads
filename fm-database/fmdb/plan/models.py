@@ -631,6 +631,14 @@ class Client(BaseModel):
     city: str = ""                 # e.g. "Mumbai", "Chennai" — used for seasonal/regional meal planning
     country: str = ""              # e.g. "India", "UK" — used for seasonal produce and recipes
     timezone: Optional[str] = None  # IANA tz (e.g. "America/New_York") — client app "today" + reminder clock; unset ⇒ IST
+    # Which front the client app (/app/<token>) renders. "v2" = the new Sequoya
+    # shell (sq-app.tsx); unset = today's app. A plain string on purpose: any
+    # other value reads as "today's app" rather than failing the load. The one
+    # place that decides is fm-database-web/src/lib/fmdb/app-shell.ts, which
+    # ALSO requires an in-programme (ACTIVE) client. Projected to Fly
+    # (app-staging-action.py _APP_CLIENT_KEYS). Test client only before
+    # 2 Jan 2027: the new front carries the embargoed programme name.
+    app_shell: Optional[str] = None
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date

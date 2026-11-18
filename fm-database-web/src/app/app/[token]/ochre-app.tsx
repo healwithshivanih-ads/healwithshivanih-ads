@@ -44,6 +44,8 @@ import { MsqOverlay } from "./ochre-msq";
 import { FeedbackBanner, FeedbackOverlay } from "./ochre-feedback";
 import { OrderOverlay } from "./ochre-order";
 import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
+import { isPlanSetupHold, pickAppShell } from "@/lib/fmdb/app-shell";
+import SqApp from "./sq-app";
 
 interface Stored {
   day?: string;
@@ -699,7 +701,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // start morning, then advances daily once the plan begins. With NO date set
   // yet, keep the "being set up" hold screen (nothing to preview).
   const previewing = onHold && data.client.startsInDays > 0;
-  const setupHold = onHold && !previewing;
+  const setupHold = isPlanSetupHold(data.client);
 
   // REVIEW opens REVIEW_LEAD_DAYS (14, or 7 for short plans) BEFORE the
   // effective recheck, so the Continue/Maintain decision gets made before the
@@ -753,6 +755,23 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated]);
+
+  // ── Which front? The ONE branch (rule + tests: src/lib/fmdb/app-shell.ts) ──
+  // The new Sequoya shell renders only for a client switched on with
+  // `app_shell: v2` who is in programme (ACTIVE, package tier, plan not on
+  // setup hold). Everyone else falls through to today's app below, untouched.
+  // It sits here, after every hook, on purpose: the new front is handed the
+  // SAME on-device store and tick state this component owns (and keeps the
+  // tick sync to the coach, the timezone fix and the push refresh running),
+  // so both fronts read and write the same data and switching back loses
+  // nothing.
+  if (pickAppShell(data) === "sq") {
+    return (
+      <OchreContext.Provider value={data}>
+        <SqApp data={data} state={{ hydrated, logged, practicesDone, toggleSupp, togglePractice, markDone }} />
+      </OchreContext.Provider>
+    );
+  }
 
   let screen: React.ReactNode = null;
   if (onboarding) {

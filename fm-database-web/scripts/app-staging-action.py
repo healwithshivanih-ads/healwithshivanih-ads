@@ -96,6 +96,11 @@ _APP_CLIENT_KEYS = (
     # IANA tz — the Fly app anchors "today" (menu day / week counter) and the
     # reminders cron on this; without it a US client renders on IST.
     "timezone",
+    # Which front the app renders ("v2" = the new Sequoya shell, unset =
+    # today's app). The app is served from Fly, so without this key the switch
+    # set on the Mac never reaches the phone and the client stays on today's
+    # app. app-shell.ts decides; tests/test_app_shell_field.py pins this key.
+    "app_shell",
     "intake_date",
     "next_contact_date",
     "active_conditions",
