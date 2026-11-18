@@ -27,6 +27,10 @@ import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 import { bandForHour } from "./day-plan";
 import { buildMoments, isTicked, rankFloorAt, type SqKind, type SqMoment, type SqTicks } from "./sq-day";
+import type { AskButton } from "@/lib/fmdb/ask-card";
+import { askChips, routeAsk, type AskContext } from "./sq-ask";
+import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
+import { SqCoach, useCoachThread } from "./sq-coach";
 import { SqHome } from "./sq-home";
 import { recipeTitle, recordDayTitle, SqDaySheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
@@ -183,6 +187,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   const scrollRef = useRef<HTMLElement | null>(null);
   const go = (next: SqTabId) => {
     setTab(next);
+    // The Today tab always lands on Home; the question thread is one tap in.
+    if (next === "today") setView("home");
+    setHint("");
     if (scrollRef.current) scrollRef.current.scrollTop = 0;
   };
 
@@ -220,6 +227,75 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   }, [depth]);
 
   const { week, totalWeeks } = data.client;
+
+  // ── the ask box and the coach ──────────────────────────────────────────
+  /** Today shows Home or the thread of questions. */
+  const [view, setView] = useState<"home" | "ask">("home");
+  const [turns, setTurns] = useState<AskTurn[]>([]);
+  const [input, setInput] = useState("");
+  const [hint, setHint] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const turnSeq = useRef(0);
+  const coach = useCoachThread(data.token, tab === "coach");
+  const askCtx: AskContext = { data, moments, ticks, nowRank, todayYmd };
+
+  const toCoach = (draft?: string) => {
+    go("coach");
+    if (draft !== undefined) setInput(draft);
+    // After the tab has drawn its own placeholder.
+    setTimeout(() => inputRef.current?.focus(), 0);
+  };
+
+  const ask = (q: string) => {
+    if (!now) return; // the phone's clock is not known yet
+    const r = routeAsk(q, askCtx);
+    if (r.type === "empty") {
+      setHint("Type a question, or tap one of the questions on Today.");
+      return;
+    }
+    setHint("");
+    if (r.type === "open") return open(r.sheet);
+    if (r.type === "tab") return r.tab === "coach" ? toCoach(r.draft) : go(r.tab);
+    const id = ++turnSeq.current;
+    setTab("today");
+    setView("ask");
+    if (r.type === "card") {
+      setTurns((t) => [...t, { id, q, card: r.card, send: "idle" }]);
+      return;
+    }
+    setTurns((t) => [...t, { id, q, card: null, send: "idle" }]);
+    void fetchModelCard(data.token, q).then((card) => setTurns((t) => t.map((x) => (x.id === id ? { ...x, card } : x))));
+  };
+
+  const onCardButton = (b: AskButton) => {
+    if (b.to === "day" || b.to === "record" || b.to === "start") open({ k: b.to });
+    else if (b.to === "recipe" && b.ref) open({ k: "recipe", slot: b.ref });
+    else if (b.to === "soon") open({ k: "soon", title: b.ref ?? b.label });
+    else if (b.to === "practices") go("practices");
+    else if (b.to === "coach") toCoach(b.draft);
+  };
+
+  /** Hand a question to the coach: it goes into the same thread as a message. */
+  const sendToCoach = (turn: AskTurn) => {
+    const mark = (send: AskTurn["send"]) => setTurns((t) => t.map((x) => (x.id === turn.id ? { ...x, send } : x)));
+    mark("sending");
+    void coach.send(handoffText(turn.q, week, totalWeeks), false).then((ok) => mark(ok ? "sent" : "failed"));
+  };
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = input.trim();
+    if (tab === "coach") {
+      if (!text) return setHint("Type a message first.");
+      setHint("");
+      setInput("");
+      void coach.send(text);
+      return;
+    }
+    if (text) setInput("");
+    ask(text);
+  };
+
   const active = SQ_TABS.find((t) => t.id === tab) ?? SQ_TABS[0];
   const ready = state.hydrated && now !== null;
 
@@ -274,7 +350,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       {/* aria-busy until the phone's own ticks and clock are known: before
           that, what is "next" cannot be known either. */}
       <main className="sq-scroll" ref={scrollRef} aria-busy={!ready} inert={sheet ? true : undefined}>
-        {tab === "today" ? (
+        {tab === "today" && view === "ask" ? (
+          <SqAskView turns={turns} onBack={() => setView("home")} onButton={onCardButton} onSend={sendToCoach} onAsk={ask} />
+        ) : tab === "today" ? (
           <SqHome
             data={data}
             moments={moments}
@@ -291,7 +369,11 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
             open={open}
             returnDismissed={returnDismissed}
             onDismissReturn={dismissReturn}
+            chips={ready ? askChips(askCtx) : []}
+            onAsk={ask}
           />
+        ) : tab === "coach" ? (
+          <SqCoach data={data} thread={coach} />
         ) : (
           <>
             <div className="sq-greet">
@@ -334,6 +416,34 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
         )}
       </main>
 
+      {/* One box, two jobs: a question about the plan on Today, a message to
+          the coach on the Coach tab. The placeholder says which. */}
+      {(tab === "today" || tab === "coach") && (
+        <form className="sq-composer" onSubmit={submit} inert={sheet ? true : undefined} autoComplete="off">
+          {hint && (
+            <p className="sq-hint" role="status">
+              {hint}
+            </p>
+          )}
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+              if (hint) setHint("");
+            }}
+            placeholder={tab === "coach" ? "Message your coach" : "Ask about your plan"}
+            aria-label={tab === "coach" ? "Message your coach" : "Ask about your plan"}
+            enterKeyHint="send"
+            maxLength={tab === "coach" ? 4000 : 500}
+          />
+          <button className="sq-send" type="submit" aria-label="Send">
+            <SqIcon name="up" />
+          </button>
+        </form>
+      )}
+
       <nav className="sq-tabs" aria-label="Main" inert={sheet ? true : undefined}>
         {SQ_TABS.map((t) => (
           <button
@@ -345,6 +455,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           >
             <SqIcon name={t.icon} />
             {t.label}
+            {t.id === "coach" && coach.unread && tab !== "coach" && <span className="sq-tabdot" role="img" aria-label="New message" />}
           </button>
         ))}
       </nav>

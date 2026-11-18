@@ -12,6 +12,10 @@
    toggle and arrives with the practice player.
    ======================================================================== */
 
+@keyframes sq-dot {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
 @keyframes sq-sheet-up {
   from { transform: translateY(24px); opacity: 0.4; }
   to   { transform: none; opacity: 1; }
@@ -35,6 +39,9 @@
     --sq-growth: #557a43;
     --sq-cedar: #a0673f;
     --sq-shadow: 0 1px 2px rgba(42, 41, 45, 0.05), 0 10px 26px rgba(42, 41, 45, 0.07);
+    --sq-danger: #a3302a;
+    --sq-danger-tint: #f9e3e0;
+    --sq-chip-ink: #7a1f45;
 
     /* look D: the top of the screen is a soft "sky" that follows the day */
     --sq-sky-morning: #f1dfcc;
@@ -363,5 +370,102 @@
   @media (prefers-reduced-motion: reduce) {
     .sq-hero { animation: none; }
     .sq-btn, .sq-fold .sq-ic, .sq-switch, .sq-switch::after { transition: none; }
+  }
+
+  /* ── the ask box: tappable questions, the composer, answer cards ──────── */
+  .sq-askb { display: flex; flex-direction: column; gap: 12px; }
+  .sq-ask-h { font-family: var(--sq-serif); font-size: 20px; font-weight: 500; margin-top: 4px; }
+  .sq-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sq-chips-in { margin-top: 12px; }
+  .sq-chip {
+    background: var(--sq-fire-tint); color: var(--sq-chip-ink);
+    border: none; border-radius: 999px; padding: 10px 15px; min-height: 44px;
+    font-size: 15px; font-weight: 600; text-align: left;
+    transition: transform 0.12s;
+  }
+  .sq-chip:active { transform: scale(0.96); }
+
+  .sq-composer {
+    display: flex; flex-wrap: wrap; gap: 8px; flex: none;
+    padding: 8px var(--sq-gr) 8px var(--sq-gl);
+    background: var(--sq-ground); border-top: 1px solid var(--sq-line);
+  }
+  .sq-composer input {
+    flex: 1; min-width: 0;
+    background: var(--sq-card); color: var(--sq-ink);
+    border: 1px solid var(--sq-line-strong); border-radius: 999px;
+    padding: 11px 16px; font: inherit; font-size: 16px;
+  }
+  .sq-composer input::placeholder { color: var(--sq-muted); }
+  .sq-send {
+    width: 46px; height: 46px; border-radius: 50%; border: none; flex: none;
+    background: var(--sq-fire-fill); color: var(--sq-on-fire);
+    display: grid; place-items: center;
+  }
+  .sq-hint { flex-basis: 100%; font-size: 14.5px; color: var(--sq-muted); }
+
+  .sq-askv, .sq-coachv { display: flex; flex-direction: column; gap: 14px; }
+  .sq-turn { display: flex; flex-direction: column; gap: 12px; }
+  .sq-back {
+    background: none; border: none; align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 0; min-height: 44px; color: var(--sq-muted); font-size: 15px;
+  }
+  .sq-me, .sq-them { max-width: 84%; padding: 10px 15px; font-size: 15.5px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .sq-me { align-self: flex-end; background: var(--sq-card-2); border-radius: 20px 20px 6px 20px; }
+  .sq-them { align-self: flex-start; background: var(--sq-card); border-radius: 20px 20px 20px 6px; box-shadow: var(--sq-shadow); }
+  .sq-me small, .sq-them small { display: block; color: var(--sq-muted); font-size: 13px; margin-top: 3px; }
+  .sq-me-failed { box-shadow: inset 0 0 0 1.5px var(--sq-danger); }
+  .sq-me small .sq-link { font-size: 13px; padding: 0; min-height: 0; }
+
+  .sq-ans { animation: sq-rise 0.32s ease both; }
+  .sq-src {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--sq-fire-text); margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sq-av-s {
+    width: 24px; height: 24px; border-radius: 50%; flex: none;
+    background: var(--sq-fire-fill); color: var(--sq-on-fire);
+    display: grid; place-items: center;
+    font-family: var(--sq-serif); font-size: 13px; letter-spacing: 0;
+  }
+  .sq-ans h3 { font-family: var(--sq-serif); font-weight: 500; font-size: 19px; line-height: 1.25; margin-bottom: 6px; color: var(--sq-ink); }
+  .sq-ans p { font-size: 15.5px; color: var(--sq-ink); }
+  .sq-ans p + p { margin-top: 8px; }
+  .sq-yn { display: flex; flex-direction: column; gap: 7px; margin: 8px 0 0; padding: 0; list-style: none; font-size: 15.5px; }
+  .sq-yn li { display: flex; gap: 9px; align-items: flex-start; }
+  .sq-yn .sq-ic { margin-top: 3px; flex: none; }
+  .sq-yn-yes .sq-ic { color: var(--sq-growth); }
+  .sq-yn-no .sq-ic { color: var(--sq-cedar); }
+  .sq-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sq-line-strong); margin: 9px 7px 0 7px; flex: none; }
+  .sq-ans .sq-note, .sq-note { margin-top: 10px; font-size: 14.5px; color: var(--sq-muted); }
+  .sq-err { color: var(--sq-danger); }
+  .sq-doctor { margin-top: 0; }
+  .sq-row-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .sq-btn:disabled { opacity: 0.6; }
+  .sq-urgent { background: var(--sq-danger-tint); box-shadow: none; }
+  .sq-urgent .sq-src, .sq-urgent h3 { color: var(--sq-danger); }
+
+  .sq-thinking { display: flex; align-items: center; gap: 6px; color: var(--sq-muted); font-size: 15px; }
+  .sq-thinking i { width: 7px; height: 7px; border-radius: 50%; background: var(--sq-fire); animation: sq-dot 1s ease-in-out infinite; }
+  .sq-thinking i:nth-child(2) { animation-delay: 0.15s; }
+  .sq-thinking i:nth-child(3) { animation-delay: 0.3s; margin-right: 6px; }
+
+  /* ── the Coach tab ────────────────────────────────────────────────────── */
+  .sq-coach-h { display: flex; gap: 12px; align-items: center; }
+  .sq-av {
+    width: 48px; height: 48px; border-radius: 50%; flex: none;
+    background: var(--sq-fire-tint); color: var(--sq-chip-ink);
+    display: grid; place-items: center; font-family: var(--sq-serif); font-size: 18px;
+  }
+  .sq-coach-h b { font-family: var(--sq-serif); font-weight: 500; font-size: 20px; display: block; line-height: 1.2; }
+  .sq-coach-h span { color: var(--sq-muted); font-size: 14px; }
+  .sq-thread { display: flex; flex-direction: column; gap: 10px; }
+  .sq-tab { position: relative; }
+  .sq-tabdot { position: absolute; top: 4px; left: calc(50% + 8px); width: 9px; height: 9px; border-radius: 50%; background: var(--sq-fire); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sq-ans, .sq-thinking i, .sq-chip { animation: none; transition: none; }
   }
 }

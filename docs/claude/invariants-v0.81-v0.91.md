@@ -295,3 +295,28 @@ Tests: `sq-day.test.ts`, `sq-home.test.tsx`, `sq-app.test.tsx`, `src/lib/fmdb/ap
 - **Why:** the snack and dinner share "evening" (4 pm to 9 pm), so an unticked snack held the card until 9 pm (the coach saw "Tea with milk" at 8:15 pm). Same for breakfast against the mid-morning bite.
 - A window that opens on a part of the day must keep that part's cut from `bandOfRank` (19, 39, 50, 70); a test pins this at every minute. Today's app still uses `bandForHour` and is untouched.
 - A skipped item leaves "next" and "Later today" only; it stays in Your whole day and can be ticked late. The clock is read on open and when she comes back to the app, not on a timer.
+
+### Client app redesign step 2: the ask box and the Coach tab (18 Nov 2026)
+
+New front only (`app_shell: v2`, the test account). Today's app, its co-pilot and its chat are untouched.
+
+**The order a question goes through** (do not reorder; the tests walk it):
+1. `src/lib/fmdb/ask-safety.ts::askUrgent` — self-harm, then emergency. English, Hindi, Hinglish and common misspellings. A denial written against the phrase ("no chest pain", "chest pain nahi hai") and a figure of speech ("fainted with laughter") are skipped; a bare "not" is NOT a denial ("I can not bear this chest pain"). The live chat list (`triage.ts::EMERGENCY_HINTS`) is the floor.
+2. A few questions that cannot be clinical: coach reply time, next session, how the app works, "tell my coach".
+3. `askHandoff` — medicine, another person's health, alcohol, results, supplements together, weight change, symptom, dose, the wider health picture. Each goes to the coach; never answered.
+4. Plan lookups on the phone, `src/app/app/[token]/sq-ask.ts::routeAsk`: her meals, ticks, record, a supplement's timing and reason, its every-other-day schedule, whether a dish is on this week's menu (`dishOnMenu`: EVERY word of the food must be in one dish).
+5. Everything else → the model: `/api/app-copilot` with `format: "card"` → `scripts/app-copilot.py` `mode: "card"`.
+
+**Rules**
+- **One module for safety, both sides.** The phone runs `ask-safety.ts` for an instant card; `/api/app-copilot` runs it again first, because a direct POST skips the phone.
+- **The model never writes to the client.** It returns one JSON card; `src/lib/fmdb/ask-card.ts::parseModelCard` checks every field and turns anything else into "defer" (hand to the coach). Buttons come only from `MODEL_BUTTONS`. A test pins the route's order: safety, daily cap (15, shared with today's co-pilot), lapsed, LIBRARY, then the model.
+- **Not answered by fixed text, on purpose:** tea and coffee, eating out, swaps, portions, "can I eat X". The prototype's answers were written for one demo client. In the app they depend on each client's food list, so they go to the model with her plan in front of it, and the model defers when the plan does not say.
+- **Tappable questions cost nothing.** `askChips` returns only questions the router answers on the phone; a test walks every chip at every hour and fails if one would reach the model.
+- **Results** (lab values, body age) always hand to the coach until step 5 shares them.
+- **Alcohol** always hands to the coach. **A missed capsule** hands to the coach until the coach's own answer is supplied (then check `isMissedCapsule` before `askHandoff`).
+- **Hand-off** sends the question into the same chat thread (`/api/app-chat`) as `"<her words>\n\n(Asked in the app · week N of M)"`, then shows "Your coach replies within 24 hours". No plan slug in the text: the thread is per client, and the slug carries the client id.
+- **Coach tab** (`sq-coach.tsx`): same thread and route as today's chat. A message typed there passes `coachTabNote`: it is still sent, and the emergency card or "see a doctor today" line shows beside it. A failed send stays on screen as "Not sent yet". The unread dot is asked on open and on return to the app, never on a timer; reading the list marks the coach's messages read, so it is only read while the tab is open. Not built yet: sending a photo, turning on notifications.
+- **Copy:** "your coach", never the coach's name, and no pronoun for the coach. Tests check both.
+- **Screens from later steps** (shopping list, check-in, weight, reorder, the week's menu, movement) open the "not built yet" sheet from the ask box for now.
+
+**Cost, measured 18 Nov 2026 on the test plan:** a typed question that reaches the model is about 2,700 input tokens on `claude-haiku-4-5`, about US$0.0027 (the build plan estimated $0.001). The first version sent the whole week's menu and cost $0.0041; the context now carries tomorrow only. The cached blocks are under the model's minimum cacheable length, so caching does not engage. Nine test calls were made while building: $0.03.

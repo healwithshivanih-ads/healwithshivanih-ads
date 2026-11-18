@@ -76,6 +76,8 @@ function home(o: { ticks?: SqTicks; band?: BandKey; data?: ClientAppData } & Par
       ready
       hour={hour}
       nowRank={rankFloorAt(BAND_HOUR[band])}
+      chips={[]}
+      onAsk={noop}
       checkinSentWeek={0}
       track={false}
       lastId={null}

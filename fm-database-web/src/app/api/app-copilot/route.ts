@@ -13,6 +13,9 @@ import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { runShim } from "@/lib/fmdb/shim";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { isEmergency } from "@/lib/fmdb/triage";
+import { askHandoff, askUrgent } from "@/lib/fmdb/ask-safety";
+import { parseModelCard } from "@/lib/fmdb/ask-card";
+import type { ClientAppData } from "@/lib/fmdb/client-app";
 
 export const dynamic = "force-dynamic";
 
@@ -31,10 +34,57 @@ const DEFER_HINTS = [
   "side effect", "doctor", "diagnos",
 ];
 
+/**
+ * What the model is told about the plan, for the new front's ask box. Today's
+ * app sends a shorter version (built inline below, unchanged); the card may
+ * be asked about tomorrow, approved swaps, travel and what a supplement is
+ * for, so it carries those too. Everything here is already shown to the
+ * client somewhere in the app — nothing coach-only is added.
+ */
+function cardContext(data: ClientAppData): string {
+  // Tomorrow only, not the week: "is X on my menu this week" is answered on
+  // the phone (sq-ask.ts dishOnMenu), and the whole week tripled the tokens —
+  // and so the cost — of every question.
+  const week = data.weekMenus.find((w) => w.current);
+  const todayAt = week ? week.days.findIndex((d) => d.today) : -1;
+  const next = week && todayAt >= 0 ? week.days[todayAt + 1] ?? data.weekMenus.find((w) => w.week === week.week + 1)?.days[0] : undefined;
+  const tomorrow = next ? `${next.dow} — ${next.slots.map((x) => `${x.slot}: ${x.dish}`).join("; ")}` : "";
+  const swaps = data.meals
+    .map((m) => {
+      const names = (data.mealExtra[m.slot]?.swaps ?? []).slice(0, 3).map((x) => x.name);
+      return names.length ? `${m.slot}: ${names.join(", ")}` : "";
+    })
+    .filter(Boolean)
+    .join("; ");
+  const part = (label: string, value: string) => (value.trim() ? `${label}: ${value.trim()}\n` : "");
+  return (
+    part("Client", `week ${data.client.week} of ${data.client.totalWeeks}, ${data.client.program}`) +
+    part("Today's meals", data.meals.map((m) => `${m.slot}${m.timeHint ? ` (${m.timeHint})` : ""}: ${m.pills.join(", ")}`).join("; ")) +
+    part("Swaps the coach has approved for today's meals", swaps) +
+    part("Tomorrow's meals", tomorrow) +
+    part(
+      "Supplements",
+      data.supplements
+        .map((x) => `${x.name} ${x.dose} (${x.timing || x.slot}${x.notDaily ? `, ${x.notDaily === "weekly" ? "once a week" : "every other day"}` : ""})${x.why ? ` — ${x.why}` : ""}`)
+        .join("; "),
+    ) +
+    part("Practices", data.practices.map((p) => (p.kind === "weekly" ? `${p.name} (${p.perWeek ? `${p.perWeek}× a week` : "weekly"})` : p.name)).join("; ")) +
+    part("Standing guidelines", data.guidelines.map((g) => g.name).join("; ")) +
+    part("Daily remedies", data.remedies.filter((r) => r.assigned && r.daily).map((r) => `${r.name} (${r.when || r.timing})`).join("; ")) +
+    part("Eat freely", data.planRef.foods.eat.join(", ")) +
+    part("Sometimes", data.planRef.foods.sometimes.join(", ")) +
+    part("Leave out", data.planRef.foods.avoid.join(", ")) +
+    part("Why those are left out", data.planRef.avoidWhy) +
+    part("Cooking oils", `${data.planRef.oils.use.join(", ")}${data.planRef.oils.avoid.length ? ` (avoid ${data.planRef.oils.avoid.join(", ")})` : ""}`) +
+    part("Away from home", data.travel ? `${data.travel.kind} from ${data.travel.from} to ${data.travel.to}${data.travel.location ? `, ${data.travel.location}` : ""}` : "") +
+    part("Next session with the coach", data.coach.nextSession ?? "")
+  );
+}
+
 export async function POST(req: NextRequest) {
-  let body: { token?: string; question?: string };
+  let body: { token?: string; question?: string; format?: string };
   try {
-    body = (await req.json()) as { token?: string; question?: string };
+    body = (await req.json()) as { token?: string; question?: string; format?: string };
   } catch {
     return NextResponse.json({ ok: false, error: "invalid JSON" }, { status: 400 });
   }
@@ -43,6 +93,11 @@ export async function POST(req: NextRequest) {
   if (!token || token.length < 16 || !question) {
     return NextResponse.json({ ok: false, error: "token and question required" }, { status: 400 });
   }
+  // The new front's ask box. Its own branch, so today's app (free text, below)
+  // is untouched. Same guard rails in the same order: fixed safety rules, the
+  // daily cap, a valid link, a client still in care — and only then the model.
+  if (body.format === "card") return cardAnswer(req, token, question);
+
   const q = question.toLowerCase();
   if (isEmergency(question)) {
     return NextResponse.json({ ok: true, answer: "EMERGENCY" });
@@ -95,5 +150,43 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("[app-copilot] failed:", err);
     return NextResponse.json({ ok: true, answer: "DEFER" });
+  }
+}
+
+/** Never an error to the phone: anything that goes wrong is "defer", which
+ *  the ask box shows as an offer to send the question to the coach. */
+async function cardAnswer(req: NextRequest, token: string, question: string) {
+  const defer = (reason?: string) => NextResponse.json({ ok: true, verdict: "defer", ...(reason ? { reason } : {}) });
+
+  // Authoritative: the phone runs the same module first, but a direct POST
+  // skips the phone.
+  const urgent = askUrgent(question);
+  if (urgent) return NextResponse.json({ ok: true, verdict: urgent });
+  const handoff = askHandoff(question);
+  if (handoff) return defer(handoff);
+
+  if (!(await allowDaily("app-copilot", token, DAILY_LIMIT)).ok) return defer("limit");
+  const lookup = await resolveAppToken(token);
+  if (!lookup.ok) {
+    return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
+  }
+  if (await clientIsLapsed(lookup.client_id)) return defer();
+
+  try {
+    const data = await loadClientAppData(token, {
+      deviceTz: req.cookies.get("ochre_tz")?.value ?? null,
+    });
+    if (!data || data.mode === "LIBRARY") return defer();
+    const out = (await runShim(
+      "app-copilot.py",
+      { client_id: data.clientId, context: cardContext(data), question, mode: "card" },
+      30_000,
+    )) as { ok?: boolean; answer?: string; error?: string };
+    if (!out.ok) return defer();
+    const verdict = parseModelCard(out.answer);
+    return NextResponse.json({ ok: true, ...verdict });
+  } catch (err) {
+    console.error("[app-copilot] card failed:", err);
+    return defer();
   }
 }
