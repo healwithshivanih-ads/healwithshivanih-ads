@@ -1,0 +1,51 @@
+slug: sea-buckthorn-oral-attenuates-tear-film-osmolarity
+statement: In a double-blind randomised placebo-controlled trial, 2 g/day of ORAL sea
+  buckthorn oil taken for 3 months blunted the seasonal rise in tear film osmolarity
+  in adults with dry eye, and positively affected dry eye symptoms.
+evidence_tier: plausible_emerging
+rationale: One reasonably designed RCT (100 recruited / 86 completed, adults 20-75,
+  autumn-to-winter) with a statistically significant result on the primary marker both
+  intention-to-treat (P = 0.04) and per-protocol (P = 0.02). Tiered plausible_emerging
+  rather than strong because it is a single trial, the headline outcome is a laboratory
+  surrogate (tear film osmolarity) rather than a patient-reported endpoint, and the
+  cohort was Nordic and studied across a cold season, which is not Kamla's climate.
+  Sea buckthorn's differentiator from fish oil is omega-7 (palmitoleic acid), which
+  the large null DREAM trial of EPA/DHA in dry eye did not test — so DREAM's negative
+  result does not automatically transfer here, but nor does this one trial outweigh it.
+coaching_translation: 'There is real trial evidence that taking sea buckthorn oil by
+  mouth improves the quality of the tear film over about three months. Frame it to the
+  client as: it makes tears work better, it is slow, and it is worth a proper three-month
+  trial before judging it. Do not promise symptom relief — the strongest finding was
+  a laboratory measure of tear quality, not "your eyes stopped hurting".'
+out_of_scope_notes: Dose selection and any interaction with anticoagulant or antiplatelet
+  medication is a clinician conversation, not a coaching one. Naming the dose the trial
+  used is education; telling a client what to take is prescribing.
+caveats:
+- Single trial — not replicated at the time of writing.
+- Primary outcome was tear film osmolarity, a surrogate marker, not symptom resolution.
+- ORAL route only. This trial says nothing whatsoever about instilling sea buckthorn
+  oil into the eye, and supplement-grade oil is not a sterile ophthalmic preparation.
+- Nordic cohort studied across a cold season; generalisability to an Indian climate
+  is untested.
+- Captured from the abstract and trial registry only — the full text was blocked by
+  the container egress proxy and the methods have not been read.
+linked_to_topics:
+- dry-eye-syndrome
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_symptoms:
+- dry-eyes
+linked_to_supplements:
+- sea-buckthorn-oil
+sources:
+- id: larmo-sea-buckthorn-dry-eye-2010
+  location: Abstract — Results
+  quote: Compared with the placebo group, the increase in tear film osmolarity was
+    significantly less in the sea buckthorn group when all participants were included
+    (intention to treat, P = 0.04) and when only participants consuming the study
+    products for at least 80% of the intervention days were included (per protocol,
+    P = 0.02).
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani

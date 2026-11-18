@@ -1,0 +1,38 @@
+slug: eyelid-margin-redness
+display_name: Red / Inflamed Eyelid Margins
+aliases:
+- red-eyelid-margins
+- lid-margin-redness
+- red-eyelids
+- inflamed-eyelids
+- sore-eyelids
+category: skin
+severity: common
+description: Redness, thickening or soreness along the rim of the eyelid where the
+  lashes emerge, often with visible small blood vessels and blocked or capped gland
+  openings. The visible face of lid-margin inflammation, and frequently the driver
+  behind evaporative dry eye and recurrent styes. Strongly associated with rosacea,
+  where facial flushing and lid disease travel together.
+when_to_refer: Marked swelling, pus, or spread beyond the lid margin — possible
+  preseptal or orbital cellulitis, urgent. Also refer for one-sided persistent change,
+  lash loss, or a firm nodule that does not settle.
+linked_to_topics:
+- blepharitis-and-meibomian-gland-dysfunction
+- rosacea
+- stye
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_symptoms:
+- eyelid-crusting
+notes_for_coach: Worth asking a client with red lid margins whether she flushes easily
+  or has been told she has rosacea — the catalogue's own NHS stye claim carries the
+  blepharitis/rosacea link, and treating the skin condition reduces the eye trouble.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — eyelid concretions / lid-margin disease enquiry, Aug 2026
+  quote: Lid-margin signs had no symptom slugs, so blepharitis presentations had
+    nowhere to attach.
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani

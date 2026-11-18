@@ -1,0 +1,81 @@
+slug: blepharitis-and-meibomian-gland-dysfunction
+display_name: Blepharitis & Meibomian Gland Dysfunction
+aliases:
+- blepharitis
+- meibomian-gland-dysfunction
+- mgd
+- posterior-blepharitis
+- anterior-blepharitis
+- lid-margin-disease
+- evaporative-dry-eye
+summary: Chronic inflammation of the eyelid margin, and blockage of the meibomian glands
+  that line it. Those glands secrete the oil layer that stops tears evaporating, so
+  when they clog the tear film breaks up early and the eye feels gritty, burning, sore
+  and paradoxically watery. This is the commonest driver of evaporative dry eye and
+  of recurrent styes, and it very often sits underneath complaints the client describes
+  as something else. It is managed, not cured — warm compress plus lid-margin hygiene,
+  done daily and indefinitely, is the whole foundation of care.
+common_symptoms:
+- gritty eyes
+- burning eyes
+- dry eyes
+- watery eyes
+- eyelid crusting
+- eyelid margin redness
+red_flags:
+- Vision affected, or pain rather than discomfort — refer same-day.
+- Pus, marked swelling, or spread of infection into the eye or eyelid — possible
+  preseptal or orbital cellulitis, urgent referral.
+- One eyelid persistently and asymmetrically involved, with lash loss or a firm
+  nodule that does not settle — needs an ophthalmologist to exclude other causes.
+- Dry eyes plus dry mouth plus joint pain — a sicca pattern; refer for autoimmune
+  workup rather than treating as lid disease.
+related_topics:
+- dry-eye-syndrome
+- stye
+- rosacea
+key_mechanisms:
+- chronic-inflammation
+coaching_scope_notes: 'Warm compress and lid hygiene are squarely in coaching scope
+  and are the highest-value thing you can offer — they are self-care, not treatment
+  of a diagnosis. Dose them properly: warm compress 5-10 minutes, 2-4 times a day
+  (the stye claims in this catalogue carry the NHS figures), then wipe gently along
+  the lash line straight afterwards while the oils are still soft. The order matters
+  and clients routinely get it backwards. Set the expectation that this is ongoing
+  daily maintenance like brushing teeth, not a two-week course — the single commonest
+  reason it "does not work" is that the client stopped. Do not diagnose this; describe
+  the self-care and send her to an eye clinician for the label.'
+clinician_scope_notes: Diagnosis, gland expression, topical or oral antibiotics,
+  ciclosporin, and any decision about Demodex treatment all sit with an ophthalmologist
+  or optometrist.
+notes_for_coach: 'UNVERIFIED SOURCING — READ BEFORE CLIENT USE. Drafted 2026-08-11
+  from an active client question (Kamla Bhutani, eyelid deposits). The NHS blepharitis
+  page could not be retrieved: the container egress proxy blocks nhs.uk, so the only
+  citation below is the blepharitis mention inside the already-verified NHS stye
+  source. Everything else here is clinical general knowledge that has NOT been checked
+  against a primary source, which is why this is tiered confirm_with_clinician rather
+  than strong. Fetch https://www.nhs.uk/conditions/blepharitis/ from an unrestricted
+  machine, add it as a source, split out the compress and lid-hygiene claims properly,
+  and re-tier.
+
+
+  WHY THIS ENTRY EXISTS: the catalogue had stye and dry-eye-syndrome but nothing on
+  the lid-margin disease that causes most of both. That gap meant warm-compress advice
+  was only reachable through the stye topic, which is the wrong door for a client
+  who has never had a stye.
+
+
+  MOST USEFUL REFRAME FOR A CLIENT: heat and hygiene treat the glands and the
+  inflammation. They do not remove anything solid. If there is a physical deposit or
+  a firm lump, that is a separate problem needing a separate answer — see
+  conjunctival-concretions.'
+sources:
+- id: nhs-stye-2026
+  location: NHS page — How to prevent a stye
+  quote: You're also more likely to get a stye if you have long-term blepharitis or
+    rosacea
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: '2026-08-11'
+updated_by: Shivani
