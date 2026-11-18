@@ -4,6 +4,7 @@
 # A missing key => unknown => routed to requisition (safe default).
 # in_base = inside Aarogyam F Pro + fasting glucose (verified against a real
 # F Pro report, 17 Nov 2026). addon slugs = lab_providers/thyrocare.yaml#addon_tests.
+# not_at_lab re-checked against the ThyroNXT catalogue 18 Nov 2026.
 markers:
   # Thyroid
   "TSH": { coverage: in_base }
@@ -12,7 +13,7 @@ markers:
   "Reverse T3": { coverage: not_at_lab }
   "TPO Antibodies": { coverage: addon:thyroid-antibodies }
   "Thyroglobulin Antibodies": { coverage: addon:thyroid-antibodies }
-  "TSI (Thyroid Stimulating Immunoglobulin)": { coverage: not_at_lab }
+  "TSI (Thyroid Stimulating Immunoglobulin)": { coverage: addon:thyroid-antibodies }  # TRAb in the Autoimmune Thyroid panel
   # Metabolic
   "Fasting Glucose": { coverage: in_base }
   "Fasting Insulin": { coverage: in_base }
@@ -42,7 +43,7 @@ markers:
   "NMR LipoProfile": { coverage: not_at_lab }
   # Blood, liver, kidney
   "CBC with Differential": { coverage: in_base }
-  "Reticulocyte Count": { coverage: not_at_lab }
+  "Reticulocyte Count": { coverage: addon:reticulocytes }
   # F Pro has sodium + chloride but no potassium / bicarbonate.
   "Comprehensive Metabolic Panel (CMP)": { coverage: addon:potassium }
   "Liver Function Tests (LFT)": { coverage: in_base }
@@ -55,7 +56,7 @@ markers:
   "Vitamin D (25-OH)": { coverage: in_base }
   "Vitamin B12": { coverage: in_base }
   "MMA (Methylmalonic Acid)": { coverage: not_at_lab }
-  "Active B12 (Holotranscobalamin)": { coverage: not_at_lab }
+  "Active B12 (Holotranscobalamin)": { coverage: addon:active-b12 }
   "RBC Folate": { coverage: not_at_lab }
   "Ferritin": { coverage: in_base }
   "Serum Iron": { coverage: in_base }
@@ -74,7 +75,7 @@ markers:
   "FSH": { coverage: addon:fsh }
   "LH": { coverage: addon:lh }
   "AMH (Anti-Müllerian Hormone)": { coverage: addon:amh }
-  "17-OH Progesterone": { coverage: not_at_lab }
+  "17-OH Progesterone": { coverage: addon:17-oh-progesterone }
   "Total Testosterone": { coverage: addon:total-testosterone }
   "Free Testosterone": { coverage: addon:free-testosterone }
   "SHBG": { coverage: addon:shbg }
@@ -85,7 +86,7 @@ markers:
   "Morning Cortisol (8am, fasting)": { coverage: addon:am-cortisol }
   "DUTCH Test (Dried Urine)": { coverage: not_at_lab }
   "Salivary Cortisol 4-point": { coverage: not_at_lab }
-  "Aldosterone + Renin": { coverage: not_at_lab }
+  "Aldosterone + Renin": { coverage: addon:aldosterone-renin }
   "Pregnenolone": { coverage: not_at_lab }
   # Genetics / functional
   "MTHFR Gene Variants": { coverage: not_at_lab }

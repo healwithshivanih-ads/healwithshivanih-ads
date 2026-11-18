@@ -4,16 +4,12 @@
 # FBS; HOMA-IR, TyG and the other insulin scores need it). Contents verified
 # against a real F Pro report (17 Nov 2026).
 #
-# PRICES ARE BLANK ON PURPOSE. A profile with no `our_cost_inr` AND `mrp_inr`
-# is unbookable (lab-providers.ts fails closed), so nothing can be charged until
-# the coach fills in Thyrocare's rates. To make Thyrocare bookable:
-#   1. profiles_final[].our_cost_inr  = what Thyrocare bills us
-#   2. profiles_final[].mrp_inr       = what the client pays
-#   3. profiles_final[].margin_inr    = mrp − cost (display only)
-#   4. profiles_final[].catalogue_inr = optional strike-through "regular price"
-#   5. addon_tests[].our_cost_inr / client_inr per add-on (optional — the coach
-#      also types each add-on's client price when recommending)
-# Until (1)+(2) are set for profile 1, the coach card falls back to Acumen.
+# PRICES (read from the ThyroNXT partner portal, 18 Nov 2026):
+#   client pays Thyrocare's LIST price ("Test Price" in ThyroNXT) — coach's call;
+#   our_cost_inr = list price − ThyroNXT "Incentive" (what we keep).
+#   Profiles are summed from their parts (F Pro + FBS + hormone tests/bundles).
+#   Re-read ThyroNXT when Thyrocare changes its rates; a profile missing
+#   our_cost_inr or mrp_inr is unbookable (lab-providers.ts fails closed).
 #
 # Booking: MANUAL for now — a paid order WhatsApps the coach (env
 # THYROCARE_ALERT_WHATSAPP, falling back to COACH_NOTIFY_PHONE) and she books
@@ -50,16 +46,16 @@ provider:
     manganese, molybdenum). It does NOT cover thyroid antibodies, post-meal
     glucose/insulin, potassium, zinc, copper, ESR, urine, sex hormones or
     cortisol — those are add-ons.
-  updated_at: '2026-11-17'
+  updated_at: '2026-11-18'
   updated_by: shivani
 
 profiles_final:
   - id: 1
     name: "Aarogyam F Pro + fasting glucose"
     audience: everyone
-    our_cost_inr: null
-    mrp_inr: null
-    margin_inr: null
+    our_cost_inr: 4959
+    mrp_inr: 7079
+    margin_inr: 2120
     catalogue_inr: null
     includes:
       - "Thyroid — TSH, free T3 & free T4"
@@ -77,86 +73,102 @@ profiles_final:
   - id: 2
     name: "Women's Reproductive"
     audience: "women <45"
-    our_cost_inr: null
-    mrp_inr: null
-    margin_inr: null
+    our_cost_inr: 13858
+    mrp_inr: 20023
+    margin_inr: 6165
     catalogue_inr: null
+    # = F Pro + FBS + Steroid Profile + FSH + LH + AMH + prolactin + free T + SHBG + Autoimmune Thyroid panel
     includes_extra:
-      - "Reproductive hormones — FSH, LH, AMH, estradiol, progesterone, prolactin"
-      - "Androgens — total & free testosterone, SHBG, DHEA-S"
-      - "Thyroid antibodies — anti-TPO & anti-Tg"
-    covered_addon_slugs: [fsh, lh, amh, estradiol-e2, progesterone, prolactin, total-testosterone, free-testosterone, shbg, dhea-s, thyroid-antibodies]
+      - "Steroid hormone profile — estradiol, progesterone, testosterone, DHEA, DHEA-S, androstenedione, 17-OH progesterone, cortisol, aldosterone"
+      - "Fertility & pituitary — FSH, LH, AMH, prolactin"
+      - "Free testosterone & SHBG"
+      - "Thyroid antibodies — anti-TPO, anti-Tg & TSH receptor antibodies"
+    covered_addon_slugs: [steroid-profile, fsh, lh, amh, estradiol-e2, progesterone, prolactin, total-testosterone, free-testosterone, shbg, dhea-s, am-cortisol, 17-oh-progesterone, thyroid-antibodies]
   - id: 3
     name: "Perimenopause"
     audience: "women 40+"
-    our_cost_inr: null
-    mrp_inr: null
-    margin_inr: null
+    our_cost_inr: 10613
+    mrp_inr: 15498
+    margin_inr: 4885
     catalogue_inr: null
+    # = F Pro + FBS + Steroid Profile + FSH + LH + SHBG + Autoimmune Thyroid panel
     includes_extra:
-      - "Perimenopause hormones — FSH, LH, estradiol, progesterone"
-      - "Androgens — total testosterone, SHBG, DHEA-S"
-      - "Thyroid antibodies — anti-TPO & anti-Tg"
-    covered_addon_slugs: [fsh, lh, estradiol-e2, progesterone, total-testosterone, shbg, dhea-s, thyroid-antibodies]
+      - "Steroid hormone profile — estradiol, progesterone, testosterone, DHEA, DHEA-S, androstenedione, 17-OH progesterone, cortisol, aldosterone"
+      - "Perimenopause markers — FSH, LH, SHBG"
+      - "Thyroid antibodies — anti-TPO, anti-Tg & TSH receptor antibodies"
+    covered_addon_slugs: [steroid-profile, fsh, lh, estradiol-e2, progesterone, total-testosterone, shbg, dhea-s, am-cortisol, 17-oh-progesterone, thyroid-antibodies]
   - id: 4
     name: "Male"
     audience: men
-    our_cost_inr: null
-    mrp_inr: null
-    margin_inr: null
+    our_cost_inr: 12858
+    mrp_inr: 18478
+    margin_inr: 5620
     catalogue_inr: null
+    # = F Pro + FBS + Steroid Profile + free T + SHBG + LH + FSH + prolactin + PSA + Autoimmune Thyroid panel
     includes_extra:
-      - "Male hormones — total & free testosterone, SHBG, DHEA-S, estradiol"
+      - "Steroid hormone profile — testosterone, estradiol, DHEA, DHEA-S, androstenedione, cortisol, aldosterone"
+      - "Free testosterone & SHBG"
       - "Pituitary — LH, FSH, prolactin"
       - "Men's screening — PSA"
-      - "Thyroid antibodies — anti-TPO & anti-Tg"
-    covered_addon_slugs: [total-testosterone, free-testosterone, shbg, dhea-s, estradiol-e2, lh, fsh, prolactin, psa-total, thyroid-antibodies]
+      - "Thyroid antibodies — anti-TPO, anti-Tg & TSH receptor antibodies"
+    covered_addon_slugs: [steroid-profile, total-testosterone, free-testosterone, shbg, dhea-s, estradiol-e2, am-cortisol, 17-oh-progesterone, lh, fsh, prolactin, psa-total, thyroid-antibodies]
 
 # ---------------------------------------------------------------------------
-# A-LA-CARTE ADD-ONS. Prices blank until the Thyrocare rate card is in:
-#   our_cost_inr = what Thyrocare bills us · client_inr = default client price
-#   dos_list_inr = Thyrocare's listed price (strike-through anchor), optional
-# The coach still types each add-on's client price per recommendation.
+# A-LA-CARTE ADD-ONS (ThyroNXT, 18 Nov 2026):
+#   client_inr = Thyrocare list price · our_cost_inr = list − incentive
+# The coach can still change an add-on's client price per recommendation.
 # ---------------------------------------------------------------------------
 addon_tests:
   # Core gaps in F Pro — recommended for every client
-  - { slug: thyroid-antibodies, name: "Thyroid antibodies (anti-TPO + anti-Tg)", our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: insulin-pp,         name: "Insulin + glucose (2 hours after a meal)", our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
-  - { slug: urine-routine,      name: "Urine routine",                       our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: urine-microalbumin, name: "Urine microalbumin (UACR)",           our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: potassium,          name: "Potassium",                           our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: zinc,               name: "Zinc",                                our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: copper,             name: "Copper",                              our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: esr,                name: "ESR",                                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: thyroid-antibodies, name: "Thyroid antibodies panel (anti-TPO, anti-Tg, TSH receptor Ab + TSH/T3/T4)", our_cost_inr: 1455, client_inr: 2645, dos_list_inr: null }
+  - { slug: insulin-pp,         name: "Insulin + glucose (2 hours after a meal)", our_cost_inr: 585, client_inr: 710, dos_list_inr: null, fasting: true }
+  - { slug: urine-routine,      name: "Urine routine",                       our_cost_inr: 135, client_inr: 180, dos_list_inr: null }
+  - { slug: urine-microalbumin, name: "Urine microalbumin (UACR)",           our_cost_inr: 460, client_inr: 550, dos_list_inr: null }
+  - { slug: potassium,          name: "Potassium",                           our_cost_inr: 165, client_inr: 220, dos_list_inr: null }
+  - { slug: zinc,               name: "Zinc (serum)",                                our_cost_inr: 400, client_inr: 470, dos_list_inr: null }
+  - { slug: copper,             name: "Copper (serum)",                              our_cost_inr: 310, client_inr: 350, dos_list_inr: null }
+  - { slug: esr,                name: "ESR",                                 our_cost_inr: 100, client_inr: 130, dos_list_inr: null }
   # Hormones & adrenal
-  - { slug: am-cortisol,        name: "Cortisol (morning)",                  our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
-  - { slug: dhea-s,             name: "DHEA-S",                              our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: fsh,                name: "FSH",                                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: lh,                 name: "LH",                                  our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: estradiol-e2,       name: "Estradiol (E2)",                      our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: progesterone,       name: "Progesterone",                        our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: prolactin,          name: "Prolactin",                           our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: amh,                name: "AMH",                                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: total-testosterone, name: "Testosterone (total)",                our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: free-testosterone,  name: "Testosterone (free)",                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: shbg,               name: "SHBG",                                our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: psa-total,          name: "PSA (total)",                         our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: am-cortisol,        name: "Cortisol (morning)",                  our_cost_inr: 525, client_inr: 635, dos_list_inr: null, fasting: true }
+  - { slug: dhea-s,             name: "DHEA-S",                              our_cost_inr: 815, client_inr: 1165, dos_list_inr: null }
+  - { slug: fsh,                name: "FSH",                                 our_cost_inr: 485, client_inr: 580, dos_list_inr: null }
+  - { slug: lh,                 name: "LH",                                  our_cost_inr: 475, client_inr: 565, dos_list_inr: null }
+  - { slug: estradiol-e2,       name: "Estradiol (E2)",                      our_cost_inr: 540, client_inr: 650, dos_list_inr: null }
+  - { slug: progesterone,       name: "Progesterone",                        our_cost_inr: 560, client_inr: 680, dos_list_inr: null }
+  - { slug: prolactin,          name: "Prolactin",                           our_cost_inr: 500, client_inr: 600, dos_list_inr: null }
+  - { slug: amh,                name: "AMH",                                 our_cost_inr: 1540, client_inr: 2200, dos_list_inr: null }
+  - { slug: total-testosterone, name: "Testosterone (total)",                our_cost_inr: 600, client_inr: 735, dos_list_inr: null }
+  - { slug: free-testosterone,  name: "Testosterone (free)",                 our_cost_inr: 1205, client_inr: 1725, dos_list_inr: null }
+  - { slug: shbg,               name: "SHBG",                                our_cost_inr: 860, client_inr: 1230, dos_list_inr: null }
+  - { slug: psa-total,          name: "PSA (total)",                         our_cost_inr: 540, client_inr: 655, dos_list_inr: null }
   # Triggered by intake answers
-  - { slug: ttg-iga,            name: "Coeliac screen (tTG-IgA + total IgA)", our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: h-pylori-igg,       name: "H. pylori IgG (blood)",               our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: pth,                name: "Parathyroid hormone (PTH)",           our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: cystatin-c,         name: "Cystatin C",                          our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: c-peptide,          name: "C-peptide",                           our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  - { slug: ttg-iga,            name: "Coeliac screen (tTG-IgA + total IgA)", our_cost_inr: 1715, client_inr: 2315, dos_list_inr: null }
+  - { slug: h-pylori-igg,       name: "H. pylori IgG (blood)",               our_cost_inr: 845, client_inr: 1205, dos_list_inr: null }
+  - { slug: pth,                name: "Parathyroid hormone (PTH)",           our_cost_inr: 1105, client_inr: 1580, dos_list_inr: null }
+  - { slug: cystatin-c,         name: "Cystatin C",                          our_cost_inr: 495, client_inr: 595, dos_list_inr: null }
+  - { slug: c-peptide,          name: "C-peptide",                           our_cost_inr: 865, client_inr: 1235, dos_list_inr: null, fasting: true }
   # 12-week retests — re-test only what was off instead of re-buying F Pro
-  - { slug: insulin-fasting,    name: "Insulin + glucose (fasting)",         our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
-  - { slug: hba1c,              name: "HbA1c",                               our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: lipid-profile,      name: "Lipid profile",                       our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
-  - { slug: apob,               name: "Apolipoprotein B",                    our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: hscrp,              name: "hs-CRP",                              our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: homocysteine,       name: "Homocysteine",                        our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
-  - { slug: lft,                name: "Liver function (LFT)",                our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: thyroid-profile,    name: "Thyroid (TSH, free T3, free T4)",    our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: iron-studies,       name: "Iron studies",                        our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: ferritin,           name: "Ferritin",                            our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: vitamin-d,          name: "Vitamin D (25-OH)",                   our_cost_inr: null, client_inr: null, dos_list_inr: null }
-  - { slug: vitamin-b12,        name: "Vitamin B12",                         our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: insulin-fasting,    name: "Insulin + glucose (fasting)",         our_cost_inr: 700, client_inr: 865, dos_list_inr: null, fasting: true }
+  - { slug: hba1c,              name: "HbA1c",                               our_cost_inr: 365, client_inr: 420, dos_list_inr: null }
+  - { slug: lipid-profile,      name: "Lipid profile",                       our_cost_inr: 515, client_inr: 620, dos_list_inr: null, fasting: true }
+  - { slug: apob,               name: "Apolipoprotein B",                    our_cost_inr: 540, client_inr: 650, dos_list_inr: null }
+  - { slug: hscrp,              name: "hs-CRP",                              our_cost_inr: 640, client_inr: 785, dos_list_inr: null }
+  - { slug: homocysteine,       name: "Homocysteine",                        our_cost_inr: 740, client_inr: 1060, dos_list_inr: null, fasting: true }
+  - { slug: lft,                name: "Liver function (LFT)",                our_cost_inr: 640, client_inr: 790, dos_list_inr: null }
+  - { slug: thyroid-profile,    name: "Thyroid (TSH, T3, T4, free T3, free T4)",    our_cost_inr: 464, client_inr: 549, dos_list_inr: null }
+  - { slug: iron-studies,       name: "Iron studies (iron, TIBC, transferrin saturation, ferritin)",                        our_cost_inr: 725, client_inr: 900, dos_list_inr: null }
+  - { slug: ferritin,           name: "Ferritin",                            our_cost_inr: 670, client_inr: 825, dos_list_inr: null }
+  - { slug: vitamin-d,          name: "Vitamin D (25-OH)",                   our_cost_inr: 910, client_inr: 1300, dos_list_inr: null }
+  - { slug: vitamin-b12,        name: "Vitamin B12",                         our_cost_inr: 765, client_inr: 1090, dos_list_inr: null }
+  # Added 18 Nov 2026 (ThyroNXT) — bundles + tests worth having
+  - { slug: steroid-profile,      name: "Steroid hormone profile (LC-MS/MS, 14 steroids)", our_cost_inr: 2379, client_inr: 3399, dos_list_inr: null }
+  - { slug: small-dense-ldl,      name: "Small dense LDL",                     our_cost_inr: 460,  client_inr: 550,  dos_list_inr: null }
+  - { slug: vitamin-b6,           name: "Vitamin B6 (P5P)",                    our_cost_inr: 845,  client_inr: 1205, dos_list_inr: null }
+  - { slug: active-b12,           name: "Active B12 (holotranscobalamin)",     our_cost_inr: 845,  client_inr: 1205, dos_list_inr: null }
+  - { slug: fat-soluble-vitamins, name: "Fat-soluble vitamins (A, E, K, D)",   our_cost_inr: 1520, client_inr: 2170, dos_list_inr: null }
+  - { slug: ceruloplasmin,        name: "Ceruloplasmin",                       our_cost_inr: 725,  client_inr: 900,  dos_list_inr: null }
+  - { slug: bicarbonate,          name: "Bicarbonate",                         our_cost_inr: 495,  client_inr: 595,  dos_list_inr: null }
+  - { slug: anti-parietal-cell,   name: "Anti-parietal cell antibody",         our_cost_inr: 2380, client_inr: 3400, dos_list_inr: null }
+  - { slug: 17-oh-progesterone,   name: "17-OH progesterone",                  our_cost_inr: 725,  client_inr: 900,  dos_list_inr: null }
+  - { slug: reticulocytes,        name: "Reticulocyte count",                  our_cost_inr: 320,  client_inr: 360,  dos_list_inr: null }
+  - { slug: aldosterone-renin,    name: "Aldosterone / renin ratio",           our_cost_inr: 2100, client_inr: 3000, dos_list_inr: null }
