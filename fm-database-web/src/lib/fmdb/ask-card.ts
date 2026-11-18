@@ -11,7 +11,7 @@ import { HANDOFF_COPY, URGENT_COPY, type HandoffKind, type UrgentKind } from "./
 
 /** Where a button on a card may lead. A fixed list: the model picks from the
  *  MODEL_BUTTONS subset and cannot invent a destination. */
-export type AskTarget = "day" | "record" | "recipe" | "start" | "practices" | "coach" | "soon";
+export type AskTarget = "day" | "record" | "recipe" | "start" | "eatout" | "practices" | "coach" | "soon";
 
 export interface AskButton {
   to: AskTarget;

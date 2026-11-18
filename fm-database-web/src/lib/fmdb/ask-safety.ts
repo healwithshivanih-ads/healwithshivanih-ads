@@ -137,10 +137,14 @@ const OTHER_PERSON = new RegExp(
     `(can|could|should|kya) (my |mere |meri |mera )?(${KIN})\\b.*\\b(eat|have|take|follow|use|kha)`,
     // "pati ko ... kha sakte"
     `(${KIN}) ko .*(kha|le) sakt`,
-    // "my husband has high BP, what should he eat"
-    `\\b(my|mere|meri|mera) (${KIN}) (has|have|is|was|ko|needs?|wants?|should|can|got)\\b`,
   ].join("|"),
 );
+/** "My husband has high BP, what should he eat" — a statement about someone
+ *  else. Weaker than the patterns above, so it does not apply when she then
+ *  asks for herself: "my husband wants pizza, can I have a slice?" is her
+ *  own food question. */
+const OTHER_PERSON_STATED = new RegExp(`\\b(my|mere|meri|mera) (${KIN}) (has|have|is|was|ko|needs?|should|can|got)\\b`);
+const ASKS_FOR_SELF = /\b(can|could|should|may|shall) i\b|\bwhat (do|should|can) i\b|\bfor me\b|\bmain\b.*\bsakt/;
 
 const ALCOHOL =
   /alcohol|\bwine\b|\bbeer\b|whisky|whiskey|vodka|\brum\b|\bgin\b|cocktail|daaru|\bdrinks\b|\b(can|may|could) i (have a|get a)? ?drink\b(?! (water|juice|milk|lassi|chaas|buttermilk|nimbu|lemon|coconut|tea|coffee|chai))|\bhave a drink\b/;
@@ -186,7 +190,7 @@ export function askHandoff(q: string): HandoffKind | null {
   if (!raw) return null;
   const s = dropSupplementForms(raw);
   if (MEDICINE.test(s)) return "medicine";
-  if (OTHER_PERSON.test(s)) return "other_person";
+  if (OTHER_PERSON.test(s) || (OTHER_PERSON_STATED.test(s) && !ASKS_FOR_SELF.test(s))) return "other_person";
   if (ALCOHOL.test(s)) return "alcohol";
   if (isMissedCapsule(raw)) return "dose";
   if (RESULTS.test(s)) return "results";

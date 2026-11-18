@@ -41,6 +41,8 @@ export type SqSheet =
   | { k: "recday"; date: string }
   | { k: "recipe"; slot: string }
   | { k: "start" }
+  /** the coach's eating-out guide for this plan week, in full */
+  | { k: "eatout" }
   /** a screen a later build step fills in */
   | { k: "soon"; title: string };
 

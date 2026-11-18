@@ -425,6 +425,102 @@ describe("her plan", () => {
   });
 });
 
+// ── eating out: the coach's guide on the plan ──────────────────────────────
+
+describe("eating out, with the coach's guide on the plan", () => {
+  const sit = (where: string, choose: string[], skip: string[] = [], keywords: string[] = []) => ({ where, keywords, choose, skip, note: "" });
+  const GUIDE = {
+    label: "",
+    rules: ["Start with the vegetables", "Grilled or tandoori over fried"],
+    situations: [
+      sit("At a restaurant", ["Dal, sabzi, and rice or jowar roti"], ["Naan and cream gravies"]),
+      sit("At a hotel buffet", ["Start at the cooked vegetables"], ["The bread basket and juices"]),
+      sit("At a wedding or party", ["Dal, sabzi, rice and salad from the counter"], ["Chaat and fried starters"]),
+      sit("Travelling", ["Idli or dosa with sambar"], ["Sandwiches and anything fried"]),
+    ],
+    notOnList: "Choose the plainest cooked dish and tell your coach afterwards.",
+  };
+  const withGuide = (over: Partial<AskContext> = {}) => ctx({ ...over, dataOver: { planRef: { eatingOut: GUIDE } } });
+
+  it.each([
+    ["hotel buffet what do i eat", "CARD At a hotel buffet"],
+    ["hotel breakfast", "CARD At a hotel buffet"],
+    ["Hotel buffet, what do I eat?", "CARD At a hotel buffet"],
+    ["airport lounge what do i eat", "CARD Travelling"],
+    ["i'm travelling tuesday to thursday", "CARD Travelling"],
+    ["travelling next week", "CARD Travelling"],
+    ["wedding saturday what do i do", "CARD At a wedding or party"],
+    ["client dinner italian tonight", "CARD At a restaurant"],
+    ["business lunch tomorrow what do i order", "CARD At a restaurant"],
+    ["I'm eating out tonight", "CARD At a restaurant"],
+    ["I'm eating out", "CARD At a restaurant"],
+    ["I'm at a restaurant, what can I order?", "CARD At a restaurant"],
+    // away from home but not about food: still the model, which uses the detail
+    ["i'll run out of vitamin d abroad", "MODEL"],
+    ["hotel gym only, what workout", "MODEL"],
+    ["jet lag, how do I sleep", "MODEL"],
+    ["late flight wired cant sleep", "MODEL"],
+    // nothing to do with eating out is untouched by the guide
+    ["What's for dinner?", "CARD Dinner: Moong khichdi"],
+    ["can i eat mango", "MODEL"],
+  ])("%s → %s", (q, want) => {
+    expect(ask(q, withGuide())).toBe(want);
+  });
+
+  it("the card is the coach's lines as written: choose as ticks, skip as crosses", () => {
+    const r = routeAsk("I'm at a restaurant, what can I order?", withGuide());
+    if (r.type !== "card") throw new Error("expected a card");
+    expect(r.card.list).toEqual([
+      { mark: "yes", text: "Dal, sabzi, and rice or jowar roti" },
+      { mark: "no", text: "Naan and cream gravies" },
+    ]);
+    expect(r.card.src).toBe("From your plan");
+    // She has her answer now, and can still ask the coach as well.
+    expect(r.card.handoff).toBeUndefined();
+    expect(r.card.buttons?.map((b) => b.to)).toEqual(["eatout", "coach"]);
+  });
+
+  it("names the section of the plan the guide is for", () => {
+    const c = ctx({ dataOver: { planRef: { eatingOut: { ...GUIDE, label: "Remove phase" } } } });
+    const r = routeAsk("I'm eating out", c);
+    expect(r.type === "card" && r.card.src).toBe("From your plan · Remove phase");
+  });
+
+  it("a place the guide has no card for gets the restaurant card with the rules that hold anywhere", () => {
+    const small = ctx({ dataOver: { planRef: { eatingOut: { ...GUIDE, situations: [GUIDE.situations[0]] } } } });
+    const r = routeAsk("wedding saturday what do i eat", small);
+    if (r.type !== "card") throw new Error("expected a card");
+    expect(r.card.heading).toBe("At a restaurant");
+    expect(r.card.lines).toEqual(GUIDE.rules);
+  });
+
+  it("dinner with drinks: the food is answered now, and the drinks stay the coach's call", () => {
+    const r = routeAsk("late client dinner with drinks", withGuide());
+    if (r.type !== "card") throw new Error("expected a card");
+    expect(r.card.heading).toBe("At a restaurant");
+    expect(r.card.list?.[0]).toEqual({ mark: "yes", text: "Dal, sabzi, and rice or jowar roti" });
+    expect(r.card.note).toContain("Alcohol is your coach's call");
+    expect(r.card.handoff).toBe(true);
+    // Alcohol on its own is still only the coach's.
+    expect(ask("can i drink wine", withGuide())).toBe("HAND");
+  });
+
+  it("safety still comes first, even at a restaurant", () => {
+    expect(ask("I'm at a restaurant and my chest feels tight", withGuide())).toBe("EMERGENCY");
+    expect(ask("at a hotel buffet, my stomach hurts", withGuide())).toBe("HAND");
+  });
+
+  it("offers 'I'm eating out' as a tappable question only when the plan has a guide", () => {
+    expect(askChips(withGuide())).toContain("I'm eating out");
+    expect(askChips(ctx())).not.toContain("I'm eating out");
+    // …and it is answered on the phone, like every chip.
+    for (let h = 0; h < 24; h++) {
+      const c = withGuide({ nowRank: rankFloorAt(h) });
+      for (const q of askChips(c)) expect(ask(q, c), q).not.toBe("MODEL");
+    }
+  });
+});
+
 describe("dishOnMenu — every word of the food must be in one dish", () => {
   const d = data();
   it("finds a dish that is on the week's menu, with where", () => {

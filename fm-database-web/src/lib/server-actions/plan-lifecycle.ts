@@ -1251,6 +1251,11 @@ export async function generateFollowUpPlan(
     attached_protocols: inheritedProtocols,
     // Never carried: a new phase is tested afresh against who she is now.
     client_fit: [],
+    // Never carried either: the eating-out guide is written for one phase of
+    // one plan (what a client may order in a 5R Remove phase is not what they
+    // may order in Repair). plan-check refuses the draft until the new phase
+    // has its own; the predecessor's guide is there to start from.
+    eating_out: [],
     // Prepend AI summary + protocols-carried note to notes_for_coach.
     // Header reflects intent so coach can scan and see whether this
     // draft is a next-phase continuation or a maintenance graduation.

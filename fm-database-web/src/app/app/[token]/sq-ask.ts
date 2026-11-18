@@ -13,10 +13,15 @@
  * show. It never invents a fact — every line it writes is read from the
  * payload, and where the payload does not say, it hands to the coach.
  *
+ * Eating out is answered here from the coach's own guide on the plan
+ * (plan.eating_out → planRef.eatingOut, see lib/fmdb/eating-out.ts): her
+ * lines, as written, at once and at no cost. A plan with no guide for this
+ * week sends eating-out questions to the model instead.
+ *
  * Deliberately NOT answered here, though the prototype did: tea and coffee,
- * eating out, swaps, portions, "can I eat X". The prototype's answers were
- * written for one demo client. In the real app they depend on each client's
- * own food list, so they go to the model with her plan in front of it.
+ * swaps, portions, "can I eat X". The prototype's answers were written for
+ * one demo client. In the real app they depend on each client's own food
+ * list, so they go to the model with the plan in front of it.
  *
  * Screens that arrive in later build steps (shopping list, check-in, weight,
  * reorder, the week's menu) open the "not built yet" sheet for now; only the
@@ -25,7 +30,8 @@
 
 import type { AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
 import { coachCard, handoffCard, urgentCard, type AskCard } from "@/lib/fmdb/ask-card";
-import { REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, normalizeAsk } from "@/lib/fmdb/ask-safety";
+import { HANDOFF_COPY, REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, normalizeAsk } from "@/lib/fmdb/ask-safety";
+import { defaultSituation, matchSituation, type AppEatingOut, type AppEatingOutSituation } from "@/lib/fmdb/eating-out";
 import {
   dayCount,
   dayLabel,
@@ -315,6 +321,30 @@ export function dishOnMenu(s: string, data: ClientAppData): { dish: string; wher
   return hits;
 }
 
+/**
+ * An eating-out card: the coach's own lines for that place, as written in the
+ * plan. Nothing is added or reworded. It answers at once and offers the coach
+ * as well, so nobody waits a day before a meal.
+ */
+export function eatingOutCard(sit: AppEatingOutSituation, guide: AppEatingOut, q: string, withRules = false): AskCard {
+  return {
+    src: guide.label ? `From your plan · ${guide.label}` : PLAN,
+    heading: sit.where,
+    lines: withRules ? guide.rules.slice(0, 3) : [],
+    list: [...sit.choose.map((text) => ({ mark: "yes" as const, text })), ...sit.skip.map((text) => ({ mark: "no" as const, text }))],
+    note: sit.note || undefined,
+    buttons: [
+      { to: "eatout", label: "The whole guide" },
+      { to: "coach", label: "Ask my coach too", draft: q.trim() },
+    ],
+  };
+}
+
+/** Away from home, but not about food: these keep going to the model, which
+ *  uses the detail in the question or hands to the coach. */
+const NOT_FOOD = /\bgym\b|workout|exercise|sleep|jet ?lag|supplement|vitamin|capsule|run(ning)? out|ran out|medicine|tablet/;
+const ABOUT_FOOD = /\b(eat|eating|order|ordering|food|khana|kha|menu|meals?|breakfast|lunch|dinner|snack|buffet|restaurant)\b|what (do|should|can) i (do|have|get|choose|pick)/;
+
 // ── the router ─────────────────────────────────────────────────────────────
 
 const TRAVEL = /travel|\btrip\b|flight|flying|abroad|out of (town|station)|on tour|hotel|airport|jet ?lag|buffet|wedding|shaadi|restaurant|eating out|eat out|(client|business|office|team) (dinner|lunch)|(dinner|lunch) out|italian|chinese|pizza|takeaway|order in|swiggy|zomato/;
@@ -346,7 +376,14 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (has(/(tell|message|msg|talk to|speak to|write to|call) (my |the |your )?coach/)) return { type: "tab", tab: "coach" };
 
   // 3. the coach answers these personally
+  const guide = data.planRef?.eatingOut ?? null;
+  const situation = guide ? matchSituation(s, guide) : null;
   const handoff = askHandoff(q);
+  if (handoff === "alcohol" && guide && situation) {
+    // "Late client dinner with drinks": the food is answered now, from the
+    // plan. The drinks stay the coach's call, and the card says so.
+    return card({ ...eatingOutCard(situation, guide, q), buttons: [], note: HANDOFF_COPY.alcohol.line, handoff: true });
+  }
   if (handoff) return card(handoffCard(handoff));
   if (has(/(shift|change|move|adjust|push).{0,24}(time|timing)|eat (breakfast|lunch|dinner) at \d|(late|night|early) shift/)) {
     return card(coachCard("Changing when you eat or take things is your coach's call. Send this to your coach?"));
@@ -355,6 +392,16 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   // 4. plan lookups
   // Anything about being away from home uses the detail in the question, so
   // it goes to the model rather than to a card that ignores it.
+  // Eating away from home: answered at once from the coach's guide for this
+  // plan week, when the plan has one and the question is about food.
+  if (guide) {
+    const food = has(ABOUT_FOOD);
+    if (situation && (food || !has(NOT_FOOD))) return card(eatingOutCard(situation, guide, q));
+    if (food && has(TRAVEL)) {
+      const fallback = defaultSituation(guide);
+      if (fallback) return card(eatingOutCard(fallback, guide, q, true));
+    }
+  }
   if (has(TRAVEL)) return { type: "model" };
 
   const rows = dayRows(moments);
@@ -504,6 +551,7 @@ export function askChips(ctx: AskContext): string[] {
     if (SLOTS.some(([ask]) => ask.test(part))) chips.push(`What's for ${part}?`);
   }
   chips.push("What is left today?");
+  if (ctx.data.planRef?.eatingOut?.situations.length) chips.push("I'm eating out");
   const supp = dayRows(ctx.moments).find((r) => r.kind === "supp" && ctx.data.supplements.some((x) => x.id === r.id && (x.why || x.timing)));
   if (supp) chips.push(`Why ${supp.name.toLowerCase()}?`);
   if (ctx.data.coach.nextSession) chips.push("When is my next session?");

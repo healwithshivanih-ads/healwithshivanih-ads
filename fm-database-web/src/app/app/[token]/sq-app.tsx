@@ -32,7 +32,7 @@ import { askChips, routeAsk, type AskContext } from "./sq-ask";
 import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
 import { SqCoach, useCoachThread } from "./sq-coach";
 import { SqHome } from "./sq-home";
-import { recipeTitle, recordDayTitle, SqDaySheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
+import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
 import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
 import "./sq.css";
@@ -268,7 +268,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   };
 
   const onCardButton = (b: AskButton) => {
-    if (b.to === "day" || b.to === "record" || b.to === "start") open({ k: b.to });
+    if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout") open({ k: b.to });
     else if (b.to === "recipe" && b.ref) open({ k: "recipe", slot: b.ref });
     else if (b.to === "soon") open({ k: "soon", title: b.ref ?? b.label });
     else if (b.to === "practices") go("practices");
@@ -314,11 +314,14 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "recipe") {
       sheetTitle = recipeTitle(data, sheet.slot);
       sheetBody = <SqRecipeSheet data={data} slot={sheet.slot} />;
+    } else if (sheet.k === "eatout" && data.planRef?.eatingOut) {
+      sheetTitle = "Eating out";
+      sheetBody = <SqEatingOutSheet guide={data.planRef.eatingOut} />;
     } else if (sheet.k === "start") {
       sheetTitle = "How this app works";
       sheetBody = <SqStartSheet />;
     } else {
-      sheetTitle = sheet.title;
+      sheetTitle = sheet.k === "soon" ? sheet.title : "Eating out";
       sheetBody = (
         <SqCard>
           <p className="sq-sub">{NOT_BUILT}</p>
@@ -386,6 +389,13 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                     <SqNavRow title="How this app works" note="One minute, whenever you need it" onOpen={() => open({ k: "start" })} />
                   </div>
                 </SqCard>
+                {data.planRef?.eatingOut && (
+                  <SqCard title="Your plan">
+                    <div className="sq-list">
+                      <SqNavRow title="Eating out" note="What to choose and what to skip, away from home" onOpen={() => open({ k: "eatout" })} />
+                    </div>
+                  </SqCard>
+                )}
                 <SqCard title="You">
                   <div className="sq-list">
                     <SqNavRow title="Your record" note="Everything you have ticked, day by day" onOpen={() => open({ k: "record" })} />

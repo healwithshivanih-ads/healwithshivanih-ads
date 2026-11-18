@@ -15,6 +15,7 @@ import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { isEmergency } from "@/lib/fmdb/triage";
 import { askHandoff, askUrgent } from "@/lib/fmdb/ask-safety";
 import { parseModelCard } from "@/lib/fmdb/ask-card";
+import { eatingOutContext } from "@/lib/fmdb/eating-out";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 
 export const dynamic = "force-dynamic";
@@ -75,6 +76,10 @@ function cardContext(data: ClientAppData): string {
     part("Sometimes", data.planRef.foods.sometimes.join(", ")) +
     part("Leave out", data.planRef.foods.avoid.join(", ")) +
     part("Why those are left out", data.planRef.avoidWhy) +
+    part("Diet", data.planRef.flags.map((f) => f.label).join(", ")) +
+    // The coach's own eating-out guide for this plan week. With it, a
+    // food-choice question always has an answer for now.
+    part("Eating out (the coach's guide)", data.planRef.eatingOut ? eatingOutContext(data.planRef.eatingOut) : "") +
     part("Cooking oils", `${data.planRef.oils.use.join(", ")}${data.planRef.oils.avoid.length ? ` (avoid ${data.planRef.oils.avoid.join(", ")})` : ""}`) +
     part("Away from home", data.travel ? `${data.travel.kind} from ${data.travel.from} to ${data.travel.to}${data.travel.location ? `, ${data.travel.location}` : ""}` : "") +
     part("Next session with the coach", data.coach.nextSession ?? "")

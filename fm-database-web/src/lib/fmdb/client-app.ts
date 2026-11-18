@@ -1,4 +1,5 @@
 import { classifyPracticeKind, supplementCadence, weeklyDueToday, type DayPart } from "./practice-kind";
+import { pickEatingOutGuide, type AppEatingOut } from "./eating-out";
 import { type DairyClient, resolveDairy, treatsAsAllergy } from "./dairy-reaction";
 import "server-only";
 
@@ -1420,6 +1421,9 @@ export interface ClientAppData {
     accents: PlateItem[];
     oils: { use: string[]; avoid: string[]; note: string };
     foods: { eat: string[]; sometimes: string[]; avoid: string[] };
+    /** The coach's eating-out guide for THIS plan week (eating-out.ts), or
+     *  null when the plan has none for it. Client-facing, printed as written. */
+    eatingOut?: AppEatingOut | null;
     /** when the issued letter spells out its own food groups, render THOSE
      *  verbatim (letter parity) instead of the 3-tier paraphrase */
     letterFoods?: LetterFoods | null;
@@ -6499,6 +6503,7 @@ export async function loadClientAppData(
       accents,
       oils,
       foods,
+      eatingOut: pickEatingOutGuide(plan.eating_out, week),
       letterFoods: null,
       avoidWhy,
       cooking,

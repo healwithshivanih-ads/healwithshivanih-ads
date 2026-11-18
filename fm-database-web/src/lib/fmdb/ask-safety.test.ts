@@ -164,6 +164,9 @@ describe("askHandoff — the coach answers these personally", () => {
     "can i drink water before breakfast",
     "aaj mehman aa rahe hai kya banau",
     "I'm furious with everyone today",
+    // someone else is mentioned, but the question is her own
+    "my husband wants pizza, can I have a slice",
+    "my son is ordering biryani, what should I order",
   ])("is left for the plan lookups and the model: %s", (q) => {
     expect(askUrgent(q)).toBeNull();
     expect(askHandoff(q)).toBeNull();

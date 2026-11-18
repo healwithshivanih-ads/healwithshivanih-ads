@@ -232,6 +232,146 @@ def _diet_hits(text: str, groups: set[str]) -> list[tuple[str, str]]:
     return hits
 
 
+def _check_eating_out(
+    plan: Plan, client: Client | None, findings: list[Finding]
+) -> None:
+    """The plan's eating-out guide exists, is usable, and is safe for THIS client.
+
+    The client app answers "I'm at a restaurant, what do I order" straight
+    from `plan.eating_out`, with nobody in between, so what is written there is
+    held to the same bar as a prescription:
+
+      - a plan still being written (draft / ready_to_publish) with NO guide is
+        CRITICAL — the guide is part of writing the plan. A plan published
+        before the guide existed gets an INFO: add one with
+        `scripts/set-eating-out-guide.py`.
+      - a guide that tells the client to CHOOSE a food outside their diet
+        (meat for a vegetarian) is CRITICAL, by the same word lists and
+        negation rules as nutrition.add.
+      - a guide that tells a client with a dairy reaction to choose dairy is
+        CRITICAL for an allergy or an untyped reaction, WARNING for lactose
+        intolerance (plan/dairy.py decides which).
+      - weeks that no guide covers are a WARNING.
+
+    "Skip" lines are not screened: naming a food to avoid is the point of them.
+    """
+    guides = list(plan.eating_out or [])
+    gated = str(getattr(plan.status, "value", plan.status)) in _GATED_STATUSES
+    if not guides:
+        if gated:
+            findings.append(Finding(
+                "CRITICAL", "eating_out", "guide",
+                ("no eating-out guide. Write one for THIS client (author-plan "
+                 "step 4c): the rules that hold anywhere, then what to choose "
+                 "and what to skip at a restaurant, on the road and at a "
+                 "celebration. The app answers from it so the client never "
+                 "waits for the coach before a meal."),
+                target="missing",
+            ))
+        else:
+            findings.append(Finding(
+                "INFO", "eating_out", "guide",
+                ("this plan has no eating-out guide, so the app hands "
+                 "eating-out questions to the coach. Add one with "
+                 "scripts/set-eating-out-guide.py."),
+                target="missing",
+            ))
+        return
+
+    total = int(plan.plan_period_weeks or 0)
+    covered: set[int] = set()
+    whole_plan = False
+    for i, g in enumerate(guides):
+        name = g.label or ("whole plan" if g.from_week is None and g.to_week is None else f"guide {i + 1}")
+        if not g.situations or not any(s.choose for s in g.situations):
+            findings.append(Finding(
+                "CRITICAL" if gated else "WARNING", "eating_out", "situations",
+                (f"the {name!r} guide names no place with something to choose. "
+                 "Give at least one situation (a restaurant) with 'choose' lines."),
+                target=f"{i}",
+            ))
+        for s in g.situations:
+            if not (s.where or "").strip():
+                findings.append(Finding(
+                    "CRITICAL" if gated else "WARNING", "eating_out", "where",
+                    f"a situation in the {name!r} guide has no 'where' — it is the card's heading.",
+                    target=f"{i}",
+                ))
+        if g.from_week is None and g.to_week is None:
+            whole_plan = True
+        else:
+            lo = g.from_week if g.from_week is not None else 1
+            hi = g.to_week if g.to_week is not None else (total or lo)
+            if lo < 1 or hi < lo or (total and hi > total):
+                findings.append(Finding(
+                    "CRITICAL" if gated else "WARNING", "eating_out", "weeks",
+                    (f"the {name!r} guide runs weeks {lo}–{hi}, which does not fit "
+                     f"a {total}-week plan."),
+                    target=f"{i}",
+                ))
+            else:
+                clash = sorted(covered & set(range(lo, hi + 1)))
+                if clash:
+                    findings.append(Finding(
+                        "WARNING", "eating_out", "weeks",
+                        (f"the {name!r} guide overlaps another guide in week(s) "
+                         f"{', '.join(map(str, clash))}; the app uses the first one listed."),
+                        target=f"{i}",
+                    ))
+                covered |= set(range(lo, hi + 1))
+    if not whole_plan and total:
+        gaps = [w for w in range(1, total + 1) if w not in covered]
+        if gaps:
+            findings.append(Finding(
+                "WARNING", "eating_out", "weeks",
+                (f"no eating-out guide covers week(s) {', '.join(map(str, gaps))}. "
+                 "Add a guide for those weeks, or one with no weeks set for the whole plan."),
+                target="gaps",
+            ))
+
+    if client is None:
+        return
+
+    # What the guide tells the client to DO: rules, choose lines, notes, and
+    # the not-on-my-list line. (Skip lines name foods to avoid, on purpose.)
+    def _said(g) -> list[tuple[str, str]]:
+        out = [("rules", t) for t in g.rules]
+        for s in g.situations:
+            out += [("choose", t) for t in s.choose]
+            if s.note:
+                out.append(("note", s.note))
+        if g.not_on_list:
+            out.append(("not_on_list", g.not_on_list))
+        return out
+
+    diet = _normalise_diet(getattr(client, "dietary_preference", None))
+    forbids = _DIET_FORBIDS.get(diet, set()) if diet and diet != "non_vegetarian" else set()
+    try:
+        from .dairy import resolve_dairy, text_is_dairy_safe, treats_as_allergy
+        dairy = resolve_dairy(client.model_dump())
+    except Exception:  # noqa: BLE001 — a record the resolver cannot read is not this check's finding
+        dairy = None
+
+    for g in guides:
+        for field, text in _said(g):
+            for _group, word in _diet_hits(text, forbids):
+                findings.append(Finding(
+                    "CRITICAL", "eating_out", field,
+                    (f"the eating-out guide says {text!r}, which names {word!r} — "
+                     f"the client is {diet.replace('_', '-')} and does not eat it. "
+                     "The app prints this line to the client as written."),
+                    target=word,
+                ))
+            if dairy and not text_is_dairy_safe(text, dairy):
+                findings.append(Finding(
+                    "CRITICAL" if treats_as_allergy(dairy) else "WARNING", "eating_out", field,
+                    (f"the eating-out guide says {text!r}, which is not dairy-safe "
+                     f"for this client ({dairy['kind'].replace('_', ' ')}). Reword it, "
+                     "or move the food to that situation's 'skip' lines."),
+                    target=text[:40],
+                ))
+
+
 def _check_dietary_consistency(
     plan: Plan, client: Client | None, findings: list[Finding]
 ) -> None:
@@ -1433,6 +1573,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Dietary-preference consistency ----------
     _check_dietary_consistency(plan, client, findings)
+
+    # ---------- Eating out: a guide for this client, safe for this client ----------
+    _check_eating_out(plan, client, findings)
 
     # ---------- Food-first redundancy ----------
     _check_food_first_redundancy(plan, findings)

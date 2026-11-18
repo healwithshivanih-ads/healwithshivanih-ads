@@ -28,6 +28,12 @@ export interface AskTurn {
 /** Shown when the phone could not reach the server at all. */
 export const OFFLINE_CARD: AskCard = coachCard("I couldn't get an answer just now. You can ask again, or send this to your coach.");
 
+/** Shown when the day's typed questions are used up (the server's cap). The
+ *  tappable questions and the plan lookups are not counted and still work. */
+export const LIMIT_CARD: AskCard = coachCard(
+  "That is all the typed questions I can answer today. The questions on Today still work, and I can pass this one to your coach.",
+);
+
 /**
  * Ask the model, by way of the server. Always resolves to a card: the server
  * has already checked the model's words, and anything that goes wrong here
@@ -45,6 +51,7 @@ export async function fetchModelCard(token: string, question: string): Promise<A
     if (j.verdict === "answer" && j.card && Array.isArray(j.card.lines)) return j.card;
     if (j.verdict === "emergency" || j.verdict === "selfharm") return urgentCard(j.verdict);
     if (j.reason && j.reason in HANDOFF_COPY) return handoffCard(j.reason as HandoffKind);
+    if (j.reason === "limit") return LIMIT_CARD;
     return NO_ANSWER_CARD;
   } catch {
     return OFFLINE_CARD;
