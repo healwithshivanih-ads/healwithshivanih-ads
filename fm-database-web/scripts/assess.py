@@ -1848,10 +1848,20 @@ def main() -> int:
             # Use the latest date_drawn across all extracted labs as the markers date
             all_dates = [_parse_report_date(l.get("date_drawn")) for l in extracted_labs]
             latest_report_date = max((d for d in all_dates if d), default=today.isoformat())
-            raw_client["lab_markers"] = computed_ratios
+            # Merge, never replace: hand-entered markers and the text on
+            # unchanged values survive (fmdb/assess/marker_merge.py).
+            from fmdb.assess.marker_merge import merge_markers
+            merged = merge_markers(raw_client.get("lab_markers"), computed_ratios)
+            raw_client["lab_markers"] = merged
             raw_client["lab_markers_date"] = latest_report_date
-            if lab_synthesis:
-                raw_client["lab_synthesis"] = lab_synthesis
+            try:
+                from fmdb.assess.lab_synthesis import synthesise_labs
+                _stored_synth = synthesise_labs(merged, _lab_ctx) if merged else None
+            except Exception as _se:  # pragma: no cover
+                print(f"WARN: lab synthesis skipped: {_se}", file=sys.stderr)
+                _stored_synth = lab_synthesis
+            if _stored_synth:
+                raw_client["lab_synthesis"] = _stored_synth
 
         # Build one health snapshot per distinct report date so health trends can
         # show how each marker changed between appointments.
