@@ -100,8 +100,11 @@ def main() -> int:
         )
         return 0
 
-    markers = compute_ratios(all_labs, lab_client_context(data))
+    _ctx = lab_client_context(data)
+    markers = compute_ratios(all_labs, _ctx)
     data["lab_markers"] = markers
+    from fmdb.assess.lab_synthesis import synthesise_labs  # type: ignore
+    data["lab_synthesis"] = synthesise_labs(markers, _ctx) if markers else None
     # Newest date_drawn across all labs as the marker date
     all_dates = sorted(
         [str(lv.get("date_drawn") or "") for lv in all_labs],

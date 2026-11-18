@@ -1,0 +1,27 @@
+id: mcauley-2001-insulin-resistance-index
+title: Diagnosing insulin resistance in the general population
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- McAuley KA
+- Williams SM
+- Mann JI
+- Walker RJ
+- Lewis-Barned NJ
+- Temple LA
+- Duncan AW
+year: 2001
+publisher: Diabetes Care 24(3):460-464
+url: https://pubmed.ncbi.nlm.nih.gov/11289468/
+doi: 10.2337/diacare.24.3.460
+notes: '178 normoglycaemic New Zealand adults against the euglycaemic clamp: fasting insulin and triglycerides
+  were the best predictors, combined as exp(2.63 - 0.28 ln insulin - 0.31 ln TG mmol/L). The paper''s
+  screening cut-off for insulin resistance is 5.8.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

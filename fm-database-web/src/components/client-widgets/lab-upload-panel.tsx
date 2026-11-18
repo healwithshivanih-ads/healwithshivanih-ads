@@ -10,7 +10,9 @@ import {
   loadLatestLabSnapshotAction,
   checkDuplicateUploadAction,
 } from "@/lib/server-actions/assess";
-import { findExpectingSessionAction, assessReworkBenefitAction } from "@/lib/server-actions/clients";
+import { findExpectingSessionAction, assessReworkBenefitAction, saveLabPretestAction } from "@/lib/server-actions/clients";
+import { LabPretestForm } from "./lab-pretest-form";
+import type { LabPretest } from "@/lib/fmdb/types";
 import type { ExtractedLabValue, ExtractedMeasurements } from "@/lib/fmdb/anthropic";
 import type { ComputedRatio, ExtractedLab } from "@/lib/fmdb/anthropic-types";
 
@@ -431,6 +433,12 @@ export function LabUploadPanel({ clientId }: Props) {
   // Fix A 2026-05-23 — Claude desktop fallback modal (shown when API is
   // capped + coach clicks the new "Extract via Claude desktop instead" button)
   const [showClaudeFallback, setShowClaudeFallback] = useState(false);
+  // Pre-test answers for this draw (illness, paracetamol, exercise, biotin…).
+  // Saved with a new report; for an already-saved draw, "Save answers"
+  // writes them to that snapshot and rebuilds the lab read.
+  const [pretest, setPretest] = useState<LabPretest>({});
+  const [pretestDirty, setPretestDirty] = useState(false);
+  const [isSavingPretest, startSavePretest] = useTransition();
 
   // Rehydrate the most recent saved lab snapshot on mount. Without this the
   // widget reset to empty on every refresh, making the coach think the
@@ -452,6 +460,8 @@ export function LabUploadPanel({ clientId }: Props) {
       if (r.measurements) {
         setExtractedMeasurements(r.measurements as ExtractedMeasurements);
       }
+      setPretest(r.pretest ?? {});
+      setPretestDirty(false);
     })();
     return () => { stale = true; };
   }, [clientId]);
@@ -463,7 +473,23 @@ export function LabUploadPanel({ clientId }: Props) {
     setFilePath(null);
     setSaved(false);
     setFileName("");
+    setPretest({});
+    setPretestDirty(false);
+    setSavedSnapshotDate(null);
     if (fileRef.current) fileRef.current.value = "";
+  };
+
+  const onSavePretest = () => {
+    if (!savedSnapshotDate) return;
+    startSavePretest(async () => {
+      const r = await saveLabPretestAction(clientId, savedSnapshotDate, pretest);
+      if (!r.ok) {
+        toast.error(`Pre-test answers not saved: ${r.error}`);
+        return;
+      }
+      setPretestDirty(false);
+      toast.success("✓ Pre-test answers saved — lab read rebuilt");
+    });
   };
 
   const onExtract = () => {
@@ -588,6 +614,7 @@ export function LabUploadPanel({ clientId }: Props) {
         measurements: extractedMeasurements ?? undefined,
         source: "lab_report",
         linked_session_id: linkedSessionId,
+        pretest: Object.keys(pretest).length > 0 ? pretest : undefined,
       });
       if (!res.ok) {
         toast.error(`Save failed: ${res.error}`);
@@ -704,6 +731,32 @@ export function LabUploadPanel({ clientId }: Props) {
           )}
 
           <PatternBanners labs={extractedLabs} />
+
+          <div className="rounded-lg border bg-white p-3 space-y-2">
+            <p className="text-[10px] uppercase tracking-wide font-medium text-muted-foreground">
+              Pre-test answers{savedSnapshotDate ? ` — draw of ${savedSnapshotDate}` : ""}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              What the client did before this draw. Each &quot;yes&quot; lowers confidence on the markers it
+              distorts (e.g. a cold → CRP, ferritin; biotin → thyroid). Leave &quot;—&quot; if unknown.
+            </p>
+            <LabPretestForm
+              value={pretest}
+              onChange={(next) => { setPretest(next); setPretestDirty(true); }}
+              disabled={isSaving || isSavingPretest || (saved && !savedSnapshotDate)}
+            />
+            {saved && savedSnapshotDate && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onSavePretest}
+                disabled={!pretestDirty || isSavingPretest}
+                className="text-xs"
+              >
+                {isSavingPretest ? "Saving…" : "💾 Save answers"}
+              </Button>
+            )}
+          </div>
 
           {!saved ? (
             <div className="flex gap-2">

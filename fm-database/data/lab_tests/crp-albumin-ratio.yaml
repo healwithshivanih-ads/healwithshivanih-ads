@@ -1,0 +1,44 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: crp-albumin-ratio
+display_name: CRP/Albumin ratio
+full_name: C-Reactive Protein to Albumin Ratio
+aliases:
+- car
+- crp albumin ratio
+- crp/albumin ratio
+- c-reactive protein/albumin ratio
+- crp to albumin ratio
+units: ratio
+sample_type: blood (calculated)
+conventional_high: 0.075
+fm_optimal_high: 0.025
+interpretation_high: |
+  CRP (mg/L) divided by albumin (g/L). Albumin falls as inflammation rises,
+  so the ratio is steadier than CRP alone.
+
+    - under 0.025: little inflammation for the protein reserve
+    - 0.025 to 0.075: low-grade inflammation, or a low albumin
+    - above 0.075: inflammation outpacing the liver's protein output
+
+  The bands mirror the hsCRP 1 and 3 mg/L lines at a normal albumin; in
+  acute hospital admissions a ratio above 2 predicted mortality.
+when_to_order: |
+  Nothing extra to order: hsCRP (or CRP) and albumin.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: fairclough-2009-crp-albumin-ratio
+  location: Abstract
+  quote: a strong correlation between the MEWS score and CRP/albumin ratio
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: hsCRP 4.2 mg/L, albumin 3.93 g/dL (39.3 g/L).
+  4.2 / 39.3 = 0.107 — high. Recheck when the client has been well for 3 weeks.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

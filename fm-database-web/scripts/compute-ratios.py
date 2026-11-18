@@ -25,6 +25,7 @@ Writes JSON to stdout:
       "computed": bool
     }
   ],
+  "synthesis": {...} | null,   # fmdb.assess.lab_synthesis.synthesise_labs
   "error": str | null
 }
 """
@@ -80,12 +81,15 @@ def main() -> int:
         return 1
 
     try:
-        ratios = compute_ratios(lab_values, _client_context(str(payload.get("client_id") or "")))
+        _ctx = _client_context(str(payload.get("client_id") or ""))
+        ratios = compute_ratios(lab_values, _ctx)
+        from fmdb.assess.lab_synthesis import synthesise_labs
+        synthesis = synthesise_labs(ratios, _ctx) if ratios else None
     except Exception as e:
         json.dump({"ok": False, "ratios": [], "error": f"compute error: {e}"}, sys.stdout)
         return 1
 
-    json.dump({"ok": True, "ratios": ratios, "error": None}, sys.stdout)
+    json.dump({"ok": True, "ratios": ratios, "synthesis": synthesis, "error": None}, sys.stdout)
     return 0
 
 

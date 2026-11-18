@@ -1,0 +1,41 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: monocyte-lymphocyte-ratio
+display_name: MLR
+full_name: Monocyte-to-Lymphocyte Ratio
+aliases:
+- mlr
+- monocyte lymphocyte ratio
+- monocyte/lymphocyte ratio
+- monocyte-to-lymphocyte ratio
+- monocyte/lymphocyte ratio (mlr)
+units: ratio
+sample_type: blood (calculated)
+conventional_high: 0.35
+fm_optimal_high: 0.25
+interpretation_high: |
+  Absolute monocytes divided by absolute lymphocytes: innate (monocyte-led)
+  inflammation relative to the adaptive arm.
+
+    - under 0.25: balanced
+    - 0.25 to 0.35: borderline
+    - above 0.35: high — chronic infection, visceral fat, atherosclerosis risk
+
+  No agreed cut-off; FM working bands. Any infection, cold, vaccine or injury in the 3 weeks before the draw raises it; read it when the client is well.
+when_to_order: |
+  Nothing extra to order: any CBC with a differential.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+- innate-immune-modulation
+sources: []
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  Worked example: monocytes 0.15 / lymphocytes 1.47 = 0.10 — balanced.
+  Thyrocare prints counts as 'X 10^3/uL'; the app reads 0.15 as 150 cells/uL.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

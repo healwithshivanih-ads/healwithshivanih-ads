@@ -1,0 +1,27 @@
+id: liu-2018-phenotypic-age-nhanes
+title: 'A new aging measure captures morbidity and mortality risk across diverse subpopulations from NHANES
+  IV: A cohort study'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Liu Z
+- Kuo PL
+- Horvath S
+- Crimmins E
+- Ferrucci L
+- Levine M
+year: 2018
+publisher: PLoS Medicine 15(12):e1002718
+url: https://pubmed.ncbi.nlm.nih.gov/30596641/
+doi: 10.1371/journal.pmed.1002718
+notes: 'Validates blood-based Phenotypic Age in 11,432 US adults (NHANES IV): an older phenotypic age
+  than calendar age predicted all-cause and cause-specific mortality, even in apparently healthy people.
+  Supports showing PhenoAge as a research score and a trend.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

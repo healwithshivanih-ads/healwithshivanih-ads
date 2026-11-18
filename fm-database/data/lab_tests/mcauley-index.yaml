@@ -1,0 +1,42 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: mcauley-index
+display_name: McAuley index
+full_name: McAuley Insulin Sensitivity Index
+aliases:
+- mcauley index
+- mcauley
+- mcauley insulin sensitivity index
+- mffm/i
+units: score
+sample_type: blood (calculated)
+conventional_low: 5.8
+fm_optimal_low: 7.0
+interpretation_low: |
+  exp(2.63 - 0.28 ln insulin - 0.31 ln TG mmol/L). Uses insulin and
+  triglycerides, so it catches insulin resistance while glucose is still
+  normal. LOWER means more resistant.
+
+    - above 7: insulin sensitive
+    - 5.8 to 7: near the line
+    - under 5.8: insulin resistance (the study's screening cut-off)
+when_to_order: |
+  Needs a fasting insulin and triglycerides.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- insulin-resistance-early-detection
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: mcauley-2001-insulin-resistance-index
+  location: Abstract
+  quote: exp[2.63 - 0.28ln(insulin) - 0.31ln(TAG)]
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: insulin 5 uIU/mL, TG 88.6 mg/dL (1.0 mmol/L).
+  exp(2.63 - 0.28 x 1.609 - 0) = exp(2.179) = 8.84 — sensitive.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

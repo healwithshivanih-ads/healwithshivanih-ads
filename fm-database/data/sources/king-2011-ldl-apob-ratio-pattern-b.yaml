@@ -1,0 +1,28 @@
+id: king-2011-ldl-apob-ratio-pattern-b
+title: What is the best predictor of the atherogenic LDL subclass phenotype 'pattern B' in patients with
+  type 2 diabetes mellitus?
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- King RI
+- Florkowski CM
+- Yeo J
+- Walmsley TA
+- Shand BI
+- Scott RS
+- George PM
+year: 2011
+publisher: Annals of Clinical Biochemistry 48(Pt 2):166-169
+url: https://pubmed.ncbi.nlm.nih.gov/21278248/
+doi: 10.1258/acb.2010.010185
+notes: '97 people with type 2 diabetes, LDL size by gel electrophoresis: the LDL-C/ApoB ratio predicted
+  small dense LDL (''pattern B''), but less well (AUC 0.71) than TG/HDL (0.87) or triglycerides alone
+  (0.84). So the app reads LDL-C/ApoB together with TG/HDL, never alone.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

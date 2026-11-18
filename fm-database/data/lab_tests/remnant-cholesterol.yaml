@@ -1,0 +1,48 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: remnant-cholesterol
+display_name: Remnant cholesterol
+full_name: Remnant Cholesterol (TC - HDL - LDL)
+aliases:
+- remnant cholesterol
+- remnant-c
+- rlp cholesterol
+- remnant lipoprotein cholesterol
+units: mg/dL
+sample_type: blood (calculated)
+conventional_high: 30.0
+fm_optimal_high: 20.0
+interpretation_high: |
+  Cholesterol carried in triglyceride-rich remnant particles: total
+  cholesterol minus HDL minus LDL.
+
+    - under 20 mg/dL: low remnant burden
+    - 20 to 30: borderline
+    - above 30: high — a risk on top of LDL that tracks insulin resistance
+      and high TG
+
+  Each 39 mg/dL (1 mmol/L) rise carried 2.8 times the heart-disease risk
+  in Copenhagen genetic data. Only meaningful when LDL is measured
+  directly; with a calculated (Friedewald) LDL it is just TG/5.
+when_to_order: |
+  Nothing extra to order: a lipid panel with a DIRECT LDL (Thyrocare prints
+  'LDL Cholesterol - Direct').
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-risk-assessment
+- insulin-resistance
+linked_to_mechanisms:
+- apob-atherogenic-particle-burden
+sources:
+- id: varbo-2013-remnant-cholesterol
+  location: Abstract
+  quote: elevated nonfasting remnant cholesterol is a causal risk factor for ischemic heart disease
+evidence_tier: strong
+notes_for_coach: |
+  Worked example: TC 190, HDL 62, LDL 110 (direct). 190 - 62 - 110 = 18 —
+  low. The app converts mmol/L itself (x 38.67).
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

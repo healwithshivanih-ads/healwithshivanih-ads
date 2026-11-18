@@ -1,0 +1,26 @@
+id: fairclough-2009-crp-albumin-ratio
+title: Evaluation of a modified early warning system for acute medical admissions and comparison with
+  C-reactive protein/albumin ratio as a predictor of patient outcome
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Fairclough E
+- Cairns E
+- Hamilton J
+- Kelly C
+year: 2009
+publisher: Clinical Medicine (London) 9(1):30-33
+url: https://pubmed.ncbi.nlm.nih.gov/19271597/
+doi: 10.7861/clinmedicine.9-1-30
+notes: '300 acute medical admissions: the CRP/albumin ratio tracked illness severity (r=0.88 with the
+  early-warning score) and a ratio above 2 predicted mortality (RR 2.6). A hospital setting; the app''s
+  wellness bands (0.025 / 0.075) are derived from the hsCRP 1 and 3 mg/L lines at a normal albumin, not
+  from this paper.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

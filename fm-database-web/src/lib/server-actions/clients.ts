@@ -10,6 +10,7 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 import { resolvePersonDir } from "@/lib/fmdb/person-dir";
 import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
+import type { LabPretest } from "@/lib/fmdb/types";
 import { validateMeasurement, reconcileFlatMeasurements } from "@/lib/fmdb/measurements";
 import { matchDrug, drugAliases, type DrugAliasRecord } from "@/lib/fmdb/drug-match";
 
@@ -2770,6 +2771,29 @@ export async function recomputeLabMarkersAction(clientId: string): Promise<{
       // Refresh any page using the client's lab_markers.
       revalidatePath(`/clients-v2/${clientId}`);
     }
+    return res;
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+/** Record pre-test answers (illness, paracetamol, exercise, biotin, …) for
+ *  one lab draw and rebuild the lab read so the confounders apply at once.
+ *  $0 — save-lab-pretest.py validates against fmdb.plan.models.LabPretest. */
+export async function saveLabPretestAction(
+  clientId: string,
+  date: string,
+  pretest: LabPretest,
+): Promise<{ ok: boolean; snapshots?: number; markers_count?: number; error?: string | null }> {
+  if (!clientId) return { ok: false, error: "client_id missing" };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return { ok: false, error: "draw date missing" };
+  try {
+    const res = (await runScript("save-lab-pretest.py", {
+      client_id: clientId,
+      date,
+      pretest,
+    })) as { ok: boolean; snapshots?: number; markers_count?: number; error?: string | null };
+    if (res.ok) revalidatePath(`/clients-v2/${clientId}`);
     return res;
   } catch (err) {
     return { ok: false, error: (err as Error).message };

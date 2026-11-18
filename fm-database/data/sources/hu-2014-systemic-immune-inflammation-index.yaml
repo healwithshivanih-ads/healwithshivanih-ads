@@ -1,0 +1,32 @@
+id: hu-2014-systemic-immune-inflammation-index
+title: Systemic immune-inflammation index predicts prognosis of patients after curative resection for
+  hepatocellular carcinoma
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Hu B
+- Yang XR
+- Xu Y
+- Sun YF
+- Sun C
+- Guo W
+- Zhang X
+- Wang WM
+- Qiu SJ
+- Zhou J
+- Fan J
+year: 2014
+publisher: Clinical Cancer Research 20(23):6212-6222
+url: https://pubmed.ncbi.nlm.nih.gov/25271081/
+doi: 10.1158/1078-0432.CCR-14-0442
+notes: 'The paper that defined SII = platelets x neutrophils / lymphocytes (absolute counts) and showed
+  it predicted survival after liver-cancer surgery (cut-off 330 x10^9/L in that cohort). A cancer-prognosis
+  cut-off, not a wellness range; used here only for the formula.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

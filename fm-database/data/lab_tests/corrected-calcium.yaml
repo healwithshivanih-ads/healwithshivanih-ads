@@ -1,0 +1,46 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: corrected-calcium
+display_name: Calcium (albumin-corrected)
+full_name: Albumin-Corrected Calcium
+aliases:
+- corrected calcium
+- albumin corrected calcium
+- albumin-corrected calcium
+- adjusted calcium
+- calcium corrected
+- calcium (corrected)
+units: mg/dL
+sample_type: blood (calculated)
+conventional_low: 8.5
+conventional_high: 10.2
+fm_optimal_low: 9.0
+fm_optimal_high: 10.0
+interpretation_low: |
+  Low once albumin is accounted for: check vitamin D, magnesium, PTH and
+  kidney function.
+interpretation_high: |
+  High once albumin is accounted for: check PTH, the vitamin D dose
+  (excess raises calcium) and kidney function with the doctor.
+when_to_order: |
+  Nothing extra: calcium and albumin. Ionised calcium is the direct measure
+  when this is borderline.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- calcium-metabolism
+- bone-health
+linked_to_mechanisms:
+- albumin-calcium-binding
+- pth-calcium-regulation
+sources:
+- id: payne-1973-corrected-calcium
+  location: Abstract
+evidence_tier: strong
+notes_for_coach: |
+  Corrected Ca = Ca + 0.8 x (4.0 - albumin g/dL). Worked example: Ca 9.4,
+  albumin 3.93: 9.4 + 0.8 x 0.07 = 9.46. Payne's original 1973 form used a
+  factor of 1.0.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

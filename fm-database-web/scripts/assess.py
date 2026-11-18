@@ -1814,6 +1814,13 @@ def main() -> int:
         print(f"WARN: lab client context skipped: {_ce}", file=sys.stderr)
         _lab_ctx = None
     computed_ratios = compute_ratios(extracted_labs, _lab_ctx)
+    # Holistic read (system scores, patterns, cross-system rules) — $0.
+    try:
+        from fmdb.assess.lab_synthesis import synthesise_labs
+        lab_synthesis = synthesise_labs(computed_ratios, _lab_ctx) if computed_ratios else None
+    except Exception as _se:  # pragma: no cover
+        print(f"WARN: lab synthesis skipped: {_se}", file=sys.stderr)
+        lab_synthesis = None
 
     # ----- persist lab_markers + per-report health snapshots to client YAML -----
     try:
@@ -1843,6 +1850,8 @@ def main() -> int:
             latest_report_date = max((d for d in all_dates if d), default=today.isoformat())
             raw_client["lab_markers"] = computed_ratios
             raw_client["lab_markers_date"] = latest_report_date
+            if lab_synthesis:
+                raw_client["lab_synthesis"] = lab_synthesis
 
         # Build one health snapshot per distinct report date so health trends can
         # show how each marker changed between appointments.
@@ -1983,6 +1992,7 @@ def main() -> int:
         "suggestions": suggestions.model_dump(),
         "gate": (gate_report.as_dict() if gate_report is not None else None),
         "computed_ratios": computed_ratios,
+        "lab_synthesis": lab_synthesis,
         "usage": usage,
         "subgraph_size_bytes": subgraph_bytes,
         "error": None,

@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
+import type { LabPretest, LabSynthesis } from "@/lib/fmdb/types";
 import { confirmationNameMatches } from "@/lib/fmdb/engagement";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
@@ -604,6 +605,8 @@ export interface ApplyClientDataInput {
    *  the session that ordered it, this links the snapshot back to that session
    *  so the session detail view shows everything ordered together. */
   linked_session_id?: string | null;
+  /** Pre-test answers for this draw (illness, paracetamol, biotin, …). */
+  pretest?: LabPretest;
 }
 
 export interface ApplyClientDataResult {
@@ -634,7 +637,11 @@ export interface ComputeRatiosResult {
     fm_interpretation: string;
     panel?: string;
     computed?: boolean;
+    confidence?: "low";
+    confounded_by?: string[];
   }>;
+  /** Holistic read (fmdb/assess/lab_synthesis.py); null when no markers. */
+  synthesis?: LabSynthesis | null;
   error?: string | null;
 }
 
@@ -753,6 +760,8 @@ export async function loadLatestLabSnapshotAction(
   source: string | null;
   lab_values: Array<{ test_name: string; value: string; unit: string; date_drawn?: string | null }>;
   measurements: Record<string, unknown> | null;
+  /** Pre-test answers saved for this draw (any same-date lab snapshot). */
+  pretest: LabPretest | null;
 } | { ok: false; error: string }> {
   try {
     const yaml = await import("js-yaml");
@@ -767,7 +776,7 @@ export async function loadLatestLabSnapshotAction(
       (s) => Array.isArray(s.lab_values) && (s.lab_values as unknown[]).length > 0,
     );
     if (labSnaps.length === 0) {
-      return { ok: true, date: null, source: null, lab_values: [], measurements: null };
+      return { ok: true, date: null, source: null, lab_values: [], measurements: null, pretest: null };
     }
     labSnaps.sort((a, b) =>
       String(b.date ?? "").localeCompare(String(a.date ?? "")),
@@ -801,12 +810,24 @@ export async function loadLatestLabSnapshotAction(
       }
     }
 
+    // Pre-test answers: plain JSON copy (primitives only) of the block on
+    // any lab snapshot sharing the latest draw date.
+    const pt = labSnaps.find(
+      (s) => String(s.date ?? "") === String(latest.date ?? "") && s.pretest && typeof s.pretest === "object",
+    )?.pretest as Record<string, unknown> | undefined;
+    const cleanPretest: LabPretest | null = pt
+      ? (Object.fromEntries(
+          Object.entries(pt).filter(([, v]) => ["string", "number", "boolean"].includes(typeof v)),
+        ) as LabPretest)
+      : null;
+
     return {
       ok: true,
       date: latest.date != null ? String(latest.date) : null,
       source: latest.source != null ? String(latest.source) : null,
       lab_values: cleanLabs,
       measurements: cleanMeas,
+      pretest: cleanPretest,
     };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };

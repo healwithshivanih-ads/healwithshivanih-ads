@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import type { Client } from "@/lib/fmdb/types";
+import type { Client, LabSynthesis } from "@/lib/fmdb/types";
+import { LabSynthesisPanel } from "@/components/client-widgets/lab-synthesis-panel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -3200,6 +3201,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   );
   // Pre-analyse FM ratios computed from editableHealthData.lab_values
   const [previewRatios, setPreviewRatios] = useState<ComputedRatio[]>([]);
+  const [previewSynthesis, setPreviewSynthesis] = useState<LabSynthesis | null>(null);
   const [ratiosPending, startRatiosCompute] = useTransition();
 
   // Prior sessions — seeded from RSC for the initial client, refreshed client-side on change
@@ -3232,11 +3234,14 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const labValuesKey = editableHealthData?.lab_values?.map(l => `${l.test_name}:${l.value}`).join("|") ?? "";
   useEffect(() => {
     const labs = editableHealthData?.lab_values ?? [];
-    if (!labs.length) { setPreviewRatios([]); return; }
+    if (!labs.length) { setPreviewRatios([]); setPreviewSynthesis(null); return; }
     let cancelled = false;
     startRatiosCompute(async () => {
       const res = await computeRatiosAction({ lab_values: labs, client_id: clientId || undefined });
-      if (!cancelled && res.ok) setPreviewRatios(res.ratios as ComputedRatio[]);
+      if (!cancelled && res.ok) {
+        setPreviewRatios(res.ratios as ComputedRatio[]);
+        setPreviewSynthesis(res.synthesis ?? null);
+      }
     });
     return () => { cancelled = true; };
   }, [labValuesKey, clientId]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -3814,6 +3819,11 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       )}
       {!ratiosPending && previewRatios.length > 0 && (
         <ComputedRatiosCard ratios={previewRatios} />
+      )}
+      {!ratiosPending && previewSynthesis && (
+        <div className="mt-3">
+          <LabSynthesisPanel synthesis={previewSynthesis} compact />
+        </div>
       )}
     </div>
   ) : null;

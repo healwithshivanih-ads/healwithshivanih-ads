@@ -698,8 +698,13 @@ export interface Client {
     flag: string;
     fm_interpretation: string;
     computed?: boolean;
+    /** "low" when a pre-test confounder distorts this marker (lab_confounders.py). */
+    confidence?: "low";
+    confounded_by?: string[];
   }>;
   lab_markers_date?: string;
+  /** Holistic read built by fmdb/assess/lab_synthesis.py. Coach-only. */
+  lab_synthesis?: LabSynthesis | null;
   external_reports?: Array<{
     id: string;
     type: string;
@@ -729,9 +734,63 @@ export interface Client {
     lab_values?: Array<{ test_name: string; value: string; unit: string }>;
     medications?: string[];
     conditions?: string[];
+    /** Pre-test answers for this draw (fmdb.plan.models.LabPretest). */
+    pretest?: LabPretest;
   }>;
   rework_suggestion?: ReworkSuggestion | null;
   [key: string]: unknown;
+}
+
+/** Pre-test answers for ONE blood draw — mirrors fmdb.plan.models.LabPretest
+ *  (extra="forbid": keep the two in step). An omitted answer = not known. */
+export type HormoneRoute =
+  | "none" | "oral_estrogen" | "ocp" | "transdermal_estrogen"
+  | "vaginal_estrogen" | "progestogen_only" | "other";
+export interface LabPretest {
+  illness_3w?: boolean;
+  illness_note?: string;
+  paracetamol_48h?: boolean;
+  alcohol_48h?: boolean;
+  hard_exercise_72h?: boolean;
+  biotin_72h?: boolean;
+  high_dose_vitamin_d?: boolean;
+  hormone_route?: HormoneRoute;
+  creatine?: boolean;
+  fasted?: boolean;
+  cycle_day?: number;
+  no_cycle?: boolean;
+  notes?: string;
+  recorded_at?: string;
+  recorded_by?: string;
+}
+
+export type LabSystemStatus = "green" | "amber" | "red" | "no_data";
+export interface LabSynthesis {
+  version: number;
+  systems: Array<{
+    key: string;
+    label: string;
+    status: LabSystemStatus;
+    drivers: Array<{ marker: string; value: number | string; unit: string; flag: string; low_confidence: boolean }>;
+    measured: number;
+    low_confidence: boolean;
+    summary: string;
+  }>;
+  patterns: Array<{
+    key: string;
+    label: string;
+    kind: "classifier" | "cross_system";
+    level: "red" | "amber" | "info";
+    systems: string[];
+    detail: string;
+    markers: string[];
+  }>;
+  confounders: {
+    recorded: boolean;
+    pretest_date?: string | null;
+    applied: Array<{ label: string; affects: string[] }>;
+    note: string;
+  };
 }
 
 /** AI plan-rework suggestion stored on Client. Overwritten on each fire. */

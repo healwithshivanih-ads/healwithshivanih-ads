@@ -1,0 +1,46 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: phenoage
+display_name: PhenoAge
+full_name: Phenotypic Age (Levine 2018, blood-based)
+aliases:
+- phenoage
+- phenotypic age
+- pheno age
+- phenoage (research score)
+- levine phenoage
+units: years
+sample_type: blood (calculated)
+interpretation_high: |
+  A research score: the age whose mortality risk matches nine routine
+  blood markers (albumin, creatinine, glucose, CRP, lymphocyte %, MCV,
+  RDW, ALP, WBC) plus calendar age. Older than calendar age means the
+  blood reads older; the inputs pulling it up are the ones to work on.
+  Show it as a trend between reports, never as a diagnosis.
+when_to_order: |
+  Nothing extra: Aarogyam F Pro carries every input (hsCRP, CBC, LFT, KFT,
+  glucose). Needs the client's date of birth.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- biological-age-reversal
+- inflammaging
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: levine-2018-phenoage
+  location: Abstract
+- id: liu-2018-phenotypic-age-nhanes
+  location: Abstract
+  quote: Phenotypic Age was significantly associated with all-cause mortality
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example (the coach's own report): albumin 3.93 g/dL, creatinine
+  0.64 mg/dL, glucose 93.75 mg/dL, CRP 4.2 mg/L, lymphocytes 24.1%,
+  MCV 86.5, RDW 13.6, ALP 76.9, WBC 6.11, age 51 -> PhenoAge 46.6.
+  Coach-only (client_visible false). An infection or a hard workout moves
+  CRP, WBC and lymphocytes and so this score.
+client_visible: false
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

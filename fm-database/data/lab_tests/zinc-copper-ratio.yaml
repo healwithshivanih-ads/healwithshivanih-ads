@@ -1,0 +1,45 @@
+# Computed automatically by fmdb/assess/lab_ratios.py (holistic read, Nov 2026).
+slug: zinc-copper-ratio
+display_name: Zinc/Copper ratio
+full_name: Zinc to Copper Ratio
+aliases:
+- zn/cu ratio
+- zinc copper ratio
+- zinc/copper ratio
+- zn:cu ratio
+- copper zinc ratio
+- cu/zn ratio
+units: ratio
+sample_type: blood (calculated)
+conventional_low: 0.7
+conventional_high: 1.5
+fm_optimal_low: 0.85
+fm_optimal_high: 1.25
+interpretation_low: |
+  Copper-dominant: inflammation, oestrogen (OCP/HRT) or low zinc pushes
+  copper up relative to zinc. A rising Cu/Zn ratio tracks inflammation
+  and ageing.
+interpretation_high: |
+  Zinc-dominant: long high-dose zinc can deplete copper — check for low
+  copper (anaemia, low WBC, neuropathy).
+when_to_order: |
+  Needs serum zinc and serum copper (both on Aarogyam F Pro).
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- zinc-nutrition
+- inflammaging
+linked_to_mechanisms:
+- estrogen-zinc-antagonism
+sources:
+- id: giacconi-2016-copper-zinc-ratio
+  location: Abstract
+  quote: Cu/Zn ratio was positively associated with markers of systemic inflammation and age
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Worked example: zinc 85, copper 110 ug/dL. 85 / 110 = 0.77 (Cu/Zn 1.29) —
+  leaning copper-dominant. umol/L values are converted by the app.
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

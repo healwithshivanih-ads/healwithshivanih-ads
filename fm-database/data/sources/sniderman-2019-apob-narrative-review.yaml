@@ -1,0 +1,27 @@
+id: sniderman-2019-apob-narrative-review
+title: 'Apolipoprotein B Particles and Cardiovascular Disease: A Narrative Review'
+source_type: peer_reviewed_paper
+quality: high
+authors:
+- Sniderman AD
+- Thanassoulis G
+- Glavinovic T
+- Navar AM
+- Pencina M
+- Catapano A
+- Ference BA
+year: 2019
+publisher: JAMA Cardiology 4(12):1287-1295
+url: https://pubmed.ncbi.nlm.nih.gov/31642874/
+doi: 10.1001/jamacardio.2019.3780
+notes: 'Each atherogenic particle carries one ApoB, and cholesterol per particle varies, so ApoB measures
+  atherogenic risk more accurately than LDL-C or non-HDL-C. The basis for the app''s ApoB-LDL discordance
+  rule: when ApoB is high and LDL-C is not, follow ApoB.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani

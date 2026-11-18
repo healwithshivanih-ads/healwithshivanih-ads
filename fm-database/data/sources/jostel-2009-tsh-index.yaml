@@ -1,0 +1,24 @@
+id: jostel-2009-tsh-index
+title: 'The use of thyroid function tests in the diagnosis of hypopituitarism: definition and evaluation
+  of the TSH Index'
+source_type: peer_reviewed_paper
+quality: moderate
+authors:
+- Jostel A
+- Ryder WDJ
+- Shalet SM
+year: 2009
+publisher: Clinical Endocrinology 71(4):529-534
+url: https://pubmed.ncbi.nlm.nih.gov/19226261/
+doi: 10.1111/j.1365-2265.2009.03534.x
+notes: '9,519 thyroid function tests: defines TSHI = ln TSH + 0.1345 x FT4 (pmol/L), an FT4-adjusted TSH
+  that estimates pituitary drive. A low TSHI predicted failed pituitary stimulation tests in hypopituitary
+  patients.
+
+  Read from the PubMed abstract (17 Nov 2026).
+
+  '
+version: 1
+status: active
+updated_at: '2026-11-17'
+updated_by: shivani
