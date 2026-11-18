@@ -254,3 +254,37 @@ client sees has changed.
 
 Tests: `src/lib/fmdb/app-shell.test.ts`, `src/app/app/[token]/sq-app.test.tsx`,
 `fm-database/tests/test_app_shell_field.py`.
+
+## Client app: the new Sequoya front, step 1 — Home, ticks, the record (18 Nov 2026)
+
+Test client `cl-900` only (see step 0 above for the switch and the embargo).
+
+- **`sq-day.ts` decides, the screens only draw.** Pure functions on top of `day-plan.ts::buildDay`:
+  `buildMoments` (the day as cards), `nextMoment`, `dayCount`, `buildRecord`. Change a rule there,
+  with its test in `sq-day.test.ts`.
+- **"With it" supplements.** A supplement folds into a MAIN meal (breakfast 19.5, lunch 39.5,
+  dinner 59.5) when its rank is within 5.5 after it and it is not empty-stomach. Snacks never take
+  one. It is its own tick: a meal tick records the meal only.
+- **"Next" never looks back.** The next card is the first unticked moment from the part of the
+  day the phone is in onward. Earlier parts are not offered and not listed as overdue; they stay
+  tickable in "Your whole day". Home must never say something was missed.
+- **Meal ticks** use kind `meal` and id `mealTickId` (`m-<slot>`), kept in the same `logged` map
+  as supplements. The kind must be allowed in THREE places or it is dropped silently:
+  `TickKind` (`app/[token]/daily-ticks.ts`), `KINDS` in `api/app-ticks/route.ts`, `KINDS` in
+  `scripts/save-app-ticks.py`. `ochre-app.tsx` sends meal rows ONLY for the new front: today's
+  app has no meal tick, so its meals would log as "not done" every day.
+- **Practice ticks now keep their time** (`practiceAt` in the on-device store, sent as `at`). This
+  also applies to today's app; older ticks have none.
+- **The record** reads `ClientAppData.sq.tickHistory` (trailing fortnight from
+  `_daily_ticks.jsonl`); today is always shown from the phone. A day with no row says only
+  "Nothing ticked". A row with no meal items says meals were not tracked that day.
+- **`ClientAppData.sq`** (plan day, tick history, days since last open) is filled only when
+  `app_shell` is `v2`, so no other client's payload grows.
+- **Recipes in the new front** must keep the "Made without X for you" line (`AppMealExtra.omits`)
+  above the method, and every component recipe of a compound meal.
+- **Left for later steps, on purpose:** the ask box and "Swap" (step 2); "Begin" on a practice
+  (step 3); the shopping list and check-in screens, so the "This week" line opens a placeholder
+  (step 4); the evening "How did today go?" question, which needs a place in the coach's view.
+
+Tests: `sq-day.test.ts`, `sq-home.test.tsx`, `sq-app.test.tsx`, `src/lib/fmdb/app-shell.test.ts`,
+`fm-database/tests/test_save_app_ticks_meal.py`.

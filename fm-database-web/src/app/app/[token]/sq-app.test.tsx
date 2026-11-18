@@ -16,17 +16,28 @@ const STATE: SqShellState = {
   hydrated: true,
   logged: {},
   practicesDone: {},
-  toggleSupp: noop,
+  practiceAt: {},
+  toggleTick: noop,
   togglePractice: noop,
-  markDone: noop,
+  checkinSentWeek: 0,
+  textLarge: false,
+  setTextLarge: noop,
 };
 
 /** Only the fields the frame reads; a full payload is hundreds of lines. */
 function payload(week: number, totalWeeks: number): ClientAppData {
   return {
     clientId: "cl-test",
-    client: { firstName: "Asha", week, totalWeeks },
+    client: { firstName: "Asha", week, totalWeeks, notStarted: false },
     coach: { name: "Zzyzx Qwerty" },
+    today: { dow: "Wednesday", dateLabel: "18 November", idx: 2 },
+    meals: [],
+    supplements: [],
+    remedies: [],
+    practices: [],
+    mealExtra: {},
+    grocery: null,
+    sq: null,
   } as unknown as ClientAppData;
 }
 
@@ -92,10 +103,25 @@ describe("the Sequoya shell frame", () => {
     expect(weekRingRadii(26, 26)[0]).toBe(15);
   });
 
-  it("says plainly that the open screen is not built yet", () => {
+  it("opens on Home, greeting her by name with the day and her week", () => {
+    const html = draw(7, 12);
+    // The server does not know the phone's hour, so the greeting is neutral
+    // until the page is live — never a wrong "Good morning".
+    expect(html).toContain("<h1>Hello, Asha</h1>");
+    expect(html).toContain("Wednesday 18 November · week 7 of 12");
+  });
+
+  it("shows no 'next' card before the phone's ticks and clock are known", () => {
+    // A static render is the first paint: nothing has been read back yet. A
+    // card drawn now could be for something she has already ticked.
     const html = draw();
-    expect(html).toContain("<h1>Today</h1>");
-    expect(html).toContain("This screen is not built yet.");
+    expect(html).not.toContain("sq-hero");
+    expect(html).toContain('aria-busy="true"');
+  });
+
+  it("carries the larger-text setting it is lent", () => {
+    expect(draw(4, 12, { ...STATE, textLarge: true })).toContain('class="sq-app sq-big"');
+    expect(draw(4, 12, STATE)).toContain('class="sq-app"');
   });
 
   it("is rooted in its own class and never in today's app's", () => {
@@ -114,8 +140,4 @@ describe("the Sequoya shell frame", () => {
     expect(html).not.toContain("Qwerty");
   });
 
-  it("marks the main area busy until the on-device store is read back", () => {
-    expect(draw(4, 12, { ...STATE, hydrated: false })).toContain('aria-busy="true"');
-    expect(draw(4, 12, STATE)).toContain('aria-busy="false"');
-  });
 });

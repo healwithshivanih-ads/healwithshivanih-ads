@@ -20,6 +20,7 @@ const KIND_ICON: Record<string, string> = {
   supplement: "💊",
   remedy: "🌿",
   practice: "🌱",
+  meal: "🍽",
 };
 
 function shortDay(iso: string): string {

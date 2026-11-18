@@ -118,12 +118,13 @@ describe("wiring", () => {
 
   it("only the package build of the app payload carries the switch", () => {
     const src = read("src/lib/fmdb/client-app.ts");
-    // Read from the client record through the one parser…
-    expect(src).toMatch(/appShell: parseAppShell\(client\.app_shell\)/);
-    // …exactly once: the discovery and guided builders never set it, so those
-    // apps cannot be switched whatever their record says.
+    // Read from the client record through the one parser, exactly once…
+    expect(src.match(/parseAppShell\(client\.app_shell\)/g)?.length).toBe(1);
+    // …and set on the payload exactly once: the discovery and guided builders
+    // never set it, so those apps cannot be switched whatever their record says.
     expect(src.match(/appShell:/g)?.length).toBe(1);
-    expect(src.match(/app_shell/g)?.length).toBe(2); // the loader line + the field's doc comment
+    // The new front's extra data rides only with the switch.
+    expect(src).toMatch(/sq: sqShell === "v2" \? await loadSqData\(/);
   });
 
   it("the app chooses its front in exactly one place", () => {
@@ -136,6 +137,16 @@ describe("wiring", () => {
     const app = read("src/app/app/[token]/ochre-app.tsx");
     expect(app.match(/pickAppShell\(/g)?.length).toBe(1);
     expect(app.match(/<SqApp\b/g)?.length).toBe(1);
+    // Meal ticks go to the coach only from the new front: today's app has no
+    // meal tick, so sending its meals would log every one as not done.
+    expect(app).toMatch(/shell === "sq" \? mealTickItems\(data\.meals, logged\) : \[\]/);
+  });
+
+  it("a meal tick is allowed everywhere it passes through, or it is dropped silently", () => {
+    // The phone sends it, the route filters by kind, the script filters again.
+    expect(read("src/app/app/[token]/daily-ticks.ts")).toMatch(/export type TickKind = [^;]*"meal"/);
+    expect(read("src/app/api/app-ticks/route.ts")).toMatch(/const KINDS = new Set\(\[[^\]]*"meal"/);
+    expect(read("scripts/save-app-ticks.py")).toMatch(/^KINDS = \([^)]*"meal"/m);
   });
 
   it("the switch is projected to Fly, where the client app is served", () => {

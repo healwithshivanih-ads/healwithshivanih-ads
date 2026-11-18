@@ -22,7 +22,9 @@ import { allowDaily } from "@/lib/fmdb/rate-limit";
 
 export const dynamic = "force-dynamic";
 
-const KINDS = new Set(["supplement", "remedy", "practice"]);
+// Keep in step with TickKind (daily-ticks.ts) and KINDS in save-app-ticks.py:
+// a kind missing here is dropped silently before it is ever written.
+const KINDS = new Set(["supplement", "remedy", "practice", "meal"]);
 /** Debounced posts coalesce a day's ticking into a handful of writes; the cap
  *  is generous headroom, not a target. Past it the client simply keeps her
  *  local ticks — nothing in the app breaks. */
