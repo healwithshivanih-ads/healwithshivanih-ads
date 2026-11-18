@@ -1,0 +1,116 @@
+source_id: berens-grist-2021
+pdf_path: /Users/shivanihariharan/Downloads/_OceanofPDF.com_Grist_A_Practical_Guide_to_Cooking_Grains_-_Abra_Berens.pdf
+extracted_text: null          # not yet extracted — see BLOCKED below
+last_updated: '2026-08-03'
+status: blocked_on_source_text
+
+# ─────────────────────────────────────────────────────────────────────────
+# BLOCKED — the PDF is not reachable from the assistant's session.
+#
+# The path above is on the coach's Mac. Claude Code sessions for this repo run
+# in a remote Linux container with only the git checkout mounted; there is no
+# access to /Users/..., and the file is not in Google Drive either (checked
+# 2026-08-03, both by title and by author).
+#
+# CHOSEN (coach, 2026-08-03): (a) — upload the PDF to Google Drive.
+#
+# TO UNBLOCK, either:
+#   (a) upload the PDF to Google Drive — the session has a working Drive
+#       connector and can read application/pdf directly. Simplest, no local
+#       commands. If Drive truncates it (large scanned cookbooks do), fall
+#       back to (b); or
+#   (b) extract the text on the Mac and upload/paste THAT — it is small:
+#
+#         pdftotext -layout "<pdf_path>" /tmp/grist-extract/raw.txt
+#
+#       then prefix each form-feed-separated page with "=== PG <n> ===" (1-based),
+#       matching the convention in _murray_chapters_queue.yaml so page citations
+#       stay comparable across books.
+#
+# DO NOT author recipes or claims for this book from memory. The library's whole
+# copyright position (data/_recipes/_README.md) rests on ingredient lists being
+# FACTS captured from the source and citations carrying REAL page numbers. A
+# remembered cookbook gives neither, and a wrong `attribution.page` is worse
+# than no attribution.
+# ─────────────────────────────────────────────────────────────────────────
+
+# Section list is deliberately EMPTY. Fill it from the PDF's own bookmark
+# outline, never by guessing at the text:
+#
+#   from pypdf import PdfReader
+#   r = PdfReader(pdf_path)
+#   for it in r.outline: ...  r.get_destination_page_number(it) + 1   # 1-based
+#
+# This is the lesson recorded in _murray_chapters_queue.yaml — a hand-derived
+# page number there (ch45) was wrong and cost a debugging session. End page =
+# next section's start − 1.
+#
+# Expected shape, TO CONFIRM against the outline rather than assumed: the book
+# is organised by ingredient family (beans/legumes, grains, seeds) with a
+# technique preamble per family and variations beneath, plus front matter on
+# equipment, soaking, salting and storage. The preamble sections are the ones
+# that yield CookingAdjustment entries; the variations yield recipes.
+sections: []
+
+# ─── What this ingest is FOR (decided 2026-08-03, before any text was read) ───
+# Recorded now so the extraction pass has a target and doesn't just hoover up
+# 300 pages of a cookbook into a clinical catalogue.
+#
+# ORDER (coach, 2026-08-03): TECHNIQUE FIRST, then recipes.
+# Pass 1 is cooking_adjustments only — that is the genuine gap beside the five
+# existing Ayurvedic-framed grain/legume entries, and it is small enough for the
+# coach to review and redirect before any large recipe pass is committed to.
+# Pass 2 is a first tranche of recipes under the selection_rule below. Do not
+# start pass 2 until pass 1 has been reviewed.
+targets:
+  cooking_adjustments:
+    # The gap this book actually fills. Existing grain/legume adjustments are
+    # Ayurvedic-framed (see source notes); these would be the Western-technique
+    # counterparts. Candidate shapes only — each must be earned from the text.
+    intent: >-
+      Grain, legume and seed handling technique: when salt goes into the pot,
+      soak-vs-no-soak and what each costs, doneness cues, cooking liquid reuse,
+      batch-cook and storage. One entry per reusable decision, not per dish.
+    reuse_first: >-
+      Check the 25 existing cooking_adjustments before creating any entry —
+      soak-and-sprout-legumes, quick-soak-legumes-boil-and-rest,
+      rinse-and-soak-grains-before-cooking, pressure-cook-grains-legumes,
+      add-kombu-to-bean-cooking-water and dry-roast-whole-spices already cover
+      real ground. Prefer enriching an existing entry over adding a near-duplicate;
+      the catalogue has been through four de-duplication sweeps and should not
+      re-acquire the problem.
+
+  recipes:
+    intent: >-
+      Dishes that widen the library where it is genuinely thin, not a bulk port
+      of the book.
+    selection_rule: >-
+      Take a dish only if it (a) survives Indian-kitchen sourcing — no ingredient
+      the coach's clients cannot buy, and (b) fills a real gap. The v0.76 coverage
+      analysis found the library thinnest on vitamin-D and B12 vegetarian dishes
+      and on monsoon-season recipes; whole-grain and legume mains that carry
+      protein and fibre are the overlap with this book. Skip anything that is a
+      near-duplicate of an existing recipe.
+    schema: data/_recipes/_README.md          # steps in OUR words; ingredients faithful
+    must_carry:
+      - attribution: {author, book, source_id: berens-grist-2021, page}
+      - sources: [{id: berens-grist-2021, location: '<section>, pg N'}]
+      - no committed image binary; rights_status book_reference_uncleared if referenced
+    after_write:
+      - python fm-database-web/scripts/validate-recipes.py
+      - python fm-database-web/scripts/compute-recipe-nutrients.py   # nutrients + rich_in
+    watch: >-
+      approve-recipe-candidate.py's gates (dedup ≥75% name-token overlap,
+      no-porridge rule, diet consistency, allergen derivation) exist for a reason.
+      Recipes written straight to disk bypass them — so apply the same checks by
+      hand, especially allergen derivation from the ingredient list.
+
+  claims:
+    intent: >-
+      Sparingly. See the ⚠ EVIDENCE-TIER CAUTION on the source entry — a chef's
+      cookbook is not clinical evidence. Culinary-technique claims only, or
+      nothing.
+
+# ─── Provenance discipline ───
+# Every entry written from this book must be traceable to a page. If the page
+# is unknown, the entry is not ready to commit.
