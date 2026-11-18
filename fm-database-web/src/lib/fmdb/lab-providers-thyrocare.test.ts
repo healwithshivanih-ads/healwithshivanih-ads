@@ -95,13 +95,29 @@ describe("real thyrocare.yaml", () => {
     expect(thyro.pretestInstructions.length).toBeGreaterThan(0);
   });
 
-  it("charges nothing until its prices are filled in", () => {
-    // Every Thyrocare profile ships unpriced → none bookable → the card falls back to Acumen.
-    if (!hasBookablePanel(thyro)) {
-      expect(priceSelection(thyro, { profileId: 1 }).ok).toBe(false);
-    }
+  it("is bookable at Thyrocare list price, and every price leaves us a margin", () => {
+    expect(hasBookablePanel(thyro)).toBe(true);
+    expect(thyro.profiles.map((p) => p.id)).toEqual([1, 2, 3, 4]);
+    const base = thyro.profiles.find((p) => p.id === 1)!;
+    expect(base.mrpInr).toBe(7079); // F Pro ₹6,999 + fasting glucose ₹80
+    const r = priceSelection(thyro, { profileId: 1 });
+    expect(r.ok).toBe(true);
     for (const prof of thyro.profiles) {
       expect(prof.mrpInr).toBeGreaterThan(prof.ourCostInr);
+      expect(prof.ourCostInr).toBeGreaterThan(0);
+    }
+    for (const a of thyro.addons) {
+      expect(a.clientInr, a.slug).not.toBeNull();
+      expect(a.ourCostInr, a.slug).not.toBeNull();
+      expect(a.clientInr!, a.slug).toBeGreaterThan(a.ourCostInr!);
+    }
+  });
+
+  it("the hormone profiles carry the Steroid Profile and the Autoimmune Thyroid panel", () => {
+    for (const prof of thyro.profiles.filter((p) => p.id > 1)) {
+      expect(prof.coveredAddonSlugs).toContain("steroid-profile");
+      expect(prof.coveredAddonSlugs).toContain("thyroid-antibodies");
+      expect(prof.coveredAddonSlugs).toContain("am-cortisol");
     }
   });
 
