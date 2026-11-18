@@ -82,6 +82,8 @@ export { FmRecipeImageChip } from "./FmRecipeImageChip";
 
 export { FmInboundMessagesBanner } from "./FmInboundMessagesBanner";
 export type { FmInboundMessagesBannerProps } from "./FmInboundMessagesBanner";
+export { FmUnmatchedMessagesBanner } from "./FmUnmatchedMessagesBanner";
+export type { FmUnmatchedMessagesBannerProps } from "./FmUnmatchedMessagesBanner";
 
 export { FmIntakeActivityBanner } from "./FmIntakeActivityBanner";
 export type { FmIntakeActivityBannerProps } from "./FmIntakeActivityBanner";

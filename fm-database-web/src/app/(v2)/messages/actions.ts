@@ -27,3 +27,24 @@ export async function markInboxReadAction(
     return { ok: false, error: (err as Error).message };
   }
 }
+
+/**
+ * Mark every message from one not-on-the-roster number as seen
+ * (/messages/unmatched). Read-only towards the sender: this writes
+ * `_whatsapp_unmatched_seen.yaml` and nothing else — no reply, no alert.
+ */
+export async function markUnmatchedSenderSeenAction(
+  phoneKey: string,
+): Promise<{ ok: true; marked: number } | { ok: false; error: string }> {
+  if (!/^\d{1,10}$/.test(phoneKey)) return { ok: false, error: "phone required" };
+  try {
+    const { markUnmatchedSenderSeen } = await import("@/lib/fmdb/whatsapp-unmatched");
+    const marked = await markUnmatchedSenderSeen(phoneKey);
+    revalidatePath("/messages/unmatched");
+    revalidatePath("/messages");
+    revalidatePath("/dashboard-v2");
+    return { ok: true, marked };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}

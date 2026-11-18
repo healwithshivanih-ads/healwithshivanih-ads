@@ -41,6 +41,7 @@ import { loadDecisions as loadRenewalDecisions } from "@/lib/fmdb/renewal-queue"
 import { getArchiveCandidates } from "@/lib/fmdb/archive-candidates";
 import { loadProgrammeFeedback } from "@/lib/fmdb/programme-feedback-loader";
 import { loadHeldMonthlyCards } from "@/lib/fmdb/monthly-cards-store";
+import { loadUnmatchedMessages } from "@/lib/fmdb/whatsapp-unmatched";
 import { listOpenRenewalsAction } from "@/lib/server-actions/renewals";
 import { listRenewalLettersAction } from "@/lib/server-actions/renewal-letters";
 import { listWinbackDraftsAction, listWinbackScheduledAction } from "@/lib/server-actions/winback-drip";
@@ -68,6 +69,7 @@ import {
   FmRosterReviewChip,
   FmMaintenanceBlurChip,
   FmInboundMessagesBanner,
+  FmUnmatchedMessagesBanner,
   FmStrandedIntakeBanner,
   FmUpcomingBookingsPanel,
   FmCancellationAlertBanner,
@@ -148,6 +150,7 @@ export default async function DashboardV2() {
     archiveCandidatesRaw,
     upcomingBookings,
     recentCancellations,
+    unmatchedMessages,
   ] = await Promise.all([
     getRecentInboundMessages(clients.map((c) => c.client_id), clientNameMap, 7),
     getClientUnreadCounts(clients as unknown as Array<Record<string, unknown>>, {}),
@@ -176,6 +179,9 @@ export default async function DashboardV2() {
     ),
     loadUpcomingBookings(clientNameMap),
     loadRecentCancellations(clientNameMap),
+    // WhatsApp from numbers that are on nobody's record (not a client, not a
+    // parked prospect). Never allowed to take the dashboard down.
+    loadUnmatchedMessages().catch(() => []),
   ]);
   const deferredItems = deferredRes.ok ? deferredRes.rows : [];
 
@@ -281,15 +287,23 @@ export default async function DashboardV2() {
     month: "long",
     year: "numeric",
   });
-  const n = decisions.counts.total;
+  // Messages from numbers not on the roster sit outside collectDecisions (it
+  // is keyed by client and lifecycle; these people have neither). They still
+  // count: "Nothing waiting on you" must not show over an unread stranger.
+  const unmatchedUnread = unmatchedMessages.filter((m) => m.isUnread);
+  const unmatchedSenders = new Set(unmatchedUnread.map((m) => m.phoneKey)).size;
+  const n = decisions.counts.total + unmatchedUnread.length;
 
   return (
     <FmAppShell activeNavId="dashboard" crumbs={[{ label: "Dashboard" }]}>
       <FmPageHeader
         title={n === 0 ? "Nothing waiting on you" : `${n} decision${n === 1 ? "" : "s"} today`}
-        subtitle={`${dateLabel}. ${KIND_ORDER.filter((k) => decisions.counts.byKind[k] > 0)
-          .map((k) => `${decisions.counts.byKind[k]} ${KIND_META[k].label.toLowerCase()}`)
-          .join(" · ")}`}
+        subtitle={`${dateLabel}. ${[
+          ...KIND_ORDER.filter((k) => decisions.counts.byKind[k] > 0).map(
+            (k) => `${decisions.counts.byKind[k]} ${KIND_META[k].label.toLowerCase()}`,
+          ),
+          ...(unmatchedUnread.length > 0 ? [`${unmatchedUnread.length} from new numbers`] : []),
+        ].join(" · ")}`}
         rightSlot={
           <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end" }}>
             <BookSessionButton
@@ -318,6 +332,10 @@ export default async function DashboardV2() {
           <FmInboundMessagesBanner messages={inboundToShow} windowDays={7} inboxHref="/messages" />
         </section>
       )}
+
+      {/* 📨 Someone who is on nobody's record wrote (a report buyer, say).
+          Count + link only; the list page is where they are read. */}
+      <FmUnmatchedMessagesBanner unread={unmatchedUnread.length} senders={unmatchedSenders} />
 
       {/* ✅ Approvals — things the automations drafted and are holding. */}
       <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
