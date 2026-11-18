@@ -226,3 +226,31 @@ Two picker bugs found on the same run (`lab_ratios.py`):
   erythrocyte folate are excluded and pass through as their own marker.
 
 Tests: `fm-database/tests/test_marker_rebuild_safety.py`.
+
+## Client app: the new Sequoya front, step 0 (18 Nov 2026)
+
+The front of `/app/<token>` is being replaced before the 2 Jan 2027 launch: keep the engine,
+replace the shell. Step 0 adds the per-client switch and an empty new shell. Nothing a real
+client sees has changed.
+
+- **One function decides the front:** `fm-database-web/src/lib/fmdb/app-shell.ts::pickAppShell`.
+  New shell only when `client.yaml#app_shell` is exactly `v2` AND tier is `package` AND mode is
+  `ACTIVE` AND the plan is not on setup hold. Everything else, including a missing or mistyped
+  value, is today's app. Never branch on `appShell` anywhere else; `app-shell.test.ts` walks
+  every combination and pins that `ochre-app.tsx` is the only caller.
+- **Embargo:** the new shell prints the programme name. Until 2 Jan 2027 `app_shell: v2` goes
+  on the test client `cl-900` only.
+- **Same data both ways.** `ochre-app.tsx` still owns the on-device store
+  (`ochre.app.<clientId>`), the day's ticks, the tick sync to the coach, the timezone fix and the
+  push refresh. The branch sits after its hooks and hands that state to `sq-app.tsx`, so a
+  client switched back finds everything she ticked. Do not give the new shell its own store.
+- **New files are `sq-`** beside the `ochre-` ones; `sq.css` is nested under `.sq-app` with
+  `--sq-` custom properties so it cannot leak into `.ochre-app` or the other way.
+- **`app_shell` is in `_APP_CLIENT_KEYS`** (the app is served from Fly); a plain string on the
+  model so a typo reads as "today's app" rather than failing a load.
+- **Known gap for later steps:** REVIEW opens 14 days before a plan ends (7 for short plans)
+  while the client is still mid-protocol. Under the rule above she drops back to today's app for
+  those last days. Decide before any real client is switched.
+
+Tests: `src/lib/fmdb/app-shell.test.ts`, `src/app/app/[token]/sq-app.test.tsx`,
+`fm-database/tests/test_app_shell_field.py`.

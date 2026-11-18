@@ -1,0 +1,189 @@
+/* ========================================================================
+   Sequoya client app — the NEW front (sq-app.tsx), look D of the prototype
+   (docs/client-app-redesign/sequoya-app-prototype.html).
+
+   Everything here is nested under the one root class `.sq-app`, and every
+   custom property is prefixed `--sq-`, so nothing can leak into today's app
+   (`.ochre-app`, app.css) and nothing there can leak in. Today's app never
+   renders a `.sq-app` element; the new front never renders `.ochre-app` at
+   its root.
+
+   Light only, by decision: there is no dark Home. Dimming is a per-practice
+   toggle and arrives with the practice player.
+   ======================================================================== */
+
+@keyframes sq-sheet-up {
+  from { transform: translateY(24px); opacity: 0.4; }
+  to   { transform: none; opacity: 1; }
+}
+
+.sq-app {
+  & {
+    /* palette — "After the fire": ash, charcoal, fireweed, growth, cedar */
+    --sq-ground: #f5f0eb;
+    --sq-card: #fffdfa;
+    --sq-card-2: #ede6da;
+    --sq-ink: #2a292d;
+    --sq-muted: #5f5953;
+    --sq-line: rgba(42, 41, 45, 0.10);
+    --sq-line-strong: rgba(42, 41, 45, 0.22);
+    --sq-fire: #c94a77;
+    --sq-fire-fill: #b53d67;
+    --sq-fire-text: #a93860;
+    --sq-fire-tint: #f6dce6;
+    --sq-on-fire: #ffffff;
+    --sq-growth: #557a43;
+    --sq-cedar: #a0673f;
+    --sq-shadow: 0 1px 2px rgba(42, 41, 45, 0.05), 0 10px 26px rgba(42, 41, 45, 0.07);
+
+    /* look D: the top of the screen is a soft "sky" that follows the day */
+    --sq-sky-morning: #f1dfcc;
+    --sq-sky-midday: #ebe2d5;
+    --sq-sky-evening: #e7d3ce;
+    --sq-sky: var(--sq-sky-midday);
+    --sq-sky-fg: #2a292d;
+
+    --sq-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sq-sans: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* side gutters, clear of a notch in landscape */
+    --sq-gl: max(16px, env(safe-area-inset-left, 0px));
+    --sq-gr: max(16px, env(safe-area-inset-right, 0px));
+
+    /* the column: full-bleed on a phone, a phone-width column on a desktop
+       (the centring stage is .ochre-stage in app/layout.tsx) */
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    position: relative;
+    /* clip, not hidden: a clipped box never becomes a scroll container, so a
+       stray focus cannot scroll the shell and lift the bar off-screen. The
+       real scroller is .sq-scroll. */
+    overflow: clip;
+    display: flex;
+    flex-direction: column;
+    background: var(--sq-ground);
+    color: var(--sq-ink);
+    font-family: var(--sq-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    box-shadow: 0 0 60px rgba(42, 41, 45, 0.10);
+  }
+  &[data-time="morning"] { --sq-sky: var(--sq-sky-morning); }
+  &[data-time="evening"] { --sq-sky: var(--sq-sky-evening); }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  h1, h2, h3, p { margin: 0; }
+  button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--sq-fire); outline-offset: 2px; }
+
+  /* line icons: one stroke weight everywhere */
+  .sq-ic {
+    width: 18px; height: 18px; flex: none;
+    fill: none; stroke: currentColor; stroke-width: 1.9;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ── top bar: ring mark · wordmark · "Week N" ─────────────────────────── */
+  .sq-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: max(14px, env(safe-area-inset-top, 0px)) var(--sq-gr) 6px var(--sq-gl);
+    background: var(--sq-sky); color: var(--sq-sky-fg);
+    flex: none;
+  }
+  .sq-mark { width: 30px; height: 30px; flex: none; display: block; color: var(--sq-sky-fg); }
+  .sq-word {
+    font-family: var(--sq-serif); font-size: 21px; font-weight: 500;
+    letter-spacing: -0.01em; flex: 1; min-width: 0;
+  }
+  .sq-ringbtn {
+    display: flex; align-items: center; gap: 8px;
+    background: none; border: none; padding: 4px 2px;
+    font-size: 14px; color: var(--sq-sky-fg);
+    /* a comfortable thumb target without growing the bar */
+    min-height: 44px;
+  }
+  .sq-ringbtn svg { width: 34px; height: 34px; flex: none; }
+
+  /* ── the scrolling main area ──────────────────────────────────────────── */
+  .sq-scroll {
+    flex: 1; min-height: 0; overflow-y: auto;
+    padding: 0 var(--sq-gr) 20px var(--sq-gl);
+    display: flex; flex-direction: column; gap: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sq-scroll > * { flex-shrink: 0; }
+
+  /* the page title sits on the sky, which runs on from the bar and ends in a
+     soft curve; the first card overlaps it */
+  .sq-greet {
+    background: var(--sq-sky); color: var(--sq-sky-fg);
+    margin-left: calc(-1 * var(--sq-gl)); margin-right: calc(-1 * var(--sq-gr));
+    padding: 6px var(--sq-gr) 42px var(--sq-gl);
+    border-radius: 0 0 30px 30px;
+  }
+  .sq-greet h1 {
+    font-family: var(--sq-serif); font-weight: 400; font-size: 33px;
+    line-height: 1.15; letter-spacing: -0.015em; text-wrap: balance;
+  }
+  .sq-greet + * { margin-top: -42px; }
+
+  .sq-card {
+    background: var(--sq-card); border-radius: 20px; padding: 16px 18px;
+    box-shadow: var(--sq-shadow);
+  }
+  .sq-card p { font-size: 16px; color: var(--sq-muted); }
+
+  /* ── bottom tabs: Today · Practices · Coach · Everything ──────────────── */
+  .sq-tabs {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 4px var(--sq-gr) max(8px, env(safe-area-inset-bottom, 0px)) var(--sq-gl);
+    background: var(--sq-ground);
+    flex: none;
+  }
+  .sq-tab {
+    background: none; border: none;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 6px 0; min-height: 48px;
+    font-size: 12.5px; font-weight: 600; color: var(--sq-muted);
+    position: relative;
+  }
+  .sq-tab .sq-ic { width: 23px; height: 23px; }
+  .sq-tab[aria-current="page"] { color: var(--sq-fire-text); }
+
+  /* ── full-screen sheet (covers the bar and the tabs) ──────────────────── */
+  .sq-sheet {
+    position: absolute; inset: 0; z-index: 5;
+    background: var(--sq-ground);
+    display: flex; flex-direction: column;
+    animation: sq-sheet-up 0.26s ease both;
+  }
+  .sq-sheet-h {
+    display: flex; align-items: center; gap: 8px;
+    padding: max(14px, env(safe-area-inset-top, 0px)) var(--sq-gr) 8px var(--sq-gl);
+    flex: none;
+  }
+  .sq-sheet-h h2 {
+    font-family: var(--sq-serif); font-weight: 500; font-size: 22px;
+    flex: 1; min-width: 0; text-wrap: balance;
+  }
+  .sq-x {
+    width: 44px; height: 44px; border-radius: 50%; border: none;
+    background: var(--sq-card-2); display: grid; place-items: center; flex: none;
+  }
+  .sq-sheet-b {
+    flex: 1; min-height: 0; overflow-y: auto;
+    padding: 6px var(--sq-gr) max(24px, env(safe-area-inset-bottom, 0px)) var(--sq-gl);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .sq-sheet-b > * { flex-shrink: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sq-sheet { animation: none; }
+  }
+}
+
+@media (max-width: 480px) {
+  .sq-app { box-shadow: none; }
+}
