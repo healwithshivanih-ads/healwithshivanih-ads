@@ -148,7 +148,11 @@ addon_tests:
   - { slug: cystatin-c,         name: "Cystatin C",                          our_cost_inr: 495, client_inr: 595, dos_list_inr: null }
   - { slug: c-peptide,          name: "C-peptide",                           our_cost_inr: 865, client_inr: 1235, dos_list_inr: null, fasting: true }
   # 12-week retests — re-test only what was off instead of re-buying F Pro
-  - { slug: insulin-fasting,    name: "Insulin + glucose (fasting)",         our_cost_inr: 700, client_inr: 865, dos_list_inr: null, fasting: true }
+  # Booked as ThyroNXT "HOMA Insulin Resistance Index" (fasting glucose + fasting
+  # insulin + HOMA-IR) since 18 Nov 2026: ₹460 list, ₹65 incentive — cheaper than
+  # the standalone Insulin - Fasting (₹785). Slug kept so existing orders and
+  # recommendations still resolve.
+  - { slug: insulin-fasting,    name: "Insulin + glucose (fasting) with HOMA-IR", our_cost_inr: 395, client_inr: 460, dos_list_inr: null, fasting: true }
   - { slug: hba1c,              name: "HbA1c",                               our_cost_inr: 365, client_inr: 420, dos_list_inr: null }
   - { slug: lipid-profile,      name: "Lipid profile",                       our_cost_inr: 515, client_inr: 620, dos_list_inr: null, fasting: true }
   - { slug: apob,               name: "Apolipoprotein B",                    our_cost_inr: 540, client_inr: 650, dos_list_inr: null }
@@ -172,3 +176,25 @@ addon_tests:
   - { slug: 17-oh-progesterone,   name: "17-OH progesterone",                  our_cost_inr: 725,  client_inr: 900,  dos_list_inr: null }
   - { slug: reticulocytes,        name: "Reticulocyte count",                  our_cost_inr: 320,  client_inr: 360,  dos_list_inr: null }
   - { slug: aldosterone-renin,    name: "Aldosterone / renin ratio",           our_cost_inr: 2100, client_inr: 3000, dos_list_inr: null }
+
+# ---------------------------------------------------------------------------
+# LONGEVITY PANELS — priced for the planned longevity vertical, NOT bookable.
+# lab-providers.ts reads only `provider`, `profiles_final` and `addon_tests`, so
+# nothing here reaches the coach app or a client until a longevity flow is built
+# and deliberately wires it in (with its own PROFILE_RULES entry).
+# Prices read from ThyroNXT, 18 Nov 2026.
+# ---------------------------------------------------------------------------
+longevity_panels:
+  - key: body-age
+    name: "Know your body age"
+    # ThyroNXT "Comprehensive Heart Health Checkup" (97 tests): ₹2,364 list,
+    # ₹710 incentive + "HOMA Insulin Resistance Index": ₹460 list, ₹65 incentive.
+    thyrocare_items: ["Comprehensive Heart Health Checkup", "HOMA Insulin Resistance Index"]
+    our_cost_inr: 2049
+    list_inr: 2824
+    covers:
+      - "Body age (PhenoAge): albumin, creatinine, fasting glucose, hs-CRP, lymphocyte %, MCV, RDW, ALP, WBC"
+      - "Liver & metabolic risk: ALT, AST, GGT, platelets, triglycerides, fasting insulin, HOMA-IR, TyG, HSI, FIB-4 (FLI/LAP/TyG-WC need a waist)"
+      - "Heart: hs-CRP, ApoB, ApoA1, Lp(a), homocysteine, full lipids"
+      - "Also: HbA1c, TSH + total T3/T4, kidney panel, urine routine"
+    not_covered: ["vitamin D", "vitamin B12", "free T3/T4", "iron studies"]
