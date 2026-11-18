@@ -39,6 +39,14 @@ export const REVIEW_LEAD_DAYS_SHORT = 7;
 export const SHORT_PLAN_MAX_WEEKS = 6;
 /** Full-access window after maintenance lapses before dropping to LIBRARY. */
 export const GRACE_DAYS = 15;
+/** Full-access days after the plan's effective end (the recheck) before a client
+ *  who has neither renewed nor started maintenance drops to LIBRARY. Coach
+ *  decision 2026-11-18: ZERO — the plan runs through its end date and the very
+ *  next day the app shows the "programme complete" floor (supplement re-orders
+ *  + retest booking stay open). Was GRACE_DAYS (15) until then, which left a
+ *  client who did not renew with the full app for two more weeks. Maintenance
+ *  lapses keep their own 15-day GRACE_DAYS. */
+export const PLAN_END_GRACE_DAYS = 0;
 /** Days before the effective recheck that the "your programme is finishing"
  *  heads-up appears in the app. Deliberately SHORTER than the REVIEW lead:
  *  REVIEW opens 14 days out (7 for short plans) and carries the graduation
@@ -121,10 +129,10 @@ function daysBetweenYmd(fromYmd: string, toYmd: string): number {
  *   2. Otherwise the plan window decides ACTIVE vs REVIEW.
  *   3. Nothing usable → LIBRARY (the silent floor).
  *
- * Decline → LIBRARY (coach decision 2026-06-15): REVIEW runs from
- * REVIEW_LEAD_DAYS before the recheck through GRACE_DAYS after it. A client who
- * neither continues nor maintains within that window falls to the LIBRARY floor
- * automatically — the same 15-day grace the maintenance-lapse path uses. It is
+ * Decline → LIBRARY (coach decisions 2026-06-15, 2026-11-18): REVIEW runs from
+ * REVIEW_LEAD_DAYS before the recheck through PLAN_END_GRACE_DAYS after it (0:
+ * the recheck day itself is the last full day). A client who neither continues
+ * nor maintains by then falls to the LIBRARY floor the next day. It is
  * purely time-based (no explicit "decline" tap needed) and fully recoverable:
  * publishing the next plan or starting maintenance flips them back out.
  */
@@ -178,10 +186,10 @@ export function resolveAppMode(
     return { mode: "ACTIVE", reason: `in protocol; recheck ${recheck}`, continued };
   }
 
-  // REVIEW runs from the plan's review lead before the recheck through GRACE_DAYS
-  // after it. Past that window with no continue/maintain decision → LIBRARY
-  // (same 15-day grace as the maintenance-lapse path; coach decision 2026-06-15).
-  const reviewEnd = addDaysYmd(recheck, GRACE_DAYS);
+  // REVIEW runs from the plan's review lead before the recheck through
+  // PLAN_END_GRACE_DAYS after it. Past that with no continue/maintain decision →
+  // LIBRARY, the day after the plan ends (coach decision 2026-11-18).
+  const reviewEnd = addDaysYmd(recheck, PLAN_END_GRACE_DAYS);
   if (todayYmd <= reviewEnd) {
     return {
       mode: "REVIEW",
@@ -219,8 +227,8 @@ export interface FinalStretchNote {
  *      note would contradict it — a MAINTENANCE client is not finishing, and a
  *      LIBRARY client has already finished. (In practice ACTIVE can never be
  *      inside the window either: REVIEW opens 14 days out, 7 for short plans.)
- *   2. Today is on or before the effective recheck. REVIEW runs GRACE_DAYS PAST
- *      the recheck; once it's passed, the graduation report's "you've reached
+ *   2. Today is on or before the effective recheck. REVIEW may run
+ *      PLAN_END_GRACE_DAYS past the recheck; once it's passed, the graduation report's "you've reached
  *      the finish line" is the truth and "finishing soon" would be a lie.
  *   3. Today is within FINAL_STRETCH_DAYS of it — not from day one.
  *
