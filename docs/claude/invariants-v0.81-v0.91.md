@@ -288,3 +288,10 @@ Test client `cl-900` only (see step 0 above for the switch and the embargo).
 
 Tests: `sq-day.test.ts`, `sq-home.test.tsx`, `sq-app.test.tsx`, `src/lib/fmdb/app-shell.test.ts`,
 `fm-database/tests/test_save_app_ticks_meal.py`.
+
+### Client app redesign: the "next" card goes by windows of the day (18 Nov 2026)
+
+- The new front's "next" card and "Later today" no longer go by the five parts of the day. `sq-day.ts::rankFloorAt(hour, minute)` gives a floor on day-plan.ts's ranks, and `upcomingMoments` offers only moments at or above it. Windows: before 8 am everything; 8 am breakfast; 10:30 am mid-morning; 12 noon lunch; 4 pm tea-time snack; 6:30 pm dinner (floor 55, so the evening practice at 58 stays); 9 pm bedtime.
+- **Why:** the snack and dinner share "evening" (4 pm to 9 pm), so an unticked snack held the card until 9 pm (the coach saw "Tea with milk" at 8:15 pm). Same for breakfast against the mid-morning bite.
+- A window that opens on a part of the day must keep that part's cut from `bandOfRank` (19, 39, 50, 70); a test pins this at every minute. Today's app still uses `bandForHour` and is untouched.
+- A skipped item leaves "next" and "Later today" only; it stays in Your whole day and can be ticked late. The clock is read on open and when she comes back to the app, not on a timer.

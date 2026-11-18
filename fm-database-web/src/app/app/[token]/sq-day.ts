@@ -26,7 +26,7 @@
 import type { AppMeal, AppPractice, AppRemedy, AppSupplement, AppTickDay } from "@/lib/fmdb/client-app";
 import { crisp } from "./crisp";
 import type { TickItem } from "./daily-ticks";
-import { BAND_META, BAND_ORDER, buildDay, mealTickId, slotLabel, type BandKey, type DayInput } from "./day-plan";
+import { BAND_META, buildDay, mealTickId, slotLabel, type BandKey, type DayInput } from "./day-plan";
 
 // ── ticks ──────────────────────────────────────────────────────────────────
 
@@ -66,6 +66,8 @@ export interface SqMoment {
   id: string;
   kind: SqKind;
   band: BandKey;
+  /** where it sits in the day (day-plan.ts ranks); "next" is decided on this */
+  rank: number;
   /** "Breakfast", "On waking", "Before bed" */
   part: string;
   /** a clock hint when the plan gives one ("8:30 am"), else "" */
@@ -148,6 +150,7 @@ export function buildMoments(input: DayInput): SqMoment[] {
           id: mealTickId(it.meal, index, input.meals),
           kind: "meal",
           band: band.key,
+          rank: it.rank,
           part: slotLabel(it.meal.slot) || BAND_META[band.key].label,
           time: (it.meal.timeHint || "").trim(),
           title: mealTitle(it.meal),
@@ -172,6 +175,7 @@ export function buildMoments(input: DayInput): SqMoment[] {
           id: it.id,
           kind: "supp",
           band: band.key,
+          rank: it.rank,
           part: BAND_META[band.key].label,
           time: "",
           title: shortName(it.supp.name),
@@ -187,6 +191,7 @@ export function buildMoments(input: DayInput): SqMoment[] {
           id: it.id,
           kind: "remedy",
           band: band.key,
+          rank: it.rank,
           part: BAND_META[band.key].label,
           time: "",
           title: shortName(it.remedy.name),
@@ -202,6 +207,7 @@ export function buildMoments(input: DayInput): SqMoment[] {
         id: it.id,
         kind: "practice",
         band: band.key,
+        rank: it.rank,
         part: BAND_META[band.key].label,
         time: "",
         title: lines.title,
@@ -217,21 +223,54 @@ export function buildMoments(input: DayInput): SqMoment[] {
 
 // ── next and later ─────────────────────────────────────────────────────────
 
-const bandIndex = (b: BandKey) => BAND_ORDER.indexOf(b);
+/**
+ * The windows of the day. Each row is [minutes after midnight, floor]: from
+ * that minute on, anything ranked below the floor is behind her and is no
+ * longer offered as "next".
+ *
+ * Finer than the five parts of the day on purpose. The tea-time snack and
+ * dinner share "evening" (4 pm to 9 pm), and breakfast and the mid-morning
+ * bite share "morning"; going by the part alone, an unticked snack held the
+ * card until 9 pm. The floors sit between day-plan.ts's ranks:
+ *   19  breakfast 19.5 and what is taken with it (20, 21, 25)
+ *   29  mid-morning 29.5, 30
+ *   39  lunch 39.5 and with it (40, 41), the midday practices (44, 47), 45
+ *   50  afternoon supplement 50, tea-time snack 50.5
+ *   55  the evening practice 58, dinner 59.5, with dinner 60
+ *   70  bedtime 70, 72, 75
+ * Where a window opens on a part of the day (8 am, noon, 4 pm, 9 pm) its floor
+ * is that part's own cut in bandOfRank — a test pins the two together.
+ */
+const DAY_WINDOWS: [fromMinute: number, floor: number][] = [
+  [0, 0],
+  [8 * 60, 19],
+  [10 * 60 + 30, 29],
+  [12 * 60, 39],
+  [16 * 60, 50],
+  [18 * 60 + 30, 55],
+  [21 * 60, 70],
+];
+
+/** The floor for a time on the phone's clock: what is still ahead starts here. */
+export function rankFloorAt(hour: number, minute = 0): number {
+  const at = hour * 60 + minute;
+  let floor = 0;
+  for (const [from, f] of DAY_WINDOWS) if (at >= from) floor = f;
+  return floor;
+}
 
 /**
- * What is still ahead today, in order: unticked moments from the part of the
- * day she is in onward. "Any time" things are never ahead — they have no
- * moment — and are listed separately (anytimeMoments).
+ * What is still ahead today, in order: unticked moments from the window of
+ * the day she is in onward (rankFloorAt). "Any time" things are never ahead —
+ * they have no moment — and are listed separately (anytimeMoments).
  */
-export function upcomingMoments(moments: SqMoment[], ticks: SqTicks, nowBand: BandKey): SqMoment[] {
-  const now = bandIndex(nowBand);
-  return moments.filter((m) => m.band !== "anytime" && bandIndex(m.band) >= now && !isTicked(m.id, m.kind, ticks));
+export function upcomingMoments(moments: SqMoment[], ticks: SqTicks, fromRank: number): SqMoment[] {
+  return moments.filter((m) => m.band !== "anytime" && m.rank >= fromRank && !isTicked(m.id, m.kind, ticks));
 }
 
 /** The one thing the Home shows as "next", or null when nothing is ahead. */
-export function nextMoment(moments: SqMoment[], ticks: SqTicks, nowBand: BandKey): SqMoment | null {
-  return upcomingMoments(moments, ticks, nowBand)[0] ?? null;
+export function nextMoment(moments: SqMoment[], ticks: SqTicks, fromRank: number): SqMoment | null {
+  return upcomingMoments(moments, ticks, fromRank)[0] ?? null;
 }
 
 /** Unticked things with no set time (a weekly strength session). */

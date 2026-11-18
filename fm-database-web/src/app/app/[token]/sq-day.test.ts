@@ -12,7 +12,7 @@
 
 import { describe, expect, it } from "vitest";
 import type { AppMeal, AppPractice, AppRemedy, AppSupplement, AppTickDay } from "@/lib/fmdb/client-app";
-import { mealTickId } from "./day-plan";
+import { bandForHour, bandOfRank, mealTickId } from "./day-plan";
 import {
   anytimeMoments,
   buildMoments,
@@ -26,6 +26,7 @@ import {
   mealTickItems,
   mealsNotTracked,
   nextMoment,
+  rankFloorAt,
   recordSummary,
   showReturnCard,
   showStartCard,
@@ -190,25 +191,25 @@ describe("buildMoments — the day as the Home shows it", () => {
 
 describe("nextMoment — the one card on Home", () => {
   it("is the first thing of the day when the day begins", () => {
-    expect(nextMoment(moments(), NONE, "waking")?.id).toBe("rx-chia-water");
+    expect(nextMoment(moments(), NONE, rankFloorAt(7))?.id).toBe("rx-chia-water");
   });
 
   it("moves on as each thing is ticked", () => {
     const t: SqTicks = { ...NONE, logged: { "rx-chia-water": "7:05 am", "s-fasted": "7:06 am" } };
-    expect(nextMoment(moments(), t, "waking")?.id).toBe("m-breakfast");
+    expect(nextMoment(moments(), t, rankFloorAt(7))?.id).toBe("m-breakfast");
   });
 
   it("is never something from an earlier part of the day", () => {
     // Nothing ticked, opened at lunchtime: breakfast is not offered as "next".
-    expect(nextMoment(moments(), NONE, "midday")?.id).toBe("m-lunch");
-    expect(upcomingMoments(moments(), NONE, "midday").map((m) => m.band)).not.toContain("morning");
+    expect(nextMoment(moments(), NONE, rankFloorAt(13))?.id).toBe("m-lunch");
+    expect(upcomingMoments(moments(), NONE, rankFloorAt(13)).map((m) => m.band)).not.toContain("morning");
     // …but it is still in the whole day, where she can tick it.
     expect(dayRows(moments()).map((r) => r.id)).toContain("m-breakfast");
   });
 
   it("ticking a meal moves on even when its supplements are not ticked", () => {
     const t: SqTicks = { ...NONE, logged: { "m-lunch": "1:10 pm" } };
-    expect(nextMoment(moments(), t, "midday")?.id).not.toBe("m-lunch");
+    expect(nextMoment(moments(), t, rankFloorAt(13))?.id).not.toBe("m-lunch");
     expect(isTicked("s-d3", "supp", t)).toBe(false); // the meal tick is only the meal
   });
 
@@ -219,19 +220,84 @@ describe("nextMoment — the one card on Home", () => {
       practicesDone: { "p-wind": true },
       practiceAt: {},
     };
-    expect(nextMoment(all, t, "waking")).toBeNull();
+    expect(nextMoment(all, t, rankFloorAt(7))).toBeNull();
     expect(anytimeMoments(all, t).map((m) => m.id)).toEqual(["p-strength"]);
   });
 
   it("is nothing late at night when the evening is done", () => {
     const t: SqTicks = { logged: { "s-magnesium": "10:05 pm" }, practicesDone: { "p-wind": true }, practiceAt: {} };
-    expect(nextMoment(moments(), t, "bedtime")).toBeNull();
+    expect(nextMoment(moments(), t, rankFloorAt(22))).toBeNull();
   });
 
   it("summarises what is later by part of the day, once each", () => {
-    const later = upcomingMoments(moments(), NONE, "midday").slice(1);
+    const later = upcomingMoments(moments(), NONE, rankFloorAt(13)).slice(1);
     // Two things are due before bed (the wind-down and magnesium): one mention.
     expect(laterSummary(later)).toBe("snack, dinner, before bed");
+  });
+});
+
+describe("rankFloorAt — the windows of the day", () => {
+  const at = (h: number, m = 0) => nextMoment(moments(), NONE, rankFloorAt(h, m))?.id;
+
+  it("gives each meal its own window, so an unticked one gives way to the next", () => {
+    // Nothing ticked all day: the card follows the clock, not the oldest gap.
+    expect(at(7)).toBe("rx-chia-water");
+    expect(at(8)).toBe("m-breakfast");
+    expect(at(10, 29)).toBe("m-breakfast");
+    expect(at(10, 30)).toBe("m-mid-morning");
+    expect(at(11, 59)).toBe("m-mid-morning");
+    expect(at(12)).toBe("m-lunch");
+    expect(at(15, 59)).toBe("m-lunch");
+    expect(at(16)).toBe("m-snack");
+    expect(at(18, 29)).toBe("m-snack");
+    expect(at(18, 30)).toBe("m-dinner");
+    // The case that prompted this: 8:15 pm with the tea-time snack unticked.
+    expect(at(20, 15)).toBe("m-dinner");
+    expect(at(21)).toBe("s-magnesium");
+  });
+
+  it("a snack left unticked is out of 'next' and 'later' but still in the whole day", () => {
+    const ahead = upcomingMoments(moments(), NONE, rankFloorAt(20, 15)).map((m) => m.id);
+    expect(ahead).toEqual(["m-dinner", "s-magnesium", "p-wind"]);
+    expect(dayRows(moments()).map((r) => r.id)).toContain("m-snack");
+  });
+
+  it("an evening practice stays through dinner time, not dropped with the snack", () => {
+    const plan = { ...PLAN, practices: [...PLAN.practices, practice("p-walk", "evening", "daily", "Evening walk")] };
+    const ahead = (h: number, m = 0) => upcomingMoments(buildMoments(plan), NONE, rankFloorAt(h, m)).map((x) => x.id);
+    expect(ahead(16)).toContain("p-walk");
+    expect(ahead(18, 30)[0]).toBe("p-walk"); // before dinner, as the day lists it
+    expect(ahead(20, 59)).toContain("p-walk");
+    expect(ahead(21)).not.toContain("p-walk");
+  });
+
+  it("never rises and falls: a later minute never brings back an earlier window", () => {
+    let last = -1;
+    for (let h = 0; h < 24; h++) {
+      for (let m = 0; m < 60; m++) {
+        const f = rankFloorAt(h, m);
+        expect(f, `${h}:${m}`).toBeGreaterThanOrEqual(last);
+        last = f;
+      }
+    }
+  });
+
+  it("agrees with the five parts of the day at every minute", () => {
+    // The floor's part of the day is the part the clock says it is: the windows
+    // only split parts, they never move a boundary between two of them.
+    for (let h = 0; h < 24; h++) {
+      for (const m of [0, 15, 29, 30, 45, 59]) {
+        expect(bandOfRank(Math.max(rankFloorAt(h, m), 0)), `${h}:${m}`).toBe(bandForHour(h));
+      }
+    }
+  });
+
+  it("every moment of the day is ahead in the window it belongs to", () => {
+    // Guards the floors against a rank that falls in a gap: each moment must be
+    // offered at some time of day, and the whole day is on offer first thing.
+    const all = moments().filter((m) => m.band !== "anytime");
+    expect(upcomingMoments(moments(), NONE, rankFloorAt(0)).length).toBe(all.length);
+    for (const m of all) expect(m.rank, m.id).toBeGreaterThanOrEqual(0);
   });
 });
 

@@ -26,7 +26,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 import { bandForHour } from "./day-plan";
-import { buildMoments, isTicked, type SqKind, type SqMoment, type SqTicks } from "./sq-day";
+import { buildMoments, isTicked, rankFloorAt, type SqKind, type SqMoment, type SqTicks } from "./sq-day";
 import { SqHome } from "./sq-home";
 import { recipeTitle, recordDayTitle, SqDaySheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
@@ -136,7 +136,8 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     return () => document.removeEventListener("visibilitychange", onShow);
   }, []);
   const hour = now ? now.getHours() : null;
-  const nowBand = bandForHour(hour ?? 12);
+  // Hour AND minute: the windows of the day turn on the half hour.
+  const nowRank = now ? rankFloorAt(now.getHours(), now.getMinutes()) : rankFloorAt(12);
   const todayYmd = now ? now.toLocaleDateString("en-CA") : "";
 
   // Per-device settings, read after mount for the same reason as the clock.
@@ -280,7 +281,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
             ticks={ticks}
             ready={ready}
             hour={hour}
-            nowBand={nowBand}
+            nowRank={nowRank}
             checkinSentWeek={state.checkinSentWeek}
             track={track}
             lastId={lastId}
