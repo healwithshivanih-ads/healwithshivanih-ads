@@ -77,14 +77,17 @@ describe("resolveFinalStretch — the window", () => {
   });
 
   it("does NOT show once the finish date has passed", () => {
-    // REVIEW runs 15 days PAST the recheck. Through all of it the graduation
-    // copy says "you've reached the finish line" — "finishing soon" would
-    // contradict the mode.
+    // Since 2026-11-18 there is no post-end grace: the day after the recheck a
+    // non-renewing client is on the LIBRARY floor, and "finishing soon" would
+    // contradict it.
     for (const daysPast of [1, 5, 15]) {
       const { mode, note } = noteFor(planWithRecheck(-daysPast));
-      expect(mode, `${daysPast}d past`).toBe("REVIEW");
+      expect(mode, `${daysPast}d past`).toBe("LIBRARY");
       expect(note, `${daysPast}d past`).toBeNull();
     }
+    // Even if REVIEW were ever widened past the recheck again, the resolver
+    // itself refuses a note once the date has passed.
+    expect(resolveFinalStretch("REVIEW", planWithRecheck(-1), TODAY)).toBeNull();
   });
 });
 

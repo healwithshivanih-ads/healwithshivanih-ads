@@ -38,7 +38,10 @@ maintenance record:
 
 ```
 ACTIVE      plan published AND today < effective_meal_plan_start + plan_period_weeks*7
-REVIEW      within ~14d of (or past) effective_recheck_date, no successor yet
+REVIEW      within ~14d of effective_recheck_date up to and including that day, no successor yet
+            (coach decision 2026-11-18: no post-end grace — PLAN_END_GRACE_DAYS = 0;
+            the day after the plan ends a non-renewing client is on LIBRARY, where
+            supplement re-order links and retest booking stay open)
             → show graduation report + "Continue or Maintain?" choice
 PHASE2      a newer published plan supersedes the old one → resolves to ACTIVE
 MAINTENANCE maintenance.paid_through >= today

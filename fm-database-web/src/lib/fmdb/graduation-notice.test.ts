@@ -6,7 +6,7 @@ import {
   GRADUATION_BACKFILL_DAYS,
   type GraduationNoticeInput,
 } from "./graduation-notice";
-import { GRACE_DAYS } from "./app-mode";
+import { PLAN_END_GRACE_DAYS } from "./app-mode";
 
 const TODAY = "2026-08-20";
 
@@ -37,7 +37,7 @@ function planWithRecheck(daysOut: number, extra: Record<string, unknown> = {}) {
 function input(over: Partial<GraduationNoticeInput> = {}): GraduationNoticeInput {
   return {
     todayYmd: TODAY,
-    appMode: { plan: planWithRecheck(-(GRACE_DAYS + 1)) },
+    appMode: { plan: planWithRecheck(-(PLAN_END_GRACE_DAYS + 1)) },
     hasPhone: true,
     daysSinceLastOpen: 1,
     lastSentAt: null,
@@ -46,9 +46,9 @@ function input(over: Partial<GraduationNoticeInput> = {}): GraduationNoticeInput
 }
 
 // The day the app flips to the LIBRARY floor, relative to TODAY: REVIEW's last
-// day is recheck + GRACE_DAYS, so a recheck at -(GRACE_DAYS + 1) graduates them
+// day is recheck + PLAN_END_GRACE_DAYS, so a recheck at -(PLAN_END_GRACE_DAYS + 1) graduates them
 // exactly today.
-const GRADUATED_TODAY = { plan: planWithRecheck(-(GRACE_DAYS + 1)) };
+const GRADUATED_TODAY = { plan: planWithRecheck(-(PLAN_END_GRACE_DAYS + 1)) };
 
 describe("graduationNoticeDecision — the REVIEW→LIBRARY edge", () => {
   it("fires on the first day past the review window", () => {
@@ -59,7 +59,7 @@ describe("graduationNoticeDecision — the REVIEW→LIBRARY edge", () => {
 
   it("does NOT fire while still inside the review window (last day of grace)", () => {
     const d = graduationNoticeDecision(
-      input({ appMode: { plan: planWithRecheck(-GRACE_DAYS) } }),
+      input({ appMode: { plan: planWithRecheck(-PLAN_END_GRACE_DAYS) } }),
     );
     expect(d.send).toBe(false);
     expect(d.reason).toContain("REVIEW");
@@ -145,7 +145,7 @@ describe("graduationNoticeDecision — who is eligible", () => {
     const d = graduationNoticeDecision(
       input({
         appMode: {
-          plan: planWithRecheck(-(GRACE_DAYS + 1)),
+          plan: planWithRecheck(-(PLAN_END_GRACE_DAYS + 1)),
           maintenance_status: "lapsed",
           maintenance_paid_through: addDays(TODAY, -90),
         },

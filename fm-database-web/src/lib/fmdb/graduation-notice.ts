@@ -17,7 +17,7 @@
  * THE EDGE IS NOT RECOMPUTED. `resolveAppMode` is the authority on whether a
  * client is on the floor — this asks it rather than re-deriving the window, so
  * the two can never drift apart. The only arithmetic done here is WHEN the
- * floor started (recheck + GRACE_DAYS + 1, the day after REVIEW's last day),
+ * floor started (recheck + PLAN_END_GRACE_DAYS + 1, the day after REVIEW's last day),
  * which is what makes "once per graduation" expressible.
  *
  * IDEMPOTENCE IS DATE-SCOPED, NOT A BOOLEAN. The durable send-state is the
@@ -30,7 +30,7 @@
  * send belongs to a previous programme and does not.
  */
 
-import { resolveAppMode, GRACE_DAYS, type AppModeInput } from "./app-mode";
+import { resolveAppMode, PLAN_END_GRACE_DAYS, type AppModeInput } from "./app-mode";
 import { effectiveRecheckDate } from "./plan-timing";
 
 /**
@@ -124,9 +124,9 @@ export function graduationNoticeDecision(
     return { send: false, reason: "recheck date not computable from the plan" };
   }
 
-  // 3. REVIEW's last day is recheck + GRACE_DAYS, so the floor starts the day
+  // 3. REVIEW's last day is recheck + PLAN_END_GRACE_DAYS, so the floor starts the day
   //    after. This date is the identity of this particular graduation.
-  const graduatedOn = addDaysYmd(recheck, GRACE_DAYS + 1);
+  const graduatedOn = addDaysYmd(recheck, PLAN_END_GRACE_DAYS + 1);
 
   if (todayYmd > addDaysYmd(graduatedOn, GRADUATION_BACKFILL_DAYS)) {
     return {

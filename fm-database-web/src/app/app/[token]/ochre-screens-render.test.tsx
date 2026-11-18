@@ -358,6 +358,14 @@ describe("Library-floor supplements — every re-orderable supplement stays reac
       "a supplement with no buy link was listed under a re-order card it cannot serve",
     ).toBe(false);
   });
+
+  it("keeps retests bookable after the programme (coach decision 2026-11-18)", () => {
+    // A client with no lab orders on file still gets the booking card and the
+    // always-available "Ask about labs" route — never a dead end.
+    const html = renderLibraryFloor([supp("Magnesium glycinate", "https://example.test/mag")]);
+    expect(html).toContain("Book your retests with us");
+    expect(html).toContain("Ask about labs");
+  });
 });
 
 // ── the final-week heads-up ─────────────────────────────────────────────────

@@ -15,6 +15,7 @@
 import { crisp } from "./crisp";
 import { useState } from "react";
 import { useOchre } from "./ochre-context";
+import { LabOrdersCard } from "./ochre-lab-pay";
 import { FoundingMemberMark } from "@/components/sequoya/sequoya-brand";
 
 const FOREST = "var(--forest, #2d5a3d)";
@@ -799,6 +800,20 @@ export function LibraryFloorScreen({ goCoach, goTab }: { goCoach: () => void; go
           </div>
         </div>
       )}
+
+      {/* Retests stay bookable after the programme (coach decision 2026-11-18).
+          The SAME card the Labs tab uses: a coach-recommended order is payable
+          in-app, a past package is one tap to rebook at current prices, and
+          "Ask about labs" is always there as the fallback. */}
+      <div style={{ ...cardStyle, marginBottom: 0 }}>
+        <div style={{ fontSize: 14.5, fontWeight: 500, color: INK }}>Book your retests with us</div>
+        <p style={{ fontSize: 12.5, color: MUTED, lineHeight: 1.5, margin: "4px 0 0" }}>
+          When it&apos;s time to check your numbers again, book here. The sample is collected from home.
+        </p>
+      </div>
+      <div style={{ marginBottom: 12 }}>
+        <LabOrdersCard />
+      </div>
 
       {bot && <BackOnTrackCard bot={bot} />}
 

@@ -3,6 +3,7 @@ import {
   resolveAppMode,
   reviewLeadDays,
   GRACE_DAYS,
+  PLAN_END_GRACE_DAYS,
   REVIEW_LEAD_DAYS,
   REVIEW_LEAD_DAYS_SHORT,
   SHORT_PLAN_MAX_WEEKS,
@@ -44,16 +45,21 @@ describe("resolveAppMode — plan window (no maintenance)", () => {
     expect(resolveAppMode({ plan: planWithRecheck(REVIEW_LEAD_DAYS) }, TODAY).mode).toBe("REVIEW");
   });
 
-  it("REVIEW when recheck has recently passed (inside grace)", () => {
-    expect(resolveAppMode({ plan: planWithRecheck(-10) }, TODAY).mode).toBe("REVIEW");
+  it("REVIEW on the plan's last day (the recheck itself)", () => {
+    expect(resolveAppMode({ plan: planWithRecheck(0) }, TODAY).mode).toBe("REVIEW");
   });
 
-  it("REVIEW exactly at the grace boundary (recheck + 15d)", () => {
-    expect(resolveAppMode({ plan: planWithRecheck(-GRACE_DAYS) }, TODAY).mode).toBe("REVIEW");
+  it("plan-end grace is zero days (coach decision 2026-11-18)", () => {
+    expect(PLAN_END_GRACE_DAYS).toBe(0);
   });
 
-  it("LIBRARY one day past the review grace (recheck + 16d, no decision)", () => {
-    expect(resolveAppMode({ plan: planWithRecheck(-(GRACE_DAYS + 1)) }, TODAY).mode).toBe("LIBRARY");
+  it("LIBRARY the day after the plan ends (no renewal, no maintenance)", () => {
+    expect(resolveAppMode({ plan: planWithRecheck(-(PLAN_END_GRACE_DAYS + 1)) }, TODAY).mode).toBe("LIBRARY");
+    expect(resolveAppMode({ plan: planWithRecheck(-1) }, TODAY).mode).toBe("LIBRARY");
+  });
+
+  it("LIBRARY well past the end — the old 15-day window no longer applies", () => {
+    expect(resolveAppMode({ plan: planWithRecheck(-10) }, TODAY).mode).toBe("LIBRARY");
   });
 
   it("ACTIVE with continued=true when plan supersedes a prior one", () => {
@@ -145,7 +151,7 @@ describe("resolveAppMode — short-engagement review lead", () => {
     expect(resolveAppMode({ plan: shortPlan(REVIEW_LEAD_DAYS, 7) }, TODAY).mode).toBe("REVIEW");
   });
 
-  it("short plan still degrades to LIBRARY past recheck + grace", () => {
-    expect(resolveAppMode({ plan: shortPlan(-(GRACE_DAYS + 1), 4) }, TODAY).mode).toBe("LIBRARY");
+  it("short plan also degrades to LIBRARY the day after it ends", () => {
+    expect(resolveAppMode({ plan: shortPlan(-(PLAN_END_GRACE_DAYS + 1), 4) }, TODAY).mode).toBe("LIBRARY");
   });
 });
