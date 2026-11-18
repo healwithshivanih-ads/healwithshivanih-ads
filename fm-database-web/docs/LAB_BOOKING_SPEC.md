@@ -275,3 +275,12 @@ phone (`+91 98080 50050`). Coach order dashboard:
   volume grows.
 - **Refunds/cancellations** — policy + Razorpay refund flow (P2).
 - **Invoice identity** — whose GSTIN/branding on the client invoice (Ochre's).
+
+## Providers: Thyrocare primary, Acumen backup (Nov 2026)
+
+- Two catalogues: `fm-database/data/lab_providers/thyrocare.yaml` (primary) and `acumen.yaml` (backup), each with its own coverage map (`lab_coverage_thyrocare.yaml`, `lab_coverage.yaml`). Same 4-profile id contract.
+- Thyrocare's base profile is **Aarogyam F Pro + fasting glucose** (F Pro does not include FBS). Its prices ship blank, so it is unbookable until the coach fills in `our_cost_inr` + `mrp_inr`; until then the coach card opens on Acumen and says why.
+- Every stored order carries `provider`. Pay, rebook, webhook, invoice, client-app projection and the booking email load **that order's** provider via `orderProviderSlug(order)` — never the default. A missing/unknown value reads as Acumen (all pre-Thyrocare orders).
+- Booking: Thyrocare is `manual` — a paid order WhatsApps the coach (`THYROCARE_ALERT_WHATSAPP`, else `COACH_NOTIFY_PHONE`) and she books it. Acumen stays `partner_whatsapp` (`LAB_PARTNER_WHATSAPP`). A Thyrocare order never alerts Acumen's partner. `api` is reserved for the Thyrocare partner API.
+- Add-on pricing: Acumen's 50%-of-catalogue cost rule applies only to Acumen; other labs state `our_cost_inr` / `client_inr` per add-on.
+- The client pay screen shows the lab's `pretest_instructions` ("Before your test").

@@ -134,6 +134,9 @@ export interface LabOrder {
    *  Display-only: computed in the client-app projection from the provider
    *  catalogue, NOT stored on disk. Absent/null on un-projected orders. */
   list_inr?: number | null;
+  /** Client-facing "before your test" lines from the order's lab catalogue.
+   *  Display-only, attached in the client-app projection, NOT stored on disk. */
+  pretest_instructions?: string[];
   status: LabOrderStatus;
   recommended_by: string;
   recommended_at: string;
@@ -143,6 +146,8 @@ export interface LabOrder {
   razorpay_order_id: string | null;
   razorpay_payment_id: string | null;
   paid_at: string | null;
+  /** When the coach marked it booked with the lab. The name predates Thyrocare —
+   *  it holds the booking time for whichever lab `provider` names. */
   booked_with_acumen_at: string | null;
   sample_collected_on: string | null;
   results_snapshot_date: string | null;
@@ -190,7 +195,7 @@ export function canTransition(from: LabOrderStatus, to: LabOrderStatus): boolean
 }
 
 /** Ceiling on a single coach-set add-on price — a sanity cap so a typo / hostile
- *  caller can't mint an absurd charge (no Acumen add-on is near this). */
+ *  caller can't mint an absurd charge (no lab add-on is near this). */
 export const MAX_ADDON_INR = 200_000;
 
 const VALID_STATUSES = new Set<LabOrderStatus>([
@@ -291,7 +296,7 @@ export function buildOrder(provider: LabProvider, input: RecommendInput): BuildR
       booked_with_acumen_at: null,
       sample_collected_on: null,
       results_snapshot_date: null,
-      // All Acumen FM profiles are fasting. An add-on-only order is fasting when
+      // All FM profiles (Thyrocare and Acumen) are fasting. An add-on-only order is fasting when
       // any add-on is flagged `fasting: true` in the catalogue (a 12-week insulin
       // or homocysteine retest) — otherwise the app hid the fasting line on it.
       fasting_required: input.profileId != null || fastingAddon,

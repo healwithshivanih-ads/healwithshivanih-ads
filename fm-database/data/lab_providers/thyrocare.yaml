@@ -1,0 +1,162 @@
+# Thyrocare — PRIMARY lab provider from Nov 2026 (Acumen is the backup).
+#
+# The standard panel is Aarogyam F Pro + fasting glucose (F Pro does NOT include
+# FBS; HOMA-IR, TyG and the other insulin scores need it). Contents verified
+# against a real F Pro report (17 Nov 2026).
+#
+# PRICES ARE BLANK ON PURPOSE. A profile with no `our_cost_inr` AND `mrp_inr`
+# is unbookable (lab-providers.ts fails closed), so nothing can be charged until
+# the coach fills in Thyrocare's rates. To make Thyrocare bookable:
+#   1. profiles_final[].our_cost_inr  = what Thyrocare bills us
+#   2. profiles_final[].mrp_inr       = what the client pays
+#   3. profiles_final[].margin_inr    = mrp − cost (display only)
+#   4. profiles_final[].catalogue_inr = optional strike-through "regular price"
+#   5. addon_tests[].our_cost_inr / client_inr per add-on (optional — the coach
+#      also types each add-on's client price when recommending)
+# Until (1)+(2) are set for profile 1, the coach card falls back to Acumen.
+#
+# Booking: MANUAL for now — a paid order WhatsApps the coach (env
+# THYROCARE_ALERT_WHATSAPP, falling back to COACH_NOTIFY_PHONE) and she books
+# Thyrocare herself. Switch `booking` to `api` once the Thyrocare partner API
+# is wired.
+
+provider:
+  slug: thyrocare
+  display_name: Thyrocare
+  role: primary
+  booking: manual
+  alert_recipients_env: THYROCARE_ALERT_WHATSAPP
+  phone_e164: ""
+  website: https://www.thyrocare.com
+  home_collection: true
+  # Add-ons carry explicit prices (no %-of-catalogue rule like Acumen's deal).
+  addon_our_cost_fraction: null
+  addon_client_price: explicit
+  # Shown to the client on the pay screen, before they book. Client-facing:
+  # short, plain, brand voice.
+  pretest_instructions:
+    - "Fast for 10–12 hours before the test. Water is fine."
+    - "Book a morning slot (7–9 am) if you can."
+    - "Pause biotin for 3 days before. It hides in hair, skin & nail and B-complex supplements."
+    - "No hard workouts for 3 days before, and no alcohol for 2 days."
+    - "Avoid paracetamol (Crocin, Dolo) for 2 days if you can. Take your prescribed medicines as usual."
+    - "Unwell in the last 2 weeks? Message us before booking. It is better to move the test."
+  notes_for_coach: >-
+    Primary lab from Nov 2026. Aarogyam F Pro covers thyroid levels, insulin,
+    HbA1c, fructosamine, full lipids + ApoA1/ApoB/Lp(a)/LP-PLA2, hs-CRP,
+    homocysteine, iron studies, vitamin D/B12/folate, magnesium, calcium,
+    phosphorus, sodium, chloride, liver + kidney panels, CBC, amylase, lipase,
+    RF, anti-CCP, ANA, total IgE and 22 elements (heavy metals + selenium,
+    manganese, molybdenum). It does NOT cover thyroid antibodies, post-meal
+    glucose/insulin, potassium, zinc, copper, ESR, urine, sex hormones or
+    cortisol — those are add-ons.
+  updated_at: '2026-11-17'
+  updated_by: shivani
+
+profiles_final:
+  - id: 1
+    name: "Aarogyam F Pro + fasting glucose"
+    audience: everyone
+    our_cost_inr: null
+    mrp_inr: null
+    margin_inr: null
+    catalogue_inr: null
+    includes:
+      - "Thyroid — TSH, free T3 & free T4"
+      - "Blood sugar — fasting glucose & insulin, HbA1c, fructosamine, HOMA-IR"
+      - "Heart — full lipids, ApoA1, ApoB, Lp(a), LP-PLA2"
+      - "Inflammation — hs-CRP, homocysteine"
+      - "Iron studies + ferritin"
+      - "Vitamin D, vitamin B12 & folate"
+      - "Minerals — magnesium, calcium, phosphorus, sodium, chloride"
+      - "Liver & kidney function, full blood count"
+      - "Pancreas — amylase & lipase"
+      - "Immune & allergy — rheumatoid factor, anti-CCP, ANA, total IgE"
+      - "22 elements — heavy metals (lead, mercury, arsenic, cadmium) and trace minerals (selenium, manganese)"
+    covered_addon_slugs: [fasting-glucose, insulin-fasting, hba1c, lipid-profile, apob, lp-a, hscrp, homocysteine, iron-studies, ferritin, vitamin-d, vitamin-b12, folate-serum, magnesium-serum, lft, rft, cbc, ana, anti-ccp, total-ige, heavy-metals]
+  - id: 2
+    name: "Women's Reproductive"
+    audience: "women <45"
+    our_cost_inr: null
+    mrp_inr: null
+    margin_inr: null
+    catalogue_inr: null
+    includes_extra:
+      - "Reproductive hormones — FSH, LH, AMH, estradiol, progesterone, prolactin"
+      - "Androgens — total & free testosterone, SHBG, DHEA-S"
+      - "Thyroid antibodies — anti-TPO & anti-Tg"
+    covered_addon_slugs: [fsh, lh, amh, estradiol-e2, progesterone, prolactin, total-testosterone, free-testosterone, shbg, dhea-s, thyroid-antibodies]
+  - id: 3
+    name: "Perimenopause"
+    audience: "women 40+"
+    our_cost_inr: null
+    mrp_inr: null
+    margin_inr: null
+    catalogue_inr: null
+    includes_extra:
+      - "Perimenopause hormones — FSH, LH, estradiol, progesterone"
+      - "Androgens — total testosterone, SHBG, DHEA-S"
+      - "Thyroid antibodies — anti-TPO & anti-Tg"
+    covered_addon_slugs: [fsh, lh, estradiol-e2, progesterone, total-testosterone, shbg, dhea-s, thyroid-antibodies]
+  - id: 4
+    name: "Male"
+    audience: men
+    our_cost_inr: null
+    mrp_inr: null
+    margin_inr: null
+    catalogue_inr: null
+    includes_extra:
+      - "Male hormones — total & free testosterone, SHBG, DHEA-S, estradiol"
+      - "Pituitary — LH, FSH, prolactin"
+      - "Men's screening — PSA"
+      - "Thyroid antibodies — anti-TPO & anti-Tg"
+    covered_addon_slugs: [total-testosterone, free-testosterone, shbg, dhea-s, estradiol-e2, lh, fsh, prolactin, psa-total, thyroid-antibodies]
+
+# ---------------------------------------------------------------------------
+# A-LA-CARTE ADD-ONS. Prices blank until the Thyrocare rate card is in:
+#   our_cost_inr = what Thyrocare bills us · client_inr = default client price
+#   dos_list_inr = Thyrocare's listed price (strike-through anchor), optional
+# The coach still types each add-on's client price per recommendation.
+# ---------------------------------------------------------------------------
+addon_tests:
+  # Core gaps in F Pro — recommended for every client
+  - { slug: thyroid-antibodies, name: "Thyroid antibodies (anti-TPO + anti-Tg)", our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: insulin-pp,         name: "Insulin + glucose (2 hours after a meal)", our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  - { slug: urine-routine,      name: "Urine routine",                       our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: urine-microalbumin, name: "Urine microalbumin (UACR)",           our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: potassium,          name: "Potassium",                           our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: zinc,               name: "Zinc",                                our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: copper,             name: "Copper",                              our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: esr,                name: "ESR",                                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  # Hormones & adrenal
+  - { slug: am-cortisol,        name: "Cortisol (morning)",                  our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  - { slug: dhea-s,             name: "DHEA-S",                              our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: fsh,                name: "FSH",                                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: lh,                 name: "LH",                                  our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: estradiol-e2,       name: "Estradiol (E2)",                      our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: progesterone,       name: "Progesterone",                        our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: prolactin,          name: "Prolactin",                           our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: amh,                name: "AMH",                                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: total-testosterone, name: "Testosterone (total)",                our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: free-testosterone,  name: "Testosterone (free)",                 our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: shbg,               name: "SHBG",                                our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: psa-total,          name: "PSA (total)",                         our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  # Triggered by intake answers
+  - { slug: ttg-iga,            name: "Coeliac screen (tTG-IgA + total IgA)", our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: h-pylori-igg,       name: "H. pylori IgG (blood)",               our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: pth,                name: "Parathyroid hormone (PTH)",           our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: cystatin-c,         name: "Cystatin C",                          our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: c-peptide,          name: "C-peptide",                           our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  # 12-week retests — re-test only what was off instead of re-buying F Pro
+  - { slug: insulin-fasting,    name: "Insulin + glucose (fasting)",         our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  - { slug: hba1c,              name: "HbA1c",                               our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: lipid-profile,      name: "Lipid profile",                       our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  - { slug: apob,               name: "Apolipoprotein B",                    our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: hscrp,              name: "hs-CRP",                              our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: homocysteine,       name: "Homocysteine",                        our_cost_inr: null, client_inr: null, dos_list_inr: null, fasting: true }
+  - { slug: lft,                name: "Liver function (LFT)",                our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: thyroid-profile,    name: "Thyroid (TSH, free T3, free T4)",    our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: iron-studies,       name: "Iron studies",                        our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: ferritin,           name: "Ferritin",                            our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: vitamin-d,          name: "Vitamin D (25-OH)",                   our_cost_inr: null, client_inr: null, dos_list_inr: null }
+  - { slug: vitamin-b12,        name: "Vitamin B12",                         our_cost_inr: null, client_inr: null, dos_list_inr: null }

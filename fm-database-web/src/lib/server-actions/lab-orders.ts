@@ -15,7 +15,16 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { ageFromDob } from "@/lib/fmdb/age";
-import { loadLabProvider, profilesForClient, type LabProfile, type LabAddon } from "@/lib/fmdb/lab-providers";
+import {
+  LAB_PROVIDER_SLUGS,
+  hasBookablePanel,
+  loadLabProvider,
+  profilesForClient,
+  resolveRecommendProvider,
+  type LabProfile,
+  type LabAddon,
+  type LabBookingMode,
+} from "@/lib/fmdb/lab-providers";
 import {
   createRecommendedOrder,
   loadOrder,
@@ -60,8 +69,26 @@ function clientSexAge(client: Record<string, unknown>): { sex: string; age: numb
   return { sex, age };
 }
 
+/** One lab the coach can recommend from (Thyrocare primary, Acumen backup). */
+export interface LabProviderChoice {
+  slug: string;
+  displayName: string;
+  role: "primary" | "backup";
+  booking: LabBookingMode;
+  /** false while the lab has no priced panel (e.g. Thyrocare before its rates
+   *  are filled in) — add-on-only orders are still possible. */
+  bookable: boolean;
+}
+
 export interface LabMenu {
   ok: true;
+  /** The lab this menu is for. */
+  provider: LabProviderChoice;
+  /** Every lab the coach can switch to, primary first. */
+  providers: LabProviderChoice[];
+  /** True when the primary (Thyrocare) has no priced panel yet, so the menu
+   *  fell back to the backup (Acumen). */
+  fellBack: boolean;
   /** all profiles (the coach can override the suggestion). */
   profiles: LabProfile[];
   /** the profile id(s) suggested for this client's sex/age. */
@@ -69,23 +96,35 @@ export interface LabMenu {
   /** add-on catalogue (clientInr is null — coach sets the price per recommendation). */
   addons: { slug: string; name: string; ourCostInr: number | null }[];
   homeCollection: boolean;
-  /** FM-marker → Acumen coverage map, for the "is the call's lab list covered by
-   *  this package?" check (lab-coverage.ts). */
+  /** FM-marker → this lab's coverage map, for the "is the call's lab list
+   *  covered by this package?" check (lab-coverage.ts). */
   coverage: import("@/lib/fmdb/lab-coverage").LabCoverageRegistry;
 }
 
-/** Load the menu the coach builder renders: all profiles + which are suggested
- *  for this client + the add-on catalogue. */
-export async function loadLabMenuAction(clientId: string): Promise<LabMenu | { ok: false; error: string }> {
+/** Load the menu the coach builder renders for one lab: all profiles + which
+ *  are suggested for this client + the add-on catalogue. With no `providerSlug`
+ *  it opens on Thyrocare, or on Acumen while Thyrocare has no priced panel. */
+export async function loadLabMenuAction(
+  clientId: string,
+  providerSlug?: string,
+): Promise<LabMenu | { ok: false; error: string }> {
   if (onPublicBox()) return { ok: false, error: "unavailable" };
-  const provider = await loadLabProvider();
-  if (!provider || provider.profiles.length === 0) return { ok: false, error: "lab catalogue unavailable" };
+  const { provider, fellBack } = await resolveRecommendProvider(providerSlug);
+  if (!provider) return { ok: false, error: "lab catalogue unavailable" };
+  const providers: LabProviderChoice[] = [];
+  for (const slug of LAB_PROVIDER_SLUGS) {
+    const p = slug === provider.slug ? provider : await loadLabProvider(slug);
+    if (p) providers.push(choiceOf(p));
+  }
   const client = await readClient(clientId);
   if (!client) return { ok: false, error: "client not found" };
   const { sex, age } = clientSexAge(client);
   const { loadLabCoverage } = await import("@/lib/fmdb/lab-coverage");
   return {
     ok: true,
+    provider: choiceOf(provider),
+    providers,
+    fellBack,
     profiles: provider.profiles,
     suggestedIds: profilesForClient(provider, { sex, age }).map((p) => p.id),
     // fees are added automatically on recommend — never offered as a pickable test
@@ -93,8 +132,12 @@ export async function loadLabMenuAction(clientId: string): Promise<LabMenu | { o
       .filter((a: LabAddon) => !a.isFee)
       .map((a: LabAddon) => ({ slug: a.slug, name: a.name, ourCostInr: a.ourCostInr })),
     homeCollection: provider.homeCollection,
-    coverage: await loadLabCoverage(),
+    coverage: await loadLabCoverage(provider.slug),
   };
+}
+
+function choiceOf(p: import("@/lib/fmdb/lab-providers").LabProvider): LabProviderChoice {
+  return { slug: p.slug, displayName: p.displayName, role: p.role, booking: p.booking, bookable: hasBookablePanel(p) };
 }
 
 /** Coach approves labs → creates a `recommended` order for the client to pay. */
@@ -103,10 +146,13 @@ export async function recommendLabsAction(input: {
   profileId: number | null;
   addons: RecommendAddon[];
   coachNote?: string;
+  /** The lab the coach recommended from (the card's lab switch). Omitted →
+   *  Thyrocare, or Acumen while Thyrocare has no priced panel. */
+  providerSlug?: string;
 }): Promise<{ ok: true; order: LabOrder } | { ok: false; error: string }> {
   if (onPublicBox()) return { ok: false, error: "unavailable" };
   if (!safeId(input.clientId)) return { ok: false, error: "bad client id" };
-  const provider = await loadLabProvider();
+  const { provider } = await resolveRecommendProvider(input.providerSlug);
   if (!provider) return { ok: false, error: "lab catalogue unavailable" };
   // Per-booking charges (catalogue `fee: true`, e.g. Acumen's ₹250) ride on every
   // recommendation at their catalogue price, so the coach never has to remember them.
@@ -161,6 +207,7 @@ export async function advanceLabOrderAction(
   if (!safeId(clientId) || !safeId(orderId)) return { ok: false, error: "bad id" };
   const patch: Partial<LabOrder> = {};
   const now = new Date().toISOString();
+  // Field name predates Thyrocare — it records the booking with whichever lab.
   if (to === "booked") patch.booked_with_acumen_at = now;
   else if (to === "sample_collected") patch.sample_collected_on = now.slice(0, 10);
   else if (to === "results_in") patch.results_snapshot_date = now.slice(0, 10);

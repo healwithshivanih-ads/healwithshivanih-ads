@@ -17,7 +17,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { findOrderByRazorpayOrderId, loadOrder, transitionOrder, type LabOrder } from "@/lib/fmdb/lab-orders";
-import { loadLabProvider } from "@/lib/fmdb/lab-providers";
+import { loadLabProvider, orderProviderSlug } from "@/lib/fmdb/lab-providers";
 import { buildPaymentEvent, clientJoinKeyFor, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
 import { getOrCreateLabOrderInvoice } from "@/lib/fmdb/invoices";
 
@@ -58,14 +58,18 @@ async function clientAgeSexLabel(clientId: string): Promise<string> {
 }
 
 /**
- * Best-effort: ping the lab partner (Abhinav) + the coach's own + admin numbers
- * on WhatsApp the moment a booking is paid, so they can arrange the home
- * collection. Self-contained (no "use server" import) so it runs from this route;
- * sends the Meta-approved template `fm_lab_booking_v1` via the self-hosted
- * WhatsApp server. Stays INERT until these env vars are set on Fly:
- * WHATSAPP_SERVER_URL, WHATSAPP_SERVER_API_KEY, and LAB_PARTNER_WHATSAPP (a
- * comma-separated list of recipients). Never throws into the webhook — the
- * payment is already recorded; a notify failure is logged, not surfaced.
+ * Best-effort: WhatsApp the people who must act the moment a booking is paid.
+ * WHO depends on the order's lab (its catalogue `alert_recipients_env`):
+ *   - Acumen (backup, `partner_whatsapp`): LAB_PARTNER_WHATSAPP — the lab
+ *     partner (Abhinav) + the coach's own + admin numbers.
+ *   - Thyrocare (primary, `manual`): THYROCARE_ALERT_WHATSAPP — the coach, who
+ *     books Thyrocare herself; falls back to COACH_NOTIFY_PHONE. NEVER the
+ *     Acumen list, so Acumen's partner is not pinged for a Thyrocare order.
+ * Self-contained (no "use server" import) so it runs from this route; sends the
+ * Meta-approved `fm_lab_booking_v*` templates via the self-hosted WhatsApp
+ * server. INERT until WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY and the
+ * recipient env are set on Fly. Never throws into the webhook — the payment is
+ * already recorded; a notify failure is logged, not surfaced.
  *
  * Meta rejects template params containing newlines / tabs / 4+ spaces, so every
  * param is flattened to single-spaced text.
@@ -73,11 +77,20 @@ async function clientAgeSexLabel(clientId: string): Promise<string> {
 async function notifyLabPartner(order: LabOrder): Promise<void> {
   const url = (process.env.WHATSAPP_SERVER_URL ?? "").replace(/\/$/, "");
   const apiKey = process.env.WHATSAPP_SERVER_API_KEY ?? "";
-  // Comma-separated list → clean each to "+digits", drop junk, de-dup. The alert
-  // fans out to every number (lab partner + the coach's own + admin).
+  // The order's own lab decides who is alerted (see the doc comment above).
+  const provider = await loadLabProvider(orderProviderSlug(order));
+  const envName = provider?.alertRecipientsEnv || "";
+  let rawRecipients = envName ? (process.env[envName] ?? "") : "";
+  if (!rawRecipients.trim() && provider?.booking === "manual") {
+    rawRecipients = process.env.COACH_NOTIFY_PHONE ?? "";
+  }
+  if (!rawRecipients.trim()) {
+    console.error(`[lab-notify] no WhatsApp recipients for ${order.provider} order ${order.order_id} — set ${envName || "an alert env"} on Fly`);
+  }
+  // Comma-separated list → clean each to "+digits", drop junk, de-dup.
   const recipients = [
     ...new Set(
-      (process.env.LAB_PARTNER_WHATSAPP ?? "")
+      rawRecipients
         .split(",")
         .map((s) => s.replace(/[^\d+]/g, ""))
         .filter((s) => s.replace(/\D/g, "").length >= 8),
@@ -92,7 +105,7 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   const fasting = order.fasting_required ? " · fasting sample" : "";
   const slot = l.preferred_slot.replace(/_/g, " ");
   // Include the client's age/sex on the "Client:" line (e.g. "Meghana Dighe · 42F")
-  // so Acumen has it for reference ranges. Folded into {{1}} to avoid a new
+  // so the lab has it for reference ranges. Folded into {{1}} to avoid a new
   // template placeholder (which would need Meta re-approval).
   const ageSex = await clientAgeSexLabel(order.client_id);
   const nameField = ageSex ? `${flat(l.full_name)} · ${ageSex}` : flat(l.full_name);
@@ -102,20 +115,21 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
   // An add-on-only order (client's recent report already covers the Base panel)
   // has no package — its first line is just the first test, which read as if the
   // whole booking were one test.
+  const baseName = provider?.profiles.find((p) => p.id === 1)?.name || "Base Panel";
+  const labTag = provider && provider.booking === "manual" ? ` · book with ${provider.displayName}` : "";
   const packageName =
-    order.profile_id === 1 ? "Base Panel"
+    (order.profile_id === 1 ? baseName
     : order.profile_id != null ? `Base + ${panel}`
-    : `Individual tests (${order.includes?.length || order.lines.length})`;
+    : `Individual tests (${order.includes?.length || order.lines.length})`) + labTag;
   const listText = order.includes?.length ? order.includes.join("; ") : panel;
-  // Our cost = what Acumen invoices us (order.our_cost_inr — profile cost + any
-  // add-ons at 50% of catalogue). NOT the client MRP; Acumen never sees margin.
+  // Our cost = what the lab invoices us (order.our_cost_inr — profile cost + any
+  // add-on costs). NOT the client MRP; the lab never sees margin.
   const ourCost = `₹${(order.our_cost_inr ?? 0).toLocaleString("en-IN")}`;
 
   // v3 (fm_lab_booking_v3): the readable layout — bold labels + the tests split
   // into a Base-panel block and a hormones/add-ons block (bullet " · " within
   // each; true per-test line breaks aren't allowed inside a param). Split by
   // matching against the Base profile's includes from the catalogue.
-  const provider = await loadLabProvider();
   const baseIncludes = new Set(provider?.profiles.find((p) => p.id === 1)?.includes ?? []);
   const allTests = order.includes?.length ? order.includes : [panel];
   const baseTests = baseIncludes.size ? allTests.filter((t) => baseIncludes.has(t)) : allTests;
@@ -128,7 +142,7 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
     flat(nameField),                        // {{1}} Client (name · age/sex)
     flat(l.phone),                          // {{2}} Phone
     flat(packageName),                      // {{3}} Package (Base + <profile>)
-    flat(ourCost),                          // {{4}} Our cost (to Acumen)
+    flat(ourCost),                          // {{4}} Our cost (to the lab)
     flat(baseTests.join(" · ")) || "—",     // {{5}} Base panel markers
     flat(groupHeader),                      // {{6}} hormones/add-ons block header
     flat(extraTests.join(" · ")) || "—",    // {{7}} hormones/add-ons markers
@@ -142,7 +156,7 @@ async function notifyLabPartner(order: LabOrder): Promise<void> {
     flat(l.phone),                          // {{2}} Phone
     flat(packageName),                      // {{3}} Package (Base + <profile>)
     flat(`${listText}${fasting}`),          // {{4}} Tests (full itemised list)
-    flat(ourCost),                          // {{5}} Our cost (to Acumen)
+    flat(ourCost),                          // {{5}} Our cost (to the lab)
     flat(`${l.address}, ${l.pincode}`),     // {{6}} Address
     flat(`${l.preferred_date}, ${slot}`),   // {{7}} Preferred collection
   ];

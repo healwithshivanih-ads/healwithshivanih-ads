@@ -1,15 +1,18 @@
 /**
- * Lab provider catalogue (Acumen) — loader + server-side price derivation.
+ * Lab provider catalogues — loader + server-side price derivation.
  *
- * Reads `fm-database/data/lab_providers/acumen.yaml#profiles_final` (the locked
- * 2026-06-25 deal: 4 sex/age-gated profiles), NOT the superseded `packages:`
- * block. Exposes the bookable menu + a price function that derives the amount
- * ENTIRELY from the catalogue — a client-sent price is never trusted (see
- * docs/LAB_BOOKING_SPEC.md, "Price is computed server-side").
+ * Two providers (Nov 2026): Thyrocare is PRIMARY (`thyrocare.yaml`), Acumen is
+ * the BACKUP (`acumen.yaml`). Each file carries `profiles_final` (4 sex/age-gated
+ * profiles, same id contract) + `addon_tests`; Acumen's superseded `packages:`
+ * block is ignored. A stored order remembers its `provider`, and every price
+ * check (pay / rebook / webhook / invoice) must load THAT provider — never the
+ * default — so an Acumen order is never validated against Thyrocare's prices.
+ * The amount is derived ENTIRELY from the catalogue — a client-sent price is
+ * never trusted (see docs/LAB_BOOKING_SPEC.md, "Price is computed server-side").
  *
- * The pure functions (parseAcumen / profilesForClient / priceSelection) take a
- * plain object so they're unit-testable without disk; loadLabProvider() is the
- * thin fs wrapper.
+ * The pure functions (parseLabProvider / profilesForClient / priceSelection)
+ * take a plain object so they're unit-testable without disk; loadLabProvider()
+ * is the thin fs wrapper.
  *
  * PROFILE-ID CONTRACT: selection + pricing key off `profiles_final[].id`
  *   1 = Base Panel (everyone) · 2 = Women's Reproductive (women <45)
@@ -63,11 +66,24 @@ export interface LabAddon {
   fasting?: boolean;
 }
 
+/** How a paid order reaches the lab. `manual`: alert the coach, she books it
+ *  herself. `partner_whatsapp`: alert the lab partner's WhatsApp (Acumen).
+ *  `api`: reserved for the Thyrocare partner API (not wired yet). */
+export type LabBookingMode = "manual" | "partner_whatsapp" | "api";
+
 export interface LabProvider {
   slug: string;
   displayName: string;
+  /** "primary" (Thyrocare) or "backup" (Acumen). */
+  role: "primary" | "backup";
+  booking: LabBookingMode;
+  /** Env var holding the comma-separated WhatsApp numbers alerted when an order
+   *  is paid. Per provider so a Thyrocare order never pings Acumen's partner. */
+  alertRecipientsEnv: string;
   phoneE164: string;
   homeCollection: boolean;
+  /** Client-facing "before your test" lines shown on the pay screen. */
+  pretestInstructions: string[];
   profiles: LabProfile[];
   addons: LabAddon[];
 }
@@ -91,6 +107,33 @@ export type PriceResult =
   | { ok: false; error: string };
 
 const ACUMEN_SLUG = "acumen-diagnostics";
+const THYROCARE_SLUG = "thyrocare";
+
+/** The lab every new recommendation defaults to. */
+export const PRIMARY_LAB_PROVIDER = THYROCARE_SLUG;
+/** Used when the primary has no priced panel yet, or the coach picks it. */
+export const BACKUP_LAB_PROVIDER = ACUMEN_SLUG;
+
+/** Provider slug → catalogue file stem. Also the allowlist: an unknown slug
+ *  (e.g. a tampered order) loads nothing rather than an arbitrary path. */
+const PROVIDER_FILES: Record<string, string> = {
+  [THYROCARE_SLUG]: "thyrocare",
+  [ACUMEN_SLUG]: "acumen",
+};
+
+/** Every known provider, primary first. */
+export const LAB_PROVIDER_SLUGS: readonly string[] = [PRIMARY_LAB_PROVIDER, BACKUP_LAB_PROVIDER];
+
+export function isKnownLabProvider(slug: unknown): slug is string {
+  return typeof slug === "string" && Object.prototype.hasOwnProperty.call(PROVIDER_FILES, slug);
+}
+
+/** The provider a stored order belongs to. Orders written before Thyrocare
+ *  existed were all Acumen; a missing/odd value reads as Acumen, never as the
+ *  primary (re-pricing an old order against a new lab would be wrong). */
+export function orderProviderSlug(order: { provider?: unknown }): string {
+  return isKnownLabProvider(order.provider) ? order.provider : ACUMEN_SLUG;
+}
 
 /** Predicate per profile id. age is years; sex is "M"/"F"/"". */
 const PROFILE_RULES: Record<number, (ctx: ClientLabContext) => boolean> = {
@@ -108,10 +151,24 @@ function strArr(v: unknown): string[] {
   return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
 }
 
-/** Parse the raw acumen.yaml object into the typed provider. Reads ONLY
- *  `profiles_final` (ignores the superseded `packages:`). */
-export function parseAcumen(raw: Record<string, unknown>): LabProvider {
+/** Parse a raw provider yaml object into the typed provider. Reads ONLY
+ *  `profiles_final` (ignores Acumen's superseded `packages:`). */
+export function parseLabProvider(raw: Record<string, unknown>): LabProvider {
   const prov = (raw.provider as Record<string, unknown>) ?? {};
+  const slug = String(prov.slug ?? ACUMEN_SLUG);
+  const isAcumen = slug === ACUMEN_SLUG;
+  // Add-on pricing rule. Acumen's deal: we pay 50% of catalogue, the client pays
+  // catalogue — the default for the Acumen slug even when the yaml predates these
+  // fields. Any other lab must state prices explicitly per add-on.
+  const costFraction = asNum(prov.addon_our_cost_fraction) ?? (isAcumen ? 0.5 : null);
+  const clientFromCatalogue =
+    prov.addon_client_price === "catalogue" || (prov.addon_client_price == null && isAcumen);
+  const booking: LabBookingMode =
+    prov.booking === "manual" || prov.booking === "api" || prov.booking === "partner_whatsapp"
+      ? prov.booking
+      : isAcumen
+        ? "partner_whatsapp"
+        : "manual";
   const rawList = (Array.isArray(raw.profiles_final) ? raw.profiles_final : []) as Record<string, unknown>[];
   // The Base profile (id 1) carries the full `includes`; other profiles add
   // `includes_extra` on top of it (the deal is "base + X").
@@ -160,14 +217,16 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
         slug: String(o.slug ?? ""),
         name: String(o.name ?? ""),
         catalogueInr: cat,
-        // Acumen bills us 50% of catalogue (final deal). Round to whole rupees.
-        // A flat charge carries its own `our_cost_inr` (not 50% of a catalogue
-        // price) — e.g. a fee Acumen passes straight through.
-        ourCostInr: asNum(o.our_cost_inr) ?? (cat != null ? Math.round(cat * 0.5) : null),
-        // Client pays the full Acumen catalogue price for add-ons (coach rule
-        // 2026-07-01) → we keep the 50% margin. Null when no catalogue price is on
-        // file (e.g. DHEA-S / total testosterone / CEA) → not bookable until priced.
-        clientInr: asNum(o.client_inr) ?? cat,
+        // An explicit `our_cost_inr` always wins (e.g. a fee passed straight
+        // through). Otherwise Acumen bills us 50% of catalogue (final deal),
+        // rounded to whole rupees; a lab with no fraction rule → unknown (null).
+        ourCostInr:
+          asNum(o.our_cost_inr) ??
+          (cat != null && costFraction != null ? Math.round(cat * costFraction) : null),
+        // Acumen: client pays the full catalogue price for add-ons (coach rule
+        // 2026-07-01). Other labs: only an explicit `client_inr`. Null → not
+        // bookable at a catalogue price until priced (the coach can still set one).
+        clientInr: asNum(o.client_inr) ?? (clientFromCatalogue ? cat : null),
         isFee: o.fee === true,
         fasting: o.fasting === true,
       };
@@ -175,14 +234,21 @@ export function parseAcumen(raw: Record<string, unknown>): LabProvider {
     .filter((a) => a.slug);
 
   return {
-    slug: String(prov.slug ?? ACUMEN_SLUG),
-    displayName: String(prov.display_name ?? "Acumen Diagnostics"),
+    slug,
+    displayName: String(prov.display_name ?? (isAcumen ? "Acumen Diagnostics" : slug)),
+    role: prov.role === "primary" ? "primary" : prov.role === "backup" ? "backup" : isAcumen ? "backup" : "primary",
+    booking,
+    alertRecipientsEnv: String(prov.alert_recipients_env ?? (isAcumen ? "LAB_PARTNER_WHATSAPP" : "")),
     phoneE164: String(prov.phone_e164 ?? ""),
     homeCollection: prov.home_collection === true,
+    pretestInstructions: strArr(prov.pretest_instructions),
     profiles,
     addons,
   };
 }
+
+/** @deprecated kept for existing callers/tests — use parseLabProvider. */
+export const parseAcumen = parseLabProvider;
 
 /**
  * The profiles to OFFER this client: Base + the matching gender/age profile(s).
@@ -232,14 +298,39 @@ export function priceSelection(provider: LabProvider, sel: LabSelection): PriceR
   return { ok: true, amountInr, ourCostInr, lines };
 }
 
-/** Read + parse the Acumen provider config from disk. */
-export async function loadLabProvider(slug: string = ACUMEN_SLUG): Promise<LabProvider | null> {
+/** Read + parse one provider's config from disk. Defaults to the PRIMARY lab
+ *  (Thyrocare) — callers handling a stored order must pass the order's own
+ *  provider (orderProviderSlug). An unknown slug returns null. */
+export async function loadLabProvider(slug: string = PRIMARY_LAB_PROVIDER): Promise<LabProvider | null> {
+  const stem = PROVIDER_FILES[slug];
+  if (!stem) return null;
   const { getCataloguePath } = await import("@/lib/fmdb/paths");
-  const file = path.join(getCataloguePath(), "lab_providers", `${slug.replace(/^acumen.*/, "acumen")}.yaml`);
+  const file = path.join(getCataloguePath(), "lab_providers", `${stem}.yaml`);
   try {
     const raw = (yaml.load(await fs.readFile(file, "utf8")) as Record<string, unknown>) ?? {};
-    return parseAcumen(raw);
+    return parseLabProvider(raw);
   } catch {
     return null;
   }
+}
+
+/** True when the provider has at least one priced (bookable) panel. */
+export function hasBookablePanel(provider: LabProvider | null | undefined): boolean {
+  return !!provider && provider.profiles.length > 0;
+}
+
+/**
+ * The provider a NEW recommendation should use: the requested one if known,
+ * else the primary when it has a priced panel, else the backup. `fellBack` tells
+ * the coach UI to explain why it's showing Acumen.
+ */
+export async function resolveRecommendProvider(
+  requested?: string | null,
+): Promise<{ provider: LabProvider | null; fellBack: boolean }> {
+  if (requested && isKnownLabProvider(requested)) {
+    return { provider: await loadLabProvider(requested), fellBack: false };
+  }
+  const primary = await loadLabProvider(PRIMARY_LAB_PROVIDER);
+  if (hasBookablePanel(primary)) return { provider: primary, fellBack: false };
+  return { provider: await loadLabProvider(BACKUP_LAB_PROVIDER), fellBack: true };
 }

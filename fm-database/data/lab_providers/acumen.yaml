@@ -7,6 +7,15 @@
 provider:
   slug: acumen-diagnostics
   display_name: Acumen Diagnostics
+  # BACKUP lab from Nov 2026 — Thyrocare (thyrocare.yaml) is primary. The coach
+  # card falls back here while Thyrocare has no priced panel.
+  role: backup
+  # A paid order WhatsApps the lab partner (+ coach/admin) via LAB_PARTNER_WHATSAPP.
+  booking: partner_whatsapp
+  alert_recipients_env: LAB_PARTNER_WHATSAPP
+  # Final deal: Acumen bills us 50% of catalogue on add-ons; the client pays catalogue.
+  addon_our_cost_fraction: 0.5
+  addon_client_price: catalogue
   phone_e164: "+919808050050"
   website: https://www.acumendiagnostics.in
   home_collection: true
