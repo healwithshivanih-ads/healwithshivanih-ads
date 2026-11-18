@@ -13,7 +13,7 @@ import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { AppMeal, AppPractice, AppSupplement, ClientAppData } from "@/lib/fmdb/client-app";
 import type { BandKey } from "./day-plan";
-import { buildMoments, dayRows, type SqTicks } from "./sq-day";
+import { buildMoments, dayRows, rankFloorAt, type SqTicks } from "./sq-day";
 import { SqHome, type SqHomeProps } from "./sq-home";
 import { SqDaySheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 
@@ -63,6 +63,9 @@ function payload(over: Record<string, unknown> = {}): ClientAppData {
 
 const NONE: SqTicks = { logged: {}, practicesDone: {}, practiceAt: {} };
 
+/** A representative hour for each part of the day. */
+const BAND_HOUR: Record<BandKey, number> = { waking: 7, morning: 9, midday: 13, evening: 19, bedtime: 22, anytime: 13 };
+
 function home(o: { ticks?: SqTicks; band?: BandKey; data?: ClientAppData } & Partial<SqHomeProps> = {}): string {
   const { ticks = NONE, band = "midday", hour = 13, data = payload(), ...rest } = o;
   return renderToStaticMarkup(
@@ -72,7 +75,7 @@ function home(o: { ticks?: SqTicks; band?: BandKey; data?: ClientAppData } & Par
       ticks={ticks}
       ready
       hour={hour}
-      nowBand={band}
+      nowRank={rankFloorAt(BAND_HOUR[band])}
       checkinSentWeek={0}
       track={false}
       lastId={null}

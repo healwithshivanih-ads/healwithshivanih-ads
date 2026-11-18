@@ -13,7 +13,6 @@
 
 import { useState } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
-import type { BandKey } from "./day-plan";
 import {
   anytimeMoments,
   dayCount,
@@ -39,9 +38,10 @@ export interface SqHomeProps {
   ticks: SqTicks;
   /** true once the phone's own ticks and clock are known */
   ready: boolean;
-  /** the device's hour (null before the page is live) and its part of the day */
+  /** the device's hour (null before the page is live) */
   hour: number | null;
-  nowBand: BandKey;
+  /** where the phone's clock puts her in the day (sq-day.ts rankFloorAt) */
+  nowRank: number;
   /** the last week whose check-in was sent from this phone */
   checkinSentWeek: number;
   /** "track every item": ticks and the count show on Home */
@@ -173,7 +173,7 @@ export function SqHome(p: SqHomeProps) {
   // nothing.
   if (!p.ready) return head;
 
-  const upcoming = upcomingMoments(moments, ticks, p.nowBand);
+  const upcoming = upcomingMoments(moments, ticks, p.nowRank);
   const next = upcoming[0] ?? null;
   const later = [...upcoming.slice(1), ...anytimeMoments(moments, ticks)];
   const count = dayCount(moments, ticks);
