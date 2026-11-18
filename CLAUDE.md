@@ -93,6 +93,7 @@ Each line is a pointer, not the full rule: open the linked file before changing 
 **Data plumbing**
 - **New client.yaml field the Fly app reads → add it to `_APP_CLIENT_KEYS`** in `app-staging-action.py`, or it is invisible on Fly. → [v0.78](docs/claude/invariants-v0.73-v0.80.md)
 - **Pydantic models use `extra="forbid"`**: a new YAML field without a model field crashes loads. Intake fields need the submit allowlist in `intake-token-action.py` too (a test pins it). → [v0.72](docs/claude/history-v0.61-v0.72.md), [v0.82](docs/claude/invariants-v0.81-v0.91.md)
+- **`lab_markers` writers merge, never replace**: go through `fmdb/assess/marker_merge.py::merge_markers` so hand-entered markers and written text survive a rebuild. → [v0.91](docs/claude/invariants-v0.81-v0.91.md)
 - **Every Python shim prints JSON on stdout**; warnings go to stderr or the TS side fails to parse. YAML written from TS uses `dumpYaml`, never raw js-yaml. → [v0.67](docs/claude/history-v0.61-v0.72.md)
 - **`FLY_INTAKE_ONLY=1` must stay in `fly.toml [env]`**: without it the coach UI is public. Mutagen versions on Mac and Fly must match; Mac data is authoritative. → [v0.73](docs/claude/invariants-v0.73-v0.80.md)
 - **Labs: Thyrocare is primary, Acumen the backup.** Any code touching a stored lab order loads ITS provider (`orderProviderSlug`), never the default; a Thyrocare order never alerts Acumen. → [booking spec](fm-database-web/docs/LAB_BOOKING_SPEC.md)

@@ -202,3 +202,27 @@
 - **Pre-test answers** live on the draw: `health_snapshots[].pretest`, validated by `fmdb.plan.models.LabPretest` (extra="forbid"; TS mirror `LabPretest` in `types.ts` — keep in step). Saved with a new upload (`update-client-data.py` `pretest`) or for an existing draw by `scripts/save-lab-pretest.py` / `saveLabPretestAction` (sets every same-date lab snapshot, rebuilds via `fmdb/assess/lab_rebuild.py`). Form: `lab-pretest-form.tsx` inside `LabUploadPanel`. The Thyrocare booking flow sends instructions but stores no answers.
 - **`lab_client_context` returns the pretest of the LATEST lab draw only** (`pretest`, `pretest_date`); `compute_ratios` ignores it when the newest lab passed in has a different date (a preview of a fresh upload never inherits the last report's answers) and sets `pretest_stale` for the synthesis note. `lab_confounders.apply_confounders` marks `confidence: "low"` + `confounded_by` and appends one "Lower confidence:" sentence — values and flags are never changed. Exercise hits ALT/AST/CK, not GGT; oral oestrogen/OCP hits CRP/SHBG/TG/binding proteins, transdermal does not. Known simplification: answers apply to every marker, including one whose newest value came from an older report.
 - Surfaces: Overview shows `LabSynthesisPanel` above the markers; Assess shows it under the computed ratios (`compute-ratios.py` returns `synthesis`). Coach-only — not in `_APP_CLIENT_KEYS`. Existing clients get it on the next lab save or 🔄 rebuild; nothing back-filled.
+
+### Marker rebuilds merge, never replace (18 Nov 2026)
+
+The first in-care rebuild after the Liver & Metabolic Risk indices showed that every
+writer of `client.lab_markers` (🔄 Re-run markers → `recompute-lab-markers.py`, lab
+save → `update-client-data.py`, AI assess → `assess.py`) REPLACED the list with a fresh
+`compute_ratios` run. Ten in-care clients lost hand-entered markers (one lost nine) and
+152 written interpretations. All three now go through
+`fmdb/assess/marker_merge.py::merge_markers(previous, rebuilt)`:
+
+- every rebuilt marker is kept; if the client already had it (same folded name, or a
+  shared distinctive word AND the same value) and the value is unchanged, the old
+  `fm_interpretation` is carried over. A changed value gets the fresh engine text.
+- an old marker the rebuild does not cover is kept unless `computed: true` (a computed
+  index whose inputs are gone is dropped).
+- `lab_synthesis` is built from the MERGED list.
+
+Two picker bugs found on the same run (`lab_ratios.py`):
+- haemoglobin matched "HbA1c (Glycosylated Hemoglobin)" — a same-day HbA1c 5.8 % read
+  as Hb 5.8 g/dL. Lookaheads now drop a1c / glyc / MCH / MCHC / electrophoresis / HbF.
+- serum folate matched "RBC folate" — 448 replaced a deficient 3.9. RBC / haemolysate /
+  erythrocyte folate are excluded and pass through as their own marker.
+
+Tests: `fm-database/tests/test_marker_rebuild_safety.py`.

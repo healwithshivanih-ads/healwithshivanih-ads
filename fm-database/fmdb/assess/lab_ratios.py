@@ -1731,8 +1731,14 @@ def compute_ratios(
     # ══════════════════════════════════════════════════════════════════════════
     # 6. IRON & BLOOD
     # ══════════════════════════════════════════════════════════════════════════
+    # Whole-blood haemoglobin ONLY. "HbA1c (Glycosylated Hemoglobin)", MCH
+    # ("mean corpuscular hemoglobin"), MCHC and Hb electrophoresis fractions all
+    # contain the word; without the lookaheads a same-day HbA1c of 5.8 % read as
+    # a haemoglobin of 5.8 g/dL (severe anaemia) on a real client.
     hemoglobin = _find(extracted_labs,
-        r"hemoglobin|haemoglobin|\bhgb\b|\bhb\b|blood haemoglobin")
+        r"^(?!.*a1c)(?!.*glyc)(?!.*corpuscular)(?!.*mean cell)(?!.*\bmchc?\b)"
+        r"(?!.*concentration)(?!.*electrophoresis)(?!.*\ba2\b)(?!.*fetal)(?!.*\bhbf\b)"
+        r"(?!.*urine).*(?:hemoglobin|haemoglobin|\bhgb\b|\bhb\b)")
     ferritin = _find(extracted_labs,
         r"\bferritin\b|serum ferritin")
     iron = _find(extracted_labs,
@@ -1915,8 +1921,13 @@ def compute_ratios(
     # it still surfaces as its own pass-through marker.
     b12 = _find(extracted_labs,
         r"^(?!.*holotrans)(?!.*holo.?tc)(?!.*\bactive\b).*(?:vitamin b12|b-12\b|b12\b|cobalamin|cyanocobalamin)")
+    # Serum folate ONLY. RBC / haemolysate folate is a different test on a
+    # different scale (ng/mL of red cells, range ~500-1300); read as serum folate
+    # it turned a deficient 3.9 into a "high" 448. Left unconsumed, it passes
+    # through as its own marker.
     folate = _find(extracted_labs,
-        r"\bfolate\b|folic acid|serum folate|rbc folate")
+        r"^(?!.*\brbc\b)(?!.*red.?cell)(?!.*h(?:a)?emolysate)(?!.*erythrocyte)"
+        r".*(?:\bfolate\b|folic acid)")
     # Magnesium — two distinct biomarkers with different ranges:
     #   Serum Mg: lab default, but a poor marker (only ~1% extracellular).
     #             Optimal 2.0–2.5 mg/dL; "normal" lab range starts at 1.7.

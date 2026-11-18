@@ -8,7 +8,9 @@ Writes JSON to stdout:
   {"ok": True, "markers_count": N, "lab_markers_date": "YYYY-MM-DD"}
 
 Walks every snapshot's lab_values, runs fmdb.assess.lab_ratios.compute_ratios
-on the flattened union, and writes the result back to
+on the flattened union, merges it into the existing markers
+(fmdb.assess.marker_merge: hand-entered markers and the text on unchanged
+values are kept), and writes the result back to
 ~/fm-plans/clients/<id>/client.yaml. Snapshot date fills in date_drawn
 where the extracted lab didn't carry one, so compute_ratios's
 recency-tiebreak picks the right value when the same marker appears
@@ -101,7 +103,10 @@ def main() -> int:
         return 0
 
     _ctx = lab_client_context(data)
-    markers = compute_ratios(all_labs, _ctx)
+    from fmdb.assess.marker_merge import merge_markers  # type: ignore
+    # Merge, never replace: markers typed in by hand (never in a snapshot) and
+    # the text on unchanged values survive the rebuild.
+    markers = merge_markers(data.get("lab_markers"), compute_ratios(all_labs, _ctx))
     data["lab_markers"] = markers
     from fmdb.assess.lab_synthesis import synthesise_labs  # type: ignore
     data["lab_synthesis"] = synthesise_labs(markers, _ctx) if markers else None

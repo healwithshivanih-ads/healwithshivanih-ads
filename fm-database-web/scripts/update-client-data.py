@@ -439,7 +439,11 @@ def main() -> int:
                     all_labs.append(lv)
             if all_labs:
                 _ctx = lab_client_context(data)
-                markers = compute_ratios(all_labs, _ctx)
+                from fmdb.assess.marker_merge import merge_markers  # type: ignore
+                rebuilt = compute_ratios(all_labs, _ctx)
+                # Merge, never replace: hand-entered markers and the text on
+                # unchanged values survive.
+                markers = merge_markers(data.get("lab_markers"), rebuilt) if rebuilt else []
                 if markers:
                     data["lab_markers"] = markers
                     from fmdb.assess.lab_synthesis import synthesise_labs  # type: ignore
