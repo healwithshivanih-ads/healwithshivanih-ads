@@ -4,65 +4,38 @@
  * The NEW front of the client app — the Sequoya shell (look D of the
  * prototype in docs/client-app-redesign/).
  *
- * Step 0 of the build plan: the frame only. A top bar (ring mark, wordmark,
- * "Week N"), a scrolling main area, four bottom tabs and a full-screen sheet
- * host. Each tab is a placeholder; Home, ticks, the ask box and the practice
- * player arrive in the later steps.
+ * The frame: a top bar (ring mark, wordmark, "Week N"), a scrolling main
+ * area, four bottom tabs and a full-screen sheet host. Built so far: Home
+ * (sq-home.tsx), Your whole day, Your record, recipes, and the start card.
+ * The ask box, the practice player and most of Everything arrive in later
+ * build steps; until then those screens say plainly that they are not built.
  *
  * Who sees this is decided in exactly one place: ochre-app.tsx calls
  * `pickAppShell` (src/lib/fmdb/app-shell.ts) and renders this component
  * instead of today's app. This file never decides that for itself.
  *
- * State is NOT kept here. ochre-app.tsx owns the on-device store
- * (`ochre.app.<clientId>`) and the day's ticks, and hands them in as `state`,
- * so both fronts read and write the same data and a client moved back to
- * today's app finds everything she ticked.
+ * Ticks are NOT kept here. ochre-app.tsx owns the on-device store
+ * (`ochre.app.<clientId>`) and the day's ticks and lends them in as `state`,
+ * so both fronts read and write the same data. Only two per-device settings
+ * live here: "track every item" and whether the return card was put away.
  *
  * Copy rule: the app says "Coach", never the coach's first name.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 import { bandForHour } from "./day-plan";
+import { buildMoments, isTicked, type SqKind, type SqMoment, type SqTicks } from "./sq-day";
+import { SqHome } from "./sq-home";
+import { recipeTitle, recordDayTitle, SqDaySheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
+import { SqStartSheet } from "./sq-start";
+import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
 import "./sq.css";
 
-/** The shared state today's app owns and lends to this front. Step 0 only
- *  reads `hydrated`; the ticks are carried so step 1 (Home) can use them
- *  without touching the store again. */
-export interface SqShellState {
-  /** True once the on-device store has been read back. */
-  hydrated: boolean;
-  /** Today's supplement / remedy ticks: id → the time it was ticked. */
-  logged: Record<string, string>;
-  /** Today's practice ticks: id → done. */
-  practicesDone: Record<string, boolean>;
-  toggleSupp: (id: string) => void;
-  togglePractice: (id: string) => void;
-  /** Tick several at once; never un-ticks. */
-  markDone: (ids: { logIds: string[]; practiceIds: string[] }) => void;
-}
+export type { SqShellState } from "./sq-ui";
 
 export type SqTabId = "today" | "practices" | "coach" | "all";
-
-type SqIconName = "home" | "leaf" | "chat" | "grid" | "x";
-
-/** Line icons, 24×24, drawn with the stroke set in `.sq-ic`. */
-const ICON_PATHS: Record<SqIconName, string> = {
-  home: "M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z",
-  leaf: "M5 19C5 10 10 5 19 5c0 9-5 14-14 14zM5 19l8-8",
-  chat: "M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-7l-5 4v-4H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z",
-  grid: "M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z",
-  x: "M6 6l12 12M18 6L6 18",
-};
-
-function SqIcon({ name }: { name: SqIconName }) {
-  return (
-    <svg className="sq-ic" viewBox="0 0 24 24" aria-hidden="true">
-      <path d={ICON_PATHS[name]} />
-    </svg>
-  );
-}
 
 export const SQ_TABS: { id: SqTabId; label: string; icon: SqIconName }[] = [
   { id: "today", label: "Today", icon: "home" },
@@ -73,6 +46,11 @@ export const SQ_TABS: { id: SqTabId; label: string; icon: SqIconName }[] = [
 
 /** The one plain line every unbuilt screen shows. */
 const NOT_BUILT = "This screen is not built yet.";
+
+/** Per-device settings. Device-level like today's larger-text setting: they
+ *  describe how this phone's owner likes the app, not a client's data. */
+const TRACK_KEY = "sq.track";
+const RETURN_KEY = "sq.return.dismissed";
 
 /** Radii of the small week ring's circles, outermost first. Exported for the
  *  test only.
@@ -121,22 +99,86 @@ function skyForHour(hour: number): SkyTime {
   return "evening";
 }
 
-interface Sheet {
-  title: string;
+function readFlag(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null; // private mode — the setting simply does not stick
+  }
+}
+function writeFlag(key: string, value: string | null): void {
+  try {
+    if (value === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, value);
+  } catch {
+    /* private mode */
+  }
 }
 
 export default function SqApp({ data, state }: { data: ClientAppData; state: SqShellState }) {
   const [tab, setTab] = useState<SqTabId>("today");
-  const [sheet, setSheet] = useState<Sheet | null>(null);
+  /** Open sheets, the top one last. Closing takes off one. */
+  const [stack, setStack] = useState<SqSheet[]>([]);
+  const sheet = stack[stack.length - 1] ?? null;
 
-  // Midday on the server and on first paint; the device's own hour after
-  // mount. Reading the clock during render would differ between the server
-  // (its timezone) and the phone, and React would flag the mismatch.
-  const [sky, setSky] = useState<SkyTime>("midday");
+  // The phone's own clock. Null on the server and on first paint: reading it
+  // during render would differ between the server (its timezone) and the
+  // phone, and React would flag the mismatch. Refreshed when she comes back
+  // to the app, so "next" follows the real time of day.
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
-    setSky(skyForHour(new Date().getHours()));
+    const tick = () => setNow(new Date());
+    tick();
+    const onShow = () => {
+      if (document.visibilityState === "visible") tick();
+    };
+    document.addEventListener("visibilitychange", onShow);
+    return () => document.removeEventListener("visibilitychange", onShow);
   }, []);
+  const hour = now ? now.getHours() : null;
+  const nowBand = bandForHour(hour ?? 12);
+  const todayYmd = now ? now.toLocaleDateString("en-CA") : "";
 
+  // Per-device settings, read after mount for the same reason as the clock.
+  const [track, setTrackState] = useState(false);
+  const [returnDismissed, setReturnDismissed] = useState(false);
+  useEffect(() => {
+    setTrackState(readFlag(TRACK_KEY) === "on");
+    setReturnDismissed(readFlag(RETURN_KEY) === new Date().toLocaleDateString("en-CA"));
+  }, []);
+  const setTrack = (on: boolean) => {
+    setTrackState(on);
+    writeFlag(TRACK_KEY, on ? "on" : null);
+  };
+  const dismissReturn = () => {
+    setReturnDismissed(true);
+    writeFlag(RETURN_KEY, new Date().toLocaleDateString("en-CA"));
+  };
+
+  // ── the day ────────────────────────────────────────────────────────────
+  const moments = useMemo(
+    () => buildMoments({ meals: data.meals, supplements: data.supplements, remedies: data.remedies, practices: data.practices }),
+    [data.meals, data.supplements, data.remedies, data.practices],
+  );
+  const ticks: SqTicks = useMemo(
+    () => ({ logged: state.logged, practicesDone: state.practicesDone, practiceAt: state.practiceAt }),
+    [state.logged, state.practicesDone, state.practiceAt],
+  );
+  const toggle = (id: string, kind: SqKind) => (kind === "practice" ? state.togglePractice(id) : state.toggleTick(id));
+  /** The moment ticked most recently with Done — what "Undo" takes back. */
+  const [lastId, setLastId] = useState<string | null>(null);
+  const done = (m: SqMoment) => {
+    if (!isTicked(m.id, m.kind, ticks)) toggle(m.id, m.kind);
+    setLastId(m.id);
+  };
+  // Undo reverses exactly one action: the tick Done made. Anything ticked
+  // with it (a supplement tapped on the card) stays as she left it.
+  const undo = (m: SqMoment) => {
+    if (isTicked(m.id, m.kind, ticks)) toggle(m.id, m.kind);
+    setLastId(null);
+  };
+
+  // ── tabs and sheets ────────────────────────────────────────────────────
   const scrollRef = useRef<HTMLElement | null>(null);
   const go = (next: SqTabId) => {
     setTab(next);
@@ -144,36 +186,72 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   };
 
   // A sheet covers the whole app, so it behaves as a dialog: Escape closes it
-  // and focus returns to whatever opened it.
+  // and, when the last one closes, focus returns to whatever opened the first.
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const openerRef = useRef<HTMLElement | null>(null);
-  const openSheet = (s: Sheet) => {
-    openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setSheet(s);
+  const open = (s: SqSheet) => {
+    if (stack.length === 0) {
+      openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    }
+    setStack((prev) => [...prev, s]);
   };
-  const closeSheet = () => {
-    setSheet(null);
-    openerRef.current?.focus();
-    openerRef.current = null;
+  const close = () => {
+    if (stack.length <= 1) {
+      openerRef.current?.focus();
+      openerRef.current = null;
+    }
+    setStack((prev) => prev.slice(0, -1));
   };
+  const depth = stack.length;
   useEffect(() => {
-    if (!sheet) return;
+    if (depth === 0) return;
     closeRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
-      setSheet(null);
-      openerRef.current?.focus();
-      openerRef.current = null;
+      if (depth === 1) {
+        openerRef.current?.focus();
+        openerRef.current = null;
+      }
+      setStack((prev) => prev.slice(0, -1));
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [sheet]);
+  }, [depth]);
 
   const { week, totalWeeks } = data.client;
   const active = SQ_TABS.find((t) => t.id === tab) ?? SQ_TABS[0];
+  const ready = state.hydrated && now !== null;
+
+  let sheetTitle = "";
+  let sheetBody: React.ReactNode = null;
+  if (sheet) {
+    if (sheet.k === "day") {
+      sheetTitle = "Your whole day";
+      sheetBody = <SqDaySheet moments={moments} ticks={ticks} track={track} onToggle={toggle} open={open} />;
+    } else if (sheet.k === "record") {
+      sheetTitle = "Your record";
+      sheetBody = <SqRecordSheet data={data} moments={moments} ticks={ticks} todayYmd={todayYmd} open={open} />;
+    } else if (sheet.k === "recday") {
+      sheetTitle = recordDayTitle(sheet.date);
+      sheetBody = <SqRecordDaySheet data={data} date={sheet.date} />;
+    } else if (sheet.k === "recipe") {
+      sheetTitle = recipeTitle(data, sheet.slot);
+      sheetBody = <SqRecipeSheet data={data} slot={sheet.slot} />;
+    } else if (sheet.k === "start") {
+      sheetTitle = "How this app works";
+      sheetBody = <SqStartSheet />;
+    } else {
+      sheetTitle = sheet.title;
+      sheetBody = (
+        <SqCard>
+          <p className="sq-sub">{NOT_BUILT}</p>
+        </SqCard>
+      );
+    }
+  }
 
   return (
-    <div className="sq-app" data-time={sky}>
+    <div className={"sq-app" + (state.textLarge ? " sq-big" : "")} data-time={hour === null ? "midday" : skyForHour(hour)}>
       <SequoyaFonts />
 
       <header className="sq-bar">
@@ -185,22 +263,74 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           type="button"
           className="sq-ringbtn"
           aria-label={`Your progress, week ${week} of ${totalWeeks}`}
-          onClick={() => openSheet({ title: "Your progress" })}
+          onClick={() => open({ k: "soon", title: "Your progress" })}
         >
           <span>Week {week}</span>
           <WeekRings week={week} total={totalWeeks} />
         </button>
       </header>
 
-      {/* aria-busy until the on-device store is read back: before that the
-          day's ticks are not known, and later steps draw from them. */}
-      <main className="sq-scroll" ref={scrollRef} aria-busy={!state.hydrated} inert={sheet ? true : undefined}>
-        <div className="sq-greet">
-          <h1>{active.label}</h1>
-        </div>
-        <div className="sq-card">
-          <p>{NOT_BUILT}</p>
-        </div>
+      {/* aria-busy until the phone's own ticks and clock are known: before
+          that, what is "next" cannot be known either. */}
+      <main className="sq-scroll" ref={scrollRef} aria-busy={!ready} inert={sheet ? true : undefined}>
+        {tab === "today" ? (
+          <SqHome
+            data={data}
+            moments={moments}
+            ticks={ticks}
+            ready={ready}
+            hour={hour}
+            nowBand={nowBand}
+            checkinSentWeek={state.checkinSentWeek}
+            track={track}
+            lastId={lastId}
+            onDone={done}
+            onUndo={undo}
+            onToggle={toggle}
+            open={open}
+            returnDismissed={returnDismissed}
+            onDismissReturn={dismissReturn}
+          />
+        ) : (
+          <>
+            <div className="sq-greet">
+              <h1>{active.label}</h1>
+            </div>
+            {tab === "all" ? (
+              <>
+                <SqCard title="Start here">
+                  <div className="sq-list">
+                    <SqNavRow title="How this app works" note="One minute, whenever you need it" onOpen={() => open({ k: "start" })} />
+                  </div>
+                </SqCard>
+                <SqCard title="You">
+                  <div className="sq-list">
+                    <SqNavRow title="Your record" note="Everything you have ticked, day by day" onOpen={() => open({ k: "record" })} />
+                    <SqSwitchRow
+                      title="Track every item on Home"
+                      on={track}
+                      onNote="On · ticks and your daily count show on Home"
+                      offNote="Off · Home stays simple"
+                      onChange={setTrack}
+                    />
+                    <SqSwitchRow
+                      title="Larger text"
+                      on={state.textLarge}
+                      onNote="On · tap to go back to normal"
+                      offNote="Off · tap to make everything bigger"
+                      onChange={state.setTextLarge}
+                    />
+                  </div>
+                </SqCard>
+                <section className="sq-soft">The rest of this tab is not built yet.</section>
+              </>
+            ) : (
+              <SqCard>
+                <p className="sq-sub">{NOT_BUILT}</p>
+              </SqCard>
+            )}
+          </>
+        )}
       </main>
 
       <nav className="sq-tabs" aria-label="Main" inert={sheet ? true : undefined}>
@@ -219,18 +349,16 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       </nav>
 
       {sheet && (
-        <div className="sq-sheet" role="dialog" aria-modal="true" aria-labelledby="sq-sheet-title">
+        // key: each sheet is its own element, so opening one from another
+        // starts at the top and plays its own entrance.
+        <div key={depth} className="sq-sheet" role="dialog" aria-modal="true" aria-labelledby="sq-sheet-title">
           <div className="sq-sheet-h">
-            <h2 id="sq-sheet-title">{sheet.title}</h2>
-            <button type="button" className="sq-x" aria-label="Close" onClick={closeSheet} ref={closeRef}>
+            <h2 id="sq-sheet-title">{sheetTitle}</h2>
+            <button type="button" className="sq-x" aria-label={depth > 1 ? "Back" : "Close"} onClick={close} ref={closeRef}>
               <SqIcon name="x" />
             </button>
           </div>
-          <div className="sq-sheet-b">
-            <div className="sq-card">
-              <p>{NOT_BUILT}</p>
-            </div>
-          </div>
+          <div className="sq-sheet-b">{sheetBody}</div>
         </div>
       )}
     </div>

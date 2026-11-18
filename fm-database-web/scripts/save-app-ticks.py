@@ -28,7 +28,7 @@ Reads JSON from stdin:
   "date":      "YYYY-MM-DD",   # device-local day
   "plan_slug": str | null,
   "week":      int | null,
-  "items": [ {"kind": "supplement"|"remedy"|"practice",
+  "items": [ {"kind": "supplement"|"remedy"|"practice"|"meal",
               "id": str, "name": str, "done": bool, "at": str|null}, ... ]
 }
 
@@ -42,7 +42,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-KINDS = ("supplement", "remedy", "practice")
+# "meal" arrives only from the new front (the old app has no meal tick), so a
+# row without meal items means meals were not tracked that day — not skipped.
+KINDS = ("supplement", "remedy", "practice", "meal")
 MAX_ITEMS = 80
 
 

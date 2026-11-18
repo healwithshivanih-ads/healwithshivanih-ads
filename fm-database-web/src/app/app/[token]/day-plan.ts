@@ -166,6 +166,16 @@ export function buildDay(input: DayInput): DayBand[] {
   }).filter((b) => b.items.length > 0);
 }
 
+/** The id a MEAL is ticked under (new front only). Built from the slot, not
+ *  the position, so it survives a menu that gains or loses a slot mid-day; the
+ *  index only breaks a tie between two meals that share a slot name. Ticks are
+ *  kept per day, so this never needs to be stable across days. */
+export function mealTickId(meal: Pick<AppMeal, "slot">, index: number, all: Pick<AppMeal, "slot">[]): string {
+  const slug = (meal.slot || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "meal";
+  const clash = all.some((m, i) => i < index && (m.slot || "").toLowerCase() === (meal.slot || "").toLowerCase());
+  return clash ? `m-${slug}-${index}` : `m-${slug}`;
+}
+
 /** Which band "now" is, for opening the right one by default. */
 export function bandForHour(hour: number): BandKey {
   if (hour < 8) return "waking";

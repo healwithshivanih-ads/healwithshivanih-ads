@@ -81,6 +81,7 @@ import {
 } from "@/lib/fmdb/discovery-tier";
 import { resolveAppMode, resolveFinalStretch, GRACE_DAYS, REVIEW_LEAD_DAYS, SHORT_PLAN_MAX_WEEKS, type AppMode, type AppModePlan } from "@/lib/fmdb/app-mode";
 import { parseAppShell } from "@/lib/fmdb/app-shell";
+import { loadTickRows } from "@/lib/fmdb/daily-ticks";
 import { fallbackWeekFor } from "@/lib/fmdb/menu-weeks";
 import { dedupeRecipePack } from "@/lib/fmdb/recipe-pack-dedup";
 import { MAINTENANCE_PRICING, latestPaidMaintenanceThrough } from "@/lib/fmdb/maintenance-orders";
@@ -1173,6 +1174,27 @@ export interface AppGuideline {
   kind: "guideline" | "as_needed";
 }
 
+/** One saved day of ticks, as the client's own record shows it. */
+export interface AppTickDay {
+  /** the DEVICE's local day the ticks belong to, YYYY-MM-DD */
+  date: string;
+  items: { kind: string; name: string; done: boolean; at: string | null }[];
+}
+
+/** What the new front needs beyond the shared payload. */
+export interface AppSqData {
+  /** 1 on the day the plan starts, counting up; 0 before it has started. */
+  planDay: number;
+  /** Saved tick rows for the trailing fortnight, oldest first — every item she
+   *  was shown that day with whether (and when) she ticked it. It may include
+   *  a row for today; the app shows today from the phone, not from here. */
+  tickHistory: AppTickDay[];
+  /** Whole days since the app was last opened, in the client's timezone. Null
+   *  when there is no earlier open on record. Drives the return card, which
+   *  must never claim anything was done or missed in between. */
+  daysSinceLastOpen: number | null;
+}
+
 export interface ClientAppData {
   clientId: string;
   planSlug: string;
@@ -1212,6 +1234,9 @@ export interface ClientAppData {
    *  it. Never branch on this directly — app-shell.ts::pickAppShell is the one
    *  place that decides, and it also requires an in-programme client. */
   appShell?: "v2" | null;
+  /** Extra data only the new front reads (sq-app.tsx). Filled only when
+   *  appShell is "v2", so no other client's payload grows. */
+  sq?: AppSqData | null;
   /** Coach-recommended lab orders (Thyrocare primary, Acumen backup). `recommended` ones are payable in
    *  app; others show status. Universal across tiers (booking works in any mode). */
   labOrders: LabOrder[];
@@ -1793,6 +1818,39 @@ export function deriveCheckinPrefill(
     bucket[id] = n / appeared[k] >= 0.65 ? 0 : 1;
   }
   return out;
+}
+
+/** Days from one YYYY-MM-DD to another (UTC arithmetic, so no DST skew). */
+function ymdDiff(fromYmd: string, toYmd: string): number {
+  return Math.round(
+    (new Date(`${toYmd}T00:00:00Z`).getTime() - new Date(`${fromYmd}T00:00:00Z`).getTime()) / 86_400_000,
+  );
+}
+
+/** The new front's extras — the saved record and how long she has been away.
+ *  Every read is best-effort: a missing or broken file means an empty record
+ *  and no return card, never a failed app load. */
+async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number): Promise<AppSqData> {
+  const rows = await loadTickRows(clientId, 15).catch(() => []);
+  const tickHistory: AppTickDay[] = rows.map((r) => ({
+    date: r.date,
+    items: r.items
+      .filter((i) => i && typeof i.name === "string")
+      .map((i) => ({ kind: String(i.kind || ""), name: i.name, done: i.done === true, at: typeof i.at === "string" && i.at ? i.at : null })),
+  }));
+  let daysSinceLastOpen: number | null = null;
+  try {
+    const doc = await readYamlIfExists(path.join(clientDir, "_app_opens.yaml"));
+    const opens = Array.isArray(doc?.opens) ? (doc.opens as unknown[]) : [];
+    const last = opens.length ? new Date(String(opens[opens.length - 1])) : null;
+    if (last && !Number.isNaN(last.getTime())) {
+      const lastYmd = last.toLocaleDateString("en-CA", { timeZone: appTz });
+      daysSinceLastOpen = Math.max(0, ymdDiff(lastYmd, tzTodayYmd(appTz)));
+    }
+  } catch {
+    /* no opens on record */
+  }
+  return { planDay, tickHistory, daysSinceLastOpen };
 }
 
 async function loadCheckinPrefill(
@@ -6285,6 +6343,11 @@ export async function loadClientAppData(
   const startsInDays = _holdDate
     ? Math.max(0, Math.ceil((_holdDate.getTime() - todayUTC.getTime()) / 86_400_000))
     : 0;
+  // The new front (app_shell: v2) — which day of the plan today is, for its
+  // first-day card. 1 on the start day; 0 before the plan has started.
+  const sqShell = parseAppShell(client.app_shell);
+  const sqPlanDay =
+    !notStarted && _mealStart ? Math.floor((todayUTC.getTime() - _mealStart.getTime()) / 86_400_000) + 1 : 0;
 
   // End-game app mode (graduation → maintenance/grace/library). Built from a
   // clean AppModePlan (dates coerced) + the client's maintenance fields. ACTIVE
@@ -6349,7 +6412,8 @@ export async function loadClientAppData(
     intakeUrl: null,
     mode: appMode,
     endgame,
-    appShell: parseAppShell(client.app_shell),
+    appShell: sqShell,
+    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay) : null,
     labOrders,
     client: {
       firstName,

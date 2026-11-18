@@ -187,3 +187,181 @@
 @media (max-width: 480px) {
   .sq-app { box-shadow: none; }
 }
+
+/* ========================================================================
+   Home, the day's sheets and the record (sq-home.tsx, sq-sheets.tsx,
+   sq-start.tsx). Same rule as above: everything under `.sq-app`.
+   ======================================================================== */
+@keyframes sq-rise {
+  from { transform: translateY(8px); opacity: 0.3; }
+  to   { transform: none; opacity: 1; }
+}
+
+.sq-app {
+  & {
+    --sq-growth-tint: #e4eedc;
+    --sq-cedar-tint: #f1e4d8;
+    --sq-cedar-ink: #7a4a28;
+  }
+
+  /* Larger text: the same per-device setting today's app uses. The bar stays
+     its size so the week button never wraps. */
+  &.sq-big .sq-scroll,
+  &.sq-big .sq-sheet-h,
+  &.sq-big .sq-sheet-b,
+  &.sq-big .sq-tabs { zoom: 1.14; }
+
+  .sq-greet p { font-size: 15.5px; margin-top: 4px; }
+
+  .sq-eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+  .sq-sec {
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--sq-muted); margin-bottom: 6px;
+  }
+  .sq-sub { color: var(--sq-muted); font-size: 16px; }
+  .sq-small { font-size: 14px; }
+  .sq-soft { background: var(--sq-card-2); border-radius: 20px; padding: 14px 16px; font-size: 16px; }
+
+  /* ── the "next" card ──────────────────────────────────────────────────── */
+  .sq-hero {
+    position: relative; overflow: hidden;
+    background: var(--sq-card); color: var(--sq-ink);
+    border-radius: 26px; padding: 20px 20px 18px;
+    box-shadow: var(--sq-shadow);
+    animation: sq-rise 0.35s ease both;
+  }
+  .sq-hero .sq-eyebrow { color: var(--sq-fire-text); }
+  .sq-hero-row { display: flex; gap: 14px; align-items: flex-start; margin-top: 8px; }
+  .sq-hero-row > div { flex: 1; min-width: 0; }
+  .sq-hero h2 {
+    font-family: var(--sq-serif); font-weight: 500; font-size: 26px;
+    line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance;
+  }
+  .sq-hero-sub { color: var(--sq-muted); font-size: 16px; margin-top: 6px; }
+  .sq-hphoto { width: 96px; height: 96px; border-radius: 24px; object-fit: cover; flex: none; display: block; }
+  .sq-how { color: var(--sq-muted); font-size: 16px; margin-top: 12px; white-space: pre-line; }
+  .sq-hero-actions { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+  /* supplements taken with a meal: each its own tap */
+  .sq-with { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; align-items: center; }
+  .sq-with-lbl { font-size: 14px; color: var(--sq-muted); }
+  .sq-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: transparent; color: var(--sq-ink); border: none;
+    box-shadow: inset 0 0 0 1.4px currentColor;
+    border-radius: 999px; padding: 8px 14px; min-height: 40px;
+    font-size: 15px; font-weight: 600;
+  }
+  .sq-pill .sq-ic { width: 14px; height: 14px; }
+  .sq-pill[aria-pressed="true"] { background: var(--sq-fire-fill); color: var(--sq-on-fire); box-shadow: none; }
+  .sq-pill-quiet { box-shadow: inset 0 0 0 1.4px var(--sq-line-strong); }
+  .sq-pill-quiet[aria-pressed="true"] { background: var(--sq-growth); color: var(--sq-ground); }
+
+  .sq-btn {
+    border: none; border-radius: 999px; padding: 11px 18px; min-height: 44px;
+    font-weight: 600; font-size: 15px;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: transform 0.12s;
+  }
+  .sq-btn:active { transform: scale(0.97); }
+  .sq-btn-primary, .sq-btn-solid { background: var(--sq-fire-fill); color: var(--sq-on-fire); }
+  .sq-btn-ghost, .sq-btn-quiet {
+    background: transparent; color: var(--sq-ink);
+    box-shadow: inset 0 0 0 1.5px var(--sq-line-strong);
+  }
+  .sq-btn-quiet { align-self: flex-start; }
+  .sq-btn-small { padding: 9px 15px; font-size: 14.5px; }
+
+  /* ── ticked, with Undo ────────────────────────────────────────────────── */
+  .sq-db-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .sq-donebar .sq-with { margin-top: 8px; }
+  .sq-status { font-size: 14.5px; color: var(--sq-growth); font-weight: 600; display: flex; gap: 6px; align-items: center; }
+  .sq-link {
+    background: none; border: none; color: var(--sq-fire-text);
+    font-size: 15.5px; font-weight: 600; padding: 6px 0; min-height: 44px;
+    display: inline-flex; align-items: center; gap: 6px; text-align: left;
+  }
+
+  .sq-welcome h3 { font-family: var(--sq-serif); font-weight: 500; font-size: 19px; }
+  .sq-welcome > p { color: var(--sq-muted); font-size: 15px; margin: 4px 0 12px; }
+
+  /* ── Later today ──────────────────────────────────────────────────────── */
+  .sq-fold {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    background: none; border: none; padding: 4px 2px; min-height: 44px;
+    font-size: 16.5px; font-weight: 600; text-align: left;
+  }
+  .sq-fold small { color: var(--sq-muted); font-weight: 400; font-size: 14.5px; }
+  .sq-fold .sq-ic { transition: transform 0.2s; color: var(--sq-muted); }
+  .sq-fold[aria-expanded="true"] .sq-ic { transform: rotate(180deg); }
+  .sq-tl { display: flex; flex-direction: column; margin-top: 10px; }
+  .sq-tl-row {
+    display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 10px;
+    padding: 10px 0; border: none; border-top: 1px solid var(--sq-line);
+    font-size: 16px; background: none; width: 100%; text-align: left;
+  }
+  .sq-tl-row time { color: var(--sq-muted); font-size: 15px; font-variant-numeric: tabular-nums; }
+  .sq-tl-body { min-width: 0; }
+  .sq-tl-body b { font-weight: 600; display: block; }
+  .sq-tl-body span { color: var(--sq-muted); font-size: 15px; }
+  .sq-tl-tick[aria-pressed="true"] .sq-tick { background: var(--sq-growth); border-color: var(--sq-growth); color: var(--sq-ground); }
+  .sq-tl-tick[aria-pressed="true"] b { color: var(--sq-muted); }
+
+  /* ── the "This week" line ─────────────────────────────────────────────── */
+  .sq-week { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; border: none; }
+  .sq-badge {
+    width: 44px; height: 44px; border-radius: 14px; flex: none;
+    background: var(--sq-cedar-tint); color: var(--sq-cedar-ink);
+    display: grid; place-items: center;
+  }
+  .sq-badge .sq-ic { width: 22px; height: 22px; }
+  .sq-week-body { flex: 1; min-width: 0; display: block; }
+  .sq-week .sq-eyebrow { color: var(--sq-cedar-ink); display: block; }
+  .sq-week b { display: block; font-weight: 600; font-size: 17px; }
+  .sq-week-sub { color: var(--sq-muted); font-size: 14.5px; }
+  .sq-week > .sq-ic { color: var(--sq-muted); }
+
+  /* ── lists: tick rows, rows that open something, switches ─────────────── */
+  .sq-list { display: flex; flex-direction: column; }
+  .sq-li {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; min-height: 48px;
+    border: none; border-top: 1px solid var(--sq-line);
+    font-size: 17px; background: none; width: 100%; text-align: left;
+  }
+  .sq-list .sq-li:first-child { border-top: none; }
+  .sq-li-body { flex: 1; min-width: 0; display: block; }
+  .sq-li b { font-weight: 600; display: block; }
+  .sq-li small { display: block; color: var(--sq-muted); font-size: 15px; }
+  .sq-li > .sq-ic { color: var(--sq-muted); }
+  .sq-li.sq-under { padding-left: 36px; font-size: 16px; }
+  .sq-tick {
+    width: 26px; height: 26px; border-radius: 9px; flex: none;
+    border: 1.5px solid var(--sq-line-strong);
+    display: grid; place-items: center; color: transparent;
+  }
+  .sq-li[aria-pressed="true"] .sq-tick,
+  .sq-li-static[data-on="true"] .sq-tick { background: var(--sq-growth); border-color: var(--sq-growth); color: var(--sq-ground); }
+  .sq-li[aria-pressed="true"] b { color: var(--sq-muted); }
+  .sq-switch {
+    width: 46px; height: 28px; border-radius: 999px; flex: none; position: relative;
+    background: var(--sq-line-strong); transition: background 0.15s;
+  }
+  .sq-switch::after {
+    content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--sq-card); transition: transform 0.15s;
+  }
+  .sq-li[aria-checked="true"] .sq-switch { background: var(--sq-growth); }
+  .sq-li[aria-checked="true"] .sq-switch::after { transform: translateX(18px); }
+
+  /* ── a recipe ─────────────────────────────────────────────────────────── */
+  .sq-rphoto { width: 100%; height: 170px; object-fit: cover; border-radius: 20px; display: block; }
+  .sq-ing { margin: 0; padding-left: 18px; font-size: 16px; columns: 2; column-gap: 24px; }
+  .sq-steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; }
+  .sq-ing + .sq-steps { margin-top: 12px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sq-hero { animation: none; }
+    .sq-btn, .sq-fold .sq-ic, .sq-switch, .sq-switch::after { transition: none; }
+  }
+}

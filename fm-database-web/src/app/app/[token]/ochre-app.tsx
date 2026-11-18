@@ -46,11 +46,16 @@ import { OrderOverlay } from "./ochre-order";
 import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
 import { isPlanSetupHold, pickAppShell } from "@/lib/fmdb/app-shell";
 import SqApp from "./sq-app";
+import { mealTickItems } from "./sq-day";
 
 interface Stored {
   day?: string;
   logged?: Record<string, string>;
   practicesDone?: Record<string, boolean>;
+  /** When each practice was ticked today ("9:40 pm"). Added with the new front
+   *  so its record can show a time for every tick; a practice ticked before
+   *  this existed simply has none. */
+  practiceAt?: Record<string, string>;
   submittedWeek?: number;
   feel?: FeelMap;
   moves?: MoveEntry[];
@@ -127,6 +132,10 @@ type Overlay =
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
   const STORE = `ochre.app.${data.clientId}`;
+  // Which front this client gets. Decided ONCE, here (rule + tests:
+  // src/lib/fmdb/app-shell.ts); the branch that acts on it is further down,
+  // after the hooks both fronts share.
+  const shell = pickAppShell(data);
 
   // Timezone self-correction: the server rendered "today" in data.timezone
   // (ochre_tz cookie → client.yaml → IST). If this device disagrees (US client,
@@ -164,6 +173,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const [pushSilent, setPushSilent] = useState(false);
   const [logged, setLogged] = useState<Record<string, string>>({});
   const [practicesDone, setPracticesDone] = useState<Record<string, boolean>>({});
+  const [practiceAt, setPracticeAt] = useState<Record<string, string>>({});
   const [submittedWeek, setSubmittedWeek] = useState<number>(0);
   const [feel, setFeel] = useState<FeelMap>({});
   const [moves, setMoves] = useState<MoveEntry[]>([]);
@@ -219,6 +229,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       if (s.day === day) {
         setLogged(s.logged ?? {});
         setPracticesDone(s.practicesDone ?? {});
+        setPracticeAt(s.practiceAt ?? {});
       }
       setSubmittedWeek(s.submittedWeek ?? 0);
       // Energy history: server first, this phone's map on top. The chart used
@@ -260,13 +271,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   useEffect(() => {
     if (!hydrated) return;
-    const s: Stored = { day: todayIso(), logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug: lastSeenPlanSlug ?? undefined, lastSeenUpdatedAt: lastSeenUpdatedAt ?? undefined, loggedDays, lastSeenWeek: lastSeenWeek ?? undefined, lastSeenDay: lastSeenDay ?? undefined };
+    const s: Stored = { day: todayIso(), logged, practicesDone, practiceAt, submittedWeek, feel, moves, lastSeenPlanSlug: lastSeenPlanSlug ?? undefined, lastSeenUpdatedAt: lastSeenUpdatedAt ?? undefined, loggedDays, lastSeenWeek: lastSeenWeek ?? undefined, lastSeenDay: lastSeenDay ?? undefined };
     try {
       localStorage.setItem(STORE, JSON.stringify(s));
     } catch {
       /* storage full / private mode */
     }
-  }, [hydrated, logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug, lastSeenUpdatedAt, loggedDays, lastSeenWeek, lastSeenDay, STORE]);
+  }, [hydrated, logged, practicesDone, practiceAt, submittedWeek, feel, moves, lastSeenPlanSlug, lastSeenUpdatedAt, loggedDays, lastSeenWeek, lastSeenDay, STORE]);
 
   // The splash covers the page only until hydration (local state restored) —
   // it used to hold for a fixed 1.3 s on EVERY open, on top of the server
@@ -443,14 +454,33 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         for (const id of logIds) if (!next[id]) next[id] = tt;
         return next;
       });
-    if (practiceIds.length)
+    if (practiceIds.length) {
+      // Time only the ones this press actually ticks — an earlier tick keeps
+      // the time it was made.
+      const fresh = practiceIds.filter((id) => !practicesDone[id]);
       setPracticesDone((prev) => {
         const next = { ...prev };
         for (const id of practiceIds) next[id] = true;
         return next;
       });
+      if (fresh.length)
+        setPracticeAt((prev) => {
+          const next = { ...prev };
+          for (const id of fresh) next[id] = tt;
+          return next;
+        });
+    }
   };
-  const togglePractice = (id: string) => setPracticesDone((prev) => ({ ...prev, [id]: !prev[id] }));
+  const togglePractice = (id: string) => {
+    const on = !practicesDone[id];
+    setPracticesDone((prev) => ({ ...prev, [id]: on }));
+    setPracticeAt((prev) => {
+      const next = { ...prev };
+      if (on) next[id] = nowTime();
+      else delete next[id];
+      return next;
+    });
+  };
   const addMove = (m: { label: string; kind: string; mins: number; day: string }) =>
     setMoves((prev) => [{ ...m, id: "mv" + Date.now(), source: "Logged" }, ...prev]);
   const logFeeling = (v: number) => setFeel((prev) => ({ ...prev, [todayIso()]: v }));
@@ -567,7 +597,11 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         id: p.id,
         name: p.name,
         done: !!practicesDone[p.id],
+        at: practicesDone[p.id] ? practiceAt[p.id] ?? null : null,
       })),
+      // Meals are ticked only in the new front. Today's app has no meal tick,
+      // so sending its meals would report every one as "not done" each day.
+      ...(shell === "sq" ? mealTickItems(data.meals, logged) : []),
     ];
     // First pass after hydration is the state restored from this phone. Send it
     // only if something is already ticked — that's a day whose ticks may never
@@ -588,6 +622,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     hydrated,
     logged,
     practicesDone,
+    practiceAt,
+    shell,
+    data.meals,
     dailyRemedies,
     data.supplements,
     data.practices,
@@ -756,7 +793,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated]);
 
-  // ── Which front? The ONE branch (rule + tests: src/lib/fmdb/app-shell.ts) ──
+  // ── Which front? The ONE branch (`shell` is decided at the top) ──────────
   // The new Sequoya shell renders only for a client switched on with
   // `app_shell: v2` who is in programme (ACTIVE, package tier, plan not on
   // setup hold). Everyone else falls through to today's app below, untouched.
@@ -765,10 +802,23 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // tick sync to the coach, the timezone fix and the push refresh running),
   // so both fronts read and write the same data and switching back loses
   // nothing.
-  if (pickAppShell(data) === "sq") {
+  if (shell === "sq") {
     return (
       <OchreContext.Provider value={data}>
-        <SqApp data={data} state={{ hydrated, logged, practicesDone, toggleSupp, togglePractice, markDone }} />
+        <SqApp
+          data={data}
+          state={{
+            hydrated,
+            logged,
+            practicesDone,
+            practiceAt,
+            toggleTick: toggleSupp,
+            togglePractice,
+            checkinSentWeek: submittedWeek,
+            textLarge,
+            setTextLarge: changeTextLarge,
+          }}
+        />
       </OchreContext.Provider>
     );
   }

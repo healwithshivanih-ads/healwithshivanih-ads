@@ -18,14 +18,16 @@
  *     she can act on and would only make a good habit feel broken.
  */
 
-export type TickKind = "supplement" | "remedy" | "practice";
+/** "meal" is ticked only in the new front (sq-home.tsx); today's app never
+ *  sends one, so a day logged there carries no meal rows — by design, not a gap. */
+export type TickKind = "supplement" | "remedy" | "practice" | "meal";
 
 export interface TickItem {
   kind: TickKind;
   id: string;
   name: string;
   done: boolean;
-  /** display time the client ticked it ("8:30 am"), supplements/remedies only */
+  /** display time the client ticked it ("8:30 am"); absent when it was not recorded */
   at?: string | null;
 }
 
