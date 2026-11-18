@@ -168,3 +168,40 @@ def test_recompute_script_keeps_hand_markers(tmp_path):
     assert out["Hemoglobin"]["value"] == 12.2
     assert out["Hemoglobin"]["fm_interpretation"] == "hand: fine"
     assert out["HbA1c"]["value"] == 5.8
+
+
+# ── fasting glucose picker (every spelling seen on real reports, Nov 2026) ──
+
+import pytest
+
+_FASTING = ["Glucose Fasting", "Fasting Glucose", "Glucose fasting", "Glucose - Fasting",
+            "Fasting Blood Sugar (Glucose)", "Glucose, Fasting", "Glucose Plasma, Fasting",
+            "Fasting glucose (FBS)", "Fasting Plasma Glucose", "FBS", "Blood Glucose",
+            "Plasma Glucose"]
+_NOT_FASTING = ["Estimated Average Glucose (eAG)", "Glucose Post Prandial",
+                "Blood Glucose - Post Prandial", "Postprandial Glucose (2-hr)",
+                "Post-prandial glucose (PPBS)", "PP Plasma Glucose",
+                "Glucose, Random (Hexokinase)", "Glucose, Post-Prandial",
+                "GLUCOSE (Post prandial)", "Average Blood Glucose (ABG) Calculated",
+                "eAG (estimated average glucose)", "Urine Glucose"]
+
+
+def _fasting(name):
+    m = _by_name(compute_ratios([{"test_name": name, "value": "91", "date_drawn": D}]))
+    return m.get("Fasting glucose", {}).get("value")
+
+
+@pytest.mark.parametrize("name", _FASTING)
+def test_fasting_glucose_spellings_read(name):
+    assert _fasting(name) == 91
+
+
+@pytest.mark.parametrize("name", _NOT_FASTING)
+def test_non_fasting_glucose_never_reads_as_fasting(name):
+    assert _fasting(name) is None
+
+
+def test_same_day_pp_glucose_does_not_beat_fasting():
+    labs = [{"test_name": "Blood Glucose - Post Prandial", "value": "162", "date_drawn": D},
+            {"test_name": "Glucose, Fasting", "value": "79.5", "date_drawn": D}]
+    assert _by_name(compute_ratios(labs))["Fasting glucose"]["value"] == 79.5

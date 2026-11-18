@@ -1122,8 +1122,14 @@ def compute_ratios(
     # ══════════════════════════════════════════════════════════════════════════
     # 1. METABOLIC & INSULIN
     # ══════════════════════════════════════════════════════════════════════════
+    # FASTING glucose only. Labs print it as "Glucose, Fasting", "Glucose -
+    # Fasting", "Glucose Plasma, Fasting" (missed by a one-character gap, so a
+    # client lost HOMA-IR, TyG and PhenoAge), and "Blood Glucose - Post
+    # Prandial" / "PP Plasma Glucose" / "Average Blood Glucose" used to match.
     glucose = _find(extracted_labs,
-        r"fasting.glucose|glucose.fast|blood glucose|plasma glucose|fasting blood sugar|fbs\b")
+        r"^(?!.*post)(?!.*prandial)(?!.*\bpp)(?!.*random)(?!.*average)(?!.*estimated)"
+        r"(?!.*\beag\b)(?!.*\babg\b)(?!.*urine)(?!.*\b2.?h)(?!.*hour)"
+        r".*(?:fasting.*glucose|glucose.*fast|blood glucose|plasma glucose|fasting blood sugar|\bfbs\b)")
     insulin = _find(extracted_labs,
         r"insulin.*fast|fast.*insulin|serum insulin")
     hba1c = _find(extracted_labs,
