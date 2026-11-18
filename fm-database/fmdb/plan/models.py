@@ -1439,6 +1439,49 @@ class CustomRemedy(BaseModel):
     reason: str = ""          # coach rationale (why this, for this client)
 
 
+class EatingOutSituation(BaseModel):
+    """One place a client eats away from home, and what to do there.
+
+    Every string is CLIENT-FACING and printed verbatim in the app, so each
+    line is written for THIS client: it never names a food on their leave-out
+    list as a thing to choose, and never a food outside their diet.
+    """
+    model_config = ConfigDict(extra="forbid")
+    where: str                                   # the card's heading: "At a restaurant"
+    # Words a client might type for it ("italian", "pasta", "pizza"). The app
+    # already knows the common ones (restaurant, hotel, buffet, airport,
+    # wedding, party, ordering in); list only what is particular to this card.
+    keywords: list[str] = Field(default_factory=list)
+    choose: list[str] = Field(default_factory=list)   # "Dal, sabzi, and rice or jowar roti"
+    skip: list[str] = Field(default_factory=list)     # "Naan, paneer and cream gravies"
+    note: str = ""                                    # one optional closing line
+
+
+class EatingOutGuide(BaseModel):
+    """What this client does when they eat away from home.
+
+    Written WITH the plan (author-plan step 4c), for the whole plan or for one
+    section of it — a 5R protocol's Remove weeks call for a different guide
+    from its Repair weeks. The app's ask box answers "I'm at a restaurant,
+    what do I order" from this, at once and at no cost, so nobody waits a day
+    for the coach before a meal. plan-check refuses a plan without one.
+
+    Leave from_week and to_week unset for a guide that covers the whole plan.
+    With several guides, the app shows the one whose weeks hold the client's
+    current plan week, and falls back to a whole-plan guide.
+    """
+    model_config = ConfigDict(extra="forbid")
+    label: str = ""                              # "Remove phase" — "" for the whole plan
+    from_week: Optional[int] = None              # plan week, 1-based, inclusive
+    to_week: Optional[int] = None
+    rules: list[str] = Field(default_factory=list)    # hold anywhere: "Vegetables first"
+    situations: list[EatingOutSituation] = Field(default_factory=list)
+    # What to do about a food the plan does not mention, when the client has
+    # to decide now: "If it is not on your list, choose the plainest cooked
+    # dish on the menu and tell me afterwards." Client-facing.
+    not_on_list: str = ""
+
+
 class NutritionPlan(BaseModel):
     model_config = ConfigDict(extra="forbid")
     pattern: str = ""                    # short label like "gentle anti-inflammatory"
@@ -1902,6 +1945,10 @@ class Plan(BaseModel):
     # ---- coach-authored sections ----
     lifestyle_practices: list[PracticeItem] = Field(default_factory=list)
     nutrition: NutritionPlan = Field(default_factory=NutritionPlan)
+    # Eating-out guide(s) for this client — see EatingOutGuide. Top level, NOT
+    # under `nutrition`: the web plan editor writes the whole nutrition object
+    # back from its form and would silently drop a field it does not render.
+    eating_out: list[EatingOutGuide] = Field(default_factory=list)
     education: list[EducationModule] = Field(default_factory=list)
 
     # ---- Ayurveda layer (optional; gated by Client.ayurveda_enabled) ----

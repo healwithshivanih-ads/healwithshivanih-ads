@@ -295,3 +295,42 @@ Tests: `sq-day.test.ts`, `sq-home.test.tsx`, `sq-app.test.tsx`, `src/lib/fmdb/ap
 - **Why:** the snack and dinner share "evening" (4 pm to 9 pm), so an unticked snack held the card until 9 pm (the coach saw "Tea with milk" at 8:15 pm). Same for breakfast against the mid-morning bite.
 - A window that opens on a part of the day must keep that part's cut from `bandOfRank` (19, 39, 50, 70); a test pins this at every minute. Today's app still uses `bandForHour` and is untouched.
 - A skipped item leaves "next" and "Later today" only; it stays in Your whole day and can be ticked late. The clock is read on open and when she comes back to the app, not on a timer.
+
+### Client app redesign step 2: the ask box and the Coach tab (18 Nov 2026)
+
+New front only (`app_shell: v2`, the test account). Today's app, its co-pilot and its chat are untouched.
+
+**The order a question goes through** (do not reorder; the tests walk it):
+1. `src/lib/fmdb/ask-safety.ts::askUrgent` — self-harm, then emergency. English, Hindi, Hinglish and common misspellings. A denial written against the phrase ("no chest pain", "chest pain nahi hai") and a figure of speech ("fainted with laughter") are skipped; a bare "not" is NOT a denial ("I can not bear this chest pain"). The live chat list (`triage.ts::EMERGENCY_HINTS`) is the floor.
+2. A few questions that cannot be clinical: coach reply time, next session, how the app works, "tell my coach".
+3. `askHandoff` — medicine, another person's health, alcohol, results, supplements together, weight change, symptom, dose, the wider health picture. Each goes to the coach; never answered.
+4. Plan lookups on the phone, `src/app/app/[token]/sq-ask.ts::routeAsk`: her meals, ticks, record, a supplement's timing and reason, its every-other-day schedule, whether a dish is on this week's menu (`dishOnMenu`: EVERY word of the food must be in one dish).
+5. Everything else → the model: `/api/app-copilot` with `format: "card"` → `scripts/app-copilot.py` `mode: "card"`.
+
+**Rules**
+- **One module for safety, both sides.** The phone runs `ask-safety.ts` for an instant card; `/api/app-copilot` runs it again first, because a direct POST skips the phone.
+- **The model never writes to the client.** It returns one JSON card; `src/lib/fmdb/ask-card.ts::parseModelCard` checks every field and turns anything else into "defer" (hand to the coach). Buttons come only from `MODEL_BUTTONS`. A test pins the route's order: safety, daily cap (15, shared with today's co-pilot), lapsed, LIBRARY, then the model.
+- **Not answered by fixed text, on purpose:** tea and coffee, swaps, portions, "can I eat X" (eating out is answered from the plan's own guide; see the next section). The prototype's answers were written for one demo client. In the app they depend on each client's food list, so they go to the model with her plan in front of it, and the model defers when the plan does not say.
+- **Tappable questions cost nothing.** `askChips` returns only questions the router answers on the phone; a test walks every chip at every hour and fails if one would reach the model.
+- **Results** (lab values, body age) always hand to the coach until step 5 shares them.
+- **Alcohol** always hands to the coach. **A missed capsule** hands to the coach until the coach's own answer is supplied (then check `isMissedCapsule` before `askHandoff`).
+- **Hand-off** sends the question into the same chat thread (`/api/app-chat`) as `"<her words>\n\n(Asked in the app · week N of M)"`, then shows "Your coach replies within 24 hours". No plan slug in the text: the thread is per client, and the slug carries the client id.
+- **Coach tab** (`sq-coach.tsx`): same thread and route as today's chat. A message typed there passes `coachTabNote`: it is still sent, and the emergency card or "see a doctor today" line shows beside it. A failed send stays on screen as "Not sent yet". The unread dot is asked on open and on return to the app, never on a timer; reading the list marks the coach's messages read, so it is only read while the tab is open. Not built yet: sending a photo, turning on notifications.
+- **Copy:** "your coach", never the coach's name, and no pronoun for the coach. Tests check both.
+- **Screens from later steps** (shopping list, check-in, weight, reorder, the week's menu, movement) open the "not built yet" sheet from the ask box for now.
+
+**Cost, measured 18 Nov 2026 on the test plan:** a typed question that reaches the model is about 2,700 input tokens on `claude-haiku-4-5`, about US$0.0027 (the build plan estimated $0.001). The first version sent the whole week's menu and cost $0.0041; the context now carries tomorrow only. The cached blocks are under the model's minimum cacheable length, so caching does not engage. Nine test calls were made while building: $0.03.
+
+### The eating-out guide is part of every plan (18 Nov 2026)
+
+The coach's rule: a client at a restaurant cannot wait 24 hours for an answer, so each plan carries its own eating-out guide, written when the plan is written, and the app answers from it.
+
+- **Where it lives:** `Plan.eating_out: list[EatingOutGuide]` (`fmdb/plan/models.py`), TOP LEVEL, not under `nutrition`: the web plan editor writes the whole `nutrition` object back from its form and would drop a field it does not render. A guide has `rules`, `situations` (`where`, `choose`, `skip`, optional `keywords` and `note`) and `not_on_list`. One guide with no weeks covers the whole plan; several with `label` / `from_week` / `to_week` cover sections of it (a 5R protocol's phases).
+- **Every line is client-facing and printed as written.** The app adds no wording of its own to a guide card.
+- **The gate:** `checker.py::_check_eating_out`. A plan in draft or ready_to_publish with no guide is CRITICAL. A published plan with none is INFO (it must not suddenly fail). A `choose`, `rules`, `note` or `not_on_list` line naming a food outside the client's diet is CRITICAL; one that is not dairy-safe is CRITICAL for an allergy or untyped reaction and WARNING for lactose intolerance. `skip` lines are not screened. Weeks no guide covers are a WARNING. The checker knows diet and dairy only; other allergies and `foods_to_avoid` are the author's to check.
+- **Writing it:** `scripts/set-eating-out-guide.py` (no model call). It screens the guide as a plan being written whatever the plan's status, writes nothing on a CRITICAL, and on a PUBLISHED plan appends one `amendments` line and touches nothing else. This is how an existing client gets a guide without a new plan. `author-plan` step 4c.
+- **Never carried to a successor:** `generateFollowUpPlan` clears `eating_out`, like `client_fit`. A new phase gets its own guide.
+- **Deploy order when the field is new somewhere:** the Python model must be live (main checkout pulled, Fly deployed) BEFORE any plan file carries `eating_out`, or `extra="forbid"` fails the load.
+- **In the app:** `src/lib/fmdb/eating-out.ts::pickEatingOutGuide(plan.eating_out, week)` → `planRef.eatingOut` (this week's guide, or null — a week no guide covers gets none, never another phase's). New front only: the ask box answers eating-out food questions from it on the phone at no cost (`sq-ask.ts::eatingOutCard`), offers "I'm eating out" as a tappable question, and Everything has an "Eating out" screen. "Dinner with drinks" gets the food card with the alcohol hand-off on it.
+- **The model's food rules (card mode):** a food question that is not clinical is always an answer, never a hand-off. It may say YES only to a dish the plan names. It may say SKIP when a leave-out or skip line names the dish or what it is mainly made of. A dish the plan does not mention gets "not on your list" plus the guide's `not_on_list` line. Measured 18 Nov on the test plan, about 20 questions: the yes-or-skip was right each time; twice the stated reason carried a detail that is not in the plan ("dosa is rice and urad, both left out" — only rice is). That is the remaining risk of the small model.
+- **Cost with a guide in the context:** about 3,700 input tokens, US$0.004 a question on `claude-haiku-4-5`. Eating-out cards from the guide cost nothing.

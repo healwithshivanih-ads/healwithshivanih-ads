@@ -29,6 +29,7 @@ import {
   type SqTicks,
   type SqWith,
 } from "./sq-day";
+import { SqAskBox } from "./sq-ask-ui";
 import { SqStartCard } from "./sq-start";
 import { SqIcon, type SqSheet } from "./sq-ui";
 
@@ -38,6 +39,9 @@ export interface SqHomeProps {
   ticks: SqTicks;
   /** true once the phone's own ticks and clock are known */
   ready: boolean;
+  /** the tappable questions under the day, and what a tap does */
+  chips: string[];
+  onAsk: (q: string) => void;
   /** the device's hour (null before the page is live) */
   hour: number | null;
   /** where the phone's clock puts her in the day (sq-day.ts rankFloorAt) */
@@ -285,6 +289,7 @@ export function SqHome(p: SqHomeProps) {
           <SqIcon name="right" />
         </button>
       )}
+      {p.chips.length > 0 && <SqAskBox chips={p.chips} onAsk={p.onAsk} />}
     </>
   );
 }

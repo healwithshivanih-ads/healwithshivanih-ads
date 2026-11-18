@@ -7,6 +7,7 @@
  */
 
 import type { ClientAppData } from "@/lib/fmdb/client-app";
+import type { AppEatingOut } from "@/lib/fmdb/eating-out";
 import {
   buildRecord,
   dayCount,
@@ -209,6 +210,55 @@ export function SqRecipeSheet({ data, slot }: { data: ClientAppData; slot: strin
           )}
         </SqCard>
       ))}
+    </>
+  );
+}
+
+/**
+ * The eating-out guide in full: the coach's rules, then each place with what
+ * to choose and what to skip. Every line is the coach's, as written in the
+ * plan; this screen adds none of its own.
+ */
+export function SqEatingOutSheet({ guide }: { guide: AppEatingOut }) {
+  return (
+    <>
+      {guide.label && <p className="sq-sub">For this part of your plan: {guide.label}</p>}
+      {guide.rules.length > 0 && (
+        <SqCard title="Wherever you are">
+          <ul className="sq-yn">
+            {guide.rules.map((r, i) => (
+              <li key={i} className="sq-yn-dot">
+                <span className="sq-dot" aria-hidden="true" />
+                <span>{r}</span>
+              </li>
+            ))}
+          </ul>
+        </SqCard>
+      )}
+      {guide.situations.map((s) => (
+        <SqCard key={s.where} title={s.where}>
+          <ul className="sq-yn">
+            {s.choose.map((t, i) => (
+              <li key={"c" + i} className="sq-yn-yes">
+                <SqIcon name="check" />
+                <span>{t}</span>
+              </li>
+            ))}
+            {s.skip.map((t, i) => (
+              <li key={"s" + i} className="sq-yn-no">
+                <SqIcon name="x" />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+          {s.note && <p className="sq-note">{s.note}</p>}
+        </SqCard>
+      ))}
+      {guide.notOnList && (
+        <SqCard title="If it is not on your list">
+          <p className="sq-sub">{guide.notOnList}</p>
+        </SqCard>
+      )}
     </>
   );
 }

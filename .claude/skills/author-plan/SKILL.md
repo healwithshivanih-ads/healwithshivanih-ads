@@ -135,8 +135,9 @@ findings here rather than discovering them at activation. WARNINGs are advisory 
 each one deserves a sentence in `notes_for_coach` saying why it stands, or the next
 reviewer will undo your reasoning.
 
-The gate catches, among others: a protocol or supplement not tested against this client
-(`client_fit`); unknown catalogue slugs (alias-aware); a supplement
+The gate catches, among others: a plan with no eating-out guide, or a guide that tells
+the client to choose a food they do not eat (`eating_out`, step 4c); a protocol or
+supplement not tested against this client (`client_fit`); unknown catalogue slugs (alias-aware); a supplement
 contraindicated against an active condition or current medication; combo-product
 nutrient overlap (a standalone alongside a blend that already contains it); a
 supplement with **no order link** in `supplement_links.yaml` and no pinned `buy_link`,
@@ -226,6 +227,49 @@ Then hand it over — activation is the coach's, not yours:
 ```
 Client → Plan tab → the draft → 🚀 Activate plan
 ```
+
+### 4c. Write the EATING-OUT GUIDE — every plan, for THIS client
+
+The client app answers "I'm at a restaurant, what do I order?" straight from the plan's
+`eating_out`, at once and with nobody in between. Without a guide that question waits for
+the coach, and nobody can wait a day before a meal. So the guide is part of writing the
+plan, and `plan-check` refuses a draft that has none (CRITICAL).
+
+Write it from what the plan already says for this client, not from general advice:
+
+- **`rules`** — two to four that hold anywhere ("Start with the vegetables").
+- **`situations`** — at least a restaurant, then the places this client's life actually
+  has: a hotel buffet, travel, a wedding or party, ordering in, the office canteen, a
+  cuisine they eat often. Each has `where` (the card's heading), `choose` lines and `skip`
+  lines. Give `keywords` only for what is particular to a card ("italian", "pizza"); the
+  app already knows the common words.
+- **`not_on_list`** — one line for a food the plan does not mention, when they have to
+  decide now. It must give them something to DO, not a verdict on the food.
+
+Rules that bite:
+
+- **One guide per section of the plan, when the sections differ.** A 5R protocol's Remove
+  weeks call for a stricter guide than its Repair weeks: write one guide per phase with
+  `label`, `from_week`, `to_week`. Leave the weeks unset for a guide that holds for the
+  whole plan. `plan-check` warns about weeks no guide covers.
+- **Every line is printed to the client as written.** No evidence caveats, no coach
+  shorthand, no first names. Say "your coach".
+- **`choose` lines are screened like a prescription**: a food outside the client's diet
+  (meat or egg for a vegetarian, root vegetables for a Jain client) or against their dairy
+  status is CRITICAL. Check each `choose` line against `nutrition.reduce`, their allergies
+  and `foods_to_avoid` yourself too — the checker only knows diet and dairy.
+- **It never carries to a successor.** `generateFollowUpPlan` clears it, like `client_fit`.
+  Read the predecessor's guide, then write this phase's.
+
+Put it on the plan with the script, which screens it first and writes nothing on a CRITICAL:
+
+```bash
+echo '{"plan_slug":"<slug>","guides":[{"rules":["..."],"situations":[{"where":"At a restaurant","choose":["..."],"skip":["..."]}],"not_on_list":"..."}]}' \
+  | fm-database/.venv/bin/python fm-database-web/scripts/set-eating-out-guide.py
+```
+
+The same script adds or replaces the guide on a PUBLISHED plan (one line in `amendments`,
+nothing else touched) — that is how an existing client gets one without a new plan.
 
 ### 5. Adversarial self-review before you call it ready ($0)
 

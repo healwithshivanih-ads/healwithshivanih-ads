@@ -41,10 +41,12 @@ export type SqSheet =
   | { k: "recday"; date: string }
   | { k: "recipe"; slot: string }
   | { k: "start" }
+  /** the coach's eating-out guide for this plan week, in full */
+  | { k: "eatout" }
   /** a screen a later build step fills in */
   | { k: "soon"; title: string };
 
-export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "bag" | "pen";
+export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "left" | "up" | "bag" | "pen";
 
 /** Line icons, 24×24, drawn with the stroke set in `.sq-ic`. */
 const ICON_PATHS: Record<SqIconName, string> = {
@@ -56,6 +58,8 @@ const ICON_PATHS: Record<SqIconName, string> = {
   check: "M5 12.5l4.5 4.5L19 7.5",
   chev: "M6 9l6 6 6-6",
   right: "M9 6l6 6-6 6",
+  left: "M15 6l-6 6 6 6",
+  up: "M12 19V5M5 12l7-7 7 7",
   bag: "M6 8h12l1 12H5zM9 8V6a3 3 0 0 1 6 0v2",
   pen: "M4 20l4-1 11-11-3-3L5 16zM14 6l3 3",
 };

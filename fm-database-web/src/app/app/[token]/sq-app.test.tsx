@@ -28,6 +28,7 @@ const STATE: SqShellState = {
 function payload(week: number, totalWeeks: number): ClientAppData {
   return {
     clientId: "cl-test",
+    token: "tok-test-0000000000",
     client: { firstName: "Asha", week, totalWeeks, notStarted: false },
     coach: { name: "Zzyzx Qwerty" },
     today: { dow: "Wednesday", dateLabel: "18 November", idx: 2 },
@@ -132,6 +133,14 @@ describe("the Sequoya shell frame", () => {
     // Every class it draws is its own — nothing borrowed from app.css.
     const classes = [...html.matchAll(/class="([^"]+)"/g)].flatMap((m) => m[1].split(/\s+/));
     expect(classes.filter((c) => !c.startsWith("sq-"))).toEqual([]);
+  });
+
+  it("has the ask box's input on Today, ready on first paint", () => {
+    const html = draw();
+    expect(html).toContain('placeholder="Ask about your plan"');
+    expect(html).toContain('class="sq-send"');
+    // No unread dot until the phone has asked the server.
+    expect(html).not.toContain("sq-tabdot");
   });
 
   it("never prints the coach's name", () => {
