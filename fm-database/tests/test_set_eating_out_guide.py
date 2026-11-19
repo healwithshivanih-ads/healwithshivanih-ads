@@ -25,6 +25,11 @@ _SCRIPT = (
     / "fm-database-web" / "scripts" / "set-eating-out-guide.py"
 )
 
+PLACES = [
+    "North Indian", "South Indian", "Chinese and Asian", "Italian and continental", "At a cafe",
+    "Street food and chaat", "Sweets and desserts", "Drinks", "At a hotel buffet", "Travelling",
+    "At a wedding or party", "Ordering in",
+]
 GUIDE = {
     "rules": ["Start with the vegetables"],
     "situations": [
@@ -32,7 +37,8 @@ GUIDE = {
             "where": "At a restaurant",
             "choose": ["Dal, sabzi, and rice or jowar roti"],
             "skip": ["Naan and cream gravies"],
-        }
+        },
+        *[{"where": w, "choose": ["Dal and a cooked vegetable"], "skip": ["Anything deep fried"]} for w in PLACES],
     ],
     "not_on_list": "Choose the plainest cooked dish and tell your coach afterwards.",
 }
@@ -119,7 +125,7 @@ def test_a_draft_gets_the_guide_with_no_amendment(tmp_path):
 def test_meat_for_a_vegetarian_is_refused_and_nothing_is_written(tmp_path):
     path = _seed(tmp_path, dietary_preference="vegetarian")
     before = path.read_text()
-    bad = {**GUIDE, "situations": [{"where": "At a restaurant", "choose": ["Grilled chicken and salad"]}]}
+    bad = {**GUIDE, "situations": [{"where": "At a restaurant", "choose": ["Grilled chicken and salad"]}, *GUIDE["situations"][1:]]}
     got = _run(tmp_path, {"plan_slug": "p-test", "guides": [bad]})
     assert got["ok"] is False and got["written"] is False
     assert any(f["severity"] == "CRITICAL" and "chicken" in f["detail"] for f in got["findings"])
@@ -154,3 +160,20 @@ def test_an_unknown_plan_is_a_clean_answer(tmp_path):
     storage.ensure_layout(tmp_path)
     got = _run(tmp_path, {"plan_slug": "nope", "guides": [GUIDE]})
     assert got["ok"] is False and "could not load the plan" in got["error"]
+
+
+def test_a_thin_guide_is_refused_even_on_a_published_plan(tmp_path):
+    path = _seed(tmp_path)
+    before = path.read_text()
+    got = _run(tmp_path, {"plan_slug": "p-test", "guides": [{**GUIDE, "situations": GUIDE["situations"][:3]}]})
+    assert got["ok"] is False
+    assert any(f["field"] == "coverage" and f["severity"] == "CRITICAL" for f in got["findings"])
+    assert path.read_text() == before
+
+
+def test_warnings_come_back_with_a_guide_that_was_written(tmp_path):
+    _seed(tmp_path, foods_to_avoid="Rice")
+    got = _run(tmp_path, {"plan_slug": "p-test", "guides": [GUIDE]})
+    assert got["ok"] and got["written"]
+    assert any(f["severity"] == "WARNING" and "rice" in f["detail"] for f in got["findings"])
+

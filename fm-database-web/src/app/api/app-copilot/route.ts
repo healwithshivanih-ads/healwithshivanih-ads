@@ -15,12 +15,15 @@ import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { isEmergency } from "@/lib/fmdb/triage";
 import { askHandoff, askUrgent } from "@/lib/fmdb/ask-safety";
 import { parseModelCard } from "@/lib/fmdb/ask-card";
-import { eatingOutContext } from "@/lib/fmdb/eating-out";
+import { eatingOutContextFor } from "@/lib/fmdb/eating-out";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 
 export const dynamic = "force-dynamic";
 
-const DAILY_LIMIT = 15;
+/** Typed questions that may reach the model, per client link, per day. The
+ *  env override exists so the limit can be changed without a deploy of code
+ *  (and raised for a local test run); anything unreadable falls back to 15. */
+const DAILY_LIMIT = Math.max(1, Math.floor(Number(process.env.FMDB_COPILOT_DAILY_LIMIT)) || 15);
 
 // Authoritative gates (the client-side copies in ochre-coach.tsx are a UX
 // optimization only — a direct POST skips them, so these must stand alone).
@@ -42,7 +45,7 @@ const DEFER_HINTS = [
  * for, so it carries those too. Everything here is already shown to the
  * client somewhere in the app — nothing coach-only is added.
  */
-function cardContext(data: ClientAppData): string {
+function cardContext(data: ClientAppData, question: string): string {
   // Tomorrow only, not the week: "is X on my menu this week" is answered on
   // the phone (sq-ask.ts dishOnMenu), and the whole week tripled the tokens —
   // and so the cost — of every question.
@@ -79,7 +82,7 @@ function cardContext(data: ClientAppData): string {
     part("Diet", data.planRef.flags.map((f) => f.label).join(", ")) +
     // The coach's own eating-out guide for this plan week. With it, a
     // food-choice question always has an answer for now.
-    part("Eating out (the coach's guide)", data.planRef.eatingOut ? eatingOutContext(data.planRef.eatingOut) : "") +
+    part("Eating out (the coach's guide)", data.planRef.eatingOut ? eatingOutContextFor(question, data.planRef.eatingOut) : "") +
     part("Cooking oils", `${data.planRef.oils.use.join(", ")}${data.planRef.oils.avoid.length ? ` (avoid ${data.planRef.oils.avoid.join(", ")})` : ""}`) +
     part("Away from home", data.travel ? `${data.travel.kind} from ${data.travel.from} to ${data.travel.to}${data.travel.location ? `, ${data.travel.location}` : ""}` : "") +
     part("Next session with the coach", data.coach.nextSession ?? "")
@@ -184,7 +187,7 @@ async function cardAnswer(req: NextRequest, token: string, question: string) {
     if (!data || data.mode === "LIBRARY") return defer();
     const out = (await runShim(
       "app-copilot.py",
-      { client_id: data.clientId, context: cardContext(data), question, mode: "card" },
+      { client_id: data.clientId, context: cardContext(data, question), question, mode: "card" },
       30_000,
     )) as { ok?: boolean; answer?: string; error?: string };
     if (!out.ok) return defer();

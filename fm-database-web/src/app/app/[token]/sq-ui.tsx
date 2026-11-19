@@ -42,7 +42,7 @@ export type SqSheet =
   | { k: "recipe"; slot: string }
   | { k: "start" }
   /** the coach's eating-out guide for this plan week, in full */
-  | { k: "eatout" }
+  | { k: "eatout"; where?: string }
   /** a screen a later build step fills in */
   | { k: "soon"; title: string };
 

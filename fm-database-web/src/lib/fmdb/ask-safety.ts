@@ -61,7 +61,7 @@ export function dropSupplementForms(s: string): string {
 // ── urgent ─────────────────────────────────────────────────────────────────
 
 const SELF =
-  /suicid|su[ie]?c[ie]de|\bkms\b|kill(ing)? my ?self|end(ing)? my life|end it all|want to die|wanna die|wish i (was|were) dead|better off dead|better off without me|don'?t want to (be here|live|go on|wake up)|no point (in )?living|(harm|hurt|cut)(ing)? my ?self|self.?harm|unalive|marna chaht|mar jau|mar jana chaht|jeena nahi|jeene ka man nahi|khudkushi|jaan de d/;
+  /suicid|su[ie]?c[ie]de|\bkms\b|kill(ing)? my ?self|end(ing)? my life|end it all|want to die|wanna die|wish i (was|were) dead|better off dead|better off without me|don'?t want to (be here|live|go on|wake up)|no point (in )?living|(harm|hurt|cut)(ing)? my ?self|self.?harm|unalive|marna chaht|mar jau|mar jana chaht|jeena nahi|jeene ka ma+n+ nahi|khudkushi|jaan de d/;
 
 /** Each emergency phrase is tried on its own so a denied one ("no chest pain")
  *  can be skipped without hiding a real one later in the same message. */
@@ -74,6 +74,9 @@ const EMERG_SOURCES: RegExp[] = [
   /too many (pills|tablets|capsules|medicines?|goli)|took (all|the whole) (of )?(my |the )?(pills|tablets|capsules|strip|bottle)|zyada goli/,
   /seene? (me|mein|main|mai) (\w+ ){0,2}(dard|jalan|dabav|bhaari)|chh?ati (me|mein|main|mai) (\w+ ){0,2}dard/,
   /saans (nahi|nhi|lene me)|saans phool|behosh|dil ka daura|khoon ki ulti/,
+  // A reaction to food: swelling of the lips, tongue, throat or face, or a
+  // closing throat. At a restaurant table this cannot wait for the coach.
+  /(lips?|tongue|throat|face|mouth) (is |are |has |have |feels? )?(started )?(swell|swollen|puff)|swell(ing|ed)? (of |in |on )?(my |the )?(lips?|tongue|throat|face|mouth)|throat (is |feels? )?(closing|tight|blocked)|can'?t swallow|anaphyla|(severe|bad) allergic reaction|(hoth|honth|gala|muh|chehra) (sooj|suj)|gala band/,
 ];
 
 /** A figure of speech, not a symptom: "I fainted with laughter". */
@@ -144,7 +147,7 @@ const OTHER_PERSON = new RegExp(
  *  asks for herself: "my husband wants pizza, can I have a slice?" is her
  *  own food question. */
 const OTHER_PERSON_STATED = new RegExp(`\\b(my|mere|meri|mera) (${KIN}) (has|have|is|was|ko|needs?|should|can|got)\\b`);
-const ASKS_FOR_SELF = /\b(can|could|should|may|shall) i\b|\bwhat (do|should|can) i\b|\bfor me\b|\bmain\b.*\bsakt/;
+const ASKS_FOR_SELF = /\b(can|could|should|may|shall|have|am|did|do|will|would) i\b|\bwhat (do|should|can) i\b|\bi (have|am|feel|felt|ate|was|can'?t|cannot|don'?t|need|want)\b|\bi'?(m|ve)\b|\bfor me\b|\bmain\b.*\bsakt/;
 
 const ALCOHOL =
   /alcohol|\bwine\b|\bbeer\b|whisky|whiskey|vodka|\brum\b|\bgin\b|cocktail|daaru|\bdrinks\b|\b(can|may|could) i (have a|get a)? ?drink\b(?! (water|juice|milk|lassi|chaas|buttermilk|nimbu|lemon|coconut|tea|coffee|chai))|\bhave a drink\b/;

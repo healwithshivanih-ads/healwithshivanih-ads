@@ -56,13 +56,18 @@ describe("parseModelCard", () => {
     ["an answer with no lines", answer({ heading: "Yes" })],
     ["an answer whose lines are empty", answer({ lines: ["", "  "] })],
     ["lines that are not a list", answer({ lines: "Tea is fine." })],
-    ["more than three lines", answer({ lines: ["a", "b", "c", "d"] })],
     ["a line that runs on", answer({ lines: ["x".repeat(241)] })],
     ["a heading that runs on", answer({ heading: "y".repeat(81), lines: ["Tea is fine."] })],
     ["the coach's name", answer({ lines: ["Shivani says tea is fine."] })],
     ["a leaked control word", answer({ lines: ["I should DEFER this."] })],
   ])("fails towards the coach: %s", (_label, raw) => {
     expect(parseModelCard(raw)).toEqual({ verdict: "defer" });
+  });
+
+  it("keeps the first three lines of a longer answer", () => {
+    const got = parseModelCard(answer({ lines: ["a", "b", "c", "d"] }));
+    if (got.verdict !== "answer") throw new Error("expected an answer");
+    expect(got.card.lines).toEqual(["a", "b", "c"]);
   });
 
   it("keeps only buttons from the fixed list, at most two, each once", () => {
