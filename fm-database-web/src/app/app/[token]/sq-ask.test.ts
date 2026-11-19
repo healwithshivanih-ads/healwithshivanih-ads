@@ -15,7 +15,7 @@
 
 import { describe, expect, it } from "vitest";
 import type { AppMeal, AppPractice, AppRemedy, AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
-import { askChips, dishOnMenu, findRow, routeAsk, type AskContext, type AskResult } from "./sq-ask";
+import { askChips, dishOnMenu, findRow, looksLikeDishQuestion, notOnListCard, routeAsk, type AskContext, type AskResult } from "./sq-ask";
 import { buildMoments, dayRows, rankFloorAt, type SqTicks } from "./sq-day";
 
 // ── a synthetic client ─────────────────────────────────────────────────────
@@ -440,7 +440,7 @@ describe("eating out, with the coach's guide on the plan", () => {
     ],
     notOnList: "Choose the plainest cooked dish and tell your coach afterwards.",
   };
-  const withGuide = (over: Partial<AskContext> = {}) => ctx({ ...over, dataOver: { planRef: { eatingOut: GUIDE } } });
+  const withGuide = (over: Partial<AskContext> & { dataOver?: Record<string, unknown> } = {}) => ctx({ dataOver: { planRef: { eatingOut: GUIDE } }, ...over });
 
   it.each([
     ["hotel buffet what do i eat", "CARD At a hotel buffet"],
@@ -477,7 +477,7 @@ describe("eating out, with the coach's guide on the plan", () => {
     expect(r.card.src).toBe("From your plan");
     // She has her answer now, and can still ask the coach as well.
     expect(r.card.handoff).toBeUndefined();
-    expect(r.card.buttons?.map((b) => b.to)).toEqual(["eatout", "coach"]);
+    expect(r.card.buttons?.map((b) => b.label)).toEqual(["Other places", "Ask my coach"]);
   });
 
   it("names the section of the plan the guide is for", () => {
@@ -510,6 +510,67 @@ describe("eating out, with the coach's guide on the plan", () => {
     expect(ask("at a hotel buffet, my stomach hurts", withGuide())).toBe("HAND");
   });
 
+  it("a named dish gets the coach's own line for it, at once, with what to have instead", () => {
+    const skip = routeAsk("can I have butter naan", withGuide());
+    if (skip.type !== "card") throw new Error("expected a card");
+    expect(skip.card.heading).toBe("Skip this one");
+    expect(skip.card.list).toEqual([
+      { mark: "no", text: "Naan and cream gravies" },
+      { mark: "yes", text: "Dal, sabzi, and rice or jowar roti" },
+    ]);
+    expect(skip.card.note).toBe("The ticked lines are what to have instead.");
+    expect(skip.card.handoff).toBeUndefined();
+
+    const south = { ...GUIDE, situations: [sit("South Indian", ["Ragi dosa", "Sambar and rasam"], ["Idli, dosa and uttapam"])] };
+    const mixed = routeAsk("is the dosa with sambar ok", ctx({ dataOver: { planRef: { eatingOut: south } } }));
+    if (mixed.type !== "card") throw new Error("expected a card");
+    // "X with Y" is two dishes. Sambar is a yes; a bare "dosa" is skipped,
+    // and because a ragi dosa is fine the card shows both lines.
+    expect(mixed.card.heading).toBe("It depends which one");
+    expect(mixed.card.list?.map((x) => `${x.mark}:${x.text}`)).toEqual(["no:Idli, dosa and uttapam", "yes:Ragi dosa", "yes:Sambar and rasam"]);
+  });
+
+  it("two dishes get a row each", () => {
+    const g = { ...GUIDE, situations: [{ ...GUIDE.situations[0], skip: ["Naan and cream gravies", "Biryani and pulao"] }] };
+    const r = routeAsk("they have naan and biryani, which one", ctx({ dataOver: { planRef: { eatingOut: g } } }));
+    if (r.type !== "card") throw new Error("expected a card");
+    expect(r.card.heading).toBe("Skip these");
+    expect(r.card.list?.filter((x) => x.mark === "no")).toHaveLength(2);
+  });
+
+  it("'I already ate it' is never answered with a skip list", () => {
+    const r = routeAsk("I ate samosa at the canteen, what should I do now", ctx({ dataOver: { planRef: { eatingOut: { ...GUIDE, situations: [{ ...GUIDE.situations[0], skip: ["Samosa and pakora"] }] } } } }));
+    if (r.type !== "card") throw new Error("expected a card");
+    expect(r.card.heading).toBe("You pick up from your next meal");
+    expect(r.card.list).toBeUndefined();
+  });
+
+  it("when the model has no answer to a food question, she still gets the guide's own line", () => {
+    expect(looksLikeDishQuestion("is paneer tikka masala ok")).toBe(true);
+    expect(looksLikeDishQuestion("what is the capital of france")).toBe(false);
+    const c = notOnListCard(GUIDE, "is paneer tikka masala ok");
+    expect(c.heading).toBe("Not on your list yet");
+    expect(c.lines).toEqual([GUIDE.notOnList]);
+    expect(c.handoff).toBeUndefined();
+    expect(c.buttons?.map((b) => b.to)).toEqual(["eatout", "coach"]);
+  });
+
+  it("asking for the guide opens it", () => {
+    expect(ask("is there a list of what I can eat when eating out", withGuide())).toBe("OPEN eatout");
+  });
+
+  it("a dish the guide does not name still goes to the model, never a guess", () => {
+    expect(ask("can I have paneer tikka", withGuide())).toBe("MODEL");
+    expect(ask("can i eat mango", withGuide())).toBe("MODEL");
+  });
+
+  it("a guide line never hijacks a question that is not about a dish", () => {
+    for (const q of ["What's for dinner?", "What is left today?", "Why magnesium at night?", "when is my next session", "I feel stressed", "did I take my magnesium on Monday?"]) {
+      const without = ask(q);
+      expect(ask(q, withGuide()), q).toBe(without);
+    }
+  });
+
   it("offers 'I'm eating out' as a tappable question only when the plan has a guide", () => {
     expect(askChips(withGuide())).toContain("I'm eating out");
     expect(askChips(ctx())).not.toContain("I'm eating out");
@@ -518,6 +579,29 @@ describe("eating out, with the coach's guide on the plan", () => {
       const c = withGuide({ nowRank: rankFloorAt(h) });
       for (const q of askChips(c)) expect(ask(q, c), q).not.toBe("MODEL");
     }
+  });
+});
+
+describe("round-5 tester findings", () => {
+  it.each([
+    // her own question, though it mentions her mother
+    ["Have I ruined everything by being away while my mother was in hospital", "CARD You pick up from today"],
+    // distress is heard, never the flat no-answer card
+    ["I can't do this anymore, it's too much", "HAND"],
+    // an allergic reaction inside a food question is an emergency
+    ["I'm at the restaurant and my lips are swelling after the egg curry, can I eat the dal?", "EMERGENCY"],
+    ["mera gala band ho raha hai", "EMERGENCY"],
+    ["mujhe jeene ka mann nahi hai", "SELFHARM"],
+    // a record question with no item named opens the record
+    ["Did I take my supplement on Monday?", "OPEN record"],
+    ["what do I eat today", "CARD Today"],
+  ])("%s → %s", (q, want) => {
+    expect(ask(q)).toBe(want);
+  });
+
+  it("distress gets the warm hand-off line", () => {
+    const r = routeAsk("I can't do this anymore, it's too much", ctx());
+    expect(r.type === "card" && r.card.lines[0]).toContain("That sounds heavy");
   });
 });
 

@@ -27,8 +27,8 @@ import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 import { bandForHour } from "./day-plan";
 import { buildMoments, isTicked, rankFloorAt, type SqKind, type SqMoment, type SqTicks } from "./sq-day";
-import type { AskButton } from "@/lib/fmdb/ask-card";
-import { askChips, routeAsk, type AskContext } from "./sq-ask";
+import { NO_ANSWER_CARD, type AskButton } from "@/lib/fmdb/ask-card";
+import { askChips, looksLikeDishQuestion, notOnListCard, routeAsk, type AskContext } from "./sq-ask";
 import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
 import { SqCoach, useCoachThread } from "./sq-coach";
 import { SqHome } from "./sq-home";
@@ -264,7 +264,13 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       return;
     }
     setTurns((t) => [...t, { id, q, card: null, send: "idle" }]);
-    void fetchModelCard(data.token, q).then((card) => setTurns((t) => t.map((x) => (x.id === id ? { ...x, card } : x))));
+    void fetchModelCard(data.token, q).then((got) => {
+      // No answer to a food question: the guide's own line for a food the
+      // plan does not mention, so she has something to act on now.
+      const guide = data.planRef?.eatingOut;
+      const card = got === NO_ANSWER_CARD && guide && looksLikeDishQuestion(q) ? notOnListCard(guide, q) : got;
+      setTurns((t) => t.map((x) => (x.id === id ? { ...x, card } : x)));
+    });
   };
 
   const onCardButton = (b: AskButton) => {
@@ -315,8 +321,8 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       sheetTitle = recipeTitle(data, sheet.slot);
       sheetBody = <SqRecipeSheet data={data} slot={sheet.slot} />;
     } else if (sheet.k === "eatout" && data.planRef?.eatingOut) {
-      sheetTitle = "Eating out";
-      sheetBody = <SqEatingOutSheet guide={data.planRef.eatingOut} />;
+      sheetTitle = sheet.where ?? "Eating out";
+      sheetBody = <SqEatingOutSheet guide={data.planRef.eatingOut} where={sheet.where} open={open} />;
     } else if (sheet.k === "start") {
       sheetTitle = "How this app works";
       sheetBody = <SqStartSheet />;

@@ -69,6 +69,7 @@ export function SqAskBox({ chips, onAsk }: { chips: string[]; onAsk: (q: string)
   return (
     <section className="sq-askb">
       <h2 className="sq-ask-h">Ask anything about your plan</h2>
+      <p className="sq-ask-sub">A dish, a restaurant, what is left today. Medicines, doses and symptoms go to your coach.</p>
       <div className="sq-chips">
         {chips.map((c) => (
           <button key={c} type="button" className="sq-chip" onClick={() => onAsk(c)}>

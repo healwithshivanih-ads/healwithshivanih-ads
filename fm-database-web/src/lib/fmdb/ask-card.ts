@@ -129,8 +129,9 @@ export function parseModelCard(raw: unknown): ModelVerdict {
   if (verdict !== "answer") return { verdict: "defer" };
 
   const heading = clean(obj.heading);
-  const lines = Array.isArray(obj.lines) ? obj.lines.map(clean).filter(Boolean) : [];
-  if (lines.length === 0 || lines.length > MAX_LINES) return { verdict: "defer" };
+  // A fourth line is dropped, not a reason to throw the answer away.
+  const lines = (Array.isArray(obj.lines) ? obj.lines.map(clean).filter(Boolean) : []).slice(0, MAX_LINES);
+  if (lines.length === 0) return { verdict: "defer" };
   if (heading.length > MAX_HEADING || lines.some((l) => l.length > MAX_LINE)) return { verdict: "defer" };
   const all = [heading, ...lines].join(" ");
   // Copy rule: the app says "your coach", never the coach's name. And the two

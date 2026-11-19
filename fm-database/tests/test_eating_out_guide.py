@@ -32,16 +32,37 @@ def client(**over):
     return Client(**{**BASE, **over})
 
 
+# One card for every place and cuisine a full guide covers.
+PLACES = [
+    "At a restaurant",
+    "North Indian",
+    "South Indian",
+    "Chinese and Asian",
+    "Italian and continental",
+    "At a cafe",
+    "Street food and chaat",
+    "Sweets and desserts",
+    "Drinks",
+    "At a hotel buffet",
+    "Travelling",
+    "At a wedding or party",
+    "Ordering in",
+]
+
+
+def card(where, choose=("Dal and a cooked vegetable",), skip=("Anything deep fried",)):
+    return EatingOutSituation(where=where, choose=list(choose), skip=list(skip))
+
+
+def full(first=None):
+    """Every standard card; `first` replaces the restaurant card."""
+    return [first or card(PLACES[0])] + [card(w) for w in PLACES[1:]]
+
+
 def guide(**over):
     base = dict(
         rules=["Start with the vegetables"],
-        situations=[
-            EatingOutSituation(
-                where="At a restaurant",
-                choose=["Dal, sabzi, and rice or jowar roti"],
-                skip=["Naan and cream gravies"],
-            )
-        ],
+        situations=full(),
         not_on_list="Choose the plainest cooked dish and tell your coach afterwards.",
     )
     return EatingOutGuide(**{**base, **over})
@@ -97,13 +118,80 @@ def test_a_complete_guide_passes():
 
 def test_a_guide_with_nothing_to_choose_is_refused():
     empty = guide(situations=[EatingOutSituation(where="At a restaurant", skip=["Naan"])])
-    assert sev(check(plan([empty]))) == ["CRITICAL"]
+    assert [f.field for f in check(plan([empty]))] == ["situations"]
     assert sev(check(plan([guide(situations=[])]))) == ["CRITICAL"]
 
 
 def test_a_situation_needs_its_heading():
-    g = guide(situations=[EatingOutSituation(where=" ", choose=["Dal and rice"])])
-    assert "CRITICAL" in sev(check(plan([g])))
+    g = guide(situations=full() + [EatingOutSituation(where=" ", choose=["Dal and rice"])])
+    got = check(plan([g]))
+    assert [f.field for f in got if f.severity == "CRITICAL"] == ["where"]
+
+
+# ── comprehensive enough that she does not ask about every dish ────────────
+
+
+def test_a_thin_guide_is_refused_while_the_plan_is_being_written():
+    thin = guide(situations=full()[:5])
+    got = [f for f in check(plan([thin])) if f.field == "coverage"]
+    assert "CRITICAL" in sev(got)
+    assert "only 5 place(s)" in got[0].detail
+    # On a published plan it is a prompt, never a failure.
+    assert "CRITICAL" not in sev(check(plan([thin], status="published")))
+
+
+def test_missing_cuisines_are_named_for_the_coach_to_add_or_wave_through():
+    most = guide(situations=[s for s in full() if s.where not in ("Italian and continental", "Drinks")])
+    got = check(plan([most]))
+    assert sev(got) == ["WARNING"]
+    assert "Italian or continental" in got[0].detail and "drinks" in got[0].detail
+    assert "North Indian" not in got[0].detail
+
+
+def test_a_card_can_be_found_by_its_keywords_as_well_as_its_heading():
+    cards = [s for s in full() if s.where != "South Indian"]
+    cards.append(EatingOutSituation(where="Breakfast places", keywords=["dosa", "idli"], choose=["Idli with sambar"]))
+    assert check(plan([guide(situations=cards)])) == []
+
+
+def test_a_declared_allergy_is_never_something_to_choose():
+    g = guide(situations=full(card("At a restaurant", choose=["Mushroom soup to start"])))
+    got = check(plan([g]), client(known_allergies=["Mushrooms, yeast"]))
+    assert sev(got) == ["CRITICAL"]
+    assert "allergy" in got[0].detail and "mushroom" in got[0].detail
+    # Naming it under skip is the point of a skip line.
+    ok = guide(situations=full(card("At a restaurant", skip=["Anything with mushrooms"])))
+    assert check(plan([ok]), client(known_allergies=["Mushrooms, yeast"])) == []
+
+
+def test_a_food_the_client_avoids_is_flagged_but_not_refused():
+    g = guide(situations=full(card("At a restaurant", choose=["Dal with rice"])))
+    got = check(plan([g]), client(foods_to_avoid="Brinjal, Rice, Wheat"))
+    assert sev(got) == ["WARNING"]
+    assert "'rice'" in got[0].detail
+    # 'price' and 'licorice' are not rice.
+    fine = guide(situations=full(card("At a restaurant", choose=["The set meal at a fair price"])))
+    assert check(plan([fine]), client(foods_to_avoid="Rice")) == []
+
+
+def test_leaving_a_food_out_is_not_recommending_it():
+    g = guide(situations=full(card("At a restaurant", choose=["A bean bowl, without the rice", "Take the dal and leave the rice"])))
+    assert check(plan([g]), client(foods_to_avoid="Rice")) == []
+
+
+def test_a_vegetarians_guide_must_say_no_to_meat_somewhere():
+    # No skip line names meat: "can I have the butter chicken" would find
+    # nothing in the guide and wait for the coach.
+    got = check(plan([guide()]), client(dietary_preference="vegetarian"))
+    assert sev(got) == ["WARNING"] and "names meat or fish" in got[0].detail
+    named = guide(situations=full(card("At a restaurant", skip=["Chicken, mutton and fish — your plan has no meat"])))
+    assert check(plan([named]), client(dietary_preference="vegetarian")) == []
+    # Someone who eats meat needs no such line.
+    assert check(plan([guide()]), client(dietary_preference="non-vegetarian")) == []
+
+
+def test_a_client_who_reported_no_allergies_raises_nothing():
+    assert check(plan([guide()]), client(known_allergies=["none"])) == []
 
 
 # ── the whole plan, or sections of it ──────────────────────────────────────
@@ -140,10 +228,10 @@ def test_overlapping_sections_are_flagged():
 
 
 def test_a_vegetarian_is_never_told_to_choose_meat():
-    g = guide(situations=[EatingOutSituation(where="At a restaurant", choose=["Grilled chicken with vegetables"])])
+    g = guide(situations=full(card("At a restaurant", choose=["Grilled chicken with vegetables"])))
     got = check(plan([g]), client(dietary_preference="vegetarian"))
-    assert sev(got) == ["CRITICAL"]
-    assert "chicken" in got[0].detail
+    crit = [f for f in got if f.severity == "CRITICAL"]
+    assert len(crit) == 1 and "chicken" in crit[0].detail
     # The same line is fine for someone who eats it.
     assert check(plan([g]), client(dietary_preference="non-vegetarian")) == []
 
@@ -155,12 +243,12 @@ def test_meat_in_the_rules_or_the_fallback_line_is_caught_too():
 
 
 def test_naming_meat_as_something_to_skip_is_not_a_finding():
-    g = guide(situations=[EatingOutSituation(where="At a restaurant", choose=["Dal and rice"], skip=["Chicken, mutton and fish"])])
+    g = guide(situations=full(card("At a restaurant", choose=["Dal and rice"], skip=["Chicken, mutton and fish"])))
     assert check(plan([g]), client(dietary_preference="vegetarian")) == []
 
 
 def test_a_client_with_a_milk_allergy_is_never_told_to_choose_paneer():
-    g = guide(situations=[EatingOutSituation(where="At a restaurant", choose=["Paneer tikka and a salad"])])
+    g = guide(situations=full(card("At a restaurant", choose=["Paneer tikka and a salad"])))
     allergic = client(known_allergies=["Milk"])
     got = check(plan([g]), allergic)
     assert sev(got) == ["CRITICAL"]
@@ -170,7 +258,7 @@ def test_a_client_with_a_milk_allergy_is_never_told_to_choose_paneer():
 
 
 def test_lactose_intolerance_is_a_warning_not_a_refusal():
-    g = guide(situations=[EatingOutSituation(where="At a restaurant", choose=["A glass of milk with the meal"])])
+    g = guide(situations=full(card("At a restaurant", choose=["A glass of milk with the meal"])))
     got = check(plan([g]), client(dairy_reaction_type="lactose_intolerance"))
     assert sev(got) == ["WARNING"]
 

@@ -232,6 +232,58 @@ def _diet_hits(text: str, groups: set[str]) -> list[tuple[str, str]]:
     return hits
 
 
+# A guide the client can actually eat out with. Fewer places than this and they
+# are back to asking the coach about every dish, which is what the guide is for.
+_EATING_OUT_MIN_PLACES = 6
+
+# The places and cuisines a full guide covers. Matched against each card's
+# heading and its keywords. A missing one is a WARNING, not a refusal: a
+# client who never eats Italian does not need that card, and the coach says so
+# by acknowledging the finding.
+_EATING_OUT_STANDARD: dict[str, str] = {
+    "a general restaurant card": r"restaurant|eating out",
+    "North Indian": r"north indian|punjabi|mughlai|tandoor",
+    "South Indian": r"south indian|udupi|dosa|idli",
+    "Chinese or Asian": r"chinese|asian|thai|indo.?chinese",
+    "Italian or continental": r"italian|continental|pizza|pasta",
+    "a cafe or fast food": r"cafe|café|fast food|burger|sandwich",
+    "street food and chaat": r"street|chaat",
+    "sweets and desserts": r"sweet|dessert|mithai",
+    "drinks": r"drinks?\b|beverage|juice",
+    "a hotel buffet": r"buffet|hotel",
+    "travel": r"travel|airport|station|train|flight|road",
+    "a wedding or party": r"wedding|party|celebrat|function|festival",
+    "ordering in": r"order|deliver|take.?away",
+}
+
+
+def _avoid_words(raw) -> list[str]:
+    """Single foods out of a free-text list: 'Brinjal, Rice, Wheat' → three.
+    Only short plain entries are used — a sentence is not a food name."""
+    if isinstance(raw, (list, tuple)):
+        raw = ", ".join(str(x) for x in raw)
+    out = []
+    for part in _re.split(r"[,;/\n]| and ", str(raw or "")):
+        w = part.strip().lower().strip(".")
+        if 3 <= len(w) <= 24 and len(w.split()) <= 2 and w not in ("none", "nil", "n/a", "no"):
+            out.append(w)
+    return out
+
+
+def _names_food(text: str, food: str) -> bool:
+    """Does a guide line tell the client to HAVE this food? Whole words,
+    singular or plural. "Without the rice" and "leave the rice" do not: a
+    choose line that says to leave a food out is not recommending it."""
+    stem = _re.escape(food[:-1] if food.endswith("s") and len(food) > 4 else food)
+    low = text.lower()
+    for m in _re.finditer(r"\b" + stem + r"(e?s)?\b", low):
+        before = low[: m.start()]
+        if _re.search(r"\b(without|leave|leaving|skip|skipping|no|not|minus|hold)( the| any| a)? $", before):
+            continue
+        return True
+    return False
+
+
 def _check_eating_out(
     plan: Plan, client: Client | None, findings: list[Finding]
 ) -> None:
@@ -329,6 +381,32 @@ def _check_eating_out(
                 target="gaps",
             ))
 
+    # Enough places, and the usual cuisines among them. Counted across guides
+    # only when there is one guide; with a guide per section, each is judged.
+    for i, g in enumerate(guides):
+        name = g.label or ("whole plan" if g.from_week is None and g.to_week is None else f"guide {i + 1}")
+        usable = [s for s in g.situations if (s.where or "").strip() and s.choose]
+        if 0 < len(usable) < _EATING_OUT_MIN_PLACES:
+            findings.append(Finding(
+                "CRITICAL" if gated else "WARNING", "eating_out", "coverage",
+                (f"the {name!r} guide covers only {len(usable)} place(s). A client needs "
+                 f"at least {_EATING_OUT_MIN_PLACES}, with the cuisines they actually eat "
+                 "(North Indian, South Indian, Chinese, Italian, cafe food, street food, "
+                 "sweets, drinks), or they will ask the coach about every dish."),
+                target=f"{i}",
+            ))
+        if usable:
+            blob = [f"{s.where} {' '.join(s.keywords)}".lower() for s in usable]
+            missing = [what for what, pat in _EATING_OUT_STANDARD.items()
+                       if not any(_re.search(pat, b) for b in blob)]
+            if missing:
+                findings.append(Finding(
+                    "WARNING", "eating_out", "coverage",
+                    (f"the {name!r} guide has no card for: {', '.join(missing)}. Add them, "
+                     "or acknowledge this if the client does not eat there."),
+                    target=f"{i}:missing",
+                ))
+
     if client is None:
         return
 
@@ -352,6 +430,34 @@ def _check_eating_out(
     except Exception:  # noqa: BLE001 — a record the resolver cannot read is not this check's finding
         dairy = None
 
+    # A client who does not eat meat still sits at tables where it is served.
+    # Unless a skip line names it, "can I have the butter chicken" finds no
+    # line in the guide and waits for the coach.
+    if forbids & {"meat_poultry", "fish_seafood"}:
+        for i, g in enumerate(guides):
+            skips = [t for sit in g.situations for t in sit.skip]
+            if skips and not any(_diet_hits(t, forbids & {"meat_poultry", "fish_seafood"}) for t in skips):
+                findings.append(Finding(
+                    "WARNING", "eating_out", "skip",
+                    (f"the client is {diet.replace('_', '-')}, but no skip line names meat or fish. "
+                     "Add one to the restaurant card (\"Chicken, mutton, fish and prawns — "
+                     "your plan has no meat or fish\") so the app can say no at once."),
+                    target=f"{i}:diet",
+                ))
+
+    # Declared allergies are absolute; `foods_to_avoid` may be a preference, so
+    # it warns. Dairy words are left to the dairy resolver above, which knows
+    # an allergy from lactose intolerance.
+    record = client.model_dump()
+    try:
+        from .allergies import resolve_allergies
+        from .dairy import is_dairy_term
+        _status, declared = resolve_allergies(record)
+        allergens = [w for w in _avoid_words(declared) if not is_dairy_term(w)]
+        avoids = [w for w in _avoid_words(record.get("foods_to_avoid")) if not is_dairy_term(w) and w not in allergens]
+    except Exception:  # noqa: BLE001
+        allergens, avoids = [], []
+
     for g in guides:
         for field, text in _said(g):
             for _group, word in _diet_hits(text, forbids):
@@ -362,6 +468,24 @@ def _check_eating_out(
                      "The app prints this line to the client as written."),
                     target=word,
                 ))
+            for food in allergens:
+                if _names_food(text, food):
+                    findings.append(Finding(
+                        "CRITICAL", "eating_out", field,
+                        (f"the eating-out guide says {text!r}, which names {food!r} — "
+                         "the client's record lists it as an allergy. The app prints "
+                         "this line to the client as written."),
+                        target=food,
+                    ))
+            for food in avoids:
+                if _names_food(text, food):
+                    findings.append(Finding(
+                        "WARNING", "eating_out", field,
+                        (f"the eating-out guide says {text!r}, which names {food!r} — "
+                         "the client's record says they avoid it. Move it to 'skip', "
+                         "or acknowledge this if it is allowed here."),
+                        target=f"avoid:{food}",
+                    ))
             if dairy and not text_is_dairy_safe(text, dairy):
                 findings.append(Finding(
                     "CRITICAL" if treats_as_allergy(dairy) else "WARNING", "eating_out", field,

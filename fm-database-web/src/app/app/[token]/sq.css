@@ -375,6 +375,7 @@
   /* ── the ask box: tappable questions, the composer, answer cards ──────── */
   .sq-askb { display: flex; flex-direction: column; gap: 12px; }
   .sq-ask-h { font-family: var(--sq-serif); font-size: 20px; font-weight: 500; margin-top: 4px; }
+  .sq-ask-sub { font-size: 14.5px; color: var(--sq-muted); margin-top: -6px; }
   .sq-chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .sq-chips-in { margin-top: 12px; }
   .sq-chip {

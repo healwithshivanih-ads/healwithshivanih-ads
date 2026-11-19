@@ -235,16 +235,40 @@ The client app answers "I'm at a restaurant, what do I order?" straight from the
 the coach, and nobody can wait a day before a meal. So the guide is part of writing the
 plan, and `plan-check` refuses a draft that has none (CRITICAL).
 
-Write it from what the plan already says for this client, not from general advice:
+Write it from what the plan already says for this client, not from general advice. It has to
+be FULL: the point is that the client does not come back to the coach about every dish.
 
-- **`rules`** — two to four that hold anywhere ("Start with the vegetables").
-- **`situations`** — at least a restaurant, then the places this client's life actually
-  has: a hotel buffet, travel, a wedding or party, ordering in, the office canteen, a
-  cuisine they eat often. Each has `where` (the card's heading), `choose` lines and `skip`
-  lines. Give `keywords` only for what is particular to a card ("italian", "pizza"); the
-  app already knows the common words.
+- **`rules`** — three to five that hold anywhere ("Start with the vegetables").
+- **`situations`** — one card per place and cuisine, at least six and normally twelve or
+  more: any restaurant, North Indian, South Indian, Chinese / Thai / Asian, Italian and
+  continental, Mexican and Middle Eastern, a cafe or fast food, a thali place, street food
+  and chaat, sweets and desserts, drinks, a hotel buffet, travel, a wedding or party,
+  ordering in — plus whatever this client's own city and life call for (a Chennai client
+  needs the meals plate and tiffin places). `plan-check` refuses fewer than six and warns
+  about each standard card that is missing.
+- **`choose` and `skip` lines name DISHES**, the way a menu does: "Dal tadka or dal fry",
+  "Idli, dosa, uttapam and appam". The app answers "can I have masala dosa" by finding the
+  dish in these lines, so a vague line ("light options") answers nothing.
 - **`not_on_list`** — one line for a food the plan does not mention, when they have to
   decide now. It must give them something to DO, not a verdict on the food.
+
+How the app reads the lines — write to these rules:
+
+- **A reason goes after a spaced dash**: `"Idli, dosa and uttapam — they are made of rice"`.
+  The client sees it; the app never matches on it. Every skip line should have one: testers
+  asked "why?" of every bare "skip".
+- **Another name goes in brackets**: `"Chana masala (chole) or rajma"`, `"Brinjal (baingan)"`.
+- **A YES needs the whole dish in one choose line.** "Jowar roti" is a yes from "Jowar or
+  bajra roti"; a plain "roti" is not.
+- **A SKIP needs the dish to contain a whole food the skip line lists.** List the bare word
+  when the whole family is out: `"dosa"` covers masala dosa and rava dosa; `"cold coffee"`
+  says nothing about filter coffee. Do not list adjectives on their own ("the sweet"): they
+  would catch "sweet corn soup".
+- **Name meat and fish under skip for anyone who does not eat them**, with the reason
+  ("Chicken, mutton, fish and prawns — your plan has no meat or fish"). `plan-check` warns
+  if it is missing. Without it, "can I have butter chicken" waits a day for a no.
+- **With every skip the app shows the first two choose lines of that card** as what to have
+  instead, so put the most useful choices first.
 
 Rules that bite:
 
@@ -256,8 +280,9 @@ Rules that bite:
   shorthand, no first names. Say "your coach".
 - **`choose` lines are screened like a prescription**: a food outside the client's diet
   (meat or egg for a vegetarian, root vegetables for a Jain client) or against their dairy
-  status is CRITICAL. Check each `choose` line against `nutrition.reduce`, their allergies
-  and `foods_to_avoid` yourself too — the checker only knows diet and dairy.
+  status is CRITICAL, and so is one naming a declared allergy. One naming something in
+  `foods_to_avoid` is a WARNING. Check each line against `nutrition.reduce` yourself too —
+  that list is free text the checker cannot read.
 - **It never carries to a successor.** `generateFollowUpPlan` clears it, like `client_fit`.
   Read the predecessor's guide, then write this phase's.
 

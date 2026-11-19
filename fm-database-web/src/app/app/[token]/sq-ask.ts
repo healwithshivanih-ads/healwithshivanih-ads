@@ -31,7 +31,7 @@
 import type { AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
 import { coachCard, handoffCard, urgentCard, type AskCard } from "@/lib/fmdb/ask-card";
 import { HANDOFF_COPY, REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, normalizeAsk } from "@/lib/fmdb/ask-safety";
-import { defaultSituation, matchSituation, type AppEatingOut, type AppEatingOutSituation } from "@/lib/fmdb/eating-out";
+import { defaultSituation, dishesInGuide, matchSituation, type AppEatingOut, type AppEatingOutSituation, type DishVerdict } from "@/lib/fmdb/eating-out";
 import {
   dayCount,
   dayLabel,
@@ -334,11 +334,74 @@ export function eatingOutCard(sit: AppEatingOutSituation, guide: AppEatingOut, q
     list: [...sit.choose.map((text) => ({ mark: "yes" as const, text })), ...sit.skip.map((text) => ({ mark: "no" as const, text }))],
     note: sit.note || undefined,
     buttons: [
-      { to: "eatout", label: "The whole guide" },
-      { to: "coach", label: "Ask my coach too", draft: q.trim() },
+      { to: "eatout", label: "Other places" },
+      { to: "coach", label: "Ask my coach", draft: q.trim() },
     ],
   };
 }
+
+/**
+ * A named dish, settled by the coach's guide: her own line for it, as
+ * written, and which card it is on. One row per dish asked about.
+ */
+export function dishCard(found: DishVerdict[], guide: AppEatingOut, q: string): AskCard {
+  const no = found.filter((f) => f.verdict === "skip").length;
+  const maybe = found.filter((f) => f.verdict === "depends").length;
+  const all = found.length > 1;
+  const heading = maybe
+    ? "It depends which one"
+    : no === 0
+      ? all ? "Yes, both are fine" : "Yes, go ahead"
+      : no === found.length
+        ? all ? "Skip these" : "Skip this one"
+        : "One yes, one to skip";
+  const list: AskCard["list"] = [];
+  const instead: string[] = [];
+  for (const f of found) {
+    list.push({ mark: f.verdict === "choose" ? "yes" : "no", text: f.line });
+    if (f.verdict === "depends") list.push(...f.instead.map((text) => ({ mark: "yes" as const, text })));
+    if (f.verdict === "skip") instead.push(...f.instead);
+  }
+  // With a skip, the coach's own lines for what to have there instead: nobody
+  // should be left at a table with only a "no".
+  const shown = new Set(list.map((x) => x.text));
+  const swaps = [...new Set(instead)].filter((t) => !shown.has(t)).slice(0, 2);
+  return {
+    src: guide.label ? `From your plan · ${guide.label}` : PLAN,
+    heading,
+    lines: [],
+    list: [...list, ...swaps.map((text) => ({ mark: "yes" as const, text }))],
+    note: swaps.length ? "The ticked lines are what to have instead." : undefined,
+    buttons: [
+      { to: "eatout", label: "The whole guide" },
+      { to: "coach", label: "Ask my coach", draft: q.trim() },
+    ],
+  };
+}
+
+/**
+ * When the model has no answer to a food question, the client still gets the
+ * coach's own line for a food the plan does not mention — never only "ask
+ * your coach", which at a restaurant table means waiting a day.
+ */
+export function notOnListCard(guide: AppEatingOut, q: string): AskCard {
+  return {
+    src: guide.label ? `From your plan · ${guide.label}` : PLAN,
+    heading: "Not on your list yet",
+    lines: [guide.notOnList || "Choose something from your guide for now, and message your coach so this can be added."],
+    buttons: [
+      { to: "eatout", label: "The whole guide" },
+      { to: "coach", label: "Ask my coach", draft: q.trim() },
+    ],
+  };
+}
+
+/** True when a question asks whether a food may be eaten. */
+export const looksLikeDishQuestion = (q: string): boolean => DISH_ASK.test(dropSupplementForms(normalizeAsk(q)));
+
+/** A question that asks about a food, as opposed to one that merely shares a
+ *  word with a guide line. */
+const DISH_ASK = /\b(can|may|should|could) i\b|\bis\b.*\b(ok|okay|fine|allowed)\b|\b(ok|okay|allowed)\b|what about|which one|\border\b|\beat\b|\bhave\b|\bkha\b|sakt/;
 
 /** Away from home, but not about food: these keep going to the model, which
  *  uses the detail in the question or hands to the coach. */
@@ -394,7 +457,26 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   // it goes to the model rather than to a card that ignores it.
   // Eating away from home: answered at once from the coach's guide for this
   // plan week, when the plan has one and the question is about food.
+  // "I already ate it": answered before any dish lookup. She is not asking
+  // whether she may have it, and a skip list now would read as a scolding.
+  if (has(/(i|maine) (just )?(ate|had|have eaten|have had)\b.*\b(wrong|shouldn'?t|not allowed|off.?plan|cheat|junk|samosa|sweet|dessert|rice|fried)|already ate|i (slipped|cheated)|broke (my|the) (diet|plan)|kha liya/)) {
+    return card({
+      src: PLAN,
+      heading: "You pick up from your next meal",
+      lines: ["One meal does not undo your plan. Nothing here has expired, and there is nothing to make up for."],
+      buttons: [
+        { to: "day", label: "Your whole day", solid: true },
+        { to: "coach", label: "Tell my coach", draft: q.trim() },
+      ],
+    });
+  }
+  if (guide && has(/\b(guide|list)\b/) && has(/eat(ing)? out|restaurant|outside|bahar|dish(es)?|foods?\b/)) return { type: "open", sheet: { k: "eatout" } };
   if (guide) {
+    // A dish she names, when the guide settles it: her coach's line for it.
+    if (has(DISH_ASK) || s.split(" ").length <= 3) {
+      const found = dishesInGuide(s, guide);
+      if (found.length) return card(dishCard(found, guide, q));
+    }
     const food = has(ABOUT_FOOD);
     if (situation && (food || !has(NOT_FOOD))) return card(eatingOutCard(situation, guide, q));
     if (food && has(TRAVEL)) {
@@ -437,7 +519,7 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
       ],
     });
   }
-  if (has(/\bi feel\b|feeling|failed|guilty|ashamed|\bsad\b|crying|lonely/)) {
+  if (has(/\bi feel\b|feeling|failed|guilty|ashamed|\bsad\b|crying|lonely|can'?t do this|cannot do this|too much|too hard|give up|giving up|fed up|what'?s the point/)) {
     return card(coachCard("That sounds heavy. I can send this to your coach, and you don't have to do anything else today."));
   }
   if (has(/ruined|lost (all )?(my )?progress|wasted|back to (zero|square)/)) {
@@ -455,7 +537,7 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (has(/(tick|ticked|done|taken|took|take).*(today|so far)|how many.*(done|ticked)|what (have|did) i (tick|ticked|done|taken)/) && !has(/yesterday|last week/)) {
     return doneAnswer(ctx);
   }
-  if (has(/what did i (tick|take|do|eat)|yesterday|history|\brecord\b|streak|in a row|how many days|proof/)) return { type: "open", sheet: { k: "record" } };
+  if (has(/what did i (tick|take|do|eat)|yesterday|history|\brecord\b|streak|in a row|how many days|proof|did i (take|have|tick)|what time did i/)) return { type: "open", sheet: { k: "record" } };
 
   // screens that arrive in later build steps
   if (has(/exercise|workout|strength|movement|\bgym\b|sit.?to.?stand|push.?up/)) return soon("Movement");
@@ -513,7 +595,7 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (has(/this week|week.?s menu|weekly menu|whole week/)) return soon("This week's menu");
   const meal = mealFor(s, moments);
   if (meal) return card(mealCard(meal, data));
-  if (has(/(aaj|today).*(khana|kya|menu|meals?|eat|food)|today.?s (meals|menu|food)|whole day|all meals/)) {
+  if (has(/(aaj|today).*(khana|kya|menu|meals?|eat|food)|(eat|khana|khau|khaun).*(today|aaj)|today.?s (meals|menu|food)|whole day|all meals/)) {
     return card({
       src: PLAN,
       heading: "Today",
