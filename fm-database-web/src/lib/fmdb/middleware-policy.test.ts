@@ -92,6 +92,9 @@ const PUBLIC_ROUTES = [
   "/api/m-bridge/ask",
   "/recipe-images/dal.jpg",
   "/exercise-videos/neck-retraction.mp4",
+  "/app-voice/tapping-shared-01.m4a",
+  "/app-scenes/rain.mp4",
+  "/app-scenes/rain.jpg",
 ];
 
 const FLY: GateEnv = { flyIntakeOnly: "1" };

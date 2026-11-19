@@ -45,6 +45,15 @@ describe("the recorded voice", () => {
     expect(voiceUrl("sleep-wind-down", 9)).toBe("/app-voice/sleep-wind-down-10.m4a");
   });
 
+  it("Fly is allowed to serve the clips and the scenes", () => {
+    // Fly serves only allow-listed paths. Without these two the practices
+    // open in silence over a blank scene, and nothing errors.
+    const src = fs.readFileSync(path.join(root, "src/lib/fmdb/middleware-policy.ts"), "utf8");
+    const list = src.slice(src.indexOf("export const PUBLIC_PATH_PREFIXES"), src.indexOf("];", src.indexOf("export const PUBLIC_PATH_PREFIXES")));
+    expect(list).toContain('"/app-voice/"');
+    expect(list).toContain('"/app-scenes/"');
+  });
+
   it("every scene has its loop and its still", () => {
     for (const s of ["shore", "rain", "grove", "grass"]) {
       expect(fs.existsSync(path.join(root, `public/app-scenes/${s}.mp4`)), s).toBe(true);
