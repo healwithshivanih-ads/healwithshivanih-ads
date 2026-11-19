@@ -76,9 +76,18 @@ def text(h: str) -> str:
     ("potassium", 5.6, dict(lo=3.5, hi=5.5), "C"), ("potassium", 6.0, dict(lo=3.5, hi=5.5), "D"), ("potassium", 3.2, dict(lo=3.5, hi=5.5), "B"),
     ("sodium", 155, dict(lo=135, hi=145), "C"), ("sodium", 156, dict(lo=135, hi=145), "D"),
     ("glucose", 55, dict(lo=70, hi=110), "C"), ("glucose", 300, dict(lo=70, hi=110), "D"),
+    # the lines corrected after the five-reviewer check (each was a result the first table handled wrongly)
+    ("glucose", 260, dict(lo=70, hi=100), "D"), ("glucose", 240, dict(lo=70, hi=100), "C"),
+    ("potassium", 5.2, dict(lo=3.5, hi=5.5), "A"),      # inside the range printed beside it: never past A
+    ("potassium", 5.2, dict(lo=3.5, hi=5.1), "B"),      # outside a tighter laboratory range: the listed line applies
+    ("creatinine", 1.7, dict(lo=0.6, hi=1.2), "C"),
+    ("calcium", 7.2, dict(lo=8.6, hi=10.2), "D"), ("calcium", 7.8, dict(lo=8.6, hi=10.2), "C"),
+    ("bilirubin", 6.0, dict(lo=0.3, hi=1.2), "D"), ("bilirubin", 4.0, dict(lo=0.3, hi=1.2), "C"),
+    ("albumin", 2.0, dict(lo=3.5, hi=5.5), "C"), ("albumin", 3.1, dict(lo=3.5, hi=5.5), "B"), ("albumin", 3.4, dict(lo=3.5, hi=5.5), "A"),
+    ("lpa_nmol", 110, dict(hi=75), "A"), ("lpa_nmol", 130, dict(hi=75), "B"), ("lpa_nmol", 210, dict(hi=75), "C"),
     # multiples of the laboratory's limit, and per cent above it
     ("alt", 50, dict(hi=40), "A"), ("alt", 70, dict(hi=40), "B"), ("alt", 130, dict(hi=40), "C"), ("alt", 410, dict(hi=40), "D"),
-    ("creatinine", 1.25, dict(lo=0.6, hi=1.2), "A"), ("creatinine", 1.5, dict(lo=0.6, hi=1.2), "B"), ("creatinine", 2.4, dict(lo=0.6, hi=1.2), "D"),
+    ("creatinine", 1.25, dict(lo=0.6, hi=1.2), "A"), ("creatinine", 1.4, dict(lo=0.6, hi=1.2), "B"), ("creatinine", 2.4, dict(lo=0.6, hi=1.2), "D"),
     ("fib4", 2.0, {}, "A"), ("fib4", 2.7, {}, "C"),
     # a marker with no row: per cent beyond its range
     ("urea", 58, dict(lo=18, hi=55), "A"), ("urea", 66, dict(lo=18, hi=55), "B"), ("urea", 90, dict(lo=18, hi=55), "C"),
@@ -91,10 +100,25 @@ def test_levels(key, value, kw, want):
 
 
 def test_levels_are_sex_aware():
-    assert level_for("hb", 12.2, sex="F") == "A" and level_for("hb", 12.2, sex="M") == "B"
+    assert level_for("hb", 12.2, sex="F") == "A" and level_for("hb", 12.2, sex="M") == "C"   # any anaemia in a man: doctor
+    assert level_for("hb", 13.2, sex="M") == "A"
+    assert level_for("hb", 19.0, lo=13, hi=17, sex="M") == "C" and level_for("hb", 17.8, lo=13, hi=17, sex="M") == "B"
+    assert level_for("hb", 17.2, lo=13, hi=17, sex="M") == "A" and level_for("hb", 16.8, lo=13, hi=17, sex="M") == ""
+    assert level_for("hb", 16.0, lo=12, hi=15, sex="F") == "B" and level_for("hb", 16.8, lo=12, hi=15, sex="F") == "C"
     assert level_for("hb", 10.5, sex="F") == "C" and level_for("hb", 7.5, sex="M") == "D"
     assert level_for("hdl", 42, sex="M") == "" and level_for("hdl", 42, sex="F") == "B"
     assert level_for("hdl", 37, sex="M") == "A"
+
+
+def test_a_womans_low_haemoglobin_keeps_the_check_up_step_a_mans_goes_to_the_doctor():
+    def low_hb(sex):
+        rp = make_report(dict(FX["person"], sex=sex), labs(dict(STEADY, Haemoglobin=11.5)), kind="standard", sample=True,
+                         sample_date=FX["sample_date"], report_date=FX["report_date"])
+        return rp.rows["hb"].level, text(report_html(rp))
+    lv_f, t_f = low_hb("F")
+    lv_m, t_m = low_hb("M")
+    assert lv_f == "B" and CHECKUP in t_f and DOCTOR not in t_f
+    assert lv_m == "C" and DOCTOR in t_m
 
 
 def test_what_each_level_prints():
@@ -102,11 +126,23 @@ def test_what_each_level_prints():
     assert "doctor" not in CHECKUP
 
 
-def test_every_cutoff_lives_in_the_one_file_and_the_table_is_approved():
+def test_every_cutoff_lives_in_the_one_file_and_the_table_waits_for_her_yes():
     c = load_cutoffs()
-    assert set(c) >= {"status", "fallback_pct", "cap_at_A", "markers"}
-    # Approved by Shivani on 19 Nov 2026. A change to the numbers goes back to "provisional" until she says yes again.
-    assert c["status"] == "approved" and cutoffs_approved() is True
+    assert set(c) >= {"status", "fallback_pct", "cap_at_A", "inside_range_max_A", "markers"}
+    # She approved the first table on 19 Nov 2026. The lines corrected after the five-reviewer check are waiting for
+    # her yes, so the table is provisional and the command builds the test profile only. On her yes: "approved" here
+    # and in cutoffs.yaml, together.
+    assert c["status"] == "provisional" and cutoffs_approved() is False
+
+
+def test_lpa_is_read_on_the_lines_for_the_unit_the_laboratory_used():
+    def lpa(value, unit):
+        rows = [dict(l, value=str(value), unit=unit) if "Lp(a)" in l["test_name"] else l for l in labs()]
+        rp = make_report(FX["person"], rows, kind="standard", sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+        return rp.rows["lpa"].level, rp.warnings
+    assert lpa(110, "mg/dL")[0] == "C" and lpa(110, "nmol/L")[0] == "A" and lpa(210, "nmol/L")[0] == "C"
+    lv, warns = lpa(110, "U/L")
+    assert lv == "C" and any("Lp(a)" in w and "unit" in w for w in warns)       # read as mg/dL, and the coach is told
 
 
 # ── the test profile reads as the approved samples do ────────────────────────
@@ -247,9 +283,9 @@ def test_an_urgent_value_is_raised_to_the_coach_not_printed():
 
 
 def test_a_far_out_result_nobody_wrote_for_stops_the_report():
-    rp, _, _ = outcome({"Albumin": 1.6})                         # albumin has no row in the table and no block of its own
-    assert rp.rows["albumin"].level == "C"
-    assert rp.missing and any("Albumin" in m for m in rp.missing) and rp.ready is False
+    rp, _, _ = outcome({"Phosphorus": 1.0}, kind="deeper")       # phosphorus has no row in the table and no block of its own
+    assert rp.rows["phosphorus"].level == "C"
+    assert rp.missing and any("Phosphorus" in m for m in rp.missing) and rp.ready is False
 
 
 def test_draft_sentences_are_listed_so_she_can_see_them():
@@ -275,9 +311,11 @@ SWEEP = [
     ("standard", {"TSH (Ultrasensitive)": 4.9}, "tsh_high", "A"), ("standard", {"TSH (Ultrasensitive)": 6.5}, "tsh_high", "B"),
     ("standard", {"TSH (Ultrasensitive)": 0.2}, "tsh_low", "B"), ("standard", {"TSH (Ultrasensitive)": 0.05}, "tsh_low", "C"),
     ("standard", {"Thyroxine (T4, Total)": 13.5}, "thyroid_hormones", "A"),
-    ("standard", {"Creatinine": 1.25}, "kidney", "A"), ("standard", {"Creatinine": 1.5}, "kidney", "B"),
-    ("standard", {"Potassium": 5.3}, "salts", "B"), ("standard", {"Sodium": 128}, "salts", "C"), ("standard", {"Chloride": 111}, "salts", "A"),
-    ("standard", {"Haemoglobin": 13.2}, "hb_low", "A"), ("standard", {"Haemoglobin": 12.0}, "hb_low", "B"), ("standard", {"Haemoglobin": 10.0}, "hb_low", "C"),
+    ("standard", {"Creatinine": 1.25}, "kidney", "A"), ("standard", {"Creatinine": 1.4}, "kidney", "B"), ("standard", {"Creatinine": 1.7}, "kidney", "C"),
+    ("standard", {"Potassium": 5.3}, "salts", "A"), ("standard", {"Potassium": 3.3}, "salts", "B"), ("standard", {"Sodium": 128}, "salts", "C"), ("standard", {"Chloride": 111}, "salts", "A"),
+    ("standard", {"Haemoglobin": 13.2}, "hb_low", "A"), ("standard", {"Haemoglobin": 12.5}, "hb_low", "C"), ("standard", {"Haemoglobin": 10.0}, "hb_low", "C"),
+    ("standard", {"Haemoglobin": 17.3}, "hb_high", "A"), ("standard", {"Haemoglobin": 17.8}, "hb_high", "B"), ("standard", {"Haemoglobin": 19.0}, "hb_high", "C"),
+    ("standard", {"Albumin": 3.4}, "albumin", "A"), ("standard", {"Albumin": 3.1}, "albumin", "B"), ("standard", {"Albumin": 2.8}, "albumin", "C"),
     ("standard", {"MCV": 78}, "red_cells", "A"), ("standard", {"Total Leucocyte Count (TLC)": 12500}, "white_cells", "B"),
     ("standard", {"Platelet Count": 120}, "platelets", "B"), ("standard", {"Blood Urea": 12}, "generic", "B"),
     ("deeper", {"Vitamin D (25-OH)": 24}, "vitd_low", "A"), ("deeper", {"Vitamin D (25-OH)": 15}, "vitd_low", "B"),
@@ -289,7 +327,7 @@ SWEEP = [
     # several at once: the buyers the design was tested on
     ("standard", {"HbA1c": 6.2, "Triglycerides": 240}, "sugar", "B"),
     ("standard", {"hsCRP": 6.8, "Apolipoprotein B (ApoB)": 148, "HbA1c": 6.0}, "lipids", "B"),
-    ("deeper", {"Haemoglobin": 11.5, "Transferrin Saturation": 11, "Vitamin B12": 190}, "hb_low", "B"),
+    ("deeper", {"Haemoglobin": 11.5, "Transferrin Saturation": 11, "Vitamin B12": 190}, "hb_low", "C"),
 ]
 
 
@@ -477,6 +515,7 @@ def test_command_refuses_a_real_buyer_while_the_cutoffs_are_provisional(tmp_path
 def test_command_refuses_a_real_buyer_before_the_launch(tmp_path, monkeypatch, capsys):
     from datetime import datetime
     from zoneinfo import ZoneInfo
+    monkeypatch.setattr("fmdb.report.levels.cutoffs_approved", lambda path=None: True)     # as it is once she says yes
     monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
     write_person(tmp_path, "cl-950")
     mod = shim()
@@ -491,6 +530,7 @@ def test_command_refuses_a_real_buyer_before_the_launch(tmp_path, monkeypatch, c
 def test_command_builds_a_buyer_stored_as_a_prospect_once_the_table_is_approved(tmp_path, monkeypatch, capsys):
     from datetime import datetime
     from zoneinfo import ZoneInfo
+    monkeypatch.setattr("fmdb.report.levels.cutoffs_approved", lambda path=None: True)     # as it is once she says yes
     monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
     d = write_person(tmp_path, "cl-950")                                    # in prospects/, not clients/
     mod = shim()

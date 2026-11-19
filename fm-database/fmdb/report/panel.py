@@ -271,7 +271,14 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
             else:
                 kind, a, b, rtxt = _lab_range_text(lo, hi, sp.under)
             st = state_of(v, kind, a, b, sp.b_incl)
-            lv, side = level_and_side(sp.key, v, lo=lo, hi=hi, sex=sex, cutoffs=cutoffs)
+            ckey, unit_warn = sp.key, ""
+            if sp.key == "lpa":           # the lines are per unit; laboratories report Lp(a) in mg/dL or nmol/L
+                u = unit.lower().replace(" ", "")
+                if "nmol" in u:
+                    ckey = "lpa_nmol"
+                elif "mg/dl" not in u:
+                    unit_warn = f"Lp(a): the unit ({unit or 'none'}) is neither mg/dL nor nmol/L; its level was read as mg/dL, check it"
+            lv, side = level_and_side(ckey, v, lo=lo, hi=hi, sex=sex, cutoffs=cutoffs)
             illustrative = bool(lab and lab.get("illustrative"))
             sec.rows.append(Row(
                 key=sp.key, name=sp.name, gloss="illustrative value" if illustrative else sp.gloss, value=v,
@@ -279,7 +286,7 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                 rtxt=("illustrative range, " + rtxt.replace("lab ", "")) if illustrative else rtxt,
                 calc=bool(sp.comp), state=st, level=lv, nature=sp.nature, group=sp.group or sp.key, beyond=sp.beyond,
                 lo=lo, hi=hi, b_incl=sp.b_incl, illustrative=illustrative, side=side,
-                warn="" if kind != "none" else f"{sp.name}: the laboratory's range could not be read"))
+                warn=unit_warn or ("" if kind != "none" else f"{sp.name}: the laboratory's range could not be read")))
         if sec.rows:
             out.append(sec)
     _thyroid_hormone_rule(out)

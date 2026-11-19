@@ -102,6 +102,8 @@ def level_and_side(
         return "", ""
     if key in (c.get("cap_at_A") or []) and rank(lv) > rank("A"):
         lv = "A"
+    if key in (c.get("inside_range_max_A") or []) and rank(lv) > rank("A") and lo is not None and hi is not None and not above and not below:
+        lv = "A"        # inside the range the laboratory printed beside it
     return lv, side
 
 

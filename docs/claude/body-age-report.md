@@ -28,10 +28,14 @@ approved, no personal Foundation link, a broken link in the PDF.
   `prospect`. Fields on client.yaml: `body_age_reports` (one entry per report), `body_age_report_kind` +
   `body_age_report_date` (the Foundation credit), `segment` (`longevity_customer` when the report offered no session).
   Only the two credit fields are in `_APP_CLIENT_KEYS`; findings and tags never go to Fly.
-- **Every cut-off is in `fmdb/report/cutoffs.yaml`.** No number in code. Shivani approved the table on 19 Nov 2026
-  (`status: approved`). The numbers are guideline lines written from memory and a doctor's read was recommended but is
-  not recorded as done, so a correction is an edit to that file only. Set `status: provisional` while a change waits
-  for her yes: the command then builds the test profile (cl-900) only and refuses everyone else.
+- **Every cut-off is in `fmdb/report/cutoffs.yaml`.** No number in code. Shivani approved the first table on
+  19 Nov 2026. The numbers are guideline lines written from memory and a doctor's read was recommended but is not
+  recorded as done, so a correction is an edit to that file only. Set `status: provisional` while a change waits for
+  her yes: the command then builds the test profile (cl-900) only and refuses everyone else. **The table is
+  `provisional` now**: eight lines corrected after the five-reviewer check (listed at the top of the file, each marked
+  "proposed") wait for her yes. On her yes set `approved` in the file and in the test that pins the status.
+  `inside_range_max_A` (potassium) stops a result inside the laboratory's printed range at A; Lp(a) is read on the
+  `lpa` (mg/dL) or `lpa_nmol` row by the unit the laboratory used.
 - **Levels:** A just outside or middle zone (no doctor wording) · B clearly raised ("worth mentioning at your next
   routine check-up") · C far out ("needs a doctor's attention. Please speak to your doctor.", her wording of 19 Nov 2026,
   no "as well") · D urgent (never printed; the command reports
