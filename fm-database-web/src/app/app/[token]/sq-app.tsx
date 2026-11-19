@@ -31,6 +31,10 @@ import { NO_ANSWER_CARD, type AskButton } from "@/lib/fmdb/ask-card";
 import { askChips, looksLikeDishQuestion, notOnListCard, routeAsk, type AskContext } from "./sq-ask";
 import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
 import { SqCoach, useCoachThread } from "./sq-coach";
+import { DEFAULT_PREFS, findPractice, parsePrefs, practiceList, type PracticePrefs } from "./sq-practice-data";
+import { SqGoodnight, SqPracticePlayer, type PracticeResult } from "./sq-practice";
+import { SqPractices, SqScenesSheet } from "./sq-practices";
+import { sqSound } from "./sq-sound";
 import { SqHome } from "./sq-home";
 import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
@@ -50,6 +54,8 @@ export const SQ_TABS: { id: SqTabId; label: string; icon: SqIconName }[] = [
 
 /** The one plain line every unbuilt screen shows. */
 const NOT_BUILT = "This screen is not built yet.";
+/** Practice settings and saved places, on this phone only. */
+const PRACTICE_KEY = "sq.practice";
 
 /** Per-device settings. Device-level like today's larger-text setting: they
  *  describe how this phone's owner likes the app, not a client's data. */
@@ -228,6 +234,61 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
 
   const { week, totalWeeks } = data.client;
 
+  // ── practices ────────────────────────────────────────────────────────────
+  const practices = useMemo(
+    () => practiceList({ eft: data.eft, sleep: data.sleep, breathwork: data.breathwork, somatic: data.somatic }),
+    [data.eft, data.sleep, data.breathwork, data.somatic],
+  );
+  // Per-device settings and saved places, read after mount like the others.
+  const [prefs, setPrefsState] = useState<PracticePrefs>(DEFAULT_PREFS);
+  useEffect(() => {
+    const t = setTimeout(() => setPrefsState(parsePrefs(readFlag(PRACTICE_KEY))), 0);
+    return () => clearTimeout(t);
+  }, []);
+  const setPrefs = (next: PracticePrefs) => {
+    setPrefsState(next);
+    writeFlag(PRACTICE_KEY, JSON.stringify(next));
+  };
+  /** Open a practice. Called straight from a tap: a phone only lets sound
+   *  start inside one, so the audio is woken here, before the screen draws. */
+  const beginPractice = (id: string) => {
+    if (!findPractice(practices, id)) return go("practices");
+    sqSound().unlock();
+    open({ k: "practice", id });
+  };
+  const finishPractice = (r: PracticeResult) => {
+    const { practice } = r;
+    // Finishing a practice ticks it for today, exactly as tapping its tick would.
+    if (practice.practiceId && !state.practicesDone[practice.practiceId]) state.togglePractice(practice.practiceId);
+    const { [practice.id]: _done, ...resume } = prefs.resume;
+    void _done;
+    setPrefs({ ...prefs, resume, last: { id: practice.id === "one" ? "breath" : practice.id, ymd: todayYmd } });
+    // The coach's log of practices, as today's app writes it. Best effort.
+    const kind = practice.kind === "tap" ? "eft" : practice.kind === "reset" ? "somatic" : practice.kind;
+    void fetch("/api/app-practice", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        token: data.token,
+        kind,
+        practice_id: practice.practiceId,
+        name: practice.title,
+        theme: r.theme ?? null,
+        suds_before: r.sudsBefore ?? null,
+        suds_after: r.sudsAfter ?? null,
+        seconds: r.seconds,
+        slug: practice.kind === "reset" ? practice.id.slice("reset:".length) : null,
+      }),
+    }).catch(() => {});
+    // The wind-down ends on the goodnight screen; the rest simply close.
+    setStack((prev) => [...prev.slice(0, -1), ...(practice.kind === "sleep" ? [{ k: "night" } as SqSheet] : [])]);
+  };
+  /** Bedtime supplements still open, for the goodnight screen's one tick. */
+  const bedtimeOpen = moments.flatMap((m) =>
+    m.band === "bedtime" && m.kind === "supp" && !isTicked(m.id, m.kind, ticks) ? [{ id: m.id, name: m.title }] : [],
+  );
+
   // ── the ask box and the coach ──────────────────────────────────────────
   /** Today shows Home or the thread of questions. */
   const [view, setView] = useState<"home" | "ask">("home");
@@ -254,7 +315,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       return;
     }
     setHint("");
-    if (r.type === "open") return open(r.sheet);
+    if (r.type === "open") return r.sheet.k === "practice" ? beginPractice(r.sheet.id) : open(r.sheet);
     if (r.type === "tab") return r.tab === "coach" ? toCoach(r.draft) : go(r.tab);
     const id = ++turnSeq.current;
     setTab("today");
@@ -277,6 +338,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout") open({ k: b.to });
     else if (b.to === "recipe" && b.ref) open({ k: "recipe", slot: b.ref });
     else if (b.to === "soon") open({ k: "soon", title: b.ref ?? b.label });
+    else if (b.to === "practice" && b.ref) beginPractice(b.ref);
     else if (b.to === "practices") go("practices");
     else if (b.to === "coach") toCoach(b.draft);
   };
@@ -323,6 +385,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "eatout" && data.planRef?.eatingOut) {
       sheetTitle = sheet.where ?? "Eating out";
       sheetBody = <SqEatingOutSheet guide={data.planRef.eatingOut} where={sheet.where} open={open} />;
+    } else if (sheet.k === "scenes") {
+      sheetTitle = "Backgrounds";
+      sheetBody = <SqScenesSheet prefs={prefs} setPrefs={setPrefs} />;
     } else if (sheet.k === "start") {
       sheetTitle = "How this app works";
       sheetBody = <SqStartSheet />;
@@ -383,6 +448,8 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           />
         ) : tab === "coach" ? (
           <SqCoach data={data} thread={coach} />
+        ) : tab === "practices" ? (
+          <SqPractices list={practices} prefs={prefs} todayYmd={todayYmd} next={data.mindBody} onBegin={beginPractice} open={open} />
         ) : (
           <>
             <div className="sq-greet">
@@ -476,7 +543,20 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
         ))}
       </nav>
 
-      {sheet && (
+      {sheet?.k === "practice" && findPractice(practices, sheet.id) && (
+        <SqPracticePlayer
+          key={sheet.id}
+          data={data}
+          practice={findPractice(practices, sheet.id)!}
+          hour={hour ?? 12}
+          prefs={prefs}
+          setPrefs={setPrefs}
+          onFinish={finishPractice}
+          onClose={close}
+        />
+      )}
+      {sheet?.k === "night" && <SqGoodnight pending={bedtimeOpen} onTick={(id) => state.toggleTick(id)} onClose={close} />}
+      {sheet && sheet.k !== "practice" && sheet.k !== "night" && (
         // key: each sheet is its own element, so opening one from another
         // starts at the top and plays its own entrance.
         <div key={depth} className="sq-sheet" role="dialog" aria-modal="true" aria-labelledby="sq-sheet-title">

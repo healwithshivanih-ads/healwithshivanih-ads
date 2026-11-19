@@ -17,6 +17,7 @@ import { describe, expect, it } from "vitest";
 import type { AppMeal, AppPractice, AppRemedy, AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
 import { askChips, dishOnMenu, findRow, looksLikeDishQuestion, notOnListCard, routeAsk, type AskContext, type AskResult } from "./sq-ask";
 import { buildMoments, dayRows, rankFloorAt, type SqTicks } from "./sq-day";
+import { ALL_PRACTICES, SOMATIC, eft } from "./sq-practice.fixture";
 
 // ── a synthetic client ─────────────────────────────────────────────────────
 
@@ -91,6 +92,7 @@ function data(over: Record<string, unknown> = {}): ClientAppData {
         ],
       },
     ],
+    ...ALL_PRACTICES,
     travel: null,
     clientUpdateNote: null,
     sq: { planDay: 24, tickHistory: HISTORY, daysSinceLastOpen: 0 },
@@ -117,7 +119,7 @@ function outcome(r: AskResult): string {
   if (r.type === "empty") return "EMPTY";
   if (r.type === "model") return "MODEL";
   if (r.type === "tab") return `TAB ${r.tab}`;
-  if (r.type === "open") return r.sheet.k === "soon" ? `SOON ${r.sheet.title}` : `OPEN ${r.sheet.k}`;
+  if (r.type === "open") return r.sheet.k === "soon" ? `SOON ${r.sheet.title}` : r.sheet.k === "practice" ? `PRACTICE ${r.sheet.id}` : `OPEN ${r.sheet.k}`;
   const c = r.card;
   if (c.tone === "urgent") return c.heading!.includes("alone") ? "SELFHARM" : "EMERGENCY";
   if (c.handoff) return "HAND";
@@ -184,24 +186,24 @@ const REGRESSION: [string, string][] = [
   ["do i have to do all of this", "OPEN start"],
   ["what is the ring at the top", "OPEN start"],
   // a practice offer
-  ["can't switch my mind off", "CARD Let's slow things down"],
-  ["hot flush right now", "CARD Let's slow things down"],
-  ["hot flush at work and my heart is racing, what can I do right now", "CARD Let's slow things down"],
-  ["raat ko neend nahi aayi", "CARD Let's slow things down"],
-  ["i could not sleep last night", "CARD Let's slow things down"],
-  ["sleep", "CARD Let's slow things down"],
-  ["my mind is racing, it's 11pm", "CARD Let's slow things down"],
-  ["I woke at 3 and can't get back to sleep", "CARD Let's slow things down"],
-  ["Help me sleep", "CARD Let's slow things down"],
-  ["I can't sleep", "CARD Let's slow things down"],
+  ["can't switch my mind off", "CARD For a busy mind"],
+  ["hot flush right now", "CARD Right now, where you are"],
+  ["hot flush at work and my heart is racing, what can I do right now", "CARD Right now, where you are"],
+  ["raat ko neend nahi aayi", "CARD For tonight"],
+  ["i could not sleep last night", "CARD For tonight"],
+  ["sleep", "CARD For tonight"],
+  ["my mind is racing, it's 11pm", "CARD For tonight"],
+  ["I woke at 3 and can't get back to sleep", "CARD For tonight"],
+  ["Help me sleep", "CARD For tonight"],
+  ["I can't sleep", "CARD For tonight"],
   ["feeling panicky right now", "CARD Let's slow things down"],
   ["I feel stressed", "CARD Let's slow things down"],
   ["Help me wind down", "CARD Let's slow things down"],
-  ["I'm so irritable today, snapping at everyone", "CARD Let's slow things down"],
-  ["I feel irritable", "CARD Let's slow things down"],
-  ["tapping", "CARD Let's slow things down"],
-  ["I don't have five minutes", "CARD Let's slow things down"],
-  ["I have one minute", "CARD Let's slow things down"],
+  ["I'm so irritable today, snapping at everyone", "CARD For a short fuse"],
+  ["I feel irritable", "CARD For a short fuse"],
+  ["tapping", "PRACTICE tap"],
+  ["I don't have five minutes", "CARD One minute is enough"],
+  ["I have one minute", "CARD One minute is enough"],
   ["which practice for anger", "TAB practices"],
   // coming back
   ["I've fallen off completely. Do I have to start the whole plan again from day 1?", "CARD You start from today"],
@@ -309,8 +311,8 @@ describe("round-4 tester findings", () => {
     ["aaj mehman aa rahe hai kya banau", "CARD Today on your plan"],
     ["what is left to tick today?", "CARD 9 left today"],
     ["what time does my coach reply?", "CARD Within 24 hours"],
-    ["I'm furious with everyone today", "CARD Let's slow things down"],
-    ["sheets are soaked, again", "CARD Let's slow things down"],
+    ["I'm furious with everyone today", "CARD For a short fuse"],
+    ["sheets are soaked, again", "CARD For tonight"],
     ["", "EMPTY"],
     ["   ", "EMPTY"],
   ])("%s → %s", (q, want) => {
@@ -602,6 +604,60 @@ describe("round-5 tester findings", () => {
   it("distress gets the warm hand-off line", () => {
     const r = routeAsk("I can't do this anymore, it's too much", ctx());
     expect(r.type === "card" && r.card.lines[0]).toContain("That sounds heavy");
+  });
+});
+
+// ── practices ──────────────────────────────────────────────────────────────
+
+describe("practice answers", () => {
+  const card = (q: string, c: AskContext = ctx()) => {
+    const r = routeAsk(q, c);
+    if (r.type !== "card") throw new Error(`expected a card for "${q}"`);
+    return r.card;
+  };
+
+  it("a bad night offers the wind-down first, one tap from starting, and the coach", () => {
+    const c = card("I woke at 3 and can't get back to sleep");
+    expect(c.buttons).toEqual([
+      { to: "practice", ref: "sleep", label: "Begin sleep wind-down", solid: true },
+      { to: "practice", ref: "breath", label: "Slow breathing", solid: false },
+      { to: "coach", label: "Tell my coach", draft: "I woke at 3 and can't get back to sleep" },
+    ]);
+    expect(c.note).toContain("nights like this");
+  });
+
+  it("round 5: a hot flush is never offered a movement session", () => {
+    const c = card("hot flush at work");
+    expect(c.heading).toBe("Right now, where you are");
+    expect(c.buttons?.map((b) => b.ref)).toEqual(["one", "reset:body-reset", undefined]);
+    expect(JSON.stringify(c)).not.toMatch(/movement/i);
+  });
+
+  it("offers only practices that are on her plan", () => {
+    // Tapping and a body reset, but no wind-down and no breathing.
+    const some = ctx({ dataOver: { eft: eft(), sleep: null, breathwork: null, somatic: SOMATIC } });
+    const night = card("I can't sleep", some);
+    expect(night.heading).toBe("Let's slow things down");
+    expect(night.buttons?.map((b) => b.ref)).toEqual(["tap", "reset:body-reset", undefined]);
+    // The two-practice line is used only when she has both.
+    const fuse = card("I'm furious", ctx({ dataOver: { eft: eft(), sleep: null, breathwork: null, somatic: [] } }));
+    expect(fuse.lines[0]).toBe("Tapping suits this, and it is on your plan.");
+  });
+
+  it("with no practices on the plan, a feeling goes to the coach", () => {
+    const none = ctx({ dataOver: { eft: null, sleep: null, breathwork: null, somatic: [] } });
+    expect(ask("I feel stressed", none)).toBe("HAND");
+    expect(ask("tapping", none)).toBe("HAND");
+  });
+
+  it("asked for by name, a practice simply opens", () => {
+    expect(ask("tapping")).toBe("PRACTICE tap");
+    expect(ask("body reset")).toBe("PRACTICE reset:body-reset");
+    expect(ask("sleep wind-down")).toBe("PRACTICE sleep");
+  });
+
+  it("a tight chest is still the emergency card, never a practice", () => {
+    expect(ask("I think it's panic, my chest is tight")).toBe("EMERGENCY");
   });
 });
 

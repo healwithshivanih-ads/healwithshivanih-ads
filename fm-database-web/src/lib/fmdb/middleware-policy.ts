@@ -132,6 +132,11 @@ export const PUBLIC_PATH_PREFIXES = [
   // Exercise demonstration videos for the client app's session player.
   // Generic anatomy-figure loops — no client data.
   "/exercise-videos/",
+  // The coach's recorded voice for the client app's practices (tapping and
+  // the sleep wind-down), and the four looping scenes behind them. The same
+  // generic recordings for every client — no client data.
+  "/app-voice/",
+  "/app-scenes/",
   // Public client handouts — static branded 1-page guides. No client data.
   "/handouts/",
   // Inbound WhatsApp (self-hosted Fly app). HMAC-verified at the route via

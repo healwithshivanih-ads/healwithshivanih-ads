@@ -706,7 +706,9 @@ const EFT_LIBRARY: Record<string, EftScript> = {
     "How stressed do you feel right now?",
     "And now — how stressed do you feel?",
     [
-      "All this stress I've been holding",
+      // "the", not "this": it is what the coach says in the recording
+      // (public/app-voice/tapping-stress-02.m4a), and the screen must match the voice.
+      "All the stress I've been holding",
       "Everything I've been carrying today",
       "It's okay to set some of it down",
       "I'm doing the best I can",
