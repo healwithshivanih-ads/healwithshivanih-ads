@@ -30,6 +30,7 @@ import {
   type SqWith,
 } from "./sq-day";
 import { SqAskBox } from "./sq-ask-ui";
+import { SqDiaryCard, type SqDiaryState } from "./sq-diary";
 import { SqStartCard } from "./sq-start";
 import { SqIcon, type SqSheet } from "./sq-ui";
 
@@ -56,6 +57,8 @@ export interface SqHomeProps {
   onUndo: (m: SqMoment) => void;
   onToggle: (id: string, kind: SqKind) => void;
   open: (s: SqSheet) => void;
+  /** the food diary, while the coach has one running (sq-diary.tsx) */
+  diary?: SqDiaryState;
   /** the return card has been put away today */
   returnDismissed: boolean;
   onDismissReturn: () => void;
@@ -209,6 +212,8 @@ export function SqHome(p: SqHomeProps) {
       )}
 
       {firstDay && <SqStartCard onOpen={() => p.open({ k: "start" })} />}
+
+      {p.diary?.view && <SqDiaryCard d={p.diary} onOpen={() => p.open({ k: "diary" })} />}
 
       {last && isTicked(last.id, last.kind, ticks) && (
         <section className="sq-soft sq-donebar" role="status">
