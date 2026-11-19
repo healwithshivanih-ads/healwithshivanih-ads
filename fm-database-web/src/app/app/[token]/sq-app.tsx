@@ -36,6 +36,7 @@ import { SqGoodnight, SqPracticePlayer, type PracticeResult } from "./sq-practic
 import { SqPractices, SqScenesSheet } from "./sq-practices";
 import { sqSound } from "./sq-sound";
 import { SqHome } from "./sq-home";
+import { SqDiarySheet, useSqDiary } from "./sq-diary";
 import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
 import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
@@ -209,6 +210,11 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     }
     setStack((prev) => [...prev, s]);
   };
+  // The food diary's state lives here so Home and its sheet show the same
+  // photos. A photo picked from Home opens the diary sheet to be saved.
+  const diary = useSqDiary(data, () => {
+    if (stack[stack.length - 1]?.k !== "diary") open({ k: "diary" });
+  });
   const close = () => {
     if (stack.length <= 1) {
       openerRef.current?.focus();
@@ -388,6 +394,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "scenes") {
       sheetTitle = "Backgrounds";
       sheetBody = <SqScenesSheet prefs={prefs} setPrefs={setPrefs} />;
+    } else if (sheet.k === "diary") {
+      sheetTitle = "Food diary";
+      sheetBody = <SqDiarySheet d={diary} data={data} />;
     } else if (sheet.k === "start") {
       sheetTitle = "How this app works";
       sheetBody = <SqStartSheet />;
@@ -445,6 +454,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
             onDismissReturn={dismissReturn}
             chips={ready ? askChips(askCtx) : []}
             onAsk={ask}
+            diary={diary}
           />
         ) : tab === "coach" ? (
           <SqCoach data={data} thread={coach} />
@@ -543,6 +553,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
         ))}
       </nav>
 
+      {/* The diary's photo picker sits outside everything a sheet makes inert,
+          so "Add a photo" works from Home and from the diary sheet alike. */}
+      {diary.input}
       {sheet?.k === "practice" && findPractice(practices, sheet.id) && (
         <SqPracticePlayer
           key={sheet.id}

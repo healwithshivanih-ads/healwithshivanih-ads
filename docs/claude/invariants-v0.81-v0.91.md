@@ -380,3 +380,7 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - **Breathing light:** `BreathOrb` in `sq-practice.tsx` replaced the static rings: a glass sphere over the live scene (backdrop-filter refraction), warm core and halo driven by `--b` (0..1, eased), a ripple per phase, drifting motes; `auto` mode (closing breath after tapping) animates `--b` through a registered `@property`. Reduced motion stops the movement.
 - The coach app (pm2 `fm-coach`) must be rebuilt after client-app sound changes, or its live preview iframe serves the old build.
 - **Scene sound has its own switch:** `PracticePrefs.nature` (default on; old saved settings read as on) shows in practice Settings as "Rain / Waves / Wind / Birdsong: on|off" (`SCENES[k].sound`). Music off keeps the scene sound and vice versa; the bed starts if either is on. Rain plays at gain 0.11 (halved at the coach's request).
+
+### Client app redesign — food diary on the new front (19 Nov 2026)
+- `sq-diary.tsx` (`useSqDiary`, `SqDiaryCard`, `SqDiarySheet`) is the new front's diary. It talks only to `/api/app-diary` like `ochre-diary.tsx`, and shows only what `clientDiaryView` sends (words, grams only when the coach switched them on).
+- Home shows the card only while a diary runs; a picked photo opens the "diary" sheet. It never names the coach and never sends a message (`sq-diary.test.tsx` pins both). Meal-time reminders stay off until the client turns them on.

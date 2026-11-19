@@ -49,10 +49,12 @@ export type SqSheet =
   | { k: "night" }
   /** the four practice backgrounds */
   | { k: "scenes" }
+  /** the food diary: a new photo to save, today's photos, reminders */
+  | { k: "diary" }
   /** a screen a later build step fills in */
   | { k: "soon"; title: string };
 
-export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "left" | "up" | "bag" | "pen";
+export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "left" | "up" | "bag" | "pen" | "camera";
 
 /** Line icons, 24×24, drawn with the stroke set in `.sq-ic`. */
 const ICON_PATHS: Record<SqIconName, string> = {
@@ -68,6 +70,7 @@ const ICON_PATHS: Record<SqIconName, string> = {
   up: "M12 19V5M5 12l7-7 7 7",
   bag: "M6 8h12l1 12H5zM9 8V6a3 3 0 0 1 6 0v2",
   pen: "M4 20l4-1 11-11-3-3L5 16zM14 6l3 3",
+  camera: "M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1zM12 16.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z",
 };
 
 export function SqIcon({ name }: { name: SqIconName }) {
