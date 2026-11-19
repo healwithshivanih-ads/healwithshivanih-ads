@@ -396,6 +396,27 @@ class FoodDiary(BaseModel):
 KNOWN_ENGAGEMENT_STATUSES = ("pending", "signed_up", "declined", "lapsed")
 
 
+class BodyAgeReportEntry(BaseModel):
+    """One body age report made for a person (fmdb/report/build.py::Report.record).
+
+    `extra="allow"` so a field added to the report later never breaks loading."""
+
+    model_config = ConfigDict(extra="allow")
+
+    report_no: str
+    kind: str                                  # "standard" | "deeper"
+    sample_date: date
+    report_date: date
+    body_age: Optional[float] = None
+    age_at_sample: Optional[int] = None
+    outcome: Optional[str] = None              # nothing | self | foundation | doctor_only
+    segment: Optional[str] = None
+    tags: list[str] = Field(default_factory=list)
+    next_test: Optional[date] = None
+    credit_until: Optional[date] = None
+    files_dir: Optional[str] = None
+
+
 class InterestSignal(BaseModel):
     """One thing a prospect has shown they care about (2026-10-21).
 
@@ -741,6 +762,21 @@ class Client(BaseModel):
     # so the follow-up emails still wait for the call itself.
     triage_paid_at: Optional[datetime] = None
     triage_payment_id: Optional[str] = None
+    # ── Body age report (a blood test + written report, sold on its own) ─────
+    # A report buyer is stored like a prospect: no sign-up, no plan, so the one
+    # lifecycle resolver reads them as `prospect` and never as in care.
+    # body_age_report_kind + body_age_report_date are the credit toward the
+    # Foundation session (the report fee comes off for 14 days after the report
+    # date: foundationPriceFor in foundation-orders.ts). Projected to Fly for
+    # the pay route. Written by scripts/body-age-report.py.
+    body_age_report_kind: Optional[str] = None       # "standard" | "deeper"
+    body_age_report_date: Optional[date] = None
+    # One entry per report made: what it concluded, the tags for matching
+    # reading, and where its files are. Coach-side only; never projected.
+    body_age_reports: list[BodyAgeReportEntry] = Field(default_factory=list)
+    # Who to market to and how. "longevity_customer" = a report buyer whose
+    # report offered no session (steady, or small things to work on alone).
+    segment: Optional[str] = None
     # ── Sequoya "Founding 20" (launch Jan 2027) ──────────────────────────────
     # founding_member drives the "Founding member" mark in the client app (it
     # IS projected to Fly). founding_splus_rate_inr is the locked Sequoya+

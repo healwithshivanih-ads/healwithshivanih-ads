@@ -165,9 +165,12 @@ export async function startFoundationSession(clientId: string): Promise<
 
   const gift = giftedSessionOf(data);
   const price = foundationPriceFor(data);
-  const priceLine = price.creditInr
-    ? `(₹${price.amountInr.toLocaleString("en-IN")} — the ₹${price.creditInr} you paid for our short call comes off the ₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")})`
-    : `(₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")})`;
+  const list = `₹${FOUNDATION_SESSION_PRICE_INR.toLocaleString("en-IN")}`;
+  const priceLine = !price.creditInr
+    ? `(${list})`
+    : price.creditKind === "body_age_report"
+      ? `(₹${price.amountInr.toLocaleString("en-IN")} — what you paid for your body age report comes off the ${list}${price.creditUntil ? `, if you book by ${price.creditUntil.split("-").reverse().join("-")}` : ""})`
+      : `(₹${price.amountInr.toLocaleString("en-IN")} — the ₹${price.creditInr} you paid for our short call comes off the ${list})`;
   // A gifted session (Sequoya founding gift) has no price — never quote one.
   const waText = gift
     ? giftMessage({
@@ -212,6 +215,11 @@ export async function lookupFoundationToken(token: string): Promise<
       paid: boolean;
       amountInr: number;
       creditInr: number;
+      /** Which credit came off, so the page words it truthfully. */
+      creditKind: "triage_call" | "body_age_report" | null;
+      /** Last day (YYYY-MM-DD) a body age report credit applies. */
+      creditUntil: string | null;
+      listInr: number;
       intakePath: string | null;
       intakeSubmitted: boolean;
       bookingUrl: string;
@@ -236,6 +244,7 @@ export async function lookupFoundationToken(token: string): Promise<
   const { paid } = await foundationSessionPaid(clientId);
   const g = giftedSessionOf(data);
   const todayYmd = new Date().toLocaleDateString("en-CA", { timeZone: IST });
+  const price = foundationPriceFor(data, todayYmd);
   return {
     ok: true,
     clientId,
@@ -245,8 +254,11 @@ export async function lookupFoundationToken(token: string): Promise<
     gift: g
       ? { byFirstName: g.gifted_by_name || "a friend", expiresOn: g.expires_on, expired: giftExpired(g, todayYmd) }
       : null,
-    amountInr: foundationPriceFor(data).amountInr,
-    creditInr: foundationPriceFor(data).creditInr,
+    amountInr: price.amountInr,
+    creditInr: price.creditInr,
+    creditKind: price.creditKind ?? null,
+    creditUntil: price.creditUntil ?? null,
+    listInr: FOUNDATION_SESSION_PRICE_INR,
     intakePath: intakeToken ? `/intake/${intakeToken}` : null,
     intakeSubmitted,
     bookingUrl: foundationCallUrl(),

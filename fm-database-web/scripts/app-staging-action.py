@@ -148,6 +148,12 @@ _APP_CLIENT_KEYS = (
     # ₹11,001 instead of ₹12,000. Without it here the credit never reaches Fly.
     "triage_call_date",
     "triage_paid_at",
+    # the body age report credit: the report fee comes off the Foundation session
+    # for 14 days after the report date (foundationPriceFor). The pay page is
+    # served from Fly, so without these two the buyer is charged the full price.
+    # Only the type and the date go to Fly; findings and tags stay on the Mac.
+    "body_age_report_kind",
+    "body_age_report_date",
     # Sequoya "Founding 20". founding_member → the "Founding member" mark in the
     # app + on the growing tree. gifted_foundation_session → the /foundation
     # page shows the gift card (not the pay step) and the Fly pay route refuses

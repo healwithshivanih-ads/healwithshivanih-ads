@@ -16,3 +16,6 @@ eval_type_backport>=0.2.0; python_version < "3.10"
 markdown>=3.5
 html2text
 pytest>=8.0
+# fmdb/report/pdf.py lays the header/footer layer over the body age report PDF
+# (headless Chrome prints both). Imported only when a PDF is built.
+pypdf>=4.0

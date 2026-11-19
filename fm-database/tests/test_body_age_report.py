@@ -1,0 +1,387 @@
+"""The body age report: result levels, the next step it offers, the drawings, and the approved wording.
+
+The test profile is cl-900 (the app's test account), 4 Jul 2026 draw. `approved_*.txt` is the visible text of the
+two PDFs Shivani approved on 19 Nov 2026; the generator must reproduce it apart from a listed set of differences.
+"""
+from __future__ import annotations
+
+import difflib
+import html
+import importlib.util
+import json
+import os
+import re
+import sys
+from datetime import date
+from pathlib import Path
+
+import pytest
+import yaml
+
+ROOT = Path(__file__).resolve().parent.parent
+FIX = Path(__file__).parent / "fixtures" / "body_age"
+WEB = ROOT.parent / "fm-database-web"
+sys.path.insert(0, str(ROOT))
+
+from fmdb.plan.lifecycle import IN_CARE, resolve_lifecycle  # noqa: E402
+from fmdb.plan.models import Client  # noqa: E402
+from fmdb.report import mail, viz  # noqa: E402
+from fmdb.report.build import ReportError, make_report  # noqa: E402
+from fmdb.report.decide import CREDIT_DAYS, FOUNDATION_AFTER_INR, credit_deadline, decide, next_test_date  # noqa: E402
+from fmdb.report.levels import CHECKUP, DOCTOR, cutoffs_approved, doctor_wording, level_for, load_cutoffs  # noqa: E402
+from fmdb.report.page import report_html  # noqa: E402
+from fmdb.report.panel import num  # noqa: E402
+
+FX = yaml.safe_load((FIX / "test_profile.yaml").read_text())
+
+# a profile with nothing off: the test profile with its flagged results brought into range
+STEADY = {"TSH (Ultrasensitive)": 2.1, "Homocysteine": 9.0, "hsCRP": 0.6, "HbA1c": 5.3, "Cholesterol - Total": 170,
+          "Cholesterol - LDL": 90, "Cholesterol - VLDL": 18, "Triglycerides": 95, "Non-HDL Cholesterol": 112,
+          "Lipoprotein (a) [Lp(a)]": 12, "Apolipoprotein A1 (ApoA1)": 142, "Apolipoprotein B (ApoB)": 82, "Vitamin B12": 520}
+
+
+def labs(over=None, metals=False):
+    over = over or {}
+    out = [dict(l, value=str(over.get(l["test_name"], l["value"]))) for l in FX["lab_values"]]
+    return out + (FX["illustrative_metals"] if metals else [])
+
+
+def report(kind="standard", over=None, **kw):
+    kw.setdefault("sample_date", FX["sample_date"])
+    kw.setdefault("report_date", FX["report_date"])
+    return make_report(FX["person"], labs(over, metals=kind == "deeper"), kind=kind, sample=True, **kw)
+
+
+def text(h: str) -> str:
+    h = re.sub(r"<(svg|style).*?</\1>", " ", h, flags=re.S)
+    h = re.sub(r"<[^>]+>", " ", h)
+    return re.sub(r"\s+", " ", html.unescape(h)).strip()
+
+
+# ── result levels ────────────────────────────────────────────────────────────
+@pytest.mark.parametrize("key,value,kw,want", [
+    # the results Shivani has already seen printed in the approved samples
+    ("tsh", 8.31, dict(lo=0.40, hi=4.40), "C"),
+    ("hcy", 22.07, dict(lo=3.7, hi=15.0), "B"),
+    ("apob", 143.2, {}, "B"), ("ldl", 142.6, {}, "B"), ("non_hdl", 174.7, dict(hi=160), "B"),
+    ("hba1c", 5.8, {}, "A"),
+    # the nine test buyers
+    ("hba1c", 6.2, {}, "B"), ("tg", 240, {}, "B"), ("lpa", 96, {}, "C"), ("hscrp", 6.8, {}, "B"), ("apob", 151, {}, "B"),
+    ("tsh", 4.9, dict(lo=0.4, hi=4.4), "A"),
+    # each band's edges
+    ("hba1c", 5.6, {}, ""), ("hba1c", 6.5, {}, "C"), ("hba1c", 10.0, {}, "D"),
+    ("hscrp", 3.0, {}, "A"), ("hscrp", 3.1, {}, "B"), ("hscrp", 10, {}, "C"),
+    ("tsh", 0.35, dict(lo=0.4, hi=4.4), "A"), ("tsh", 0.2, dict(lo=0.4, hi=4.4), "B"), ("tsh", 0.05, dict(lo=0.4, hi=4.4), "C"),
+    ("tsh", 4.45, dict(lo=0.4, hi=4.4), "A"),          # outside the lab's range, short of every listed line
+    ("potassium", 5.6, dict(lo=3.5, hi=5.5), "C"), ("potassium", 6.0, dict(lo=3.5, hi=5.5), "D"), ("potassium", 3.2, dict(lo=3.5, hi=5.5), "B"),
+    ("sodium", 155, dict(lo=135, hi=145), "C"), ("sodium", 156, dict(lo=135, hi=145), "D"),
+    ("glucose", 55, dict(lo=70, hi=110), "C"), ("glucose", 300, dict(lo=70, hi=110), "D"),
+    # multiples of the laboratory's limit, and per cent above it
+    ("alt", 50, dict(hi=40), "A"), ("alt", 70, dict(hi=40), "B"), ("alt", 130, dict(hi=40), "C"), ("alt", 410, dict(hi=40), "D"),
+    ("creatinine", 1.25, dict(lo=0.6, hi=1.2), "A"), ("creatinine", 1.5, dict(lo=0.6, hi=1.2), "B"), ("creatinine", 2.4, dict(lo=0.6, hi=1.2), "D"),
+    ("fib4", 2.0, {}, "A"), ("fib4", 2.7, {}, "C"),
+    # a marker with no row: per cent beyond its range
+    ("urea", 58, dict(lo=18, hi=55), "A"), ("urea", 66, dict(lo=18, hi=55), "B"), ("urea", 90, dict(lo=18, hi=55), "C"),
+    ("urea", 40, dict(lo=18, hi=55), ""),
+    # never a doctor line on their own
+    ("insulin", 80, dict(hi=25), "A"), ("apoa1", 60, dict(lo=120, hi=190), "A"), ("b12", 1475, dict(lo=120, hi=911), "A"),
+])
+def test_levels(key, value, kw, want):
+    assert level_for(key, value, **kw) == want
+
+
+def test_levels_are_sex_aware():
+    assert level_for("hb", 12.2, sex="F") == "A" and level_for("hb", 12.2, sex="M") == "B"
+    assert level_for("hb", 10.5, sex="F") == "C" and level_for("hb", 7.5, sex="M") == "D"
+    assert level_for("hdl", 42, sex="M") == "" and level_for("hdl", 42, sex="F") == "B"
+    assert level_for("hdl", 37, sex="M") == "A"
+
+
+def test_what_each_level_prints():
+    assert doctor_wording("A") == "" and doctor_wording("B") == CHECKUP and doctor_wording("C") == DOCTOR
+    assert "doctor" not in CHECKUP
+
+
+def test_every_cutoff_lives_in_the_one_file_and_is_still_provisional():
+    c = load_cutoffs()
+    assert set(c) >= {"status", "fallback_pct", "cap_at_A", "markers"}
+    # Flip to "approved" in cutoffs.yaml only when Shivani has signed the table off; this line then changes with it.
+    assert c["status"] == "provisional" and cutoffs_approved() is False
+
+
+# ── the test profile reads as the approved samples do ────────────────────────
+def test_profile_statuses_and_decision():
+    rp = report("deeper")
+    assert {s.id: s.status for s in rp.sections} == {
+        "heart": "needs attention", "sugar": "watch", "liver": "steady", "thyroid": "needs a deeper look",
+        "kidneys": "steady", "blood": "steady", "nutrients": "watch", "metals": "steady"}
+    d = rp.decision
+    assert d.outcome == "foundation" and d.segment is None and d.urgent == []
+    assert d.deep_rows == ["tsh", "hcy"] and d.testimonials == ["thyroid", "sugar"]
+    assert {"tsh:C", "hcy:B", "lipids:B", "sugar:A", "pattern:hcy_b12", "b12_high", "body_age:younger"} <= set(d.tags)
+    assert rp.drafts == [] and rp.missing == [] and rp.warnings == []
+
+
+def test_body_age_is_scored_at_the_age_on_the_sample_date():
+    rp = report()                                       # born 30 Jul 1973, sample 4 Jul 2026: still 52
+    assert (rp.age, rp.body_age) == (52, 41.9)
+    later = report(sample_date="2026-08-01", report_date="2026-08-03")
+    assert later.age == 53 and later.body_age > rp.body_age
+    assert rp.next_test == date(2026, 11, 4) and rp.deadline == date(2026, 7, 21)
+
+
+def test_a_record_without_a_birth_date_or_sex_is_refused():
+    for drop in ("date_of_birth", "sex"):
+        person = {k: v for k, v in FX["person"].items() if k != drop}
+        with pytest.raises(ReportError):
+            make_report(person, labs(), kind="standard", sample_date=FX["sample_date"], report_date=FX["report_date"])
+
+
+ALLOWED = {  # (approved, generated): every permitted difference from the approved text
+    ("53,", "52,"), ("53.", "52."), ("53", "52"), ("53:", "52:"), ("42.8", "41.9"),      # age on the sample date
+    ("lowers your body age", ""), ("little effect", ""),                                   # provisional tags dropped
+    ("0.95", "0.93"),                                                                      # the scarring score uses age
+    ("0.40–4.40", "0.4–4.4"), ("0.60–1.20", "0.6–1.2"), ("11.6–14.0", "11.6–14"), ("13.0–17.0", "13–17"),
+    ("3.7–15.0", "3.7–15"), ("2.5–5.0", "2.5–5"), ("5.0", "5"),                            # a range bound prints without trailing zeros
+}
+
+
+@pytest.mark.parametrize("kind,ref,no", [("standard", "approved_standard.txt", "SR-SAMPLE-01"), ("deeper", "approved_deeper.txt", "SRP-SAMPLE-01")])
+def test_the_report_reproduces_the_approved_text(kind, ref, no):
+    a = (FIX / ref).read_text().split()
+    b = text(report_html(report(kind, report_no=no, book_url="https://example.test/foundation/t"))).split()
+    sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    diffs = {(" ".join(a[i1:i2]), " ".join(b[j1:j2])) for tag, i1, i2, j1, j2 in sm.get_opcodes() if tag != "equal"}
+    assert diffs <= ALLOWED, sorted(diffs - ALLOWED)
+
+
+# "ring" may only mean the tree's rings (the drawing and its one sentence), never the product or a test
+FORBIDDEN = re.compile(r"sequoya|rings\+|rings? report|\b(?:your|next|first|each|every|three|this) rings?\b|thyrocare|85,000|"
+                       r"twelve.week|programme|12.week|results call", re.I)
+
+
+@pytest.mark.parametrize("kind", ["standard", "deeper"])
+@pytest.mark.parametrize("over", [None, STEADY])
+def test_nothing_a_buyer_reads_names_the_product_the_lab_or_the_programme(kind, over):
+    rp = report(kind, over)
+    for h in (report_html(rp), mail.email_html(rp), mail.attachment_name(rp), mail.SUBJECT):
+        t = text(h)
+        assert not FORBIDDEN.search(t), FORBIDDEN.search(t).group(0)
+
+
+def test_email_carries_the_approved_short_version():
+    rp = report(book_url="https://example.test/foundation/t")
+    t = text(mail.email_html(rp))
+    assert "Your body age is 41.9 . You are 52." in t
+    assert "A Foundation session, ₹7,000." in t and "if you book by 21 July 2026" in t
+    assert "https://example.test/foundation/t" in mail.email_html(rp)
+    assert 'src="cid:ring"' in mail.email_html(rp)
+    assert mail.attachment_name(rp) == "Body age report, R., 4 July 2026.pdf"
+
+
+# ── the next step, the longevity flag and the tags ───────────────────────────
+def outcome(over, kind="standard"):
+    rp = report(kind, dict(STEADY, **over))
+    return rp, rp.decision.outcome, rp.decision.segment
+
+
+def test_a_steady_report_offers_nothing_and_files_a_longevity_customer():
+    rp, out, seg = outcome({})
+    assert (out, seg) == ("nothing", "longevity_customer") and "steady" in rp.decision.tags
+    assert all(s.status == "steady" for s in rp.sections)
+    assert rp.next_test == date(2027, 7, 4)                      # about a year, not four months
+    t = text(report_html(rp))
+    assert "Foundation session" not in t and "₹" not in t        # a steady page quotes no price
+    assert "Book your session" not in t
+
+
+def test_one_or_two_small_things_are_the_buyers_own_to_work_on():
+    rp, out, seg = outcome({"HbA1c": 5.8})
+    assert (out, seg) == ("self", "longevity_customer") and "sugar:A" in rp.decision.tags
+    assert "Foundation session" not in text(report_html(rp))
+    assert outcome({"HbA1c": 5.8, "TSH (Ultrasensitive)": 4.9})[1] == "self"
+
+
+def test_foundation_is_offered_for_a_clear_result_three_small_ones_or_an_older_body_age():
+    assert outcome({"HbA1c": 6.2})[1] == "foundation"                                               # clearly raised
+    assert outcome({"HbA1c": 5.8, "TSH (Ultrasensitive)": 4.9, "hsCRP": 2.0})[1] == "foundation"    # three in the middle zone
+    rp = report(over=STEADY)
+    assert decide(rp.sections, body_age=rp.age + 3.1, age=rp.age, deeper=False).outcome == "foundation"
+    assert decide(rp.sections, body_age=rp.age + 3.0, age=rp.age, deeper=False).outcome == "nothing"
+
+
+def test_an_inherited_doctor_only_result_gets_the_doctor_line_and_no_session_offer():
+    rp, out, seg = outcome({"Lipoprotein (a) [Lp(a)]": 96})
+    assert (out, seg) == ("doctor_only", None) and "lpa:C" in rp.decision.tags
+    assert "price" not in rp.step and "doctor" in rp.step["headline"]
+    # with something of the buyer's own to work on as well, still no session: it is theirs to do
+    assert outcome({"Lipoprotein (a) [Lp(a)]": 96, "HbA1c": 5.8})[1] == "self"
+
+
+def test_foundation_price_and_deadline_follow_the_report_type_and_date():
+    std, deep = report("standard"), report("deeper")
+    assert (std.step["price"], deep.step["price"]) == (7000, 2000) == (FOUNDATION_AFTER_INR["standard"], FOUNDATION_AFTER_INR["deeper"])
+    assert credit_deadline(date(2026, 7, 7)) == date(2026, 7, 21) and CREDIT_DAYS == 14
+    assert "₹12,000, with what you paid for this report taken off, if you book by 21 July 2026." in std.step["credit"]
+
+
+def test_the_web_price_rule_and_the_report_print_the_same_figures():
+    ts = (WEB / "src/lib/fmdb/foundation-orders.ts").read_text()
+    m = re.search(r"FOUNDATION_AFTER_BODY_AGE_REPORT_INR[^=]*=\s*\{\s*standard:\s*(\d+),\s*deeper:\s*(\d+)\s*\}", ts)
+    assert m and {"standard": int(m.group(1)), "deeper": int(m.group(2))} == FOUNDATION_AFTER_INR
+    assert int(re.search(r"BODY_AGE_CREDIT_DAYS\s*=\s*(\d+)", ts).group(1)) == CREDIT_DAYS
+
+
+def test_an_urgent_value_is_raised_to_the_coach_not_printed():
+    rp, _, _ = outcome({"Potassium": 6.2})
+    assert rp.decision.urgent and "Potassium" in rp.decision.urgent[0] and rp.ready is False
+
+
+def test_a_result_with_no_wording_stops_the_report():
+    rp, _, _ = outcome({"Potassium": 5.3})                       # kidneys now need a deeper look: nothing approved for that
+    assert rp.missing and any("kidneys" in m for m in rp.missing) and rp.ready is False
+
+
+def test_draft_sentences_are_listed_so_she_can_see_them():
+    rp, _, _ = outcome({})
+    assert "heart.steady" in rp.drafts and "step.nothing" in rp.drafts and rp.missing == []
+
+
+def test_next_test_is_four_months_with_something_to_work_on():
+    rp = report()
+    assert next_test_date(rp.sample_date, rp.sections) == date(2026, 11, 4)
+
+
+# ── the three drawings follow the data ───────────────────────────────────────
+def test_only_the_deeper_report_has_drawings():
+    assert report("standard").figures == {} and set(report("deeper").figures) == {"glance", "nutrients", "onebody"}
+
+
+def test_organ_tints_come_from_each_sections_status():
+    sick, well = report("deeper").figures["glance"][1], report("deeper", STEADY).figures["glance"][1]
+    assert sick.count(viz.ZOUT) == 2 and well.count(viz.ZOUT) == 0          # thyroid and heart tinted; none when steady
+    assert "needs a deeper look" in sick and "needs a deeper look" not in well
+    assert well.count(">steady<") == 8                                        # six organs and the two blood-only sections
+
+
+def test_jar_levels_come_from_the_values_and_their_ranges():
+    assert viz.jar_note(42.2, 30, 100) == ("in range, lower third", "ok")
+    assert viz.jar_note(32.8, 16, 50) == ("comfortable", "ok")
+    assert viz.jar_note(1475, 120, 911) == ("overfull", "over") and viz.jar_note(18, 30, 100) == ("below the low line", "low")
+    jars = viz.jars_for(report("deeper").rows, num)
+    assert [(j[0], j[1], j[6]) for j in jars] == [("Vitamin D", "42.2", "in range, lower third"), ("Vitamin B12", "1,475", "overfull"),
+                                                  ("Iron carriers", "32.8%", "comfortable")]
+    low = viz.jars_for(report("deeper", dict(STEADY, **{"Vitamin D (25-OH)": 14})).rows, num)
+    assert low[0][6:] == ("below the low line", "low")
+
+
+def test_map_nodes_and_links_come_from_the_rules_that_write_the_text():
+    rp = report("deeper")
+    said = {c.id for c in rp.decision.connections if c.title}
+    assert said == {"thyroid_arteries", "sugar_fats", "hcy_b12"}
+    t = text(report_html(rp))
+    for c in rp.decision.connections:
+        if c.title:
+            assert c.text in t
+    from fmdb.report.decide import groups_of
+    nodes, links, aside = viz.map_for(rp.sections, rp.decision.connections, rp.rows, groups_of(rp.sections))
+    assert list(nodes) == ["thyroid", "b12", "hcy", "art", "sugar"] and len(links) == 4
+    assert nodes["thyroid"][1:3] == ("needs a deeper look", "deep") and nodes["art"][1:3] == ("needs attention", "att")
+    assert nodes["b12"][1] == "overfull" and nodes["sugar"][1] == "watch"
+    assert aside[0] == "steady, and not on this map: liver, kidneys, blood count, metals"
+    assert viz.overlaps(nodes, links) == []
+    # a report where nothing connects draws no map and says so in words
+    well = report("deeper", STEADY)
+    assert "onebody" not in well.figures and not any(c.title for c in well.decision.connections)
+
+
+# ── a buyer is not a client in care ──────────────────────────────────────────
+def buyer_record():
+    return {"client_id": "cl-950", "display_name": "Test Buyer", "sex": "F", "date_of_birth": "1980-01-01",
+            "intake_date": "2027-01-03", "created_at": "2027-01-03T10:00:00Z", "updated_at": "2027-01-10T10:00:00Z",
+            "updated_by": "coach", "body_age_report_kind": "standard", "body_age_report_date": "2027-01-10",
+            "segment": "longevity_customer",
+            "body_age_reports": [{"report_no": "BA-S-950-270105", "kind": "standard", "sample_date": "2027-01-05",
+                                  "report_date": "2027-01-10", "outcome": "nothing", "tags": ["steady"]}]}
+
+
+def test_a_report_buyer_resolves_to_prospect_and_is_never_in_care():
+    life = resolve_lifecycle(buyer_record(), [], date(2027, 1, 12))
+    assert life["state"] == "prospect" and life["state"] not in IN_CARE
+    # and stays one however long ago the report was
+    assert resolve_lifecycle(buyer_record(), [], date(2028, 1, 12))["state"] == "prospect"
+
+
+def test_the_client_model_holds_the_buyer_fields():
+    c = Client.model_validate(buyer_record())
+    assert c.body_age_report_date == date(2027, 1, 10) and c.body_age_reports[0].outcome == "nothing" and c.segment == "longevity_customer"
+
+
+def test_only_the_credit_fields_reach_the_public_box():
+    src = (WEB / "scripts/app-staging-action.py").read_text()
+    assert '    "body_age_report_kind",\n    "body_age_report_date",\n' in src
+    assert "body_age_reports" not in src                 # findings and tags stay on the Mac
+
+
+# ── the command ──────────────────────────────────────────────────────────────
+def shim():
+    spec = importlib.util.spec_from_file_location("body_age_report_shim", WEB / "scripts/body-age-report.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def write_person(root: Path, cid: str, bucket: str = "prospects") -> Path:
+    d = root / bucket / cid
+    d.mkdir(parents=True)
+    person = dict(FX["person"], client_id=cid, intake_date="2026-05-04", created_at="2026-05-04T00:00:00Z",
+                  updated_at="2026-05-04T00:00:00Z", updated_by="coach", health_snapshots=[{"date": FX["sample_date"], "lab_values": FX["lab_values"]}])
+    (d / "client.yaml").write_text(yaml.safe_dump(person, sort_keys=False))
+    return d
+
+
+def run(mod, capsys, **req):
+    import io
+    old = sys.stdin
+    sys.stdin = io.StringIO(json.dumps(req))
+    try:
+        mod.main([])
+    finally:
+        sys.stdin = old
+    return json.loads(capsys.readouterr().out)
+
+
+def test_command_refuses_a_real_buyer_while_the_cutoffs_are_provisional(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
+    write_person(tmp_path, "cl-950")
+    out = run(shim(), capsys, client_id="cl-950", kind="standard")
+    assert out["ok"] is False and "provisional" in out["error"]
+
+
+def test_command_builds_the_test_profile_and_records_it(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
+    d = write_person(tmp_path, "cl-900", bucket="clients")
+    out = run(shim(), capsys, client_id="cl-900", kind="standard", report_date=FX["report_date"], record=True, html_only=True)
+    assert out["ok"] and out["report"]["outcome"] == "foundation" and out["report"]["credit_until"] == "2026-07-21"
+    # no app token on this record yet, so there is no personal link: the report is not ready to send
+    assert out["ready"] is False and any("Foundation link" in b for b in out["blockers"])
+    saved = yaml.safe_load((d / "client.yaml").read_text())
+    assert saved["body_age_report_kind"] == "standard" and str(saved["body_age_report_date"]) == FX["report_date"]
+    assert saved["body_age_reports"][0]["report_no"] == out["report"]["report_no"] and "segment" not in saved
+    Client.model_validate(saved)
+    assert Path(out["files"]["html"]).is_file() and Path(out["files"]["email_html"]).is_file()
+
+
+@pytest.mark.skipif(os.environ.get("FMDB_PDF_TESTS") != "1", reason="prints with Chrome; run locally with FMDB_PDF_TESTS=1")
+@pytest.mark.parametrize("kind,pages", [("standard", 16), ("deeper", 19)])
+def test_pdf_has_the_approved_page_count_and_working_links(kind, pages, tmp_path):
+    from fmdb.report.pdf import build_pdf
+    from pypdf import PdfReader
+    rp = report(kind, book_url="https://example.test/foundation/t")
+    res = build_pdf(rp, tmp_path / "r.pdf")
+    assert res["pages"] == pages
+    kinds = {k for _, k, _ in res["links"]}
+    assert "BROKEN" not in kinds and ("web" in kinds and "jump" in kinds)
+    assert any(t == "https://example.test/foundation/t" for _, _, t in res["links"])
+    meta = PdfReader(str(tmp_path / "r.pdf")).metadata
+    assert "body age report" in meta.title.lower() and not FORBIDDEN.search(meta.title + str(meta.author))

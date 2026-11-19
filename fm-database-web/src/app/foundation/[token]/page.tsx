@@ -5,6 +5,9 @@ import { GiftView } from "./gift-view";
 export const dynamic = "force-dynamic";
 
 const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+/** "2026-07-21" → "21 July 2026". */
+const longDate = (ymd: string) =>
+  new Date(`${ymd}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 export default async function FoundationTokenPage({
   params,
@@ -133,7 +136,13 @@ export default async function FoundationTokenPage({
           <span className="text-3xl font-semibold text-stone-900">{inr(res.amountInr)}</span>
           <span className="text-sm text-stone-500">one-time</span>
         </div>
-        {res.creditInr > 0 && (
+        {res.creditInr > 0 && res.creditKind === "body_age_report" && (
+          <p className="mt-2 text-sm text-emerald-700">
+            {inr(res.listInr)}, with what you paid for your body age report taken off
+            {res.creditUntil ? `, if you book by ${longDate(res.creditUntil)}` : ""}.
+          </p>
+        )}
+        {res.creditInr > 0 && res.creditKind !== "body_age_report" && (
           <p className="mt-2 text-sm text-emerald-700">
             Includes your {inr(res.creditInr)} credit from our short call.
           </p>
