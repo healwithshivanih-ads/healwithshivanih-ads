@@ -27,6 +27,10 @@ Text = Union[str, dict]
 
 LINE_B = " A result at this level is worth mentioning at your next routine check-up."
 LINE_C = " A result this far outside its range needs a doctor's attention. Please speak to your doctor."
+# The strongest level (D). Shivani, 19 Nov 2026: nothing is called urgent, a buyer may panic; the report says the same
+# thing as far-out in slightly stronger words and is sent like any other. DRAFT until she approves the sentence.
+LINE_D = " A result at this level needs a doctor's attention soon. Please see your doctor in the next day or two."
+LINE_D_SHORT = " Needs a doctor's attention soon."
 
 
 @dataclass

@@ -22,7 +22,7 @@ SHOW = {"loss": "[women: regular blood loss such as heavy periods · men: slow b
 GROUPS = [("steady.", "Sections with nothing off"), ("liver.fat", "Sections with nothing off"), ("b12_high", "Sections with nothing off"),
           ("rest.", "Page 1 and the letter"), ("todo.", "Page 1 and the letter"), ("letter.", "Page 1 and the letter"),
           ("bodyage.", "Your body age"), ("onebody.", "What connects"), ("conn.", "What connects"),
-          ("next.", "Your next test"), ("step.", "Your next step")]
+          ("next.", "Your next test"), ("line.", "Your next step"), ("step.", "Your next step")]
 
 
 # what the {slots} in the page-1 and next-step phrases are shown as: one example person
@@ -31,6 +31,8 @@ EXAMPLE = {"name": "Asha", "date": "4 November 2026", "status": "watch", "others
            "its_their": "its", "it_is": "It is", "count": "Two things", "is_are": "are",
            "things": "your artery numbers and your sugar average"}
 EXAMPLE_FOR = {"todo.deep.many": {"names": "Your haemoglobin, your vitamin B12 and your iron"},
+               "todo.soon": {"names": "Your salts", "is_are": "are"},
+               "step.soon.headline": {"count": "One result", "needs": "needs", "names": "salts"},
                "step.inherited.headline": {"names": "Lp(a)"}, "step.doctor_only.headline": {"names": "Lp(a)"},
                "step.foundation.far": {"names": "liver enzymes"}, "step.nothing.para": {"date": "4 July 2027"},
                "next.steady.when": {"date": "4 July 2027"}, "rest.also": {"name": "vitamins and iron"}}

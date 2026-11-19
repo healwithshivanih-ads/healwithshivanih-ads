@@ -21,7 +21,8 @@ Writes JSON to stdout:
 {
   "ok": bool, "error": str | null,
   "ready": bool,                 # false = do NOT send; `blockers` says why
-  "blockers": [str], "drafts": [str], "warnings": [str], "urgent": [str],
+  "blockers": [str], "drafts": [str], "warnings": [str],
+  "soon": [str],                 # results at the strongest level: the report asks them to see a doctor in a day or two
   "report": {...},               # kind, dates, body age, outcome, segment, tags, credit_until
   "files": {"pdf", "email_html", "email_preview", "ring", "mark", "html", "json"},
   "pages": int | null
@@ -164,7 +165,6 @@ def main(argv: list[str]) -> int:
         return fail(f"{cid}: {e}")
 
     blockers = [f"needs wording: {m}" for m in rp.missing]
-    blockers += [f"URGENT, phone them today, do not wait for the report: {u}" for u in rp.decision.urgent]
     if rp.decision.outcome == "foundation" and not book_url:
         blockers.append("no personal Foundation link yet: open the Foundation pay link on their page, then build again")
     if rp.drafts:
@@ -203,10 +203,13 @@ def main(argv: list[str]) -> int:
 
     if req.get("record"):
         write_record(cdir, person, rp, out_dir)
+    # Nothing is called urgent and nothing is held back (Shivani, 19 Nov 2026): the report itself asks them to see a
+    # doctor in the next day or two. The coach is told so the report does not sit unsent.
+    rp.warnings += [f"{u}: the report asks them to see a doctor in the next day or two. Send it today." for u in rp.decision.soon]
     for w in rp.warnings:
         print(f"warning: {w}", file=sys.stderr)
     json.dump({"ok": True, "error": None, "ready": not blockers, "blockers": blockers, "drafts": rp.drafts,
-               "warnings": rp.warnings, "urgent": rp.decision.urgent, "report": rp.record(), "files": files, "pages": pages,
+               "warnings": rp.warnings, "soon": rp.decision.soon, "report": rp.record(), "files": files, "pages": pages,
                "recorded": bool(req.get("record"))}, sys.stdout, ensure_ascii=False)
     return 0
 

@@ -19,7 +19,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from .findings import FOLDED_INTO_LIPIDS, Hit, at, hits_in
+from .findings import FOLDED_INTO_LIPIDS, LINE_D, LINE_D_SHORT, Hit, at, hits_in
 from .levels import rank
 from .panel import Row, Section, b12_high, num
 
@@ -78,6 +78,12 @@ DRAFT: dict[str, tuple[str, str]] = {
     "step.self.para": ("Next step, one or two small things", "What is marked in this report sits just outside its range. Your next test, on {date}, will show which way it is moving."),
     "step.inherited.headline": ("Next step, an inherited result alone and clearly raised: headline", "One result here is worth mentioning at your next routine check-up: your {names}."),
     "step.inherited.para": ("Next step, an inherited result alone and clearly raised", "It is inherited, and food does not move it. Everything else in this report is steady, so you do not need a session with me."),
+    "line.soon": ("Closing sentence at the strongest level, in place of the far-out sentence", LINE_D.strip()),
+    "line.soon.short": ("One-page summary, a result at the strongest level", LINE_D_SHORT.strip()),
+    "todo.soon": ("Page 1 steps and the email, a result at the strongest level: the first step, tagged 'See your doctor first · in the next day or two'",
+                  "{names} {is_are} at a level that needs a doctor's attention soon. Please see your doctor in the next day or two, and take this report with you."),
+    "step.soon.headline": ("Next step, a result at the strongest level: headline (no session is offered)", "{count} here {needs} a doctor's attention soon: your {names}."),
+    "step.soon.para": ("Next step, a result at the strongest level", "Please see your doctor in the next day or two, and take this report with you. That comes before anything else here."),
     "step.doctor_only.headline": ("Next step, an inherited result alone and far out: headline", "One result here needs a doctor's attention: your {names}."),
     "step.doctor_only.para": ("Next step, an inherited result alone and far out", "It is inherited, and food does not move it. Please speak to your doctor. Everything else in this report is steady, so you do not need a session with me."),
     "step.foundation.work.headline": ("Next step, Foundation offered with nothing needing a deeper look: headline", "{count} in this report {is_are} worth working on with help: {things}."),
@@ -171,6 +177,9 @@ class Lib:
 
     def hit(self, h: Hit) -> None:
         """Record a finding block as used when its wording at this level is not approved yet."""
+        if h.level == "D":
+            self._note("line.soon")
+            self._note("line.soon.short")
         if not h.approved:
             self._note(f"finding.{h.finding.id}.{'C' if h.level == 'D' else h.level}")
 
@@ -262,7 +271,9 @@ def slots_for(h: Hit, sex: str) -> dict:
 
 
 def line_of(h: Hit) -> str:
-    return h.finding.line.get("C" if h.level == "D" else h.level, "")
+    if h.level == "D":                                  # the strongest level: the same message, slightly stronger words
+        return h.finding.line.get("D", LINE_D)
+    return h.finding.line.get(h.level, "")
 
 
 def noun_of(h: Hit) -> str:
@@ -277,7 +288,7 @@ def order(h: Hit, do: str) -> str:
     """What to do, with the level's closing sentence. At far-out the doctor sentence comes FIRST, so nobody reads
     the food advice and stops; the approved blocks keep the order Shivani approved."""
     line = line_of(h).strip()
-    if rank(h.level) >= 3 and not h.approved and line:
+    if line and (rank(h.level) >= 4 or (rank(h.level) >= 3 and not h.approved)):
         return (line + " " + do).strip()
     return (do + " " + line).strip()
 
@@ -475,6 +486,11 @@ def deep_step(deep: list[Hit], rp: Any, lib: Lib, link: bool = True) -> str:
 def todo_steps(rp: Any, lib: Lib) -> list[dict]:
     """The numbered steps on page 1: start tonight, what we can work on, what needs a deeper look."""
     steps: list[dict] = []
+    soon = [h for h in all_hits(rp) if h.level == "D"]
+    if soon:                  # the strongest level: the doctor is step 1, before anything the buyer can do alone
+        steps.append(dict(tag="See your doctor first", when="in the next day or two", short="seeing your doctor in the next day or two",
+                          text=lib.d("todo.soon", names=cap(join(["your " + noun_of(h) for h in soon])),
+                                     is_are="are" if len(soon) > 1 or is_plural(soon[0]) else "is")))
     work = [h for h in work_hits(rp) if h.finding.step]
     ids = [h.finding.id for h in work]
     walk = "Walk for ten minutes after your largest meal, every day until your next test. It helps your body clear the sugar from that meal."
@@ -491,9 +507,9 @@ def todo_steps(rp: Any, lib: Lib) -> list[dict]:
             lib.hit(h)
         body = " ".join(h.finding.step for h in work[:3])
         steps.append(dict(tag="What we can work on", when="over the next few months", text=body, email=body))
-    deep = deep_hits(rp)
+    deep = [h for h in deep_hits(rp) if h.level != "D"]
     if deep:
-        steps.append(dict(tag="Needs a deeper look", when="the next step", text=deep_step(deep, rp, lib), email=deep_step(deep, rp, lib, link=False)))
+        steps.append(dict(tag="Needs a deeper look", when="after you have seen your doctor" if soon else "the next step", text=deep_step(deep, rp, lib), email=deep_step(deep, rp, lib, link=False)))
     else:
         watch = [h for h in all_hits(rp) if h.nature != "work" and rank(h.level) == 1]
         if watch:
@@ -609,7 +625,7 @@ def next_test(rp: Any, lib: Lib) -> dict:
 
 # ── your report on one page ──────────────────────────────────────────────────
 def _line(level: str) -> str:
-    return {2: " Worth mentioning at your next routine check-up.", 3: " Needs a doctor's attention.", 4: " Needs a doctor's attention."}.get(rank(level), "")
+    return {2: " Worth mentioning at your next routine check-up.", 3: " Needs a doctor's attention.", 4: LINE_D_SHORT}.get(rank(level), "")
 
 
 def summary(rp: Any, lib: Lib) -> dict:
@@ -665,6 +681,12 @@ def next_step(rp: Any, lib: Lib) -> dict:
         return dict(outcome="self", headline=lib.d("step.self.headline"), paras=[lib.d("step.self.para", date=day(rp.next_test))])
     deep = deep_hits(rp)
     names = [noun_of(h) for h in deep]
+    if d.outcome == "doctor_soon":                      # a result at the strongest level: the doctor first, no session offer
+        soon = [noun_of(h) for h in all_hits(rp) if h.level == "D"]
+        k = len(soon)
+        return dict(outcome="doctor_only", paras=[lib.d("step.soon.para")],
+                    headline=lib.d("step.soon.headline", count=f"{word(k).capitalize()} result{'s' if k != 1 else ''}",
+                                   needs="need" if k != 1 else "needs", names=join(soon[:1] + ['your ' + n for n in soon[1:]])))
     if d.outcome == "doctor_only":
         key = "doctor_only" if any(rank(h.level) >= 3 for h in deep) else "inherited"
         return dict(outcome="doctor_only", headline=lib.d(f"step.{key}.headline", names=join(names)), paras=[lib.d(f"step.{key}.para")])

@@ -69,7 +69,7 @@ class Report:
     @property
     def ready(self) -> bool:
         """True when nothing stops this report from being shown to its buyer."""
-        return not self.missing and not self.decision.urgent and (self.sample or self.cutoffs_status == "approved")
+        return not self.missing and (self.sample or self.cutoffs_status == "approved")
 
     def record(self) -> dict:
         """What is kept on the buyer's record (client.yaml#body_age_reports)."""

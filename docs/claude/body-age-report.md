@@ -16,10 +16,10 @@ echo '{"client_id":"cl-900","kind":"deeper","name":"R."}' | python fm-database-w
 
 Writes `<person>/files/body-age/<report no>/`: the PDF, `email.html` (images as `cid:ring` / `cid:mark`), `ring.png`,
 `mark.png`, `email-preview.html` (open this to read the email) and `report.json`. Prints JSON: `ready`, `blockers`,
-`drafts`, `urgent`, the outcome and tags. `"record": true` also writes the result to client.yaml. Needs Chrome on the
+`drafts`, `soon`, the outcome and tags. `"record": true` also writes the result to client.yaml. Needs Chrome on the
 machine (the Mac that runs the coach app); `FMDB_CHROME` overrides the path. Nothing is ever sent.
 
-`ready: false` means do not send. Blockers: a result with no wording, an urgent value, draft sentences Shivani has not
+`ready: false` means do not send. Blockers: a result with no wording, draft sentences Shivani has not
 approved, no personal Foundation link, a broken link in the PDF.
 
 ## Invariants
@@ -37,8 +37,10 @@ approved, no personal Foundation link, a broken link in the PDF.
   `lpa` (mg/dL) or `lpa_nmol` row by the unit the laboratory used.
 - **Levels:** A just outside or middle zone (no doctor wording) · B clearly raised ("worth mentioning at your next
   routine check-up") · C far out ("needs a doctor's attention. Please speak to your doctor.", her wording of 19 Nov 2026,
-  no "as well") · D urgent (never printed; the command reports
-  it and blocks). Calculated scores, insulin and ApoA1 stop at A; the scarring score (FIB-4) is the exception.
+  no "as well") · D strongest ("needs a doctor's attention soon. Please see your doctor in the next day or two.", DRAFT).
+  **Nothing is called urgent and nothing is held back** (her rule, 19 Nov 2026: a buyer may panic): a D result prints
+  like any other, the doctor is step 1 on page 1, no session is offered (`outcome: doctor_soon`), and the command's
+  `soon` list and a warning tell the coach to send it today. Calculated scores, insulin and ApoA1 stop at A; the scarring score (FIB-4) is the exception.
 - **Body age is scored at the age on the sample date**, in completed years (`lab_client_context(person, today=sample_date)`).
   A record without a date of birth or sex is refused.
 - **The approved text is pinned word for word.** `tests/fixtures/body_age/approved_*.txt` is the standard and deeper

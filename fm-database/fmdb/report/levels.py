@@ -1,4 +1,4 @@
-"""Result levels for the body age report: A just outside, B clearly raised, C far out, D urgent.
+"""Result levels for the body age report: A just outside, B clearly raised, C far out, D see a doctor soon.
 
 Every number lives in cutoffs.yaml (same folder). This module only reads that file and applies it.
 "" (empty) means the result is fine.
@@ -117,5 +117,5 @@ CHECKUP = "worth mentioning at your next routine check-up"
 
 
 def doctor_wording(level: str) -> str:
-    """The words a level prints, or "" (A prints nothing; D is never printed, it is handled by phone)."""
+    """The words a level prints, or "" (A prints nothing; D prints the far-out words with "soon", see findings.LINE_D)."""
     return {"B": CHECKUP, "C": DOCTOR, "D": DOCTOR}.get(level, "")

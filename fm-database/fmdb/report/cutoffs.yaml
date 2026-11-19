@@ -13,11 +13,11 @@
 #
 # CORRECTED AND APPROVED 19 Nov 2026 (her "yes for the 8", after the five-reviewer check). Each line below is
 # marked "corrected" where it sits:
-#   glucose      urgent from 250 (was 300)
+#   glucose      strongest level (D) from 250 (was 300)
 #   creatinine   doctor sentence from 25% above the laboratory's top (was 50%)
 #   potassium    a result inside the laboratory's own printed range never goes past level A (was B from 5.1)
-#   calcium      urgent below 7.5 (no urgent line before)
-#   bilirubin    urgent from 5.0 mg/dL (no urgent line before)
+#   calcium      strongest level (D) below 7.5 (no D line before)
+#   bilirubin    strongest level (D) from 5.0 mg/dL (no D line before)
 #   hb           men: doctor sentence below 13.0 (was check-up below 13.0, doctor below 11.0); a HIGH haemoglobin now
 #                has lines for both sexes (it had none)
 #   albumin      its own row: check-up below 3.2, doctor below 3.0 (was the per-cent rule: doctor only below ~1.7)
@@ -27,7 +27,9 @@
 #   A  just outside, or middle zone   no doctor wording
 #   B  clearly raised or clearly low  "worth mentioning at your next routine check-up"
 #   C  far out                        "needs a doctor's attention. Please speak to your doctor."
-#   D  urgent                         never printed; the coach is told the day results are loaded
+#   D  strongest                      "needs a doctor's attention soon. Please see your doctor in the next day or two."
+#                                     Printed like any other level. Nothing is called urgent and nothing is held
+#                                     back (Shivani, 19 Nov 2026: a buyer may panic); the coach is told to send it today.
 #
 # How a row is read:
 #   high:      value AT OR ABOVE the number reaches that level   (">155" means strictly above)

@@ -151,7 +151,7 @@ def test_profile_statuses_and_decision():
         "heart": "needs attention", "sugar": "watch", "liver": "steady", "thyroid": "needs a deeper look",
         "kidneys": "steady", "blood": "steady", "nutrients": "watch", "metals": "steady"}
     d = rp.decision
-    assert d.outcome == "foundation" and d.segment is None and d.urgent == []
+    assert d.outcome == "foundation" and d.segment is None and d.soon == []
     assert d.deep_rows == ["tsh", "hcy"] and d.testimonials == ["thyroid", "sugar"]
     assert {"tsh:C", "hcy:B", "lipids:B", "sugar:A", "pattern:hcy_b12", "b12_high", "body_age:younger"} <= set(d.tags)
     assert rp.drafts == [] and rp.missing == [] and rp.warnings == []
@@ -276,9 +276,33 @@ def test_the_web_price_rule_and_the_report_print_the_same_figures():
     assert int(re.search(r"BODY_AGE_CREDIT_DAYS\s*=\s*(\d+)", ts).group(1)) == CREDIT_DAYS
 
 
-def test_an_urgent_value_is_raised_to_the_coach_not_printed():
-    rp, _, _ = outcome({"Potassium": 6.2})
-    assert rp.decision.urgent and "Potassium" in rp.decision.urgent[0] and rp.ready is False
+# Shivani, 19 Nov 2026: nothing is called urgent (a buyer may panic) and nothing is held back. The strongest level
+# prints the far-out message in slightly stronger words, puts the doctor first and offers no session.
+SOON = "Please see your doctor in the next day or two"
+
+
+@pytest.mark.parametrize("kind", ["standard", "deeper"])
+@pytest.mark.parametrize("over", [{"Potassium": 6.2}, {"Fasting Glucose": 270}, {"Calcium": 7.2}, {"Bilirubin Total": 6.0},
+                                  {"Haemoglobin": 7.5}, {"Potassium": 6.2, "TSH (Ultrasensitive)": 8.3, "HbA1c": 6.1}])
+def test_the_strongest_level_prints_stronger_doctor_words_and_never_the_word_urgent(kind, over):
+    rp, outcome_, seg = outcome(over, kind)
+    assert outcome_ == "doctor_soon" and seg is None and rp.decision.soon and not rp.missing and rp.ready is True
+    page = text(report_html(rp))
+    mailed = text(mail.email_html(rp))
+    for t in (page, mailed):
+        assert SOON in t and not re.search(r"urgent|emergency|immediately|at once|phone", t, re.I)
+    assert rp.todo[0]["tag"] == "See your doctor first" and "needs a doctor's attention soon" in rp.todo[0]["text"]
+    step = page[page.rfind("Your next step"):page.rfind("Methods and references")]
+    assert "needs a doctor's attention soon" in step or "need a doctor's attention soon" in step
+    assert "₹" not in step and "session" not in step.lower()                  # the doctor first: no offer beside it
+    assert "line.soon" in rp.drafts                                             # her yes is still needed for the sentence
+
+
+def test_far_out_keeps_her_sentence_and_only_the_strongest_level_says_soon():
+    rp, outcome_, _ = outcome({"Potassium": 5.8})
+    page = text(report_html(rp))
+    assert rp.rows["potassium"].level == "C" and outcome_ == "foundation"
+    assert "needs a doctor's attention. Please speak to your doctor." in page and "soon" not in page.lower().replace("sooner", "")
 
 
 def test_a_far_out_result_nobody_wrote_for_stops_the_report():

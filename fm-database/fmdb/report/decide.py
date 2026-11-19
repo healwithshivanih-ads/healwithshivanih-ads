@@ -72,10 +72,10 @@ class Connection:
 
 @dataclass
 class Decision:
-    outcome: str                  # nothing | self | foundation | doctor_only
+    outcome: str                  # nothing | self | foundation | doctor_only | doctor_soon
     segment: Optional[str]        # longevity_customer | None
     tags: list[str]
-    urgent: list[str]             # level D results: the coach phones the buyer the same day
+    soon: list[str]               # level D results: the report tells the buyer to see a doctor in the next day or two
     deep_rows: list[str]          # row keys marked "needs a deeper look"
     testimonials: list[str]       # thyroid | sugar, each printed in its own section
     connections: list[Connection] = field(default_factory=list)
@@ -151,7 +151,9 @@ def decide(sections: list[Section], *, body_age: float, age: int, deeper: bool) 
     clear = [g for g in groups if rank(g.level) >= 2]
     clear_own = [g for g in clear if g.nature != "inherited"]
     edge = [g for g in groups if rank(g.level) == 1]
-    if clear_own or gap > OLDER_BY_YEARS or len(edge) >= 3:
+    if any(r.level == "D" for r in rows.values()):
+        outcome = "doctor_soon"          # the strongest level: the doctor comes first and no session is offered
+    elif clear_own or gap > OLDER_BY_YEARS or len(edge) >= 3:
         outcome = "foundation"
     elif clear and not edge:
         outcome = "doctor_only"          # inherited and far enough out for a doctor, everything else steady
@@ -174,7 +176,7 @@ def decide(sections: list[Section], *, body_age: float, age: int, deeper: bool) 
     testimonials = [k for k in ("thyroid", "sugar") if status.get(k, "steady") != "steady"]
     return Decision(
         outcome=outcome, segment=segment, tags=tags,
-        urgent=[f"{r.name} {r.value:g} {r.unit}".strip() for r in rows.values() if r.level == "D"],
+        soon=[f"{r.name} {r.value:g} {r.unit}".strip() for r in rows.values() if r.level == "D"],
         deep_rows=[r.key for r in sorted(rows.values(), key=lambda r: -rank(r.level))
                    if _counts(r) and rank(r.level) >= 2 and r.nature != "work"],
         testimonials=testimonials, connections=conns, body_age_gap=gap)
