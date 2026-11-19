@@ -32,6 +32,7 @@ import {
 import { SqAskBox } from "./sq-ask-ui";
 import { SqDiaryCard, type SqDiaryState } from "./sq-diary";
 import { SqStartCard } from "./sq-start";
+import { travellingNow, tripDates } from "./sq-everything";
 import { SqIcon, type SqSheet } from "./sq-ui";
 
 export interface SqHomeProps {
@@ -212,6 +213,14 @@ export function SqHome(p: SqHomeProps) {
       )}
 
       {firstDay && <SqStartCard onOpen={() => p.open({ k: "start" })} />}
+
+      {p.ready && travellingNow(p.data, new Date().toLocaleDateString("en-CA")) && p.data.travel && (
+        <button type="button" className="sq-card sq-trip" onClick={() => p.open({ k: "trip" })}>
+          <span className="sq-eyebrow">Travelling</span>
+          <b>{tripDates(p.data.travel.from, p.data.travel.to)}</b>
+          <small>Your coach knows. Tap for the eating-out guide or to end the trip.</small>
+        </button>
+      )}
 
       {p.diary?.view && <SqDiaryCard d={p.diary} onOpen={() => p.open({ k: "diary" })} />}
 

@@ -51,6 +51,11 @@ export type SqSheet =
   | { k: "scenes" }
   /** the food diary: a new photo to save, today's photos, reminders */
   | { k: "diary" }
+  /** Everything: supplements, ordering them, weight and BP, a trip */
+  | { k: "supps" }
+  | { k: "order" }
+  | { k: "vitals" }
+  | { k: "trip" }
   /** a screen a later build step fills in */
   | { k: "soon"; title: string };
 

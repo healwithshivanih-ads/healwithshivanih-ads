@@ -384,3 +384,4 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 ### Client app redesign — food diary on the new front (19 Nov 2026)
 - `sq-diary.tsx` (`useSqDiary`, `SqDiaryCard`, `SqDiarySheet`) is the new front's diary. It talks only to `/api/app-diary` like `ochre-diary.tsx`, and shows only what `clientDiaryView` sends (words, grams only when the coach switched them on).
 - Home shows the card only while a diary runs; a picked photo opens the "diary" sheet. It never names the coach and never sends a message (`sq-diary.test.tsx` pins both). Meal-time reminders stay off until the client turns them on.
+- Everything tab part 1 (`sq-everything.tsx`): supplements, order supplements (ticks phone-only for now: coach cannot see them yet), weight + BP (prototype ranges; posts `/api/app-body`), trip (posts `/api/app-travel`; Home Travelling card only from the day of travel, `travellingNow`).

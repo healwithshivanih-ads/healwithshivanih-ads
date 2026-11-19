@@ -39,6 +39,7 @@ import { SqHome } from "./sq-home";
 import { SqDiarySheet, useSqDiary } from "./sq-diary";
 import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
+import { orderRows, SqOrderSheet, SqSuppsSheet, SqTripSheet, SqVitalsSheet } from "./sq-everything";
 import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
 import "./sq.css";
 
@@ -397,6 +398,20 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "diary") {
       sheetTitle = "Food diary";
       sheetBody = <SqDiarySheet d={diary} data={data} />;
+    } else if (sheet.k === "supps") {
+      sheetTitle = "Your supplements";
+      sheetBody = <SqSuppsSheet data={data} />;
+    } else if (sheet.k === "order") {
+      sheetTitle = "Order supplements";
+      sheetBody = <SqOrderSheet data={data} onAsk={() => toCoach("Where do I get the supplements that have no shop link?")} />;
+    } else if (sheet.k === "vitals") {
+      sheetTitle = "Weight and blood pressure";
+      sheetBody = <SqVitalsSheet data={data} todayYmd={todayYmd} />;
+    } else if (sheet.k === "trip") {
+      sheetTitle = "Your trip";
+      sheetBody = (
+        <SqTripSheet data={data} todayYmd={todayYmd} onEatOut={data.planRef?.eatingOut ? () => open({ k: "eatout" }) : undefined} />
+      );
     } else if (sheet.k === "start") {
       sheetTitle = "How this app works";
       sheetBody = <SqStartSheet />;
@@ -479,8 +494,22 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                     </div>
                   </SqCard>
                 )}
+                {(data.supplements.length > 0 || (data.upcomingSupplements ?? []).length > 0) && (
+                  <SqCard title="Supplements">
+                    <div className="sq-list">
+                      <SqNavRow title="Your supplements" note="What each one is for and when" onOpen={() => open({ k: "supps" })} />
+                      <SqNavRow title="Order supplements" note={`${orderRows(data).length} to order, each with its own shop page`} onOpen={() => open({ k: "order" })} />
+                    </div>
+                  </SqCard>
+                )}
                 <SqCard title="You">
                   <div className="sq-list">
+                    <SqNavRow title="Log weight or blood pressure" note="Takes ten seconds" onOpen={() => open({ k: "vitals" })} />
+                    <SqNavRow
+                      title={data.travel ? "Your trip" : "Going away?"}
+                      note={data.travel ? "Your coach has your dates" : "Tell your coach your dates"}
+                      onOpen={() => open({ k: "trip" })}
+                    />
                     <SqNavRow title="Your record" note="Everything you have ticked, day by day" onOpen={() => open({ k: "record" })} />
                     <SqSwitchRow
                       title="Track every item on Home"

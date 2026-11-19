@@ -716,3 +716,11 @@
     .sq-orb-motes { display: none; }
   }
 }
+
+/* Everything: order rows, the Travelling card on Home */
+.sq-app .sq-ord { display: flex; align-items: center; gap: 12px; }
+.sq-app .sq-ord .sq-li-body { flex: 1; min-width: 0; }
+.sq-app .sq-ord a.sq-btn { text-decoration: none; }
+.sq-app .sq-trip { display: flex; flex-direction: column; gap: 4px; text-align: left; width: 100%; border: none; font: inherit; color: inherit; cursor: pointer; }
+.sq-app .sq-trip b { font-size: 17px; }
+.sq-app .sq-trip small { color: var(--sq-ink-2, inherit); font-size: 14.5px; }
