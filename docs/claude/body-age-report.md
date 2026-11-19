@@ -33,10 +33,17 @@ approved, no personal Foundation link, a broken link in the PDF.
   not recorded as done, so a correction is an edit to that file only. Set `status: provisional` while a change waits
   for her yes: the command then builds the test profile (cl-900) only and refuses everyone else.
 - **Levels:** A just outside or middle zone (no doctor wording) · B clearly raised ("worth mentioning at your next
-  routine check-up") · C far out ("needs a doctor's attention as well") · D urgent (never printed; the command reports
+  routine check-up") · C far out ("needs a doctor's attention. Please speak to your doctor.", her wording of 19 Nov 2026,
+  no "as well") · D urgent (never printed; the command reports
   it and blocks). Calculated scores, insulin and ApoA1 stop at A; the scarring score (FIB-4) is the exception.
 - **Body age is scored at the age on the sample date**, in completed years (`lab_client_context(person, today=sample_date)`).
   A record without a date of birth or sex is refused.
+- **The approved text is pinned word for word.** `tests/fixtures/body_age/approved_*.txt` is the standard and deeper
+  report for the test profile as Shivani approved them, including her eleven changes after the five-reviewer check
+  (19 Nov 2026: body age as a whole number, the opening line, the plain 14-day offer, "it may also take a few further
+  tests", the client stories ending "One person's result. Results vary.", two safety lines). Any change to that text
+  needs her yes and a new reference. What the reviewers flagged and what is still open (cut-offs, the urgent-call
+  plan, legal items) is in the shared notes file `body-age-review-findings.md`.
 - **Wording is never invented at build time.** Three kinds (`wording.py` header): APPROVED sentences from the two
   PDFs; DRAFTS (the finding blocks in `findings.py` not marked approved, and the phrases in `wording.DRAFT`); and
   MISSING (a far-out result with no block), which stops the report. Each draft a report uses is listed in `drafts`
