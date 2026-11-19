@@ -16,7 +16,8 @@ from .panel import SECTIONS
 from .wording import APPROVED_DRAFTS, DRAFT
 
 LEVEL = {"A": "Just outside its range, or middle zone", "B": "Clearly off", "C": "Far out"}
-SHOW = {"loss": "[women: regular blood loss such as heavy periods · men: blood being lost slowly somewhere in the body]",
+SHOW = {"loss": "[women: regular blood loss such as heavy periods · men: slow blood loss]",
+        "iron_food": "[women only: Iron-rich food with something sour alongside, such as lemon, amla or tomato, helps the body take iron in.] ",
         "names": "Lead", "is_are": "is", "its_their": "its", "name": "[the result's name]", "dist": "[how far outside range]"}
 GROUPS = [("steady.", "Sections with nothing off"), ("liver.fat", "Sections with nothing off"), ("b12_high", "Sections with nothing off"),
           ("rest.", "Page 1 and the letter"), ("todo.", "Page 1 and the letter"), ("letter.", "Page 1 and the letter"),
@@ -107,8 +108,9 @@ def markdown() -> str:
            "Each finding has up to three levels: **just outside** its range (or middle zone), **clearly off**, and **far out**. "
            "Where one wording is shown without a level, it is used at every level.", "",
            "Two closing sentences are added to “What to do” unless a finding shows its own: at clearly off, "
-           "“A result at this level is worth mentioning at your next routine check-up.”; at far out, "
-           "“A result this far outside its range needs a doctor's attention as well.” Just outside adds nothing.", "",
+           "“A result at this level is worth mentioning at your next routine check-up.” comes last; at far out, "
+           "“A result this far outside its range needs a doctor's attention as well.” comes FIRST, before any food advice. "
+           "Just outside adds nothing.", "",
            "Sections 2 to 7 are single phrases. Where a phrase takes a name, a date or a result, an example is filled in.", "",
            "Rules I held to: plain meaning first; no supplement or medicine advice; nothing about anything you sell beyond the Foundation session.", "",
            "## 1. Findings, by body system", ""]

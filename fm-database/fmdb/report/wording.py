@@ -49,23 +49,22 @@ DRAFT: dict[str, tuple[str, str]] = {
     "rest.also": ("Page 1, a fourth section that is not steady", " Also marked “{status}”: {name}."),
     "todo.start.other": ("Page 1, step 1, when neither sugar nor cholesterol is marked", "Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are."),
     "todo.work.also": ("Page 1, step 2, cholesterol plus another result food moves", " The same changes work on {others}."),
-    "todo.work.close": ("Page 1, step 2, results food moves when cholesterol is not the main one: closing sentence", " Most people know the headline. Few manage it alone, because it comes down to your own routine."),
     "todo.watch": ("Page 1, a step for results just outside range that food does not move", "{names} {sit} just outside {its_their} range. Nothing to do now. {it_is} read again at your next test."),
     "todo.deep.many": ("Page 1, deeper-look step with three or more results", "{names}. All sit well outside their range, and blood alone cannot say why."),
-    "letter.older": ("Letter, body age more than 3 years older", "{name}, this first result reads older than your age, and most of what is driving it can be moved."),
+    "letter.older": ("Letter, body age more than 3 years older", "{name}, this first result reads older than your age, and several of the things behind it can change."),
     "letter.level": ("Letter, body age within 3 years of age", "{name}, this is a steady first result: your blood reads close to your age."),
     "letter.steady": ("Letter, second line, report offers no session", "Nothing in here needs fixing. The few things worth keeping an eye on are marked, with what moves each one."),
     "letter.other": ("Letter, second line, something other than cholesterol leads", "Where I would put the effort this year: {parts}."),
     # body age
-    "bodyage.older": ("Body age section, older than age", "A body age of {ba} at {age} does not mean {n} years are lost. It says that today your blood looks like that of an older person in those studies, and the values behind it can move."),
+    "bodyage.older": ("Body age section, older than age", "A body age of {ba} at {age} says that today your blood looks like that of an older person in those studies. Many of the values behind it can change, and one illness before the test can raise it."),
     "bodyage.level": ("Body age section, about the same as age", "A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies."),
     # reading it as one body
     "onebody.none": ("Reading it as one body, nothing connects", "Nothing in this report pulls on anything else. Each section stands on its own."),
-    "conn.sugar_liver": ("Connection: sugar marked and the liver fat score high or enzymes marked", "Sugar the body cannot use straight away is stored as fat, and the liver is the first place it goes. A raised sugar reading and signs of fat in the liver usually move together, and the same changes bring both down."),
-    "conn.inflammation_arteries": ("Connection: inflammation clearly raised and cholesterol marked", "Cholesterol particles do more harm in an artery wall that is already inflamed. With both raised, each matters more than it would alone."),
+    "conn.sugar_liver": ("Connection: sugar marked and the liver fat score high or enzymes marked", "A raised sugar reading and signs of fat in the liver often go together, because sugar the body cannot use straight away is stored as fat and the liver is one of the first places it goes. The same changes tend to bring both down."),
+    "conn.inflammation_arteries": ("Connection: inflammation clearly raised and cholesterol marked", "In studies, people with both raised inflammation and a heavy particle load are at higher risk than people with either alone. That makes each of yours matter a little more."),
     "conn.iron_haemoglobin": ("Connection: haemoglobin low and iron low (deeper report)", "Your haemoglobin and your iron carriers are both low. Iron is what haemoglobin is built from, so these two belong together. The question is why iron is short."),
     "conn.b12_haemoglobin": ("Connection: haemoglobin low and B12 low (deeper report)", "Your haemoglobin and your B12 are both low. Red cells cannot be built properly without B12, so these two belong together."),
-    "conn.vitd_alp": ("Connection: vitamin D low and ALP raised (deeper report)", "Your vitamin D is low and one bone-linked enzyme is raised. When vitamin D runs short, bone turns over faster, and that enzyme rises with it."),
+    "conn.vitd_alp": ("Connection: vitamin D low and ALP raised (deeper report)", "Your vitamin D is low and one bone-linked enzyme is raised. The two often go together, because bone turns over faster when vitamin D runs short."),
     # next test
     "next.steady.headline": ("Next test, steady report: headline", "About a year after this test, because this report is steady all through."),
     "next.steady.when": ("Next test, steady report", "<b>Your next test:</b> {date}. A year is long enough to show whether anything has started to drift."),
@@ -74,7 +73,7 @@ DRAFT: dict[str, tuple[str, str]] = {
     "next.hope.other": ("Next test, what we would hope to see (general)", "The marked results moving back towards their range, and your body age holding or coming down."),
     # your next step
     "step.nothing.headline": ("Next step, steady report: headline", "You do not need anything more from me."),
-    "step.nothing.para": ("Next step, steady report", "Your report is steady all through. Keep doing what you are doing, and test again in about a year, on {date}."),
+    "step.nothing.para": ("Next step, steady report", "Your report is steady all through. Test again in about a year, on {date}. A steady blood report does not rule out illness, so if something feels wrong, have it looked at."),
     "step.self.headline": ("Next step, one or two small things: headline", "Nothing here needs me. The steps on the first page are yours to take."),
     "step.self.para": ("Next step, one or two small things", "What is marked in this report sits just outside its range. Your next test, on {date}, will show which way it is moving."),
     "step.inherited.headline": ("Next step, an inherited result alone and clearly raised: headline", "One result here is worth mentioning at your next routine check-up: your {names}."),
@@ -250,7 +249,10 @@ def slots_for(h: Hit, sex: str) -> dict:
     names = join([x.name for x in h.rows])
     many = len(h.rows) > 1
     return dict(name=r.name, dist=off(r), names=names, is_are="are" if many else "is", its_their="their" if many else "its",
-                loss="regular blood loss such as heavy periods" if sex == "F" else "blood being lost slowly somewhere in the body")
+                loss="regular blood loss such as heavy periods" if sex == "F" else "slow blood loss",
+                # iron-rich food is the first thought for a woman at the low edge; for a man the reason comes first
+                iron_food=("Iron-rich food with something sour alongside, such as lemon, amla or tomato, helps the body take iron in. "
+                           if sex == "F" else ""))
 
 
 def line_of(h: Hit) -> str:
@@ -265,14 +267,24 @@ def is_plural(h: Hit) -> bool:
     return (len(h.rows) > 1 and h.finding.id in ("metals", "generic")) or h.finding.plural
 
 
+def order(h: Hit, do: str) -> str:
+    """What to do, with the level's closing sentence. At far-out the doctor sentence comes FIRST, so nobody reads
+    the food advice and stops; the approved blocks keep the order Shivani approved."""
+    line = line_of(h).strip()
+    if rank(h.level) >= 3 and not h.approved and line:
+        return (line + " " + do).strip()
+    return (do + " " + line).strip()
+
+
 def also_para(h: Hit, lib: Lib, sex: str) -> tuple[str, str]:
     """A finding that is not its section's main one, told in one paragraph."""
     lib.hit(h)
     s = slots_for(h, sex)
     f = h.finding
+    do = at(f.do, h.level).format(**s)
     if h.is_generic:
-        return s["name"], (at(f.why, h.level) + " " + at(f.do, h.level)).format(**s) + line_of(h)
-    return f.title, (at(f.head, h.level) + " " + at(f.do, h.level)).format(**s).strip() + line_of(h)
+        return s["name"], at(f.why, h.level).format(**s) + " " + order(h, do)
+    return f.title, at(f.head, h.level).format(**s) + " " + order(h, do)
 
 
 def also_paras(lead: Hit, others: list[Hit], lib: Lib, sex: str) -> list[tuple[str, str]]:
@@ -302,7 +314,7 @@ def compose(lead: Hit, others: list[Hit], lib: Lib, sex: str) -> tuple[str, list
     means += also_paras(lead, others, lib, sex)
     do = at(f.do, lv).format(**s)
     if do or line_of(lead):
-        means.append(("What to do", (do + line_of(lead)).strip()))
+        means.append(("What to do", order(lead, do)))
     return at(f.head, lv).format(**s), means
 
 
@@ -472,8 +484,7 @@ def todo_steps(rp: Any, lib: Lib) -> list[dict]:
         for h in work:
             lib.hit(h)
         body = " ".join(h.finding.step for h in work[:3])
-        close = lib.d("todo.work.close") if set(ids) & {"lipids", "sugar", "tg"} else ""      # the food findings
-        steps.append(dict(tag="What we can work on", when="over the next few months", text=body + close, email=body))
+        steps.append(dict(tag="What we can work on", when="over the next few months", text=body, email=body))
     deep = deep_hits(rp)
     if deep:
         steps.append(dict(tag="Needs a deeper look", when="the next step", text=deep_step(deep, rp, lib), email=deep_step(deep, rp, lib, link=False)))

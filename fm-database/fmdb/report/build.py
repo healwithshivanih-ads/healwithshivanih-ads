@@ -183,3 +183,8 @@ def _write(rp: Report) -> None:
     rp.summary = W.summary(rp, lib)
     rp.step = W.next_step(rp, lib)
     rp.drafts, rp.missing = lib.drafts, lib.missing
+    for hs in rp.hits.values():           # a result nobody wrote a block for, clearly off: the coach should look at it herself
+        for h in hs:
+            if h.is_generic and h.level == "B":
+                r = h.rows[0]
+                rp.warnings.append(f"{r.name} {num(r.value)} is clearly outside its range and has only the catch-all wording: read it yourself")

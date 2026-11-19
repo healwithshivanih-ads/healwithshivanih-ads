@@ -312,6 +312,38 @@ def test_every_finding_has_wording_and_the_doctor_line_only_where_it_is_earned(k
     assert not re.search(r"\btake (?:a|an|your|some) (?:supplement|tablet|capsule|dose)|\d\s?(?:mg|mcg|IU)\b(?!/)", page)
 
 
+# what five reviewers flagged in the draft wording on 19 Nov 2026 (body-age-review-findings.md), pinned
+SOFT = re.compile(r"usually passing|usually means little|commonest reason|usually harmless|topping up|leave out any biotin", re.I)
+
+
+@pytest.mark.parametrize("kind,over,finding,level", [c for c in SWEEP if c[3] == "C"])
+def test_a_far_out_result_is_never_soft_pedalled(kind, over, finding, level):
+    rp = report(kind, dict(STEADY, **over))
+    sid = next(s.id for s in rp.sections if any(h.finding.id == finding for h in rp.hits[s.id]))
+    lead = rp.hits[sid][0]
+    head, means = rp.section_text[sid]
+    block = " ".join([head] + [b for _a, b in means])
+    assert not SOFT.search(block), SOFT.search(block).group(0)
+    today = dict(means).get("Today", "")
+    if finding not in ("hcy", "lipids", "vitd_low", "b12_low", "glucose_low", "sugar", "hb_low", "iron_high"):
+        assert today != "Nothing you would feel.", "a far-out result can be felt: say what to watch for"
+    if not lead.approved:                    # the doctor sentence leads; the approved blocks keep their approved order
+        assert "doctor's attention" in dict(means)["What to do"].split(". ")[0]
+
+
+def test_no_draft_gives_supplement_advice_or_false_comfort_above_just_outside():
+    from fmdb.report.findings import FINDINGS, GENERIC, at
+    for f in FINDINGS + [GENERIC]:
+        for lv in ("B", "C"):
+            block = " ".join(at(t, lv) for t in (f.head, f.today, f.why, f.do, f.summary)) + " " + f.line.get(lv, "")
+            assert not SOFT.search(block), (f.id, lv, SOFT.search(block).group(0))
+
+
+def test_an_unlisted_result_that_is_clearly_off_is_pointed_out_to_the_coach():
+    rp, _, _ = outcome({"Blood Urea": 12})                        # 33% below range: level B, catch-all wording only
+    assert any("Urea" in w and "catch-all" in w for w in rp.warnings)
+
+
 def test_the_approval_document_lists_every_draft_and_no_approved_sentence():
     from fmdb.report.findings import FINDINGS
     from fmdb.report.library_doc import markdown
