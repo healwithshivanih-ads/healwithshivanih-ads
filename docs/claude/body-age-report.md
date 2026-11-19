@@ -49,6 +49,9 @@ approved, no personal Foundation link, a broken link in the PDF.
   is its main finding's block; another finding in the section gets a paragraph when it is clearly off. No block
   gives supplement or medicine advice, and the doctor and check-up sentences appear only at their levels (a test
   sweeps about 60 result combinations for both).
+- **Every session is online** (her rule, 19 Nov 2026). Nothing a buyer reads may say "we meet", "see you", "in person",
+  "in the room" or "sit down together"; the Foundation step reads "A Foundation session, online" and "In your session.
+  It is online, by video call, wherever you are." A test fails on any of those phrases.
 - **Next step** (`decide.py`): Foundation for any clearly raised or far-out result that is not inherited, three or more
   just-outside results, or body age more than 3 years older · work on it yourself for one or two just-outside results ·
   nothing for a steady report · an inherited doctor-only result alone (high Lp(a)) gets the doctor line and no offer.

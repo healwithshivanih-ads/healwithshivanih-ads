@@ -158,7 +158,9 @@ def test_the_report_reproduces_the_approved_text(kind, ref, no):
 # "ring" may only mean the tree's rings (the drawing and its one sentence), never the product or a test
 BRAND = "Sequoya by Shivani Hari"       # her wording, 19 Nov 2026; embargoed until 2 Jan 2027, 20:00 IST
 FORBIDDEN = re.compile(r"sequoya|rings\+|rings? report|\b(?:your|next|first|each|every|three|this) rings?\b|thyrocare|85,000|"
-                       r"twelve.week|programme|12.week|results call", re.I)
+                       r"twelve.week|programme|12.week|results call|"
+                       # every session is online (her rule, 19 Nov 2026): nothing may suggest meeting in person
+                       r"\bwe meet\b|\bin the room\b|\bsee you\b|\bin person\b|\bsit down together\b", re.I)
 
 
 @pytest.mark.parametrize("kind", ["standard", "deeper"])
@@ -178,7 +180,8 @@ def test_email_carries_the_approved_short_version():
     rp = report(book_url="https://example.test/foundation/t")
     t = text(mail.email_html(rp))
     assert "Your body age is 41.9 . You are 52." in t
-    assert "A Foundation session, ₹7,000." in t and "if you book by 21 July 2026" in t
+    assert "A Foundation session, online, ₹7,000." in t and "if you book by 21 July 2026" in t
+    assert "online session by video call" in t
     assert "https://example.test/foundation/t" in mail.email_html(rp)
     assert 'src="cid:ring"' in mail.email_html(rp)
     assert mail.attachment_name(rp) == "Body age report, R., 4 July 2026.pdf"

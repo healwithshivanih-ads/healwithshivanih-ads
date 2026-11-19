@@ -12,7 +12,8 @@ Three kinds of text:
 
 Rules that hold for every sentence: "body age report" and "test", never the product's internal name; no
 programme, plan length or programme price; the laboratory is never named; no supplement or medicine advice;
-a doctor is named only for a result far outside its range and a routine check-up for a clearly raised one.
+a doctor is named only for a result far outside its range and a routine check-up for a clearly raised one;
+every session is online, so nothing says "we meet", "see you", "in person", "in the room" or "sit down together".
 """
 from __future__ import annotations
 
@@ -678,12 +679,12 @@ def next_step(rp: Any, lib: Lib) -> dict:
         email_paras=[p for p in (why, far_only) if p],
         price=rp.foundation_after, credit=f"{inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
         steps=[
-            ("Before we meet", "You fill in your full history in your own time, about 25 minutes, one short section at a time. It covers your health story in the order it happened, your diagnoses and family history, medicines past and present, how you eat, sleep, move and handle stress, your childhood and surroundings, what you have already tried, and each part of your body that bothers you. This is the part blood cannot show."),
-            ("When we meet", "I read your history against this report, and we go through both together."),
+            ("Before your session", "You fill in your full history in your own time, about 25 minutes, one short section at a time. It covers your health story in the order it happened, your diagnoses and family history, medicines past and present, how you eat, sleep, move and handle stress, your childhood and surroundings, what you have already tried, and each part of your body that bothers you. This is the part blood cannot show."),
+            ("In your session", "It is online, by video call, wherever you are. I read your history against this report, and we go through both together."),
             ("Further tests", "You get the short list worth doing for you, and I read those with you when they are back. Most people need two to four, usually ₹1,000 to ₹5,000 in all, paid to the laboratory. You see the list and the price before you decide."),
             ("What you leave with", leave),
         ],
         fresh=f"These results show you as you were on {sample_day}, and a deeper look is most use while they are fresh. That is why your report fee comes off only until {deadline}.",
-        after="Nothing, unless you want it. You leave with the order to work in, and I see you at your next test.",
-        email_offer=f"<b>A Foundation session, {inr(rp.foundation_after)}.</b> That is {inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
-        email_how="You fill in your history first. Then we meet, I read it against your report, and you leave with the short list of further tests worth doing and the order to work in.")
+        after="Nothing, unless you want it. You leave with the order to work in, and your next test will show what has moved.",
+        email_offer=f"<b>A Foundation session, online, {inr(rp.foundation_after)}.</b> That is {inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
+        email_how="You fill in your history first. Then we have an online session by video call: I read it against your report, and you leave with the short list of further tests worth doing and the order to work in.")

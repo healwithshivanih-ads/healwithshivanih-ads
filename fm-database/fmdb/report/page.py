@@ -213,7 +213,7 @@ def report_main(rp: Any) -> str:
     paras = '<div class="means">' + "".join(f"<p>{p}</p>" for p in st["paras"]) + "</div>"
     if st["outcome"] == "foundation":
         call = (f'<a class="call" href="{rp.book_url}">Book your session</a>' if rp.book_url else '<span class="call">Book your session</span>')
-        help_html = (f'<p class="headline">{st["headline"]}</p>{paras}<ol class="steps"><li><div class="st"><b>A Foundation session</b>'
+        help_html = (f'<p class="headline">{st["headline"]}</p>{paras}<ol class="steps"><li><div class="st"><b>A Foundation session, online</b>'
                      f'<span>{W.inr(st["price"])}</span></div><p class="cr">{st["credit"]}</p><ul class="for">'
                      + "".join(f"<li><b>{a}.</b> {b}</li>" for a, b in st["steps"]) + f"</ul><p>{call}</p></li></ol>"
                      f'<p class="fresh">{st["fresh"]}</p><h3>And after that</h3><div class="means"><p>{st["after"]}</p></div>')
