@@ -126,13 +126,12 @@ def test_what_each_level_prints():
     assert "doctor" not in CHECKUP
 
 
-def test_every_cutoff_lives_in_the_one_file_and_the_table_waits_for_her_yes():
+def test_every_cutoff_lives_in_the_one_file_and_the_table_is_approved():
     c = load_cutoffs()
     assert set(c) >= {"status", "fallback_pct", "cap_at_A", "inside_range_max_A", "markers"}
-    # She approved the first table on 19 Nov 2026. The lines corrected after the five-reviewer check are waiting for
-    # her yes, so the table is provisional and the command builds the test profile only. On her yes: "approved" here
-    # and in cutoffs.yaml, together.
-    assert c["status"] == "provisional" and cutoffs_approved() is False
+    # Shivani approved the first table on 19 Nov 2026 and the eight corrected lines the same day ("yes for the 8").
+    # A change to the numbers goes back to "provisional" until she says yes again.
+    assert c["status"] == "approved" and cutoffs_approved() is True
 
 
 def test_lpa_is_read_on_the_lines_for_the_unit_the_laboratory_used():
