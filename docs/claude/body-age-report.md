@@ -25,9 +25,10 @@ approved, no personal Foundation link, a broken link in the PDF.
   `prospect`. Fields on client.yaml: `body_age_reports` (one entry per report), `body_age_report_kind` +
   `body_age_report_date` (the Foundation credit), `segment` (`longevity_customer` when the report offered no session).
   Only the two credit fields are in `_APP_CLIENT_KEYS`; findings and tags never go to Fly.
-- **Every cut-off is in `fmdb/report/cutoffs.yaml`.** No number in code. While the file says `status: provisional` the
-  command builds the test profile (cl-900) only and refuses everyone else. Set `approved` only when Shivani has signed
-  the table off (the design session's `result-level-cutoffs-proposal.md`), and change the one test line that pins it.
+- **Every cut-off is in `fmdb/report/cutoffs.yaml`.** No number in code. Shivani approved the table on 19 Nov 2026
+  (`status: approved`). The numbers are guideline lines written from memory and a doctor's read was recommended but is
+  not recorded as done, so a correction is an edit to that file only. Set `status: provisional` while a change waits
+  for her yes: the command then builds the test profile (cl-900) only and refuses everyone else.
 - **Levels:** A just outside or middle zone (no doctor wording) · B clearly raised ("worth mentioning at your next
   routine check-up") · C far out ("needs a doctor's attention as well") · D urgent (never printed; the command reports
   it and blocks). Calculated scores, insulin and ApoA1 stop at A; the scarring score (FIB-4) is the exception.
@@ -48,7 +49,8 @@ approved, no personal Foundation link, a broken link in the PDF.
   deeper one, up to and including day 14 after the report date (India time), then the full price. It does not add to the
   ₹999 short-call credit: the larger applies. `creditKind` tells each surface how to word it. The pay page is served
   from Fly, so the rule takes effect there only after a Fly deploy, and a buyer's record must be staged (the existing
-  Foundation pay-link button does it) after the credit fields are written.
+  Foundation pay-link button does it) after the credit fields are written. The credit is per PERSON (her rule for
+  couples, 19 Nov 2026: "Yes, flat 7,000"): it sits on each buyer's own record and never passes to a partner.
 - Fonts (OFL) and the ring mark are in `fmdb/report/assets/` and inlined into the page, so a render needs no network.
 
 ## Not built yet

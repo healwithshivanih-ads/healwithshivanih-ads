@@ -102,11 +102,11 @@ def test_what_each_level_prints():
     assert "doctor" not in CHECKUP
 
 
-def test_every_cutoff_lives_in_the_one_file_and_is_still_provisional():
+def test_every_cutoff_lives_in_the_one_file_and_the_table_is_approved():
     c = load_cutoffs()
     assert set(c) >= {"status", "fallback_pct", "cap_at_A", "markers"}
-    # Flip to "approved" in cutoffs.yaml only when Shivani has signed the table off; this line then changes with it.
-    assert c["status"] == "provisional" and cutoffs_approved() is False
+    # Approved by Shivani on 19 Nov 2026. A change to the numbers goes back to "provisional" until she says yes again.
+    assert c["status"] == "approved" and cutoffs_approved() is True
 
 
 # ── the test profile reads as the approved samples do ────────────────────────
@@ -353,9 +353,21 @@ def run(mod, capsys, **req):
 
 def test_command_refuses_a_real_buyer_while_the_cutoffs_are_provisional(tmp_path, monkeypatch, capsys):
     monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
+    monkeypatch.setattr("fmdb.report.levels.cutoffs_approved", lambda path=None: False)
     write_person(tmp_path, "cl-950")
     out = run(shim(), capsys, client_id="cl-950", kind="standard")
     assert out["ok"] is False and "provisional" in out["error"]
+
+
+def test_command_builds_a_buyer_stored_as_a_prospect_once_the_table_is_approved(tmp_path, monkeypatch, capsys):
+    monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
+    d = write_person(tmp_path, "cl-950")                                    # in prospects/, not clients/
+    out = run(shim(), capsys, client_id="cl-950", kind="deeper", report_date=FX["report_date"], record=True, html_only=True)
+    assert out["ok"] and out["report"]["kind"] == "deeper" and out["report"]["report_no"] == "BA-D-950-260704"
+    assert "Sample report" not in Path(out["files"]["html"]).read_text()    # a real buyer's page carries no sample marks
+    saved = yaml.safe_load((d / "client.yaml").read_text())
+    assert saved["body_age_report_kind"] == "deeper"
+    assert resolve_lifecycle(saved, [], date(2026, 7, 8))["state"] == "prospect"
 
 
 def test_command_builds_the_test_profile_and_records_it(tmp_path, monkeypatch, capsys):

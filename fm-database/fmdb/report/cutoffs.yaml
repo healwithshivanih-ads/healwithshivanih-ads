@@ -2,11 +2,14 @@
 #
 # ONE place for every number. Changing a cut-off is an edit here and nowhere else.
 #
-# status: provisional  -> the generator builds the TEST profile only and refuses a real buyer.
-# status: approved     -> set once Shivani has signed the table off (her decision is recorded in the
-#                         design session's notes, rings-report-structure.md).
+# status: approved     -> Shivani approved this table on 19 Nov 2026 ("Yes, approved" to "Approve these cut-offs
+#                         for the build?", recorded in the design session's notes, rings-report-structure.md).
+# status: provisional  -> set this while a change to the numbers is waiting for her yes: the generator then builds
+#                         the TEST profile only and refuses a real buyer.
 #
-# Source: result-level-cutoffs-proposal.md, proposed by the report design session on 19 Nov 2026.
+# Source: result-level-cutoffs-proposal.md (report design session, 19 Nov 2026), checked row by row against this file.
+# The numbers are standard guideline lines written from memory. A doctor's read of the table was recommended and is
+# NOT recorded as done; a correction after that read is an edit to this file and nothing else.
 #
 # Levels (what the report prints):
 #   A  just outside, or middle zone   no doctor wording
@@ -21,7 +24,7 @@
 #   high_pct:  the same, on per cent above the top of the laboratory's range
 #   A row split into M / F is read for the buyer's sex.
 #   A result outside its laboratory range that reaches no level here is level A.
-status: provisional
+status: approved
 source: "result-level-cutoffs-proposal.md (design session, 19 Nov 2026)"
 
 # Any marker with no row below: per cent beyond the laboratory's range.
