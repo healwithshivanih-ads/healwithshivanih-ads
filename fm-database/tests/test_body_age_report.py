@@ -42,8 +42,8 @@ STEADY = {"TSH (Ultrasensitive)": 2.1, "Homocysteine": 9.0, "hsCRP": 0.6, "HbA1c
 
 def labs(over=None, metals=False):
     over = over or {}
-    out = [dict(l, value=str(over.get(l["test_name"], l["value"]))) for l in FX["lab_values"]]
-    return out + (FX["illustrative_metals"] if metals else [])
+    rows = FX["lab_values"] + (FX["illustrative_metals"] if metals else [])
+    return [dict(l, value=str(over.get(l["test_name"], l["value"]))) for l in rows]
 
 
 def report(kind="standard", over=None, **kw):
@@ -214,6 +214,8 @@ def test_an_inherited_doctor_only_result_gets_the_doctor_line_and_no_session_off
     rp, out, seg = outcome({"Lipoprotein (a) [Lp(a)]": 96})
     assert (out, seg) == ("doctor_only", None) and "lpa:C" in rp.decision.tags
     assert "price" not in rp.step and "doctor" in rp.step["headline"]
+    mild, out_mild, _ = outcome({"Lipoprotein (a) [Lp(a)]": 60})          # clearly raised, not far out: the check-up line, still no offer
+    assert out_mild == "doctor_only" and "routine check-up" in mild.step["headline"] and "doctor" not in mild.step["headline"]
     # with something of the buyer's own to work on as well, still no session: it is theirs to do
     assert outcome({"Lipoprotein (a) [Lp(a)]": 96, "HbA1c": 5.8})[1] == "self"
 
@@ -237,14 +239,84 @@ def test_an_urgent_value_is_raised_to_the_coach_not_printed():
     assert rp.decision.urgent and "Potassium" in rp.decision.urgent[0] and rp.ready is False
 
 
-def test_a_result_with_no_wording_stops_the_report():
-    rp, _, _ = outcome({"Potassium": 5.3})                       # kidneys now need a deeper look: nothing approved for that
-    assert rp.missing and any("kidneys" in m for m in rp.missing) and rp.ready is False
+def test_a_far_out_result_nobody_wrote_for_stops_the_report():
+    rp, _, _ = outcome({"Albumin": 1.6})                         # albumin has no row in the table and no block of its own
+    assert rp.rows["albumin"].level == "C"
+    assert rp.missing and any("Albumin" in m for m in rp.missing) and rp.ready is False
 
 
 def test_draft_sentences_are_listed_so_she_can_see_them():
     rp, _, _ = outcome({})
-    assert "heart.steady" in rp.drafts and "step.nothing" in rp.drafts and rp.missing == []
+    assert "steady.heart.head" in rp.drafts and "step.nothing.headline" in rp.drafts and rp.missing == []
+    rp, _, _ = outcome({"HbA1c": 6.2})
+    assert "finding.sugar.B" in rp.drafts
+    assert report().drafts == []                                  # the approved samples' own findings carry no drafts
+
+
+# every finding the library has wording for, at the levels the cut-off table gives it
+SWEEP = [
+    ("standard", {"hsCRP": 2.0}, "crp", "A"), ("standard", {"hsCRP": 6.8}, "crp", "B"), ("standard", {"hsCRP": 14}, "crp", "C"),
+    ("standard", {"Homocysteine": 16}, "hcy", "A"), ("standard", {"Homocysteine": 22}, "hcy", "B"), ("standard", {"Homocysteine": 35}, "hcy", "C"),
+    ("standard", {"Lipoprotein (a) [Lp(a)]": 40}, "lpa", "A"), ("standard", {"Lipoprotein (a) [Lp(a)]": 60}, "lpa", "B"),
+    ("standard", {"Cholesterol - LDL": 112}, "lipids", "A"), ("standard", {"Cholesterol - LDL": 195}, "lipids", "C"),
+    ("standard", {"Cholesterol - HDL": 33}, "hdl_low", "B"), ("standard", {"Triglycerides": 240}, "tg", "B"),
+    ("standard", {"Triglycerides": 170}, "tg", "A"), ("standard", {"Triglycerides": 620}, "tg", "C"),
+    ("standard", {"Fasting Glucose": 104}, "sugar", "A"), ("standard", {"HbA1c": 6.2}, "sugar", "B"), ("standard", {"HbA1c": 6.9}, "sugar", "C"),
+    ("standard", {"Fasting Glucose": 55}, "glucose_low", "C"), ("standard", {"Uric Acid": 8.2}, "uric", "A"), ("standard", {"Uric Acid": 9.5}, "uric", "B"),
+    ("standard", {"ALT (SGPT)": 50}, "enzymes", "A"), ("standard", {"ALT (SGPT)": 70}, "enzymes", "B"), ("standard", {"ALT (SGPT)": 130, "AST (SGOT)": 125}, "enzymes", "C"),
+    ("standard", {"Bilirubin Total": 1.5}, "bilirubin", "A"), ("standard", {"Alkaline Phosphatase (ALP)": 150}, "alp", "A"),
+    ("standard", {"TSH (Ultrasensitive)": 4.9}, "tsh_high", "A"), ("standard", {"TSH (Ultrasensitive)": 6.5}, "tsh_high", "B"),
+    ("standard", {"TSH (Ultrasensitive)": 0.2}, "tsh_low", "B"), ("standard", {"TSH (Ultrasensitive)": 0.05}, "tsh_low", "C"),
+    ("standard", {"Thyroxine (T4, Total)": 13.5}, "thyroid_hormones", "A"),
+    ("standard", {"Creatinine": 1.25}, "kidney", "A"), ("standard", {"Creatinine": 1.5}, "kidney", "B"),
+    ("standard", {"Potassium": 5.3}, "salts", "B"), ("standard", {"Sodium": 128}, "salts", "C"), ("standard", {"Chloride": 111}, "salts", "A"),
+    ("standard", {"Haemoglobin": 13.2}, "hb_low", "A"), ("standard", {"Haemoglobin": 12.0}, "hb_low", "B"), ("standard", {"Haemoglobin": 10.0}, "hb_low", "C"),
+    ("standard", {"MCV": 78}, "red_cells", "A"), ("standard", {"Total Leucocyte Count (TLC)": 12500}, "white_cells", "B"),
+    ("standard", {"Platelet Count": 120}, "platelets", "B"), ("standard", {"Blood Urea": 12}, "generic", "B"),
+    ("deeper", {"Vitamin D (25-OH)": 24}, "vitd_low", "A"), ("deeper", {"Vitamin D (25-OH)": 15}, "vitd_low", "B"),
+    ("deeper", {"Vitamin D (25-OH)": 9}, "vitd_low", "C"), ("deeper", {"Vitamin D (25-OH)": 120}, "vitd_high", "B"),
+    ("deeper", {"Vitamin B12": 250}, "b12_low", "A"), ("deeper", {"Vitamin B12": 180}, "b12_low", "B"), ("deeper", {"Vitamin B12": 110}, "b12_low", "C"),
+    ("deeper", {"Vitamin B12": 1400}, "b12_high", "A"),
+    ("deeper", {"Transferrin Saturation": 12}, "iron_low", "B"), ("deeper", {"Transferrin Saturation": 65}, "iron_high", "C"),
+    ("deeper", {"Lead": 7}, "metals", "B"), ("deeper", {"Mercury": 12, "Lead": 11}, "metals", "C"),
+    # several at once: the buyers the design was tested on
+    ("standard", {"HbA1c": 6.2, "Triglycerides": 240}, "sugar", "B"),
+    ("standard", {"hsCRP": 6.8, "Apolipoprotein B (ApoB)": 148, "HbA1c": 6.0}, "lipids", "B"),
+    ("deeper", {"Haemoglobin": 11.5, "Transferrin Saturation": 11, "Vitamin B12": 190}, "hb_low", "B"),
+]
+
+
+@pytest.mark.parametrize("kind,over,finding,level", SWEEP)
+def test_every_finding_has_wording_and_the_doctor_line_only_where_it_is_earned(kind, over, finding, level):
+    rp = report(kind, dict(STEADY, **over))
+    found = {h.finding.id: h.level for hs in rp.hits.values() for h in hs}
+    assert found.get(finding) == level, found
+    assert rp.missing == [], rp.missing
+    page, email = text(report_html(rp)), text(mail.email_html(rp))
+    for t in (page, email):
+        assert not FORBIDDEN.search(t), FORBIDDEN.search(t).group(0)
+        assert "[needs wording" not in t and "{" not in t and "}" not in t
+    worst = max(found.values())
+    assert ("doctor's attention" in page) == (worst >= "C"), f"doctor line vs worst level {worst}"
+    if worst < "B":
+        assert "routine check-up" not in page
+    # nothing in a report tells the buyer to take a supplement or a medicine
+    assert not re.search(r"\btake (?:a|an|your|some) (?:supplement|tablet|capsule|dose)|\d\s?(?:mg|mcg|IU)\b(?!/)", page)
+
+
+def test_the_approval_document_lists_every_draft_and_no_approved_sentence():
+    from fmdb.report.findings import FINDINGS
+    from fmdb.report.library_doc import markdown
+    from fmdb.report.wording import DRAFT
+    doc = markdown()
+    for key, (_where, sentence) in DRAFT.items():
+        assert f"<sub>{key}</sub>" in doc
+    assert "finding.sugar.A · finding.sugar.B · finding.sugar.C" in doc and "finding.hcy.A" in doc
+    for f in FINDINGS:
+        assert f.title in doc or all(lv in f.approved for lv in "ABC")
+    assert "Your morning sugar is calm." not in doc and "Clear. Nothing to act on." not in doc     # approved: not up for review
+    assert "finding.lipids.B" not in doc and "finding.tsh_high.C" not in doc
+    assert not FORBIDDEN.search(doc.split("## 1.", 1)[1]) and "{" not in doc      # the sentences, not my note about the rules
 
 
 def test_next_test_is_four_months_with_something_to_work_on():

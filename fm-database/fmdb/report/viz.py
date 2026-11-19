@@ -217,7 +217,7 @@ def _node_status(key, row_or_level, nature):
 def map_for(sections, connections, rows, groups):
     """(nodes, links, aside) for connections_svg, or None when nothing in this report connects."""
     by_id = {c.id: c for c in connections}
-    links_in = [by_id[i] for i in MAP_ORDER if i in by_id] + [c for c in connections if c.id not in MAP_ORDER]
+    links_in = [by_id[i] for i in MAP_ORDER if i in by_id]       # connections told in words only are not drawn
     if not links_in:
         return None
     used = {k for c in links_in for k in (c.a, c.b)}

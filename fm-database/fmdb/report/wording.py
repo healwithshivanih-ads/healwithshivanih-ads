@@ -1,23 +1,90 @@
 """The wording library for the body age report: every sentence a buyer reads, chosen by rule from their results.
 
-Two kinds of text live here.
-  APPROVED  the sentences in the two PDFs Shivani approved on 19 Nov 2026. Used as they are.
-  DRAFT     sentences written for results the approved samples did not have (a steady heart, a steady report,
-            a report with nothing that needs a deeper look). Each use is recorded in `Lib.drafts`, so the
-            coach sees exactly which unapproved sentences a report carries before it goes anywhere.
-A result with no wording at all is recorded in `Lib.missing`: the build stops and lists what needs writing.
-Nothing is invented at build time.
+Three kinds of text:
+  APPROVED  the sentences in the two PDFs Shivani approved on 19 Nov 2026 (the fixed text below, and the
+            finding blocks in findings.py marked approved). Used as they are.
+  DRAFT     sentences written for results the approved samples did not have: the other finding blocks in
+            findings.py and the phrases in DRAFT below. Each use is recorded in `Lib.drafts`, so the coach
+            sees exactly which unapproved sentences a report carries. When she approves one, add its key to
+            APPROVED_DRAFTS and it stops being reported. library_doc.py prints them all as one document.
+  MISSING   a result with no wording at all (a far-out result nobody wrote for) is recorded in `Lib.missing`:
+            the build stops and lists what needs writing. Nothing is invented at build time.
 
 Rules that hold for every sentence: "body age report" and "test", never the product's internal name; no
-programme, plan length or programme price; the laboratory is never named; a doctor is named only for a result
-far outside its range (levels.DOCTOR) and a routine check-up for a clearly raised one (levels.CHECKUP).
+programme, plan length or programme price; the laboratory is never named; no supplement or medicine advice;
+a doctor is named only for a result far outside its range and a routine check-up for a clearly raised one.
 """
 from __future__ import annotations
 
 from typing import Any, Optional
 
+from .findings import FOLDED_INTO_LIPIDS, Hit, at, hits_in
 from .levels import rank
 from .panel import Row, Section, b12_high, num
+
+# Draft keys Shivani has approved. "finding.<id>.<level>" for a block in findings.py, or a key of DRAFT below.
+APPROVED_DRAFTS: set[str] = set()
+
+# key: (where it prints and when, the sentence). {slots} are filled from the person's results.
+DRAFT: dict[str, tuple[str, str]] = {
+    # sections with nothing off
+    "steady.heart.head": ("Heart section, steady: headline", "Your arteries are carrying a comfortable load, and the markers of wear are quiet."),
+    "steady.heart.today": ("Heart section, steady: Today", "Nothing to act on."),
+    "steady.sugar.head": ("Sugar section, steady: headline", "Your morning sugar and your three-month average are both calm."),
+    "steady.sugar.today": ("Sugar section, steady: Today", "Your body is holding its sugar steady without strain. Nothing to act on."),
+    "steady.liver.head": ("Liver section, steady with no score in the middle zone: headline", "Your liver is working quietly."),
+    "liver.fat_high.head": ("Liver section, enzymes in range but the stored-fat score above its upper line: headline", "Your liver enzymes are quiet. The score for stored fat reads high."),
+    "liver.fat_high.means": ("Same: One thing to look at again", "The score that estimates stored fat is above its upper line. It is worked out from enzymes and body size, so it is an estimate. Sugar, refined carbohydrate, alcohol and weight around the middle are what move it."),
+    "steady.thyroid.head": ("Thyroid section, steady: headline", "Your thyroid signal is calm, and the hormones it makes are in range."),
+    "steady.thyroid.today": ("Thyroid section, steady: Today", "Nothing to act on."),
+    "steady.nutrients.head": ("Vitamins and iron, steady: headline", "Your vitamin D, B12 and iron are all comfortably in range."),
+    "steady.nutrients.today": ("Vitamins and iron, steady: Today", "Nothing here is short and nothing is overfull."),
+    "b12_high.head": ("Vitamins and iron, B12 high and vitamin D or iron also marked: headline", "Your B12 is well above its range."),
+    # page 1
+    "rest.heart": ("Page 1, the 'Everything else is steady' line", "your heart and arteries"),
+    "rest.sugar": ("Page 1, the 'Everything else is steady' line", "your sugar handling"),
+    "rest.thyroid": ("Page 1, the 'Everything else is steady' line", "your thyroid"),
+    "rest.nutrients": ("Page 1, the 'Everything else is steady' line", "your vitamins and iron"),
+    "rest.also": ("Page 1, a fourth section that is not steady", " Also marked “{status}”: {name}."),
+    "todo.start.other": ("Page 1, step 1, when neither sugar nor cholesterol is marked", "Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are."),
+    "todo.work.also": ("Page 1, step 2, cholesterol plus another result food moves", " The same changes work on {others}."),
+    "todo.work.close": ("Page 1, step 2, results food moves when cholesterol is not the main one: closing sentence", " Most people know the headline. Few manage it alone, because it comes down to your own routine."),
+    "todo.watch": ("Page 1, a step for results just outside range that food does not move", "{names} {sit} just outside {its_their} range. Nothing to do now. {it_is} read again at your next test."),
+    "todo.deep.many": ("Page 1, deeper-look step with three or more results", "{names}. All sit well outside their range, and blood alone cannot say why."),
+    "letter.older": ("Letter, body age more than 3 years older", "{name}, this first result reads older than your age, and most of what is driving it can be moved."),
+    "letter.level": ("Letter, body age within 3 years of age", "{name}, this is a steady first result: your blood reads close to your age."),
+    "letter.steady": ("Letter, second line, report offers no session", "Nothing in here needs fixing. The few things worth keeping an eye on are marked, with what moves each one."),
+    "letter.other": ("Letter, second line, something other than cholesterol leads", "Where I would put the effort this year: {parts}."),
+    # body age
+    "bodyage.older": ("Body age section, older than age", "A body age of {ba} at {age} does not mean {n} years are lost. It says that today your blood looks like that of an older person in those studies, and the values behind it can move."),
+    "bodyage.level": ("Body age section, about the same as age", "A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies."),
+    # reading it as one body
+    "onebody.none": ("Reading it as one body, nothing connects", "Nothing in this report pulls on anything else. Each section can be read by itself."),
+    "conn.sugar_liver": ("Connection: sugar marked and the liver fat score high or enzymes marked", "Sugar the body cannot use straight away is stored as fat, and the liver is the first place it goes. A raised sugar reading and signs of fat in the liver usually move together, and the same changes bring both down."),
+    "conn.inflammation_arteries": ("Connection: inflammation clearly raised and cholesterol marked", "Cholesterol particles do more harm in an artery wall that is already inflamed. With both raised, each matters more than it would alone."),
+    "conn.iron_haemoglobin": ("Connection: haemoglobin low and iron low (deeper report)", "Your haemoglobin and your iron carriers are both low. Iron is what haemoglobin is built from, so these two belong together. The question is why iron is short."),
+    "conn.b12_haemoglobin": ("Connection: haemoglobin low and B12 low (deeper report)", "Your haemoglobin and your B12 are both low. Red cells cannot be built properly without B12, so these two belong together."),
+    "conn.vitd_alp": ("Connection: vitamin D low and ALP raised (deeper report)", "Your vitamin D is low and one bone-linked enzyme is raised. When vitamin D runs short, bone turns over faster, and that enzyme rises with it."),
+    # next test
+    "next.steady.headline": ("Next test, steady report: headline", "About a year after this test, because this report is steady all through."),
+    "next.steady.when": ("Next test, steady report", "<b>Your next test:</b> {date}. A year is long enough to show whether anything has started to drift."),
+    "next.steady.expect": ("Next test, steady report: what we would hope to see", "The same steady picture, and a body age that has held or come down."),
+    "next.work.other": ("Next test, nothing that food moves is marked", "<b>If you work on this yourself:</b> {date}. Four months is long enough for a change to show."),
+    "next.hope.other": ("Next test, what we would hope to see (general)", "The marked results moving back towards their range, and your body age holding or coming down."),
+    # your next step
+    "step.nothing.headline": ("Next step, steady report: headline", "You do not need anything more from me."),
+    "step.nothing.para": ("Next step, steady report", "Your report is steady all through. Keep doing what you are doing, and test again in about a year, on {date}."),
+    "step.self.headline": ("Next step, one or two small things: headline", "Nothing here needs me. The steps on the first page are yours to take."),
+    "step.self.para": ("Next step, one or two small things", "What is marked in this report sits just outside its range. Your next test, on {date}, will show which way it is moving."),
+    "step.inherited.headline": ("Next step, an inherited result alone and clearly raised: headline", "One result here is worth mentioning at your next routine check-up: your {names}."),
+    "step.inherited.para": ("Next step, an inherited result alone and clearly raised", "It is inherited, and food does not move it. Everything else in this report is steady, so you do not need a session with me."),
+    "step.doctor_only.headline": ("Next step, an inherited result alone and far out: headline", "One result here needs a doctor's attention: your {names}."),
+    "step.doctor_only.para": ("Next step, an inherited result alone and far out", "It is inherited, and food does not move it. Everything else in this report is steady, so you do not need a session with me."),
+    "step.foundation.work.headline": ("Next step, Foundation offered with nothing needing a deeper look: headline", "{count} in this report {is_are} worth working on with help: {things}."),
+    "step.foundation.work.why": ("Same: first paragraph", "Blood shows what is off. What moves it is in your routine: how you eat and sleep, what you take, what runs in your family, and when things began to change."),
+    "step.foundation.work.leave": ("Same: What you leave with", "What is driving these numbers in your own routine, and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone."),
+    "step.foundation.far": ("Next step, Foundation, a far-out result other than the thyroid signal", "Your {names} {is_are} far enough outside range to need a doctor's attention as well. See yours. The session covers the rest: why it is happening, as far as it can be known, and what food, sleep and stress are doing to it."),
+}
 
 WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
          "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
@@ -32,6 +99,10 @@ def join(items: list[str]) -> str:
     return items[0] if len(items) == 1 else (", ".join(items[:-1]) + " and " + items[-1]) if items else ""
 
 
+def cap(s: str) -> str:
+    return s[:1].upper() + s[1:]
+
+
 def day(d: Any, year: bool = True) -> str:
     return f"{d.day} {d:%B}" + (f" {d.year}" if year else "")
 
@@ -43,6 +114,8 @@ def inr(n: int) -> str:
 def distance(r: Row) -> str:
     """How far outside its range a result is, in the report's words."""
     v, kind, a, b = r.value, r.kind, r.a, r.b
+    if kind == "none":
+        return "outside its range"
     if kind == "range":
         d, w = ((v - b) / b, "above") if v > b else ((a - v) / a, "below")
     elif kind == "min":
@@ -51,6 +124,19 @@ def distance(r: Row) -> str:
         top = b if kind == "z3" else a
         d, w = (v - top) / top, "above"
     return "just outside range" if d < 0.05 else f"{round(d * 100)}% {w} range"
+
+
+def off(r: Row) -> str:
+    """How a flagged result reads in words: its distance from the range, or, when the cut-off table marks it
+    while it is still inside the laboratory's printed range, which end it sits at."""
+    if r.state == "ok":
+        end = "low" if r.side == "low" else "high"
+        return f"at the {end} end of its range" if rank(r.level) <= 1 else end
+    return distance(r)
+
+
+def val(r: Row) -> str:
+    return f"{num(r.value)}%" if r.unit == "%" else f"{num(r.value)} {r.unit}".strip()
 
 
 def how_far(r: Row) -> str:
@@ -68,10 +154,19 @@ class Lib:
         self.drafts: list[str] = []
         self.missing: list[str] = []
 
-    def draft(self, key: str, text: str) -> str:
-        if key not in self.drafts:
+    def _note(self, key: str) -> None:
+        if key not in APPROVED_DRAFTS and key not in self.drafts:
             self.drafts.append(key)
-        return text
+
+    def d(self, key: str, **slots: Any) -> str:
+        """A draft phrase from DRAFT, recorded as used."""
+        self._note(key)
+        return DRAFT[key][1].format(**slots) if slots else DRAFT[key][1]
+
+    def hit(self, h: Hit) -> None:
+        """Record a finding block as used when its wording at this level is not approved yet."""
+        if not h.approved:
+            self._note(f"finding.{h.finding.id}.{'C' if h.level == 'D' else h.level}")
 
     def need(self, key: str, what: str) -> str:
         self.missing.append(f"{key}: {what}")
@@ -100,9 +195,6 @@ MOVES = {
     "nutrients": "Sunlight and supplements for vitamin D. Diet, absorption and supplements for B12. Diet, blood loss and inflammation for iron.",
     "metals": "Drinking water, some fish, rice from certain regions, old paint and pipes, some traditional remedies and cosmetics, and smoking.",
 }
-REST_NAME = {"liver": "your liver", "kidneys": "your kidneys", "blood": "your blood count", "metals": "your metals"}
-REST_NAME_DRAFT = {"heart": "your heart and arteries", "sugar": "your sugar handling", "thyroid": "your thyroid",
-                   "nutrients": "your vitamins and iron"}
 FH = [
     "Your doctor looks for disease and treats it. Nothing here replaces that.",
     "A nutritionist gives you a way of eating. A coach helps you keep a change going.",
@@ -116,20 +208,6 @@ REFS = [
     "Fat-storage score (Hepatic Steatosis Index): Lee JH et al. Dig Liver Dis. 2010;42:503–508.",
     "Scarring score (FIB-4): Sterling RK et al. Hepatology. 2006;43:1317–1325.",
 ]
-KEEP = "And keep whatever you do in the mornings. It is working."
-
-# what a result is called inside a sentence: (noun, section it links to)
-NOUN = {"tsh": ("thyroid signal", "thyroid"), "hcy": ("homocysteine", "heart")}
-NOUN_DRAFT = {"lpa": ("Lp(a)", "heart"), "hb": ("haemoglobin", "blood"), "creatinine": ("kidney marker", "kidneys"),
-              "potassium": ("potassium", "kidneys"), "sodium": ("sodium", "kidneys"), "calcium": ("calcium", "kidneys"),
-              "alt": ("liver enzymes", "liver"), "ast": ("liver enzymes", "liver"), "ggt": ("liver enzymes", "liver"),
-              "wbc": ("white cell count", "blood"), "platelets": ("platelets", "blood"), "b12": ("vitamin B12", "nutrients"),
-              "tsat": ("iron stores", "nutrients"), "ft4": ("free thyroid hormone", "thyroid"), "ft3": ("free thyroid hormone", "thyroid")}
-# what a group of results that food and movement move is called: (in "numbers" sentences, in "load" sentences)
-WORK_NOUN = {"lipids": ("artery numbers", "artery load"), "sugar": ("sugar average", "sugar average")}
-WORK_NOUN_DRAFT = {"inflammation": ("inflammation marker", "inflammation"), "uric": ("uric acid", "uric acid"),
-                   "vitd": ("vitamin D", "vitamin D"), "hsi": ("liver fat score", "liver fat score")}
-
 # real clients, unnamed, each shown only in the section whose finding it matches (testimonials-by-finding.md)
 TESTIMONIAL = {
     "thyroid": ('<h3>In a client\'s words</h3><div class="tm">'
@@ -146,22 +224,9 @@ TESTIMONIAL = {
 }
 
 
-def noun(key: str, lib: Lib) -> tuple[str, str]:
-    if key in NOUN:
-        return NOUN[key]
-    if key in NOUN_DRAFT:
-        lib.draft(f"noun.{key}", "")
-        return NOUN_DRAFT[key]
-    return lib.need(f"noun.{key}", "what this result is called inside a sentence"), "first"
-
-
-def work_noun(group: str, lib: Lib) -> tuple[str, str]:
-    if group in WORK_NOUN:
-        return WORK_NOUN[group]
-    if group in WORK_NOUN_DRAFT:
-        lib.draft(f"work_noun.{group}", "")
-        return WORK_NOUN_DRAFT[group]
-    return (lib.need(f"work_noun.{group}", "what this group of results is called inside a sentence"),) * 2
+KEEP = "And keep whatever you do in the mornings. It is working."
+CLOSE_APPROVED = (" Most people know the headline. Few manage it alone, because it comes down to your own routine, "
+                  "whether that is your kitchen or a restaurant menu.")
 
 
 def _lv(rows: dict[str, Row], key: str) -> int:
@@ -178,105 +243,155 @@ def _ok(rows: dict[str, Row], key: str) -> bool:
     return bool(r and r.state == "ok" and not r.level)
 
 
-# ── one section's headline and "what it means for you" ──────────────────────
-def section_text(sec: Section, rows: dict[str, Row], deeper: bool, lib: Lib) -> tuple[str, list[tuple[str, str]]]:
-    sid, st = sec.id, sec.status
-    flagged = [r for r in sec.rows if r.level and (not r.calc or r.key == "fib4")]
-    what = f"status '{st}' from " + ", ".join(f"{r.name} {num(r.value)} (level {r.level})" for r in flagged)
+def slots_for(h: Hit, sex: str) -> dict:
+    """What a finding block's {slots} are filled with."""
+    r = max(h.rows, key=lambda x: rank(x.level))
+    names = join([x.name for x in h.rows])
+    many = len(h.rows) > 1
+    return dict(name=r.name, dist=off(r), names=names, is_are="are" if many else "is", its_their="their" if many else "its",
+                loss="regular blood loss such as heavy periods" if sex == "F" else "blood being lost slowly somewhere in the body")
 
-    if sid == "heart":
-        lip = _glv(rows, "lipids")
-        if st == "needs attention" and lip >= 2:
-            todo = "Food comes first, and that is where the work starts."
-            if lip >= 3:
-                todo += lib.draft("heart.lipids.C", " Numbers at this level need a doctor's attention as well.")
-            else:
-                todo += " Numbers at this level are also worth mentioning at your next routine check-up."
-            return ("Your arteries are carrying a heavier load of cholesterol particles than is good for them.",
-                    [("Today", "You feel nothing. That is the difficulty with this one."),
-                     ("Over the years", "A heavy particle load is one of the patterns linked with heart disease later in life. It is also one of the most changeable."),
-                     ("New in this report", "A standard check-up counts the cholesterol. This counts the particles carrying it, and adds a second marker of artery wear."),
-                     ("What to do", todo)])
-        if st == "steady":
-            return (lib.draft("heart.steady", "Your arteries are carrying a comfortable load, and the markers of wear are quiet."),
-                    [("Today", lib.draft("heart.steady", "Nothing to act on.")),
-                     ("New in this report", "A standard check-up counts the cholesterol. This counts the particles carrying it, and adds a second marker of artery wear.")])
-    if sid == "sugar":
-        if st == "watch" and _lv(rows, "hba1c") == 1 and _ok(rows, "glucose"):
-            return ("Your morning sugar is calm. Your three-month average sits just above the line.",
-                    [("Today", "Your mornings are steady, and you may notice nothing at all."),
-                     ("What we are watching", "The gap between a calm morning reading and a slightly raised three-month average is often the first thing to move, years before a morning test does. You are early, and early is the easy time.")])
-        if st == "steady":
-            return (lib.draft("sugar.steady", "Your morning sugar and your three-month average are both calm."),
-                    [("Today", lib.draft("sugar.steady", "Your body is holding its sugar steady without strain. Nothing to act on."))])
-    if sid == "liver" and st == "steady":
+
+def line_of(h: Hit) -> str:
+    return h.finding.line.get("C" if h.level == "D" else h.level, "")
+
+
+def noun_of(h: Hit) -> str:
+    return join([r.name.lower() if r.name != "Lp(a)" else r.name for r in h.rows]) if h.finding.id in ("metals", "generic") else h.finding.noun
+
+
+def is_plural(h: Hit) -> bool:
+    return (len(h.rows) > 1 and h.finding.id in ("metals", "generic")) or h.finding.plural
+
+
+def also_para(h: Hit, lib: Lib, sex: str) -> tuple[str, str]:
+    """A finding that is not its section's main one, told in one paragraph."""
+    lib.hit(h)
+    s = slots_for(h, sex)
+    f = h.finding
+    if h.is_generic:
+        return s["name"], (at(f.why, h.level) + " " + at(f.do, h.level)).format(**s) + line_of(h)
+    return f.title, (at(f.head, h.level) + " " + at(f.do, h.level)).format(**s).strip() + line_of(h)
+
+
+def also_paras(lead: Hit, others: list[Hit], lib: Lib, sex: str) -> list[tuple[str, str]]:
+    """The other findings in a section that earn a paragraph: any that are clearly off, and, when the main
+    finding is itself only just outside range, the small ones beside it too."""
+    out = []
+    for o in others:
+        if rank(o.level) < 2 and rank(lead.level) >= 2:
+            continue
+        if lead.finding.id == "lipids" and o.finding.id == "hcy" and o.level == "B":
+            continue            # as approved: homocysteine at this level is covered by the section's check-up line
+        out.append(also_para(o, lib, sex))
+    return out
+
+
+def compose(lead: Hit, others: list[Hit], lib: Lib, sex: str) -> tuple[str, list[tuple[str, str]]]:
+    """A section's headline and "what it means for you", from its findings' blocks."""
+    if lead.is_generic and rank(lead.level) >= 3:
+        r = lead.rows[0]
+        return lib.need(f"finding.{r.key}", f"{r.name} {num(r.value)} is level {lead.level} and nothing is written for it"), []
+    lib.hit(lead)
+    f, lv, s = lead.finding, lead.level, slots_for(lead, sex)
+    means = [("Today", at(f.today, lv))]
+    if f.why:
+        means.append((f.why_title, at(f.why, lv).format(**s)))
+    means += list(f.extra)
+    means += also_paras(lead, others, lib, sex)
+    do = at(f.do, lv).format(**s)
+    if do or line_of(lead):
+        means.append(("What to do", (do + line_of(lead)).strip()))
+    return at(f.head, lv).format(**s), means
+
+
+# ── one section's headline and "what it means for you" ──────────────────────
+def section_text(sec: Section, rows: dict[str, Row], deeper: bool, lib: Lib, sex: str = "M",
+                 hits: Optional[list[Hit]] = None) -> tuple[str, list[tuple[str, str]]]:
+    sid = sec.id
+    hits = hits_in(sec) if hits is None else hits
+    if not hits:
+        return steady_text(sec, rows, lib)
+    lead, others = hits[0], hits[1:]
+    fid = lead.finding.id
+
+    if fid == "sugar" and lead.level == "A" and _lv(rows, "hba1c") == 1 and _ok(rows, "glucose") and not _lv(rows, "insulin"):
+        return ("Your morning sugar is calm. Your three-month average sits just above the line.",
+                [("Today", "Your mornings are steady, and you may notice nothing at all."),
+                 ("What we are watching", "The gap between a calm morning reading and a slightly raised three-month average is often the first thing to move, years before a morning test does. You are early, and early is the easy time.")]
+                + also_paras(lead, others, lib, sex))
+    if fid == "tsh_high":
+        lib.hit(lead)
+        f = lead.finding
+        means = [("Today", at(f.today, lead.level))]
+        hold = deeper and _ok(rows, "ft4") and _ok(rows, "ft3")
+        if hold:
+            means.append(("What the deeper tests add", "Your free hormones are in range. The signal is raised, but your thyroid is still keeping up. Whether your immune system is involved is the next thing to check."))
+        means += also_paras(lead, others, lib, sex)
+        do = at(f.do, lead.level)
+        if hold and rank(lead.level) >= 2:
+            do = "This needs a deeper look, read alongside your history: what is pushing the signal up while the hormones hold."
+        means.append(("What to do", do + line_of(lead)))
+        return f.head, means
+    if fid == "b12_high":
+        alone = not others and _ok(rows, "vitd") and (_ok(rows, "tsat") or _ok(rows, "iron"))
+        means = [("Today", lead.finding.today)]
+        if _lv(rows, "hcy") >= 2:
+            means.append(("Why it matters in your report", "Homocysteine normally comes down when B12 is plentiful. Yours is high while your B12 is full, so a shortage of B12 is not the explanation. That requires a deeper look and further investigation."))
+        means += also_paras(lead, others, lib, sex)
+        head = "Your vitamin D and iron are comfortably in range. Your B12 is well above it." if alone else lib.d("b12_high.head")
+        return head, means
+    return compose(lead, others, lib, sex)
+
+
+def steady_text(sec: Section, rows: dict[str, Row], lib: Lib) -> tuple[str, list[tuple[str, str]]]:
+    sid = sec.id
+    if sid == "liver":
         hsi = rows.get("hsi")
         if hsi and hsi.state == "mid":
             return ("Your liver is working quietly. One score for stored fat sits in the middle zone.",
                     [("Today", "Nothing to feel and nothing to fix."),
                      ("One thing to look at again", "The score that estimates stored fat sits in the middle zone. It is worth a second look at your next test.")])
-        if not hsi or hsi.state == "ok":
-            return (lib.draft("liver.steady", "Your liver is working quietly."), [("Today", "Nothing to feel and nothing to fix.")])
-    if sid == "thyroid":
-        tsh = rows.get("tsh")
-        if tsh and tsh.level and tsh.hi is not None and tsh.value > tsh.hi and not any(r.level for r in sec.rows if r.key != "tsh"):
-            lvl = rank(tsh.level)
-            if lvl >= 3:
-                tail = " A signal this far outside its range needs a doctor's attention as well, because medicine can be part of the answer."
-            elif lvl == 2:
-                tail = lib.draft("thyroid.signal.B", " A signal at this level is worth mentioning at your next routine check-up.")
-            else:
-                tail = lib.draft("thyroid.signal.A", " It is only just outside its range, so the first step is to read it again at your next test.")
-            means = [("Today", "People with a raised signal often feel tired, cold or slower than they used to.")]
-            if deeper and "ft4" in rows and "ft3" in rows:
-                means += [("What the deeper tests add", "Your free hormones are in range. The signal is raised, but your thyroid is still keeping up. Whether your immune system is involved is the next thing to check."),
-                          ("What to do", "This needs a deeper look, read alongside your history: what is pushing the signal up while the hormones hold." + tail)]
-            else:
-                means += [("What to do", "This needs a deeper look: the full thyroid picture, read alongside your history." + tail)]
-            return "The signal asking your thyroid to work harder is raised.", means
-        if st == "steady":
-            return (lib.draft("thyroid.steady", "Your thyroid signal is calm, and the hormones it makes are in range."),
-                    [("Today", lib.draft("thyroid.steady", "Nothing to act on."))])
-    if sid == "kidneys" and st == "steady":
+        if hsi and hsi.state == "out":
+            return lib.d("liver.fat_high.head"), [("Today", "Nothing to feel and nothing to fix."), ("One thing to look at again", lib.d("liver.fat_high.means"))]
+        return lib.d("steady.liver.head"), [("Today", "Nothing to feel and nothing to fix.")]
+    if sid == "kidneys":
         return "Your kidneys are clearing waste well and your salts are in balance.", [("Today", "Clear. Nothing to act on.")]
-    if sid == "blood" and st == "steady":
+    if sid == "blood":
         return ("Your red cells are fresh and even. This is the strongest part of your report.",
                 [("Today", "Red cells like these go with stamina and good recovery.")])
-    if sid == "nutrients":
-        only_b12 = b12_high(rows) and [r.key for r in flagged] == ["b12"]
-        if only_b12:
-            means = [("Today", "Nothing here is short. A B12 this high usually comes from supplements or fortified food.")]
-            if _lv(rows, "hcy") >= 2:
-                means.append(("Why it matters in your report", "Homocysteine normally comes down when B12 is plentiful. Yours is high while your B12 is full, so a shortage of B12 is not the explanation. That requires a deeper look and further investigation."))
-            return "Your vitamin D and iron are comfortably in range. Your B12 is well above it.", means
-        if st == "steady":
-            return (lib.draft("nutrients.steady", "Your vitamin D, B12 and iron are all comfortably in range."),
-                    [("Today", lib.draft("nutrients.steady", "Nothing here is short and nothing is overfull."))])
-    if sid == "metals" and st == "steady":
+    if sid == "metals":
         head = "No heavy metal is above range."
         if any(r.illustrative for r in sec.rows):
             head += " These values are illustrative: the test profile has no metals results."
         return head, [("Today", "Nothing to trace and nothing to act on.")]
-    return lib.need(f"section.{sid}", what or f"status '{st}'"), []
+    means = [("Today", lib.d(f"steady.{sid}.today"))]
+    if sid == "heart":
+        means.append(("New in this report", "A standard check-up counts the cholesterol. This counts the particles carrying it, and adds a second marker of artery wear."))
+    return lib.d(f"steady.{sid}.head"), means
 
 
-def stand_numbers(sec: Section, rows: dict[str, Row], lib: Lib) -> str:
+def stand_numbers(sec: Section, rows: dict[str, Row], hits: list[Hit]) -> str:
     """The small line of key numbers under a finding on page 1."""
-    if sec.id == "heart" and _glv(rows, "lipids") >= 1:
-        r = rows.get("apob")
-        bits = [f"ApoB {num(r.value)} {r.unit} · usual aim under 100"] if r else []
-        if not r and "ldl" in rows:
-            bits = [f"LDL cholesterol {num(rows['ldl'].value)} {rows['ldl'].unit} · under 100 ideal"]
+    lead = hits[0] if hits else None
+    if lead and lead.finding.id == "lipids":
+        r, ldl = rows.get("apob"), rows.get("ldl")
+        if r and r.level:
+            bits = [f"ApoB {num(r.value)} {r.unit} · usual aim under 100"]
+        elif ldl and ldl.level:
+            bits = [f"LDL cholesterol {num(ldl.value)} {ldl.unit} · under 100 ideal"]
+        else:
+            w = max(lead.rows, key=lambda x: rank(x.level))
+            bits = [f"{w.name} {val(w)} · {w.rtxt}"]
         h = rows.get("hcy")
         if h and rank(h.level) >= 2:
             bits.append(f"homocysteine {num(h.value)} {h.unit} · {distance(h)}")
         return " &nbsp;|&nbsp; ".join(bits)
-    if sec.id == "sugar" and _lv(rows, "hba1c") >= 1:
+    if lead and lead.finding.id == "sugar" and _lv(rows, "hba1c") >= 1:
         return f"HbA1c {num(rows['hba1c'].value)}% · lab under 5.7"
-    flagged = sorted((r for r in sec.rows if r.level and not r.calc), key=lambda r: -rank(r.level))
-    if flagged:
-        r = flagged[0]
-        return f"{r.name} {num(r.value)} {r.unit} · {r.rtxt}"
+    if lead:
+        r = max(lead.rows, key=lambda x: rank(x.level))
+        return f"{r.name} {val(r)} · {r.rtxt}"
     return ""
 
 
@@ -291,28 +406,48 @@ def gap_words(gap: float) -> tuple[str, str]:
     return "about the same as your age", ""
 
 
-def deep_step(deep: list[Row], lib: Lib, link: bool = True) -> str:
+def all_hits(rp: Any) -> list[Hit]:
+    return [h for s in rp.sections for h in rp.hits.get(s.id, [])]
+
+
+def section_of(rp: Any, h: Hit) -> str:
+    return next(s.id for s in rp.sections if h.rows[0] in s.rows)
+
+
+def deep_hits(rp: Any) -> list[Hit]:
+    """The findings that need a deeper look (clearly off, and not something food simply moves), worst first."""
+    keys = set(rp.decision.deep_rows)
+    out = [h for h in all_hits(rp) if any(r.key in keys for r in h.rows)]
+    return sorted(out, key=lambda h: -rank(h.level))
+
+
+def work_hits(rp: Any) -> list[Hit]:
+    """The findings that food, movement and sleep move, clearest first."""
+    out = [h for h in all_hits(rp) if h.nature == "work" and not h.is_generic]
+    return sorted(out, key=lambda h: -rank(h.level))
+
+
+def deep_step(deep: list[Hit], rp: Any, lib: Lib, link: bool = True) -> str:
     """Step 3 on page 1: the results that need a deeper look, with the doctor or check-up line each one earns."""
-    names = []
-    for r in deep:
-        n, sid = noun(r.key, lib)
-        names.append(f'your <a href="#{sid}">{n}</a>' if link else f"your {n}")
-    plain = [noun(r.key, lib)[0] for r in deep]
+    plain = [noun_of(h) for h in deep]
+    names = [f'your <a href="#{section_of(rp, h)}">{n}</a>' if link else f"your {n}" for h, n in zip(deep, plain)]
     if len(deep) == 1:
-        s = f"{names[0][0].upper()}{names[0][1:]}. It sits well outside its range, and blood alone cannot say why."
+        s = f"{cap(names[0])}. " + ("They sit well outside their range" if is_plural(deep[0]) else "It sits well outside its range") + ", and blood alone cannot say why."
     elif len(deep) == 2:
-        s = f"{names[0][0].upper()}{names[0][1:]} and {names[1]}. Both sit well outside their range, and blood alone cannot say why."
+        s = f"{cap(names[0])} and {names[1]}. Both sit well outside their range, and blood alone cannot say why."
     else:
-        s = lib.draft("todo.deep.many", f"{join(names)[0].upper()}{join(names)[1:]}. All sit well outside their range, and blood alone cannot say why.")
+        s = lib.d("todo.deep.many", names=cap(join(names)))
     s += " That takes your history and a few further tests."
-    far = [n for r, n in zip(deep, plain) if rank(r.level) >= 3]
-    clear = [n for r, n in zip(deep, plain) if rank(r.level) == 2]
+
+    def verb(hs: list[Hit]) -> str:
+        return "are" if len(hs) > 1 or is_plural(hs[0]) else "is"
+    far = [h for h in deep if rank(h.level) >= 3]
+    clear = [h for h in deep if rank(h.level) == 2]
     parts = []
     if far:
-        parts.append(f"The {join(far)} {'is' if len(far) == 1 else 'are'} far enough out to need a doctor's attention as well")
+        parts.append(f"The {join([noun_of(h) for h in far])} {verb(far)} far enough out to need a doctor's attention as well")
     if clear:
-        lead = "the" if parts else "The"
-        parts.append(f"{lead} {join(clear)} {'is' if len(clear) == 1 else 'are'} worth mentioning at your next routine check-up")
+        parts.append(f"{'the' if parts else 'The'} {join([noun_of(h) for h in clear])} {verb(clear)} worth mentioning at your next routine check-up")
     if parts:
         s += " " + ", and ".join(parts) + "."
     return s
@@ -320,27 +455,34 @@ def deep_step(deep: list[Row], lib: Lib, link: bool = True) -> str:
 
 def todo_steps(rp: Any, lib: Lib) -> list[dict]:
     """The numbered steps on page 1: start tonight, what we can work on, what needs a deeper look."""
-    rows = rp.rows
     steps: list[dict] = []
-    lip, sug = _glv(rows, "lipids"), _glv(rows, "sugar")
-    if lip or sug:
-        steps.append(dict(tag="Start tonight", when="free", short="a ten-minute walk after your largest meal, tonight",
-                          text="Walk for ten minutes after your largest meal, every day until your next test. It helps your body clear the sugar from that meal."))
-    else:
-        steps.append(dict(tag="Start tonight", when="free", short="a ten-minute walk after your largest meal, tonight",
-                          text=lib.draft("todo.start.steady", "Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are.")))
-    if lip >= 2:
+    work = [h for h in work_hits(rp) if h.finding.step]
+    ids = [h.finding.id for h in work]
+    walk = "Walk for ten minutes after your largest meal, every day until your next test. It helps your body clear the sugar from that meal."
+    steps.append(dict(tag="Start tonight", when="free", short="a ten-minute walk after your largest meal, tonight",
+                      text=walk if ("lipids" in ids or "sugar" in ids) else lib.d("todo.start.other")))
+    lipids = next((h for h in work if h.finding.id == "lipids" and rank(h.level) >= 2), None)
+    if lipids:
+        others = [h for h in work if h is not lipids and rank(h.level) >= 2]
+        also = lib.d("todo.work.also", others=join(["your " + h.finding.moves for h in others])) if others else ""
         steps.append(dict(tag="What we can work on", when="over the next few months",
-                          email="Bringing the artery load down through how you eat: which fats, how much fibre, what dinner looks like, what you reach for between meals.",
-                          text='Bringing the <a href="#heart">artery load</a> down through how you eat: which fats, how much fibre, what dinner looks like, what you reach for between meals. Most people know the headline. Few manage it alone, because it comes down to your own routine, whether that is your kitchen or a restaurant menu.'))
-    elif any(s.status in ("needs attention", "watch") for s in rp.sections):
-        work = [s.name.lower() for s in rp.sections if s.status in ("needs attention", "watch")]
-        t = lib.draft("todo.work.other", f"Your {join(work)}. Food, movement and sleep move these within months, and the sections behind this page show what moves each one.")
-        steps.append(dict(tag="What we can work on", when="over the next few months", text=t, email=t))
-    deep = [rows[k] for k in rp.decision.deep_rows]
+                          text=lipids.finding.step + CLOSE_APPROVED + also, email=lipids.finding.step + also))
+    elif work:
+        for h in work:
+            lib.hit(h)
+        body = " ".join(h.finding.step for h in work[:3])
+        close = lib.d("todo.work.close") if set(ids) & {"lipids", "sugar", "tg"} else ""      # the food findings
+        steps.append(dict(tag="What we can work on", when="over the next few months", text=body + close, email=body))
+    deep = deep_hits(rp)
     if deep:
-        deep.sort(key=lambda r: -rank(r.level))
-        steps.append(dict(tag="Needs a deeper look", when="the next step", text=deep_step(deep, lib), email=deep_step(deep, lib, link=False)))
+        steps.append(dict(tag="Needs a deeper look", when="the next step", text=deep_step(deep, rp, lib), email=deep_step(deep, rp, lib, link=False)))
+    else:
+        watch = [h for h in all_hits(rp) if h.nature != "work" and rank(h.level) == 1]
+        if watch:
+            many = len(watch) > 1 or is_plural(watch[0])
+            t = lib.d("todo.watch", names=cap(join(["your " + noun_of(h) for h in watch])), sit="sit" if many else "sits",
+                      its_their="their" if many else "its", it_is="They are" if many else "It is")
+            steps.append(dict(tag="Worth watching", when="at your next test", text=t))
     for s in steps:
         s.setdefault("email", s["text"])
     return steps
@@ -348,41 +490,36 @@ def todo_steps(rp: Any, lib: Lib) -> list[dict]:
 
 def letter(rp: Any, lib: Lib) -> list[str]:
     gap, name = rp.decision.body_age_gap, rp.name
-    heart = next((s for s in rp.sections if s.id == "heart"), None)
+    heart = rp.hits.get("heart") or []
     if gap <= -3:
         first = f"{name}, this is a strong first result, and it is worth protecting."
     elif gap > 3:
-        first = lib.draft("letter.older", f"{name}, this first result reads older than your age, and most of what is driving it can be moved.")
+        first = lib.d("letter.older", name=name)
     else:
-        first = lib.draft("letter.level", f"{name}, this is a steady first result: your blood reads close to your age.")
+        first = lib.d("letter.level", name=name)
     out = [first]
-    if heart and heart.status == "needs attention" and gap <= -3:
+    if heart and heart[0].finding.id == "lipids" and rank(heart[0].level) >= 2 and gap <= -3:
         out.append("One thing in here does not match the rest: your arteries. That is where I would put the effort this year.")
     elif rp.decision.outcome in ("nothing", "self"):
-        out.append(lib.draft("letter.steady", "Nothing in here needs fixing. The few things worth keeping an eye on are marked, with what moves each one."))
+        out.append(lib.d("letter.steady"))
     else:
-        off = [s.name.lower() for s in rp.sections if s.key == "att"]
-        out.append(lib.draft("letter.other", f"The part I would put the effort into this year: your {join(off)}."))
+        off = [s.name.lower() for s in rp.sections if s.key == "att"] or [s.name.lower() for s in rp.sections if s.key == "watch"]
+        out.append(lib.d("letter.other", parts=join(["your " + x for x in off])))
     return out
 
 
 def rest_line(rp: Any, lib: Lib) -> str:
-    names = []
-    for s in rp.sections:
-        if s.status != "steady":
-            continue
-        if s.id in REST_NAME:
-            names.append(REST_NAME[s.id])
-        else:
-            names.append(lib.draft(f"rest.{s.id}", REST_NAME_DRAFT[s.id]))
+    approved = {"liver": "your liver", "kidneys": "your kidneys", "blood": "your blood count", "metals": "your metals"}
+    names = [approved.get(s.id) or lib.d(f"rest.{s.id}") for s in rp.sections if s.status == "steady"]
     line = f"Everything else is steady: {join(names)}." if names else ""
     shown = {x["id"] for x in rp.stand}
-    extra = [s for s in rp.sections if s.status != "steady" and s.id not in shown]
-    for s in extra:
+    for s in rp.sections:
+        if s.status == "steady" or s.id in shown:
+            continue
         if s.id == "nutrients" and b12_high(rp.rows) and _lv(rp.rows, "hcy") >= 2:
             line += " Your B12 is high, which matters for one finding above."
         else:
-            line += lib.draft("rest.also", f" Also marked “{s.status}”: {s.name.lower()}.")
+            line += lib.d("rest.also", status=s.status, name=s.name.lower())
     return line.strip()
 
 
@@ -396,41 +533,52 @@ def body_age_means(rp: Any, lib: Lib) -> tuple[str, str]:
         means = (f"A body age of {ba} at {age} does not promise {n} extra years. It says that today your blood looks like that of "
                  "a younger person in those studies. That is worth protecting.")
     elif gap >= 1.5:
-        means = lib.draft("bodyage.older", f"A body age of {ba} at {age} does not mean {n} years are lost. It says that today your blood looks like "
-                          "that of an older person in those studies, and the values behind it can move.")
+        means = lib.d("bodyage.older", ba=ba, age=age, n=n)
     else:
-        means = lib.draft("bodyage.level", f"A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies.")
+        means = lib.d("bodyage.level", ba=ba, age=age)
     tail = "."
     if gap <= -1.5 and heart and heart.key == "att":
         tail = f", and why yours can read {n} years younger while your heart section still needs attention."
     return means, tail
 
 
+def connection_text(c: Any, lib: Lib) -> str:
+    return lib.d(f"conn.{c.id}") if c.draft else c.text
+
+
 # ── next test ────────────────────────────────────────────────────────────────
 def next_test(rp: Any, lib: Lib) -> dict:
     rows, d = rp.rows, day(rp.next_test)
     if all(s.status == "steady" for s in rp.sections):
-        return dict(headline=lib.draft("next.steady", "About a year after this test, because this report is steady all through."),
-                    when=[lib.draft("next.steady", f"<b>Your next test:</b> {d}. A year is long enough to show whether anything has started to drift.")],
-                    expect=[("What we would hope to see", lib.draft("next.steady", "The same steady picture, and a body age that has held or come down."))])
-    work = [work_noun(g, lib)[1] for g in ("lipids", "sugar") if _glv(rows, g)]
+        return dict(headline=lib.d("next.steady.headline"), when=[lib.d("next.steady.when", date=d)],
+                    expect=[("What we would hope to see", lib.d("next.steady.expect"))])
+    moving: list[str] = []
+    hits = work_hits(rp)
+    has_lipids = any(h.finding.id == "lipids" for h in hits)
+    for h in hits:
+        if has_lipids and h.finding.id in FOLDED_INTO_LIPIDS:
+            continue
+        if h.finding.moves and h.finding.moves not in moving:
+            moving.append(h.finding.moves)
+    order = ["artery load", "sugar average"]
+    moving.sort(key=lambda m: (order.index(m) if m in order else 9, m == "inflammation"))
+    slow = [m for m in moving if m != "inflammation"]
     when = []
-    if work:
-        when.append(f"<b>If you work on this yourself:</b> {d}. Four months is long enough for {join(['your ' + w for w in work])} to show a change.")
+    if slow:
+        when.append(f"<b>If you work on this yourself:</b> {d}. Four months is long enough for {join(['your ' + w for w in slow])} to show a change.")
     else:
-        when.append(lib.draft("next.work.other", f"<b>If you work on this yourself:</b> {d}. Four months is long enough for a change to show."))
+        when.append(lib.d("next.work.other", date=d))
     if _lv(rows, "tsh") >= 2:
         when.append("<b>If your thyroid is rechecked sooner:</b> use that date. A change there can move your cholesterol too.")
     when.append("<b>When a report is steady all through:</b> about a year is enough. Yours is not there yet.")
     expect = []
-    moving = [work_noun(g, lib)[1] for g in ("lipids", "sugar") if _glv(rows, g)] + (["inflammation"] if _lv(rows, "hscrp") else [])
     if moving:
-        expect.append(("What can move in four months", "T" + join(["the " + m for m in moving])[1:] + "."))
-    heart = next((s for s in rp.sections if s.id == "heart"), None)
-    if heart and heart.status == "needs attention" and rp.decision.body_age_gap <= -1.5:
+        expect.append(("What can move in four months", cap(join(["the " + m for m in moving])) + "."))
+    heart = rp.hits.get("heart") or []
+    if heart and heart[0].finding.id == "lipids" and rank(heart[0].level) >= 2 and rp.decision.body_age_gap <= -1.5:
         expect.append(("What we would hope to see", "Your body age holding where it is, and the heart picture moving from “needs attention” towards “watch”."))
-    elif moving:
-        expect.append(("What we would hope to see", lib.draft("next.hope.other", "The marked results moving back towards their range, and your body age holding or coming down.")))
+    else:
+        expect.append(("What we would hope to see", lib.d("next.hope.other")))
     lpa = rows.get("lpa")
     if lpa and lpa.level:
         expect.append(("What will not move", f"One part of your heart picture is largely inherited (Lp(a) {num(lpa.value)} {lpa.unit} · {lpa.rtxt}). It changes little, so there is no need to repeat it at four months."))
@@ -444,32 +592,40 @@ def _line(level: str) -> str:
 
 def summary(rp: Any, lib: Lib) -> dict:
     rows, deeper = rp.rows, rp.kind == "deeper"
+    deep_list = deep_hits(rp)
     work, deep = [], []
     for s in rp.sections:
-        if s.status == "steady":
+        hits = rp.hits.get(s.id) or []
+        if not hits:
             continue
-        if s.id == "heart" and _glv(rows, "lipids") >= 1:
-            lv = max((r for r in s.rows if r.group == "lipids" and not r.calc), key=lambda r: rank(r.level)).level
-            work.append((s.name, "The load of cholesterol particles your arteries carry." + _line(lv), s.id))
-        elif s.id == "sugar" and _lv(rows, "hba1c") == 1:
-            work.append((s.name, "Your three-month sugar average, just above the line.", s.id))
-        elif s.id == "nutrients" and b12_high(rows) and [r.key for r in s.rows if r.level] == ["b12"] and _lv(rows, "hcy") >= 2:
-            pass                # told inside the homocysteine line below
-        elif any(r.level and r.nature == "work" and not r.calc for r in s.rows):
-            r = max((r for r in s.rows if r.level and r.nature == "work" and not r.calc), key=lambda r: rank(r.level))
-            work.append((s.name, lib.draft("summary.work.other", f"{r.name} {num(r.value)} {r.unit}, {distance(r) if r.state == 'out' else 'in the middle zone'}.") + _line(r.level), s.id))
-    for k in rp.decision.deep_rows:
-        r = rows[k]
-        sid = next(s.id for s in rp.sections if r in s.rows)
-        if k == "tsh":
+        w = next((h for h in hits if h.nature == "work" and not h.is_generic), None)
+        if w:
+            sv = slots_for(w, rp.sex)
+            if w.finding.id == "sugar" and w.level == "A" and _lv(rows, "hba1c") == 1 and _ok(rows, "glucose") and not _lv(rows, "insulin"):
+                text = "Your three-month sugar average, just above the line."
+            else:
+                lib.hit(w)
+                text = at(w.finding.summary, w.level).format(**sv)
+            work.append((s.name, text + _line(w.level), s.id))
+        elif not any(h in deep_list for h in hits):
+            h = hits[0]                      # only small things food does not move: read again next time
+            if h.finding.id == "b12_high" and len(hits) == 1 and _lv(rows, "hcy") >= 2 and deeper:
+                continue                     # told inside the homocysteine line below
+            lib.hit(h)
+            text = at(h.finding.summary, h.level).format(**slots_for(h, rp.sex)) or f"{noun_of(h).capitalize()}, {off(h.rows[0])}."
+            work.append((s.name, text, s.id))
+    for h in deep_list:
+        r = max(h.rows, key=lambda x: rank(x.level))
+        sid = section_of(rp, h)
+        if h.finding.id == "tsh_high":
             hold = ", while the hormones hold" if deeper and _ok(rows, "ft4") and _ok(rows, "ft3") else ""
-            deep.append(("Thyroid signal", f"TSH {num(r.value)} {r.unit}, {how_far(r)}{hold}." + _line(r.level), sid))
-        elif k == "hcy":
+            deep.append(("Thyroid signal", f"TSH {num(r.value)} {r.unit}, {how_far(r)}{hold}." + _line(h.level), sid))
+        elif h.finding.id == "hcy":
             full = ", although your B12 is full" if deeper and b12_high(rows) else ""
-            deep.append(("Homocysteine", f"{num(r.value)} {r.unit}, {distance(r)}{full}." + _line(r.level), sid))
+            deep.append(("Homocysteine", f"{num(r.value)} {r.unit}, {distance(r)}{full}." + _line(h.level), sid))
         else:
-            n, _sid = noun(k, lib)
-            deep.append((n[0].upper() + n[1:], lib.draft("summary.deep.other", f"{num(r.value)} {r.unit}, {distance(r)}.") + _line(r.level), sid))
+            title = r.name if h.finding.id in ("metals", "generic") else h.finding.title
+            deep.append((title, f"{r.name} {val(r)}, {off(r)}.".replace(f"{title} ", "", 1) + _line(h.level), sid))
     gapw, _n = gap_words(rp.decision.body_age_gap)
     start = rp.todo[0]["short"] if rp.todo else ""
     return dict(headline=f"Your body age is {num(rp.body_age)} at {rp.age}: {gapw}.", work=work, deep=deep,
@@ -479,24 +635,21 @@ def summary(rp: Any, lib: Lib) -> dict:
 # ── your next step ───────────────────────────────────────────────────────────
 def next_step(rp: Any, lib: Lib) -> dict:
     """The last section: one tailored step, or none. Never a price menu."""
-    d, rows = rp.decision, rp.rows
+    d = rp.decision
     sample_day, deadline = day(rp.sample_date, year=False), day(rp.deadline)
     if d.outcome == "nothing":
-        return dict(outcome="nothing", headline=lib.draft("step.nothing", "You do not need anything more from me."),
-                    paras=[lib.draft("step.nothing", f"Your report is steady all through. Keep doing what you are doing, and test again in about a year, on {day(rp.next_test)}.")])
+        return dict(outcome="nothing", headline=lib.d("step.nothing.headline"), paras=[lib.d("step.nothing.para", date=day(rp.next_test))])
     if d.outcome == "self":
-        return dict(outcome="self", headline=lib.draft("step.self", "Nothing here needs me. The steps on the first page are yours to take."),
-                    paras=[lib.draft("step.self", f"What is marked in this report sits just outside its range, and everyday changes move it. Your next test, on {day(rp.next_test)}, will show what they did.")])
+        return dict(outcome="self", headline=lib.d("step.self.headline"), paras=[lib.d("step.self.para", date=day(rp.next_test))])
+    deep = deep_hits(rp)
+    names = [noun_of(h) for h in deep]
     if d.outcome == "doctor_only":
-        names = [noun(k, lib)[0] for k in d.deep_rows]
-        return dict(outcome="doctor_only", headline=lib.draft("step.doctor_only", f"One result here needs a doctor's attention: your {join(names)}."),
-                    paras=[lib.draft("step.doctor_only", "It is inherited, and food does not move it. Take this report to your doctor. Everything else in it is steady, so you do not need a session with me.")])
+        key = "doctor_only" if any(rank(h.level) >= 3 for h in deep) else "inherited"
+        return dict(outcome="doctor_only", headline=lib.d(f"step.{key}.headline", names=join(names)), paras=[lib.d(f"step.{key}.para")])
 
-    deep = sorted((rows[k] for k in d.deep_rows), key=lambda r: -rank(r.level))
-    names = [noun(r.key, lib)[0] for r in deep]
-    work_b = [work_noun(g, lib)[0] for g in ("lipids", "sugar", "inflammation") if _glv(rows, g) >= 2]
-    far = [n for r, n in zip(deep, names) if rank(r.level) >= 3]
-    clear = [n for r, n in zip(deep, names) if rank(r.level) == 2] + work_b
+    work_b = [h.finding.noun for h in work_hits(rp) if rank(h.level) >= 2]
+    far = [h for h in deep if rank(h.level) >= 3]
+    clear = [noun_of(h) for h in deep if rank(h.level) == 2] + work_b
     if deep:
         k = len(deep)
         headline = (f"{word(k).capitalize()} result{'s' if k != 1 else ''} in this report need{'' if k != 1 else 's'} a deeper look: "
@@ -506,17 +659,17 @@ def next_step(rp: Any, lib: Lib) -> dict:
                  "and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone.")
     else:
         things = work_b or [s.name.lower() for s in rp.sections if s.status != "steady"]
-        headline = lib.draft("step.foundation.work", f"{word(len(things)).capitalize()} thing{'s' if len(things) != 1 else ''} in this report {'are' if len(things) != 1 else 'is'} worth working on with help: {join(['your ' + t for t in things])}.")
-        why = lib.draft("step.foundation.work", "Blood shows what is off. What moves it is in your routine: how you eat and sleep, what you take, what runs in your family, and when things began to change.")
-        leave = lib.draft("step.foundation.work", "What is driving these numbers in your own routine, and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone.")
+        n = len(things)
+        headline = lib.d("step.foundation.work.headline", count=f"{word(n).capitalize()} thing{'s' if n != 1 else ''}", is_are="are" if n != 1 else "is",
+                         things=join(["your " + t for t in things]))
+        why, leave = lib.d("step.foundation.work.why"), lib.d("step.foundation.work.leave")
     second = ""
     if far:
-        if far == ["thyroid signal"]:
+        if [h.finding.id for h in far] == ["tsh_high"]:
             second = ("Your thyroid signal is far enough outside its range to need a doctor's attention as well. See yours. The session covers the rest: "
                       "why it is happening, as far as it can be known, and what food, sleep and stress are doing to it.")
         else:
-            second = lib.draft("step.foundation.far", f"Your {join(far)} {'is' if len(far) == 1 else 'are'} far enough outside range to need a doctor's attention as well. See yours. "
-                               "The session covers the rest: why it is happening, as far as it can be known, and what food, sleep and stress are doing to it.")
+            second = lib.d("step.foundation.far", names=join([noun_of(h) for h in far]), is_are="are" if len(far) > 1 or is_plural(far[0]) else "is")
     far_only = second
     if clear:
         second += (" " if second else "") + f"Your {join(clear[:1] + ['your ' + c for c in clear[1:]])} {'are' if len(clear) != 1 or clear[0].endswith('s') else 'is'} worth mentioning at your next routine check-up."

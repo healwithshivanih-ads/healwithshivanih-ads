@@ -34,10 +34,18 @@ approved, no personal Foundation link, a broken link in the PDF.
   it and blocks). Calculated scores, insulin and ApoA1 stop at A; the scarring score (FIB-4) is the exception.
 - **Body age is scored at the age on the sample date**, in completed years (`lab_client_context(person, today=sample_date)`).
   A record without a date of birth or sex is refused.
-- **Wording is never invented at build time.** `wording.py` holds the approved sentences and DRAFT ones written for
-  results the samples did not have; each draft used is listed in `drafts`, and a result with no wording at all goes to
-  `missing` and stops the report. `tests/fixtures/body_age/approved_*.txt` is the approved text; the generator must
-  reproduce it for the test profile apart from the listed differences (`ALLOWED` in the test).
+- **Wording is never invented at build time.** Three kinds (`wording.py` header): APPROVED sentences from the two
+  PDFs; DRAFTS (the finding blocks in `findings.py` not marked approved, and the phrases in `wording.DRAFT`); and
+  MISSING (a far-out result with no block), which stops the report. Each draft a report uses is listed in `drafts`
+  and keeps it `ready: false`. When Shivani approves one, add its key to `wording.APPROVED_DRAFTS`.
+  `python -m fmdb.report.library_doc` prints every draft as one document for her; it reads the library itself, so
+  the document is exactly what a report would print. `tests/fixtures/body_age/approved_*.txt` is the approved text;
+  the generator must reproduce it for the test profile apart from the listed differences (`ALLOWED` in the test).
+- **One block per finding** (`findings.py`): a finding claims the results that mean one thing to a reader (the
+  cholesterol family, both liver enzymes) and carries headline / today / why / what to do by level. A section's text
+  is its main finding's block; another finding in the section gets a paragraph when it is clearly off. No block
+  gives supplement or medicine advice, and the doctor and check-up sentences appear only at their levels (a test
+  sweeps about 60 result combinations for both).
 - **Next step** (`decide.py`): Foundation for any clearly raised or far-out result that is not inherited, three or more
   just-outside results, or body age more than 3 years older · work on it yourself for one or two just-outside results ·
   nothing for a steady report · an inherited doctor-only result alone (high Lp(a)) gets the doctor line and no offer.
@@ -55,5 +63,5 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-Sending the email from the app (today the command hands over the draft files); a coach screen; wording for findings the
-approved samples did not have; how a buyer pays for the report and books the draw; the two-person report.
+Sending the email from the app (today the command hands over the draft files); a coach screen; Shivani's approval of the
+draft wording (written, not yet approved); how a buyer pays for the report and books the draw; the two-person report.

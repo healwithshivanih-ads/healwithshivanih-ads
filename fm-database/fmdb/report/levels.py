@@ -64,7 +64,7 @@ def _scan(value: float, spec: Any, sex: Optional[str], low: bool = False) -> str
     return out
 
 
-def level_for(
+def level_and_side(
     key: str,
     value: Optional[float],
     *,
@@ -72,33 +72,42 @@ def level_for(
     hi: Optional[float] = None,
     sex: Optional[str] = None,
     cutoffs: Optional[dict] = None,
-) -> str:
-    """The level of one result. `lo` / `hi` are the laboratory's own printed range for it."""
+) -> tuple[str, str]:
+    """(level, side) of one result. side is "high", "low" or "" and says which way the result is off.
+
+    `lo` / `hi` are the laboratory's own printed range for it."""
     if value is None:
-        return ""
+        return "", ""
     c = cutoffs or load_cutoffs()
     spec = (c.get("markers") or {}).get(key)
     above = hi is not None and value > hi
     below = lo is not None and value < lo
+    up = down = ""
     if spec is None:
         fb = c.get("fallback_pct") or {}
         if above and hi:
-            lv = _scan(100.0 * (value - hi) / hi, fb, sex)
+            up = _scan(100.0 * (value - hi) / hi, fb, sex)
         elif below and lo:
-            lv = _scan(100.0 * (lo - value) / lo, fb, sex)
-        else:
-            lv = ""
+            down = _scan(100.0 * (lo - value) / lo, fb, sex)
     else:
-        got = [_scan(value, spec.get("high"), sex), _scan(value, spec.get("low"), sex, low=True)]
+        up, down = _scan(value, spec.get("high"), sex), _scan(value, spec.get("low"), sex, low=True)
         if hi:
-            got.append(_scan(value / hi, spec.get("high_x"), sex))
-            got.append(_scan(100.0 * (value - hi) / hi, spec.get("high_pct"), sex))
-        lv = worst(*got)
-        if not lv and (above or below):
-            lv = "A"        # outside the laboratory's range but short of every listed line
+            up = worst(up, _scan(value / hi, spec.get("high_x"), sex), _scan(100.0 * (value - hi) / hi, spec.get("high_pct"), sex))
+        if not up and above:
+            up = "A"        # outside the laboratory's range but short of every listed line
+        if not down and below:
+            down = "A"
+    lv, side = (up, "high") if rank(up) >= rank(down) else (down, "low")
+    if not lv:
+        return "", ""
     if key in (c.get("cap_at_A") or []) and rank(lv) > rank("A"):
         lv = "A"
-    return lv
+    return lv, side
+
+
+def level_for(key: str, value: Optional[float], **kw: Any) -> str:
+    """The level of one result (see level_and_side)."""
+    return level_and_side(key, value, **kw)[0]
 
 
 DOCTOR = "needs a doctor's attention as well"

@@ -67,6 +67,7 @@ class Connection:
     b: str = ""
     note: tuple[str, ...] = ()
     notepos: tuple[int, int] = (0, 0)
+    draft: bool = False           # wording Shivani has not approved yet (wording.DRAFT lists it for her)
 
 
 @dataclass
@@ -86,6 +87,20 @@ def _lvl(rows: dict[str, Row], key: str) -> int:
     return rank(r.level) if r else 0
 
 
+def _glv(rows: dict[str, Row], group: str) -> int:
+    return max((rank(r.level) for r in rows.values() if r.group == group and _counts(r)), default=0)
+
+
+def _state(rows: dict[str, Row], key: str) -> str:
+    r = rows.get(key)
+    return r.state if r else ""
+
+
+def _low(rows: dict[str, Row], key: str) -> bool:
+    r = rows.get(key)
+    return bool(r and r.level and r.side == "low")
+
+
 def connections_for(sections: list[Section], deeper: bool) -> list[Connection]:
     rows = all_rows(sections)
     lipids = max((rank(r.level) for r in rows.values() if r.group == "lipids" and _counts(r)), default=0)
@@ -99,7 +114,7 @@ def connections_for(sections: list[Section], deeper: bool) -> list[Connection]:
             "A raised thyroid signal and a raised particle load often travel together, because thyroid hormone helps the liver "
             "clear those particles from the blood. It is one reason the thyroid result comes first.",
             "thyroid", "art", ("thyroid hormone helps", "clear these particles"), (20, 190)))
-    if _lvl(rows, "tg") >= 1 and _lvl(rows, "hba1c") >= 1 and ins and ins.value < 5:
+    if _lvl(rows, "tg") == 1 and _lvl(rows, "hba1c") == 1 and ins and ins.value < 5:      # "both a little high": level A only
         out.append(Connection(
             "sugar_fats", "Sugar and fats",
             "Your triglycerides and your three-month sugar average are both a little high while your insulin is very low. "
@@ -113,6 +128,16 @@ def connections_for(sections: list[Section], deeper: bool) -> list[Connection]:
             "hcy", "b12", ("high, although", "B12 is full"), (552, 150)))
     if _lvl(rows, "hcy") >= 1 and lipids >= 1:
         out.append(Connection("hcy_arteries", a="hcy", b="art", note=("a marker of", "artery wear"), notepos=(338, 262)))
+    # connections written after the approved samples (drafts): told in words, not drawn on the map
+    for cid, title, cond in (
+        ("sugar_liver", "Sugar and liver", _glv(rows, "sugar") >= 1 and (_state(rows, "hsi") == "out" or _glv(rows, "liver_enzymes") >= 1)),
+        ("inflammation_arteries", "Inflammation and arteries", _lvl(rows, "hscrp") >= 2 and lipids >= 1),
+        ("iron_haemoglobin", "Iron and haemoglobin", deeper and _low(rows, "hb") and _low(rows, "tsat")),
+        ("b12_haemoglobin", "B12 and haemoglobin", deeper and _low(rows, "hb") and _low(rows, "b12")),
+        ("vitd_alp", "Vitamin D and bone", deeper and _low(rows, "vitd") and _lvl(rows, "alp") >= 1),
+    ):
+        if cond:
+            out.append(Connection(cid, title, draft=True))
     return out
 
 

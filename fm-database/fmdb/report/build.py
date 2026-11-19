@@ -17,6 +17,7 @@ from fmdb.assess.lab_ratios import compute_ratios
 from . import viz, wording as W
 from .decide import (FOUNDATION_AFTER_INR, FOUNDATION_LIST_INR, Decision, credit_deadline, decide, groups_of,
                      next_test_date)
+from .findings import hits_in
 from .levels import load_cutoffs
 from .panel import NINE, Row, Section, all_rows, build_sections, num
 
@@ -48,6 +49,7 @@ class Report:
     rows: dict[str, Row]
     decision: Decision
     figures: dict[str, tuple[str, str]] = field(default_factory=dict)
+    hits: dict = field(default_factory=dict)              # {section id: its findings, the main one first}
     section_text: dict[str, tuple[str, list[tuple[str, str]]]] = field(default_factory=dict)
     stand: list[dict] = field(default_factory=list)
     rest: str = ""
@@ -160,19 +162,23 @@ def _write(rp: Report) -> None:
     """Every sentence in the report, chosen from the wording library."""
     lib = W.Lib()
     deeper = rp.kind == "deeper"
+    rp.hits = {s.id: hits_in(s) for s in rp.sections}
     for s in rp.sections:
-        rp.section_text[s.id] = W.section_text(s, rp.rows, deeper, lib)
+        rp.section_text[s.id] = W.section_text(s, rp.rows, deeper, lib, rp.sex, rp.hits[s.id])
     order = [s for s in rp.sections if s.key == "att"] + [s for s in rp.sections if s.key == "watch"]
     rp.stand = [dict(id=s.id, name=s.name, status=s.status, key=s.key, text=rp.section_text[s.id][0],
-                     nums=W.stand_numbers(s, rp.rows, lib)) for s in order[:3]]
+                     nums=W.stand_numbers(s, rp.rows, rp.hits[s.id])) for s in order[:3]]
     rp.rest = W.rest_line(rp, lib)
     rp.todo = W.todo_steps(rp, lib)
     g, i, h = rp.rows.get("glucose"), rp.rows.get("insulin"), rp.rows.get("homa")
     rp.keep = bool(g and g.state == "ok" and not g.level and ((i and i.state == "ok") or (h and h.state == "ok")))
     rp.letter = W.letter(rp, lib)
     rp.body_age_means = W.body_age_means(rp, lib)
+    for c in rp.decision.connections:
+        if c.title and c.draft:
+            c.text = W.connection_text(c, lib)
     if not any(c.title for c in rp.decision.connections):
-        rp.onebody_none = lib.draft("onebody.none", "Nothing in this report pulls on anything else. Each section can be read by itself.")
+        rp.onebody_none = lib.d("onebody.none")
     rp.next_text = W.next_test(rp, lib)
     rp.summary = W.summary(rp, lib)
     rp.step = W.next_step(rp, lib)

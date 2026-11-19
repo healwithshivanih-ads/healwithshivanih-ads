@@ -12,7 +12,7 @@ from typing import Any, Optional
 
 from fmdb.assess.lab_ratios import _parse_ref_range, _peek
 
-from .levels import level_for
+from .levels import level_and_side
 
 
 @dataclass
@@ -59,6 +59,7 @@ class Row:
     b_incl: bool = False
     illustrative: bool = False
     warn: str = ""
+    side: str = ""               # high | low: which way a flagged result is off
 
 
 @dataclass
@@ -270,14 +271,14 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
             else:
                 kind, a, b, rtxt = _lab_range_text(lo, hi, sp.under)
             st = state_of(v, kind, a, b, sp.b_incl)
-            lv = level_for(sp.key, v, lo=lo, hi=hi, sex=sex, cutoffs=cutoffs)
+            lv, side = level_and_side(sp.key, v, lo=lo, hi=hi, sex=sex, cutoffs=cutoffs)
             illustrative = bool(lab and lab.get("illustrative"))
             sec.rows.append(Row(
                 key=sp.key, name=sp.name, gloss="illustrative value" if illustrative else sp.gloss, value=v,
                 unit=sp.unit if sp.unit is not None else unit, kind=kind, a=a, b=b,
                 rtxt=("illustrative range, " + rtxt.replace("lab ", "")) if illustrative else rtxt,
                 calc=bool(sp.comp), state=st, level=lv, nature=sp.nature, group=sp.group or sp.key, beyond=sp.beyond,
-                lo=lo, hi=hi, b_incl=sp.b_incl, illustrative=illustrative,
+                lo=lo, hi=hi, b_incl=sp.b_incl, illustrative=illustrative, side=side,
                 warn="" if kind != "none" else f"{sp.name}: the laboratory's range could not be read"))
         if sec.rows:
             out.append(sec)
@@ -293,6 +294,7 @@ def _thyroid_hormone_rule(sections: list[Section]) -> None:
         r = rows.get(k)
         if r and r.state == "out":
             r.level = "C" if (tsh and tsh.level) else "B"
+            r.side = r.side or ("high" if (r.hi is not None and r.value > r.hi) else "low")
 
 
 def all_rows(sections: list[Section]) -> dict[str, Row]:
