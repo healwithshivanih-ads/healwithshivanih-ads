@@ -82,7 +82,7 @@ def rings_svg(age: int, body_age: float, labels: bool = True) -> str:
         ax, ay = pt(radii[mark - 1], math.radians(118), mark)
         bx, by = pt(radii[age - 1], math.radians(62), age)
         out.append(f'<path d="M{ax:.1f} {ay:.1f} Q{ax - 30:.1f} {ay + 50:.1f} -112 172" fill="none" stroke="{ink}" stroke-width="1.3" stroke-linecap="round"/>')
-        out.append(f'<text x="-150" y="190" font-family="Caveat, cursive" font-size="21" fill="{ink}">{num(body_age)} · where your blood reads</text>')
+        out.append(f'<text x="-150" y="190" font-family="Caveat, cursive" font-size="21" fill="{ink}">about {round(body_age)} · where your blood reads</text>')
         out.append(f'<path d="M{bx:.1f} {by:.1f} Q{bx + 22:.1f} {by + 40:.1f} 112 198" fill="none" stroke="{bark}" stroke-width="1.3" stroke-linecap="round"/>')
         where = "the outer ring" if age >= mark else "the dark ring"
         out.append(f'<text x="150" y="220" text-anchor="end" font-family="Caveat, cursive" font-size="21" fill="{bark}">{age} · your age, {where}</text>')
@@ -91,7 +91,7 @@ def rings_svg(age: int, body_age: float, labels: bool = True) -> str:
 
 def rings_alt(age: int, body_age: float) -> str:
     return (f"A tree cross-section with {age} rings, one for each year of age. "
-            f"The {ordinal(max(1, round(body_age)))} ring is marked: body age {num(body_age)}.")
+            f"The {ordinal(max(1, round(body_age)))} ring is marked: body age about {round(body_age)}.")
 
 
 def bar(r: Row) -> str:
@@ -233,14 +233,15 @@ def report_main(rp: Any) -> str:
 </dl>
 
 <section id="first" style="margin-top:44px">{head("first", "Read this first")}
-<div class="two"><div><h1>Your body age is <em>{num(rp.body_age)}</em>. You are {rp.age}.</h1><p class="lede">{lede}</p></div>
+<div class="two"><div><h1>Your body age is <em>{W.ba_text(rp.body_age)}</em>. You are {rp.age}.</h1><p class="lede">{lede}</p></div>
 <figure>{rings_svg(rp.age, rp.body_age)}</figure></div>
 {f'<h3>What stands out</h3><ul class="stand">{stand_html}</ul>' if rp.stand else ""}
 <p class="rest">{rp.rest}</p>
 <h3>What to do about it</h3><ol class="todo">{todo}</ol>{f'<p class="keep">{W.KEEP}</p>' if rp.keep else ""}
 <div class="letter lettersep"><p>Dear {name},</p>{"".join(f"<p>{x}</p>" for x in rp.letter)}
 <p>This page is the whole report in brief. Everything behind it is the detail: each result against its range, system by system, with what it means.</p></div>
-<p class="sign">Shivani</p><p class="signed">Shivani Hari · certified functional health coach (IAFM, FMCA)</p></section>
+<p class="sign">Shivani</p><p class="signed">Shivani Hari · certified functional health coach (IAFM, FMCA)</p>
+<p class="fine">This is a wellness report. A steady result does not rule out illness, so if something feels wrong, have it looked at.</p></section>
 
 <p class="navh" id="contents">The rest of this report</p>
 <nav aria-label="Contents">{"".join(f'<a href="#{i}"><i>{no[i]}</i>{t}</a>' for i, t in toc[1:])}</nav>
@@ -269,8 +270,8 @@ def report_main(rp: Any) -> str:
 <h3>What the research found</h3>
 <div class="means"><p>The measure was then checked in a second group of 11,432 adults, who were followed for about twelve years. Three things stood out.</p>
 <ol class="found">
-<li><b>It tracked how people fared.</b> Those whose body age ran behind their birthday tended to stay well for longer. Those whose body age ran ahead fared worse. The link held for younger and older adults, and across education and lifestyle.</li>
-<li><b>It saw what a routine check had not.</b> The link held even among people who looked healthy, with no diagnosed disease and a normal weight.</li>
+<li><b>It tracked who lived longer.</b> Those whose body age ran behind their birthday were less likely to die over the following twelve years. Those whose body age ran ahead were more likely to. The link held for younger and older adults, and across education and lifestyle.</li>
+<li><b>It held in people who looked healthy.</b> The link was there even among people with no diagnosed disease and a normal weight.</li>
 <li><b>It moved with illness.</b> The more conditions a person had, the older their body age read, step by step.</li>
 </ol></div>
 <h3>What it means for you</h3>
@@ -313,6 +314,7 @@ def report_main(rp: Any) -> str:
 <section id="methods">{head("methods", "Methods and references")}
 <p class="edu">Blood was collected at home and analysed by an independent diagnostic laboratory. Measured results are shown against that laboratory's reference range; cholesterol, LDL and triglycerides use the standard three-tier categories. Calculated scores use the published formulas below, with their usual cut-offs.</p>
 <ol class="refs">{"".join(f"<li>{r}</li>" for r in W.REFS)}</ol>
+<p class="fine">Ranges here are for adults who are not pregnant. If you take medicine for thyroid, sugar, blood pressure or cholesterol, do not change it because of this report.</p>
 <p class="fine">This is a wellness report. It does not diagnose, treat or prescribe.{sample_fine}</p></section>
 </main>"""
 

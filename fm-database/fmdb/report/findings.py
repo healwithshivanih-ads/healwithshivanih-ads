@@ -26,7 +26,7 @@ from .panel import Row, Section
 Text = Union[str, dict]
 
 LINE_B = " A result at this level is worth mentioning at your next routine check-up."
-LINE_C = " A result this far outside its range needs a doctor's attention as well."
+LINE_C = " A result this far outside its range needs a doctor's attention. Please speak to your doctor."
 
 
 @dataclass
@@ -69,7 +69,7 @@ FINDINGS: list[Finding] = [
       do={"A": "Food comes first: the kind of fat, the amount of fibre, what dinner looks like.",
           "B": "Food comes first, and that is where the work starts.", "C": "Food comes first, and that is where the work starts."},
       line={"B": " Numbers at this level are also worth mentioning at your next routine check-up.",
-            "C": " Numbers at this level need a doctor's attention as well, because medicine can be part of the answer."},
+            "C": " Numbers at this level need a doctor's attention, because medicine can be part of the answer. Please speak to your doctor."},
       summary={"A": "The load of cholesterol particles your arteries carry, a little above the aim.",
                "B": "The load of cholesterol particles your arteries carry.", "C": "The load of cholesterol particles your arteries carry."},
       step='Bringing the <a href="#heart">artery load</a> down through how you eat: which fats, how much fibre, what dinner looks like, what you reach for between meals.',
@@ -126,7 +126,7 @@ FINDINGS: list[Finding] = [
       do={"A": "Nothing to do about the number itself. It rarely needs testing again.",
           "B": "Keep the rest of this section as good as it can be. It runs in families, so it is worth telling yours.",
           "C": "Keep the rest of this section as good as it can be. It runs in families, so it is worth telling yours."},
-      line={"B": LINE_B, "C": " A level this high needs a doctor's attention as well, because there are things a doctor can do about the overall risk."},
+      line={"B": LINE_B, "C": " A level this high needs a doctor's attention, because there are things a doctor can do about the overall risk. Please speak to your doctor."},
       summary={"A": "Lp(a), an inherited particle, just above the line. Nothing to do."}),
     # ── Energy and sugar ────────────────────────────────────────────────────
     F("sugar", "sugar", "Your sugar", "sugar average", high=("hba1c", "glucose", "insulin"),
@@ -207,7 +207,7 @@ FINDINGS: list[Finding] = [
           "B": "This needs a deeper look: the full thyroid picture, read alongside your history.",
           "C": "This needs a deeper look: the full thyroid picture, read alongside your history."},
       line={"B": " A signal at this level is worth mentioning at your next routine check-up.",
-            "C": " A signal this far outside its range needs a doctor's attention as well, because medicine can be part of the answer."},
+            "C": " A signal this far outside its range needs a doctor's attention, because medicine can be part of the answer. Please speak to your doctor."},
       summary={"A": "Thyroid signal, just above its range. Worth repeating in two to three months."}, approved=("C",)),
     F("tsh_low", "thyroid", "Thyroid signal", "thyroid signal", low=("tsh",),
       head={"A": "The signal asking your thyroid to work sits just below its range.",
@@ -221,7 +221,7 @@ FINDINGS: list[Finding] = [
           "B": "This needs a deeper look: the full thyroid picture, read alongside your history and what you take.",
           "C": "This needs a deeper look: the full thyroid picture, read alongside your history and what you take."},
       line={"B": " A signal at this level is worth mentioning at your next routine check-up.",
-            "C": " A signal this far outside its range needs a doctor's attention as well, because medicine can be part of the answer."},
+            "C": " A signal this far outside its range needs a doctor's attention, because medicine can be part of the answer. Please speak to your doctor."},
       summary={"A": "Thyroid signal, just below its range. Read again at your next test."}),
     F("thyroid_hormones", "thyroid", "Thyroid hormones", "thyroid hormones", plural=True, either=("t4_total", "t3_total", "ft4", "ft3"),
       head="One of the hormones your thyroid makes sits outside its range.",
@@ -302,7 +302,7 @@ FINDINGS: list[Finding] = [
           "B": "Sunlight comes first: some sun on bare arms and legs, most days.",
           "C": "Sunlight alone is unlikely to bring this up."},
       line={"B": " Whether you need more than sunlight is worth asking at your next routine check-up.",
-            "C": " A level this low needs a doctor's attention as well, because a prescribed dose is usually part of the answer."},
+            "C": " A level this low needs a doctor's attention, because a prescribed dose is usually part of the answer. Please speak to your doctor."},
       summary={"A": "Vitamin D, a little short.", "B": "Vitamin D, clearly low.", "C": "Vitamin D, very low."},
       step='Building your <a href="#nutrients">vitamin D</a> back up, starting with some sun most days.', moves="vitamin D level"),
     F("vitd_high", "nutrients", "Vitamin D", "vitamin D", high=("vitd",),
@@ -317,7 +317,7 @@ FINDINGS: list[Finding] = [
       do={"A": "Dairy, eggs and fortified foods help. It is read again at your next test.",
           "B": "This needs a deeper look: why it is low, and how best to bring it up.",
           "C": "This needs a deeper look: why it is low, and how best to bring it up."},
-      line={"B": LINE_B, "C": " A level this low needs a doctor's attention as well, because injections are sometimes needed."},
+      line={"B": LINE_B, "C": " A level this low needs a doctor's attention, because injections are sometimes needed. Please speak to your doctor."},
       summary={"A": "Vitamin B12, at the low end of its range. Read again at your next test."}),
     F("b12_high", "nutrients", "Vitamin B12", "vitamin B12", high=("b12",),
       head="Your B12 is well above its range.",

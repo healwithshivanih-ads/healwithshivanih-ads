@@ -33,7 +33,11 @@ WM_OPACITY = 0.06   # faint: visible on open paper, never competing with text
 # page with its table, and the contents list runs in three columns to fit under the letter
 CSS_STANDARD = "#heart{break-before:page;margin-top:0}"
 CSS_DEEPER = (CSS_STANDARD + "figure{max-width:212px} ul.stand li{padding:7px 0 8px} #first{margin-top:10px} h1{font-size:40px} "
-              "#glance{break-before:page;margin-top:0} nav{columns:3;font-size:12.5px} .navh{margin-top:22px}")
+              "#glance{break-before:page;margin-top:0} nav{columns:3;font-size:12.5px} .navh{margin-top:14px} "
+              # a little tighter, so the letter and the contents list still share page 2 and no section tail is stranded
+              # on a page of its own now that the report carries the safety lines added on 19 Nov 2026
+              "ol.todo li{margin-top:15px} .lettersep{margin-top:14px} .letter p{margin-top:9px} .sign{margin-top:10px;font-size:34px} "
+              "nav a{padding:3px 0} .tm .by{margin-top:5px} .tm .nums{margin-top:5px} .means p{margin-top:6px}")
 
 CHROME_PATHS = ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "google-chrome", "google-chrome-stable",
                 "chromium", "chromium-browser"]

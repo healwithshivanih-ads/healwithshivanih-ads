@@ -99,7 +99,7 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
           kind="z3", a=2.0, b=3.5, rtxt="under 2.0 good · over 3.5 high", beyond=True, **LIPIDS),
         S("lpa", "Lp(a)", "an inherited particle, measured once", raw=r"\blp\(?a\)?|lipoprotein.{0,5}a\b|lipoprotein.little.a",
           under=True, nature="inherited", beyond=True),
-        S("hcy", "Homocysteine", "a marker of wear on the artery wall", raw=r"homocysteine|\bhcy\b", decimals=2, beyond=True),
+        S("hcy", "Homocysteine", "linked with wear on the artery wall", raw=r"homocysteine|\bhcy\b", decimals=2, beyond=True),
         S("hscrp", "hs-CRP", "background inflammation",
           raw=r"hs.?crp|high.sensitivity.crp|high sensitivity c.reactive|c.?reactive.*sensitiv|sensitiv.*c.?reactive|crp.*sensitiv",
           kind="z3", a=1.0, b=3.0, rtxt="lab under 1.0 low · over 3.0 high", nature="work", group="inflammation", beyond=True),

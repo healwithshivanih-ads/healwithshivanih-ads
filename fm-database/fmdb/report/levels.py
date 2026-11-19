@@ -110,7 +110,7 @@ def level_for(key: str, value: Optional[float], **kw: Any) -> str:
     return level_and_side(key, value, **kw)[0]
 
 
-DOCTOR = "needs a doctor's attention as well"
+DOCTOR = "needs a doctor's attention"            # Shivani, 19 Nov 2026: no "as well"; followed by "Please speak to your doctor."
 CHECKUP = "worth mentioning at your next routine check-up"
 
 

@@ -79,11 +79,11 @@ DRAFT: dict[str, tuple[str, str]] = {
     "step.inherited.headline": ("Next step, an inherited result alone and clearly raised: headline", "One result here is worth mentioning at your next routine check-up: your {names}."),
     "step.inherited.para": ("Next step, an inherited result alone and clearly raised", "It is inherited, and food does not move it. Everything else in this report is steady, so you do not need a session with me."),
     "step.doctor_only.headline": ("Next step, an inherited result alone and far out: headline", "One result here needs a doctor's attention: your {names}."),
-    "step.doctor_only.para": ("Next step, an inherited result alone and far out", "It is inherited, and food does not move it. Everything else in this report is steady, so you do not need a session with me."),
+    "step.doctor_only.para": ("Next step, an inherited result alone and far out", "It is inherited, and food does not move it. Please speak to your doctor. Everything else in this report is steady, so you do not need a session with me."),
     "step.foundation.work.headline": ("Next step, Foundation offered with nothing needing a deeper look: headline", "{count} in this report {is_are} worth working on with help: {things}."),
-    "step.foundation.work.why": ("Same: first paragraph", "Blood shows what is off. What moves it is in your routine: how you eat and sleep, what you take, what runs in your family, and when things began to change."),
+    "step.foundation.work.why": ("Same: first paragraph", "Blood shows what is off. What moves it is in your routine: how you eat and sleep, what you take, what runs in your family, and when things began to change. It may also take a few further tests."),
     "step.foundation.work.leave": ("Same: What you leave with", "What is driving these numbers in your own routine, and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone."),
-    "step.foundation.far": ("Next step, Foundation, a far-out result other than the thyroid signal", "Your {names} {is_are} far enough outside range to need a doctor's attention as well. See yours. The session covers the rest: why it is happening, as far as it can be known, and what food, sleep and stress are doing to it."),
+    "step.foundation.far": ("Next step, Foundation, a far-out result other than the thyroid signal", "Your {names} {is_are} far enough outside range to need a doctor's attention. Please speak to your doctor. The session covers the rest: what in your food, sleep, stress and routine may be feeding it."),
 }
 
 WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
@@ -137,6 +137,12 @@ def off(r: Row) -> str:
 
 def val(r: Row) -> str:
     return f"{num(r.value)}%" if r.unit == "%" else f"{num(r.value)} {r.unit}".strip()
+
+
+def ba_text(body_age: float) -> str:
+    """Body age as a buyer reads it: a whole number. One decimal claimed a precision the score does not have
+    (Shivani, 19 Nov 2026). The exact figure stays on the record."""
+    return f"about {round(body_age)}"
 
 
 def how_far(r: Row) -> str:
@@ -196,9 +202,8 @@ MOVES = {
     "metals": "Drinking water, some fish, rice from certain regions, old paint and pipes, some traditional remedies and cosmetics, and smoking.",
 }
 FH = [
-    "Your doctor looks for disease and treats it. Nothing here replaces that.",
-    "A nutritionist gives you a way of eating. A coach helps you keep a change going.",
-    "Functional health starts earlier and asks why. It reads your results as one body rather than separate organs, pays attention to numbers that are still inside the range but drifting, and then works on food, sleep, movement and stress around the life you actually live.",
+    "Your doctor diagnoses and treats illness. Nothing here replaces that.",
+    "Functional health reads your results as one body rather than separate organs, pays attention to numbers that are still inside the range but drifting, and then works on food, sleep, movement and stress around the life you actually live.",
 ]
 REFS = [
     "Body age: Phenotypic Age. Levine ME et al. Aging (Albany NY). 2018;10(4):573–591. Calculated from albumin, creatinine, fasting glucose, hs-CRP, lymphocyte percentage, MCV, RDW, ALP and white cell count.",
@@ -206,8 +211,9 @@ REFS = [
     "HOMA-IR: Matthews DR et al. Diabetologia. 1985;28:412–419.",
     "TyG index: Simental-Mendía LE et al. Metab Syndr Relat Disord. 2008;6:299–304.",
     "Fat-storage score (Hepatic Steatosis Index): Lee JH et al. Dig Liver Dis. 2010;42:503–508.",
-    "Scarring score (FIB-4): Sterling RK et al. Hepatology. 2006;43:1317–1325.",
+    "Scarring score (FIB-4): Sterling RK et al. Hepatology. 2006;43:1317–1325. Cut-offs used here: Shah AG et al. Clin Gastroenterol Hepatol. 2009;7:1104–1112.",
 ]
+ONE_PERSON = '<p class="by">One person\'s result. Results vary.</p>'
 # real clients, unnamed, each shown only in the section whose finding it matches (testimonials-by-finding.md)
 TESTIMONIAL = {
     "thyroid": ('<h3>In a client\'s words</h3><div class="tm">'
@@ -216,15 +222,15 @@ TESTIMONIAL = {
                 'started coming off more easily and stayed off as my thyroid numbers improved.”</p>'
                 '<p class="by"><b>A client who started with a thyroid finding.</b> Both thyroid antibodies were above the normal range at the start, '
                 'and back inside it fourteen weeks later, at the same laboratory.</p>'
-                '<p class="nums">Thyroglobulin antibody 135 → 70 <span>normal under 115, in fourteen weeks</span></p></div>'),
+                '<p class="nums">Thyroglobulin antibody 135 → 70 <span>normal under 115, in fourteen weeks</span></p>' + ONE_PERSON + '</div>'),
     "sugar": ('<h3>A client\'s result</h3><div class="tm">'
-              '<p class="q">Three-month sugar average: from the diabetes range to just above normal in fifty-three days, after months of rising. Cholesterol down too.</p>'
-              '<p class="by"><b>A client who started with a sugar finding.</b> Both readings from the same laboratory.</p>'
-              '<p class="nums">HbA1c 6.6 → 5.8 <span>in 53 days</span> · Total cholesterol 233 → 201</p></div>'),
+              '<p class="q">Three-month sugar average down from 6.6 to 5.8 in fifty-three days, after months of rising.</p>'
+              '<p class="by"><b>A client who started with a sugar finding.</b> Both readings from the same laboratory. She was already taking metformin, and her sugar had been rising despite it.</p>'
+              '<p class="nums">HbA1c 6.6 → 5.8 <span>in 53 days</span></p>' + ONE_PERSON + '</div>'),
 }
 
 
-KEEP = "And keep whatever you do in the mornings. It is working."
+KEEP = "Your morning sugar is steady. Keep whatever you are doing there."
 CLOSE_APPROVED = (" Most people know the headline. Few manage it alone, because it comes down to your own routine, "
                   "whether that is your kitchen or a restaurant menu.")
 
@@ -350,7 +356,7 @@ def section_text(sec: Section, rows: dict[str, Row], deeper: bool, lib: Lib, sex
         alone = not others and _ok(rows, "vitd") and (_ok(rows, "tsat") or _ok(rows, "iron"))
         means = [("Today", lead.finding.today)]
         if _lv(rows, "hcy") >= 2:
-            means.append(("Why it matters in your report", "Homocysteine normally comes down when B12 is plentiful. Yours is high while your B12 is full, so a shortage of B12 is not the explanation. That requires a deeper look and further investigation."))
+            means.append(("Why it matters in your report", "Homocysteine normally comes down when B12 is plentiful. Yours is high while your B12 is full, so a simple shortage of B12 is unlikely to be the reason. Thyroid, other B vitamins and the kidneys can all raise it, which is why it needs a deeper look."))
         means += also_paras(lead, others, lib, sex)
         head = "Your vitamin D and iron are comfortably in range. Your B12 is well above it." if alone else lib.d("b12_high.head")
         return head, means
@@ -458,7 +464,7 @@ def deep_step(deep: list[Hit], rp: Any, lib: Lib, link: bool = True) -> str:
     clear = [h for h in deep if rank(h.level) == 2]
     parts = []
     if far:
-        parts.append(f"The {join([noun_of(h) for h in far])} {verb(far)} far enough out to need a doctor's attention as well")
+        parts.append(f"The {join([noun_of(h) for h in far])} {verb(far)} far enough out to need a doctor's attention")
     if clear:
         parts.append(f"{'the' if parts else 'The'} {join([noun_of(h) for h in clear])} {verb(clear)} worth mentioning at your next routine check-up")
     if parts:
@@ -503,7 +509,11 @@ def todo_steps(rp: Any, lib: Lib) -> list[dict]:
 def letter(rp: Any, lib: Lib) -> list[str]:
     gap, name = rp.decision.body_age_gap, rp.name
     heart = rp.hits.get("heart") or []
-    if gap <= -3:
+    n = len(rp.stand)
+    if gap <= -3 and n:
+        first = (f"{name}, your blood reads younger than your age, and {word(n)} thing{'s' if n != 1 else ''} in this report "
+                 f"need{'' if n != 1 else 's'} attention.")
+    elif gap <= -3:
         first = f"{name}, this is a strong first result, and it is worth protecting."
     elif gap > 3:
         first = lib.d("letter.older", name=name)
@@ -538,7 +548,7 @@ def rest_line(rp: Any, lib: Lib) -> str:
 # ── body age ─────────────────────────────────────────────────────────────────
 def body_age_means(rp: Any, lib: Lib) -> tuple[str, str]:
     """(what your number means for you, the end of the cholesterol caveat)."""
-    gap, ba, age = rp.decision.body_age_gap, num(rp.body_age), rp.age
+    gap, ba, age = rp.decision.body_age_gap, ba_text(rp.body_age), rp.age
     n = word(round(abs(gap)))
     heart = next((s for s in rp.sections if s.id == "heart"), None)
     if gap <= -1.5:
@@ -599,7 +609,7 @@ def next_test(rp: Any, lib: Lib) -> dict:
 
 # ── your report on one page ──────────────────────────────────────────────────
 def _line(level: str) -> str:
-    return {2: " Worth mentioning at your next routine check-up.", 3: " Needs a doctor's attention as well.", 4: " Needs a doctor's attention as well."}.get(rank(level), "")
+    return {2: " Worth mentioning at your next routine check-up.", 3: " Needs a doctor's attention.", 4: " Needs a doctor's attention."}.get(rank(level), "")
 
 
 def summary(rp: Any, lib: Lib) -> dict:
@@ -640,7 +650,7 @@ def summary(rp: Any, lib: Lib) -> dict:
             deep.append((title, f"{r.name} {val(r)}, {off(r)}.".replace(f"{title} ", "", 1) + _line(h.level), sid))
     gapw, _n = gap_words(rp.decision.body_age_gap)
     start = rp.todo[0]["short"] if rp.todo else ""
-    return dict(headline=f"Your body age is {num(rp.body_age)} at {rp.age}: {gapw}.", work=work, deep=deep,
+    return dict(headline=f"Your body age is {ba_text(rp.body_age)} at {rp.age}: {gapw}.", work=work, deep=deep,
                 where=f"Where to start: {start}. Your next test: {day(rp.next_test)}.")
 
 
@@ -666,7 +676,8 @@ def next_step(rp: Any, lib: Lib) -> dict:
         k = len(deep)
         headline = (f"{word(k).capitalize()} result{'s' if k != 1 else ''} in this report need{'' if k != 1 else 's'} a deeper look: "
                     f"{join(['your ' + n for n in names])}.")
-        why = "Blood shows what is off. It cannot show why. That takes your history: how you eat and sleep, what you take, what runs in your family, and when things began to change."
+        why = ("Blood shows what is off. It cannot show why. That takes your history: how you eat and sleep, what you take, what runs in your family, "
+               "and when things began to change. It may also take a few further tests.")
         leave = (f"Why {'these ' + word(k) + ' results are where they are' if k != 1 else 'this result is where it is'}, as far as it can be known, "
                  "and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone.")
     else:
@@ -678,8 +689,8 @@ def next_step(rp: Any, lib: Lib) -> dict:
     second = ""
     if far:
         if [h.finding.id for h in far] == ["tsh_high"]:
-            second = ("Your thyroid signal is far enough outside its range to need a doctor's attention as well. See yours. The session covers the rest: "
-                      "why it is happening, as far as it can be known, and what food, sleep and stress are doing to it.")
+            second = ("Your thyroid signal is far enough outside its range to need a doctor's attention. Please speak to your doctor. "
+                      "The session covers the rest: what in your food, sleep, stress and routine may be feeding it.")
         else:
             second = lib.d("step.foundation.far", names=join([noun_of(h) for h in far]), is_are="are" if len(far) > 1 or is_plural(far[0]) else "is")
     far_only = second
@@ -695,7 +706,8 @@ def next_step(rp: Any, lib: Lib) -> dict:
             ("Further tests", "You get the short list worth doing for you, and I read those with you when they are back. Most people need two to four, usually ₹1,000 to ₹5,000 in all, paid to the laboratory. You see the list and the price before you decide."),
             ("What you leave with", leave),
         ],
-        fresh=f"These results show you as you were on {sample_day}, and a deeper look is most use while they are fresh. That is why your report fee comes off only until {deadline}.",
+        fresh=f"Your report fee comes off the session if you book by {deadline}. After that the session is {inr(rp.foundation_list)}.",
         after="Nothing, unless you want it. You leave with the order to work in, and your next test will show what has moved.",
         email_offer=f"<b>A Foundation session, online, {inr(rp.foundation_after)}.</b> That is {inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
-        email_how="You fill in your history first. Then we have an online session by video call: I read it against your report, and you leave with the short list of further tests worth doing and the order to work in.")
+        email_how=("You fill in your history first. Then we have an online session by video call: I read it against your report, and you leave with the short list of "
+                   "further tests worth doing and the order to work in. Most people need two to four further tests, usually ₹1,000 to ₹5,000 in all, paid to the laboratory."))

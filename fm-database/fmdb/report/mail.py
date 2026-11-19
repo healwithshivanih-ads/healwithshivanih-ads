@@ -63,7 +63,7 @@ def email_body(rp: Any, ring_src: str = "cid:ring", mark_src: str = "cid:mark") 
                  f'<td bgcolor="{HOTTEXT}" style="background:{HOTTEXT};"><a href="{rp.book_url or "#"}" style="display:block;padding:13px 24px;'
                  f'font-family:{SANS};font-size:16px;font-weight:bold;color:#FFFFFF;text-decoration:none;">Book your session</a></td></tr></table>')
     alt = (f"A tree cross-section with {rp.age} rings, one for each year of your age. "
-           f"The {ordinal(max(1, round(rp.body_age)))} ring is marked: body age {num(rp.body_age)}.")
+           f"The {ordinal(max(1, round(rp.body_age)))} ring is marked: body age about {round(rp.body_age)}.")
     return f"""<div style="display:none;max-height:0;overflow:hidden;opacity:0;">Your body age, what stands out, and what to do first.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{ASH};"><tr><td align="center" style="padding:0 16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;"><tr><td style="padding:26px 0 44px 0;">
@@ -76,7 +76,7 @@ def email_body(rp: Any, ring_src: str = "cid:ring", mark_src: str = "cid:mark") 
 {P("Your body age report is ready. " + first)}
 {"".join(P(x) for x in rp.letter[1:])}
 
-<p style="margin:30px 0 0 0;font-family:{SERIF};font-size:31px;line-height:1.18;color:{INK};">Your body age is <span style="color:{HOTTEXT};">{num(rp.body_age)}</span>. You are {rp.age}.</p>
+<p style="margin:30px 0 0 0;font-family:{SERIF};font-size:31px;line-height:1.18;color:{INK};">Your body age is <span style="color:{HOTTEXT};">{W.ba_text(rp.body_age)}</span>. You are {rp.age}.</p>
 {P(f"Your blood reads {gapw}.", 18, INK, 10)}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="padding:16px 0 0 0;">
 <img src="{ring_src}" width="300" alt="{alt}" style="display:block;border:0;width:300px;max-width:100%;height:auto;"></td></tr></table>

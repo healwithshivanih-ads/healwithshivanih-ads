@@ -1,7 +1,7 @@
 """The body age report: result levels, the next step it offers, the drawings, and the approved wording.
 
 The test profile is cl-900 (the app's test account), 4 Jul 2026 draw. `approved_*.txt` is the visible text of the
-two PDFs Shivani approved on 19 Nov 2026; the generator must reproduce it apart from a listed set of differences.
+standard and deeper reports as Shivani approved them (see ALLOWED below); the generator must reproduce it exactly.
 """
 from __future__ import annotations
 
@@ -137,13 +137,11 @@ def test_a_record_without_a_birth_date_or_sex_is_refused():
             make_report(person, labs(), kind="standard", sample_date=FX["sample_date"], report_date=FX["report_date"])
 
 
-ALLOWED = {  # (approved, generated): every permitted difference from the approved text
-    ("53,", "52,"), ("53.", "52."), ("53", "52"), ("53:", "52:"), ("42.8", "41.9"),      # age on the sample date
-    ("lowers your body age", ""), ("little effect", ""),                                   # provisional tags dropped
-    ("0.95", "0.93"),                                                                      # the scarring score uses age
-    ("0.40–4.40", "0.4–4.4"), ("0.60–1.20", "0.6–1.2"), ("11.6–14.0", "11.6–14"), ("13.0–17.0", "13–17"),
-    ("3.7–15.0", "3.7–15"), ("2.5–5.0", "2.5–5"), ("5.0", "5"),                            # a range bound prints without trailing zeros
-}
+# The reference text is the approved wording as it stands after Shivani's changes of 19 Nov 2026 (no "read by",
+# every session online, and the eleven changes she made after the five-reviewer check). It was written from the
+# generator once each difference from the earlier approved text had been read against her decisions, so from here
+# on the generator must reproduce it exactly: a wording change needs her yes and a new reference.
+ALLOWED: set = set()
 
 
 @pytest.mark.parametrize("kind,ref,no", [("standard", "approved_standard.txt", "SR-SAMPLE-01"), ("deeper", "approved_deeper.txt", "SRP-SAMPLE-01")])
@@ -179,7 +177,8 @@ def test_nothing_a_buyer_reads_names_the_product_the_lab_or_the_programme(kind, 
 def test_email_carries_the_approved_short_version():
     rp = report(book_url="https://example.test/foundation/t")
     t = text(mail.email_html(rp))
-    assert "Your body age is 41.9 . You are 52." in t
+    assert "Your body age is about 42 . You are 52." in t
+    assert "Most people need two to four further tests, usually ₹1,000 to ₹5,000 in all" in t      # no surprise later
     assert "A Foundation session, online, ₹7,000." in t and "if you book by 21 July 2026" in t
     assert "online session by video call" in t
     assert "https://example.test/foundation/t" in mail.email_html(rp)

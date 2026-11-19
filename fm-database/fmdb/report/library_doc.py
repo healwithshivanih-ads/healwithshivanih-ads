@@ -109,7 +109,7 @@ def markdown() -> str:
            "Where one wording is shown without a level, it is used at every level.", "",
            "Two closing sentences are added to “What to do” unless a finding shows its own: at clearly off, "
            "“A result at this level is worth mentioning at your next routine check-up.” comes last; at far out, "
-           "“A result this far outside its range needs a doctor's attention as well.” comes FIRST, before any food advice. "
+           "“A result this far outside its range needs a doctor's attention. Please speak to your doctor.” comes FIRST, before any food advice. "
            "Just outside adds nothing.", "",
            "Sections 2 to 7 are single phrases. Where a phrase takes a name, a date or a result, an example is filled in.", "",
            "Rules I held to: plain meaning first; no supplement or medicine advice; nothing about anything you sell beyond the Foundation session.", "",
