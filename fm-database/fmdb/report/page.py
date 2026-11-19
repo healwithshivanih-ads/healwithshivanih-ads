@@ -17,7 +17,10 @@ from .panel import NINE, Row, num, rng
 
 ASSETS = Path(__file__).with_name("assets")
 BACK = '<p class="back"><a href="#contents">Back to contents</a></p>'
-READ_BY = "Shivani Hari, certified functional health coach (IAFM, FMCA)"
+# No "read by" or "reviewed by" anywhere (Shivani, 19 Nov 2026): the report is "from / prepared by" the brand.
+# The brand name is embargoed until Sat 2 Jan 2027, 20:00 IST; scripts/body-age-report.py refuses to make a real
+# buyer's report before then, and these two lines plus pdf.HEAD_L are the only places the name is printed.
+PREPARED_BY = "Sequoya by Shivani Hari"
 
 
 @lru_cache(maxsize=1)
@@ -222,11 +225,11 @@ def report_main(rp: Any) -> str:
     sample_fine = " Sample report: the values belong to a test profile." if rp.sample else ""
     return f"""<main>
 <header class="head">{ringmark()}<div><p class="brand">{"Body age report, with deeper tests" if deeper else "Body age report"}</p><p class="sub">{"Whole-body blood results, plus vitamins, minerals, iron, the free thyroid hormones and metals" if deeper else "With your whole-body blood results, system by system"}</p></div>{'<span class="stamp">Sample</span>' if rp.sample else ""}</header>
-<p class="who">A wellness report read by a certified functional health coach.</p>
+<p class="who">A wellness report from {PREPARED_BY}.</p>
 <dl class="meta">
 <div><dt>Name</dt><dd>{name}</dd></div><div><dt>Age and sex</dt><dd>{rp.age}, {"male" if rp.sex == "M" else "female"}</dd></div><div><dt>Report no.</dt><dd>{rp.report_no}</dd></div>
 <div><dt>Reading</dt><dd>First</dd></div><div><dt>Sample collected</dt><dd>{W.day(rp.sample_date)}, {rp.collected}</dd></div><div><dt>Report issued</dt><dd>{W.day(rp.report_date)}</dd></div>
-<div><dt>Markers read</dt><dd>{n_meas} measured, {n_calc} calculated, and body age</dd></div><div><dt>Read by</dt><dd>{READ_BY}</dd></div><div><dt>Next test due</dt><dd>{W.day(rp.next_test)}</dd></div>
+<div><dt>Markers covered</dt><dd>{n_meas} measured, {n_calc} calculated, and body age</dd></div><div><dt>Prepared by</dt><dd>{PREPARED_BY}</dd></div><div><dt>Next test due</dt><dd>{W.day(rp.next_test)}</dd></div>
 </dl>
 
 <section id="first" style="margin-top:44px">{head("first", "Read this first")}

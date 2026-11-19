@@ -47,6 +47,13 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(HERE))
 
 TEST_PROFILE = "cl-900"      # the app's test account: the only record a provisional cut-off table may be used for
+# The report prints the brand name ("from Sequoya by Shivani Hari"), which is embargoed until the launch. No real
+# buyer's report may exist before this moment; the test profile's may, because it never leaves the coach.
+EMBARGO_UNTIL = datetime(2027, 1, 2, 20, 0, tzinfo=ZoneInfo("Asia/Kolkata"))
+
+
+def now_ist() -> datetime:
+    return datetime.now(ZoneInfo("Asia/Kolkata"))
 
 
 def plans_root() -> Path:
@@ -135,6 +142,9 @@ def main(argv: list[str]) -> int:
         return fail(f"{cid}: no record in clients/ or prospects/")
     person = yaml.safe_load((cdir / "client.yaml").read_text()) or {}
     is_test = cid == TEST_PROFILE
+    if not is_test and now_ist() < EMBARGO_UNTIL:
+        return fail("the report carries the brand name, which is embargoed until Sat 2 Jan 2027, 20:00 IST. "
+                    f"Before then a report can be built for the test profile ({TEST_PROFILE}) only.")
     if not is_test and not cutoffs_approved():
         return fail("the result-level cut-offs are still provisional (fm-database/fmdb/report/cutoffs.yaml). "
                     f"Until Shivani approves them a report can be built for the test profile ({TEST_PROFILE}) only.")
@@ -143,7 +153,7 @@ def main(argv: list[str]) -> int:
     sample_date = _ymd(req.get("sample_date")) or (max(by_date) if by_date else "")
     if sample_date not in by_date:
         return fail(f"{cid}: no lab values on file for {sample_date or 'any date'}")
-    report_date = _ymd(req.get("report_date")) or datetime.now(ZoneInfo("Asia/Kolkata")).date().isoformat()
+    report_date = _ymd(req.get("report_date")) or now_ist().date().isoformat()
     token = str(person.get("app_token") or "").strip()
     book_url = f"{public_base()}/foundation/{token}" if len(token) >= 16 else None
 

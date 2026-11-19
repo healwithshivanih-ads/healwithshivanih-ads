@@ -156,6 +156,7 @@ def test_the_report_reproduces_the_approved_text(kind, ref, no):
 
 
 # "ring" may only mean the tree's rings (the drawing and its one sentence), never the product or a test
+BRAND = "Sequoya by Shivani Hari"       # her wording, 19 Nov 2026; embargoed until 2 Jan 2027, 20:00 IST
 FORBIDDEN = re.compile(r"sequoya|rings\+|rings? report|\b(?:your|next|first|each|every|three|this) rings?\b|thyrocare|85,000|"
                        r"twelve.week|programme|12.week|results call", re.I)
 
@@ -164,9 +165,13 @@ FORBIDDEN = re.compile(r"sequoya|rings\+|rings? report|\b(?:your|next|first|each
 @pytest.mark.parametrize("over", [None, STEADY])
 def test_nothing_a_buyer_reads_names_the_product_the_lab_or_the_programme(kind, over):
     rp = report(kind, over)
-    for h in (report_html(rp), mail.email_html(rp), mail.attachment_name(rp), mail.SUBJECT):
+    page = text(report_html(rp))
+    # the brand name appears in exactly two places on the page ("from" and "Prepared by"), always as this phrase
+    assert page.count("Sequoya") == 2 == page.count(BRAND)
+    for h in (page.replace(BRAND, ""), mail.email_html(rp), mail.attachment_name(rp), mail.SUBJECT):
         t = text(h)
         assert not FORBIDDEN.search(t), FORBIDDEN.search(t).group(0)
+    assert "read by" not in page.lower() and "reviewed by" not in page.lower()
 
 
 def test_email_carries_the_approved_short_version():
@@ -292,7 +297,7 @@ def test_every_finding_has_wording_and_the_doctor_line_only_where_it_is_earned(k
     found = {h.finding.id: h.level for hs in rp.hits.values() for h in hs}
     assert found.get(finding) == level, found
     assert rp.missing == [], rp.missing
-    page, email = text(report_html(rp)), text(mail.email_html(rp))
+    page, email = text(report_html(rp)).replace(BRAND, ""), text(mail.email_html(rp))
     for t in (page, email):
         assert not FORBIDDEN.search(t), FORBIDDEN.search(t).group(0)
         assert "[needs wording" not in t and "{" not in t and "}" not in t
@@ -427,14 +432,36 @@ def test_command_refuses_a_real_buyer_while_the_cutoffs_are_provisional(tmp_path
     monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
     monkeypatch.setattr("fmdb.report.levels.cutoffs_approved", lambda path=None: False)
     write_person(tmp_path, "cl-950")
-    out = run(shim(), capsys, client_id="cl-950", kind="standard")
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    mod = shim()
+    mod.now_ist = lambda: datetime(2027, 1, 5, 10, 0, tzinfo=ZoneInfo("Asia/Kolkata"))
+    out = run(mod, capsys, client_id="cl-950", kind="standard")
     assert out["ok"] is False and "provisional" in out["error"]
 
 
+def test_command_refuses_a_real_buyer_before_the_launch(tmp_path, monkeypatch, capsys):
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
+    write_person(tmp_path, "cl-950")
+    mod = shim()
+    ist = ZoneInfo("Asia/Kolkata")
+    mod.now_ist = lambda: datetime(2027, 1, 2, 19, 59, tzinfo=ist)
+    out = run(mod, capsys, client_id="cl-950", kind="standard", html_only=True)
+    assert out["ok"] is False and "embargoed" in out["error"]
+    mod.now_ist = lambda: datetime(2027, 1, 2, 20, 0, tzinfo=ist)
+    assert run(mod, capsys, client_id="cl-950", kind="standard", report_date="2027-01-02", html_only=True)["ok"] is True
+
+
 def test_command_builds_a_buyer_stored_as_a_prospect_once_the_table_is_approved(tmp_path, monkeypatch, capsys):
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
     monkeypatch.setenv("FMDB_PLANS_DIR", str(tmp_path))
     d = write_person(tmp_path, "cl-950")                                    # in prospects/, not clients/
-    out = run(shim(), capsys, client_id="cl-950", kind="deeper", report_date=FX["report_date"], record=True, html_only=True)
+    mod = shim()
+    mod.now_ist = lambda: datetime(2027, 1, 5, 10, 0, tzinfo=ZoneInfo("Asia/Kolkata"))      # after the launch
+    out = run(mod, capsys, client_id="cl-950", kind="deeper", report_date=FX["report_date"], record=True, html_only=True)
     assert out["ok"] and out["report"]["kind"] == "deeper" and out["report"]["report_no"] == "BA-D-950-260704"
     assert "Sample report" not in Path(out["files"]["html"]).read_text()    # a real buyer's page carries no sample marks
     saved = yaml.safe_load((d / "client.yaml").read_text())
@@ -469,3 +496,5 @@ def test_pdf_has_the_approved_page_count_and_working_links(kind, pages, tmp_path
     assert any(t == "https://example.test/foundation/t" for _, _, t in res["links"])
     meta = PdfReader(str(tmp_path / "r.pdf")).metadata
     assert "body age report" in meta.title.lower() and not FORBIDDEN.search(meta.title + str(meta.author))
+    first = PdfReader(str(tmp_path / "r.pdf")).pages[0].extract_text()
+    assert "Sequoya by Shivani Hari" in first and "Read by" not in first

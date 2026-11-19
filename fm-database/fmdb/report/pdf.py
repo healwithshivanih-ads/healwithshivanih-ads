@@ -20,7 +20,7 @@ from urllib.parse import quote
 from . import wording as W
 from .page import fonts_css, report_html, ringmark
 
-HEAD_L = "Shivani Hari · certified functional health coach (IAFM, FMCA)"
+HEAD_L = "Sequoya by Shivani Hari · certified functional health coach (IAFM, FMCA)"     # embargoed name: see page.PREPARED_BY
 SITE, SITE_URL = "theochretree.com", "https://theochretree.com"
 CALL, CALL_URL = "+91 87792 89917", "tel:+918779289917"                 # voice calls
 WA = "+91 89765 63971"                                                   # WhatsApp only: this number takes no voice calls

@@ -59,7 +59,7 @@ DRAFT: dict[str, tuple[str, str]] = {
     "bodyage.older": ("Body age section, older than age", "A body age of {ba} at {age} does not mean {n} years are lost. It says that today your blood looks like that of an older person in those studies, and the values behind it can move."),
     "bodyage.level": ("Body age section, about the same as age", "A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies."),
     # reading it as one body
-    "onebody.none": ("Reading it as one body, nothing connects", "Nothing in this report pulls on anything else. Each section can be read by itself."),
+    "onebody.none": ("Reading it as one body, nothing connects", "Nothing in this report pulls on anything else. Each section stands on its own."),
     "conn.sugar_liver": ("Connection: sugar marked and the liver fat score high or enzymes marked", "Sugar the body cannot use straight away is stored as fat, and the liver is the first place it goes. A raised sugar reading and signs of fat in the liver usually move together, and the same changes bring both down."),
     "conn.inflammation_arteries": ("Connection: inflammation clearly raised and cholesterol marked", "Cholesterol particles do more harm in an artery wall that is already inflamed. With both raised, each matters more than it would alone."),
     "conn.iron_haemoglobin": ("Connection: haemoglobin low and iron low (deeper report)", "Your haemoglobin and your iron carriers are both low. Iron is what haemoglobin is built from, so these two belong together. The question is why iron is short."),

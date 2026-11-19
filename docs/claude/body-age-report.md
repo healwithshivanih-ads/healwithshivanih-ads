@@ -1,8 +1,11 @@
 # Body age report generator (v0.92, 19 Nov 2026)
 
 A blood test plus a written report, sold on its own (standard and deeper). Everything a buyer sees calls it the
-"body age report". The internal product name is embargoed until 2 Jan 2027 and must never appear in the PDF, the
-email, a file name or PDF metadata (a test pins this). The design (two PDFs and the email) was approved by Shivani on
+"body age report", never by the product's internal name. The BRAND name is printed in the PDF in three fixed places
+only (the top line "A wellness report from Sequoya by Shivani Hari.", "Prepared by" in the details box, and the running
+header): her wording of 19 Nov 2026, which also removed every "read by" / "reviewed by". That name is embargoed until
+Sat 2 Jan 2027, 20:00 IST, so the command refuses to make any report except the test profile's before then. The
+email, the file name and the PDF metadata carry no brand name (a test pins all of this). The design (two PDFs and the email) was approved by Shivani on
 19 Nov 2026; this is the generator that reproduces it from a person's lab results. $0 per report: no API call anywhere.
 
 ## Run it
