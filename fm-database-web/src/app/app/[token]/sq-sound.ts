@@ -45,11 +45,58 @@ class SqSound {
 
   voiceOn = true;
   musicOn = true;
+  /** the scene's own sound (rain, waves, wind, birdsong); its own switch */
+  natureOn = true;
+  /** Turn the music down while the voice speaks. Off for the sleep wind-down,
+   *  where the coach wanted the music steady under her voice (19 Nov 2026). */
+  duckOn = true;
   volume = 2;
 
-  /** Call from a tap. Creates the audio context and wakes it. */
+  /** Call from a tap. Creates the audio context and wakes it, and asks the
+   *  phone to treat this as media playback (see `asPlayback`). */
   unlock(): void {
+    this.asPlayback();
     this.ensure();
+  }
+
+  private keepAlive: HTMLAudioElement | null = null;
+
+  /** Restart the silent loop if something paused it. Allowed outside a tap
+   *  once the first tap has played it. */
+  private holdPlayback(): void {
+    if (this.keepAlive?.paused) void this.keepAlive.play().catch(() => {});
+  }
+
+  /**
+   * On an iPhone, Web Audio follows the ring/silent switch: with the switch on
+   * silent, the voice, music and bells are all muted. An <audio> element is
+   * "media" and plays through the switch, the way videos and music apps do.
+   * Two things move the page's sound into that category:
+   *   - `navigator.audioSession.type = "playback"` (Safari 17 and later);
+   *   - for older iPhones, a silent looping <audio> element started from the
+   *     same tap, which switches the whole page to playback.
+   * Elsewhere both are harmless; any failure is ignored.
+   */
+  private asPlayback(): void {
+    if (typeof window === "undefined") return;
+    try {
+      const session = (navigator as unknown as { audioSession?: { type: string } }).audioSession;
+      if (session) session.type = "playback";
+    } catch {
+      /* not supported */
+    }
+    try {
+      if (!this.keepAlive) {
+        const a = new Audio(silentWav());
+        a.loop = true;
+        a.setAttribute("playsinline", "");
+        a.setAttribute("aria-hidden", "true");
+        this.keepAlive = a;
+      }
+      void this.keepAlive.play().catch(() => {});
+    } catch {
+      /* no audio element */
+    }
   }
 
   private ensure(): AC | null {
@@ -73,8 +120,9 @@ class SqSound {
 
   /** Start the bed for a scene. Safe to call again: it restarts cleanly. */
   start(scene: SceneKey): void {
-    this.stop();
-    if (!this.musicOn) return;
+    this.stop(false);
+    this.holdPlayback();
+    if (!this.musicOn && !this.natureOn) return;
     const c = this.ensure();
     if (!c || !this.master) return;
     const bed = c.createGain();
@@ -83,20 +131,39 @@ class SqSound {
     bed.gain.setTargetAtTime(1, c.currentTime, 1.4);
     this.bed = bed;
 
-    // drone: three close low tones, breathing slowly
-    for (const [freq, level] of [
-      [98, 0.03],
-      [98.4, 0.022],
-      [146.83, 0.014],
+    // A warm open chord (G2 D3 G3 B3), each tone slowly swelling and softening
+    // at its own rate, like breathing. Chosen by ear with the coach (19 Nov
+    // 2026) in place of the old three-tone drone.
+    if (this.musicOn) for (const [freq, level, rate] of [
+      [98, 0.03, 0.05],
+      [146.83, 0.021, 0.07],
+      [196, 0.018, 0.06],
+      [246.94, 0.011, 0.09],
     ]) {
-      const o = c.createOscillator();
       const g = c.createGain();
-      o.frequency.value = freq;
-      g.gain.value = level;
-      o.connect(g);
+      g.gain.value = level * 0.65;
       g.connect(bed);
-      o.start();
-      this.nodes.push(o);
+      for (const [mult, amt] of [
+        [1, 1],
+        [1.002, 0.3],
+      ]) {
+        const o = c.createOscillator();
+        const og = c.createGain();
+        o.frequency.value = freq * mult;
+        og.gain.value = amt;
+        o.connect(og);
+        og.connect(g);
+        o.start();
+        this.nodes.push(o);
+      }
+      const l = c.createOscillator();
+      const lg = c.createGain();
+      l.frequency.value = rate;
+      lg.gain.value = level * 0.35;
+      l.connect(lg);
+      lg.connect(g.gain);
+      l.start();
+      this.nodes.push(l);
     }
 
     // the scene: filtered noise, swelling and fading
@@ -130,9 +197,25 @@ class SqSound {
         this.nodes.push(l);
       }
     };
-    if (scene === "rain") {
-      band("bandpass", 2600, 0.05, 0, 0);
-      band("lowpass", 500, 0.03, 0.07, 0.012);
+    if (!this.natureOn) {
+      /* the client turned the scene's sound off */
+    } else if (scene === "rain") {
+      // Real recorded rain (public domain, "Rain" by ezwa on Wikimedia
+      // Commons), a 41-second seamless loop. The coach found every filtered-
+      // noise rain harsh (19 Nov 2026). Loaded only when a rain practice opens.
+      void this.loadRain().then((buf) => {
+        const cc = this.ctx;
+        if (!buf || !cc || this.bed !== bed) return;
+        const src = cc.createBufferSource();
+        src.buffer = buf;
+        src.loop = true;
+        const g = cc.createGain();
+        g.gain.value = 0.11; // halved at the coach's request (19 Nov 2026)
+        src.connect(g);
+        g.connect(bed);
+        src.start();
+        this.nodes.push(src);
+      });
     } else if (scene === "shore") band("lowpass", 700, 0.06, 0.11, 0.05);
     else if (scene === "grass") band("lowpass", 600, 0.035, 0.09, 0.02);
     else {
@@ -168,8 +251,24 @@ class SqSound {
         o.stop(t + 8);
       }
     };
-    play();
-    this.tuneTimer = setInterval(play, 4200);
+    if (this.musicOn) {
+      play();
+      this.tuneTimer = setInterval(play, 4200);
+    }
+  }
+
+  private rain: Promise<AudioBuffer | null> | null = null;
+  private loadRain(): Promise<AudioBuffer | null> {
+    const c = this.ctx;
+    if (!c) return Promise.resolve(null);
+    this.rain ??= fetch("/app-scenes/rain.m4a")
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(String(r.status)))))
+      .then((bytes) => c.decodeAudioData(bytes))
+      .catch(() => {
+        this.rain = null; // try again next time
+        return null;
+      });
+    return this.rain;
   }
 
   private chirp(): void {
@@ -193,9 +292,11 @@ class SqSound {
     }
   }
 
-  /** Fade the bed out and stop the voice. */
-  stop(): void {
+  /** Fade the bed out and stop the voice. `release` also lets the phone's
+   *  media session go (false only when a new bed starts straight after). */
+  stop(release = true): void {
     this.hush();
+    if (release) this.keepAlive?.pause();
     if (this.tuneTimer) clearInterval(this.tuneTimer);
     if (this.birdTimer) clearInterval(this.birdTimer);
     this.tuneTimer = this.birdTimer = null;
@@ -253,6 +354,7 @@ class SqSound {
   // ── the voice ────────────────────────────────────────────────────────────
 
   private duck(on: boolean): void {
+    if (on && !this.duckOn) return;
     if (this.ctx && this.bed) this.bed.gain.setTargetAtTime(on ? 0.3 : 1, this.ctx.currentTime, 0.25);
   }
 
@@ -286,6 +388,7 @@ class SqSound {
   /** Speak one clip. Anything already speaking stops first. */
   say(set: VoiceSet, i: number): void {
     if (!this.voiceOn) return;
+    this.holdPlayback();
     const mine = ++this.turn;
     void this.load(set, i).then((buf) => {
       const c = this.ctx;
@@ -337,6 +440,32 @@ class SqSound {
     this.stopVoice();
     this.duck(false);
   }
+}
+
+/** Half a second of silence as a WAV data URL (8 kHz, 8-bit mono), made here
+ *  so there is nothing to download. */
+function silentWav(): string {
+  const n = 4000;
+  const bytes = new Uint8Array(44 + n);
+  const v = new DataView(bytes.buffer);
+  const tag = (at: number, s: string) => [...s].forEach((ch, i) => v.setUint8(at + i, ch.charCodeAt(0)));
+  tag(0, "RIFF");
+  v.setUint32(4, 36 + n, true);
+  tag(8, "WAVE");
+  tag(12, "fmt ");
+  v.setUint32(16, 16, true);
+  v.setUint16(20, 1, true); // PCM
+  v.setUint16(22, 1, true); // mono
+  v.setUint32(24, 8000, true);
+  v.setUint32(28, 8000, true);
+  v.setUint16(32, 1, true);
+  v.setUint16(34, 8, true);
+  tag(36, "data");
+  v.setUint32(40, n, true);
+  bytes.fill(128, 44); // 8-bit silence is the midpoint
+  let bin = "";
+  for (const b of bytes) bin += String.fromCharCode(b);
+  return "data:audio/wav;base64," + btoa(bin);
 }
 
 let shared: SqSound | null = null;

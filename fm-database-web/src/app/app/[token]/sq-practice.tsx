@@ -75,19 +75,39 @@ function Beacon({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
   );
 }
 
-function Rings({ small }: { small?: boolean }) {
+/**
+ * The breathing light: a glass sphere over the live scene. It refracts and
+ * brightens what is behind it, its warm core and halo grow with the in-breath
+ * (`b`, 0 = empty lungs, 1 = full), a ripple leaves it at each new phase, and
+ * a few motes of light drift up around it. `auto` breathes on its own clock
+ * (the closing breath after tapping); otherwise the player drives `b`.
+ */
+function BreathOrb({ b = 0.5, small, auto, ripple }: { b?: number; small?: boolean; auto?: boolean; ripple?: number }) {
   return (
-    <svg className={"sq-pacer" + (small ? " sq-pacer-sm" : "")} viewBox="0 0 200 200" aria-hidden="true">
-      <circle cx="100" cy="100" r="92" strokeWidth="5" />
-      <circle className="sq-p2" cx="100" cy="100" r="64" strokeWidth="4" />
-      <circle className="sq-p3" cx="100" cy="100" r="36" strokeWidth="3" />
-      <circle className="sq-pc" cx="100" cy="100" r="7" />
-    </svg>
+    <div
+      className={"sq-orb" + (small ? " sq-orb-sm" : "") + (auto ? " sq-orb-auto" : "")}
+      style={auto ? undefined : ({ "--b": b.toFixed(3) } as React.CSSProperties)}
+      aria-hidden="true"
+    >
+      <div className="sq-orb-halo" />
+      {ripple !== undefined && <i key={ripple} className="sq-orb-ripple" />}
+      <div className="sq-orb-glass">
+        <div className="sq-orb-caustic" />
+        <div className="sq-orb-light" />
+        <div className="sq-orb-spec" />
+        <div className="sq-orb-rim" />
+      </div>
+      <div className="sq-orb-motes">
+        {Array.from({ length: 9 }, (_, k) => (
+          <i key={k} style={{ "--k": k } as React.CSSProperties} />
+        ))}
+      </div>
+    </div>
   );
 }
 
 function TapFigure({ fig }: { fig: PStep["fig"] }) {
-  if (fig === "breath") return <Rings small />;
+  if (fig === "breath") return <BreathOrb small auto />;
   if (fig === "hand") {
     return (
       <svg className="sq-eft" viewBox="55 35 330 360" role="img" aria-label="The side of the hand, with the tapping point marked">
@@ -165,6 +185,7 @@ function Settings({ prefs, setPrefs, voiced, scene }: { prefs: PracticePrefs; se
       <div className="sq-pchips">
         {voiced && chip("Voice", prefs.voice, () => setPrefs({ ...prefs, voice: !prefs.voice }))}
         {chip("Music", prefs.music, () => setPrefs({ ...prefs, music: !prefs.music }))}
+        {chip(SCENES[scene].sound, prefs.nature, () => setPrefs({ ...prefs, nature: !prefs.nature }))}
       </div>
       {voiced && (
         <div className="sq-pvol">
@@ -247,13 +268,18 @@ export function SqPracticePlayer({ data, practice, hour, prefs, setPrefs, onFini
   useEffect(() => {
     sound.voiceOn = prefs.voice;
     sound.musicOn = prefs.music;
+    sound.natureOn = prefs.nature;
     sound.volume = prefs.volume;
-  }, [sound, prefs.voice, prefs.music, prefs.volume]);
+    sound.duckOn = practice.kind !== "sleep";
+  }, [sound, prefs.voice, prefs.music, prefs.nature, prefs.volume, practice.kind]);
   useEffect(() => {
-    if (prefs.music) sound.start(scene);
-    else sound.stop();
-    return () => sound.stop();
-  }, [sound, scene, prefs.music]);
+    if (prefs.music || prefs.nature) sound.start(scene);
+    else sound.stop(false);
+    // A scene or music change keeps the phone's media session (the voice
+    // must still play through the silent switch); closing the player lets it go.
+    return () => sound.stop(false);
+  }, [sound, scene, prefs.music, prefs.nature]);
+  useEffect(() => () => sound.stop(), [sound]);
 
   // ── finishing and leaving ────────────────────────────────────────────────
   const finishedRef = useRef(false);
@@ -353,16 +379,21 @@ export function SqPracticePlayer({ data, practice, hour, prefs, setPrefs, onFini
     lastPhase.current = now.index;
     if (now.action !== "hold") sound.bell(now.action === "expand" ? 392 : 293.66, 0.1);
   }, [now, paused, sound]);
-  // The ring grows on the in-breath, rests on a hold, and falls on the out-breath.
-  let scale = 0.6;
+  // The light fills on the in-breath, rests on a hold, and empties on the
+  // out-breath, eased so it moves like a breath rather than a clock hand.
+  let fill = 0;
+  let ripple: number | undefined;
   if (breath && now) {
-    const at = now.secs > 0 ? now.into / now.secs : 1;
-    if (now.action === "expand") scale = 0.6 + 0.4 * at;
-    else if (now.action === "shrink") scale = 1 - 0.4 * at;
+    const at = now.secs > 0 ? Math.min(1, now.into / now.secs) : 1;
+    const ease = (t: number) => 0.5 - 0.5 * Math.cos(Math.PI * t);
+    if (now.action === "expand") fill = ease(at);
+    else if (now.action === "shrink") fill = 1 - ease(at);
     else {
       const prev = breath.phases[(now.index - 1 + breath.phases.length) % breath.phases.length];
-      scale = prev.action === "expand" ? 1 : 0.6;
+      fill = prev.action === "expand" ? 1 : 0;
     }
+    // one ripple per phase: keyed on when this phase began
+    ripple = Math.round((elapsed - now.into) * 10);
   }
 
   // ── drawing ──────────────────────────────────────────────────────────────
@@ -396,15 +427,15 @@ export function SqPracticePlayer({ data, practice, hour, prefs, setPrefs, onFini
     stage = <Rating question={theme?.sudsBeforeQ || "How strong is it right now?"} onPick={setBefore} />;
   } else if (breath) {
     stage = (
-      <div className="sq-pstage sq-breath">
-        <div className="sq-ring" style={{ transform: `scale(${scale.toFixed(3)})` }} aria-hidden="true">
-          <Rings />
+      <div className={"sq-pstage sq-breath" + (paused ? " sq-paused" : "")}>
+        <BreathOrb b={fill} ripple={paused ? undefined : ripple} />
+        <div className="sq-breath-words">
+          <p className="sq-cue" aria-live="polite">
+            {paused ? "Paused" : now?.label}
+          </p>
+          <p className="sq-psub">{now?.cue}</p>
+          <p className="sq-pleft">{clock(breathTotal - elapsed)} left</p>
         </div>
-        <p className="sq-cue" aria-live="polite">
-          {paused ? "Paused" : now?.label}
-        </p>
-        <p className="sq-psub">{now?.cue}</p>
-        <p className="sq-pleft">{clock(breathTotal - elapsed)} left</p>
       </div>
     );
     controls = (
