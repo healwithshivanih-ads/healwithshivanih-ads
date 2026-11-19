@@ -44,6 +44,7 @@ import {
   type SqRow,
   type SqTicks,
 } from "./sq-day";
+import { practiceList, type SqPractice } from "./sq-practice-data";
 import type { SqSheet } from "./sq-ui";
 
 export interface AskContext {
@@ -408,6 +409,96 @@ const DISH_ASK = /\b(can|may|should|could) i\b|\bis\b.*\b(ok|okay|fine|allowed)\
 const NOT_FOOD = /\bgym\b|workout|exercise|sleep|jet ?lag|supplement|vitamin|capsule|run(ning)? out|ran out|medicine|tablet/;
 const ABOUT_FOOD = /\b(eat|eating|order|ordering|food|khana|kha|menu|meals?|breakfast|lunch|dinner|snack|buffet|restaurant)\b|what (do|should|can) i (do|have|get|choose|pick)/;
 
+// ── practices ──────────────────────────────────────────────────────────────
+
+/**
+ * A feeling, a bad night, a hot flush: the practice on her plan that suits
+ * it, one tap from starting. Only practices the coach prescribed are offered;
+ * a client with none is offered the coach.
+ *
+ * The wording of each answer is the prototype's, which the testers saw. A
+ * symptom never reaches here: the safety rules send those to the coach first.
+ */
+function practiceAnswer(s: string, q: string, data: ClientAppData): AskResult {
+  const list = practiceList({ eft: data.eft, sleep: data.sleep, breathwork: data.breathwork, somatic: data.somatic });
+  const has = (r: RegExp) => r.test(s);
+  const get = (id: string) => list.find((p) => p.id === id) ?? null;
+  const reset = list.find((p) => p.kind === "reset") ?? null;
+  const start = (p: SqPractice): AskResult => ({ type: "open", sheet: { k: "practice", id: p.id } });
+  const tell = { to: "coach" as const, label: "Tell my coach", draft: q.trim() };
+
+  if (list.length === 0) return card(coachCard("That is worth telling your coach. Send it to your coach?"));
+
+  // asked for by name
+  const tap = get("tap");
+  const sleep = get("sleep");
+  if (tap && has(/tapping|\beft\b/)) return start(tap);
+  if (reset && has(/body reset|somatic/)) return start(reset);
+  if (sleep && has(/wind.?down/) && has(/sleep|night|bed/)) return start(sleep);
+
+  /** A card offering the first two of `want` that she has; null when none. */
+  const offer = (heading: string, both: string, want: (SqPractice | null)[], note?: string): AskResult | null => {
+    const have = want.filter((p): p is SqPractice => !!p);
+    if (have.length === 0) return null;
+    const all = have.length === want.filter(Boolean).length && have.length === want.length;
+    return card({
+      src: PLAN,
+      heading,
+      // The fuller line names two practices; it is used only when she has both.
+      lines: [all ? both : `${have[0].title} suits this, and it is on your plan.`],
+      note,
+      buttons: [
+        ...have.slice(0, 2).map((p, i) => ({ to: "practice" as const, ref: p.id, label: i === 0 ? `Begin ${p.title.toLowerCase()}` : p.title, solid: i === 0 })),
+        tell,
+      ],
+    });
+  };
+  const one = get("one");
+  const breath = get("breath");
+  const tries: (AskResult | null)[] = [];
+  if (has(/don'?t have (five|5|time)|no time|only (a|one) minute|one minute|\bquick\b/)) {
+    tries.push(offer("One minute is enough", "A single minute of slow out-breaths still tells your body it is safe.", [one]));
+  } else if (has(/hot flush|hot flash|flush|heart is racing|racing heart/)) {
+    tries.push(
+      offer(
+        "Right now, where you are",
+        "Lengthen your out-breath for one minute. You can do it wherever you are, sitting, standing or lying down.",
+        [one, reset],
+        "If your heart keeps racing, or this is new for you, tell your coach.",
+      ),
+    );
+  } else if (has(/irritab|angry|anger|snapping|short fuse|furious/)) {
+    tries.push(offer("For a short fuse", "Tapping takes the charge out of it. The body reset is quicker if you are in company.", [tap, reset]));
+  } else if (has(/sleep|woke|awake|\b3 ?am\b|at 3\b|insomnia|neend|wired|night|11 ?pm|\bbed\b|soaked/)) {
+    tries.push(
+      offer(
+        "For tonight",
+        "Your sleep wind-down is about five minutes, lights low. If you would rather have quiet, slow breathing works lying down.",
+        [sleep, breath],
+        "Your coach would want to hear about nights like this, whenever you like.",
+      ),
+    );
+  } else if (has(/\bmind\b|\bbrain\b|thoughts?|overthink/)) {
+    tries.push(offer("For a busy mind", "Tapping gives the mind one small thing to follow. Slow breathing is quieter if you would rather not speak.", [tap, breath]));
+  }
+  const hit = tries.find(Boolean);
+  if (hit) return hit;
+  // Anything else, and any mood whose own practices she does not have.
+  return card({
+    src: PLAN,
+    heading: "Let's slow things down",
+    lines: ["Pick whichever suits the moment. None of them need anything but you."],
+    note: "Your coach would want to hear about this, whenever you like.",
+    buttons: [
+      ...[breath, tap, reset, sleep, one]
+        .filter((p): p is SqPractice => !!p)
+        .slice(0, 2)
+        .map((p, i) => ({ to: "practice" as const, ref: p.id, label: p.title, solid: i === 0 })),
+      tell,
+    ],
+  });
+}
+
 // ── the router ─────────────────────────────────────────────────────────────
 
 const TRAVEL = /travel|\btrip\b|flight|flying|abroad|out of (town|station)|on tour|hotel|airport|jet ?lag|buffet|wedding|shaadi|restaurant|eating out|eat out|(client|business|office|team) (dinner|lunch)|(dinner|lunch) out|italian|chinese|pizza|takeaway|order in|swiggy|zomato/;
@@ -505,20 +596,7 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
     return card({ src: "How it works", heading: "What your coach sees", lines: ["What you tick, when you last opened the app, and anything you send. Nothing else."], followUps: ["Tell my coach how I feel"] });
   }
   if (has(/^practices?$|which practice|my practices|all practices|other practices/)) return { type: "tab", tab: "practices" };
-  if (has(PRACTICE)) {
-    const mine = data.practices.filter((p) => p.kind === "daily").slice(0, 3);
-    return card({
-      src: PLAN,
-      heading: "Let's slow things down",
-      lines: ["Your practices are in the Practices tab. Pick whichever suits the moment."],
-      list: mine.map((p) => ({ mark: "dot" as const, text: p.name.split(" — ")[0] })),
-      note: "Your coach would want to hear about this, whenever you like.",
-      buttons: [
-        { to: "practices", label: "Open Practices", solid: true },
-        { to: "coach", label: "Tell my coach", draft: q.trim() },
-      ],
-    });
-  }
+  if (has(PRACTICE)) return practiceAnswer(s, q, data);
   if (has(/\bi feel\b|feeling|failed|guilty|ashamed|\bsad\b|crying|lonely|can'?t do this|cannot do this|too much|too hard|give up|giving up|fed up|what'?s the point/)) {
     return card(coachCard("That sounds heavy. I can send this to your coach, and you don't have to do anything else today."));
   }

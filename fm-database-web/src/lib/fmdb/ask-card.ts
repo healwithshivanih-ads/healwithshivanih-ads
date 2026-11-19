@@ -11,12 +11,12 @@ import { HANDOFF_COPY, URGENT_COPY, type HandoffKind, type UrgentKind } from "./
 
 /** Where a button on a card may lead. A fixed list: the model picks from the
  *  MODEL_BUTTONS subset and cannot invent a destination. */
-export type AskTarget = "day" | "record" | "recipe" | "start" | "eatout" | "practices" | "coach" | "soon";
+export type AskTarget = "day" | "record" | "recipe" | "start" | "eatout" | "practice" | "practices" | "coach" | "soon";
 
 export interface AskButton {
   to: AskTarget;
   label: string;
-  /** recipe: the menu slot; soon: the screen's title */
+  /** recipe: the menu slot; practice: its id; soon: the screen's title */
   ref?: string;
   /** coach: words to put in the message box, for her to edit and send */
   draft?: string;

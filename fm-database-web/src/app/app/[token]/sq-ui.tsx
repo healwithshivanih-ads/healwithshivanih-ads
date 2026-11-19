@@ -43,6 +43,12 @@ export type SqSheet =
   | { k: "start" }
   /** the coach's eating-out guide for this plan week, in full */
   | { k: "eatout"; where?: string }
+  /** a practice, playing (sq-practice.tsx); id from sq-practice-data.ts */
+  | { k: "practice"; id: string }
+  /** the goodnight screen after the sleep wind-down */
+  | { k: "night" }
+  /** the four practice backgrounds */
+  | { k: "scenes" }
   /** a screen a later build step fills in */
   | { k: "soon"; title: string };
 
