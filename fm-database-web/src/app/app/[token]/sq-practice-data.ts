@@ -23,11 +23,12 @@ import type { AppBreathwork, AppEft, AppEftTheme, AppSleep, ClientAppData } from
 // ── scenes ─────────────────────────────────────────────────────────────────
 
 export type SceneKey = "shore" | "rain" | "grove" | "grass";
-export const SCENES: Record<SceneKey, { name: string; about: string }> = {
-  shore: { name: "Slow waves", about: "Small waves on warm sand" },
-  rain: { name: "Rain on leaves", about: "Soft rain on broad green leaves" },
-  grove: { name: "Forest path", about: "Tall trees and morning light" },
-  grass: { name: "Grasses in the breeze", about: "Wild grass moving in a light wind" },
+/** `sound` names the scene's own sound on its on/off switch in Settings. */
+export const SCENES: Record<SceneKey, { name: string; about: string; sound: string }> = {
+  shore: { name: "Slow waves", about: "Small waves on warm sand", sound: "Waves" },
+  rain: { name: "Rain on leaves", about: "Soft rain on broad green leaves", sound: "Rain" },
+  grove: { name: "Forest path", about: "Tall trees and morning light", sound: "Birdsong" },
+  grass: { name: "Grasses in the breeze", about: "Wild grass moving in a light wind", sound: "Wind" },
 };
 export const SCENE_KEYS = Object.keys(SCENES) as SceneKey[];
 export const isScene = (v: unknown): v is SceneKey => typeof v === "string" && v in SCENES;
@@ -43,7 +44,10 @@ export const VOICE_SECS: Record<VoiceSet, number[]> = {
   "tapping-anxiety": [6.4, 2.29, 2.32, 2.78, 2.98, 2.45, 3.47, 3.83, 3.74],
   "tapping-sleep": [5.89, 1.94, 2.28, 2.4, 2.55, 1.95, 2.81, 2.11, 3.66],
   "tapping-stress": [6.37, 2.25, 2.24, 2.52, 2.07, 3.09, 2.29, 2.47, 3.05],
-  "sleep-wind-down": [10.56, 16.06, 9.01, 8.2, 6.86, 7.4, 8.33, 8.58, 7.94, 7.94],
+  // The wind-down clips play 20% slower than recorded (ffmpeg atempo=0.80,
+  // pitch unchanged), with 2 s of quiet added between the sentences inside
+  // each line, as the coach chose by ear on 19 Nov 2026.
+  "sleep-wind-down": [17.19, 26.07, 15.27, 14.25, 10.57, 11.25, 14.4, 14.73, 11.91, 13.91],
 };
 
 /** The file for one clip: clips are numbered from 01. */
@@ -99,7 +103,10 @@ export const RECORDED_TAPPING: Record<string, string[]> = {
 };
 
 /** The quiet after each wind-down line, in seconds, at normal pace. */
-const WIND_GAPS = [10, 14, 18, 18, 18, 18, 18, 18, 16, 24];
+// The coach's choice by ear, 19 Nov 2026: 8 s between lines, except after
+// "Slow your breath": 50 s of music and rain for five slow breaths (in 4,
+// out 6), and 12 s before the last line to let sleep in.
+const WIND_GAPS = [8, 50, 8, 8, 8, 8, 8, 8, 8, 12];
 
 /** Words only: case, punctuation and dashes do not make two lines different. */
 const plain = (s: string): string =>
@@ -366,6 +373,8 @@ export interface PracticePrefs {
   volume: number;
   voice: boolean;
   music: boolean;
+  /** the scene's own sound (rain, waves, wind, birdsong), apart from the music */
+  nature: boolean;
   /** a scene she chose for every practice; null lets each practice pick */
   scene: SceneKey | null;
   /** where she stopped in a practice she did not finish: practice id → step */
@@ -374,7 +383,7 @@ export interface PracticePrefs {
   last: { id: string; ymd: string } | null;
 }
 
-export const DEFAULT_PREFS: PracticePrefs = { pace: DEFAULT_PACE, volume: 2, voice: true, music: true, scene: null, resume: {}, last: null };
+export const DEFAULT_PREFS: PracticePrefs = { pace: DEFAULT_PACE, volume: 2, voice: true, music: true, nature: true, scene: null, resume: {}, last: null };
 export const VOLUME_LEVELS = 5;
 
 /** Read saved settings defensively: anything unreadable is the default. */
@@ -395,6 +404,7 @@ export function parsePrefs(raw: string | null): PracticePrefs {
       volume: int(j.volume, 0, VOLUME_LEVELS - 1, 2),
       voice: j.voice !== false,
       music: j.music !== false,
+      nature: j.nature !== false,
       scene: isScene(j.scene) ? j.scene : null,
       resume,
       last: last && typeof last.id === "string" && typeof last.ymd === "string" ? { id: last.id, ymd: last.ymd } : null,

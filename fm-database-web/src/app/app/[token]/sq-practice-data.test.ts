@@ -124,8 +124,8 @@ describe("the wind-down and body resets", () => {
   it("the wind-down speaks each of its ten steps, then leaves quiet", () => {
     const steps = sleepSteps(SLEEP);
     expect(steps).toHaveLength(10);
-    expect(steps[1].parts).toEqual([{ vo: ["sleep-wind-down", 1] }, { gap: 14 }]);
-    expect(minutesLabel(totalSeconds(steps, 1))).toBe("4 minutes");
+    expect(steps[1].parts).toEqual([{ vo: ["sleep-wind-down", 1] }, { gap: 50 }]);
+    expect(minutesLabel(totalSeconds(steps, 1))).toBe("5 minutes");
   });
 
   it("a body reset has no voice; a step with no time set gets twenty seconds", () => {
@@ -148,9 +148,9 @@ describe("pace changes the pauses, never the voice", () => {
     expect(fast.clips).toEqual(normal.clips);
     expect(slow.clips).toEqual(normal.clips);
     const voice = VOICE_SECS["sleep-wind-down"][0];
-    expect(normal.total).toBeCloseTo(0.5 + voice + 10, 5);
-    expect(fast.total).toBeCloseTo(0.5 + voice + 10 / PACES[3], 5);
-    expect(slow.total).toBeCloseTo(0.5 + voice + 10 / PACES[0], 5);
+    expect(normal.total).toBeCloseTo(0.5 + voice + 8, 5);
+    expect(fast.total).toBeCloseTo(0.5 + voice + 8 / PACES[3], 5);
+    expect(slow.total).toBeCloseTo(0.5 + voice + 8 / PACES[0], 5);
   });
   it("each later clip of a step starts after the one before it has finished", () => {
     for (const s of tapSteps(eftTheme("cravings", "Cravings"))) {
@@ -201,7 +201,7 @@ describe("practiceList — only what the coach prescribed", () => {
   it("says so when a practice is led by the coach's voice, and only then", () => {
     const list = practiceList(ALL_PRACTICES);
     const meta = (id: string) => list.find((p) => p.id === id)!.meta;
-    expect(meta("sleep")).toBe("4 minutes · before bed · led by your coach's voice");
+    expect(meta("sleep")).toBe("5 minutes · before bed · led by your coach's voice");
     expect(meta("tap")).toBe("2 minutes a round · led by your coach's voice");
     expect(meta("breath")).toBe("5 minutes · to settle");
     expect(meta("reset:body-reset")).toBe("3 minutes · for tension");
@@ -233,8 +233,11 @@ describe("settings kept on the phone", () => {
     });
   });
   it("round-trips what she chose", () => {
-    const mine = { pace: 3, volume: 4, voice: false, music: false, scene: "rain" as const, resume: { tap: 4 }, last: { id: "sleep", ymd: "2026-11-19" } };
+    const mine = { pace: 3, volume: 4, voice: false, music: false, nature: false, scene: "rain" as const, resume: { tap: 4 }, last: { id: "sleep", ymd: "2026-11-19" } };
     expect(parsePrefs(JSON.stringify(mine))).toEqual(mine);
+  });
+  it("keeps the scene sound on for settings saved before it had a switch", () => {
+    expect(parsePrefs(JSON.stringify({ music: false })).nature).toBe(true);
   });
 });
 
