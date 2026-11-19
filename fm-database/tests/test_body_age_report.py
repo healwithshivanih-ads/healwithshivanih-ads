@@ -530,5 +530,7 @@ def test_pdf_has_the_approved_page_count_and_working_links(kind, pages, tmp_path
     assert any(t == "https://example.test/foundation/t" for _, _, t in res["links"])
     meta = PdfReader(str(tmp_path / "r.pdf")).metadata
     assert "body age report" in meta.title.lower() and not FORBIDDEN.search(meta.title + str(meta.author))
-    first = PdfReader(str(tmp_path / "r.pdf")).pages[0].extract_text()
+    pages_text = [pg.extract_text() for pg in PdfReader(str(tmp_path / "r.pdf")).pages]
+    assert all("It does not diagnose, treat or prescribe." in t for t in pages_text), "the disclaimer is on every page"
+    first = pages_text[0]
     assert "Sequoya by Shivani Hari" in first and "Read by" not in first

@@ -28,6 +28,8 @@ WA_URL = "https://wa.me/918976563971?text=" + quote("Hi, I have a question about
 MAIL = "admin@theochretree.com"
 MAIL_URL = "mailto:admin@theochretree.com?subject=" + quote("My body age report")
 WM_OPACITY = 0.06   # faint: visible on open paper, never competing with text
+# on every page, above the contact line (Shivani, 19 Nov 2026: "put our disclaimer also in the footnotes")
+DISCLAIMER = "This is a wellness report. It does not diagnose, treat or prescribe."
 
 # the heart section opens a page; in the deeper report page 1 carries one more line, the body figure shares a
 # page with its table, and the contents list runs in three columns to fit under the letter
@@ -74,12 +76,13 @@ def furniture_html(n: int, head_r: str) -> str:
     foot = (f'<a href="{SITE_URL}">{SITE}</a> &nbsp;·&nbsp; Call <a href="{CALL_URL}">{CALL}</a> &nbsp;·&nbsp; '
             f'WhatsApp <a href="{WA_URL}">{WA}</a> &nbsp;·&nbsp; <a href="{MAIL_URL}">{MAIL}</a>')
     pages = "".join(f'<div class="pg"><div class="hd"><span>{HEAD_L}</span><span>{head_r}</span></div><div class="wm">{svg}</div>'
+                    f'<div class="dc">{DISCLAIMER}</div>'
                     f'<div class="ft"><span>{foot}</span><span>Page {i} of {n}</span></div></div>' for i in range(1, n + 1))
     css = """@page{size:A4;margin:0} html,body{margin:0}
 .pg{position:relative;width:210mm;height:296.6mm;overflow:hidden;break-after:page;font:8.5pt "Instrument Sans",Arial,sans-serif;color:#6F6A72}
 .pg:last-child{break-after:auto}
 .hd,.ft{position:absolute;left:14mm;right:14mm;display:flex;justify-content:space-between;align-items:baseline}
-.hd{top:9.6mm} .ft{bottom:7.6mm}
+.hd{top:9.6mm} .ft{bottom:7.6mm} .dc{position:absolute;left:14mm;right:14mm;bottom:12.3mm;font-size:7.5pt}
 .ft a{color:#6F6A72;text-decoration:underline;text-decoration-color:#C94A77;text-decoration-thickness:.8pt;text-underline-offset:2pt}
 .wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center} .wm svg{width:130mm;height:130mm}"""
     return f"<!doctype html><html><head><meta charset=utf-8><style>{fonts_css()}</style><style>{css}</style></head><body>{pages}</body></html>"
