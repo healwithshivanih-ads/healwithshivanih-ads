@@ -312,7 +312,7 @@ def report_main(rp: Any) -> str:
 </section>
 
 <section id="methods">{head("methods", "Methods and references")}
-<p class="edu">Blood was collected at home and analysed by an independent diagnostic laboratory. Measured results are shown against that laboratory's reference range; cholesterol, LDL and triglycerides use the standard three-tier categories. Calculated scores use the published formulas below, with their usual cut-offs.</p>
+<p class="edu">Blood was collected at home and analysed by an independent diagnostic laboratory, whose pathologists sign off every result. Measured results are shown against that laboratory's reference range; cholesterol, LDL and triglycerides use the standard three-tier categories. Calculated scores use the published formulas below, with their usual cut-offs.</p>
 <ol class="refs">{"".join(f"<li>{r}</li>" for r in W.REFS)}</ol>
 <p class="fine">Ranges here are for adults who are not pregnant. If you take medicine for thyroid, sugar, blood pressure or cholesterol, do not change it because of this report.</p>
 <p class="fine">This is a wellness report. It does not diagnose, treat or prescribe.{sample_fine}</p></section>
