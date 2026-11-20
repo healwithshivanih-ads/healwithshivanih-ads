@@ -51,10 +51,20 @@ def test_non_vegetarian_is_not_read_as_vegetarian():
     assert R.veg_leaning("Vegetarian") is True
 
 
-def test_jain_clients_get_no_priority_push():
-    # the priority set is sprout dishes; Jain practice commonly avoids sprouts
-    assert R.coach_priority_boost(_recipe("a", True), "Vegetarian Jain") == 0.0
-    assert catalogue_dishes.priority_dish_names("Vegetarian Jain") == []
+def test_jain_clients_get_the_push_but_only_for_dishes_they_can_eat():
+    # coach decision 2026-11-20: Jain clients are included, as vegetarian-leaning
+    assert (R.coach_priority_boost(_recipe("a", True), "Vegetarian Jain")
+            == R.COACH_PRIORITY_BOOST + R.COACH_PRIORITY_VEG_BONUS)
+    jain = catalogue_dishes.priority_dish_names("Vegetarian Jain")
+    everyone = catalogue_dishes.priority_dish_names("Vegetarian")
+    assert jain, "a Jain client should be offered some priority dishes"
+    assert set(jain) < set(everyone)
+    # the drafter is told to PREFER this list, so nothing on it may carry
+    # onion, garlic or a root vegetable
+    by_name = {r["name"]: r for r in R.load_recipes()}
+    for name in jain:
+        assert R.diet_ok(by_name[name], "vegetarian jain"), name
+    assert "Tadka moong with coconut" not in jain      # has onion
 
 
 def test_unflagged_recipe_gets_nothing():
