@@ -56,6 +56,7 @@ protein_g: 10.3
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: Leftover dhokla stir-fried with boiled chana sprouts and three colours of
   capsicum.
 headnote: A good use for yesterday's dhokla.
@@ -64,6 +65,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 70
+image:
+  file: images/web/dhokla-with-sprouted-chana-and-peppers.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://dhokla-with-sprouted-chana-and-peppers
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 70
@@ -120,3 +128,10 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित चने और शिमला मिर्च वाला ढोकला
+    steps:
+    - शिमला मिर्च की पतली पट्टियाँ तेल में पकाएँ।
+    - अंकुरित चने, लाल मिर्च और नमक डालकर मिलाएँ।
+    - ढोकले के टुकड़े डालें, हल्के हाथ से गरम होने तक मिलाएँ और परोसें।

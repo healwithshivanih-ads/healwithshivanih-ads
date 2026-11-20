@@ -69,6 +69,7 @@ protein_g: 7.8
 good_for:
 - blood-sugar-regulation
 - constipation
+coach_priority: high
 one_line: Steamed moong and cooked kala chana with onion, tomato and cabbage.
 headnote: The everyday sprout salad, with two kinds of sprouts for better texture.
 attribution:
@@ -76,6 +77,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 46
+image:
+  file: images/web/simple-moong-chana-salad.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://simple-moong-chana-salad
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 46
@@ -144,3 +152,10 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: मूँग और चने का सादा सलाद
+    steps:
+    - दोनों अंकुर एक कटोरे में डालें और प्याज़, टमाटर, पत्तागोभी और हरा धनिया मिलाएँ।
+    - नींबू का रस, नमक, हरी मिर्च और चाट मसाला डालकर अच्छी तरह मिलाएँ।
+    - तुरंत परोसें। साथ में सूप और थोड़ा पनीर हो तो पूरा खाना बन जाता है।

@@ -39,6 +39,11 @@ CYCLE_PHASES = {"menstrual", "follicular", "ovulatory", "early_luteal", "late_lu
 # — the split costs nothing in safety and buys precision.)
 ALLERGENS = {"dairy", "gluten", "nuts", "peanut", "soy", "egg", "fish", "shellfish", "sesame", "mustard"}
 
+# The coach's "put this in front of clients" flag (see recipe_select.py and the
+# weekly menu drafter's rule 18). One value on purpose: a second tier nobody
+# asked for is a second thing to keep in step across three ranking surfaces.
+COACH_PRIORITIES = {"high"}
+
 REQUIRED = ("slug", "name", "meal_type", "one_line")
 
 # template slots that were meant to be substituted before the recipe shipped.
@@ -205,6 +210,11 @@ def check_recipe(d: dict, fname: str) -> tuple[list[str], list[str]]:
     sub("aggravates_dosha", DOSHAS); sub("seasons", SEASONS); sub("rasa", RASAS)
     sub("contains_allergens", ALLERGENS, hard=False)
     sub("cycle_phases", CYCLE_PHASES)
+    # a misspelt priority would silently not rank — the coach would see nothing
+    cp = d.get("coach_priority")
+    if cp is not None and str(cp).lower() not in COACH_PRIORITIES:
+        errs.append(f"{fname}: coach_priority {cp!r} is not valid "
+                    f"(allowed: {sorted(COACH_PRIORITIES)}, or leave the field out)")
 
     for k in ("approx_kcal_per_serving", "protein_g"):
         if d.get(k) is not None and not isinstance(d[k], (int, float)):

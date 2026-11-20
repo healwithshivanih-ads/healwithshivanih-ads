@@ -61,6 +61,7 @@ protein_g: 6.0
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Horsegram sprouts tossed with tart raw mango and coconut — a light summer
   side.
 headnote: Horsegram is warming, so the raw mango and coconut balance it. A small side,
@@ -70,6 +71,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 41
+image:
+  file: images/web/kulith-and-kairi-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://kulith-and-kairi-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 41
@@ -126,3 +134,13 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: कुलथी और कैरी की सब्ज़ी
+    steps:
+    - भारी तले की कड़ाही में तेल गरम करके प्याज़ नरम करें।
+    - अंकुरित कुलथी और कसी हुई कैरी डालकर चलाते रहें।
+    - 3–4 छोटे चम्मच पानी डालें, ढककर धीमी आँच पर एक-दो मिनट पकाएँ — अंकुर ज़्यादा
+      नरम चाहिए तो थोड़ा और।
+    - नमक और काली मिर्च डालें और ऊपर से नारियल छिड़कें। प्याज़ के साथ चुटकी भर गरम
+      मसाला डालना भी अच्छा लगता है।

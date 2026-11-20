@@ -74,6 +74,7 @@ protein_g: 6.3
 good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
+coach_priority: high
 one_line: Moong sprouts in a mustard, cumin and urad dal tempering, finished with
   fresh coconut.
 headnote: A quick everyday sabzi. The coconut and ghee soften the dryness of the sprouts,
@@ -83,6 +84,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 27
+image:
+  file: images/web/tadka-moong-with-coconut.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://tadka-moong-with-coconut
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 27
@@ -154,3 +162,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: नारियल वाली तड़का मूँग
+    steps:
+    - कड़ाही में घी गरम करें और राई, जीरा और उड़द दाल कुछ सेकंड चटकने दें।
+    - प्याज़ डालकर हल्का सुनहरा होने तक भूनें।
+    - अंकुरित मूँग, नमक, हल्दी और आधा कप पानी डालें। ढककर मूँग नरम होने तक पकाएँ।
+    - ऊपर से नारियल, टमाटर और हरी मिर्च डालें, फिर ढककर 5 मिनट और पकाएँ।

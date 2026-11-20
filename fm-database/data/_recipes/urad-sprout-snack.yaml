@@ -72,6 +72,7 @@ kcal_is_estimate: true
 protein_g: 6.4
 good_for:
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Blanched whole urad sprouts tossed in ghee with hing, garlic and ginger.
 headnote: Urad is the heaviest of the dals; hing, ginger and garlic are there to help
   digest it.
@@ -80,6 +81,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 59
+image:
+  file: images/web/urad-sprout-snack.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://urad-sprout-snack
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 59
@@ -152,3 +160,12 @@ nutrient_lines:
 nutrient_servings: 1.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित उड़द का स्टर-फ़्राई
+    steps:
+    - अंकुरित उड़द को उबलते पानी में करीब एक मिनट डालकर छान लें।
+    - धीमी आँच पर घी गरम करें और जीरा, हींग, करी पत्ता, हरी मिर्च, लहसुन, अदरक और
+      नमक डालें। कुछ सेकंड चलाएँ।
+    - अंकुर डालकर 2–3 मिनट पकाएँ।
+    - प्याज़ और थोड़ा नींबू का रस डालें और ऊपर से हरा धनिया।

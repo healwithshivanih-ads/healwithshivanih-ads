@@ -65,6 +65,7 @@ good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
 - constipation
+coach_priority: high
 one_line: Boiled green chana sprouts with cucumber, tomato, onion and chaat masala.
 headnote: Green chana (hara chana) has a sweeter, fresher taste than kala chana. Dried
   green chana sprouts well through the year.
@@ -73,6 +74,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 52
+image:
+  file: images/web/green-chana-sprout-salad.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://green-chana-sprout-salad
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 52
@@ -135,3 +143,10 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित हरे चने का सलाद
+    steps:
+    - अंकुरित चने, खीरा, टमाटर और प्याज़ एक कटोरे में डालें।
+    - चाट मसाला, नींबू का रस और नमक छिड़ककर अच्छी तरह मिलाएँ।
+    - ऊपर से हरा धनिया और पुदीना डालें।

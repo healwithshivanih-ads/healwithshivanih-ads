@@ -73,6 +73,7 @@ protein_g: 12.4
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: Hara-bhara-style tikkis made from mashed sprouted green chana and paneer.
 headnote: Shallow-fried in a spoonful of ghee. Makes eight.
 attribution:
@@ -80,6 +81,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 79
+image:
+  file: images/web/sprouted-green-chana-and-paneer-kabab.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-green-chana-and-paneer-kabab
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 79
@@ -152,3 +160,13 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित हरे चने और पनीर के कबाब
+    steps:
+    - पके हुए चनों को कटोरे में अच्छी तरह मसल लें।
+    - इसमें पनीर, गाजर, फ्रेंच बीन्स, हरी मिर्च, हरा धनिया, अदरक-लहसुन का पेस्ट, अमचूर
+      और नमक अच्छी तरह मिलाएँ।
+    - 8 टिक्कियाँ बनाएँ और हर एक पर एक काजू दबा दें।
+    - घी में दोनों तरफ़ से सुनहरा होने तक सेंकें। पुदीने की चटनी या गाढ़े दही की डिप
+      के साथ परोसें।

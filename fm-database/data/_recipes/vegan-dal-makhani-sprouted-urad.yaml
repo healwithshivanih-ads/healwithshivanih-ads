@@ -63,6 +63,7 @@ protein_g: 8.4
 good_for:
 - protein-adequacy-vegetarian
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Dal makhani without butter or cream — the creaminess comes from blending
   part of the sprouted urad.
 headnote: Whole urad is heavy; sprouting and a long simmer make it noticeably lighter.
@@ -72,6 +73,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 38
+image:
+  file: images/web/vegan-dal-makhani-sprouted-urad.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://vegan-dal-makhani-sprouted-urad
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 38
@@ -132,3 +140,12 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित उड़द की वीगन दाल मखनी
+    steps:
+    - टमाटर और लहसुन को आधा कप भाप में पके अंकुरित उड़द के साथ बारीक पीस लें।
+    - तेल गरम करके जीरा डालें, फिर यह पेस्ट। 2 मिनट पकाएँ।
+    - लाल मिर्च, नमक और बाक़ी अंकुर 1–2 कप पानी के साथ डालें, जितनी गाढ़ी दाल चाहिए
+      उसके हिसाब से।
+    - 10 मिनट धीमी आँच पर पकाएँ। नमक ठीक करें, नींबू का रस मिलाएँ और गरम परोसें।

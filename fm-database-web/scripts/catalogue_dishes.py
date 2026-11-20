@@ -52,6 +52,41 @@ def catalogue_dish_names(diet_pref: str = "") -> list[str]:
     return names
 
 
+@functools.lru_cache(maxsize=1)
+def _priority_titles() -> tuple[str, ...]:
+    out: list[str] = []
+    for f in glob.glob(str(_FMDB / "data" / "_recipes" / "*.yaml")):
+        try:
+            r = yaml.safe_load(open(f)) or {}
+        except Exception:
+            continue
+        if not isinstance(r, dict):
+            continue
+        nm = (r.get("name") or "").strip()
+        if nm and str(r.get("coach_priority") or "").lower() == "high":
+            out.append(nm)
+    return tuple(sorted(set(out)))
+
+
+def priority_dish_names(diet_pref: str = "") -> list[str]:
+    """Catalogue titles the coach has flagged `coach_priority: high` — the
+    weekly menu drafter's rule 18 list.
+
+    Empty for a Jain client: the priority set is sprout dishes, which Jain
+    practice commonly avoids (recipe_select.coach_priority_boost makes the same
+    call). Meat-named dishes are dropped for anyone not explicitly non-veg, as
+    in `catalogue_dish_names`.
+    """
+    dp = (diet_pref or "").lower()
+    if "jain" in dp:
+        return []
+    names = list(_priority_titles())
+    is_nonveg = any(x in dp for x in ("non-veg", "nonveg", "non veg", "pescatar", "omnivore"))
+    if not is_nonveg:
+        names = [n for n in names if not any(w in n.lower() for w in _MEAT)]
+    return names
+
+
 # ── snapping a drafted dish name back onto its catalogue title ───────────────
 #
 # The vocabulary nudge above gets most of the way — 35 of 41 dish slots on a

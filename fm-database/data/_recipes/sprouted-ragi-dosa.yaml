@@ -50,6 +50,7 @@ protein_g: 9.9
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Regular dosa batter with whole sprouted ragi stirred in.
 headnote: 'The easiest way to use sprouted ragi: no grinding, and the dosa picks up
   a nutty crunch along with ragi''s calcium.'
@@ -58,6 +59,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 77
+image:
+  file: images/web/sprouted-ragi-dosa.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-ragi-dosa
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 77
@@ -112,3 +120,10 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित रागी का डोसा
+    steps:
+    - अंकुरित रागी को नमक और हरी मिर्च के पेस्ट के साथ डोसे के घोल में मिलाएँ।
+    - गरम तवे पर थोड़े घी के साथ मध्यम आकार के डोसे बनाएँ।
+    - सांबर और चटनी के साथ परोसें।

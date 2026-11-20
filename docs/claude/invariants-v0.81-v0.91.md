@@ -393,3 +393,11 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - **Safety edits against the book:** sprouted rajma is boiled 10 min before use (the book pan-steams it); raw seed sprouts are dipped in hot water; `broccoli-sprouts` sits in `goitrogen-brassica-thyroid`. Sprout recipes are never tagged `jain`.
 - **Benefit tags follow the computed serving**: `protein-adequacy-vegetarian` needs >= 8 g, `iron-nutrition` >= 3 mg, `constipation` >= 4 g fibre.
 - Not done: photos and Hindi translations for the 64 new entries.
+
+**`coach_priority: high` — dishes the coach wants on clients' menus (2026-11-20).** The 60 sprout recipes carry it (not the four `home-sprouted-*` method entries). One flag, three readers, keep them in step:
+- `recipe_select.py::coach_priority_boost` — +3.0, plus +2.0 for a vegetarian, vegan or eggetarian client (`veg_leaning`, which tests "non" first because "non-vegetarian" contains "veg"). **Capped**: at most a third of any meal type's slots and a third of the whole shortlist (a fifth for non-vegetarian clients). Without the caps 14 of a vegetarian client's 22 slots went to sprout dishes.
+- `generate-week-menu.py` **rule 18** + the `PRIORITY DISHES` block (`catalogue_dishes.priority_dish_names`) — target 4 different priority dishes a week for vegetarian-leaning clients, 2 for others. It yields to rules 1, 4, 15 and 17, and to reported gas or bloating from sprouts or legumes.
+- `recipe-picker.ts` sorts priority dishes straight after the lab-nutrient boost.
+- **Jain clients get no push** (no boost, empty priority list): sprouted pulses are commonly avoided in Jain practice and `diet_ok` only screens root vegetables. The coach can still pin a dish by hand.
+- `recipe_schema.py` rejects any other value, so a typo cannot silently fail to rank. `tests/test_coach_priority.py` pins the boost, the caps and the Jain rule.
+- The same batch added Hindi `translations.hi` (name + steps) for all 64 sprouting-guide entries and original generated photos.

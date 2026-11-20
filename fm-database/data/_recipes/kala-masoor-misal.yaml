@@ -93,6 +93,7 @@ good_for:
 - iron-nutrition
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: A Maharashtrian-style misal made with sprouted whole masoor instead of matki.
 headnote: Sprouted masoor cooks in one whistle. Go easy on the farsan topping — the
   usal itself is the meal.
@@ -101,6 +102,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 30
+image:
+  file: images/web/kala-masoor-misal.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://kala-masoor-misal
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 30
@@ -184,3 +192,16 @@ nutrient_lines:
 nutrient_servings: 6.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: काले मसूर की मिसल
+    steps:
+    - अंकुरित मसूर को कुकर में सिर्फ़ एक सीटी तक पकाएँ ताकि दाने साबुत रहें। अलग रखें।
+    - गहरे बर्तन में तेल गरम करें और जीरा, लहसुन, अदरक और करी पत्ता डालें, फिर प्याज़।
+      सुनहरा होने तक भूनें।
+    - टमाटर डालें, फिर सारे सूखे मसाले और 4 बड़े चम्मच पानी। चलाते हुए तेल छूटने तक
+      पकाएँ।
+    - पका हुआ मसूर और नमक डालें और पानी डालकर मनचाहा गाढ़ापन करें। चखकर मसाला ठीक
+      करें।
+    - चावल के साथ गरम परोसें, या मिसल की तरह ऊपर से नींबू निचोड़कर और एक चम्मच फरसाण
+      डालकर।

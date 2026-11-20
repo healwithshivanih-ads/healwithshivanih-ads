@@ -66,6 +66,7 @@ good_for:
 - blood-sugar-regulation
 - anti-inflammatory-diet
 - iron-nutrition
+coach_priority: high
 one_line: Sourdough toast topped with horsegram sprouts, peppers and avocado.
 headnote: Avocado stands in for cheese here. Two slices make a solid breakfast.
 attribution:
@@ -73,6 +74,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 56
+image:
+  file: images/web/horsegram-sprout-bruschetta.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://horsegram-sprout-bruschetta
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 56
@@ -144,3 +152,12 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित कुलथी और एवोकाडो का ब्रुशेटा
+    steps:
+    - घी गरम करके हर्ब्स डालें, फिर शिमला मिर्च और अंकुरित कुलथी।
+    - खुलकर पानी छिड़कें और सब्ज़ियाँ बस पकने तक पकाएँ — ज़्यादा न पकाएँ।
+    - एवोकाडो का गूदा निकालकर इसमें मिलाएँ। नमक और काली मिर्च डालें।
+    - ब्रेड के टुकड़े तवे पर सेंकें और ऊपर यह मिश्रण रखें। कुछ अंकुर और कटी शिमला
+      मिर्च से सजाएँ।

@@ -52,6 +52,7 @@ protein_g: 4.8
 good_for:
 - digestion-and-nutrient-absorption
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: Sweet mango with steamed moong sprouts and crunchy peppers.
 headnote: A mango-season salad. Mix it close to eating — it turns watery if it sits.
 attribution:
@@ -59,6 +60,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 44
+image:
+  file: images/web/mango-and-moong-salad.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mango-and-moong-salad
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 44
@@ -112,3 +120,10 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: आम और अंकुरित मूँग का सलाद
+    steps:
+    - आम, भाप में पके अंकुरित मूँग और शिमला मिर्च एक गहरे कटोरे में डालें।
+    - चिली सॉस और नमक डालकर हल्के हाथ से मिलाएँ।
+    - ठंडा करें और मिलाने के एक घंटे के अंदर खा लें।

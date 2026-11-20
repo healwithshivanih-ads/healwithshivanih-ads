@@ -60,6 +60,7 @@ protein_g: 15.8
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: Moong and chana sprouts with paneer, onion and black olives.
 headnote: 'A protein-heavy salad: two sprouts and a cup of paneer between three people.'
 attribution:
@@ -67,6 +68,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 47
+image:
+  file: images/web/sprout-salad-with-olives-and-paneer.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprout-salad-with-olives-and-paneer
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 47
@@ -129,3 +137,10 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: जैतून और पनीर वाला अंकुरित सलाद
+    steps:
+    - अंकुर एक गहरे कटोरे में डालें।
+    - प्याज़ और जैतून डालकर मिलाएँ। नमक और नींबू का रस डालकर फिर मिलाएँ।
+    - पनीर मिलाएँ और तुरंत परोसें।

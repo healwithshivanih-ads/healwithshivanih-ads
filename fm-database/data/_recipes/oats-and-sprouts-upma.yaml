@@ -82,6 +82,7 @@ good_for:
 - blood-sugar-regulation
 - constipation
 - protein-adequacy-vegetarian
+coach_priority: high
 one_line: A savoury oats upma with moong and chana sprouts and vegetables.
 headnote: Tempered and savoury like a rava upma, with far more fibre.
 attribution:
@@ -89,6 +90,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 74
+image:
+  file: images/web/oats-and-sprouts-upma.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://oats-and-sprouts-upma
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 74
@@ -171,3 +179,13 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: ओट्स और अंकुरित दालों का उपमा
+    steps:
+    - कड़ाही में तेल गरम करें। राई, हरी मिर्च, करी पत्ता, प्याज़ और टमाटर डालकर एक
+      मिनट पकाएँ।
+    - सब्ज़ियाँ डालकर एक मिनट और पकाएँ।
+    - अंकुर और 2 कप पानी डालकर उबाल लाएँ। नमक और हरा धनिया डालकर एक मिनट पकाएँ।
+    - ओट्स मिलाएँ, ढककर धीमी आँच पर एक मिनट पकाएँ।
+    - नींबू का रस डालकर गरम परोसें।

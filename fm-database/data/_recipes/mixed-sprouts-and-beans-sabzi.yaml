@@ -75,6 +75,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - constipation
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: A South Indian-style poriyal of French beans, moong sprouts and a little
   sprouted rajma with coconut.
 headnote: The guide steams the rajma sprouts in the pan; we boil them first, because
@@ -84,6 +85,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 39
+image:
+  file: images/web/mixed-sprouts-and-beans-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mixed-sprouts-and-beans-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 39
@@ -155,3 +163,14 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग और फ्रेंच बीन्स की सब्ज़ी
+    steps:
+    - अंकुरित राजमा को कम से कम 10 मिनट तेज़ उबालकर छान लें — राजमा कभी अधपका नहीं
+      डालना चाहिए।
+    - धीमी आँच पर तेल गरम करके राई और उड़द दाल डालें।
+    - हल्दी, उबला राजमा, अंकुरित मूँग और फ्रेंच बीन्स डालकर हल्का चलाएँ।
+    - 3–4 छोटे चम्मच पानी डालें, ढककर अपनी ही भाप में पकने दें।
+    - इस बीच हरी मिर्च को नारियल के साथ पीस लें। यह पेस्ट मिलाएँ, नमक डालें, कुछ सेकंड
+      और पकाएँ और गरम परोसें।
