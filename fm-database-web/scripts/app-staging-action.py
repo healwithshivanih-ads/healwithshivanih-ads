@@ -103,6 +103,12 @@ _APP_CLIENT_KEYS = (
     "app_shell",
     # Coach's switch for menu grams in the new app (meal-macros.ts nutrientsShown).
     "app_nutrients",
+    # Released results (new front, step 5): the switch, its note, and the
+    # computed markers that hold body age. Read only when results are shared.
+    "results_shared_on",
+    "results_shared_note",
+    "lab_markers",
+    "lab_markers_date",
     # Coach-set inputs to the daily targets (day_targets.py).
     "carb_level",
     "fibre_g",

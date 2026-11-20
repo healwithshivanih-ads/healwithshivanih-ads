@@ -181,6 +181,7 @@ function CollapsibleSection({
     <div style={{ marginTop: 16 }}>
       <button
         type="button"
+        className="lab-group-toggle"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         style={{

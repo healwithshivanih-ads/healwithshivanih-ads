@@ -33,6 +33,7 @@ import { askChips, looksLikeDishQuestion, notOnListCard, routeAsk, type AskConte
 import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
 import { SqCoach, useCoachThread } from "./sq-coach";
 import { HOSTED_TITLES, hostedAvailable, SqHost } from "./sq-host";
+import { SqResultsSheet } from "./sq-results";
 import { DEFAULT_PREFS, findPractice, parsePrefs, practiceList, type PracticePrefs } from "./sq-practice-data";
 import { SqGoodnight, SqPracticePlayer, type PracticeResult } from "./sq-practice";
 import { SqPractices, SqScenesSheet } from "./sq-practices";
@@ -346,6 +347,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   const onCardButton = (b: AskButton) => {
     if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout") open({ k: b.to });
     else if (b.to === "recipe" && b.ref) open({ k: "recipe", slot: b.ref });
+    else if (b.to === "soon" && b.ref === "results") open({ k: "results" });
     else if (b.to === "soon") open({ k: "soon", title: b.ref ?? b.label });
     else if (b.to === "practice" && b.ref) beginPractice(b.ref);
     else if (b.to === "practices") go("practices");
@@ -394,6 +396,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "eatout" && data.planRef?.eatingOut) {
       sheetTitle = sheet.where ?? "Eating out";
       sheetBody = <SqEatingOutSheet guide={data.planRef.eatingOut} where={sheet.where} open={open} />;
+    } else if (sheet.k === "results") {
+      sheetTitle = "Your results";
+      sheetBody = <SqResultsSheet results={data.sq?.results ?? null} onAsk={() => toCoach("Could you walk me through my results?")} />;
     } else if (sheet.k === "scenes") {
       sheetTitle = "Backgrounds";
       sheetBody = <SqScenesSheet prefs={prefs} setPrefs={setPrefs} />;
@@ -513,6 +518,11 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                       <SqCard title="Each week">
                         <div className="sq-list">
                           {row("checkin", state.checkinSentWeek >= data.client.week ? `Week ${data.client.week} sent` : "A minute, once a week, for your coach")}
+                          <SqNavRow
+                            title="Your results"
+                            note={data.sq?.results ? "Body age and your numbers, shared by your coach" : "Your coach shares these with you first"}
+                            onOpen={() => open({ k: "results" })}
+                          />
                           {row("labs", "Book a test, and the reports you have")}
                           {row("move", "Your strength session")}
                         </div>

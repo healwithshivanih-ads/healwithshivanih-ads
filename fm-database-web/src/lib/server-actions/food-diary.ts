@@ -308,3 +308,27 @@ export async function setAppNutrientsAction(clientId: string, on: boolean | null
   revalidatePath(`/clients-v2/${clientId}/overview`);
   return { ok: true };
 }
+
+/**
+ * Release (or take back) the client's results in the new app front:
+ * client.yaml#results_shared_on = today, with an optional note shown above
+ * the numbers. `share: false` removes both, and the app goes back to handing
+ * every results question to the coach.
+ */
+export async function setResultsSharedAction(clientId: string, share: boolean, note?: string): Promise<{ ok: true } | Fail> {
+  const c = readClient(clientId);
+  if (!c) return { ok: false, error: "client not found" };
+  if (share) {
+    c.doc.results_shared_on = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+    const n = (note ?? "").trim();
+    if (n) c.doc.results_shared_note = n.slice(0, 500);
+    else delete c.doc.results_shared_note;
+  } else {
+    delete c.doc.results_shared_on;
+    delete c.doc.results_shared_note;
+  }
+  writeClient(c.file, c.doc);
+  revalidatePath(`/clients-v2/${clientId}/overview`);
+  return { ok: true };
+}
+

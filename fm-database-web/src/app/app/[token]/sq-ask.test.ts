@@ -661,6 +661,39 @@ describe("practice answers", () => {
   });
 });
 
+describe("results questions", () => {
+  const RESULTS = {
+    sharedOn: "2026-11-20",
+    note: "",
+    bodyAge: { value: 45, calendarAge: 53, date: "2026-10-26" },
+    groups: [{ system: "Vitamins", rows: [{ name: "Vitamin D", value: 18, unit: "ng/mL", date: "2026-10-26", tag: "below", range: "30 to 100" }] }],
+  };
+  const shared = () => ctx({ dataOver: { sq: { planDay: 24, tickHistory: [], daysSinceLastOpen: 0, results: RESULTS } } });
+
+  it("go to the coach until the coach shares them", () => {
+    expect(ask("what is my body age")).toBe("HAND");
+    expect(ask("is my vitamin D low?")).toBe("HAND");
+  });
+  it("once shared, answer with the number and its tag, and offer the coach", () => {
+    const ba = routeAsk("what is my body age", shared());
+    if (ba.type !== "card") throw new Error("expected a card");
+    expect(ba.card.heading).toBe("Your body age: 45 years");
+    expect(ba.card.lines[0]).toContain("You were 53 at the test");
+    const d = routeAsk("is my vitamin D low?", shared());
+    if (d.type !== "card") throw new Error("expected a card");
+    expect(d.card.heading).toBe("Your Vitamin D: 18 ng/mL");
+    expect(d.card.lines[0]).toBe("Below the usual range (30 to 100). From your test on 2026-10-26.");
+    expect(d.card.buttons?.[0].to).toBe("coach");
+  });
+  it("a results question naming nothing on file opens the results screen", () => {
+    expect(ask("show me my reports", shared())).toBe("OPEN results");
+  });
+  it("what to do about a result still goes to the coach, shared or not", () => {
+    expect(ask("my vitamin D is low, should I take more?", shared())).toBe("HAND");
+    expect(ask("my ferritin is high, do I need to stop iron", shared())).toBe("HAND");
+  });
+});
+
 describe("dishOnMenu — every word of the food must be in one dish", () => {
   const d = data();
   it("finds a dish that is on the week's menu, with where", () => {

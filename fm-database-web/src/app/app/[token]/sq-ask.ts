@@ -29,6 +29,7 @@
  */
 
 import type { AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
+import { TAG_WORDS, type AppResults } from "@/lib/fmdb/released-results";
 import { coachCard, handoffCard, urgentCard, type AskCard } from "@/lib/fmdb/ask-card";
 import { HANDOFF_COPY, REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, normalizeAsk } from "@/lib/fmdb/ask-safety";
 import { defaultSituation, dishesInGuide, matchSituation, type AppEatingOut, type AppEatingOutSituation, type DishVerdict } from "@/lib/fmdb/eating-out";
@@ -500,6 +501,44 @@ function practiceAnswer(s: string, q: string, data: ClientAppData): AskResult {
   });
 }
 
+// ── released results ───────────────────────────────────────────────────────
+
+/**
+ * A results question once the coach has shared them: the number, its date and
+ * its plain tag, from released-results.ts. What it means stays the coach's,
+ * so every card says so and offers the coach. A marker the question does not
+ * name opens the whole results screen.
+ */
+function resultsAnswer(s: string, results: AppResults): AskResult {
+  const ask = { to: "coach" as const, label: "Ask my coach about it", draft: "Could you walk me through my results?" };
+  const all = { to: "soon" as const, label: "All your results", ref: "results" };
+  if (/body age|biological age|bio age|how old is my body/.test(s)) {
+    const ba = results.bodyAge;
+    if (!ba) return card(coachCard("Your body age has not been worked out from your tests yet. Shall I ask your coach?"));
+    return card({
+      src: "From your results",
+      heading: `Your body age: ${ba.value} years`,
+      lines: [ba.calendarAge !== null ? `You were ${ba.calendarAge} at the test. One test is a snapshot; it is measured again at your recheck.` : "One test is a snapshot; it is measured again at your recheck."],
+      note: "What it means for you is for your coach.",
+      buttons: [ask],
+    });
+  }
+  const rows = results.groups.flatMap((g) => g.rows);
+  const words = s.replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w) => w.length >= 3 && !/^(is|my|the|and|low|high|range|normal|level|report|result|results|number|numbers|what|how|okay|fine|in)$/.test(w));
+  const hit = rows.find((r) => {
+    const n = r.name.toLowerCase();
+    return words.some((w) => n.includes(w) || (w === "sugar" && /glucose|hba1c/.test(n)) || (w.startsWith("vit") && n.includes("vitamin")));
+  });
+  if (!hit) return { type: "open", sheet: { k: "results" } };
+  return card({
+    src: "From your results",
+    heading: `Your ${hit.name}: ${hit.value} ${hit.unit}`.trim(),
+    lines: [`${TAG_WORDS[hit.tag]}${hit.range ? ` (${hit.range})` : ""}. From your test on ${hit.date}.`],
+    note: "What it means for you, and what to do about it, is for your coach.",
+    buttons: [ask, all],
+  });
+}
+
 // ── the router ─────────────────────────────────────────────────────────────
 
 const TRAVEL = /travel|\btrip\b|flight|flying|abroad|out of (town|station)|on tour|hotel|airport|jet ?lag|buffet|wedding|shaadi|restaurant|eating out|eat out|(client|business|office|team) (dinner|lunch)|(dinner|lunch) out|italian|chinese|pizza|takeaway|order in|swiggy|zomato/;
@@ -539,6 +578,10 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
     // plan. The drinks stay the coach's call, and the card says so.
     return card({ ...eatingOutCard(situation, guide, q), buttons: [], note: HANDOFF_COPY.alcohol.line, handoff: true });
   }
+  // A shared result is answered; what to DO about it ("should I take more?")
+  // is still the coach's, so any question about acting on it is handed over.
+  const actsOnIt = /\b(should|can|do|must) i\b|\bneed to\b|\btake\b|\bstop\b|\bincrease\b|\breduce\b|\bmore\b|\bless\b|\bdose\b|\bfix\b|\btreat/.test(s);
+  if (handoff === "results" && data.sq?.results && !actsOnIt) return resultsAnswer(s, data.sq.results);
   if (handoff) return card(handoffCard(handoff));
   if (has(/(shift|change|move|adjust|push).{0,24}(time|timing)|eat (breakfast|lunch|dinner) at \d|(late|night|early) shift/)) {
     return card(coachCard("Changing when you eat or take things is your coach's call. Send this to your coach?"));
