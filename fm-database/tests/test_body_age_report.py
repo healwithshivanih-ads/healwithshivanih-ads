@@ -405,7 +405,9 @@ def test_a_far_out_result_nobody_wrote_for_stops_the_report():
     assert rp.missing and any("Phosphorus" in m for m in rp.missing) and rp.ready is False
 
 
-def test_draft_sentences_are_listed_so_she_can_see_them():
+def test_draft_sentences_are_listed_so_she_can_see_them(monkeypatch):
+    from fmdb.report import wording
+    monkeypatch.setattr(wording, "APPROVED_DRAFTS", set())       # as if nothing had been approved yet: the mechanism itself
     rp, _, _ = outcome({})
     assert "steady.heart.head" in rp.drafts and "step.nothing.headline" in rp.drafts and rp.missing == []
     rp, _, _ = outcome({"HbA1c": 6.2})

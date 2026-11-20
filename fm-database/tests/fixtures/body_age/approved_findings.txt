@@ -34,6 +34,33 @@ summary: Kidney filtering figure, below 60.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.glucose_low.A]
+head: Your morning sugar is lower than its range.
+today: Some people feel shaky, sweaty or foggy when sugar runs low, especially after a long gap without food.
+why: A low fasting reading can simply be a long fast before the test. It can also be how your body handles sugar, or something you take.
+do: It needs a deeper look, read with how you felt that morning and what you take.
+summary: Your morning sugar, lower than its range.
+closing: 
+page 1 step: 
+
+[finding.glucose_low.B]
+head: Your morning sugar is lower than its range.
+today: Some people feel shaky, sweaty or foggy when sugar runs low, especially after a long gap without food.
+why: A low fasting reading can simply be a long fast before the test. It can also be how your body handles sugar, or something you take.
+do: It needs a deeper look, read with how you felt that morning and what you take.
+summary: Your morning sugar, lower than its range.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.glucose_low.C]
+head: Your morning sugar is lower than its range.
+today: Some people feel shaky, sweaty or foggy when sugar runs low, especially after a long gap without food.
+why: A low fasting reading can simply be a long fast before the test. It can also be how your body handles sugar, or something you take.
+do: It needs a deeper look, read with how you felt that morning and what you take.
+summary: Your morning sugar, lower than its range.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.hb_high.A]
 head: Your red cells sit just above their range.
 today: Nothing you would feel.
@@ -205,6 +232,33 @@ summary: Platelets, just above their range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.sugar.A]
+head: Your sugar sits just above the line.
+today: You may notice nothing at all.
+why: Your body is working a little harder than it should to handle sugar. This is the stage where it turns around most easily.
+do: What is on the plate and when, and a walk after your largest meal.
+summary: Your sugar, just above the line.
+closing: 
+page 1 step: Bringing your <a href="#sugar">sugar average</a> down through what is on the plate and when, movement after meals, and sleep.
+
+[finding.sugar.B]
+head: Your sugar appears to be clearly above the line.
+today: Many people feel nothing. Some notice a dip in energy after meals, or more thirst than usual.
+why: Laboratories mark this range as prediabetes. At this level the body may be struggling to keep sugar in line, and it tends to drift upward if nothing changes. It is also the stage where food, movement and sleep change the number most.
+do: This is the first thing to work on: what is on the plate and when, movement after meals, and sleep.
+summary: Your sugar, clearly above the line.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: Bringing your <a href="#sugar">sugar average</a> down through what is on the plate and when, movement after meals, and sleep.
+
+[finding.sugar.C]
+head: Your sugar appears to be well above the line.
+today: Some people feel tired, thirsty or pass urine more often. Many feel nothing.
+why: Laboratories mark this range as diabetes, and one reading is usually confirmed with a second. The three-month average can also read falsely high or low with anaemia or an inherited haemoglobin trait. Food, movement and sleep still matter a great deal, and they are the part we can work on.
+do: What is on the plate and when, movement after meals, and sleep. If you already take medicine for sugar, do not change it because of this report.
+summary: Your sugar, well above the line.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: Bringing your <a href="#sugar">sugar average</a> down through what is on the plate and when, movement after meals, and sleep.
+
 [finding.tg.A]
 head: The fat travelling in your blood sits just above the line.
 today: Nothing you would feel.
@@ -231,3 +285,30 @@ do: Less sugar, refined carbohydrate and alcohol, and a walk after meals. This n
 summary: Triglycerides, the fat travelling in your blood, very high.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: Bringing your <a href="#heart">triglycerides</a> down: less sugar, refined carbohydrate and alcohol, and a walk after meals.
+
+[finding.uric.A]
+head: Your uric acid sits just above its range.
+today: Nothing you would feel.
+why: Uric acid rises with sweet drinks, alcohol, red meat and shellfish, and with sugar strain in general. High for long enough, it can settle in joints.
+do: More water, fewer sweet drinks and less alcohol usually bring it down.
+summary: Uric acid, just above its range.
+closing: 
+page 1 step: Bringing your <a href="#sugar">uric acid</a> down: more water, fewer sweet drinks, less alcohol.
+
+[finding.uric.B]
+head: Your uric acid appears to be clearly above its range.
+today: Nothing you would feel.
+why: Uric acid rises with sweet drinks, alcohol, red meat and shellfish, and with sugar strain in general. High for long enough, it can settle in joints.
+do: More water, fewer sweet drinks and less alcohol usually bring it down.
+summary: Uric acid, clearly above its range.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: Bringing your <a href="#sugar">uric acid</a> down: more water, fewer sweet drinks, less alcohol.
+
+[finding.uric.C]
+head: Your uric acid appears to be far above its range.
+today: Often nothing. A hot, swollen, painful joint would be a reason not to wait.
+why: Uric acid rises with sweet drinks, alcohol, red meat and shellfish, and with sugar strain in general. High for long enough, it can settle in joints.
+do: More water, fewer sweet drinks and less alcohol usually bring it down.
+summary: Uric acid, far above its range.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: Bringing your <a href="#sugar">uric acid</a> down: more water, fewer sweet drinks, less alcohol.
