@@ -113,6 +113,10 @@ class _Part:
             return "protein"
         return "other"
 
+    def droppable(self) -> bool:
+        """A plain nut or seed extra (no recipe): fat-dense, can be left out."""
+        return self.kind() == "fat" and re.search(r"almond|walnut|cashew|pistachio|brazil|peanut|seed|nut\b", self.title.lower()) is not None
+
     def grams(self) -> dict:
         if self.unit_m:
             return {k: self.unit_m[k] * self.qty for k in KEYS}
@@ -189,7 +193,12 @@ def fit_day(day: dict, bands: dict, client: dict, mm: MenuMacros) -> dict:
                         if (k == "veg" and d < 0) or (k == "protein" and d < 0) or (k == "fat" and d > 0):
                             continue
                         q = p.qty + d
-                        if q < max(SCALE[0] * p.q0, step / 2) or q > SCALE[1] * p.q0 + 1e-9:
+                        # A nut or seed extra may go altogether (coach, 20 Nov 2026:
+                        # "trim nuts and seeds"); everything else keeps half.
+                        floor = 0 if p.droppable() else max(SCALE[0] * p.q0, step / 2)
+                        if q < floor - 1e-9 or q > SCALE[1] * p.q0 + 1e-9:
+                            continue
+                        if 0 < q < step / 2:
                             continue
                         p.qty = q
                         e = miss(totals(), bands)
@@ -221,7 +230,8 @@ def fit_day(day: dict, bands: dict, client: dict, mm: MenuMacros) -> dict:
             break
     added = "; ".join(added_list) or None
     for s, ps in zip(slots, parts):
-        s["dish"] = " + ".join(p.text() for p in ps)
+        kept = [p for p in ps if not (p.unit_m and p.qty <= 0)]
+        s["dish"] = " + ".join(p.text() for p in (kept or ps))
     return {"before": before, "after": {k: round(v) for k, v in totals().items()}, "added": added}
 
 

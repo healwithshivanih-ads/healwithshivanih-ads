@@ -167,8 +167,11 @@ def _day_target_lines(client: dict, target_week: int | None) -> list[str] | None
         out.append(f"  - Fat: {round(kcal * fs[0] / 9)} to {round(kcal * fs[1] / 9)} g")
     if t.get("fibre"):
         out.append(f"  - Fibre: about {t['fibre']} g")
-    out.append("  Size portions to reach these (a bigger dal bowl, a curd or paneer side, "
-               "a fistful of nuts or seeds); never invent a portion a person would not eat.")
+    out.append("  Size portions to reach these (a bigger dal bowl, an extra roti, a curd, sprouts "
+               "or egg side); never invent a portion a person would not eat.")
+    out.append("  - Nuts and seeds (almonds, walnuts, brazil nut, pumpkin / sesame / flax seeds): "
+               "at most ONE small serving a day in total (about 6 almonds, or 1 tbsp seeds) — "
+               "not at every snack. They are the easiest way to overshoot the fat figure.")
     return out
 
 
