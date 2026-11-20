@@ -90,7 +90,7 @@ shares it, with its range tag.
 - **Offline:** airplane mode, tick two items, reconnect; both ticks are there with their times. A
   message sent offline shows "Not sent yet".
 
-## 5. Already found before the round (fix list for step 6)
+## 5. Already found before the round (fixed 20 Nov 2026, re-check)
 
 From the automated pass on 20 Nov 2026 (320 px wide, light and dark):
 
@@ -105,6 +105,10 @@ From the automated pass on 20 Nov 2026 (320 px wide, light and dark):
   - several labels sit just under the 4.5 contrast ratio (3.9 to 4.4): "Back", "Back to plan",
     the result group names, the check-in answer chips, the menu slot names;
   - shopping-list rows are buttons with no spoken name for a screen reader.
+- **Fixed the same day** (`sq.css`, scoped to the new app so today's app is unchanged): labels at
+  12 px, the old screens' accent / muted / label colours darkened to pass 4.5, back, swap and
+  result-group buttons at 44 px, shopping-list rows read out as checkboxes with the item's name.
+  The re-run of the same audit found nothing left. Testers confirm on real phones.
 - **Home is blank while it loads** on the development server (about 10 seconds there). Check the load
   time on Fly; if it is more than a second or two, Home needs a loading state.
 

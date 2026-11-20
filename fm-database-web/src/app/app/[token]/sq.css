@@ -751,3 +751,35 @@
 .sq-app .sq-res-val { font-variant-numeric: tabular-nums; color: var(--sq-ink); white-space: nowrap; }
 .sq-app .sq-res-tag { font-size: 13.5px; color: var(--sq-muted); }
 .sq-app .sq-res-above .sq-res-tag, .sq-app .sq-res-below .sq-res-tag { color: var(--sq-cedar); font-weight: 600; }
+
+/* ── Step 6 accessibility pass (20 Nov 2026) ─────────────────────────────
+   Screens carried over from today's app (shopping list, check-in, tests and
+   results, this week's menu) render inside .sq-host-app with the old app's
+   sizes. Inside the NEW app only: text at least 12 px, tap targets at least
+   44 px, and colours dark enough for a 4.5 contrast ratio on cream. Today's
+   app is untouched (these rules need .sq-app). */
+.sq-app .sq-eyebrow,
+.sq-app .sq-sec { font-size: 12px; }
+.sq-app .sq-host-app.sequoya,
+.sq-app .sq-host-app .sequoya,
+.sq-app .sq-host-app {
+  --forest: #b33d68;
+  --ochre: #8a5535;
+  --ochre-deep: #7d4c2f;
+  --muted: #5f5953;
+}
+.sq-app .sq-host-app .wm-slotname,
+.sq-app .sq-host-app .wm-portion,
+.sq-app .sq-host-app .gro-for,
+.sq-app .sq-host-app .gro-cat,
+.sq-app .sq-host-app .gro-launch-meta,
+.sq-app .sq-host-app em { font-size: 12px; }
+.sq-app .sq-host-app .gro-launch-meta { color: rgba(243, 236, 224, 0.92); }
+.sq-app .sq-host-app .back-link { min-height: 44px; padding-right: 10px; }
+.sq-app .sq-host-app .gro-swapbtn { width: 44px; height: 44px; }
+.sq-app .sq-host-app .lab-group-toggle { min-height: 44px; }
+/* Inline font sizes in the carried-over results screen (ochre-labs.tsx). */
+.sq-app .sq-host-app [style*="font-size: 11px"],
+.sq-app .sq-host-app [style*="font-size: 11.5px"],
+.sq-app .sq-host-app [style*="font-size:11px"],
+.sq-app .sq-host-app [style*="font-size:11.5px"] { font-size: 12px !important; }

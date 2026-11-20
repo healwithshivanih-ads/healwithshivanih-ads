@@ -317,7 +317,7 @@ export function GroceryOverlay({ onClose }: { onClose: () => void }) {
     const isOpen = swapOpen === k;
     return (
       <div key={k}>
-        <div className="gro-row" role="button" tabIndex={0} onClick={() => save({ ...ticked, [k]: !on })}
+        <div className="gro-row" role="checkbox" aria-checked={on} aria-label={i.item} tabIndex={0} onClick={() => save({ ...ticked, [k]: !on })}
           onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") save({ ...ticked, [k]: !on }); }}>
           <span className={"check-sq2" + (on ? " on" : "")} style={on ? { background: "var(--forest)", borderColor: "var(--forest)" } : undefined}>
             {on && <Icon name="checkBold" size={13} style={{ color: "#fff" }} />}
