@@ -101,6 +101,8 @@ _APP_CLIENT_KEYS = (
     # set on the Mac never reaches the phone and the client stays on today's
     # app. app-shell.ts decides; tests/test_app_shell_field.py pins this key.
     "app_shell",
+    # Coach's switch for menu grams in the new app (meal-macros.ts nutrientsShown).
+    "app_nutrients",
     "intake_date",
     "next_contact_date",
     "active_conditions",

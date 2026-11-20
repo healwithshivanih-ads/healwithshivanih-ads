@@ -726,3 +726,5 @@
 .sq-app .sq-trip small { color: var(--sq-ink-2, inherit); font-size: 14.5px; }
 
 .sq-status.sq-low { color: var(--sq-cedar); }
+
+.sq-app .sq-macros { font-size: 13.5px; color: var(--sq-muted); margin: 4px 0 8px; }

@@ -22,6 +22,7 @@
  * Copy rule: the app says "Coach", never the coach's first name.
  */
 
+import { dayMacros } from "@/lib/fmdb/meal-macros";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
@@ -379,7 +380,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   if (sheet) {
     if (sheet.k === "day") {
       sheetTitle = "Your whole day";
-      sheetBody = <SqDaySheet moments={moments} ticks={ticks} track={track} onToggle={toggle} open={open} />;
+      sheetBody = <SqDaySheet menu={dayMacros(data.meals)} moments={moments} ticks={ticks} track={track} onToggle={toggle} open={open} />;
     } else if (sheet.k === "record") {
       sheetTitle = "Your record";
       sheetBody = <SqRecordSheet data={data} moments={moments} ticks={ticks} todayYmd={todayYmd} open={open} />;
