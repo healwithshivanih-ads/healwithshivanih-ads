@@ -30,6 +30,13 @@ APPROVED_DRAFTS: set[str] = {
     # The four blocks written for the lines added on 20 Nov 2026, in the softer wording she asked for ("appears to
     # be", "sometimes", "consider a repeat test"): her "Yes, use it", 20 Nov 2026. Approved here, not with
     # Finding.approved, so the doctor sentence still comes first at far out (as she was shown).
+    # Heart and arteries, all six findings: her "All approved", 20 Nov 2026.
+    "finding.lipids.A", "finding.lipids.C",
+    "finding.tg.A", "finding.tg.B", "finding.tg.C",
+    "finding.hdl_low.A", "finding.hdl_low.B",
+    "finding.crp.A", "finding.crp.B", "finding.crp.C",
+    "finding.hcy.A", "finding.hcy.B", "finding.hcy.C",
+    "finding.lpa.A", "finding.lpa.B", "finding.lpa.C",
     "finding.egfr_low.C",
     "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
     "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",

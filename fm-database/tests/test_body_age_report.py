@@ -507,7 +507,8 @@ def _approved_finding_text() -> str:
         _, fid, lv = key.split(".")
         f = BY_ID[fid]
         out += [f"[{key}]"] + [f"{name}: {at(t, lv)}" for name, t in
-                               (("head", f.head), ("today", f.today), ("why", f.why), ("do", f.do), ("summary", f.summary))] + [""]
+                               (("head", f.head), ("today", f.today), ("why", f.why), ("do", f.do), ("summary", f.summary))]
+        out += [f"closing: {f.line.get(lv, '').strip()}", f"page 1 step: {f.step}", ""]
     return "\n".join(out)
 
 
@@ -526,9 +527,10 @@ def test_the_approval_document_lists_every_draft_and_no_approved_sentence():
     doc = markdown()
     for key, (_where, sentence) in DRAFT.items():
         assert (f"<sub>{key}</sub>" in doc) == (key not in APPROVED_DRAFTS), key     # approved: no longer up for review
-    assert "finding.sugar.A · finding.sugar.B · finding.sugar.C" in doc and "finding.hcy.A" in doc
+    from fmdb.report.library_doc import todo_levels
     for f in FINDINGS:
-        assert f.title in doc or all(lv in f.approved for lv in "ABC")
+        for lv in "ABC":
+            assert (f"finding.{f.id}.{lv}" in doc) == (lv in todo_levels(f)), (f.id, lv)      # approved: not up for review
     assert "Your morning sugar is calm." not in doc and "Clear. Nothing to act on." not in doc     # approved: not up for review
     assert "finding.lipids.B" not in doc and "finding.tsh_high.C" not in doc
     assert not FORBIDDEN.search(doc.split("## 1.", 1)[1]) and "{" not in doc      # the sentences, not my note about the rules

@@ -52,6 +52,11 @@ def _levels(f: Finding) -> list[str]:
     return [lv for lv in ("A", "B", "C") if lv in (seen or {"A", "B", "C"})]
 
 
+def todo_levels(f: Finding) -> list[str]:
+    """The levels of a block Shivani has not approved yet."""
+    return [lv for lv in _levels(f) if lv not in f.approved and f"finding.{f.id}.{lv}" not in APPROVED_DRAFTS]
+
+
 def _text(t, lv: str) -> str:
     from .findings import at
     return _plain(at(t, lv))
@@ -84,7 +89,7 @@ def finding_block(n: str, f: Finding) -> list[str]:
     if rows:
         way = "off" if f.either else "high" if f.high and not f.low else "low" if f.low and not f.high else "high or low"
         out += [f"Printed when these read {way}: " + ", ".join(names.get(k, k) for k in rows) + ".", ""]
-    todo = [lv for lv in _levels(f) if lv not in f.approved and f"finding.{f.id}.{lv}" not in APPROVED_DRAFTS]
+    todo = todo_levels(f)
     done = [SHORT[lv] for lv in _levels(f) if lv not in todo]
     if done:
         out += [f"Already approved and not repeated here: {' and '.join(done)}.", ""]
@@ -118,13 +123,11 @@ def markdown() -> str:
            "## 1. Findings, by body system", ""]
     k = 0
     for sid, sname, _deeper_only, _specs in SECTIONS:
-        fs = [f for f in FINDINGS if f.section == sid]
+        fs = [f for f in FINDINGS if f.section == sid and todo_levels(f)]
         if not fs:
             continue
         out += [f"## {sname}", ""]
         for f in fs:
-            if all(lv in f.approved for lv in _levels(f)):
-                continue
             k += 1
             out += finding_block(f"1.{k}", f)
     k += 1
