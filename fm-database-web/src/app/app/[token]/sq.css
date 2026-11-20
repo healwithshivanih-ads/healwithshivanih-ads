@@ -802,3 +802,10 @@
 .sq-app .sq-host-app [style*="font-size: 11.5px"],
 .sq-app .sq-host-app [style*="font-size:11px"],
 .sq-app .sq-host-app [style*="font-size:11.5px"] { font-size: 12px !important; }
+/* Step 6 re-test: sizes in carried-over check-in and tests screens. */
+.sq-app .sq-host-app .dots5-cap { font-size: 12px; }
+.sq-app .sq-host-app .dots5 button { min-width: 44px; min-height: 44px; }
+.sq-app .sq-host-app .seg button,
+.sq-app .sq-host-app .adh-item button { min-height: 44px; }
+.sq-app .sq-host-app a[href*="wa.me"],
+.sq-app .sq-host-app button:has(svg) { min-height: 44px; }

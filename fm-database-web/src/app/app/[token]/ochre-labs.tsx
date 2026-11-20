@@ -136,7 +136,7 @@ function MarkerCard({ m, mode }: { m: LabMarker; mode: LabVaultMode }) {
         </div>
       )}
       {m.unitMismatch && (
-        <div style={{ fontSize: 11.5, color: MUTED, marginTop: 6 }}>Units differ from our reference — Shivani will confirm.</div>
+        <div style={{ fontSize: 11.5, color: MUTED, marginTop: 6 }}>Units differ from our reference — Coach will confirm.</div>
       )}
       {cap && (
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 10, paddingTop: 10, borderTop: "1px solid rgba(38,34,25,0.07)" }}>
