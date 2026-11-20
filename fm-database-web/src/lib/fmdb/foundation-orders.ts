@@ -48,35 +48,94 @@ export interface FoundationPrice {
   creditInr: number;
   /** Why, in words — shown to the coach and stored on the order. */
   creditReason: string | null;
+  /** Which credit it is, so each surface can word it truthfully (a report
+   *  credit must never be described as "our short call"). Absent when none. */
+  creditKind?: "triage_call" | "body_age_report";
+  /** Last day (YYYY-MM-DD, inclusive, India time) the credit applies. Only the
+   *  body age report credit has one. */
+  creditUntil?: string;
+}
+
+/** The Foundation price for someone who has just had a body age report, by
+ *  report type: ₹12,000 "with what you paid for this report taken off", in
+ *  Shivani's round figures (19 Nov 2026: ₹7,000 after the ₹4,999 report,
+ *  ₹2,000 after the ₹9,999 one). Holds for BODY_AGE_CREDIT_DAYS after the
+ *  report date. Mirrors FOUNDATION_AFTER_INR in fm-database/fmdb/report/decide.py
+ *  (the report prints the same figure; a test pins the two together). */
+export const FOUNDATION_AFTER_BODY_AGE_REPORT_INR: Record<string, number> = { standard: 7000, deeper: 2000 };
+export const BODY_AGE_CREDIT_DAYS = 14;
+
+const ymdOf = (v: unknown): string | null =>
+  v instanceof Date && !Number.isNaN(v.getTime())
+    ? v.toISOString().slice(0, 10)
+    : typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v.trim())
+      ? v.trim().slice(0, 10)
+      : null;
+
+/** Today's date in India, as YYYY-MM-DD. The credit window is counted in the
+ *  buyer's calendar days, and the pay page runs on a server set to UTC. */
+export function todayYmdIST(now: Date = new Date()): string {
+  return now.toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+}
+
+/** The last day (inclusive) the report fee still comes off, or null. */
+export function bodyAgeCreditUntil(client: Record<string, unknown> | null | undefined): string | null {
+  const date = ymdOf(client?.body_age_report_date);
+  const kind = typeof client?.body_age_report_kind === "string" ? client.body_age_report_kind : "";
+  if (!date || !Object.hasOwn(FOUNDATION_AFTER_BODY_AGE_REPORT_INR, kind)) return null;
+  const d = new Date(`${date}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + BODY_AGE_CREDIT_DAYS);
+  return d.toISOString().slice(0, 10);
 }
 
 /**
  * The Foundation price for one client, from their client.yaml.
  *
- * `triage_call_date` (YYYY-MM-DD, the coach recorded the PAID ₹999 call) or
- * `triage_paid_at` (ochre-funnel reported the ₹999 payment) is the only credit
- * toward the Foundation session — a FREE discovery call carries none. Pure; the pay route, the pay page and the
- * coach's pay-link card all go through this so they can never disagree.
+ * Two credits exist, and they do not add up: the larger one applies.
+ *   1. `triage_call_date` (YYYY-MM-DD, the coach recorded the PAID ₹999 call) or
+ *      `triage_paid_at` (ochre-funnel reported the ₹999 payment). No expiry. A
+ *      FREE discovery call carries none.
+ *   2. `body_age_report_kind` + `body_age_report_date`: the body age report fee,
+ *      up to and including the 14th day after the report date (India time).
+ *      After that the price is the full ₹12,000 again (or ₹11,001 with a short call).
+ * Pure (pass `todayYmd` in tests); the pay route, the pay page and the coach's
+ * pay-link card all go through this so they can never disagree.
  */
-export function foundationPriceFor(client: Record<string, unknown> | null | undefined): FoundationPrice {
-  // Either marker is the credit: triage_call_date (coach recorded the call)
+export function foundationPriceFor(
+  client: Record<string, unknown> | null | undefined,
+  todayYmd: string = todayYmdIST(),
+): FoundationPrice {
+  let best: FoundationPrice = { amountInr: FOUNDATION_SESSION_PRICE_INR, creditInr: 0, creditReason: null };
+  // Either marker is the ₹999 credit: triage_call_date (coach recorded the call)
   // or triage_paid_at (ochre-funnel reported the ₹999 payment).
-  const ymdOf = (v: unknown): string | null =>
-    v instanceof Date && !Number.isNaN(v.getTime())
-      ? v.toISOString().slice(0, 10)
-      : typeof v === "string" && /^\d{4}-\d{2}-\d{2}/.test(v.trim())
-        ? v.trim().slice(0, 10)
-        : null;
   const call = ymdOf(client?.triage_call_date);
   const paid = ymdOf(client?.triage_paid_at);
-  if (!call && !paid) return { amountInr: FOUNDATION_SESSION_PRICE_INR, creditInr: 0, creditReason: null };
-  return {
-    amountInr: FOUNDATION_SESSION_PRICE_INR - TRIAGE_CALL_PRICE_INR,
-    creditInr: TRIAGE_CALL_PRICE_INR,
-    creditReason: call
-      ? `₹${TRIAGE_CALL_PRICE_INR} short call on ${call}`
-      : `₹${TRIAGE_CALL_PRICE_INR} short call paid ${paid}`,
-  };
+  if (call || paid) {
+    best = {
+      amountInr: FOUNDATION_SESSION_PRICE_INR - TRIAGE_CALL_PRICE_INR,
+      creditInr: TRIAGE_CALL_PRICE_INR,
+      creditReason: call
+        ? `₹${TRIAGE_CALL_PRICE_INR} short call on ${call}`
+        : `₹${TRIAGE_CALL_PRICE_INR} short call paid ${paid}`,
+      creditKind: "triage_call",
+    };
+  }
+  const until = bodyAgeCreditUntil(client);
+  const reportDate = ymdOf(client?.body_age_report_date);
+  if (until && reportDate && todayYmd >= reportDate && todayYmd <= until) {
+    const after = FOUNDATION_AFTER_BODY_AGE_REPORT_INR[String(client?.body_age_report_kind)];
+    const credit = FOUNDATION_SESSION_PRICE_INR - after;
+    if (credit > best.creditInr) {
+      best = {
+        amountInr: after,
+        creditInr: credit,
+        creditReason: `body age report (${String(client?.body_age_report_kind)}) of ${reportDate}, until ${until}`,
+        creditKind: "body_age_report",
+        creditUntil: until,
+      };
+    }
+  }
+  return best;
 }
 
 export interface FoundationOrder {
