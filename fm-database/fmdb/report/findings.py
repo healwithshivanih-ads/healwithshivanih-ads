@@ -208,7 +208,7 @@ FINDINGS: list[Finding] = [
       summary={"A": "Albumin, just below its range. Read again at your next test."}),
     F("fib4", "liver", "The scarring score", "liver scarring score", high=("fib4",),
       head={"A": "One score that estimates liver scarring sits in the middle zone.",
-            "C": "The score that estimates liver scarring is above its upper line."},
+            "C": "The score that estimates liver scarring appears to be above its upper line."},
       why={"A": "This score is worked out from your age, two liver enzymes and your platelets. In the middle zone it cannot say yes or no, and it reads higher as we get older.",
            "C": "This score is worked out from your age, two liver enzymes and your platelets. Above the upper line it is the usual signal for a scan of the liver."},
       do={"A": "It is read again at your next test. If it stays here, it needs a deeper look.", "C": "It needs a deeper look."},

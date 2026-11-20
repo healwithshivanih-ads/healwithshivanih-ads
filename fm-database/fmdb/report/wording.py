@@ -41,6 +41,12 @@ APPROVED_DRAFTS: set[str] = {
     "finding.sugar.A", "finding.sugar.B", "finding.sugar.C",
     "finding.glucose_low.A", "finding.glucose_low.B", "finding.glucose_low.C",
     "finding.uric.A", "finding.uric.B", "finding.uric.C",
+    # Liver, all five findings: her "Yes all approved", 20 Nov 2026.
+    "finding.enzymes.A", "finding.enzymes.B", "finding.enzymes.C",
+    "finding.alp.A", "finding.alp.B", "finding.alp.C",
+    "finding.bilirubin.A", "finding.bilirubin.B", "finding.bilirubin.C",
+    "finding.albumin.A", "finding.albumin.B", "finding.albumin.C",
+    "finding.fib4.A", "finding.fib4.C",
     "finding.egfr_low.C",
     "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
     "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",

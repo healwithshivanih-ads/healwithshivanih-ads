@@ -1,3 +1,84 @@
+[finding.albumin.A]
+head: Your albumin sits just below its range.
+today: Nothing you would feel.
+why: Albumin is the main protein your liver makes. It dips after an illness and when food has been short of protein for a while.
+do: It is read again at your next test.
+summary: Albumin, just below its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.albumin.B]
+head: Your albumin appears to be clearly below its range.
+today: Usually nothing.
+why: Albumin is the main protein your liver makes. It falls when the liver makes less, when protein is lost through the kidneys or the gut, when the body is inflamed, or when food has been short of protein for a while. One reading cannot say which.
+do: This needs a deeper look, starting with a repeat test.
+summary: Albumin, just below its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.albumin.C]
+head: Your albumin appears to be far below its range.
+today: Often nothing. Swollen ankles or a puffy face would be a reason not to wait.
+why: Albumin is the main protein your liver makes. A fall this large usually has a reason, and it is worth finding: the liver making less, protein being lost through the kidneys or the gut, or a long-running inflammation.
+do: This needs a deeper look, starting with a repeat test in the coming days.
+summary: Albumin, just below its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.alp.A]
+head: One enzyme linked with bile flow and bone sits above its range.
+today: Nothing you would feel.
+why: ALP comes from both the liver and the bones, so a raised reading only makes sense beside the other liver results and vitamin D.
+do: It is read again at your next test, alongside vitamin D.
+summary: ALP, just above its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.alp.B]
+head: One enzyme linked with bile flow and bone sits above its range.
+today: Nothing you would feel.
+why: ALP comes from both the liver and the bones, so a raised reading only makes sense beside the other liver results and vitamin D.
+do: It needs a deeper look, alongside vitamin D.
+summary: ALP, just above its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.alp.C]
+head: One enzyme linked with bile flow and bone sits above its range.
+today: Nothing you would feel.
+why: ALP comes from both the liver and the bones, so a raised reading only makes sense beside the other liver results and vitamin D.
+do: It needs a deeper look, alongside vitamin D.
+summary: ALP, just above its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.bilirubin.A]
+head: The pigment your liver clears is a little raised.
+today: Nothing you would feel.
+why: A mildly raised bilirubin is common. It often runs in families, and it rises after fasting, which you were doing for this test. It is read with the rest of your liver results.
+do: It is read again at your next test.
+summary: Bilirubin, a little raised. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.bilirubin.B]
+head: The pigment your liver clears appears to be clearly raised.
+today: Sometimes a yellow tinge in the whites of the eyes. Often nothing.
+why: Bilirubin is made when old red cells are broken down, and the liver clears it. A clear rise can mean more is being made or less is being cleared.
+do: It needs a deeper look, read with the rest of your liver results and your blood count.
+summary: Bilirubin, a little raised. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.bilirubin.C]
+head: The pigment your liver clears appears to be far above its range.
+today: Sometimes a yellow tinge in the whites of the eyes. Often nothing.
+why: Bilirubin is made when old red cells are broken down, and the liver clears it. A rise this large usually means more is being made or less is being cleared.
+do: It needs a deeper look, read with the rest of your liver results and your blood count.
+summary: Bilirubin, a little raised. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.crp.A]
 head: Your inflammation marker sits in the middle zone, where most adults are.
 today: Nothing you would feel.
@@ -31,6 +112,51 @@ today: Nothing you would feel.
 why: This figure is worked out from your creatinine, your age and your sex. It estimates how much blood your kidneys clean each minute, and it falls slowly with age. One reading below 60 cannot say whether it will hold: too little water, a hard workout or a high-protein meal before the test can sometimes lower it.
 do: A repeat test, with a urine test alongside it, is the usual first step.
 summary: Kidney filtering figure, below 60.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.enzymes.A]
+head: One of your liver enzymes sits just above its range.
+today: Nothing you would feel.
+why: Enzymes leak into the blood when liver cells are irritated. A small rise is common after a hard workout, a few drinks, a new medicine or supplement, or with fat stored in the liver.
+do: Go easy on alcohol and sugar, and it is read again at your next test.
+summary: A liver enzyme, just above its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.enzymes.B]
+head: Your liver enzymes appear to be clearly raised.
+today: Nothing you would feel.
+why: Something may be irritating your liver cells. Alcohol, stored fat, a medicine or supplement, and infections are the usual reasons.
+do: This needs a deeper look: what you take and drink, and a few further tests.
+summary: A liver enzyme, just above its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.enzymes.C]
+head: Your liver enzymes appear to be far above their range.
+today: Often nothing. Yellowing of the eyes, dark urine or pain under the right ribs would be a reason not to wait.
+why: Something appears to be irritating your liver cells, more than a passing cause usually explains.
+do: This needs a deeper look: what you take and drink, and a few further tests.
+summary: A liver enzyme, just above its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.fib4.A]
+head: One score that estimates liver scarring sits in the middle zone.
+today: Nothing you would feel.
+why: This score is worked out from your age, two liver enzymes and your platelets. In the middle zone it cannot say yes or no, and it reads higher as we get older.
+do: It is read again at your next test. If it stays here, it needs a deeper look.
+summary: The liver scarring score, in the middle zone. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.fib4.C]
+head: The score that estimates liver scarring appears to be above its upper line.
+today: Nothing you would feel.
+why: This score is worked out from your age, two liver enzymes and your platelets. Above the upper line it is the usual signal for a scan of the liver.
+do: It needs a deeper look.
+summary: The liver scarring score, in the middle zone. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
