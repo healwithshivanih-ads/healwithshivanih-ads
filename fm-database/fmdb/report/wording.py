@@ -75,6 +75,14 @@ APPROVED_DRAFTS: set[str] = {
     "finding.hb_low.B", "finding.hb_low.C", "finding.white_cells.B", "finding.white_cells.C",
     "finding.platelets.A", "finding.platelets.B", "finding.platelets.C",
     "finding.vitd_low.B", "finding.vitd_low.C", "finding.b12_low.B", "finding.b12_low.C",
+    # The wording written for the fixes found on a real panel (chloride, LDL with the particle count in range, ferritin
+    # low and high, low iron when ferritin is measured, the page-1 line for Lp(a)): her "all approved", 20 Nov 2026.
+    "finding.ldl_only.A",
+    "finding.chloride.A", "finding.chloride.B", "finding.chloride.C",
+    "finding.iron_low_stores.A", "finding.iron_low_stores.B", "finding.iron_low_stores.C",
+    "finding.ferritin_low.A", "finding.ferritin_low.B", "finding.ferritin_low.C",
+    "finding.ferritin_high.A", "finding.ferritin_high.B", "finding.ferritin_high.C",
+    "todo.deep.lpa",
     "finding.egfr_low.C",
     "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
     "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",

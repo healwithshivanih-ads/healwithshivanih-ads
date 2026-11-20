@@ -148,6 +148,9 @@ phrase: {count} here {needs} a doctor's attention soon: your {names}.
 [step.soon.para]
 phrase: Please see your doctor in the next day or two, and take this report with you. That comes before anything else here.
 
+[todo.deep.lpa]
+phrase: It is inherited, so the useful question is what to do about the rest of your heart numbers.
+
 [todo.deep.many]
 phrase: {names}. All sit well outside their range, and blood alone cannot say why.
 
@@ -271,6 +274,33 @@ summary: Bilirubin, a little raised. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.chloride.A]
+head: Your chloride sits just outside its range.
+today: Nothing you would feel.
+why: Chloride travels with sodium and follows how much water you had before the test. A small move by itself, with sodium in range, usually means little.
+do: It is read again at your next test.
+summary: Chloride, just outside its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.chloride.B]
+head: Your chloride appears to be clearly outside its range.
+today: Nothing you would feel.
+why: Chloride travels with sodium and follows how much water you had before the test. A repeat shows whether it holds.
+do: Consider a repeat test on a fresh sample to confirm.
+summary: Chloride, just outside its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.chloride.C]
+head: Your chloride appears to be far outside its range.
+today: Nothing you would feel.
+why: Chloride travels with sodium and with the balance of acid in the blood. A reading this far out usually has a reason, and it is worth finding.
+do: A repeat test on a fresh sample in the coming days is the usual first step.
+summary: Chloride, just outside its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.crp.A]
 head: Your inflammation marker sits in the middle zone, where most adults are.
 today: Nothing you would feel.
@@ -331,6 +361,60 @@ today: Often nothing. Yellowing of the eyes, dark urine or pain under the right 
 why: Something appears to be irritating your liver cells, more than a passing cause usually explains.
 do: This needs a deeper look: what you take and drink, and a few further tests.
 summary: A liver enzyme, just above its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.ferritin_high.A]
+head: Your ferritin sits just above its range.
+today: Nothing you would feel.
+why: Ferritin is the measure of stored iron, and it also rises with any inflammation, a recent infection, alcohol or fat stored in the liver. A little above the range it is most often one of those.
+do: It is read again at your next test. If you take iron, mention it.
+summary: Ferritin, just above its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.ferritin_high.B]
+head: Your ferritin appears to be clearly above its range.
+today: Nothing you would feel.
+why: Ferritin is the measure of stored iron, and it also rises with inflammation, a recent infection, alcohol or fat stored in the liver. A repeat, read with your inflammation marker and liver results, helps tell these apart.
+do: This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so.
+summary: Ferritin, just above its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.ferritin_high.C]
+head: Your ferritin appears to be far above its range.
+today: Nothing you would feel.
+why: Ferritin is the measure of stored iron, and it also rises with inflammation, alcohol or fat stored in the liver. At this level it can sometimes mean the body is holding too much iron, which runs in families. It is worth finding the reason.
+do: This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so.
+summary: Ferritin, just above its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.ferritin_low.A]
+head: Your iron stores sit just below their range.
+today: You may notice nothing.
+why: Ferritin is the measure of the iron your body has stored. Stores run down before haemoglobin does, so this is the early sign.
+do: {iron_food}It is read again at your next test.
+summary: Iron stores, just below their range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.ferritin_low.B]
+head: Your iron stores appear to be clearly low.
+today: Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Ferritin is the measure of the iron your body has stored. Stores run down when less iron comes in than goes out: too little in food, poor absorption, or {loss}.
+do: This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores.
+summary: Iron stores, just below their range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.ferritin_low.C]
+head: Your iron stores appear to be very low.
+today: Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Ferritin is the measure of the iron your body has stored. Stores this low usually have a reason, and it is worth finding: too little in food, poor absorption, or {loss}.
+do: This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores.
+summary: Iron stores, just below their range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
@@ -550,6 +634,33 @@ summary: Iron, a little low. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.iron_low_stores.A]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.
+do: It is read again at your next test.
+summary: Iron, a little low. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.iron_low_stores.B]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.
+do: This needs a deeper look: the carriers and the stores together, and why they are low.
+summary: Iron, a little low. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.iron_low_stores.C]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.
+do: This needs a deeper look: the carriers and the stores together, and why they are low.
+summary: Iron, a little low. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.kidney.A]
 head: One marker of how your kidneys clear waste sits just above its range.
 today: Nothing you would feel.
@@ -576,6 +687,15 @@ do: This needs a deeper look, starting with a repeat test in the coming days.
 summary: A kidney marker, just above its range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
+
+[finding.ldl_only.A]
+head: Your LDL cholesterol sits a little above the aim, while the particle count is in range.
+today: Nothing you would feel.
+why: The particle count is the better guide of the two, and yours is in range. LDL a little above the aim is worth keeping an eye on, not a finding by itself.
+do: Food comes first: the kind of fat, the amount of fibre, what dinner looks like.
+summary: LDL cholesterol, a little above the aim. The particle count is in range.
+closing: 
+page 1 step: Keeping your <a href="#heart">LDL cholesterol</a> near the aim through how you eat: which fats, how much fibre.
 
 [finding.lipids.A]
 head: Your arteries are carrying a slightly heavier load of cholesterol particles than we would like.
