@@ -1,0 +1,110 @@
+slug: open-toast-with-broccoli-sprouts
+name: Open toast with broccoli sprouts
+meal_type:
+- snack
+- breakfast
+diet:
+- vegetarian
+region: Fusion
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- sour
+- pungent
+main_ingredients:
+- sourdough bread
+- broccoli sprouts
+- cheese
+contains_allergens:
+- dairy
+- gluten
+ingredients:
+- item: sourdough bread, thin
+  qty: '2'
+  unit: slice
+- item: tomato pizza sauce, home-made
+  qty: '4'
+  unit: tbsp
+- item: cheddar cheese, in slivers
+  qty: '40'
+  unit: g
+- item: broccoli sprouts
+  qty: '1'
+  unit: handful
+steps:
+- Toast the bread if you like, then spread with the sauce.
+- Cover with the cheese and pile the broccoli sprouts on top. Eat straight away.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 331
+kcal_is_estimate: true
+protein_g: 18.5
+good_for:
+- liver-detoxification
+- phytonutrient-dense-diet
+one_line: Sourdough with tomato sauce, cheddar and a generous handful of raw broccoli
+  sprouts.
+headnote: The simplest way to eat broccoli sprouts — raw, so nothing is lost to heat.
+  Dip stored sprouts in hot water for a few seconds first.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 58
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 58
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 331
+kcal_total: 331
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 331
+  protein_g: 18.5
+  carbs_g: 29.3
+  fat_g: 15.6
+  fibre_g: 4.8
+  iron_mg: 2.1
+  calcium_mg: 405
+  magnesium_mg: 69.0
+  zinc_mg: 2.5
+  potassium_mg: 340
+  folate_ug: 56.0
+  b12_ug: 0.3
+  vit_d_ug: 0.2
+  vit_c_mg: 20.2
+  omega3_mg: 243
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- calcium
+- zinc
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: bread-whole-wheat
+  g: 60.0
+- i: 1
+  key: tomato
+  g: 37.5
+- i: 2
+  key: cheddar-cheese
+  g: 40.0
+- i: 3
+  key: broccoli-sprouts
+  g: 30.0
+nutrient_servings: 1.0
+cycle_phases:
+- follicular

@@ -62,9 +62,9 @@ steps:
 servings: '2'
 prep_time_min: 12
 cook_time_min: 0
-approx_kcal_per_serving: 56
+approx_kcal_per_serving: 138
 kcal_is_estimate: true
-protein_g: 4.1
+protein_g: 7.7
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -89,31 +89,34 @@ kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 56
-kcal_total: 120
+kcal_per_serving: 138
+kcal_total: 276
 kcal_basis: ingredient_table_v1
-kcal_computed_at: '2026-06-13'
+kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 75.6
-  protein_g: 4.1
-  carbs_g: 11.7
-  fat_g: 2.8
-  fibre_g: 2.9
-  iron_mg: 1.7
-  calcium_mg: 35.0
-  magnesium_mg: 36.5
-  zinc_mg: 0.7
-  potassium_mg: 359
-  folate_ug: 77.9
+  kcal: 138
+  protein_g: 7.7
+  carbs_g: 21.6
+  fat_g: 2.9
+  fibre_g: 5.6
+  iron_mg: 2.6
+  calcium_mg: 58.9
+  magnesium_mg: 67.7
+  zinc_mg: 1.0
+  potassium_mg: 553
+  folate_ug: 186
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 25.8
-  omega3_mg: 22.0
+  omega3_mg: 53.2
 nutrient_coverage_pct: 100.0
 rich_in:
+- fibre
+- potassium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: mung-sprouted

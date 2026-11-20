@@ -1,0 +1,164 @@
+slug: bhindi-chana-masala
+name: Bhindi and sprouted chana masala
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Konkani
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- sweet
+main_ingredients:
+- bhindi
+- kala chana sprouts
+- fresh coconut
+- tamarind
+contains_allergens: []
+ingredients:
+- item: bhindi, cut into small pieces
+  qty: '250'
+  unit: g
+- item: kala chana sprouts, boiled
+  qty: '2'
+  unit: cup
+- item: coriander seeds
+  qty: '1'
+  unit: tbsp
+- item: chana dal
+  qty: '1'
+  unit: tbsp
+- item: urad dal (split, skinless)
+  qty: '1'
+  unit: tbsp
+- item: dried red chilli (Byadgi)
+  qty: '7'
+  unit: piece
+- item: fresh coconut, grated (a quarter coconut)
+  qty: '1'
+  unit: cup
+- item: tamarind (a lemon-sized ball)
+  qty: '25'
+  unit: g
+- item: coconut oil
+  qty: '2'
+  unit: tbsp
+- item: onion, chopped
+  qty: '2'
+  unit: medium
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Dry-roast the coriander seeds, chana dal, urad dal and red chillies and let them
+  cool.
+- Grind them with the coconut and tamarind to a paste.
+- Heat the coconut oil on low and cook the onion until light pink.
+- Add the bhindi, chana sprouts and salt. Cover and cook on low for 5 minutes, stirring
+  now and then.
+- When the bhindi is cooked, mix in the masala paste and cook on low for 7–10 minutes.
+  Serve with rice or roti.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 25
+approx_kcal_per_serving: 350
+kcal_is_estimate: true
+protein_g: 11.5
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+- constipation
+one_line: Bhindi and boiled kala chana sprouts in a roasted coconut, tamarind and
+  Byadgi chilli masala.
+headnote: A coastal-style masala. The roasted dals thicken it, and the tamarind keeps
+  the bhindi from turning slimy.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 40
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 40
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 350
+kcal_total: 1400
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 350
+  protein_g: 11.5
+  carbs_g: 43.2
+  fat_g: 16.3
+  fibre_g: 11.8
+  iron_mg: 3.5
+  calcium_mg: 111
+  magnesium_mg: 102
+  zinc_mg: 2.0
+  potassium_mg: 759
+  folate_ug: 198
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 25.7
+  omega3_mg: 60.9
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: bhindi
+  g: 250.0
+- i: 1
+  key: chana-sprouted
+  g: 300.0
+- i: 2
+  key: coriander-seeds
+  g: 5.625
+- i: 3
+  key: chana-dal
+  g: 12.5
+- i: 4
+  key: urad-dal
+  g: 12.5
+- i: 5
+  key: dried-red-chilli
+  g: 14.0
+- i: 6
+  key: coconut-fresh
+  g: 80.0
+- i: 7
+  key: tamarind
+  g: 25.0
+- i: 8
+  key: coconut-oil
+  g: 27.25
+- i: 9
+  key: onion
+  g: 220.0
+- i: 10
+  key: salt
+  g: 0.0
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

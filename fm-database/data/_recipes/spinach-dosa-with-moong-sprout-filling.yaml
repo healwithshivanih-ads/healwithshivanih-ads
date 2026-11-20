@@ -1,0 +1,163 @@
+slug: spinach-dosa-with-moong-sprout-filling
+name: Spinach dosa with moong sprout filling
+meal_type:
+- breakfast
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- sour
+- astringent
+main_ingredients:
+- dosa batter
+- spinach
+- moong sprouts
+- paneer
+contains_allergens:
+- dairy
+ingredients:
+- item: dosa batter
+  qty: '4'
+  unit: cup
+- item: spinach leaves
+  qty: '2'
+  unit: cup
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: cup
+- item: ginger, grated
+  qty: '1'
+  unit: inch
+- item: green chilli, chopped
+  qty: '2'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: mixed vegetables (carrot, onion, peppers, capsicum, cabbage), chopped
+  qty: '1'
+  unit: cup
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: cold-pressed oil
+  qty: '2'
+  unit: tsp
+- item: black pepper powder
+  qty: '0.25'
+  unit: tsp
+- item: paneer, grated
+  qty: '0.5'
+  unit: cup
+steps:
+- For the filling, heat a teaspoon of oil, add the vegetables and sprouts and cook
+  2 minutes. Season with salt and pepper and set aside.
+- Heat the remaining oil and cook the ginger and green chillies, then the spinach
+  and coriander, for 2 minutes. Add salt, cool and grind smooth.
+- Whisk the spinach puree into the dosa batter.
+- Make thin dosas, add a generous spoonful of filling and a sprinkle of paneer, fold
+  and serve with chutney.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 20
+approx_kcal_per_serving: 475
+kcal_is_estimate: true
+protein_g: 17.2
+good_for:
+- protein-adequacy-vegetarian
+- iron-nutrition
+- blood-sugar-regulation
+one_line: Green spinach-coriander dosas folded around moong sprouts, vegetables and
+  paneer.
+headnote: Greens in the batter and sprouts and paneer in the fold make a plain dosa
+  a complete breakfast.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 78
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 78
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 475
+kcal_total: 1900
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 475
+  protein_g: 17.2
+  carbs_g: 81.2
+  fat_g: 7.8
+  fibre_g: 7.1
+  iron_mg: 3.9
+  calcium_mg: 149
+  magnesium_mg: 98.6
+  zinc_mg: 2.5
+  potassium_mg: 585
+  folate_ug: 157
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 19.3
+  omega3_mg: 86.3
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: idli-dosa-batter
+  g: 1000.0
+- i: 1
+  key: spinach
+  g: 60.0
+- i: 2
+  key: coriander-fresh
+  g: 16.0
+- i: 3
+  key: ginger-fresh
+  g: 6.0
+- i: 4
+  key: green-chilli
+  g: 10.0
+- i: 5
+  key: salt
+  g: 0.0
+- i: 6
+  key: mixed-vegetables
+  g: 120.0
+- i: 7
+  key: mung-sprouted
+  g: 104.0
+- i: 8
+  key: sunflower-oil
+  g: 9.083333333333334
+- i: 9
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 10
+  key: paneer
+  g: 65.0
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

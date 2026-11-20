@@ -1,0 +1,137 @@
+slug: green-chana-sprout-salad
+name: Green chana sprout salad
+meal_type:
+- salad
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- green chana sprouts
+- cucumber
+- tomato
+- onion
+contains_allergens: []
+ingredients:
+- item: green chana sprouts, boiled
+  qty: '1'
+  unit: cup
+- item: cucumber, diced
+  qty: '1'
+  unit: piece
+- item: tomato, diced
+  qty: '1'
+  unit: piece
+- item: onion, diced
+  qty: '1'
+  unit: piece
+- item: chaat masala
+  qty: '0.5'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander and mint, finely chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Put the sprouts, cucumber, tomato and onion in a bowl.
+- Sprinkle with the chaat masala, lemon juice and salt and mix very well.
+- Top with the coriander and mint.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 172
+kcal_is_estimate: true
+protein_g: 8.6
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+- constipation
+one_line: Boiled green chana sprouts with cucumber, tomato, onion and chaat masala.
+headnote: Green chana (hara chana) has a sweeter, fresher taste than kala chana. Dried
+  green chana sprouts well through the year.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 52
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 52
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 172
+kcal_total: 344
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 172
+  protein_g: 8.6
+  carbs_g: 31.4
+  fat_g: 2.2
+  fibre_g: 6.7
+  iron_mg: 2.2
+  calcium_mg: 58.7
+  magnesium_mg: 52.3
+  zinc_mg: 1.4
+  potassium_mg: 599
+  folate_ug: 154
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 18.9
+  omega3_mg: 42.6
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: chana-sprouted
+  g: 150.0
+- i: 1
+  key: cucumber
+  g: 200.0
+- i: 2
+  key: tomato
+  g: 100.0
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: chaat-masala
+  g: 1.1458333333333333
+- i: 5
+  key: lemon-juice
+  g: 5.083333333333333
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

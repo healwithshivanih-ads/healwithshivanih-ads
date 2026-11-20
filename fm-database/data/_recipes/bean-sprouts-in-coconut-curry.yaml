@@ -1,0 +1,176 @@
+slug: bean-sprouts-in-coconut-curry
+name: Bean sprouts and vegetables in coconut curry
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- dairy_free
+region: Asian-inspired
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- salty
+- pungent
+main_ingredients:
+- moong sprouts
+- coconut milk
+- mixed vegetables
+contains_allergens:
+- gluten
+- nuts
+- peanut
+- soy
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: capsicum (mixed colours), finely sliced
+  qty: '1'
+  unit: cup
+- item: mixed vegetables (mushroom, zucchini, cauliflower, broccoli, carrot), thinly
+    sliced
+  qty: '2'
+  unit: cup
+- item: coconut milk, thick
+  qty: '500'
+  unit: ml
+- item: coconut oil
+  qty: '2'
+  unit: tsp
+- item: garlic, grated
+  qty: '4'
+  unit: cloves
+- item: ginger, grated
+  qty: '0.5'
+  unit: inch
+- item: onion, sliced
+  qty: '1'
+  unit: piece
+- item: soy sauce
+  qty: '1'
+  unit: tbsp
+- item: red chilli sauce
+  qty: '1'
+  unit: tbsp
+- item: almond butter or peanut butter
+  qty: '2'
+  unit: tbsp
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat the oil in a wok and soften the garlic, ginger, onion and capsicum.
+- Add the sliced vegetables and cook until just tender.
+- Whisk the coconut milk with the soy sauce, chilli sauce and nut butter until smooth,
+  pour it in and simmer 3–4 minutes.
+- Add the sprouts, lemon juice and salt, cover and cook another 3–4 minutes. Serve
+  hot with rice or noodles.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 15
+approx_kcal_per_serving: 335
+kcal_is_estimate: true
+protein_g: 8.0
+good_for:
+- digestion-and-nutrient-absorption
+- anti-inflammatory-diet
+- phytonutrient-dense-diet
+one_line: A mild Thai-style coconut curry with moong sprouts and a wokful of vegetables.
+headnote: The sprouts go in at the end so they stay tender. Rich from the coconut
+  milk — a small bowl over rice is a meal.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 28
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 28
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 335
+kcal_total: 1340
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 335
+  protein_g: 8.0
+  carbs_g: 21.6
+  fat_g: 26.4
+  fibre_g: 6.2
+  iron_mg: 4.6
+  calcium_mg: 87.8
+  magnesium_mg: 94.3
+  zinc_mg: 1.6
+  potassium_mg: 659
+  folate_ug: 106
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 65.3
+  omega3_mg: 43.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: capsicum
+  g: 120.0
+- i: 2
+  key: mixed-vegetables
+  g: 240.0
+- i: 3
+  key: coconut-milk
+  g: 500.0
+- i: 4
+  key: coconut-oil
+  g: 9.083333333333334
+- i: 5
+  key: garlic
+  g: 12.0
+- i: 6
+  key: ginger-fresh
+  g: 3.0
+- i: 7
+  key: onion
+  g: 110.0
+- i: 8
+  key: tamari
+  g: 15.9375
+- i: 9
+  key: green-chilli
+  g: 4.6875
+- i: 10
+  key: almond-butter
+  g: 31.25
+- i: 11
+  key: lemon-juice
+  g: 30.5
+- i: 12
+  key: salt
+  g: 0.0
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

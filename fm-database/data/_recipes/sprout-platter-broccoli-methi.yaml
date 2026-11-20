@@ -1,0 +1,115 @@
+slug: sprout-platter-broccoli-methi
+name: Broccoli and methi sprout platter
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- pungent
+- astringent
+main_ingredients:
+- broccoli sprouts
+- methi sprouts
+- onion
+contains_allergens: []
+ingredients:
+- item: broccoli sprouts
+  qty: '0.5'
+  unit: cup
+- item: methi sprouts
+  qty: '0.25'
+  unit: cup
+- item: onion, thinly sliced
+  qty: '0.5'
+  unit: medium
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: pink salt
+  qty: to taste
+  unit: ''
+steps:
+- Dip the sprouts in hot water for 10–15 seconds and drain well.
+- Arrange the broccoli sprouts, methi sprouts and onion on a plate.
+- Sprinkle lightly with lemon juice and pink salt and eat with the meal.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 22
+kcal_is_estimate: true
+protein_g: 1.1
+good_for:
+- liver-detoxification
+- phytonutrient-dense-diet
+- blood-sugar-regulation
+one_line: A small plate of broccoli and methi sprouts with onion, lemon and salt,
+  eaten alongside a meal.
+headnote: The guide gives no amounts for this one — these are a starting point. Think
+  of it as a fresh relish on the side of the thali.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 48
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 48
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 22
+kcal_total: 45
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 22.5
+  protein_g: 1.1
+  carbs_g: 4.6
+  fat_g: 0.2
+  fibre_g: 1.3
+  iron_mg: 0.5
+  calcium_mg: 15.4
+  magnesium_mg: 9.8
+  zinc_mg: 0.2
+  potassium_mg: 79.4
+  folate_ug: 12.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 8.1
+  omega3_mg: 10.8
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: broccoli-sprouts
+  g: 17.5
+- i: 1
+  key: methi-sprouts
+  g: 22.5
+- i: 2
+  key: onion
+  g: 55.0
+- i: 3
+  key: lemon-juice
+  g: 5.083333333333333
+- i: 4
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

@@ -148,6 +148,11 @@ cautions:
       - cabbage
       - kale
       - broccoli
+      # Raw broccoli sprouts carry more glucosinolate per gram than the mature
+      # head and are eaten uncooked (added with the sprouting-guide ingest,
+      # 2026-11-20). A handful on a salad is a small dose; daily raw use is the
+      # same concern as the daily raw smoothie.
+      - broccoli-sprouts
       - cauliflower
       - radish
       - mustard-seeds

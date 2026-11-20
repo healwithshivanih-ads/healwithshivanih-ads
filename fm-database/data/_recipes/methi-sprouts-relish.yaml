@@ -1,0 +1,114 @@
+slug: methi-sprouts-relish
+name: Methi sprouts relish
+meal_type:
+- condiment
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- bitter
+- sour
+- pungent
+main_ingredients:
+- methi sprouts
+- vinegar
+- beetroot
+contains_allergens: []
+ingredients:
+- item: methi sprouts
+  qty: '1'
+  unit: cup
+- item: vinegar
+  qty: '2'
+  unit: tbsp
+- item: pink salt
+  qty: '1'
+  unit: tsp
+- item: green chilli, slit
+  qty: '2'
+  unit: piece
+- item: beetroot, thinly sliced
+  qty: '0.25'
+  unit: piece
+steps:
+- Put everything in a clean glass jar and stir or shake well.
+- Refrigerate for 24 hours to marinate.
+- Serve a spoonful with the main meal. Keeps in the fridge for up to a week.
+servings: '8'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 11
+kcal_is_estimate: true
+protein_g: 0.6
+good_for:
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+one_line: Long methi sprouts pickled overnight with vinegar, green chilli and beetroot.
+headnote: A quick fridge pickle. The beetroot turns it pink and softens the bitterness;
+  a spoonful with a meal is the portion.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 51
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 51
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 11
+kcal_total: 90
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 11.2
+  protein_g: 0.6
+  carbs_g: 2.2
+  fat_g: 0.2
+  fibre_g: 0.7
+  iron_mg: 0.4
+  calcium_mg: 6.0
+  magnesium_mg: 5.9
+  zinc_mg: 0.1
+  potassium_mg: 35.0
+  folate_ug: 4.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 2.2
+  omega3_mg: 4.8
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: methi-sprouts
+  g: 90.0
+- i: 1
+  key: vinegar
+  g: 30.0
+- i: 2
+  key: salt
+  g: 5.6875
+- i: 3
+  key: green-chilli
+  g: 10.0
+- i: 4
+  key: beetroot
+  g: 20.0
+nutrient_servings: 8.0
+cycle_phases:
+- follicular

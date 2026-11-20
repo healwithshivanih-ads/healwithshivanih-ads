@@ -1,0 +1,156 @@
+slug: tadka-moong-with-coconut
+name: Tadka moong with coconut
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- moong sprouts
+- fresh coconut
+- onion
+contains_allergens:
+- mustard
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: fresh coconut, grated
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '2'
+  unit: tsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: urad dal
+  qty: '1'
+  unit: tsp
+- item: onion, chopped
+  qty: '1'
+  unit: medium
+- item: salt
+  qty: to taste
+  unit: ''
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: tomato, chopped
+  qty: '1'
+  unit: small
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+steps:
+- Warm the ghee in a pan and let the mustard seeds, cumin and urad dal crackle for
+  a few seconds.
+- Add the onion and cook until it just starts to brown.
+- Stir in the moong sprouts, salt, turmeric and half a cup of water. Cover and cook
+  until the moong is tender.
+- Scatter over the coconut, tomato and green chilli, cover again and cook 5 minutes
+  more.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 211
+kcal_is_estimate: true
+protein_g: 6.3
+good_for:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+one_line: Moong sprouts in a mustard, cumin and urad dal tempering, finished with
+  fresh coconut.
+headnote: A quick everyday sabzi. The coconut and ghee soften the dryness of the sprouts,
+  so it sits easily even for a sensitive stomach.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 27
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 27
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 211
+kcal_total: 422
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 211
+  protein_g: 6.3
+  carbs_g: 20.4
+  fat_g: 12.6
+  fibre_g: 6.2
+  iron_mg: 3.0
+  calcium_mg: 56.9
+  magnesium_mg: 60.8
+  zinc_mg: 1.0
+  potassium_mg: 480
+  folate_ug: 115
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 19.4
+  omega3_mg: 77.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: coconut-fresh
+  g: 40.0
+- i: 2
+  key: ghee
+  g: 9.083333333333334
+- i: 3
+  key: mustard-seeds
+  g: 4.166666666666667
+- i: 4
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 5
+  key: urad-dal
+  g: 4.166666666666667
+- i: 6
+  key: onion
+  g: 110.0
+- i: 7
+  key: salt
+  g: 0.0
+- i: 8
+  key: turmeric
+  g: 0.78125
+- i: 9
+  key: tomato
+  g: 70.0
+- i: 10
+  key: green-chilli
+  g: 5.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

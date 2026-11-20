@@ -79,9 +79,9 @@ steps:
 servings: '4'
 prep_time_min: 15
 cook_time_min: 45
-approx_kcal_per_serving: 285
+approx_kcal_per_serving: 293
 kcal_is_estimate: true
-protein_g: 14.6
+protein_g: 15.1
 good_for:
 - agni-digestive-fire
 - gut-microbiome
@@ -111,26 +111,26 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 285
-kcal_total: 520
+kcal_per_serving: 293
+kcal_total: 1172
 kcal_basis: ingredient_table_v1
-kcal_computed_at: '2026-06-13'
+kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 285
-  protein_g: 14.6
-  carbs_g: 47.7
+  kcal: 293
+  protein_g: 15.1
+  carbs_g: 49.0
   fat_g: 4.9
-  fibre_g: 11.1
-  iron_mg: 4.6
-  calcium_mg: 126
-  magnesium_mg: 140
+  fibre_g: 11.4
+  iron_mg: 4.8
+  calcium_mg: 129
+  magnesium_mg: 144
   zinc_mg: 1.9
-  potassium_mg: 999
-  folate_ug: 333
+  potassium_mg: 1024
+  folate_ug: 347
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 13.4
-  omega3_mg: 125
+  omega3_mg: 129
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -140,7 +140,7 @@ rich_in:
 - potassium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: water
@@ -179,13 +179,15 @@ nutrient_servings: 4.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: अंकुरित मूँग दाल दही के साथ
     steps:
-    - बड़े पतीले में पानी/शोरबा उबालें; भिगोई मूँग व विंटर स्पाइस मिक्स डालकर 10 मिनट उबालें।
-    - कटी सब्ज़ियाँ डालें, आँच धीमी कर आधा ढककर 30 मिनट पकाएँ; अंत में कटा स्विस चार्ड मिलाएँ।
+    - बड़े पतीले में पानी/शोरबा उबालें; भिगोई मूँग व विंटर स्पाइस मिक्स डालकर 10 मिनट
+      उबालें।
+    - कटी सब्ज़ियाँ डालें, आँच धीमी कर आधा ढककर 30 मिनट पकाएँ; अंत में कटा स्विस चार्ड
+      मिलाएँ।
     - छोटे पैन में घी गरम कर जीरा-राई 2–3 मिनट खुशबूदार भूनें; बीज उछलें तो ढकें।
-    - मसालेदार घी पतीले में डालें, नमक व ताज़ी अंकुरित मूँग मिलाकर आधा ढककर पकाते रहें।
+    - मसालेदार घी पतीले में डालें, नमक व ताज़ी अंकुरित मूँग मिलाकर आधा ढककर पकाते
+      रहें।
     - स्टू की तरह, चाहें चावल पर, हर कटोरी में एक चम्मच दही संग परोसें।

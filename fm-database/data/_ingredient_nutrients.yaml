@@ -1079,6 +1079,8 @@ bulgur:
   basis: dry
   aliases:
   - bulgur wheat
+  - broken wheat
+  - dalia
   per_100g:
     kcal: 342
     protein_g: 12.3
@@ -2975,6 +2977,8 @@ green-mango:
   basis: raw
   aliases:
   - green mangoes
+  - raw mango
+  - kairi
   per_100g:
     kcal: 60
     protein_g: 0.7
@@ -6068,6 +6072,12 @@ zucchini:
 mung-sprouted:
   category: dal_legume
   basis: sprouted
+  # Corrected 2026-11-20 (coach decision). The earlier row (30 kcal, 3.0 g
+  # protein) was USDA's long, watery bean sprout - about 90% water. Indian
+  # home-sprouted moong with short tails is roughly 3x the dry weight, so it
+  # is about three times denser. These figures are mung-whole scaled to that
+  # weight gain; an estimate, as no IFCT/USDA row exists for short sprouts.
+  note: home-sprouted 2-3 days (short tails, about 3x the dry weight); estimated from the mung-whole values
   aliases:
   - sprouted mung beans
   - fresh sprouted mung beans
@@ -6078,21 +6088,21 @@ mung-sprouted:
   - moong sprouts
   - mixed sprouts
   per_100g:
-    kcal: 30
-    protein_g: 3.0
-    carbs_g: 5.9
-    fat_g: 0.2
-    fibre_g: 1.8
-    iron_mg: 0.9
-    calcium_mg: 13
-    magnesium_mg: 21
-    zinc_mg: 0.4
-    potassium_mg: 149
-    folate_ug: 61
+    kcal: 90
+    protein_g: 6.5
+    carbs_g: 15.5
+    fat_g: 0.3
+    fibre_g: 4.4
+    iron_mg: 1.8
+    calcium_mg: 36
+    magnesium_mg: 51
+    zinc_mg: 0.7
+    potassium_mg: 335
+    folate_ug: 165
     b12_ug: 0
     vit_d_ug: 0
     vit_c_mg: 13
-    omega3_mg: 15
+    omega3_mg: 45
   density:
     g_per_cup: 104
     g_per_piece: null
@@ -6148,5 +6158,547 @@ moong-dal-soaked:
     omega3_mg: 12
   density:
     g_per_cup: 185
+    g_per_piece: null
+    g_per_leaf: null
+chana-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: home-sprouted 2-3 days (short tails, about 2.2x the dry weight); estimated from the dry-bean values, no IFCT/USDA row exists for this sprout
+  aliases:
+  - sprouted chana
+  - chana sprouts
+  - sprouted kala chana
+  - kala chana sprouts
+  - sprouted black chana
+  - black chana sprouts
+  - sprouted brown chana
+  - sprouted green chana
+  - green chana sprouts
+  - sprouted chickpeas
+  - chickpea sprouts
+  - mixed chana sprouts
+  - sprouted chole
+  per_100g:
+    kcal: 165
+    protein_g: 9.0
+    carbs_g: 27.0
+    fat_g: 2.6
+    fibre_g: 6.0
+    iron_mg: 1.9
+    calcium_mg: 30
+    magnesium_mg: 36
+    zinc_mg: 1.3
+    potassium_mg: 320
+    folate_ug: 170
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 5
+    omega3_mg: 45
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+matki-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: home-sprouted 2-3 days (short tails, about 2.2x the dry weight); estimated from the dry-bean values, no IFCT/USDA row exists for this sprout
+  aliases:
+  - sprouted matki
+  - matki sprouts
+  - sprouted moth beans
+  - moth bean sprouts
+  - sprouted moth
+  per_100g:
+    kcal: 125
+    protein_g: 8.0
+    carbs_g: 21.0
+    fat_g: 0.7
+    fibre_g: 6.0
+    iron_mg: 3.0
+    calcium_mg: 60
+    magnesium_mg: 75
+    zinc_mg: 1.1
+    potassium_mg: 430
+    folate_ug: 130
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8
+    omega3_mg: 20
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+masoor-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: USDA FDC lentils, sprouted, raw
+  aliases:
+  - sprouted masoor
+  - masoor sprouts
+  - sprouted kala masoor
+  - kala masoor sprouts
+  - sprouted whole masoor
+  - sprouted lentils
+  - lentil sprouts
+  per_100g:
+    kcal: 106
+    protein_g: 9.0
+    carbs_g: 22.1
+    fat_g: 0.6
+    fibre_g: 3.0
+    iron_mg: 3.2
+    calcium_mg: 25
+    magnesium_mg: 37
+    zinc_mg: 1.5
+    potassium_mg: 322
+    folate_ug: 100
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 16
+    omega3_mg: 40
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+urad-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: home-sprouted 2-3 days (short tails, about 2.2x the dry weight); estimated from the dry-bean values, no IFCT/USDA row exists for this sprout
+  aliases:
+  - sprouted whole urad
+  - whole urad sprouts
+  - sprouted urad
+  - urad sprouts
+  - sprouted black gram
+  - black gram sprouts
+  per_100g:
+    kcal: 125
+    protein_g: 9.0
+    carbs_g: 19.0
+    fat_g: 0.7
+    fibre_g: 7.0
+    iron_mg: 2.5
+    calcium_mg: 36
+    magnesium_mg: 70
+    zinc_mg: 1.2
+    potassium_mg: 400
+    folate_ug: 80
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8
+    omega3_mg: 60
+  density:
+    g_per_cup: 110
+    g_per_piece: null
+    g_per_leaf: null
+horsegram-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: home-sprouted 2-3 days (short tails, about 2.2x the dry weight); estimated from the dry-bean values, no IFCT/USDA row exists for this sprout
+  aliases:
+  - sprouted horsegram
+  - horsegram sprouts
+  - sprouted horse gram
+  - horse gram sprouts
+  - sprouted kulith
+  - kulith sprouts
+  - sprouted kulthi
+  per_100g:
+    kcal: 140
+    protein_g: 9.3
+    carbs_g: 24.0
+    fat_g: 0.3
+    fibre_g: 3.4
+    iron_mg: 3.7
+    calcium_mg: 115
+    magnesium_mg: 65
+    zinc_mg: 1.2
+    potassium_mg: 450
+    folate_ug: 80
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8
+    omega3_mg: 10
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+lobia-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: home-sprouted 2-3 days (short tails, about 2.2x the dry weight); estimated from the dry-bean values, no IFCT/USDA row exists for this sprout
+  aliases:
+  - sprouted lobia
+  - lobia sprouts
+  - sprouted lobiya
+  - lobiya sprouts
+  - sprouted cowpeas
+  - cowpea sprouts
+  - sprouted chawli
+  per_100g:
+    kcal: 140
+    protein_g: 9.8
+    carbs_g: 25.0
+    fat_g: 0.5
+    fibre_g: 4.5
+    iron_mg: 3.4
+    calcium_mg: 46
+    magnesium_mg: 77
+    zinc_mg: 1.4
+    potassium_mg: 465
+    folate_ug: 200
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8
+    omega3_mg: 40
+  density:
+    g_per_cup: 120
+    g_per_piece: null
+    g_per_leaf: null
+rajma-sprouted:
+  category: dal_legume
+  basis: sprouted
+  note: home-sprouted 2-3 days (short tails, about 2.2x the dry weight); estimated from the dry-bean values, no IFCT/USDA row exists for this sprout; always boiled before eating
+  aliases:
+  - sprouted rajma
+  - rajma sprouts
+  - sprouted kidney beans
+  - kidney bean sprouts
+  per_100g:
+    kcal: 135
+    protein_g: 9.5
+    carbs_g: 24.0
+    fat_g: 0.4
+    fibre_g: 6.0
+    iron_mg: 2.8
+    calcium_mg: 55
+    magnesium_mg: 55
+    zinc_mg: 1.1
+    potassium_mg: 560
+    folate_ug: 150
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 10
+    omega3_mg: 60
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+methi-sprouts:
+  category: vegetable
+  basis: sprouted
+  note: seed sprout with long tails (about 4.5x the dry weight); estimated from fenugreek seed values
+  aliases:
+  - methi sprouts
+  - sprouted methi
+  - sprouted methi seeds
+  - methi seed sprouts
+  - fenugreek sprouts
+  - sprouted fenugreek
+  - methi microgreens
+  - sprouted methidana
+  per_100g:
+    kcal: 70
+    protein_g: 5.0
+    carbs_g: 12.5
+    fat_g: 1.4
+    fibre_g: 5.4
+    iron_mg: 3.0
+    calcium_mg: 40
+    magnesium_mg: 42
+    zinc_mg: 0.6
+    potassium_mg: 170
+    folate_ug: 15
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 6
+    omega3_mg: 40
+  density:
+    g_per_cup: 90
+    g_per_piece: null
+    g_per_leaf: null
+alfalfa-sprouts:
+  category: vegetable
+  basis: sprouted
+  note: USDA FDC alfalfa seeds, sprouted, raw
+  aliases:
+  - alfalfa sprouts
+  - sprouted alfalfa
+  - alfalfa
+  per_100g:
+    kcal: 23
+    protein_g: 4.0
+    carbs_g: 2.1
+    fat_g: 0.7
+    fibre_g: 1.9
+    iron_mg: 1.0
+    calcium_mg: 32
+    magnesium_mg: 27
+    zinc_mg: 0.9
+    potassium_mg: 79
+    folate_ug: 36
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 8
+    omega3_mg: 175
+  density:
+    g_per_cup: 33
+    g_per_piece: null
+    g_per_leaf: null
+broccoli-sprouts:
+  category: vegetable
+  basis: sprouted
+  note: estimated from grower nutrition panels; no IFCT/USDA row. Raw crucifer - listed in the goitrogen caution
+  aliases:
+  - broccoli sprouts
+  - sprouted broccoli seeds
+  - broccoli microgreens
+  per_100g:
+    kcal: 35
+    protein_g: 2.8
+    carbs_g: 5.0
+    fat_g: 0.5
+    fibre_g: 2.5
+    iron_mg: 0.7
+    calcium_mg: 50
+    magnesium_mg: 25
+    zinc_mg: 0.4
+    potassium_mg: 200
+    folate_ug: 60
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 50
+    omega3_mg: 60
+  density:
+    g_per_cup: 35
+    g_per_piece: null
+    g_per_leaf: null
+ragi-sprouted:
+  category: grain
+  basis: sprouted
+  note: home-sprouted (about 1.5x the dry weight); estimated from the dry ragi values
+  aliases:
+  - sprouted ragi
+  - ragi sprouts
+  - sprouted nachni
+  - sprouted finger millet
+  per_100g:
+    kcal: 210
+    protein_g: 4.7
+    carbs_g: 43.0
+    fat_g: 1.2
+    fibre_g: 7.3
+    iron_mg: 3.0
+    calcium_mg: 235
+    magnesium_mg: 95
+    zinc_mg: 1.6
+    potassium_mg: 290
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3
+    omega3_mg: 20
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+jowar-sprouted:
+  category: grain
+  basis: sprouted
+  note: home-sprouted (about 1.6x the dry weight); estimated from the dry jowar values
+  aliases:
+  - sprouted jowar
+  - jowar sprouts
+  - sprouted sorghum
+  - sorghum sprouts
+  per_100g:
+    kcal: 200
+    protein_g: 6.0
+    carbs_g: 40.0
+    fat_g: 1.0
+    fibre_g: 6.1
+    iron_mg: 2.4
+    calcium_mg: 17
+    magnesium_mg: 80
+    zinc_mg: 1.2
+    potassium_mg: 200
+    folate_ug: 30
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 3
+    omega3_mg: 20
+  density:
+    g_per_cup: 150
+    g_per_piece: null
+    g_per_leaf: null
+mango:
+  category: fruit
+  basis: raw
+  note: USDA FDC mangos, raw
+  aliases:
+  - mango
+  - ripe mango
+  - alphonso mango
+  per_100g:
+    kcal: 60
+    protein_g: 0.8
+    carbs_g: 15.0
+    fat_g: 0.4
+    fibre_g: 1.6
+    iron_mg: 0.2
+    calcium_mg: 11
+    magnesium_mg: 10
+    zinc_mg: 0.1
+    potassium_mg: 168
+    folate_ug: 43
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 36
+    omega3_mg: 37
+  density:
+    g_per_cup: 165
+    g_per_piece: 200
+    g_per_leaf: null
+olives:
+  category: vegetable
+  basis: as_consumed
+  note: USDA FDC olives, ripe, canned
+  aliases:
+  - olives
+  - black olives
+  - green olives
+  - pitted olives
+  per_100g:
+    kcal: 116
+    protein_g: 0.8
+    carbs_g: 6.0
+    fat_g: 10.9
+    fibre_g: 1.6
+    iron_mg: 6.3
+    calcium_mg: 88
+    magnesium_mg: 4
+    zinc_mg: 0.2
+    potassium_mg: 8
+    folate_ug: 0
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 60
+  density:
+    g_per_cup: 135
+    g_per_piece: 4
+    g_per_leaf: null
+cheddar-cheese:
+  category: dairy
+  basis: as_consumed
+  note: USDA FDC cheese, cheddar. Deliberately no bare 'cheese' alias - cottage cheese and parmesan are different foods.
+  aliases:
+  - cheddar cheese
+  - cheddar
+  per_100g:
+    kcal: 403
+    protein_g: 24.9
+    carbs_g: 1.3
+    fat_g: 33.1
+    fibre_g: 0
+    iron_mg: 0.7
+    calcium_mg: 721
+    magnesium_mg: 28
+    zinc_mg: 3.1
+    potassium_mg: 98
+    folate_ug: 18
+    b12_ug: 0.8
+    vit_d_ug: 0.6
+    vit_c_mg: 0
+    omega3_mg: 365
+  density:
+    g_per_cup: 113
+    g_per_piece: 20
+    g_per_leaf: null
+dhokla:
+  category: composite
+  basis: as_consumed
+  note: steamed besan khaman with tempering; estimated from a standard recipe, no IFCT/USDA row
+  aliases:
+  - dhokla
+  - khaman dhokla
+  - dhokla pieces
+  - khaman
+  per_100g:
+    kcal: 160
+    protein_g: 7.0
+    carbs_g: 22.0
+    fat_g: 5.0
+    fibre_g: 2.5
+    iron_mg: 1.5
+    calcium_mg: 40
+    magnesium_mg: 35
+    zinc_mg: 0.7
+    potassium_mg: 200
+    folate_ug: 60
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 1
+    omega3_mg: 20
+  density:
+    g_per_cup: 110
+    g_per_piece: 30
+    g_per_leaf: null
+papdi:
+  category: composite
+  basis: as_consumed
+  note: deep-fried wheat crisps; estimated, no IFCT/USDA row
+  aliases:
+  - papdi
+  - crisp puri
+  - crisp puris
+  - chaat puri
+  per_100g:
+    kcal: 500
+    protein_g: 8.0
+    carbs_g: 55.0
+    fat_g: 27.0
+    fibre_g: 2.5
+    iron_mg: 2.0
+    calcium_mg: 25
+    magnesium_mg: 25
+    zinc_mg: 0.8
+    potassium_mg: 120
+    folate_ug: 20
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 50
+  density:
+    g_per_cup: 60
+    g_per_piece: 5
+    g_per_leaf: null
+sev:
+  category: composite
+  basis: as_consumed
+  note: deep-fried besan noodles; estimated, no IFCT/USDA row
+  aliases:
+  - sev
+  - nylon sev
+  - besan sev
+  - farsan
+  per_100g:
+    kcal: 550
+    protein_g: 15.0
+    carbs_g: 45.0
+    fat_g: 35.0
+    fibre_g: 6.0
+    iron_mg: 3.5
+    calcium_mg: 50
+    magnesium_mg: 80
+    zinc_mg: 1.5
+    potassium_mg: 400
+    folate_ug: 100
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 60
+  density:
+    g_per_cup: 40
     g_per_piece: null
     g_per_leaf: null

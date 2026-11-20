@@ -1,0 +1,167 @@
+slug: sprouted-moong-idli
+name: Instant sprouted moong idli
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- moong sprouts
+- curd
+- carrot
+contains_allergens:
+- dairy
+- mustard
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: curd
+  qty: '0.25'
+  unit: cup
+- item: carrot, finely grated
+  qty: '0.5'
+  unit: cup
+- item: capsicum, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: fresh coriander, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: piece
+- item: ginger paste
+  qty: '1'
+  unit: tsp
+- item: cold-pressed oil
+  qty: '2'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: hing (asafoetida)
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fruit salt (Eno)
+  qty: '2'
+  unit: tsp
+steps:
+- Grind the sprouts to a smooth paste with a little water.
+- Mix in the curd, carrot, capsicum, coriander, green chillies and ginger paste, adding
+  water for a thick pouring batter.
+- Heat the oil, splutter the mustard seeds with the curry leaves and hing, and pour
+  this over the batter.
+- Grease the idli moulds. Add the salt and fruit salt to the batter and whisk briskly.
+- Pour into the moulds at once and steam for 10–12 minutes. Unmould once cool and
+  serve with coconut chutney.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 12
+approx_kcal_per_serving: 220
+kcal_is_estimate: true
+protein_g: 5.7
+good_for:
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+one_line: Soft idlis from a ground moong-sprout batter, raised with fruit salt instead
+  of fermenting.
+headnote: No rice and no overnight wait. Steam as soon as the fruit salt goes in.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 73
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 73
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 220
+kcal_total: 440
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 220
+  protein_g: 5.7
+  carbs_g: 15.5
+  fat_g: 15.7
+  fibre_g: 4.0
+  iron_mg: 1.7
+  calcium_mg: 92.8
+  magnesium_mg: 46.9
+  zinc_mg: 0.8
+  potassium_mg: 418
+  folate_ug: 108
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 34.3
+  omega3_mg: 48.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: yogurt
+  g: 61.25
+- i: 2
+  key: carrot
+  g: 64.0
+- i: 3
+  key: capsicum
+  g: 30.0
+- i: 4
+  key: coriander-fresh
+  g: 4.0
+- i: 5
+  key: green-chilli
+  g: 10.0
+- i: 6
+  key: ginger-fresh
+  g: 2.0
+- i: 7
+  key: sunflower-oil
+  g: 27.25
+- i: 8
+  key: mustard-seeds
+  g: 4.166666666666667
+- i: 9
+  key: curry-leaves
+  g: 2.4
+- i: 10
+  key: asafoetida
+  g: 1.5625
+- i: 11
+  key: salt
+  g: 0.0
+- i: 12
+  key: salt
+  g: 11.375
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

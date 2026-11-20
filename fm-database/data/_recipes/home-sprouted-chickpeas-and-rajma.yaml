@@ -1,0 +1,102 @@
+slug: home-sprouted-chickpeas-and-rajma
+name: Home-sprouted chickpeas and rajma (the slow sprouters)
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- kabuli chana
+- rajma
+contains_allergens: []
+ingredients:
+- item: kabuli chana, small-seeded (or small rajma)
+  qty: '1'
+  unit: cup
+- item: clean drinking water, for soaking and rinsing
+  qty: '4'
+  unit: cup
+steps:
+- Choose a small-seeded variety — large kabuli chana and large rajma often refuse
+  to sprout.
+- Soak in clean drinking water for 7–8 hours, then drain completely.
+- Rinse and drain three times a day. These big beans spoil faster than moong, so do
+  not skip a rinse.
+- Expect 3 to 4 days before good sprouts show.
+- Always cook these before eating. Rajma sprouts must be boiled hard for at least
+  10 minutes, or pressure-cooked — raw or undercooked kidney beans upset the stomach.
+  Boil chickpea sprouts until tender.
+- Use within 2 days, stored airtight in the fridge.
+servings: '6'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 126
+kcal_is_estimate: true
+protein_g: 6.8
+good_for:
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+one_line: 'Chickpeas and rajma sprout slowly: small beans, three rinses a day, 3–4
+  days — and always cook them.'
+headnote: These are the hardest beans to sprout at home. Rajma sprouts are never eaten
+  raw.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 25
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 25
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 126
+kcal_total: 756
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 126
+  protein_g: 6.8
+  carbs_g: 21.0
+  fat_g: 2.0
+  fibre_g: 4.1
+  iron_mg: 1.4
+  calcium_mg: 19.0
+  magnesium_mg: 26.3
+  zinc_mg: 0.9
+  potassium_mg: 239
+  folate_ug: 186
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.3
+  omega3_mg: 33.3
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: chickpeas
+  g: 200.0
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 6.0
+cycle_phases:
+- follicular

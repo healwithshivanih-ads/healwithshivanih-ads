@@ -1,0 +1,164 @@
+slug: dahiwale-moong
+name: Dahiwale moong
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sour
+- sweet
+main_ingredients:
+- moong sprouts
+- curd
+contains_allergens:
+- dairy
+- mustard
+ingredients:
+- item: moong sprouts
+  qty: '2'
+  unit: cup
+- item: curd, well beaten
+  qty: '1'
+  unit: cup
+- item: cold-pressed oil
+  qty: '1'
+  unit: tsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: ginger, grated
+  qty: '0.5'
+  unit: inch
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat the oil in a deep pan. Add the mustard and cumin, then the green chilli, ginger
+  and curry leaves.
+- Add the sprouts and the dry spices and stir for a minute. Add salt and 1 cup of
+  water.
+- Cook until the moong is done.
+- Lower the heat, stir in the beaten curd and simmer gently for 2–3 minutes.
+- Top with coriander and serve hot with rice.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 136
+kcal_is_estimate: true
+protein_g: 7.8
+good_for:
+- gut-microbiome
+- digestion-and-nutrient-absorption
+one_line: Moong sprouts simmered in a light, tempered curd gravy.
+headnote: Keep the heat low once the curd goes in so it stays smooth. Soothing with
+  plain rice.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 33
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 33
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 136
+kcal_total: 408
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 136
+  protein_g: 7.8
+  carbs_g: 16.1
+  fat_g: 4.9
+  fibre_g: 3.6
+  iron_mg: 1.9
+  calcium_mg: 140
+  magnesium_mg: 52.8
+  zinc_mg: 1.1
+  potassium_mg: 407
+  folate_ug: 123
+  b12_ug: 0.3
+  vit_d_ug: 0.1
+  vit_c_mg: 11.9
+  omega3_mg: 55.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 208.0
+- i: 1
+  key: yogurt
+  g: 245.0
+- i: 2
+  key: sunflower-oil
+  g: 4.541666666666667
+- i: 3
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 4
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 5
+  key: green-chilli
+  g: 5.0
+- i: 6
+  key: ginger-fresh
+  g: 3.0
+- i: 7
+  key: curry-leaves
+  g: 2.4
+- i: 8
+  key: turmeric
+  g: 0.78125
+- i: 9
+  key: chilli-powder
+  g: 1.25
+- i: 10
+  key: coriander-powder
+  g: 1.25
+- i: 11
+  key: salt
+  g: 0.0
+- i: 12
+  key: coriander-fresh
+  g: 1.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

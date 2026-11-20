@@ -1,0 +1,137 @@
+slug: mixed-chana-sabzi
+name: Mixed chana sprouts sabzi
+meal_type:
+- lunch
+- dinner
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- chana sprouts
+- onion
+- tomato
+contains_allergens:
+- sesame
+ingredients:
+- item: mixed chana sprouts (kala and green), boiled
+  qty: '2'
+  unit: cup
+- item: sesame oil, cold-pressed
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: onion, thinly sliced
+  qty: '2'
+  unit: medium
+- item: ginger-garlic paste
+  qty: '0.5'
+  unit: tsp
+- item: tomato puree, fresh
+  qty: '1'
+  unit: cup
+- item: pink salt
+  qty: to taste
+  unit: ''
+- item: black pepper powder
+  qty: '0.25'
+  unit: tsp
+steps:
+- Warm the oil on low heat and add the cumin and onion, then the ginger-garlic paste.
+- When the onion turns light brown, add the tomato puree and salt.
+- Once the oil separates, add the boiled sprouts and the pepper.
+- Cook until the masala coats the chana well. Good with dosa.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 286
+kcal_is_estimate: true
+protein_g: 10.4
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+one_line: Boiled chana sprouts in a thick onion-tomato masala with black pepper.
+headnote: A dry, peppery chana that goes with dosa as easily as with roti.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 35
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 35
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 286
+kcal_total: 858
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 286
+  protein_g: 10.4
+  carbs_g: 36.2
+  fat_g: 11.9
+  fibre_g: 7.9
+  iron_mg: 2.6
+  calcium_mg: 56.7
+  magnesium_mg: 50.7
+  zinc_mg: 1.6
+  potassium_mg: 557
+  folate_ug: 192
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 17.6
+  omega3_mg: 77.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: chana-sprouted
+  g: 300.0
+- i: 1
+  key: sesame-oil
+  g: 27.25
+- i: 2
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 3
+  key: onion
+  g: 220.0
+- i: 4
+  key: ginger-garlic-paste
+  g: 2.5
+- i: 5
+  key: tomato
+  g: 150.0
+- i: 6
+  key: salt
+  g: 0.0
+- i: 7
+  key: black-pepper
+  g: 0.5208333333333334
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

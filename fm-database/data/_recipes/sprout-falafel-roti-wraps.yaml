@@ -1,0 +1,177 @@
+slug: sprout-falafel-roti-wraps
+name: Sprout falafel-style roti wraps
+meal_type:
+- lunch
+- snack
+- dinner
+diet:
+- vegetarian
+region: Fusion
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- whole-wheat roti
+- mixed sprouts
+- curd
+- avocado
+contains_allergens:
+- dairy
+- gluten
+ingredients:
+- item: whole-wheat rotis
+  qty: '4'
+  unit: piece
+- item: mixed sprouts (chana, moong, kabuli chana), lightly steamed
+  qty: '1'
+  unit: cup
+- item: fresh coriander, chopped
+  qty: '0.5'
+  unit: cup
+- item: mint leaves
+  qty: '0.5'
+  unit: cup
+- item: onion
+  qty: '1'
+  unit: piece
+- item: garlic
+  qty: '5'
+  unit: cloves
+- item: green chilli
+  qty: '2'
+  unit: piece
+- item: ginger
+  qty: '0.5'
+  unit: inch
+- item: mixed vegetables (peppers, cucumber, carrot, tomato, onion), thinly sliced
+  qty: '1'
+  unit: cup
+- item: avocado, sliced
+  qty: '0.5'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: curd, thick
+  qty: '0.5'
+  unit: cup
+- item: red chilli sauce
+  qty: '1'
+  unit: tsp
+- item: dried herbs (oregano) and chilli flakes
+  qty: '1'
+  unit: pinch
+steps:
+- Grind the sprouts, coriander, mint, onion, 4 of the garlic cloves, chillies, ginger
+  and salt to a coarse paste.
+- Stir the last garlic clove, grated, into the curd with the chilli sauce, oregano,
+  chilli flakes, salt and pepper to make the dip.
+- Spread the sprout paste over one side of each roti and roast that side on a lightly
+  oiled tawa.
+- Spread with the curd dip, add the sliced vegetables and avocado, and roll up.
+servings: '4'
+prep_time_min: 20
+cook_time_min: 10
+approx_kcal_per_serving: 204
+kcal_is_estimate: true
+protein_g: 7.9
+good_for:
+- blood-sugar-regulation
+- phytonutrient-dense-diet
+one_line: Rotis spread with a herby ground-sprout paste, roasted, then rolled with
+  vegetables, avocado and a garlic curd dip.
+headnote: All the falafel flavour without deep frying — the paste cooks straight on
+  the roti.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 68
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 68
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 204
+kcal_total: 816
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 204
+  protein_g: 7.9
+  carbs_g: 34.2
+  fat_g: 4.4
+  fibre_g: 7.6
+  iron_mg: 2.7
+  calcium_mg: 91.4
+  magnesium_mg: 74.4
+  zinc_mg: 1.6
+  potassium_mg: 494
+  folate_ug: 91.4
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 20.2
+  omega3_mg: 74.6
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- magnesium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: wheat-roti
+  g: 160.0
+- i: 1
+  key: mung-sprouted
+  g: 104.0
+- i: 2
+  key: coriander-fresh
+  g: 8.0
+- i: 3
+  key: mint-fresh
+  g: 12.5
+- i: 4
+  key: onion
+  g: 110.0
+- i: 5
+  key: garlic
+  g: 15.0
+- i: 6
+  key: green-chilli
+  g: 10.0
+- i: 7
+  key: ginger-fresh
+  g: 3.0
+- i: 8
+  key: mixed-vegetables
+  g: 120.0
+- i: 9
+  key: avocado
+  g: 70.0
+- i: 10
+  key: salt
+  g: 0.0
+- i: 11
+  key: yogurt
+  g: 122.5
+- i: 12
+  key: green-chilli
+  g: 1.5625
+- i: 13
+  key: dried-herbs
+  g: 0.3
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

@@ -1,0 +1,156 @@
+slug: sprouted-moong-and-spinach-thepla
+name: Sprouted moong and spinach thepla
+meal_type:
+- breakfast
+- lunch
+- snack
+diet:
+- vegetarian
+- vegan
+- dairy_free
+region: Gujarati
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- moong sprouts
+- whole-wheat flour
+- spinach
+contains_allergens:
+- gluten
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: whole-wheat flour
+  qty: '1'
+  unit: cup
+- item: green chilli
+  qty: '1'
+  unit: piece
+- item: ginger
+  qty: '0.5'
+  unit: inch
+- item: garlic
+  qty: '4'
+  unit: cloves
+- item: spinach, chopped
+  qty: '1'
+  unit: cup
+- item: fresh coriander, chopped
+  qty: '0.75'
+  unit: cup
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '1'
+  unit: pinch
+- item: cold-pressed oil (1 for the dough, the rest for cooking)
+  qty: '1.5'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Roughly crush the sprouts with the chilli, ginger and garlic.
+- Tip into a bowl and add the spinach, coriander, turmeric, hing, a tablespoon of
+  oil and salt.
+- Add the flour and a little water and knead into a soft dough. Rest 5 minutes.
+- Roll small portions into rounds and cook on a tawa with a little oil.
+servings: '3'
+prep_time_min: 20
+cook_time_min: 15
+approx_kcal_per_serving: 232
+kcal_is_estimate: true
+protein_g: 7.1
+good_for:
+- iron-nutrition
+- constipation
+one_line: Gujarati-style thepla with crushed moong sprouts and spinach in the dough.
+headnote: Equal parts sprouts and flour, so each thepla carries more protein and less
+  wheat than usual. Travels well.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 62
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 62
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 232
+kcal_total: 696
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 232
+  protein_g: 7.1
+  carbs_g: 33.8
+  fat_g: 7.6
+  fibre_g: 6.7
+  iron_mg: 3.0
+  calcium_mg: 48.2
+  magnesium_mg: 79.1
+  zinc_mg: 1.4
+  potassium_mg: 356
+  folate_ug: 86.4
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 11.7
+  omega3_mg: 54.1
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: wheat-flour
+  g: 120.0
+- i: 2
+  key: green-chilli
+  g: 5.0
+- i: 3
+  key: ginger-fresh
+  g: 3.0
+- i: 4
+  key: garlic
+  g: 12.0
+- i: 5
+  key: spinach
+  g: 30.0
+- i: 6
+  key: coriander-fresh
+  g: 12.0
+- i: 7
+  key: turmeric
+  g: 1.5625
+- i: 8
+  key: asafoetida
+  g: 0.3
+- i: 9
+  key: sunflower-oil
+  g: 20.4375
+- i: 10
+  key: salt
+  g: 0.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

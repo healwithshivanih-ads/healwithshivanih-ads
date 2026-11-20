@@ -1,0 +1,141 @@
+slug: cabbage-carrot-methi-sprout-raita
+name: Sautéed cabbage, carrot and methi sprout raita
+meal_type:
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- sweet
+- bitter
+main_ingredients:
+- curd
+- cabbage
+- carrot
+- methi sprouts
+contains_allergens:
+- dairy
+ingredients:
+- item: curd
+  qty: '1'
+  unit: cup
+- item: methi sprouts
+  qty: '4'
+  unit: tbsp
+- item: carrot, grated
+  qty: '1'
+  unit: piece
+- item: cabbage, grated
+  qty: '1'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '6'
+  unit: leaves
+- item: green chilli, chopped
+  qty: '3'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Heat the ghee and add the cumin, curry leaves and green chillies.
+- Add the carrot, cabbage and methi sprouts and stir.
+- Add salt, cover and cook 1–2 minutes.
+- Cool slightly, then stir into the curd and serve straight away.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 5
+approx_kcal_per_serving: 175
+kcal_is_estimate: true
+protein_g: 6.1
+good_for:
+- gut-microbiome
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: A raita with lightly cooked cabbage, carrot and methi sprouts instead of
+  raw vegetables.
+headnote: Cooking the vegetables for a minute or two makes this easier on the stomach
+  than a raw raita.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 86
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 86
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 175
+kcal_total: 350
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 175
+  protein_g: 6.1
+  carbs_g: 14.0
+  fat_g: 11.4
+  fibre_g: 2.8
+  iron_mg: 1.6
+  calcium_mg: 199
+  magnesium_mg: 34.4
+  zinc_mg: 1.0
+  potassium_mg: 432
+  folate_ug: 37.8
+  b12_ug: 0.5
+  vit_d_ug: 0.2
+  vit_c_mg: 28.0
+  omega3_mg: 93.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- calcium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: yogurt
+  g: 245.0
+- i: 1
+  key: methi-sprouts
+  g: 22.5
+- i: 2
+  key: carrot
+  g: 60.0
+- i: 3
+  key: cabbage
+  g: 89.0
+- i: 4
+  key: ghee
+  g: 13.625
+- i: 5
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 6
+  key: curry-leaves
+  g: 1.7999999999999998
+- i: 7
+  key: green-chilli
+  g: 15.0
+- i: 8
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

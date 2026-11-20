@@ -1,0 +1,146 @@
+slug: horsegram-sprout-bruschetta
+name: Horsegram sprout and avocado bruschetta
+meal_type:
+- snack
+- breakfast
+diet:
+- vegetarian
+region: Fusion
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- horsegram sprouts
+- sourdough bread
+- avocado
+contains_allergens:
+- gluten
+ingredients:
+- item: horsegram sprouts
+  qty: '1'
+  unit: cup
+- item: whole-wheat sourdough bread
+  qty: '6'
+  unit: slice
+- item: avocado
+  qty: '2'
+  unit: medium
+- item: ghee
+  qty: '2'
+  unit: tsp
+- item: dried herbs, mixed
+  qty: '0.5'
+  unit: tsp
+- item: capsicum (red and yellow, half of each), chopped
+  qty: '1'
+  unit: piece
+- item: green capsicum, chopped
+  qty: '0.33'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: black pepper powder
+  qty: '0.25'
+  unit: tsp
+steps:
+- Heat the ghee and add the herbs, then the capsicums and horsegram sprouts.
+- Sprinkle generously with water and cook until the vegetables are just done — do
+  not overcook.
+- Scoop out the avocado and mix it into the pan. Season with salt and pepper.
+- Toast the bread slices on a pan and pile the sprout mixture on top. Garnish with
+  a few sprouts and chopped peppers.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 10
+approx_kcal_per_serving: 400
+kcal_is_estimate: true
+protein_g: 13.5
+good_for:
+- blood-sugar-regulation
+- anti-inflammatory-diet
+- iron-nutrition
+one_line: Sourdough toast topped with horsegram sprouts, peppers and avocado.
+headnote: Avocado stands in for cheese here. Two slices make a solid breakfast.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 56
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 56
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 400
+kcal_total: 1200
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 400
+  protein_g: 13.5
+  carbs_g: 46.8
+  fat_g: 19.4
+  fibre_g: 12.4
+  iron_mg: 3.9
+  calcium_mg: 164
+  magnesium_mg: 107
+  zinc_mg: 2.3
+  potassium_mg: 902
+  folate_ug: 158
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 80.7
+  omega3_mg: 223
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: horsegram-sprouted
+  g: 120.0
+- i: 1
+  key: bread-whole-wheat
+  g: 180.0
+- i: 2
+  key: avocado
+  g: 280.0
+- i: 3
+  key: ghee
+  g: 9.083333333333334
+- i: 4
+  key: dried-herbs
+  g: 0.4166666666666667
+- i: 5
+  key: capsicum
+  g: 120.0
+- i: 6
+  key: capsicum
+  g: 39.6
+- i: 7
+  key: salt
+  g: 0.0
+- i: 8
+  key: black-pepper
+  g: 0.5208333333333334
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

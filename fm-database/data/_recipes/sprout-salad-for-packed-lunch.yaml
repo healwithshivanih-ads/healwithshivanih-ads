@@ -1,0 +1,132 @@
+slug: sprout-salad-for-packed-lunch
+name: Sprout and paneer salad for a packed lunch
+meal_type:
+- salad
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- moong sprouts
+- paneer
+- mixed vegetables
+contains_allergens:
+- dairy
+ingredients:
+- item: moong sprouts, steamed
+  qty: '0.5'
+  unit: cup
+- item: mixed vegetables (cucumber, purple cabbage, capsicum, peppers), chopped
+  qty: '1'
+  unit: cup
+- item: paneer cubes
+  qty: '0.5'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tsp
+- item: dried herbs, mixed
+  qty: '1'
+  unit: pinch
+- item: olive oil, extra virgin
+  qty: '2'
+  unit: tsp
+- item: pink salt
+  qty: to taste
+  unit: ''
+steps:
+- Sauté the paneer cubes in the ghee with the herbs until lightly golden. Cool.
+- Pack the sprouts, vegetables and paneer in a container, drizzle with the olive oil
+  and toss lightly.
+- Add the salt and toss again only just before eating, so the vegetables stay crisp.
+servings: '1'
+prep_time_min: 10
+cook_time_min: 5
+approx_kcal_per_serving: 415
+kcal_is_estimate: true
+protein_g: 18.6
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+one_line: A one-box lunch of steamed moong sprouts, crunchy vegetables and herbed
+  paneer.
+headnote: Salting at the last minute is what keeps a packed salad from going limp
+  by lunchtime.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 50
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 50
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 415
+kcal_total: 415
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 415
+  protein_g: 18.6
+  carbs_g: 22.2
+  fat_g: 28.9
+  fibre_g: 6.0
+  iron_mg: 2.6
+  calcium_mg: 369
+  magnesium_mg: 64.9
+  zinc_mg: 2.4
+  potassium_mg: 544
+  folate_ug: 145
+  b12_ug: 0.5
+  vit_d_ug: 0.2
+  vit_c_mg: 36.8
+  omega3_mg: 237
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- calcium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 52.0
+- i: 1
+  key: mixed-vegetables
+  g: 120.0
+- i: 2
+  key: paneer
+  g: 65.0
+- i: 3
+  key: ghee
+  g: 4.541666666666667
+- i: 4
+  key: dried-herbs
+  g: 0.3
+- i: 5
+  key: olive-oil
+  g: 9.0
+- i: 6
+  key: salt
+  g: 0.0
+nutrient_servings: 1.0
+cycle_phases:
+- follicular

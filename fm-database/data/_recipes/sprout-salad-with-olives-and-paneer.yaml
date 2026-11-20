@@ -1,0 +1,131 @@
+slug: sprout-salad-with-olives-and-paneer
+name: Sprout salad with olives and paneer
+meal_type:
+- salad
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- astringent
+- salty
+- sour
+main_ingredients:
+- moong sprouts
+- kala chana sprouts
+- paneer
+- olives
+contains_allergens:
+- dairy
+ingredients:
+- item: moong sprouts, steamed
+  qty: '1'
+  unit: cup
+- item: kala chana sprouts, cooked
+  qty: '1'
+  unit: cup
+- item: onion, thinly sliced
+  qty: '1'
+  unit: large
+- item: black olives, pitted
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+- item: paneer, chopped
+  qty: '1'
+  unit: cup
+steps:
+- Put the sprouts in a deep bowl.
+- Add the onion and olives and toss. Add the salt and lemon juice and toss again.
+- Fold in the paneer and serve straight away.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 291
+kcal_is_estimate: true
+protein_g: 15.8
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+one_line: Moong and chana sprouts with paneer, onion and black olives.
+headnote: 'A protein-heavy salad: two sprouts and a cup of paneer between three people.'
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 47
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 47
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 291
+kcal_total: 873
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 291
+  protein_g: 15.8
+  carbs_g: 27.8
+  fat_g: 13.8
+  fibre_g: 5.8
+  iron_mg: 3.5
+  calcium_mg: 268
+  magnesium_mg: 51.0
+  zinc_mg: 2.0
+  potassium_mg: 407
+  folate_ug: 160
+  b12_ug: 0.3
+  vit_d_ug: 0.1
+  vit_c_mg: 15.0
+  omega3_mg: 97.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- zinc
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: chana-sprouted
+  g: 150.0
+- i: 2
+  key: onion
+  g: 154.0
+- i: 3
+  key: olives
+  g: 67.5
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: lemon-juice
+  g: 30.5
+- i: 6
+  key: paneer
+  g: 130.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

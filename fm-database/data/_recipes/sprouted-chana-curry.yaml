@@ -97,21 +97,21 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 377
-  protein_g: 16.2
-  carbs_g: 55.4
-  fat_g: 11.7
-  fibre_g: 11.4
-  iron_mg: 4.8
-  calcium_mg: 90.6
-  magnesium_mg: 82.6
-  zinc_mg: 2.4
-  potassium_mg: 885
-  folate_ug: 405
+  kcal: 368
+  protein_g: 15.8
+  carbs_g: 53.1
+  fat_g: 11.6
+  fibre_g: 12.1
+  iron_mg: 4.7
+  calcium_mg: 96.8
+  magnesium_mg: 82.8
+  zinc_mg: 2.5
+  potassium_mg: 877
+  folate_ug: 281
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 22.5
-  omega3_mg: 81.8
+  vit_c_mg: 27.3
+  omega3_mg: 81.3
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -123,12 +123,11 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
-  key: chickpeas
-  g: 400.0
-  f: 0.34
+  key: chana-sprouted
+  g: 300.0
 - i: 1
   key: onion
   g: 110.0
