@@ -35,6 +35,8 @@ approved, no personal Foundation link, a broken link in the PDF.
   the five-reviewer check and approved by her the same day (listed at the top of the file, each marked "corrected").
   `inside_range_max_A` (potassium) stops a result inside the laboratory's printed range at A; Lp(a) is read on the
   `lpa` (mg/dL) or `lpa_nmol` row by the unit the laboratory used.
+  Lead is read on `lead` (µg/dL) or `lead_ug_l` (µg/L, the same lines ×10) by the laboratory's unit; any other unit
+  warns the coach (fixed 20 Nov after a real panel printed µg/L and got a false doctor sentence).
   Added and approved 20 Nov 2026 ("Yes, add all three"): `fallback_plus` (markers on the per-cent rule that also have
   listed lines, the worse of the two counts; a line with a `unit` applies only when the laboratory used that unit, else
   the coach gets a warning): PCV `hct`, `phosphorus`, `urea`, `bun`; `platelets` high D; and an `egfr` row from the

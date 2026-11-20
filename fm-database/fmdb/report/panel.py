@@ -284,6 +284,12 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                     ckey = "lpa_nmol"
                 elif "mg/dl" not in u:
                     unit_warn = f"Lp(a): the unit ({unit or 'none'}) is neither mg/dL nor nmol/L; its level was read as mg/dL, check it"
+            if sp.key == "lead":          # the lines are µg/dL; this panel's laboratory reports µg/L, ten times the number
+                u = unit.lower().replace(" ", "").replace("μ", "µ").replace("mcg", "µg").replace("ug", "µg").replace("µµ", "µ")
+                if u.endswith("g/l"):
+                    ckey = "lead_ug_l"
+                elif not u.endswith("g/dl"):
+                    unit_warn = f"Lead: the unit ({unit or 'none'}) is neither µg/dL nor µg/L; its level was read as µg/dL, check it"
             if not plus_unit_ok(sp.key, unit, cutoffs):
                 unit_warn = (f"{sp.name}: the unit ({unit or 'none'}) is not the one its strongest-level line is written for; "
                              "only the per-cent rule was applied, check it")

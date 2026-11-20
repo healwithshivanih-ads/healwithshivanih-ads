@@ -109,7 +109,8 @@ markers:
   vitd:       {low: {A: 30, B: 20, C: 12}, high: {B: ">100", C: ">150"}}
   b12:        {low: {A: 300, B: 200, C: 150}}
   tsat:       {low: {B: 16}, high: {B: ">50", C: ">60"}}
-  lead:       {high: {B: 5.0, C: 10, D: 45}}
+  lead:       {high: {B: 5.0, C: 10, D: 45}}                 # µg/dL
+  lead_ug_l:  {high: {B: 50, C: 100, D: 450}}                # fixed 20 Nov: the SAME lines when the laboratory reports µg/L (1 µg/dL = 10 µg/L)
   mercury:    {high_x: {B: ">1", C: ">2"}}
   arsenic:    {high_x: {B: ">1", C: ">2"}}
   cadmium:    {high_x: {B: ">1", C: ">2"}}
