@@ -61,6 +61,10 @@ cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
 # that range beside the result and must not contradict it. (corrected 19 Nov)
 inside_range_max_A: [potassium]
 
+# A result INSIDE the laboratory's own printed range is not flagged at all (added 20 Nov, after a real panel: the
+# report said "a low protective cholesterol" beside a row drawn in range).
+inside_range_none: [hdl]
+
 # Markers read on the per-cent rule above that ALSO have listed lines: the worse of the two counts. A line with a
 # `unit` is applied only when the laboratory reported in that unit (the report warns the coach when it did not).
 fallback_plus:                                                                         # added 20 Nov

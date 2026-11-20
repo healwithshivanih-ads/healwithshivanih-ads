@@ -124,7 +124,7 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
         S("ast", "AST", "an enzyme shared by liver and muscle", raw=r"\bast\b|sgot\b|aspartate.amino|aspartate transaminase", group="liver_enzymes"),
         S("ggt", "GGT", "sensitive to alcohol, medicines and liver fat", raw=r"\bggtp?\b|gamma.glutamyl|gamma-gt", group="liver_enzymes"),
         S("alp", "ALP", "bile flow and bone", raw=r"\balp\b|alkaline phosphatase|alk phos"),
-        S("bilirubin", "Bilirubin", "a pigment the liver clears", raw=r"total bilirubin|bilirubin.total|t.bili\b"),
+        S("bilirubin", "Bilirubin", "a pigment the liver clears", raw=r"total bilirubin|bilirubin\W*total|t.bili\b"),
         S("albumin", "Albumin", "the main protein the liver makes", raw=r"^(?!.*ratio)(?!.*binding)(?!.*urine)(?!.*micro).*\balbumin\b"),
         S("hsi", "Fat-storage score (HSI)", "estimates stored fat from enzymes and body size", comp=r"hepatic steatosis",
           kind="z3", a=30, b=36, rtxt="under 30 unlikely · over 36 likely", nature="work", beyond=True),
@@ -173,7 +173,10 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
         S("iron", "Iron", "iron in the blood today", raw=r"serum iron|s-iron|^iron\b(?!\s*binding)", group="iron"),
         S("tibc", "Iron-binding capacity (TIBC)", "how much more iron the blood could carry", raw=r"\btibc\b|total iron binding", group="iron"),
         S("tsat", "Transferrin saturation", "how full your iron carriers are", raw=r"transferrin saturation|\btsat\b|% ?saturation", group="iron"),
-        S("phosphorus", "Phosphorus", raw=r"^(?!.*urine)(?!.*ratio).*(?:phosphorus|phosphate)"),
+        S("ferritin", "Ferritin", "your iron stores", raw=r"\bferritin\b", group="iron"),
+        S("folate", "Folate", "a B vitamin, with B12", raw=r"\bfolate\b|folic acid|vitamin b9"),
+        S("magnesium", "Magnesium", raw=r"^(?!.*urine)(?!.*rbc)(?!.*red cell).*\bmagnesium\b"),
+        S("phosphorus", "Phosphorus", raw=r"^(?!.*urine)(?!.*ratio).*(?:phosphorus|phosphorous|phosphate)"),
     ]),
     ("metals", "Metals", True, [
         S("lead", "Lead", raw=r"\blead\b", under=True),
@@ -197,6 +200,10 @@ def num(v: float) -> str:
 def rng(v: float) -> str:
     """A bound of the laboratory's range: no trailing zeros (0.40 prints as 0.4, 13.0 as 13)."""
     return f"{int(v):,}" if float(v).is_integer() else f"{v:g}"
+
+
+_WORKED_OUT = re.compile(r"\bratio\b|\bindex\b|mean platelet|platelet distribution|platelet to large|plateletcrit|"
+                         r"\bmpv\b|\bpdw\b|\bplcr\b|\bpct\b")
 
 
 def _round(v: float, decimals: Optional[int]) -> float:
@@ -246,6 +253,9 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
 
     A row whose result is not on file is left out; a section with no rows at all is left out too."""
     out: list[Section] = []
+    # A row reads the result itself, never a figure worked out from it that carries its name ("SGOT / SGPT RATIO",
+    # "Mean Platelet Volume", "RDW index"): whichever the laboratory printed first used to win.
+    direct = [l for l in labs if not _WORKED_OUT.search(str(l.get("test_name") or "").lower())]
     for sid, name, deeper_only, specs in SECTIONS:
         if deeper_only and not deeper:
             continue
@@ -260,7 +270,7 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                     continue
                 v, unit = float(m["value"]), ""
             else:
-                v0, lab = _peek(labs, sp.raw)
+                v0, lab = _peek(direct, sp.raw)
                 if v0 is None or lab is None:
                     continue
                 v, unit = _scale(v0, sp.scale), str(lab.get("unit") or "")
@@ -305,6 +315,27 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
         if sec.rows:
             out.append(sec)
     _thyroid_hormone_rule(out)
+    return out
+
+
+def unlisted_out_of_range(labs: list[dict]) -> list[str]:
+    """Measured results outside their laboratory range that the report has NO row for (total IgE, lipase...).
+    The report cannot speak about them, so the coach is told: they must not pass unseen."""
+    patterns = [re.compile(sp.raw) for _sid, _name, _d, specs in SECTIONS for sp in specs if sp.raw]
+    out: list[str] = []
+    for lab in labs:
+        name = str(lab.get("test_name") or "").strip()
+        if not name or lab.get("illustrative") or any(p.search(name.lower()) for p in patterns):
+            continue
+        if re.search(r"vldl|ratio|\bindex\b", name.lower()):     # worked out from results the report already reads
+            continue
+        try:
+            v = float(str(lab.get("value")).replace(",", ""))
+        except (TypeError, ValueError):
+            continue
+        lo, hi = _parse_ref_range(lab.get("reference_range"))
+        if (hi is not None and v > hi) or (lo is not None and v < lo):
+            out.append(f"{name} {num(v)} is outside its range ({lab.get('reference_range')}) and the report has no row for it: read it yourself")
     return out
 
 

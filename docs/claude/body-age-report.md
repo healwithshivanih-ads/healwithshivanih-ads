@@ -37,6 +37,9 @@ approved, no personal Foundation link, a broken link in the PDF.
   `lpa` (mg/dL) or `lpa_nmol` row by the unit the laboratory used.
   Lead is read on `lead` (µg/dL) or `lead_ug_l` (µg/L, the same lines ×10) by the laboratory's unit; any other unit
   warns the coach (fixed 20 Nov after a real panel printed µg/L and got a false doctor sentence).
+  `inside_range_none` (hdl): inside the laboratory's printed range is not flagged at all. `panel.unlisted_out_of_range`
+  warns the coach about a measured result outside range that has no row. Two blocks are chosen by rule in `hits_in`, not by row:
+  `ldl_only` (lipids at A with ApoB in range) and `iron_low_stores` (iron_low when ferritin is on the panel).
   Added and approved 20 Nov 2026 ("Yes, add all three"): `fallback_plus` (markers on the per-cent rule that also have
   listed lines, the worse of the two counts; a line with a `unit` applies only when the laboratory used that unit, else
   the coach gets a warning): PCV `hct`, `phosphorus`, `urea`, `bun`; `platelets` high D; and an `egfr` row from the

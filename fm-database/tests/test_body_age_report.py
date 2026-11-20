@@ -247,6 +247,89 @@ def test_one_metal_is_spoken_of_in_the_singular():
     assert "lead are" not in page.lower() and "lead is" in page.lower()
 
 
+# ── found by running the deeper report on a real panel (20 Nov 2026) ─────────
+def _plus(extra, over=None, kind="deeper", sex=None):
+    person = dict(FX["person"], **({"sex": sex} if sex else {}))
+    rows = labs(dict(STEADY, **(over or {})), metals=kind == "deeper") + extra
+    return make_report(person, rows, kind=kind, sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+
+
+def _lab(name, value, rng, unit="mg/dL"):
+    return dict(test_name=name, value=str(value), unit=unit, reference_range=rng)
+
+
+def test_hdl_inside_the_laboratorys_own_range_is_not_called_low():
+    assert level_for("hdl", 49, lo=40, hi=60, sex="F") == ""          # the table's line is 50, the laboratory's range starts at 40
+    assert level_for("hdl", 38, lo=40, hi=60, sex="F") == "B"         # below both
+    assert level_for("hdl", 47, sex="F") == "A"                       # no range printed: the table's line stands
+
+
+def test_a_measured_result_the_report_has_no_row_for_is_flagged_to_the_coach():
+    rp = _plus([_lab("Total IgE", 198, "< 100", "IU/mL"), _lab("Lipase", 65.5, "5-60", "U/L"), _lab("Amylase", 60, "28-100", "U/L")])
+    warned = " | ".join(rp.warnings)
+    assert "Total IgE" in warned and "Lipase" in warned and "Amylase" not in warned
+    assert report("deeper").warnings == []                            # the test profile has none
+
+
+def test_ferritin_folate_and_magnesium_have_rows_in_the_deeper_report():
+    rp = _plus([_lab("Ferritin", 60, "20-250", "ng/mL"), _lab("Folate", 9, "4-20", "ng/mL"), _lab("Magnesium", 2.0, "1.7-2.4")])
+    assert {"ferritin", "folate", "magnesium"} <= set(rp.rows) and all(not rp.rows[k].level for k in ("ferritin", "folate", "magnesium"))
+    assert "ferritin" not in _plus([_lab("Ferritin", 60, "20-250", "ng/mL")], kind="standard").rows
+    rp = _plus([_lab("Ferritin", 12, "20-250", "ng/mL")])
+    page = text(report_html(rp))
+    assert rp.rows["ferritin"].level and "iron stores" in page.lower() and not rp.missing
+
+
+def test_low_iron_carriers_never_say_the_stores_are_unmeasured_when_ferritin_is_there():
+    low = {"Transferrin Saturation": 10} if any(l["test_name"] == "Transferrin Saturation" for l in FX["lab_values"]) else None
+    if low is None:
+        pytest.skip("the profile has no transferrin saturation")
+    without = text(report_html(_plus([], low)))
+    with_ = text(report_html(_plus([_lab("Ferritin", 60, "20-250", "ng/mL")], low)))
+    assert "does not measure iron stores" in without and "does not measure iron stores" not in with_
+    assert "Your ferritin, shown beside it" in with_
+
+
+def test_rows_read_the_real_panels_spellings_and_never_a_ratio_that_shares_the_name():
+    def named(old, new, extra_first=()):
+        rows = list(extra_first) + [dict(l, test_name=new) if l["test_name"] == old else l for l in labs(STEADY, metals=True)]
+        return make_report(FX["person"], rows, kind="deeper", sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+    base = report("deeper", STEADY).rows
+    assert named("Bilirubin Total", "BILIRUBIN - TOTAL").rows["bilirubin"].value == base["bilirubin"].value
+    assert named("Phosphorus", "PHOSPHOROUS").rows["phosphorus"].value == base["phosphorus"].value
+    first = [_lab("SGOT / SGPT RATIO", 9.9, "< 2", ""), _lab("Mean Platelet Volume (MPV)", 9.9, "6.5-12", "fL"),
+             _lab("APO B / APO A1 RATIO (APO B/A1)", 9.9, "0.35-0.98", ""), _lab("RED CELL DISTRIBUTION WIDTH INDEX (RDWI)", 999, "< 220", "")]
+    rp = named("Phosphorus", "Phosphorus", extra_first=first)
+    for k in ("alt", "ast", "platelets", "apob", "apoa1", "rdw"):
+        assert rp.rows[k].value == base[k].value, k
+
+
+def test_chloride_has_its_own_words():
+    rp, _, _ = outcome({"Chloride": 111})
+    page = text(report_html(rp))
+    assert "Your chloride sits just outside its range." in page and "Chloride travels with sodium" in page
+
+
+def test_ldl_a_little_high_with_the_particle_count_in_range_is_not_called_artery_load():
+    rp, _, _ = outcome({"Cholesterol - LDL": 112})
+    ids = [h.finding.id for hs in rp.hits.values() for h in hs]
+    page = text(report_html(rp))
+    if rp.rows.get("apob") is not None and not rp.rows["apob"].level:
+        assert "ldl_only" in ids and "lipids" not in ids
+        assert "particle count is in range" in page and "artery load" not in page.lower() and "heavier load" not in page
+    rp, _, _ = outcome({"Cholesterol - LDL": 135})                    # clearly off: the approved wording stands
+    assert "lipids" in [h.finding.id for hs in rp.hits.values() for h in hs]
+
+
+def test_lpa_is_never_told_that_blood_cannot_say_why():
+    rp, _, _ = outcome({"Lipoprotein (a) [Lp(a)]": 95})
+    page = text(report_html(rp))
+    assert rp.rows["lpa"].level == "C" and "blood alone cannot say why" not in page and "It is inherited" in page
+    rp, _, _ = outcome({"Lipoprotein (a) [Lp(a)]": 95, "Homocysteine": 35})
+    step = next(t["text"] for t in rp.todo if "blood alone cannot say why" in t["text"])
+    assert "homocysteine" in step.lower() and "lp(a)</a>. " not in step.lower().split("blood alone")[0][-40:]
+
+
 # ── the test profile reads as the approved samples do ────────────────────────
 def test_profile_statuses_and_decision():
     rp = report("deeper")
@@ -446,7 +529,7 @@ SWEEP = [
     ("standard", {"hsCRP": 2.0}, "crp", "A"), ("standard", {"hsCRP": 6.8}, "crp", "B"), ("standard", {"hsCRP": 14}, "crp", "C"),
     ("standard", {"Homocysteine": 16}, "hcy", "A"), ("standard", {"Homocysteine": 22}, "hcy", "B"), ("standard", {"Homocysteine": 35}, "hcy", "C"),
     ("standard", {"Lipoprotein (a) [Lp(a)]": 40}, "lpa", "A"), ("standard", {"Lipoprotein (a) [Lp(a)]": 60}, "lpa", "B"),
-    ("standard", {"Cholesterol - LDL": 112}, "lipids", "A"), ("standard", {"Cholesterol - LDL": 195}, "lipids", "C"),
+    ("standard", {"Cholesterol - LDL": 112}, "ldl_only", "A"), ("standard", {"Cholesterol - LDL": 195}, "lipids", "C"),
     ("standard", {"Cholesterol - HDL": 33}, "hdl_low", "B"), ("standard", {"Triglycerides": 240}, "tg", "B"),
     ("standard", {"Triglycerides": 170}, "tg", "A"), ("standard", {"Triglycerides": 620}, "tg", "C"),
     ("standard", {"Fasting Glucose": 104}, "sugar", "A"), ("standard", {"HbA1c": 6.2}, "sugar", "B"), ("standard", {"HbA1c": 6.9}, "sugar", "C"),
@@ -457,7 +540,7 @@ SWEEP = [
     ("standard", {"TSH (Ultrasensitive)": 0.2}, "tsh_low", "B"), ("standard", {"TSH (Ultrasensitive)": 0.05}, "tsh_low", "C"),
     ("standard", {"Thyroxine (T4, Total)": 13.5}, "thyroid_hormones", "A"),
     ("standard", {"Creatinine": 1.25}, "kidney", "A"), ("standard", {"Creatinine": 1.4}, "kidney", "B"), ("standard", {"Creatinine": 1.7}, "kidney", "C"),
-    ("standard", {"Potassium": 5.3}, "salts", "A"), ("standard", {"Potassium": 3.3}, "salts", "B"), ("standard", {"Sodium": 128}, "salts", "C"), ("standard", {"Chloride": 111}, "salts", "A"),
+    ("standard", {"Potassium": 5.3}, "salts", "A"), ("standard", {"Potassium": 3.3}, "salts", "B"), ("standard", {"Sodium": 128}, "salts", "C"), ("standard", {"Chloride": 111}, "chloride", "A"),
     ("standard", {"Haemoglobin": 13.2}, "hb_low", "A"), ("standard", {"Haemoglobin": 12.5}, "hb_low", "C"), ("standard", {"Haemoglobin": 10.0}, "hb_low", "C"),
     ("standard", {"Haemoglobin": 17.3}, "hb_high", "A"), ("standard", {"Haemoglobin": 17.8}, "hb_high", "B"), ("standard", {"Haemoglobin": 19.0}, "hb_high", "C"),
     ("standard", {"Albumin": 3.4}, "albumin", "A"), ("standard", {"Albumin": 3.1}, "albumin", "B"), ("standard", {"Albumin": 2.8}, "albumin", "C"),
