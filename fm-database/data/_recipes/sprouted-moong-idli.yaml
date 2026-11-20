@@ -46,8 +46,8 @@ ingredients:
   qty: '1'
   unit: tsp
 - item: cold-pressed oil
-  qty: '2'
-  unit: tbsp
+  qty: '1'
+  unit: tsp
 - item: mustard seeds
   qty: '1'
   unit: tsp
@@ -109,10 +109,10 @@ kcal_total: 440
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 220
+  kcal: 120
   protein_g: 5.7
   carbs_g: 15.5
-  fat_g: 15.7
+  fat_g: 4.3
   fibre_g: 4.0
   iron_mg: 1.7
   calcium_mg: 92.8
@@ -123,7 +123,7 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 34.3
-  omega3_mg: 48.0
+  omega3_mg: 43.5
 nutrient_coverage_pct: 100.0
 rich_in:
 - folate
@@ -154,7 +154,7 @@ nutrient_lines:
   g: 2.0
 - i: 7
   key: sunflower-oil
-  g: 27.25
+  g: 4.541666666666667
 - i: 8
   key: mustard-seeds
   g: 4.166666666666667

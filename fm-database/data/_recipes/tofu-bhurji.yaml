@@ -43,8 +43,8 @@ ingredients:
   qty: '1'
   unit: tsp
 - item: cooking oil
-  qty: '1.5'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '1'
   unit: tsp
@@ -107,10 +107,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 246
+  kcal: 196
   protein_g: 13.4
   carbs_g: 15.1
-  fat_g: 16.2
+  fat_g: 10.6
   fibre_g: 4.5
   iron_mg: 3.8
   calcium_mg: 291
@@ -121,7 +121,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 89.2
-  omega3_mg: 342
+  omega3_mg: 340
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -131,7 +131,7 @@ rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: tofu
@@ -150,7 +150,7 @@ nutrient_lines:
   g: 5.0
 - i: 5
   key: sunflower-oil
-  g: 20.4375
+  g: 9.083333333333334
 - i: 6
   key: cumin-seeds
   g: 2.0833333333333335
