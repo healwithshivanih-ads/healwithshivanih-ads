@@ -878,20 +878,24 @@ def next_step(rp: Any, lib: Lib) -> dict:
         else:
             second = lib.d("step.foundation.far", names=join([noun_of(h) for h in far]), is_are="are" if len(far) > 1 or is_plural(far[0]) else "is")
     far_only = second
+    pct_off = round(100 * (rp.foundation_list - rp.foundation_after) / rp.foundation_list)
     if clear:
         second += (" " if second else "") + f"Your {join(clear[:1] + ['your ' + c for c in clear[1:]])} {'are' if len(clear) != 1 or clear[0].endswith('s') else 'is'} worth mentioning at your next routine check-up."
     return dict(
         outcome="foundation", headline=headline, paras=[p for p in (why, second) if p],
         email_paras=[p for p in (why, far_only) if p],
-        price=rp.foundation_after, credit=f"{inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
+        # Shivani, 20 Nov 2026: the full price crossed out, the price they pay, the discount, then her sentence
+        price=rp.foundation_after, list_price=rp.foundation_list, pct_off=pct_off,
+        credit=f"The price of your body age report is fully adjusted against a Foundation session if you sign up by {deadline}.",
         steps=[
             ("Before your session", "You fill in your full history in your own time, about 25 minutes, one short section at a time. It covers your health story in the order it happened, your diagnoses and family history, medicines past and present, how you eat, sleep, move and handle stress, your childhood and surroundings, what you have already tried, and each part of your body that bothers you. This is the part blood cannot show."),
             ("In your session", "It is online, by video call, wherever you are. I read your history against this report, and we go through both together."),
             ("Further tests", "You get the short list worth doing for you, and I read those with you when they are back. Most people need two to four, usually ₹1,000 to ₹5,000 in all, paid to the laboratory. You see the list and the price before you decide."),
             ("What you leave with", leave),
         ],
-        fresh=f"Your report fee comes off the session if you book by {deadline}. After that the session is {inr(rp.foundation_list)}.",
+        fresh=f"After {deadline} the session is {inr(rp.foundation_list)}.",
         after="Nothing, unless you want it. You leave with the order to work in, and your next test will show what has moved.",
-        email_offer=f"<b>A Foundation session, online, {inr(rp.foundation_after)}.</b> That is {inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
+        email_offer=(f"<b>A Foundation session, online: <s>{inr(rp.foundation_list)}</s> {inr(rp.foundation_after)} ({pct_off}% off).</b> "
+                     f"The price of your body age report is fully adjusted against a Foundation session if you sign up by {deadline}."),
         email_how=("You fill in your history first. Then we have an online session by video call: I read it against your report, and you leave with the short list of "
                    "further tests worth doing and the order to work in. Most people need two to four further tests, usually ₹1,000 to ₹5,000 in all, paid to the laboratory."))

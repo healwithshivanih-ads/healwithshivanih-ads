@@ -147,3 +147,4 @@ table.ct tr:last-child td{border-bottom:0}
 table.ct .v{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap} table.ct .v b{font-weight:650} table.ct .v span{font-size:11.5px;color:var(--mute);font-weight:400}
 table.ct td:first-child{width:40%} table.ct .v{width:22%} table.ct .s{width:16%} table.ct .r{color:var(--mute);font-size:12px} table.ct .s{text-align:right;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:650;color:var(--good);white-space:nowrap}
 table.ct tr.out .s,table.ct tr.out .v b{color:var(--hot-text)}
+ol.steps .st span s{color:var(--mute);font-size:17px;margin-right:6px} ol.steps .st span em{font-style:normal;font-family:var(--sans);font-size:12.5px;font-weight:650;letter-spacing:.05em;text-transform:uppercase;color:var(--good);margin-left:8px}

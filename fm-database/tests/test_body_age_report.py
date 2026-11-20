@@ -402,7 +402,8 @@ def test_email_carries_the_approved_short_version():
     t = text(mail.email_html(rp))
     assert "Your body age is about 42 . You are 52." in t
     assert "Most people need two to four further tests, usually ₹1,000 to ₹5,000 in all" in t      # no surprise later
-    assert "A Foundation session, online, ₹7,000." in t and "if you book by 21 July 2026" in t
+    assert "A Foundation session, online: ₹12,000 ₹7,000 (42% off)." in t      # the full price is crossed out (Shivani, 20 Nov 2026)
+    assert "fully adjusted against a Foundation session if you sign up by 21 July 2026" in t
     assert "online session by video call" in t
     assert "https://example.test/foundation/t" in mail.email_html(rp)
     assert 'src="cid:ring"' in mail.email_html(rp)
@@ -454,7 +455,9 @@ def test_foundation_price_and_deadline_follow_the_report_type_and_date():
     std, deep = report("standard"), report("deeper")
     assert (std.step["price"], deep.step["price"]) == (7000, 2000) == (FOUNDATION_AFTER_INR["standard"], FOUNDATION_AFTER_INR["deeper"])
     assert credit_deadline(date(2026, 7, 7)) == date(2026, 7, 21) and CREDIT_DAYS == 14
-    assert "₹12,000, with what you paid for this report taken off, if you book by 21 July 2026." in std.step["credit"]
+    assert std.step["credit"] == "The price of your body age report is fully adjusted against a Foundation session if you sign up by 21 July 2026."
+    assert (std.step["pct_off"], deep.step["pct_off"]) == (42, 83) and std.step["fresh"] == "After 21 July 2026 the session is ₹12,000."
+    assert "₹12,000 ₹2,000 83% off" in text(report_html(deep)) and "<s>₹12,000</s> ₹2,000 (83% off)" in deep.step["email_offer"]
 
 
 def test_the_web_price_rule_and_the_report_print_the_same_figures():
