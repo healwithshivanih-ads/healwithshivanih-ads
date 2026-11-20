@@ -69,7 +69,7 @@ export function weekNourishment(tagCounts: Record<string, number>): WeekNourishm
   const phrases = top.map((t) => TAG_PHRASE[t]);
   const leadFood = TAG_FOOD[top[0]];
   const foodClause = leadFood ? `Lots of ${leadFood} this week — ` : "This week leans into ";
-  const line = `🌿 ${foodClause}${joinNat(phrases)}.`;
+  const line = `${foodClause}${joinNat(phrases)}.`;
   return { tags: top, line };
 }
 

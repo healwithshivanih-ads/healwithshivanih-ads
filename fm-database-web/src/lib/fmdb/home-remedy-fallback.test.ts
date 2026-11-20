@@ -149,7 +149,7 @@ describe("remedies only ever fill a gap", () => {
  * contradict. Break either and a client gets someone else's drink.
  */
 describe("a one-word name counts only when it identifies exactly one remedy", () => {
-  const CHAAS = "Spiced Lassi (Buttermilk) for Digestion";
+  const CHAAS = "Spiced Lassi (Buttermilk)"; // "for …" dropped for clients (clientRemedyName)
 
   it("resolves the buttermilk/chaas dish that no single name matched", async () => {
     const resolve = buildHomeRemedyResolver(await loadRemedyFallbackLibrary());
