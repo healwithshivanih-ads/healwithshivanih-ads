@@ -103,3 +103,31 @@ A "Body age report" card on a person's More tab (`clients-v2/[id]/body-age-repor
 (the script refuses a real buyer before the launch). `lib/fmdb/body-age-report-view.ts` turns the script's JSON
 into links; `/api/body-age-file/[id]/[report]/[name]` serves the PDF and the email preview, coach-only (not on
 `PUBLIC_PATH_PREFIXES`, so 404 on Fly). Nothing sends. "Save to their record" passes `record: true`.
+
+## Extra results and the Urine section (20 Nov 2026)
+Her rule: "we are asking them to do these tests so we should explain the report to them." Every result the two
+packages print now has a row. Source of every word: `extra-results-wording-draft.md` (design session's notes, her
+"All approved": D1 to D8, C1 to C41, F1 to F19). None of it enters the body age score or the drawings (D1).
+
+- **Rows** (`panel.py`): `Spec.extra` marks them. Three kinds that are not ordinary rows:
+  `noflag` = the laboratory's own ratios and indices, shown, never a level (D2); `note` = one white cell type or a
+  finer red cell / platelet measure, never a level, one fixed paragraph and the section's status does not move
+  (F9, F10; the coach is warned when one is far out); `quiet` = total IgE and every urine result, a level and a
+  paragraph, the section goes to "watch" at most and never brings the session offer (D4, D6).
+  `Spec.worked` rows read the laboratory's ratio lines, which every other row skips (`_WORKED_OUT`).
+- **Compact tables** (`Spec.table`, `panel.TABLES`, `page.compact_tables`): long lists print as one table per
+  heading, not a bar each (D8). A section with more than 12 results is allowed to run across pages.
+- **New sections**: "Allergy and autoimmune markers" and "Pancreas" (deeper), "Urine" (both, last). "Metals" is
+  now "Metals and trace elements". An older draw without those results simply has no such section, no warning.
+- **Urine** (`panel.urine_section`): results are words. "Trace" = level A, "present" = level B, never further.
+  A cell count is read against the laboratory's range on the per-cent rule, capped at B. Names that also exist in
+  blood (protein, glucose, bilirubin, blood, red cells, pH, volume) are read only when the test name (or a
+  `specimen` / `panel` field) says urine. NOT YET CHECKED against a real urine printout: the first order must be.
+- **Levels**: the per-cent rule, plus `cap_at_B: [ige]` and the `rf` / `anti_ccp` / `ana` lines in `cutoffs.yaml`.
+- **Session offer**: an extra just outside its range does not count towards "three small things" (`Group.extra`).
+  Clearly off or far out, an extra counts like any other result, except the quiet ones.
+- **Page 1** lists an extra only when clearly off or far out (D7): `wording.small_extras_only`.
+- **Ferritin** keeps the three-level blocks approved earlier the same day; the design file's F1/F2 are one-level.
+  Her pick between the two is open.
+- The two approved samples changed by rows only (VLDL, total protein, globulin, neutrophils, eosinophils, UIBC)
+  and are now 18 and 20 pages (were 16 and 19).

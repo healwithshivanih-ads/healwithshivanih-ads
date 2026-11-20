@@ -25,8 +25,9 @@ def _counts(r: Row) -> bool:
 
 def set_section_status(sec: Section) -> None:
     rows = [r for r in sec.rows if _counts(r)]
-    work = [r for r in rows if rank(r.level) >= 2 and r.nature == "work"]
-    deep = [r for r in rows if rank(r.level) >= 2 and r.nature != "work"]
+    loud = [r for r in rows if not r.quiet]          # a quiet row (total IgE, urine) takes its section to "watch" at most
+    work = [r for r in loud if rank(r.level) >= 2 and r.nature == "work"]
+    deep = [r for r in loud if rank(r.level) >= 2 and r.nature != "work"]
     if work:
         sec.status, sec.key = "needs attention", "att"
     elif deep:
@@ -43,6 +44,7 @@ class Group:
     level: str
     nature: str
     section: str
+    extra: bool = False           # an explained extra result: just outside its range, it does not count towards the session offer
 
 
 def groups_of(sections: list[Section]) -> list[Group]:
@@ -52,9 +54,11 @@ def groups_of(sections: list[Section]) -> list[Group]:
         for r in s.rows:
             if not _counts(r) or not r.level:
                 continue
+            lv = "A" if r.quiet else r.level          # quiet rows never bring the session offer by themselves (D4, D6)
             g = out.get(r.group)
-            if g is None or rank(r.level) > rank(g.level):
-                out[r.group] = Group(r.group, r.level, r.nature, s.id)
+            if g is None or rank(lv) > rank(g.level):
+                out[r.group] = g = Group(r.group, lv, r.nature, s.id, extra=g.extra if g else True)
+            g.extra = g.extra and r.extra
     return list(out.values())
 
 
@@ -151,9 +155,10 @@ def decide(sections: list[Section], *, body_age: float, age: int, deeper: bool) 
     clear = [g for g in groups if rank(g.level) >= 2]
     clear_own = [g for g in clear if g.nature != "inherited"]
     edge = [g for g in groups if rank(g.level) == 1]
+    edge_main = [g for g in edge if not g.extra]      # three small things bring the offer; the extras are not counted
     if any(r.level == "D" for r in rows.values()):
         outcome = "doctor_soon"          # the strongest level: the doctor comes first and no session is offered
-    elif clear_own or gap > OLDER_BY_YEARS or len(edge) >= 3:
+    elif clear_own or gap > OLDER_BY_YEARS or len(edge_main) >= 3:
         outcome = "foundation"
     elif clear and not edge:
         outcome = "doctor_only"          # inherited and far enough out for a doctor, everything else steady
@@ -178,7 +183,7 @@ def decide(sections: list[Section], *, body_age: float, age: int, deeper: bool) 
         outcome=outcome, segment=segment, tags=tags,
         soon=[f"{r.name} {r.value:g} {r.unit}".strip() for r in rows.values() if r.level == "D"],
         deep_rows=[r.key for r in sorted(rows.values(), key=lambda r: -rank(r.level))
-                   if _counts(r) and rank(r.level) >= 2 and r.nature != "work"],
+                   if _counts(r) and rank(r.level) >= 2 and r.nature != "work" and not r.quiet],
         testimonials=testimonials, connections=conns, body_age_gap=gap)
 
 

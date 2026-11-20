@@ -138,3 +138,12 @@ table.pay td:last-child{font-weight:650} table.pay tfoot td{border-top:1px solid
 .fresh{margin-top:14px;max-width:62ch;font-family:var(--serif);font-size:17px;line-height:1.5}
 ul.terms{margin-top:10px;max-width:66ch;font-size:13.5px;color:var(--mute);list-style:disc;padding-left:18px} ul.terms li{margin-top:5px}
 nav{margin-top:44px} .navh{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:650;margin-top:56px} .navh+nav{margin-top:8px}
+
+/* compact tables: the long lists of extra results (added 20 Nov 2026) */
+.ctw{margin-top:14px} .cth{font-size:15px} .cth b{font-weight:650} .cth span{display:block;font-size:13px;color:var(--mute);line-height:1.35}
+table.ct{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:6px;background:var(--paper);border:1px solid var(--ink);font-size:13.5px}
+table.ct td{padding:5px 11px;border-bottom:1px solid var(--rule);vertical-align:baseline}
+table.ct tr:last-child td{border-bottom:0}
+table.ct .v{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap} table.ct .v b{font-weight:650} table.ct .v span{font-size:11.5px;color:var(--mute);font-weight:400}
+table.ct td:first-child{width:40%} table.ct .v{width:22%} table.ct .s{width:16%} table.ct .r{color:var(--mute);font-size:12px} table.ct .s{text-align:right;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:650;color:var(--good);white-space:nowrap}
+table.ct tr.out .s,table.ct tr.out .v b{color:var(--hot-text)}

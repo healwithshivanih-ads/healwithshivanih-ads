@@ -230,7 +230,7 @@ def map_for(sections, connections, rows, groups):
         status, tone = _node_status(key, g.level if g else "A", g.nature if g else "deep")
         nodes[key] = (label, status, tone, cx, cy)
     links = [(c.a, c.b, list(c.note), c.notepos, "start") for c in links_in if c.a in nodes and c.b in nodes]
-    steady = [STEADY_SHORT[s.id] for s in sections if s.status == "steady"]
+    steady = [STEADY_SHORT[s.id] for s in sections if s.status == "steady" and s.id in STEADY_SHORT]
     aside = ("steady, and not on this map: " + ", ".join(steady), 20, 20) if steady else None
     return nodes, links, aside
 
