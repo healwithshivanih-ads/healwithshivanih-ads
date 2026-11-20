@@ -41,8 +41,8 @@ ingredients:
   qty: '0.25'
   unit: tsp
 - item: cooking oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -86,10 +86,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 121
+  kcal: 101
   protein_g: 4.4
   carbs_g: 12.1
-  fat_g: 7.5
+  fat_g: 5.3
   fibre_g: 3.9
   iron_mg: 1.7
   calcium_mg: 82.3
@@ -100,13 +100,13 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 127
-  omega3_mg: 144
+  omega3_mg: 143
 nutrient_coverage_pct: 100.0
 rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: broccoli
@@ -128,7 +128,7 @@ nutrient_lines:
   g: 0.5208333333333334
 - i: 6
   key: sunflower-oil
-  g: 13.625
+  g: 9.083333333333334
 - i: 7
   key: salt
   g: 0.0

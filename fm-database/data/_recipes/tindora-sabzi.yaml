@@ -53,7 +53,7 @@ ingredients:
   unit: pinch
 - item: cooking oil
   qty: '2'
-  unit: tbsp
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -97,10 +97,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 190
+  kcal: 110
   protein_g: 3.3
   carbs_g: 12.7
-  fat_g: 14.7
+  fat_g: 5.6
   fibre_g: 4.5
   iron_mg: 3.2
   calcium_mg: 149
@@ -111,13 +111,13 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 24.0
-  omega3_mg: 30.3
+  omega3_mg: 26.7
 nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: tendli
@@ -148,7 +148,7 @@ nutrient_lines:
   g: 0.3
 - i: 9
   key: sunflower-oil
-  g: 27.25
+  g: 9.083333333333334
 - i: 10
   key: salt
   g: 0.0

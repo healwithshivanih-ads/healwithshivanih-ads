@@ -32,11 +32,11 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: bottle gourd, diced
-  qty: '2'
-  unit: cups
+  qty: '300'
+  unit: g
 - item: ghee or coconut oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: mustard seeds
   qty: '0.5'
   unit: tsp
@@ -105,32 +105,32 @@ kcal_total: 160
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 106
-  protein_g: 1.4
-  carbs_g: 5.9
-  fat_g: 9.0
-  fibre_g: 1.4
-  iron_mg: 1.0
-  calcium_mg: 50.9
-  magnesium_mg: 22.1
-  zinc_mg: 1.0
-  potassium_mg: 236
-  folate_ug: 12.0
+  kcal: 90.5
+  protein_g: 1.6
+  carbs_g: 7.1
+  fat_g: 6.8
+  fibre_g: 1.6
+  iron_mg: 1.1
+  calcium_mg: 60.0
+  magnesium_mg: 26.0
+  zinc_mg: 1.2
+  potassium_mg: 288
+  folate_ug: 14.1
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 12.2
-  omega3_mg: 65.0
+  vit_c_mg: 15.7
+  omega3_mg: 47.5
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: lauki
-  g: 230.0
+  g: 300.0
 - i: 1
   key: ghee
-  g: 13.625
+  g: 9.083333333333334
 - i: 2
   key: mustard-seeds
   g: 2.0833333333333335
@@ -156,13 +156,15 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: लौकी की सब्ज़ी
     steps:
-    - कड़ाही में मध्यम आँच पर घी गरम करें। राई डालकर चटकने दें, फिर जीरा, करी पत्ता और अदरक डालें; 30 सेकंड खुशबू आने तक भूनें।
+    - कड़ाही में मध्यम आँच पर घी गरम करें। राई डालकर चटकने दें, फिर जीरा, करी पत्ता
+      और अदरक डालें; 30 सेकंड खुशबू आने तक भूनें।
     - कटी हुई लौकी और हल्दी डालें। तड़के में अच्छी तरह मिलाएँ।
-    - नमक डालें, ढककर धीमी आँच पर 8-12 मिनट, बीच-बीच में चलाते हुए, सब्ज़ी के बस नरम होने (गली नहीं) तक पकाएँ। चिपके तो थोड़ा पानी छिड़कें।
-    - ढक्कन हटाकर थोड़ी देर तेज़ आँच पर बची नमी सुखा लें। चाहें तो कद्दूकस किया नारियल मिलाएँ।
+    - नमक डालें, ढककर धीमी आँच पर 8-12 मिनट, बीच-बीच में चलाते हुए, सब्ज़ी के बस नरम
+      होने (गली नहीं) तक पकाएँ। चिपके तो थोड़ा पानी छिड़कें।
+    - ढक्कन हटाकर थोड़ी देर तेज़ आँच पर बची नमी सुखा लें। चाहें तो कद्दूकस किया नारियल
+      मिलाएँ।
     - ताज़े धनिया से सजाकर रोटी या चावल के साथ गरम परोसें।

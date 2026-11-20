@@ -29,6 +29,8 @@ export interface SqShellState {
   togglePractice: (id: string) => void;
   /** The last week whose check-in was sent from this phone (0 = none). */
   checkinSentWeek: number;
+  /** Record that this week's check-in was sent from this phone. */
+  markCheckinSent?: () => void;
   /** The per-device larger-text setting, shared with today's app. */
   textLarge: boolean;
   setTextLarge: (on: boolean) => void;
@@ -57,6 +59,8 @@ export type SqSheet =
   | { k: "vitals" }
   | { k: "trip" }
   /** a screen a later build step fills in */
+  /** one of today's screens, hosted (sq-host.tsx) */
+  | { k: "hosted"; id: "menu" | "grocery" | "checkin" | "labs" | "move" }
   | { k: "soon"; title: string };
 
 export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "left" | "up" | "bag" | "pen" | "camera";

@@ -138,8 +138,113 @@ def _protein_suppressed(client: dict) -> bool:
     return False
 
 
-def _nutrient_targets_block(client: dict) -> list[str]:
+def _day_target_lines(client: dict, target_week: int | None) -> list[str] | None:
+    """New-app clients (app_shell: v2) only: the client's confirmed day target
+    (scripts/day_targets.py), so each day is BUILT to the grams the app shows
+    beside the menu. None for everyone else, whose menus stay as they were
+    until the coach moves them over."""
+    if client.get("app_shell") != "v2":
+        return None
+    try:
+        from day_targets import day_targets
+
+        t = day_targets(client, target_week)
+    except Exception:
+        return None
+    if t.get("status") != "ok":
+        return None
+    kcal = t.get("kcal_now") or 0
+    out = ["- Build EVERY day so its one-person portions add up close to these daily grams "
+           "(the client's app shows the day's total beside them, so a gap shows):"]
+    p = t.get("protein")
+    if p:
+        out.append(f"  - Protein: {p['low']} to {p['high']} g" if p["low"] != p["high"] else f"  - Protein: about {p['low']} g — do NOT go over")
+    cs = t.get("carb_share")
+    if cs and kcal:
+        out.append(f"  - Carbs: {round(kcal * cs[0] / 4)} to {round(kcal * cs[1] / 4)} g")
+    fs = t.get("fat_share")
+    if fs and kcal:
+        out.append(f"  - Fat: {round(kcal * fs[0] / 9)} to {round(kcal * fs[1] / 9)} g")
+    if t.get("fibre"):
+        out.append(f"  - Fibre: about {t['fibre']} g")
+    out.append("  Size portions to reach these (a bigger dal bowl, an extra roti, a curd, sprouts "
+               "or egg side); never invent a portion a person would not eat.")
+    out.append("  - Nuts and seeds (almonds, walnuts, brazil nut, pumpkin / sesame / flax seeds): "
+               "at most ONE small serving a day in total (about 6 almonds, or 1 tbsp seeds) — "
+               "not at every snack. They are the easiest way to overshoot the fat figure.")
+    return out
+
+
+_MENU_MACROS = None
+
+
+def _menu_macros():
+    """The app's menu-grams engine in Python (menu_macros.py, parity-pinned)."""
+    global _MENU_MACROS
+    if _MENU_MACROS is None:
+        from menu_macros import MenuMacros
+
+        _MENU_MACROS = MenuMacros()
+    return _MENU_MACROS
+
+
+_UNIT_WORD = {"piece": "1", "bowl": "1 bowl", "glass": "1 glass", "tbsp": "1 tbsp"}
+
+
+def _catalogue_with_grams(names: list[str]) -> list[str]:
+    """'Toor dal (1 bowl): protein 7 g, carbs 19 g, fat 3 g' for each catalogue
+    dish with known grams, so the drafter can CHOOSE dishes and portions that
+    add up to the day's target. Names without grams are listed bare."""
+    mm = _menu_macros()
+    out = []
+    for n in names:
+        hit = mm.recipe(n)
+        unit = (hit or {}).get("portion") or {}
+        line = mm.per_portion_line(n, _UNIT_WORD[unit["unit"]]) if unit.get("unit") in _UNIT_WORD else None
+        out.append(line or n)
+    return out
+
+
+def _check_days(days: list, target: dict) -> tuple[list[dict], list[str]]:
+    """Each drafted day's grams (exactly as the app will add them up) against
+    the target. Returns (per-day totals, plain misses for a fix-up pass)."""
+    mm = _menu_macros()
+    kcal = target.get("kcal_now") or 0
+    bands = {}
+    if target.get("protein"):
+        bands["protein_g"] = (target["protein"]["low"], target["protein"]["high"])
+    if target.get("carb_share") and kcal:
+        bands["carbs_g"] = (round(kcal * target["carb_share"][0] / 4), round(kcal * target["carb_share"][1] / 4))
+    if target.get("fat_share") and kcal:
+        bands["fat_g"] = (round(kcal * target["fat_share"][0] / 9), round(kcal * target["fat_share"][1] / 9))
+    if target.get("fibre"):
+        bands["fibre_g"] = (target["fibre"], None)
+    totals, misses = [], []
+    for i, d in enumerate(days):
+        dishes = [str(sl.get("dish") or "") for sl in (d.get("slots") or []) if isinstance(sl, dict)]
+        t = mm.day(dishes)
+        totals.append({"day": i + 1, **t})
+        for k, (lo, hi) in bands.items():
+            name = k[:-2]
+            if t[k] < lo * 0.92:
+                misses.append(f"Day {i + 1}: {name} {t[k]} g, needs {lo}{f' to {hi}' if hi and hi != lo else ''} g (add about {lo - t[k]} g)")
+            elif hi and t[k] > hi * 1.08:
+                misses.append(f"Day {i + 1}: {name} {t[k]} g, over the {hi} g ceiling (cut about {t[k] - hi} g)")
+    return totals, misses
+
+
+def _nutrient_targets_block(client: dict, target_week: int | None = None) -> list[str]:
     """Prompt lines: protein/fibre floors + lab-driven nutrient emphasis."""
+    dt_lines = _day_target_lines(client, target_week)
+    if dt_lines:
+        lines_dt = list(dt_lines)
+        priorities = lab_nutrient_priorities(client)
+        if priorities:
+            ranked = sorted(priorities, key=lambda t: -priorities[t])[:5]
+            lines_dt.append("- This client's recent labs are LOW on: " + "; ".join(
+                f"{t.replace('-', ' ')} ({_NUTRIENT_FOODS.get(t, '')})" for t in ranked) +
+                ". Lean the week toward dishes naturally rich in these.")
+        return lines_dt
     weight = _client_weight_kg(client)
     suppressed = _protein_suppressed(client)
     lines: list[str] = []
@@ -333,8 +438,8 @@ HARD RULES:
     (c) follicular days: the lighter, fresher end of the framework — more sprouts, fresh preparations, lighter grains.
     (d) ovulatory days: bright fresh meals; favour cruciferous vegetables (cabbage, cauliflower, broccoli — cooked if a thyroid caution applies) to support estrogen clearance.
     Blend transitions naturally — a week that crosses from late_luteal into menstrual should soften as it goes, not flip styles mid-week. NEVER name phases, hormones, or cycle days in the change_note; if the phase shaped the week, say it food-first ("kept dinners heartier this week", "leaned into lighter fresh meals").
-17. ALLERGIES + DAIRY ARE HARD RULES — the CLIENT block carries an ALLERGIES line and, when dairy is an issue, a DAIRY line. Never use an allergen, in any form. Follow the DAIRY line EXACTLY and let it override rule 10's protein anchors: for LACTOSE INTOLERANCE keep curd, paneer, buttermilk and ghee (and use lactose-free milk wherever milk is needed) — do not strip dairy wholesale; for a MILK-PROTEIN ALLERGY or an UNCONFIRMED dairy reaction use NO milk (lactose-free milk included), curd, buttermilk, raita, paneer, cheese or milk sweets — anchor protein with dal, sprouts, tofu, eggs/meat if eaten — and ghee only if the line says ghee is OK (otherwise cook in oil)."""
-18. COACH'S PRIORITY DISHES — a PRIORITY DISHES list may be provided: catalogue dishes the coach specifically wants on clients' menus. When you introduce or rotate a dish under rule 3, take it from this list FIRST wherever one genuinely fits the slot, and name it with its EXACT title (rule 13). Aim for the count the PRIORITY DISHES line states for this client across the week, as DIFFERENT dishes spread over different days and meal slots; never use the same priority dish more than twice in the week, and never more than one priority dish in a single meal. This rule YIELDS to every rule above it: skip any priority dish that breaks the framework (rule 1), client or coach feedback (rule 4), a food caution (rule 15) or an allergy or dairy rule (rule 17), and use none at all if the client has reported gas, bloating or discomfort from sprouts or legumes. Fewer priority dishes that fit beats the full count forced in.
+17. ALLERGIES + DAIRY ARE HARD RULES — the CLIENT block carries an ALLERGIES line and, when dairy is an issue, a DAIRY line. Never use an allergen, in any form. Follow the DAIRY line EXACTLY and let it override rule 10's protein anchors: for LACTOSE INTOLERANCE keep curd, paneer, buttermilk and ghee (and use lactose-free milk wherever milk is needed) — do not strip dairy wholesale; for a MILK-PROTEIN ALLERGY or an UNCONFIRMED dairy reaction use NO milk (lactose-free milk included), curd, buttermilk, raita, paneer, cheese or milk sweets — anchor protein with dal, sprouts, tofu, eggs/meat if eaten — and ghee only if the line says ghee is OK (otherwise cook in oil).
+18. COACH'S PRIORITY DISHES — a PRIORITY DISHES list may be provided: catalogue dishes the coach specifically wants on clients' menus. When you introduce or rotate a dish under rule 3, take it from this list FIRST wherever one genuinely fits the slot, and name it with its EXACT title (rule 13). Aim for the count the PRIORITY DISHES line states for this client across the week, as DIFFERENT dishes spread over different days and meal slots; never use the same priority dish more than twice in the week, and never more than one priority dish in a single meal. This rule YIELDS to every rule above it: skip any priority dish that breaks the framework (rule 1), client or coach feedback (rule 4), a food caution (rule 15) or an allergy or dairy rule (rule 17), and use none at all if the client has reported gas, bloating or discomfort from sprouts or legumes. Fewer priority dishes that fit beats the full count forced in."""
 
 
 def _plans_root() -> Path:
@@ -597,6 +702,16 @@ def main() -> None:
     except Exception:
         _caution_lines = ""
     cat_names = catalogue_dish_names(client.get("dietary_preference") or "")
+    # New-app clients: the confirmed day target the menu is built to.
+    dt_target = None
+    if client.get("app_shell") == "v2":
+        try:
+            from day_targets import day_targets as _dt
+
+            _t = _dt(client, target_week)
+            dt_target = _t if _t.get("status") == "ok" else None
+        except Exception:
+            dt_target = None
     # Rule 18. Vegetarian-leaning clients get the higher target: for them these
     # dishes carry protein, iron and folate the rest of the menu is short on.
     _dp = (client.get("dietary_preference") or "").lower()
@@ -632,10 +747,11 @@ def main() -> None:
             _caution_lines or "none for this client",
             "",
             "NUTRIENT TARGETS FOR THIS CLIENT (rule 10 — balance the week to these):",
-            *_nutrient_targets_block(client),
+            *_nutrient_targets_block(client, target_week),
             "",
             "CATALOGUE DISHES — name every cookable main dish with one of these EXACT titles (rule 13):",
-            ", ".join(cat_names),
+            *(["Grams are for the portion shown; scale them with the portion you write."] if dt_target else []),
+            ("\n".join(_catalogue_with_grams(cat_names)) if dt_target else ", ".join(cat_names)),
             "",
             *(["PRIORITY DISHES (rule 18 — aim for "
                f"{prio_target} different ones across the week, only where they fit):",
@@ -721,6 +837,57 @@ def main() -> None:
         print(json.dumps({"ok": False, "error": "menu had no food left after hygiene pass"}))
         return
 
+    # Built to the target (new-app clients): add each day up exactly as the
+    # app will, and give the model ONE chance to fix the days that miss —
+    # portions and sides only. What still misses is recorded for the coach.
+    target_check = None
+    fix_resp = None
+    if dt_target:
+        totals, misses = _check_days(tool_input["days"], dt_target)
+        if misses:
+            fix_user = (
+                user
+                + "\n\nYOUR DRAFT (as JSON):\n" + json.dumps(tool_input["days"], ensure_ascii=False)
+                + "\n\nDAY CHECK — these days miss this client's daily grams, counted with the "
+                "catalogue grams listed above:\n- " + "\n- ".join(misses)
+                + "\n\nReturn the WHOLE week again with these days fixed. Change portions and "
+                "sides only (a bigger dal bowl, an extra roti, a curd / paneer / sprouts side, "
+                "fewer nuts or less ghee); keep the same dishes wherever you can, and every rule above."
+            )
+            try:
+                fix_resp = client_api.messages.create(
+                    model=MODEL,
+                    max_tokens=4096,
+                    system=SYSTEM,
+                    tools=[_TOOL],
+                    tool_choice={"type": "tool", "name": "record_week_menu"},
+                    messages=[{"role": "user", "content": fix_user}],
+                )
+                fixed = next((b.input for b in fix_resp.content if getattr(b, "type", "") == "tool_use"), None)
+                if fix_resp.stop_reason != "max_tokens" and fixed and fixed.get("days"):
+                    scrub_menu_days(fixed["days"])
+                    snap_menu_days(fixed["days"])
+                    if any(isinstance(d, dict) and (d.get("slots") or []) for d in fixed["days"]):
+                        new_totals, new_misses = _check_days(fixed["days"], dt_target)
+                        if len(new_misses) <= len(misses):
+                            tool_input = fixed
+                            totals, misses = new_totals, new_misses
+            except Exception as e:  # noqa: BLE001 — the first draft still stands
+                print(f"[week-menu] fix-up pass failed: {e}", file=sys.stderr)
+        # Then the deterministic fit: portions moved and a protein side added
+        # so each day lands on the target (portion_fit.py). Diet-safe sides
+        # only; vegetables never cut.
+        try:
+            from portion_fit import fit_week
+
+            fits = fit_week(tool_input["days"], dt_target, client, _menu_macros())
+            totals, misses = _check_days(tool_input["days"], dt_target)
+            added = [f"Day {i + 1}: {f['added']}" for i, f in enumerate(fits) if f.get("added")]
+        except Exception as e:  # noqa: BLE001 — the draft still stands
+            print(f"[week-menu] portion fit failed: {e}", file=sys.stderr)
+            added = []
+        target_check = {"days": totals, "misses": misses, "sides_added": added}
+
     # re-read the plan fresh (avoid clobbering concurrent panel edits)
     plan = yaml.safe_load(pf.read_text()) or {}
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -745,6 +912,7 @@ def main() -> None:
             "change_note": str(tool_input.get("change_note") or "").strip(),
             "generated_at": now_iso,
             "inputs_summary": f"{len(feedback)} feedback signals, {len(edits)} coach edits",
+            **({"target_check": target_check} if target_check else {}),
         }
         change_note = plan["app_menu_pending"]["change_note"]
     write_text_atomic(pf, yaml.safe_dump(plan, sort_keys=False, width=100, allow_unicode=True))
@@ -760,6 +928,14 @@ def main() -> None:
             usage=resp.usage,
             notes=f"week {target_week} auto-draft for {plan_slug}",
         )
+        if fix_resp is not None:
+            log_usage(
+                client_id=client_id,
+                script="generate-week-menu.py",
+                model=MODEL,
+                usage=fix_resp.usage,
+                notes=f"week {target_week} target fix-up for {plan_slug}",
+            )
     except Exception:
         pass
 

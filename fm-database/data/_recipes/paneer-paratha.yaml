@@ -42,7 +42,7 @@ ingredients:
   qty: '0.25'
   unit: tsp
 - item: ghee (for cooking)
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: salt
   qty: to taste
@@ -87,10 +87,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 608
+  kcal: 547
   protein_g: 22.2
   carbs_g: 62.0
-  fat_g: 30.0
+  fat_g: 23.2
   fibre_g: 10.5
   iron_mg: 4.4
   calcium_mg: 355
@@ -101,7 +101,7 @@ nutrients_per_serving:
   b12_ug: 0.5
   vit_d_ug: 0.2
   vit_c_mg: 3.1
-  omega3_mg: 217
+  omega3_mg: 162
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -111,7 +111,7 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: wheat-flour
@@ -133,7 +133,7 @@ nutrient_lines:
   g: 0.5208333333333334
 - i: 6
   key: ghee
-  g: 27.25
+  g: 13.625
 - i: 7
   key: salt
   g: 0.0

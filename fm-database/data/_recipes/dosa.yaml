@@ -36,7 +36,7 @@ ingredients:
   qty: to taste
   unit: ''
 - item: oil or ghee for cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
 - Soak the rice separately, and the urad dal with the methi seeds, for 5–6 hours.
@@ -84,10 +84,10 @@ kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 381
+  kcal: 358
   protein_g: 11.1
   carbs_g: 69.9
-  fat_g: 6.2
+  fat_g: 3.5
   fibre_g: 4.6
   iron_mg: 2.3
   calcium_mg: 35.4
@@ -98,12 +98,12 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 82.7
+  omega3_mg: 62.2
 nutrient_coverage_pct: 100.0
 rich_in:
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: white-rice
@@ -119,18 +119,20 @@ nutrient_lines:
   g: 0.0
 - i: 4
   key: olive-oil
-  g: 27.0
+  g: 13.5
 nutrient_servings: 5.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: डोसा
     steps:
     - चावल को अलग, और उड़द दाल को मेथी दानों के साथ, 5–6 घंटे भिगोएँ।
     - पहले दाल को हल्का फूला हुआ पेस्ट बना पीसें, फिर चावल को थोड़ा दरदरा।
-    - घोल तब तैयार है जब वह फूल जाए और हल्की खट्टी खुशबू आए। पानी डालकर गिरने लायक पतला करें।
-    - तवा तब तक गरम करें जब पानी की बूँद उस पर छिटके। बीच में एक कलछी डालकर गोल-गोल बाहर की ओर फैलाएँ।
+    - घोल तब तैयार है जब वह फूल जाए और हल्की खट्टी खुशबू आए। पानी डालकर गिरने लायक
+      पतला करें।
+    - तवा तब तक गरम करें जब पानी की बूँद उस पर छिटके। बीच में एक कलछी डालकर गोल-गोल
+      बाहर की ओर फैलाएँ।
     - किनारों पर तेल डालें और तली सुनहरी होकर आसानी से उठने तक पकाएँ। मोड़कर परोसें।
-    - इस घोल से करीब 12 डोसे बनते हैं — करीब 5 सर्विंग। जो न पकाएँ उसे फ्रिज में रखें और 3 दिन में इस्तेमाल करें। मिलाएँ, नमक डालें और रातभर खमीर उठाएँ।
+    - इस घोल से करीब 12 डोसे बनते हैं — करीब 5 सर्विंग। जो न पकाएँ उसे फ्रिज में रखें
+      और 3 दिन में इस्तेमाल करें। मिलाएँ, नमक डालें और रातभर खमीर उठाएँ।

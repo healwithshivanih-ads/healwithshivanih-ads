@@ -46,7 +46,7 @@ ingredients:
   qty: to taste
   unit: ''
 - item: oil for cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: water
   qty: '1.75'
@@ -95,10 +95,10 @@ kcal_total: 300
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 384
+  kcal: 324
   protein_g: 8.2
   carbs_g: 51.6
-  fat_g: 15.9
+  fat_g: 9.0
   fibre_g: 6.6
   iron_mg: 2.9
   calcium_mg: 60.9
@@ -109,13 +109,13 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 3.2
-  omega3_mg: 53.9
+  omega3_mg: 51.1
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: jowar-flour
@@ -140,7 +140,7 @@ nutrient_lines:
   g: 0.0
 - i: 7
   key: sunflower-oil
-  g: 27.25
+  g: 13.625
 - i: 8
   key: water
   g: 0.0

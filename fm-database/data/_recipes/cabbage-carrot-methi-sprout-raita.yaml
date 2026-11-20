@@ -37,8 +37,8 @@ ingredients:
   qty: '1'
   unit: cup
 - item: ghee
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '1'
   unit: tsp
@@ -95,10 +95,10 @@ kcal_total: 350
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 175
+  kcal: 155
   protein_g: 6.1
   carbs_g: 14.0
-  fat_g: 11.4
+  fat_g: 9.1
   fibre_g: 2.8
   iron_mg: 1.6
   calcium_mg: 199
@@ -107,9 +107,9 @@ nutrients_per_serving:
   potassium_mg: 432
   folate_ug: 37.8
   b12_ug: 0.5
-  vit_d_ug: 0.2
+  vit_d_ug: 0.1
   vit_c_mg: 28.0
-  omega3_mg: 93.7
+  omega3_mg: 75.5
 nutrient_coverage_pct: 100.0
 rich_in:
 - calcium
@@ -131,7 +131,7 @@ nutrient_lines:
   g: 89.0
 - i: 4
   key: ghee
-  g: 13.625
+  g: 9.083333333333334
 - i: 5
   key: cumin-seeds
   g: 2.0833333333333335

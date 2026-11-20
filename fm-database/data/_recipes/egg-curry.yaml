@@ -105,33 +105,32 @@ kcal_total: 340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 398
-  protein_g: 16.3
-  carbs_g: 16.6
-  fat_g: 30.9
-  fibre_g: 4.2
-  iron_mg: 5.3
-  calcium_mg: 121
-  magnesium_mg: 65.5
-  zinc_mg: 2.2
-  potassium_mg: 707
-  folate_ug: 84.5
+  kcal: 328
+  protein_g: 15.4
+  carbs_g: 14.8
+  fat_g: 23.2
+  fibre_g: 3.6
+  iron_mg: 4.0
+  calcium_mg: 113
+  magnesium_mg: 49.3
+  zinc_mg: 2.0
+  potassium_mg: 617
+  folate_ug: 79.1
   b12_ug: 0.9
   vit_d_ug: 2.0
-  vit_c_mg: 21.3
-  omega3_mg: 113
+  vit_c_mg: 20.4
+  omega3_mg: 114
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - iron
 - zinc
 - potassium
-- folate
 - b12
 - vitamin-c
 - vitamin-d
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: egg
@@ -158,7 +157,7 @@ nutrient_lines:
   key: chilli-powder
   g: 1.25
 - i: 8
-  key: coconut-milk
+  key: coconut-milk-light
   g: 180.0
 - i: 9
   key: curry-leaves
@@ -170,7 +169,6 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: अंडा करी

@@ -36,7 +36,7 @@ ingredients:
   qty: to taste
   unit: ''
 - item: oil or ghee for cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
 - Rinse the foxtail millet well — millets carry more surface starch than rice.
@@ -83,13 +83,13 @@ kcal_total: 500
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 356
+  kcal: 332
   protein_g: 14.0
   carbs_g: 55.4
-  fat_g: 8.9
+  fat_g: 6.2
   fibre_g: 8.3
   iron_mg: 3.8
-  calcium_mg: 51.1
+  calcium_mg: 51.0
   magnesium_mg: 113
   zinc_mg: 2.4
   potassium_mg: 381
@@ -97,7 +97,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 108
+  omega3_mg: 87.1
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -106,7 +106,7 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-02'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: millet-foxtail
@@ -122,20 +122,23 @@ nutrient_lines:
   g: 0.0
 - i: 4
   key: olive-oil
-  g: 27.0
+  g: 13.5
 nutrient_servings: 5.0
 cycle_phases:
 - follicular
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: कंगनी दोसा
     steps:
     - कंगनी को अच्छे से धोएँ — मिलेट की सतह पर चावल से ज़्यादा स्टार्च होता है।
     - कंगनी को अलग, और उड़द दाल को मेथी के साथ, 5 घंटे भिगोएँ।
-    - दाल को हल्का और फूला हुआ पीसें, फिर कंगनी को थोड़ा दरदरा। नमक मिलाकर 8–10 घंटे खमीर उठने दें।
-    - गरम मौसम में मिलेट का घोल चावल के घोल से जल्दी खमीर उठाता है, इसलिए जल्दी जाँच लें।
-    - गरम तवे पर पतला फैलाएँ, किनारों पर तेल लगाएँ और नीचे से सुनहरा और कुरकुरा होने तक पकाएँ।
-    - इस घोल से करीब 12 दोसे बनते हैं — लगभग 5 सर्विंग। जो न बनाएँ उसे फ्रिज में रखें और 3 दिन में इस्तेमाल करें।
+    - दाल को हल्का और फूला हुआ पीसें, फिर कंगनी को थोड़ा दरदरा। नमक मिलाकर 8–10 घंटे
+      खमीर उठने दें।
+    - गरम मौसम में मिलेट का घोल चावल के घोल से जल्दी खमीर उठाता है, इसलिए जल्दी जाँच
+      लें।
+    - गरम तवे पर पतला फैलाएँ, किनारों पर तेल लगाएँ और नीचे से सुनहरा और कुरकुरा होने
+      तक पकाएँ।
+    - इस घोल से करीब 12 दोसे बनते हैं — लगभग 5 सर्विंग। जो न बनाएँ उसे फ्रिज में रखें
+      और 3 दिन में इस्तेमाल करें।

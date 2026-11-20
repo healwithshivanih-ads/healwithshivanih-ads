@@ -103,6 +103,9 @@ _APP_CLIENT_KEYS = (
     "app_shell",
     # Coach's switch for menu grams in the new app (meal-macros.ts nutrientsShown).
     "app_nutrients",
+    # Coach-set inputs to the daily targets (day_targets.py).
+    "carb_level",
+    "fibre_g",
     "intake_date",
     "next_contact_date",
     "active_conditions",
@@ -494,6 +497,18 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     fd = merged.get("food_diary")
     if isinstance(fd, dict):
         merged["food_diary"] = {k: v for k, v in fd.items() if k != "focus"}
+    # Daily nutrient targets (scripts/day_targets.py) are decided HERE, from
+    # the full Mac record: lab results and the rest never reach Fly. New-app
+    # clients only. Coach-side `notes` and the kidney menu figure stay home.
+    if merged.get("app_shell") == "v2":
+        try:
+            from day_targets import day_targets as _day_targets
+
+            dt = _day_targets(adata)
+            merged["day_targets"] = {k: v for k, v in dt.items() if k not in ("notes", "menu_protein_g", "record", "kcal_now")}
+        except Exception as e:  # a target failure must never stop the copy
+            merged.pop("day_targets", None)
+            print(f"[app-staging] day_targets failed for {adata.get('client_id')}: {e}", file=sys.stderr)
     s_client.write_text(yaml.safe_dump(merged, sort_keys=False, allow_unicode=True))
 
     # 3. letters (md + html + sidecars) + the send log. The app trusts ONLY

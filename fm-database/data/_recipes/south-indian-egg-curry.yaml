@@ -32,7 +32,7 @@ ingredients:
   qty: '6'
   unit: whole
 - item: coconut oil
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: mustard seeds
   qty: '0.5'
@@ -70,10 +70,10 @@ ingredients:
 - item: red chilli powder
   qty: '0.75'
   unit: tsp
-- item: thin coconut milk
+- item: light coconut milk
   qty: '1.5'
   unit: cup
-- item: thick coconut milk
+- item: light coconut milk
   qty: '0.5'
   unit: cup
 - item: salt
@@ -120,31 +120,29 @@ protein_g: 13.5
 kcal_per_serving: 403
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 403
-  protein_g: 13.5
-  carbs_g: 15.9
-  fat_g: 33.3
-  fibre_g: 4.1
-  iron_mg: 5.4
-  calcium_mg: 152
-  magnesium_mg: 69.1
-  zinc_mg: 2.0
-  potassium_mg: 633
-  folate_ug: 72.8
+  kcal: 280
+  protein_g: 12.3
+  carbs_g: 13.5
+  fat_g: 19.7
+  fibre_g: 3.3
+  iron_mg: 3.7
+  calcium_mg: 141
+  magnesium_mg: 47.5
+  zinc_mg: 1.6
+  potassium_mg: 513
+  folate_ug: 65.6
   b12_ug: 0.7
   vit_d_ug: 1.5
-  vit_c_mg: 14.5
-  omega3_mg: 92.0
+  vit_c_mg: 13.3
+  omega3_mg: 93.2
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - iron
-- calcium
-- zinc
 - potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -162,7 +160,7 @@ nutrient_lines:
   g: 300.0
 - i: 1
   key: coconut-oil
-  g: 27.25
+  g: 13.625
 - i: 2
   key: mustard-seeds
   g: 2.0833333333333335
@@ -200,10 +198,10 @@ nutrient_lines:
   key: chilli-powder
   g: 1.875
 - i: 14
-  key: coconut-milk
+  key: coconut-milk-light
   g: 360.0
 - i: 15
-  key: coconut-milk
+  key: coconut-milk-light
   g: 120.0
 - i: 16
   key: salt
@@ -212,13 +210,13 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 4.0
-
 translations:
   hi:
     name: साउथ इंडियन अंडा करी
     steps:
     - अंडे 10 मिनट उबालें, छीलें, हर एक पर 3–4 हल्के चीरे लगाएँ। अलग रखें।
     - नारियल तेल गरम करें। राई, सौंफ, करी पत्ता तड़काएँ। प्याज़ 10 मिनट सुनहरा करें।
-    - अदरक-लहसुन 1 मिनट भूनें, फिर टमाटर, मसाले, आधी काली मिर्च डालकर तेल छूटने तक पकाएँ।
+    - अदरक-लहसुन 1 मिनट भूनें, फिर टमाटर, मसाले, आधी काली मिर्च डालकर तेल छूटने तक
+      पकाएँ।
     - पतला नारियल दूध और नमक डालकर उबालें। अंडे डालकर 8 मिनट बिना ढके पकाएँ।
     - गाढ़ा नारियल दूध और बची मिर्च डालकर 2 मिनट धीमा पकाएँ। धनिया डालकर परोसें।

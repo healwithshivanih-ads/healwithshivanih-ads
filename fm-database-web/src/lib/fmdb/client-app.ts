@@ -284,6 +284,22 @@ import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
 import { loadSupply } from "./supply-store";
 import { recipePortion } from "./recipe-portion";
+import { buildPlainFoodLookup } from "./plain-foods";
+import { targetsForWeek, type DayTargets } from "./day-targets";
+import { currentHost } from "./client-thread";
+import { runShim } from "./shim";
+
+/** The day's target: on Fly from the projected spec (the full record never
+ *  reaches Fly); on the Mac from scripts/day_targets.py directly. */
+async function loadDayTargets(client: Record<string, unknown>, clientId: string, week: number): Promise<DayTargets | null> {
+  if (currentHost() === "fly") return targetsForWeek(client.day_targets, week);
+  try {
+    const out = (await runShim("day-targets.py", { client_id: clientId, plan_week: week })) as { ok?: boolean; targets?: unknown };
+    return out?.ok ? targetsForWeek(out.targets, week) : null;
+  } catch {
+    return null;
+  }
+}
 import { buildMacroLookup, macrosFromServing, mealMacros, nutrientsShown, type Macros, type MealMacros } from "./meal-macros";
 import { parsePackSize, unitsPerDay, type ItemSupply, type PackSize } from "./supply";
 import {
@@ -1507,6 +1523,9 @@ export interface ClientAppData {
    *  coach correction or an AI reading (see clientDiaryView). Absent on the
    *  discovery / guided tiers. */
   foodDiary?: ClientDiaryView | null;
+  /** The day's nutrient target in grams (day-targets.ts), new app only and
+   *  only while menu grams are on. */
+  dayTargets?: DayTargets | null;
   /** The client's own supply taps, folded per order-sheet row (supply.ts). */
   supply?: Record<string, ItemSupply>;
   reminders: {
@@ -4085,6 +4104,7 @@ export async function loadClientAppData(
           title: l.recipe.title,
           aliases: l.recipe.aliases,
           macros: l.recipe.macros,
+          kcal: l.recipe.kcalPerServing,
           portion: recipePortion(
             l.recipe.title,
             l.recipe.nutrientLines,
@@ -4095,6 +4115,9 @@ export async function loadClientAppData(
         })),
       )
     : null;
+  const plainLookup = macroLookup
+    ? buildPlainFoodLookup(portionTable?.entries as Parameters<typeof buildPlainFoodLookup>[0])
+    : undefined;
   const dishKcal = (dish: string): number | undefined => {
     const k = estimateDishKcal(dish, recipeKcalLookup);
     // Whole numbers only. A per-serving figure can now carry a decimal (an
@@ -4317,7 +4340,7 @@ export async function loadClientAppData(
         components: splitDishComponents(cell),
         note: slotNote(slotL),
         kcal: dishKcal(cell),
-        ...(macroLookup ? { macros: mealMacros(splitDishComponents(cell), macroLookup) } : {}),
+        ...(macroLookup ? { macros: mealMacros(splitDishComponents(cell), macroLookup, plainLookup) } : {}),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
         dishTitle: rec?.title || pills[0],
       });
@@ -6588,5 +6611,6 @@ export async function loadClientAppData(
     reminders,
     foodDiary,
     supply: loadSupply(clientId),
+    dayTargets: macroLookup && sqShell === "v2" ? await loadDayTargets(client, clientId, week) : null,
   };
 }

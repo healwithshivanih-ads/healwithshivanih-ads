@@ -7,6 +7,7 @@
  */
 
 import { gramsLine, macroLine, type MealMacros } from "@/lib/fmdb/meal-macros";
+import { targetLine, type DayTargets } from "@/lib/fmdb/day-targets";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import type { AppEatingOut } from "@/lib/fmdb/eating-out";
 import {
@@ -34,9 +35,12 @@ export function SqDaySheet({
   onToggle,
   open,
   menu,
+  target,
 }: {
   /** the day's menu total (meal-macros.ts); absent when switched off */
   menu?: MealMacros | null;
+  /** the day's target (day-targets.ts); absent when none is set */
+  target?: DayTargets | null;
   moments: SqMoment[];
   ticks: SqTicks;
   track: boolean;
@@ -55,6 +59,8 @@ export function SqDaySheet({
           {menu.complete ? "Today\u2019s menu adds up to" : "Today\u2019s menu adds up to about"}: {gramsLine(menu)}
         </p>
       )}
+      {target && targetLine(target) && <p className="sq-macros">Your day&rsquo;s target: {targetLine(target)}</p>}
+      {target?.line && <p className="sq-macros">{target.line}</p>}
       <SqCard>
         <div className="sq-list">
           {dayRows(moments).map((r) => {

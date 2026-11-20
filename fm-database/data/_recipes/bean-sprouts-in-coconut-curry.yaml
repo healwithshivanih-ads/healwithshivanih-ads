@@ -39,7 +39,7 @@ ingredients:
     sliced
   qty: '2'
   unit: cup
-- item: coconut milk, thick
+- item: light coconut milk, thick
   qty: '500'
   unit: ml
 - item: coconut oil
@@ -114,25 +114,24 @@ kcal_total: 1340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 335
-  protein_g: 8.0
-  carbs_g: 21.6
-  fat_g: 26.4
-  fibre_g: 6.2
-  iron_mg: 4.6
-  calcium_mg: 87.8
-  magnesium_mg: 94.3
-  zinc_mg: 1.6
-  potassium_mg: 659
-  folate_ug: 106
+  kcal: 238
+  protein_g: 6.7
+  carbs_g: 19.1
+  fat_g: 15.8
+  fibre_g: 5.4
+  iron_mg: 2.9
+  calcium_mg: 76.5
+  magnesium_mg: 71.8
+  zinc_mg: 1.2
+  potassium_mg: 534
+  folate_ug: 98.3
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 65.3
-  omega3_mg: 43.0
+  vit_c_mg: 64.0
+  omega3_mg: 44.3
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
-- iron
 - magnesium
 - potassium
 - folate
@@ -150,7 +149,7 @@ nutrient_lines:
   key: mixed-vegetables
   g: 240.0
 - i: 3
-  key: coconut-milk
+  key: coconut-milk-light
   g: 500.0
 - i: 4
   key: coconut-oil

@@ -23,8 +23,8 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: fenugreek leaves (methi), cleaned and chopped
-  qty: '3'
-  unit: cup
+  qty: '500'
+  unit: g
 - item: garlic, crushed
   qty: '4'
   unit: piece
@@ -44,8 +44,8 @@ ingredients:
   qty: '1'
   unit: pinch
 - item: cooking oil
-  qty: '1.5'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -86,32 +86,37 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 144
-  protein_g: 3.3
-  carbs_g: 10.0
-  fat_g: 11.0
-  fibre_g: 3.9
-  iron_mg: 4.4
-  calcium_mg: 174
-  magnesium_mg: 42.3
-  zinc_mg: 0.6
-  potassium_mg: 305
-  folate_ug: 43.6
+  kcal: 161
+  protein_g: 11.2
+  carbs_g: 17.9
+  fat_g: 7.1
+  fibre_g: 13.6
+  iron_mg: 17.2
+  calcium_mg: 716
+  magnesium_mg: 163
+  zinc_mg: 2.0
+  potassium_mg: 967
+  folate_ug: 166
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 30.9
-  omega3_mg: 74.6
+  vit_c_mg: 124
+  omega3_mg: 309
 nutrient_coverage_pct: 100.0
 rich_in:
+- fibre
 - iron
 - calcium
+- magnesium
+- zinc
+- potassium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: methi-leaves
-  g: 105.0
+  g: 500.0
 - i: 1
   key: garlic
   g: 12.0
@@ -132,7 +137,7 @@ nutrient_lines:
   g: 0.3
 - i: 7
   key: sunflower-oil
-  g: 20.4375
+  g: 9.083333333333334
 - i: 8
   key: salt
   g: 0.0

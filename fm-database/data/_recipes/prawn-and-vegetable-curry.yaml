@@ -104,21 +104,21 @@ kcal_total: 310
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 453
-  protein_g: 30.7
-  carbs_g: 28.5
-  fat_g: 27.0
-  fibre_g: 7.9
-  iron_mg: 5.1
-  calcium_mg: 194
-  magnesium_mg: 137
-  zinc_mg: 3.0
-  potassium_mg: 1298
-  folate_ug: 95.2
+  kcal: 361
+  protein_g: 29.5
+  carbs_g: 26.1
+  fat_g: 16.8
+  fibre_g: 7.0
+  iron_mg: 3.4
+  calcium_mg: 183
+  magnesium_mg: 115
+  zinc_mg: 2.7
+  potassium_mg: 1178
+  folate_ug: 88.0
   b12_ug: 1.4
   vit_d_ug: 0.2
-  vit_c_mg: 85.0
-  omega3_mg: 400
+  vit_c_mg: 83.8
+  omega3_mg: 402
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -132,7 +132,7 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: prawns
@@ -165,7 +165,7 @@ nutrient_lines:
   key: coriander-powder
   g: 2.5
 - i: 10
-  key: coconut-milk
+  key: coconut-milk-light
   g: 240.0
 - i: 11
   key: salt
@@ -174,7 +174,6 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: झींगा और सब्ज़ी की करी
@@ -183,4 +182,5 @@ translations:
     - प्याज़ नरम करें, अदरक-लहसुन पेस्ट डालें, फिर हल्दी और धनिया पाउडर डालें।
     - सब्ज़ियाँ थोड़े पानी के साथ डालें, ढककर बस नरम होने तक पकाएँ।
     - नारियल का दूध डालें और हल्का उबाल लाएँ।
-    - झींगे डालकर सिर्फ 4 मिनट पकाएँ, जब तक वे मुड़कर अपारदर्शी हो जाएँ। धनिया डालकर पूरा करें।
+    - झींगे डालकर सिर्फ 4 मिनट पकाएँ, जब तक वे मुड़कर अपारदर्शी हो जाएँ। धनिया डालकर
+      पूरा करें।

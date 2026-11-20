@@ -66,6 +66,7 @@ export type AskResult =
 
 const card = (c: AskCard): AskResult => ({ type: "card", card: c });
 const soon = (title: string): AskResult => ({ type: "open", sheet: { k: "soon", title } });
+const hosted = (id: "menu" | "grocery" | "checkin" | "labs" | "move"): AskResult => ({ type: "open", sheet: { k: "hosted", id } });
 const PLAN = "From your plan";
 const RECORD = "From your record";
 
@@ -618,15 +619,16 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (has(/what did i (tick|take|do|eat)|yesterday|history|\brecord\b|streak|in a row|how many days|proof|did i (take|have|tick)|what time did i/)) return { type: "open", sheet: { k: "record" } };
 
   // screens that arrive in later build steps
-  if (has(/exercise|workout|strength|movement|\bgym\b|sit.?to.?stand|push.?up/)) return soon("Movement");
-  if (has(/check.?in/)) return soon("Your check-in");
-  if (has(/weight|weigh|blood pressure|\bbp\b/)) return soon("Weight and blood pressure");
+  if (has(/exercise|workout|strength|movement|\bgym\b|sit.?to.?stand|push.?up/)) return data.exerciseSessions?.length ? hosted("move") : soon("Movement");
+  if (has(/book (a |my |the )?(blood )?test|(next|blood|lab) test|retest|\blab slot|collection slot/) && !has(/result|report|level|range|normal/)) return hosted("labs");
+  if (has(/check.?in/)) return hosted("checkin");
+  if (has(/weight|weigh|blood pressure|\bbp\b/)) return { type: "open", sheet: { k: "vitals" } };
   if (has(/how long|how many weeks|programme|program\b|when does (it|this) end|which week|what week/)) {
     return card({ src: PLAN, heading: `Week ${data.client.week} of ${data.client.totalWeeks}`, lines: [`Your programme runs ${data.client.totalWeeks} weeks.`] });
   }
-  if (has(/shopping|grocer|sabzi list|what (do|should) i (need to )?buy|\bsaman\b/)) return soon("Shopping list");
+  if (has(/shopping|grocer|sabzi list|what (do|should) i (need to )?buy|\bsaman\b/)) return data.grocery?.weeks?.some((w) => w.items.length) ? hosted("grocery") : soon("Shopping list");
   if (has(/\bcook\b|maharaj|\bbai\b|kitchen/) && has(/send|bhej|share|list|sheet/)) return soon("Send to my cook");
-  if (has(/reorder|re-order|running out|run out|ran out|refill|order (my |the |more )?(supplement|iron|magnesium|vitamin|capsule)/)) return soon("Order supplements");
+  if (has(/reorder|re-order|running out|run out|ran out|refill|order (my |the |more )?(supplement|iron|magnesium|vitamin|capsule)/)) return { type: "open", sheet: { k: "order" } };
 
   // her meals
   if (has(/mehman|\bguests?\b|party at home|kya banau|what (should|do|can) i (cook|make)/)) {
@@ -670,7 +672,7 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
       list: want ? undefined : slots.map((x) => ({ mark: "dot" as const, text: `${x.slot}: ${x.dish}` })),
     });
   }
-  if (has(/this week|week.?s menu|weekly menu|whole week/)) return soon("This week's menu");
+  if (has(/this week|week.?s menu|weekly menu|whole week/)) return data.weekMenus?.length ? hosted("menu") : soon("This week's menu");
   const meal = mealFor(s, moments);
   if (meal) return card(mealCard(meal, data));
   if (has(/(aaj|today).*(khana|kya|menu|meals?|eat|food)|(eat|khana|khau|khaun).*(today|aaj)|today.?s (meals|menu|food)|whole day|all meals/)) {
