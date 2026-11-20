@@ -33,6 +33,10 @@ export interface MealMacros extends Macros {
 
 /** Below this, a recipe's figures leave out too much of it to show. */
 export const MIN_COVERAGE = 90;
+/** Calories in ONE menu portion (a bowl, a piece, a glass) above which a
+ *  recipe's figures are a data error — a "mustard greens" sabzi whose
+ *  ingredients matched mustard SEEDS. Such a recipe shows no grams. */
+export const MAX_PORTION_KCAL = 700;
 
 export const MACRO_KEYS = ["protein_g", "carbs_g", "fat_g", "fibre_g"] as const;
 
@@ -70,11 +74,12 @@ function norm(s: string): string {
  *  Same matching as the calorie lookup (calorie-estimate.ts), so a dish gets
  *  its grams from the recipe its calories already come from. */
 export function buildMacroLookup(
-  recipes: { title: string; aliases?: string[]; macros?: Macros; portion?: Portion | null }[],
+  recipes: { title: string; aliases?: string[]; macros?: Macros; portion?: Portion | null; kcal?: number }[],
 ): MacroLookup {
   const idx: { name: string; hit: MacroHit }[] = [];
   for (const r of recipes) {
     if (!r.macros) continue;
+    if (r.kcal && r.kcal / (r.portion?.qty ?? 1) > MAX_PORTION_KCAL) continue;
     for (const n of [r.title, ...(r.aliases ?? [])]) {
       const name = norm(n || "");
       if (name.length >= 5) idx.push({ name, hit: { m: r.macros, portion: r.portion ?? null } });

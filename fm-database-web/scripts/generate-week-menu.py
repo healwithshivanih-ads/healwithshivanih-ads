@@ -172,6 +172,64 @@ def _day_target_lines(client: dict, target_week: int | None) -> list[str] | None
     return out
 
 
+_MENU_MACROS = None
+
+
+def _menu_macros():
+    """The app's menu-grams engine in Python (menu_macros.py, parity-pinned)."""
+    global _MENU_MACROS
+    if _MENU_MACROS is None:
+        from menu_macros import MenuMacros
+
+        _MENU_MACROS = MenuMacros()
+    return _MENU_MACROS
+
+
+_UNIT_WORD = {"piece": "1", "bowl": "1 bowl", "glass": "1 glass", "tbsp": "1 tbsp"}
+
+
+def _catalogue_with_grams(names: list[str]) -> list[str]:
+    """'Toor dal (1 bowl): protein 7 g, carbs 19 g, fat 3 g' for each catalogue
+    dish with known grams, so the drafter can CHOOSE dishes and portions that
+    add up to the day's target. Names without grams are listed bare."""
+    mm = _menu_macros()
+    out = []
+    for n in names:
+        hit = mm.recipe(n)
+        unit = (hit or {}).get("portion") or {}
+        line = mm.per_portion_line(n, _UNIT_WORD[unit["unit"]]) if unit.get("unit") in _UNIT_WORD else None
+        out.append(line or n)
+    return out
+
+
+def _check_days(days: list, target: dict) -> tuple[list[dict], list[str]]:
+    """Each drafted day's grams (exactly as the app will add them up) against
+    the target. Returns (per-day totals, plain misses for a fix-up pass)."""
+    mm = _menu_macros()
+    kcal = target.get("kcal_now") or 0
+    bands = {}
+    if target.get("protein"):
+        bands["protein_g"] = (target["protein"]["low"], target["protein"]["high"])
+    if target.get("carb_share") and kcal:
+        bands["carbs_g"] = (round(kcal * target["carb_share"][0] / 4), round(kcal * target["carb_share"][1] / 4))
+    if target.get("fat_share") and kcal:
+        bands["fat_g"] = (round(kcal * target["fat_share"][0] / 9), round(kcal * target["fat_share"][1] / 9))
+    if target.get("fibre"):
+        bands["fibre_g"] = (target["fibre"], None)
+    totals, misses = [], []
+    for i, d in enumerate(days):
+        dishes = [str(sl.get("dish") or "") for sl in (d.get("slots") or []) if isinstance(sl, dict)]
+        t = mm.day(dishes)
+        totals.append({"day": i + 1, **t})
+        for k, (lo, hi) in bands.items():
+            name = k[:-2]
+            if t[k] < lo * 0.92:
+                misses.append(f"Day {i + 1}: {name} {t[k]} g, needs {lo}{f' to {hi}' if hi and hi != lo else ''} g (add about {lo - t[k]} g)")
+            elif hi and t[k] > hi * 1.08:
+                misses.append(f"Day {i + 1}: {name} {t[k]} g, over the {hi} g ceiling (cut about {t[k] - hi} g)")
+    return totals, misses
+
+
 def _nutrient_targets_block(client: dict, target_week: int | None = None) -> list[str]:
     """Prompt lines: protein/fibre floors + lab-driven nutrient emphasis."""
     dt_lines = _day_target_lines(client, target_week)
@@ -640,6 +698,16 @@ def main() -> None:
     except Exception:
         _caution_lines = ""
     cat_names = catalogue_dish_names(client.get("dietary_preference") or "")
+    # New-app clients: the confirmed day target the menu is built to.
+    dt_target = None
+    if client.get("app_shell") == "v2":
+        try:
+            from day_targets import day_targets as _dt
+
+            _t = _dt(client, target_week)
+            dt_target = _t if _t.get("status") == "ok" else None
+        except Exception:
+            dt_target = None
 
     # Rule 17. This drafter used to see `foods_to_avoid` only — never the
     # allergy list — while rule 10 told it to anchor protein with paneer and
@@ -672,7 +740,8 @@ def main() -> None:
             *_nutrient_targets_block(client, target_week),
             "",
             "CATALOGUE DISHES — name every cookable main dish with one of these EXACT titles (rule 13):",
-            ", ".join(cat_names),
+            *(["Grams are for the portion shown; scale them with the portion you write."] if dt_target else []),
+            ("\n".join(_catalogue_with_grams(cat_names)) if dt_target else ", ".join(cat_names)),
             "",
             "CURRENT MENU (vary from this):",
             *cur_lines,
@@ -755,6 +824,57 @@ def main() -> None:
         print(json.dumps({"ok": False, "error": "menu had no food left after hygiene pass"}))
         return
 
+    # Built to the target (new-app clients): add each day up exactly as the
+    # app will, and give the model ONE chance to fix the days that miss —
+    # portions and sides only. What still misses is recorded for the coach.
+    target_check = None
+    fix_resp = None
+    if dt_target:
+        totals, misses = _check_days(tool_input["days"], dt_target)
+        if misses:
+            fix_user = (
+                user
+                + "\n\nYOUR DRAFT (as JSON):\n" + json.dumps(tool_input["days"], ensure_ascii=False)
+                + "\n\nDAY CHECK — these days miss this client's daily grams, counted with the "
+                "catalogue grams listed above:\n- " + "\n- ".join(misses)
+                + "\n\nReturn the WHOLE week again with these days fixed. Change portions and "
+                "sides only (a bigger dal bowl, an extra roti, a curd / paneer / sprouts side, "
+                "fewer nuts or less ghee); keep the same dishes wherever you can, and every rule above."
+            )
+            try:
+                fix_resp = client_api.messages.create(
+                    model=MODEL,
+                    max_tokens=4096,
+                    system=SYSTEM,
+                    tools=[_TOOL],
+                    tool_choice={"type": "tool", "name": "record_week_menu"},
+                    messages=[{"role": "user", "content": fix_user}],
+                )
+                fixed = next((b.input for b in fix_resp.content if getattr(b, "type", "") == "tool_use"), None)
+                if fix_resp.stop_reason != "max_tokens" and fixed and fixed.get("days"):
+                    scrub_menu_days(fixed["days"])
+                    snap_menu_days(fixed["days"])
+                    if any(isinstance(d, dict) and (d.get("slots") or []) for d in fixed["days"]):
+                        new_totals, new_misses = _check_days(fixed["days"], dt_target)
+                        if len(new_misses) <= len(misses):
+                            tool_input = fixed
+                            totals, misses = new_totals, new_misses
+            except Exception as e:  # noqa: BLE001 — the first draft still stands
+                print(f"[week-menu] fix-up pass failed: {e}", file=sys.stderr)
+        # Then the deterministic fit: portions moved and a protein side added
+        # so each day lands on the target (portion_fit.py). Diet-safe sides
+        # only; vegetables never cut.
+        try:
+            from portion_fit import fit_week
+
+            fits = fit_week(tool_input["days"], dt_target, client, _menu_macros())
+            totals, misses = _check_days(tool_input["days"], dt_target)
+            added = [f"Day {i + 1}: {f['added']}" for i, f in enumerate(fits) if f.get("added")]
+        except Exception as e:  # noqa: BLE001 — the draft still stands
+            print(f"[week-menu] portion fit failed: {e}", file=sys.stderr)
+            added = []
+        target_check = {"days": totals, "misses": misses, "sides_added": added}
+
     # re-read the plan fresh (avoid clobbering concurrent panel edits)
     plan = yaml.safe_load(pf.read_text()) or {}
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -779,6 +899,7 @@ def main() -> None:
             "change_note": str(tool_input.get("change_note") or "").strip(),
             "generated_at": now_iso,
             "inputs_summary": f"{len(feedback)} feedback signals, {len(edits)} coach edits",
+            **({"target_check": target_check} if target_check else {}),
         }
         change_note = plan["app_menu_pending"]["change_note"]
     write_text_atomic(pf, yaml.safe_dump(plan, sort_keys=False, width=100, allow_unicode=True))
@@ -794,6 +915,14 @@ def main() -> None:
             usage=resp.usage,
             notes=f"week {target_week} auto-draft for {plan_slug}",
         )
+        if fix_resp is not None:
+            log_usage(
+                client_id=client_id,
+                script="generate-week-menu.py",
+                model=MODEL,
+                usage=fix_resp.usage,
+                notes=f"week {target_week} target fix-up for {plan_slug}",
+            )
     except Exception:
         pass
 

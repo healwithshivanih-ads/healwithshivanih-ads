@@ -4104,6 +4104,7 @@ export async function loadClientAppData(
           title: l.recipe.title,
           aliases: l.recipe.aliases,
           macros: l.recipe.macros,
+          kcal: l.recipe.kcalPerServing,
           portion: recipePortion(
             l.recipe.title,
             l.recipe.nutrientLines,

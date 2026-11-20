@@ -62,7 +62,7 @@ FIBRE_GENTLE_G = 15
 FIBRE_G = 25
 FAT_SHARE = (0.20, 0.30)
 CARB_SHARE = {"glycaemic": (0.45, 0.45), "standard": (0.50, 0.55)}
-MAINTENANCE_ACTIVITY = "light"
+MAINTENANCE_ACTIVITY = "sedentary"  # coach, 20 Nov 2026: sedentary unless recorded
 
 
 def _terms_hit(client: dict, terms: list[str], *, history: bool = True) -> str | None:
@@ -225,7 +225,7 @@ def day_targets(client: dict, plan_week: int | None = None) -> dict[str, Any]:
         if t and t.get("tdee"):
             kcal_spec = {"maintenance": int(t["tdee"])}
             if not (wl or {}).get("activity_level"):
-                notes.append("maintenance at 'light' activity (none recorded)")
+                notes.append("maintenance at 'sedentary' activity (none recorded)")
     if not kcal_spec:
         return {"status": "none", "why": "height or age missing for calories"}
     kcal = _phase_kcal(kcal_spec.get("phases") or {}, plan_week) or kcal_spec.get("maintenance") or 0
