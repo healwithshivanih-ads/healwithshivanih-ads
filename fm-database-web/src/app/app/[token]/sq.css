@@ -740,3 +740,14 @@
   padding: max(14px, env(safe-area-inset-top, 0px)) var(--sq-gr) 8px var(--sq-gl);
 }
 .sq-app .sq-host-bar h2 { flex: 1; font-family: var(--sq-serif); font-weight: 500; font-size: 22px; color: var(--sq-ink); }
+
+/* Your results (sq-results.tsx) */
+.sq-app .sq-big-num { font-family: var(--sq-serif); font-size: 34px; color: var(--sq-ink); }
+.sq-app .sq-res { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.sq-app .sq-res li { padding: 10px 0; border-bottom: 1px solid var(--sq-line); }
+.sq-app .sq-res li:last-child { border-bottom: none; }
+.sq-app .sq-res-top { display: flex; justify-content: space-between; gap: 10px; }
+.sq-app .sq-res-name { font-weight: 600; color: var(--sq-ink); }
+.sq-app .sq-res-val { font-variant-numeric: tabular-nums; color: var(--sq-ink); white-space: nowrap; }
+.sq-app .sq-res-tag { font-size: 13.5px; color: var(--sq-muted); }
+.sq-app .sq-res-above .sq-res-tag, .sq-app .sq-res-below .sq-res-tag { color: var(--sq-cedar); font-weight: 600; }

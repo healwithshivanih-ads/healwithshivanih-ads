@@ -61,6 +61,8 @@ export type SqSheet =
   /** a screen a later build step fills in */
   /** one of today's screens, hosted (sq-host.tsx) */
   | { k: "hosted"; id: "menu" | "grocery" | "checkin" | "labs" | "move" }
+  /** released body age and lab numbers (sq-results.tsx) */
+  | { k: "results" }
   | { k: "soon"; title: string };
 
 export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "left" | "up" | "bag" | "pen" | "camera";

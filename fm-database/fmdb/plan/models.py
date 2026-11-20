@@ -644,6 +644,12 @@ class Client(BaseModel):
     # (food-diary-balance.ts diaryGentle), who is off unless set true. The
     # coach's switch on the client overview. Projected to Fly.
     app_nutrients: Optional[bool] = None
+    # Results the coach has released to the client's app (new front, step 5).
+    # A date (YYYY-MM-DD) once the coach presses "Share results"; unset means
+    # body age and lab numbers stay off the client's app and every results
+    # question goes to the coach. The note is shown above the numbers.
+    results_shared_on: Optional[str] = None
+    results_shared_note: Optional[str] = None
     # Daily nutrient targets (fm-database-web/scripts/day_targets.py).
     # carb_level: "glycaemic" | "standard" | a share the coach types (0.2-0.65);
     # unset = no carb target shown. fibre_g: a coach-typed fibre figure that

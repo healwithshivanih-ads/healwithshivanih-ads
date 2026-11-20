@@ -1,4 +1,5 @@
 import { classifyPracticeKind, supplementCadence, weeklyDueToday, type DayPart } from "./practice-kind";
+import { releasedResults, type AppResults } from "./released-results";
 import { pickEatingOutGuide, type AppEatingOut } from "./eating-out";
 import { type DairyClient, resolveDairy, treatsAsAllergy } from "./dairy-reaction";
 import "server-only";
@@ -1223,6 +1224,8 @@ export interface AppSqData {
    *  when there is no earlier open on record. Drives the return card, which
    *  must never claim anything was done or missed in between. */
   daysSinceLastOpen: number | null;
+  /** Results the coach has released (released-results.ts); null until then. */
+  results: AppResults | null;
 }
 
 export interface ClientAppData {
@@ -1868,7 +1871,7 @@ function ymdDiff(fromYmd: string, toYmd: string): number {
 /** The new front's extras — the saved record and how long she has been away.
  *  Every read is best-effort: a missing or broken file means an empty record
  *  and no return card, never a failed app load. */
-async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number): Promise<AppSqData> {
+async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null): Promise<AppSqData> {
   const rows = await loadTickRows(clientId, 15).catch(() => []);
   const tickHistory: AppTickDay[] = rows.map((r) => ({
     date: r.date,
@@ -1888,7 +1891,7 @@ async function loadSqData(clientId: string, clientDir: string, appTz: string, pl
   } catch {
     /* no opens on record */
   }
-  return { planDay, tickHistory, daysSinceLastOpen };
+  return { planDay, tickHistory, daysSinceLastOpen, results };
 }
 
 async function loadCheckinPrefill(
@@ -6499,7 +6502,7 @@ export async function loadClientAppData(
     mode: appMode,
     endgame,
     appShell: sqShell,
-    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay) : null,
+    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault)) : null,
     labOrders,
     client: {
       firstName,
