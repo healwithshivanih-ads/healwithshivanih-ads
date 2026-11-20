@@ -761,6 +761,25 @@ def _mirror_food_diary(sdir: Path, auth_person: Path) -> "tuple[int, list[str]]"
     return copied, errors
 
 
+def _mirror_supply(sdir: Path, auth_person: Path) -> "tuple[int, list[str]]":
+    """Fly → Mac only: _supply.<host>.jsonl, the client's own order/arrival taps
+    (src/lib/fmdb/supply.ts). Append-only per host, so a bigger copy is newer.
+    The Mac never writes one, so nothing goes the other way."""
+    copied = 0
+    errors: list = []
+    for jf in sorted(sdir.glob("_supply.*.jsonl")):
+        if jf.name == "_supply.mac.jsonl":
+            continue
+        dest = auth_person / jf.name
+        try:
+            if (not dest.exists()) or jf.stat().st_size > dest.stat().st_size:
+                shutil.copy2(jf, dest)
+                copied += 1
+        except Exception as e:
+            errors.append(f"supply-mirror: {e}")
+    return copied, errors
+
+
 def _merge_jsonl(src: Path, dest: Path, key: "str | None") -> int:
     """Fold a JSONL log written on Fly into the authoritative copy on the Mac.
 
@@ -1044,6 +1063,9 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             # One file per writing host, append-only, so a size-newer copy
             # is always right. Photos: copy-only, never delete.
             n, errs = _mirror_food_diary(sdir, auth_person)
+            out["checkins_mirrored"] += n
+            out["errors"].extend(f"{client_id} {e}" for e in errs)
+            n, errs = _mirror_supply(sdir, auth_person)
             out["checkins_mirrored"] += n
             out["errors"].extend(f"{client_id} {e}" for e in errs)
 

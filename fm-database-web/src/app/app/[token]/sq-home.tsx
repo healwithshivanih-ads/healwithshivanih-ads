@@ -32,7 +32,7 @@ import {
 import { SqAskBox } from "./sq-ask-ui";
 import { SqDiaryCard, type SqDiaryState } from "./sq-diary";
 import { SqStartCard } from "./sq-start";
-import { travellingNow, tripDates } from "./sq-everything";
+import { leftWords, lowRows, travellingNow, tripDates } from "./sq-everything";
 import { SqIcon, type SqSheet } from "./sq-ui";
 
 export interface SqHomeProps {
@@ -222,6 +222,8 @@ export function SqHome(p: SqHomeProps) {
         </button>
       )}
 
+      {p.ready && <SqLowCard data={p.data} onOpen={() => p.open({ k: "order" })} />}
+
       {p.diary?.view && <SqDiaryCard d={p.diary} onOpen={() => p.open({ k: "diary" })} />}
 
       {last && isTicked(last.id, last.kind, ticks) && (
@@ -305,5 +307,34 @@ export function SqHome(p: SqHomeProps) {
       )}
       {p.chips.length > 0 && <SqAskBox chips={p.chips} onAsk={p.onAsk} />}
     </>
+  );
+}
+
+/** "Running low": one card for every supplement within a week of running out,
+ *  from the client's own "It's arrived" tap and the pack size. Buy goes
+ *  straight to the shop when there is one; the card opens the order sheet. */
+function SqLowCard({ data, onOpen }: { data: ClientAppData; onOpen: () => void }) {
+  const low = lowRows(data, new Date().toLocaleDateString("en-CA"));
+  if (low.length === 0) return null;
+  const first = low[0];
+  return (
+    <section className="sq-card sq-trip">
+      <span className="sq-eyebrow">Running low</span>
+      <b>{low.length === 1 ? first.row.name : `${first.row.name} and ${low.length - 1} more`}</b>
+      <small>
+        {low.length === 1 ? `${leftWords(first.st)[0].toUpperCase()}${leftWords(first.st).slice(1)}.` : `${first.row.name}: ${leftWords(first.st)}.`}{" "}
+        Order now so it arrives in time.
+      </small>
+      <div className="sq-prow">
+        {low.length === 1 && first.row.buyUrl ? (
+          <a className="sq-btn sq-btn-solid sq-btn-small" href={first.row.buyUrl} target="_blank" rel="noopener noreferrer" onClick={onOpen}>
+            Buy
+          </a>
+        ) : null}
+        <button type="button" className="sq-btn sq-btn-quiet sq-btn-small" onClick={onOpen}>
+          {low.length === 1 ? "Order list" : "See them"}
+        </button>
+      </div>
+    </section>
   );
 }

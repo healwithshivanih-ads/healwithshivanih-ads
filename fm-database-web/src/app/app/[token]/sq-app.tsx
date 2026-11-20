@@ -403,7 +403,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       sheetBody = <SqSuppsSheet data={data} />;
     } else if (sheet.k === "order") {
       sheetTitle = "Order supplements";
-      sheetBody = <SqOrderSheet data={data} onAsk={() => toCoach("Where do I get the supplements that have no shop link?")} />;
+      sheetBody = <SqOrderSheet data={data} todayYmd={todayYmd} onAsk={() => toCoach("Where do I get the supplements that have no shop link?")} />;
     } else if (sheet.k === "vitals") {
       sheetTitle = "Weight and blood pressure";
       sheetBody = <SqVitalsSheet data={data} todayYmd={todayYmd} />;
