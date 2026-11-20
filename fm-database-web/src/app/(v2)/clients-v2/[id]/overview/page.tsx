@@ -56,6 +56,7 @@ import { EngagementPicker } from "../engagement-picker";
 import { ClientArchiveControl } from "../client-archive-control";
 import { DiscoveryAppCard } from "../discovery-app-card";
 import { FoundationSessionCard } from "../foundation-session-card";
+import { BodyAgeReportCard } from "../body-age-report-card";
 import { FoundingMemberCard } from "../founding-member-card";
 import { creditWindowFor, giftedSessionOf, isFoundingMember } from "@/lib/fmdb/founding";
 import { UnlockFullIntakeButton } from "../unlock-full-intake-button";
@@ -2306,6 +2307,10 @@ export default async function ClientV2Page({
                         !!giftedSessionOf(client as unknown as Record<string, unknown>)) && (
                         <FoundingMemberCard clientId={client.client_id} />
                       )}
+                      {/* Body age report: builds the PDF + email as drafts from the
+                          results on file. Nothing sends; the script refuses a real
+                          buyer before the launch and says so. */}
+                      <BodyAgeReportCard clientId={client.client_id} />
                       {!publishedPlan && engagement !== "signed_up" && (
                         <FoundationSessionCard
                           clientId={client.client_id}
