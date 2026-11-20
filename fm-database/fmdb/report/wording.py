@@ -24,7 +24,10 @@ from .levels import rank
 from .panel import Row, Section, b12_high, num
 
 # Draft keys Shivani has approved. "finding.<id>.<level>" for a block in findings.py, or a key of DRAFT below.
-APPROVED_DRAFTS: set[str] = set()
+APPROVED_DRAFTS: set[str] = {
+    # The strongest level's doctor words: Shivani's "Yes, approve", 20 Nov 2026. Nothing a buyer reads is called urgent.
+    "line.soon", "line.soon.short", "todo.soon", "step.soon.headline", "step.soon.para",
+}
 
 # key: (where it prints and when, the sentence). {slots} are filled from the person's results.
 DRAFT: dict[str, tuple[str, str]] = {

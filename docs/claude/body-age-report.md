@@ -37,7 +37,7 @@ approved, no personal Foundation link, a broken link in the PDF.
   `lpa` (mg/dL) or `lpa_nmol` row by the unit the laboratory used.
 - **Levels:** A just outside or middle zone (no doctor wording) · B clearly raised ("worth mentioning at your next
   routine check-up") · C far out ("needs a doctor's attention. Please speak to your doctor.", her wording of 19 Nov 2026,
-  no "as well") · D strongest ("needs a doctor's attention soon. Please see your doctor in the next day or two.", DRAFT).
+  no "as well") · D strongest ("needs a doctor's attention soon. Please see your doctor in the next day or two.", approved 20 Nov 2026 with its page-1 step and next-step lines).
   **Nothing is called urgent and nothing is held back** (her rule, 19 Nov 2026: a buyer may panic): a D result prints
   like any other, the doctor is step 1 on page 1, no session is offered (`outcome: doctor_soon`), and the command's
   `soon` list and a warning tell the coach to send it today. Calculated scores, insulin and ApoA1 stop at A; the scarring score (FIB-4) is the exception.

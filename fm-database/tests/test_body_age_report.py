@@ -295,7 +295,22 @@ def test_the_strongest_level_prints_stronger_doctor_words_and_never_the_word_urg
     step = page[page.rfind("Your next step"):page.rfind("Methods and references")]
     assert "needs a doctor's attention soon" in step or "need a doctor's attention soon" in step
     assert "₹" not in step and "session" not in step.lower()                  # the doctor first: no offer beside it
-    assert "line.soon" in rp.drafts                                             # her yes is still needed for the sentence
+    assert not [d for d in rp.drafts if ".soon" in d]                           # approved by Shivani, 20 Nov 2026
+
+
+def test_the_strongest_level_words_are_the_ones_shivani_approved():
+    from fmdb.report.wording import APPROVED_DRAFTS, DRAFT
+    approved = {
+        "line.soon": "A result at this level needs a doctor's attention soon. Please see your doctor in the next day or two.",
+        "line.soon.short": "Needs a doctor's attention soon.",
+        "todo.soon": "{names} {is_are} at a level that needs a doctor's attention soon. Please see your doctor in the next day or two, "
+                     "and take this report with you.",
+        "step.soon.headline": "{count} here {needs} a doctor's attention soon: your {names}.",
+        "step.soon.para": "Please see your doctor in the next day or two, and take this report with you. That comes before anything else here.",
+    }
+    assert set(approved) <= APPROVED_DRAFTS
+    for key, words in approved.items():
+        assert DRAFT[key][1] == words, key                                      # a changed word needs her yes again
 
 
 def test_far_out_keeps_her_sentence_and_only_the_strongest_level_says_soon():
@@ -407,10 +422,10 @@ def test_an_unlisted_result_that_is_clearly_off_is_pointed_out_to_the_coach():
 def test_the_approval_document_lists_every_draft_and_no_approved_sentence():
     from fmdb.report.findings import FINDINGS
     from fmdb.report.library_doc import markdown
-    from fmdb.report.wording import DRAFT
+    from fmdb.report.wording import APPROVED_DRAFTS, DRAFT
     doc = markdown()
     for key, (_where, sentence) in DRAFT.items():
-        assert f"<sub>{key}</sub>" in doc
+        assert (f"<sub>{key}</sub>" in doc) == (key not in APPROVED_DRAFTS), key     # approved: no longer up for review
     assert "finding.sugar.A · finding.sugar.B · finding.sugar.C" in doc and "finding.hcy.A" in doc
     for f in FINDINGS:
         assert f.title in doc or all(lv in f.approved for lv in "ABC")
