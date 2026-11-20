@@ -1,0 +1,69 @@
+[finding.egfr_low.C]
+head: Your kidney filtering figure appears to be below 60, the line at which it is usually checked again.
+today: Nothing you would feel.
+why: This figure is worked out from your creatinine, your age and your sex. It estimates how much blood your kidneys clean each minute, and it falls slowly with age. One reading below 60 cannot say whether it will hold: too little water, a hard workout or a high-protein meal before the test can sometimes lower it.
+do: A repeat test, with a urine test alongside it, is the usual first step.
+summary: Kidney filtering figure, below 60.
+
+[finding.hb_high.A]
+head: Your red cells sit just above their range.
+today: Nothing you would feel.
+why: Haemoglobin and haematocrit both measure how much of your blood is red cells. A reading a little above the range often means the blood was concentrated: too little water before the test is the commonest reason.
+do: Come to your next test well hydrated, unless you have been told to limit fluids. It is read again then.
+summary: Red cells, just above their range. Read again at your next test.
+
+[finding.hb_high.B]
+head: Your red cells appear to be clearly above their range.
+today: Nothing you would feel.
+why: Haemoglobin and haematocrit both measure how much of your blood is red cells. A high reading can sometimes mean the blood was concentrated on the morning of the test. Smoking, living at altitude and sleep broken by pauses in breathing can raise it too. A repeat helps tell these apart.
+do: Consider a repeat test, well hydrated, to see whether it holds.
+summary: Red cells, just above their range. Read again at your next test.
+
+[finding.hb_high.C]
+head: Your red cells appear to be far above their range.
+today: Often nothing. Some people notice headaches, a flushed face or itching after a warm bath.
+why: Haemoglobin and haematocrit both measure how much of your blood is red cells. At this level the blood may be thicker than it should be. Smoking, living at altitude and sleep broken by pauses in breathing can do it, and sometimes the body is making too many red cells. It is worth finding the reason.
+do: A repeat test in the coming days is the usual first step, with a look at the reason.
+summary: Red cells, just above their range. Read again at your next test.
+
+[finding.phosphorus_low.A]
+head: Your phosphorus sits just below its range.
+today: Nothing you would feel.
+why: Phosphorus works with calcium and vitamin D in bone and muscle. A reading a little below the range, with calcium in range, usually means little.
+do: It is read again at your next test, alongside your vitamin D.
+summary: Phosphorus, just below its range. Read again at your next test.
+
+[finding.phosphorus_low.B]
+head: Your phosphorus appears to be clearly low.
+today: Nothing you would feel.
+why: Phosphorus works with calcium and vitamin D in bone and muscle. A low reading can sometimes follow low vitamin D, some medicines or eating very little. A repeat shows whether it holds.
+do: Consider a repeat test, alongside your calcium and vitamin D.
+summary: Phosphorus, just below its range. Read again at your next test.
+
+[finding.phosphorus_low.C]
+head: Your phosphorus appears to be far below its range.
+today: Often nothing. Marked muscle weakness would be a reason not to wait.
+why: Phosphorus works with calcium and vitamin D in bone and muscle. A reading this low usually has a reason, and it is worth finding.
+do: A repeat test in the coming days is the usual first step.
+summary: Phosphorus, just below its range. Read again at your next test.
+
+[finding.platelets_high.A]
+head: Your platelet count sits just above its range.
+today: Nothing you would feel.
+why: Platelets are the cells that help blood clot. A count a little above the range often follows an infection, low iron or inflammation somewhere in the body. A repeat shows whether it was passing.
+do: It is read again at your next test.
+summary: Platelets, just above their range. Read again at your next test.
+
+[finding.platelets_high.B]
+head: Your platelet count appears to be clearly above its range.
+today: Nothing you would feel.
+why: Platelets are the cells that help blood clot. A raised count often follows an infection, low iron or inflammation somewhere in the body. A repeat shows whether it holds.
+do: Consider a repeat test, alongside your iron.
+summary: Platelets, just above their range. Read again at your next test.
+
+[finding.platelets_high.C]
+head: Your platelet count appears to be far above its range.
+today: Nothing you would feel.
+why: Platelets are the cells that help blood clot. A count this high can sometimes follow an infection, low iron or inflammation, and occasionally the body is making too many. It is worth finding the reason.
+do: A repeat test in the coming days is the usual first step, with a look at the reason.
+summary: Platelets, just above their range. Read again at your next test.

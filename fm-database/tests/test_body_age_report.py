@@ -192,8 +192,8 @@ def test_a_kidney_filtering_figure_of_60_or_over_prints_and_says_nothing(value):
 def test_a_kidney_filtering_figure_below_60_gets_the_doctor_sentence_and_its_own_words():
     rp = _with_egfr(52)
     page = text(report_html(rp))
-    assert rp.rows["egfr"].level == "C" and not rp.missing and "finding.egfr_low.C" in rp.drafts
-    assert "Your kidney filtering figure is below 60" in page and "needs a doctor's attention. Please speak to your doctor." in page
+    assert rp.rows["egfr"].level == "C" and not rp.missing and not [d for d in rp.drafts if "egfr" in d]
+    assert "Your kidney filtering figure appears to be below 60" in page and "needs a doctor's attention. Please speak to your doctor." in page
     assert SOON not in page and rp.decision.outcome == "foundation"
 
 
@@ -205,7 +205,7 @@ def test_the_creatinine_row_never_reads_the_filtering_figure():
 def test_a_strongest_level_phosphorus_prints_and_another_unit_is_flagged_not_guessed():
     rp, out, _ = outcome({"Phosphorus": 0.9}, kind="deeper")
     assert rp.rows["phosphorus"].level == "D" and out == "doctor_soon" and not rp.missing
-    assert SOON in text(report_html(rp)) and "finding.phosphorus_low.C" in rp.drafts
+    assert SOON in text(report_html(rp)) and not [d for d in rp.drafts if "phosphorus" in d]
     rows = [dict(l, value="1.1", unit="mmol/L", reference_range="0.8-1.5") if l["test_name"] == "Phosphorus" else l
             for l in labs(STEADY, metals=True)]
     rp = make_report(FX["person"], rows, kind="deeper", sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
@@ -215,10 +215,10 @@ def test_a_strongest_level_phosphorus_prints_and_another_unit_is_flagged_not_gue
 def test_high_red_cells_and_high_platelets_have_their_own_words():
     rp, _, _ = outcome({"Hematocrit (PCV)": 53})
     page = text(report_html(rp))
-    assert rp.rows["hct"].level == "B" and "Your red cells are clearly above their range." in page and "iron and B12" not in page
+    assert rp.rows["hct"].level == "B" and "Your red cells appear to be clearly above their range." in page and "iron and B12" not in page
     rp, _, _ = outcome({"Platelet Count": 700})
     page = text(report_html(rp))
-    assert rp.rows["platelets"].level == "C" and "Your platelet count is far above its range." in page and "falsely low" not in page
+    assert rp.rows["platelets"].level == "C" and "Your platelet count appears to be far above its range." in page and "falsely low" not in page
 
 
 # ── the test profile reads as the approved samples do ────────────────────────
@@ -496,6 +496,27 @@ def test_no_draft_gives_supplement_advice_or_false_comfort_above_just_outside():
 def test_an_unlisted_result_that_is_clearly_off_is_pointed_out_to_the_coach():
     rp, _, _ = outcome({"Blood Urea": 12})                        # 33% below range: level B, catch-all wording only
     assert any("Urea" in w and "catch-all" in w for w in rp.warnings)
+
+
+def _approved_finding_text() -> str:
+    """Every finding level approved through APPROVED_DRAFTS, as the words a report prints."""
+    from fmdb.report.findings import BY_ID, at
+    from fmdb.report.wording import APPROVED_DRAFTS
+    out = []
+    for key in sorted(k for k in APPROVED_DRAFTS if k.startswith("finding.")):
+        _, fid, lv = key.split(".")
+        f = BY_ID[fid]
+        out += [f"[{key}]"] + [f"{name}: {at(t, lv)}" for name, t in
+                               (("head", f.head), ("today", f.today), ("why", f.why), ("do", f.do), ("summary", f.summary))] + [""]
+    return "\n".join(out)
+
+
+def test_approved_finding_blocks_read_word_for_word_as_shivani_approved_them():
+    # To record a NEW approval: add the keys to wording.APPROVED_DRAFTS, then run with FMDB_WRITE_APPROVED=1 once.
+    path = FIX / "approved_findings.txt"
+    if os.environ.get("FMDB_WRITE_APPROVED"):
+        path.write_text(_approved_finding_text())
+    assert _approved_finding_text() == path.read_text()            # a changed word needs her yes again
 
 
 def test_the_approval_document_lists_every_draft_and_no_approved_sentence():

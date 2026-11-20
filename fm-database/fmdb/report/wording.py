@@ -27,6 +27,13 @@ from .panel import Row, Section, b12_high, num
 APPROVED_DRAFTS: set[str] = {
     # The strongest level's doctor words: Shivani's "Yes, approve", 20 Nov 2026. Nothing a buyer reads is called urgent.
     "line.soon", "line.soon.short", "todo.soon", "step.soon.headline", "step.soon.para",
+    # The four blocks written for the lines added on 20 Nov 2026, in the softer wording she asked for ("appears to
+    # be", "sometimes", "consider a repeat test"): her "Yes, use it", 20 Nov 2026. Approved here, not with
+    # Finding.approved, so the doctor sentence still comes first at far out (as she was shown).
+    "finding.egfr_low.C",
+    "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
+    "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",
+    "finding.phosphorus_low.A", "finding.phosphorus_low.B", "finding.phosphorus_low.C",
 }
 
 # key: (where it prints and when, the sentence). {slots} are filled from the person's results.
