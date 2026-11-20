@@ -131,6 +131,14 @@ async function projectClientLabOrders(clientId: string): Promise<LabOrder[]> {
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
+
+/** A client never sees a condition in a remedy's name: the catalogue's
+ *  "Psyllium Husk with Fresh Yogurt for Irritable Bowel Syndrome" reads
+ *  "Psyllium Husk with Fresh Yogurt". Coach's choice, 20 Nov 2026. */
+export function clientRemedyName(name: string): string {
+  return name.replace(/\s+for\s+.+$/i, "").trim();
+}
+
 export interface AppMeal {
   slot: string;
   timeHint: string;
@@ -3105,7 +3113,7 @@ async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: str
     const slug = asStr(d.slug) || name.replace(/\.ya?ml$/, "");
     // aliases[0] is the short biochemic order-name ("Nat Mur", "Kali Mur").
     const aliases = Array.isArray(d.aliases) ? (d.aliases as unknown[]).map(asStr) : [];
-    const abbrev = aliases[0] || asStr(d.display_name) || humanize(slug);
+    const abbrev = aliases[0] || clientRemedyName(asStr(d.display_name)) || humanize(slug);
     const num = d.salt_number;
     const displayName = num != null && `${num}`.trim() ? `${abbrev} (No. ${num})` : abbrev;
     const buyUrl = `https://www.amazon.in/s?k=${encodeURIComponent(`SBL ${abbrev} 6X tablets`)}`;
@@ -3151,7 +3159,7 @@ async function loadRemedyLibrary(): Promise<AppRemedy[]> {
       : [];
     out.push({
       slug,
-      name: asStr(d.display_name) || humanize(slug),
+      name: clientRemedyName(asStr(d.display_name)) || humanize(slug),
       also: aliases.slice(0, 2).map(humanize).join(" · "),
       aliases,
       category,
