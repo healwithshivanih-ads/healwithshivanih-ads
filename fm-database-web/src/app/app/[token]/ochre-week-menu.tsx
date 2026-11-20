@@ -386,14 +386,14 @@ export function GroceryOverlay({ onClose }: { onClose: () => void }) {
   return (
     <div className="overlay-scroll">
       <button className="back-link" onClick={onClose} style={{ margin: "0 0 4px" }}>
-        <Icon name="arrowLeft" size={18} /> Back to plan
+        <Icon name="arrowLeft" size={18} /> Back
       </button>
       <div className="overlay-pad" style={{ paddingTop: 4 }}>
         <div className="eyebrow">
           Shopping list · {done}/{total} ticked
         </div>
         <h2 className="h-serif" style={{ fontSize: 24, margin: "8px 0 0", lineHeight: 1.2 }}>
-          {data.menuIsSample ? "Your weekly groceries" : `Week ${week.week} groceries`}
+          {data.menuIsSample ? "Your weekly groceries" : week.week === currentWeek ? "This week's groceries" : `Week ${week.week} groceries`}
         </h2>
         <div className="muted" style={{ fontSize: 12.5, marginTop: 6 }}>
           Quantities are for one person — multiply for the family pot. Tap ⇄ on any

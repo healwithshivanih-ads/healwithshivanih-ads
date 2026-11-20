@@ -300,7 +300,7 @@ function GroupAsk({
 function CheckinBar({ onClose }: { onClose: () => void }) {
   return (
     <button className="back-link" onClick={onClose}>
-      <Icon name="arrowLeft" size={18} /> Progress
+      <Icon name="arrowLeft" size={18} /> Back
     </button>
   );
 }
