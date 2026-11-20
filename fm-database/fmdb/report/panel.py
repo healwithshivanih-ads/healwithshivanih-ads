@@ -124,7 +124,7 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
         S("ast", "AST", "an enzyme shared by liver and muscle", raw=r"\bast\b|sgot\b|aspartate.amino|aspartate transaminase", group="liver_enzymes"),
         S("ggt", "GGT", "sensitive to alcohol, medicines and liver fat", raw=r"\bggtp?\b|gamma.glutamyl|gamma-gt", group="liver_enzymes"),
         S("alp", "ALP", "bile flow and bone", raw=r"\balp\b|alkaline phosphatase|alk phos"),
-        S("bilirubin", "Bilirubin", "a pigment the liver clears", raw=r"total bilirubin|bilirubin.total|t.bili\b"),
+        S("bilirubin", "Bilirubin", "a pigment the liver clears", raw=r"total bilirubin|bilirubin\W*total|t.bili\b"),
         S("albumin", "Albumin", "the main protein the liver makes", raw=r"^(?!.*ratio)(?!.*binding)(?!.*urine)(?!.*micro).*\balbumin\b"),
         S("hsi", "Fat-storage score (HSI)", "estimates stored fat from enzymes and body size", comp=r"hepatic steatosis",
           kind="z3", a=30, b=36, rtxt="under 30 unlikely · over 36 likely", nature="work", beyond=True),
@@ -176,7 +176,7 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
         S("ferritin", "Ferritin", "your iron stores", raw=r"\bferritin\b", group="iron"),
         S("folate", "Folate", "a B vitamin, with B12", raw=r"\bfolate\b|folic acid|vitamin b9"),
         S("magnesium", "Magnesium", raw=r"^(?!.*urine)(?!.*rbc)(?!.*red cell).*\bmagnesium\b"),
-        S("phosphorus", "Phosphorus", raw=r"^(?!.*urine)(?!.*ratio).*(?:phosphorus|phosphate)"),
+        S("phosphorus", "Phosphorus", raw=r"^(?!.*urine)(?!.*ratio).*(?:phosphorus|phosphorous|phosphate)"),
     ]),
     ("metals", "Metals", True, [
         S("lead", "Lead", raw=r"\blead\b", under=True),
@@ -200,6 +200,10 @@ def num(v: float) -> str:
 def rng(v: float) -> str:
     """A bound of the laboratory's range: no trailing zeros (0.40 prints as 0.4, 13.0 as 13)."""
     return f"{int(v):,}" if float(v).is_integer() else f"{v:g}"
+
+
+_WORKED_OUT = re.compile(r"\bratio\b|\bindex\b|mean platelet|platelet distribution|platelet to large|plateletcrit|"
+                         r"\bmpv\b|\bpdw\b|\bplcr\b|\bpct\b")
 
 
 def _round(v: float, decimals: Optional[int]) -> float:
@@ -249,6 +253,9 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
 
     A row whose result is not on file is left out; a section with no rows at all is left out too."""
     out: list[Section] = []
+    # A row reads the result itself, never a figure worked out from it that carries its name ("SGOT / SGPT RATIO",
+    # "Mean Platelet Volume", "RDW index"): whichever the laboratory printed first used to win.
+    direct = [l for l in labs if not _WORKED_OUT.search(str(l.get("test_name") or "").lower())]
     for sid, name, deeper_only, specs in SECTIONS:
         if deeper_only and not deeper:
             continue
@@ -263,7 +270,7 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                     continue
                 v, unit = float(m["value"]), ""
             else:
-                v0, lab = _peek(labs, sp.raw)
+                v0, lab = _peek(direct, sp.raw)
                 if v0 is None or lab is None:
                     continue
                 v, unit = _scale(v0, sp.scale), str(lab.get("unit") or "")

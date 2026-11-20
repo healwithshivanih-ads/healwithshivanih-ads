@@ -290,6 +290,20 @@ def test_low_iron_carriers_never_say_the_stores_are_unmeasured_when_ferritin_is_
     assert "Your ferritin, shown beside it" in with_
 
 
+def test_rows_read_the_real_panels_spellings_and_never_a_ratio_that_shares_the_name():
+    def named(old, new, extra_first=()):
+        rows = list(extra_first) + [dict(l, test_name=new) if l["test_name"] == old else l for l in labs(STEADY, metals=True)]
+        return make_report(FX["person"], rows, kind="deeper", sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+    base = report("deeper", STEADY).rows
+    assert named("Bilirubin Total", "BILIRUBIN - TOTAL").rows["bilirubin"].value == base["bilirubin"].value
+    assert named("Phosphorus", "PHOSPHOROUS").rows["phosphorus"].value == base["phosphorus"].value
+    first = [_lab("SGOT / SGPT RATIO", 9.9, "< 2", ""), _lab("Mean Platelet Volume (MPV)", 9.9, "6.5-12", "fL"),
+             _lab("APO B / APO A1 RATIO (APO B/A1)", 9.9, "0.35-0.98", ""), _lab("RED CELL DISTRIBUTION WIDTH INDEX (RDWI)", 999, "< 220", "")]
+    rp = named("Phosphorus", "Phosphorus", extra_first=first)
+    for k in ("alt", "ast", "platelets", "apob", "apoa1", "rdw"):
+        assert rp.rows[k].value == base[k].value, k
+
+
 def test_chloride_has_its_own_words():
     rp, _, _ = outcome({"Chloride": 111})
     page = text(report_html(rp))
