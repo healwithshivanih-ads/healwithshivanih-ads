@@ -105,16 +105,14 @@ def is_coach_priority(recipe: dict) -> bool:
 def coach_priority_boost(recipe: dict, dietary_preference: str) -> float:
     """Score bonus for a coach-priority recipe, by the client's diet.
 
-    A Jain client gets none: the priority set is sprout dishes, and sprouted
-    pulses are commonly avoided in Jain practice. `diet_ok` does not know that
-    (it screens root vegetables), so the push is withheld here rather than
-    guessed at — the coach can still pin any dish by hand.
+    Jain clients are INCLUDED (coach decision 2026-11-20) and count as
+    vegetarian-leaning. Which priority dishes a Jain client can actually be
+    served is `diet_ok`'s job, not this function's: it has already dropped the
+    ones with onion, garlic or root vegetables before scoring happens.
     """
     if not is_coach_priority(recipe):
         return 0.0
     dp = (dietary_preference or "").lower()
-    if "jain" in dp:
-        return 0.0
     return COACH_PRIORITY_BOOST + (COACH_PRIORITY_VEG_BONUS if veg_leaning(dp) else 0.0)
 
 
