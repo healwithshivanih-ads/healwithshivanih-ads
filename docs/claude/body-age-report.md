@@ -93,5 +93,13 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-Sending the email from the app (today the command hands over the draft files); a coach screen; Shivani's approval of the
+Sending the email from the app (the coach card and the command both hand over draft files); Shivani's approval of the
 draft wording (written, not yet approved); how a buyer pays for the report and books the draw; the two-person report.
+
+## Coach screen (20 Nov 2026)
+
+A "Body age report" card on a person's More tab (`clients-v2/[id]/body-age-report-card.tsx`) calls
+`server-actions/body-age-report.ts::buildBodyAgeReport`, which runs the same script and adds no gate of its own
+(the script refuses a real buyer before the launch). `lib/fmdb/body-age-report-view.ts` turns the script's JSON
+into links; `/api/body-age-file/[id]/[report]/[name]` serves the PDF and the email preview, coach-only (not on
+`PUBLIC_PATH_PREFIXES`, so 404 on Fly). Nothing sends. "Save to their record" passes `record: true`.
