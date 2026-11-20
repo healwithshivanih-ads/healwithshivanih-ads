@@ -3,6 +3,9 @@ import {
   FOUNDATION_SESSION_PRICE_INR,
   buildFoundationOrder,
   foundationPriceFor,
+  bodyAgeCreditUntil,
+  todayYmdIST,
+  FOUNDATION_AFTER_BODY_AGE_REPORT_INR,
   resolveFoundationRazorpay,
   foundationWebhookSecret,
   foundationCallUrl,
@@ -100,5 +103,50 @@ describe("foundationPriceFor — the ₹999 short-call credit", () => {
   it("stamps the credit on the order it builds", () => {
     const o = buildFoundationOrder("f-1", "cl-1", "2026-09-25T00:00:00Z", foundationPriceFor({ triage_call_date: "2026-09-20" }));
     expect(o).toMatchObject({ amount_inr: 11001, credit_inr: 999 });
+  });
+});
+
+describe("foundationPriceFor — the body age report credit", () => {
+  const std = { body_age_report_kind: "standard", body_age_report_date: "2026-07-07" };
+  const deep = { body_age_report_kind: "deeper", body_age_report_date: "2026-07-07" };
+
+  it("is ₹7,000 after the standard report and ₹2,000 after the deeper one", () => {
+    expect(foundationPriceFor(std, "2026-07-07")).toMatchObject({ amountInr: 7000, creditInr: 5000, creditKind: "body_age_report" });
+    expect(foundationPriceFor(deep, "2026-07-10")).toMatchObject({ amountInr: 2000, creditInr: 10000 });
+    expect(FOUNDATION_AFTER_BODY_AGE_REPORT_INR).toEqual({ standard: 7000, deeper: 2000 });
+  });
+  it("holds up to and including day 14, and is the full price from day 15", () => {
+    expect(bodyAgeCreditUntil(std)).toBe("2026-07-21");
+    expect(foundationPriceFor(std, "2026-07-21")).toMatchObject({ amountInr: 7000, creditUntil: "2026-07-21" });
+    expect(foundationPriceFor(std, "2026-07-22")).toMatchObject({ amountInr: 12000, creditInr: 0 });
+    expect(foundationPriceFor(std, "2026-07-22").creditKind).toBeUndefined();
+  });
+  it("does not apply before the report date", () => {
+    expect(foundationPriceFor(std, "2026-07-06").amountInr).toBe(12000);
+  });
+  it("reads a js-yaml Date the same way", () => {
+    const c = { body_age_report_kind: "deeper", body_age_report_date: new Date("2026-07-07T00:00:00Z") };
+    expect(foundationPriceFor(c, "2026-07-15").amountInr).toBe(2000);
+  });
+  it("needs both a known type and a date, and ignores junk rather than discounting", () => {
+    expect(foundationPriceFor({ body_age_report_kind: "standard" }, "2026-07-08").amountInr).toBe(12000);
+    expect(foundationPriceFor({ body_age_report_date: "2026-07-07" }, "2026-07-08").amountInr).toBe(12000);
+    expect(foundationPriceFor({ body_age_report_kind: "premium", body_age_report_date: "2026-07-07" }, "2026-07-08").amountInr).toBe(12000);
+    expect(foundationPriceFor({ body_age_report_kind: "constructor", body_age_report_date: "2026-07-07" }, "2026-07-08").amountInr).toBe(12000);
+  });
+  it("does not add to the ₹999 short call: the larger credit applies, then the short call is left", () => {
+    const both = { ...std, triage_call_date: "2026-07-01" };
+    expect(foundationPriceFor(both, "2026-07-10")).toMatchObject({ amountInr: 7000, creditKind: "body_age_report" });
+    expect(foundationPriceFor(both, "2026-07-30")).toMatchObject({ amountInr: 11001, creditKind: "triage_call" });
+  });
+  it("stamps the report credit on the order it builds", () => {
+    const o = buildFoundationOrder("f-2", "cl-900", "2026-07-08T00:00:00Z", foundationPriceFor(deep, "2026-07-08"));
+    expect(o).toMatchObject({ amount_inr: 2000, credit_inr: 10000 });
+    expect(o.credit_reason).toContain("body age report");
+  });
+  it("counts the day in India, not in UTC", () => {
+    // 21 July 23:30 IST is still 21 July in India though it is 18:00 UTC; 22 July 00:30 IST is 21 July 19:00 UTC.
+    expect(todayYmdIST(new Date("2026-07-21T18:00:00Z"))).toBe("2026-07-21");
+    expect(todayYmdIST(new Date("2026-07-21T19:00:00Z"))).toBe("2026-07-22");
   });
 });

@@ -44,6 +44,11 @@ describe("followupDecision — who is open", () => {
   it("stops once any plan exists", () => {
     expect(followupDecision({ ...base, hasPlan: true }).draft).toBe(false);
   });
+  it("leaves a body age report buyer alone: with no call on record there is nothing to follow up", () => {
+    // A report buyer is stored like a prospect but never had a discovery call, so the scan has no anchor date.
+    const d = followupDecision({ ...base, callDate: "" });
+    expect(d.draft).toBe(false);
+  });
 
   it("stops when the coach exited it", () => {
     expect(followupDecision({ ...base, exited: true }).draft).toBe(false);

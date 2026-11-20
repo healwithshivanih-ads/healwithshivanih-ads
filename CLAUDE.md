@@ -99,6 +99,7 @@ Each line is a pointer, not the full rule: open the linked file before changing 
 - **Labs: Thyrocare is primary, Acumen the backup.** Any code touching a stored lab order loads ITS provider (`orderProviderSlug`), never the default; a Thyrocare order never alerts Acumen. → [booking spec](fm-database-web/docs/LAB_BOOKING_SPEC.md)
 - **The client app (`/app/<token>`) is served from Fly**: client-side changes need a Fly deploy; coach UI is localhost pm2 `fm-coach` on port 3002. → [v0.76](docs/claude/invariants-v0.73-v0.80.md), [run](docs/claude/run-and-cli.md)
 - **Catalogue edits:** new spellings are aliases on the entity that owns them; merges keep old slugs as aliases; ingest is authored in chat at $0, not via the API. → [v0.64, v0.67](docs/claude/history-v0.61-v0.72.md), [architecture](docs/claude/architecture-and-file-map.md)
+- **Body age report** (`fmdb/report/`): a buyer is a `prospect`; cut-offs only in `cutoffs.yaml` (approved 19 Nov 2026); no invented wording; nothing sends. → [doc](docs/claude/body-age-report.md)
 - **AI cost:** intake insights fire once on first submit only; every paid script calls `refuse_if_expired`; prefer Haiku where it fits. → [v0.72](docs/claude/history-v0.61-v0.72.md)
 
 ## Where the detail lives
