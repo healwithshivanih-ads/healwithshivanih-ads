@@ -47,6 +47,30 @@ APPROVED_DRAFTS: set[str] = {
     "finding.bilirubin.A", "finding.bilirubin.B", "finding.bilirubin.C",
     "finding.albumin.A", "finding.albumin.B", "finding.albumin.C",
     "finding.fib4.A", "finding.fib4.C",
+    # Her "all approved" (typed in the report design session on 20 Nov 2026, to the wording document printed for her
+    # there on 19 Nov; her message read in that session's transcript). It covers ONLY what reads today exactly as it
+    # did in that print: the finding levels below and every single phrase. The 17 finding levels softened on 20 Nov
+    # (tsh_low B/C, kidney B/C, salts B/C, hb_low B/C, white_cells B/C, platelets A/B/C, vitd_low B/C, b12_low B/C)
+    # were not in front of her and stay drafts until she says yes to them.
+    "finding.tsh_high.A", "finding.tsh_high.B", "finding.tsh_low.A", "finding.thyroid_hormones.A",
+    "finding.thyroid_hormones.B", "finding.thyroid_hormones.C", "finding.kidney.A", "finding.salts.A",
+    "finding.hb_low.A", "finding.red_cells.A", "finding.red_cells.B", "finding.red_cells.C",
+    "finding.white_cells.A", "finding.vitd_low.A", "finding.vitd_high.B", "finding.vitd_high.C",
+    "finding.b12_low.A", "finding.iron_low.A", "finding.iron_low.B", "finding.iron_low.C", "finding.iron_high.A",
+    "finding.iron_high.B", "finding.iron_high.C", "finding.metals.A", "finding.metals.B", "finding.metals.C",
+    "finding.generic.A", "finding.generic.B",
+    # the single phrases (sections 2 to 7 of the approval document)
+    "steady.heart.head", "steady.heart.today", "steady.sugar.head", "steady.sugar.today", "steady.liver.head",
+    "liver.fat_high.head", "liver.fat_high.means", "steady.thyroid.head", "steady.thyroid.today",
+    "steady.nutrients.head", "steady.nutrients.today", "b12_high.head", "rest.heart", "rest.sugar", "rest.thyroid",
+    "rest.nutrients", "rest.also", "todo.start.other", "todo.work.also", "todo.watch", "todo.deep.many",
+    "letter.older", "letter.level", "letter.steady", "letter.other", "bodyage.older", "bodyage.level",
+    "onebody.none", "conn.sugar_liver", "conn.inflammation_arteries", "conn.iron_haemoglobin",
+    "conn.b12_haemoglobin", "conn.vitd_alp", "next.steady.headline", "next.steady.when", "next.steady.expect",
+    "next.work.other", "next.hope.other", "step.nothing.headline", "step.nothing.para", "step.self.headline",
+    "step.self.para", "step.inherited.headline", "step.inherited.para", "step.doctor_only.headline",
+    "step.doctor_only.para", "step.foundation.work.headline", "step.foundation.work.why",
+    "step.foundation.work.leave", "step.foundation.far",
     "finding.egfr_low.C",
     "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
     "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",

@@ -57,6 +57,10 @@ approved, no personal Foundation link, a broken link in the PDF.
   PDFs; DRAFTS (the finding blocks in `findings.py` not marked approved, and the phrases in `wording.DRAFT`); and
   MISSING (a far-out result with no block), which stops the report. Each draft a report uses is listed in `drafts`
   and keeps it `ready: false`. When Shivani approves one, add its key to `wording.APPROVED_DRAFTS`.
+  Approved through `APPROVED_DRAFTS` and pinned word for word in `tests/fixtures/body_age/approved_findings.txt`
+  (20 Nov 2026): every single phrase and every finding level except 17 softened that day (tsh_low B/C, kidney B/C, salts B/C,
+  hb_low B/C, white_cells B/C, platelets A/B/C, vitd_low B/C, b12_low B/C). To record a new approval add the key and run the
+  test once with `FMDB_WRITE_APPROVED=1`.
   `python -m fmdb.report.library_doc` prints every draft as one document for her; it reads the library itself, so
   the document is exactly what a report would print. `tests/fixtures/body_age/approved_*.txt` is the approved text;
   the generator must reproduce it for the test profile apart from the listed differences (`ALLOWED` in the test).

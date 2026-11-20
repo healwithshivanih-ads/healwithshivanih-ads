@@ -502,12 +502,12 @@ def test_an_unlisted_result_that_is_clearly_off_is_pointed_out_to_the_coach():
 
 def _approved_finding_text() -> str:
     """Every finding level approved through APPROVED_DRAFTS, as the words a report prints."""
-    from fmdb.report.findings import BY_ID, at
-    from fmdb.report.wording import APPROVED_DRAFTS
-    out = []
+    from fmdb.report.findings import BY_ID, GENERIC, at
+    from fmdb.report.wording import APPROVED_DRAFTS, DRAFT
+    out = [f"[{key}]\nphrase: {DRAFT[key][1]}\n" for key in sorted(APPROVED_DRAFTS) if not key.startswith("finding.")]
     for key in sorted(k for k in APPROVED_DRAFTS if k.startswith("finding.")):
         _, fid, lv = key.split(".")
-        f = BY_ID[fid]
+        f = BY_ID.get(fid) or GENERIC
         out += [f"[{key}]"] + [f"{name}: {at(t, lv)}" for name, t in
                                (("head", f.head), ("today", f.today), ("why", f.why), ("do", f.do), ("summary", f.summary))]
         out += [f"closing: {f.line.get(lv, '').strip()}", f"page 1 step: {f.step}", ""]

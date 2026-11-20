@@ -1,3 +1,168 @@
+[b12_high.head]
+phrase: Your B12 is well above its range.
+
+[bodyage.level]
+phrase: A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies.
+
+[bodyage.older]
+phrase: A body age of {ba} at {age} says that today your blood looks like that of an older person in those studies. Many of the values behind it can change, and one illness before the test can raise it.
+
+[conn.b12_haemoglobin]
+phrase: Your haemoglobin and your B12 are both low. Red cells cannot be built properly without B12, so these two belong together.
+
+[conn.inflammation_arteries]
+phrase: In studies, people with both raised inflammation and a heavy particle load are at higher risk than people with either alone. That makes each of yours matter a little more.
+
+[conn.iron_haemoglobin]
+phrase: Your haemoglobin and your iron carriers are both low. Iron is what haemoglobin is built from, so these two belong together. The question is why iron is short.
+
+[conn.sugar_liver]
+phrase: A raised sugar reading and signs of fat in the liver often go together, because sugar the body cannot use straight away is stored as fat and the liver is one of the first places it goes. The same changes tend to bring both down.
+
+[conn.vitd_alp]
+phrase: Your vitamin D is low and one bone-linked enzyme is raised. The two often go together, because bone turns over faster when vitamin D runs short.
+
+[letter.level]
+phrase: {name}, this is a steady first result: your blood reads close to your age.
+
+[letter.older]
+phrase: {name}, this first result reads older than your age, and several of the things behind it can change.
+
+[letter.other]
+phrase: Where I would put the effort this year: {parts}.
+
+[letter.steady]
+phrase: Nothing in here needs fixing. The few things worth keeping an eye on are marked, with what moves each one.
+
+[line.soon]
+phrase: A result at this level needs a doctor's attention soon. Please see your doctor in the next day or two.
+
+[line.soon.short]
+phrase: Needs a doctor's attention soon.
+
+[liver.fat_high.head]
+phrase: Your liver enzymes are quiet. The score for stored fat reads high.
+
+[liver.fat_high.means]
+phrase: The score that estimates stored fat is above its upper line. It is worked out from enzymes and body size, so it is an estimate. Sugar, refined carbohydrate, alcohol and weight around the middle are what move it.
+
+[next.hope.other]
+phrase: The marked results moving back towards their range, and your body age holding or coming down.
+
+[next.steady.expect]
+phrase: The same steady picture, and a body age that has held or come down.
+
+[next.steady.headline]
+phrase: About a year after this test, because this report is steady all through.
+
+[next.steady.when]
+phrase: <b>Your next test:</b> {date}. A year is long enough to show whether anything has started to drift.
+
+[next.work.other]
+phrase: <b>If you work on this yourself:</b> {date}. Four months is long enough for a change to show.
+
+[onebody.none]
+phrase: Nothing in this report pulls on anything else. Each section stands on its own.
+
+[rest.also]
+phrase:  Also marked “{status}”: {name}.
+
+[rest.heart]
+phrase: your heart and arteries
+
+[rest.nutrients]
+phrase: your vitamins and iron
+
+[rest.sugar]
+phrase: your sugar handling
+
+[rest.thyroid]
+phrase: your thyroid
+
+[steady.heart.head]
+phrase: Your arteries are carrying a comfortable load, and the markers of wear are quiet.
+
+[steady.heart.today]
+phrase: Nothing to act on.
+
+[steady.liver.head]
+phrase: Your liver is working quietly.
+
+[steady.nutrients.head]
+phrase: Your vitamin D, B12 and iron are all comfortably in range.
+
+[steady.nutrients.today]
+phrase: Nothing here is short and nothing is overfull.
+
+[steady.sugar.head]
+phrase: Your morning sugar and your three-month average are both calm.
+
+[steady.sugar.today]
+phrase: Your body is holding its sugar steady without strain. Nothing to act on.
+
+[steady.thyroid.head]
+phrase: Your thyroid signal is calm, and the hormones it makes are in range.
+
+[steady.thyroid.today]
+phrase: Nothing to act on.
+
+[step.doctor_only.headline]
+phrase: One result here needs a doctor's attention: your {names}.
+
+[step.doctor_only.para]
+phrase: It is inherited, and food does not move it. Please speak to your doctor. Everything else in this report is steady, so you do not need a session with me.
+
+[step.foundation.far]
+phrase: Your {names} {is_are} far enough outside range to need a doctor's attention. Please speak to your doctor. The session covers the rest: what in your food, sleep, stress and routine may be feeding it.
+
+[step.foundation.work.headline]
+phrase: {count} in this report {is_are} worth working on with help: {things}.
+
+[step.foundation.work.leave]
+phrase: What is driving these numbers in your own routine, and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone.
+
+[step.foundation.work.why]
+phrase: Blood shows what is off. What moves it is in your routine: how you eat and sleep, what you take, what runs in your family, and when things began to change. It may also take a few further tests.
+
+[step.inherited.headline]
+phrase: One result here is worth mentioning at your next routine check-up: your {names}.
+
+[step.inherited.para]
+phrase: It is inherited, and food does not move it. Everything else in this report is steady, so you do not need a session with me.
+
+[step.nothing.headline]
+phrase: You do not need anything more from me.
+
+[step.nothing.para]
+phrase: Your report is steady all through. Test again in about a year, on {date}. A steady blood report does not rule out illness, so if something feels wrong, have it looked at.
+
+[step.self.headline]
+phrase: Nothing here needs me. The steps on the first page are yours to take.
+
+[step.self.para]
+phrase: What is marked in this report sits just outside its range. Your next test, on {date}, will show which way it is moving.
+
+[step.soon.headline]
+phrase: {count} here {needs} a doctor's attention soon: your {names}.
+
+[step.soon.para]
+phrase: Please see your doctor in the next day or two, and take this report with you. That comes before anything else here.
+
+[todo.deep.many]
+phrase: {names}. All sit well outside their range, and blood alone cannot say why.
+
+[todo.soon]
+phrase: {names} {is_are} at a level that needs a doctor's attention soon. Please see your doctor in the next day or two, and take this report with you.
+
+[todo.start.other]
+phrase: Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are.
+
+[todo.watch]
+phrase: {names} {sit} just outside {its_their} range. Nothing to do now. {it_is} read again at your next test.
+
+[todo.work.also]
+phrase:  The same changes work on {others}.
+
 [finding.albumin.A]
 head: Your albumin sits just below its range.
 today: Nothing you would feel.
@@ -50,6 +215,15 @@ why: ALP comes from both the liver and the bones, so a raised reading only makes
 do: It needs a deeper look, alongside vitamin D.
 summary: ALP, just above its range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.b12_low.A]
+head: Your vitamin B12 is in range, at the low end.
+today: Often nothing. Sometimes tiredness, or pins and needles in the hands or feet.
+why: B12 comes almost entirely from animal foods, so it runs low in vegetarians, and in anyone who absorbs it poorly. Acid-lowering medicines and metformin are common reasons.
+do: Dairy, eggs and fortified foods help. It is read again at your next test.
+summary: Vitamin B12, at the low end of its range. Read again at your next test.
+closing: 
 page 1 step: 
 
 [finding.bilirubin.A]
@@ -160,6 +334,24 @@ summary: The liver scarring score, in the middle zone. Read again at your next t
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.generic.A]
+head: One result in this section sits outside its range.
+today: Nothing you would feel.
+why: {name} is {dist}. A single result a little outside its range, with everything around it in range, usually means little.
+do: It is read again at your next test.
+summary: {name}, {dist}. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.generic.B]
+head: One result in this section sits outside its range.
+today: Nothing you would feel.
+why: {name} is {dist}. One reading cannot say whether that will hold.
+do: A repeat test shows whether it holds.
+summary: {name}, {dist}.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
 [finding.glucose_low.A]
 head: Your morning sugar is lower than its range.
 today: Some people feel shaky, sweaty or foggy when sugar runs low, especially after a long gap without food.
@@ -214,6 +406,15 @@ summary: Red cells, just above their range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.hb_low.A]
+head: Your haemoglobin is in range, at the low edge.
+today: You may notice nothing, or tire a little sooner than you used to.
+why: Haemoglobin carries oxygen. At the low edge the usual reasons are iron, vitamin B12 or folate running short, or {loss}.
+do: {iron_food}It is read again at your next test.
+summary: Haemoglobin, at the low edge of its range. Read again at your next test.
+closing: 
+page 1 step: 
+
 [finding.hcy.A]
 head: Your homocysteine sits just above its range.
 today: Nothing you would feel.
@@ -259,6 +460,69 @@ summary: Protective cholesterol, clearly low.
 closing: A result at this level is worth mentioning at your next routine check-up.
 page 1 step: More regular movement, which is what a low <a href="#heart">protective cholesterol</a> points to.
 
+[finding.iron_high.A]
+head: Your iron carriers are fuller than they should be.
+today: Nothing you would feel.
+why: This can follow iron supplements. It can also be a tendency to take in too much iron, which runs in families.
+do: It is read again at your next test. If you take iron, mention it.
+summary: Iron, a little high. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.iron_high.B]
+head: Your iron carriers are fuller than they should be.
+today: Nothing you would feel.
+why: This can follow iron supplements. It can also be a tendency to take in too much iron, which runs in families.
+do: This needs a deeper look, starting with your iron stores. If you take iron, say so.
+summary: Iron, a little high. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.iron_high.C]
+head: Your iron carriers are fuller than they should be.
+today: Often nothing.
+why: This can follow iron supplements. It can also be a tendency to take in too much iron, which runs in families.
+do: This needs a deeper look, starting with your iron stores. If you take iron, say so.
+summary: Iron, a little high. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.iron_low.A]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. This panel does not measure iron stores, so it cannot say why.
+do: It is read again at your next test.
+summary: Iron, a little low. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.iron_low.B]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. This panel does not measure iron stores, so it cannot say why.
+do: This needs a deeper look: your iron stores, and why the carriers are low.
+summary: Iron, a little low. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.iron_low.C]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. This panel does not measure iron stores, so it cannot say why.
+do: This needs a deeper look: your iron stores, and why the carriers are low.
+summary: Iron, a little low. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.kidney.A]
+head: One marker of how your kidneys clear waste sits just above its range.
+today: Nothing you would feel.
+why: Creatinine comes from muscle and urea from protein. Both read higher after a high-protein day, a hard workout or too little water before the test, and in people who carry a lot of muscle.
+do: Come to your next test well hydrated, unless you have been told to limit fluids. It is read again then.
+summary: A kidney marker, just above its range. Read again at your next test.
+closing: 
+page 1 step: 
+
 [finding.lipids.A]
 head: Your arteries are carrying a slightly heavier load of cholesterol particles than we would like.
 today: You feel nothing. That is the difficulty with this one.
@@ -302,6 +566,33 @@ why: Lp(a) is a cholesterol particle set almost entirely by your genes. Food and
 do: Keep the rest of this section as good as it can be. It runs in families, so it is worth telling yours.
 summary: Lp(a), an inherited particle, just above the line. Nothing to do.
 closing: A level this high needs a doctor's attention, because there are things a doctor can do about the overall risk. Please speak to your doctor.
+page 1 step: 
+
+[finding.metals.A]
+head: {names} {is_are} above {its_their} limit.
+today: Usually nothing.
+why: Blood levels mostly reflect the last few weeks: a fish meal can raise mercury and arsenic, and smoking raises cadmium. A raised level that holds on a repeat means more is coming in than the body is clearing, and the work is to find the source. Water, cookware, cosmetics, traditional remedies and the workplace are the usual ones.
+do: This needs a deeper look: tracing the source is the first step.
+summary: 
+closing: 
+page 1 step: 
+
+[finding.metals.B]
+head: {names} {is_are} above {its_their} limit.
+today: Usually nothing.
+why: Blood levels mostly reflect the last few weeks: a fish meal can raise mercury and arsenic, and smoking raises cadmium. A raised level that holds on a repeat means more is coming in than the body is clearing, and the work is to find the source. Water, cookware, cosmetics, traditional remedies and the workplace are the usual ones.
+do: This needs a deeper look: tracing the source is the first step.
+summary: 
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.metals.C]
+head: {names} {is_are} above {its_their} limit.
+today: Usually nothing.
+why: Blood levels mostly reflect the last few weeks: a fish meal can raise mercury and arsenic, and smoking raises cadmium. A raised level that holds on a repeat means more is coming in than the body is clearing, and the work is to find the source. Water, cookware, cosmetics, traditional remedies and the workplace are the usual ones.
+do: This needs a deeper look: tracing the source is the first step.
+summary: 
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
 [finding.phosphorus_low.A]
@@ -358,6 +649,42 @@ summary: Platelets, just above their range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.red_cells.A]
+head: One measure of your red cells sits outside its range.
+today: Nothing you would feel.
+why: The size, number and evenness of red cells shift when iron, B12 or folate run low, sometimes before haemoglobin does. Being a little dry on the morning of the test can also raise the count.
+do: It is read again at your next test, alongside your iron and B12.
+summary: One red cell measure, just outside its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.red_cells.B]
+head: One measure of your red cells sits outside its range.
+today: Nothing you would feel.
+why: The size, number and evenness of red cells shift when iron, B12 or folate run low, sometimes before haemoglobin does. Being a little dry on the morning of the test can also raise the count.
+do: It needs a deeper look, alongside your iron and B12.
+summary: One red cell measure, just outside its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.red_cells.C]
+head: One measure of your red cells sits outside its range.
+today: Nothing you would feel.
+why: The size, number and evenness of red cells shift when iron, B12 or folate run low, sometimes before haemoglobin does. Being a little dry on the morning of the test can also raise the count.
+do: It needs a deeper look, alongside your iron and B12.
+summary: One red cell measure, just outside its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.salts.A]
+head: One of your body's salts sits outside its range.
+today: Nothing you would feel.
+why: Sodium, potassium and calcium are held in a narrow band, so even a small move is marked. The way a sample is handled on its way to the laboratory can raise potassium falsely, and some medicines move all three.
+do: It is read again at your next test.
+summary: One salt, just outside its range. Read again at your next test.
+closing: 
+page 1 step: 
+
 [finding.sugar.A]
 head: Your sugar sits just above the line.
 today: You may notice nothing at all.
@@ -412,6 +739,60 @@ summary: Triglycerides, the fat travelling in your blood, very high.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: Bringing your <a href="#heart">triglycerides</a> down: less sugar, refined carbohydrate and alcohol, and a walk after meals.
 
+[finding.thyroid_hormones.A]
+head: One of the hormones your thyroid makes sits outside its range.
+today: Nothing you would feel.
+why: The signal and the hormones are read as a set. When a hormone is outside its range, the question is whether the signal agrees with it.
+do: It is read again at your next test.
+summary: A thyroid hormone, just outside its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.thyroid_hormones.B]
+head: One of the hormones your thyroid makes sits outside its range.
+today: Some people notice a racing heart, shakiness or unusual tiredness. Many notice nothing.
+why: The signal and the hormones are read as a set. When a hormone is outside its range, the question is whether the signal agrees with it.
+do: This needs a deeper look: the full thyroid picture, read alongside your history.
+summary: A thyroid hormone, just outside its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.thyroid_hormones.C]
+head: One of the hormones your thyroid makes sits outside its range.
+today: Some people notice a racing heart, shakiness or unusual tiredness. If you do, do not wait.
+why: The signal and the hormones are read as a set. When a hormone is outside its range, the question is whether the signal agrees with it.
+do: This needs a deeper look: the full thyroid picture, read alongside your history.
+summary: A thyroid hormone, just outside its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.tsh_high.A]
+head: The signal asking your thyroid to work harder is raised.
+today: At this level most people feel nothing.
+why: 
+do: It is only just outside its range, and many such readings settle. A repeat in two to three months shows whether it has.
+summary: Thyroid signal, just above its range. Worth repeating in two to three months.
+closing: 
+page 1 step: 
+
+[finding.tsh_high.B]
+head: The signal asking your thyroid to work harder is raised.
+today: People with a raised signal often feel tired, cold or slower than they used to.
+why: 
+do: This needs a deeper look: the full thyroid picture, read alongside your history.
+summary: Thyroid signal, just above its range. Worth repeating in two to three months.
+closing: A signal at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.tsh_low.A]
+head: The signal asking your thyroid to work sits just below its range.
+today: Nothing you would feel.
+why: A low signal means the brain is asking for less thyroid hormone than usual. Just below the range it is often a passing dip.
+do: A repeat in two to three months shows whether it has settled. Biotin, found in hair and nail supplements, can make this test read falsely low, so mention it if you take any.
+summary: Thyroid signal, just below its range. Read again at your next test.
+closing: 
+page 1 step: 
+
 [finding.uric.A]
 head: Your uric acid sits just above its range.
 today: Nothing you would feel.
@@ -438,3 +819,39 @@ do: More water, fewer sweet drinks and less alcohol usually bring it down.
 summary: Uric acid, far above its range.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: Bringing your <a href="#sugar">uric acid</a> down: more water, fewer sweet drinks, less alcohol.
+
+[finding.vitd_high.B]
+head: Your vitamin D is above its range.
+today: Nothing you would feel.
+why: This almost always comes from supplements. More is not better with vitamin D: too much pulls calcium into the blood.
+do: Note what you are taking and how much, and do not stop anything a doctor prescribed without asking them.
+summary: Vitamin D, above its range.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.vitd_high.C]
+head: Your vitamin D is above its range.
+today: Nothing you would feel.
+why: This almost always comes from supplements. More is not better with vitamin D: too much pulls calcium into the blood.
+do: Note what you are taking and how much, and do not stop anything a doctor prescribed without asking them.
+summary: Vitamin D, far above its range.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.vitd_low.A]
+head: Your vitamin D is a little short of where it should be.
+today: Nothing you would feel at this level.
+why: Vitamin D is made in the skin from sunlight, and bones, muscles and the immune system all need it. Most people who work indoors run low.
+do: Some sun on bare arms and legs, most days, is where to start.
+summary: Vitamin D, a little short.
+closing: 
+page 1 step: Building your <a href="#nutrients">vitamin D</a> back up, starting with some sun most days.
+
+[finding.white_cells.A]
+head: Your white cells sit outside their range.
+today: Nothing you would feel.
+why: White cells rise with an infection or stress on the body, and can dip for a few weeks after a viral illness. A repeat shows whether it was passing.
+do: It is read again at your next test.
+summary: White cells, just outside their range. Read again at your next test.
+closing: 
+page 1 step: 

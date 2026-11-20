@@ -131,7 +131,8 @@ def markdown() -> str:
             k += 1
             out += finding_block(f"1.{k}", f)
     k += 1
-    out += ["## Any section", ""] + finding_block(f"1.{k}", GENERIC)
+    if todo_levels(GENERIC):
+        out += ["## Any section", ""] + finding_block(f"1.{k}", GENERIC)
     out += ["A far-out result with no block of its own stops the report and asks for wording.", ""]
     sec_no = 1
     done: list[str] = []
@@ -140,13 +141,14 @@ def markdown() -> str:
             continue
         done.append(title)
         sec_no += 1
-        out += [f"## {sec_no}. {title}", ""]
-        i = 0
+        i, part = 0, [f"## {sec_no}. {title}", ""]
         for key, (where, text) in DRAFT.items():
             if key in APPROVED_DRAFTS or not any(key.startswith(p) for p, t in GROUPS if t == title):
                 continue
             i += 1
-            out += [f"**{sec_no}.{i}** {where}", "", f"> {_plain(text, dict(EXAMPLE, **EXAMPLE_FOR.get(key, {})))}", "", f"<sub>{key}</sub>", ""]
+            part += [f"**{sec_no}.{i}** {where}", "", f"> {_plain(text, dict(EXAMPLE, **EXAMPLE_FOR.get(key, {})))}", "", f"<sub>{key}</sub>", ""]
+        if i:
+            out += part
     return "\n".join(out)
 
 
