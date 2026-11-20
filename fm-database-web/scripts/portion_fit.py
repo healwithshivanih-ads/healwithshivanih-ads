@@ -147,12 +147,13 @@ def _sides(client: dict) -> list[tuple[str, str]]:
     if not vegan and text_is_dairy_safe is not None and text_is_dairy_safe("curd paneer", dairy):
         if "curd" not in avoid and "dahi" not in avoid:
             out.append(("Curd", "1 cup"))
-        if "paneer" not in avoid:
-            out.append(("Paneer", "1/2 cup"))
     if "sprout" not in avoid and "moong" not in avoid:
         out.append(("Moong sprouts", "1 bowl"))
     if ("egg" in pref or "non" in pref) and "egg" not in avoid:
         out.append(("Boiled eggs", "2"))
+    # Paneer last: about 17 g of fat in half a cup, so leaner sides go first.
+    if not vegan and text_is_dairy_safe is not None and text_is_dairy_safe("paneer", dairy) and "paneer" not in avoid:
+        out.append(("Paneer", "1/2 cup"))
     return out
 
 
