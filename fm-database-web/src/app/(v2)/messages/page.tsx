@@ -14,9 +14,10 @@
  * picker UI in two places.
  */
 import Link from "next/link";
-import { FmAppShell, FmPageHeader, FmPanel } from "@/components/fm";
+import { FmAppShell, FmPageHeader, FmPanel, FmUnmatchedMessagesBanner } from "@/components/fm";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getInboxMessages, type InboxMessage } from "@/lib/fmdb/loader-extras";
+import { loadUnmatchedMessages } from "@/lib/fmdb/whatsapp-unmatched";
 import { InboxFilters } from "./inbox-filters";
 import { InboxMarkReadButton } from "./inbox-mark-read-button";
 
@@ -90,6 +91,11 @@ export default async function MessagesInboxPage({
     30,
   );
 
+  // Numbers that are not on the roster have no client thread, so they can
+  // never appear in the list below — they get their own page, linked here.
+  const unmatched = await loadUnmatchedMessages().catch(() => []);
+  const unmatchedUnread = unmatched.filter((m) => m.isUnread);
+
   const todayIso = new Date().toISOString().slice(0, 10);
   const cutoff7d = (() => {
     const d = new Date();
@@ -116,6 +122,18 @@ export default async function MessagesInboxPage({
         title="Messages"
         subtitle={`Inbound WhatsApp — last 30 days. ${counts.unread > 0 ? `${counts.unread} unread.` : "All caught up."}`}
       />
+
+      <FmUnmatchedMessagesBanner
+        unread={unmatchedUnread.length}
+        senders={new Set(unmatchedUnread.map((m) => m.phoneKey)).size}
+      />
+      {unmatched.length > 0 && unmatchedUnread.length === 0 && (
+        <div style={{ marginTop: 8, fontSize: 12 }}>
+          <Link href="/messages/unmatched" style={{ color: "var(--fm-text-tertiary)" }}>
+            Messages from new numbers ({unmatched.length}, nothing new) →
+          </Link>
+        </div>
+      )}
 
       <InboxFilters active={filterId} counts={counts} />
 
