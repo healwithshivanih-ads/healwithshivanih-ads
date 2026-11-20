@@ -377,7 +377,8 @@ export function SqPracticePlayer({ data, practice, hour, prefs, setPrefs, onFini
   useEffect(() => {
     if (!now || paused || now.index === lastPhase.current) return;
     lastPhase.current = now.index;
-    if (now.action !== "hold") sound.bell(now.action === "expand" ? 392 : 293.66, 0.1);
+    if (now.action !== "hold") sound.bell(now.action === "expand" ? 392 : 293.66, 0.3);
+    sound.breathe(now.action, now.secs);
   }, [now, paused, sound]);
   // The light fills on the in-breath, rests on a hold, and empties on the
   // out-breath, eased so it moves like a breath rather than a clock hand.
