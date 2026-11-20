@@ -261,6 +261,42 @@ def deferred_items(root: Path, slug: Optional[str]) -> list[str]:
 # ── the brief ─────────────────────────────────────────────────────────────────
 
 
+def supply_taps(cdir: Path) -> list[dict]:
+    """The client's own order-sheet taps (src/lib/fmdb/supply.ts), folded the
+    same way: oldest first, "undo" pops the item's last tap. One row per item:
+    what stands now and the day. The run-out countdown is the app's; this says
+    only what the client told it."""
+    lines: list[dict] = []
+    for f in sorted(cdir.glob("_supply.*.jsonl")):
+        try:
+            for raw in f.read_text(encoding="utf-8").splitlines():
+                try:
+                    o = json.loads(raw)
+                except Exception:
+                    continue
+                if isinstance(o, dict) and o.get("op") in ("ordered", "arrived", "have", "undo") and o.get("item") and o.get("ts"):
+                    lines.append(o)
+        except Exception:
+            continue
+    hist: dict[str, list[dict]] = {}
+    for o in sorted(lines, key=lambda x: str(x["ts"])):
+        h = hist.setdefault(str(o["item"]), [])
+        if o["op"] == "undo":
+            if h:
+                h.pop()
+        else:
+            h.append(o)
+    out = []
+    for item, h in hist.items():
+        if not h:
+            continue
+        last = h[-1]
+        day = str(last.get("date") or last["ts"])[:10]
+        name = re.sub(r"^(s|rx)-", "", item).replace("-", " ")
+        out.append({"item": name, "state": last["op"], "on": day})
+    return sorted(out, key=lambda x: x["item"])
+
+
 def build(root: Path, needle: str, today: dt.date) -> dict:
     c, cdir, parked = find_person(root, needle)
     if not c or not cdir:
@@ -410,6 +446,8 @@ def build(root: Path, needle: str, today: dt.date) -> dict:
             # Photo food diary (docs/FOOD_DIARY_PLAN.md): the summary once one
             # has finished; `food_diary_running` when one is open now.
             "last_food_diary": last_food_diary,
+            # The client's own supply taps from the app's order sheet.
+            "supply": supply_taps(cdir),
             "food_diary_running": (
                 {k: c["food_diary"].get(k) for k in ("start", "days", "status")}
                 if isinstance(c.get("food_diary"), dict) and c["food_diary"].get("status") == "active" else None
@@ -513,6 +551,10 @@ def render(b: dict, full: bool = False) -> str:
     if r.get("food_diary_running"):
         fr = r["food_diary_running"]
         lines.append(f"- food diary OPEN: {fr.get('days')} days from {fr.get('start')}")
+    if r.get("supply"):
+        words = {"ordered": "ordered", "arrived": "arrived", "have": "already had it"}
+        lines.append("- supplies (client's taps): " + " · ".join(
+            f"{x['item']} {words[x['state']]} {x['on']}" for x in r["supply"]))
     if r.get("last_food_diary"):
         fd = r["last_food_diary"]
         lines.append(f"- food diary {fd['date']} ({fd.get('days')} days, {fd.get('photos')} photos): {fd['summary']}")
