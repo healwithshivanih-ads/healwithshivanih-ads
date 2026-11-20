@@ -125,6 +125,9 @@ import { loadClientApiSpend } from "@/lib/server-actions/usage";
 import { IfmBaselineCard, type IfmBaseline } from "../ifm-baseline-card";
 import { CycleTrackingPanel } from "../cycle-tracking-panel";
 import { WeeklyGenerationToggle } from "../weekly-generation-toggle";
+import { AppNutrientsToggle } from "../app-nutrients-toggle";
+import { nutrientsShown } from "@/lib/fmdb/meal-macros";
+import { diaryGentle } from "@/lib/fmdb/food-diary-balance";
 import { StageGate } from "../stage-gate";
 import { resolveAllergies } from "@/lib/fmdb/allergies";
 
@@ -1763,6 +1766,13 @@ export default async function ClientV2Page({
             {publishedPlan &&
               (client as unknown as { meal_plan_style?: string }).meal_plan_style !==
                 "principles" && <WeeklyGenerationToggle clientId={client.client_id} />}
+            {publishedPlan && (
+              <AppNutrientsToggle
+                clientId={client.client_id}
+                on={nutrientsShown(client as unknown as Record<string, unknown>, diaryGentle(client as unknown as Record<string, unknown>))}
+                gentle={diaryGentle(client as unknown as Record<string, unknown>)}
+              />
+            )}
           </FmGroupedPanel>
 
           {/* ✅ What she actually ticked off in the app. Sits above the

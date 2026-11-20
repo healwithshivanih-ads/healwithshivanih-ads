@@ -386,6 +386,11 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - Home shows the card only while a diary runs; a picked photo opens the "diary" sheet. It never names the coach and never sends a message (`sq-diary.test.tsx` pins both). Meal-time reminders stay off until the client turns them on.
 - Everything tab part 1 (`sq-everything.tsx`): supplements, order supplements (ticks phone-only for now: coach cannot see them yet), weight + BP (prototype ranges; posts `/api/app-body`), trip (posts `/api/app-travel`; Home Travelling card only from the day of travel, `travellingNow`).
 
+### Supplement supply countdown (client app, Nov 2026)
+- Client taps on the order sheet (`ordered` / `arrived` / `have` / `undo`) → `/api/app-supply` → `_supply.<host>.jsonl` (append-only per host; `app-staging-action.py::_mirror_supply` copies Fly → Mac). Pure logic in `fmdb/supply.ts` + `supply-rows.ts`.
+- Run-out = arrival day + pack count ÷ units a day. Pack size comes from `supplement_links.yaml#pack_size` ONLY when the Buy link is that product (a coach-pinned `buy_link` to another product gets no countdown). Units a day: a count in the dose, else dose ÷ `unit_strength`; g/ml packs, as-needed, weekly and alternate-day doses get NO date. Never guess.
+- Home "Running low" card ≤ 7 days left; push at 10:00 client time via `cron/app-reminders` (push-enabled clients only, `purpose: "plan"`, once per pack keyed `supply:<item>:<runsOutOn>`).
+
 **Sprouting-guide ingest + sprout nutrient values (2026-11-20).** The sprout-me "Ultimate Sprouting Guide" (60 recipes) went into `_recipes` with four sprouting-method entries (`home-sprouted-*`), authored in chat at $0. The book has no nutrition figures; every number is computed by `nutrients_lib.py`.
 - **Sprouts are their own table rows, on a HOME-SPROUT basis** (short tails, 2-3 days): `chana-sprouted`, `matki-sprouted`, `masoor-sprouted`, `urad-sprouted`, `horsegram-sprouted`, `lobia-sprouted`, `rajma-sprouted`, `methi-sprouts`, `alfalfa-sprouts`, `broccoli-sprouts`, `ragi-sprouted`, `jowar-sprouted`. Only masoor and alfalfa are USDA rows; the rest are scaled from the dry bean and say so in `note`. Without these rows "kala chana sprouts" matched dry `chickpeas`.
 - **`mung-sprouted` was corrected from 30 kcal / 3.0 g protein to 90 kcal / 6.5 g per 100 g** (coach decision). The old row was USDA's long, ~90%-water bean sprout; Indian home sprouts are about three times denser. Do not "re-verify" it back to the USDA figure. 12 existing recipes were recomputed with it.
@@ -393,6 +398,11 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - **Safety edits against the book:** sprouted rajma is boiled 10 min before use (the book pan-steams it); raw seed sprouts are dipped in hot water; `broccoli-sprouts` sits in `goitrogen-brassica-thyroid`. Sprout recipes are never tagged `jain`.
 - **Benefit tags follow the computed serving**: `protein-adequacy-vegetarian` needs >= 8 g, `iron-nutrition` >= 3 mg, `constipation` >= 4 g fibre.
 - Not done: photos and Hindi translations for the 64 new entries.
+
+### Menu grams in the new app (Nov 2026; not shipped yet)
+- `fmdb/meal-macros.ts`: protein / carbs / fat / fibre per meal and the day total, ONLY from library recipes with `nutrient_coverage_pct >= 90`; no fallback table. Garnish counts as nothing; any part without a figure or a comparable portion makes it "About:". Calories never shown.
+- `fmdb/recipe-portion.ts`: what one recipe serving is in menu units (piece / bowl / glass / tbsp) from the recipe's own ingredient grams + the ingredient table's category/basis; soups, salads, sandwiches, chaat get none. A recipe YAML `serving_portion: {qty, unit}` wins. Grams scale by menu portion ÷ serving.
+- Switch `client.yaml#app_nutrients` (model + `_APP_CLIENT_KEYS`): unset = on, except gentle clients (`diaryGentle`) = off; coach toggle on the overview. No targets shown until the coach confirms the starting targets in BUILD-PLAN.md.
 
 **`coach_priority: high` — dishes the coach wants on clients' menus (2026-11-20).** The 60 sprout recipes carry it (not the four `home-sprouted-*` method entries). One flag, three readers, keep them in step:
 - `recipe_select.py::coach_priority_boost` — +3.0, plus +2.0 for a vegetarian, vegan or eggetarian client (`veg_leaning`, which tests "non" first because "non-vegetarian" contains "veg"). **Capped**: at most a third of any meal type's slots and a third of the whole shortlist (a fifth for non-vegetarian clients). Without the caps 14 of a vegetarian client's 22 slots went to sprout dishes.

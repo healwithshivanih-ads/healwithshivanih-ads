@@ -6,6 +6,7 @@
  * draws the title bar and the close button around it.
  */
 
+import { gramsLine, macroLine, type MealMacros } from "@/lib/fmdb/meal-macros";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import type { AppEatingOut } from "@/lib/fmdb/eating-out";
 import {
@@ -32,7 +33,10 @@ export function SqDaySheet({
   track,
   onToggle,
   open,
+  menu,
 }: {
+  /** the day's menu total (meal-macros.ts); absent when switched off */
+  menu?: MealMacros | null;
   moments: SqMoment[];
   ticks: SqTicks;
   track: boolean;
@@ -46,6 +50,11 @@ export function SqDaySheet({
         {track ? `${count.ticked} of ${count.total} ticked. ` : ""}
         Each meal and each supplement has its own tick. Tap a tick again to clear it.
       </p>
+      {menu && (
+        <p className="sq-macros">
+          {menu.complete ? "Today\u2019s menu adds up to" : "Today\u2019s menu adds up to about"}: {gramsLine(menu)}
+        </p>
+      )}
       <SqCard>
         <div className="sq-list">
           {dayRows(moments).map((r) => {
@@ -156,6 +165,7 @@ export function SqRecipeSheet({ data, slot }: { data: ClientAppData; slot: strin
     return <section className="sq-soft">There is no written recipe for this meal yet.</section>;
   }
   const meta = [ex.mins, ex.serves ? `serves ${ex.serves}` : ""].filter(Boolean).join(" · ");
+  const mm = data.meals.find((m) => m.slot === slot)?.macros;
   return (
     <>
       {ex.imageUrl && (
@@ -163,6 +173,7 @@ export function SqRecipeSheet({ data, slot }: { data: ClientAppData; slot: strin
         <img className="sq-rphoto" src={ex.imageUrl} alt="" />
       )}
       {meta && <p className="sq-sub">{meta}</p>}
+      {mm && <p className="sq-macros">{macroLine(mm)}</p>}
       {/* A food left out of this recipe FOR THIS CLIENT (an allergy, a food she
           avoids). It must be said before the method, in the same words today's
           app uses, because the steps may still name it. */}

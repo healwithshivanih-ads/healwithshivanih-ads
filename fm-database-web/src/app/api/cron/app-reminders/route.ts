@@ -23,6 +23,7 @@
  */
 import { NextRequest, NextResponse } from "next/server";
 import fs from "node:fs/promises";
+import fsSync from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
@@ -31,11 +32,16 @@ import { deriveReminders, effectiveReminders } from "@/lib/fmdb/reminders-derive
 import { remediesForReminders } from "@/lib/fmdb/remedy-reminder-source";
 import { readOverrides, readFired, writeFired } from "@/lib/fmdb/reminders-server";
 import { sendPushToClient, pushStatus } from "@/lib/fmdb/push-server";
+import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { clientDir } from "@/lib/fmdb/client-thread";
+import { leftWords, lowRows } from "@/lib/fmdb/supply-rows";
 
 export const dynamic = "force-dynamic";
 
 const IST_TZ = "Asia/Kolkata";
 const CATCHUP_WINDOW_MIN = 180;
+/** The running-low push goes at 10:00 the client's time (catch-up as above). */
+const SUPPLY_PUSH_MIN = 10 * 60;
 
 type Dict = Record<string, unknown>;
 
@@ -121,6 +127,17 @@ async function publishedPlanForClient(clientId: string): Promise<Dict | null> {
   return null;
 }
 
+/** Cheap gate: has this client ever tapped on the order sheet? */
+function hasSupplyLog(clientId: string): boolean {
+  const dir = clientDir(clientId);
+  if (!dir) return false;
+  try {
+    return fsSync.readdirSync(dir).some((n) => /^_supply\.[a-z0-9]+\.jsonl$/.test(n));
+  } catch {
+    return false;
+  }
+}
+
 async function readClientYaml(clientId: string): Promise<Dict> {
   try {
     const raw = await fs.readFile(
@@ -188,8 +205,6 @@ export async function POST(req: NextRequest) {
       }),
       overrides,
     );
-    if (reminders.length === 0) continue;
-
     const fired = await readFired(clientId);
     let dirty = false;
     const url = token ? `/app/${token}` : "/";
@@ -216,6 +231,44 @@ export async function POST(req: NextRequest) {
         sent.push({ clientId, id: r.id });
       } else {
         skipped.push({ clientId, id: r.id, reason: "push_unavailable" });
+      }
+    }
+
+    // Running low (src/lib/fmdb/supply.ts): once a day, only for a client who
+    // has tapped "It's arrived" at least once, one push per pack — keyed on
+    // the run-out day, so a new pack can remind again. The client's own
+    // reminder about the client's own supply; never a coach message.
+    const supplyLate = nowMin - SUPPLY_PUSH_MIN;
+    if (
+      token &&
+      supplyLate >= 0 &&
+      supplyLate <= CATCHUP_WINDOW_MIN &&
+      fired["supply-check"] !== clientToday &&
+      hasSupplyLog(clientId)
+    ) {
+      try {
+        const data = await loadClientAppData(token);
+        let allSent = true;
+        for (const { row, st } of data ? lowRows(data, clientToday) : []) {
+          const key = `supply:${row.id}:${st.runsOutOn}`;
+          if (fired[key]) continue;
+          const ok = await sendPushToClient(
+            clientId,
+            { title: "The Ochre Tree 🌿", body: `${row.name}: ${leftWords(st)}. Order now so it arrives in time.`, url, tag: `supply:${row.id}` },
+            { purpose: "plan" },
+          );
+          if (ok) {
+            fired[key] = clientToday;
+            sent.push({ clientId, id: key });
+          } else {
+            allSent = false;
+            skipped.push({ clientId, id: key, reason: "push_unavailable" });
+          }
+        }
+        if (allSent) fired["supply-check"] = clientToday;
+        dirty = true;
+      } catch (e) {
+        skipped.push({ clientId, id: "supply", reason: (e as Error)?.message ?? "supply check failed" });
       }
     }
 

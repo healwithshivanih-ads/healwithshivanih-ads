@@ -140,6 +140,9 @@ export interface AppMeal {
   note?: string;
   /** estimated calories for this meal (recipe-accurate where matched) */
   kcal?: number;
+  /** grams for the new app (meal-macros.ts): absent when the coach switched
+   *  them off, null when no part of the meal has a recipe figure. */
+  macros?: MealMacros | null;
   /** dish is a classic Ayurvedic preparation → "Ayurveda recommends" badge */
   ayurveda?: boolean;
   /** the meal's headline title — the matched library recipe's canonical name
@@ -279,6 +282,10 @@ import { clientDiaryView, diaryDisplay, parseDiaryConfig, type ClientDiaryView }
 import { diaryGentle } from "./food-diary-balance";
 import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
+import { loadSupply } from "./supply-store";
+import { recipePortion } from "./recipe-portion";
+import { buildMacroLookup, macrosFromServing, mealMacros, nutrientsShown, type Macros, type MealMacros } from "./meal-macros";
+import { parsePackSize, unitsPerDay, type ItemSupply, type PackSize } from "./supply";
 import {
   isNonVegPref,
   isVegetarianPref,
@@ -386,6 +393,10 @@ export interface AppSupplement {
   /** VitaOne supplement-facts label thumbnail (from supplement_links.yaml),
    *  shown beside the Reorder link. */
   imageUrl?: string;
+  /** Pack size of the product the Buy link opens, and units taken a day.
+   *  Only when both are known (supply.ts never guesses). Drives the
+   *  running-low countdown. */
+  pack?: { count: number; unit: string; perDay: number };
   /** True when timing is situational (as-needed, at-risk meals, PRN). Excluded from daily log. */
   asNeeded?: boolean;
   /** True when supplement should be taken on an empty stomach — sorts before with-food supplements. */
@@ -1496,6 +1507,8 @@ export interface ClientAppData {
    *  coach correction or an AI reading (see clientDiaryView). Absent on the
    *  discovery / guided tiers. */
   foodDiary?: ClientDiaryView | null;
+  /** The client's own supply taps, folded per order-sheet row (supply.ts). */
+  supply?: Record<string, ItemSupply>;
   reminders: {
     id: string;
     label: string;
@@ -1964,6 +1977,12 @@ export interface LetterRecipe {
    *  re-derive the figures by subtraction (see recipe-nutrients.ts). */
   nutrientLines?: NutrientLine[];
   nutrientServings?: number;
+  /** grams of protein / carbs / fat / fibre per serving, only when the
+   *  recipe's own computation is complete enough to show (meal-macros.ts). */
+  macros?: Macros;
+  /** a hand-set "one serving is" (recipe YAML serving_portion), which wins
+   *  over the computed one (recipe-portion.ts). */
+  servingPortion?: unknown;
   /** foods taken OUT of this recipe for this client (see recipe-adapt.ts).
    *  Empty/absent means the recipe is the catalogue's own. */
   omits?: string[];
@@ -2080,6 +2099,8 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
             ? (r.nutrient_lines as NutrientLine[])
             : undefined,
           nutrientServings: Number(r.nutrient_servings) || undefined,
+          macros: macrosFromServing(r.nutrients_per_serving as Dict | undefined, r.nutrient_coverage_pct) ?? undefined,
+          servingPortion: r.serving_portion,
           diet: asStrArr(r.diet),
           aliases: asStrArr(r.aliases),
           mains: asStrArr(r.main_ingredients),
@@ -2249,7 +2270,11 @@ export function buildClientRecipeAdapter(
       ...a.recipe,
       omits: a.omitted,
       omitsInSteps: a.stepsStillMention,
-      ...(n ? { kcalPerServing: n.perServing.kcal, richIn: n.richIn } : {}),
+      // Without the recompute the catalogue figures still count the removed
+      // food, so the grams go too rather than show the wrong dish's numbers.
+      ...(n
+        ? { kcalPerServing: n.perServing.kcal, richIn: n.richIn, macros: macrosFromServing(n.perServing, n.coveragePct) ?? undefined }
+        : { macros: undefined }),
     };
   };
 }
@@ -4051,6 +4076,25 @@ export async function loadClientAppData(
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
   );
+  // Grams on each meal (meal-macros.ts) — same recipes the calories come
+  // from, and only while the coach has not switched them off for this client.
+  const portionTable = nutrientsShown(client, diaryGentle(client)) ? await loadNutrientTable() : null;
+  const macroLookup = nutrientsShown(client, diaryGentle(client))
+    ? buildMacroLookup(
+        libraryRecipes.map((l) => ({
+          title: l.recipe.title,
+          aliases: l.recipe.aliases,
+          macros: l.recipe.macros,
+          portion: recipePortion(
+            l.recipe.title,
+            l.recipe.nutrientLines,
+            l.recipe.nutrientServings,
+            (k) => (portionTable?.entries[k] as { category?: string; basis?: string } | undefined) ?? null,
+            l.recipe.servingPortion,
+          ),
+        })),
+      )
+    : null;
   const dishKcal = (dish: string): number | undefined => {
     const k = estimateDishKcal(dish, recipeKcalLookup);
     // Whole numbers only. A per-serving figure can now carry a decimal (an
@@ -4273,6 +4317,7 @@ export async function loadClientAppData(
         components: splitDishComponents(cell),
         note: slotNote(slotL),
         kcal: dishKcal(cell),
+        ...(macroLookup ? { macros: mealMacros(splitDishComponents(cell), macroLookup) } : {}),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
         dishTitle: rec?.title || pills[0],
       });
@@ -4505,6 +4550,8 @@ export async function loadClientAppData(
     const dose = asStr(p.dose);
     let buyUrl: string | undefined;
     let suppImageUrl: string | undefined;
+    let suppPack: PackSize | null = null;
+    let suppStrength: string | undefined;
     {
       // Coach-set per-plan buy-link override WINS — a specific product the coach
       // pinned on the plan entry (e.g. "Autoimmunity Care UTI Care") that may not
@@ -4527,6 +4574,12 @@ export async function loadClientAppData(
         if (link.source !== "search") {
           if (!buyUrl) buyUrl = link.url;
           suppImageUrl = link.image_url;
+          // Pack size only when the client buys THIS product: a coach-pinned
+          // buy_link to another product would count the wrong pack.
+          if (buyUrl === link.url) {
+            suppPack = parsePackSize(link.pack_size);
+            suppStrength = link.unit_strength;
+          }
         } else if (!buyUrl && international) {
           // The international search fallback is a targeted iHerb keyword
           // search on the ingredient — fail-safe (right ingredient, referral
@@ -4583,6 +4636,10 @@ export async function loadClientAppData(
     // into today's slots / check-in / counts.
     const cad = asNeeded ? null : supplementCadence(dose, timing);
     if (cad) (suppItem as AppSupplement).notDaily = cad.cadence;
+    if (suppPack && buyUrl) {
+      const perDay = asNeeded || cad ? null : unitsPerDay(dose, timing, suppStrength, suppPack);
+      if (perDay) (suppItem as AppSupplement).pack = { ...suppPack, perDay };
+    }
     allSupplements.push(suppItem);
     // A supplement with named days ("Mon/Wed/Fri") is on Today only on those
     // days; one that just says "once weekly" is offered every day, uncounted.
@@ -6530,5 +6587,6 @@ export async function loadClientAppData(
     body,
     reminders,
     foodDiary,
+    supply: loadSupply(clientId),
   };
 }
