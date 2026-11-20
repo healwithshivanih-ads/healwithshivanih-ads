@@ -104,7 +104,11 @@ export function isNothing(component: string): boolean {
  *  recipe scaled from ITS serving to the menu's portion (recipe-portion.ts).
  *  A component whose portion can't be compared keeps one serving and makes
  *  the meal "about". null when nothing in it has a figure. */
-export function mealMacros(components: { title: string; portion?: string }[], lookup: MacroLookup): MealMacros | null {
+export function mealMacros(
+  components: { title: string; portion?: string }[],
+  lookup: MacroLookup,
+  plain?: (title: string, portion: string | undefined) => Macros | null,
+): MealMacros | null {
   const sum: Macros = { protein_g: 0, carbs_g: 0, fat_g: 0, fibre_g: 0 };
   let found = 0;
   let unsure = 0;
@@ -118,7 +122,15 @@ export function mealMacros(components: { title: string; portion?: string }[], lo
       if (f === null) unsure += 1;
       for (const k of MACRO_KEYS) sum[k] += hit.m[k] * (f ?? 1);
     } else if (!isNothing(c)) {
-      unsure += 1;
+      // A plain food (curd, almonds, fruit) with a portion: the ingredient
+      // table's figures for that weight (plain-foods.ts).
+      const pm = plain?.(c, comp.portion);
+      if (pm) {
+        found += 1;
+        for (const k of MACRO_KEYS) sum[k] += pm[k];
+      } else {
+        unsure += 1;
+      }
     }
   }
   if (!found) return null;

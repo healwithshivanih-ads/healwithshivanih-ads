@@ -31,10 +31,15 @@ def test_everyday_client():
     assert t["protein"] == {"low": 84, "high": 105}
     assert t["fibre"] == 25
     assert t["fat_share"] == [0.2, 0.3]
-    assert t["carb_share"] is None  # no carb level set: no carb target
+    assert t["carb_share"] == [0.5, 0.55]  # standard by default
 
 
-def test_carb_levels_only_when_coach_sets_them():
+def test_carb_level_defaults_from_the_record():
+    assert day_targets(base(active_conditions=["PCOS"]))["carb_share"] == [0.45, 0.45]
+    assert day_targets(base(active_conditions=["PCOS"], carb_level="standard"))["carb_share"] == [0.5, 0.55]
+
+
+def test_carb_levels_the_coach_sets():
     assert day_targets(base(carb_level="standard"))["carb_share"] == [0.5, 0.55]
     g = day_targets(base(carb_level="glycaemic"))
     assert g["carb_share"] == [0.45, 0.45]
@@ -69,8 +74,8 @@ def test_no_automatic_targets():
 
 def test_kidney():
     t = day_targets(base(lab_markers=[{"marker_name": "eGFR", "value": 50}]))
-    assert t["protein"] is None
-    assert t["protein_note"] == "Your kidney team sets your protein."
+    assert t["protein"] == {"low": 56, "high": 56}  # low target, no reason given
+    assert t["protein_note"] is None
     assert t["menu_protein_g"] == 56
     # one high creatinine, no diagnosis: the usual band plus a doctor line
     t = day_targets(base(lab_markers=[{"marker_name": "eGFR", "value": 80}, {"marker_name": "Creatinine", "value": 1.4}]))
@@ -80,14 +85,14 @@ def test_kidney():
     assert "maintenance" in t["kcal"]
 
 
-def test_gout_shows_no_protein_number():
+def test_gout_gets_a_low_band_with_no_reason():
     t = day_targets(base(active_conditions=["Gout"]))
-    assert t["protein"] is None and t["protein_note"] is None
+    assert t["protein"] == {"low": 56, "high": 70} and t["protein_note"] is None
 
 
 def test_fibre_exclusions():
-    assert day_targets(base(active_conditions=["Ulcerative colitis"]))["fibre"] is None
-    assert day_targets(base(active_conditions=["SIBO"]))["fibre"] is None
+    assert day_targets(base(active_conditions=["Ulcerative colitis"]))["fibre"] == 15
+    assert day_targets(base(active_conditions=["SIBO"]))["fibre"] == 15
     assert day_targets(base(active_conditions=["SIBO"], fibre_g=15))["fibre"] == 15
     assert day_targets(base(active_conditions=["IBS"]))["fibre"] == 25
     # "ulcer" must not be read as ulcerative colitis, nor the reverse

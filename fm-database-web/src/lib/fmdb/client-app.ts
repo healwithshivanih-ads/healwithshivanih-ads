@@ -284,6 +284,7 @@ import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
 import { loadSupply } from "./supply-store";
 import { recipePortion } from "./recipe-portion";
+import { buildPlainFoodLookup } from "./plain-foods";
 import { targetsForWeek, type DayTargets } from "./day-targets";
 import { currentHost } from "./client-thread";
 import { runShim } from "./shim";
@@ -4113,6 +4114,9 @@ export async function loadClientAppData(
         })),
       )
     : null;
+  const plainLookup = macroLookup
+    ? buildPlainFoodLookup(portionTable?.entries as Parameters<typeof buildPlainFoodLookup>[0])
+    : undefined;
   const dishKcal = (dish: string): number | undefined => {
     const k = estimateDishKcal(dish, recipeKcalLookup);
     // Whole numbers only. A per-serving figure can now carry a decimal (an
@@ -4335,7 +4339,7 @@ export async function loadClientAppData(
         components: splitDishComponents(cell),
         note: slotNote(slotL),
         kcal: dishKcal(cell),
-        ...(macroLookup ? { macros: mealMacros(splitDishComponents(cell), macroLookup) } : {}),
+        ...(macroLookup ? { macros: mealMacros(splitDishComponents(cell), macroLookup, plainLookup) } : {}),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
         dishTitle: rec?.title || pills[0],
       });

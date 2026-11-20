@@ -13,10 +13,10 @@ per-minute staging copy projects it to Fly as client.yaml#day_targets):
                split, never shown to the client; the app picks the plan week
   protein      {low, high} g band | None, with `protein_note` when no number
                is shown ("Your kidney team sets your protein.", ...)
-  carb_share   [low, high] share of calories | None — only when the coach has
-               set a carb level (client.carb_level); never guessed
+  carb_share   [low, high] share of calories — the coach's carb_level, else
+               glycaemic for a recorded glycaemic diagnosis, else standard
   fat_share    [low, high]
-  fibre        25 | None (excluded conditions, SIBO)
+  fibre        25, or FIBRE_GENTLE_G for bowel conditions / SIBO, or fibre_g
   notes        coach-side reasons, one line each
 
 Rules worth knowing before editing:
@@ -53,6 +53,12 @@ NO_KIDNEY_TEST_PROTEIN = (1.2, 1.5)
 OVER_65_DEFICIT = False
 
 PROTEIN_BAND = (1.2, 1.5)
+#: kidney (eGFR < 60, ACR >= 30 or a diagnosis): one low figure, g/kg
+KIDNEY_PROTEIN_G_KG = 0.8
+#: high uric acid / gout: a low band, g/kg
+URATE_PROTEIN_G_KG = (0.8, 1.0)
+#: bowel conditions and SIBO: a gentle fibre target instead of none
+FIBRE_GENTLE_G = 15
 FIBRE_G = 25
 FAT_SHARE = (0.20, 0.30)
 CARB_SHARE = {"glycaemic": (0.45, 0.45), "standard": (0.50, 0.55)}
@@ -233,27 +239,35 @@ def day_targets(client: dict, plan_week: int | None = None) -> dict[str, Any]:
     protein: dict | None = {"low": round(band[0] * calc_w), "high": round(band[1] * calc_w)}
     protein_note = None
     menu_protein = None
+    # Coach, 20 Nov 2026: kidney and gout clients get a LOW target, shown as a
+    # plain number with no reason given (the reason is the coach's to explain).
     if kidney:
-        menu_protein = round(0.8 * calc_w)
-        protein, protein_note = None, "Your kidney team sets your protein."
+        menu_protein = round(KIDNEY_PROTEIN_G_KG * calc_w)
+        protein = {"low": menu_protein, "high": menu_protein}
+        notes.append(f"kidney: protein held at {KIDNEY_PROTEIN_G_KG} g/kg, no reason shown")
     elif _terms_hit(client, URATE):
-        protein, protein_note = None, None
-        notes.append("uric acid / gout: no protein number shown; food rules only")
+        protein = {"low": round(URATE_PROTEIN_G_KG[0] * calc_w), "high": round(URATE_PROTEIN_G_KG[1] * calc_w)}
+        notes.append("uric acid / gout: low protein band, no reason shown")
     elif kidney_check_line:
         protein_note = "Check this kidney result with your doctor."
 
-    # 5. carbs: only a coach-set level
+    # 5. carbs: the coach's level, else a default from the record (coach,
+    # 20 Nov 2026: "build that in or at least a default base") — glycaemic
+    # when a glycaemic diagnosis is recorded, else standard.
     level = client.get("carb_level")
     carb_share = None
     if isinstance(level, (int, float)) and 0.2 <= float(level) <= 0.65:
         carb_share = (float(level), float(level))
     elif isinstance(level, str) and level in CARB_SHARE:
         carb_share = CARB_SHARE[level]
+    else:
+        hit = _terms_hit(client, GLYCAEMIC)
+        level = "glycaemic" if hit else "standard"
+        carb_share = CARB_SHARE[level]
+        notes.append(f"carb level {level} by default" + (f" ({hit})" if hit else "") + "; set carb_level to change")
     if carb_share and "sglt2" in drugs and carb_share[0] < 0.45:
         carb_share = (0.45, max(0.45, carb_share[1]))
         notes.append("SGLT2 inhibitor: carbs kept at 45% or more")
-    if not carb_share and _terms_hit(client, GLYCAEMIC):
-        notes.append("record suggests the glycaemic carb level; set carb_level to show a carb target")
 
     # 6. fat: 20-30%, up to GLYCAEMIC_FAT_MAX on glycaemic plans
     fat_hi = GLYCAEMIC_FAT_MAX if level == "glycaemic" else FAT_SHARE[1]
@@ -261,12 +275,10 @@ def day_targets(client: dict, plan_week: int | None = None) -> dict[str, Any]:
 
     # 7. fibre
     fibre: int | None = FIBRE_G
-    if _terms_hit(client, FIBRE_NONE):
-        fibre = None
-        notes.append("bowel condition on record: no fibre target, follows their doctor")
-    elif _terms_hit(client, SIBO, history=False) and not isinstance(client.get("fibre_g"), (int, float)):
-        fibre = None
-        notes.append("SIBO: no fibre number unless the coach sets fibre_g")
+    # Coach, 20 Nov 2026: a gentle, lower target rather than none, no reason shown.
+    if _terms_hit(client, FIBRE_NONE) or _terms_hit(client, SIBO, history=False):
+        fibre = FIBRE_GENTLE_G
+        notes.append(f"bowel condition / SIBO: gentle fibre {FIBRE_GENTLE_G} g, no reason shown")
     if isinstance(client.get("fibre_g"), (int, float)):
         fibre = int(client["fibre_g"])
 

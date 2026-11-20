@@ -138,8 +138,52 @@ def _protein_suppressed(client: dict) -> bool:
     return False
 
 
-def _nutrient_targets_block(client: dict) -> list[str]:
+def _day_target_lines(client: dict, target_week: int | None) -> list[str] | None:
+    """New-app clients (app_shell: v2) only: the client's confirmed day target
+    (scripts/day_targets.py), so each day is BUILT to the grams the app shows
+    beside the menu. None for everyone else, whose menus stay as they were
+    until the coach moves them over."""
+    if client.get("app_shell") != "v2":
+        return None
+    try:
+        from day_targets import day_targets
+
+        t = day_targets(client, target_week)
+    except Exception:
+        return None
+    if t.get("status") != "ok":
+        return None
+    kcal = t.get("kcal_now") or 0
+    out = ["- Build EVERY day so its one-person portions add up close to these daily grams "
+           "(the client's app shows the day's total beside them, so a gap shows):"]
+    p = t.get("protein")
+    if p:
+        out.append(f"  - Protein: {p['low']} to {p['high']} g" if p["low"] != p["high"] else f"  - Protein: about {p['low']} g — do NOT go over")
+    cs = t.get("carb_share")
+    if cs and kcal:
+        out.append(f"  - Carbs: {round(kcal * cs[0] / 4)} to {round(kcal * cs[1] / 4)} g")
+    fs = t.get("fat_share")
+    if fs and kcal:
+        out.append(f"  - Fat: {round(kcal * fs[0] / 9)} to {round(kcal * fs[1] / 9)} g")
+    if t.get("fibre"):
+        out.append(f"  - Fibre: about {t['fibre']} g")
+    out.append("  Size portions to reach these (a bigger dal bowl, a curd or paneer side, "
+               "a fistful of nuts or seeds); never invent a portion a person would not eat.")
+    return out
+
+
+def _nutrient_targets_block(client: dict, target_week: int | None = None) -> list[str]:
     """Prompt lines: protein/fibre floors + lab-driven nutrient emphasis."""
+    dt_lines = _day_target_lines(client, target_week)
+    if dt_lines:
+        lines_dt = list(dt_lines)
+        priorities = lab_nutrient_priorities(client)
+        if priorities:
+            ranked = sorted(priorities, key=lambda t: -priorities[t])[:5]
+            lines_dt.append("- This client's recent labs are LOW on: " + "; ".join(
+                f"{t.replace('-', ' ')} ({_NUTRIENT_FOODS.get(t, '')})" for t in ranked) +
+                ". Lean the week toward dishes naturally rich in these.")
+        return lines_dt
     weight = _client_weight_kg(client)
     suppressed = _protein_suppressed(client)
     lines: list[str] = []
@@ -625,7 +669,7 @@ def main() -> None:
             _caution_lines or "none for this client",
             "",
             "NUTRIENT TARGETS FOR THIS CLIENT (rule 10 — balance the week to these):",
-            *_nutrient_targets_block(client),
+            *_nutrient_targets_block(client, target_week),
             "",
             "CATALOGUE DISHES — name every cookable main dish with one of these EXACT titles (rule 13):",
             ", ".join(cat_names),
