@@ -81,6 +81,7 @@ kcal_is_estimate: true
 protein_g: 7.9
 good_for:
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: A one-pot basmati pulao with spinach, moong sprouts and whole spices.
 headnote: Rice, greens and a legume in one pot. Add curd and it is a full meal.
 attribution:
@@ -88,6 +89,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 83
+image:
+  file: images/web/spinach-sprouts-pulao.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://spinach-sprouts-pulao
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 83
@@ -167,3 +175,13 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: पालक और अंकुरित मूँग का पुलाव
+    steps:
+    - गहरे बर्तन में घी गरम करें और जीरा और खड़े मसाले डालें, फिर हरी मिर्च और अदरक।
+    - पालक डालकर कुछ सेकंड चलाएँ, फिर अंकुरित मूँग डालें।
+    - चावल डालकर हल्के हाथ से चलाएँ। 3 कप पानी और नमक डालें।
+    - ढककर धीमी आँच पर पकाएँ; 7–8 मिनट बाद चावल देख लें।
+    - आँच से उतारकर नींबू का रस मिलाएँ, हरा धनिया डालें और 5 मिनट ढककर रखें। रायते
+      या दही के साथ परोसें।

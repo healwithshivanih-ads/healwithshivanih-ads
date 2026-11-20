@@ -78,6 +78,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
 - constipation
+coach_priority: high
 one_line: A smooth, lightly spiced pumpkin soup with moong sprouts blended in.
 headnote: The sprouts give a pumpkin soup the protein it normally lacks. A good light
   dinner.
@@ -86,6 +87,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 87
+image:
+  file: images/web/pumpkin-and-moong-sprout-soup.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://pumpkin-and-moong-sprout-soup
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 87
@@ -160,3 +168,13 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: कद्दू और अंकुरित मूँग का सूप
+    steps:
+    - पतीले में घी गरम करें। जीरा, अदरक, लहसुन और हरी मिर्च डालकर कुछ सेकंड चलाएँ।
+    - कद्दू, प्याज़ और गाजर डालकर एक मिनट पकाएँ, फिर अंकुरित मूँग डालकर एक मिनट और।
+    - नमक, काली मिर्च और 2 कप पानी डालें। ढककर धीमी आँच पर कद्दू नरम होने तक पकाएँ।
+    - ठंडा करके बारीक पीस लें, ज़रूरत के हिसाब से पानी डालकर पतला करें।
+    - दोबारा गरम करें और ऊपर से हरे प्याज़ के पत्ते, थोड़ी कसी गाजर और कुछ अंकुर डालकर
+      परोसें।

@@ -83,6 +83,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
 - constipation
+coach_priority: high
 one_line: A simple one-pot stew of moong sprouts, carrot and potato.
 headnote: Soft, warm and lightly spiced — a good dinner on a day digestion feels slow.
 attribution:
@@ -90,6 +91,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 37
+image:
+  file: images/web/sprouted-moong-stew.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-moong-stew
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 37
@@ -171,3 +179,12 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग और सब्ज़ियों का स्ट्यू
+    steps:
+    - जैतून के तेल में प्याज़, अदरक और लहसुन एक मिनट नरम करें।
+    - गाजर, आलू, टमाटर और हरा धनिया डालकर पकाते रहें।
+    - नमक और सूखे मसाले डालें, एक कप पानी डालकर उबाल लाएँ।
+    - अंकुरित मूँग डालें, ढककर सब कुछ नरम होने तक पकाएँ।
+    - नींबू का रस मिलाकर चावल के साथ परोसें।

@@ -52,7 +52,7 @@ ingredients:
   qty: '1.5'
   unit: tsp
 - item: mustard oil
-  qty: '3'
+  qty: '2'
   unit: tbsp
 - item: water
   qty: '1.5'
@@ -98,25 +98,25 @@ protein_g: 6.7
 kcal_per_serving: 132
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 132
-  protein_g: 6.7
-  carbs_g: 8.2
-  fat_g: 9.0
-  fibre_g: 3.4
-  iron_mg: 2.9
-  calcium_mg: 70.1
-  magnesium_mg: 95.9
-  zinc_mg: 1.6
-  potassium_mg: 225
-  folate_ug: 42.3
+  kcal: 147
+  protein_g: 3.9
+  carbs_g: 5.2
+  fat_g: 13.0
+  fibre_g: 2.0
+  iron_mg: 1.9
+  calcium_mg: 41.6
+  magnesium_mg: 56.3
+  zinc_mg: 0.9
+  potassium_mg: 146
+  folate_ug: 25.0
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 8.3
-  omega3_mg: 84.9
-nutrient_coverage_pct: 16.6
+  vit_c_mg: 7.5
+  omega3_mg: 53.7
+nutrient_coverage_pct: 15.4
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -151,8 +151,8 @@ nutrient_lines:
   key: salt
   g: 8.53125
 - i: 7
-  key: mustard-seeds
-  g: 37.5
+  key: sunflower-oil
+  g: 27.25
 - i: 8
   key: water
   g: 0.0

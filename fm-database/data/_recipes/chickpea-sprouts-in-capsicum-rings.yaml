@@ -75,6 +75,7 @@ protein_g: 12.9
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: Capsicum rings filled with a mashed chickpea-sprout and vegetable mixture
   and pan-cooked like tikkis.
 headnote: The capsicum ring holds the tikki together, so it needs very little besan
@@ -84,6 +85,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 55
+image:
+  file: images/web/chickpea-sprouts-in-capsicum-rings.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://chickpea-sprouts-in-capsicum-rings
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 55
@@ -158,3 +166,14 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: शिमला मिर्च के छल्लों में अंकुरित चने
+    steps:
+    - शिमला मिर्च के 1 सेमी मोटे छल्ले काटें। अंकुरित चनों को एक कटोरे में मसल लें।
+    - इसमें सब्ज़ियाँ, दही, बेसन, चाट मसाला, अजवाइन, लाल मिर्च और नमक मिलाएँ।
+    - तवे पर हल्की चिकनाई लगाएँ, कुछ छल्ले रखें और हर एक में मिश्रण भरकर बराबर दबा
+      दें। ऊपर से कसा हुआ पनीर डालें।
+    - थोड़े घी के साथ मध्यम आँच पर 4–5 मिनट सेंकें, सँभालकर पलटें और दूसरी तरफ़ 4–5
+      मिनट सेंकें।
+    - धनिया-पुदीने की चटनी के साथ गरम परोसें।

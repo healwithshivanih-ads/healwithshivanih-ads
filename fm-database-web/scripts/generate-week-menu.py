@@ -34,7 +34,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
-from catalogue_dishes import catalogue_dish_names  # noqa: E402
+from catalogue_dishes import catalogue_dish_names, priority_dish_names  # noqa: E402
 from meal_foods import relevant_meal_foods  # noqa: E402
 from menu_hygiene import scrub_menu_days, snap_menu_days  # noqa: E402
 
@@ -435,7 +435,8 @@ HARD RULES:
     (c) follicular days: the lighter, fresher end of the framework — more sprouts, fresh preparations, lighter grains.
     (d) ovulatory days: bright fresh meals; favour cruciferous vegetables (cabbage, cauliflower, broccoli — cooked if a thyroid caution applies) to support estrogen clearance.
     Blend transitions naturally — a week that crosses from late_luteal into menstrual should soften as it goes, not flip styles mid-week. NEVER name phases, hormones, or cycle days in the change_note; if the phase shaped the week, say it food-first ("kept dinners heartier this week", "leaned into lighter fresh meals").
-17. ALLERGIES + DAIRY ARE HARD RULES — the CLIENT block carries an ALLERGIES line and, when dairy is an issue, a DAIRY line. Never use an allergen, in any form. Follow the DAIRY line EXACTLY and let it override rule 10's protein anchors: for LACTOSE INTOLERANCE keep curd, paneer, buttermilk and ghee (and use lactose-free milk wherever milk is needed) — do not strip dairy wholesale; for a MILK-PROTEIN ALLERGY or an UNCONFIRMED dairy reaction use NO milk (lactose-free milk included), curd, buttermilk, raita, paneer, cheese or milk sweets — anchor protein with dal, sprouts, tofu, eggs/meat if eaten — and ghee only if the line says ghee is OK (otherwise cook in oil)."""
+17. ALLERGIES + DAIRY ARE HARD RULES — the CLIENT block carries an ALLERGIES line and, when dairy is an issue, a DAIRY line. Never use an allergen, in any form. Follow the DAIRY line EXACTLY and let it override rule 10's protein anchors: for LACTOSE INTOLERANCE keep curd, paneer, buttermilk and ghee (and use lactose-free milk wherever milk is needed) — do not strip dairy wholesale; for a MILK-PROTEIN ALLERGY or an UNCONFIRMED dairy reaction use NO milk (lactose-free milk included), curd, buttermilk, raita, paneer, cheese or milk sweets — anchor protein with dal, sprouts, tofu, eggs/meat if eaten — and ghee only if the line says ghee is OK (otherwise cook in oil).
+18. COACH'S PRIORITY DISHES — a PRIORITY DISHES list may be provided: catalogue dishes the coach specifically wants on clients' menus. When you introduce or rotate a dish under rule 3, take it from this list FIRST wherever one genuinely fits the slot, and name it with its EXACT title (rule 13). Aim for the count the PRIORITY DISHES line states for this client across the week, as DIFFERENT dishes spread over different days and meal slots; never use the same priority dish more than twice in the week, and never more than one priority dish in a single meal. This rule YIELDS to every rule above it: skip any priority dish that breaks the framework (rule 1), client or coach feedback (rule 4), a food caution (rule 15) or an allergy or dairy rule (rule 17), and use none at all if the client has reported gas, bloating or discomfort from sprouts or legumes. Fewer priority dishes that fit beats the full count forced in."""
 
 
 def _plans_root() -> Path:
@@ -708,6 +709,12 @@ def main() -> None:
             dt_target = _t if _t.get("status") == "ok" else None
         except Exception:
             dt_target = None
+    # Rule 18. Vegetarian-leaning clients get the higher target: for them these
+    # dishes carry protein, iron and folate the rest of the menu is short on.
+    _dp = (client.get("dietary_preference") or "").lower()
+    prio_names = priority_dish_names(_dp)
+    _veg_leaning = "non" not in _dp and any(w in _dp for w in ("vegan", "veg", "egg"))  # as recipe_select.veg_leaning
+    prio_target = 4 if _veg_leaning else 2
 
     # Rule 17. This drafter used to see `foods_to_avoid` only — never the
     # allergy list — while rule 10 told it to anchor protein with paneer and
@@ -743,6 +750,9 @@ def main() -> None:
             *(["Grams are for the portion shown; scale them with the portion you write."] if dt_target else []),
             ("\n".join(_catalogue_with_grams(cat_names)) if dt_target else ", ".join(cat_names)),
             "",
+            *(["PRIORITY DISHES (rule 18 — aim for "
+               f"{prio_target} different ones across the week, only where they fit):",
+               ", ".join(prio_names), ""] if prio_names else []),
             "CURRENT MENU (vary from this):",
             *cur_lines,
             "",

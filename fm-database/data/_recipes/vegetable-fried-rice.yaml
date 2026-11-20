@@ -41,7 +41,7 @@ ingredients:
   qty: '1'
   unit: tbsp
 - item: oil
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: black pepper powder
   qty: '0.5'
@@ -86,35 +86,30 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 1150
-  protein_g: 23.8
-  carbs_g: 226
-  fat_g: 15.4
-  fibre_g: 10.5
-  iron_mg: 2.7
-  calcium_mg: 62.2
-  magnesium_mg: 87.1
-  zinc_mg: 3.6
-  potassium_mg: 574
-  folate_ug: 56.9
+  kcal: 415
+  protein_g: 8.0
+  carbs_g: 77.5
+  fat_g: 7.7
+  fibre_g: 3.7
+  iron_mg: 1.2
+  calcium_mg: 61.1
+  magnesium_mg: 46.5
+  zinc_mg: 1.5
+  potassium_mg: 353
+  folate_ug: 39.1
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 46.0
-  omega3_mg: 174
+  omega3_mg: 92.9
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
-- fibre
-- magnesium
-- zinc
-- potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
-  key: white-rice
-  g: 555.0
+  key: rice-cooked
+  g: 480.0
 - i: 1
   key: carrot
   g: 64.0
@@ -132,7 +127,7 @@ nutrient_lines:
   g: 8.5
 - i: 6
   key: olive-oil
-  g: 27.0
+  g: 13.5
 - i: 7
   key: black-pepper
   g: 1.0416666666666667
@@ -140,7 +135,6 @@ nutrient_lines:
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: वेजिटेबल फ्राइड राइस

@@ -37,8 +37,8 @@ ingredients:
   qty: '1.25'
   unit: cup
 - item: cold-pressed oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: mustard seeds
   qty: '1'
   unit: tsp
@@ -75,6 +75,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - constipation
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: A South Indian-style poriyal of French beans, moong sprouts and a little
   sprouted rajma with coconut.
 headnote: The guide steams the rajma sprouts in the pan; we boil them first, because
@@ -84,6 +85,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 39
+image:
+  file: images/web/mixed-sprouts-and-beans-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mixed-sprouts-and-beans-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 39
@@ -96,10 +104,10 @@ kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 210
+  kcal: 190
   protein_g: 8.5
   carbs_g: 22.7
-  fat_g: 10.6
+  fat_g: 8.3
   fibre_g: 6.9
   iron_mg: 3.4
   calcium_mg: 69.3
@@ -110,7 +118,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 22.4
-  omega3_mg: 103
+  omega3_mg: 102
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -133,7 +141,7 @@ nutrient_lines:
   g: 137.5
 - i: 3
   key: sunflower-oil
-  g: 13.625
+  g: 9.083333333333334
 - i: 4
   key: mustard-seeds
   g: 4.166666666666667
@@ -155,3 +163,14 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग और फ्रेंच बीन्स की सब्ज़ी
+    steps:
+    - अंकुरित राजमा को कम से कम 10 मिनट तेज़ उबालकर छान लें — राजमा कभी अधपका नहीं
+      डालना चाहिए।
+    - धीमी आँच पर तेल गरम करके राई और उड़द दाल डालें।
+    - हल्दी, उबला राजमा, अंकुरित मूँग और फ्रेंच बीन्स डालकर हल्का चलाएँ।
+    - 3–4 छोटे चम्मच पानी डालें, ढककर अपनी ही भाप में पकने दें।
+    - इस बीच हरी मिर्च को नारियल के साथ पीस लें। यह पेस्ट मिलाएँ, नमक डालें, कुछ सेकंड
+      और पकाएँ और गरम परोसें।

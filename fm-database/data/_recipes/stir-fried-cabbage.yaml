@@ -50,8 +50,8 @@ ingredients:
   qty: '1'
   unit: pinch
 - item: cooking oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -95,10 +95,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 137
+  kcal: 117
   protein_g: 4.1
   carbs_g: 15.5
-  fat_g: 7.7
+  fat_g: 5.4
   fibre_g: 6.0
   iron_mg: 2.0
   calcium_mg: 154
@@ -109,7 +109,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 72.8
-  omega3_mg: 47.2
+  omega3_mg: 46.3
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -117,7 +117,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: cabbage
@@ -148,7 +148,7 @@ nutrient_lines:
   g: 0.3
 - i: 9
   key: sunflower-oil
-  g: 13.625
+  g: 9.083333333333334
 - i: 10
   key: salt
   g: 0.0

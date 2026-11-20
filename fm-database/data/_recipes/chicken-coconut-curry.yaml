@@ -27,7 +27,7 @@ ingredients:
   qty: '500'
   unit: g
 - item: coconut oil
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: mustard seeds
   qty: '0.5'
@@ -102,39 +102,38 @@ kcal_total: 340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 760
-  protein_g: 57.7
-  carbs_g: 20.2
-  fat_g: 51.2
-  fibre_g: 5.1
-  iron_mg: 7.6
-  calcium_mg: 116
-  magnesium_mg: 145
-  zinc_mg: 4.6
-  potassium_mg: 1213
-  folate_ug: 58.0
+  kcal: 560
+  protein_g: 55.9
+  carbs_g: 16.6
+  fat_g: 29.1
+  fibre_g: 3.8
+  iron_mg: 5.1
+  calcium_mg: 100.0
+  magnesium_mg: 113
+  zinc_mg: 4.1
+  potassium_mg: 1033
+  folate_ug: 47.2
   b12_ug: 0.8
   vit_d_ug: 0.2
-  vit_c_mg: 16.7
-  omega3_mg: 214
+  vit_c_mg: 14.9
+  omega3_mg: 216
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
-- fibre
 - iron
 - magnesium
 - zinc
 - potassium
 - b12
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: chicken
   g: 500.0
 - i: 1
   key: coconut-oil
-  g: 27.25
+  g: 13.625
 - i: 2
   key: mustard-seeds
   g: 2.0833333333333335
@@ -157,7 +156,7 @@ nutrient_lines:
   key: coriander-powder
   g: 5.0
 - i: 9
-  key: coconut-milk
+  key: coconut-milk-light
   g: 360.0
 - i: 10
   key: salt

@@ -39,7 +39,7 @@ ingredients:
     sliced
   qty: '2'
   unit: cup
-- item: coconut milk, thick
+- item: light coconut milk, thick
   qty: '500'
   unit: ml
 - item: coconut oil
@@ -86,6 +86,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - anti-inflammatory-diet
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: A mild Thai-style coconut curry with moong sprouts and a wokful of vegetables.
 headnote: The sprouts go in at the end so they stay tender. Rich from the coconut
   milk — a small bowl over rice is a meal.
@@ -94,6 +95,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 28
+image:
+  file: images/web/bean-sprouts-in-coconut-curry.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://bean-sprouts-in-coconut-curry
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 28
@@ -106,25 +114,24 @@ kcal_total: 1340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 335
-  protein_g: 8.0
-  carbs_g: 21.6
-  fat_g: 26.4
-  fibre_g: 6.2
-  iron_mg: 4.6
-  calcium_mg: 87.8
-  magnesium_mg: 94.3
-  zinc_mg: 1.6
-  potassium_mg: 659
-  folate_ug: 106
+  kcal: 238
+  protein_g: 6.7
+  carbs_g: 19.1
+  fat_g: 15.8
+  fibre_g: 5.4
+  iron_mg: 2.9
+  calcium_mg: 76.5
+  magnesium_mg: 71.8
+  zinc_mg: 1.2
+  potassium_mg: 534
+  folate_ug: 98.3
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 65.3
-  omega3_mg: 43.0
+  vit_c_mg: 64.0
+  omega3_mg: 44.3
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
-- iron
 - magnesium
 - potassium
 - folate
@@ -142,7 +149,7 @@ nutrient_lines:
   key: mixed-vegetables
   g: 240.0
 - i: 3
-  key: coconut-milk
+  key: coconut-milk-light
   g: 500.0
 - i: 4
   key: coconut-oil
@@ -174,3 +181,13 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: नारियल की करी में अंकुरित मूँग और सब्ज़ियाँ
+    steps:
+    - कड़ाही में तेल गरम करें और लहसुन, अदरक, प्याज़ और शिमला मिर्च नरम करें।
+    - कटी सब्ज़ियाँ डालकर बस नरम होने तक पकाएँ।
+    - नारियल के दूध में सोया सॉस, चिली सॉस और नट बटर अच्छी तरह फेंटें, कड़ाही में
+      डालें और 3–4 मिनट धीमी आँच पर पकाएँ।
+    - अंकुरित मूँग, नींबू का रस और नमक डालें, ढककर 3–4 मिनट और पकाएँ। चावल या नूडल्स
+      के साथ गरम परोसें।

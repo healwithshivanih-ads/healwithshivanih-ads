@@ -73,6 +73,7 @@ good_for:
 - blood-sugar-regulation
 - protein-adequacy-vegetarian
 - constipation
+coach_priority: high
 one_line: A thick jowar flatbread with ground chana and moong sprouts worked into
   the dough.
 headnote: Gluten-free and more filling than a plain bhakri. Makes four.
@@ -81,6 +82,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 61
+image:
+  file: images/web/sprouts-and-jowar-doda.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouts-and-jowar-doda
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 61
@@ -153,3 +161,12 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित दाल और ज्वार का डोडा
+    steps:
+    - अंकुरों को लहसुन, अदरक, हरी मिर्च और प्याज़ के साथ पीस लें।
+    - कटोरे में निकालें और कसूरी मेथी, तिल, नमक और ज्वार का आटा डालें। आटा गूँध लें
+      — आम तौर पर पानी की ज़रूरत नहीं पड़ती।
+    - 4 हिस्से करें। हर हिस्से को बटर पेपर पर गीली उँगलियों से थपथपाकर गोल चपटा करें।
+    - तवे पर थोड़े घी के साथ दोनों तरफ़ से सेंकें।

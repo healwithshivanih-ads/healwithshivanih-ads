@@ -66,6 +66,7 @@ protein_g: 6.1
 good_for:
 - phytonutrient-dense-diet
 - anti-inflammatory-diet
+coach_priority: high
 one_line: Quinoa and chopped vegetables with a handful of alfalfa sprouts and a honey-lemon
   dressing.
 headnote: Alfalfa sprouts are delicate — add them last and eat the salad fresh.
@@ -74,6 +75,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 49
+image:
+  file: images/web/alfalfa-and-quinoa-salad.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://alfalfa-and-quinoa-salad
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 49
@@ -137,3 +145,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अल्फाल्फा और क्विनोआ का सलाद
+    steps:
+    - क्विनोआ, सब्ज़ियाँ और अल्फाल्फा के अंकुर एक बड़े कटोरे में मिलाएँ।
+    - नमक, काली मिर्च, शहद, नींबू का रस, जैतून का तेल और चिली फ्लेक्स एक बंद जार में
+      हिलाकर मिला लें।
+    - यह ड्रेसिंग ऊपर डालें और अच्छी तरह मिलाएँ। तुरंत परोसें।

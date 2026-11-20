@@ -78,6 +78,7 @@ good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
 - constipation
+coach_priority: high
 one_line: Bhindi and boiled kala chana sprouts in a roasted coconut, tamarind and
   Byadgi chilli masala.
 headnote: A coastal-style masala. The roasted dals thicken it, and the tamarind keeps
@@ -87,6 +88,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 40
+image:
+  file: images/web/bhindi-chana-masala.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://bhindi-chana-masala
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 40
@@ -162,3 +170,14 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: भिंडी और अंकुरित चने का मसाला
+    steps:
+    - साबुत धनिया, चना दाल, उड़द दाल और सूखी लाल मिर्च सूखा भूनकर ठंडा करें।
+    - इन्हें नारियल और इमली के साथ पीसकर पेस्ट बना लें।
+    - धीमी आँच पर नारियल तेल गरम करें और प्याज़ हल्का गुलाबी होने तक भूनें।
+    - भिंडी, अंकुरित चने और नमक डालें। ढककर धीमी आँच पर 5 मिनट पकाएँ, बीच-बीच में
+      चलाते रहें।
+    - भिंडी पक जाने पर मसाले का पेस्ट मिलाएँ और धीमी आँच पर 7–10 मिनट पकाएँ। चावल
+      या रोटी के साथ परोसें।

@@ -23,8 +23,8 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: mustard greens (sarson), cleaned and chopped
-  qty: '4'
-  unit: cup
+  qty: '500'
+  unit: g
 - item: garlic, crushed
   qty: '5'
   unit: piece
@@ -44,8 +44,8 @@ ingredients:
   qty: '1'
   unit: pinch
 - item: cooking oil
-  qty: '1.5'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -89,39 +89,35 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 2159
-  protein_g: 105
-  carbs_g: 120
-  fat_g: 154
-  fibre_g: 50.0
-  iron_mg: 37.5
-  calcium_mg: 1093
-  magnesium_mg: 1489
-  zinc_mg: 24.6
-  potassium_mg: 3084
-  folate_ug: 659
+  kcal: 144
+  protein_g: 8.4
+  carbs_g: 20.1
+  fat_g: 5.7
+  fibre_g: 9.2
+  iron_mg: 4.7
+  calcium_mg: 316
+  magnesium_mg: 89.4
+  zinc_mg: 1.0
+  potassium_mg: 1092
+  folate_ug: 41.4
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 37.6
-  omega3_mg: 1290
+  vit_c_mg: 184
+  omega3_mg: 57.9
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
 - fibre
 - iron
 - calcium
 - magnesium
-- zinc
 - potassium
-- folate
 - vitamin-c
-- omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
-  key: mustard-seeds
-  g: 800.0
+  key: mustard-greens
+  g: 500.0
 - i: 1
   key: garlic
   g: 15.0
@@ -142,7 +138,7 @@ nutrient_lines:
   g: 0.3
 - i: 7
   key: sunflower-oil
-  g: 20.4375
+  g: 9.083333333333334
 - i: 8
   key: salt
   g: 0.0

@@ -167,15 +167,20 @@ export async function searchRecipesAction(
         kitchenTested: r.kitchen_tested !== false,
         labMatchedTags: hasLabPriorities ? matchedPriorityTags(richIn, labPriorities) : undefined,
         _labBoost: hasLabPriorities ? recipeLabBoost(richIn, labPriorities) : 0,
-      } as PickerRecipe & { _labBoost: number });
+        // `coach_priority: high` — dishes the coach wants on clients' menus
+        // (recipe_select.py + the weekly drafter's rule 18 read the same flag)
+        _coachPriority: String(r.coach_priority ?? "").toLowerCase() === "high" ? 1 : 0,
+      } as PickerRecipe & { _labBoost: number; _coachPriority: number });
     }
 
-    // rank: lab-priority boost first (client's low nutrients), then query
-    // prefix, then photo, then alphabetical.
-    const scored = out as (PickerRecipe & { _labBoost?: number })[];
+    // rank: lab-priority boost first (client's low nutrients), then the
+    // coach's priority dishes, then query prefix, then photo, then alphabetical.
+    const scored = out as (PickerRecipe & { _labBoost?: number; _coachPriority?: number })[];
     scored.sort((a, b) => {
       const lb = (b._labBoost ?? 0) - (a._labBoost ?? 0);
       if (lb !== 0) return lb;
+      const cp = (b._coachPriority ?? 0) - (a._coachPriority ?? 0);
+      if (cp !== 0) return cp;
       const aw = q && a.title.toLowerCase().startsWith(q) ? 0 : 1;
       const bw = q && b.title.toLowerCase().startsWith(q) ? 0 : 1;
       if (aw !== bw) return aw - bw;
@@ -183,8 +188,9 @@ export async function searchRecipesAction(
       return a.title.localeCompare(b.title);
     });
 
-    const recipes = scored.slice(0, 40).map(({ _labBoost, ...rest }) => {
+    const recipes = scored.slice(0, 40).map(({ _labBoost, _coachPriority, ...rest }) => {
       void _labBoost;
+      void _coachPriority;
       return rest;
     });
     return { ok: true, recipes };

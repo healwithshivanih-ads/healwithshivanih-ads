@@ -26,8 +26,8 @@ ingredients:
   qty: '0.5'
   unit: cup
 - item: ghee
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
@@ -72,6 +72,7 @@ kcal_is_estimate: true
 protein_g: 6.4
 good_for:
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Blanched whole urad sprouts tossed in ghee with hing, garlic and ginger.
 headnote: Urad is the heaviest of the dals; hing, ginger and garlic are there to help
   digest it.
@@ -80,6 +81,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 59
+image:
+  file: images/web/urad-sprout-snack.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://urad-sprout-snack
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 59
@@ -92,10 +100,10 @@ kcal_total: 231
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 231
+  kcal: 190
   protein_g: 6.4
   carbs_g: 19.4
-  fat_g: 14.4
+  fat_g: 9.9
   fibre_g: 4.9
   iron_mg: 2.6
   calcium_mg: 71.6
@@ -104,9 +112,9 @@ nutrients_per_serving:
   potassium_mg: 401
   folate_ug: 58.7
   b12_ug: 0.0
-  vit_d_ug: 0.1
+  vit_d_ug: 0.0
   vit_c_mg: 32.0
-  omega3_mg: 151
+  omega3_mg: 114
 nutrient_coverage_pct: 100.0
 rich_in:
 - vitamin-c
@@ -118,7 +126,7 @@ nutrient_lines:
   g: 55.0
 - i: 1
   key: ghee
-  g: 13.625
+  g: 9.083333333333334
 - i: 2
   key: cumin-seeds
   g: 1.0416666666666667
@@ -152,3 +160,12 @@ nutrient_lines:
 nutrient_servings: 1.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित उड़द का स्टर-फ़्राई
+    steps:
+    - अंकुरित उड़द को उबलते पानी में करीब एक मिनट डालकर छान लें।
+    - धीमी आँच पर घी गरम करें और जीरा, हींग, करी पत्ता, हरी मिर्च, लहसुन, अदरक और
+      नमक डालें। कुछ सेकंड चलाएँ।
+    - अंकुर डालकर 2–3 मिनट पकाएँ।
+    - प्याज़ और थोड़ा नींबू का रस डालें और ऊपर से हरा धनिया।

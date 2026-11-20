@@ -62,6 +62,7 @@ protein_g: 1.7
 good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
+coach_priority: high
 one_line: A green coriander-mint chutney thickened with matki sprouts.
 headnote: The guide grinds the sprouts raw; we steam them first, as it advises for
   bean sprouts elsewhere. Thick enough to use as a dip.
@@ -70,6 +71,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 88
+image:
+  file: images/web/matki-sprout-chutney.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://matki-sprout-chutney
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 88
@@ -129,3 +137,12 @@ nutrient_lines:
 nutrient_servings: 6.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मटकी की चटनी
+    steps:
+    - अंकुरित मटकी को 3–4 मिनट भाप में पकाकर ठंडा करें।
+    - लहसुन की कलियाँ घी में भून लें।
+    - सब कुछ बर्फ़ के एक टुकड़े के साथ बारीक पीस लें — बर्फ़ से चटनी का हरा रंग बना
+      रहता है।
+    - खीरे के टुकड़ों पर लगाकर, या सब्ज़ियों की स्टिक्स के साथ डिप की तरह परोसें।

@@ -69,6 +69,7 @@ protein_g: 14.9
 good_for:
 - protein-adequacy-vegetarian
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: South Indian appe from ground sprouted urad, rava, paneer and coconut —
   no fermenting.
 headnote: 'An instant batter: ten minutes'' rest instead of an overnight ferment.'
@@ -77,6 +78,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 67
+image:
+  file: images/web/sprouted-urad-and-rava-appe.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-urad-and-rava-appe
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 67
@@ -145,3 +153,11 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित उड़द और रवा के अप्पे
+    steps:
+    - अंकुरित उड़द को हरी मिर्च, अदरक और करी पत्ते के साथ थोड़ा पानी डालकर पीस लें।
+    - कटोरे में निकालें और हींग, नमक, पनीर, सूजी और नारियल मिलाएँ। 10 मिनट रखें।
+    - अप्पे का पैन गरम करें और खाँचों में नारियल तेल लगाएँ।
+    - घोल डालें और पलटते हुए चारों तरफ़ से कुरकुरा होने तक सेंकें।

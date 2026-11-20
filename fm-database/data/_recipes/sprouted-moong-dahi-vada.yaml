@@ -78,6 +78,7 @@ good_for:
 - gut-microbiome
 - protein-adequacy-vegetarian
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Dahi vada made with a moong-sprout batter cooked in a paniyaram pan instead
   of deep-fried.
 headnote: The vadas are pan-cooked with a teaspoon of oil. Use rice flour instead
@@ -87,6 +88,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 76
+image:
+  file: images/web/sprouted-moong-dahi-vada.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-moong-dahi-vada
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 76
@@ -160,3 +168,16 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग का दही वड़ा (बिना तले)
+    steps:
+    - अंकुरित मूँग, सूजी, अदरक, हरी मिर्च और नमक को कम से कम पानी के साथ बारीक पीस
+      लें। ढककर 15 मिनट रखें।
+    - घोल को 2–3 मिनट फेंटें जब तक हल्का और झागदार हो जाए।
+    - अप्पे का पैन गरम करके खाँचों में तेल लगाएँ। चम्मच से घोल डालें और पलटते हुए
+      चारों तरफ़ से सुनहरा होने तक सेंकें।
+    - वड़ों को 2 मिनट गुनगुने पानी में भिगोएँ, हल्के हाथ से निचोड़ें और ठंडा होने
+      दें।
+    - दही को नमक, काला नमक, चाट मसाला और जीरा पाउडर के साथ फेंटकर वड़ों पर डालें।
+      ऊपर से चटनी और हरा धनिया डालें।

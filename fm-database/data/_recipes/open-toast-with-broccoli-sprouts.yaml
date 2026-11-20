@@ -48,6 +48,7 @@ protein_g: 18.5
 good_for:
 - liver-detoxification
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: Sourdough with tomato sauce, cheddar and a generous handful of raw broccoli
   sprouts.
 headnote: The simplest way to eat broccoli sprouts — raw, so nothing is lost to heat.
@@ -57,6 +58,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 58
+image:
+  file: images/web/open-toast-with-broccoli-sprouts.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://open-toast-with-broccoli-sprouts
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 58
@@ -108,3 +116,9 @@ nutrient_lines:
 nutrient_servings: 1.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: ब्रोकली के अंकुरों वाला ओपन टोस्ट
+    steps:
+    - चाहें तो ब्रेड सेंक लें, फिर सॉस लगाएँ।
+    - ऊपर चीज़ रखें और ब्रोकली के अंकुर भरपूर डालें। तुरंत खाएँ।

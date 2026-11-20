@@ -70,6 +70,7 @@ protein_g: 7.6
 good_for:
 - digestion-and-nutrient-absorption
 - blood-sugar-regulation
+coach_priority: high
 one_line: Appe made from a ground sprouted-lobia batter with carrot and capsicum —
   no rice, no fermenting.
 headnote: An all-legume appe, so it is higher in protein and lower in carbs than the
@@ -79,6 +80,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 71
+image:
+  file: images/web/cowpea-appe.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://cowpea-appe
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 71
@@ -146,3 +154,12 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित लोबिया के अप्पे
+    steps:
+    - अंकुरित लोबिया को चौथाई कप पानी के साथ बारीक पीस लें।
+    - इसमें दही, गाजर, शिमला मिर्च, हरा धनिया, हरी मिर्च, अदरक का पेस्ट, हींग और नमक
+      मिलाएँ। घोल ज़्यादा गाढ़ा हो तो थोड़ा पानी डालें।
+    - अप्पे के पैन में तेल लगाकर घोल डालें।
+    - ढककर मध्यम-धीमी आँच पर करीब 10 मिनट पकाएँ, एक बार पलटें। हरी चटनी के साथ परोसें।

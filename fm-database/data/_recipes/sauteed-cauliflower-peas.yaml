@@ -47,8 +47,8 @@ ingredients:
   qty: '1'
   unit: tsp
 - item: cooking oil
-  qty: '1.5'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -95,10 +95,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 179
+  kcal: 128
   protein_g: 4.8
   carbs_g: 17.9
-  fat_g: 11.4
+  fat_g: 5.7
   fibre_g: 6.0
   iron_mg: 2.5
   calcium_mg: 76.9
@@ -109,7 +109,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 89.4
-  omega3_mg: 84.4
+  omega3_mg: 82.1
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -117,7 +117,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: cauliflower
@@ -145,7 +145,7 @@ nutrient_lines:
   g: 2.5
 - i: 8
   key: sunflower-oil
-  g: 20.4375
+  g: 9.083333333333334
 - i: 9
   key: salt
   g: 0.0

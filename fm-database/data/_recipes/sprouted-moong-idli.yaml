@@ -81,6 +81,7 @@ protein_g: 5.7
 good_for:
 - digestion-and-nutrient-absorption
 - blood-sugar-regulation
+coach_priority: high
 one_line: Soft idlis from a ground moong-sprout batter, raised with fruit salt instead
   of fermenting.
 headnote: No rice and no overnight wait. Steam as soon as the fruit salt goes in.
@@ -89,6 +90,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 73
+image:
+  file: images/web/sprouted-moong-idli.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-moong-idli
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 73
@@ -165,3 +173,14 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: झटपट अंकुरित मूँग की इडली
+    steps:
+    - अंकुरित मूँग को थोड़े पानी के साथ बारीक पीस लें।
+    - इसमें दही, गाजर, शिमला मिर्च, हरा धनिया, हरी मिर्च और अदरक का पेस्ट मिलाएँ,
+      पानी डालकर गाढ़ा बहने वाला घोल बना लें।
+    - तेल गरम करके राई, करी पत्ता और हींग का तड़का लगाएँ और घोल पर डालें।
+    - इडली के साँचों में चिकनाई लगाएँ। घोल में नमक और फ्रूट सॉल्ट डालकर तेज़ी से फेंटें।
+    - तुरंत साँचों में डालें और 10–12 मिनट भाप में पकाएँ। ठंडा होने पर निकालें और
+      नारियल की चटनी के साथ परोसें।

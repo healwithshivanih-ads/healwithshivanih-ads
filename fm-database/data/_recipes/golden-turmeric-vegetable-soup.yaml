@@ -108,21 +108,21 @@ image:
   note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 nutrients_per_serving:
-  kcal: 442
-  protein_g: 18.2
-  carbs_g: 57.9
-  fat_g: 17.5
-  fibre_g: 12.8
-  iron_mg: 7.9
-  calcium_mg: 111
-  magnesium_mg: 92.9
-  zinc_mg: 3.1
-  potassium_mg: 1061
-  folate_ug: 321
+  kcal: 396
+  protein_g: 17.6
+  carbs_g: 56.7
+  fat_g: 12.4
+  fibre_g: 12.4
+  iron_mg: 7.1
+  calcium_mg: 106
+  magnesium_mg: 82.1
+  zinc_mg: 2.9
+  potassium_mg: 1001
+  folate_ug: 317
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 56.7
-  omega3_mg: 130
+  vit_c_mg: 56.1
+  omega3_mg: 131
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -134,7 +134,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: masoor-dal
@@ -164,7 +164,7 @@ nutrient_lines:
   key: black-pepper
   g: 1.0416666666666667
 - i: 9
-  key: coconut-milk
+  key: coconut-milk-light
   g: 120.0
 - i: 10
   key: salt
@@ -181,13 +181,13 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: सुनहरा हल्दी सब्ज़ी और दाल सूप
     steps:
     - तेल में जीरा चटकाएँ, फिर प्याज़, लहसुन और अदरक नरम करें।
-    - हल्दी और काली मिर्च एक साथ मिलाएँ — काली मिर्च ही हल्दी को शरीर के काम आने लायक बनाती है, इसलिए इसे न छोड़ें।
+    - हल्दी और काली मिर्च एक साथ मिलाएँ — काली मिर्च ही हल्दी को शरीर के काम आने लायक
+      बनाती है, इसलिए इसे न छोड़ें।
     - दाल, सब्ज़ियाँ, पानी और नमक डालें। 20–25 मिनट उबालें जब तक दाल गल जाए।
     - आधे सूप को पीसकर वापस मिला दें, ताकि यह गाढ़ा हो पर टुकड़े भी रहें।
     - नारियल दूध डालें और बिना उबाले गरम करें। नींबू का रस और धनिया डालकर पूरा करें।

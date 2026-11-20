@@ -77,6 +77,7 @@ good_for:
 - protein-adequacy-vegetarian
 - iron-nutrition
 - blood-sugar-regulation
+coach_priority: high
 one_line: Green spinach-coriander dosas folded around moong sprouts, vegetables and
   paneer.
 headnote: Greens in the batter and sprouts and paneer in the fold make a plain dosa
@@ -86,6 +87,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 78
+image:
+  file: images/web/spinach-dosa-with-moong-sprout-filling.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://spinach-dosa-with-moong-sprout-filling
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 78
@@ -161,3 +169,13 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग की भरावन वाला पालक डोसा
+    steps:
+    - भरावन के लिए एक छोटा चम्मच तेल गरम करें, सब्ज़ियाँ और अंकुरित मूँग डालकर 2 मिनट
+      पकाएँ। नमक और काली मिर्च डालकर अलग रखें।
+    - बाक़ी तेल गरम करके अदरक और हरी मिर्च, फिर पालक और हरा धनिया 2 मिनट पकाएँ। नमक
+      डालें, ठंडा करके बारीक पीस लें।
+    - पालक की यह प्यूरी डोसे के घोल में अच्छी तरह मिलाएँ।
+    - पतले डोसे बनाएँ, भरपूर भरावन और थोड़ा कसा पनीर रखें, मोड़ें और चटनी के साथ परोसें।

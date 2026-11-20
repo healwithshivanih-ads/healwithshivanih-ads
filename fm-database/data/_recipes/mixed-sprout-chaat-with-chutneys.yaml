@@ -75,6 +75,7 @@ protein_g: 6.9
 good_for:
 - digestion-and-nutrient-absorption
 - constipation
+coach_priority: high
 one_line: Bhel-style chaat built on boiled moong, matki and chana sprouts instead
   of puffed rice.
 headnote: All the chaat flavours with sprouts doing the heavy lifting. The puri and
@@ -84,6 +85,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 66
+image:
+  file: images/web/mixed-sprout-chaat-with-chutneys.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mixed-sprout-chaat-with-chutneys
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 66
@@ -159,3 +167,11 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: इमली और हरी चटनी वाली मिक्स अंकुरित चाट
+    steps:
+    - उबले अंकुर गहरे कटोरे में डालें और प्याज़, टमाटर और खीरा मिलाएँ।
+    - दोनों चटनियाँ और कैरी डालें, फिर चूरा की हुई पूरी, नमक और चाट मसाला। अच्छी तरह
+      मिलाएँ।
+    - ऊपर से थोड़ा सेव और ख़ूब सारा हरा धनिया डालकर परोसें।

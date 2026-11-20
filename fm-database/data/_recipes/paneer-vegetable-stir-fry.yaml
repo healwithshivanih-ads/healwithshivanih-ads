@@ -40,8 +40,8 @@ ingredients:
   qty: '0.5'
   unit: cup
 - item: oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: garlic, minced
   qty: '1'
   unit: tsp
@@ -96,12 +96,12 @@ image:
   note: coach-selected reference image (Wikimedia Commons); confirm licence/attribution
     before external or commercial use
 nutrients_per_serving:
-  kcal: 252
+  kcal: 232
   protein_g: 12.1
   carbs_g: 12.1
-  fat_g: 18.6
+  fat_g: 16.4
   fibre_g: 3.4
-  iron_mg: 1.3
+  iron_mg: 1.2
   calcium_mg: 283
   magnesium_mg: 35.5
   zinc_mg: 1.5
@@ -110,14 +110,14 @@ nutrients_per_serving:
   b12_ug: 0.4
   vit_d_ug: 0.1
   vit_c_mg: 122
-  omega3_mg: 182
+  omega3_mg: 165
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 - calcium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: paneer
@@ -133,7 +133,7 @@ nutrient_lines:
   g: 55.0
 - i: 4
   key: olive-oil
-  g: 13.5
+  g: 9.0
 - i: 5
   key: garlic
   g: 2.8333333333333335
@@ -153,13 +153,13 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: पनीर सब्ज़ी स्टिर-फ्राई
     steps:
     - एक कड़ाही या वॉक में तेल गरम करें; लहसुन और अदरक डालकर 20 सेकंड चलाएँ।
-    - पहले सबसे सख़्त सब्ज़ियाँ (बीन्स, ब्रोकली) डालें, फिर शिमला मिर्च, तेज़ आँच पर चलाते हुए ताकि कुरकुरी रहें।
+    - पहले सबसे सख़्त सब्ज़ियाँ (बीन्स, ब्रोकली) डालें, फिर शिमला मिर्च, तेज़ आँच
+      पर चलाते हुए ताकि कुरकुरी रहें।
     - सब्ज़ियों को किनारे कर पनीर के टुकड़े डालें और 1-2 मिनट सेंक लें।
     - नमक और काली मिर्च डालें, सब कुछ एक मिनट मिलाएँ।
     - नींबू निचोड़कर पूरा करें और छोटी सलाद या रोटी के साथ गरम परोसें।

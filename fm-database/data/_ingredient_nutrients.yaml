@@ -1427,6 +1427,31 @@ chana-dal:
     g_per_cup: 200
     g_per_piece: null
     g_per_leaf: null
+coconut-milk-light:
+  category: liquid
+  basis: as_consumed
+  aliases:
+  - light coconut milk
+  per_100g:
+    kcal: 73
+    protein_g: 0.6
+    carbs_g: 1.5
+    fat_g: 7.0
+    fibre_g: 0.3
+    iron_mg: 1.0
+    calcium_mg: 6
+    magnesium_mg: 12
+    zinc_mg: 0.2
+    potassium_mg: 80
+    folate_ug: 4
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 0
+    omega3_mg: 1.0
+  density:
+    g_per_cup: 240
+    g_per_piece: null
+    g_per_leaf: null
 maida:
   category: flour
   basis: dry
@@ -1526,6 +1551,34 @@ mushroom-button:
   density:
     g_per_cup: 70
     g_per_piece: 18
+    g_per_leaf: null
+mustard-greens:
+  category: leafy
+  basis: raw
+  aliases:
+  - mustard greens
+  - mustard leaves
+  - sarson
+  - sarson ka saag
+  per_100g:
+    kcal: 27
+    protein_g: 2.9
+    carbs_g: 4.7
+    fat_g: 0.4
+    fibre_g: 3.2
+    iron_mg: 1.6
+    calcium_mg: 115
+    magnesium_mg: 32
+    zinc_mg: 0.3
+    potassium_mg: 384
+    folate_ug: 12
+    b12_ug: 0
+    vit_d_ug: 0
+    vit_c_mg: 70
+    omega3_mg: 20
+  density:
+    g_per_cup: 56
+    g_per_piece: null
     g_per_leaf: null
 pomegranate:
   category: fruit
@@ -1817,7 +1870,6 @@ coconut-milk:
   category: liquid
   basis: as_consumed
   aliases:
-  - light coconut milk
   - coconut milk
   - canned coconut milk
   per_100g:
@@ -3586,6 +3638,9 @@ millet-cooked:
   basis: cooked
   aliases:
   - cooked millet
+  - cooked foxtail millet
+  - cooked little millet
+  - cooked sama
   per_100g:
     kcal: 119
     protein_g: 3.5
@@ -4685,6 +4740,8 @@ rice-cooked:
   basis: cooked
   aliases:
   - cooked basmati rice
+  - cooked rice
+  - cooked white rice
   - cooked white basmati rice
   - cooked white jasmine rice
   - cooked grain of choice
@@ -5304,6 +5361,8 @@ sunflower-oil:
   - groundnut oil
   - peanut oil
   - cold-pressed groundnut oil
+  - mustard oil
+  - cold-pressed mustard oil
   per_100g:
     kcal: 884
     protein_g: 0

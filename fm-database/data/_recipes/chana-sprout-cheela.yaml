@@ -87,6 +87,7 @@ good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
 - iron-nutrition
+coach_priority: high
 one_line: A cheela made from ground sprouted kala chana, loaded with chopped vegetables.
 headnote: 'Whole sprouted chana instead of besan: more fibre and a nuttier taste.
   Cook it covered and slowly — it is thicker than a besan cheela.'
@@ -95,6 +96,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 75
+image:
+  file: images/web/chana-sprout-cheela.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://chana-sprout-cheela
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 75
@@ -177,3 +185,14 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित चने का चीला
+    steps:
+    - अंकुरित काले चने को हरी मिर्च, अदरक और करीब चौथाई कप पानी के साथ बारीक पीस लें।
+    - इसमें हींग, बेसन, हल्दी, लाल मिर्च, सब्ज़ियाँ और नमक मिलाएँ। थोड़ा पानी डालकर
+      चीले का घोल बना लें।
+    - तवा गरम करके घी लगाएँ और एक करछी घोल फैलाकर चीला बनाएँ।
+    - ढककर धीमी आँच पर नीचे से सुनहरा होने तक सेंकें। थोड़ा घी डालें, पलटें और दूसरी
+      तरफ़ सेंकें।
+    - धनिये की चटनी के साथ गरम परोसें।

@@ -25,8 +25,8 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: spinach (palak), washed and roughly chopped
-  qty: '4'
-  unit: cup
+  qty: '500'
+  unit: g
 - item: garlic, sliced
   qty: '4'
   unit: piece
@@ -43,8 +43,8 @@ ingredients:
   qty: '1'
   unit: pinch
 - item: cooking oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -87,31 +87,36 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 88.7
-  protein_g: 1.8
-  carbs_g: 4.7
-  fat_g: 7.3
-  fibre_g: 1.8
-  iron_mg: 2.5
-  calcium_mg: 67.2
-  magnesium_mg: 49.5
-  zinc_mg: 0.4
-  potassium_mg: 330
-  folate_ug: 85.4
+  kcal: 114
+  protein_g: 5.8
+  carbs_g: 10.2
+  fat_g: 6.2
+  fibre_g: 6.3
+  iron_mg: 8.0
+  calcium_mg: 223
+  magnesium_mg: 190
+  zinc_mg: 1.1
+  potassium_mg: 1204
+  folate_ug: 351
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 23.7
-  omega3_mg: 91.4
+  vit_c_mg: 80.7
+  omega3_mg: 356
 nutrient_coverage_pct: 100.0
 rich_in:
+- fibre
+- iron
+- calcium
+- magnesium
+- potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: spinach
-  g: 120.0
+  g: 500.0
 - i: 1
   key: garlic
   g: 12.0
@@ -129,7 +134,7 @@ nutrient_lines:
   g: 0.3
 - i: 6
   key: sunflower-oil
-  g: 13.625
+  g: 9.083333333333334
 - i: 7
   key: salt
   g: 0.0

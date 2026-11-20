@@ -72,6 +72,49 @@ SEASON_YEAR_ROUND = 1.0          # dish is tagged `all` — fine now, but not a 
 # house rule), and most of the library is deliberately phase-neutral.
 CYCLE_PHASE_MATCH = 2.0
 
+# Coach priority — recipes the coach has asked to see on clients' menus
+# (`coach_priority: high`; first used for the sprout dishes, 2026-11-20). Same
+# weight class as a dosha match, so a priority dish that also suits the client
+# lands near the top, and one that aggravates their dosha or carries a food
+# caution can still be outranked. Vegetarian-leaning clients get a larger push:
+# for them a sprout dish is doing a job (protein, iron, folate) that a
+# non-vegetarian client's menu already covers elsewhere.
+COACH_PRIORITY_BOOST = 3.0
+COACH_PRIORITY_VEG_BONUS = 2.0
+# ...but a shortlist that is ALL priority dishes is a worse shortlist. Measured
+# before these caps existed: 14 of a vegetarian client's 22 slots went to sprout
+# dishes. So priority recipes may take at most a third of any one meal type's
+# slots, and at most this share of the whole shortlist — a third for a
+# vegetarian-leaning client, a fifth for anyone else.
+COACH_PRIORITY_MEAL_SHARE = 1 / 3
+COACH_PRIORITY_TOTAL_SHARE_VEG = 1 / 3
+COACH_PRIORITY_TOTAL_SHARE_OTHER = 1 / 5
+
+
+def veg_leaning(dietary_preference: str) -> bool:
+    """Vegetarian, vegan or eggetarian — NOT non-vegetarian, which also
+    contains "veg" (the same trap `diet_ok` steps around)."""
+    dp = (dietary_preference or "").lower()
+    return "non" not in dp and any(w in dp for w in ("vegan", "veg", "egg"))
+
+
+def is_coach_priority(recipe: dict) -> bool:
+    return str(recipe.get("coach_priority") or "").lower() == "high"
+
+
+def coach_priority_boost(recipe: dict, dietary_preference: str) -> float:
+    """Score bonus for a coach-priority recipe, by the client's diet.
+
+    Jain clients are INCLUDED (coach decision 2026-11-20) and count as
+    vegetarian-leaning. Which priority dishes a Jain client can actually be
+    served is `diet_ok`'s job, not this function's: it has already dropped the
+    ones with onion, garlic or root vegetables before scoring happens.
+    """
+    if not is_coach_priority(recipe):
+        return 0.0
+    dp = (dietary_preference or "").lower()
+    return COACH_PRIORITY_BOOST + (COACH_PRIORITY_VEG_BONUS if veg_leaning(dp) else 0.0)
+
 
 # ── condition ↔ food cautions (scripts/food_cautions.py) ───────────────────
 # Optional by construction: if the module or its data file is absent every
@@ -327,8 +370,9 @@ def score_recipe(recipe: dict, doshas: set[str], season: str | None,
                  lab_priorities: dict | None = None,
                  gf_weights: dict | None = None,
                  food_cautions_live: list | None = None,
-                 cycle_phase: str | None = None) -> float:
-    s = 0.0
+                 cycle_phase: str | None = None,
+                 dietary_preference: str = "") -> float:
+    s = coach_priority_boost(recipe, dietary_preference)
     bal = set(d.lower() for d in (recipe.get("balances_dosha") or []))
     agg = set(d.lower() for d in (recipe.get("aggravates_dosha") or []))
     if doshas:
@@ -429,20 +473,34 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
             continue
         eligible.append((score_recipe(r, doshas, season, topics, region, weight_loss,
                                       lab_priorities, gf_weights, cautions_live,
-                                      cycle_phase), r))
+                                      cycle_phase, dp), r))
     eligible.sort(key=lambda x: x[0], reverse=True)
 
     # coverage: take up to `per_meal` per meal_type, then global cap
     chosen, seen, by_type = [], set(), {}
+    # the boost is meant to put priority recipes IN the shortlist, not to make
+    # them the shortlist — cap them per meal type and overall
+    prio_cap = max(1, int(per_meal * COACH_PRIORITY_MEAL_SHARE))
+    prio_total_cap = max(1, math.ceil(total * (
+        COACH_PRIORITY_TOTAL_SHARE_VEG if veg_leaning(dp) else COACH_PRIORITY_TOTAL_SHARE_OTHER)))
+    prio_total = 0
+    prio_by_type: dict = {}
     for sc, r in eligible:
         mts = r.get("meal_type") or ["other"]
         if not any(by_type.get(mt, 0) < per_meal for mt in mts):
             continue
         if r["slug"] in seen:
             continue
+        prio = is_coach_priority(r)
+        if prio and (prio_total >= prio_total_cap
+                     or not any(prio_by_type.get(mt, 0) < prio_cap for mt in mts)):
+            continue
         seen.add(r["slug"]); chosen.append((sc, r))
         for mt in mts:
             by_type[mt] = by_type.get(mt, 0) + 1
+            if prio:
+                prio_by_type[mt] = prio_by_type.get(mt, 0) + 1
+        prio_total += 1 if prio else 0
         if len(chosen) >= total:
             break
     return chosen     # list of (score, recipe)

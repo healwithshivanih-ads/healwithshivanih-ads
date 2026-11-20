@@ -78,6 +78,7 @@ good_for:
 - gut-microbiome
 - protein-adequacy-vegetarian
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Boiled chana sprouts and raw vegetables folded into garlicky tempered curd.
 headnote: Somewhere between a raita and a salad. Cooling in hot weather; use less
   chilli powder for a pitta-prone client.
@@ -86,6 +87,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 45
+image:
+  file: images/web/summer-sprout-salad-in-tempered-curd.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://summer-sprout-salad-in-tempered-curd
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 45
@@ -160,3 +168,12 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: तड़के वाले दही में गर्मियों का अंकुरित सलाद
+    steps:
+    - गहरे कटोरे में दही को नमक के साथ फेंट लें।
+    - तेल गरम करके हींग, जीरा, लहसुन, आधी लाल मिर्च और हल्दी डालें। यह तड़का दही पर
+      डालकर मिलाएँ।
+    - दूसरे कटोरे में उबले चने, सब्ज़ियाँ, बाक़ी लाल मिर्च और चाट मसाला मिलाएँ।
+    - इसे दही में मिलाएँ और ऊपर से हरा धनिया डालें।

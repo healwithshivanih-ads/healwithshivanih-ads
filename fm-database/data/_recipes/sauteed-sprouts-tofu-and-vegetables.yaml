@@ -79,6 +79,7 @@ good_for:
 - protein-adequacy-vegetarian
 - phytonutrient-dense-diet
 - blood-sugar-regulation
+coach_priority: high
 one_line: A quick stir-fry of moong sprouts, tofu, beans, carrot, broccoli and peppers.
 headnote: Sprouts go in last so they keep their bite. Use oil instead of ghee to make
   it vegan.
@@ -87,6 +88,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 60
+image:
+  file: images/web/sauteed-sprouts-tofu-and-vegetables.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sauteed-sprouts-tofu-and-vegetables
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 60
@@ -164,3 +172,12 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग, टोफू और सब्ज़ियों का स्टर-फ़्राई
+    steps:
+    - भारी तले की कड़ाही में धीमी आँच पर घी गरम करें। जीरा, प्याज़ और लहसुन डालकर
+      एक मिनट पकाएँ।
+    - फ्रेंच बीन्स और गाजर डालकर तेज़ आँच पर चलाएँ।
+    - ब्रोकली और शिमला मिर्च डालें, फिर टोफू, नमक और चिली फ्लेक्स, और अच्छी तरह मिलाएँ।
+    - अंकुर सबसे आख़िर में डालें, मिलाएँ और तुरंत परोसें।

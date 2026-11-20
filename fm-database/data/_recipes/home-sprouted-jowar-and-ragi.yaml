@@ -57,6 +57,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 25
+image:
+  file: images/web/home-sprouted-jowar-and-ragi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://home-sprouted-jowar-and-ragi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 25
@@ -98,3 +105,16 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: घर पर अंकुरित ज्वार और रागी
+    steps:
+    - अनाज अच्छी तरह धोकर जार में साफ़ पीने के पानी में रात भर (7–8 घंटे) भिगोएँ।
+    - पूरा पानी निकालें, ताज़े पानी से धोएँ और फिर निकालें।
+    - दिन में तीन बार धोकर पानी निकालें — इन छोटे दानों को दालों से ज़्यादा बार धोना
+      पड़ता है।
+    - ज्वार में करीब 3 दिन में अच्छी जड़ें आ जाती हैं और स्वाद मीठा होता है। रागी
+      को भी लगभग इतना ही समय लगता है और दाने छोटे ही रहते हैं।
+    - एयरटाइट डिब्बे में फ्रिज में रखें; रागी के अंकुर 5 दिन तक चलते हैं।
+    - ज्वार के अंकुर पकाकर ही खाएँ — कुकर में खिचड़ी या उपमा बनाएँ। रागी के अंकुर
+      कच्चे ही डोसे के घोल में या सूप में डाल सकते हैं।

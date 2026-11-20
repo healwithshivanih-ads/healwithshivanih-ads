@@ -84,34 +84,32 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 254
-  protein_g: 38.4
-  carbs_g: 7.5
-  fat_g: 8.5
-  fibre_g: 2.2
-  iron_mg: 3.3
-  calcium_mg: 235
-  magnesium_mg: 90.8
-  zinc_mg: 2.5
-  potassium_mg: 750
-  folate_ug: 35.0
+  kcal: 283
+  protein_g: 36.8
+  carbs_g: 5.8
+  fat_g: 13.1
+  fibre_g: 1.4
+  iron_mg: 2.8
+  calcium_mg: 218
+  magnesium_mg: 67.7
+  zinc_mg: 2.1
+  potassium_mg: 704
+  folate_ug: 24.9
   b12_ug: 4.0
   vit_d_ug: 16.0
-  vit_c_mg: 19.5
-  omega3_mg: 1234
+  vit_c_mg: 19.0
+  omega3_mg: 1217
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
-- iron
 - calcium
-- magnesium
 - zinc
 - potassium
 - b12
 - vitamin-d
 - omega-3
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: fish
@@ -132,17 +130,18 @@ nutrient_lines:
   key: salt
   g: 0.0
 - i: 6
-  key: mustard-seeds
-  g: 12.5
+  key: sunflower-oil
+  g: 13.625
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: ग्रिल्ड मछली
     steps:
     - मछली के टुकड़ों को पोंछकर सुखाएँ और हर तरफ़ दो हल्के चीरे लगाएँ।
-    - हल्दी, मिर्च पाउडर, अदरक-लहसुन पेस्ट, नमक और आधे नींबू का रस मिलाकर पेस्ट बनाएँ और पूरी मछली पर मलें। 20 मिनट रखें।
+    - हल्दी, मिर्च पाउडर, अदरक-लहसुन पेस्ट, नमक और आधे नींबू का रस मिलाकर पेस्ट बनाएँ
+      और पूरी मछली पर मलें। 20 मिनट रखें।
     - ग्रिल पैन या तवे पर तेल लगाएँ और मध्यम-तेज़ आँच पर गरम करें।
     - मछली रखें और 4-5 मिनट ग्रिल करें जब तक नीचे की तरफ़ सुनहरी हो और आसानी से उठे।
-    - एक बार पलटें और दूसरी तरफ़ 4-5 मिनट और ग्रिल करें जब तक पक जाए और टुकड़ों में टूटे।
+    - एक बार पलटें और दूसरी तरफ़ 4-5 मिनट और ग्रिल करें जब तक पक जाए और टुकड़ों में
+      टूटे।
     - ऊपर बचा नींबू निचोड़ें और गरम परोसें।

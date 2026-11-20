@@ -24,7 +24,7 @@ main_ingredients:
 - curry leaves
 contains_allergens: []
 ingredients:
-- item: sama (little millet), cooked and cooled
+- item: cooked sama (little millet), cooled
   qty: '2.5'
   unit: cup
 - item: coconut oil
@@ -99,37 +99,34 @@ kcal_total: 540
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 906
-  protein_g: 23.7
-  carbs_g: 162
-  fat_g: 19.4
-  fibre_g: 21.3
-  iron_mg: 4.6
-  calcium_mg: 82.6
-  magnesium_mg: 236
-  zinc_mg: 4.9
-  potassium_mg: 561
-  folate_ug: 133
+  kcal: 399
+  protein_g: 11.7
+  carbs_g: 66.5
+  fat_g: 9.7
+  fibre_g: 7.0
+  iron_mg: 2.9
+  calcium_mg: 50.9
+  magnesium_mg: 127
+  zinc_mg: 2.9
+  potassium_mg: 406
+  folate_ug: 93.3
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 32.0
-  omega3_mg: 120
+  omega3_mg: 95.7
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
 - fibre
-- iron
 - magnesium
 - zinc
-- potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
-  key: millet-little
-  g: 450.0
+  key: millet-cooked
+  g: 437.5
 - i: 1
   key: coconut-oil
   g: 13.625
@@ -164,12 +161,12 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: सामा चावल पोहा
     steps:
-    - सामा को पहले पका लें और थाली में फैलाकर ठंडा करें — गरम बाजरा मिलाते समय गुठली बनाता है।
+    - सामा को पहले पका लें और थाली में फैलाकर ठंडा करें — गरम बाजरा मिलाते समय गुठली
+      बनाता है।
     - तेल में राई तड़काएँ, करी पत्ता, प्याज़ और हरी मिर्च डालें।
     - मटर और गाजर थोड़े पानी के साथ डालें और नरम होने तक पकाएँ।
     - हल्दी और नमक मिलाएँ, फिर ठंडा सामा हल्के हाथ से मिलाएँ।

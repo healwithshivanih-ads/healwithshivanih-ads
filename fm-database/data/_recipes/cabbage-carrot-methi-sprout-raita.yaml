@@ -37,8 +37,8 @@ ingredients:
   qty: '1'
   unit: cup
 - item: ghee
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '1'
   unit: tsp
@@ -66,6 +66,7 @@ good_for:
 - gut-microbiome
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: A raita with lightly cooked cabbage, carrot and methi sprouts instead of
   raw vegetables.
 headnote: Cooking the vegetables for a minute or two makes this easier on the stomach
@@ -75,6 +76,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 86
+image:
+  file: images/web/cabbage-carrot-methi-sprout-raita.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://cabbage-carrot-methi-sprout-raita
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 86
@@ -87,10 +95,10 @@ kcal_total: 350
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 175
+  kcal: 155
   protein_g: 6.1
   carbs_g: 14.0
-  fat_g: 11.4
+  fat_g: 9.1
   fibre_g: 2.8
   iron_mg: 1.6
   calcium_mg: 199
@@ -99,9 +107,9 @@ nutrients_per_serving:
   potassium_mg: 432
   folate_ug: 37.8
   b12_ug: 0.5
-  vit_d_ug: 0.2
+  vit_d_ug: 0.1
   vit_c_mg: 28.0
-  omega3_mg: 93.7
+  omega3_mg: 75.5
 nutrient_coverage_pct: 100.0
 rich_in:
 - calcium
@@ -123,7 +131,7 @@ nutrient_lines:
   g: 89.0
 - i: 4
   key: ghee
-  g: 13.625
+  g: 9.083333333333334
 - i: 5
   key: cumin-seeds
   g: 2.0833333333333335
@@ -139,3 +147,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: पत्तागोभी, गाजर और अंकुरित मेथी का रायता
+    steps:
+    - घी गरम करके जीरा, करी पत्ता और हरी मिर्च डालें।
+    - गाजर, पत्तागोभी और अंकुरित मेथी डालकर चलाएँ।
+    - नमक डालें, ढककर 1–2 मिनट पकाएँ।
+    - थोड़ा ठंडा करके दही में मिलाएँ और तुरंत परोसें।

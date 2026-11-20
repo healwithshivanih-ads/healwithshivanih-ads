@@ -77,6 +77,7 @@ good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
+coach_priority: high
 one_line: Sprouted methi seeds cooked soft in an onion-tomato masala, rounded off
   with a little curd.
 headnote: Sprouting takes much of the bitterness out of methi seeds, and the onion
@@ -86,6 +87,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 32
+image:
+  file: images/web/methi-sprouts-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://methi-sprouts-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 32
@@ -160,3 +168,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मेथी की सब्ज़ी
+    steps:
+    - तिल का तेल गरम करके जीरा डालें, फिर प्याज़। हल्का रंग आने तक भूनें।
+    - टमाटर, लहसुन, हल्दी, लाल मिर्च, धनिया पाउडर और नमक डालकर अच्छी तरह मिलाएँ।
+    - 4 बड़े चम्मच पानी और अंकुरित मेथी डालें। ढककर अंकुर पूरी तरह नरम होने तक पकाएँ।
+    - दही मिलाएँ, आँच से उतारें और ऊपर से हरा धनिया डालें।

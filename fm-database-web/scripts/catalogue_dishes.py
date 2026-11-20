@@ -52,6 +52,51 @@ def catalogue_dish_names(diet_pref: str = "") -> list[str]:
     return names
 
 
+@functools.lru_cache(maxsize=1)
+def _priority_recipes() -> tuple[dict, ...]:
+    out: dict[str, dict] = {}
+    for f in glob.glob(str(_FMDB / "data" / "_recipes" / "*.yaml")):
+        try:
+            r = yaml.safe_load(open(f)) or {}
+        except Exception:
+            continue
+        if not isinstance(r, dict):
+            continue
+        nm = (r.get("name") or "").strip()
+        if nm and str(r.get("coach_priority") or "").lower() == "high":
+            out.setdefault(nm, r)
+    return tuple(out[k] for k in sorted(out))
+
+
+def priority_dish_names(diet_pref: str = "") -> list[str]:
+    """Catalogue titles the coach has flagged `coach_priority: high` — the
+    weekly menu drafter's rule 18 list.
+
+    Meat-named dishes are dropped for anyone not explicitly non-veg, as in
+    `catalogue_dish_names`.
+
+    Jain clients are included (coach decision 2026-11-20), but their list is
+    narrowed to the dishes `recipe_select.diet_ok` passes for a Jain diet — no
+    onion, garlic or root vegetables. Unlike the full catalogue list, this one
+    tells the drafter to PREFER what is on it, so a dish a Jain client cannot
+    eat must not be on it at all. If that check cannot be loaded the list is
+    empty rather than unscreened.
+    """
+    dp = (diet_pref or "").lower()
+    recipes = list(_priority_recipes())
+    if "jain" in dp:
+        try:
+            from recipe_select import diet_ok
+        except Exception:
+            return []
+        recipes = [r for r in recipes if diet_ok(r, dp)]
+    names = [(r.get("name") or "").strip() for r in recipes]
+    is_nonveg = any(x in dp for x in ("non-veg", "nonveg", "non veg", "pescatar", "omnivore"))
+    if not is_nonveg:
+        names = [n for n in names if not any(w in n.lower() for w in _MEAT)]
+    return names
+
+
 # ── snapping a drafted dish name back onto its catalogue title ───────────────
 #
 # The vocabulary nudge above gets most of the way — 35 of 41 dish slots on a
