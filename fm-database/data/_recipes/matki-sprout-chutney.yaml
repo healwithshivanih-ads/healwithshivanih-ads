@@ -1,0 +1,131 @@
+slug: matki-sprout-chutney
+name: Matki sprout chutney
+meal_type:
+- condiment
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- astringent
+- sour
+main_ingredients:
+- matki sprouts
+- fresh coriander
+- mint
+contains_allergens: []
+ingredients:
+- item: matki sprouts
+  qty: '1'
+  unit: cup
+- item: fresh coriander, chopped
+  qty: '0.5'
+  unit: cup
+- item: mint leaves
+  qty: '0.5'
+  unit: cup
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: green chilli, chopped
+  qty: '2'
+  unit: piece
+- item: pink salt
+  qty: to taste
+  unit: ''
+- item: garlic, peeled
+  qty: '2'
+  unit: cloves
+- item: ghee
+  qty: '1'
+  unit: tsp
+steps:
+- Steam the matki sprouts for 3–4 minutes and cool them.
+- Sauté the garlic cloves in the ghee.
+- Grind everything together with one ice cube until smooth — the ice keeps the chutney
+  bright green.
+- Serve on cucumber slices, or as a dip with vegetable sticks.
+servings: '6'
+prep_time_min: 10
+cook_time_min: 5
+approx_kcal_per_serving: 34
+kcal_is_estimate: true
+protein_g: 1.7
+good_for:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+one_line: A green coriander-mint chutney thickened with matki sprouts.
+headnote: The guide grinds the sprouts raw; we steam them first, as it advises for
+  bean sprouts elsewhere. Thick enough to use as a dip.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 88
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 88
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 34
+kcal_total: 202
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 33.7
+  protein_g: 1.7
+  carbs_g: 4.7
+  fat_g: 0.9
+  fibre_g: 1.3
+  iron_mg: 0.9
+  calcium_mg: 18.3
+  magnesium_mg: 16.2
+  zinc_mg: 0.3
+  potassium_mg: 108
+  folate_ug: 27.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 5.2
+  omega3_mg: 17.0
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: matki-sprouted
+  g: 110.0
+- i: 1
+  key: coriander-fresh
+  g: 8.0
+- i: 2
+  key: mint-fresh
+  g: 12.5
+- i: 3
+  key: lemon-juice
+  g: 15.25
+- i: 4
+  key: green-chilli
+  g: 10.0
+- i: 5
+  key: salt
+  g: 0.0
+- i: 6
+  key: garlic
+  g: 6.0
+- i: 7
+  key: ghee
+  g: 4.541666666666667
+nutrient_servings: 6.0
+cycle_phases:
+- follicular

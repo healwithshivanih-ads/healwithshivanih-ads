@@ -1,0 +1,190 @@
+slug: sprout-and-millet-thalipeeth
+name: Sprout and millet thalipeeth
+meal_type:
+- breakfast
+- lunch
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Maharashtrian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- moong sprouts
+- jowar flour
+- ragi flour
+- besan
+contains_allergens: []
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: jowar flour
+  qty: '1'
+  unit: cup
+- item: ragi flour (nachni)
+  qty: '1'
+  unit: cup
+- item: garlic
+  qty: '4'
+  unit: cloves
+- item: green chilli
+  qty: '2'
+  unit: piece
+- item: ginger
+  qty: '1'
+  unit: inch
+- item: curry leaves
+  qty: '10'
+  unit: leaves
+- item: onion, finely chopped
+  qty: '1'
+  unit: cup
+- item: fresh coriander, finely chopped
+  qty: '1'
+  unit: cup
+- item: besan
+  qty: '0.5'
+  unit: cup
+- item: red chilli powder
+  qty: '1'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: dhania-jeera powder
+  qty: '1'
+  unit: tsp
+- item: cold-pressed oil (2 for the dough, the rest for cooking)
+  qty: '3'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Grind the sprouts, garlic, chillies, ginger and curry leaves to a coarse paste with
+  very little water.
+- Tip into a deep bowl and add the flours, onion, coriander, dry spices, salt and
+  2 tablespoons of oil. Knead lightly into a soft dough without adding more water.
+- Divide into 6. Pat one portion flat on a wet cloth and poke a small hole in the
+  centre.
+- Lift it onto a hot tawa and cook both sides, brushing lightly with oil, until golden.
+  Serve hot.
+servings: '3'
+prep_time_min: 20
+cook_time_min: 20
+approx_kcal_per_serving: 507
+kcal_is_estimate: true
+protein_g: 13.8
+good_for:
+- blood-sugar-regulation
+- constipation
+- protein-adequacy-vegetarian
+one_line: Maharashtrian thalipeeth made with jowar, ragi and besan, bound with ground
+  moong sprouts.
+headnote: The ground sprouts supply the moisture, so the dough needs no water. Makes
+  six; two with curd or chutney is a meal.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 57
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 57
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 507
+kcal_total: 1521
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 507
+  protein_g: 13.8
+  carbs_g: 75.1
+  fat_g: 16.6
+  fibre_g: 13.2
+  iron_mg: 6.1
+  calcium_mg: 215
+  magnesium_mg: 168
+  zinc_mg: 2.7
+  potassium_mg: 710
+  folate_ug: 167
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 14.5
+  omega3_mg: 85.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- calcium
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: jowar-flour
+  g: 120.0
+- i: 2
+  key: ragi
+  g: 120.0
+- i: 3
+  key: garlic
+  g: 12.0
+- i: 4
+  key: green-chilli
+  g: 10.0
+- i: 5
+  key: ginger-fresh
+  g: 6.0
+- i: 6
+  key: curry-leaves
+  g: 3.0
+- i: 7
+  key: onion
+  g: 115.0
+- i: 8
+  key: coriander-fresh
+  g: 16.0
+- i: 9
+  key: besan
+  g: 46.0
+- i: 10
+  key: chilli-powder
+  g: 2.5
+- i: 11
+  key: turmeric
+  g: 1.5625
+- i: 12
+  key: cumin-powder
+  g: 2.5
+- i: 13
+  key: sunflower-oil
+  g: 40.875
+- i: 14
+  key: salt
+  g: 0.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

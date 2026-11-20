@@ -1,0 +1,148 @@
+slug: sprouts-chaat-cucumber-boats
+name: Sprouts chaat cucumber boats
+meal_type:
+- snack
+- salad
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- cucumber
+- mixed sprouts
+- hung curd
+contains_allergens:
+- dairy
+ingredients:
+- item: cucumber, long, peeled and halved lengthwise
+  qty: '2'
+  unit: piece
+- item: mixed sprouts (moong, matki, chana), boiled
+  qty: '1'
+  unit: cup
+- item: mixed vegetables (cucumber, carrot, onion), chopped
+  qty: '1'
+  unit: cup
+- item: hung curd
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: chaat masala
+  qty: '0.5'
+  unit: tsp
+- item: carrot, grated
+  qty: '2'
+  unit: tbsp
+- item: beetroot, grated
+  qty: '1'
+  unit: tbsp
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+steps:
+- Mix the sprouts, chopped vegetables, hung curd, salt and chaat masala in a bowl.
+- Scoop the seeds out of the cucumber halves to make boats.
+- Fill with the sprout mixture and top with the grated carrot, beetroot and coriander.
+- Squeeze over the lemon juice and eat.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 151
+kcal_is_estimate: true
+protein_g: 8.6
+good_for:
+- gut-microbiome
+- digestion-and-nutrient-absorption
+- constipation
+one_line: Hollowed cucumber halves filled with a sprout, vegetable and hung-curd chaat.
+headnote: A chaat with no fried base — the cucumber is the plate.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 65
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 65
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 151
+kcal_total: 302
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 151
+  protein_g: 8.6
+  carbs_g: 26.0
+  fat_g: 2.6
+  fibre_g: 5.6
+  iron_mg: 2.2
+  calcium_mg: 147
+  magnesium_mg: 75.7
+  zinc_mg: 1.5
+  potassium_mg: 776
+  folate_ug: 138
+  b12_ug: 0.2
+  vit_d_ug: 0.1
+  vit_c_mg: 34.4
+  omega3_mg: 67.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- magnesium
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: cucumber
+  g: 400.0
+- i: 1
+  key: mung-sprouted
+  g: 104.0
+- i: 2
+  key: mixed-vegetables
+  g: 120.0
+- i: 3
+  key: yogurt
+  g: 122.5
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: chaat-masala
+  g: 1.1458333333333333
+- i: 6
+  key: carrot
+  g: 16.0
+- i: 7
+  key: beetroot
+  g: 8.5
+- i: 8
+  key: coriander-fresh
+  g: 1.0
+- i: 9
+  key: lemon-juice
+  g: 30.5
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

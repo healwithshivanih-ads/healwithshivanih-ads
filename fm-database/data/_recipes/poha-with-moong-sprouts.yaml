@@ -1,0 +1,189 @@
+slug: poha-with-moong-sprouts
+name: Poha with moong sprouts
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Maharashtrian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- sour
+- pungent
+main_ingredients:
+- poha
+- moong sprouts
+- potato
+- peanuts
+contains_allergens:
+- mustard
+- peanut
+ingredients:
+- item: poha, washed and soaked (2 cups once soaked)
+  qty: '1.25'
+  unit: cup
+- item: moong sprouts
+  qty: '0.5'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: piece
+- item: tomato, finely chopped
+  qty: '0.5'
+  unit: piece
+- item: potato, cut into small cubes
+  qty: '1'
+  unit: piece
+- item: mixed vegetables (peppers, carrot, peas, corn), chopped
+  qty: '0.5'
+  unit: cup
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '1'
+  unit: sprig
+- item: green chilli
+  qty: '3'
+  unit: piece
+- item: peanuts
+  qty: '2'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat the oil and add the mustard seeds, cumin, green chillies and curry leaves.
+- When they splutter, add the peanuts, potato, sprouts and salt and cook, stirring.
+- Add the onion, tomato and vegetables and cook until tender.
+- Add the poha and turmeric and toss.
+- Sprinkle with lemon juice and top with the coriander.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 15
+approx_kcal_per_serving: 296
+kcal_is_estimate: true
+protein_g: 8.0
+good_for:
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+- iron-nutrition
+one_line: Everyday kanda-batata poha with moong sprouts, vegetables and peanuts.
+headnote: A handful of sprouts and vegetables turns a mostly-carb breakfast into a
+  more balanced one.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 64
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 64
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 296
+kcal_total: 888
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 296
+  protein_g: 8.0
+  carbs_g: 48.5
+  fat_g: 8.6
+  fibre_g: 5.5
+  iron_mg: 4.3
+  calcium_mg: 51.3
+  magnesium_mg: 69.6
+  zinc_mg: 1.4
+  potassium_mg: 567
+  folate_ug: 77.8
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 32.0
+  omega3_mg: 35.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- potassium
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: poha
+  g: 112.5
+- i: 1
+  key: mung-sprouted
+  g: 52.0
+- i: 2
+  key: onion
+  g: 110.0
+- i: 3
+  key: tomato
+  g: 50.0
+- i: 4
+  key: potato
+  g: 150.0
+- i: 5
+  key: mixed-vegetables
+  g: 60.0
+- i: 6
+  key: sunflower-oil
+  g: 13.625
+- i: 7
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 8
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 9
+  key: curry-leaves
+  g: 1.0
+- i: 10
+  key: green-chilli
+  g: 15.0
+- i: 11
+  key: peanuts
+  g: 18.25
+- i: 12
+  key: turmeric
+  g: 1.5625
+- i: 13
+  key: lemon-juice
+  g: 30.5
+- i: 14
+  key: salt
+  g: 0.0
+- i: 15
+  key: coriander-fresh
+  g: 1.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

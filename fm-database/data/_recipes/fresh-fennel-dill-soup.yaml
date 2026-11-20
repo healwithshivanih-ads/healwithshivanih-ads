@@ -62,9 +62,9 @@ steps:
 servings: '2'
 prep_time_min: 8
 cook_time_min: 25
-approx_kcal_per_serving: 94
+approx_kcal_per_serving: 110
 kcal_is_estimate: true
-protein_g: 4.2
+protein_g: 5.1
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -93,26 +93,26 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 94
-kcal_total: 180
+kcal_per_serving: 110
+kcal_total: 220
 kcal_basis: ingredient_table_v1
-kcal_computed_at: '2026-06-13'
+kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 94.1
-  protein_g: 4.2
-  carbs_g: 13.0
+  kcal: 110
+  protein_g: 5.1
+  carbs_g: 15.5
   fat_g: 3.6
-  fibre_g: 6.9
-  iron_mg: 2.2
-  calcium_mg: 239
-  magnesium_mg: 48.3
-  zinc_mg: 0.6
-  potassium_mg: 761
-  folate_ug: 90.7
+  fibre_g: 7.6
+  iron_mg: 2.4
+  calcium_mg: 245
+  magnesium_mg: 56.1
+  zinc_mg: 0.7
+  potassium_mg: 809
+  folate_ug: 118
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 82.5
-  omega3_mg: 148
+  omega3_mg: 156
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -121,7 +121,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: fennel-bulb
@@ -145,7 +145,6 @@ nutrient_lines:
   key: dill
   g: 0.5625
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: ताज़ा सौंफ और डिल सूप

@@ -1,0 +1,161 @@
+slug: mixed-sprout-chaat-with-chutneys
+name: Mixed sprout chaat with tamarind and green chutney
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- mixed sprouts
+- tamarind chutney
+- coriander chutney
+contains_allergens:
+- gluten
+ingredients:
+- item: mixed sprouts (moong, matki, chana), boiled
+  qty: '2'
+  unit: cup
+- item: onion, finely chopped
+  qty: '1'
+  unit: medium
+- item: tomato, finely chopped
+  qty: '1'
+  unit: medium
+- item: cucumber, finely chopped
+  qty: '1'
+  unit: small
+- item: tamarind chutney, sweet
+  qty: '2'
+  unit: tbsp
+- item: coriander chutney, spicy
+  qty: '2'
+  unit: tbsp
+- item: raw mango, finely chopped
+  qty: '1'
+  unit: tbsp
+- item: crisp puri (papdi), crushed
+  qty: '6'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: chaat masala
+  qty: '1'
+  unit: tsp
+- item: sev
+  qty: '1'
+  unit: tbsp
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Put the boiled sprouts in a deep bowl with the onion, tomato and cucumber.
+- Add both chutneys and the raw mango, then the crushed puris, salt and chaat masala.
+  Mix well.
+- Serve topped with a little sev and plenty of coriander.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 174
+kcal_is_estimate: true
+protein_g: 6.9
+good_for:
+- digestion-and-nutrient-absorption
+- constipation
+one_line: Bhel-style chaat built on boiled moong, matki and chana sprouts instead
+  of puffed rice.
+headnote: All the chaat flavours with sprouts doing the heavy lifting. The puri and
+  sev are a garnish — leave them out to keep it gluten-free.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 66
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 66
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 174
+kcal_total: 522
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 174
+  protein_g: 6.9
+  carbs_g: 30.4
+  fat_g: 3.5
+  fibre_g: 5.4
+  iron_mg: 2.3
+  calcium_mg: 58.5
+  magnesium_mg: 63.4
+  zinc_mg: 0.8
+  potassium_mg: 534
+  folate_ug: 136
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 20.0
+  omega3_mg: 42.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 208.0
+- i: 1
+  key: onion
+  g: 110.0
+- i: 2
+  key: tomato
+  g: 100.0
+- i: 3
+  key: cucumber
+  g: 140.0
+- i: 4
+  key: tamarind
+  g: 31.25
+- i: 5
+  key: coriander-fresh
+  g: 2.0
+- i: 6
+  key: green-mango
+  g: 10.3125
+- i: 7
+  key: papdi
+  g: 30.0
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: chaat-masala
+  g: 2.2916666666666665
+- i: 10
+  key: sev
+  g: 2.5
+- i: 11
+  key: coriander-fresh
+  g: 2.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

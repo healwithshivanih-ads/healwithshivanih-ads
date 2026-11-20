@@ -1,0 +1,173 @@
+slug: sprouted-moong-stew
+name: Sprouted moong and vegetable stew
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- moong sprouts
+- carrot
+- potato
+contains_allergens: []
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: carrot, sliced
+  qty: '2'
+  unit: medium
+- item: potato, sliced
+  qty: '2'
+  unit: medium
+- item: olive oil
+  qty: '1'
+  unit: tbsp
+- item: onion, finely chopped
+  qty: '2'
+  unit: small
+- item: ginger, grated
+  qty: '1'
+  unit: inch
+- item: garlic, grated
+  qty: '6'
+  unit: cloves
+- item: tomato, finely chopped
+  qty: '2'
+  unit: small
+- item: fresh coriander, chopped
+  qty: '4'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+steps:
+- Soften the onion, ginger and garlic in the olive oil for a minute.
+- Add the carrot, potato, tomato and coriander and keep cooking.
+- Add the salt and dry spices, pour in a cup of water and bring to a boil.
+- Add the sprouts, cover and cook until everything is tender.
+- Stir in the lemon juice and serve with rice.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 20
+approx_kcal_per_serving: 210
+kcal_is_estimate: true
+protein_g: 6.2
+good_for:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- constipation
+one_line: A simple one-pot stew of moong sprouts, carrot and potato.
+headnote: Soft, warm and lightly spiced — a good dinner on a day digestion feels slow.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 37
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 37
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 630
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 210
+  protein_g: 6.2
+  carbs_g: 36.4
+  fat_g: 5.1
+  fibre_g: 6.9
+  iron_mg: 2.5
+  calcium_mg: 71.0
+  magnesium_mg: 61.8
+  zinc_mg: 1.0
+  potassium_mg: 924
+  folate_ug: 99.3
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 41.9
+  omega3_mg: 69.8
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: carrot
+  g: 120.0
+- i: 2
+  key: potato
+  g: 300.0
+- i: 3
+  key: olive-oil
+  g: 13.5
+- i: 4
+  key: onion
+  g: 154.0
+- i: 5
+  key: ginger-fresh
+  g: 6.0
+- i: 6
+  key: garlic
+  g: 18.0
+- i: 7
+  key: tomato
+  g: 140.0
+- i: 8
+  key: coriander-fresh
+  g: 4.0
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: turmeric
+  g: 1.5625
+- i: 11
+  key: coriander-powder
+  g: 1.25
+- i: 12
+  key: chilli-powder
+  g: 1.25
+- i: 13
+  key: lemon-juice
+  g: 15.25
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

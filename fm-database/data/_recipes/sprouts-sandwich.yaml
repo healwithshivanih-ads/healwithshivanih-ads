@@ -84,26 +84,29 @@ status: active
 updated_at: '2026-07-13'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 190
-  protein_g: 9.8
-  carbs_g: 33.9
-  fat_g: 2.3
-  fibre_g: 5.7
-  iron_mg: 2.3
-  calcium_mg: 117
-  magnesium_mg: 66.4
-  zinc_mg: 1.5
-  potassium_mg: 405
-  folate_ug: 71.3
+  kcal: 221
+  protein_g: 11.6
+  carbs_g: 38.9
+  fat_g: 2.4
+  fibre_g: 7.0
+  iron_mg: 2.7
+  calcium_mg: 129
+  magnesium_mg: 82.0
+  zinc_mg: 1.6
+  potassium_mg: 502
+  folate_ug: 125
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 19.8
-  omega3_mg: 88.6
+  omega3_mg: 104
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
+- magnesium
+- potassium
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: bread-whole-wheat

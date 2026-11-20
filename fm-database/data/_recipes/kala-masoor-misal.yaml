@@ -1,0 +1,186 @@
+slug: kala-masoor-misal
+name: Kala masoor misal
+meal_type:
+- lunch
+- dinner
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Maharashtrian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- pungent
+- astringent
+main_ingredients:
+- kala masoor sprouts
+- onion
+- tomato
+contains_allergens: []
+ingredients:
+- item: kala masoor sprouts
+  qty: '6'
+  unit: cup
+- item: onion, finely chopped
+  qty: '2'
+  unit: piece
+- item: tomato, finely chopped
+  qty: '2'
+  unit: piece
+- item: garlic, crushed
+  qty: '5'
+  unit: cloves
+- item: ginger, grated
+  qty: '1'
+  unit: inch
+- item: cold-pressed oil
+  qty: '2'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: '6'
+  unit: leaves
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.75'
+  unit: tsp
+- item: coriander powder
+  qty: '0.5'
+  unit: tsp
+- item: garam masala
+  qty: '0.5'
+  unit: tsp
+- item: amchur (dry mango powder)
+  qty: '0.25'
+  unit: tsp
+- item: misal masala
+  qty: '0.75'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Pressure-cook the masoor sprouts for one whistle only, so they hold their shape.
+  Set aside.
+- Heat the oil in a deep pan and add the cumin, garlic, ginger and curry leaves, then
+  the onion. Cook until golden.
+- Add the tomato, then all the dry spices with 4 tablespoons of water. Cook, stirring,
+  until the oil separates.
+- Add the cooked masoor and salt, and loosen with water to the consistency you like.
+  Taste and adjust the spice.
+- Serve hot with rice, or as misal with a squeeze of lemon and a spoonful of farsan
+  on top.
+servings: '6'
+prep_time_min: 15
+cook_time_min: 25
+approx_kcal_per_serving: 166
+kcal_is_estimate: true
+protein_g: 9.2
+good_for:
+- protein-adequacy-vegetarian
+- iron-nutrition
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: A Maharashtrian-style misal made with sprouted whole masoor instead of matki.
+headnote: Sprouted masoor cooks in one whistle. Go easy on the farsan topping — the
+  usal itself is the meal.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 30
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 30
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 166
+kcal_total: 996
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 166
+  protein_g: 9.2
+  carbs_g: 26.4
+  fat_g: 5.4
+  fibre_g: 4.1
+  iron_mg: 3.7
+  calcium_mg: 48.0
+  magnesium_mg: 45.2
+  zinc_mg: 1.6
+  potassium_mg: 463
+  folate_ug: 103
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.0
+  omega3_mg: 44.8
+nutrient_coverage_pct: 99.8
+rich_in:
+- iron
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: masoor-sprouted
+  g: 540.0
+- i: 1
+  key: onion
+  g: 220.0
+- i: 2
+  key: tomato
+  g: 200.0
+- i: 3
+  key: garlic
+  g: 15.0
+- i: 4
+  key: ginger-fresh
+  g: 6.0
+- i: 5
+  key: sunflower-oil
+  g: 27.25
+- i: 6
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 7
+  key: curry-leaves
+  g: 1.7999999999999998
+- i: 8
+  key: turmeric
+  g: 1.5625
+- i: 9
+  key: chilli-powder
+  g: 1.875
+- i: 10
+  key: coriander-powder
+  g: 1.25
+- i: 11
+  key: garam-masala
+  g: 1.0416666666666667
+- i: 12
+  key: amchur
+  g: 0.5729166666666666
+- i: 13
+  key: null
+  g: 1.875
+- i: 14
+  key: salt
+  g: 0.0
+nutrient_servings: 6.0
+cycle_phases:
+- follicular

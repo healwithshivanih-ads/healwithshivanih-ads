@@ -1,0 +1,147 @@
+slug: sprouted-urad-and-rava-appe
+name: Sprouted urad and rava appe
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- whole urad sprouts
+- semolina
+- paneer
+- fresh coconut
+contains_allergens:
+- dairy
+- gluten
+ingredients:
+- item: whole urad sprouts
+  qty: '2'
+  unit: cup
+- item: semolina (rava), lightly roasted
+  qty: '1'
+  unit: cup
+- item: paneer, crumbled
+  qty: '0.75'
+  unit: cup
+- item: green chilli
+  qty: '5'
+  unit: piece
+- item: ginger
+  qty: '1'
+  unit: inch
+- item: hing (asafoetida)
+  qty: '0.25'
+  unit: tsp
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: fresh coconut, chopped
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: coconut oil, for the pan
+  qty: '1'
+  unit: tbsp
+steps:
+- Grind the sprouts with the chillies, ginger and curry leaves, using a little water.
+- Tip into a bowl and mix in the hing, salt, paneer, semolina and coconut. Rest 10
+  minutes.
+- Heat an appe pan and brush the hollows with coconut oil.
+- Spoon in the batter and cook, turning, until crisp on all sides.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 20
+approx_kcal_per_serving: 357
+kcal_is_estimate: true
+protein_g: 14.9
+good_for:
+- protein-adequacy-vegetarian
+- digestion-and-nutrient-absorption
+one_line: South Indian appe from ground sprouted urad, rava, paneer and coconut —
+  no fermenting.
+headnote: 'An instant batter: ten minutes'' rest instead of an overnight ferment.'
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 67
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 67
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 357
+kcal_total: 1428
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 357
+  protein_g: 14.9
+  carbs_g: 45.5
+  fat_g: 13.0
+  fibre_g: 5.9
+  iron_mg: 2.8
+  calcium_mg: 153
+  magnesium_mg: 68.8
+  zinc_mg: 1.8
+  potassium_mg: 391
+  folate_ug: 62.0
+  b12_ug: 0.2
+  vit_d_ug: 0.0
+  vit_c_mg: 11.8
+  omega3_mg: 67.4
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- calcium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: urad-sprouted
+  g: 220.0
+- i: 1
+  key: suji
+  g: 167.0
+- i: 2
+  key: paneer
+  g: 97.5
+- i: 3
+  key: green-chilli
+  g: 25.0
+- i: 4
+  key: ginger-fresh
+  g: 6.0
+- i: 5
+  key: asafoetida
+  g: 0.78125
+- i: 6
+  key: curry-leaves
+  g: 2.4
+- i: 7
+  key: coconut-fresh
+  g: 40.0
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: coconut-oil
+  g: 13.625
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

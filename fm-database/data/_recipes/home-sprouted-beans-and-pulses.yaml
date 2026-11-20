@@ -1,0 +1,113 @@
+slug: home-sprouted-beans-and-pulses
+name: Home-sprouted beans and pulses (moong, matki, masoor, chana)
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- whole moong
+- matki
+- kala chana
+- whole masoor
+contains_allergens: []
+ingredients:
+- item: whole green mung beans (moong) — or matki, whole masoor, kala chana, whole
+    urad, horsegram
+  qty: '1'
+  unit: cup
+- item: clean drinking water, for soaking and rinsing
+  qty: '4'
+  unit: cup
+steps:
+- Pick over the beans and put them in a sprouting jar, filling no more than a third
+  of it — they swell and need air. Cover well with clean drinking water and leave
+  upright overnight (7–8 hours).
+- Next morning pour off all the water. Refill with fresh water, swirl and drain straight
+  away, then rest the jar at a slant for 6–8 minutes so the last of the water runs
+  out.
+- Stand the jar upright, out of direct sun. Rinse and drain fully like this twice
+  a day — morning and night is enough. Water left sitting in the jar is what makes
+  sprouts sticky.
+- Carry on for 2–3 days, depending on the weather. Moong shows tails after about 24
+  hours; the sprouts are ready when the root is longer than the bean.
+- 'Store in an airtight box in the fridge: moong and matki keep 3 days, chana 2 days.
+  Steam or lightly boil bean sprouts before eating — a few minutes, not until mushy.'
+- Wash the jar and lid with warm soapy water after every batch (not boiling water,
+  the glass can crack).
+servings: '6'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 116
+kcal_is_estimate: true
+protein_g: 8.0
+good_for:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- gut-microbiome
+- protein-adequacy-vegetarian
+one_line: 'The basic method for moong, matki, masoor, chana, urad and horsegram: soak
+  overnight, then rinse and drain twice a day for 2–3 days.'
+headnote: Good beans, clean drinking water and a full drain after every rinse are
+  the whole method. If a batch fails, the beans are usually the reason — old or poor-quality
+  beans do not sprout.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 16
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 16
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 116
+kcal_total: 696
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 116
+  protein_g: 8.0
+  carbs_g: 20.9
+  fat_g: 0.4
+  fibre_g: 5.4
+  iron_mg: 2.2
+  calcium_mg: 44.0
+  magnesium_mg: 63.0
+  zinc_mg: 0.9
+  potassium_mg: 415
+  folate_ug: 208
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.6
+  omega3_mg: 56.7
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-whole
+  g: 200.0
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 6.0
+cycle_phases:
+- follicular

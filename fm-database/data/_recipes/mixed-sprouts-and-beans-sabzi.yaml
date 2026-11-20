@@ -1,0 +1,157 @@
+slug: mixed-sprouts-and-beans-sabzi
+name: Mixed sprouts and French beans sabzi
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- moong sprouts
+- french beans
+- rajma sprouts
+- fresh coconut
+contains_allergens:
+- mustard
+ingredients:
+- item: rajma sprouts, boiled for 10 minutes
+  qty: '3'
+  unit: tbsp
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: French beans, chopped
+  qty: '1.25'
+  unit: cup
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: urad dal (split, skinless)
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: green chilli
+  qty: '2'
+  unit: piece
+- item: fresh coconut, grated
+  qty: '3'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Boil the rajma sprouts hard for at least 10 minutes and drain — kidney beans must
+  never go in undercooked.
+- Heat the oil on low and add the mustard seeds and urad dal.
+- Add the turmeric, boiled rajma, moong sprouts and French beans and toss lightly.
+- Add 3–4 teaspoons of water, cover and let everything cook in its own steam.
+- Meanwhile grind the green chillies with the coconut. Stir this paste in, add salt,
+  cook a few seconds more and serve hot.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 210
+kcal_is_estimate: true
+protein_g: 8.5
+good_for:
+- digestion-and-nutrient-absorption
+- constipation
+- phytonutrient-dense-diet
+one_line: A South Indian-style poriyal of French beans, moong sprouts and a little
+  sprouted rajma with coconut.
+headnote: The guide steams the rajma sprouts in the pan; we boil them first, because
+  undercooked kidney beans upset the stomach.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 39
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 39
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 210
+  protein_g: 8.5
+  carbs_g: 22.7
+  fat_g: 10.6
+  fibre_g: 6.9
+  iron_mg: 3.4
+  calcium_mg: 69.3
+  magnesium_mg: 81.1
+  zinc_mg: 1.1
+  potassium_mg: 535
+  folate_ug: 150
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 22.4
+  omega3_mg: 103
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- magnesium
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: rajma-sprouted
+  g: 28.125
+- i: 1
+  key: mung-sprouted
+  g: 104.0
+- i: 2
+  key: green-beans
+  g: 137.5
+- i: 3
+  key: sunflower-oil
+  g: 13.625
+- i: 4
+  key: mustard-seeds
+  g: 4.166666666666667
+- i: 5
+  key: urad-dal
+  g: 12.5
+- i: 6
+  key: turmeric
+  g: 1.5625
+- i: 7
+  key: green-chilli
+  g: 10.0
+- i: 8
+  key: coconut-fresh
+  g: 15.0
+- i: 9
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

@@ -1,0 +1,148 @@
+slug: cowpea-appe
+name: Sprouted lobia appe
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- lobia sprouts
+- curd
+- carrot
+contains_allergens:
+- dairy
+ingredients:
+- item: lobia sprouts (red cowpea)
+  qty: '1'
+  unit: cup
+- item: curd
+  qty: '0.25'
+  unit: cup
+- item: carrot, finely grated
+  qty: '0.5'
+  unit: cup
+- item: capsicum, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: fresh coriander, finely chopped
+  qty: '0.25'
+  unit: cup
+- item: green chilli, finely chopped
+  qty: '2'
+  unit: piece
+- item: ginger paste
+  qty: '1'
+  unit: tsp
+- item: hing (asafoetida)
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: cold-pressed oil, for the mould
+  qty: '2'
+  unit: tsp
+steps:
+- Grind the lobia sprouts with a quarter cup of water to a smooth paste.
+- Mix in the curd, carrot, capsicum, coriander, green chillies, ginger paste, hing
+  and salt. Add a little water if the batter is too thick.
+- Grease an appe pan with oil and pour in the batter.
+- Cover and cook on medium-low heat for about 10 minutes, turning once. Serve with
+  green chutney.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 12
+approx_kcal_per_serving: 165
+kcal_is_estimate: true
+protein_g: 7.6
+good_for:
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+one_line: Appe made from a ground sprouted-lobia batter with carrot and capsicum —
+  no rice, no fermenting.
+headnote: An all-legume appe, so it is higher in protein and lower in carbs than the
+  usual rice-and-dal batter.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 71
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 71
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 165
+kcal_total: 330
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 165
+  protein_g: 7.6
+  carbs_g: 21.7
+  fat_g: 6.0
+  fibre_g: 4.1
+  iron_mg: 2.6
+  calcium_mg: 84.5
+  magnesium_mg: 58.3
+  zinc_mg: 1.2
+  potassium_mg: 498
+  folate_ug: 138
+  b12_ug: 0.1
+  vit_d_ug: 0.0
+  vit_c_mg: 32.2
+  omega3_mg: 37.1
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: lobia-sprouted
+  g: 120.0
+- i: 1
+  key: yogurt
+  g: 61.25
+- i: 2
+  key: carrot
+  g: 64.0
+- i: 3
+  key: capsicum
+  g: 30.0
+- i: 4
+  key: coriander-fresh
+  g: 4.0
+- i: 5
+  key: green-chilli
+  g: 10.0
+- i: 6
+  key: ginger-fresh
+  g: 2.0
+- i: 7
+  key: asafoetida
+  g: 1.5625
+- i: 8
+  key: salt
+  g: 0.0
+- i: 9
+  key: sunflower-oil
+  g: 9.083333333333334
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

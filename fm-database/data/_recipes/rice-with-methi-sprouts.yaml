@@ -1,0 +1,104 @@
+slug: rice-with-methi-sprouts
+name: Steamed rice with methi sprouts
+meal_type:
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- bitter
+main_ingredients:
+- rice
+- methi sprouts
+contains_allergens: []
+ingredients:
+- item: methi sprouts
+  qty: '1'
+  unit: cup
+- item: cooked white rice, steamed
+  qty: '2'
+  unit: cup
+- item: olive oil, extra virgin
+  qty: '2'
+  unit: tbsp
+- item: pink salt (optional)
+  qty: to taste
+  unit: ''
+steps:
+- Dip the methi sprouts in hot water for 10–15 seconds and drain well.
+- Fold them through the warm rice.
+- Drizzle with the olive oil, add salt if needed and serve with your curries.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 359
+kcal_is_estimate: true
+protein_g: 6.6
+good_for:
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: Plain steamed rice with long methi sprouts folded through.
+headnote: Methi sprouts add fibre and a gentle bitterness to plain white rice — a
+  simple way to slow down the rice.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 82
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 82
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 359
+kcal_total: 718
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 359
+  protein_g: 6.6
+  carbs_g: 50.7
+  fat_g: 14.6
+  fibre_g: 3.1
+  iron_mg: 1.8
+  calcium_mg: 34.1
+  magnesium_mg: 38.1
+  zinc_mg: 1.1
+  potassium_mg: 133
+  folate_ug: 11.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 2.7
+  omega3_mg: 129
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: methi-sprouts
+  g: 90.0
+- i: 1
+  key: rice-cooked
+  g: 320.0
+- i: 2
+  key: olive-oil
+  g: 27.0
+- i: 3
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

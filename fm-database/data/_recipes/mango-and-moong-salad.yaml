@@ -1,0 +1,114 @@
+slug: mango-and-moong-salad
+name: Mango and moong sprout salad
+meal_type:
+- salad
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- summer
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- mango
+- moong sprouts
+- capsicum
+contains_allergens: []
+ingredients:
+- item: mango (Alphonso), cubed
+  qty: '1'
+  unit: piece
+- item: moong sprouts, steamed
+  qty: '1'
+  unit: cup
+- item: capsicum (mixed colours), chopped
+  qty: '1'
+  unit: cup
+- item: red chilli sauce, mild
+  qty: '1.5'
+  unit: tsp
+- item: pink salt
+  qty: to taste
+  unit: ''
+steps:
+- Put the mango, steamed sprouts and capsicum in a deep bowl.
+- Add the chilli sauce and salt and toss lightly.
+- Chill, and eat within an hour of mixing.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 123
+kcal_is_estimate: true
+protein_g: 4.8
+good_for:
+- digestion-and-nutrient-absorption
+- phytonutrient-dense-diet
+one_line: Sweet mango with steamed moong sprouts and crunchy peppers.
+headnote: A mango-season salad. Mix it close to eating — it turns watery if it sits.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 44
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 44
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 123
+kcal_total: 246
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 123
+  protein_g: 4.8
+  carbs_g: 26.8
+  fat_g: 0.7
+  fibre_g: 5.2
+  iron_mg: 1.4
+  calcium_mg: 35.9
+  magnesium_mg: 44.0
+  zinc_mg: 0.6
+  potassium_mg: 473
+  folate_ug: 157
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 121
+  omega3_mg: 75.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mango
+  g: 200.0
+- i: 1
+  key: mung-sprouted
+  g: 104.0
+- i: 2
+  key: capsicum
+  g: 120.0
+- i: 3
+  key: green-chilli
+  g: 2.34375
+- i: 4
+  key: salt
+  g: 0.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

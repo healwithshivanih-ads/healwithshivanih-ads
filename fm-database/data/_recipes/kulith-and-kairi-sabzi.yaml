@@ -1,0 +1,128 @@
+slug: kulith-and-kairi-sabzi
+name: Kulith and kairi sabzi (horsegram sprouts with raw mango)
+meal_type:
+- side
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Maharashtrian
+seasons:
+- summer
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- astringent
+main_ingredients:
+- horsegram sprouts
+- raw mango
+- fresh coconut
+contains_allergens: []
+ingredients:
+- item: horsegram sprouts
+  qty: '1'
+  unit: cup
+- item: raw mango (kairi), grated
+  qty: '4'
+  unit: tbsp
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+- item: onion, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: black pepper powder
+  qty: '0.25'
+  unit: tsp
+- item: fresh coconut, grated
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat the oil in a heavy pan and soften the onion.
+- Add the horsegram sprouts and grated raw mango and keep stirring.
+- Add 3–4 teaspoons of water, cover and cook on low for a minute or two — longer if
+  you like the sprouts softer.
+- Season with salt and pepper and top with the coconut. A pinch of garam masala with
+  the onions is a good variation.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 8
+approx_kcal_per_serving: 178
+kcal_is_estimate: true
+protein_g: 6.0
+good_for:
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: Horsegram sprouts tossed with tart raw mango and coconut — a light summer
+  side.
+headnote: Horsegram is warming, so the raw mango and coconut balance it. A small side,
+  not a main.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 41
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 41
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 178
+kcal_total: 356
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 178
+  protein_g: 6.0
+  carbs_g: 19.1
+  fat_g: 8.7
+  fibre_g: 3.0
+  iron_mg: 2.5
+  calcium_mg: 75.4
+  magnesium_mg: 44.2
+  zinc_mg: 0.8
+  potassium_mg: 336
+  folate_ug: 59.6
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 15.0
+  omega3_mg: 15.6
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: horsegram-sprouted
+  g: 120.0
+- i: 1
+  key: green-mango
+  g: 41.25
+- i: 2
+  key: sunflower-oil
+  g: 13.625
+- i: 3
+  key: onion
+  g: 14.375
+- i: 4
+  key: salt
+  g: 0.0
+- i: 5
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 6
+  key: coconut-fresh
+  g: 10.0
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

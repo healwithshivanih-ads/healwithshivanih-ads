@@ -1,0 +1,119 @@
+slug: sprouted-chana-idli-muffins
+name: Sprouted chana idli muffins
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- sour
+- astringent
+main_ingredients:
+- black chana sprouts
+- idli batter
+- sesame oil
+contains_allergens:
+- sesame
+ingredients:
+- item: black chana sprouts
+  qty: '1'
+  unit: cup
+- item: idli batter
+  qty: '2.5'
+  unit: cup
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: pink salt
+  qty: to taste
+  unit: ''
+- item: sesame oil, cold-pressed
+  qty: '2'
+  unit: tbsp
+steps:
+- Stir the chana sprouts into the idli batter with the cumin and salt.
+- Whisk in the sesame oil really well.
+- Pour into lightly greased idli or muffin moulds and steam for 18–20 minutes.
+- Serve hot or cold — they are good even without chutney.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 20
+approx_kcal_per_serving: 350
+kcal_is_estimate: true
+protein_g: 10.5
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+- gut-microbiome
+one_line: Idli batter studded with whole sprouted kala chana and steamed in muffin
+  moulds.
+headnote: Whole sprouts add protein and something to chew on. They hold well in a
+  tiffin.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 80
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 80
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 350
+kcal_total: 1400
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 350
+  protein_g: 10.5
+  carbs_g: 55.6
+  fat_g: 8.8
+  fibre_g: 5.1
+  iron_mg: 2.4
+  calcium_mg: 37.1
+  magnesium_mg: 53.5
+  zinc_mg: 1.6
+  potassium_mg: 312
+  folate_ug: 111
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 1.9
+  omega3_mg: 53.6
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: chana-sprouted
+  g: 150.0
+- i: 1
+  key: idli-dosa-batter
+  g: 625.0
+- i: 2
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 3
+  key: salt
+  g: 0.0
+- i: 4
+  key: sesame-oil
+  g: 27.25
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

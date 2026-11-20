@@ -1,0 +1,129 @@
+slug: sprouted-chana-paneer-salad
+name: Sprouted chana and paneer salad
+meal_type:
+- salad
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- chana sprouts
+- paneer
+- cucumber
+- tomato
+contains_allergens:
+- dairy
+ingredients:
+- item: cucumber, chopped
+  qty: '0.5'
+  unit: cup
+- item: small onions (shallots), chopped
+  qty: '0.5'
+  unit: cup
+- item: tomato, chopped
+  qty: '0.5'
+  unit: cup
+- item: chana sprouts, cooked
+  qty: '2'
+  unit: cup
+- item: lemon juice
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: paneer, cut into pieces
+  qty: '0.5'
+  unit: cup
+steps:
+- Put the cucumber, onions and tomato in a deep bowl.
+- Add the cooked chana sprouts and toss.
+- Season with the lemon juice and salt.
+- Fold in the paneer last and serve straight away.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 247
+kcal_is_estimate: true
+protein_g: 13.8
+good_for:
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+one_line: Cooked chana sprouts, cucumber, tomato and paneer with lemon.
+headnote: Filling enough to be lunch on its own.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 43
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 43
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 247
+kcal_total: 741
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 247
+  protein_g: 13.8
+  carbs_g: 32.2
+  fat_g: 7.6
+  fibre_g: 6.8
+  iron_mg: 2.3
+  calcium_mg: 145
+  magnesium_mg: 48.2
+  zinc_mg: 1.9
+  potassium_mg: 469
+  folate_ug: 184
+  b12_ug: 0.2
+  vit_d_ug: 0.0
+  vit_c_mg: 14.4
+  omega3_mg: 69.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: cucumber
+  g: 60.0
+- i: 1
+  key: onion
+  g: 57.5
+- i: 2
+  key: tomato
+  g: 75.0
+- i: 3
+  key: chana-sprouted
+  g: 300.0
+- i: 4
+  key: lemon-juice
+  g: 30.5
+- i: 5
+  key: salt
+  g: 0.0
+- i: 6
+  key: paneer
+  g: 65.0
+nutrient_servings: 3.0
+cycle_phases:
+- follicular
