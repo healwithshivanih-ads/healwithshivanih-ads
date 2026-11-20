@@ -1,6 +1,9 @@
 [b12_high.head]
 phrase: Your B12 is well above its range.
 
+[blood.small_cells_inherited]
+phrase: Your red cells are small, and there are plenty of them. That pattern can be inherited, and it can look like low iron without being low iron. It needs a deeper look to tell the two apart.
+
 [bodyage.level]
 phrase: A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies.
 

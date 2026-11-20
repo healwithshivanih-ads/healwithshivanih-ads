@@ -999,6 +999,6 @@ def test_the_two_small_cell_indices_say_when_there_is_nothing_to_read_and_flag_t
     small = _plus([_lab("MENTZER INDEX", 11.5, "", "-")], over={"MCV": 70})
     page = text(report_html(small))
     assert "nothing to read here" not in page and "That pattern can be inherited" in dict(small.section_text["blood"][1])["Small red cells"]
-    assert small.drafts == ["blood.small_cells_inherited"]                 # a draft until Shivani approves the sentence
+    assert not small.drafts                                                # she approved the sentence on 20 Nov 2026
     iron = _plus([_lab("MENTZER INDEX", 16, "", "-")], over={"MCV": 70})
     assert "Small red cells" not in dict(iron.section_text["blood"][1])

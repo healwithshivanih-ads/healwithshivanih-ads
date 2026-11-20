@@ -84,6 +84,7 @@ APPROVED_DRAFTS: set[str] = {
     "finding.ferritin_low.A", "finding.ferritin_low.B", "finding.ferritin_low.C",
     "finding.ferritin_high.A", "finding.ferritin_high.B", "finding.ferritin_high.C",
     "todo.deep.lpa",
+    "blood.small_cells_inherited",      # her "Approve it", 20 Nov 2026
     # The extra results, F3 to F19: her "All approved" of extra-results-wording-draft.md, 20 Nov 2026, built at her
     # "Do this task here". The same approved words at every level.
     "finding.folate_low.A", "finding.folate_low.B", "finding.folate_low.C",
