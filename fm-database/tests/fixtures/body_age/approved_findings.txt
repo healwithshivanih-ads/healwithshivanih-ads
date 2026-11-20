@@ -226,6 +226,24 @@ summary: Vitamin B12, at the low end of its range. Read again at your next test.
 closing: 
 page 1 step: 
 
+[finding.b12_low.B]
+head: Your vitamin B12 appears to be low.
+today: Often nothing. Sometimes tiredness, or pins and needles in the hands or feet.
+why: B12 comes almost entirely from animal foods, so it runs low in vegetarians, and in anyone who absorbs it poorly. Acid-lowering medicines and metformin are common reasons.
+do: This needs a deeper look: why it is low, and how best to bring it up.
+summary: Vitamin B12, at the low end of its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.b12_low.C]
+head: Your vitamin B12 appears to be very low.
+today: Often nothing. Sometimes tiredness, or pins and needles in the hands or feet.
+why: B12 comes almost entirely from animal foods, so it runs low in vegetarians, and in anyone who absorbs it poorly. Acid-lowering medicines and metformin are common reasons.
+do: This needs a deeper look: why it is low, and how best to bring it up.
+summary: Vitamin B12, at the low end of its range. Read again at your next test.
+closing: A level this low needs a doctor's attention, because injections are sometimes needed. Please speak to your doctor.
+page 1 step: 
+
 [finding.bilirubin.A]
 head: The pigment your liver clears is a little raised.
 today: Nothing you would feel.
@@ -415,6 +433,24 @@ summary: Haemoglobin, at the low edge of its range. Read again at your next test
 closing: 
 page 1 step: 
 
+[finding.hb_low.B]
+head: Your haemoglobin appears to be below its range.
+today: Low haemoglobin often shows as tiredness, breathlessness on the stairs or feeling cold.
+why: Haemoglobin carries oxygen, and there may be less of it than your body needs. The reason matters more than the number: iron, B12 or folate running short, or {loss}.
+do: This needs a deeper look: your iron, B12 and folate, and where the shortfall is coming from.
+summary: Haemoglobin, at the low edge of its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.hb_low.C]
+head: Your haemoglobin appears to be low enough that it is worth finding the reason.
+today: Low haemoglobin often shows as tiredness, breathlessness on the stairs or feeling cold.
+why: Haemoglobin carries oxygen, and there may be less of it than your body needs. A low reading usually has a reason: iron, B12 or folate running short, or {loss}.
+do: This needs a deeper look: your iron, B12 and folate, and where the shortfall is coming from.
+summary: Haemoglobin, at the low edge of its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.hcy.A]
 head: Your homocysteine sits just above its range.
 today: Nothing you would feel.
@@ -523,6 +559,24 @@ summary: A kidney marker, just above its range. Read again at your next test.
 closing: 
 page 1 step: 
 
+[finding.kidney.B]
+head: A marker of how your kidneys clear waste appears to be clearly raised.
+today: Nothing you would feel.
+why: Creatinine and urea are waste the kidneys clear. When they build up, either more is being made or the kidneys are clearing less. A dry day, a hard workout or a high-protein day before the test can do it too, and a repeat tells these apart.
+do: This needs a deeper look, starting with a repeat test.
+summary: A kidney marker, just above its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.kidney.C]
+head: A marker of how your kidneys clear waste appears to be far above its range.
+today: Often nothing. Swollen ankles, passing much less urine or feeling sick would be a reason not to wait.
+why: Creatinine and urea are waste the kidneys clear. A rise like this can mean the kidneys are clearing less than they should, and it is worth confirming.
+do: This needs a deeper look, starting with a repeat test in the coming days.
+summary: A kidney marker, just above its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.lipids.A]
 head: Your arteries are carrying a slightly heavier load of cholesterol particles than we would like.
 today: You feel nothing. That is the difficulty with this one.
@@ -622,6 +676,33 @@ summary: Phosphorus, just below its range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.platelets.A]
+head: Your platelet count sits just below its range.
+today: Nothing you would feel.
+why: Platelets are the cells that help blood clot. A count a little below the range often follows an infection or some medicines. A repeat shows whether it was passing.
+do: It is read again at your next test.
+summary: Platelets, just below their range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.platelets.B]
+head: Your platelet count appears to be clearly below its range.
+today: Nothing you would feel.
+why: Platelets are the cells that help blood clot. A low count can follow an infection or some medicines, and platelets clumping in the tube can sometimes make a count read falsely low.
+do: Consider a repeat test to confirm.
+summary: Platelets, just below their range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.platelets.C]
+head: Your platelet count appears to be far below its range.
+today: Often nothing. Easy bruising, nosebleeds or bleeding gums would be a reason not to wait.
+why: Platelets are the cells that help blood clot. At this level the count is worth confirming, because platelets clumping in the tube can sometimes make it read falsely low, and a true result this far out is worth explaining.
+do: A repeat test in the coming days is the usual first step.
+summary: Platelets, just below their range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.platelets_high.A]
 head: Your platelet count sits just above its range.
 today: Nothing you would feel.
@@ -683,6 +764,24 @@ why: Sodium, potassium and calcium are held in a narrow band, so even a small mo
 do: It is read again at your next test.
 summary: One salt, just outside its range. Read again at your next test.
 closing: 
+page 1 step: 
+
+[finding.salts.B]
+head: One of your body's salts sits outside its range.
+today: Usually nothing.
+why: Sodium, potassium and calcium are held in a narrow band, so even a small move is marked. The way a sample is handled on its way to the laboratory can raise potassium falsely, and some medicines move all three.
+do: Consider a repeat test on a fresh sample to confirm.
+summary: One salt, just outside its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.salts.C]
+head: One of your body's salts sits outside its range.
+today: Some people feel weak, confused, or notice cramps or an uneven heartbeat. If you do, do not wait.
+why: Sodium, potassium and calcium are held in a narrow band, so even a small move is marked. The way a sample is handled on its way to the laboratory can raise potassium falsely, and some medicines move all three.
+do: A repeat test on a fresh sample in the coming days is the usual first step.
+summary: One salt, just outside its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
 [finding.sugar.A]
@@ -793,6 +892,24 @@ summary: Thyroid signal, just below its range. Read again at your next test.
 closing: 
 page 1 step: 
 
+[finding.tsh_low.B]
+head: The signal asking your thyroid to work appears to be clearly low.
+today: Some people with a low signal feel restless or warm, or notice a faster heartbeat.
+why: A low signal means the brain is asking for less thyroid hormone, usually because there is already plenty in the blood.
+do: This needs a deeper look: the full thyroid picture, read alongside your history and what you take.
+summary: Thyroid signal, just below its range. Read again at your next test.
+closing: A signal at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.tsh_low.C]
+head: The signal asking your thyroid to work appears to be very low.
+today: Some people with a low signal feel restless or warm, or notice a faster heartbeat.
+why: A low signal means the brain is asking for less thyroid hormone, usually because there is already plenty in the blood.
+do: This needs a deeper look: the full thyroid picture, read alongside your history and what you take.
+summary: Thyroid signal, just below its range. Read again at your next test.
+closing: A signal this far outside its range needs a doctor's attention, because medicine can be part of the answer. Please speak to your doctor.
+page 1 step: 
+
 [finding.uric.A]
 head: Your uric acid sits just above its range.
 today: Nothing you would feel.
@@ -847,6 +964,24 @@ summary: Vitamin D, a little short.
 closing: 
 page 1 step: Building your <a href="#nutrients">vitamin D</a> back up, starting with some sun most days.
 
+[finding.vitd_low.B]
+head: Your vitamin D appears to be clearly low.
+today: Low vitamin D can show as aching muscles, low mood or tiredness. Often it shows as nothing.
+why: Vitamin D is made in the skin from sunlight, and bones, muscles and the immune system all need it. Most people who work indoors run low.
+do: Sunlight comes first: some sun on bare arms and legs, most days.
+summary: Vitamin D, clearly low.
+closing: Whether you need more than sunlight is worth asking at your next routine check-up.
+page 1 step: Building your <a href="#nutrients">vitamin D</a> back up, starting with some sun most days.
+
+[finding.vitd_low.C]
+head: Your vitamin D appears to be very low.
+today: Low vitamin D can show as aching muscles, low mood or tiredness. Often it shows as nothing.
+why: Vitamin D is made in the skin from sunlight, and bones, muscles and the immune system all need it. Most people who work indoors run low.
+do: Sunlight alone is unlikely to bring this up.
+summary: Vitamin D, very low.
+closing: A level this low needs a doctor's attention, because a prescribed dose is usually part of the answer. Please speak to your doctor.
+page 1 step: Building your <a href="#nutrients">vitamin D</a> back up, starting with some sun most days.
+
 [finding.white_cells.A]
 head: Your white cells sit outside their range.
 today: Nothing you would feel.
@@ -854,4 +989,22 @@ why: White cells rise with an infection or stress on the body, and can dip for a
 do: It is read again at your next test.
 summary: White cells, just outside their range. Read again at your next test.
 closing: 
+page 1 step: 
+
+[finding.white_cells.B]
+head: Your white cells sit outside their range.
+today: Nothing you would feel.
+why: White cells rise with an infection or stress on the body, and can dip for a few weeks after a viral illness. A repeat shows whether it was passing.
+do: Consider a repeat test when you are well.
+summary: White cells, just outside their range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.white_cells.C]
+head: Your white cells sit outside their range.
+today: Often nothing. Fever, infections that keep coming back or easy bruising would be a reason not to wait.
+why: White cells rise with an infection or stress on the body and can fall after a viral illness. A count this far outside its range is worth checking again, not leaving to settle by itself.
+do: A repeat test in the coming days is the usual first step.
+summary: White cells, just outside their range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
