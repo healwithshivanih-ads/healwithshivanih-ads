@@ -29,7 +29,7 @@ ingredients:
   qty: '400'
   unit: g
 - item: mustard oil
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: garlic cloves, thinly sliced
   qty: '4'
@@ -86,30 +86,27 @@ protein_g: 6.8
 kcal_per_serving: 135
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 135
-  protein_g: 6.8
-  carbs_g: 19.7
-  fat_g: 4.2
-  fibre_g: 6.6
-  iron_mg: 2.4
-  calcium_mg: 79.7
-  magnesium_mg: 72.8
-  zinc_mg: 1.5
-  potassium_mg: 527
-  folate_ug: 84.0
+  kcal: 132
+  protein_g: 4.2
+  carbs_g: 16.9
+  fat_g: 6.1
+  fibre_g: 5.4
+  iron_mg: 1.5
+  calcium_mg: 53.1
+  magnesium_mg: 35.8
+  zinc_mg: 0.9
+  potassium_mg: 454
+  folate_ug: 67.8
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 44.0
-  omega3_mg: 93.8
+  vit_c_mg: 43.3
+  omega3_mg: 63.9
 nutrient_coverage_pct: 99.7
 rich_in:
 - fibre
-- magnesium
-- potassium
-- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -126,8 +123,8 @@ nutrient_lines:
   key: mixed-vegetables
   g: 400.0
 - i: 1
-  key: mustard-seeds
-  g: 25.0
+  key: sunflower-oil
+  g: 13.625
 - i: 2
   key: garlic
   g: 12.0

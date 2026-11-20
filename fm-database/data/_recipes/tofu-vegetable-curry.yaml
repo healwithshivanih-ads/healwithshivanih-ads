@@ -103,21 +103,21 @@ kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 437
-  protein_g: 17.5
-  carbs_g: 26.3
-  fat_g: 31.7
-  fibre_g: 8.0
-  iron_mg: 6.9
-  calcium_mg: 346
-  magnesium_mg: 129
-  zinc_mg: 2.5
-  potassium_mg: 835
-  folate_ug: 94.8
+  kcal: 345
+  protein_g: 16.3
+  carbs_g: 23.9
+  fat_g: 21.5
+  fibre_g: 7.1
+  iron_mg: 5.2
+  calcium_mg: 336
+  magnesium_mg: 107
+  zinc_mg: 2.2
+  potassium_mg: 715
+  folate_ug: 87.6
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 37.3
-  omega3_mg: 366
+  vit_c_mg: 36.1
+  omega3_mg: 367
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -130,7 +130,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: tofu
@@ -160,7 +160,7 @@ nutrient_lines:
   key: coriander-powder
   g: 2.5
 - i: 9
-  key: coconut-milk
+  key: coconut-milk-light
   g: 240.0
 - i: 10
   key: salt
@@ -172,13 +172,14 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: टोफू और सब्ज़ी करी
     steps:
     - नारियल तेल में राई तड़काएँ, फिर करी पत्ता डालें।
     - प्याज़ नरम करें, अदरक-लहसुन पेस्ट डालें और कच्चापन पकाएँ।
-    - सब्ज़ियाँ हल्दी, धनिया पाउडर और नमक और थोड़े पानी के साथ डालें। ढककर बस नरम होने तक पकाएँ।
-    - नारियल का दूध डालें और बस हल्की आँच पर लाएँ — कभी तेज़ उबाल नहीं, वरना फट जाता है।
+    - सब्ज़ियाँ हल्दी, धनिया पाउडर और नमक और थोड़े पानी के साथ डालें। ढककर बस नरम
+      होने तक पकाएँ।
+    - नारियल का दूध डालें और बस हल्की आँच पर लाएँ — कभी तेज़ उबाल नहीं, वरना फट जाता
+      है।
     - टोफू डालें, 3–4 minute गरम करें, और धनिया से पूरा करें।

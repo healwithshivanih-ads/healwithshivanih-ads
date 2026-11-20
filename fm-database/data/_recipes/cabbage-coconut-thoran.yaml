@@ -35,8 +35,8 @@ ingredients:
   qty: '0.75'
   unit: cup
 - item: coconut oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: mustard seeds
   qty: '0.5'
   unit: tsp
@@ -112,10 +112,10 @@ kcal_total: 170
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 325
+  kcal: 305
   protein_g: 7.2
   carbs_g: 39.6
-  fat_g: 17.8
+  fat_g: 15.5
   fibre_g: 11.7
   iron_mg: 3.5
   calcium_mg: 159
@@ -136,7 +136,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: cabbage
@@ -149,7 +149,7 @@ nutrient_lines:
   g: 60.0
 - i: 3
   key: coconut-oil
-  g: 13.625
+  g: 9.083333333333334
 - i: 4
   key: mustard-seeds
   g: 2.0833333333333335

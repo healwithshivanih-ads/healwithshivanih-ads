@@ -44,7 +44,7 @@ ingredients:
   qty: '1'
   unit: tsp
 - item: oil
-  qty: '2'
+  qty: '1'
   unit: tbsp
 - item: salt
   qty: to taste
@@ -89,36 +89,31 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 1178
-  protein_g: 25.2
-  carbs_g: 231
-  fat_g: 16.2
-  fibre_g: 11.7
-  iron_mg: 3.2
-  calcium_mg: 141
-  magnesium_mg: 102
-  zinc_mg: 3.9
-  potassium_mg: 863
-  folate_ug: 70.2
+  kcal: 442
+  protein_g: 9.5
+  carbs_g: 81.7
+  fat_g: 8.5
+  fibre_g: 4.9
+  iron_mg: 1.7
+  calcium_mg: 140
+  magnesium_mg: 61.7
+  zinc_mg: 1.7
+  potassium_mg: 642
+  folate_ug: 52.5
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 26.4
-  omega3_mg: 170
+  omega3_mg: 89.0
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
-- fibre
-- iron
-- magnesium
-- zinc
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
-  key: white-rice
-  g: 555.0
+  key: rice-cooked
+  g: 480.0
 - i: 1
   key: tomato
   g: 300.0
@@ -139,12 +134,11 @@ nutrient_lines:
   g: 2.5
 - i: 7
   key: olive-oil
-  g: 27.0
+  g: 13.5
 - i: 8
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: टमाटर चावल

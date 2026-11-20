@@ -32,11 +32,11 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: moringa, diced
-  qty: '2'
-  unit: cups
+  qty: '300'
+  unit: g
 - item: ghee or coconut oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: mustard seeds
   qty: '0.5'
   unit: tsp
@@ -104,32 +104,38 @@ kcal_total: 280
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 103
-  protein_g: 2.7
-  carbs_g: 3.8
-  fat_g: 9.3
-  fibre_g: 1.3
-  iron_mg: 1.7
-  calcium_mg: 59.9
-  magnesium_mg: 18.3
-  zinc_mg: 0.3
-  potassium_mg: 134
-  folate_ug: 13.5
+  kcal: 166
+  protein_g: 14.8
+  carbs_g: 14.5
+  fat_g: 8.8
+  fibre_g: 3.9
+  iron_mg: 6.8
+  calcium_mg: 299
+  magnesium_mg: 72.5
+  zinc_mg: 1.1
+  potassium_mg: 569
+  folate_ug: 65.1
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 11.6
-  omega3_mg: 105
+  vit_c_mg: 78.7
+  omega3_mg: 344
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- protein
+- iron
+- calcium
+- magnesium
+- potassium
+- vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: moringa-leaves
-  g: 42.0
+  g: 300.0
 - i: 1
   key: ghee
-  g: 13.625
+  g: 9.083333333333334
 - i: 2
   key: mustard-seeds
   g: 2.0833333333333335
@@ -155,13 +161,14 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: सहजन की सब्ज़ी
     steps:
-    - कड़ाही में मध्यम आँच पर घी गरम करें। राई डालकर चटकाएँ, फिर जीरा, करी पत्ता और अदरक डालें; 30 सेकंड खुशबू आने तक भूनें।
+    - कड़ाही में मध्यम आँच पर घी गरम करें। राई डालकर चटकाएँ, फिर जीरा, करी पत्ता और
+      अदरक डालें; 30 सेकंड खुशबू आने तक भूनें।
     - कटा सहजन और हल्दी डालें। तड़के में अच्छी तरह मिलाएँ।
-    - नमक डालें, ढककर धीमी आँच पर 8-12 मिनट बीच-बीच में चलाते हुए पकाएँ जब तक सब्ज़ी बस नरम (गली नहीं) हो जाए। चिपके तो थोड़ा पानी छिड़कें।
+    - नमक डालें, ढककर धीमी आँच पर 8-12 मिनट बीच-बीच में चलाते हुए पकाएँ जब तक सब्ज़ी
+      बस नरम (गली नहीं) हो जाए। चिपके तो थोड़ा पानी छिड़कें।
     - ढक्कन हटाएँ, थोड़ी देर आँच तेज़ करके नमी सुखाएँ। चाहें तो कद्दूकस नारियल मिलाएँ।
     - ताज़े धनिये से सजाएँ और रोटी या चावल के साथ गरमागरम परोसें।

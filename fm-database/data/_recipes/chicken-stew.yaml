@@ -114,21 +114,21 @@ kcal_total: 340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 685
-  protein_g: 48.2
-  carbs_g: 32.2
-  fat_g: 42.0
-  fibre_g: 7.3
-  iron_mg: 7.3
-  calcium_mg: 119
-  magnesium_mg: 144
-  zinc_mg: 4.0
-  potassium_mg: 1439
-  folate_ug: 71.6
+  kcal: 546
+  protein_g: 46.4
+  carbs_g: 28.6
+  fat_g: 26.7
+  fibre_g: 6.0
+  iron_mg: 4.7
+  calcium_mg: 102
+  magnesium_mg: 111
+  zinc_mg: 3.5
+  potassium_mg: 1259
+  folate_ug: 60.8
   b12_ug: 0.6
   vit_d_ug: 0.2
-  vit_c_mg: 31.9
-  omega3_mg: 194
+  vit_c_mg: 30.1
+  omega3_mg: 196
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -140,7 +140,7 @@ rich_in:
 - b12
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: chicken
@@ -179,7 +179,7 @@ nutrient_lines:
   key: cardamom
   g: 0.8999999999999999
 - i: 12
-  key: coconut-milk
+  key: coconut-milk-light
   g: 360.0
 - i: 13
   key: curry-leaves
@@ -188,13 +188,16 @@ nutrient_lines:
   key: salt
   g: 0.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: चिकन स्टू
     steps:
-    - नारियल तेल गरम करें और दालचीनी, लौंग और इलायची कुछ सेकंड डालें। इलायची इश्टू की खास खुशबू है — इसे न छोड़ें।
-    - प्याज़, अदरक, हरी मिर्च और करी पत्ता को बिना भूरा किए नरम करें। स्टू पीला रहना चाहिए, और पत्तों को नारियल दूध में स्वाद पहुँचाने के लिए तेल में यह समय चाहिए।
-    - सब्ज़ियाँ, कुटी काली मिर्च और नमक आधा कप पानी के साथ डालें। ढककर लगभग नरम होने तक पकाएँ।
+    - नारियल तेल गरम करें और दालचीनी, लौंग और इलायची कुछ सेकंड डालें। इलायची इश्टू
+      की खास खुशबू है — इसे न छोड़ें।
+    - प्याज़, अदरक, हरी मिर्च और करी पत्ता को बिना भूरा किए नरम करें। स्टू पीला रहना
+      चाहिए, और पत्तों को नारियल दूध में स्वाद पहुँचाने के लिए तेल में यह समय चाहिए।
+    - सब्ज़ियाँ, कुटी काली मिर्च और नमक आधा कप पानी के साथ डालें। ढककर लगभग नरम होने
+      तक पकाएँ।
     - चिकन और नारियल दूध डालें। बहुत धीमी आँच पर 20 मिनट पकाएँ।
-    - परोसने से पहले स्टू को 10 मिनट आँच से उतारकर रखें — यह जम जाता है और थोड़ा गाढ़ा हो जाता है।
+    - परोसने से पहले स्टू को 10 मिनट आँच से उतारकर रखें — यह जम जाता है और थोड़ा गाढ़ा
+      हो जाता है।

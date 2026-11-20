@@ -33,8 +33,8 @@ ingredients:
   qty: '250'
   unit: g
 - item: fresh methi (fenugreek) leaves, washed and roughly chopped
-  qty: '2'
-  unit: cups
+  qty: '500'
+  unit: g
 - item: onion, finely chopped
   qty: '1'
   unit: large
@@ -49,7 +49,7 @@ ingredients:
   unit: medium
 - item: oil
   qty: '2'
-  unit: tbsp
+  unit: tsp
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
@@ -106,28 +106,34 @@ protein_g: 2.7
 kcal_per_serving: 151
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 174
-  protein_g: 5.8
-  carbs_g: 14.6
-  fat_g: 11.9
-  fibre_g: 4.7
-  iron_mg: 3.5
-  calcium_mg: 118
-  magnesium_mg: 44.3
-  zinc_mg: 1.0
-  potassium_mg: 655
-  folate_ug: 52.9
+  kcal: 169
+  protein_g: 12.7
+  carbs_g: 21.5
+  fat_g: 6.2
+  fibre_g: 13.1
+  iron_mg: 14.6
+  calcium_mg: 589
+  magnesium_mg: 149
+  zinc_mg: 2.2
+  potassium_mg: 1231
+  folate_ug: 160
   b12_ug: 0.0
   vit_d_ug: 0.2
-  vit_c_mg: 27.3
-  omega3_mg: 125
+  vit_c_mg: 108
+  omega3_mg: 277
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
+- fibre
 - iron
+- calcium
+- magnesium
+- zinc
 - potassium
+- folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -145,7 +151,7 @@ nutrient_lines:
   g: 250.0
 - i: 1
   key: methi-leaves
-  g: 70.0
+  g: 500.0
 - i: 2
   key: onion
   g: 154.0
@@ -160,7 +166,7 @@ nutrient_lines:
   g: 100.0
 - i: 6
   key: olive-oil
-  g: 27.0
+  g: 9.0
 - i: 7
   key: cumin-seeds
   g: 1.0416666666666667

@@ -44,8 +44,8 @@ ingredients:
   qty: '0.25'
   unit: tsp
 - item: cooking oil
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -88,10 +88,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 117
+  kcal: 96.9
   protein_g: 3.5
   carbs_g: 9.8
-  fat_g: 8.0
+  fat_g: 5.8
   fibre_g: 2.9
   iron_mg: 1.6
   calcium_mg: 99.0
@@ -102,13 +102,13 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 38.1
-  omega3_mg: 107
+  omega3_mg: 106
 nutrient_coverage_pct: 100.0
 rich_in:
 - potassium
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: zucchini
@@ -133,7 +133,7 @@ nutrient_lines:
   g: 0.625
 - i: 7
   key: sunflower-oil
-  g: 13.625
+  g: 9.083333333333334
 - i: 8
   key: salt
   g: 0.0

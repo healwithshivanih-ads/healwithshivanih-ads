@@ -37,8 +37,8 @@ ingredients:
   qty: '0.5'
   unit: tsp
 - item: ghee
-  qty: '1'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '0.5'
   unit: tsp
@@ -104,10 +104,10 @@ kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 125
+  kcal: 105
   protein_g: 6.4
   carbs_g: 8.5
-  fat_g: 7.5
+  fat_g: 5.2
   fibre_g: 4.7
   iron_mg: 7.4
   calcium_mg: 472
@@ -118,14 +118,14 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 5.3
-  omega3_mg: 61.2
+  omega3_mg: 43.0
 nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 - calcium
 - magnesium
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: moringa-powder
@@ -135,7 +135,7 @@ nutrient_lines:
   g: 1.5625
 - i: 2
   key: ghee
-  g: 13.625
+  g: 9.083333333333334
 - i: 3
   key: cumin-seeds
   g: 1.0416666666666667
@@ -160,12 +160,14 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual
-
 translations:
   hi:
     name: दाल में मोरिंगा पाउडर
     steps:
-    - मोरिंगा पाउडर को अच्छी तरह मिलाएँ। हल्दी और 2.5 कप पानी के साथ नरम होने तक प्रेशर-कुक करें (3-4 सीटी), या ढककर 25-30 मिनट उबालें। चिकना फेंट लें।
-    - छोटे पैन में घी गरम करें। जीरा डालकर चटकने दें, फिर अदरक, करी पत्ता और एक चुटकी हींग डालें; 20 सेकंड भूनें।
-    - तड़के को पकी दाल में डालें। नमक और थोड़ा गरम पानी डालकर बहने जैसा गाढ़ापन लाएँ। 3-4 मिनट उबालें।
+    - मोरिंगा पाउडर को अच्छी तरह मिलाएँ। हल्दी और 2.5 कप पानी के साथ नरम होने तक प्रेशर-कुक
+      करें (3-4 सीटी), या ढककर 25-30 मिनट उबालें। चिकना फेंट लें।
+    - छोटे पैन में घी गरम करें। जीरा डालकर चटकने दें, फिर अदरक, करी पत्ता और एक चुटकी
+      हींग डालें; 20 सेकंड भूनें।
+    - तड़के को पकी दाल में डालें। नमक और थोड़ा गरम पानी डालकर बहने जैसा गाढ़ापन लाएँ।
+      3-4 मिनट उबालें।
     - नींबू का रस और धनिया से खत्म करें। चावल या रोटी के साथ गरम परोसें।

@@ -29,8 +29,8 @@ ingredients:
   qty: '300'
   unit: g
 - item: oil (any neutral)
-  qty: '1.5'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: cumin seeds
   qty: '1'
   unit: tsp
@@ -95,10 +95,10 @@ protein_g: 0.6
 kcal_per_serving: 86
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 112
+  kcal: 72.1
   protein_g: 4.3
   carbs_g: 6.6
-  fat_g: 8.8
+  fat_g: 4.3
   fibre_g: 1.8
   iron_mg: 1.6
   calcium_mg: 24.4
@@ -109,11 +109,11 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.2
   vit_c_mg: 7.1
-  omega3_mg: 66.9
+  omega3_mg: 32.7
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -131,7 +131,7 @@ nutrient_lines:
   g: 300.0
 - i: 1
   key: olive-oil
-  g: 20.25
+  g: 9.0
 - i: 2
   key: cumin-seeds
   g: 2.0833333333333335

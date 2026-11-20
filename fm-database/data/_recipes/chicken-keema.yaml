@@ -102,26 +102,26 @@ kcal_total: 340
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 280
-  protein_g: 18.0
-  carbs_g: 10.6
-  fat_g: 19.0
-  fibre_g: 2.5
-  iron_mg: 2.9
-  calcium_mg: 57.0
-  magnesium_mg: 51.4
-  zinc_mg: 1.5
-  potassium_mg: 455
-  folate_ug: 24.3
+  kcal: 234
+  protein_g: 17.4
+  carbs_g: 9.4
+  fat_g: 13.9
+  fibre_g: 2.1
+  iron_mg: 2.1
+  calcium_mg: 51.6
+  magnesium_mg: 40.6
+  zinc_mg: 1.4
+  potassium_mg: 395
+  folate_ug: 20.7
   b12_ug: 0.2
   vit_d_ug: 0.1
-  vit_c_mg: 6.6
-  omega3_mg: 67.9
+  vit_c_mg: 6.0
+  omega3_mg: 68.5
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: chicken
@@ -145,7 +145,7 @@ nutrient_lines:
   key: coriander-powder
   g: 2.5
 - i: 7
-  key: coconut-milk
+  key: coconut-milk-light
   g: 120.0
 - i: 8
   key: salt
@@ -154,13 +154,14 @@ nutrient_lines:
   key: coriander-fresh
   g: 2.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: चिकन कीमा
     steps:
     - चिकन को साफ करके टुकड़ों में काटें।
-    - नारियल तेल गरम करें, प्याज़ और करी पत्ता डालें; सुनहरा होने तक भूनें। अदरक-लहसुन पेस्ट डालकर 1 मिनट पकाएँ।
+    - नारियल तेल गरम करें, प्याज़ और करी पत्ता डालें; सुनहरा होने तक भूनें। अदरक-लहसुन
+      पेस्ट डालकर 1 मिनट पकाएँ।
     - हल्दी और धनिया पाउडर डालें; 30 सेकंड चलाएँ।
-    - चिकन और नमक डालें; 2-3 मिनट भूनें। नारियल का दूध और थोड़ा पानी डालें। ढककर बस पकने तक धीमी आँच पर पकाएँ (मछली 8-10 मिनट, चिकन 18-20 मिनट, झींगा 5-6 मिनट)।
+    - चिकन और नमक डालें; 2-3 मिनट भूनें। नारियल का दूध और थोड़ा पानी डालें। ढककर बस
+      पकने तक धीमी आँच पर पकाएँ (मछली 8-10 मिनट, चिकन 18-20 मिनट, झींगा 5-6 मिनट)।
     - ताज़ा धनिया डालें। चावल या बाजरे के साथ गरमागरम परोसें।

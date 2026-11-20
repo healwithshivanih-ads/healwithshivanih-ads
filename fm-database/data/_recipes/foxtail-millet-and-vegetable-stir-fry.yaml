@@ -26,7 +26,7 @@ main_ingredients:
 contains_allergens:
 - soy
 ingredients:
-- item: foxtail millet, cooked and cooled
+- item: cooked foxtail millet, cooled
   qty: '2'
   unit: cup
 - item: coconut oil
@@ -99,37 +99,35 @@ kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 776
-  protein_g: 26.7
-  carbs_g: 135
-  fat_g: 15.0
-  fibre_g: 20.7
-  iron_mg: 6.8
-  calcium_mg: 137
-  magnesium_mg: 189
-  zinc_mg: 5.1
-  potassium_mg: 1042
-  folate_ug: 107
+  kcal: 389
+  protein_g: 10.7
+  carbs_g: 68.5
+  fat_g: 9.0
+  fibre_g: 8.6
+  iron_mg: 2.8
+  calcium_mg: 86.4
+  magnesium_mg: 120
+  zinc_mg: 2.3
+  potassium_mg: 701
+  folate_ug: 113
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 97.1
-  omega3_mg: 143
+  omega3_mg: 105
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
 - fibre
-- iron
 - magnesium
 - zinc
 - potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
-  key: millet-foxtail
-  g: 360.0
+  key: millet-cooked
+  g: 350.0
 - i: 1
   key: coconut-oil
   g: 13.625
@@ -161,12 +159,12 @@ nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: फॉक्सटेल मिलेट और सब्ज़ी स्टिर-फ्राई
     steps:
-    - पहले से पका और ठंडा किया मिलेट इस्तेमाल करें — गरम मिलेट स्टिर-फ्राई में गुठला और चिपचिपा हो जाता है।
+    - पहले से पका और ठंडा किया मिलेट इस्तेमाल करें — गरम मिलेट स्टिर-फ्राई में गुठला
+      और चिपचिपा हो जाता है।
     - पैन खूब गरम करें, तेल और लहसुन डालकर 20 सेकंड भूनें।
     - बीन्स और गाजर डालकर 2 मिनट, फिर शिमला मिर्च डालकर एक मिनट और भूनें।
     - ठंडा मिलेट, तमारी, काली मिर्च और नमक डालें, और तेज़ आँच पर गरम होने तक चलाएँ।
