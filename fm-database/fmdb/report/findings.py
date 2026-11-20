@@ -78,6 +78,15 @@ FINDINGS: list[Finding] = [
                "B": "The load of cholesterol particles your arteries carry.", "C": "The load of cholesterol particles your arteries carry."},
       step='Bringing the <a href="#heart">artery load</a> down through how you eat: which fats, how much fibre, what dinner looks like, what you reach for between meals.',
       moves="artery load", approved=("B",)),
+    F("ldl_only", "heart", "LDL cholesterol", "LDL cholesterol",
+      head={"A": "Your LDL cholesterol sits a little above the aim, while the particle count is in range."},
+      today={"A": "Nothing you would feel."},
+      why_title="Over the years",
+      why={"A": "The particle count is the better guide of the two, and yours is in range. LDL a little above the aim is worth keeping an eye on, not a finding by itself."},
+      do={"A": "Food comes first: the kind of fat, the amount of fibre, what dinner looks like."},
+      summary={"A": "LDL cholesterol, a little above the aim. The particle count is in range."},
+      step='Keeping your <a href="#heart">LDL cholesterol</a> near the aim through how you eat: which fats, how much fibre.',
+      moves="LDL cholesterol"),
     F("tg", "heart", "Triglycerides", "triglycerides", plural=True, high=("tg",),
       head={"A": "The fat travelling in your blood sits just above the line.", "B": "The fat travelling in your blood appears to be clearly raised.",
             "C": "The fat travelling in your blood appears to be very high."},
@@ -260,7 +269,7 @@ FINDINGS: list[Finding] = [
           "B": "This needs a deeper look, starting with a repeat test.",
           "C": "This needs a deeper look, starting with a repeat test in the coming days."},
       summary={"A": "A kidney marker, just above its range. Read again at your next test."}),
-    F("salts", "kidneys", "Your salts", "salts", plural=True, either=("sodium", "potassium", "chloride", "calcium"),
+    F("salts", "kidneys", "Your salts", "salts", plural=True, either=("sodium", "potassium", "calcium"),
       head="One of your body's salts sits outside its range.",
       today={"A": "Nothing you would feel.", "B": "Usually nothing.",
              "C": "Some people feel weak, confused, or notice cramps or an uneven heartbeat. If you do, do not wait."},
@@ -268,6 +277,15 @@ FINDINGS: list[Finding] = [
       do={"A": "It is read again at your next test.", "B": "Consider a repeat test on a fresh sample to confirm.",
           "C": "A repeat test on a fresh sample in the coming days is the usual first step."},
       summary={"A": "One salt, just outside its range. Read again at your next test."}),
+    F("chloride", "kidneys", "Chloride", "chloride", either=("chloride",),
+      head={"A": "Your chloride sits just outside its range.", "B": "Your chloride appears to be clearly outside its range.",
+            "C": "Your chloride appears to be far outside its range."},
+      why={"A": "Chloride travels with sodium and follows how much water you had before the test. A small move by itself, with sodium in range, usually means little.",
+           "B": "Chloride travels with sodium and follows how much water you had before the test. A repeat shows whether it holds.",
+           "C": "Chloride travels with sodium and with the balance of acid in the blood. A reading this far out usually has a reason, and it is worth finding."},
+      do={"A": "It is read again at your next test.", "B": "Consider a repeat test on a fresh sample to confirm.",
+          "C": "A repeat test on a fresh sample in the coming days is the usual first step."},
+      summary={"A": "Chloride, just outside its range. Read again at your next test."}),
     F("egfr_low", "kidneys", "Kidney filtering", "kidney filtering figure", low=("egfr",),
       head={"C": "Your kidney filtering figure appears to be below 60, the line at which it is usually checked again."},
       today={"C": "Nothing you would feel."},
@@ -383,6 +401,36 @@ FINDINGS: list[Finding] = [
           "B": "This needs a deeper look, starting with your iron stores. If you take iron, say so.",
           "C": "This needs a deeper look, starting with your iron stores. If you take iron, say so."},
       summary={"A": "Iron, a little high. Read again at your next test."}),
+    F("iron_low_stores", "nutrients", "Iron", "iron",          # iron_low when ferritin is on the panel (chosen in hits_in)
+      head="Your iron carriers are running low.",
+      today="Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.",
+      why="Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.",
+      do={"A": "It is read again at your next test.",
+          "B": "This needs a deeper look: the carriers and the stores together, and why they are low.",
+          "C": "This needs a deeper look: the carriers and the stores together, and why they are low."},
+      summary={"A": "Iron, a little low. Read again at your next test."}),
+    F("ferritin_low", "nutrients", "Iron stores", "iron stores", plural=True, low=("ferritin",),
+      head={"A": "Your iron stores sit just below their range.", "B": "Your iron stores appear to be clearly low.",
+            "C": "Your iron stores appear to be very low."},
+      today={"A": "You may notice nothing.", "B": "Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs.",
+             "C": "Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs."},
+      why={"A": "Ferritin is the measure of the iron your body has stored. Stores run down before haemoglobin does, so this is the early sign.",
+           "B": "Ferritin is the measure of the iron your body has stored. Stores run down when less iron comes in than goes out: too little in food, poor absorption, or {loss}.",
+           "C": "Ferritin is the measure of the iron your body has stored. Stores this low usually have a reason, and it is worth finding: too little in food, poor absorption, or {loss}."},
+      do={"A": "{iron_food}It is read again at your next test.",
+          "B": "This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores.",
+          "C": "This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores."},
+      summary={"A": "Iron stores, just below their range. Read again at your next test."}),
+    F("ferritin_high", "nutrients", "Ferritin", "ferritin", high=("ferritin",),
+      head={"A": "Your ferritin sits just above its range.", "B": "Your ferritin appears to be clearly above its range.",
+            "C": "Your ferritin appears to be far above its range."},
+      why={"A": "Ferritin is the measure of stored iron, and it also rises with any inflammation, a recent infection, alcohol or fat stored in the liver. A little above the range it is most often one of those.",
+           "B": "Ferritin is the measure of stored iron, and it also rises with inflammation, a recent infection, alcohol or fat stored in the liver. A repeat, read with your inflammation marker and liver results, helps tell these apart.",
+           "C": "Ferritin is the measure of stored iron, and it also rises with inflammation, alcohol or fat stored in the liver. At this level it can sometimes mean the body is holding too much iron, which runs in families. It is worth finding the reason."},
+      do={"A": "It is read again at your next test. If you take iron, mention it.",
+          "B": "This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so.",
+          "C": "This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so."},
+      summary={"A": "Ferritin, just above its range. Read again at your next test."}),
     # ── Metals (deeper report) ──────────────────────────────────────────────
     F("metals", "metals", "Metals", "metals", plural=True, high=("lead", "mercury", "arsenic", "cadmium"),
       head="{names} {is_are} above {its_their} limit.",
@@ -466,5 +514,14 @@ def hits_in(sec: Section) -> list[Hit]:
             h.rows.append(r)
             if rank(r.level) > rank(h.level):
                 h.level = r.level
+    by_key = {r.key: r for r in sec.rows}
+    for h in out.values():
+        # LDL (or its relatives) just above the aim while the particle count itself is in range: not "artery load"
+        apob = by_key.get("apob")
+        if h.finding.id == "lipids" and h.level == "A" and apob is not None and not apob.level and all(r.key != "apob" for r in h.rows):
+            h.finding = BY_ID["ldl_only"]
+        # the iron wording says the stores are not measured: untrue when ferritin is on the panel
+        if h.finding.id == "iron_low" and "ferritin" in by_key:
+            h.finding = BY_ID["iron_low_stores"]
     order = {f.id: i for i, f in enumerate(FINDINGS)}
     return sorted(out.values(), key=lambda h: (-rank(h.level), order.get(h.finding.id, 999)))

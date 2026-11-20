@@ -173,6 +173,9 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
         S("iron", "Iron", "iron in the blood today", raw=r"serum iron|s-iron|^iron\b(?!\s*binding)", group="iron"),
         S("tibc", "Iron-binding capacity (TIBC)", "how much more iron the blood could carry", raw=r"\btibc\b|total iron binding", group="iron"),
         S("tsat", "Transferrin saturation", "how full your iron carriers are", raw=r"transferrin saturation|\btsat\b|% ?saturation", group="iron"),
+        S("ferritin", "Ferritin", "your iron stores", raw=r"\bferritin\b", group="iron"),
+        S("folate", "Folate", "a B vitamin, with B12", raw=r"\bfolate\b|folic acid|vitamin b9"),
+        S("magnesium", "Magnesium", raw=r"^(?!.*urine)(?!.*rbc)(?!.*red cell).*\bmagnesium\b"),
         S("phosphorus", "Phosphorus", raw=r"^(?!.*urine)(?!.*ratio).*(?:phosphorus|phosphate)"),
     ]),
     ("metals", "Metals", True, [
@@ -305,6 +308,27 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
         if sec.rows:
             out.append(sec)
     _thyroid_hormone_rule(out)
+    return out
+
+
+def unlisted_out_of_range(labs: list[dict]) -> list[str]:
+    """Measured results outside their laboratory range that the report has NO row for (total IgE, lipase...).
+    The report cannot speak about them, so the coach is told: they must not pass unseen."""
+    patterns = [re.compile(sp.raw) for _sid, _name, _d, specs in SECTIONS for sp in specs if sp.raw]
+    out: list[str] = []
+    for lab in labs:
+        name = str(lab.get("test_name") or "").strip()
+        if not name or lab.get("illustrative") or any(p.search(name.lower()) for p in patterns):
+            continue
+        if re.search(r"vldl|ratio|\bindex\b", name.lower()):     # worked out from results the report already reads
+            continue
+        try:
+            v = float(str(lab.get("value")).replace(",", ""))
+        except (TypeError, ValueError):
+            continue
+        lo, hi = _parse_ref_range(lab.get("reference_range"))
+        if (hi is not None and v > hi) or (lo is not None and v < lo):
+            out.append(f"{name} {num(v)} is outside its range ({lab.get('reference_range')}) and the report has no row for it: read it yourself")
     return out
 
 

@@ -105,6 +105,8 @@ DRAFT: dict[str, tuple[str, str]] = {
     "todo.start.other": ("Page 1, step 1, when neither sugar nor cholesterol is marked", "Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are."),
     "todo.work.also": ("Page 1, step 2, cholesterol plus another result food moves", " The same changes work on {others}."),
     "todo.watch": ("Page 1, a step for results just outside range that food does not move", "{names} {sit} just outside {its_their} range. Nothing to do now. {it_is} read again at your next test."),
+    "todo.deep.lpa": ("Page 1, deeper-look step when Lp(a) is the only such result",
+                      "It is inherited, so the useful question is what to do about the rest of your heart numbers."),
     "todo.deep.many": ("Page 1, deeper-look step with three or more results", "{names}. All sit well outside their range, and blood alone cannot say why."),
     "letter.older": ("Letter, body age more than 3 years older", "{name}, this first result reads older than your age, and several of the things behind it can change."),
     "letter.level": ("Letter, body age within 3 years of age", "{name}, this is a steady first result: your blood reads close to your age."),
@@ -516,15 +518,21 @@ def work_hits(rp: Any) -> list[Hit]:
 
 def deep_step(deep: list[Hit], rp: Any, lib: Lib, link: bool = True) -> str:
     """Step 3 on page 1: the results that need a deeper look, with the doctor or check-up line each one earns."""
-    plain = [noun_of(h) for h in deep]
-    names = [f'your <a href="#{section_of(rp, h)}">{n}</a>' if link else f"your {n}" for h, n in zip(deep, plain)]
-    if len(deep) == 1:
-        s = f"{cap(names[0])}. " + ("They sit well outside their range" if is_plural(deep[0]) else "It sits well outside its range") + ", and blood alone cannot say why."
-    elif len(deep) == 2:
-        s = f"{cap(names[0])} and {names[1]}. Both sit well outside their range, and blood alone cannot say why."
+    def named(hs: list[Hit]) -> list[str]:
+        return [f'your <a href="#{section_of(rp, h)}">{noun_of(h)}</a>' if link else f"your {noun_of(h)}" for h in hs]
+    # Lp(a) is set by genes and the heart section says so: it is never part of "blood alone cannot say why"
+    why = [h for h in deep if h.finding.id != "lpa"]
+    names = named(why)
+    if not why:
+        s = f"{cap(named(deep)[0])}. " + lib.d("todo.deep.lpa")
     else:
-        s = lib.d("todo.deep.many", names=cap(join(names)))
-    s += " That takes your history and a few further tests."
+        if len(why) == 1:
+            s = f"{cap(names[0])}. " + ("They sit well outside their range" if is_plural(why[0]) else "It sits well outside its range") + ", and blood alone cannot say why."
+        elif len(why) == 2:
+            s = f"{cap(names[0])} and {names[1]}. Both sit well outside their range, and blood alone cannot say why."
+        else:
+            s = lib.d("todo.deep.many", names=cap(join(names)))
+        s += " That takes your history and a few further tests."
 
     def verb(hs: list[Hit]) -> str:
         return "are" if len(hs) > 1 or is_plural(hs[0]) else "is"

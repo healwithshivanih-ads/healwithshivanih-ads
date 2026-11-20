@@ -19,7 +19,7 @@ from .decide import (FOUNDATION_AFTER_INR, FOUNDATION_LIST_INR, Decision, credit
                      next_test_date)
 from .findings import hits_in
 from .levels import load_cutoffs
-from .panel import NINE, Row, Section, all_rows, build_sections, num
+from .panel import NINE, Row, Section, all_rows, build_sections, num, unlisted_out_of_range
 
 KINDS = ("standard", "deeper")
 
@@ -145,6 +145,7 @@ def make_report(
         sections=sections, rows=rows, decision=decision, cutoffs_status=c["status"])
     rp.warnings = [r.warn for r in rows.values() if r.warn]
     rp.warnings += [f"body age input missing from the tables: {k}" for k in NINE if k not in rows]
+    rp.warnings += unlisted_out_of_range(labs)
     have = {x.id for x in sections}
     want = ["heart", "sugar", "liver", "thyroid", "kidneys", "blood"] + (["nutrients", "metals"] if deeper else [])
     rp.warnings += [f"no results on file for the '{w}' section, so it is left out of the report" for w in want if w not in have]
