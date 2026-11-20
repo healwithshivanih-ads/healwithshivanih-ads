@@ -62,6 +62,7 @@ good_for:
 - gut-microbiome
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Chilled curd with onion, cucumber and peppers, finished with raw methi sprouts.
 headnote: A few teaspoons of methi sprouts are enough — they bring a pleasant bitterness
   to a cooling raita.
@@ -70,6 +71,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 89
+image:
+  file: images/web/methi-sprout-vegetable-raita.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://methi-sprout-vegetable-raita
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 89
@@ -130,3 +138,10 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मेथी और सब्ज़ियों का रायता
+    steps:
+    - दही में प्याज़, खीरा, शिमला मिर्च, नमक और जीरा पाउडर मिलाएँ।
+    - ज़्यादातर मेथी के अंकुर मिला दें।
+    - ठंडा परोसें, ऊपर से हरा धनिया और बचे हुए अंकुर डालकर।

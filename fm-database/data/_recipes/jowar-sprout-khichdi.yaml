@@ -88,6 +88,7 @@ good_for:
 - blood-sugar-regulation
 - constipation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: A rice-free khichdi of sprouted jowar and moong dal with vegetables.
 headnote: Sprouted jowar still needs a proper pressure-cook — 4 to 5 whistles — to
   turn soft. Chewier and more filling than a rice khichdi.
@@ -96,6 +97,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 84
+image:
+  file: images/web/jowar-sprout-khichdi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://jowar-sprout-khichdi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 84
@@ -184,3 +192,12 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित ज्वार की खिचड़ी
+    steps:
+    - कुकर में तेल गरम करके हरी मिर्च, करी पत्ता, लहसुन और अदरक भूनें।
+    - प्याज़, टमाटर और सब्ज़ियाँ डालें।
+    - दाल और अंकुरित ज्वार डालें, फिर सूखे मसाले और नमक।
+    - 2 कप पानी डालकर अच्छी तरह चलाएँ।
+    - 4–5 सीटी आने तक पकाएँ। रायते या दही के साथ परोसें।

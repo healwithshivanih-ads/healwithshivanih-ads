@@ -92,6 +92,7 @@ good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
 - iron-nutrition
+coach_priority: high
 one_line: Everyday kanda-batata poha with moong sprouts, vegetables and peanuts.
 headnote: A handful of sprouts and vegetables turns a mostly-carb breakfast into a
   more balanced one.
@@ -100,6 +101,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 64
+image:
+  file: images/web/poha-with-moong-sprouts.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://poha-with-moong-sprouts
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 64
@@ -187,3 +195,12 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग वाला पोहा
+    steps:
+    - तेल गरम करके राई, जीरा, हरी मिर्च और करी पत्ता डालें।
+    - चटकने पर मूँगफली, आलू, अंकुरित मूँग और नमक डालकर चलाते हुए पकाएँ।
+    - प्याज़, टमाटर और सब्ज़ियाँ डालकर नरम होने तक पकाएँ।
+    - पोहा और हल्दी डालकर मिलाएँ।
+    - नींबू का रस छिड़कें और ऊपर से हरा धनिया डालें।

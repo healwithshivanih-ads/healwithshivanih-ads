@@ -74,6 +74,7 @@ protein_g: 7.1
 good_for:
 - iron-nutrition
 - constipation
+coach_priority: high
 one_line: Gujarati-style thepla with crushed moong sprouts and spinach in the dough.
 headnote: Equal parts sprouts and flour, so each thepla carries more protein and less
   wheat than usual. Travels well.
@@ -82,6 +83,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 62
+image:
+  file: images/web/sprouted-moong-and-spinach-thepla.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-moong-and-spinach-thepla
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 62
@@ -154,3 +162,12 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग और पालक का थेपला
+    steps:
+    - अंकुरित मूँग को हरी मिर्च, अदरक और लहसुन के साथ दरदरा कूट लें।
+    - कटोरे में निकालें और पालक, हरा धनिया, हल्दी, हींग, एक बड़ा चम्मच तेल और नमक
+      डालें।
+    - आटा और थोड़ा पानी डालकर नरम आटा गूँध लें। 5 मिनट रखें।
+    - छोटी-छोटी लोइयाँ बेलकर तवे पर थोड़े तेल के साथ सेंकें।

@@ -62,6 +62,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 19
+image:
+  file: images/web/home-sprouted-seeds-methi-alfalfa-broccoli.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://home-sprouted-seeds-methi-alfalfa-broccoli
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 19
@@ -103,3 +110,18 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: घर पर अंकुरित बीज (मेथी, अल्फाल्फा, ब्रोकली)
+    steps:
+    - बीज जार में डालकर साफ़ पीने का पानी भरें। बीजों को दालों से कम भिगोना होता है
+      — 4 से 6 घंटे, ज़्यादा से ज़्यादा रात भर।
+    - जार को तिरछा रखकर पूरा पानी निकालें, फिर ताज़े पानी से धोकर दोबारा निकालें।
+    - दिन में दो से तीन बार धोकर पानी निकालें। बीज छोटे होते हैं और पानी रोकते हैं,
+      इसलिए धोने के बीच जार को तिरछा ही रखें।
+    - जब जड़ें बीज से लंबी हो जाएँ तब निकालें — आम तौर पर 3 से 5 दिन। मेथी के अंकुर
+      लंबे और हल्के कड़वे होते हैं; अल्फाल्फा और ब्रोकली के बारीक और नाज़ुक।
+    - 'एयरटाइट डिब्बे में फ्रिज में रखें: मेथी के अंकुर 7 दिन, अल्फाल्फा 3 दिन, ब्रोकली
+      2 दिन।'
+    - बीजों के अंकुर अक्सर कच्चे खाए जाते हैं। सावधानी के लिए पहले 10–15 सेकंड गरम
+      पानी में डुबो लें, ख़ासकर अगर कुछ दिन फ्रिज में रखे हों।

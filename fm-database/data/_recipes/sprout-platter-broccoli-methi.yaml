@@ -54,6 +54,7 @@ good_for:
 - liver-detoxification
 - phytonutrient-dense-diet
 - blood-sugar-regulation
+coach_priority: high
 one_line: A small plate of broccoli and methi sprouts with onion, lemon and salt,
   eaten alongside a meal.
 headnote: The guide gives no amounts for this one — these are a starting point. Think
@@ -63,6 +64,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 48
+image:
+  file: images/web/sprout-platter-broccoli-methi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprout-platter-broccoli-methi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 48
@@ -113,3 +121,10 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: ब्रोकली और मेथी के अंकुरों की प्लेट
+    steps:
+    - अंकुरों को 10–15 सेकंड गरम पानी में डुबोकर अच्छी तरह पानी निकाल दें।
+    - ब्रोकली के अंकुर, मेथी के अंकुर और प्याज़ एक प्लेट में सजाएँ।
+    - हल्का नींबू का रस और सेंधा नमक छिड़कें और खाने के साथ खाएँ।

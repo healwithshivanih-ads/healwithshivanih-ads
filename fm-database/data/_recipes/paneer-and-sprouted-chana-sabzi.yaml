@@ -66,6 +66,7 @@ protein_g: 16.0
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: Crumbled paneer and boiled kala chana sprouts in a quick tomato base.
 headnote: Two vegetarian proteins in one pan. Ready in ten minutes once the chana
   is boiled.
@@ -74,6 +75,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 36
+image:
+  file: images/web/paneer-and-sprouted-chana-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://paneer-and-sprouted-chana-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 36
@@ -141,3 +149,11 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: पनीर और अंकुरित चने की सब्ज़ी
+    steps:
+    - तेल गरम करके जीरा और प्याज़ भूनें।
+    - टमाटर, मिर्च-अदरक का पेस्ट और नमक डालकर एक मिनट पकाएँ, फिर उबले चने डालें।
+    - हरा धनिया और मसला हुआ पनीर मिलाएँ और एक मिनट और पकाएँ।
+    - सब्ज़ियों के सूप के साथ गरम परोसें।

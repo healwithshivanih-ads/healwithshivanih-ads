@@ -91,6 +91,7 @@ good_for:
 - blood-sugar-regulation
 - constipation
 - protein-adequacy-vegetarian
+coach_priority: high
 one_line: Maharashtrian thalipeeth made with jowar, ragi and besan, bound with ground
   moong sprouts.
 headnote: The ground sprouts supply the moisture, so the dough needs no water. Makes
@@ -100,6 +101,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 57
+image:
+  file: images/web/sprout-and-millet-thalipeeth.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprout-and-millet-thalipeeth
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 57
@@ -188,3 +196,15 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग और मिलेट का थालीपीठ
+    steps:
+    - अंकुरित मूँग, लहसुन, हरी मिर्च, अदरक और करी पत्ता बहुत कम पानी के साथ दरदरा
+      पीस लें।
+    - गहरे कटोरे में निकालें और आटे, प्याज़, हरा धनिया, सूखे मसाले, नमक और 2 बड़े
+      चम्मच तेल डालें। बिना और पानी डाले हल्के हाथ से नरम आटा गूँध लें।
+    - 6 हिस्से करें। एक हिस्से को गीले कपड़े पर थपथपाकर चपटा करें और बीच में छोटा
+      छेद करें।
+    - गरम तवे पर रखें और हल्का तेल लगाते हुए दोनों तरफ़ सुनहरा होने तक सेंकें। गरम
+      परोसें।

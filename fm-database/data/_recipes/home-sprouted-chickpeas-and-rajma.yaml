@@ -58,6 +58,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 25
+image:
+  file: images/web/home-sprouted-chickpeas-and-rajma.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://home-sprouted-chickpeas-and-rajma
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 25
@@ -100,3 +107,17 @@ nutrient_lines:
 nutrient_servings: 6.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: घर पर अंकुरित काबुली चना और राजमा (देर से अंकुरित होने वाले)
+    steps:
+    - छोटे दाने वाली किस्म लें — बड़ा काबुली चना और बड़ा राजमा अक्सर अंकुरित नहीं
+      होते।
+    - साफ़ पीने के पानी में 7–8 घंटे भिगोएँ, फिर पूरा पानी निकाल दें।
+    - दिन में तीन बार धोकर पानी निकालें। ये बड़े दाने मूँग से जल्दी ख़राब होते हैं,
+      इसलिए एक भी बार न छोड़ें।
+    - अच्छे अंकुर आने में 3 से 4 दिन लगते हैं।
+    - इन्हें हमेशा पकाकर ही खाएँ। राजमा के अंकुर कम से कम 10 मिनट तेज़ उबालें या कुकर
+      में पकाएँ — कच्चा या अधपका राजमा पेट ख़राब करता है। चने के अंकुर नरम होने तक
+      उबालें।
+    - एयरटाइट डिब्बे में फ्रिज में रखकर 2 दिन में इस्तेमाल कर लें।

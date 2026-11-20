@@ -66,6 +66,7 @@ protein_g: 10.4
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: Boiled chana sprouts in a thick onion-tomato masala with black pepper.
 headnote: A dry, peppery chana that goes with dosa as easily as with roti.
 attribution:
@@ -73,6 +74,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 35
+image:
+  file: images/web/mixed-chana-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mixed-chana-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 35
@@ -135,3 +143,11 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित चने की मसाला सब्ज़ी
+    steps:
+    - धीमी आँच पर तेल गरम करें और जीरा और प्याज़ डालें, फिर अदरक-लहसुन का पेस्ट।
+    - प्याज़ हल्का सुनहरा होने पर टमाटर की प्यूरी और नमक डालें।
+    - तेल छूटने पर उबले हुए अंकुरित चने और काली मिर्च डालें।
+    - तब तक पकाएँ जब तक मसाला चनों पर अच्छी तरह चढ़ जाए। डोसे के साथ अच्छा लगता है।

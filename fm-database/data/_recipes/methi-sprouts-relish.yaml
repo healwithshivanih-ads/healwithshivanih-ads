@@ -54,6 +54,7 @@ good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
+coach_priority: high
 one_line: Long methi sprouts pickled overnight with vinegar, green chilli and beetroot.
 headnote: A quick fridge pickle. The beetroot turns it pink and softens the bitterness;
   a spoonful with a meal is the portion.
@@ -62,6 +63,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 51
+image:
+  file: images/web/methi-sprouts-relish.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://methi-sprouts-relish
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 51
@@ -112,3 +120,10 @@ nutrient_lines:
 nutrient_servings: 8.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मेथी का अचार
+    steps:
+    - सब कुछ साफ़ काँच के जार में डालकर अच्छी तरह हिलाएँ।
+    - 24 घंटे फ्रिज में रखें।
+    - खाने के साथ एक चम्मच परोसें। फ्रिज में एक हफ़्ते तक चलता है।

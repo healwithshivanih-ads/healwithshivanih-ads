@@ -86,6 +86,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - anti-inflammatory-diet
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: A mild Thai-style coconut curry with moong sprouts and a wokful of vegetables.
 headnote: The sprouts go in at the end so they stay tender. Rich from the coconut
   milk — a small bowl over rice is a meal.
@@ -94,6 +95,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 28
+image:
+  file: images/web/bean-sprouts-in-coconut-curry.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://bean-sprouts-in-coconut-curry
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 28
@@ -174,3 +182,13 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: नारियल की करी में अंकुरित मूँग और सब्ज़ियाँ
+    steps:
+    - कड़ाही में तेल गरम करें और लहसुन, अदरक, प्याज़ और शिमला मिर्च नरम करें।
+    - कटी सब्ज़ियाँ डालकर बस नरम होने तक पकाएँ।
+    - नारियल के दूध में सोया सॉस, चिली सॉस और नट बटर अच्छी तरह फेंटें, कड़ाही में
+      डालें और 3–4 मिनट धीमी आँच पर पकाएँ।
+    - अंकुरित मूँग, नींबू का रस और नमक डालें, ढककर 3–4 मिनट और पकाएँ। चावल या नूडल्स
+      के साथ गरम परोसें।

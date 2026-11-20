@@ -68,6 +68,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 16
+image:
+  file: images/web/home-sprouted-beans-and-pulses.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://home-sprouted-beans-and-pulses
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 16
@@ -111,3 +118,20 @@ nutrient_lines:
 nutrient_servings: 6.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: घर पर अंकुरित दालें और चने (मूँग, मटकी, मसूर, चना)
+    steps:
+    - दाने बीनकर अंकुरित करने वाले जार में डालें, जार एक-तिहाई से ज़्यादा न भरें —
+      दाने फूलते हैं और उन्हें हवा चाहिए। साफ़ पीने का पानी भरकर जार को सीधा रखें
+      और रात भर (7–8 घंटे) भिगोएँ।
+    - सुबह सारा पानी निकाल दें। ताज़ा पानी भरें, हिलाएँ और तुरंत निकाल दें, फिर जार
+      को 6–8 मिनट तिरछा रखें ताकि बचा हुआ पानी भी निकल जाए।
+    - जार को सीधा रखें, सीधी धूप से दूर। दिन में दो बार इसी तरह धोकर पूरा पानी निकालें
+      — सुबह और रात काफ़ी है। जार में रुका पानी ही अंकुरों को चिपचिपा बनाता है।
+    - मौसम के हिसाब से 2–3 दिन ऐसा करते रहें। मूँग में करीब 24 घंटे में अंकुर दिखने
+      लगते हैं; जब जड़ दाने से लंबी हो जाए तो अंकुर तैयार हैं।
+    - 'एयरटाइट डिब्बे में फ्रिज में रखें: मूँग और मटकी 3 दिन, चना 2 दिन चलता है। खाने
+      से पहले दालों के अंकुर भाप में या हल्का उबाल लें — कुछ मिनट, गलने तक नहीं।'
+    - हर बार के बाद जार और ढक्कन को गुनगुने साबुन के पानी से धोएँ (उबलता पानी नहीं,
+      काँच चटक सकता है)।

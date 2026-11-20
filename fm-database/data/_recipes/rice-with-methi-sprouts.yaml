@@ -47,6 +47,7 @@ protein_g: 6.6
 good_for:
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Plain steamed rice with long methi sprouts folded through.
 headnote: Methi sprouts add fibre and a gentle bitterness to plain white rice — a
   simple way to slow down the rice.
@@ -55,6 +56,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 82
+image:
+  file: images/web/rice-with-methi-sprouts.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://rice-with-methi-sprouts
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 82
@@ -102,3 +110,10 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मेथी वाले चावल
+    steps:
+    - मेथी के अंकुरों को 10–15 सेकंड गरम पानी में डुबोकर अच्छी तरह पानी निकाल दें।
+    - इन्हें गरम चावल में मिलाएँ।
+    - ऊपर से जैतून का तेल डालें, ज़रूरत हो तो नमक, और अपनी सब्ज़ी-दाल के साथ परोसें।

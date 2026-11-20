@@ -75,6 +75,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - constipation
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: Cabbage leaves rolled around a moong sprout and vegetable filling, then
   steamed.
 headnote: A light, low-calorie snack or starter. Makes about ten rolls.
@@ -83,6 +84,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 63
+image:
+  file: images/web/steamed-cabbage-rolls-with-moong-sprouts.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://steamed-cabbage-rolls-with-moong-sprouts
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 63
@@ -151,3 +159,13 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग भरे भाप में पके पत्तागोभी रोल
+    steps:
+    - पत्तागोभी के पत्तों को उबलते पानी में बस मुड़ने लायक़ नरम कर लें।
+    - थोड़े तेल में लहसुन, प्याज़ और कटी सब्ज़ियाँ पकाएँ। अंकुरित मूँग डालकर 2 मिनट
+      पकाएँ।
+    - सोया सॉस, चिली सॉस, नमक और काली मिर्च डालकर मिलाएँ और ठंडा होने दें।
+    - हर पत्ते पर थोड़ा भरावन रखकर रोल बना लें।
+    - रोल भाप में पकाएँ, या थोड़े तेल में हल्का सेंक लें। पसंद की सॉस के साथ गरम परोसें।

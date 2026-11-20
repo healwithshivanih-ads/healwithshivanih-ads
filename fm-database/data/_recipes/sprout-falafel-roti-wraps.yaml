@@ -85,6 +85,7 @@ protein_g: 7.9
 good_for:
 - blood-sugar-regulation
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: Rotis spread with a herby ground-sprout paste, roasted, then rolled with
   vegetables, avocado and a garlic curd dip.
 headnote: All the falafel flavour without deep frying — the paste cooks straight on
@@ -94,6 +95,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 68
+image:
+  file: images/web/sprout-falafel-roti-wraps.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprout-falafel-roti-wraps
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 68
@@ -175,3 +183,14 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित फलाफल-स्टाइल रोटी रैप
+    steps:
+    - अंकुर, हरा धनिया, पुदीना, प्याज़, लहसुन की 4 कलियाँ, हरी मिर्च, अदरक और नमक
+      को दरदरा पीस लें।
+    - बची हुई लहसुन की कली कसकर दही में चिली सॉस, ओरेगैनो, चिली फ्लेक्स, नमक और काली
+      मिर्च के साथ मिलाएँ — यह डिप है।
+    - हर रोटी की एक तरफ़ अंकुरों का पेस्ट फैलाएँ और उसी तरफ़ को हल्के तेल लगे तवे
+      पर सेंकें।
+    - दही की डिप लगाएँ, कटी सब्ज़ियाँ और एवोकाडो रखें और रोल कर लें।

@@ -74,6 +74,7 @@ good_for:
 - protein-adequacy-vegetarian
 - phytonutrient-dense-diet
 - liver-detoxification
+coach_priority: high
 one_line: Chickpea, moong, broccoli and alfalfa sprouts with paneer, cucumber and
   raw mango.
 headnote: Cooked bean sprouts for substance, raw seed sprouts for freshness. Dip the
@@ -84,6 +85,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 53
+image:
+  file: images/web/mixed-sprouts-salad-with-paneer-and-raw-mango.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mixed-sprouts-salad-with-paneer-and-raw-mango
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 53
@@ -156,3 +164,10 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: पनीर और कैरी वाला चार अंकुरों का सलाद
+    steps:
+    - सारे अंकुर, कैरी, खीरा और पनीर एक बड़े कटोरे में डालें।
+    - जैतून का तेल, नींबू का रस, नमक और काली मिर्च डालें।
+    - अच्छी तरह मिलाकर तुरंत परोसें।

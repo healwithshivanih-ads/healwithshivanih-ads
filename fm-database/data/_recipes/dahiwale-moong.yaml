@@ -79,6 +79,7 @@ protein_g: 7.8
 good_for:
 - gut-microbiome
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: Moong sprouts simmered in a light, tempered curd gravy.
 headnote: Keep the heat low once the curd goes in so it stays smooth. Soothing with
   plain rice.
@@ -87,6 +88,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 33
+image:
+  file: images/web/dahiwale-moong.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://dahiwale-moong
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 33
@@ -162,3 +170,12 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: दहीवाली मूँग
+    steps:
+    - गहरे बर्तन में तेल गरम करें। राई और जीरा डालें, फिर हरी मिर्च, अदरक और करी पत्ता।
+    - अंकुरित मूँग और सूखे मसाले डालकर एक मिनट चलाएँ। नमक और 1 कप पानी डालें।
+    - मूँग गलने तक पकाएँ।
+    - आँच धीमी करें, फेंटा हुआ दही मिलाएँ और 2–3 मिनट हल्की आँच पर पकाएँ।
+    - हरा धनिया डालकर चावल के साथ गरम परोसें।

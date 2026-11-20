@@ -66,6 +66,7 @@ protein_g: 5.1
 good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
+coach_priority: high
 one_line: A smooth soup of blended moong and matki sprouts and sweet corn, with whole
   ragi sprouts and carrot.
 headnote: Thick without cream or flour — the blended sprouts and a spoonful of leftover
@@ -75,6 +76,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 85
+image:
+  file: images/web/mixed-sprout-soup.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mixed-sprout-soup
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 85
@@ -138,3 +146,11 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: मिक्स अंकुरित और मक्के का सूप
+    steps:
+    - मूँग, मटकी, मक्का और चावल को बारीक पीस लें।
+    - 4 कप पानी के साथ पतीले में डालकर उबाल लाएँ।
+    - अंकुरित रागी और गाजर डालकर नरम होने तक पकाएँ।
+    - नमक और काली मिर्च अच्छी तरह डालें, नींबू का रस मिलाएँ और गरम परोसें।

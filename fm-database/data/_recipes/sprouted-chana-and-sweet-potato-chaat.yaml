@@ -66,6 +66,7 @@ good_for:
 - blood-sugar-regulation
 - gut-microbiome
 - protein-adequacy-vegetarian
+coach_priority: high
 one_line: Steamed sweet potato and three kinds of sprouts under beaten curd and tamarind
   chutney.
 headnote: 'Sweet potato in place of fried papdi or potato: slower carbs, more fibre,
@@ -75,6 +76,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 69
+image:
+  file: images/web/sprouted-chana-and-sweet-potato-chaat.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouted-chana-and-sweet-potato-chaat
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 69
@@ -142,3 +150,11 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित चने और शकरकंद की चाट
+    steps:
+    - चने, शकरकंद, अंकुरित मूँग और मटकी एक चपटी थाली में फैलाएँ।
+    - ऊपर से पुदीना और थोड़ा चाट मसाला डालें, फिर दही।
+    - और चाट मसाला छिड़कें, इमली की चटनी डालें और आख़िर में भुना जीरा पाउडर। तुरंत
+      परोसें।

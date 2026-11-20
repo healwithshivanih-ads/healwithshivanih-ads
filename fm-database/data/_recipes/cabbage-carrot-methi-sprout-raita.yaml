@@ -66,6 +66,7 @@ good_for:
 - gut-microbiome
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
+coach_priority: high
 one_line: A raita with lightly cooked cabbage, carrot and methi sprouts instead of
   raw vegetables.
 headnote: Cooking the vegetables for a minute or two makes this easier on the stomach
@@ -75,6 +76,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 86
+image:
+  file: images/web/cabbage-carrot-methi-sprout-raita.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://cabbage-carrot-methi-sprout-raita
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 86
@@ -139,3 +147,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: पत्तागोभी, गाजर और अंकुरित मेथी का रायता
+    steps:
+    - घी गरम करके जीरा, करी पत्ता और हरी मिर्च डालें।
+    - गाजर, पत्तागोभी और अंकुरित मेथी डालकर चलाएँ।
+    - नमक डालें, ढककर 1–2 मिनट पकाएँ।
+    - थोड़ा ठंडा करके दही में मिलाएँ और तुरंत परोसें।

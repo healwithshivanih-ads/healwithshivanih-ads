@@ -69,6 +69,7 @@ good_for:
 - gut-microbiome
 - digestion-and-nutrient-absorption
 - constipation
+coach_priority: high
 one_line: Hollowed cucumber halves filled with a sprout, vegetable and hung-curd chaat.
 headnote: A chaat with no fried base — the cucumber is the plate.
 attribution:
@@ -76,6 +77,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 65
+image:
+  file: images/web/sprouts-chaat-cucumber-boats.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprouts-chaat-cucumber-boats
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 65
@@ -146,3 +154,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: खीरे की नाव में अंकुरित चाट
+    steps:
+    - अंकुर, कटी सब्ज़ियाँ, गाढ़ा दही, नमक और चाट मसाला एक कटोरे में मिलाएँ।
+    - खीरे के आधे हिस्सों से बीज निकालकर नाव बना लें।
+    - इनमें अंकुरों का मिश्रण भरें और ऊपर से कसी गाजर, चुकंदर और हरा धनिया डालें।
+    - नींबू निचोड़ें और खाएँ।

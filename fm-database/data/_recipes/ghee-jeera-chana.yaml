@@ -70,6 +70,7 @@ good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
 - iron-nutrition
+coach_priority: high
 one_line: Boiled kala and green chana sprouts tossed in ghee, cumin and chaat masala.
 headnote: Five minutes once the chana is boiled. Works as an evening snack, a tiffin
   side or a quick protein add-on to a light meal.
@@ -78,6 +79,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 31
+image:
+  file: images/web/ghee-jeera-chana.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://ghee-jeera-chana
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 31
@@ -149,3 +157,11 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: घी-जीरा चना
+    steps:
+    - घी गरम करें, जीरा डालें और फिर दोनों तरह के चने। अच्छी तरह चलाएँ।
+    - नमक और सारे सूखे मसाले छिड़कें।
+    - 3 बड़े चम्मच पानी डालें, चलाएँ, ढककर 1 मिनट पकाएँ।
+    - ऊपर से नींबू निचोड़कर गरम या ठंडा परोसें।

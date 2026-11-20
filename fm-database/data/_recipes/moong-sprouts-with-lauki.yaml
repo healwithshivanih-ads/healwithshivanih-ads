@@ -77,6 +77,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
 - constipation
+coach_priority: high
 one_line: Light lauki cooked with moong sprouts in a simple onion-tomato masala.
 headnote: Lauki is cooling and easy on digestion, and the sprouts give it the protein
   it lacks on its own. Good with a phulka or a little rice.
@@ -85,6 +86,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 29
+image:
+  file: images/web/moong-sprouts-with-lauki.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://moong-sprouts-with-lauki
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 29
@@ -158,3 +166,13 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: लौकी के साथ अंकुरित मूँग
+    steps:
+    - घी गरम करके जीरा डालें। रंग बदलने पर प्याज़ डालकर गुलाबी होने तक भूनें।
+    - टमाटर, लहसुन, नमक, हल्दी, लाल मिर्च और धनिया पाउडर चौथाई कप पानी के साथ डालें।
+      ढककर 1 मिनट पकाएँ।
+    - अंकुरित मूँग और आधा कप पानी डालें और ढककर धीमी आँच पर 2–3 मिनट पकाएँ, जब तक
+      अंकुर नरम हों।
+    - लौकी और आधा कप पानी और डालें और नरम होने तक पकाएँ। आख़िर में नींबू का रस मिलाएँ।

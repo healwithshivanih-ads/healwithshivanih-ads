@@ -58,6 +58,7 @@ protein_g: 18.6
 good_for:
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
+coach_priority: high
 one_line: A one-box lunch of steamed moong sprouts, crunchy vegetables and herbed
   paneer.
 headnote: Salting at the last minute is what keeps a packed salad from going limp
@@ -67,6 +68,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 50
+image:
+  file: images/web/sprout-salad-for-packed-lunch.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://sprout-salad-for-packed-lunch
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 50
@@ -130,3 +138,10 @@ nutrient_lines:
 nutrient_servings: 1.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: टिफ़िन के लिए अंकुरित मूँग और पनीर का सलाद
+    steps:
+    - पनीर के टुकड़ों को घी में हर्ब्स के साथ हल्का सुनहरा होने तक सेंकें। ठंडा करें।
+    - अंकुर, सब्ज़ियाँ और पनीर डिब्बे में भरें, ऊपर से जैतून का तेल डालकर हल्का मिलाएँ।
+    - नमक खाने से ठीक पहले डालकर मिलाएँ, ताकि सब्ज़ियाँ कुरकुरी रहें।

@@ -54,6 +54,7 @@ good_for:
 - blood-sugar-regulation
 - protein-adequacy-vegetarian
 - iron-nutrition
+coach_priority: high
 one_line: Idlis made with sprouted horsegram, broken wheat and a fermented urad batter.
 headnote: Rice-free idlis. Only the urad paste ferments overnight; everything else
   is mixed in the morning.
@@ -62,6 +63,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 72
+image:
+  file: images/web/horsegram-idlis.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://horsegram-idlis
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 72
@@ -116,3 +124,14 @@ nutrient_lines:
 nutrient_servings: 6.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित कुलथी की इडली
+    steps:
+    - उड़द दाल धोकर एक घंटा भिगोएँ, पानी निकालकर बारीक पीस लें। रात भर ख़मीर उठने
+      दें।
+    - सुबह दलिया 15 मिनट भिगोकर छलनी में पानी निकाल दें।
+    - अंकुरित कुलथी को दरदरा पीस लें। दलिया और उड़द के पेस्ट के साथ मिलाएँ, नमक डालें
+      और हल्का और फूला होने तक अच्छी तरह फेंटें।
+    - चिकनाई लगे इडली साँचों में डालें और 15–18 मिनट भाप में पकाएँ।
+    - पुदीने की चटनी या थोड़े घर के सफ़ेद मक्खन के साथ परोसें।

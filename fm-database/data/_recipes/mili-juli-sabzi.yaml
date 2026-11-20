@@ -84,6 +84,7 @@ good_for:
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
 - phytonutrient-dense-diet
+coach_priority: high
 one_line: A mixed-vegetable sabzi — potato, carrot, cauliflower, peas — with moong
   sprouts cooked in.
 headnote: The everyday mixed sabzi with a handful of sprouts for protein and fibre.
@@ -93,6 +94,13 @@ attribution:
   book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
   source_id: sprout-me-ultimate-sprouting-guide-2024
   page: 34
+image:
+  file: images/web/mili-juli-sabzi.jpg
+  credit: generated with ChatGPT image generation
+  source_url: chatgpt-generated://mili-juli-sabzi
+  rights_status: original_generated
+  note: original generated image; visually reviewed for no people, hands, text, or
+    watermark
 sources:
 - id: sprout-me-ultimate-sprouting-guide-2024
   location: p. 34
@@ -174,3 +182,12 @@ nutrient_lines:
 nutrient_servings: 3.0
 cycle_phases:
 - follicular
+translations:
+  hi:
+    name: अंकुरित मूँग वाली मिली-जुली सब्ज़ी
+    steps:
+    - तेल गरम करके जीरा और प्याज़ डालें।
+    - आलू, टमाटर, गाजर, फूलगोभी और मटर सूखे मसालों और नमक के साथ डालें। चलाएँ, फिर
+      आधा से एक कप पानी डालें।
+    - अंकुरित मूँग डालें, ढककर सब्ज़ियाँ और अंकुर नरम होने तक पकाएँ।
+    - ऊपर से नींबू निचोड़कर परोसें।
