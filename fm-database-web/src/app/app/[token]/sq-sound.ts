@@ -351,6 +351,17 @@ class SqSound {
     }
   }
 
+  /** Breathing: the bed rises over an in-breath and falls over an
+   *  out-breath, so the sound breathes with her (coach, 20 Nov 2026). */
+  breathe(action: "expand" | "shrink" | "hold", secs: number): void {
+    if (!this.ctx || !this.bed || action === "hold") return;
+    const t = this.ctx.currentTime;
+    const g = this.bed.gain;
+    g.cancelScheduledValues(t);
+    g.setValueAtTime(g.value, t);
+    g.linearRampToValueAtTime(action === "expand" ? 1 : 0.35, t + Math.max(0.5, secs));
+  }
+
   // ── the voice ────────────────────────────────────────────────────────────
 
   private duck(on: boolean): void {
@@ -393,7 +404,10 @@ class SqSound {
     void this.load(set, i).then((buf) => {
       const c = this.ctx;
       // Hushed or superseded while loading: stay quiet.
-      if (!buf || !c || mine !== this.turn) return;
+      if (mine !== this.turn) return;
+      // The phone could not decode the clip into Web Audio: play the file
+      // as plain media instead, so her voice is never simply missing.
+      if (!buf || !c) return this.sayAsMedia(set, i, mine);
       this.stopVoice();
       const src = c.createBufferSource();
       const g = c.createGain();
@@ -423,7 +437,29 @@ class SqSound {
     });
   }
 
+  private mediaVoice: HTMLAudioElement | null = null;
+  private sayAsMedia(set: VoiceSet, i: number, mine: number): void {
+    if (typeof Audio === "undefined" || mine !== this.turn) return;
+    this.stopVoice();
+    const a = new Audio(voiceUrl(set, i));
+    a.setAttribute("playsinline", "");
+    this.mediaVoice = a;
+    this.duck(true);
+    a.onended = () => {
+      if (this.mediaVoice === a) {
+        this.mediaVoice = null;
+        this.duck(false);
+      }
+    };
+    void a.play().catch(() => this.duck(false));
+  }
+
   private stopVoice(): void {
+    if (this.mediaVoice) {
+      this.mediaVoice.onended = null;
+      this.mediaVoice.pause();
+      this.mediaVoice = null;
+    }
     if (!this.voice) return;
     try {
       this.voice.onended = null;
