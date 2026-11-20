@@ -48,10 +48,8 @@ APPROVED_DRAFTS: set[str] = {
     "finding.albumin.A", "finding.albumin.B", "finding.albumin.C",
     "finding.fib4.A", "finding.fib4.C",
     # Her "all approved" (typed in the report design session on 20 Nov 2026, to the wording document printed for her
-    # there on 19 Nov; her message read in that session's transcript). It covers ONLY what reads today exactly as it
-    # did in that print: the finding levels below and every single phrase. The 17 finding levels softened on 20 Nov
-    # (tsh_low B/C, kidney B/C, salts B/C, hb_low B/C, white_cells B/C, platelets A/B/C, vitd_low B/C, b12_low B/C)
-    # were not in front of her and stay drafts until she says yes to them.
+    # there on 19 Nov; her message read in that session's transcript): the finding levels below and every single phrase,
+    # which read exactly as in that print.
     "finding.tsh_high.A", "finding.tsh_high.B", "finding.tsh_low.A", "finding.thyroid_hormones.A",
     "finding.thyroid_hormones.B", "finding.thyroid_hormones.C", "finding.kidney.A", "finding.salts.A",
     "finding.hb_low.A", "finding.red_cells.A", "finding.red_cells.B", "finding.red_cells.C",
@@ -71,6 +69,12 @@ APPROVED_DRAFTS: set[str] = {
     "step.self.para", "step.inherited.headline", "step.inherited.para", "step.doctor_only.headline",
     "step.doctor_only.para", "step.foundation.work.headline", "step.foundation.work.why",
     "step.foundation.work.leave", "step.foundation.far",
+    # The 17 finding levels softened on 20 Nov ("appears to be", "consider a repeat test"), listed for her in the
+    # generator session: her "yes", 20 Nov 2026.
+    "finding.tsh_low.B", "finding.tsh_low.C", "finding.kidney.B", "finding.kidney.C", "finding.salts.B", "finding.salts.C",
+    "finding.hb_low.B", "finding.hb_low.C", "finding.white_cells.B", "finding.white_cells.C",
+    "finding.platelets.A", "finding.platelets.B", "finding.platelets.C",
+    "finding.vitd_low.B", "finding.vitd_low.C", "finding.b12_low.B", "finding.b12_low.C",
     "finding.egfr_low.C",
     "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
     "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",
