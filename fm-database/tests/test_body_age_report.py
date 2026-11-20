@@ -905,7 +905,8 @@ def test_one_white_cell_type_off_leaves_the_blood_count_steady_with_one_paragrap
     assert sec.status == "steady" and not rp.hits["blood"] and rp.decision.outcome == "nothing"
     para = dict(rp.section_text["blood"][1])["Eosinophils and Monocytes"]
     assert para.startswith("One type of white cell sits outside its range.") and "such as worms" in para and para.endswith("It is read again at your next test.")
-    assert "The same white and red cells as counts" in text(report_html(rp))
+    page = text(report_html(rp))
+    assert "Your white cell types, as actual counts" in page and "the same cells as actual numbers in your blood" in page
 
 
 def test_a_finer_blood_measure_off_prints_one_sentence_and_says_what_it_is_read_with():
@@ -987,3 +988,17 @@ def test_every_urine_finding_prints_its_own_paragraph_even_beside_a_clearer_one(
     rp = _plus(_urine(protein="Trace", pus="8-10"), kind="standard")
     titles = [a for a, _b in rp.section_text["urine"][1]]
     assert rp.section_text["urine"][0] == "Your urine shows signs of a possible infection." and "Protein in the urine" in titles
+
+
+def test_the_two_small_cell_indices_say_when_there_is_nothing_to_read_and_flag_the_inherited_pattern_when_there_is():
+    idx = [_lab("MENTZER INDEX", 19.1, "", "-"), _lab("RED CELL DISTRIBUTION WIDTH INDEX (RDWI)", 260, "", "-")]
+    rp = _plus(idx)
+    page = text(report_html(rp))
+    assert "to help tell low iron from an inherited trait. Your red cells are a normal size, so there is nothing to read here." in page
+    assert not rp.drafts and "Small red cells" not in dict(rp.section_text["blood"][1])
+    small = _plus([_lab("MENTZER INDEX", 11.5, "", "-")], over={"MCV": 70})
+    page = text(report_html(small))
+    assert "nothing to read here" not in page and "That pattern can be inherited" in dict(small.section_text["blood"][1])["Small red cells"]
+    assert small.drafts == ["blood.small_cells_inherited"]                 # a draft until Shivani approves the sentence
+    iron = _plus([_lab("MENTZER INDEX", 16, "", "-")], over={"MCV": 70})
+    assert "Small red cells" not in dict(iron.section_text["blood"][1])

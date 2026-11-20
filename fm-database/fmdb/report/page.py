@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from . import wording as W
-from .panel import NINE, TABLES, Row, num, rng
+from .panel import INDICES_NOTHING_TO_READ, NINE, TABLES, Row, num, rng, small_cells
 
 ASSETS = Path(__file__).with_name("assets")
 BACK = '<p class="back"><a href="#contents">Back to contents</a></p>'
@@ -148,6 +148,8 @@ def compact_tables(rows: list[Row]) -> str:
     out = []
     for key in dict.fromkeys(r.table for r in rows if r.table):
         title, gloss = TABLES[key]
+        if key == "small_cell_indices" and "mcv" in {r.key for r in rows} and not small_cells({r.key: r for r in rows}):
+            gloss += INDICES_NOTHING_TO_READ
         trs = []
         for r in (x for x in rows if x.table == key):
             beyond = (r.hi is not None and r.value > r.hi) or (r.lo is not None and r.value < r.lo)

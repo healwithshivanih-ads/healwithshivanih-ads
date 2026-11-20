@@ -167,7 +167,7 @@ def _write(rp: Report) -> None:
     rp.hits = {s.id: hits_in(s) for s in rp.sections}
     for s in rp.sections:
         head, means = W.section_text(s, rp.rows, deeper, lib, rp.sex, rp.hits[s.id])
-        rp.section_text[s.id] = (head, means + W.note_paras(s, rp.rows))
+        rp.section_text[s.id] = (head, means + W.note_paras(s, rp.rows, lib))
     # page 1 lists an explained extra only when it is clearly off or far out (D7)
     order = [s for s in rp.sections if s.key == "att"] + [s for s in rp.sections if s.key == "watch" and not W.small_extras_only(rp.hits[s.id])]
     rp.stand = [dict(id=s.id, name=s.name, status=s.status, key=s.key, text=rp.section_text[s.id][0],

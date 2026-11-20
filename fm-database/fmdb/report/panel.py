@@ -299,14 +299,26 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
 TABLES: dict[str, tuple[str, str]] = {
     "chol_ratios": ("Your laboratory's cholesterol ratios", "worked out from the numbers above"),
     "kidney_ratios": ("Urea nitrogen to creatinine ratio, urea to creatinine ratio", "two waste products against each other; mostly a read of water and protein"),
-    "small_cell_indices": ("Mentzer index and RDWI", "two indices used only when red cells are small"),
-    "cell_counts": ("The same white and red cells as counts", "the cells above as numbers, not shares"),
+    # these two reworded at Shivani's "it is not clear what exactly we are doing", her "yes" of 20 Nov 2026
+    "small_cell_indices": ("Mentzer index and RDWI", "Two figures worked out from your red cell size and count. They are read only when red "
+                           "cells are small, to help tell low iron from an inherited trait."),
+    "cell_counts": ("Your white cell types, as actual counts", "The rows above show each type as a share of your white cells. This table shows "
+                    "the same cells as actual numbers in your blood."),
     "needed": ("Needed in small amounts", ""),
     "no_use": ("No known use in the body", ""),
     "looks": ("How it looks", ""),
     "dissolved": ("What is dissolved in it", ""),
     "microscope": ("Under the microscope", ""),
 }
+INDICES_NOTHING_TO_READ = " Your red cells are a normal size, so there is nothing to read here."      # added when MCV is not low
+
+
+def small_cells(rows: dict) -> bool:
+    """True when the red cells are small (MCV below the laboratory's range): the only time the two indices are read."""
+    r = rows.get("mcv")
+    return bool(r and r.lo is not None and r.value < r.lo)
+
+
 FURTHER_ELEMENTS = ['selenium', 'manganese', 'molybdenum', 'cobalt', 'chromium', 'aluminium', 'antimony', 'barium', 'beryllium', 'bismuth', 'caesium', 'nickel', 'silver', 'strontium', 'thallium', 'tin', 'uranium', 'vanadium']
 
 # the nine values body age is worked out from, in the order the report lists them

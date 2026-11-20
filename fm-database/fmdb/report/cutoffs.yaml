@@ -64,6 +64,11 @@ fallback_pct: {A: ">0", B: 15, C: ">50"}
 # Never print a doctor line on their own: the level stops at A.
 cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
 
+# Small red cells (MCV below the laboratory's range) with a Mentzer index below this line: the report adds one
+# paragraph saying the pattern can be inherited (her "yes", 20 Nov 2026). The line is from memory (below 13 points to
+# thalassaemia trait, above it to low iron): a doctor's read is recommended and NOT recorded as done.
+mentzer_trait_below: 13
+
 # Never past the check-up sentence: the level stops at B. (added 20 Nov, D4)
 cap_at_B: [ige]
 

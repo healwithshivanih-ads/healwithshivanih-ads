@@ -21,7 +21,8 @@ from typing import Any, Optional
 
 from .findings import BY_NAME, FOLDED_INTO_LIPIDS, LINE_D, LINE_D_SHORT, Hit, at, hits_in
 from .levels import rank
-from .panel import FURTHER_ELEMENTS, Row, Section, b12_high, num
+from .levels import load_cutoffs
+from .panel import FURTHER_ELEMENTS, Row, Section, b12_high, num, small_cells
 
 # Draft keys Shivani has approved. "finding.<id>.<level>" for a block in findings.py, or a key of DRAFT below.
 APPROVED_DRAFTS: set[str] = {
@@ -131,6 +132,8 @@ DRAFT: dict[str, tuple[str, str]] = {
     "rest.also": ("Page 1, a fourth section that is not steady", " Also marked “{status}”: {name}."),
     "todo.start.other": ("Page 1, step 1, when neither sugar nor cholesterol is marked", "Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are."),
     "todo.work.also": ("Page 1, step 2, cholesterol plus another result food moves", " The same changes work on {others}."),
+    "blood.small_cells_inherited": ("Blood count, red cells small AND the Mentzer index below 13: an added paragraph",
+                                    "Your red cells are small, and there are plenty of them. That pattern can be inherited, and it can look like low iron without being low iron. It needs a deeper look to tell the two apart."),
     "todo.watch": ("Page 1, a step for results just outside range that food does not move", "{names} {sit} just outside {its_their} range. Nothing to do now. {it_is} read again at your next test."),
     "todo.deep.lpa": ("Page 1, deeper-look step when Lp(a) is the only such result",
                       "It is inherited, so the useful question is what to do about the rest of your heart numbers."),
@@ -321,9 +324,13 @@ def reads(sec: Section, deeper: bool) -> str:
     return t
 
 
-def note_paras(sec: Section, rows: dict[str, Row]) -> list[tuple[str, str]]:
+def note_paras(sec: Section, rows: dict[str, Row], lib: Optional["Lib"] = None) -> list[tuple[str, str]]:
     """The fixed paragraphs for results that are shown and explained but never a level (F9, F10)."""
     out: list[tuple[str, str]] = []
+    m = rows.get("mentzer")
+    line = load_cutoffs().get("mentzer_trait_below")
+    if sec.id == "blood" and lib is not None and m is not None and line and small_cells(rows) and m.value < float(line):
+        out.append(("Small red cells", lib.d("blood.small_cells_inherited")))
 
     def names(rs: list[Row]) -> str:
         return join(list(dict.fromkeys(r.name for r in rs)))
