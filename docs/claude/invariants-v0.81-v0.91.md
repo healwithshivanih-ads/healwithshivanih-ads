@@ -403,3 +403,9 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - `fmdb/meal-macros.ts`: protein / carbs / fat / fibre per meal and the day total, ONLY from library recipes with `nutrient_coverage_pct >= 90`; no fallback table. Garnish counts as nothing; any part without a figure or a comparable portion makes it "About:". Calories never shown.
 - `fmdb/recipe-portion.ts`: what one recipe serving is in menu units (piece / bowl / glass / tbsp) from the recipe's own ingredient grams + the ingredient table's category/basis; soups, salads, sandwiches, chaat get none. A recipe YAML `serving_portion: {qty, unit}` wins. Grams scale by menu portion ÷ serving.
 - Switch `client.yaml#app_nutrients` (model + `_APP_CLIENT_KEYS`): unset = on, except gentle clients (`diaryGentle`) = off; coach toggle on the overview. No targets shown until the coach confirms the starting targets in BUILD-PLAN.md.
+
+### Daily nutrient targets (Nov 2026; new app, cl-900 only to 2 Jan)
+- ONE rule: `fm-database-web/scripts/day_targets.py` (BUILD-PLAN "### Confirmed targets"). Conditions read with `supplement_clash.fold/has_term`, medicines with `drug_match.match_drugs`, labs with `protein_logic._iter_lab_values`, calories with `render-client-letter._calc_calorie_targets` (imported, not copied). The three open rulings are named constants at the top.
+- Runs on the Mac only (labs never reach Fly). `app-staging-action.py` projects its spec to Fly as `client.yaml#day_targets` for `app_shell: v2` clients; the Mac app calls `scripts/day-targets.py`. `day-targets.ts::targetsForWeek` turns the spec into grams for the plan week. Calories never shown.
+- No carb target unless the coach sets `client.carb_level` ("glycaemic" | "standard" | a share). `fibre_g` overrides fibre. Both in the Client model + `_APP_CLIENT_KEYS`.
+- Not yet: the weekly drafter on this rule (changes menus of clients in care; tell the coach first).

@@ -380,7 +380,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   if (sheet) {
     if (sheet.k === "day") {
       sheetTitle = "Your whole day";
-      sheetBody = <SqDaySheet menu={dayMacros(data.meals)} moments={moments} ticks={ticks} track={track} onToggle={toggle} open={open} />;
+      sheetBody = <SqDaySheet menu={dayMacros(data.meals)} target={data.dayTargets} moments={moments} ticks={ticks} track={track} onToggle={toggle} open={open} />;
     } else if (sheet.k === "record") {
       sheetTitle = "Your record";
       sheetBody = <SqRecordSheet data={data} moments={moments} ticks={ticks} todayYmd={todayYmd} open={open} />;

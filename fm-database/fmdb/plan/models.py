@@ -21,7 +21,7 @@ from __future__ import annotations
 import sys
 
 from datetime import date, datetime
-from typing import Literal, Optional
+from typing import Literal, Optional, Union
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -644,6 +644,14 @@ class Client(BaseModel):
     # (food-diary-balance.ts diaryGentle), who is off unless set true. The
     # coach's switch on the client overview. Projected to Fly.
     app_nutrients: Optional[bool] = None
+    # Daily nutrient targets (fm-database-web/scripts/day_targets.py).
+    # carb_level: "glycaemic" | "standard" | a share the coach types (0.2-0.65);
+    # unset = no carb target shown. fibre_g: a coach-typed fibre figure that
+    # replaces the default (e.g. for SIBO). day_targets: DERIVED, written only
+    # into the Fly staging copy by app-staging-action.py — never hand-edited.
+    carb_level: Optional[Union[str, float]] = None
+    fibre_g: Optional[int] = None
+    day_targets: Optional[dict] = None
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
