@@ -1,0 +1,144 @@
+slug: sprouted-chana-and-sweet-potato-chaat
+name: Sprouted chana and sweet potato chaat
+meal_type:
+- snack
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- sour
+- astringent
+main_ingredients:
+- chana sprouts
+- sweet potato
+- curd
+contains_allergens:
+- dairy
+ingredients:
+- item: chana sprouts, boiled
+  qty: '1'
+  unit: cup
+- item: sweet potato, steamed, peeled and chopped
+  qty: '2'
+  unit: piece
+- item: moong sprouts
+  qty: '0.25'
+  unit: cup
+- item: matki sprouts
+  qty: '0.25'
+  unit: cup
+- item: mint leaves
+  qty: '1'
+  unit: tbsp
+- item: chaat masala
+  qty: '1'
+  unit: tsp
+- item: curd, well beaten
+  qty: '1'
+  unit: cup
+- item: tamarind chutney
+  qty: '2'
+  unit: tbsp
+- item: roasted cumin powder
+  qty: '0.25'
+  unit: tsp
+steps:
+- Spread the chana, sweet potato, moong and matki sprouts in a flat dish.
+- Scatter over the mint and a little chaat masala, then spoon over the curd.
+- Sprinkle with more chaat masala, drizzle with the tamarind chutney and finish with
+  the roasted cumin powder. Serve straight away.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 0
+approx_kcal_per_serving: 254
+kcal_is_estimate: true
+protein_g: 10.5
+good_for:
+- blood-sugar-regulation
+- gut-microbiome
+- protein-adequacy-vegetarian
+one_line: Steamed sweet potato and three kinds of sprouts under beaten curd and tamarind
+  chutney.
+headnote: 'Sweet potato in place of fried papdi or potato: slower carbs, more fibre,
+  same dahi-chaat pleasure.'
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 69
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 69
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 254
+kcal_total: 762
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 254
+  protein_g: 10.5
+  carbs_g: 44.9
+  fat_g: 4.3
+  fibre_g: 7.2
+  iron_mg: 2.6
+  calcium_mg: 161
+  magnesium_mg: 72.6
+  zinc_mg: 1.6
+  potassium_mg: 726
+  folate_ug: 129
+  b12_ug: 0.3
+  vit_d_ug: 0.1
+  vit_c_mg: 7.3
+  omega3_mg: 52.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- calcium
+- magnesium
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: chana-sprouted
+  g: 150.0
+- i: 1
+  key: sweet-potato
+  g: 260.0
+- i: 2
+  key: mung-sprouted
+  g: 26.0
+- i: 3
+  key: matki-sprouted
+  g: 27.5
+- i: 4
+  key: mint-fresh
+  g: 1.5625
+- i: 5
+  key: chaat-masala
+  g: 2.2916666666666665
+- i: 6
+  key: yogurt
+  g: 245.0
+- i: 7
+  key: tamarind
+  g: 31.25
+- i: 8
+  key: cumin-powder
+  g: 0.625
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

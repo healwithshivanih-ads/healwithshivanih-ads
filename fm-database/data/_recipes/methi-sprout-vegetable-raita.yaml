@@ -1,0 +1,132 @@
+slug: methi-sprout-vegetable-raita
+name: Methi sprout vegetable raita
+meal_type:
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- sweet
+- bitter
+main_ingredients:
+- curd
+- methi sprouts
+- cucumber
+contains_allergens:
+- dairy
+ingredients:
+- item: methi sprouts
+  qty: '4'
+  unit: tsp
+- item: curd
+  qty: '2'
+  unit: cup
+- item: onion, chopped
+  qty: '2'
+  unit: tbsp
+- item: cucumber, chopped
+  qty: '2'
+  unit: tbsp
+- item: capsicum, chopped
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: roasted cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Mix the curd with the onion, cucumber, capsicum, salt and cumin powder.
+- Stir in most of the methi sprouts.
+- Serve chilled, topped with the coriander and the remaining sprouts.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 80
+kcal_is_estimate: true
+protein_g: 4.5
+good_for:
+- gut-microbiome
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: Chilled curd with onion, cucumber and peppers, finished with raw methi sprouts.
+headnote: A few teaspoons of methi sprouts are enough — they bring a pleasant bitterness
+  to a cooling raita.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 89
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 89
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 80
+kcal_total: 321
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 80.2
+  protein_g: 4.5
+  carbs_g: 6.8
+  fat_g: 4.2
+  fibre_g: 0.3
+  iron_mg: 0.4
+  calcium_mg: 154
+  magnesium_mg: 18.0
+  zinc_mg: 0.8
+  potassium_mg: 219
+  folate_ug: 11.7
+  b12_ug: 0.5
+  vit_d_ug: 0.1
+  vit_c_mg: 6.0
+  omega3_mg: 27.3
+nutrient_coverage_pct: 100.0
+rich_in:
+- calcium
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: methi-sprouts
+  g: 7.5
+- i: 1
+  key: yogurt
+  g: 490.0
+- i: 2
+  key: onion
+  g: 14.375
+- i: 3
+  key: cucumber
+  g: 15.0
+- i: 4
+  key: capsicum
+  g: 15.0
+- i: 5
+  key: salt
+  g: 0.0
+- i: 6
+  key: cumin-powder
+  g: 1.25
+- i: 7
+  key: coriander-fresh
+  g: 1.0
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

@@ -1,0 +1,100 @@
+slug: home-sprouted-jowar-and-ragi
+name: Home-sprouted jowar and ragi
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- jowar
+- ragi
+contains_allergens: []
+ingredients:
+- item: whole jowar (or whole ragi)
+  qty: '1'
+  unit: cup
+- item: clean drinking water, for soaking and rinsing
+  qty: '4'
+  unit: cup
+steps:
+- Wash the grain well and soak it in the sprouting jar in clean drinking water overnight
+  (7–8 hours).
+- Drain completely, rinse with fresh water and drain again.
+- Rinse and drain three times a day — these small grains need it more often than beans
+  do.
+- Jowar grows good roots in about 3 days and tastes sweet. Ragi takes about the same
+  time and stays tiny.
+- Store airtight in the fridge; ragi sprouts keep up to 5 days.
+- Cook jowar sprouts before eating — pressure-cook them into a khichdi or upma. Ragi
+  sprouts can be stirred raw into dosa batter or added to soup.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 100
+kcal_is_estimate: true
+protein_g: 3.0
+good_for:
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: 'Sprouted millets: soak overnight, rinse three times a day, ready in about
+  three days.'
+headnote: Sprouted jowar turns sweet and cooks faster; sprouted ragi folds easily
+  into batters and soups.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 25
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 25
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 100
+kcal_total: 400
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 100
+  protein_g: 3.0
+  carbs_g: 20.3
+  fat_g: 0.5
+  fibre_g: 3.1
+  iron_mg: 1.2
+  calcium_mg: 8.4
+  magnesium_mg: 39.9
+  zinc_mg: 0.6
+  potassium_mg: 98.4
+  folate_ug: 11.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.0
+  omega3_mg: 19.5
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: jowar-flour
+  g: 120.0
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

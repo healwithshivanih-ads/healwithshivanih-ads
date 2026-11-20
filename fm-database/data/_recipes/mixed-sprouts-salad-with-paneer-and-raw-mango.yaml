@@ -1,0 +1,158 @@
+slug: mixed-sprouts-salad-with-paneer-and-raw-mango
+name: Four-sprout salad with paneer and raw mango
+meal_type:
+- salad
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- astringent
+- sour
+- sweet
+main_ingredients:
+- chickpea sprouts
+- moong sprouts
+- broccoli sprouts
+- alfalfa sprouts
+- paneer
+contains_allergens:
+- dairy
+ingredients:
+- item: chickpea sprouts, boiled and drained
+  qty: '0.5'
+  unit: cup
+- item: broccoli sprouts
+  qty: '0.5'
+  unit: cup
+- item: alfalfa sprouts
+  qty: '0.5'
+  unit: cup
+- item: moong sprouts, cooked
+  qty: '0.5'
+  unit: cup
+- item: raw mango, finely chopped
+  qty: '2'
+  unit: tbsp
+- item: cucumber, chopped
+  qty: '1'
+  unit: medium
+- item: paneer, chopped
+  qty: '0.5'
+  unit: cup
+- item: olive oil, extra virgin
+  qty: '3'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: black pepper powder
+  qty: '0.25'
+  unit: tsp
+steps:
+- Put all the sprouts, the raw mango, cucumber and paneer in a large bowl.
+- Add the olive oil, lemon juice, salt and pepper.
+- Toss well and serve straight away.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 389
+kcal_is_estimate: true
+protein_g: 12.7
+good_for:
+- protein-adequacy-vegetarian
+- phytonutrient-dense-diet
+- liver-detoxification
+one_line: Chickpea, moong, broccoli and alfalfa sprouts with paneer, cucumber and
+  raw mango.
+headnote: Cooked bean sprouts for substance, raw seed sprouts for freshness. Dip the
+  broccoli and alfalfa sprouts in hot water for a few seconds first if they have been
+  stored.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 53
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 53
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 389
+kcal_total: 778
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 389
+  protein_g: 12.7
+  carbs_g: 22.2
+  fat_g: 29.0
+  fibre_g: 4.5
+  iron_mg: 2.0
+  calcium_mg: 203
+  magnesium_mg: 52.8
+  zinc_mg: 1.7
+  potassium_mg: 439
+  folate_ug: 133
+  b12_ug: 0.3
+  vit_d_ug: 0.1
+  vit_c_mg: 20.8
+  omega3_mg: 243
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- calcium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: chana-sprouted
+  g: 75.0
+- i: 1
+  key: broccoli-sprouts
+  g: 17.5
+- i: 2
+  key: alfalfa-sprouts
+  g: 16.5
+- i: 3
+  key: mung-sprouted
+  g: 52.0
+- i: 4
+  key: green-mango
+  g: 20.625
+- i: 5
+  key: cucumber
+  g: 200.0
+- i: 6
+  key: paneer
+  g: 65.0
+- i: 7
+  key: olive-oil
+  g: 40.5
+- i: 8
+  key: lemon-juice
+  g: 15.25
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: black-pepper
+  g: 0.5208333333333334
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

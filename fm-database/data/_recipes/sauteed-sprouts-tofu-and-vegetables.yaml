@@ -1,0 +1,166 @@
+slug: sauteed-sprouts-tofu-and-vegetables
+name: Sautéed sprouts, tofu and vegetables
+meal_type:
+- snack
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- moong sprouts
+- tofu
+- broccoli
+- french beans
+- carrot
+contains_allergens:
+- soy
+ingredients:
+- item: moong sprouts, blanched
+  qty: '0.75'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: onion, finely chopped
+  qty: '1'
+  unit: medium
+- item: garlic, finely chopped
+  qty: '4'
+  unit: cloves
+- item: French beans, cut into 1-inch pieces
+  qty: '0.5'
+  unit: cup
+- item: carrot, cut into thin batons
+  qty: '1'
+  unit: medium
+- item: broccoli florets, lightly blanched
+  qty: '0.5'
+  unit: cup
+- item: capsicum (red and yellow), cut into strips
+  qty: '0.5'
+  unit: piece
+- item: tofu, cubed
+  qty: '100'
+  unit: g
+- item: salt
+  qty: to taste
+  unit: ''
+- item: red chilli flakes
+  qty: '1'
+  unit: tsp
+steps:
+- Warm the ghee in a heavy pan on low heat. Add the cumin, onion and garlic and cook
+  for a minute.
+- Add the French beans and carrot and stir-fry.
+- Add the broccoli and capsicum, then the tofu, salt and chilli flakes, and toss well.
+- Add the sprouts last, toss and serve straight away.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 10
+approx_kcal_per_serving: 207
+kcal_is_estimate: true
+protein_g: 9.9
+good_for:
+- protein-adequacy-vegetarian
+- phytonutrient-dense-diet
+- blood-sugar-regulation
+one_line: A quick stir-fry of moong sprouts, tofu, beans, carrot, broccoli and peppers.
+headnote: Sprouts go in last so they keep their bite. Use oil instead of ghee to make
+  it vegan.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 60
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 60
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 207
+kcal_total: 414
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 207
+  protein_g: 9.9
+  carbs_g: 22.8
+  fat_g: 9.6
+  fibre_g: 6.2
+  iron_mg: 3.2
+  calcium_mg: 181
+  magnesium_mg: 69.8
+  zinc_mg: 1.2
+  potassium_mg: 606
+  folate_ug: 126
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 75.7
+  omega3_mg: 253
+nutrient_coverage_pct: 100.0
+rich_in:
+- fibre
+- iron
+- calcium
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 78.0
+- i: 1
+  key: ghee
+  g: 13.625
+- i: 2
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 3
+  key: onion
+  g: 110.0
+- i: 4
+  key: garlic
+  g: 12.0
+- i: 5
+  key: green-beans
+  g: 55.0
+- i: 6
+  key: carrot
+  g: 60.0
+- i: 7
+  key: broccoli
+  g: 45.5
+- i: 8
+  key: capsicum
+  g: 60.0
+- i: 9
+  key: tofu
+  g: 100.0
+- i: 10
+  key: salt
+  g: 0.0
+- i: 11
+  key: green-chilli
+  g: 1.5625
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

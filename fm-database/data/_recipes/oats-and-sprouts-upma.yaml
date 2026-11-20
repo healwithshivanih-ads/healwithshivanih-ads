@@ -1,0 +1,173 @@
+slug: oats-and-sprouts-upma
+name: Oats and sprouts upma
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- rolled oats
+- moong sprouts
+- chana sprouts
+- mixed vegetables
+contains_allergens:
+- gluten
+- mustard
+ingredients:
+- item: rolled oats
+  qty: '1'
+  unit: cup
+- item: moong sprouts, lightly cooked
+  qty: '0.5'
+  unit: cup
+- item: chana sprouts, lightly cooked
+  qty: '0.5'
+  unit: cup
+- item: mixed vegetables (carrot, French beans, capsicum), finely chopped
+  qty: '0.5'
+  unit: cup
+- item: cold-pressed oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: green chilli, slit
+  qty: '3'
+  unit: piece
+- item: curry leaves
+  qty: '8'
+  unit: leaves
+- item: onion, finely chopped
+  qty: '1'
+  unit: medium
+- item: tomato, finely chopped
+  qty: '0.5'
+  unit: medium
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '1'
+  unit: tbsp
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat the oil in a wok. Add the mustard seeds, green chillies, curry leaves, onion
+  and tomato and cook for a minute.
+- Add the vegetables and cook another minute.
+- Add the sprouts and 2 cups of water and bring to a boil. Add the salt and coriander
+  and cook for a minute.
+- Stir in the oats, cover and cook on low heat for a minute.
+- Finish with the lemon juice and serve hot.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 10
+approx_kcal_per_serving: 372
+kcal_is_estimate: true
+protein_g: 14.7
+good_for:
+- blood-sugar-regulation
+- constipation
+- protein-adequacy-vegetarian
+one_line: A savoury oats upma with moong and chana sprouts and vegetables.
+headnote: Tempered and savoury like a rava upma, with far more fibre.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 74
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 74
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 372
+kcal_total: 744
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 372
+  protein_g: 14.7
+  carbs_g: 54.6
+  fat_g: 11.6
+  fibre_g: 10.7
+  iron_mg: 4.0
+  calcium_mg: 83.0
+  magnesium_mg: 128
+  zinc_mg: 2.9
+  potassium_mg: 668
+  folate_ug: 165
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 31.9
+  omega3_mg: 100.0
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: rolled-oats
+  g: 90.0
+- i: 1
+  key: mung-sprouted
+  g: 52.0
+- i: 2
+  key: chana-sprouted
+  g: 75.0
+- i: 3
+  key: mixed-vegetables
+  g: 60.0
+- i: 4
+  key: sunflower-oil
+  g: 13.625
+- i: 5
+  key: mustard-seeds
+  g: 2.0833333333333335
+- i: 6
+  key: green-chilli
+  g: 15.0
+- i: 7
+  key: curry-leaves
+  g: 2.4
+- i: 8
+  key: onion
+  g: 110.0
+- i: 9
+  key: tomato
+  g: 50.0
+- i: 10
+  key: salt
+  g: 0.0
+- i: 11
+  key: coriander-fresh
+  g: 1.0
+- i: 12
+  key: lemon-juice
+  g: 15.25
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

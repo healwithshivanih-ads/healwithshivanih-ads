@@ -119,31 +119,32 @@ attribution:
   source_id: recipe-inbox
 parse_notes: AI-drafted gap-filler for coach review; nutritional intent around sprouted
   moong for protein and folate with curd for fermented B12 touch.
-approx_kcal_per_serving: 92
+approx_kcal_per_serving: 123
 kcal_is_estimate: true
-protein_g: 3.1
-kcal_per_serving: 92
+protein_g: 5.4
+kcal_per_serving: 123
 kcal_basis: ingredient_table_v1
 nutrients_per_serving:
-  kcal: 91.6
-  protein_g: 3.6
-  carbs_g: 11.1
-  fat_g: 4.6
-  fibre_g: 2.9
-  iron_mg: 1.4
-  calcium_mg: 84.6
-  magnesium_mg: 30.1
-  zinc_mg: 0.6
-  potassium_mg: 340
-  folate_ug: 51.5
+  kcal: 123
+  protein_g: 5.4
+  carbs_g: 16.1
+  fat_g: 4.7
+  fibre_g: 4.2
+  iron_mg: 1.8
+  calcium_mg: 96.6
+  magnesium_mg: 45.7
+  zinc_mg: 0.7
+  potassium_mg: 437
+  folate_ug: 106
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 19.2
-  omega3_mg: 48.5
+  omega3_mg: 64.1
 nutrient_coverage_pct: 100.0
-rich_in: []
+rich_in:
+- folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-08-03'
+nutrients_computed_at: '2026-11-20'
 version: 1
 status: active
 updated_at: '2026-07-07'
@@ -216,13 +217,19 @@ nutrient_lines:
 nutrient_servings: 4.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: स्प्राउट्स मिसल (हल्का)
     steps:
-    - एक मध्यम बर्तन में मध्यम आँच पर तेल गरम करें। राई डालकर चटकाएँ, फिर जीरा, करी पत्ता, हरी मिर्च और अदरक-लहसुन डालें। 1 मिनट खुशबू आने तक भूनें।
-    - प्याज़ डालें और 5–6 मिनट नरम और हल्का सुनहरा होने तक पकाएँ। टमाटर के साथ हल्दी, लाल मिर्च पाउडर, धनिया पाउडर और नमक डालें। टमाटर गलने और तेल छूटने तक करीब 5 मिनट पकाएँ।
-    - अंकुरित मूँग और 1 कप पानी डालें। अच्छी तरह चलाएँ, उबाल लाएँ, फिर आँच धीमी करके ढककर 12–15 मिनट पकाएँ जब तक अंकुर बस नरम हों पर आकार बना रहे।
-    - ढक्कन हटाएँ, गरम मसाला और नींबू का रस मिलाएँ और बिना ढके 2 मिनट पकाएँ ताकि ग्रेवी थोड़ी गाढ़ी हो। चखकर नमक ठीक करें।
-    - आँच से उतारें। कटोरों में डालें, हर सर्विंग पर एक बड़ा चम्मच फेंटा दही डालें और ताज़े धनिये से पूरा करें। गरमागरम परोसें।
+    - एक मध्यम बर्तन में मध्यम आँच पर तेल गरम करें। राई डालकर चटकाएँ, फिर जीरा, करी
+      पत्ता, हरी मिर्च और अदरक-लहसुन डालें। 1 मिनट खुशबू आने तक भूनें।
+    - प्याज़ डालें और 5–6 मिनट नरम और हल्का सुनहरा होने तक पकाएँ। टमाटर के साथ हल्दी,
+      लाल मिर्च पाउडर, धनिया पाउडर और नमक डालें। टमाटर गलने और तेल छूटने तक करीब 5
+      मिनट पकाएँ।
+    - अंकुरित मूँग और 1 कप पानी डालें। अच्छी तरह चलाएँ, उबाल लाएँ, फिर आँच धीमी करके
+      ढककर 12–15 मिनट पकाएँ जब तक अंकुर बस नरम हों पर आकार बना रहे।
+    - ढक्कन हटाएँ, गरम मसाला और नींबू का रस मिलाएँ और बिना ढके 2 मिनट पकाएँ ताकि ग्रेवी
+      थोड़ी गाढ़ी हो। चखकर नमक ठीक करें।
+    - आँच से उतारें। कटोरों में डालें, हर सर्विंग पर एक बड़ा चम्मच फेंटा दही डालें
+      और ताज़े धनिये से पूरा करें। गरमागरम परोसें।
+kcal_computed_at: '2026-11-20'

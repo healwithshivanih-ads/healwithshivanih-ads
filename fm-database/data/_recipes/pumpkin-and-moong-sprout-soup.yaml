@@ -1,0 +1,162 @@
+slug: pumpkin-and-moong-sprout-soup
+name: Pumpkin and moong sprout soup
+meal_type:
+- soup
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- pumpkin
+- moong sprouts
+- carrot
+contains_allergens: []
+ingredients:
+- item: moong sprouts
+  qty: '1'
+  unit: cup
+- item: pumpkin, cut into cubes
+  qty: '200'
+  unit: g
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: ginger, roughly chopped
+  qty: '0.5'
+  unit: inch
+- item: garlic
+  qty: '2'
+  unit: cloves
+- item: green chilli, chopped
+  qty: '1'
+  unit: piece
+- item: onion, chopped
+  qty: '1'
+  unit: piece
+- item: carrot, chopped
+  qty: '1'
+  unit: piece
+- item: salt
+  qty: to taste
+  unit: ''
+- item: black pepper powder
+  qty: '0.25'
+  unit: tsp
+- item: spring onion greens, chopped
+  qty: '1'
+  unit: tbsp
+steps:
+- Heat the ghee in a saucepan. Add the cumin, ginger, garlic and green chilli and
+  stir for a few seconds.
+- Add the pumpkin, onion and carrot and cook for a minute, then the sprouts for another
+  minute.
+- Add salt, pepper and 2 cups of water. Cover and cook on low until the pumpkin is
+  soft.
+- Cool, then blend until smooth, thinning with water as needed.
+- Reheat and serve topped with spring onion greens, a little grated carrot and a few
+  sprouts.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 20
+approx_kcal_per_serving: 181
+kcal_is_estimate: true
+protein_g: 5.8
+good_for:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- constipation
+one_line: A smooth, lightly spiced pumpkin soup with moong sprouts blended in.
+headnote: The sprouts give a pumpkin soup the protein it normally lacks. A good light
+  dinner.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 87
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 87
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 181
+kcal_total: 362
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 181
+  protein_g: 5.8
+  carbs_g: 25.0
+  fat_g: 7.5
+  fibre_g: 4.9
+  iron_mg: 2.9
+  calcium_mg: 80.1
+  magnesium_mg: 54.3
+  zinc_mg: 0.9
+  potassium_mg: 745
+  folate_ug: 120
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 25.7
+  omega3_mg: 88.2
+nutrient_coverage_pct: 100.0
+rich_in:
+- potassium
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 104.0
+- i: 1
+  key: pumpkin
+  g: 200.0
+- i: 2
+  key: ghee
+  g: 13.625
+- i: 3
+  key: cumin-seeds
+  g: 2.0833333333333335
+- i: 4
+  key: ginger-fresh
+  g: 3.0
+- i: 5
+  key: garlic
+  g: 6.0
+- i: 6
+  key: green-chilli
+  g: 5.0
+- i: 7
+  key: onion
+  g: 110.0
+- i: 8
+  key: carrot
+  g: 60.0
+- i: 9
+  key: salt
+  g: 0.0
+- i: 10
+  key: black-pepper
+  g: 0.5208333333333334
+- i: 11
+  key: onion
+  g: 7.1875
+nutrient_servings: 2.0
+cycle_phases:
+- follicular

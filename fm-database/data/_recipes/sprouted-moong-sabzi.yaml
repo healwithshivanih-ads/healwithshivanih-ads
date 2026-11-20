@@ -71,9 +71,9 @@ steps:
 servings: '2'
 prep_time_min: 10
 cook_time_min: 12
-approx_kcal_per_serving: 161
+approx_kcal_per_serving: 224
 kcal_is_estimate: true
-protein_g: 4.6
+protein_g: 8.2
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -99,32 +99,34 @@ kitchen_tested: false
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
-kcal_per_serving: 161
-kcal_total: 220
+kcal_per_serving: 224
+kcal_total: 448
 kcal_basis: ingredient_table_v1
-kcal_computed_at: '2026-06-13'
+kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 161
-  protein_g: 4.6
-  carbs_g: 14.5
-  fat_g: 10.8
-  fibre_g: 4.2
-  iron_mg: 2.0
-  calcium_mg: 45.5
-  magnesium_mg: 38.1
-  zinc_mg: 0.8
-  potassium_mg: 327
-  folate_ug: 81.5
+  kcal: 224
+  protein_g: 8.2
+  carbs_g: 24.5
+  fat_g: 10.9
+  fibre_g: 6.9
+  iron_mg: 2.9
+  calcium_mg: 69.5
+  magnesium_mg: 69.3
+  zinc_mg: 1.1
+  potassium_mg: 521
+  folate_ug: 190
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 22.1
-  omega3_mg: 26.9
+  omega3_mg: 58.1
 nutrient_coverage_pct: 100.0
 rich_in:
+- fibre
+- potassium
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: mung-sprouted
@@ -165,12 +167,12 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: अंकुरित मूंग की सब्ज़ी
     steps:
-    - अंकुरित मूंग को पहले उबालने की ज़रूरत नहीं — केवल 5 मिनट भाप में पकाएँ, या कुरकुरा पसंद हो तो सीधे पैन में डालें।
+    - अंकुरित मूंग को पहले उबालने की ज़रूरत नहीं — केवल 5 मिनट भाप में पकाएँ, या कुरकुरा
+      पसंद हो तो सीधे पैन में डालें।
     - नारियल तेल में करी पत्ते के साथ राई तड़काएँ।
     - प्याज़, अदरक और हरी मिर्च डालें और नरम करें।
     - अंकुरित मूंग हल्दी और नमक के साथ डालें और मध्यम आँच पर 5–6 मिनट मिलाएँ।

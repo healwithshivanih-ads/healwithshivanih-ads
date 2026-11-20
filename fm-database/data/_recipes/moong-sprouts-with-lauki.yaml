@@ -1,0 +1,160 @@
+slug: moong-sprouts-with-lauki
+name: Moong sprouts with lauki (bottle gourd)
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- moong sprouts
+- lauki
+- tomato
+contains_allergens: []
+ingredients:
+- item: moong sprouts
+  qty: '2'
+  unit: cup
+- item: lauki (bottle gourd), chopped
+  qty: '2'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: onion, chopped
+  qty: '0.5'
+  unit: cup
+- item: tomato, chopped
+  qty: '0.5'
+  unit: cup
+- item: garlic, grated
+  qty: '4'
+  unit: cloves
+- item: salt
+  qty: to taste
+  unit: ''
+- item: turmeric powder
+  qty: '0.25'
+  unit: tsp
+- item: red chilli powder
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '0.75'
+  unit: tsp
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Heat the ghee and add the cumin. When it darkens, add the onion and cook until pink.
+- Add the tomato, garlic, salt, turmeric, chilli and coriander powder with a quarter
+  cup of water. Cover and cook 1 minute.
+- Add the sprouts and half a cup of water and cook covered on low for 2–3 minutes,
+  until the sprouts are tender.
+- Add the lauki with another half cup of water and cook until soft. Finish with the
+  lemon juice.
+servings: '3'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 138
+kcal_is_estimate: true
+protein_g: 5.9
+good_for:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- constipation
+one_line: Light lauki cooked with moong sprouts in a simple onion-tomato masala.
+headnote: Lauki is cooling and easy on digestion, and the sprouts give it the protein
+  it lacks on its own. Good with a phulka or a little rice.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 29
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 29
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 138
+kcal_total: 414
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 138
+  protein_g: 5.9
+  carbs_g: 18.4
+  fat_g: 5.1
+  fibre_g: 4.6
+  iron_mg: 2.1
+  calcium_mg: 67.9
+  magnesium_mg: 54.1
+  zinc_mg: 1.2
+  potassium_mg: 480
+  folate_ug: 127
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 23.9
+  omega3_mg: 75.1
+nutrient_coverage_pct: 100.0
+rich_in:
+- folate
+- vitamin-c
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: mung-sprouted
+  g: 208.0
+- i: 1
+  key: lauki
+  g: 230.0
+- i: 2
+  key: ghee
+  g: 13.625
+- i: 3
+  key: cumin-seeds
+  g: 1.0416666666666667
+- i: 4
+  key: onion
+  g: 57.5
+- i: 5
+  key: tomato
+  g: 75.0
+- i: 6
+  key: garlic
+  g: 12.0
+- i: 7
+  key: salt
+  g: 0.0
+- i: 8
+  key: turmeric
+  g: 0.78125
+- i: 9
+  key: chilli-powder
+  g: 1.25
+- i: 10
+  key: coriander-powder
+  g: 1.875
+- i: 11
+  key: lemon-juice
+  g: 5.083333333333333
+nutrient_servings: 3.0
+cycle_phases:
+- follicular

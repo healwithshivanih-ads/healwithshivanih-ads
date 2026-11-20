@@ -106,21 +106,21 @@ updated_at: '2026-07-13'
 updated_by: Shivani
 provenance: ingested_my_weekend_kitchen_ebook
 nutrients_per_serving:
-  kcal: 174
-  protein_g: 7.4
-  carbs_g: 39.2
-  fat_g: 1.9
-  fibre_g: 9.4
-  iron_mg: 3.2
-  calcium_mg: 83.2
-  magnesium_mg: 70.7
-  zinc_mg: 1.4
-  potassium_mg: 898
-  folate_ug: 150
+  kcal: 236
+  protein_g: 11.1
+  carbs_g: 49.1
+  fat_g: 2.0
+  fibre_g: 12.1
+  iron_mg: 4.1
+  calcium_mg: 107
+  magnesium_mg: 102
+  zinc_mg: 1.7
+  potassium_mg: 1092
+  folate_ug: 258
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 133
-  omega3_mg: 96.1
+  omega3_mg: 127
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -130,7 +130,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: mung-sprouted

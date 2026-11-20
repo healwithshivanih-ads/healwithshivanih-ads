@@ -1,0 +1,118 @@
+slug: horsegram-idlis
+name: Horsegram sprout idlis
+meal_type:
+- breakfast
+- dinner
+diet:
+- vegetarian
+- vegan
+- dairy_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- horsegram sprouts
+- urad dal
+- broken wheat
+contains_allergens:
+- gluten
+ingredients:
+- item: horsegram sprouts
+  qty: '2'
+  unit: cup
+- item: urad dal (split, skinless)
+  qty: '1'
+  unit: cup
+- item: broken wheat (dalia)
+  qty: '1.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Wash the urad dal, soak it for an hour, drain and grind to a paste. Leave to ferment
+  overnight.
+- Next morning soak the broken wheat for 15 minutes and drain it in a colander.
+- Grind the horsegram sprouts coarsely. Mix with the broken wheat and urad paste,
+  add salt and beat well until light and fluffy.
+- Pour into greased idli moulds and steam for 15–18 minutes.
+- Serve with pudina chutney or a little home-made white butter.
+servings: '6'
+prep_time_min: 20
+cook_time_min: 18
+approx_kcal_per_serving: 289
+kcal_is_estimate: true
+protein_g: 16.4
+good_for:
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- iron-nutrition
+one_line: Idlis made with sprouted horsegram, broken wheat and a fermented urad batter.
+headnote: Rice-free idlis. Only the urad paste ferments overnight; everything else
+  is mixed in the morning.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 72
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 72
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 289
+kcal_total: 1734
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 289
+  protein_g: 16.4
+  carbs_g: 55.8
+  fat_g: 1.1
+  fibre_g: 9.7
+  iron_mg: 4.9
+  calcium_mg: 104
+  magnesium_mg: 172
+  zinc_mg: 2.2
+  potassium_mg: 651
+  folate_ug: 113
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 3.2
+  omega3_mg: 71.5
+nutrient_coverage_pct: 100.0
+rich_in:
+- protein
+- fibre
+- iron
+- magnesium
+- zinc
+- potassium
+- folate
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: horsegram-sprouted
+  g: 240.0
+- i: 1
+  key: urad-dal
+  g: 200.0
+- i: 2
+  key: bulgur
+  g: 210.0
+- i: 3
+  key: salt
+  g: 0.0
+nutrient_servings: 6.0
+cycle_phases:
+- follicular

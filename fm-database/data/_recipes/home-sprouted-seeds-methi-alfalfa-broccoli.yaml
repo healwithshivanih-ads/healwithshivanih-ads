@@ -1,0 +1,105 @@
+slug: home-sprouted-seeds-methi-alfalfa-broccoli
+name: Home-sprouted seeds (methi, alfalfa, broccoli)
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- astringent
+main_ingredients:
+- methi seeds
+- alfalfa seeds
+- broccoli seeds
+contains_allergens: []
+ingredients:
+- item: methi seeds (or alfalfa or broccoli seeds; use 3 tbsp for a full jar)
+  qty: '2'
+  unit: tbsp
+- item: clean drinking water, for soaking and rinsing
+  qty: '3'
+  unit: cup
+steps:
+- Put the seeds in the sprouting jar and cover with clean drinking water. Seeds need
+  a shorter soak than beans — 4 to 6 hours, or overnight at the most.
+- Drain with the jar at a slant until no water is left, then rinse with fresh water
+  and drain again.
+- Rinse and drain two to three times a day. Seeds are small and hold water, so leave
+  the jar slanted between rinses to keep them draining.
+- Harvest when the roots are longer than the seed — usually 3 to 5 days. Methi grows
+  long, mild-bitter shoots; alfalfa and broccoli stay fine and delicate.
+- 'Store airtight in the fridge: methi sprouts keep 7 days, alfalfa 3 days, broccoli
+  2 days.'
+- Seed sprouts are usually eaten raw. To be on the safe side, dip them in hot water
+  for 10–15 seconds first, especially after a few days in the fridge.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 15
+kcal_is_estimate: true
+protein_g: 1.1
+good_for:
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+- phytonutrient-dense-diet
+- liver-detoxification
+one_line: 'Seed sprouts for topping salads, rice and raita: a short soak, then rinse
+  and drain two to three times a day.'
+headnote: Seed sprouts are eaten raw or barely blanched, so the rinsing matters even
+  more than it does for beans. Buy seeds sold for sprouting from an established seller.
+attribution:
+  author: sprout-me (Tiara Agencies Pvt Ltd)
+  book: 'Ultimate Sprouting Guide: 60 Recipe e-book'
+  source_id: sprout-me-ultimate-sprouting-guide-2024
+  page: 19
+sources:
+- id: sprout-me-ultimate-sprouting-guide-2024
+  location: p. 19
+version: 1
+status: active
+updated_at: '2026-11-20'
+updated_by: Shivani
+kcal_per_serving: 15
+kcal_total: 60
+kcal_basis: ingredient_table_v1
+kcal_computed_at: '2026-11-20'
+nutrients_per_serving:
+  kcal: 15.1
+  protein_g: 1.1
+  carbs_g: 2.7
+  fat_g: 0.3
+  fibre_g: 1.2
+  iron_mg: 1.6
+  calcium_mg: 8.2
+  magnesium_mg: 9.0
+  zinc_mg: 0.1
+  potassium_mg: 36.1
+  folate_ug: 2.7
+  b12_ug: 0.0
+  vit_d_ug: 0.0
+  vit_c_mg: 0.1
+  omega3_mg: 4.2
+nutrient_coverage_pct: 100.0
+rich_in: []
+nutrient_basis: ingredient_table_v1
+nutrients_computed_at: '2026-11-20'
+nutrient_lines:
+- i: 0
+  key: fenugreek-seeds
+  g: 18.75
+- i: 1
+  key: water
+  g: 0.0
+nutrient_servings: 4.0
+cycle_phases:
+- follicular

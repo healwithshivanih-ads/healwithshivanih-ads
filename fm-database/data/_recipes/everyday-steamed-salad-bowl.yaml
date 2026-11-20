@@ -68,9 +68,9 @@ steps:
 servings: '2'
 prep_time_min: 15
 cook_time_min: 15
-approx_kcal_per_serving: 369
+approx_kcal_per_serving: 385
 kcal_is_estimate: true
-protein_g: 11.8
+protein_g: 12.8
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
@@ -101,28 +101,29 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
-kcal_per_serving: 369
-kcal_total: 580
+kcal_per_serving: 385
+kcal_total: 770
 kcal_basis: ingredient_table_v1
-kcal_computed_at: '2026-06-13'
+kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 369
-  protein_g: 11.8
-  carbs_g: 61.7
+  kcal: 385
+  protein_g: 12.8
+  carbs_g: 64.2
   fat_g: 9.3
-  fibre_g: 7.9
-  iron_mg: 3.8
-  calcium_mg: 225
-  magnesium_mg: 161
-  zinc_mg: 2.3
-  potassium_mg: 880
-  folate_ug: 117
+  fibre_g: 8.6
+  iron_mg: 4.0
+  calcium_mg: 231
+  magnesium_mg: 168
+  zinc_mg: 2.4
+  potassium_mg: 928
+  folate_ug: 144
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 84.4
-  omega3_mg: 120
+  omega3_mg: 128
 nutrient_coverage_pct: 100.0
 rich_in:
+- protein
 - fibre
 - iron
 - calcium
@@ -132,7 +133,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: kale
@@ -161,14 +162,16 @@ nutrient_lines:
 nutrient_servings: 2.0
 cycle_phases:
 - follicular
-
 translations:
   hi:
     name: रोज़ाना का भाप वाला सलाद बाउल
     steps:
     - केल और चार्ड के डंठल निकालकर पत्तियों को लगभग 2 इंच के टुकड़ों में काट लें।
-    - पत्तियों को एक बड़ी कड़ाही में 1 tbsp पानी के साथ डालें, कसकर ढकें, और मध्यम आँच पर 10 मिनट भाप में भूनें।
+    - पत्तियों को एक बड़ी कड़ाही में 1 tbsp पानी के साथ डालें, कसकर ढकें, और मध्यम
+      आँच पर 10 मिनट भाप में भूनें।
     - इस बीच, सब्ज़ी छीलने वाले या जूलियन पीलर से गाजर को पतली फांकों में काट लें।
-    - गाजर की फांकें, कटी पत्ता गोभी और अंकुरित मूँग कड़ाही में डालें; 5 मिनट और भाप दें, फिर आँच से उतारकर ढक्कन थोड़ा खुला छोड़ दें।
+    - गाजर की फांकें, कटी पत्ता गोभी और अंकुरित मूँग कड़ाही में डालें; 5 मिनट और भाप
+      दें, फिर आँच से उतारकर ढक्कन थोड़ा खुला छोड़ दें।
     - हर चौड़े बाउल के तले में 1 कप चावल फैलाएँ।
-    - भाप वाली सब्ज़ियाँ चावल पर बाँट दें, हर बाउल पर आधी ड्रेसिंग डालें, और ऊपर से भुने सूरजमुखी के बीज डालें।
+    - भाप वाली सब्ज़ियाँ चावल पर बाँट दें, हर बाउल पर आधी ड्रेसिंग डालें, और ऊपर से
+      भुने सूरजमुखी के बीज डालें।
