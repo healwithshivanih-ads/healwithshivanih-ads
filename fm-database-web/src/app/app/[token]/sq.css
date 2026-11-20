@@ -809,3 +809,28 @@
 .sq-app .sq-host-app .adh-item button { min-height: 44px; }
 .sq-app .sq-host-app a[href*="wa.me"],
 .sq-app .sq-host-app button:has(svg) { min-height: 44px; }
+/* Movement in the new front: the light Sequoya page, not today's dark sheet. */
+.sq-app .sq-host-app .ex-wrap { background: var(--sq-ground); color: var(--sq-ink); }
+.sq-app .sq-host-app .ex-x { background: var(--sq-card-2); color: var(--sq-ink); width: 44px; height: 44px; }
+.sq-app .sq-host-app .ex-h { font-family: var(--sq-serif); font-weight: 500; }
+.sq-app .sq-host-app .ex-when,
+.sq-app .sq-host-app .ex-count,
+.sq-app .sq-host-app .ex-support,
+.sq-app .sq-host-app .ex-why,
+.sq-app .sq-host-app .ex-note,
+.sq-app .sq-host-app .ex-kit,
+.sq-app .sq-host-app .ex-sub,
+.sq-app .sq-host-app .ex-back { color: var(--sq-muted); }
+.sq-app .sq-host-app .ex-list li strong { color: var(--sq-ink); }
+.sq-app .sq-host-app .ex-dose,
+.sq-app .sq-host-app .ex-cad,
+.sq-app .sq-host-app .ex-cad-line { color: var(--sq-fire-text); }
+.sq-app .sq-host-app .ex-coach { color: var(--sq-ink); background: var(--sq-card); border-left-color: var(--sq-fire); }
+.sq-app .sq-host-app .ex-dots span { background: var(--sq-line-strong); }
+.sq-app .sq-host-app .ex-dots span.did { background: var(--sq-fire-tint); }
+.sq-app .sq-host-app .ex-dots span.on { background: var(--sq-fire); }
+.sq-app .sq-host-app .ex-cta { background: var(--sq-fire-fill); color: var(--sq-on-fire); min-height: 44px; }
+.sq-app .sq-host-app .ex-back { min-height: 44px; }
+.sq-app .sq-host-app video.ex-figure { background: var(--sq-card-2); }
+.sq-app .sq-host-app .ex-figure,
+.sq-app .sq-host-app .ex-stepfig { --fm-fig: rgba(42, 41, 45, 0.72); --fm-figline: rgba(42, 41, 45, 0.9); }

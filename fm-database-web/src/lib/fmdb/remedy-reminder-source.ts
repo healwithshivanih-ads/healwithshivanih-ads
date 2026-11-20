@@ -57,7 +57,7 @@ export async function remediesForReminders(
     if (!e) continue;
     out.push({
       slug: s,
-      name: (e.display_name || e.name || s).trim(),
+      name: (e.display_name || e.name || s).replace(/\s+for\s+.+$/i, "").trim(),
       timing: (e.timing_notes || e.timing || "").trim(),
     });
   }
