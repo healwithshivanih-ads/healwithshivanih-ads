@@ -724,3 +724,5 @@
 .sq-app .sq-trip { display: flex; flex-direction: column; gap: 4px; text-align: left; width: 100%; border: none; font: inherit; color: inherit; cursor: pointer; }
 .sq-app .sq-trip b { font-size: 17px; }
 .sq-app .sq-trip small { color: var(--sq-ink-2, inherit); font-size: 14.5px; }
+
+.sq-status.sq-low { color: var(--sq-cedar); }

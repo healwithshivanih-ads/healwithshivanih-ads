@@ -7,7 +7,9 @@
  * name the coach. Wording follows the prototype (docs/client-app-redesign).
  */
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { shortDay, supplyStatus, type ItemSupply } from "@/lib/fmdb/supply";
+import { leftWords, orderRows } from "@/lib/fmdb/supply-rows";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { SqCard, SqIcon } from "./sq-ui";
 
@@ -58,101 +60,138 @@ export function SqSuppsSheet({ data }: { data: ClientAppData }) {
   );
 }
 
-type OrderState = "" | "open" | "done";
-export interface OrderRow {
-  id: string;
-  name: string;
-  buyUrl?: string;
-  shop: string;
-}
+export { leftWords, lowRows, orderRows, shopOf, type OrderRow } from "@/lib/fmdb/supply-rows";
 
-export function shopOf(url?: string): string {
-  if (!url) return "";
-  if (/vitaone/i.test(url)) return "VitaOne";
-  if (/fmnutrition/i.test(url)) return "FM Nutrition";
-  if (/amazon|amzn/i.test(url)) return "Amazon";
-  if (/iherb/i.test(url)) return "iHerb";
-  return "Shop page";
-}
-
-export function orderRows(data: ClientAppData): OrderRow[] {
-  const rows: OrderRow[] = [...data.supplements, ...(data.upcomingSupplements ?? [])].map((s) => ({
-    id: s.id,
-    name: s.startsNextWeek ? `${s.name} (starts next week)` : s.name,
-    buyUrl: s.buyUrl,
-    shop: shopOf(s.buyUrl),
-  }));
-  for (const r of data.remedies) {
-    if (r.assigned && r.buyUrl) rows.push({ id: "rx-" + r.slug, name: r.name, buyUrl: r.buyUrl, shop: shopOf(r.buyUrl) });
-  }
-  return rows;
-}
-
-function useOrdered(data: ClientAppData) {
-  const key = `sq.orders.${data.clientId}.${data.planSlug}`;
-  const [map, setMap] = useState<Record<string, OrderState>>({});
-  useEffect(() => {
+/** The client's supply taps, saved on the server so the countdown and the
+ *  coach both see them. Optimistic: the tap shows at once and rolls back if
+ *  the save fails. */
+function useSupply(data: ClientAppData, todayYmd: string) {
+  const [map, setMap] = useState<Record<string, ItemSupply>>(data.supply ?? {});
+  const [opened, setOpened] = useState<Record<string, boolean>>({});
+  const [error, setError] = useState<string | null>(null);
+  // Each row's earlier states, so Undo shows exactly what the server's fold
+  // will give back (it pops the last tap).
+  const [past, setPast] = useState<Record<string, (ItemSupply | undefined)[]>>({});
+  const send = async (item: string, op: "ordered" | "arrived" | "have" | "undo", given?: ItemSupply) => {
+    const before = map;
+    const beforePast = past;
+    const stack = past[item] ?? [];
+    const next = op === "undo" ? stack[stack.length - 1] : given;
+    setPast({ ...past, [item]: op === "undo" ? stack.slice(0, -1) : [...stack, map[item]] });
+    setMap((m) => {
+      const c = { ...m };
+      if (next) c[item] = next;
+      else delete c[item];
+      return c;
+    });
+    setError(null);
     try {
-      const raw = localStorage.getItem(key);
-      if (raw) setMap(JSON.parse(raw) as Record<string, OrderState>);
+      const r = await fetch("/api/app-supply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token, op, item, date: todayYmd }),
+      });
+      if (!r.ok) throw new Error();
     } catch {
-      /* private mode: start fresh */
-    }
-  }, [key]);
-  const set = (next: Record<string, OrderState>) => {
-    setMap(next);
-    try {
-      localStorage.setItem(key, JSON.stringify(next));
-    } catch {
-      /* private mode */
+      setMap(before);
+      setPast(beforePast);
+      setError("That didn't save. Check your connection and try again.");
     }
   };
-  return [map, set] as const;
+  return { map, send, opened, setOpened, error };
 }
 
-export function SqOrderSheet({ data, onAsk }: { data: ClientAppData; onAsk: () => void }) {
+export function SqOrderSheet({ data, todayYmd, onAsk }: { data: ClientAppData; todayYmd: string; onAsk: () => void }) {
   const rows = orderRows(data);
-  const [st, setSt] = useOrdered(data);
-  const all = rows.length > 0 && rows.every((r) => st[r.id] === "done");
-  const put = (id: string, v: OrderState) => setSt({ ...st, [id]: v });
+  const { map, send, opened, setOpened, error } = useSupply(data, todayYmd);
+  const now = new Date().toISOString();
+  const all = rows.length > 0 && rows.every((r) => map[r.id]);
   return (
     <>
-      <p className="sq-sub">Each one opens its own shop page, where you pay. Come back and tick it once it is ordered.</p>
+      <p className="sq-sub">
+        Each one opens its own shop page, where you pay. Tick it once it is ordered, and again when it arrives, so the app
+        can tell you before it runs out.
+      </p>
+      {error && <p className="sq-err">{error}</p>}
       <SqCard>
         <div className="sq-list">
           {rows.map((r) => {
-            const s = st[r.id] ?? "";
+            const cur = map[r.id];
+            const st = supplyStatus(cur, r.pack, r.pack?.perDay, todayYmd);
+            const left = leftWords(st);
+            const buy = r.buyUrl ? (
+              <a
+                className="sq-btn sq-btn-solid sq-btn-small"
+                href={r.buyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpened({ ...opened, [r.id]: true })}
+              >
+                Buy
+              </a>
+            ) : null;
+            let line: string | null = null;
+            let action: React.ReactNode;
+            if (st.state === "none") {
+              line = opened[r.id] ? "Shop page opened" : null;
+              action =
+                opened[r.id] || !r.buyUrl ? (
+                  <button type="button" className="sq-btn sq-btn-solid sq-btn-small" onClick={() => send(r.id, "ordered", { orderedAt: now })}>
+                    I&rsquo;ve ordered it
+                  </button>
+                ) : (
+                  buy
+                );
+            } else if (st.state === "ordered") {
+              line = left ? `Reordered. This pack: ${left}` : "Ordered";
+              action = (
+                <button
+                  type="button"
+                  className="sq-btn sq-btn-solid sq-btn-small"
+                  onClick={() => send(r.id, "arrived", { arrivedOn: todayYmd })}
+                >
+                  It&rsquo;s arrived
+                </button>
+              );
+            } else if (st.state === "low" || st.state === "out") {
+              line = `Running low: ${left}`;
+              action =
+                opened[r.id] || !r.buyUrl ? (
+                  <button
+                    type="button"
+                    className="sq-btn sq-btn-solid sq-btn-small"
+                    onClick={() => send(r.id, "ordered", { ...cur, orderedAt: now })}
+                  >
+                    I&rsquo;ve ordered it
+                  </button>
+                ) : (
+                  buy
+                );
+            } else {
+              line = st.runsOutOn ? `Lasts until about ${shortDay(st.runsOutOn)}` : cur?.have ? "You have it" : "Arrived";
+              action = (
+                <button type="button" className="sq-link" onClick={() => send(r.id, "undo")}>
+                  Undo
+                </button>
+              );
+            }
             return (
               <div key={r.id} className="sq-li sq-li-static sq-ord">
                 <span className="sq-li-body">
                   <b>{r.name}</b>
                   <small>{r.buyUrl ? r.shop : "Ask your coach where to get this one"}</small>
-                  {s === "done" && (
-                    <span className="sq-status">
-                      <SqIcon name="check" /> Ordered
+                  {line && (
+                    <span className={st.state === "low" || st.state === "out" ? "sq-status sq-low" : "sq-status"}>
+                      {st.state !== "none" && st.state !== "low" && st.state !== "out" && <SqIcon name="check" />} {line}
                     </span>
                   )}
-                  {s === "open" && <small>Shop page opened</small>}
+                  {st.state === "ordered" && (
+                    <button type="button" className="sq-link" onClick={() => send(r.id, "undo")}>
+                      Undo
+                    </button>
+                  )}
                 </span>
-                {s === "done" ? (
-                  <button type="button" className="sq-link" onClick={() => put(r.id, "")}>
-                    Undo
-                  </button>
-                ) : s === "open" || !r.buyUrl ? (
-                  <button type="button" className="sq-btn sq-btn-solid sq-btn-small" onClick={() => put(r.id, "done")}>
-                    I&rsquo;ve ordered it
-                  </button>
-                ) : (
-                  <a
-                    className="sq-btn sq-btn-solid sq-btn-small"
-                    href={r.buyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => put(r.id, "open")}
-                  >
-                    Buy
-                  </a>
-                )}
+                {action}
               </div>
             );
           })}
@@ -167,7 +206,7 @@ export function SqOrderSheet({ data, onAsk }: { data: ClientAppData; onAsk: () =
           <button
             type="button"
             className="sq-btn sq-btn-quiet"
-            onClick={() => setSt(Object.fromEntries(rows.map((r) => [r.id, "done" as OrderState])))}
+            onClick={() => rows.filter((r) => !map[r.id]).forEach((r) => send(r.id, "have", { have: true }))}
           >
             I already have them all
           </button>
@@ -178,7 +217,9 @@ export function SqOrderSheet({ data, onAsk }: { data: ClientAppData; onAsk: () =
           )}
         </div>
       )}
-      <p className="sq-sub sq-small">The shop page shows the real price.</p>
+      <p className="sq-sub sq-small">
+        The shop page shows the real price. When a new pack arrives, tick it here and the count starts again.
+      </p>
     </>
   );
 }

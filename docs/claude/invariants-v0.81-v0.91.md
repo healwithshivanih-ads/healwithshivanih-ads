@@ -385,3 +385,8 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - `sq-diary.tsx` (`useSqDiary`, `SqDiaryCard`, `SqDiarySheet`) is the new front's diary. It talks only to `/api/app-diary` like `ochre-diary.tsx`, and shows only what `clientDiaryView` sends (words, grams only when the coach switched them on).
 - Home shows the card only while a diary runs; a picked photo opens the "diary" sheet. It never names the coach and never sends a message (`sq-diary.test.tsx` pins both). Meal-time reminders stay off until the client turns them on.
 - Everything tab part 1 (`sq-everything.tsx`): supplements, order supplements (ticks phone-only for now: coach cannot see them yet), weight + BP (prototype ranges; posts `/api/app-body`), trip (posts `/api/app-travel`; Home Travelling card only from the day of travel, `travellingNow`).
+
+### Supplement supply countdown (client app, Nov 2026)
+- Client taps on the order sheet (`ordered` / `arrived` / `have` / `undo`) → `/api/app-supply` → `_supply.<host>.jsonl` (append-only per host; `app-staging-action.py::_mirror_supply` copies Fly → Mac). Pure logic in `fmdb/supply.ts` + `supply-rows.ts`.
+- Run-out = arrival day + pack count ÷ units a day. Pack size comes from `supplement_links.yaml#pack_size` ONLY when the Buy link is that product (a coach-pinned `buy_link` to another product gets no countdown). Units a day: a count in the dose, else dose ÷ `unit_strength`; g/ml packs, as-needed, weekly and alternate-day doses get NO date. Never guess.
+- Home "Running low" card ≤ 7 days left; push at 10:00 client time via `cron/app-reminders` (push-enabled clients only, `purpose: "plan"`, once per pack keyed `supply:<item>:<runsOutOn>`).

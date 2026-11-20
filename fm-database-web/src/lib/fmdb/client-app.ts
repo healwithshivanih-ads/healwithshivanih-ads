@@ -279,6 +279,8 @@ import { clientDiaryView, diaryDisplay, parseDiaryConfig, type ClientDiaryView }
 import { diaryGentle } from "./food-diary-balance";
 import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
+import { loadSupply } from "./supply-store";
+import { parsePackSize, unitsPerDay, type ItemSupply, type PackSize } from "./supply";
 import {
   isNonVegPref,
   isVegetarianPref,
@@ -386,6 +388,10 @@ export interface AppSupplement {
   /** VitaOne supplement-facts label thumbnail (from supplement_links.yaml),
    *  shown beside the Reorder link. */
   imageUrl?: string;
+  /** Pack size of the product the Buy link opens, and units taken a day.
+   *  Only when both are known (supply.ts never guesses). Drives the
+   *  running-low countdown. */
+  pack?: { count: number; unit: string; perDay: number };
   /** True when timing is situational (as-needed, at-risk meals, PRN). Excluded from daily log. */
   asNeeded?: boolean;
   /** True when supplement should be taken on an empty stomach — sorts before with-food supplements. */
@@ -1496,6 +1502,8 @@ export interface ClientAppData {
    *  coach correction or an AI reading (see clientDiaryView). Absent on the
    *  discovery / guided tiers. */
   foodDiary?: ClientDiaryView | null;
+  /** The client's own supply taps, folded per order-sheet row (supply.ts). */
+  supply?: Record<string, ItemSupply>;
   reminders: {
     id: string;
     label: string;
@@ -4505,6 +4513,8 @@ export async function loadClientAppData(
     const dose = asStr(p.dose);
     let buyUrl: string | undefined;
     let suppImageUrl: string | undefined;
+    let suppPack: PackSize | null = null;
+    let suppStrength: string | undefined;
     {
       // Coach-set per-plan buy-link override WINS — a specific product the coach
       // pinned on the plan entry (e.g. "Autoimmunity Care UTI Care") that may not
@@ -4527,6 +4537,12 @@ export async function loadClientAppData(
         if (link.source !== "search") {
           if (!buyUrl) buyUrl = link.url;
           suppImageUrl = link.image_url;
+          // Pack size only when the client buys THIS product: a coach-pinned
+          // buy_link to another product would count the wrong pack.
+          if (buyUrl === link.url) {
+            suppPack = parsePackSize(link.pack_size);
+            suppStrength = link.unit_strength;
+          }
         } else if (!buyUrl && international) {
           // The international search fallback is a targeted iHerb keyword
           // search on the ingredient — fail-safe (right ingredient, referral
@@ -4583,6 +4599,10 @@ export async function loadClientAppData(
     // into today's slots / check-in / counts.
     const cad = asNeeded ? null : supplementCadence(dose, timing);
     if (cad) (suppItem as AppSupplement).notDaily = cad.cadence;
+    if (suppPack && buyUrl) {
+      const perDay = asNeeded || cad ? null : unitsPerDay(dose, timing, suppStrength, suppPack);
+      if (perDay) (suppItem as AppSupplement).pack = { ...suppPack, perDay };
+    }
     allSupplements.push(suppItem);
     // A supplement with named days ("Mon/Wed/Fri") is on Today only on those
     // days; one that just says "once weekly" is offered every day, uncounted.
@@ -6530,5 +6550,6 @@ export async function loadClientAppData(
     body,
     reminders,
     foodDiary,
+    supply: loadSupply(clientId),
   };
 }

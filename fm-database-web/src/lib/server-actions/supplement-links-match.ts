@@ -27,6 +27,8 @@ export interface SupplementLink {
   /** VitaOne supplement-facts label image URL, when captured from the product
    *  catalogue. Surfaced as a thumbnail next to the client's Reorder link. */
   image_url?: string;
+  /** Count per pack, hand-filled from the shop page; drives the supply countdown. */
+  pack_size?: { count?: number; unit?: string; source?: string };
 }
 
 export interface LinksEntry {
@@ -43,6 +45,7 @@ export interface LinksEntry {
   unit_strength?: string;
   /** VitaOne supplement-facts label image URL (added 2026-07-04 catalogue import). */
   facts_image_url?: string;
+  pack_size?: { count?: number; unit?: string; source?: string };
   /** Opt-in for an entry whose source isn't in INTERNATIONAL_SOURCES but
    *  whose retailer ships worldwide (e.g. a brand's own global store). */
   ships_international?: boolean;
