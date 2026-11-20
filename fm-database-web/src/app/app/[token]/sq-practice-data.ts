@@ -47,7 +47,7 @@ export const VOICE_SECS: Record<VoiceSet, number[]> = {
   // The wind-down clips play 20% slower than recorded (ffmpeg atempo=0.80,
   // pitch unchanged), with 2 s of quiet added between the sentences inside
   // each line, as the coach chose by ear on 19 Nov 2026.
-  "sleep-wind-down": [17.19, 26.07, 15.27, 14.25, 10.57, 11.25, 14.4, 14.73, 11.91, 13.91],
+  "sleep-wind-down": [20.23, 30.66, 17.95, 16.75, 12.44, 13.24, 16.95, 17.33, 14.0, 16.34], // slowed 15% (coach, 20 Nov 2026)
 };
 
 /** The file for one clip: clips are numbered from 01. */
