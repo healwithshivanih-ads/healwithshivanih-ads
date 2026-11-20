@@ -44,8 +44,8 @@ from fmdb.drug_match import match_drugs  # noqa: E402
 from fmdb.plan.supplement_clash import fold, has_term  # noqa: E402
 from protein_logic import _iter_lab_values  # noqa: E402
 
-# ── the three open rulings (BUILD-PLAN "Still open"), one constant each ──────
-#: 1. glycaemic plans: carbs stay at 45%, fat may rise to this share.
+# ── the three rulings (BUILD-PLAN "Still open"), one constant each ───────────
+#: 1. DECIDED (coach, 20 Nov 2026: "Yes, fat to 35%"): glycaemic plans keep carbs at 45% and fat may rise to this share.
 GLYCAEMIC_FAT_MAX = 0.35
 #: 2. protein before any kidney test is on record (g/kg band).
 NO_KIDNEY_TEST_PROTEIN = (1.2, 1.5)
