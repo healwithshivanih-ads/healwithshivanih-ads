@@ -61,7 +61,9 @@ function snapDays(cells: string[]): { dishes: string[]; notes: string[] } {
   );
 }
 
-describe("snap_dish_to_catalogue", () => {
+// Each call loads the real catalogue in Python: seconds alone, far longer when
+// the whole suite runs in parallel. 30 s timed out under load (20 Nov 2026).
+describe("snap_dish_to_catalogue", { timeout: 120_000 }, () => {
   it("snaps a decorated name onto its catalogue title", () => {
     expect(snap(["Clear vegetable broth (1 cup)"])[0]).toBe("Everyday Vegetable Broth");
     expect(snap(["Tofu stir-fry with mixed vegetables (3/4 cup)"])[0]).toBe(
@@ -86,7 +88,7 @@ describe("snap_dish_to_catalogue", () => {
   }, PY_TEST_TIMEOUT_MS);
 });
 
-describe("snap_menu_days", () => {
+describe("snap_menu_days", { timeout: 120_000 }, () => {
   it("rewrites each component of a compound cell, keeping portions exactly", () => {
     const { dishes, notes } = snapDays([
       "Clear vegetable broth (1 cup) + Ragi dosa (1)",
