@@ -727,4 +727,16 @@
 
 .sq-status.sq-low { color: var(--sq-cedar); }
 
-.sq-app .sq-macros { font-size: 13.5px; color: var(--sq-muted); margin: 4px 0 8px; }
+.sq-app .sq-macros { font-size: 13.5px; color: var(--sq-muted); margin: 4px 0 8px;
+}
+
+/* Today's screens, hosted full-screen in the new front (sq-host.tsx) */
+.sq-app .sq-host { position: absolute; inset: 0; z-index: 6; display: flex; justify-content: center; background: var(--sq-ground); }
+.sq-app .sq-host-app { display: flex; flex-direction: column; max-width: none; height: 100%; }
+.sq-app .sq-host-app .overlay.show { position: absolute; inset: 0; }
+.sq-app .sq-host-app .screen-scroll { flex: 1; min-height: 0; overflow-y: auto; }
+.sq-app .sq-host-bar {
+  display: flex; align-items: center; gap: 8px; flex: none;
+  padding: max(14px, env(safe-area-inset-top, 0px)) var(--sq-gr) 8px var(--sq-gl);
+}
+.sq-app .sq-host-bar h2 { flex: 1; font-family: var(--sq-serif); font-weight: 500; font-size: 22px; color: var(--sq-ink); }

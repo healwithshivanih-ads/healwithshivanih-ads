@@ -119,7 +119,7 @@ function outcome(r: AskResult): string {
   if (r.type === "empty") return "EMPTY";
   if (r.type === "model") return "MODEL";
   if (r.type === "tab") return `TAB ${r.tab}`;
-  if (r.type === "open") return r.sheet.k === "soon" ? `SOON ${r.sheet.title}` : r.sheet.k === "practice" ? `PRACTICE ${r.sheet.id}` : `OPEN ${r.sheet.k}`;
+  if (r.type === "open") return r.sheet.k === "soon" ? `SOON ${r.sheet.title}` : r.sheet.k === "practice" ? `PRACTICE ${r.sheet.id}` : r.sheet.k === "hosted" ? `SCREEN ${r.sheet.id}` : `OPEN ${r.sheet.k}`;
   const c = r.card;
   if (c.tone === "urgent") return c.heading!.includes("alone") ? "SELFHARM" : "EMERGENCY";
   if (c.handoff) return "HAND";
@@ -176,7 +176,7 @@ const REGRESSION: [string, string][] = [
   // the prototype had no answer for these; the model decides (and defers)
   ["what should i drink on waking", "MODEL"],
   ["what is the capital of france", "MODEL"],
-  ["when is next test", "MODEL"],
+  ["when is next test", "SCREEN labs"],
   ["what do i get at the end", "MODEL"],
   // next session
   ["when is my next session", "CARD Your next session: Sat, 5 Dec"],
@@ -258,18 +258,18 @@ const REGRESSION: [string, string][] = [
   // the coach
   ["Tell my coach how I feel", "TAB coach"],
   // screens that arrive in later build steps
-  ["log my weight", "SOON Weight and blood pressure"],
-  ["Where do I log my weight and blood pressure?", "SOON Weight and blood pressure"],
-  ["how do i order the supplements", "SOON Order supplements"],
-  ["running out of d3 while away", "SOON Order supplements"],
-  ["Reorder supplements", "SOON Order supplements"],
+  ["log my weight", "OPEN vitals"],
+  ["Where do I log my weight and blood pressure?", "OPEN vitals"],
+  ["how do i order the supplements", "OPEN order"],
+  ["running out of d3 while away", "OPEN order"],
+  ["Reorder supplements", "OPEN order"],
   ["what do i need to buy", "SOON Shopping list"],
   ["Shopping list", "SOON Shopping list"],
   ["shopping list cook ko bhejna hai", "SOON Shopping list"],
-  ["When is my weekly check-in and where do I fill it?", "SOON Your check-in"],
+  ["When is my weekly check-in and where do I fill it?", "SCREEN checkin"],
   ["Send today's meals to my cook", "SOON Send to my cook"],
   ["cook ko aaj ka khana bhejo", "SOON Send to my cook"],
-  ["This week's menu", "SOON This week's menu"],
+  ["This week's menu", "SCREEN menu"],
   ["my exercise for today", "SOON Movement"],
 ];
 

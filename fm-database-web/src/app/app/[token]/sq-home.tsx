@@ -295,7 +295,7 @@ export function SqHome(p: SqHomeProps) {
         <button
           type="button"
           className="sq-card sq-week"
-          onClick={() => p.open({ k: "soon", title: week.opens === "grocery" ? "Shopping list" : "Weekly check-in" })}
+          onClick={() => p.open({ k: "hosted", id: week.opens === "grocery" ? "grocery" : "checkin" })}
         >
           <span className="sq-badge">
             <SqIcon name={week.opens === "grocery" ? "bag" : "pen"} />

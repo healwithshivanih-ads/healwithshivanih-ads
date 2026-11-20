@@ -32,6 +32,7 @@ import { NO_ANSWER_CARD, type AskButton } from "@/lib/fmdb/ask-card";
 import { askChips, looksLikeDishQuestion, notOnListCard, routeAsk, type AskContext } from "./sq-ask";
 import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
 import { SqCoach, useCoachThread } from "./sq-coach";
+import { HOSTED_TITLES, hostedAvailable, SqHost } from "./sq-host";
 import { DEFAULT_PREFS, findPractice, parsePrefs, practiceList, type PracticePrefs } from "./sq-practice-data";
 import { SqGoodnight, SqPracticePlayer, type PracticeResult } from "./sq-practice";
 import { SqPractices, SqScenesSheet } from "./sq-practices";
@@ -495,6 +496,30 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                     </div>
                   </SqCard>
                 )}
+                {(() => {
+                  const have = hostedAvailable(data);
+                  const row = (id: "menu" | "grocery" | "checkin" | "labs" | "move", note: string) =>
+                    have.has(id) ? <SqNavRow key={id} title={HOSTED_TITLES[id]} note={note} onOpen={() => open({ k: "hosted", id })} /> : null;
+                  return (
+                    <>
+                      {(have.has("menu") || have.has("grocery")) && (
+                        <SqCard title="Food">
+                          <div className="sq-list">
+                            {row("menu", "Every meal, day by day")}
+                            {row("grocery", "What to buy, ticked off as you go")}
+                          </div>
+                        </SqCard>
+                      )}
+                      <SqCard title="Each week">
+                        <div className="sq-list">
+                          {row("checkin", state.checkinSentWeek >= data.client.week ? `Week ${data.client.week} sent` : "A minute, once a week, for your coach")}
+                          {row("labs", "Book a test, and the reports you have")}
+                          {row("move", "Your strength session")}
+                        </div>
+                      </SqCard>
+                    </>
+                  );
+                })()}
                 {(data.supplements.length > 0 || (data.upcomingSupplements ?? []).length > 0) && (
                   <SqCard title="Supplements">
                     <div className="sq-list">
@@ -528,7 +553,6 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                     />
                   </div>
                 </SqCard>
-                <section className="sq-soft">The rest of this tab is not built yet.</section>
               </>
             ) : (
               <SqCard>
@@ -598,8 +622,18 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           onClose={close}
         />
       )}
+      {sheet?.k === "hosted" && (
+        <SqHost
+          id={sheet.id}
+          data={data}
+          checkinSent={state.checkinSentWeek >= data.client.week}
+          onCheckinSent={() => state.markCheckinSent?.()}
+          openHosted={(id) => setStack((prev) => [...prev.slice(0, -1), { k: "hosted", id }])}
+          onClose={close}
+        />
+      )}
       {sheet?.k === "night" && <SqGoodnight pending={bedtimeOpen} onTick={(id) => state.toggleTick(id)} onClose={close} />}
-      {sheet && sheet.k !== "practice" && sheet.k !== "night" && (
+      {sheet && sheet.k !== "practice" && sheet.k !== "night" && sheet.k !== "hosted" && (
         // key: each sheet is its own element, so opening one from another
         // starts at the top and plays its own entrance.
         <div key={depth} className="sq-sheet" role="dialog" aria-modal="true" aria-labelledby="sq-sheet-title">

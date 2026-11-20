@@ -815,6 +815,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
             toggleTick: toggleSupp,
             togglePractice,
             checkinSentWeek: submittedWeek,
+            markCheckinSent: () => setSubmittedWeek(data.client.week),
             textLarge,
             setTextLarge: changeTextLarge,
           }}
