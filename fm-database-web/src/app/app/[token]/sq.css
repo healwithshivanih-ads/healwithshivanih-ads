@@ -752,6 +752,25 @@
 .sq-app .sq-res-tag { font-size: 13.5px; color: var(--sq-muted); }
 .sq-app .sq-res-above .sq-res-tag, .sq-app .sq-res-below .sq-res-tag { color: var(--sq-cedar); font-weight: 600; }
 
+/* Step 6 look: today's screens wear Sequoya's ground, cards, ink and type
+   inside the new front. Contrast overrides below still win. */
+.sq-app .sq-host-app,
+.sq-app .sq-host-app .sequoya {
+  --paper: var(--sq-ground);
+  --paper-2: var(--sq-card);
+  --ink: var(--sq-ink);
+  --line: var(--sq-line);
+  --line-soft: var(--sq-line);
+  --shadow-card: var(--sq-shadow);
+  --serif: var(--sq-serif);
+  --sans: var(--sq-sans);
+  --forest-tint: var(--sq-fire-tint);
+  --ochre-tint: var(--sq-cedar-tint);
+  font-family: var(--sq-sans);
+  background: var(--sq-ground);
+  color: var(--sq-ink);
+}
+
 /* ── Step 6 accessibility pass (20 Nov 2026) ─────────────────────────────
    Screens carried over from today's app (shopping list, check-in, tests and
    results, this week's menu) render inside .sq-host-app with the old app's
