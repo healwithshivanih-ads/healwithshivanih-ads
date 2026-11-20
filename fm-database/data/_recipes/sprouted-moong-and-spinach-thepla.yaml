@@ -54,8 +54,8 @@ ingredients:
   qty: '1'
   unit: pinch
 - item: cold-pressed oil (1 for the dough, the rest for cooking)
-  qty: '1.5'
-  unit: tbsp
+  qty: '2'
+  unit: tsp
 - item: salt
   qty: to taste
   unit: ''
@@ -102,10 +102,10 @@ kcal_total: 696
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 232
+  kcal: 199
   protein_g: 7.1
   carbs_g: 33.8
-  fat_g: 7.6
+  fat_g: 3.9
   fibre_g: 6.7
   iron_mg: 3.0
   calcium_mg: 48.2
@@ -116,7 +116,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 11.7
-  omega3_mg: 54.1
+  omega3_mg: 52.6
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -155,7 +155,7 @@ nutrient_lines:
   g: 0.3
 - i: 9
   key: sunflower-oil
-  g: 20.4375
+  g: 9.083333333333334
 - i: 10
   key: salt
   g: 0.0

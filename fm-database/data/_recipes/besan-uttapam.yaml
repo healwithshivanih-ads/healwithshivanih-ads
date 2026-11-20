@@ -56,7 +56,7 @@ ingredients:
   qty: '0.75'
   unit: cup
 - item: oil for cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
 - Whisk the besan, curd and water into a batter noticeably thicker than chilla batter
@@ -103,10 +103,10 @@ kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 333
+  kcal: 273
   protein_g: 11.8
   carbs_g: 32.9
-  fat_g: 17.5
+  fat_g: 10.7
   fibre_g: 6.4
   iron_mg: 3.0
   calcium_mg: 57.4
@@ -117,7 +117,7 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 29.9
-  omega3_mg: 62.1
+  omega3_mg: 59.4
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -127,7 +127,7 @@ rich_in:
 - folate
 - vitamin-c
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: besan
@@ -161,7 +161,7 @@ nutrient_lines:
   g: 0.0
 - i: 10
   key: sunflower-oil
-  g: 27.25
+  g: 13.625
 nutrient_servings: 2.0
 cycle_phases:
 - early_luteal

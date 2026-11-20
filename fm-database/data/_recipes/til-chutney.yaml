@@ -32,7 +32,7 @@ contains_allergens:
 - sesame
 ingredients:
 - item: til (white sesame seeds)
-  qty: '1'
+  qty: '0.25'
   unit: cup
 - item: grated coconut
   qty: '0.25'
@@ -56,8 +56,8 @@ ingredients:
   qty: 1 set
   unit: ''
 steps:
-- Blend the til, coconut, ginger, chilli, lemon juice, and salt with a little water into
-  a smooth chutney.
+- Blend the til, coconut, ginger, chilli, lemon juice, and salt with a little water
+  into a smooth chutney.
 - Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the
   chutney.
 - Serve fresh alongside chilla, dosa, idli, or rice.
@@ -95,35 +95,30 @@ kcal_total: 520
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 475
-  protein_g: 13.2
-  carbs_g: 19.7
-  fat_g: 41.7
-  fibre_g: 9.5
-  iron_mg: 10.8
-  calcium_mg: 705
-  magnesium_mg: 258
-  zinc_mg: 5.8
-  potassium_mg: 401
-  folate_ug: 74.9
+  kcal: 166
+  protein_g: 3.7
+  carbs_g: 7.0
+  fat_g: 14.8
+  fibre_g: 3.1
+  iron_mg: 2.9
+  calcium_mg: 178
+  magnesium_mg: 68.8
+  zinc_mg: 1.5
+  potassium_mg: 149
+  folate_ug: 22.5
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 6.2
-  omega3_mg: 275
+  omega3_mg: 69.6
 nutrient_coverage_pct: 100.0
 rich_in:
-- protein
-- fibre
-- iron
 - calcium
-- magnesium
-- zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: sesame-seeds
-  g: 144.0
+  g: 36.0
 - i: 1
   key: coconut-fresh
   g: 20.0
@@ -150,11 +145,11 @@ cycle_phases:
 - ovulatory
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: नारियल तिल की चटनी
     steps:
-    - तिल, नारियल, अदरक, मिर्च, नींबू का रस और नमक को थोड़े पानी के साथ पीसकर चिकनी चटनी बनाएँ।
+    - तिल, नारियल, अदरक, मिर्च, नींबू का रस और नमक को थोड़े पानी के साथ पीसकर चिकनी
+      चटनी बनाएँ।
     - थोड़ा नारियल तेल गरम करें, राई और करी पत्ता तड़काएँ, और चटनी पर डालें।
     - चीला, डोसा, इडली या चावल के साथ ताज़ा परोसें।

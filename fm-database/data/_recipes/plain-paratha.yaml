@@ -25,7 +25,7 @@ ingredients:
   qty: '2'
   unit: cup
 - item: ghee (for layering and cooking)
-  qty: '3'
+  qty: '1'
   unit: tbsp
 - item: water
   qty: '0.75'
@@ -70,10 +70,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 569
+  kcal: 447
   protein_g: 12.7
   carbs_g: 77.6
-  fat_g: 22.2
+  fat_g: 8.6
   fibre_g: 13.7
   iron_mg: 4.7
   calcium_mg: 46.8
@@ -82,9 +82,9 @@ nutrients_per_serving:
   potassium_mg: 408
   folate_ug: 36.0
   b12_ug: 0.0
-  vit_d_ug: 0.1
+  vit_d_ug: 0.0
   vit_c_mg: 0.0
-  omega3_mg: 218
+  omega3_mg: 108
 nutrient_coverage_pct: 100.0
 rich_in:
 - protein
@@ -93,14 +93,14 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: wheat-flour
   g: 240.0
 - i: 1
   key: ghee
-  g: 40.875
+  g: 13.625
 - i: 2
   key: water
   g: 0.0

@@ -29,7 +29,7 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: coconut
-  qty: '1'
+  qty: '0.5'
   unit: cup
 - item: grated coconut
   qty: '0.25'
@@ -92,29 +92,29 @@ kcal_total: 220
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 204
-  protein_g: 1.8
-  carbs_g: 8.9
-  fat_g: 19.3
-  fibre_g: 4.6
-  iron_mg: 1.3
-  calcium_mg: 8.4
-  magnesium_mg: 18.4
-  zinc_mg: 0.6
-  potassium_mg: 207
-  folate_ug: 15.4
+  kcal: 134
+  protein_g: 1.1
+  carbs_g: 5.9
+  fat_g: 12.6
+  fibre_g: 2.8
+  iron_mg: 0.8
+  calcium_mg: 5.6
+  magnesium_mg: 12.0
+  zinc_mg: 0.4
+  potassium_mg: 136
+  folate_ug: 10.2
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 7.5
+  vit_c_mg: 6.9
   omega3_mg: 1.1
 nutrient_coverage_pct: 100.0
 rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: coconut-fresh
-  g: 80.0
+  g: 40.0
 - i: 1
   key: coconut-fresh
   g: 20.0
@@ -137,11 +137,11 @@ nutrient_lines:
   key: coconut-oil
   g: 5.0
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: नारियल की चटनी
     steps:
-    - नारियल, नारियल, अदरक, मिर्च, नींबू का रस और नमक को थोड़े पानी के साथ पीसकर चिकनी चटनी बना लें।
+    - नारियल, नारियल, अदरक, मिर्च, नींबू का रस और नमक को थोड़े पानी के साथ पीसकर चिकनी
+      चटनी बना लें।
     - थोड़ा नारियल तेल गरम करें, राई और करी पत्ता चटकाएँ, और चटनी पर डाल दें।
     - चीला, डोसा, इडली या चावल के साथ ताज़ा परोसें।

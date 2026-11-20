@@ -49,7 +49,7 @@ ingredients:
   qty: to taste
   unit: ''
 - item: cold-pressed oil, for dough and cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
 - Combine the wheat flour, bajra flour, chopped methi, curd, turmeric, chilli, cumin,
@@ -94,10 +94,10 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 438
+  kcal: 378
   protein_g: 11.1
   carbs_g: 59.7
-  fat_g: 17.0
+  fat_g: 10.2
   fibre_g: 11.5
   iron_mg: 6.1
   calcium_mg: 105
@@ -108,7 +108,7 @@ nutrients_per_serving:
   b12_ug: 0.1
   vit_d_ug: 0.0
   vit_c_mg: 8.8
-  omega3_mg: 97.8
+  omega3_mg: 95.1
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -116,7 +116,7 @@ rich_in:
 - magnesium
 - zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-09-09'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: wheat-flour
@@ -144,7 +144,7 @@ nutrient_lines:
   g: 0.0
 - i: 8
   key: sunflower-oil
-  g: 27.25
+  g: 13.625
 nutrient_servings: 2.0
 cycle_phases:
 - menstrual

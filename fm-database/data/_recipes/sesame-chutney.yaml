@@ -25,7 +25,7 @@ contains_allergens:
 - sesame
 ingredients:
 - item: white sesame seeds (til)
-  qty: '0.5'
+  qty: '0.25'
   unit: cup
 - item: garlic cloves
   qty: '3'
@@ -83,33 +83,31 @@ status: active
 updated_at: '2026-07-12'
 updated_by: Shivani
 nutrients_per_serving:
-  kcal: 223
-  protein_g: 6.9
-  carbs_g: 12.2
-  fat_g: 18.1
-  fibre_g: 4.6
-  iron_mg: 5.8
-  calcium_mg: 367
-  magnesium_mg: 133
-  zinc_mg: 2.9
-  potassium_mg: 229
-  folate_ug: 36.6
+  kcal: 120
+  protein_g: 3.7
+  carbs_g: 8.0
+  fat_g: 9.1
+  fibre_g: 2.5
+  iron_mg: 3.2
+  calcium_mg: 191
+  magnesium_mg: 69.9
+  zinc_mg: 1.5
+  potassium_mg: 145
+  folate_ug: 19.2
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 7.1
-  omega3_mg: 140
+  omega3_mg: 71.1
 nutrient_coverage_pct: 100.0
 rich_in:
 - iron
 - calcium
-- magnesium
-- zinc
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: sesame-seeds
-  g: 72.0
+  g: 36.0
 - i: 1
   key: garlic
   g: 9.0
@@ -133,7 +131,6 @@ cycle_phases:
 - ovulatory
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: तिल की चटनी

@@ -51,7 +51,7 @@ ingredients:
   qty: to taste
   unit: ''
 - item: ghee or oil for cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
 - Grind the sprouted moong with the ginger and green chilli and a little water to
@@ -98,10 +98,10 @@ kcal_total: 598
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 299
+  kcal: 238
   protein_g: 11.1
   carbs_g: 32.0
-  fat_g: 14.3
+  fat_g: 7.5
   fibre_g: 7.7
   iron_mg: 3.4
   calcium_mg: 70.4
@@ -110,9 +110,9 @@ nutrients_per_serving:
   potassium_mg: 601
   folate_ug: 265
   b12_ug: 0.0
-  vit_d_ug: 0.1
+  vit_d_ug: 0.0
   vit_c_mg: 25.6
-  omega3_mg: 183
+  omega3_mg: 129
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -150,7 +150,7 @@ nutrient_lines:
   g: 0.0
 - i: 8
   key: ghee
-  g: 27.25
+  g: 13.625
 nutrient_servings: 2.0
 cycle_phases:
 - follicular

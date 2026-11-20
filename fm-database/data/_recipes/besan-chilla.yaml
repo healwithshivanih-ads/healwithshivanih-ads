@@ -51,7 +51,7 @@ ingredients:
   qty: '1'
   unit: cup
 - item: ghee or oil for cooking
-  qty: '2'
+  qty: '1'
   unit: tbsp
 steps:
 - Whisk the besan with the water gradually — adding it all at once guarantees lumps.
@@ -95,10 +95,10 @@ kcal_total: 420
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 315
+  kcal: 254
   protein_g: 10.8
   carbs_g: 29.8
-  fat_g: 16.8
+  fat_g: 10.0
   fibre_g: 5.7
   iron_mg: 2.7
   calcium_mg: 33.1
@@ -107,16 +107,16 @@ nutrients_per_serving:
   potassium_mg: 457
   folate_ug: 208
   b12_ug: 0.0
-  vit_d_ug: 0.1
+  vit_d_ug: 0.0
   vit_c_mg: 5.2
-  omega3_mg: 158
+  omega3_mg: 104
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
 - magnesium
 - folate
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: besan
@@ -144,17 +144,18 @@ nutrient_lines:
   g: 0.0
 - i: 8
   key: ghee
-  g: 27.25
+  g: 13.625
 nutrient_servings: 2.0
 cycle_phases:
 - early_luteal
 - late_luteal
-
 translations:
   hi:
     name: बेसन चीला
     steps:
-    - बेसन में पानी धीरे-धीरे डालते हुए फेंटें — एक साथ सारा पानी डालने से गुठलियाँ पक्की बनेंगी।
-    - इसमें प्याज़, मिर्च, धनिया, अजवाइन, हल्दी और नमक मिलाएँ। घोल चम्मच पर चढ़े पर आसानी से गिरे, ऐसा होना चाहिए।
+    - बेसन में पानी धीरे-धीरे डालते हुए फेंटें — एक साथ सारा पानी डालने से गुठलियाँ
+      पक्की बनेंगी।
+    - इसमें प्याज़, मिर्च, धनिया, अजवाइन, हल्दी और नमक मिलाएँ। घोल चम्मच पर चढ़े पर
+      आसानी से गिरे, ऐसा होना चाहिए।
     - तवा मध्यम आँच पर गरम करें, एक कलछी घोल डालकर पतला फैलाएँ।
     - किनारों पर घी डालें, 2 minute पकाएँ जब तक उठने लगे, पलटें और सेंक लें।

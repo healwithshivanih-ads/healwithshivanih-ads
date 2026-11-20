@@ -39,8 +39,8 @@ ingredients:
   qty: to taste
   unit: ''
 - item: sesame oil, cold-pressed
-  qty: '2'
-  unit: tbsp
+  qty: '1'
+  unit: tsp
 steps:
 - Stir the chana sprouts into the idli batter with the cumin and salt.
 - Whisk in the sesame oil really well.
@@ -85,10 +85,10 @@ kcal_total: 1400
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-11-20'
 nutrients_per_serving:
-  kcal: 350
+  kcal: 299
   protein_g: 10.5
   carbs_g: 55.6
-  fat_g: 8.8
+  fat_g: 3.1
   fibre_g: 5.1
   iron_mg: 2.4
   calcium_mg: 37.1
@@ -99,7 +99,7 @@ nutrients_per_serving:
   b12_ug: 0.0
   vit_d_ug: 0.0
   vit_c_mg: 1.9
-  omega3_mg: 53.6
+  omega3_mg: 36.6
 nutrient_coverage_pct: 100.0
 rich_in:
 - fibre
@@ -121,7 +121,7 @@ nutrient_lines:
   g: 0.0
 - i: 4
   key: sesame-oil
-  g: 27.25
+  g: 4.541666666666667
 nutrient_servings: 4.0
 cycle_phases:
 - follicular

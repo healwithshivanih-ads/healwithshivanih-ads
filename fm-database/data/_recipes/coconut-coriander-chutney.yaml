@@ -27,7 +27,7 @@ main_ingredients:
 contains_allergens: []
 ingredients:
 - item: grated fresh coconut
-  qty: '1'
+  qty: '0.5'
   unit: cup
 - item: fresh coriander
   qty: '0.75'
@@ -110,30 +110,29 @@ kcal_total: 140
 kcal_basis: ingredient_table_v1
 kcal_computed_at: '2026-06-13'
 nutrients_per_serving:
-  kcal: 224
-  protein_g: 4.9
-  carbs_g: 16.1
-  fat_g: 16.8
-  fibre_g: 5.5
-  iron_mg: 1.9
-  calcium_mg: 32.9
-  magnesium_mg: 39.5
-  zinc_mg: 0.9
-  potassium_mg: 327
-  folate_ug: 46.2
+  kcal: 153
+  protein_g: 4.3
+  carbs_g: 13.0
+  fat_g: 10.1
+  fibre_g: 3.7
+  iron_mg: 1.5
+  calcium_mg: 30.1
+  magnesium_mg: 33.1
+  zinc_mg: 0.7
+  potassium_mg: 256
+  folate_ug: 41.0
   b12_ug: 0.0
   vit_d_ug: 0.0
-  vit_c_mg: 11.6
+  vit_c_mg: 10.9
   omega3_mg: 18.5
 nutrient_coverage_pct: 100.0
-rich_in:
-- fibre
+rich_in: []
 nutrient_basis: ingredient_table_v1
-nutrients_computed_at: '2026-07-29'
+nutrients_computed_at: '2026-11-20'
 nutrient_lines:
 - i: 0
   key: coconut-fresh
-  g: 80.0
+  g: 40.0
 - i: 1
   key: coriander-fresh
   g: 12.0
@@ -171,13 +170,15 @@ nutrient_lines:
   key: curry-leaves
   g: 2.4
 nutrient_servings: 2.0
-
 translations:
   hi:
     name: चना दाल वाली नारियल की चटनी
     steps:
-    - नारियल, धनिया, भुनी चना दाल, हरी मिर्च, अदरक, इमली और नमक को पानी के साथ पीसकर चिकनी चटनी बनाएँ।
-    - भुनी चना दाल इसे गाढ़ा करती है और जमाए रखती है; यह वैकल्पिक है, पर न डालें तो कम पानी लें।
+    - नारियल, धनिया, भुनी चना दाल, हरी मिर्च, अदरक, इमली और नमक को पानी के साथ पीसकर
+      चिकनी चटनी बनाएँ।
+    - भुनी चना दाल इसे गाढ़ा करती है और जमाए रखती है; यह वैकल्पिक है, पर न डालें तो
+      कम पानी लें।
     - अपनी मनचाही गाढ़ाई के लिए और पानी मिलाएँ।
-    - तड़के के लिए नारियल तेल में राई तड़काएँ, फिर उड़द दाल डालकर सुनहरी होने तक भूनें — यह खुशबू ही तड़के की जान है। आखिर में लाल मिर्च और करी पत्ता डालें।
+    - तड़के के लिए नारियल तेल में राई तड़काएँ, फिर उड़द दाल डालकर सुनहरी होने तक भूनें
+      — यह खुशबू ही तड़के की जान है। आखिर में लाल मिर्च और करी पत्ता डालें।
     - तड़का चटनी पर डालकर परोसने से ठीक पहले मिला दें।
