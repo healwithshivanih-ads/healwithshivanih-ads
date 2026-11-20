@@ -72,10 +72,12 @@ def level_and_side(
     hi: Optional[float] = None,
     sex: Optional[str] = None,
     cutoffs: Optional[dict] = None,
+    unit: Optional[str] = None,
 ) -> tuple[str, str]:
     """(level, side) of one result. side is "high", "low" or "" and says which way the result is off.
 
-    `lo` / `hi` are the laboratory's own printed range for it."""
+    `lo` / `hi` are the laboratory's own printed range for it. `unit` is the laboratory's unit: a `fallback_plus`
+    line that names a unit is applied only when the two agree (see plus_unit_ok)."""
     if value is None:
         return "", ""
     c = cutoffs or load_cutoffs()
@@ -89,6 +91,10 @@ def level_and_side(
             up = _scan(100.0 * (value - hi) / hi, fb, sex)
         elif below and lo:
             down = _scan(100.0 * (lo - value) / lo, fb, sex)
+        plus = (c.get("fallback_plus") or {}).get(key)
+        if plus and plus_unit_ok(key, unit, c):
+            up = worst(up, _scan(value, plus.get("high"), sex))
+            down = worst(down, _scan(value, plus.get("low"), sex, low=True))
     else:
         up, down = _scan(value, spec.get("high"), sex), _scan(value, spec.get("low"), sex, low=True)
         if hi:
@@ -105,6 +111,12 @@ def level_and_side(
     if key in (c.get("inside_range_max_A") or []) and rank(lv) > rank("A") and lo is not None and hi is not None and not above and not below:
         lv = "A"        # inside the range the laboratory printed beside it
     return lv, side
+
+
+def plus_unit_ok(key: str, unit: Optional[str], cutoffs: Optional[dict] = None) -> bool:
+    """False when this marker's listed lines are written for a unit the laboratory did not use."""
+    want = (((cutoffs or load_cutoffs()).get("fallback_plus") or {}).get(key) or {}).get("unit")
+    return not want or want in str(unit or "").lower().replace(" ", "")
 
 
 def level_for(key: str, value: Optional[float], **kw: Any) -> str:

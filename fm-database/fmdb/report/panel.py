@@ -12,7 +12,7 @@ from typing import Any, Optional
 
 from fmdb.assess.lab_ratios import _parse_ref_range, _peek
 
-from .levels import level_and_side
+from .levels import level_and_side, plus_unit_ok
 
 
 @dataclass
@@ -22,7 +22,7 @@ class Spec:
     gloss: str = ""
     raw: str = ""                 # regex on the laboratory's test name
     comp: str = ""                # regex on a score the lab engine calculates
-    kind: str = "lab"             # lab = the laboratory's own range · z3 = three fixed tiers
+    kind: str = "lab"             # lab = the laboratory's own range · z3 = three fixed tiers · min = one fixed floor (a)
     a: Optional[float] = None
     b: Optional[float] = None
     rtxt: str = ""
@@ -140,7 +140,11 @@ SECTIONS: list[tuple[str, str, bool, list[Spec]]] = [
     ]),
     ("kidneys", "Kidneys and salts", False, [
         S("creatinine", "Creatinine", "waste from muscle, cleared by the kidneys",
-          raw=r"^(?!.*urine)(?!.*ratio)(?!.*albumin)(?!.*clearance).*\bcreatinine\b", group="kidney"),
+          raw=r"^(?!.*urine)(?!.*ratio)(?!.*albumin)(?!.*clearance)(?!.*gfr)(?!.*filtration).*\bcreatinine\b", group="kidney"),
+        # The laboratory's own figure (it prints one with every creatinine). Laboratories print stages beside it, not
+        # a range; the report draws it against the one line doctors act on, 60 (cutoffs.yaml, added 20 Nov 2026).
+        S("egfr", "Kidney filtering (eGFR)", "worked out from creatinine, age and sex", raw=r"\begfr\b|glomerular filtration",
+          kind="min", a=60, rtxt="60 or over", decimals=0, group="kidney"),
         S("urea", "Urea", "waste from protein", raw=r"^(?!.*nitrogen)(?!.*\bbun\b).*\burea\b", group="kidney"),
         S("bun", "Urea nitrogen (BUN)", "the same waste, counted another way", raw=r"\bbun\b|urea nitrogen", group="kidney"),
         S("sodium", "Sodium", raw=r"^(?!.*urine)(?!.*ratio).*\bsodium\b"),
@@ -268,6 +272,8 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                     lo, hi = (_scale(lo, sp.scale) if lo is not None else None), _scale(hi, sp.scale)
             if sp.kind == "z3":
                 kind, a, b, rtxt = "z3", sp.a, sp.b, sp.rtxt
+            elif sp.kind == "min":
+                kind, a, b, rtxt, lo, hi = "min", sp.a, None, sp.rtxt, sp.a, None
             else:
                 kind, a, b, rtxt = _lab_range_text(lo, hi, sp.under)
             st = state_of(v, kind, a, b, sp.b_incl)
@@ -278,7 +284,10 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                     ckey = "lpa_nmol"
                 elif "mg/dl" not in u:
                     unit_warn = f"Lp(a): the unit ({unit or 'none'}) is neither mg/dL nor nmol/L; its level was read as mg/dL, check it"
-            lv, side = level_and_side(ckey, v, lo=lo, hi=hi, sex=sex, cutoffs=cutoffs)
+            if not plus_unit_ok(sp.key, unit, cutoffs):
+                unit_warn = (f"{sp.name}: the unit ({unit or 'none'}) is not the one its strongest-level line is written for; "
+                             "only the per-cent rule was applied, check it")
+            lv, side = level_and_side(ckey, v, lo=lo, hi=hi, sex=sex, cutoffs=cutoffs, unit=unit)
             illustrative = bool(lab and lab.get("illustrative"))
             sec.rows.append(Row(
                 key=sp.key, name=sp.name, gloss="illustrative value" if illustrative else sp.gloss, value=v,

@@ -128,7 +128,7 @@ def test_what_each_level_prints():
 
 def test_every_cutoff_lives_in_the_one_file_and_the_table_is_approved():
     c = load_cutoffs()
-    assert set(c) >= {"status", "fallback_pct", "cap_at_A", "inside_range_max_A", "markers"}
+    assert set(c) >= {"status", "fallback_pct", "fallback_plus", "cap_at_A", "inside_range_max_A", "markers"}
     # Shivani approved the first table on 19 Nov 2026 and the eight corrected lines the same day ("yes for the 8").
     # A change to the numbers goes back to "provisional" until she says yes again.
     assert c["status"] == "approved" and cutoffs_approved() is True
@@ -142,6 +142,83 @@ def test_lpa_is_read_on_the_lines_for_the_unit_the_laboratory_used():
     assert lpa(110, "mg/dL")[0] == "C" and lpa(110, "nmol/L")[0] == "A" and lpa(210, "nmol/L")[0] == "C"
     lv, warns = lpa(110, "U/L")
     assert lv == "C" and any("Lp(a)" in w and "unit" in w for w in warns)       # read as mg/dL, and the coach is told
+
+
+# ── the three additions Shivani approved on 20 Nov 2026 ("Yes, add all three") ──
+@pytest.mark.parametrize("key,value,kw,want", [
+    # packed cell volume: check-up above 52 men / 48 women, doctor above 55, strongest above 60 / 56
+    ("hct", 51, dict(lo=40, hi=50, sex="M"), "A"), ("hct", 52, dict(lo=40, hi=50, sex="M"), "A"),
+    ("hct", 52.5, dict(lo=40, hi=50, sex="M"), "B"), ("hct", 55, dict(lo=40, hi=50, sex="M"), "B"),
+    ("hct", 55.5, dict(lo=40, hi=50, sex="M"), "C"), ("hct", 60, dict(lo=40, hi=50, sex="M"), "C"),
+    ("hct", 60.5, dict(lo=40, hi=50, sex="M"), "D"),
+    ("hct", 47, dict(lo=36, hi=46, sex="F"), "A"), ("hct", 48.5, dict(lo=36, hi=46, sex="F"), "B"),
+    ("hct", 55.5, dict(lo=36, hi=46, sex="F"), "C"), ("hct", 56.5, dict(lo=36, hi=46, sex="F"), "D"),
+    ("hct", 45, dict(lo=40, hi=50, sex="M"), ""),
+    ("hct", 33, dict(lo=40, hi=50, sex="M"), "B"),                 # the low side keeps the per-cent rule
+    ("hct", 53, dict(lo=40, hi=50), "A"),                          # sex not on file: the per-cent rule only
+    # the three strongest-level lines from the pathologists' list
+    ("platelets", 1000, dict(lo=150, hi=450), "C"), ("platelets", 1001, dict(lo=150, hi=450), "D"),
+    ("phosphorus", 1.0, dict(lo=2.5, hi=5.0, unit="mg/dL"), "C"), ("phosphorus", 0.9, dict(lo=2.5, hi=5.0, unit="mg/dL"), "D"),
+    ("phosphorus", 2.3, dict(lo=2.5, hi=5.0, unit="mg/dL"), "A"),
+    ("phosphorus", 0.7, dict(lo=0.8, hi=1.5, unit="mmol/L"), "A"),  # another unit: the mg/dL line is not applied
+    ("phosphorus", 0.9, dict(lo=2.5, hi=5.0), "C"),                # no unit on file: not applied either
+    ("urea", 179, dict(lo=18, hi=55, unit="mg/dL"), "C"), ("urea", 180, dict(lo=18, hi=55, unit="mg/dL"), "D"),
+    ("urea", 60, dict(lo=18, hi=55, unit="mg/dL"), "A"),
+    ("bun", 83, dict(lo=8, hi=20, unit="mg/dL"), "C"), ("bun", 84, dict(lo=8, hi=20, unit="mg/dL"), "D"),
+    ("urea", 31, dict(lo=2.5, hi=7.8, unit="mmol/L"), "C"),        # mmol/L: the per-cent rule only
+    # kidney filtering: doctor sentence below 60, nothing for 60 and over
+    ("egfr", 95, dict(lo=60), ""), ("egfr", 60, dict(lo=60), ""), ("egfr", 59, dict(lo=60), "C"), ("egfr", 20, dict(lo=60), "C"),
+])
+def test_the_lines_added_on_20_nov(key, value, kw, want):
+    assert level_for(key, value, **kw) == want
+
+
+def _with_egfr(value, label="EST. GLOMERULAR FILTRATION RATE (eGFR)", kind="standard", first=False):
+    row = dict(test_name=label, value=str(value), unit="mL/min/1.73 m2", reference_range=">= 90")
+    rows = labs(STEADY, metals=kind == "deeper")
+    rows = [row] + rows if first else rows + [row]
+    return make_report(FX["person"], rows, kind=kind, sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+
+
+@pytest.mark.parametrize("value", [112, 75, 60])
+def test_a_kidney_filtering_figure_of_60_or_over_prints_and_says_nothing(value):
+    rp = _with_egfr(value)
+    r = rp.rows["egfr"]
+    assert (r.level, r.state, r.kind, r.a, r.rtxt) == ("", "ok", "min", 60, "60 or over")     # not the laboratory's stages
+    assert rp.decision.outcome == "nothing" and not rp.missing and not rp.warnings
+    assert "Kidney filtering (eGFR)" in text(report_html(rp))
+
+
+def test_a_kidney_filtering_figure_below_60_gets_the_doctor_sentence_and_its_own_words():
+    rp = _with_egfr(52)
+    page = text(report_html(rp))
+    assert rp.rows["egfr"].level == "C" and not rp.missing and "finding.egfr_low.C" in rp.drafts
+    assert "Your kidney filtering figure is below 60" in page and "needs a doctor's attention. Please speak to your doctor." in page
+    assert SOON not in page and rp.decision.outcome == "foundation"
+
+
+def test_the_creatinine_row_never_reads_the_filtering_figure():
+    rp = _with_egfr(52, label="eGFR (creatinine based, CKD-EPI)", first=True)
+    assert rp.rows["egfr"].value == 52 and rp.rows["creatinine"].value == report(over=STEADY).rows["creatinine"].value
+
+
+def test_a_strongest_level_phosphorus_prints_and_another_unit_is_flagged_not_guessed():
+    rp, out, _ = outcome({"Phosphorus": 0.9}, kind="deeper")
+    assert rp.rows["phosphorus"].level == "D" and out == "doctor_soon" and not rp.missing
+    assert SOON in text(report_html(rp)) and "finding.phosphorus_low.C" in rp.drafts
+    rows = [dict(l, value="1.1", unit="mmol/L", reference_range="0.8-1.5") if l["test_name"] == "Phosphorus" else l
+            for l in labs(STEADY, metals=True)]
+    rp = make_report(FX["person"], rows, kind="deeper", sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+    assert rp.rows["phosphorus"].level == "" and any("Phosphorus" in w and "unit" in w for w in rp.warnings)
+
+
+def test_high_red_cells_and_high_platelets_have_their_own_words():
+    rp, _, _ = outcome({"Hematocrit (PCV)": 53})
+    page = text(report_html(rp))
+    assert rp.rows["hct"].level == "B" and "Your red cells are clearly above their range." in page and "iron and B12" not in page
+    rp, _, _ = outcome({"Platelet Count": 700})
+    page = text(report_html(rp))
+    assert rp.rows["platelets"].level == "C" and "Your platelet count is far above its range." in page and "falsely low" not in page
 
 
 # ── the test profile reads as the approved samples do ────────────────────────
@@ -283,7 +360,9 @@ SOON = "Please see your doctor in the next day or two"
 
 @pytest.mark.parametrize("kind", ["standard", "deeper"])
 @pytest.mark.parametrize("over", [{"Potassium": 6.2}, {"Fasting Glucose": 270}, {"Calcium": 7.2}, {"Bilirubin Total": 6.0},
-                                  {"Haemoglobin": 7.5}, {"Potassium": 6.2, "TSH (Ultrasensitive)": 8.3, "HbA1c": 6.1}])
+                                  {"Haemoglobin": 7.5}, {"Potassium": 6.2, "TSH (Ultrasensitive)": 8.3, "HbA1c": 6.1},
+                                  {"Platelet Count": 1100}, {"Blood Urea": 190}, {"BUN - Blood Urea Nitrogen": 90},
+                                  {"Hematocrit (PCV)": 61}])                     # the lines added 20 Nov 2026
 def test_the_strongest_level_prints_stronger_doctor_words_and_never_the_word_urgent(kind, over):
     rp, outcome_, seg = outcome(over, kind)
     assert outcome_ == "doctor_soon" and seg is None and rp.decision.soon and not rp.missing and rp.ready is True
@@ -321,7 +400,7 @@ def test_far_out_keeps_her_sentence_and_only_the_strongest_level_says_soon():
 
 
 def test_a_far_out_result_nobody_wrote_for_stops_the_report():
-    rp, _, _ = outcome({"Phosphorus": 1.0}, kind="deeper")       # phosphorus has no row in the table and no block of its own
+    rp, _, _ = outcome({"Phosphorus": 8.0}, kind="deeper")       # a HIGH phosphorus: the per-cent rule, and no block of its own
     assert rp.rows["phosphorus"].level == "C"
     assert rp.missing and any("Phosphorus" in m for m in rp.missing) and rp.ready is False
 

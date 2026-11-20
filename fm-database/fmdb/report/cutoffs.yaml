@@ -23,6 +23,16 @@
 #   albumin      its own row: check-up below 3.2, doctor below 3.0 (was the per-cent rule: doctor only below ~1.7)
 #   lpa_nmol     Lp(a) reported in nmol/L is read on nmol/L lines (the mg/dL lines were applied to any unit)
 #
+# ADDED AND APPROVED 20 Nov 2026 (her "Yes, add all three", after the guideline check of the six open questions).
+# Each line is marked "added 20 Nov" where it sits:
+#   egfr         a kidney filtering row, from the laboratory's own figure: doctor sentence below 60, nothing for 60
+#                and over (NICE NG203 / KDIGO: 60-89 with nothing else found is not kidney disease)
+#   hct          packed cell volume: check-up above 52 men / 48 women, doctor above 55, strongest above 60 men /
+#                56 women (BSH polycythaemia guideline; RCPath G158 for 55)
+#   platelets    strongest level above 1,000 (RCPath G158)
+#   phosphorus   strongest level below 1.0 mg/dL (RCPath G158: 0.3 mmol/L)
+#   urea / bun   strongest level from 180 mg/dL of urea, which is 84 mg/dL counted as urea nitrogen (RCPath G158: 30 mmol/L)
+#
 # Levels (what the report prints):
 #   A  just outside, or middle zone   no doctor wording
 #   B  clearly raised or clearly low  "worth mentioning at your next routine check-up"
@@ -51,6 +61,14 @@ cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
 # that range beside the result and must not contradict it. (corrected 19 Nov)
 inside_range_max_A: [potassium]
 
+# Markers read on the per-cent rule above that ALSO have listed lines: the worse of the two counts. A line with a
+# `unit` is applied only when the laboratory reported in that unit (the report warns the coach when it did not).
+fallback_plus:                                                                         # added 20 Nov
+  hct:        {high: {M: {B: ">52", C: ">55", D: ">60"}, F: {B: ">48", C: ">55", D: ">56"}}}   # per cent
+  phosphorus: {unit: mg/dl, low: {D: 1.0}}
+  urea:       {unit: mg/dl, high: {D: 180}}
+  bun:        {unit: mg/dl, high: {D: 84}}
+
 markers:
   # sugar
   hba1c:      {high: {A: 5.7, B: 6.0, C: 6.5, D: 10}}
@@ -69,6 +87,7 @@ markers:
   tsh:        {high: {A: 4.5, B: 6.0, C: 7.0, D: 50}, low: {A: 0.40, B: 0.30, C: 0.10}}
   # kidneys and salts
   creatinine: {high_pct: {A: ">0", B: ">10", C: ">25", D: 100}}                      # corrected 19 Nov: C >25, was >50
+  egfr:       {low: {C: 60}}                                                         # added 20 Nov; the row prints "60 or over"
   potassium:  {high: {B: ">5.0", C: ">5.5", D: 6.0}, low: {B: 3.5, C: 3.0, D: 2.5}}
   sodium:     {high: {B: ">145", C: ">150", D: ">155"}, low: {B: 135, C: 130, D: 125}}
   calcium:    {high: {B: 10.3, C: 11.5, D: 13}, low: {B: 8.5, C: 8.0, D: 7.5}}           # corrected 19 Nov: low D 7.5
@@ -85,7 +104,7 @@ markers:
   hb:         {low: {M: {A: 13.5, C: 13.0, D: 8.0}, F: {A: 12.5, B: 12.0, C: 11.0, D: 8.0}},
                high: {M: {B: ">17.5", C: ">18.5"}, F: {B: ">15.5", C: ">16.5"}}}
   wbc:        {high: {B: ">11000", C: ">15000", D: ">30000"}, low: {B: 4000, C: 3000, D: 1500}}
-  platelets:  {high: {B: ">450", C: ">600"}, low: {B: 150, C: 100, D: 50}}
+  platelets:  {high: {B: ">450", C: ">600", D: ">1000"}, low: {B: 150, C: 100, D: 50}}   # added 20 Nov: high D
   # deeper report only
   vitd:       {low: {A: 30, B: 20, C: 12}, high: {B: ">100", C: ">150"}}
   b12:        {low: {A: 300, B: 200, C: 150}}
