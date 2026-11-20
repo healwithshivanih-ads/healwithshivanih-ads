@@ -639,6 +639,11 @@ class Client(BaseModel):
     # (app-staging-action.py _APP_CLIENT_KEYS). Test client only before
     # 2 Jan 2027: the new front carries the embargoed programme name.
     app_shell: Optional[str] = None
+    # Grams of protein / carbs / fat / fibre on the new app's menu
+    # (src/lib/fmdb/meal-macros.ts). Unset = on, except for a "gentle" client
+    # (food-diary-balance.ts diaryGentle), who is off unless set true. The
+    # coach's switch on the client overview. Projected to Fly.
+    app_nutrients: Optional[bool] = None
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date

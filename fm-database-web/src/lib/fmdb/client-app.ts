@@ -140,6 +140,9 @@ export interface AppMeal {
   note?: string;
   /** estimated calories for this meal (recipe-accurate where matched) */
   kcal?: number;
+  /** grams for the new app (meal-macros.ts): absent when the coach switched
+   *  them off, null when no part of the meal has a recipe figure. */
+  macros?: MealMacros | null;
   /** dish is a classic Ayurvedic preparation → "Ayurveda recommends" badge */
   ayurveda?: boolean;
   /** the meal's headline title — the matched library recipe's canonical name
@@ -280,6 +283,7 @@ import { diaryGentle } from "./food-diary-balance";
 import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
 import { loadSupply } from "./supply-store";
+import { buildMacroLookup, macrosFromServing, mealMacros, nutrientsShown, type Macros, type MealMacros } from "./meal-macros";
 import { parsePackSize, unitsPerDay, type ItemSupply, type PackSize } from "./supply";
 import {
   isNonVegPref,
@@ -1972,6 +1976,9 @@ export interface LetterRecipe {
    *  re-derive the figures by subtraction (see recipe-nutrients.ts). */
   nutrientLines?: NutrientLine[];
   nutrientServings?: number;
+  /** grams of protein / carbs / fat / fibre per serving, only when the
+   *  recipe's own computation is complete enough to show (meal-macros.ts). */
+  macros?: Macros;
   /** foods taken OUT of this recipe for this client (see recipe-adapt.ts).
    *  Empty/absent means the recipe is the catalogue's own. */
   omits?: string[];
@@ -2088,6 +2095,7 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
             ? (r.nutrient_lines as NutrientLine[])
             : undefined,
           nutrientServings: Number(r.nutrient_servings) || undefined,
+          macros: macrosFromServing(r.nutrients_per_serving as Dict | undefined, r.nutrient_coverage_pct) ?? undefined,
           diet: asStrArr(r.diet),
           aliases: asStrArr(r.aliases),
           mains: asStrArr(r.main_ingredients),
@@ -2257,7 +2265,11 @@ export function buildClientRecipeAdapter(
       ...a.recipe,
       omits: a.omitted,
       omitsInSteps: a.stepsStillMention,
-      ...(n ? { kcalPerServing: n.perServing.kcal, richIn: n.richIn } : {}),
+      // Without the recompute the catalogue figures still count the removed
+      // food, so the grams go too rather than show the wrong dish's numbers.
+      ...(n
+        ? { kcalPerServing: n.perServing.kcal, richIn: n.richIn, macros: macrosFromServing(n.perServing, n.coveragePct) ?? undefined }
+        : { macros: undefined }),
     };
   };
 }
@@ -4059,6 +4071,11 @@ export async function loadClientAppData(
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
   );
+  // Grams on each meal (meal-macros.ts) — same recipes the calories come
+  // from, and only while the coach has not switched them off for this client.
+  const macroLookup = nutrientsShown(client, diaryGentle(client))
+    ? buildMacroLookup(libraryRecipes.map((l) => ({ title: l.recipe.title, aliases: l.recipe.aliases, macros: l.recipe.macros })))
+    : null;
   const dishKcal = (dish: string): number | undefined => {
     const k = estimateDishKcal(dish, recipeKcalLookup);
     // Whole numbers only. A per-serving figure can now carry a decimal (an
@@ -4281,6 +4298,7 @@ export async function loadClientAppData(
         components: splitDishComponents(cell),
         note: slotNote(slotL),
         kcal: dishKcal(cell),
+        ...(macroLookup ? { macros: mealMacros(cell, macroLookup) } : {}),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
         dishTitle: rec?.title || pills[0],
       });

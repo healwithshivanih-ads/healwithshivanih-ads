@@ -11,6 +11,7 @@
  * counted are decided in sq-day.ts.
  */
 
+import { macroLine } from "@/lib/fmdb/meal-macros";
 import { useState } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import {
@@ -78,6 +79,7 @@ function Pill({ w, on, quiet, onToggle }: { w: SqWith; on: boolean; quiet?: bool
 function Hero({ m, p }: { m: SqMoment; p: SqHomeProps }) {
   const [showHow, setShowHow] = useState(false);
   const extra = m.slot ? p.data.mealExtra[m.slot] : undefined;
+  const heroMacros = m.slot ? p.data.meals.find((x) => x.slot === m.slot)?.macros : undefined;
   const hasRecipe = !!extra && (extra.recipe.length > 0 || extra.ingredients.length > 0);
   return (
     <section className="sq-hero" aria-label="Next">
@@ -89,6 +91,7 @@ function Hero({ m, p }: { m: SqMoment; p: SqHomeProps }) {
         <div>
           <h2>{m.title}</h2>
           {m.sub && <p className="sq-hero-sub">{m.sub}</p>}
+          {heroMacros && <p className="sq-macros">{macroLine(heroMacros)}</p>}
         </div>
         {/* A photograph of the dish, decorative: the title already names it. */}
         {extra?.imageUrl && (

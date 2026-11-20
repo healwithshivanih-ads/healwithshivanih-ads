@@ -293,3 +293,18 @@ export async function labelDiaryEntryAction(
   return { ok: true };
 }
 
+
+/**
+ * The coach's switch for grams on the client's menu in the new app
+ * (client.yaml#app_nutrients, meal-macros.ts). `null` puts it back to the
+ * default: on, off for a gentle client.
+ */
+export async function setAppNutrientsAction(clientId: string, on: boolean | null): Promise<{ ok: true } | Fail> {
+  const c = readClient(clientId);
+  if (!c) return { ok: false, error: "client not found" };
+  if (on === null) delete c.doc.app_nutrients;
+  else c.doc.app_nutrients = on;
+  writeClient(c.file, c.doc);
+  revalidatePath(`/clients-v2/${clientId}/overview`);
+  return { ok: true };
+}
