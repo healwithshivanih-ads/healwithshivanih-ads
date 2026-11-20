@@ -93,6 +93,7 @@ const PUBLIC_ROUTES = [
   "/recipe-images/dal.jpg",
   "/exercise-videos/neck-retraction.mp4",
   "/app-voice/tapping-shared-01.m4a",
+  "/sq-app/manifest.webmanifest",
   "/app-scenes/rain.mp4",
   "/app-scenes/rain.jpg",
 ];

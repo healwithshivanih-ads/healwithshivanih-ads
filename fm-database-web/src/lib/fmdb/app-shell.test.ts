@@ -133,7 +133,11 @@ describe("wiring", () => {
       .readdirSync(dir)
       .filter((f) => /\.(ts|tsx)$/.test(f) && !f.includes(".test."))
       .filter((f) => /pickAppShell\(/.test(fs.readFileSync(path.join(dir, f), "utf8")));
-    expect(callers).toEqual(["ochre-app.tsx"]);
+    // ochre-app.tsx picks the front; page.tsx asks the same rule only to name
+    // the browser tab and home-screen icon, so the name can never show on a
+    // front that is not the new one.
+    expect(callers.sort()).toEqual(["ochre-app.tsx", "page.tsx"]);
+    expect(read("src/app/app/[token]/page.tsx")).toMatch(/pickAppShell\(data\) !== "sq"\) return \{\}/);
     const app = read("src/app/app/[token]/ochre-app.tsx");
     expect(app.match(/pickAppShell\(/g)?.length).toBe(1);
     expect(app.match(/<SqApp\b/g)?.length).toBe(1);

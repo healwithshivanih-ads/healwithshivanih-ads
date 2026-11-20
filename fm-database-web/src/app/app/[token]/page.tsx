@@ -6,24 +6,51 @@
  * Everything renders from the real published plan + client record.
  */
 
+import { cache } from "react";
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { pickAppShell } from "@/lib/fmdb/app-shell";
 import { logAppOpen } from "@/lib/fmdb/app-opens";
 import OchreApp, { OchreAppError } from "./ochre-app";
 
 export const dynamic = "force-dynamic";
 
-export default async function ClientAppPage({ params }: { params: Promise<{ token: string }> }) {
-  const { token } = await params;
-  let data = null;
+/** One load per request: the page and its metadata both need the data. */
+const loadOnce = cache(async (token: string) => {
   try {
     // Device timezone pinned by the app shell on first open — all "today" math
     // (menu day, week counter) renders in the client's local day, not IST.
     const deviceTz = (await cookies()).get("ochre_tz")?.value ?? null;
-    data = await loadClientAppData(token, { deviceTz });
+    return await loadClientAppData(token, { deviceTz });
   } catch (err) {
     console.error("[client-app] failed to assemble app data:", err);
+    return null;
   }
+});
+
+/**
+ * A client on the new front sees the Sequoya name and ring mark in the
+ * browser tab and on the home screen. Everyone else keeps The Ochre Tree
+ * (the layout's metadata). Same rule as the front itself, so the name is
+ * under the same embargo: only a switched-on client in programme gets it.
+ */
+export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
+  const { token } = await params;
+  const data = await loadOnce(token);
+  if (!data || pickAppShell(data) !== "sq") return {};
+  return {
+    title: "Sequoya — your plan",
+    description: "Your plan, day by day.",
+    manifest: "/sq-app/manifest.webmanifest",
+    icons: { icon: "/sq-app/icon-192.png", apple: "/sq-app/apple-touch-icon.png" },
+    appleWebApp: { capable: true, statusBarStyle: "default", title: "Sequoya" },
+  };
+}
+
+export default async function ClientAppPage({ params }: { params: Promise<{ token: string }> }) {
+  const { token } = await params;
+  const data = await loadOnce(token);
   if (!data) return <OchreAppError />;
   // adoption signal — Fly-only (coach previews on localhost are excluded)
   void logAppOpen(data.clientId);

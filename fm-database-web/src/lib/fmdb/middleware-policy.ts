@@ -139,6 +139,8 @@ export const PUBLIC_PATH_PREFIXES = [
   // The coach's recorded voice for the client app's practices (tapping and
   // the sleep wind-down), and the four looping scenes behind them. The same
   // generic recordings for every client — no client data.
+  // Home-screen icons and manifest for clients on the new front. No data.
+  "/sq-app/",
   "/app-voice/",
   "/app-scenes/",
   // Public client handouts — static branded 1-page guides. No client data.

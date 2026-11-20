@@ -198,6 +198,8 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   const scrollRef = useRef<HTMLElement | null>(null);
   const go = (next: SqTabId) => {
     setTab(next);
+    // A tab tap leaves whatever was open on top: one tap, one place.
+    setStack([]);
     // The Today tab always lands on Home; the question thread is one tap in.
     if (next === "today") setView("home");
     setHint("");
