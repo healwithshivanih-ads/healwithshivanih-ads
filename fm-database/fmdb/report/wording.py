@@ -336,7 +336,9 @@ def noun_of(h: Hit) -> str:
 
 
 def is_plural(h: Hit) -> bool:
-    return (len(h.rows) > 1 and h.finding.id in ("metals", "generic")) or h.finding.plural
+    if h.finding.id in ("metals", "generic"):       # named by their rows: one metal is singular ("your lead is")
+        return len(h.rows) > 1
+    return h.finding.plural
 
 
 def order(h: Hit, do: str) -> str:

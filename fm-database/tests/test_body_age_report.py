@@ -221,6 +221,32 @@ def test_high_red_cells_and_high_platelets_have_their_own_words():
     assert rp.rows["platelets"].level == "C" and "Your platelet count appears to be far above its range." in page and "falsely low" not in page
 
 
+def _with_lead(value, unit, rng):
+    rows = [dict(l, value=str(value), unit=unit, reference_range=rng) if l["test_name"] == "Lead" else l
+            for l in labs(STEADY, metals=True)]
+    return make_report(FX["person"], rows, kind="deeper", sample=True, sample_date=FX["sample_date"], report_date=FX["report_date"])
+
+
+def test_lead_reported_per_litre_is_not_read_on_the_per_decilitre_lines():
+    # Found on a real panel (20 Nov 2026): the laboratory prints lead in µg/L, ten times the µg/dL number. Read on
+    # the µg/dL lines, an ordinary result got the doctor sentence while its own row was drawn in range.
+    for unit in ("µg/L", "ug/L", "mcg/L", "μg/L"):
+        rp = _with_lead(13.06, unit, "< 150")
+        assert rp.rows["lead"].level == "" and not rp.warnings, unit
+        assert rp.decision.outcome == "nothing"
+    assert _with_lead(60, "µg/L", "< 150").rows["lead"].level == "B"            # 6 µg/dL
+    assert _with_lead(120, "µg/L", "< 150").rows["lead"].level == "C"           # 12 µg/dL
+    assert _with_lead(460, "µg/L", "< 150").rows["lead"].level == "D"           # 46 µg/dL
+    assert _with_lead(12, "µg/dL", "0-5").rows["lead"].level == "C"             # unchanged on its own unit
+    rp = _with_lead(12, "ppm", "0-5")
+    assert rp.rows["lead"].level == "C" and any("Lead" in w and "unit" in w for w in rp.warnings)
+
+
+def test_one_metal_is_spoken_of_in_the_singular():
+    page = text(report_html(_with_lead(12, "µg/dL", "0-5")))
+    assert "lead are" not in page.lower() and "lead is" in page.lower()
+
+
 # ── the test profile reads as the approved samples do ────────────────────────
 def test_profile_statuses_and_decision():
     rp = report("deeper")
