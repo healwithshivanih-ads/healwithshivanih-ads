@@ -17,6 +17,8 @@
  *    the screen then says "about" and names nothing as missed.
  */
 
+import { menuPortion, portionFactor, type Portion } from "./recipe-portion";
+
 export interface Macros {
   protein_g: number;
   carbs_g: number;
@@ -48,7 +50,12 @@ export function macrosFromServing(per: Record<string, unknown> | null | undefine
   return out;
 }
 
-export type MacroLookup = (component: string) => Macros | null;
+/** A recipe's grams per serving, and what one serving is in menu units. */
+export interface MacroHit {
+  m: Macros;
+  portion: Portion | null;
+}
+export type MacroLookup = (component: string) => MacroHit | null;
 
 function norm(s: string): string {
   return s
@@ -62,20 +69,22 @@ function norm(s: string): string {
 /** Name → macros, longest recipe name first so "coconut curd" beats "curd".
  *  Same matching as the calorie lookup (calorie-estimate.ts), so a dish gets
  *  its grams from the recipe its calories already come from. */
-export function buildMacroLookup(recipes: { title: string; aliases?: string[]; macros?: Macros }[]): MacroLookup {
-  const idx: { name: string; m: Macros }[] = [];
+export function buildMacroLookup(
+  recipes: { title: string; aliases?: string[]; macros?: Macros; portion?: Portion | null }[],
+): MacroLookup {
+  const idx: { name: string; hit: MacroHit }[] = [];
   for (const r of recipes) {
     if (!r.macros) continue;
     for (const n of [r.title, ...(r.aliases ?? [])]) {
       const name = norm(n || "");
-      if (name.length >= 5) idx.push({ name, m: r.macros });
+      if (name.length >= 5) idx.push({ name, hit: { m: r.macros, portion: r.portion ?? null } });
     }
   }
   idx.sort((a, b) => b.name.length - a.name.length);
   return (component: string) => {
     const c = norm(component);
     if (c.length < 5) return null;
-    for (const e of idx) if (c === e.name || ` ${c} `.includes(` ${e.name} `)) return e.m;
+    for (const e of idx) if (c === e.name || ` ${c} `.includes(` ${e.name} `)) return e.hit;
     return null;
   };
 }
@@ -91,25 +100,29 @@ export function isNothing(component: string): boolean {
   return words.length > 0 && words.every((w) => NOTHING_WORD.test(w));
 }
 
-/** One menu cell ("A + B + C") → its macros. null when nothing in it has a
- *  figure (the screen then shows no numbers for that meal). */
-export function mealMacros(cell: string, lookup: MacroLookup): MealMacros | null {
+/** One meal's components (title + the menu's portion) → its grams, each
+ *  recipe scaled from ITS serving to the menu's portion (recipe-portion.ts).
+ *  A component whose portion can't be compared keeps one serving and makes
+ *  the meal "about". null when nothing in it has a figure. */
+export function mealMacros(components: { title: string; portion?: string }[], lookup: MacroLookup): MealMacros | null {
   const sum: Macros = { protein_g: 0, carbs_g: 0, fat_g: 0, fibre_g: 0 };
   let found = 0;
-  let missing = 0;
-  for (const raw of (cell || "").split(/\s*\+\s*/)) {
-    const c = raw.trim();
+  let unsure = 0;
+  for (const comp of components) {
+    const c = (comp.title || "").trim();
     if (!c) continue;
-    const m = lookup(c);
-    if (m) {
+    const hit = lookup(c);
+    if (hit) {
       found += 1;
-      for (const k of MACRO_KEYS) sum[k] += m[k];
+      const f = portionFactor(hit.portion, menuPortion(comp.portion));
+      if (f === null) unsure += 1;
+      for (const k of MACRO_KEYS) sum[k] += hit.m[k] * (f ?? 1);
     } else if (!isNothing(c)) {
-      missing += 1;
+      unsure += 1;
     }
   }
   if (!found) return null;
-  return { ...roundMacros(sum), complete: missing === 0 };
+  return { ...roundMacros(sum), complete: unsure === 0 };
 }
 
 export function roundMacros(m: Macros): Macros {

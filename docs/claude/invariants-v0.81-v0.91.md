@@ -398,3 +398,8 @@ New front only. Today's practice screens (`ochre-eft.tsx`, `ochre-sleep.tsx`, `o
 - **Safety edits against the book:** sprouted rajma is boiled 10 min before use (the book pan-steams it); raw seed sprouts are dipped in hot water; `broccoli-sprouts` sits in `goitrogen-brassica-thyroid`. Sprout recipes are never tagged `jain`.
 - **Benefit tags follow the computed serving**: `protein-adequacy-vegetarian` needs >= 8 g, `iron-nutrition` >= 3 mg, `constipation` >= 4 g fibre.
 - Not done: photos and Hindi translations for the 64 new entries.
+
+### Menu grams in the new app (Nov 2026; not shipped yet)
+- `fmdb/meal-macros.ts`: protein / carbs / fat / fibre per meal and the day total, ONLY from library recipes with `nutrient_coverage_pct >= 90`; no fallback table. Garnish counts as nothing; any part without a figure or a comparable portion makes it "About:". Calories never shown.
+- `fmdb/recipe-portion.ts`: what one recipe serving is in menu units (piece / bowl / glass / tbsp) from the recipe's own ingredient grams + the ingredient table's category/basis; soups, salads, sandwiches, chaat get none. A recipe YAML `serving_portion: {qty, unit}` wins. Grams scale by menu portion ÷ serving.
+- Switch `client.yaml#app_nutrients` (model + `_APP_CLIENT_KEYS`): unset = on, except gentle clients (`diaryGentle`) = off; coach toggle on the overview. No targets shown until the coach confirms the starting targets in BUILD-PLAN.md.

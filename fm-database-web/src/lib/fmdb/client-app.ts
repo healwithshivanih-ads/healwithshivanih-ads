@@ -283,6 +283,7 @@ import { diaryGentle } from "./food-diary-balance";
 import { diaryEstimate, gramsByDate } from "./food-diary-estimate";
 import { loadDiary } from "./food-diary-store";
 import { loadSupply } from "./supply-store";
+import { recipePortion } from "./recipe-portion";
 import { buildMacroLookup, macrosFromServing, mealMacros, nutrientsShown, type Macros, type MealMacros } from "./meal-macros";
 import { parsePackSize, unitsPerDay, type ItemSupply, type PackSize } from "./supply";
 import {
@@ -1979,6 +1980,9 @@ export interface LetterRecipe {
   /** grams of protein / carbs / fat / fibre per serving, only when the
    *  recipe's own computation is complete enough to show (meal-macros.ts). */
   macros?: Macros;
+  /** a hand-set "one serving is" (recipe YAML serving_portion), which wins
+   *  over the computed one (recipe-portion.ts). */
+  servingPortion?: unknown;
   /** foods taken OUT of this recipe for this client (see recipe-adapt.ts).
    *  Empty/absent means the recipe is the catalogue's own. */
   omits?: string[];
@@ -2096,6 +2100,7 @@ export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: Lett
             : undefined,
           nutrientServings: Number(r.nutrient_servings) || undefined,
           macros: macrosFromServing(r.nutrients_per_serving as Dict | undefined, r.nutrient_coverage_pct) ?? undefined,
+          servingPortion: r.serving_portion,
           diet: asStrArr(r.diet),
           aliases: asStrArr(r.aliases),
           mains: asStrArr(r.main_ingredients),
@@ -4073,8 +4078,22 @@ export async function loadClientAppData(
   );
   // Grams on each meal (meal-macros.ts) — same recipes the calories come
   // from, and only while the coach has not switched them off for this client.
+  const portionTable = nutrientsShown(client, diaryGentle(client)) ? await loadNutrientTable() : null;
   const macroLookup = nutrientsShown(client, diaryGentle(client))
-    ? buildMacroLookup(libraryRecipes.map((l) => ({ title: l.recipe.title, aliases: l.recipe.aliases, macros: l.recipe.macros })))
+    ? buildMacroLookup(
+        libraryRecipes.map((l) => ({
+          title: l.recipe.title,
+          aliases: l.recipe.aliases,
+          macros: l.recipe.macros,
+          portion: recipePortion(
+            l.recipe.title,
+            l.recipe.nutrientLines,
+            l.recipe.nutrientServings,
+            (k) => (portionTable?.entries[k] as { category?: string; basis?: string } | undefined) ?? null,
+            l.recipe.servingPortion,
+          ),
+        })),
+      )
     : null;
   const dishKcal = (dish: string): number | undefined => {
     const k = estimateDishKcal(dish, recipeKcalLookup);
@@ -4298,7 +4317,7 @@ export async function loadClientAppData(
         components: splitDishComponents(cell),
         note: slotNote(slotL),
         kcal: dishKcal(cell),
-        ...(macroLookup ? { macros: mealMacros(cell, macroLookup) } : {}),
+        ...(macroLookup ? { macros: mealMacros(splitDishComponents(cell), macroLookup) } : {}),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
         dishTitle: rec?.title || pills[0],
       });
