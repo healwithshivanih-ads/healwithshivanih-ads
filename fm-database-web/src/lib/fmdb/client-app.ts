@@ -415,6 +415,8 @@ export interface AppSupplement {
   why: string;
   buyUrl?: string;
   buyLabel?: string;
+  /** Same product in other flavours: one button each, label says the flavour. */
+  buyOptions?: { label: string; url: string }[];
   /** VitaOne supplement-facts label thumbnail (from supplement_links.yaml),
    *  shown beside the Reorder link. */
   imageUrl?: string;
@@ -4586,6 +4588,7 @@ export async function loadClientAppData(
     let suppImageUrl: string | undefined;
     let suppPack: PackSize | null = null;
     let suppStrength: string | undefined;
+    let suppOptions: { label: string; url: string }[] | undefined;
     {
       // Coach-set per-plan buy-link override WINS — a specific product the coach
       // pinned on the plan entry (e.g. "Autoimmunity Care UTI Care") that may not
@@ -4613,6 +4616,7 @@ export async function loadClientAppData(
           if (buyUrl === link.url) {
             suppPack = parsePackSize(link.pack_size);
             suppStrength = link.unit_strength;
+            if (link.options && link.options.length > 1) suppOptions = link.options;
           }
         } else if (!buyUrl && international) {
           // The international search fallback is a targeted iHerb keyword
@@ -4624,7 +4628,10 @@ export async function loadClientAppData(
         /* no catalogue link — the override (if any) still applies; else the button hides */
       }
       // She already has this one: no order button, whatever the catalogue matches.
-      if ((p as Dict).no_buy_link === true) buyUrl = undefined;
+      if ((p as Dict).no_buy_link === true) {
+        buyUrl = undefined;
+        suppOptions = undefined;
+      }
     }
     const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
     const emptyStomach = !asNeeded && /empty stomach|before breakfast|first thing in the morning|on empty|upon waking/i.test(timing);
@@ -4655,6 +4662,7 @@ export async function loadClientAppData(
       // survive scrubbing. When the coach has written the answer, use it.
       why: asStr(p.client_note).trim() || clientFacingWhy(asStr(p.coach_rationale)),
       buyUrl,
+      ...(suppOptions ? { buyOptions: suppOptions } : {}),
       imageUrl: suppImageUrl,
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),

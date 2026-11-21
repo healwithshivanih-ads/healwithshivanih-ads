@@ -99,6 +99,7 @@ export async function resolveSupplementLink(
       unit_strength: entry.unit_strength,
       image_url: entry.facts_image_url,
       pack_size: entry.pack_size,
+      options: entry.options,
     };
   }
 
