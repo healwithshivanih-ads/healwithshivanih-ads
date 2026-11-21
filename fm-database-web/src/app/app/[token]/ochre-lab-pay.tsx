@@ -30,6 +30,7 @@ import { useOchre, Icon } from "./ochre-context";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
 import type { Invoice } from "@/lib/fmdb/invoices";
 import { InvoiceReceipt } from "@/components/invoice-receipt";
+import { labErrorWords } from "@/lib/fmdb/lab-error-words";
 
 function waHref(number: string, text: string): string {
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
@@ -213,7 +214,7 @@ function RebookCta({
       if (!j.ok || !j.order) throw new Error(j.error || "could not rebook");
       onRebooked(j.order);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "could not rebook");
+      setError(labErrorWords(e));
     } finally {
       setBusy(false);
     }
@@ -269,7 +270,7 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
       if (!res.ok || !j?.ok || !j.invoice) throw new Error(j?.error || "couldn't load your receipt");
       setInvoice(j.invoice);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "couldn't load your receipt");
+      setError(labErrorWords(e));
     } finally {
       setInvoiceBusy(null);
     }
@@ -345,7 +346,7 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
       });
       rzp.open();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "payment failed");
+      setError(labErrorWords(e));
     } finally {
       setBusy(null);
     }

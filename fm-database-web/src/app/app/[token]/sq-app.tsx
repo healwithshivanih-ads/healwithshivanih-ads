@@ -459,15 +459,12 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           <SequoyaRingMark size={30} />
         </span>
         <span className="sq-word">Sequoya</span>
-        <button
-          type="button"
-          className="sq-ringbtn"
-          aria-label={`Your progress, week ${week} of ${totalWeeks}`}
-          onClick={() => open({ k: "soon", title: "Your progress" })}
-        >
+        {/* Not a button until "Your progress" is built: a tap that only says
+            "not built yet" is worse than no tap. */}
+        <span className="sq-ringbtn" role="img" aria-label={`Week ${week} of ${totalWeeks}`}>
           <span>Week {week}</span>
           <WeekRings week={week} total={totalWeeks} />
-        </button>
+        </span>
       </header>
 
       {/* aria-busy until the phone's own ticks and clock are known: before

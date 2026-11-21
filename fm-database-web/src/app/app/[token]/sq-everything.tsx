@@ -84,11 +84,13 @@ function useSupply(data: ClientAppData, todayYmd: string) {
   // will give back (it pops the last tap).
   const [past, setPast] = useState<Record<string, (ItemSupply | undefined)[]>>({});
   const send = async (item: string, op: "ordered" | "arrived" | "have" | "undo", given?: ItemSupply) => {
-    const before = map;
-    const beforePast = past;
+    // Everything here is about this one row. "I already have them all" sends
+    // several rows at once, so a failure must put back only its own row,
+    // never the whole screen as it was before the batch.
+    const beforeItem = map[item];
     const stack = past[item] ?? [];
     const next = op === "undo" ? stack[stack.length - 1] : given;
-    setPast({ ...past, [item]: op === "undo" ? stack.slice(0, -1) : [...stack, map[item]] });
+    setPast((p) => ({ ...p, [item]: op === "undo" ? stack.slice(0, -1) : [...stack, beforeItem] }));
     setMap((m) => {
       const c = { ...m };
       if (next) c[item] = next;
@@ -104,8 +106,13 @@ function useSupply(data: ClientAppData, todayYmd: string) {
       });
       if (!r.ok) throw new Error();
     } catch {
-      setMap(before);
-      setPast(beforePast);
+      setMap((m) => {
+        const c = { ...m };
+        if (beforeItem) c[item] = beforeItem;
+        else delete c[item];
+        return c;
+      });
+      setPast((p) => ({ ...p, [item]: stack }));
       setError("That didn't save. Check your connection and try again.");
     }
   };

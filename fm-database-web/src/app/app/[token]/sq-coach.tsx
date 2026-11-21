@@ -46,6 +46,30 @@ export interface CoachThread {
   retry: (id: string) => void;
 }
 
+const unsentKey = (token: string) => `sq.coach.unsent.${token}`;
+
+function readUnsent(token: string): CoachMsg[] {
+  try {
+    const raw = localStorage.getItem(unsentKey(token));
+    const v: unknown = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(v)) return [];
+    return v
+      .filter((m): m is CoachMsg => !!m && typeof m === "object" && typeof m.id === "string" && typeof m.text === "string")
+      .map((m) => ({ ...m, from: "me" as const, state: "failed" as const }));
+  } catch {
+    return [];
+  }
+}
+
+function writeUnsent(token: string, list: CoachMsg[]): void {
+  try {
+    if (list.length) localStorage.setItem(unsentKey(token), JSON.stringify(list));
+    else localStorage.removeItem(unsentKey(token));
+  } catch {
+    /* private mode: the message still shows until the app is closed */
+  }
+}
+
 /**
  * The thread's state. Lives in the shell so the dot on the Coach tab works
  * from any tab and a hand-off from the ask box can send without opening it.
@@ -54,6 +78,23 @@ export interface CoachThread {
 export function useCoachThread(token: string, open: boolean): CoachThread {
   const [msgs, setMsgs] = useState<CoachMsg[]>([]);
   const [local, setLocal] = useState<CoachMsg[]>([]);
+  // A message that did not send is kept on the phone too, so closing or
+  // reloading the app never loses her words. Restored once, after mount (the
+  // page is drawn on the server first, where there is no storage).
+  const restored = useRef(false);
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const saved = readUnsent(token);
+      restored.current = true;
+      if (saved.length) setLocal((l) => [...saved.filter((m) => !l.some((x) => x.id === m.id)), ...l]);
+    }, 0);
+    return () => clearTimeout(t);
+  }, [token]);
+  useEffect(() => {
+    // Only failed ones: one still "sending" may have reached the coach, and
+    // keeping it would risk sending it twice.
+    if (restored.current) writeUnsent(token, local.filter((m) => m.state === "failed"));
+  }, [token, local]);
   const [loaded, setLoaded] = useState(false);
   const [unread, setUnread] = useState(false);
   const [note, setNote] = useState<CoachNote>(null);

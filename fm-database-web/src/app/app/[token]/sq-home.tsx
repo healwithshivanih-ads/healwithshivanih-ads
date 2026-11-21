@@ -18,6 +18,7 @@ import {
   anytimeMoments,
   dayCount,
   greeting,
+  groceryShopped,
   isTicked,
   laterSummary,
   showReturnCard,
@@ -35,6 +36,18 @@ import { SqDiaryCard, type SqDiaryState } from "./sq-diary";
 import { SqStartCard } from "./sq-start";
 import { leftWords, lowRows, travellingNow, tripDates } from "./sq-everything";
 import { SqIcon, type SqSheet } from "./sq-ui";
+
+/** The shopping-list screen's ticks (ochre-week-menu.tsx keeps them on the
+ *  phone under this key). Empty when storage is blocked or holds nothing. */
+function readGroceryTicks(clientId: string, planSlug: string): Record<string, boolean> {
+  try {
+    const raw = localStorage.getItem(`ochre.grocery.${clientId}.${planSlug}`);
+    const v: unknown = raw ? JSON.parse(raw) : null;
+    return v && typeof v === "object" ? (v as Record<string, boolean>) : {};
+  } catch {
+    return {};
+  }
+}
 
 export interface SqHomeProps {
   data: ClientAppData;
@@ -243,14 +256,16 @@ export function SqHome(p: SqHomeProps) {
   const count = dayCount(moments, ticks);
   const last = p.lastId ? moments.find((m) => m.id === p.lastId) ?? null : null;
   const lastAt = last ? tickedAt(last.id, last.kind, ticks) : null;
-  const groceryCount = data.grocery?.weeks.find((w) => w.week === data.client.week)?.items.length ?? 0;
+  const groceryItems = data.grocery?.weeks.find((w) => w.week === data.client.week)?.items ?? [];
+  const groceryCount = groceryItems.length;
   const week = thisWeekLine({
     week: data.client.week,
     firstDay,
     groceryCount,
-    // The shopping list is marked "shopped" from its own screen, which the
-    // Everything tab brings in a later build step.
-    shopped: false,
+    // Shopped = every fresh item ticked on the shopping-list screen, read from
+    // that screen's own on-device store. Read on each render (after `ready`,
+    // so only in the browser): coming back from the list redraws Home.
+    shopped: groceryShopped(data.client.week, groceryItems, readGroceryTicks(data.clientId, data.planSlug)),
     checkinSent: p.checkinSentWeek >= data.client.week,
   });
 

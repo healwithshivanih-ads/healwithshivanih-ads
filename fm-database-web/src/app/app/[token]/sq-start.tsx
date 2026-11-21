@@ -7,8 +7,8 @@
  * The card sits on Home before the plan starts and on its first day; the same
  * one-minute explainer is always under Everything.
  *
- * Only what is built is described. The ask box and the rest of the Everything
- * tab get their own lines here when their build steps land.
+ * Only what is built is described: Today, the ask box, Practices, the Coach
+ * tab and Everything. A screen that is added later gets its line here then.
  */
 
 import { SqCard, SqNavRow } from "./sq-ui";
@@ -29,6 +29,10 @@ const POINTS: [string, string][] = [
   ["Today shows one thing: what is next", "Tap Done when you have had it. The next thing takes its place."],
   ["Supplements have their own tap", "When one goes with a meal, it sits on that meal's card. Tap it when you have taken it."],
   ["Your whole day is one tap away", "Every meal and supplement with its own tick. Tap a tick again to clear it."],
+  ["Ask about your plan", "Type a question in the box on Today. It answers from your own plan. Anything it can't answer goes to your coach."],
+  ["Practices", "Tapping, breathing and the sleep wind-down, in your coach's voice. Pause any time; it keeps your place."],
+  ["Coach", "Message your coach. Your coach reads every message and replies within 24 hours."],
+  ["Everything", "Your menu, shopping list, supplements, weekly check-in, tests, your record and trips, all in one place."],
   ["The ring at the top", "It grows as the weeks of your programme pass."],
 ];
 

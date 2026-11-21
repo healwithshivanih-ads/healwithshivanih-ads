@@ -18,6 +18,7 @@ import {
   buildMoments,
   buildRecord,
   dayCount,
+  groceryShopped,
   dayLabel,
   dayRows,
   greeting,
@@ -470,5 +471,25 @@ describe("what the Home says", () => {
     // The first day carries its own start card instead.
     expect(thisWeekLine({ ...base, firstDay: true })).toBeNull();
     expect(thisWeekLine({ ...base, groceryCount: 1 })?.sub).toBe("1 item");
+  });
+
+  it("counts the list as shopped once every fresh item is ticked for this week", () => {
+    const items = [
+      { item: "Spinach", category: "Vegetables & fresh" },
+      { item: "Moong dal", category: "Dals & legumes" },
+      { item: "Salt", category: "Spices & masala", staple: true },
+    ];
+    // Nothing ticked, or only part of it: not shopped.
+    expect(groceryShopped(4, items, {})).toBe(false);
+    expect(groceryShopped(4, items, { "4|Vegetables & fresh|Spinach": true })).toBe(false);
+    // Every fresh item ticked; the staple never needs a tick.
+    const all = { "4|Vegetables & fresh|Spinach": true, "4|Dals & legumes|Moong dal": true };
+    expect(groceryShopped(4, items, all)).toBe(true);
+    // Last week's ticks do not count for this week.
+    expect(groceryShopped(5, items, all)).toBe(false);
+    // An untick (false) is not a tick.
+    expect(groceryShopped(4, items, { ...all, "4|Dals & legumes|Moong dal": false })).toBe(false);
+    // A list of staples only has nothing to shop for, so it counts as shopped.
+    expect(groceryShopped(4, [items[2]], {})).toBe(true);
   });
 });

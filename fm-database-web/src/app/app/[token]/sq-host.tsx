@@ -12,14 +12,14 @@
  * into the Sequoya look is polish for step 6.
  */
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { CheckinScreen } from "./ochre-checkin";
-import { ExerciseOverlay } from "./ochre-exercise";
+import { ExerciseOverlay, sessionWhen } from "./ochre-exercise";
 import { LabsOverlay } from "./ochre-labs";
 import { GroceryOverlay, WeekMenuSection } from "./ochre-week-menu";
 import { OchreContext } from "./ochre-context";
-import { SqIcon } from "./sq-ui";
+import { SqCard, SqIcon, SqNavRow } from "./sq-ui";
 
 export type HostedId = "menu" | "grocery" | "checkin" | "labs" | "move";
 
@@ -59,17 +59,39 @@ export function SqHost({
   openHosted: (id: HostedId) => void;
   onClose: () => void;
 }) {
+  // With more than one movement session, a short list comes first; closing a
+  // session returns to that list, and the list's Close leaves.
+  const [moveAt, setMoveAt] = useState<number | null>(null);
+  const sessions = data.exerciseSessions;
+  const onlySession = sessions.length === 1 ? sessions[0] : null;
+  const chosen = onlySession ?? sessions.find((s) => s.sourceIndex === moveAt) ?? null;
+
   let overlay: ReactNode = null;
   let screen: ReactNode = null;
   if (id === "grocery") overlay = <GroceryOverlay onClose={onClose} />;
   else if (id === "labs") overlay = <LabsOverlay onClose={onClose} numbersHeld={!data.sq?.results} />;
-  else if (id === "move" && data.exerciseSessions[0])
+  else if (id === "move" && chosen)
     overlay = (
       <ExerciseOverlay
-        session={data.exerciseSessions[0]}
+        session={chosen}
         token={data.token}
-        onClose={onClose}
+        onClose={onlySession ? onClose : () => setMoveAt(null)}
       />
+    );
+  else if (id === "move" && sessions.length > 1)
+    screen = (
+      <SqCard>
+        <div className="sq-list">
+          {sessions.map((s) => (
+            <SqNavRow
+              key={s.sourceIndex}
+              title={s.name}
+              note={sessionWhen(s) || `${s.items.length} ${s.items.length === 1 ? "exercise" : "exercises"}`}
+              onOpen={() => setMoveAt(s.sourceIndex)}
+            />
+          ))}
+        </div>
+      </SqCard>
     );
   else if (id === "checkin")
     screen = (
