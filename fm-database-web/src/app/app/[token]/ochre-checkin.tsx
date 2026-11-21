@@ -9,6 +9,54 @@
 
 import { useState } from "react";
 import { Icon, useOchre } from "./ochre-context";
+import { coachTabNote } from "@/lib/fmdb/ask-safety";
+import { urgentCard } from "@/lib/fmdb/ask-card";
+
+type CheckinNote = ReturnType<typeof coachTabNote>;
+
+/** Plain words for a check-in that did not send. Never a status code: the
+ *  client cannot act on "(HTTP 500)". Her answers stay on the form either way. */
+export function checkinErrorLine(status: number | null): string {
+  if (status === 429) return "You have sent a few check-ins today already. Please try again tomorrow.";
+  if (status === 401) return "This link has stopped working. Message your coach for a new one.";
+  if (status === null) return "Your check-in did not send. Please check your connection and try again. Your answers are still here.";
+  return "Your check-in did not send just now. Please try again in a few minutes. Your answers are still here.";
+}
+
+/**
+ * The safety screen's result, shown BESIDE the check-in — never instead of
+ * sending it. The note invites "new symptoms", so it passes the same list as
+ * the ask box and the Coach tab (ask-safety.ts): the urgent card for
+ * self-harm or an emergency, or the "see a doctor today" line.
+ */
+export function CheckinSafetyNote({ note }: { note: CheckinNote }) {
+  if (!note) return null;
+  if ("urgent" in note) {
+    const c = urgentCard(note.urgent);
+    return (
+      <div
+        className="card"
+        role="alert"
+        style={{ padding: "14px 16px", margin: "0 0 14px", borderLeft: "4px solid var(--ochre, #b07b1e)" }}
+      >
+        <div className="eyebrow">{c.src}</div>
+        <h3 className="h-serif" style={{ fontSize: 19, margin: "6px 0 6px" }}>
+          {c.heading}
+        </h3>
+        {c.lines.map((l, i) => (
+          <p key={i} style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.5, margin: "0 0 4px" }}>
+            {l}
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <p role="status" style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.5, margin: "0 0 12px" }}>
+      {note.doctor} Your coach replies within 24 hours.
+    </p>
+  );
+}
 
 const RATING_CAP = ["", "Hard", "Low", "Okay", "Good", "Great"];
 const ADHERENCE = ["Still taking", "Sometimes", "Stopped"];
@@ -70,18 +118,28 @@ export function CheckinScreen({
   };
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  // Set when she sends, before the request: an emergency card must show even
+  // if the network fails. The server runs the same screen too (a direct POST
+  // skips this phone).
+  const [note, setNote] = useState<CheckinNote>(null);
 
   if (submitted) {
     return (
       <div className="screen-pad screen-anim">
         <CheckinBar onClose={onClose} />
-        <div className="center-state" style={{ paddingTop: 50 }}>
+        {note && "urgent" in note && (
+          <div style={{ paddingTop: 18 }}>
+            <CheckinSafetyNote note={note} />
+          </div>
+        )}
+        <div className="center-state" style={{ paddingTop: note && "urgent" in note ? 12 : 50 }}>
           <span className="ring">
             <Icon name="check" size={30} />
           </span>
           <h3>Thank you, {data.client.firstName}</h3>
           <p>Your check-in is saved. {data.coach.name.split(" ")[0]} will read it before your next session.</p>
         </div>
+        {note && "doctor" in note && <CheckinSafetyNote note={note} />}
         <div className="card-quiet" style={{ padding: "16px 16px", marginTop: 8 }}>
           <div className="eyebrow">While you wait</div>
           <div className="divider-ochre" />
@@ -99,6 +157,8 @@ export function CheckinScreen({
   const submit = async () => {
     setSending(true);
     setError("");
+    setNote(feel.trim() ? coachTabNote(feel) : null);
+    let status: number | null = null;
     try {
       const res = await fetch("/api/app-checkin", {
         method: "POST",
@@ -121,14 +181,16 @@ export function CheckinScreen({
           ],
         }),
       });
-      const out = (await res.json()) as { ok?: boolean; error?: string };
-      if (!res.ok || !out.ok) throw new Error(out.error || `HTTP ${res.status}`);
+      status = res.status;
+      const out = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; note?: CheckinNote };
+      if (!res.ok || !out.ok) throw new Error(out.error || "not saved");
+      // Errs towards firing, like the lists themselves: the server's answer
+      // replaces the phone's only when it found something.
+      if (out.note) setNote(out.note);
       onSubmit();
     } catch (e) {
-      setError(
-        `Couldn't reach ${data.coach.name.split(" ")[0]} just now — please check your connection and try again. ` +
-          `(${e instanceof Error ? e.message : "network error"})`,
-      );
+      console.error("[checkin] not sent:", e);
+      setError(checkinErrorLine(status));
     } finally {
       setSending(false);
     }
@@ -263,6 +325,7 @@ export function CheckinScreen({
         </div>
       )}
 
+      {error && note && <CheckinSafetyNote note={note} />}
       {error && <div className="checkin-error">{error}</div>}
 
       <button className="submit-btn" disabled={!canSubmit} onClick={submit}>

@@ -27,6 +27,7 @@
  */
 
 import { recipeLibKey } from "./dish-components";
+import { omittedPhrase } from "./recipe-adapt";
 import type { AppWeekMenu, AppRecipe } from "./client-app";
 
 /** A field carried in both languages so the sheet can print them side by side —
@@ -62,6 +63,10 @@ export interface TranslatedRecipe {
   time?: string;
   ingredients: { en: string; hi?: string }[];
   method: { en: string; hi?: string }[];
+  /** "Made without onion" — a food taken out of this recipe for this client
+   *  (recipe-adapt.ts). Printed above the method so the cook knows before
+   *  starting. Absent when nothing was left out. */
+  madeWithout?: Bilingual;
   tip?: string;
   imageUrl?: string;
   imageCredit?: string;
@@ -277,20 +282,65 @@ export function translateWeek(
 
 /** Translate one recipe using its pre-authored language block (from the recipe
  *  YAML). Ingredients/method fall back to English line-for-line when a language
- *  block is missing or shorter — the English is always shown alongside. */
-export function translateRecipe(recipe: AppRecipe, glossary: Glossary): TranslatedRecipe {
+ *  block is missing or shorter — the English is always shown alongside. An empty
+ *  string is "no translation": recipe-adapt.ts writes one for a step it
+ *  rewrote, so it prints in English.
+ *
+ *  `cov`, when given, counts every ingredient/method line of a recipe that HAS
+ *  a block for this language, so a line left in English shows in the sheet's
+ *  "N shown in English" note. A recipe with no block at all is not counted:
+ *  every line of it is plainly English. */
+export function translateRecipe(recipe: AppRecipe, glossary: Glossary, cov?: Coverage): TranslatedRecipe {
   const t = recipe.translations?.[glossary.lang];
   const hiName = t?.name ?? translateTitle(recipe.title, { ...glossary.terms }, phraseMax(glossary.terms));
+  const ingredients = recipe.ingredients.map((en, i) => ({ en, hi: t?.ingredients?.[i] || undefined }));
+  const method = recipe.method.map((en, i) => ({ en, hi: t?.method?.[i] || undefined }));
+  if (cov && t && (t.ingredients?.length || t.method?.length)) {
+    for (const line of [...ingredients, ...method]) {
+      cov.components += 1;
+      if (line.hi) cov.translated += 1;
+    }
+  }
+  const madeWithout = madeWithoutLine(recipe.omits, recipe.omitsInSteps, glossary);
   return {
     title: { en: recipe.title, hi: hiName || undefined },
     serves: recipe.serves,
     time: recipe.time,
-    ingredients: recipe.ingredients.map((en, i) => ({ en, hi: t?.ingredients?.[i] })),
-    method: recipe.method.map((en, i) => ({ en, hi: t?.method?.[i] })),
+    ingredients,
+    method,
+    ...(madeWithout ? { madeWithout } : {}),
     tip: recipe.tip,
     imageUrl: recipe.imageUrl,
     imageCredit: recipe.imageCredit,
   };
+}
+
+/**
+ * The "made without" line, in English and (when every food and the wording
+ * resolve) the glossary language. Same words as the app's recipe card
+ * (sq-sheets.tsx). Null when nothing was left out.
+ *
+ * The translated half is all-or-nothing: a partly-translated line that drops
+ * one of the foods would tell the cook less than the English does.
+ */
+export function madeWithoutLine(
+  omits: string[] | undefined,
+  inSteps: boolean | undefined,
+  glossary: Glossary,
+): Bilingual | null {
+  const xs = (omits ?? []).map((o) => o.trim()).filter(Boolean);
+  if (!xs.length) return null;
+  const en = `Made without ${omittedPhrase(xs)}.${inSteps ? " Leave it out wherever the steps mention it." : ""}`;
+  const tpl = glossary.ui.made_without;
+  const stepsLine = glossary.ui.leave_out_in_steps;
+  const and = glossary.ui.and;
+  const words = xs.map((x) => glossary.terms[x.toLowerCase()]);
+  if (!tpl || !tpl.includes("{foods}") || words.some((w) => !w) || (xs.length > 1 && !and) || (inSteps && !stepsLine)) {
+    return { en };
+  }
+  const foods = words.length === 1 ? words[0] : `${words.slice(0, -1).join(", ")} ${and} ${words[words.length - 1]}`;
+  const hi = tpl.replace("{foods}", foods) + (inSteps ? ` ${stepsLine}` : "");
+  return { en, hi };
 }
 
 function phraseMax(terms: Record<string, string>): number {

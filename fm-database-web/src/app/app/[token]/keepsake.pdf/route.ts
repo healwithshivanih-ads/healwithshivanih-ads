@@ -9,6 +9,7 @@
 import { cookies } from "next/headers";
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage } from "pdf-lib";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { madeWithoutForYou } from "@/lib/fmdb/recipe-adapt";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -120,6 +121,9 @@ export async function GET(_req: Request, { params }: { params: Promise<{ token: 
     para(r.title, serifBold, 16, FOREST);
     const meta = [r.serves, r.time].filter(Boolean).join("  -  ");
     if (meta) para(meta, serifBold, 10.5, OCHRE);
+    // A food taken out of this recipe for this client (same line as the page).
+    const without = madeWithoutForYou(r.omits, r.omitsInSteps);
+    if (without) para(without, serifBold, 10.5, INK);
     y -= 4;
     para("INGREDIENTS", serifBold, 9, MUTED);
     for (const ing of r.ingredients) para(ing, serif, 11, INK, 4, "-");

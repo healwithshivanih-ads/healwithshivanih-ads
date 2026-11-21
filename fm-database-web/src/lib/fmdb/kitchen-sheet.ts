@@ -111,7 +111,7 @@ export async function loadKitchenSheet(
   const weeks = (data.weekMenus ?? []).map((w) =>
     translateWeek(w, glossary, index, maxWords, coverage),
   );
-  const recipes = (data.recipePack ?? []).map((r) => translateRecipe(r, glossary));
+  const recipes = (data.recipePack ?? []).map((r) => translateRecipe(r, glossary, coverage));
 
   return {
     available: true,
