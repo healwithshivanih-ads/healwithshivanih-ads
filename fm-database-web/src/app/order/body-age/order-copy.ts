@@ -1,6 +1,8 @@
 /**
  * Every word a buyer reads on the body age order page. APPROVED by Shivani on 21 Nov 2026,
  * word for word as it stands. Any change to a sentence here needs her yes again.
+ * `fields.voucher` and `voucherNote` were added the same evening for the Rs 500 voucher and are NOT yet approved:
+ * the page must not go live with them until she says yes.
  * Rules the words follow: "body age report" and "test", never the product's internal name or the brand name;
  * the laboratory is never named; nothing is called urgent; no programme, plan length or programme price; no
  * "free"; every session is online. A test (order-copy.test.ts) fails on any of these.
@@ -41,7 +43,9 @@ export const COPY = {
     preferred_date: "Preferred morning",
     preferred_slot: "Preferred time",
     notes: "Anything we should know (optional)",
+    voucher: "Voucher code (if you have one)",
   },
+  voucherNote: "From the body age check. ₹500 comes off when you pay, for one person's report.",
   slots: { morning: "Early morning (7 to 9)", late_morning: "Late morning (9 to 11)" },
   visitNote: "We confirm the day and time with you on WhatsApp before anyone comes.",
   consent: "I am 18 or over. Everyone named here has agreed to this test, and to their results being used to prepare this report.",

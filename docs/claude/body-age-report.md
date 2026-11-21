@@ -216,3 +216,19 @@ Guards that must come across unchanged:
 - **A send needs** `ready: true`, the report saved on the record, and a valid record email; the send is logged in the report folder's `sent.json` and read back as "✓ Sent".
 - **Prospects sweep** keeps a report buyer until `credit_until` (`fmdb/plan/prospects.py`).
 - Tests that pin all this: `__tests__/body-age-send.test.ts`, `body-age-orders.test.ts`, `body-age-order-intake.test.ts`, `server-actions/body-age-report.test.ts`, `fm-database/tests/test_body_age_order_mirror.py`, `test_prospects_body_age_report.py`.
+
+## The Rs 500 voucher from the body age check (21 Nov 2026) — built on the order side, OFF until the secret is set
+
+Her rules: Rs 500 off either report for ONE person (not on the price for two), one per person, tied to the
+email they signed up with, 14 days, never extended, no timers and no reminders.
+
+- `lib/fmdb/body-age-voucher.ts`: `issueVoucher(email, todayYmd, secret)` → `BA-<last day YYMMDD>-<6 letters>`
+  (HMAC of email + day); `checkVoucher` refuses a wrong email, two people, a past day, an edited date, or no secret.
+  The check page lives on the marketing site, which shares no database with this app, so the code proves itself.
+  **The marketing site must issue codes with exactly this function and the same `BODY_AGE_VOUCHER_SECRET`.**
+- `api/body-age/order/route.ts` checks the code, refuses one a paid order already used, and charges the reduced
+  amount; the order keeps `voucher_code` and `discount_inr` (`amount_inr` is what was charged).
+- With no `BODY_AGE_VOUCHER_SECRET` every code is refused, so the voucher is off by default.
+- The form shows the code box for one person only. Its two lines (`fields.voucher`, `voucherNote`) are NOT yet
+  approved by Shivani; the wording fingerprint test was refreshed for them and must be re-approved with her yes.
+- Not built: the check page on the marketing site (sign-up saved + code issued there).
