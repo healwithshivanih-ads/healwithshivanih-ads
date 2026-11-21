@@ -325,6 +325,13 @@
   .sq-tl-body span { color: var(--sq-muted); font-size: 15px; }
   .sq-tl-tick[aria-pressed="true"] .sq-tick { background: var(--sq-growth); border-color: var(--sq-growth); color: var(--sq-ground); }
   .sq-tl-tick[aria-pressed="true"] b { color: var(--sq-muted); }
+  /* a meal row in tracking mode: the body opens the recipe, the tick ticks */
+  .sq-tl-split { grid-template-columns: 1fr auto; }
+  .sq-tl-open {
+    display: grid; grid-template-columns: 76px 1fr; align-items: center; gap: 10px;
+    border: none; background: none; padding: 0; text-align: left; font: inherit; color: inherit; min-width: 0;
+  }
+  .sq-tl-row .sq-tick[aria-pressed="true"] { background: var(--sq-growth); border-color: var(--sq-growth); color: var(--sq-ground); }
 
   /* ── the "This week" line ─────────────────────────────────────────────── */
   .sq-week { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; border: none; }

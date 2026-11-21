@@ -356,7 +356,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   };
 
   const onCardButton = (b: AskButton) => {
-    if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout" || b.to === "remind") open({ k: b.to });
+    if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout" || b.to === "remind" || b.to === "vitals") open({ k: b.to });
     else if (b.to === "recipe" && b.ref) open({ k: "recipe", slot: b.ref });
     else if (b.to === "soon" && b.ref === "results") open({ k: "results" });
     else if (b.to === "soon") open({ k: "soon", title: b.ref ?? b.label });
@@ -540,6 +540,13 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                 <SqCard title="Start here">
                   <div className="sq-list">
                     <SqNavRow title="How this app works" note="One minute, whenever you need it" onOpen={() => open({ k: "start" })} />
+                    <SqSwitchRow
+                      title="Larger text"
+                      on={state.textLarge}
+                      onNote="On · tap to go back to normal"
+                      offNote="Off · tap to make everything bigger"
+                      onChange={state.setTextLarge}
+                    />
                   </div>
                 </SqCard>
                 {data.planRef?.eatingOut && (
@@ -603,13 +610,6 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                       onNote="On · ticks and your daily count show on Home"
                       offNote="Off · Home stays simple"
                       onChange={setTrack}
-                    />
-                    <SqSwitchRow
-                      title="Larger text"
-                      on={state.textLarge}
-                      onNote="On · tap to go back to normal"
-                      offNote="Off · tap to make everything bigger"
-                      onChange={state.setTextLarge}
                     />
                   </div>
                 </SqCard>

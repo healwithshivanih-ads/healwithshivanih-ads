@@ -4695,7 +4695,8 @@ export function IntakeForm({
           <span className="fm-consent__box" aria-hidden="true" />
           <span className="fm-consent__text">
             <strong>I understand</strong> this information is private and confidential, and
-            will not be used in any manner except to help with my care.
+            will not be used in any manner except to help with my care. I agree that my
+            coach may send me my plan, reports and lab results on WhatsApp and by email.
           </span>
         </label>
 

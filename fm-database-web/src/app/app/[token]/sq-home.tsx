@@ -146,7 +146,36 @@ function LaterRow({ m, p }: { m: SqMoment; p: SqHomeProps }) {
       </span>
     </>
   );
-  if (!p.track) return <div className="sq-tl-row">{inner}</div>;
+  // A meal opens its recipe, the same as the Next card's button does.
+  const openRecipe = m.slot ? () => p.open({ k: "recipe", slot: m.slot! }) : null;
+  if (!p.track) {
+    if (!openRecipe) return <div className="sq-tl-row">{inner}</div>;
+    return (
+      <button type="button" className="sq-tl-row" onClick={openRecipe} aria-label={`${m.title}: open the recipe`}>
+        {inner}
+        <SqIcon name="chev" />
+      </button>
+    );
+  }
+  if (openRecipe) {
+    const on = isTicked(m.id, m.kind, p.ticks);
+    return (
+      <div className="sq-tl-row sq-tl-split">
+        <button type="button" className="sq-tl-open" onClick={openRecipe} aria-label={`${m.title}: open the recipe`}>
+          {inner}
+        </button>
+        <button
+          type="button"
+          className="sq-tick"
+          aria-pressed={on}
+          aria-label={on ? `Untick ${m.title}` : `Tick ${m.title}`}
+          onClick={() => p.onToggle(m.id, m.kind)}
+        >
+          <SqIcon name="check" />
+        </button>
+      </div>
+    );
+  }
   return (
     <button
       type="button"
