@@ -1,0 +1,5 @@
+
+/* paper rules for the page for two (from the approved sample) */
+.pair,table.both,.who3{break-inside:avoid} .who3{break-after:avoid} .pair figure{max-width:230px} .sum{break-inside:avoid}
+#two-own,#two-test{break-inside:avoid}
+#two-next{break-inside:avoid}

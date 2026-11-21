@@ -1,5 +1,6 @@
 /**
- * Every word a buyer reads on the body age order page. DRAFT (21 Nov 2026): not yet approved by Shivani.
+ * Every word a buyer reads on the body age order page. APPROVED by Shivani on 21 Nov 2026,
+ * word for word as it stands. Any change to a sentence here needs her yes again.
  * Rules the words follow: "body age report" and "test", never the product's internal name or the brand name;
  * the laboratory is never named; nothing is called urgent; no programme, plan length or programme price; no
  * "free"; every session is online. A test (order-copy.test.ts) fails on any of these.

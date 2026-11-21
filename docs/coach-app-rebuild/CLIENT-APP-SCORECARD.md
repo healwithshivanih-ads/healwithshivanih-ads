@@ -98,6 +98,8 @@ number.
    - It shows raw "(HTTP 500)" errors.
    - It never reaches the Home "This week" line, because `shopped: false` is hard-coded
      (`sq-home.tsx:253`). It is still reachable from Everything.
+     *Fixed 21 Nov 2026 (coach's decision): the shopping list is a convenience, not a job, so it no
+     longer gates anything. The "This week" line now shows only the check-in, until it is sent.*
 4. **C2 Coach thread: function 6 against 7.**
    - A message marked "Not sent yet" is held only in memory and lost on reload (`sq-coach.tsx:56`).
    - There is no photo and no notification that the coach has replied. A notification answering the

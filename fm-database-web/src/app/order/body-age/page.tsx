@@ -2,7 +2,7 @@
  * /order/body-age — the public order page for the body age report.
  *
  * OFF by default: 404 unless BODY_AGE_ORDER_PAGE is "test" or (from the launch moment) "live"; see
- * body-age-orders.ts. Every word a buyer reads here is in order-copy.ts and is a DRAFT until Shivani approves it.
+ * body-age-orders.ts. Every word a buyer reads here is in order-copy.ts and was approved by Shivani on 21 Nov 2026.
  */
 import { notFound } from "next/navigation";
 import { BODY_AGE_PRICE_INR, orderPageMode } from "@/lib/fmdb/body-age-orders";

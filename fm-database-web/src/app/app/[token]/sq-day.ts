@@ -446,52 +446,19 @@ export const showReturnCard = (daysSinceLastOpen: number | null | undefined): bo
 export const showStartCard = (notStarted: boolean, planDay: number): boolean => notStarted || planDay === 1;
 
 export interface WeekLine {
-  /** which screen the line opens */
-  opens: "grocery" | "checkin";
   title: string;
   sub: string;
 }
 
 /**
- * The one "This week" line: the shopping list until it is shopped, then the
- * check-in until it is sent, then nothing. Never both, and nothing on the
- * first day (the start card already carries the shopping list).
- */
-export function thisWeekLine(o: {
-  week: number;
-  firstDay: boolean;
-  /** items on this week's shopping list; 0 when there is no list */
-  groceryCount: number;
-  shopped: boolean;
-  checkinSent: boolean;
-}): WeekLine | null {
-  if (o.firstDay) return null;
-  if (o.groceryCount > 0 && !o.shopped) {
-    return { opens: "grocery", title: "Your shopping list", sub: `${o.groceryCount} ${o.groceryCount === 1 ? "item" : "items"}` };
-  }
-  if (!o.checkinSent) {
-    return { opens: "checkin", title: `Your week ${o.week} check-in`, sub: "About a minute" };
-  }
-  return null;
-}
-
-/**
- * Whether this week's shopping list is shopped: every fresh item on it has
- * been ticked on the shopping-list screen. Staples (oil, salt, spices) are
- * folded away there and never needed ticking, so they do not count.
+ * The one "This week" line: the weekly check-in until it is sent, then
+ * nothing. Nothing on the first day (the start card carries that day).
  *
- * `ticked` is the shopping-list screen's own on-device store, keyed
- * `week|category|item` (ochre-week-menu.tsx). The category is matched loosely
- * so this never has to repeat that screen's category list.
+ * The shopping list is a convenience, never a job: when or whether a client
+ * shops, or opens that screen, is not ours to track, so it never gates the
+ * check-in. It stays under Everything and on the start card.
  */
-export function groceryShopped(
-  week: number,
-  items: { item: string; staple?: boolean }[],
-  ticked: Record<string, boolean>,
-): boolean {
-  const fresh = items.filter((i) => !i.staple);
-  // Staples only: nothing to go out for, so the check-in may come next.
-  if (fresh.length === 0) return true;
-  const on = Object.keys(ticked).filter((k) => ticked[k] && k.startsWith(`${week}|`));
-  return fresh.every((i) => on.some((k) => k.endsWith(`|${i.item}`)));
+export function thisWeekLine(o: { week: number; firstDay: boolean; checkinSent: boolean }): WeekLine | null {
+  if (o.firstDay || o.checkinSent) return null;
+  return { title: `Your week ${o.week} check-in`, sub: "About a minute" };
 }

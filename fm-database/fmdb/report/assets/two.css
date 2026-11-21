@@ -1,0 +1,14 @@
+/* Body age report for two: the few rules the shared page adds to report.css (from the approved sample). */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:22px;align-items:start}
+.pair figure{margin:0 auto;max-width:250px} .pair .who2{text-align:center}
+.pair .nm{font-family:var(--serif);font-size:21px;font-weight:560}
+.pair .ba{font-family:var(--serif);font-size:50px;line-height:1;color:var(--hot);font-variation-settings:"opsz" 144;margin-top:4px}
+.pair .ln{font-size:13.5px;color:var(--mute);margin-top:4px}
+table.both{width:100%;border-collapse:collapse;margin-top:14px;background:var(--paper);border:1px solid var(--ink)}
+table.both th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:650;text-align:left;padding:8px 9px;border-bottom:1px solid var(--ink)}
+table.both td{padding:10px 9px;border-bottom:1px solid var(--rule);vertical-align:top;font-size:14px}
+table.both td:first-child{font-family:var(--serif);font-size:16.5px;font-weight:520;width:30%}
+table.both .sq{max-width:150px} table.both .cnt{display:block;font-size:12.5px;font-weight:650;margin-top:4px}
+.who3{font-family:var(--serif);font-size:21px;font-weight:560;margin-top:26px}
+.who3+.sum{margin-top:8px}
+.none{font-family:var(--serif);font-size:17px;margin-top:9px}

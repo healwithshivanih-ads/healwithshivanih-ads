@@ -178,6 +178,13 @@ DRAFT: dict[str, tuple[str, str]] = {
     "step.foundation.work.why": ("Same: first paragraph", "Blood shows what is off. What moves it is in your routine: how you eat and sleep, what you take, what runs in your family, and when things began to change. It may also take a few further tests."),
     "step.foundation.work.leave": ("Same: What you leave with", "What is driving these numbers in your own routine, and the order to work in: which to tackle first, what to change at your table and in your day, and what to leave alone."),
     "step.foundation.far": ("Next step, Foundation, a far-out result other than the thyroid signal", "Your {names} {is_are} far enough outside range to need a doctor's attention. Please speak to your doctor. The session covers the rest: what in your food, sleep, stress and routine may be feeding it."),
+    # the page for two (two.py): sentences the approved sample had no case for
+    "two.alike.other": ("Page for two, “Where you are alike”: one section marked the same for both of you, other than the shared sugar average. Printed after the section's name and “for both of you.” and followed by “Your own report has the detail.”",
+                        "It is marked “{status}” in both your reports."),
+    "two.alike.none": ("Page for two, “Where you are alike”: no section is marked the same for both of you", "Nothing is marked in both of your reports."),
+    "two.next.one_steady": ("Page for two, “Your next test”: one report has things to work on and the other is steady all through (the sample's sentence, without its last part about a shared sugar pattern)",
+                            "{whose} report has things to work on, so {his} date is four months after this test. {other}, yours could wait a year, but most couples would rather test on the same morning."),
+    "two.step.neither": ("Page for two, “Your next step”: both reports are steady all through, so no session is offered: headline", "Neither of you needs anything more from me."),
 }
 
 WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
