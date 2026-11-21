@@ -31,7 +31,7 @@
 import type { AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
 import { TAG_WORDS, type AppResults } from "@/lib/fmdb/released-results";
 import { coachCard, handoffCard, urgentCard, type AskCard } from "@/lib/fmdb/ask-card";
-import { HANDOFF_COPY, REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, normalizeAsk } from "@/lib/fmdb/ask-safety";
+import { REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, isMissedCapsule, normalizeAsk } from "@/lib/fmdb/ask-safety";
 import { defaultSituation, dishesInGuide, matchSituation, type AppEatingOut, type AppEatingOutSituation, type DishVerdict } from "@/lib/fmdb/eating-out";
 import {
   dayCount,
@@ -69,6 +69,37 @@ const card = (c: AskCard): AskResult => ({ type: "card", card: c });
 const soon = (title: string): AskResult => ({ type: "open", sheet: { k: "soon", title } });
 const hosted = (id: "menu" | "grocery" | "checkin" | "labs" | "move"): AskResult => ({ type: "open", sheet: { k: "hosted", id } });
 const PLAN = "From your plan";
+
+/** Alcohol, plan by plan (coach, 21 Nov 2026): with a risk marker on the
+ *  record, a gentle "skip it"; without one, the practical line. The reason is
+ *  never shown (scripts/alcohol_risk.py decides on the Mac). */
+export function alcoholLines(risk: boolean): string[] {
+  return risk
+    ? ["It's best to skip alcohol while you're on this plan.", "If you'd like to talk it through, your coach can help."]
+    : ["If you do have a drink, have one, slowly, with food, and water alongside.", "Your coach will go through alcohol with you."];
+}
+
+export function alcoholCard(risk: boolean): AskCard {
+  return {
+    src: "From your coach",
+    heading: risk ? "Best to skip it for now" : "One, slowly, with food",
+    lines: alcoholLines(risk),
+    buttons: [{ to: "coach", label: "Message my coach", draft: "A question about alcohol: " }],
+  };
+}
+
+/** The coach's standing answer to a missed capsule (21 Nov 2026). */
+export function missedCapsuleCard(): AskCard {
+  return {
+    src: "From your coach",
+    heading: "No worries",
+    lines: ["Just take the next one at its usual time. There's no need to take two to make up for it.", "Your phone can remind you at each supplement time."],
+    buttons: [
+      { to: "remind", label: "Yes, remind me", solid: true },
+      { to: "remind", label: "Tell me how" },
+    ],
+  };
+}
 const RECORD = "From your record";
 
 // ── small helpers ──────────────────────────────────────────────────────────
@@ -576,12 +607,16 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (handoff === "alcohol" && guide && situation) {
     // "Late client dinner with drinks": the food is answered now, from the
     // plan. The drinks stay the coach's call, and the card says so.
-    return card({ ...eatingOutCard(situation, guide, q), buttons: [], note: HANDOFF_COPY.alcohol.line, handoff: true });
+    return card({ ...eatingOutCard(situation, guide, q), buttons: [], note: alcoholLines(data.sq?.alcoholRisk !== false)[0] });
   }
+  if (handoff === "alcohol") return card(alcoholCard(data.sq?.alcoholRisk !== false));
   // A shared result is answered; what to DO about it ("should I take more?")
   // is still the coach's, so any question about acting on it is handed over.
   const actsOnIt = /\b(should|can|do|must) i\b|\bneed to\b|\btake\b|\bstop\b|\bincrease\b|\breduce\b|\bmore\b|\bless\b|\bdose\b|\bfix\b|\btreat/.test(s);
   if (handoff === "results" && data.sq?.results && !actsOnIt) return resultsAnswer(s, data.sq.results);
+  // Coach, 21 Nov 2026: a missed capsule is answered, not handed over: no
+  // worries, take the next one, and the app can remind you.
+  if (handoff === "dose" && isMissedCapsule(q)) return card(missedCapsuleCard());
   if (handoff) return card(handoffCard(handoff));
   if (has(/(shift|change|move|adjust|push).{0,24}(time|timing)|eat (breakfast|lunch|dinner) at \d|(late|night|early) shift/)) {
     return card(coachCard("Changing when you eat or take things is your coach's call. Send this to your coach?"));

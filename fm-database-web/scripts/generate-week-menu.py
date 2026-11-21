@@ -138,7 +138,7 @@ def _protein_suppressed(client: dict) -> bool:
     return False
 
 
-def _day_target_lines(client: dict, target_week: int | None) -> list[str] | None:
+def _day_target_lines(client: dict, target_week: int | None, pattern: str | None = None) -> list[str] | None:
     """New-app clients (app_shell: v2) only: the client's confirmed day target
     (scripts/day_targets.py), so each day is BUILT to the grams the app shows
     beside the menu. None for everyone else, whose menus stay as they were
@@ -148,7 +148,7 @@ def _day_target_lines(client: dict, target_week: int | None) -> list[str] | None
     try:
         from day_targets import day_targets
 
-        t = day_targets(client, target_week)
+        t = day_targets(client, target_week, pattern)
     except Exception:
         return None
     if t.get("status") != "ok":
@@ -233,9 +233,9 @@ def _check_days(days: list, target: dict) -> tuple[list[dict], list[str]]:
     return totals, misses
 
 
-def _nutrient_targets_block(client: dict, target_week: int | None = None) -> list[str]:
+def _nutrient_targets_block(client: dict, target_week: int | None = None, pattern: str | None = None) -> list[str]:
     """Prompt lines: protein/fibre floors + lab-driven nutrient emphasis."""
-    dt_lines = _day_target_lines(client, target_week)
+    dt_lines = _day_target_lines(client, target_week, pattern)
     if dt_lines:
         lines_dt = list(dt_lines)
         priorities = lab_nutrient_priorities(client)
@@ -708,7 +708,7 @@ def main() -> None:
         try:
             from day_targets import day_targets as _dt
 
-            _t = _dt(client, target_week)
+            _t = _dt(client, target_week, nutrition.get("pattern"))
             dt_target = _t if _t.get("status") == "ok" else None
         except Exception:
             dt_target = None
@@ -747,7 +747,7 @@ def main() -> None:
             _caution_lines or "none for this client",
             "",
             "NUTRIENT TARGETS FOR THIS CLIENT (rule 10 — balance the week to these):",
-            *_nutrient_targets_block(client, target_week),
+            *_nutrient_targets_block(client, target_week, nutrition.get("pattern")),
             "",
             "CATALOGUE DISHES — name every cookable main dish with one of these EXACT titles (rule 13):",
             *(["Grams are for the portion shown; scale them with the portion you write."] if dt_target else []),

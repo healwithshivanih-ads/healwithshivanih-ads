@@ -43,6 +43,7 @@ import { SqDiarySheet, useSqDiary } from "./sq-diary";
 import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeSheet, SqRecordDaySheet, SqRecordSheet } from "./sq-sheets";
 import { SqStartSheet } from "./sq-start";
 import { orderRows, SqOrderSheet, SqSuppsSheet, SqTripSheet, SqVitalsSheet } from "./sq-everything";
+import { SqRemindSheet } from "./sq-remind";
 import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
 import "./sq.css";
 
@@ -347,7 +348,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
   };
 
   const onCardButton = (b: AskButton) => {
-    if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout") open({ k: b.to });
+    if (b.to === "day" || b.to === "record" || b.to === "start" || b.to === "eatout" || b.to === "remind") open({ k: b.to });
     else if (b.to === "recipe" && b.ref) open({ k: "recipe", slot: b.ref });
     else if (b.to === "soon" && b.ref === "results") open({ k: "results" });
     else if (b.to === "soon") open({ k: "soon", title: b.ref ?? b.label });
@@ -421,6 +422,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       sheetBody = (
         <SqTripSheet data={data} todayYmd={todayYmd} onEatOut={data.planRef?.eatingOut ? () => open({ k: "eatout" }) : undefined} />
       );
+    } else if (sheet.k === "remind") {
+      sheetTitle = "Reminders";
+      sheetBody = <SqRemindSheet data={data} />;
     } else if (sheet.k === "start") {
       sheetTitle = "How this app works";
       sheetBody = <SqStartSheet />;
@@ -549,6 +553,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                       onOpen={() => open({ k: "trip" })}
                     />
                     <SqNavRow title="Your record" note="Everything you have ticked, day by day" onOpen={() => open({ k: "record" })} />
+                    <SqNavRow title="Reminders" note="Your phone reminds you at each supplement time" onOpen={() => open({ k: "remind" })} />
                     <SqSwitchRow
                       title="Track every item on Home"
                       on={track}

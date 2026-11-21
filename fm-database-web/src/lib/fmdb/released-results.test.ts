@@ -92,6 +92,6 @@ describe("wiring", () => {
   it("released results ride only with the new front's data", () => {
     const src = fs.readFileSync(path.join(root, "src/lib/fmdb/client-app.ts"), "utf8");
     expect(src.match(/releasedResults\(/g)).toHaveLength(1);
-    expect(src).toMatch(/sq: sqShell === "v2" \? await loadSqData\([^)]*releasedResults\(client, labVault\)\)/);
+    expect(src).toMatch(/sq: sqShell === "v2" \? await loadSqData\([^)]*releasedResults\(client, labVault\)[,)]/);
   });
 });

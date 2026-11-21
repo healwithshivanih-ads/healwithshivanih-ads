@@ -300,10 +300,11 @@ import { runShim } from "./shim";
 
 /** The day's target: on Fly from the projected spec (the full record never
  *  reaches Fly); on the Mac from scripts/day_targets.py directly. */
-async function loadDayTargets(client: Record<string, unknown>, clientId: string, week: number): Promise<DayTargets | null> {
+async function loadDayTargets(client: Record<string, unknown>, clientId: string, week: number, pattern: string): Promise<DayTargets | null> {
   if (currentHost() === "fly") return targetsForWeek(client.day_targets, week);
   try {
-    const out = (await runShim("day-targets.py", { client_id: clientId, plan_week: week })) as { ok?: boolean; targets?: unknown };
+    // `pattern`: the plan's diet line ("Moderate-protein, …") sets the protein band.
+    const out = (await runShim("day-targets.py", { client_id: clientId, plan_week: week, pattern })) as { ok?: boolean; targets?: unknown };
     return out?.ok ? targetsForWeek(out.targets, week) : null;
   } catch {
     return null;
@@ -1236,6 +1237,9 @@ export interface AppSqData {
   daysSinceLastOpen: number | null;
   /** Results the coach has released (released-results.ts); null until then. */
   results: AppResults | null;
+  /** The alcohol answer, plan by plan (scripts/alcohol_risk.py): true = the
+   *  gentle "skip it", false = the practical line. Never the reason. */
+  alcoholRisk: boolean;
 }
 
 export interface ClientAppData {
@@ -1881,7 +1885,18 @@ function ymdDiff(fromYmd: string, toYmd: string): number {
 /** The new front's extras — the saved record and how long she has been away.
  *  Every read is best-effort: a missing or broken file means an empty record
  *  and no return card, never a failed app load. */
-async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null): Promise<AppSqData> {
+/** Fly reads the projected flag; the Mac asks the shim. Unknown = true. */
+async function loadAlcoholRisk(client: Record<string, unknown>, clientId: string, planSlug: string): Promise<boolean> {
+  if (currentHost() === "fly") return client.alcohol_risk !== false;
+  try {
+    const out = (await runShim("alcohol-risk.py", { client_id: clientId, plan_slug: planSlug })) as { ok?: boolean; risk?: boolean };
+    return out?.ok ? out.risk !== false : true;
+  } catch {
+    return true;
+  }
+}
+
+async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null, alcoholRisk = true): Promise<AppSqData> {
   const rows = await loadTickRows(clientId, 15).catch(() => []);
   const tickHistory: AppTickDay[] = rows.map((r) => ({
     date: r.date,
@@ -1901,7 +1916,7 @@ async function loadSqData(clientId: string, clientDir: string, appTz: string, pl
   } catch {
     /* no opens on record */
   }
-  return { planDay, tickHistory, daysSinceLastOpen, results };
+  return { planDay, tickHistory, daysSinceLastOpen, results, alcoholRisk };
 }
 
 async function loadCheckinPrefill(
@@ -6518,7 +6533,7 @@ export async function loadClientAppData(
     mode: appMode,
     endgame,
     appShell: sqShell,
-    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault)) : null,
+    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault), await loadAlcoholRisk(client, clientId, planSlug)) : null,
     labOrders,
     client: {
       firstName,
@@ -6630,6 +6645,6 @@ export async function loadClientAppData(
     reminders,
     foodDiary,
     supply: loadSupply(clientId),
-    dayTargets: macroLookup && sqShell === "v2" ? await loadDayTargets(client, clientId, week) : null,
+    dayTargets: macroLookup && sqShell === "v2" ? await loadDayTargets(client, clientId, week, asStr(nutrition.pattern)) : null,
   };
 }

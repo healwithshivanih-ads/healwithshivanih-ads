@@ -107,6 +107,33 @@ def test_medicines():
     assert t["carb_share"][0] >= 0.45
 
 
-def test_over_65_no_deficit_by_default():
+def test_over_65():
+    # below BMI 30: no deficit; the usual band, never raised
     t = day_targets(base(date_of_birth="1950-01-01", weight_loss={"enabled": True}))
     assert "maintenance" in t["kcal"]
+    assert t["protein"] == {"low": 84, "high": 105}
+    # BMI 30+: a deficit at slow pace
+    t = day_targets(base(date_of_birth="1950-01-01", measurements={"weight_kg": 90, "height_cm": 160}, weight_loss={"enabled": True, "pace": "fast"}))
+    assert "phases" in t["kcal"] and "over 65: slow pace" in t["notes"]
+    # a high-protein plan is not raised over 65
+    t = day_targets(base(date_of_birth="1950-01-01"), pattern="High-protein Mediterranean")
+    assert t["protein"] == {"low": 84, "high": 105}
+
+
+def test_protein_follows_the_plan_diet_line():
+    assert day_targets(base(), pattern="Moderate-protein, low-refined-carb")["protein"] == {"low": 70, "high": 84}
+    assert day_targets(base(), pattern="High protein, low GI")["protein"] == {"low": 112, "high": 140}
+    t = day_targets(base(), pattern="Low-protein, renal-friendly")
+    assert t["protein"] == {"low": 56, "high": 56} and t["menu_protein_g"] == 56
+    assert day_targets(base(), pattern="Anti-inflammatory, whole foods")["protein"] == {"low": 84, "high": 105}
+
+
+def test_no_kidney_test():
+    # no test, no risk: the usual band
+    assert day_targets(base(lab_markers=[]))["protein"] == {"low": 84, "high": 105}
+    # no test, diabetes or high blood pressure: held at 1.0-1.2 until tested
+    t = day_targets(base(lab_markers=[], active_conditions=["Hypertension"]))
+    assert t["protein"] == {"low": 70, "high": 84}
+    assert any("order a kidney test" in n for n in t["notes"])
+    # a high-protein plan with no kidney test stays at the usual band
+    assert day_targets(base(lab_markers=[]), pattern="High-protein")["protein"] == {"low": 84, "high": 105}

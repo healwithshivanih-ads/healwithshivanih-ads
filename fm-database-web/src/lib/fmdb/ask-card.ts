@@ -11,7 +11,7 @@ import { HANDOFF_COPY, URGENT_COPY, type HandoffKind, type UrgentKind } from "./
 
 /** Where a button on a card may lead. A fixed list: the model picks from the
  *  MODEL_BUTTONS subset and cannot invent a destination. */
-export type AskTarget = "day" | "record" | "recipe" | "start" | "eatout" | "practice" | "practices" | "coach" | "soon";
+export type AskTarget = "day" | "record" | "recipe" | "start" | "eatout" | "practice" | "practices" | "coach" | "soon" | "remind";
 
 export interface AskButton {
   to: AskTarget;
@@ -40,6 +40,9 @@ export interface AskCard {
   buttons?: AskButton[];
   /** true when the card offers to send the question to the coach */
   handoff?: boolean;
+  /** an automatic answer on a dish the plan does not name: the phone also
+   *  sends the question to the coach (coach, 21 Nov 2026) */
+  autoCheck?: boolean;
   /** questions she may tap next; each must be answerable without the model */
   followUps?: string[];
 }
@@ -75,6 +78,21 @@ export const NO_ANSWER_CARD: AskCard = coachCard(
 // ── the model's card ───────────────────────────────────────────────────────
 
 /** The only buttons the model may put on a card. */
+/** Words the model uses to invent a reason a dish is off the plan ("made with
+ *  cream and butter"). The prompt forbids it, and the model still does it now
+ *  and then (round 5: butter chicken, 21 Nov 2026: dal makhani). A card that
+ *  gives one of these as a reason when neither the plan context nor the
+ *  question has the word is not shown. */
+const REASON_WORDS = ["cream", "creamy", "butter", "ghee", "oil", "oily", "fried", "dairy", "cheese", "rich", "heavy", "sugary", "processed"];
+
+export function inventsAReason(card: AskCard, context: string, question: string): boolean {
+  const said = [card.heading ?? "", ...card.lines].join(" ").toLowerCase();
+  const known = `${context} ${question}`.toLowerCase();
+  return REASON_WORDS.some((w) => new RegExp(`\\b${w}\\b`).test(said) && !new RegExp(`\\b${w}`).test(known));
+}
+
+export const AUTO_CHECK_NOTE = "This is an automatic answer. Your question has gone to your coach to check.";
+
 export const MODEL_BUTTONS = {
   day: "Your whole day",
   record: "Your record",
@@ -146,6 +164,19 @@ export function parseModelCard(raw: unknown): ModelVerdict {
     buttons.push({ to: key as ModelButton, label: MODEL_BUTTONS[key as ModelButton] });
   }
 
+  if (obj.check_with_coach === true) {
+    return {
+      verdict: "answer",
+      card: {
+        src: "Automatic answer",
+        heading: heading || undefined,
+        lines,
+        buttons: buttons.filter((x) => x.to !== "coach"),
+        note: AUTO_CHECK_NOTE,
+        autoCheck: true,
+      },
+    };
+  }
   return {
     verdict: "answer",
     card: { src: "From your plan", heading: heading || undefined, lines, buttons },

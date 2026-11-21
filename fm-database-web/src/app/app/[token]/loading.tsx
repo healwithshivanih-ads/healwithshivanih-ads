@@ -24,7 +24,10 @@ const block = (h: number, extra?: React.CSSProperties): React.CSSProperties => (
 export default function ClientAppLoading() {
   return (
     <div className="ochre-app sequoya">
-      <style>{`@keyframes ochre-skel-pulse { 0%,100% { opacity: 1 } 50% { opacity: .55 } }`}</style>
+      <style>{`@keyframes ochre-skel-pulse { 0%,100% { opacity: 1 } 50% { opacity: .55 } }
+@keyframes ochre-skel-show { to { opacity: 1 } }
+.ochre-skel-slow { display: block; margin-top: 4px; opacity: 0; animation: ochre-skel-show .4s ease 4s forwards }
+@media (prefers-reduced-motion: reduce) { .ochre-skel-slow { animation: none; opacity: 1 } }`}</style>
       <div
         className="app"
         aria-busy="true"
@@ -64,6 +67,8 @@ export default function ClientAppLoading() {
           }}
         >
           Opening your plan…
+          {/* No JavaScript here: the line appears by itself after 4 s. */}
+          <span className="ochre-skel-slow">Slow internet can make this take a little longer.</span>
         </p>
       </div>
     </div>

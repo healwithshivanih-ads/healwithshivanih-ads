@@ -22,6 +22,7 @@ anything malformed into a hand-off to the coach.
 from __future__ import annotations
 
 import json
+import re
 import os
 import sys
 from pathlib import Path
@@ -148,9 +149,9 @@ SYSTEM_CARD = (
     "plan\" unless a leave-out line or a skip line names it. Dairy, butter, "
     "cream, cheese, potato and oil are NOT left out unless the context says "
     "so. Do not invent a reason.\n"
-    "- You may say YES to a dish only when PLAN CONTEXT names it: in a list, "
-    "on a menu or in a guide's choose line. Never approve a dish from your "
-    "own knowledge.\n"
+    "- A plain YES needs PLAN CONTEXT to name the dish: in a list, on a menu "
+    "or in a guide's choose line. For a dish it does not name, see the "
+    "automatic-answer rule below.\n"
     "- You may say SKIP when a leave-out or skip line names the dish, or "
     "names what the dish is mainly made of or the kind of dish it is: pulao "
     "and biryani are rice, naan and paratha are wheat, gulab jamun is a "
@@ -161,14 +162,15 @@ SYSTEM_CARD = (
     "do not call a dish fried, creamy or sugary unless its name says so. "
     "\"Paneer tikka\" is NOT covered by a line about fried food.\n"
     "- A food or dish the plan does not mention (it is in no list, on no "
-    "menu and in no guide line): the verdict is still \"answer\". The heading "
-    "says it is not on the list yet, for example \"Mango is not on your "
-    "list yet\". Do not add a sentence saying the plan does not mention it. "
-    "Then, if the guide has a line for a food the plan does not mention, "
-    "give that line; if there is no such line, name two things from the "
-    "eat-freely list to have instead for now. Add the \"coach\" button so the "
-    "client can ask for it to be added. Never give your own verdict on "
-    "whether that food is good or bad for them.\n"
+    "menu and in no guide line): give an AUTOMATIC answer, and set "
+    "\"check_with_coach\": true so the question also goes to the coach. Judge "
+    "it ONLY against the Diet line and the leave-out and skip lines, by what "
+    "the dish is mainly made of: if none of them covers it, the heading is "
+    "\"Likely yes\" plus a few words; if one covers it, \"Likely skip\" and "
+    "that ONE line as the reason. Never judge it on health grounds of your "
+    "own (no \"too oily\", no \"good for you\"). If you cannot tell what the "
+    "dish is made of, give no verdict: the heading says it is not on the list "
+    "yet and the lines name two things from the eat-freely list.\n"
     "- A swap: offer only swaps written in the context for that meal, or a "
     "like-for-like change that stays inside the eat-freely list. Otherwise "
     "defer.\n"
@@ -179,10 +181,16 @@ SYSTEM_CARD = (
     "\"her\" or \"his\" for the coach.\n"
     "- Never say something was done, sent, booked, ordered or changed. You "
     "cannot do any of those.\n"
-    "- Plain English, even when the question is in Hindi or Hinglish. Short "
-    "sentences. No markdown, no lists, no emoji.\n"
+    "- Reply in the client's own language: a question in Hinglish gets "
+    "simple Hinglish in Roman letters (\"Haan, bina doodh ke\"), Hindi gets "
+    "Hindi, English gets English. Keep food names as the client wrote them. "
+    "Short sentences. No markdown, no lists, no emoji.\n"
     "\n"
     "Shape of an answer.\n"
+    "- LANGUAGE: heading and lines are written in the language of the "
+    "question. A question in Hinglish (Hindi words in Roman letters, like "
+    "\"kya main ... kha sakti hoon\") MUST get Hinglish in Roman letters, never "
+    "English and never Devanagari.\n"
     "- \"heading\": the answer in at most eight words, e.g. \"Yes, without "
     "milk\" or \"Dal, rice and vegetables\".\n"
     "- \"lines\": one to three sentences, each under 30 words. The first line "
@@ -191,16 +199,32 @@ SYSTEM_CARD = (
     "day), \"record\" (what has been ticked), \"practices\" (the practices), "
     "\"coach\" (message the coach). Leave it out when none helps.\n"
     "\n"
-    "Examples of the whole reply:\n"    "{\"verdict\":\"answer\",\"heading\":\"Mango is not on your list yet\",\"lines\":"
-    "[\"For now, have something from your list instead.\"],"
-    "\"buttons\":[\"coach\"]}\n"
+    "Examples of the whole reply:\n"    "{\"verdict\":\"answer\",\"heading\":\"Likely yes, a small bowl\",\"lines\":"
+    "[\"Nothing in it is on your leave-out list.\"],"
+    "\"check_with_coach\":true}\n"
 
+    "{\"verdict\":\"answer\",\"heading\":\"Haan, bina doodh ke\",\"lines\":"
+    "[\"Chai aapke plan mein theek hai.\",\"Abhi doodh band hai, toh bina doodh ke lijiye.\"]}\n"
     "{\"verdict\":\"answer\",\"heading\":\"Yes, without milk\",\"lines\":"
     "[\"Tea is fine on your plan.\",\"Milk is left out for now, so have it "
     "without.\"]}\n"
     "{\"verdict\":\"defer\"}\n"
     "{\"verdict\":\"emergency\"}"
 )
+
+
+_HINGLISH = re.compile(
+    r"\b(kya|kyu|kyun|kaise|kaisa|main|mai|mujhe|mera|meri|hai|hain|hoon|hu|nahi|nahin|sakti|sakta|sakte|khana|kha|"
+    r"khaun|khau|lena|lu|loon|pee|piyu|abhi|aaj|kal|raat|subah|thoda|zyada|bahut|chahiye|wala|wali|aur|bhi|toh|ke|ki|ko|se)\b"
+)
+
+
+def _language_line(question: str) -> str:
+    """Coach, 21 Nov 2026: Hinglish replies are fine. The model drifts back to
+    English, so a question with three or more Hindi words carries the rule."""
+    if len(_HINGLISH.findall(question.lower())) >= 3:
+        return "This question is in Hinglish: write the heading and lines in simple Hinglish, Roman letters.\n\n"
+    return ""
 
 
 def main() -> int:
@@ -253,7 +277,7 @@ def main() -> int:
                                 "text": f"PLAN CONTEXT:\n{context}",
                                 "cache_control": {"type": "ephemeral"},
                             },
-                            {"type": "text", "text": f"CLIENT QUESTION: {question}\n\nReply with the JSON object only."},
+                            {"type": "text", "text": f"CLIENT QUESTION: {question}\n\n{_language_line(question)}Reply with the JSON object only."},
                         ],
                     }
                 ],
