@@ -49,6 +49,7 @@ export function SqHost({
   checkinSent,
   onCheckinSent,
   openHosted,
+  openResults,
   onClose,
 }: {
   id: HostedId;
@@ -57,6 +58,8 @@ export function SqHost({
   onCheckinSent: () => void;
   /** from the menu, "Shopping list" opens the list in place of the menu */
   openHosted: (id: HostedId) => void;
+  /** Labs: open "Your results", where the numbers live */
+  openResults?: () => void;
   onClose: () => void;
 }) {
   // With more than one movement session, a short list comes first; closing a
@@ -69,7 +72,7 @@ export function SqHost({
   let overlay: ReactNode = null;
   let screen: ReactNode = null;
   if (id === "grocery") overlay = <GroceryOverlay onClose={onClose} />;
-  else if (id === "labs") overlay = <LabsOverlay onClose={onClose} numbersHeld={!data.sq?.results} />;
+  else if (id === "labs") overlay = <LabsOverlay onClose={onClose} numbersHeld={!data.sq?.results} onResults={openResults} />;
   else if (id === "move" && chosen)
     overlay = (
       <ExerciseOverlay

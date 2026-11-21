@@ -23,6 +23,32 @@ import type { ClientAppData, JourneyItem } from "@/lib/fmdb/client-app";
 import { progressAsOf, progressHeadline, progressTrends, shortDate } from "@/lib/fmdb/progress-view";
 import { SqCard, SqNavRow, type SqSheet } from "./sq-ui";
 
+type Checkpoint = ClientAppData["labCheckpoints"]["list"][number];
+
+/** Test dates only. The baseline row carries lab numbers with no range tag in
+ *  the payload, so it reads "On file"; a plan whose retest falls in the
+ *  full-panel week gets one row, not two with the same week. */
+export function progressCheckpoints(list: Checkpoint[]): Checkpoint[] {
+  const out: Checkpoint[] = [];
+  for (const c of list) {
+    const row = { ...c, value: c.sub === "Baseline" ? "On file" : /full review/i.test(c.value) ? "Full review with your coach" : c.value };
+    const prev = out[out.length - 1];
+    if (prev && prev.label === row.label) {
+      out[out.length - 1] = { ...row, sub: "Retest and full panel", value: "Full review with your coach" };
+    } else out.push(row);
+  }
+  return out;
+}
+
+/** Newest first by real date; a check-in from an earlier plan sits below that
+ *  plan's later events, not above "Your plan began". */
+export function journeyByDate(items: JourneyItem[]): JourneyItem[] {
+  return items
+    .map((j, i) => ({ j, i }))
+    .sort((a, b) => (b.j.date ?? "").localeCompare(a.j.date ?? "") || a.i - b.i)
+    .map((x) => x.j);
+}
+
 function Spark({ points, label }: { points: number[]; label: string }) {
   if (points.length < 2) return null;
   const W = 300, H = 70, pad = 8;
@@ -68,14 +94,8 @@ export function SqProgressSheet({ data, open }: { data: ClientAppData; open: (s:
   const t = v ? progressTrends(v) : null;
   const good = v ? progressHeadline(v) : [];
   const hist = v?.body?.history ?? [];
-  const rawPoints = data.labCheckpoints?.list ?? [];
-  // a short plan puts the retest and the full panel in the same week: one row
-  const checkpoints = rawPoints.filter((c, i) => !rawPoints.slice(i + 1).some((n) => n.label === c.label)).map((c) => ({
-    ...c,
-    // the payload's last row names the coach; app copy says "your coach"
-    value: /full review/i.test(c.value) ? "Full review with your coach" : c.sub === "Baseline" ? "On file" : c.value,
-  }));
-  const journey = data.journey ?? [];
+  const checkpoints = progressCheckpoints(data.labCheckpoints?.list ?? []);
+  const journey = journeyByDate(data.journey ?? []);
   const saveReading = (
     <div className="sq-row-btns">
       <button type="button" className="sq-btn sq-btn-quiet sq-btn-small" onClick={() => open({ k: "vitals" })}>
