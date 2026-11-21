@@ -895,8 +895,36 @@ def _merge_jsonl(src: Path, dest: Path, key: "str | None") -> int:
     return 1
 
 
+def _mirror_body_age_orders(yaml, auth: Path, stag: Path, out: dict) -> None:
+    """Body age report orders are placed and paid on Fly (the public order page), in <root>/body-age-orders/.
+    Bring them to the Mac, where the coach works them.
+
+    One-way and narrow on purpose: a file is copied when the Mac does not have it, or when the Mac's copy is
+    still `pending` and Fly's has since been settled (`paid` or `cancelled`). Once the Mac's copy is paid or
+    further on, Fly's is never taken again, so nothing the coach has done to an order (records, booked,
+    collected) can be overwritten by an older copy."""
+    src = stag / "body-age-orders"
+    if not src.is_dir():
+        return
+    dest_dir = auth / "body-age-orders"
+    for f in sorted(src.glob("ba-*.yaml")):
+        try:
+            dest = dest_dir / f.name
+            if dest.exists():
+                mine = (yaml.safe_load(dest.read_text()) or {}).get("status")
+                theirs = (yaml.safe_load(f.read_text()) or {}).get("status")
+                if not (mine == "pending" and theirs in ("paid", "cancelled")):
+                    continue
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(f, dest)
+            out["body_age_orders_mirrored"] = out.get("body_age_orders_mirrored", 0) + 1
+        except Exception as e:
+            out["errors"].append(f"body-age-order-mirror {f.name}: {e}")
+
+
 def _refresh(yaml, auth: Path, stag: Path) -> dict:
     out = {"refreshed": 0, "checkins_mirrored": 0, "purged": 0, "errors": []}
+    _mirror_body_age_orders(yaml, auth, stag, out)
     clients_dir = stag / "clients"
     if not clients_dir.exists():
         return {"ok": True, **out}

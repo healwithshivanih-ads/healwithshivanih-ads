@@ -93,9 +93,9 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-Turning a paid order into a person's record and the coach's order list (booked / collected / results in); the
-joint report for two (her choice, 21 Nov 2026: joint report before launch); the WhatsApp answers; the revenue
-export for a report order.
+The joint report for two (her choice, 21 Nov 2026: joint report before launch); the WhatsApp answers; the revenue
+export for a report order; a refund step; an order whose buyer goes quiet for 15 days before the report exists is
+not yet protected from parking (the guard starts at the report).
 
 ## Ordering and paying (21 Nov 2026) — built, OFF
 
@@ -119,6 +119,24 @@ Her decision (21 Nov 2026): a public order page anyone can open. `/order/body-ag
 - Public paths added: `/order/` and `/api/body-age/` (trailing slash on purpose: `/api/body-age-file/` stays
   coach-only; a test pins it).
 - Buyers must be 18 or over (`MIN_AGE_YEARS`), from the legal review's list; hers to change.
+
+## From a paid order to the report (21 Nov 2026)
+
+- **Orders reach the Mac** through `app-staging-action.py::_mirror_body_age_orders` (in `_refresh`): a file is
+  copied when the Mac lacks it, or when the Mac's copy is still `pending` and Fly's is settled. Once the Mac's copy
+  is paid or further on it is never overwritten. Coach-side changes are not sent back to Fly (nothing there reads
+  them yet; the WhatsApp answers will need that).
+- **Records**: `body-age-order-intake.ts::placeBodyAgeOrder`, run when the coach opens the list. Each person is
+  found by email or phone in clients/ and prospects/ (a parked person is moved back) or created as a prospect
+  (`lead_source: body_age_report`), then given date of birth, sex, email, phone and the home-visit address without
+  overwriting what was there. An unclear match (email and phone point at different records) creates NOTHING and
+  shows the coach why; two people sharing contact details get a record each. `client_ids` on the order holds the
+  result, one per person.
+- **A TEST order never creates a record.** The coach attaches it to the test profile from the list.
+- **Coach list**: `/report-orders` (menu: Report orders). Steps by hand: booked (date) → sample collected (date) →
+  results on their record → report sent; cancel does not refund. The coach can never mark an order paid.
+- **What to book** comes from `thyrocare.yaml#longevity_panels`: `body-age` (standard, cost 2,049) and
+  `body-age-deeper` (profile 1 + urine routine, cost 5,094; her yes of 21 Nov 2026). Coach screen only.
 
 ## Coach screen (20 Nov 2026)
 
