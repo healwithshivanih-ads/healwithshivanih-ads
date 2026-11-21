@@ -480,7 +480,8 @@ export function PreDiscoveryForm({ token, displayName, coachName = "Shivani", pr
 
       <p style={{ fontSize: 12, color: "#999", marginTop: 18, lineHeight: 1.55, textAlign: "center" }}>
         I understand this information is private and confidential, and will not
-        be used in any manner except to help with my care. By sending, I agree.
+        be used in any manner except to help with my care, and that my coach may send
+        me my plan, reports and lab results on WhatsApp and by email. By sending, I agree.
       </p>
     </form>
   );

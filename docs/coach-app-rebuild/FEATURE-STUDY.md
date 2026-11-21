@@ -165,6 +165,19 @@ Also cut, unused since summer:
 8. **Digest email or push.** The agents disagree.
    *Recommendation: keep the email and add a push only for new messages.*
 
+### Her decisions (21 November 2026)
+
+| # | Decision |
+|---|---|
+| 1 | Intake: link on payment plus **one gentle reminder** a few days later, then nothing. |
+| 2 | Booking: **keep both**, direct booking and a send-a-booking-link button she presses herself. |
+| 3 | Food diary: **hidden until a client asks**; the code stays dormant. |
+| 4 | Phone: **rebuild `/m` as its own phone coach app**, alongside the desktop app. |
+| 5 | Lab results: **shown to clients by default**, with a per-client off switch. This reverses the 18 Nov rule in the client-app build plan (results released per client). |
+| 6 | Sunday recipe-photo job: **stays automatic** (commit and Fly deploy). |
+| 7 | Prospect follow-ups: **kept as drafts**; nothing sends without her click. |
+| 8 | Alerts: **daily digest email, plus a phone push when a client message arrives**. |
+
 ## 6. Things found in the live app today (not the rebuild)
 
 1. **Every plan publish still sends two WhatsApps.** `FM_AUTO_PUBLISH_FOLLOWUPS=1` is set
