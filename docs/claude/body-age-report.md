@@ -93,8 +93,32 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-How a buyer pays for the report and books the draw (no order page, no report order, the two test packages are
-priced in `thyrocare.yaml#longevity_panels` but not bookable); the two-person report; the WhatsApp answers.
+Turning a paid order into a person's record and the coach's order list (booked / collected / results in); the
+joint report for two (her choice, 21 Nov 2026: joint report before launch); the WhatsApp answers; the revenue
+export for a report order.
+
+## Ordering and paying (21 Nov 2026) — built, OFF
+
+Her decision (21 Nov 2026): a public order page anyone can open. `/order/body-age` on the public server.
+
+- **Off by default.** `BODY_AGE_ORDER_PAGE` = `off` (default, everything 404s) · `test` (Razorpay TEST keys only,
+  a live key is refused, orders marked `test: true`) · `live` (real orders; reads as `off` before Sat 2 Jan 2027,
+  20:00 IST whatever the setting). `body-age-orders.ts::orderPageMode` / `orderRazorpayKeys`, pinned by tests.
+- **Prices** are in `BODY_AGE_PRICE_INR` (4,999 / 9,999; for two 8,999 / 17,999) and are worked out on the server
+  from the report and the number of people, never read from the form.
+- **Order record**: `<plans root>/body-age-orders/<ba-YYYYMMDD-xxxxxxxx>.yaml` (people, home-visit address and
+  preferred morning, amount, status, consent time and wording version). Status: pending → paid → booked →
+  collected → results_in → report_sent (+ cancelled).
+- **Paid** is set by `body-age-payment.ts::settleBodyAgePayment` through two verified doors, both safe to arrive
+  twice: the signed Checkout receipt (`/api/body-age/order/<id>/confirm`, HMAC with the key secret) and the
+  webhook (`/api/body-age/webhook`, acts only on `notes.kind = body_age_report`). The browser's word alone never
+  marks anything paid.
+- **Nothing is sent to the buyer.** A paid order emails the coach only (ops mailbox to `COACH_DIGEST_EMAIL`).
+- **Every word a buyer reads** is in `app/order/body-age/order-copy.ts`: a DRAFT until Shivani approves it. A
+  test fails on the brand name, the laboratory's name, "urgent", "free", the programme or its price.
+- Public paths added: `/order/` and `/api/body-age/` (trailing slash on purpose: `/api/body-age-file/` stays
+  coach-only; a test pins it).
+- Buyers must be 18 or over (`MIN_AGE_YEARS`), from the legal review's list; hers to change.
 
 ## Coach screen (20 Nov 2026)
 

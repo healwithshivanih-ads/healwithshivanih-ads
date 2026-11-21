@@ -28,6 +28,11 @@
 export const PUBLIC_PATH_PREFIXES = [
   "/intake/", // client-facing intake form (intake_token = auth)
   "/foundation/", // client-facing foundation-session pay page (app_token = auth)
+  // Body age report order page + its routes. Public by design (anyone may order), but every one of them answers
+  // 404 unless BODY_AGE_ORDER_PAGE turns the page on (body-age-orders.ts::orderPageMode). The trailing slashes
+  // matter: "/api/body-age/" must never widen to the coach-only "/api/body-age-file/".
+  "/order/",
+  "/api/body-age/",
   // Public letter page: clients open the consolidated plan letter via a
   // token-based URL (plan.letter_token). Generated at publish; cleared
   // on revoke. Behaviour mirrors /intake/.
