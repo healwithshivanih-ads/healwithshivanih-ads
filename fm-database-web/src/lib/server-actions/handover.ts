@@ -21,6 +21,7 @@ import yaml from "js-yaml";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { allocateNextClientId } from "@/lib/fmdb/next-client-id";
 import { buildPaymentEvent, emitActiveClientCount, emitRevenueEvent } from "@/lib/fmdb/revenue-export";
 
 export interface HandoverClientIdentity {
@@ -105,20 +106,6 @@ async function findMatchingClient(
 }
 
 /**
- * Auto-numbered client_id: scan existing clients for `cl-NNN` pattern,
- * pick max + 1. Falls back to `cl-001` when none exist.
- */
-async function nextClientId(): Promise<string> {
-  const clients = (await loadAllClients()) as Array<Record<string, unknown>>;
-  let max = 0;
-  for (const c of clients) {
-    const m = /^cl-(\d{3,})$/.exec((c.client_id as string) || "");
-    if (m) max = Math.max(max, parseInt(m[1], 10));
-  }
-  return `cl-${String(max + 1).padStart(3, "0")}`;
-}
-
-/**
  * Write a fresh client.yaml — used when the handover finds no match. Set
  * minimal fields the Pydantic Client model requires: client_id, intake_date,
  * sex, created_at, updated_at, updated_by, version. Everything else can be
@@ -195,7 +182,7 @@ export async function processDiscoveryComplete(
   if (match.kind === "match") {
     clientId = match.client_id;
   } else {
-    clientId = await nextClientId();
+    clientId = await allocateNextClientId();
     await writeNewClient(clientId, payload.client, payload.source);
     isNewClient = true;
   }
