@@ -30,6 +30,7 @@
 
 import type { AppSupplement, AppTickDay, ClientAppData } from "@/lib/fmdb/client-app";
 import { TAG_WORDS, type AppResults } from "@/lib/fmdb/released-results";
+import { dayMacros } from "@/lib/fmdb/meal-macros";
 import { coachCard, handoffCard, urgentCard, type AskCard } from "@/lib/fmdb/ask-card";
 import { REPLY_LINE, askHandoff, askUrgent, dropSupplementForms, isMissedCapsule, normalizeAsk } from "@/lib/fmdb/ask-safety";
 import { defaultSituation, dishesInGuide, matchSituation, type AppEatingOut, type AppEatingOutSituation, type DishVerdict } from "@/lib/fmdb/eating-out";
@@ -771,6 +772,24 @@ function routeAskEn(q: string, ctx: AskContext): AskResult {
   if (has(/exercise|workout|strength|movement|\bgym\b|sit.?to.?stand|push.?up/)) return data.exerciseSessions?.length ? hosted("move") : soon("Movement");
   if (has(/book (a |my |the )?(blood )?test|(next|blood|lab) test|retest|\blab slot|collection slot/) && !has(/result|report|level|range|normal/)) return hosted("labs");
   if (has(/check.?in/)) return hosted("checkin");
+  // "How many grams of protein?": the day's target and what today's menu
+  // gives, from the plan. A question about changing it is still the coach's.
+  if (has(/\bprotein\b/) && has(/how (much|many)|\bgrams?\b|\bgm?\b|kitna|target|enough|per day|a day|daily/) && !has(/powder|shake|whey|supplement/)) {
+    const t = data.dayTargets ?? null;
+    const menu = dayMacros(data.meals);
+    const lines = [
+      t?.protein ? `Your day's target is ${t.protein.low === t.protein.high ? t.protein.low : `${t.protein.low} to ${t.protein.high}`} g of protein.` : "",
+      menu ? `Today's menu gives ${menu.complete ? "" : "about "}${menu.protein_g} g.` : "",
+      t?.line ?? "",
+    ].filter(Boolean);
+    if (lines.length) {
+      return card({ src: PLAN, heading: "Your protein for the day", lines, buttons: [{ to: "day", label: "Your whole day", solid: true }] });
+    }
+  }
+  // A reading typed into the box ("bp 150/95") is answered: what the number
+  // means for today, and the form to save it so the coach sees it.
+  const bp = /\b(bp|blood pressure|pressure)\b/.test(s) ? s.match(/\b(\d{2,3})\s*(?:\/|over|by)\s*(\d{2,3})\b/) : null;
+  if (bp) return card(bpCard(Number(bp[1]), Number(bp[2])));
   if (has(/weight|weigh|blood pressure|\bbp\b/)) return { type: "open", sheet: { k: "vitals" } };
   if (has(/how long|how many weeks|programme|program\b|when does (it|this) end|which week|what week/)) {
     return card({ src: PLAN, heading: `Week ${data.client.week} of ${data.client.totalWeeks}`, lines: [`Your programme runs ${data.client.totalWeeks} weeks.`] });
@@ -868,4 +887,47 @@ export function askChips(ctx: AskContext): string[] {
   if (ctx.data.coach.nextSession) chips.push("When is my next session?");
   chips.push("I feel stressed");
   return chips.slice(0, 4);
+}
+
+/** What a blood-pressure reading means for today. General, the same for
+ *  everyone: the coach sees the saved reading and answers the rest. */
+export function bpCard(top: number, bottom: number): AskCard {
+  const save = { to: "vitals" as const, label: "Save this reading", solid: true };
+  if (top >= 180 || bottom >= 120) {
+    return {
+      src: "Please act now",
+      heading: `${top}/${bottom} is very high`,
+      lines: [
+        "Sit quietly for five minutes and take it again.",
+        "If it is still this high, or you have chest pain, a bad headache, blurred vision or weakness, call 112 or go to a hospital now.",
+      ],
+      buttons: [save],
+    };
+  }
+  if (top >= 140 || bottom >= 90) {
+    return {
+      src: PLAN,
+      heading: `${top}/${bottom} is on the high side`,
+      lines: [
+        "Sit for five minutes, feet flat, arm resting at heart height, and take it again.",
+        "One high reading is not a diagnosis. If it stays at 140/90 or above over a few days, show your doctor.",
+        "Save it, and your coach sees it with your other readings.",
+      ],
+      buttons: [save],
+    };
+  }
+  if (top < 90 || bottom < 60) {
+    return {
+      src: PLAN,
+      heading: `${top}/${bottom} is on the low side`,
+      lines: ["If you feel dizzy or faint, sit or lie down and drink some water.", "Save it, and your coach sees it with your other readings."],
+      buttons: [save],
+    };
+  }
+  return {
+    src: PLAN,
+    heading: `${top}/${bottom} is in the usual range`,
+    lines: ["Save it, and your coach sees it with your other readings."],
+    buttons: [save],
+  };
 }

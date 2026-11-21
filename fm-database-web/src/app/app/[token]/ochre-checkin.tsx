@@ -187,9 +187,10 @@ export function CheckinScreen({
       {askS.length > 0 && (
         <div className="q-block">
           <div className="q-label">Your supplements</div>
+          <div className="steady-names" style={{ margin: "0 0 8px" }}>{askS.map((x) => x.name.split(" (")[0]).join(" · ")}</div>
           <GroupAsk
             value={suppAll}
-            allLabel={askS.length === 1 ? "Taking it" : `Taking all ${askS.length}`}
+            allLabel={askS.length === 1 ? "Taking it" : "Taking all of these"}
             someLabel="Missed or stopped some"
             onChange={(v) => setGroup("s", v)}
           />
@@ -215,9 +216,10 @@ export function CheckinScreen({
       {askP.length > 0 && (
         <div className="q-block">
           <div className="q-label">Your practices</div>
+          <div className="steady-names" style={{ margin: "0 0 8px" }}>{askP.map((p) => p.name).join(" · ")}</div>
           <GroupAsk
             value={pracAll}
-            allLabel={askP.length === 1 ? "Kept it up" : `Kept up all ${askP.length}`}
+            allLabel={askP.length === 1 ? "Kept it up" : "Kept all of these up"}
             someLabel="Some slipped"
             onChange={(v) => setGroup("p", v)}
           />

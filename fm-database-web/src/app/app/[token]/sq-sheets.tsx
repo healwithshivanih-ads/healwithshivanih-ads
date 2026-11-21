@@ -70,7 +70,7 @@ export function SqDaySheet({
                 key={r.id}
                 on={isTicked(r.id, r.kind, ticks)}
                 name={r.name}
-                note={[r.note, at ? `ticked ${at}` : ""].filter(Boolean).join(" · ")}
+                note={[r.note, !r.counted && !at ? "not every day, so not in the count" : "", at ? `ticked ${at}` : ""].filter(Boolean).join(" · ")}
                 under={r.under}
                 onToggle={() => onToggle(r.id, r.kind)}
               />
