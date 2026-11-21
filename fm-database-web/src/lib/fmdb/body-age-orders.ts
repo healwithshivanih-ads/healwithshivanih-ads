@@ -7,8 +7,8 @@
  * public server that is the synced tree, so the coach's Mac receives it, turns a paid order into a person's
  * record and takes it from there (booking the home visit by hand, results, the report).
  *
- * Nothing here sends anything to the buyer. The buyer-facing words on the page are DRAFTS until Shivani approves
- * them, and the page is OFF unless `BODY_AGE_ORDER_PAGE` says otherwise:
+ * Nothing here sends anything to the buyer. The buyer-facing words on the page were approved by Shivani on
+ * 21 Nov 2026 (a change needs her yes again), and the page is OFF unless `BODY_AGE_ORDER_PAGE` says otherwise:
  *   off  (default) the page and its routes answer 404.
  *   test           the page works with Razorpay TEST keys only; a live key is refused. Orders are marked `test`.
  *   live           real orders. Refused before the launch moment (Sat 2 Jan 2027, 20:00 IST) whatever the setting.
@@ -197,7 +197,7 @@ export function sanitizeOrderInput(
 }
 
 /** The wording version of the consent line on the order page. Bump when Shivani changes that line. */
-export const CONSENT_VERSION = "draft-2026-11-21";
+export const CONSENT_VERSION = "approved-2026-11-21";
 
 export function buildBodyAgeOrder(
   orderId: string,

@@ -114,7 +114,8 @@ Her decision (21 Nov 2026): a public order page anyone can open. `/order/body-ag
   webhook (`/api/body-age/webhook`, acts only on `notes.kind = body_age_report`). The browser's word alone never
   marks anything paid.
 - **Nothing is sent to the buyer.** A paid order emails the coach only (ops mailbox to `COACH_DIGEST_EMAIL`).
-- **Every word a buyer reads** is in `app/order/body-age/order-copy.ts`: a DRAFT until Shivani approves it. A
+- **Every word a buyer reads** is in `app/order/body-age/order-copy.ts`: APPROVED by Shivani on 21 Nov 2026,
+  word for word, with the consent line (`CONSENT_VERSION = approved-2026-11-21`); a changed sentence needs her yes again. A
   test fails on the brand name, the laboratory's name, "urgent", "free", the programme or its price.
 - Public paths added: `/order/` and `/api/body-age/` (trailing slash on purpose: `/api/body-age-file/` stays
   coach-only; a test pins it).
