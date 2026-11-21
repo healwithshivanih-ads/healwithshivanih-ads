@@ -123,6 +123,9 @@ One folder (`<first person>/files/body-age/<report no>/`): both people's PDFs, t
   "the sugar pattern you share". The letter and the sugar paragraph print only for the sample's pattern (both
   younger, sugar the one section on watch for both, one person with a section needing attention); otherwise the
   letter is each person's own.
+- **An order for two is one household** (her rule, 21 Nov 2026: "the 2 people have to be in the same household").
+  One home visit, one address, one morning. So the sample's "You share a kitchen" and "in a kitchen you share" are
+  true for every pair and stay as approved. The order page's wording should say so (`order-copy.ts`, still a draft).
 - **Launch lock**: both ids go through the same lock as one (`locked()`), before anything is read or written.
   `invented` (made-up results so one test record can be two people) is for `cl-900` only and is never recorded.
 - **Not done**: the coach app does not call it. The order list needs a "build for two" action that passes the
