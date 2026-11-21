@@ -6,6 +6,8 @@
  * not send; `blockers` says why in the coach's words.
  */
 
+import type { BodyAgeSummary, SendLogEntry } from "./body-age-send";
+
 export type BodyAgeKind = "standard" | "deeper";
 
 export interface BodyAgeShimResult {
@@ -37,6 +39,11 @@ export interface BodyAgeView {
   pdfUrl: string | null;
   emailUrl: string | null;
   pdfName: string | null;
+  /** When this report was last emailed (ISO), and to which address. Null = never sent. */
+  sentAt: string | null;
+  sentTo: string | null;
+  /** True when that send was a test copy to the coach's own mailbox. */
+  sentTest: boolean;
 }
 
 export type BodyAgeResult = BodyAgeView | { ok: false; error: string };
@@ -77,6 +84,9 @@ export function toBodyAgeView(clientId: string, kind: BodyAgeKind, raw: BodyAgeS
     pdfUrl: bodyAgeFileUrl(clientId, reportNo, files.pdf),
     emailUrl: bodyAgeFileUrl(clientId, reportNo, files.email_preview ?? files.email_html),
     pdfName: files.pdf ? (files.pdf.split("/").pop() ?? null) : null,
+    sentAt: null,
+    sentTo: null,
+    sentTest: false,
   };
 }
 
@@ -96,4 +106,34 @@ export function outcomeLabel(outcome: string): string {
     default:
       return outcome || "unknown";
   }
+}
+
+/** The same card view, rebuilt from the report.json a past build left behind (so the card can show the last
+ *  report, and whether it was sent, without building again). Null when the summary is not a usable report. */
+export function summaryToView(
+  clientId: string,
+  s: BodyAgeSummary | null,
+  recorded: boolean,
+  last: SendLogEntry | null,
+): BodyAgeView | null {
+  if (!s || !s.report_no || !SAFE_ID.test(s.report_no) || (s.kind !== "standard" && s.kind !== "deeper")) return null;
+  const pdfUrl = s.attachment ? bodyAgeFileUrl(clientId, s.report_no, s.attachment) : null;
+  return {
+    ok: true,
+    ready: s.ready === true,
+    blockers: s.blockers ?? [],
+    warnings: s.warnings ?? [],
+    soon: [],
+    reportNo: s.report_no,
+    kind: s.kind,
+    outcome: typeof s.outcome === "string" ? s.outcome : "",
+    pages: typeof s.pages === "number" ? s.pages : null,
+    recorded,
+    pdfUrl,
+    emailUrl: bodyAgeFileUrl(clientId, s.report_no, "email-preview.html"),
+    pdfName: pdfUrl ? (s.attachment ?? null) : null,
+    sentAt: last?.sent_at ?? null,
+    sentTo: last?.to ?? null,
+    sentTest: last?.test === true,
+  };
 }

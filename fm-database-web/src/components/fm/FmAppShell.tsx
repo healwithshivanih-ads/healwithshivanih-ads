@@ -55,6 +55,7 @@ const NAV: FmNavSection[] = [
       { id: "practice", label: "Practice", icon: "📊", href: "/practice" },
       { id: "clients", label: "All clients", icon: "👥", href: "/clients-v2" },
       { id: "calendar", label: "Calendar", icon: "🗓️", href: "/calendar" },
+      { id: "report-orders", label: "Report orders", icon: "🧾", href: "/report-orders" },
     ],
   },
   {

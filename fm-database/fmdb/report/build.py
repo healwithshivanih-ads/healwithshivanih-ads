@@ -129,7 +129,7 @@ def make_report(
                           "(albumin, creatinine, fasting glucose, hs-CRP, lymphocyte %, MCV, RDW, ALP, white cell count)")
     c = cutoffs or load_cutoffs()
     deeper = kind == "deeper"
-    sections = build_sections(labs, markers, sex=ctx["sex"], deeper=deeper, cutoffs=c)
+    sections = build_sections(labs, markers, sex=ctx["sex"], deeper=deeper, cutoffs=c, age=int(ctx["age"]))
     rows = all_rows(sections)
     age, body_age = int(ctx["age"]), round(float(pa["value"]), 1)
     decision = decide(sections, body_age=body_age, age=age, deeper=deeper)

@@ -93,8 +93,50 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-Sending the email from the app (the coach card and the command both hand over draft files); Shivani's approval of the
-draft wording (written, not yet approved); how a buyer pays for the report and books the draw; the two-person report.
+The joint report for two (her choice, 21 Nov 2026: joint report before launch); the WhatsApp answers; the revenue
+export for a report order; a refund step; an order whose buyer goes quiet for 15 days before the report exists is
+not yet protected from parking (the guard starts at the report).
+
+## Ordering and paying (21 Nov 2026) — built, OFF
+
+Her decision (21 Nov 2026): a public order page anyone can open. `/order/body-age` on the public server.
+
+- **Off by default.** `BODY_AGE_ORDER_PAGE` = `off` (default, everything 404s) · `test` (Razorpay TEST keys only,
+  a live key is refused, orders marked `test: true`) · `live` (real orders; reads as `off` before Sat 2 Jan 2027,
+  20:00 IST whatever the setting). `body-age-orders.ts::orderPageMode` / `orderRazorpayKeys`, pinned by tests.
+- **Prices** are in `BODY_AGE_PRICE_INR` (4,999 / 9,999; for two 8,999 / 17,999) and are worked out on the server
+  from the report and the number of people, never read from the form.
+- **Order record**: `<plans root>/body-age-orders/<ba-YYYYMMDD-xxxxxxxx>.yaml` (people, home-visit address and
+  preferred morning, amount, status, consent time and wording version). Status: pending → paid → booked →
+  collected → results_in → report_sent (+ cancelled).
+- **Paid** is set by `body-age-payment.ts::settleBodyAgePayment` through two verified doors, both safe to arrive
+  twice: the signed Checkout receipt (`/api/body-age/order/<id>/confirm`, HMAC with the key secret) and the
+  webhook (`/api/body-age/webhook`, acts only on `notes.kind = body_age_report`). The browser's word alone never
+  marks anything paid.
+- **Nothing is sent to the buyer.** A paid order emails the coach only (ops mailbox to `COACH_DIGEST_EMAIL`).
+- **Every word a buyer reads** is in `app/order/body-age/order-copy.ts`: a DRAFT until Shivani approves it. A
+  test fails on the brand name, the laboratory's name, "urgent", "free", the programme or its price.
+- Public paths added: `/order/` and `/api/body-age/` (trailing slash on purpose: `/api/body-age-file/` stays
+  coach-only; a test pins it).
+- Buyers must be 18 or over (`MIN_AGE_YEARS`), from the legal review's list; hers to change.
+
+## From a paid order to the report (21 Nov 2026)
+
+- **Orders reach the Mac** through `app-staging-action.py::_mirror_body_age_orders` (in `_refresh`): a file is
+  copied when the Mac lacks it, or when the Mac's copy is still `pending` and Fly's is settled. Once the Mac's copy
+  is paid or further on it is never overwritten. Coach-side changes are not sent back to Fly (nothing there reads
+  them yet; the WhatsApp answers will need that).
+- **Records**: `body-age-order-intake.ts::placeBodyAgeOrder`, run when the coach opens the list. Each person is
+  found by email or phone in clients/ and prospects/ (a parked person is moved back) or created as a prospect
+  (`lead_source: body_age_report`), then given date of birth, sex, email, phone and the home-visit address without
+  overwriting what was there. An unclear match (email and phone point at different records) creates NOTHING and
+  shows the coach why; two people sharing contact details get a record each. `client_ids` on the order holds the
+  result, one per person.
+- **A TEST order never creates a record.** The coach attaches it to the test profile from the list.
+- **Coach list**: `/report-orders` (menu: Report orders). Steps by hand: booked (date) → sample collected (date) →
+  results on their record → report sent; cancel does not refund. The coach can never mark an order paid.
+- **What to book** comes from `thyrocare.yaml#longevity_panels`: `body-age` (standard, cost 2,049) and
+  `body-age-deeper` (profile 1 + urine routine, cost 5,094; her yes of 21 Nov 2026). Coach screen only.
 
 ## Coach screen (20 Nov 2026)
 
@@ -102,7 +144,22 @@ A "Body age report" card on a person's More tab (`clients-v2/[id]/body-age-repor
 `server-actions/body-age-report.ts::buildBodyAgeReport`, which runs the same script and adds no gate of its own
 (the script refuses a real buyer before the launch). `lib/fmdb/body-age-report-view.ts` turns the script's JSON
 into links; `/api/body-age-file/[id]/[report]/[name]` serves the PDF and the email preview, coach-only (not on
-`PUBLIC_PATH_PREFIXES`, so 404 on Fly). Nothing sends. "Save to their record" passes `record: true`.
+`PUBLIC_PATH_PREFIXES`, so 404 on Fly). "Save to their record" passes `record: true`.
+
+## Sending (21 Nov 2026)
+
+- **One door, the coach's click.** `server-actions/body-age-report.ts::sendBodyAgeReport` is the only code that emails
+  a report, and only the card's "Send by email" button (with a confirm) calls it. No cron, webhook or build step does.
+- **Who it may go to** is `lib/fmdb/body-age-send.ts::decideSend` (pure, pinned by tests): the test profile's report
+  ALWAYS goes to the coach's own mailbox, never the address on the record; before the launch moment everyone else is
+  refused; after it a buyer's report goes to the email on their record, and only once the report is saved there
+  (`record: true`, which starts the 14-day price the report quotes). A report whose `report.json` does not say
+  `ready: true` is never sent, so a report built before 21 Nov 2026 must be built again first.
+- The email is `email.html` as built, `ring.png` / `mark.png` inline (`cid:ring`, `cid:mark`), the PDF attached,
+  purpose `transactional` through the contact gate.
+- **Sent state** is `<report folder>/sent.json` (a list: `sent_at`, `to`, `test`). The card reads it back
+  (`latestBodyAgeReport`, passed from the page as `initial`) and shows "✓ Sent … · Send again". A rebuild keeps the
+  report number, so the mark survives it.
 
 ## Extra results and the Urine section (20 Nov 2026)
 Her rule: "we are asking them to do these tests so we should explain the report to them." Every result the two
@@ -131,3 +188,10 @@ packages print now has a row. Source of every word: `extra-results-wording-draft
   Her pick between the two is open.
 - The two approved samples changed by rows only (VLDL, total protein, globulin, neutrophils, eosinophils, UIBC)
   and are now 18 and 20 pages (were 16 and 19).
+
+## Source check in place of a doctor's read (21 Nov 2026)
+No doctor will put a name to the cut-offs, so every line in `cutoffs.yaml` was looked up in a published guideline and
+marked beside the line: CONFIRMED, CAUTIOUS, STEP (between two guideline lines) or NOT FOUND (still from memory).
+Four changes followed, at her word: low fasting glucose reaches the strongest level below 54 (was 50); the scarring
+score's lower line is 2.0 from age 65 (`fib4_65`, `build_sections(age=)`); a high transferrin saturation is read
+above 45 for women and above 50 for men; a low positive ANA is quiet like total IgE (`quiet_at_B`).

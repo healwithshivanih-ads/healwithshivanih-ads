@@ -23,7 +23,7 @@
 import { describe, it, expect } from "vitest";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
-import { PY_TEST_TIMEOUT_MS, TEST_PYTHON } from "./test-python";
+import { TEST_PYTHON } from "./test-python";
 
 const SCRIPTS = path.resolve(process.cwd(), "scripts");
 
@@ -63,29 +63,31 @@ function snapDays(cells: string[]): { dishes: string[]; notes: string[] } {
 
 // Each call loads the real catalogue in Python: seconds alone, far longer when
 // the whole suite runs in parallel. 30 s timed out under load (20 Nov 2026).
+// No per-test limit below: one would override the 120 s set here (it did, and
+// the first test kept timing out at 30 s in a full run, 21 Nov 2026).
 describe("snap_dish_to_catalogue", { timeout: 120_000 }, () => {
   it("snaps a decorated name onto its catalogue title", () => {
     expect(snap(["Clear vegetable broth (1 cup)"])[0]).toBe("Everyday Vegetable Broth");
     expect(snap(["Tofu stir-fry with mixed vegetables (3/4 cup)"])[0]).toBe(
       "Tofu-vegetable stir-fry",
     );
-  }, PY_TEST_TIMEOUT_MS);
+  });
 
   it("does NOT snap a name that adds an ingredient — that is a different dish", () => {
     // The whole reason "Besan chilla with methi" exists as its own recipe.
     expect(snap(["Besan chilla with methi (1)"])[0]).toBeNull();
-  }, PY_TEST_TIMEOUT_MS);
+  });
 
   it("leaves an already-correct name alone", () => {
     expect(snap(["Green moong sabzi (3/4 cup)"])[0]).toBeNull();
     expect(snap(["Baingan bharta (3/4 cup)"])[0]).toBeNull();
-  }, PY_TEST_TIMEOUT_MS);
+  });
 
   it("returns nothing for food the catalogue has no recipe for", () => {
     expect(snap(["Banana (1 small, ripe)"])[0]).toBeNull();
     expect(snap(["Chicken biryani"])[0]).toBeNull();
     expect(snap([""])[0]).toBeNull();
-  }, PY_TEST_TIMEOUT_MS);
+  });
 });
 
 describe("snap_menu_days", { timeout: 120_000 }, () => {
@@ -95,11 +97,11 @@ describe("snap_menu_days", { timeout: 120_000 }, () => {
     ]);
     expect(dishes[0]).toBe("Everyday Vegetable Broth (1 cup) + Ragi dosa (1)");
     expect(notes).toHaveLength(1); // only the broth moved
-  }, PY_TEST_TIMEOUT_MS);
+  });
 
   it("is a no-op on a menu the model named correctly — the common case", () => {
     const { dishes, notes } = snapDays(["Moong dal chilla (1) + Coconut chutney (2 tbsp)"]);
     expect(dishes[0]).toBe("Moong dal chilla (1) + Coconut chutney (2 tbsp)");
     expect(notes).toEqual([]);
-  }, PY_TEST_TIMEOUT_MS);
+  });
 });

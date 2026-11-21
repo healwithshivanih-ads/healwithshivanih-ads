@@ -37,8 +37,72 @@
 #   ige          total IgE never goes above the check-up sentence (cap_at_B): it swings widely with ordinary allergies
 #   rf / anti_ccp / ana   any result above the laboratory's limit gets the check-up sentence, more than three times
 #                the limit the doctor sentence
-# Every other extra result is read on the per-cent rule (fallback_pct), which she had approved already. The lines
-# behind D4 to D6 are from memory, like the first table: a doctor's read is still recommended and NOT recorded as done.
+# Every other extra result is read on the per-cent rule (fallback_pct), which she had approved already.
+#
+# SOURCE CHECK, 21 Nov 2026 (her instruction: no doctor will put a name to this, "so find a way"). In place of a
+# doctor's read, each line added on 20 Nov was checked against a published guideline or paper. What was found:
+#   rf / anti_ccp  "more than three times the upper limit" is the 2010 ACR/EULAR rheumatoid arthritis classification
+#                criteria's own definition of a high-positive result (low-positive: above the limit, up to three times).
+#                CONFIRMED.  https://pubmed.ncbi.nlm.nih.gov/23221588/
+#   ana          the same two steps are applied to ANA by her decision D5; no guideline sets them. Known limit: a low
+#                positive ANA is common in healthy adults (31.7% at 1:40, 5% at 1:160: Tan et al. 1997), which the
+#                approved wording says ("also appear in people who stay well"). NOT a guideline line.
+#   ige          capping total IgE at the check-up sentence agrees with Ireland's HSE laboratory guidance: a raised
+#                total IgE does not diagnose allergy and is never, by itself, a reason for specialist referral.
+#                CONFIRMED.  https://www.hse.ie/eng/about/who/cspd/lsr/resources/total-ige-and-specific-ige.pdf
+#   urine        NICE NG203 acts on blood in urine at 1+ or more and repeats it (2 of 3 tests) before calling it
+#                persistent, and does not rely on a strip for protein: a positive is confirmed on an early-morning
+#                sample. The report's "trace = watch, present = repeat the sample" is the same or more cautious.
+#                CONFIRMED.  https://www.nice.org.uk/guidance/ng203/chapter/Recommendations
+#   mentzer      below 13 points to thalassaemia trait, above 13 to low iron (Mentzer, Lancet 1973). CONFIRMED as
+#                the published line. Its accuracy varies a lot between studies (sensitivity 74-91%), which is why
+#                the report only says the pattern "can be inherited" and "needs a deeper look".
+#                https://pmc.ncbi.nlm.nih.gov/articles/PMC9121960  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11317290/
+#   rdwi         NOT used in any rule: published sources give its formula and the direction of its 220 line
+#                differently. It is shown with no comment.
+#
+# THE FIRST TABLE, SOURCE CHECK OF 21 Nov 2026 (her "Yes, check it"). Each line was looked up in a published
+# guideline. Four words are used: CONFIRMED (the line is the guideline's own), CAUTIOUS (ours speaks sooner than the
+# guideline), STEP (a step placed between two guideline lines; no guideline sets it), NOT FOUND (the search did not
+# return the source; the line is still from memory). No number was changed by this check.
+#   hba1c      5.7 and 6.5 CONFIRMED (ADA: prediabetes 5.7-6.4, diabetes from 6.5). 6.0 and 10 STEP.
+#   glucose    100 and 126 CONFIRMED (ADA). 110 STEP. Low side: ADA's line for a clinically important low is below
+#              54; ours are below 60 (doctor) and below 50 (strongest). NOT FOUND in this search; the strongest line
+#              sat 4 points under ADA's. CHANGED 21 Nov at her word: the strongest line is now below 54 (confirmed in
+#              ADA's hypoglycaemia classification, Level 2).
+#   ldl / non_hdl   NOT FOUND in this search (the usual 100/130/160/190 table, non-HDL 30 higher).
+#   tg         150, 200, 500 CONFIRMED (ATP III). 1000 CONFIRMED (Endocrine Society 2012: severe, pancreatitis risk).
+#   hdl        40 men / 50 women CONFIRMED. 35 / 45 STEP.
+#   apob       130 CONFIRMED (2018 AHA/ACC risk-enhancing factor). 100 and 160 STEP.
+#   lpa        30 and 50 mg/dL, 75 and 125 nmol/L CONFIRMED (EAS 2022; AHA/ACC 2018). 90 mg/dL and 200 nmol/L STEP.
+#   hscrp      1.0 and 3.0 CONFIRMED (AHA/CDC 2003). 10 as "look for a passing cause" is usual practice.
+#   hcy        NOT FOUND (15 and 30 are the usual moderate band).
+#   tsh        low 0.40 and 0.10 CONFIRMED (ATA 2016, grades 1 and 2). High: guidelines treat above 10 and weigh each
+#              person below that; our doctor sentence starts at 7.0. CAUTIOUS. 6.0, 0.30 and 50 STEP.
+#   potassium  UK Kidney Association: mild 5.5-5.9, moderate 6.0-6.4, severe from 6.5. Ours: doctor above 5.5,
+#              strongest from 6.0. CAUTIOUS.
+#   sodium     low 135, 130, 125 CONFIRMED (European hyponatraemia guideline). High side STEP.
+#   calcium    NOT FOUND (usual grades: mild under 12, moderate 12-14). Ours speak sooner.
+#   alt / ast / ggt / alp   multiples of the laboratory's limit: STEP (the ACG 2017 guideline grades rises but the
+#              search did not return its numbers).
+#   fib4       1.3 and 2.67 CONFIRMED. From age 65 the lower line is 2.0, not 1.3 (EASL; McPherson 2017): ours puts
+#              some older buyers in the "middle zone" who would not be. CHANGED 21 Nov at her word: 2.0 from 65.
+#   hb         13 men / 12 women CONFIRMED (WHO, kept in its 2024 guideline). 8.0 and the high lines NOT FOUND.
+#   wbc / platelets   150 and 450 are the usual range; the rest STEP.
+#   vitd       low 12, 20, 30 CONFIRMED (IOM: deficient under 12, enough from 20; Endocrine Society: 20 and 30).
+#              High: possible harm above 100 found; 150 NOT FOUND.
+#   b12        200 pg/mL (148 pmol/L) CONFIRMED as the usual deficiency line; 300 (221 pmol/L) CONFIRMED as the top
+#              of the uncertain band (NICE NG239). 150 STEP.
+#   tsat       high: EASL 2022 uses above 45% for women and above 50% for men. CHANGED 21 Nov at her word: split
+#              by sex to match. Low 16 NOT FOUND.
+#   lead       5 CONFIRMED (NIOSH adult reference level, 2015). 10 STEP. 45 is a children's line; for adults the
+#              published lines are 50 with symptoms or 80. Ours speaks sooner. CAUTIOUS.
+#   mercury / arsenic / cadmium, and the per-cent rule   STEP.
+# Sources: ADA Standards of Care (diagnosis table); ATP III; Endocrine Society hypertriglyceridaemia guideline 2012;
+# 2018 AHA/ACC cholesterol guideline; EAS Lp(a) consensus 2022; AHA/CDC statement on inflammatory markers 2003;
+# ATA hyperthyroidism guideline 2016; ATA/AACE hypothyroidism guideline 2012; UKKA hyperkalaemia guideline 2023;
+# European hyponatraemia guideline; WHO haemoglobin cut-offs guideline 2024; NIH ODS vitamin D fact sheet;
+# NICE NG239; EASL haemochromatosis guideline 2022; NIOSH adult blood lead guidance.
 #
 # Levels (what the report prints):
 #   A  just outside, or middle zone   no doctor wording
@@ -65,9 +129,14 @@ fallback_pct: {A: ">0", B: 15, C: ">50"}
 cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
 
 # Small red cells (MCV below the laboratory's range) with a Mentzer index below this line: the report adds one
-# paragraph saying the pattern can be inherited (her "yes", 20 Nov 2026). The line is from memory (below 13 points to
-# thalassaemia trait, above it to low iron): a doctor's read is recommended and NOT recorded as done.
+# paragraph saying the pattern can be inherited (her "yes", 20 Nov 2026). Below 13 points to thalassaemia trait,
+# above it to low iron: the published line, see the source check of 21 Nov 2026 above.
 mentzer_trait_below: 13
+
+# A result at the check-up level (B) that is treated like total IgE: its paragraph and the check-up sentence, the
+# section at "watch", no session offer by itself. Far out (C) it counts like any other result. (added 21 Nov: a low
+# positive ANA is common in healthy adults, 31.7% at 1:40 in Tan et al. 1997; this replaces that part of D5)
+quiet_at_B: [ana]
 
 # Never past the check-up sentence: the level stops at B. (added 20 Nov, D4)
 cap_at_B: [ige]
@@ -91,7 +160,8 @@ fallback_plus:                                                                  
 markers:
   # sugar
   hba1c:      {high: {A: 5.7, B: 6.0, C: 6.5, D: 10}}
-  glucose:    {high: {A: 100, B: 110, C: 126, D: 250}, low: {C: 60, D: 50}}        # corrected 19 Nov: D 250, was 300
+  # corrected 19 Nov: high D 250, was 300. Changed 21 Nov: low D below 54 (was 50), the ADA's line for a clinically important low
+  glucose:    {high: {A: 100, B: 110, C: 126, D: 250}, low: {C: 60, D: 54}}
   # heart and arteries
   ldl:        {high: {A: 100, B: 130, C: 190}}
   non_hdl:    {high: {A: 130, B: 160, C: 220}}
@@ -118,6 +188,7 @@ markers:
   bilirubin:  {high_x: {A: ">1", B: 1.5, C: ">3"}, high: {D: 5.0}}                      # corrected 19 Nov: D from 5.0 mg/dL
   albumin:    {low: {B: 3.2, C: 3.0}}                                                  # corrected 19 Nov: its own row
   fib4:       {high: {A: 1.3, C: ">2.67"}}
+  fib4_65:    {high: {A: 2.0, C: ">2.67"}}                   # added 21 Nov: from age 65 the lower line is 2.0 (EASL; McPherson 2017)
   # blood count
   # corrected 19 Nov: men C below 13.0 (was B 13.0, C 11.0); the high lines are new
   hb:         {low: {M: {A: 13.5, C: 13.0, D: 8.0}, F: {A: 12.5, B: 12.0, C: 11.0, D: 8.0}},
@@ -127,7 +198,8 @@ markers:
   # deeper report only
   vitd:       {low: {A: 30, B: 20, C: 12}, high: {B: ">100", C: ">150"}}
   b12:        {low: {A: 300, B: 200, C: 150}}
-  tsat:       {low: {B: 16}, high: {B: ">50", C: ">60"}}
+  # changed 21 Nov: the high line is split by sex, above 45 for women and above 50 for men (EASL haemochromatosis guideline 2022)
+  tsat:       {low: {B: 16}, high: {M: {B: ">50", C: ">60"}, F: {B: ">45", C: ">60"}}}
   lead:       {high: {B: 5.0, C: 10, D: 45}}                 # µg/dL
   lead_ug_l:  {high: {B: 50, C: 100, D: 450}}                # fixed 20 Nov: the SAME lines when the laboratory reports µg/L (1 µg/dL = 10 µg/L)
   mercury:    {high_x: {B: ">1", C: ">2"}}

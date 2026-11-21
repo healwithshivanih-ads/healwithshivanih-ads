@@ -58,6 +58,8 @@ export const TEST_PYTHON = resolvePython();
  * interpreter that then reads the whole catalogue off disk (1,100+ recipe and
  * remedy YAMLs) — ~1.5s on a dev Mac but 4-5s on a CI runner, which blew
  * vitest's 5s default. Generous on purpose: this budget is for slow I/O, not
- * for a hang.
+ * for a hang. Raised from 30 s on 21 Nov 2026: with a second session running
+ * its own suite on the same Mac, single calls took over 30 s and a different
+ * test timed out on each push.
  */
-export const PY_TEST_TIMEOUT_MS = 30_000;
+export const PY_TEST_TIMEOUT_MS = 120_000;

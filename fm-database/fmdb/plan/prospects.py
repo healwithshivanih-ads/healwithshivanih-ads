@@ -122,6 +122,27 @@ def _gift_open_until(data: dict) -> Optional[date]:
     return max(ends) if ends else None
 
 
+#: Days the Foundation price quoted in a body age report holds (foundation-orders.ts::BODY_AGE_CREDIT_DAYS).
+BODY_AGE_CREDIT_DAYS = 14
+
+
+def _report_link_open_until(data: dict) -> Optional[date]:
+    """Last day the session price quoted in a person's body age report holds.
+
+    The report's PDF and email carry their personal pay link and that date. Parking drops the record off Fly, which
+    would kill the link while the report still promises it. None when the person has no report."""
+    ends: list[date] = []
+    for r in data.get("body_age_reports") or []:
+        if isinstance(r, dict):
+            d = _as_date(r.get("credit_until"))
+            if d is not None:
+                ends.append(d)
+    issued = _as_date(data.get("body_age_report_date"))
+    if issued is not None:
+        ends.append(issued + timedelta(days=BODY_AGE_CREDIT_DAYS))
+    return max(ends) if ends else None
+
+
 def quiet_days(person_dir: Path, data: dict, today: date) -> Optional[int]:
     """Days since the last human touch, or None if we can't tell."""
     touched = last_touch(person_dir, data)
@@ -232,6 +253,15 @@ def sweep(
             kept.append(
                 {"client_id": cid, "display_name": name, "engagement_status": status,
                  "reason": f"holds a gifted Foundation session (open until {gift_until.isoformat()})"}
+            )
+            continue
+
+        report_until = _report_link_open_until(data)
+        if report_until is not None and today <= report_until:
+            # Their body age report quotes a session price up to this date, behind a personal link.
+            kept.append(
+                {"client_id": cid, "display_name": name, "engagement_status": status,
+                 "reason": f"body age report's session price is open until {report_until.isoformat()}"}
             )
             continue
 
