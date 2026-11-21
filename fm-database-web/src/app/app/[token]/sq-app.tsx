@@ -689,6 +689,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           checkinSent={state.checkinSentWeek >= data.client.week}
           onCheckinSent={() => state.markCheckinSent?.()}
           openHosted={(id) => setStack((prev) => [...prev.slice(0, -1), { k: "hosted", id }])}
+          openResults={() => setStack((prev) => [...prev.slice(0, -1), { k: "results" }])}
           onClose={close}
         />
       )}
