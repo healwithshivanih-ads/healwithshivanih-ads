@@ -474,3 +474,24 @@ export function thisWeekLine(o: {
   }
   return null;
 }
+
+/**
+ * Whether this week's shopping list is shopped: every fresh item on it has
+ * been ticked on the shopping-list screen. Staples (oil, salt, spices) are
+ * folded away there and never needed ticking, so they do not count.
+ *
+ * `ticked` is the shopping-list screen's own on-device store, keyed
+ * `week|category|item` (ochre-week-menu.tsx). The category is matched loosely
+ * so this never has to repeat that screen's category list.
+ */
+export function groceryShopped(
+  week: number,
+  items: { item: string; staple?: boolean }[],
+  ticked: Record<string, boolean>,
+): boolean {
+  const fresh = items.filter((i) => !i.staple);
+  // Staples only: nothing to go out for, so the check-in may come next.
+  if (fresh.length === 0) return true;
+  const on = Object.keys(ticked).filter((k) => ticked[k] && k.startsWith(`${week}|`));
+  return fresh.every((i) => on.some((k) => k.endsWith(`|${i.item}`)));
+}
