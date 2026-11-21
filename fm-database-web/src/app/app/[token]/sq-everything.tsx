@@ -119,7 +119,22 @@ export function SqOrderSheet({ data, todayYmd, onAsk }: { data: ClientAppData; t
             const cur = map[r.id];
             const st = supplyStatus(cur, r.pack, r.pack?.perDay, todayYmd);
             const left = leftWords(st);
-            const buy = r.buyUrl ? (
+            const buy = r.buyOptions ? (
+              <span className="sq-buy-options" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                {r.buyOptions.map((o) => (
+                  <a
+                    key={o.url}
+                    className="sq-btn sq-btn-solid sq-btn-small"
+                    href={o.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpened({ ...opened, [r.id]: true })}
+                  >
+                    Buy {o.label}
+                  </a>
+                ))}
+              </span>
+            ) : r.buyUrl ? (
               <a
                 className="sq-btn sq-btn-solid sq-btn-small"
                 href={r.buyUrl}

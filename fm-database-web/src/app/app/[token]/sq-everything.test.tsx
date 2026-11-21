@@ -41,6 +41,19 @@ describe("travel and orders", () => {
     expect(rows.map((r) => r.name)).toEqual(["Magnesium", "Omega-3 (starts next week)", "Triphala"]);
     expect(shopOf("https://vitaone.in/x")).toBe("VitaOne");
   });
+  it("carries flavour options through to the order row", () => {
+    const opts = [
+      { label: "Unflavoured", url: "https://vitaone.in/a" },
+      { label: "Chocolate", url: "https://vitaone.in/b" },
+    ];
+    const d = {
+      supplements: [{ id: "s1", name: "Plant protein", buyUrl: opts[0].url, buyOptions: opts }],
+      remedies: [],
+    } as unknown as ClientAppData;
+    expect(orderRows(d)[0].buyOptions).toEqual(opts);
+    const src = fs.readFileSync(path.join(__dirname, "sq-everything.tsx"), "utf8");
+    expect(src).toMatch(/Buy \{o\.label\}/);
+  });
   it("never names the coach", () => {
     const src = fs.readFileSync(path.join(__dirname, "sq-everything.tsx"), "utf8");
     expect(src).not.toMatch(/coach\.name|data\.coach|wa\.me/);

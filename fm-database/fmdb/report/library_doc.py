@@ -19,7 +19,7 @@ LEVEL = {"A": "Just outside its range, or middle zone", "B": "Clearly off", "C":
 SHOW = {"loss": "[women: regular blood loss such as heavy periods · men: slow blood loss]",
         "iron_food": "[women only: Iron-rich food with something sour alongside, such as lemon, amla or tomato, helps the body take iron in.] ",
         "names": "Lead", "is_are": "is", "its_their": "its", "name": "[the result's name]", "dist": "[how far outside range]"}
-GROUPS = [("steady.", "Sections with nothing off"), ("liver.fat", "Sections with nothing off"), ("b12_high", "Sections with nothing off"),
+GROUPS = [("blood.small", "Added paragraphs"), ("steady.", "Sections with nothing off"), ("liver.fat", "Sections with nothing off"), ("b12_high", "Sections with nothing off"),
           ("rest.", "Page 1 and the letter"), ("todo.", "Page 1 and the letter"), ("letter.", "Page 1 and the letter"),
           ("bodyage.", "Your body age"), ("onebody.", "What connects"), ("conn.", "What connects"),
           ("next.", "Your next test"), ("line.", "Your next step"), ("step.", "Your next step")]

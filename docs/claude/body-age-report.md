@@ -35,6 +35,11 @@ approved, no personal Foundation link, a broken link in the PDF.
   the five-reviewer check and approved by her the same day (listed at the top of the file, each marked "corrected").
   `inside_range_max_A` (potassium) stops a result inside the laboratory's printed range at A; Lp(a) is read on the
   `lpa` (mg/dL) or `lpa_nmol` row by the unit the laboratory used.
+  Lead is read on `lead` (µg/dL) or `lead_ug_l` (µg/L, the same lines ×10) by the laboratory's unit; any other unit
+  warns the coach (fixed 20 Nov after a real panel printed µg/L and got a false doctor sentence).
+  `inside_range_none` (hdl): inside the laboratory's printed range is not flagged at all. `panel.unlisted_out_of_range`
+  warns the coach about a measured result outside range that has no row. Two blocks are chosen by rule in `hits_in`, not by row:
+  `ldl_only` (lipids at A with ApoB in range) and `iron_low_stores` (iron_low when ferritin is on the panel).
   Added and approved 20 Nov 2026 ("Yes, add all three"): `fallback_plus` (markers on the per-cent rule that also have
   listed lines, the worse of the two counts; a line with a `unit` applies only when the laboratory used that unit, else
   the coach gets a warning): PCV `hct`, `phosphorus`, `urea`, `bun`; `platelets` high D; and an `egfr` row from the
@@ -58,8 +63,7 @@ approved, no personal Foundation link, a broken link in the PDF.
   MISSING (a far-out result with no block), which stops the report. Each draft a report uses is listed in `drafts`
   and keeps it `ready: false`. When Shivani approves one, add its key to `wording.APPROVED_DRAFTS`.
   Approved through `APPROVED_DRAFTS` and pinned word for word in `tests/fixtures/body_age/approved_findings.txt`
-  (20 Nov 2026): every single phrase and every finding level except 17 softened that day (tsh_low B/C, kidney B/C, salts B/C,
-  hb_low B/C, white_cells B/C, platelets A/B/C, vitd_low B/C, b12_low B/C). To record a new approval add the key and run the
+  (20 Nov 2026): every single phrase and every finding level. Nothing is left as a draft. To record a new approval add the key and run the
   test once with `FMDB_WRITE_APPROVED=1`.
   `python -m fmdb.report.library_doc` prints every draft as one document for her; it reads the library itself, so
   the document is exactly what a report would print. `tests/fixtures/body_age/approved_*.txt` is the approved text;
@@ -89,5 +93,41 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-Sending the email from the app (today the command hands over the draft files); a coach screen; Shivani's approval of the
+Sending the email from the app (the coach card and the command both hand over draft files); Shivani's approval of the
 draft wording (written, not yet approved); how a buyer pays for the report and books the draw; the two-person report.
+
+## Coach screen (20 Nov 2026)
+
+A "Body age report" card on a person's More tab (`clients-v2/[id]/body-age-report-card.tsx`) calls
+`server-actions/body-age-report.ts::buildBodyAgeReport`, which runs the same script and adds no gate of its own
+(the script refuses a real buyer before the launch). `lib/fmdb/body-age-report-view.ts` turns the script's JSON
+into links; `/api/body-age-file/[id]/[report]/[name]` serves the PDF and the email preview, coach-only (not on
+`PUBLIC_PATH_PREFIXES`, so 404 on Fly). Nothing sends. "Save to their record" passes `record: true`.
+
+## Extra results and the Urine section (20 Nov 2026)
+Her rule: "we are asking them to do these tests so we should explain the report to them." Every result the two
+packages print now has a row. Source of every word: `extra-results-wording-draft.md` (design session's notes, her
+"All approved": D1 to D8, C1 to C41, F1 to F19). None of it enters the body age score or the drawings (D1).
+
+- **Rows** (`panel.py`): `Spec.extra` marks them. Three kinds that are not ordinary rows:
+  `noflag` = the laboratory's own ratios and indices, shown, never a level (D2); `note` = one white cell type or a
+  finer red cell / platelet measure, never a level, one fixed paragraph and the section's status does not move
+  (F9, F10; the coach is warned when one is far out); `quiet` = total IgE and every urine result, a level and a
+  paragraph, the section goes to "watch" at most and never brings the session offer (D4, D6).
+  `Spec.worked` rows read the laboratory's ratio lines, which every other row skips (`_WORKED_OUT`).
+- **Compact tables** (`Spec.table`, `panel.TABLES`, `page.compact_tables`): long lists print as one table per
+  heading, not a bar each (D8). A section with more than 12 results is allowed to run across pages.
+- **New sections**: "Allergy and autoimmune markers" and "Pancreas" (deeper), "Urine" (both, last). "Metals" is
+  now "Metals and trace elements". An older draw without those results simply has no such section, no warning.
+- **Urine** (`panel.urine_section`): results are words. "Trace" = level A, "present" = level B, never further.
+  A cell count is read against the laboratory's range on the per-cent rule, capped at B. Names that also exist in
+  blood (protein, glucose, bilirubin, blood, red cells, pH, volume) are read only when the test name (or a
+  `specimen` / `panel` field) says urine. NOT YET CHECKED against a real urine printout: the first order must be.
+- **Levels**: the per-cent rule, plus `cap_at_B: [ige]` and the `rf` / `anti_ccp` / `ana` lines in `cutoffs.yaml`.
+- **Session offer**: an extra just outside its range does not count towards "three small things" (`Group.extra`).
+  Clearly off or far out, an extra counts like any other result, except the quiet ones.
+- **Page 1** lists an extra only when clearly off or far out (D7): `wording.small_extras_only`.
+- **Ferritin** keeps the three-level blocks approved earlier the same day; the design file's F1/F2 are one-level.
+  Her pick between the two is open.
+- The two approved samples changed by rows only (VLDL, total protein, globulin, neutrophils, eosinophils, UIBC)
+  and are now 18 and 20 pages (were 16 and 19).

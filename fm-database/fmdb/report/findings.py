@@ -54,6 +54,7 @@ class Finding:
     moves: str = ""                   # named in "what can move in four months"
     plural: bool = False
     approved: tuple = ()              # levels whose wording is approved, e.g. ("B",)
+    each: bool = False                # one finding per result, named by it (the further elements)
 
 
 F = Finding
@@ -78,6 +79,15 @@ FINDINGS: list[Finding] = [
                "B": "The load of cholesterol particles your arteries carry.", "C": "The load of cholesterol particles your arteries carry."},
       step='Bringing the <a href="#heart">artery load</a> down through how you eat: which fats, how much fibre, what dinner looks like, what you reach for between meals.',
       moves="artery load", approved=("B",)),
+    F("ldl_only", "heart", "LDL cholesterol", "LDL cholesterol",
+      head={"A": "Your LDL cholesterol sits a little above the aim, while the particle count is in range."},
+      today={"A": "Nothing you would feel."},
+      why_title="Over the years",
+      why={"A": "The particle count is the better guide of the two, and yours is in range. LDL a little above the aim is worth keeping an eye on, not a finding by itself."},
+      do={"A": "Food comes first: the kind of fat, the amount of fibre, what dinner looks like."},
+      summary={"A": "LDL cholesterol, a little above the aim. The particle count is in range."},
+      step='Keeping your <a href="#heart">LDL cholesterol</a> near the aim through how you eat: which fats, how much fibre.',
+      moves="LDL cholesterol"),
     F("tg", "heart", "Triglycerides", "triglycerides", plural=True, high=("tg",),
       head={"A": "The fat travelling in your blood sits just above the line.", "B": "The fat travelling in your blood appears to be clearly raised.",
             "C": "The fat travelling in your blood appears to be very high."},
@@ -184,7 +194,7 @@ FINDINGS: list[Finding] = [
       do={"A": "It is read again at your next test, alongside vitamin D.", "B": "It needs a deeper look, alongside vitamin D.",
           "C": "It needs a deeper look, alongside vitamin D."},
       summary={"A": "ALP, just above its range. Read again at your next test."}),
-    F("bilirubin", "liver", "Bilirubin", "bilirubin", high=("bilirubin",),
+    F("bilirubin", "liver", "Bilirubin", "bilirubin", high=("bilirubin", "bili_direct", "bili_indirect"),      # F6: the two parts print this block
       head={"A": "The pigment your liver clears is a little raised.", "B": "The pigment your liver clears appears to be clearly raised.",
             "C": "The pigment your liver clears appears to be far above its range."},
       today={"A": "Nothing you would feel.", "B": "Sometimes a yellow tinge in the whites of the eyes. Often nothing.",
@@ -260,7 +270,7 @@ FINDINGS: list[Finding] = [
           "B": "This needs a deeper look, starting with a repeat test.",
           "C": "This needs a deeper look, starting with a repeat test in the coming days."},
       summary={"A": "A kidney marker, just above its range. Read again at your next test."}),
-    F("salts", "kidneys", "Your salts", "salts", plural=True, either=("sodium", "potassium", "chloride", "calcium"),
+    F("salts", "kidneys", "Your salts", "salts", plural=True, either=("sodium", "potassium", "calcium"),
       head="One of your body's salts sits outside its range.",
       today={"A": "Nothing you would feel.", "B": "Usually nothing.",
              "C": "Some people feel weak, confused, or notice cramps or an uneven heartbeat. If you do, do not wait."},
@@ -268,6 +278,15 @@ FINDINGS: list[Finding] = [
       do={"A": "It is read again at your next test.", "B": "Consider a repeat test on a fresh sample to confirm.",
           "C": "A repeat test on a fresh sample in the coming days is the usual first step."},
       summary={"A": "One salt, just outside its range. Read again at your next test."}),
+    F("chloride", "kidneys", "Chloride", "chloride", either=("chloride",),
+      head={"A": "Your chloride sits just outside its range.", "B": "Your chloride appears to be clearly outside its range.",
+            "C": "Your chloride appears to be far outside its range."},
+      why={"A": "Chloride travels with sodium and follows how much water you had before the test. A small move by itself, with sodium in range, usually means little.",
+           "B": "Chloride travels with sodium and follows how much water you had before the test. A repeat shows whether it holds.",
+           "C": "Chloride travels with sodium and with the balance of acid in the blood. A reading this far out usually has a reason, and it is worth finding."},
+      do={"A": "It is read again at your next test.", "B": "Consider a repeat test on a fresh sample to confirm.",
+          "C": "A repeat test on a fresh sample in the coming days is the usual first step."},
+      summary={"A": "Chloride, just outside its range. Read again at your next test."}),
     F("egfr_low", "kidneys", "Kidney filtering", "kidney filtering figure", low=("egfr",),
       head={"C": "Your kidney filtering figure appears to be below 60, the line at which it is usually checked again."},
       today={"C": "Nothing you would feel."},
@@ -383,6 +402,36 @@ FINDINGS: list[Finding] = [
           "B": "This needs a deeper look, starting with your iron stores. If you take iron, say so.",
           "C": "This needs a deeper look, starting with your iron stores. If you take iron, say so."},
       summary={"A": "Iron, a little high. Read again at your next test."}),
+    F("iron_low_stores", "nutrients", "Iron", "iron",          # iron_low when ferritin is on the panel (chosen in hits_in)
+      head="Your iron carriers are running low.",
+      today="Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.",
+      why="Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.",
+      do={"A": "It is read again at your next test.",
+          "B": "This needs a deeper look: the carriers and the stores together, and why they are low.",
+          "C": "This needs a deeper look: the carriers and the stores together, and why they are low."},
+      summary={"A": "Iron, a little low. Read again at your next test."}),
+    F("ferritin_low", "nutrients", "Iron stores", "iron stores", plural=True, low=("ferritin",),
+      head={"A": "Your iron stores sit just below their range.", "B": "Your iron stores appear to be clearly low.",
+            "C": "Your iron stores appear to be very low."},
+      today={"A": "You may notice nothing.", "B": "Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs.",
+             "C": "Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs."},
+      why={"A": "Ferritin is the measure of the iron your body has stored. Stores run down before haemoglobin does, so this is the early sign.",
+           "B": "Ferritin is the measure of the iron your body has stored. Stores run down when less iron comes in than goes out: too little in food, poor absorption, or {loss}.",
+           "C": "Ferritin is the measure of the iron your body has stored. Stores this low usually have a reason, and it is worth finding: too little in food, poor absorption, or {loss}."},
+      do={"A": "{iron_food}It is read again at your next test.",
+          "B": "This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores.",
+          "C": "This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores."},
+      summary={"A": "Iron stores, just below their range. Read again at your next test."}),
+    F("ferritin_high", "nutrients", "Ferritin", "ferritin", high=("ferritin",),
+      head={"A": "Your ferritin sits just above its range.", "B": "Your ferritin appears to be clearly above its range.",
+            "C": "Your ferritin appears to be far above its range."},
+      why={"A": "Ferritin is the measure of stored iron, and it also rises with any inflammation, a recent infection, alcohol or fat stored in the liver. A little above the range it is most often one of those.",
+           "B": "Ferritin is the measure of stored iron, and it also rises with inflammation, a recent infection, alcohol or fat stored in the liver. A repeat, read with your inflammation marker and liver results, helps tell these apart.",
+           "C": "Ferritin is the measure of stored iron, and it also rises with inflammation, alcohol or fat stored in the liver. At this level it can sometimes mean the body is holding too much iron, which runs in families. It is worth finding the reason."},
+      do={"A": "It is read again at your next test. If you take iron, mention it.",
+          "B": "This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so.",
+          "C": "This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so."},
+      summary={"A": "Ferritin, just above its range. Read again at your next test."}),
     # ── Metals (deeper report) ──────────────────────────────────────────────
     F("metals", "metals", "Metals", "metals", plural=True, high=("lead", "mercury", "arsenic", "cadmium"),
       head="{names} {is_are} above {its_their} limit.",
@@ -400,6 +449,88 @@ FINDINGS: list[Finding] = [
       do={"A": "It is read again at your next test, alongside your vitamin D.", "B": "Consider a repeat test, alongside your calcium and vitamin D.",
           "C": "A repeat test in the coming days is the usual first step."},
       summary={"A": "Phosphorus, just below its range. Read again at your next test."}),
+    # ── The extra results (her "All approved" of extra-results-wording-draft.md, 20 Nov 2026: F3 to F19) ──────────
+    # Printed word for word as approved, the same at every level; the check-up and doctor sentences are added by
+    # level as for every other finding. F1 and F2 (ferritin) are the two blocks above. F6 is the bilirubin block.
+    # The line in "Your report on one page" is the approved headline.
+    F("folate_low", "nutrients", "Folate", "folate", low=("folate",),
+      head="Your folate is low.", today="Often nothing. Sometimes tiredness or a sore tongue.",
+      why="Folate and B12 build red cells together and keep homocysteine down. Low folate usually comes from few greens and pulses on the plate, from alcohol, or from some medicines.",
+      do="Greens, pulses and citrus every day are where folate comes from.", summary="Your folate is low."),
+    F("magnesium_low", "kidneys", "Magnesium", "magnesium", low=("magnesium",),
+      head="Your magnesium is low.", today="Sometimes cramps, twitching or restless sleep. Often nothing.",
+      why="Blood holds only a little of the body's magnesium, so a low reading means the reserve is being drawn on. Loose motions, alcohol and some medicines for acidity or blood pressure are common reasons.",
+      do="It is read again at your next test, alongside your kidney results.", summary="Your magnesium is low."),
+    F("magnesium_high", "kidneys", "Magnesium", "magnesium", high=("magnesium",),
+      head="Your magnesium is above its range.",
+      why="A high reading usually comes from supplements or antacids, or from kidneys clearing it slowly.",
+      do="It is read again at your next test, alongside your kidney results.", summary="Your magnesium is above its range."),
+    F("proteins", "liver", "Blood proteins", "blood proteins", plural=True, either=("total_protein", "globulin"),
+      head="One of your blood proteins sits outside its range.",
+      why="These proteins are made by the liver and the immune system. They shift with how much water you had, with long-running inflammation or infection, and with how well the liver and kidneys are working.",
+      do="It is read with your liver and kidney results, and again at your next test.", summary="One of your blood proteins sits outside its range."),
+    F("fructosamine", "sugar", "Fructosamine", "fructosamine", high=("fructosamine",),
+      head="Your sugar average over the last few weeks reads high.",
+      why="Fructosamine shows the last two to three weeks, where HbA1c shows three months. When it is high and HbA1c is not, sugar has been running higher recently.",
+      do="The same things that move your other sugar results: what is on the plate and when, and movement after meals.",
+      summary="Your sugar average over the last few weeks reads high."),
+    F("lppla2", "heart", "Lp-PLA2", "Lp-PLA2", high=("lppla2",),
+      head="A marker of inflammation inside the artery wall is raised.",
+      why="This enzyme is made where artery walls are inflamed, so it adds to what your cholesterol particles and your background inflammation already show.",
+      do="It moves with the same things as the rest of this section: food, movement, sleep and smoking.",
+      summary="A marker of inflammation inside the artery wall is raised."),
+    F("ige", "immune", "Total IgE", "allergy antibody", high=("ige",),
+      head="Your allergy antibody is raised.",
+      today="You may already know why: a blocked nose, itchy eyes, skin that flares, or a food that does not sit well. Some people notice nothing.",
+      why="IgE rises with allergies to dust, pollen or foods, with eczema and asthma, and with some gut infections. The number does not say what you are reacting to.",
+      do="Notice what sets your symptoms off, and when. If they bother you, this needs a deeper look.", summary="Your allergy antibody is raised."),
+    F("autoimmune", "immune", "Autoimmune markers", "autoimmune markers", plural=True, high=("rf", "anti_ccp", "ana"),
+      head="One of your autoimmune markers is raised.",
+      today="You may notice nothing. What to watch for is joints that are stiff or swollen for more than half an hour in the morning, rashes, or tiredness that does not lift.",
+      why="These antibodies can appear years before any symptom, and they also appear in people who stay well. A raised result is a reason to look closer. It is not a diagnosis.",
+      do="This needs a deeper look, with your history and your family's.", summary="One of your autoimmune markers is raised."),
+    F("pancreas", "pancreas", "Pancreas enzymes", "pancreas enzymes", plural=True, high=("lipase", "amylase"),
+      head="One of your pancreas enzymes is above its range.",
+      why="Small rises are common and often pass. Alcohol, a heavy meal the night before, gallstones and some medicines can all do it.",
+      do="It is read again at your next test. If you ever have strong pain high in the tummy that goes through to the back, see a doctor the same day.",
+      summary="One of your pancreas enzymes is above its range."),
+    F("element_high", "metals", "", "", each=True, high=('selenium', 'manganese', 'molybdenum', 'cobalt', 'chromium', 'aluminium', 'antimony', 'barium', 'beryllium', 'bismuth', 'caesium', 'nickel', 'silver', 'strontium', 'thallium', 'tin', 'uranium', 'vanadium'),
+      head="One element is above its range: {name}.",
+      why="It reaches us through water, food, cookware, dental and medical materials, cosmetics and work. What matters is finding where yours is coming from.",
+      do="This needs a deeper look for the source.", summary="One element is above its range: {name}."),
+    F("element_low", "metals", "", "", each=True, low=('selenium', 'manganese', 'molybdenum', 'cobalt', 'chromium'),
+      head="Your {lname} is low.", why="The body needs a little of this, and it comes from food.",
+      do="This needs a deeper look for the source.", summary="Your {lname} is low."),
+    # ── Urine (both reports): a word result, "trace" is level A and "present" level B (D6) ─────────────────────────
+    F("u_protein", "urine", "Protein in the urine", "urine protein", either=("u_protein",),
+      head="Your urine shows protein.",
+      why="Healthy kidneys keep protein in the blood. A little can appear after hard exercise, with a fever or when you are dehydrated. Protein that is there every time is an early sign of strain on the kidneys.",
+      do="It needs a repeat on a fresh morning sample.", summary="Your urine shows protein."),
+    F("u_glucose", "urine", "Glucose in the urine", "urine glucose", either=("u_glucose",),
+      head="Your urine shows glucose.",
+      why="Sugar spills into urine when blood sugar runs high, and with some medicines for diabetes. It is read with your sugar results in this report.",
+      do="It is read with your sugar results, and again at your next test.", summary="Your urine shows glucose."),
+    F("u_ketones", "urine", "Ketones in the urine", "urine ketones", plural=True, either=("u_ketones",),
+      head="Your urine shows ketones.",
+      why="Ketones appear when the body is burning fat for fuel: after a long fast, on a very low-carbohydrate diet, or when you have been unwell.",
+      do="It is read with your sugar results, and again at your next test.", summary="Your urine shows ketones."),
+    F("u_red_cells", "urine", "Blood or red cells in the urine", "urine red cells", plural=True, either=("u_blood", "u_rbc"),
+      head="Your urine shows red cells.",
+      why="The commonest reasons are a period, hard exercise the day before, or a urinary infection. Red cells that are there on a repeat sample need to be traced.",
+      do="It needs a repeat sample, away from your period.", summary="Your urine shows red cells."),
+    F("u_infection", "urine", "Signs of a urinary infection", "urine infection signs", plural=True,
+      either=("u_nitrite", "u_esterase", "u_pus", "u_bacteria"),
+      head="Your urine shows signs of a possible infection.",
+      today="You may notice burning, urgency or going more often. Some people notice nothing.",
+      why="These are the body's response to bacteria in the urinary tract. A sample that was not collected mid-stream can also show them.",
+      do="If you have burning, fever or pain in the lower back, see a doctor now. If you feel well, repeat the test on a clean mid-stream sample.",
+      summary="Your urine shows signs of a possible infection."),
+    F("u_other", "urine", "Anything else in the urine", "urine test",
+      either=("u_colour", "u_appearance", "u_sg", "u_ph", "u_bilirubin", "u_urobilinogen", "u_bile_pigment", "u_bile_salt", "u_casts",
+              "u_crystals", "u_yeast", "u_parasites"),
+      head="One result in your urine test is outside the usual.",
+      why="Most of these shift with how much water you drank and what you ate the day before.",
+      do="It is read again at your next test.", summary="One result in your urine test is outside the usual."),
 ]
 
 # any other result outside its range (a salt nobody listed, a low reading that rarely matters)
@@ -410,6 +541,7 @@ GENERIC = Finding(
          "B": "{name} is {dist}. One reading cannot say whether that will hold."},
     do={"A": "It is read again at your next test.", "B": "A repeat test shows whether it holds."},
     summary={"A": "{name}, {dist}. Read again at your next test.", "B": "{name}, {dist}."})
+BY_NAME = ("metals", "generic", "element_high", "element_low")      # findings named by their rows, not by a fixed noun
 FOLDED_INTO_LIPIDS = ("tg", "hdl_low")      # told as part of the artery load when the cholesterol finding is there too
 
 BY_ID = {f.id: f for f in FINDINGS}
@@ -458,7 +590,7 @@ def hits_in(sec: Section) -> list[Hit]:
         if not r.level or (r.calc and r.key != "fib4"):
             continue
         f = finding_for(r)
-        key = f.id if f else f"generic:{r.key}"
+        key = (f"{f.id}:{r.key}" if f.each else f.id) if f else f"generic:{r.key}"
         h = out.get(key)
         if h is None:
             out[key] = Hit(f or GENERIC, r.level, [r])
@@ -466,5 +598,15 @@ def hits_in(sec: Section) -> list[Hit]:
             h.rows.append(r)
             if rank(r.level) > rank(h.level):
                 h.level = r.level
+    by_key = {r.key: r for r in sec.rows}
+    for h in out.values():
+        # LDL (or its relatives) just above the aim while the particle count itself is in range: not "artery load"
+        apob = by_key.get("apob")
+        if h.finding.id == "lipids" and h.level == "A" and apob is not None and not apob.level and all(r.key != "apob" for r in h.rows):
+            h.finding = BY_ID["ldl_only"]
+        # the iron wording says the stores are not measured: untrue when ferritin is on the panel
+        if h.finding.id == "iron_low" and "ferritin" in by_key:
+            h.finding = BY_ID["iron_low_stores"]
     order = {f.id: i for i, f in enumerate(FINDINGS)}
-    return sorted(out.values(), key=lambda h: (-rank(h.level), order.get(h.finding.id, 999)))
+    # the worst finding leads; at the same level a section's own results come before an explained extra
+    return sorted(out.values(), key=lambda h: (-rank(h.level), all(r.extra for r in h.rows), order.get(h.finding.id, 999)))

@@ -19,7 +19,7 @@ from .decide import (FOUNDATION_AFTER_INR, FOUNDATION_LIST_INR, Decision, credit
                      next_test_date)
 from .findings import hits_in
 from .levels import load_cutoffs
-from .panel import NINE, Row, Section, all_rows, build_sections, num
+from .panel import NINE, Row, Section, all_rows, build_sections, num, unlisted_out_of_range
 
 KINDS = ("standard", "deeper")
 
@@ -145,7 +145,9 @@ def make_report(
         sections=sections, rows=rows, decision=decision, cutoffs_status=c["status"])
     rp.warnings = [r.warn for r in rows.values() if r.warn]
     rp.warnings += [f"body age input missing from the tables: {k}" for k in NINE if k not in rows]
+    rp.warnings += unlisted_out_of_range(labs)
     have = {x.id for x in sections}
+    # the sections added on 20 Nov 2026 (allergy and autoimmune, pancreas, urine) are simply absent from an older draw
     want = ["heart", "sugar", "liver", "thyroid", "kidneys", "blood"] + (["nutrients", "metals"] if deeper else [])
     rp.warnings += [f"no results on file for the '{w}' section, so it is left out of the report" for w in want if w not in have]
     _write(rp)
@@ -164,8 +166,10 @@ def _write(rp: Report) -> None:
     deeper = rp.kind == "deeper"
     rp.hits = {s.id: hits_in(s) for s in rp.sections}
     for s in rp.sections:
-        rp.section_text[s.id] = W.section_text(s, rp.rows, deeper, lib, rp.sex, rp.hits[s.id])
-    order = [s for s in rp.sections if s.key == "att"] + [s for s in rp.sections if s.key == "watch"]
+        head, means = W.section_text(s, rp.rows, deeper, lib, rp.sex, rp.hits[s.id])
+        rp.section_text[s.id] = (head, means + W.note_paras(s, rp.rows, lib))
+    # page 1 lists an explained extra only when it is clearly off or far out (D7)
+    order = [s for s in rp.sections if s.key == "att"] + [s for s in rp.sections if s.key == "watch" and not W.small_extras_only(rp.hits[s.id])]
     rp.stand = [dict(id=s.id, name=s.name, status=s.status, key=s.key, text=rp.section_text[s.id][0],
                      nums=W.stand_numbers(s, rp.rows, rp.hits[s.id])) for s in order[:3]]
     rp.rest = W.rest_line(rp, lib)

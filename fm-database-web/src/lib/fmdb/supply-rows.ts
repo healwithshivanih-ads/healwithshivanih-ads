@@ -9,6 +9,7 @@ export interface OrderRow {
   id: string;
   name: string;
   buyUrl?: string;
+  buyOptions?: { label: string; url: string }[];
   shop: string;
   pack?: { count: number; unit: string; perDay: number };
 }
@@ -27,6 +28,7 @@ export function orderRows(data: ClientAppData): OrderRow[] {
     id: s.id,
     name: s.startsNextWeek ? `${s.name} (starts next week)` : s.name,
     buyUrl: s.buyUrl,
+    ...(s.buyOptions ? { buyOptions: s.buyOptions } : {}),
     shop: shopOf(s.buyUrl),
     ...(s.pack ? { pack: s.pack } : {}),
   }));
