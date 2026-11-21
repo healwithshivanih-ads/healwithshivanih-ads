@@ -18,6 +18,7 @@ import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { progressAsOf, progressDraftLines } from "@/lib/fmdb/progress-view";
 import { readAppOpens } from "@/lib/fmdb/app-opens";
 import { readAppInstalled } from "@/lib/fmdb/app-installed";
 
@@ -371,4 +372,22 @@ export async function saveBuyLinkAction(
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "write failed" };
   }
+}
+
+/**
+ * What the client's Your progress would show if the coach shared it today,
+ * as plain lines, from the app's own loader and the same pure functions the
+ * client's sheet uses (progress-view.ts). Read-only: loading the data does
+ * not count as an app open.
+ */
+export async function progressPreviewAction(
+  clientId: string,
+  hideWeight: boolean,
+): Promise<{ ok: true; lines: string[] } | { ok: false; error: string }> {
+  const token = await appTokenFor(clientId);
+  if (!token) return { ok: false, error: "No app token yet — share the app first." };
+  const data = await loadClientAppData(token);
+  if (!data) return { ok: false, error: "Could not load the client app data." };
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  return { ok: true, lines: progressDraftLines(progressAsOf(data, { on: today, week: data.client.week, hideWeight })) };
 }

@@ -1,5 +1,6 @@
 import { classifyPracticeKind, supplementCadence, weeklyDueToday, type DayPart } from "./practice-kind";
 import { releasedResults, type AppResults } from "./released-results";
+import { releasedProgress, type AppProgressShare } from "./progress-view";
 import { pickEatingOutGuide, type AppEatingOut } from "./eating-out";
 import { type DairyClient, resolveDairy, treatsAsAllergy } from "./dairy-reaction";
 import "server-only";
@@ -1253,6 +1254,9 @@ export interface AppSqData {
   daysSinceLastOpen: number | null;
   /** Results the coach has released (released-results.ts); null until then. */
   results: AppResults | null;
+  /** Progress the coach has released (progress-view.ts): the snapshot date,
+   *  its plan week, her note and the weight switch. Null until she shares. */
+  progress: AppProgressShare | null;
   /** The alcohol answer, plan by plan (scripts/alcohol_risk.py): true = the
    *  gentle "skip it", false = the practical line. Never the reason. */
   alcoholRisk: boolean;
@@ -1912,7 +1916,7 @@ async function loadAlcoholRisk(client: Record<string, unknown>, clientId: string
   }
 }
 
-async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null, alcoholRisk = true): Promise<AppSqData> {
+async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null, alcoholRisk = true, progress: AppProgressShare | null = null): Promise<AppSqData> {
   const rows = await loadTickRows(clientId, 15).catch(() => []);
   const tickHistory: AppTickDay[] = rows.map((r) => ({
     date: r.date,
@@ -1932,7 +1936,7 @@ async function loadSqData(clientId: string, clientDir: string, appTz: string, pl
   } catch {
     /* no opens on record */
   }
-  return { planDay, tickHistory, daysSinceLastOpen, results, alcoholRisk };
+  return { planDay, tickHistory, daysSinceLastOpen, results, alcoholRisk, progress };
 }
 
 async function loadCheckinPrefill(
@@ -6593,7 +6597,7 @@ export async function loadClientAppData(
     mode: appMode,
     endgame,
     appShell: sqShell,
-    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault), await loadAlcoholRisk(client, clientId, planSlug)) : null,
+    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault), await loadAlcoholRisk(client, clientId, planSlug), releasedProgress(client as Record<string, unknown>, week, todayUTC.toISOString().slice(0, 10))) : null,
     labOrders,
     client: {
       firstName,

@@ -129,6 +129,7 @@ import { CycleTrackingPanel } from "../cycle-tracking-panel";
 import { WeeklyGenerationToggle } from "../weekly-generation-toggle";
 import { AppNutrientsToggle } from "../app-nutrients-toggle";
 import { ResultsSharedToggle } from "../results-shared-toggle";
+import { ProgressSharedToggle } from "../progress-shared-toggle";
 import { nutrientsShown } from "@/lib/fmdb/meal-macros";
 import { diaryGentle } from "@/lib/fmdb/food-diary-balance";
 import { StageGate } from "../stage-gate";
@@ -1781,6 +1782,14 @@ export default async function ClientV2Page({
                 clientId={client.client_id}
                 sharedOn={(client as unknown as { results_shared_on?: string }).results_shared_on ?? null}
                 note={(client as unknown as { results_shared_note?: string }).results_shared_note ?? null}
+              />
+            )}
+            {publishedPlan && (client as unknown as { app_shell?: string }).app_shell === "v2" && (
+              <ProgressSharedToggle
+                clientId={client.client_id}
+                sharedOn={(client as unknown as { progress_shared_on?: string }).progress_shared_on ?? null}
+                note={(client as unknown as { progress_shared_note?: string }).progress_shared_note ?? null}
+                hideWeight={(client as unknown as { progress_hide_weight?: boolean }).progress_hide_weight === true}
               />
             )}
           </FmGroupedPanel>

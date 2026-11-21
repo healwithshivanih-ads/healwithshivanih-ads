@@ -671,6 +671,14 @@ class Client(BaseModel):
     # question goes to the coach. The note is shown above the numbers.
     results_shared_on: Optional[str] = None
     results_shared_note: Optional[str] = None
+    # Progress the coach has released to the client's app (Your progress).
+    # A date (YYYY-MM-DD) once she presses "Share progress": the app shows a
+    # snapshot up to that day, with the note on top. Unset = the app says the
+    # first look comes at a review. progress_hide_weight leaves weight out of
+    # the view (e.g. an eating-disorder history). progress-view.ts reads them.
+    progress_shared_on: Optional[str] = None
+    progress_shared_note: Optional[str] = None
+    progress_hide_weight: Optional[bool] = None
     # Daily nutrient targets (fm-database-web/scripts/day_targets.py).
     # carb_level: "glycaemic" | "standard" | a share the coach types (0.2-0.65);
     # unset = no carb target shown. fibre_g: a coach-typed fibre figure that
