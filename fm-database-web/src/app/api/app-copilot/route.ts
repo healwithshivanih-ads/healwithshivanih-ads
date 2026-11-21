@@ -14,7 +14,7 @@ import { runShim } from "@/lib/fmdb/shim";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
 import { isEmergency } from "@/lib/fmdb/triage";
 import { askHandoff, askUrgent } from "@/lib/fmdb/ask-safety";
-import { parseModelCard } from "@/lib/fmdb/ask-card";
+import { inventsAReason, parseModelCard } from "@/lib/fmdb/ask-card";
 import { eatingOutContextFor } from "@/lib/fmdb/eating-out";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 
@@ -185,13 +185,15 @@ async function cardAnswer(req: NextRequest, token: string, question: string) {
       deviceTz: req.cookies.get("ochre_tz")?.value ?? null,
     });
     if (!data || data.mode === "LIBRARY") return defer();
+    const context = cardContext(data, question);
     const out = (await runShim(
       "app-copilot.py",
-      { client_id: data.clientId, context: cardContext(data, question), question, mode: "card" },
+      { client_id: data.clientId, context, question, mode: "card" },
       30_000,
     )) as { ok?: boolean; answer?: string; error?: string };
     if (!out.ok) return defer();
     const verdict = parseModelCard(out.answer);
+    if (verdict.verdict === "answer" && inventsAReason(verdict.card, context, question)) return defer("invented");
     return NextResponse.json({ ok: true, ...verdict });
   } catch (err) {
     console.error("[app-copilot] card failed:", err);

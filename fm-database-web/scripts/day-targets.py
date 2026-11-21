@@ -31,7 +31,7 @@ def main() -> int:
         f = root / "clients" / cid / "client.yaml"
         client = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
         week = payload.get("plan_week")
-        print(json.dumps({"ok": True, "targets": day_targets(client, int(week) if week else None)}))
+        print(json.dumps({"ok": True, "targets": day_targets(client, int(week) if week else None, payload.get("pattern"))}))
     except Exception as e:  # never a traceback on stdout
         print(json.dumps({"ok": False, "error": str(e)[:200]}))
     return 0

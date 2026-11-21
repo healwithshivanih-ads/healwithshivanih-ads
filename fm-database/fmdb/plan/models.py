@@ -679,6 +679,11 @@ class Client(BaseModel):
     carb_level: Optional[Union[str, float]] = None
     fibre_g: Optional[int] = None
     day_targets: Optional[dict] = None
+    # Alcohol answer in the app (fm-database-web/scripts/alcohol_risk.py).
+    # alcohol_ok: the coach's own call, true / false, wins over the markers.
+    # alcohol_risk: DERIVED, written only into the Fly staging copy.
+    alcohol_ok: Optional[bool] = None
+    alcohol_risk: Optional[bool] = None
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date

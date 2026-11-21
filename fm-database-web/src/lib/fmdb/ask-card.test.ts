@@ -8,7 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { MODEL_BUTTONS, NO_ANSWER_CARD, handoffCard, parseModelCard, urgentCard } from "./ask-card";
+import { AUTO_CHECK_NOTE, MODEL_BUTTONS, inventsAReason, NO_ANSWER_CARD, handoffCard, parseModelCard, urgentCard } from "./ask-card";
 
 const answer = (o: Record<string, unknown>) => JSON.stringify({ verdict: "answer", ...o });
 
@@ -145,5 +145,33 @@ describe("wiring", () => {
   it("the model's instructions list exactly the buttons the parser accepts", () => {
     const src = read("scripts/app-copilot.py");
     for (const key of Object.keys(MODEL_BUTTONS)) expect(src, key).toContain(`\\"${key}\\"`);
+  });
+});
+
+describe("automatic answer on a dish the plan does not name (coach, 21 Nov 2026)", () => {
+  it("is marked, carries the note, and drops the coach button (the question goes by itself)", () => {
+    const v = parseModelCard('{"verdict":"answer","heading":"Likely yes, a small bowl","lines":["Nothing in it is on your leave-out list."],"buttons":["coach"],"check_with_coach":true}');
+    expect(v.verdict).toBe("answer");
+    if (v.verdict !== "answer") return;
+    expect(v.card.autoCheck).toBe(true);
+    expect(v.card.src).toBe("Automatic answer");
+    expect(v.card.note).toBe(AUTO_CHECK_NOTE);
+    expect(v.card.buttons).toEqual([]);
+  });
+  it("an ordinary answer is not marked", () => {
+    const v = parseModelCard('{"verdict":"answer","heading":"Yes","lines":["Dal is on your menu."]}');
+    expect(v.verdict === "answer" && v.card.autoCheck).toBeFalsy();
+  });
+});
+
+describe("a reason the plan never gave is not shown", () => {
+  const card = (heading: string, line: string) => ({ src: "x", heading, lines: [line] });
+  it("catches cream and butter when the plan leaves out no dairy", () => {
+    expect(inventsAReason(card("Skip dal makhani", "It is made with cream and butter."), "Leave out: wheat, rice", "can I have dal makhani")).toBe(true);
+  });
+  it("lets a reason through when the plan names it, or the client did", () => {
+    expect(inventsAReason(card("Skip it", "Fried food is on your skip list."), "Eating out: skip fried snacks", "pakora?")).toBe(false);
+    expect(inventsAReason(card("Yes", "Butter is fine."), "Leave out: wheat", "can I have butter")).toBe(false);
+    expect(inventsAReason(card("Yes, dal is on your menu", "Have a small bowl."), "Leave out: wheat", "dal?")).toBe(false);
   });
 });

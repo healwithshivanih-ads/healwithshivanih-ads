@@ -153,18 +153,18 @@ const REGRESSION: [string, string][] = [
   ["I feel stressed and cant sleep, is my cortisol high", "HAND"],
   ["can i skip the b-complex today", "HAND"],
   ["mujhe bahut thakan lag rahi hai aaj", "HAND"],
-  ["can i drink wine", "HAND"],
+  ["can i drink wine", "CARD Best to skip it for now"],
   ["At exactly what time should I take the magnesium, and can I take it with the vitamin D3 and the B-complex together?", "HAND"],
   ["Is it safe to restart all my supplements at once after a gap?", "HAND"],
   ["Can I take magnesium with my SSRI?", "HAND"],
-  ["can i drink", "HAND"],
+  ["can i drink", "CARD Best to skip it for now"],
   ["what is the magnesium for, and can I take it with my B-complex", "HAND"],
-  ["Can I drink?", "HAND"],
-  ["late client dinner with drinks", "HAND"],
+  ["Can I drink?", "CARD Best to skip it for now"],
+  ["late client dinner with drinks", "CARD Best to skip it for now"],
   ["thoda chakkar aa raha hai", "HAND"],
   ["my stomach hurts after the iron", "HAND"],
   // the coach's own missed-capsule answer has not arrived, so it goes to the coach
-  ["missed my b-complex", "HAND"],
+  ["missed my b-complex", "CARD No worries"],
   // results are not shared in the app until step 5
   ["Show me my lab results and when the next blood test is.", "HAND"],
   ["my hba1c is 6.1 is that ok", "HAND"],
@@ -300,7 +300,7 @@ describe("round-4 tester findings", () => {
     ["is my vitamin D in range", "HAND"],
     ["mera vajan kitna kam hoga 3 mahine me", "HAND"],
     ["I run a shop and eat lunch at 3, can I shift the times?", "HAND"],
-    ["can I have a drink", "HAND"],
+    ["can I have a drink", "CARD Best to skip it for now"],
     ["when is my week 12 review?", "HAND"],
     ["dudh wali chai pi sakti hu", "MODEL"],
     ["I don't eat chia, what can I have instead?", "MODEL"],
@@ -496,15 +496,20 @@ describe("eating out, with the coach's guide on the plan", () => {
     expect(r.card.lines).toEqual(GUIDE.rules);
   });
 
-  it("dinner with drinks: the food is answered now, and the drinks stay the coach's call", () => {
+  it("dinner with drinks: the food is answered now, with the plan's alcohol line", () => {
     const r = routeAsk("late client dinner with drinks", withGuide());
     if (r.type !== "card") throw new Error("expected a card");
     expect(r.card.heading).toBe("At a restaurant");
     expect(r.card.list?.[0]).toEqual({ mark: "yes", text: "Dal, sabzi, and rice or jowar roti" });
-    expect(r.card.note).toContain("Alcohol is your coach's call");
-    expect(r.card.handoff).toBe(true);
-    // Alcohol on its own is still only the coach's.
-    expect(ask("can i drink wine", withGuide())).toBe("HAND");
+    expect(r.card.note).toBe("It's best to skip alcohol while you're on this plan.");
+    expect(ask("can i drink wine", withGuide())).toBe("CARD Best to skip it for now");
+  });
+
+  it("alcohol is plan by plan (coach, 21 Nov 2026): no risk marker gets the practical line", () => {
+    const c = ctx();
+    const noRisk = { ...c, data: { ...c.data, sq: { ...(c.data.sq ?? { planDay: 1, tickHistory: [], daysSinceLastOpen: null, results: null }), alcoholRisk: false } } } as AskContext;
+    expect(ask("can I have a drink", noRisk)).toBe("CARD One, slowly, with food");
+    expect(ask("can I have a drink", c)).toBe("CARD Best to skip it for now");
   });
 
   it("safety still comes first, even at a restaurant", () => {
@@ -757,5 +762,13 @@ describe("copy", () => {
       expect(text, q).not.toMatch(/zzyzx|qwerty|shivani/i);
       expect(text, q).not.toMatch(/\b(she|her|hers)\b/i);
     }
+  });
+});
+
+describe("missed capsule (coach, 21 Nov 2026)", () => {
+  it.each(["iron lena bhool gayi", "I forgot my iron yesterday, should I take two today?", "missed my magnesium"])("%s → no worries, with reminders", (q) => {
+    const r = routeAsk(q, ctx());
+    expect(outcome(r)).toBe("CARD No worries");
+    if (r.type === "card") expect(r.card.buttons?.map((b) => b.to)).toEqual(["remind", "remind"]);
   });
 });

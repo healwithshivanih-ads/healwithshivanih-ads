@@ -47,10 +47,23 @@ from protein_logic import _iter_lab_values  # noqa: E402
 # ── the three rulings (BUILD-PLAN "Still open"), one constant each ───────────
 #: 1. DECIDED (coach, 20 Nov 2026: "Yes, fat to 35%"): glycaemic plans keep carbs at 45% and fat may rise to this share.
 GLYCAEMIC_FAT_MAX = 0.35
-#: 2. protein before any kidney test is on record (g/kg band).
+#: 2. DECIDED (coach, 21 Nov 2026: "follow the diet prescribed, use industry
+#:    defaults"): with no kidney test on record the usual band stands (KDIGO:
+#:    no protein limit without kidney disease), EXCEPT for the groups KDIGO
+#:    and the ADA say to screen first — diabetes, high blood pressure — who are
+#:    held at 1.0 to 1.2 g/kg until a test is on record, and the coach is told.
 NO_KIDNEY_TEST_PROTEIN = (1.2, 1.5)
-#: 3. over 65: the usual band, and no calorie deficit unless the coach says.
-OVER_65_DEFICIT = False
+NO_KIDNEY_TEST_AT_RISK_PROTEIN = (1.0, 1.2)
+KIDNEY_RISK = ["type 2 diabetes", "diabetes", "t2dm", "hypertension", "high blood pressure"]
+#: 3. DECIDED (same ruling): over 65 keeps the usual 1.2 to 1.5 band (PROT-AGE /
+#:    ESPEN: 1.0 to 1.2 is the minimum, 1.2 to 1.5 with a chronic illness) and
+#:    is never raised above it. A calorie deficit only at BMI 30+, slow pace
+#:    (ESPEN geriatric / SCOPE: modest loss with protein and exercise).
+OVER_65_DEFICIT = True
+OVER_65_DEFICIT_MIN_BMI = 30
+#: The plan's own diet line wins over the default band (coach: "follow the
+#: diet prescribed"). Read from plan.nutrition.pattern.
+PATTERN_PROTEIN = {"low": (0.8, 0.8), "moderate": (1.0, 1.2), "high": (1.6, 2.0)}
 
 PROTEIN_BAND = (1.2, 1.5)
 #: kidney (eGFR < 60, ACR >= 30 or a diagnosis): one low figure, g/kg
@@ -133,6 +146,14 @@ def _calorie_maths():
     return mod._calc_calorie_targets
 
 
+def _pattern_protein(pattern: str | None) -> str | None:
+    """'low' / 'moderate' / 'high' when the plan's diet line names a protein level."""
+    import re as _re
+
+    m = _re.search(r"\b(low|moderate|high)[\s-]+protein\b", str(pattern or "").lower())
+    return m.group(1) if m else None
+
+
 def _age(client: dict) -> int | None:
     dob = client.get("date_of_birth")
     if dob:
@@ -158,7 +179,7 @@ def _phase_kcal(phases: dict, week: int | None) -> int | None:
     return phases.get(key)
 
 
-def day_targets(client: dict, plan_week: int | None = None) -> dict[str, Any]:
+def day_targets(client: dict, plan_week: int | None = None, pattern: str | None = None) -> dict[str, Any]:
     notes: list[str] = []
 
     # 1. no automatic targets at all
@@ -208,13 +229,16 @@ def day_targets(client: dict, plan_week: int | None = None) -> dict[str, Any]:
         ("insulin" in drugs or "sulfonylurea" in drugs, "insulin / sulfonylurea: no automatic calorie cut"),
         ("sglt2" in drugs, "SGLT2 inhibitor: no extra deficit"),
         ("glp1" in drugs, "GLP-1 drug: no deficit on top"),
-        (age is not None and age > 65 and not OVER_65_DEFICIT, "over 65: no deficit by default"),
+        (age is not None and age > 65 and not (OVER_65_DEFICIT and bmi is not None and bmi >= OVER_65_DEFICIT_MIN_BMI), "over 65 below BMI 30: no deficit"),
     ):
         if blocked and wl and wl.get("enabled"):
             deficit_ok = False
             notes.append(reason)
     kcal_spec: dict | None = None
     if wl and wl.get("enabled") and deficit_ok:
+        if age is not None and age > 65:
+            wl = {**wl, "pace": "slow"}
+            notes.append("over 65: slow pace")
         t = calc(client, wl)
         if t and t.get("phases"):
             kcal_spec = {"phases": t["phases"]}
@@ -235,16 +259,26 @@ def day_targets(client: dict, plan_week: int | None = None) -> dict[str, Any]:
     if bmi is not None and bmi >= 30 and height:
         ideal = 22.5 * (height / 100) ** 2
         calc_w = ideal + 0.4 * (weight - ideal)
-    band = PROTEIN_BAND if kidney_tested else NO_KIDNEY_TEST_PROTEIN
+    band = PROTEIN_BAND
+    level_p = _pattern_protein(pattern)
+    if level_p:
+        band = PATTERN_PROTEIN[level_p]
+        notes.append(f"protein follows the plan's diet line ({level_p}-protein)")
+    if level_p == "high" and not (kidney_tested and (age is None or age <= 65)):
+        band = PROTEIN_BAND
+        notes.append("high-protein plan held at 1.2-1.5 g/kg: " + ("over 65" if kidney_tested else "no kidney test on record"))
+    if not kidney_tested and _terms_hit(client, KIDNEY_RISK) and band[1] > NO_KIDNEY_TEST_AT_RISK_PROTEIN[1]:
+        band = NO_KIDNEY_TEST_AT_RISK_PROTEIN
+        notes.append("no kidney test on record (diabetes / blood pressure): protein held at 1.0-1.2 g/kg; order a kidney test")
     protein: dict | None = {"low": round(band[0] * calc_w), "high": round(band[1] * calc_w)}
     protein_note = None
     menu_protein = None
     # Coach, 20 Nov 2026: kidney and gout clients get a LOW target, shown as a
     # plain number with no reason given (the reason is the coach's to explain).
-    if kidney:
+    if kidney or level_p == "low":
         menu_protein = round(KIDNEY_PROTEIN_G_KG * calc_w)
         protein = {"low": menu_protein, "high": menu_protein}
-        notes.append(f"kidney: protein held at {KIDNEY_PROTEIN_G_KG} g/kg, no reason shown")
+        notes.append(f"{'kidney' if kidney else 'low-protein plan'}: protein held at {KIDNEY_PROTEIN_G_KG} g/kg, no reason shown")
     elif _terms_hit(client, URATE):
         protein = {"low": round(URATE_PROTEIN_G_KG[0] * calc_w), "high": round(URATE_PROTEIN_G_KG[1] * calc_w)}
         notes.append("uric acid / gout: low protein band, no reason shown")

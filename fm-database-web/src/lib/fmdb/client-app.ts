@@ -300,10 +300,11 @@ import { runShim } from "./shim";
 
 /** The day's target: on Fly from the projected spec (the full record never
  *  reaches Fly); on the Mac from scripts/day_targets.py directly. */
-async function loadDayTargets(client: Record<string, unknown>, clientId: string, week: number): Promise<DayTargets | null> {
+async function loadDayTargets(client: Record<string, unknown>, clientId: string, week: number, pattern: string): Promise<DayTargets | null> {
   if (currentHost() === "fly") return targetsForWeek(client.day_targets, week);
   try {
-    const out = (await runShim("day-targets.py", { client_id: clientId, plan_week: week })) as { ok?: boolean; targets?: unknown };
+    // `pattern`: the plan's diet line ("Moderate-protein, …") sets the protein band.
+    const out = (await runShim("day-targets.py", { client_id: clientId, plan_week: week, pattern })) as { ok?: boolean; targets?: unknown };
     return out?.ok ? targetsForWeek(out.targets, week) : null;
   } catch {
     return null;
@@ -415,6 +416,8 @@ export interface AppSupplement {
   why: string;
   buyUrl?: string;
   buyLabel?: string;
+  /** Same product in other flavours: one button each, label says the flavour. */
+  buyOptions?: { label: string; url: string }[];
   /** VitaOne supplement-facts label thumbnail (from supplement_links.yaml),
    *  shown beside the Reorder link. */
   imageUrl?: string;
@@ -1234,6 +1237,9 @@ export interface AppSqData {
   daysSinceLastOpen: number | null;
   /** Results the coach has released (released-results.ts); null until then. */
   results: AppResults | null;
+  /** The alcohol answer, plan by plan (scripts/alcohol_risk.py): true = the
+   *  gentle "skip it", false = the practical line. Never the reason. */
+  alcoholRisk: boolean;
 }
 
 export interface ClientAppData {
@@ -1879,7 +1885,18 @@ function ymdDiff(fromYmd: string, toYmd: string): number {
 /** The new front's extras — the saved record and how long she has been away.
  *  Every read is best-effort: a missing or broken file means an empty record
  *  and no return card, never a failed app load. */
-async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null): Promise<AppSqData> {
+/** Fly reads the projected flag; the Mac asks the shim. Unknown = true. */
+async function loadAlcoholRisk(client: Record<string, unknown>, clientId: string, planSlug: string): Promise<boolean> {
+  if (currentHost() === "fly") return client.alcohol_risk !== false;
+  try {
+    const out = (await runShim("alcohol-risk.py", { client_id: clientId, plan_slug: planSlug })) as { ok?: boolean; risk?: boolean };
+    return out?.ok ? out.risk !== false : true;
+  } catch {
+    return true;
+  }
+}
+
+async function loadSqData(clientId: string, clientDir: string, appTz: string, planDay: number, results: AppResults | null = null, alcoholRisk = true): Promise<AppSqData> {
   const rows = await loadTickRows(clientId, 15).catch(() => []);
   const tickHistory: AppTickDay[] = rows.map((r) => ({
     date: r.date,
@@ -1899,7 +1916,7 @@ async function loadSqData(clientId: string, clientDir: string, appTz: string, pl
   } catch {
     /* no opens on record */
   }
-  return { planDay, tickHistory, daysSinceLastOpen, results };
+  return { planDay, tickHistory, daysSinceLastOpen, results, alcoholRisk };
 }
 
 async function loadCheckinPrefill(
@@ -4586,6 +4603,7 @@ export async function loadClientAppData(
     let suppImageUrl: string | undefined;
     let suppPack: PackSize | null = null;
     let suppStrength: string | undefined;
+    let suppOptions: { label: string; url: string }[] | undefined;
     {
       // Coach-set per-plan buy-link override WINS — a specific product the coach
       // pinned on the plan entry (e.g. "Autoimmunity Care UTI Care") that may not
@@ -4613,6 +4631,7 @@ export async function loadClientAppData(
           if (buyUrl === link.url) {
             suppPack = parsePackSize(link.pack_size);
             suppStrength = link.unit_strength;
+            if (link.options && link.options.length > 1) suppOptions = link.options;
           }
         } else if (!buyUrl && international) {
           // The international search fallback is a targeted iHerb keyword
@@ -4624,7 +4643,10 @@ export async function loadClientAppData(
         /* no catalogue link — the override (if any) still applies; else the button hides */
       }
       // She already has this one: no order button, whatever the catalogue matches.
-      if ((p as Dict).no_buy_link === true) buyUrl = undefined;
+      if ((p as Dict).no_buy_link === true) {
+        buyUrl = undefined;
+        suppOptions = undefined;
+      }
     }
     const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
     const emptyStomach = !asNeeded && /empty stomach|before breakfast|first thing in the morning|on empty|upon waking/i.test(timing);
@@ -4655,6 +4677,7 @@ export async function loadClientAppData(
       // survive scrubbing. When the coach has written the answer, use it.
       why: asStr(p.client_note).trim() || clientFacingWhy(asStr(p.coach_rationale)),
       buyUrl,
+      ...(suppOptions ? { buyOptions: suppOptions } : {}),
       imageUrl: suppImageUrl,
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),
@@ -6510,7 +6533,7 @@ export async function loadClientAppData(
     mode: appMode,
     endgame,
     appShell: sqShell,
-    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault)) : null,
+    sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault), await loadAlcoholRisk(client, clientId, planSlug)) : null,
     labOrders,
     client: {
       firstName,
@@ -6622,6 +6645,6 @@ export async function loadClientAppData(
     reminders,
     foodDiary,
     supply: loadSupply(clientId),
-    dayTargets: macroLookup && sqShell === "v2" ? await loadDayTargets(client, clientId, week) : null,
+    dayTargets: macroLookup && sqShell === "v2" ? await loadDayTargets(client, clientId, week, asStr(nutrition.pattern)) : null,
   };
 }

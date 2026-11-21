@@ -58,6 +58,8 @@ export type SqSheet =
   | { k: "order" }
   | { k: "vitals" }
   | { k: "trip" }
+  /** turn reminders on, with steps when the phone blocks it (sq-remind.tsx) */
+  | { k: "remind" }
   /** a screen a later build step fills in */
   /** one of today's screens, hosted (sq-host.tsx) */
   | { k: "hosted"; id: "menu" | "grocery" | "checkin" | "labs" | "move" }

@@ -85,6 +85,7 @@ def _staging_root() -> "Path | None":
 # stub keys so a merged file serves both surfaces).
 _APP_CLIENT_KEYS = (
     "client_id",
+    "alcohol_ok",
     "display_name",
     "date_of_birth",
     "age_band",
@@ -516,7 +517,23 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
         try:
             from day_targets import day_targets as _day_targets
 
-            dt = _day_targets(adata)
+            # The plan's diet line ("Moderate-protein, …") sets the protein band.
+            _pat = None
+            for _pf in _published_files(auth, plan_slug)[-1:] if plan_slug else []:
+                _pat = ((yaml.safe_load(_pf.read_text()) or {}).get("nutrition") or {}).get("pattern")
+            dt = _day_targets(adata, None, _pat)
+            # Alcohol answer, plan by plan (scripts/alcohol_risk.py): one
+            # yes/no, never the reason.
+            try:
+                from alcohol_risk import alcohol_risk as _alcohol_risk
+
+                _plan = None
+                for _pf in _published_files(auth, plan_slug)[-1:] if plan_slug else []:
+                    _plan = yaml.safe_load(_pf.read_text()) or {}
+                merged["alcohol_risk"] = bool(_alcohol_risk(adata, _plan))
+            except Exception as e:
+                merged["alcohol_risk"] = True  # unknown: the gentle "skip it"
+                print(f"[app-staging] alcohol_risk failed for {adata.get('client_id')}: {e}", file=sys.stderr)
             merged["day_targets"] = {k: v for k, v in dt.items() if k not in ("notes", "menu_protein_g", "record", "kcal_now")}
         except Exception as e:  # a target failure must never stop the copy
             merged.pop("day_targets", None)

@@ -182,7 +182,23 @@ export function SqHome(p: SqHomeProps) {
   // Until the phone's own ticks and clock are known, "next" cannot be known
   // either. Showing a card and then swapping it would be worse than a beat of
   // nothing.
-  if (!p.ready) return head;
+  if (!p.ready)
+    return (
+      <>
+        {head}
+        {/* A quiet stand-in while the phone finishes loading (slow internet
+            can make this several seconds): never a blank Home. */}
+        <div className="sq-skel" aria-hidden="true">
+          <div className="sq-skel-b sq-skel-hero" />
+          <div className="sq-skel-b" />
+          <div className="sq-skel-b" />
+        </div>
+        <p className="sq-skel-note" role="status">
+          Getting your day ready…
+          <span className="sq-skel-slow"> Slow internet can make this take a little longer.</span>
+        </p>
+      </>
+    );
 
   const upcoming = upcomingMoments(moments, ticks, p.nowRank);
   const next = upcoming[0] ?? null;

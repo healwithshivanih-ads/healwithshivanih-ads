@@ -834,3 +834,17 @@
 .sq-app .sq-host-app video.ex-figure { background: var(--sq-card-2); }
 .sq-app .sq-host-app .ex-figure,
 .sq-app .sq-host-app .ex-stepfig { --fm-fig: rgba(42, 41, 45, 0.72); --fm-figline: rgba(42, 41, 45, 0.9); }
+
+/* Home while loading (slow connections): skeleton blocks, and after 4 s a
+   line saying why it is taking longer. Reduced motion: no pulse. */
+.sq-app .sq-skel { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.sq-app .sq-skel-b { height: 76px; border-radius: 18px; background: rgba(60, 50, 40, 0.07); animation: sq-skel-pulse 1.4s ease-in-out infinite; }
+.sq-app .sq-skel-hero { height: 150px; }
+.sq-app .sq-skel-note { margin-top: 18px; text-align: center; font-size: 15px; color: var(--sq-muted, #5f5953); opacity: 1; }
+.sq-app .sq-skel-slow { display: block; margin-top: 4px; opacity: 0; animation: sq-skel-show 0.4s ease 4s forwards; }
+@keyframes sq-skel-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes sq-skel-show { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .sq-app .sq-skel-b { animation: none; }
+  .sq-app .sq-skel-slow { animation: none; opacity: 1; }
+}

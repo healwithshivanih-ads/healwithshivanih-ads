@@ -48,7 +48,18 @@ export async function fetchModelCard(token: string, question: string): Promise<A
     });
     const j = (await res.json()) as { ok?: boolean; verdict?: string; card?: AskCard; reason?: string };
     if (!res.ok || !j.ok) return NO_ANSWER_CARD;
-    if (j.verdict === "answer" && j.card && Array.isArray(j.card.lines)) return j.card;
+    if (j.verdict === "answer" && j.card && Array.isArray(j.card.lines)) {
+      if (j.card.autoCheck) {
+        // The coach checks every automatic answer: the question lands in the
+        // client's own Coach thread, where she can see it went.
+        void fetch("/api/app-chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token, action: "send", text: `${question.trim()}\n\n(Automatic answer in the app: "${j.card.heading ?? j.card.lines[0]}". Please check.)` }),
+        }).catch(() => {});
+      }
+      return j.card;
+    }
     if (j.verdict === "emergency" || j.verdict === "selfharm") return urgentCard(j.verdict);
     if (j.reason && j.reason in HANDOFF_COPY) return handoffCard(j.reason as HandoffKind);
     if (j.reason === "limit") return LIMIT_CARD;
