@@ -23,6 +23,8 @@ export const dynamic = "force-dynamic";
 /** Typed questions that may reach the model, per client link, per day. The
  *  env override exists so the limit can be changed without a deploy of code
  *  (and raised for a local test run); anything unreadable falls back to 15. */
+const TEST_CLIENT = "cl-900";
+const TEST_DAILY_LIMIT = 300;
 const DAILY_LIMIT = Math.max(1, Math.floor(Number(process.env.FMDB_COPILOT_DAILY_LIMIT)) || 15);
 
 // Authoritative gates (the client-side copies in ochre-coach.tsx are a UX
@@ -173,11 +175,14 @@ async function cardAnswer(req: NextRequest, token: string, question: string) {
   const handoff = askHandoff(question);
   if (handoff) return defer(handoff);
 
-  if (!(await allowDaily("app-copilot", token, DAILY_LIMIT)).ok) return defer("limit");
   const lookup = await resolveAppToken(token);
   if (!lookup.ok) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }
+  // The test account (cl-900) runs whole tester rounds in a day; every real
+  // client keeps the usual cap.
+  const cap = lookup.client_id === TEST_CLIENT ? TEST_DAILY_LIMIT : DAILY_LIMIT;
+  if (!(await allowDaily("app-copilot", token, cap)).ok) return defer("limit");
   if (await clientIsLapsed(lookup.client_id)) return defer();
 
   try {

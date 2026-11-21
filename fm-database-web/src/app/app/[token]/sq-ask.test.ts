@@ -121,7 +121,7 @@ function outcome(r: AskResult): string {
   if (r.type === "tab") return `TAB ${r.tab}`;
   if (r.type === "open") return r.sheet.k === "soon" ? `SOON ${r.sheet.title}` : r.sheet.k === "practice" ? `PRACTICE ${r.sheet.id}` : r.sheet.k === "hosted" ? `SCREEN ${r.sheet.id}` : `OPEN ${r.sheet.k}`;
   const c = r.card;
-  if (c.tone === "urgent") return c.heading!.includes("alone") ? "SELFHARM" : "EMERGENCY";
+  if (c.tone === "urgent") return /alone|akele/.test(c.heading!) ? "SELFHARM" : "EMERGENCY";
   if (c.handoff) return "HAND";
   return `CARD ${c.heading ?? ""}`;
 }
@@ -770,5 +770,28 @@ describe("missed capsule (coach, 21 Nov 2026)", () => {
     const r = routeAsk(q, ctx());
     expect(outcome(r)).toBe("CARD No worries");
     if (r.type === "card") expect(r.card.buttons?.map((b) => b.to)).toEqual(["remind", "remind"]);
+  });
+});
+
+describe("round 6 fixes (21 Nov 2026)", () => {
+  it.each([
+    ["Goli lena bhool gayi subah", "CARD Koi baat nahi"],
+    ["I skipped my evening capsule last night, is that a problem?", "CARD No worries"],
+    ["how do i turn on reminders", "OPEN remind"],
+    ["hi im new, where do i even start?", "OPEN start"],
+    ["I haven't followed the plan for almost two weeks. Is it too late, have I undone all the progress?", "CARD You pick up from today"],
+    ["can I have dahi vada at dinner", "MODEL"],
+    ["kya main adai kha sakti hoon", "MODEL"],
+    ["is moussaka ok", "MODEL"],
+  ])("%s → %s", (q, want) => {
+    expect(ask(q)).toBe(want);
+  });
+  it("a Hinglish question gets the Hinglish card", () => {
+    expect(ask("chest me bahut dard ho raha hai kya karu")).toBe("EMERGENCY");
+    const r = routeAsk("kya main ek glass wine pi sakti hoon party mein", ctx());
+    expect(r.type === "card" && r.card.heading).toBe("Abhi ke liye na lein");
+  });
+  it("which supplements, and when: her own list", () => {
+    expect(ask("which supplements do I take and at what times")).toBe("CARD Your supplements today");
   });
 });

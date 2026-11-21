@@ -42,6 +42,8 @@ export type SqSheet =
   | { k: "record" }
   | { k: "recday"; date: string }
   | { k: "recipe"; slot: string }
+  /** a meal's recipe from the day row: day index, slot index (sq-day.tsx) */
+  | { k: "dayrecipe"; d: number; s: number }
   | { k: "start" }
   /** the coach's eating-out guide for this plan week, in full */
   | { k: "eatout"; where?: string }

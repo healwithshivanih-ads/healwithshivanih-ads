@@ -191,6 +191,22 @@ export interface WeekMenuSlot {
   /** dish broken into clean title + lifted portion per component (display). */
   components?: DishComponent[];
   ayurveda?: boolean;
+  /** The recipe for this dish, attached only for today and the next six days
+   *  so the phone can open it from the day row (Sequoya front) without
+   *  carrying every recipe on the plan. */
+  recipe?: SlotRecipe;
+}
+export interface SlotRecipe {
+  title: string;
+  imageUrl?: string;
+  mins?: string;
+  serves?: string;
+  ingredients: string[];
+  method: string[];
+  omits?: string[];
+  omitsInSteps?: boolean;
+  /** the meal's other dishes, each with its own method */
+  more?: AppComponentRecipe[];
 }
 export interface WeekMenuDay {
   dow: string;
@@ -1902,7 +1918,7 @@ async function loadSqData(clientId: string, clientDir: string, appTz: string, pl
     date: r.date,
     items: r.items
       .filter((i) => i && typeof i.name === "string")
-      .map((i) => ({ kind: String(i.kind || ""), name: i.name, done: i.done === true, at: typeof i.at === "string" && i.at ? i.at : null })),
+      .map((i) => ({ kind: String(i.kind || ""), name: String(i.kind || "") === "remedy" ? clientRemedyName(i.name) : i.name, done: i.done === true, at: typeof i.at === "string" && i.at ? i.at : null })),
   }));
   let daysSinceLastOpen: number | null = null;
   try {
@@ -4433,6 +4449,34 @@ export async function loadClientAppData(
         .filter((s) => s.dish),
     })),
   }));
+
+  // Recipes for the day row: today and the next six days, in menu order
+  // (current week from today, then the weeks after it).
+  {
+    const start = weekMenus.findIndex((w) => w.current);
+    let left = 7;
+    for (let wi = Math.max(0, start); wi < weekMenus.length && left > 0; wi++) {
+      const days = weekMenus[wi].days;
+      const from = wi === start ? Math.max(0, days.findIndex((d) => d.today)) : 0;
+      for (let di = from; di < days.length && left > 0; di++, left--) {
+        for (const slot of days[di].slots) {
+          const rec = recipeFor(slot.dish);
+          if (!rec || (rec.method.length === 0 && rec.ingredients.length === 0)) continue;
+          slot.recipe = {
+            title: rec.title || slot.dish,
+            imageUrl: rec.imageUrl ?? libraryRecipeFor(slot.dish)?.imageUrl,
+            mins: rec.time,
+            serves: rec.serves,
+            ingredients: rec.ingredients ?? [],
+            method: rec.method ?? [],
+            omits: rec.omits,
+            omitsInSteps: rec.omitsInSteps,
+            more: componentRecipesFor(slot.dish, rec, recipeFor),
+          };
+        }
+      }
+    }
+  }
 
   // Warm, food-first "nourishment" note per week — what the week's dishes are
   // collectively rich in, from their rich_in tags (Phase-2 nutrient engine).

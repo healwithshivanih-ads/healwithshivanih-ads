@@ -33,6 +33,8 @@ import { askChips, looksLikeDishQuestion, notOnListCard, routeAsk, type AskConte
 import { fetchModelCard, handoffText, SqAskView, type AskTurn } from "./sq-ask-ui";
 import { SqCoach, useCoachThread } from "./sq-coach";
 import { HOSTED_TITLES, hostedAvailable, SqHost } from "./sq-host";
+import { SqDayGroceries, SqDayRecipeSheet, SqDayRow, SqDayView, SqPrepLine } from "./sq-dayrow";
+import { upcomingDays } from "./sq-days";
 import { SqResultsSheet } from "./sq-results";
 import { DEFAULT_PREFS, findPractice, parsePrefs, practiceList, type PracticePrefs } from "./sq-practice-data";
 import { SqGoodnight, SqPracticePlayer, type PracticeResult } from "./sq-practice";
@@ -197,8 +199,14 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
 
   // ── tabs and sheets ────────────────────────────────────────────────────
   const scrollRef = useRef<HTMLElement | null>(null);
+  // The day row on Today: 0 is today, then the next days; THREE (-1) lists
+  // the next three days together.
+  const days = useMemo(() => upcomingDays(data.weekMenus ?? []), [data.weekMenus]);
+  const [dayAt, setDayAt] = useState(0);
+  const swipeX = useRef<number | null>(null);
   const go = (next: SqTabId) => {
     setTab(next);
+    if (next === "today") setDayAt(0);
     // A tab tap leaves whatever was open on top: one tap, one place.
     setStack([]);
     // The Today tab always lands on Home; the question thread is one tap in.
@@ -393,6 +401,10 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "recday") {
       sheetTitle = recordDayTitle(sheet.date);
       sheetBody = <SqRecordDaySheet data={data} date={sheet.date} />;
+    } else if (sheet.k === "dayrecipe") {
+      const slot = days[sheet.d]?.slots[sheet.s];
+      sheetTitle = slot?.recipe?.title ?? slot?.slot ?? "Recipe";
+      sheetBody = <SqDayRecipeSheet slot={slot} />;
     } else if (sheet.k === "recipe") {
       sheetTitle = recipeTitle(data, sheet.slot);
       sheetBody = <SqRecipeSheet data={data} slot={sheet.slot} />;
@@ -463,8 +475,36 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       <main className="sq-scroll" ref={scrollRef} aria-busy={!ready} inert={sheet ? true : undefined}>
         {tab === "today" && view === "ask" ? (
           <SqAskView turns={turns} onBack={() => setView("home")} onButton={onCardButton} onSend={sendToCoach} onAsk={ask} />
+        ) : tab === "today" && dayAt !== 0 ? (
+          <div
+            onTouchStart={(e) => (swipeX.current = e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+              const x0 = swipeX.current;
+              swipeX.current = null;
+              if (x0 === null || dayAt < 0) return;
+              const dx = e.changedTouches[0].clientX - x0;
+              if (Math.abs(dx) > 60) setDayAt(Math.max(0, Math.min(days.length - 1, dayAt + (dx < 0 ? 1 : -1))));
+            }}
+          >
+            <SqDayRow days={days} at={dayAt} pick={setDayAt} />
+            <SqDayView days={days} at={dayAt} open={open} />
+          </div>
         ) : tab === "today" ? (
+          <div
+            onTouchStart={(e) => (swipeX.current = e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+              const x0 = swipeX.current;
+              swipeX.current = null;
+              if (x0 !== null && x0 - e.changedTouches[0].clientX > 60 && days.length > 1) setDayAt(1);
+            }}
+          >
           <SqHome
+            dayRow={
+              <>
+                <SqDayRow days={days} at={dayAt} pick={setDayAt} />
+                <SqPrepLine next={days[1]} />
+              </>
+            }
             data={data}
             moments={moments}
             ticks={ticks}
@@ -484,6 +524,8 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
             onAsk={ask}
             diary={diary}
           />
+          {days[0] && <SqDayGroceries day={days[0]} />}
+          </div>
         ) : tab === "coach" ? (
           <SqCoach data={data} thread={coach} />
         ) : tab === "practices" ? (

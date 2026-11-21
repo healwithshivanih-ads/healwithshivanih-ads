@@ -848,3 +848,15 @@
   .sq-app .sq-skel-b { animation: none; }
   .sq-app .sq-skel-slow { animation: none; opacity: 1; }
 }
+/* Day row on Today (21 Nov 2026) */
+.sq-app .sq-dayrow { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 12px; scrollbar-width: none; }
+.sq-app .sq-dayrow::-webkit-scrollbar { display: none; }
+.sq-app .sq-daychip { flex: none; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--sq-line-strong); background: var(--sq-card); color: var(--sq-ink); font: inherit; font-size: 14px; }
+.sq-app .sq-daychip.on { background: var(--sq-fire-fill); border-color: var(--sq-fire-fill); color: var(--sq-on-fire); }
+.sq-app .sq-prep { margin-bottom: 12px; }
+.sq-app .sq-daygro summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.sq-app .sq-daygro ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.sq-app .sq-daygro li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--sq-line); font-size: 15px; }
+.sq-app .sq-daygro small { color: var(--sq-muted); font-size: 13px; }
+.sq-app .sq-daygro-meal { padding-top: 8px; }
+.sq-app .sq-daygro-meal .sq-sec { margin: 6px 0 2px; }

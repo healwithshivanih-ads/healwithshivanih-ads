@@ -45,6 +45,7 @@ import {
   type SqRow,
   type SqTicks,
 } from "./sq-day";
+import { inLanguageOf } from "@/lib/fmdb/ask-hinglish";
 import { practiceList, type SqPractice } from "./sq-practice-data";
 import type { SqSheet } from "./sq-ui";
 
@@ -81,7 +82,7 @@ export function alcoholLines(risk: boolean): string[] {
 
 export function alcoholCard(risk: boolean): AskCard {
   return {
-    src: "From your coach",
+    src: PLAN,
     heading: risk ? "Best to skip it for now" : "One, slowly, with food",
     lines: alcoholLines(risk),
     buttons: [{ to: "coach", label: "Message my coach", draft: "A question about alcohol: " }],
@@ -91,7 +92,7 @@ export function alcoholCard(risk: boolean): AskCard {
 /** The coach's standing answer to a missed capsule (21 Nov 2026). */
 export function missedCapsuleCard(): AskCard {
   return {
-    src: "From your coach",
+    src: PLAN,
     heading: "No worries",
     lines: ["Just take the next one at its usual time. There's no need to take two to make up for it.", "Your phone can remind you at each supplement time."],
     buttons: [
@@ -435,6 +436,48 @@ export const looksLikeDishQuestion = (q: string): boolean => DISH_ASK.test(dropS
 
 /** A question that asks about a food, as opposed to one that merely shares a
  *  word with a guide line. */
+/** Words of a dish question that name no food: the slot, the place, the
+ *  asking. What is left after these is the dish. */
+const NOT_A_DISH = new Set(
+  "dinner lunch breakfast snack snacks tonight tomorrow morning evening night dinnertime restaurant hotel buffet airport flight home house guests guest party wedding shaadi dhaba cafe office work outside bahar ghar ghare mehman time today aaj raat subah shaam plate bowl glass piece little small bit some one two thoda chalega chalegi chahiye okay allowed fine good bad healthy order eat eating have having drink can could should may would will kha khaa khana khaun khau sakti sakta sakte hoon kya main mai mujhe meri mera mere abhi kal ek also too with without and plan list allowed instead what about which please".split(" "),
+);
+
+/** The food words of a dish question that her plan never mentions: not in
+ *  today's or tomorrow's meals, the eat / sometimes / leave-out lists, or her
+ *  coach's eating-out guide. Empty when every food word is known. */
+/** The food a question asks about: "can I have dahi vada at dinner" → "dahi
+ *  vada", "is moussaka ok" → "moussaka", "kya main adai kha sakti hoon" →
+ *  "adai". Empty when the question names no food this way. */
+export function askedFood(s: string): string {
+  const pats = [
+    /\b(?:can|may|should|could) i (?:eat|have|order|try|get)\s+(.+?)(?:\?|$|\bat\b|\bfor\b|\btonight\b|\btoday\b|\btomorrow\b|\bin\b|\bwith\b|\bif\b)/,
+    /^(?:is|are) (?:a |an |the )?(.+?) (?:ok|okay|fine|allowed|alright)\b/,
+    /\bkya (?:main|mai|hum) (.+?) (?:kha|khaa|le|pi|pee)\b/,
+    /^(.+?) (?:chalega|chalegi|chal jayega|kha sakti|kha sakta|kha sakte|khaa sakti)\b/,
+    /\bwhat about (.+?)(?:\?|$)/,
+  ];
+  for (const p of pats) {
+    const m = s.match(p);
+    if (m && !/^(something|anything|what|this|that|it|one minute|five minutes|for|at|in|on)\b/.test(m[1].trim())) return m[1].trim();
+  }
+  return "";
+}
+
+export function unnamedDishWords(s: string, data: ClientAppData): string[] {
+  const food = askedFood(s);
+  if (!food || dishOnMenu(s, data).length) return [];
+  const known = [
+    ...data.meals.flatMap((m) => m.pills),
+    ...(data.planRef?.foods?.eat ?? []),
+    ...(data.planRef?.foods?.sometimes ?? []),
+    ...(data.planRef?.foods?.avoid ?? []),
+    JSON.stringify(data.planRef?.eatingOut ?? ""),
+  ]
+    .join(" ")
+    .toLowerCase();
+  return keyWords(food).filter((w) => !NOT_A_DISH.has(w) && !/^\d/.test(w) && !hasWord(known, w));
+}
+
 const DISH_ASK = /\b(can|may|should|could) i\b|\bis\b.*\b(ok|okay|fine|allowed)\b|\b(ok|okay|allowed)\b|what about|which one|\border\b|\beat\b|\bhave\b|\bkha\b|sakt/;
 
 /** Away from home, but not about food: these keep going to the model, which
@@ -578,6 +621,11 @@ const PRACTICE =
   /stress|anxious|anxiety|overwhelm|panic|tense\b|nervous|worr|racing|overthink|(mind|brain|head|thoughts?) (off|won'?t|wont|will not|doesn'?t|is so|is too|keeps?)|can'?t (relax|unwind|settle|calm|switch)|hot flush|hot flash|flush|irritab|angry|anger|furious|snapping|short fuse|upset|feeling low|low today|sleep|woke|awake|\b3 ?am\b|insomnia|neend|soaked|night sweat|wind.?down|calm|relax|breathing|breath ?work|tapping|\beft\b|somatic|body reset|meditat|wired|restless|don'?t have (five|5|time)|no time|one minute/;
 
 export function routeAsk(q: string, ctx: AskContext): AskResult {
+  const r = routeAskEn(q, ctx);
+  return r.type === "card" ? { ...r, card: inLanguageOf(q, r.card) } : r;
+}
+
+function routeAskEn(q: string, ctx: AskContext): AskResult {
   const raw = normalizeAsk(q);
   if (!raw) return { type: "empty" };
   const s = dropSupplementForms(raw);
@@ -595,7 +643,8 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (has(/next (session|review|call|appointment|meeting|consult)|when (is|do|will) .*(session|review|appointment|call with|meet (my|the|your) coach|see (my|the|your) coach)|(session|review|appointment) (date|kab)/)) {
     return sessionAnswer(s, data);
   }
-  if (has(/where (do|should) i (start|begin)|how (do|should) i (start|begin)|start here|getting started|new here|first day|do i (have|need) to do (all|everything)|is (all|everything) (of this )?(compulsory|necessary|mandatory)|too much to do|what is (the|this|that) (ring|circle|logo)|what are (the|these) rings|how does (this|the) app work/)) {
+  if (has(/\b(remind|reminders?|notifications?|alerts?|yaad dila)/) && !has(/\bdid i\b/)) return { type: "open", sheet: { k: "remind" } };
+  if (has(/where (do|should) i (even )?(start|begin)|what (do|should) i do first|\bon day (one|1)\b|what do i do on day|\bi'?m new\b|\bim new\b|how (do|should) i (start|begin)|start here|getting started|new here|first day|do i (have|need) to do (all|everything)|is (all|everything) (of this )?(compulsory|necessary|mandatory)|too much to do|what is (the|this|that) (ring|circle|logo)|what are (the|these) rings|how does (this|the) app work/)) {
     return { type: "open", sheet: { k: "start" } };
   }
   if (has(/(tell|message|msg|talk to|speak to|write to|call) (my |the |your )?coach/)) return { type: "tab", tab: "coach" };
@@ -604,7 +653,9 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   const guide = data.planRef?.eatingOut ?? null;
   const situation = guide ? matchSituation(s, guide) : null;
   const handoff = askHandoff(q);
-  if (handoff === "alcohol" && guide && situation) {
+  // Alcohol leads the answer; the guide's food card joins it only when the
+  // question is also about food ("client dinner with drinks").
+  if (handoff === "alcohol" && guide && situation && has(ABOUT_FOOD)) {
     // "Late client dinner with drinks": the food is answered now, from the
     // plan. The drinks stay the coach's call, and the card says so.
     return card({ ...eatingOutCard(situation, guide, q), buttons: [], note: alcoholLines(data.sq?.alcoholRisk !== false)[0] });
@@ -647,6 +698,12 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
       const found = dishesInGuide(s, guide);
       if (found.length) return card(dishCard(found, guide, q));
     }
+  }
+  // A dish her plan never mentions: the model's automatic "likely yes / likely
+  // skip", which also goes to the coach (coach, 21 Nov 2026), never a meal
+  // card or a whole guide that leaves her question unanswered.
+  if (!has(NOT_FOOD) && unnamedDishWords(s, data).length) return { type: "model" };
+  if (guide) {
     const food = has(ABOUT_FOOD);
     if (situation && (food || !has(NOT_FOOD))) return card(eatingOutCard(situation, guide, q));
     if (food && has(TRAVEL)) {
@@ -656,6 +713,20 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   }
   if (has(TRAVEL)) return { type: "model" };
 
+  // "Which supplements after lunch, and at what time?": her own list, by time.
+  if (has(/\b(which|what|my|all)\b.{0,12}\bsupplements?\b|\bsupplements?\b.{0,30}\b(when|what time|times|schedule|kab)\b/) && !has(/\b(why|for what|kis liye|order|buy|run out|ran out|did i|have i|yesterday|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/)) {
+    const slotWord = (s.match(/breakfast|lunch|dinner|bed(time)?|morning|night|evening|empty stomach/) ?? [""])[0];
+    const list = data.supplements.filter((x) => !slotWord || `${x.timing} ${x.slot}`.toLowerCase().includes(slotWord.replace("bedtime", "bed")));
+    if (list.length) {
+      return card({
+        src: PLAN,
+        heading: slotWord ? `Supplements: ${slotWord}` : "Your supplements today",
+        lines: [],
+        list: list.map((x) => ({ mark: "dot" as const, text: `${x.name}${x.dose ? `, ${x.dose}` : ""} · ${x.timing || x.slot}` })),
+        buttons: [{ to: "day", label: "Your whole day" }],
+      });
+    }
+  }
   const rows = dayRows(moments);
   const row = findRow(s, rows);
   const supp = row ? data.supplements.find((x) => x.id === row.id) ?? null : null;
@@ -679,13 +750,13 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
   if (has(/\bi feel\b|feeling|failed|guilty|ashamed|\bsad\b|crying|lonely|can'?t do this|cannot do this|too much|too hard|give up|giving up|fed up|what'?s the point/)) {
     return card(coachCard("That sounds heavy. I can send this to your coach, and you don't have to do anything else today."));
   }
-  if (has(/ruined|lost (all )?(my )?progress|wasted|back to (zero|square)/)) {
+  if (has(/ruined|lost (all )?(my )?progress|undone|too late|wasted|back to (zero|square)/)) {
     return card({ src: PLAN, heading: "You pick up from today", lines: [`Nothing here has expired. Today is week ${data.client.week}, and your plan is where you left it.`], buttons: [{ to: "day", label: "Your whole day", solid: true }] });
   }
   if (has(/fell off|fallen off|restart|start (it |this |the |my |all |over|.{0,24})?again|start over|from (day|week) (1|one)|from scratch|gave up|\bbehind\b|been away|was away|ease me/)) {
     return card({ src: PLAN, heading: "You start from today", lines: ["Nothing is waiting for you. Today's plan is the whole of it."], buttons: [{ to: "day", label: "Your whole day", solid: true }] });
   }
-  if (has(/undo|by mistake|untick|un-tick|wrongly|accident/)) {
+  if (has(/\b(undo|untick|un-tick)\b|tick(ed)?\b.{0,24}(by mistake|wrongly|accident)|(by mistake|wrongly|accident).{0,24}\btick/)) {
     return card({ src: "How it works", heading: "Tap the tick again to clear it", lines: ["Open your whole day. Every meal and every supplement has its own tick."], buttons: [{ to: "day", label: "Open my whole day", solid: true }] });
   }
 
@@ -768,7 +839,7 @@ export function routeAsk(q: string, ctx: AskContext): AskResult {
     return card(next.kind === "meal" ? mealCard(next, data, `Next: ${next.part.toLowerCase()}`) : { src: PLAN, heading: `Next: ${next.title}`, lines: [next.sub].filter(Boolean), buttons: [{ to: "day", label: "Your whole day" }] });
   }
   if (has(/changed|new this week|what.?s new|different|update/)) {
-    if (data.clientUpdateNote) return card({ src: "From your coach", heading: "Your coach's latest note", lines: [data.clientUpdateNote] });
+    if (data.clientUpdateNote) return card({ src: PLAN, heading: "Your coach's latest note", lines: [data.clientUpdateNote] });
     if (data.travel) return card({ src: PLAN, heading: "Your coach has your dates", lines: [`Away from ${data.travel.from} to ${data.travel.to}. Anything that changes for those days comes from your coach.`], buttons: [{ to: "coach", label: "Message my coach" }] });
     return card(coachCard("I can't see a change note on your plan. Shall I ask your coach?"));
   }

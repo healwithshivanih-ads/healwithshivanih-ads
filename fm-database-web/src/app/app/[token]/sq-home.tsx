@@ -12,7 +12,7 @@
  */
 
 import { macroLine } from "@/lib/fmdb/meal-macros";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import {
   anytimeMoments,
@@ -61,6 +61,8 @@ export interface SqHomeProps {
   open: (s: SqSheet) => void;
   /** the food diary, while the coach has one running (sq-diary.tsx) */
   diary?: SqDiaryState;
+  /** the day row and tomorrow's prep line, drawn under the greeting */
+  dayRow?: ReactNode;
   /** the return card has been put away today */
   returnDismissed: boolean;
   onDismissReturn: () => void;
@@ -166,7 +168,7 @@ export function SqHome(p: SqHomeProps) {
   const sq = data.sq ?? null;
   const firstDay = showStartCard(data.client.notStarted, sq?.planDay ?? 0);
 
-  const head = (
+  const greet = (
     <div className="sq-greet">
       <h1>
         {/* The hour is the phone's, so it is known only after the page is live. */}
@@ -177,6 +179,12 @@ export function SqHome(p: SqHomeProps) {
         {data.today.dow} {data.today.dateLabel} · week {data.client.week} of {data.client.totalWeeks}
       </p>
     </div>
+  );
+  const head = (
+    <>
+      {greet}
+      {p.dayRow}
+    </>
   );
 
   // Until the phone's own ticks and clock are known, "next" cannot be known

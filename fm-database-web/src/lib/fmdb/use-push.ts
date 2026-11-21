@@ -69,17 +69,19 @@ export function usePush(token: string) {
     try {
       const reg = await navigator.serviceWorker.getRegistration(SW);
       const sub = await reg?.pushManager.getSubscription();
-      const endpoint = sub?.endpoint;
-      if (sub) await sub.unsubscribe().catch(() => {});
-      await fetch("/api/app-push", {
+      // The server first: if it cannot be told (offline), the phone keeps its
+      // subscription, so reminders are still on in both places, not half off.
+      const res = await fetch("/api/app-push", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, action: "unsubscribe", endpoint }),
-      }).catch(() => {});
+        body: JSON.stringify({ token, action: "unsubscribe", endpoint: sub?.endpoint }),
+      });
+      if (!res.ok) throw new Error("not reached");
+      if (sub) await sub.unsubscribe().catch(() => {});
+      setState("off");
     } catch {
-      /* off either way */
+      setNote("Couldn't turn reminders off just now. Check your internet and try again.");
     }
-    setState("off");
     setBusy(false);
   }
 

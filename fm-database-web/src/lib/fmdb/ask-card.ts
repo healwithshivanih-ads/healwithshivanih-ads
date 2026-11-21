@@ -91,7 +91,7 @@ export function inventsAReason(card: AskCard, context: string, question: string)
   return REASON_WORDS.some((w) => new RegExp(`\\b${w}\\b`).test(said) && !new RegExp(`\\b${w}`).test(known));
 }
 
-export const AUTO_CHECK_NOTE = "This is an automatic answer. Your question has gone to your coach to check.";
+export const AUTO_CHECK_NOTE = "A quick answer from your plan. Your coach will look at your question too.";
 
 export const MODEL_BUTTONS = {
   day: "Your whole day",
@@ -168,7 +168,7 @@ export function parseModelCard(raw: unknown): ModelVerdict {
     return {
       verdict: "answer",
       card: {
-        src: "Automatic answer",
+        src: "Quick answer",
         heading: heading || undefined,
         lines,
         buttons: buttons.filter((x) => x.to !== "coach"),

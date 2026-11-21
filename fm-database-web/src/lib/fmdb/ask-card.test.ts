@@ -154,7 +154,7 @@ describe("automatic answer on a dish the plan does not name (coach, 21 Nov 2026)
     expect(v.verdict).toBe("answer");
     if (v.verdict !== "answer") return;
     expect(v.card.autoCheck).toBe(true);
-    expect(v.card.src).toBe("Automatic answer");
+    expect(v.card.src).toBe("Quick answer");
     expect(v.card.note).toBe(AUTO_CHECK_NOTE);
     expect(v.card.buttons).toEqual([]);
   });
