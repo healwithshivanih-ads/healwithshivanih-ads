@@ -95,9 +95,16 @@ function Sparkline({ pts }: { pts: { date: string; value: number }[] }) {
 
 function trendCaption(m: LabMarker): string | null {
   if (!m.hasTrend || m.delta == null) return null;
-  const first = m.trend[0];
-  if (m.delta === 0) return `Steady since ${first.date.slice(0, 7)}`;
-  return `${m.delta > 0 ? "Up" : "Down"} from ${first.value}${m.unit ? ` ${m.unit}` : ""}`;
+  // Earliest and latest by date, whatever order the trend arrives in: the
+  // stored delta's sign was the wrong way round for some markers (TSH 8.3
+  // "Up from 8.9", round 7, 21 Nov 2026).
+  const byDate = [...m.trend].sort((x, y) => x.date.localeCompare(y.date));
+  const first = byDate[0];
+  const last = byDate[byDate.length - 1];
+  const diff = Number(last.value) - Number(first.value);
+  if (!Number.isFinite(diff)) return null;
+  if (diff === 0) return `Steady since ${first.date.slice(0, 7)}`;
+  return `${diff > 0 ? "Up" : "Down"} from ${first.value}${m.unit ? ` ${m.unit}` : ""}`;
 }
 
 function MarkerCard({ m, mode }: { m: LabMarker; mode: LabVaultMode }) {
@@ -300,7 +307,10 @@ export function LabVaultBody() {
  *  flow now that the tab slot belongs to Practices. Opened from Account
  *  (always) and the Today "Book your lab test" tile (when an order is
  *  recommended). */
-export function LabsOverlay({ onClose }: { onClose: () => void }) {
+/** `numbersHeld`: the new front, before the coach has shared results
+ *  (released-results.ts). Booking and orders stay; the numbers wait for "Your
+ *  results", so the two screens never disagree (round 7, 21 Nov 2026). */
+export function LabsOverlay({ onClose, numbersHeld = false }: { onClose: () => void; numbersHeld?: boolean }) {
   const { labVault } = useOchre();
   const sub =
     labVault && labVault.summary.total > 0 ? vaultSummaryLine(labVault.summary, labVault.mode) : undefined;
@@ -313,12 +323,23 @@ export function LabsOverlay({ onClose }: { onClose: () => void }) {
         <h2 className="h-serif" style={{ fontSize: 24, margin: "0 0 2px" }}>
           Your labs
         </h2>
-        {sub && (
+        {sub && !numbersHeld && (
           <div className="muted" style={{ fontSize: 13.5, marginBottom: 10 }}>
             {sub}
           </div>
         )}
-        <LabVaultBody />
+        {numbersHeld ? (
+          <>
+            <LabOrdersCard />
+            <div className="card" style={{ padding: 20, marginTop: 14 }}>
+              <p style={{ fontSize: 15, color: INK, lineHeight: 1.6, margin: 0 }}>
+                Your coach goes through your numbers with you first. After that they appear under Your results.
+              </p>
+            </div>
+          </>
+        ) : (
+          <LabVaultBody />
+        )}
       </div>
     </div>
   );

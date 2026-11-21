@@ -177,16 +177,24 @@ export function markerSystem(
       if (p.keys.includes(c)) return { system: p.system, icon: p.icon };
     }
   }
+  // Fuzzy: the LONGEST overlapping key wins ("thyroglobulin" beats the liver
+  // panel's "globulin"), and a blood marker never lands under Urine because
+  // the urine panel also lists "glucose" (round 7, 21 Nov 2026).
+  const sing = (x: string) => x.replace(/ies\b/g, "y").replace(/(\w{3})s\b/g, "$1");
+  let best: { system: string; icon: string; len: number } | null = null;
   for (const c of cands) {
+    const urineName = /urine|urinary|\bacr\b|microalb/.test(c);
     for (const p of PANEL_INDEX) {
+      if (/urine/i.test(p.system) && !urineName) continue;
       for (const k of p.keys) {
-        if (k.length >= 4 && (c.includes(k) || k.includes(c))) {
-          return { system: p.system, icon: p.icon };
+        const ks = sing(k), cs = sing(c);
+        if (k.length >= 4 && (cs.includes(ks) || ks.includes(cs)) && (!best || k.length > best.len)) {
+          best = { system: p.system, icon: p.icon, len: k.length };
         }
       }
     }
   }
-  return { system: "Other", icon: "🧪" };
+  return best ? { system: best.system, icon: best.icon } : { system: "Other", icon: "🧪" };
 }
 
 // ── View-model ────────────────────────────────────────────────────────────────

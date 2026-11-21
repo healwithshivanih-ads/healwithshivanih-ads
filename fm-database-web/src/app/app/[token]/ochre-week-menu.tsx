@@ -115,8 +115,10 @@ export function WeekMenuSection({
               className={"wm-pill" + (i === wk ? " on" : "")}
               onClick={() => setWk(i)}
             >
-              Week {m.week}
-              {m.current ? " · now" : ""}
+              {/* Relative words, not the plan's own week number: the header
+                  counts the whole programme ("week 11"), the menu counts the
+                  plan ("Week 1"), and the two read as a contradiction. */}
+              {weekWord(i, menus.findIndex((x) => x.current))}
             </button>
           ))}
         </div>
@@ -437,4 +439,13 @@ export function GroceryOverlay({ onClose }: { onClose: () => void }) {
       </div>
     </div>
   );
+}
+
+function weekWord(i: number, cur: number): string {
+  if (cur < 0) return `Week ${i + 1}`;
+  const d = i - cur;
+  if (d === 0) return "This week";
+  if (d === 1) return "Next week";
+  if (d === -1) return "Last week";
+  return d > 0 ? `In ${d} weeks` : `${-d} weeks ago`;
 }

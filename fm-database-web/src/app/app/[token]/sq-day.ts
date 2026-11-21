@@ -363,10 +363,10 @@ const NOT_TICKED_MAX = 3;
 
 /** One line for a saved day: "9 of 11 · not ticked: psyllium husk, sleep wind-down". */
 export function recordSummary(items: AppTickDay["items"]): string {
-  if (items.length === 0) return "Nothing ticked";
+  if (items.length === 0) return "No ticks saved";
   const missed = items.filter((i) => !i.done).map((i) => i.name.toLowerCase());
   const done = items.length - missed.length;
-  if (done === 0) return `Nothing ticked · ${items.length} on the plan`;
+  if (done === 0) return `No ticks saved · ${items.length} on the plan`;
   if (missed.length === 0) return `${done} of ${items.length}`;
   const named = missed.slice(0, NOT_TICKED_MAX).join(", ");
   const more = missed.length > NOT_TICKED_MAX ? ` and ${missed.length - NOT_TICKED_MAX} more` : "";
@@ -396,7 +396,7 @@ export interface RecordSection {
 /**
  * The record, newest first: today, then each earlier day back to the first
  * day anything was saved (at most `span` days). A day with no saved row reads
- * "Nothing ticked" — that is all that is known about it.
+ * "No ticks saved" — that is all that is known about it.
  */
 export function buildRecord(history: AppTickDay[], todayYmd: string, todaySummary: string, span = 14): RecordSection[] {
   const byDate = new Map(history.filter((d) => d.date < todayYmd).map((d) => [d.date, d]));
@@ -420,7 +420,7 @@ export function buildRecord(history: AppTickDay[], todayYmd: string, todaySummar
     push(title, {
       date: d,
       label: dayLabel(d),
-      summary: row ? recordSummary(row.items) : "Nothing ticked",
+      summary: row ? recordSummary(row.items) : "No ticks saved",
       today: false,
       items: row ? row.items : null,
     });

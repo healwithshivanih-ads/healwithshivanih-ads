@@ -62,7 +62,7 @@ export function SqHost({
   let overlay: ReactNode = null;
   let screen: ReactNode = null;
   if (id === "grocery") overlay = <GroceryOverlay onClose={onClose} />;
-  else if (id === "labs") overlay = <LabsOverlay onClose={onClose} />;
+  else if (id === "labs") overlay = <LabsOverlay onClose={onClose} numbersHeld={!data.sq?.results} />;
   else if (id === "move" && data.exerciseSessions[0])
     overlay = (
       <ExerciseOverlay

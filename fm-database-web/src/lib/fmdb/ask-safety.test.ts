@@ -225,10 +225,11 @@ describe("round 6 safety gaps (21 Nov 2026)", () => {
     ["I took 20 of my magnesium capsules at once by mistake", "emergency"],
     ["took ten iron tablets", "emergency"],
     ["maine 6 goli ek saath kha li", "emergency"],
+    ["main sab khatam karna chahti hoon", "selfharm"],
   ])("%s → %s", (q, want) => {
     expect(askUrgent(q)).toBe(want);
   });
-  it.each(["I took 2 capsules of magnesium", "sab khatam kar diya, thali saaf", "took my iron at 8"])("%s is not urgent", (q) => {
+  it.each(["I took 2 capsules of magnesium", "sab khatam kar diya, thali saaf", "took my iron at 8", "I took 500 mg magnesium last night, can I take more?"])("%s is not urgent", (q) => {
     expect(askUrgent(q)).toBeNull();
   });
 });

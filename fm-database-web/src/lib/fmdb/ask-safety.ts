@@ -61,7 +61,7 @@ export function dropSupplementForms(s: string): string {
 // ── urgent ─────────────────────────────────────────────────────────────────
 
 const SELF =
-  /suicid|su[ie]?c[ie]de|\bkms\b|kill(ing)? my ?self|end(ing)? my life|end it all|want to die|wanna die|wish i (was|were) dead|better off dead|better off without me|don'?t want to (be here|live|go on|wake up)|no point (in )?living|(harm|hurt|cut)(ing)? my ?self|self.?harm|unalive|marna chaht|mar jau|mar jana chaht|jeena nahi|jeene ka ma+n+ nahi|khudkushi|jaan de d|(sab|sabkuch|sab kuch|zindagi|khud ko|apne aap ko) khatam kar (doon|du|dun|dena|lu|loon|lena)|zindagi se thak|jeena nahi chaht/;
+  /suicid|su[ie]?c[ie]de|\bkms\b|kill(ing)? my ?self|end(ing)? my life|end it all|want to die|wanna die|wish i (was|were) dead|better off dead|better off without me|don'?t want to (be here|live|go on|wake up)|no point (in )?living|(harm|hurt|cut)(ing)? my ?self|self.?harm|unalive|marna chaht|mar jau|mar jana chaht|jeena nahi|jeene ka ma+n+ nahi|khudkushi|jaan de d|(sab|sabkuch|sab kuch|zindagi|khud ko|apne aap ko) khatam (kar|karna|karne) ?(doon|du|dun|dena|lu|loon|lena|chaht|chah|ka man|ka mann)|zindagi se thak|jeena nahi chaht/;
 
 /** Each emergency phrase is tried on its own so a denied one ("no chest pain")
  *  can be skipped without hiding a real one later in the same message. */
@@ -122,6 +122,8 @@ const WORD_COUNT: Record<string, number> = { five: 5, six: 6, seven: 7, eight: 8
 function tookMany(s: string): boolean {
   const re = /\b(took|taken|swallowed|kha li|kha liya|kha gayi|le li|le liya)\b\s*(\d{1,3}|[a-z]+)\b/g;
   for (let m = re.exec(s); m; m = re.exec(s)) {
+    // "took 500 mg" is a dose, not 500 capsules.
+    if (/^\s*(mg|mcg|iu|g|ml|gm|units?)\b/.test(s.slice(m.index + m[0].length))) continue;
     const n = /^\d+$/.test(m[2]) ? Number(m[2]) : (WORD_COUNT[m[2]] ?? 0);
     if (n >= 5 && /capsule|tablet|pill|goli|supplement|softgel|dose|strip|bottle|magnesium|iron|vitamin|zinc|melatonin|ashwagandha/.test(s.slice(m.index, m.index + 80))) return true;
   }
