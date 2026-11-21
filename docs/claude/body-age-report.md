@@ -93,8 +93,8 @@ approved, no personal Foundation link, a broken link in the PDF.
 
 ## Not built yet
 
-Sending the email from the app (the coach card and the command both hand over draft files); Shivani's approval of the
-draft wording (written, not yet approved); how a buyer pays for the report and books the draw; the two-person report.
+How a buyer pays for the report and books the draw (no order page, no report order, the two test packages are
+priced in `thyrocare.yaml#longevity_panels` but not bookable); the two-person report; the WhatsApp answers.
 
 ## Coach screen (20 Nov 2026)
 
@@ -102,7 +102,22 @@ A "Body age report" card on a person's More tab (`clients-v2/[id]/body-age-repor
 `server-actions/body-age-report.ts::buildBodyAgeReport`, which runs the same script and adds no gate of its own
 (the script refuses a real buyer before the launch). `lib/fmdb/body-age-report-view.ts` turns the script's JSON
 into links; `/api/body-age-file/[id]/[report]/[name]` serves the PDF and the email preview, coach-only (not on
-`PUBLIC_PATH_PREFIXES`, so 404 on Fly). Nothing sends. "Save to their record" passes `record: true`.
+`PUBLIC_PATH_PREFIXES`, so 404 on Fly). "Save to their record" passes `record: true`.
+
+## Sending (21 Nov 2026)
+
+- **One door, the coach's click.** `server-actions/body-age-report.ts::sendBodyAgeReport` is the only code that emails
+  a report, and only the card's "Send by email" button (with a confirm) calls it. No cron, webhook or build step does.
+- **Who it may go to** is `lib/fmdb/body-age-send.ts::decideSend` (pure, pinned by tests): the test profile's report
+  ALWAYS goes to the coach's own mailbox, never the address on the record; before the launch moment everyone else is
+  refused; after it a buyer's report goes to the email on their record, and only once the report is saved there
+  (`record: true`, which starts the 14-day price the report quotes). A report whose `report.json` does not say
+  `ready: true` is never sent, so a report built before 21 Nov 2026 must be built again first.
+- The email is `email.html` as built, `ring.png` / `mark.png` inline (`cid:ring`, `cid:mark`), the PDF attached,
+  purpose `transactional` through the contact gate.
+- **Sent state** is `<report folder>/sent.json` (a list: `sent_at`, `to`, `test`). The card reads it back
+  (`latestBodyAgeReport`, passed from the page as `initial`) and shows "✓ Sent … · Send again". A rebuild keeps the
+  report number, so the mark survives it.
 
 ## Extra results and the Urine section (20 Nov 2026)
 Her rule: "we are asking them to do these tests so we should explain the report to them." Every result the two

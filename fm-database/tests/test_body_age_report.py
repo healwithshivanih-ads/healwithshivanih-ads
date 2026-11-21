@@ -807,7 +807,7 @@ def test_command_builds_the_test_profile_and_records_it(tmp_path, monkeypatch, c
     out = run(shim(), capsys, client_id="cl-900", kind="standard", report_date=FX["report_date"], record=True, html_only=True)
     assert out["ok"] and out["report"]["outcome"] == "foundation" and out["report"]["credit_until"] == "2026-07-21"
     # no app token on this record yet, so there is no personal link: the report is not ready to send
-    assert out["ready"] is False and any("Foundation link" in b for b in out["blockers"])
+    assert out["ready"] is False and any("personal session link" in b for b in out["blockers"])
     saved = yaml.safe_load((d / "client.yaml").read_text())
     assert saved["body_age_report_kind"] == "standard" and str(saved["body_age_report_date"]) == FX["report_date"]
     assert saved["body_age_reports"][0]["report_no"] == out["report"]["report_no"] and "segment" not in saved
