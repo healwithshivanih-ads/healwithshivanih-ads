@@ -316,3 +316,11 @@ export function coachTabNote(q: string): { urgent: UrgentKind } | { doctor: stri
   if (h === "weight_change") return { doctor: HANDOFF_COPY.weight_change.note! };
   return null;
 }
+
+/** What `coachTabNote` caught, as the weekly check-in stores it on the
+ *  session (save-app-checkin.py): the urgent kind, or "see_doctor" for a
+ *  symptom or a fast weight change. Null when nothing applies. */
+export function checkinSafetyFlag(note: ReturnType<typeof coachTabNote>): UrgentKind | "see_doctor" | null {
+  if (!note) return null;
+  return "urgent" in note ? note.urgent : "see_doctor";
+}

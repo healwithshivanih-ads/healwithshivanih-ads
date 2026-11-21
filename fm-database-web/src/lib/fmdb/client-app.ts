@@ -2057,6 +2057,22 @@ export interface LetterRecipe {
   translations?: RecipeTranslations;
 }
 
+/** A same-titled library recipe's translations, only when its English lines
+ *  are exactly this recipe's. Translations pair to ingredients and method BY
+ *  INDEX (menu-translate.ts::translateRecipe), so borrowing them for a letter
+ *  recipe with a different method — or one adapted for this client (onion
+ *  taken out, a step dropped) — printed Hindi for the wrong step, one that
+ *  could still name the removed food. */
+export function borrowedTranslations(
+  r: { ingredients: string[]; method: string[]; omits?: string[] },
+  lib: { ingredients: string[]; method: string[]; translations?: RecipeTranslations } | undefined,
+): RecipeTranslations | undefined {
+  if (!lib?.translations) return undefined;
+  if (r.omits && r.omits.length) return undefined;
+  const same = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
+  return same(r.ingredients, lib.ingredients) && same(r.method, lib.method) ? lib.translations : undefined;
+}
+
 /** The structured recipe library (fm-database/data/_recipes/) — the plan-side
  *  source of truth for recipe methods. Detailed plans no longer need a
  *  generated recipes letter: any menu dish that matches a library recipe (or
@@ -4551,7 +4567,7 @@ export async function loadClientAppData(
       omits: r.omits,
       omitsInSteps: r.omitsInSteps,
       ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
-      translations: r.translations ?? lib?.translations,
+      translations: r.translations ?? borrowedTranslations(r, lib),
     };
   });
 

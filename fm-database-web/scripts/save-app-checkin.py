@@ -15,7 +15,8 @@ Reads JSON from stdin:
   "feel": str,                    # free text
   "concerns": str,                # free text
   "supplements": [{"name": str, "status": str|null}],
-  "practices":   [{"name": str, "status": str|null}]
+  "practices":   [{"name": str, "status": str|null}],
+  "safety_flag": str?             # "selfharm" | "emergency" | "see_doctor"
 }
 
 Writes JSON to stdout: {"ok": bool, "session_id": str?, "error": str?}
@@ -27,6 +28,15 @@ import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+
+# The line at the top of the session when the safety screen caught the note.
+# Coach-facing only (the session YAML is read on the coach side).
+SAFETY_LINES = {
+    "selfharm": "## ⚠ Safety screen: words about self-harm. The client was shown the card to call 112 or go to the nearest hospital, and to message you.",
+    "emergency": "## ⚠ Safety screen: possible emergency. The client was shown the card to call 112 or go to the nearest hospital now.",
+    "see_doctor": "## ⚠ Safety screen: a symptom or a fast weight change. The client was shown \"see a doctor today if it feels severe or sudden\".",
+}
 
 
 def _plans_root() -> Path:
@@ -66,6 +76,10 @@ def main() -> int:
     rating = max(0, min(int(payload.get("rating") or 0), 5))
     feel = (payload.get("feel") or "").strip()
     concerns = (payload.get("concerns") or "").strip()
+    # Set by /api/app-checkin when the typed note tripped the ask box's safety
+    # list (ask-safety.ts::coachTabNote): "selfharm", "emergency" or
+    # "see_doctor". The route has already pushed the coach.
+    safety_flag = (payload.get("safety_flag") or "").strip()
     supplements = payload.get("supplements") or []
     practices = payload.get("practices") or []
 
@@ -78,6 +92,9 @@ def main() -> int:
 
     cap = ["", "Hard", "Low", "Okay", "Good", "Great"]
     lines = [f"Week {week} check-in from the client app — feeling {rating}/5 ({cap[rating]})."]
+    if safety_flag in SAFETY_LINES:
+        lines.insert(0, SAFETY_LINES[safety_flag])
+        lines.insert(1, "")
     if feel:
         lines.append(f"In their words: {feel}")
     answered_s = [s for s in supplements if s.get("status")]
@@ -131,6 +148,7 @@ def main() -> int:
             "rating": rating,
             "feel": feel,
             "concerns": concerns,
+            **({"safety_flag": safety_flag} if safety_flag in SAFETY_LINES else {}),
             "supplements": answered_s,
             "practices": answered_p,
             "received_at": now_iso,

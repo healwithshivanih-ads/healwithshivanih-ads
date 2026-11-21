@@ -53,7 +53,18 @@ export interface AdaptableRecipe {
   ingredients: string[];
   ingredientsStructured?: { qty: string; unit: string; item: string }[];
   method: string[];
+  /** pre-authored language lines, paired to `ingredients` / `method` BY INDEX
+   *  (menu-translate.ts::translateRecipe). An adaptation must carry them in
+   *  step, or the cook's sheet prints a Hindi line for a step that was
+   *  rewritten or dropped — one that can still name the removed food. */
+  translations?: AdaptableTranslations;
 }
+
+/** Structurally the same as client-app.ts::RecipeTranslations (kept local so
+ *  this module does not import the app loader). */
+export type AdaptableTranslations = {
+  [lang: string]: { name?: string; ingredients?: string[]; method?: string[] };
+};
 
 export interface Adaptation<T extends AdaptableRecipe> {
   /** the recipe with the avoided items taken out of every surface */
@@ -419,25 +430,38 @@ export function adaptRecipeForAvoids<T extends AdaptableRecipe>(
   // "leave out the onion" written above it) beats both a mangled sentence and
   // no method at all.
   const method: string[] = [];
+  // For each kept step, the ORIGINAL index it came from when it is untouched
+  // (a), else null. Only an untouched step may keep its translated line.
+  const methodFrom: (number | null)[] = [];
   let verbatimMentions = false;
-  for (const step of recipe.method) {
+  recipe.method.forEach((step, idx) => {
     if (!mentions(step, res)) {
       method.push(step);
-      continue;
+      methodFrom.push(idx);
+      return;
     }
-    if (!hasOtherFood(step, res)) continue; // (b)
+    if (!hasOtherFood(step, res)) return; // (b)
     const scrubbed = scrubClause(step, res); // (c)
     if (scrubbed !== null) {
       const rebuilt = joinClauses([scrubbed], step);
       if (stepIsGood(rebuilt, res)) {
         method.push(rebuilt);
-        continue;
+        methodFrom.push(null);
+        return;
       }
     }
-    method.push(step); // (d)
+    // (d) English kept verbatim with a "leave it out" line above it — but its
+    // translation goes: that line sits in English, and a cook reading only
+    // Hindi would follow the step as written.
+    method.push(step);
+    methodFrom.push(null);
     verbatimMentions = true;
-  }
+  });
   if (!method.length) return null;
+
+  const translations = recipe.translations
+    ? adaptTranslations(recipe.translations, recipe, removedIngredientIndices, methodFrom)
+    : undefined;
 
   return {
     stepsStillMention: verbatimMentions,
@@ -450,9 +474,44 @@ export function adaptRecipeForAvoids<T extends AdaptableRecipe>(
         ? { ingredientsStructured: recipe.ingredientsStructured.filter((i) => !mentions(i.item, res)) }
         : {}),
       method,
+      ...(translations ? { translations } : {}),
     },
     omitted,
   };
+}
+
+/**
+ * Re-pair each language's lines to the adapted recipe.
+ *
+ * Ingredients: a kept line is the original English, so it keeps its own
+ * translation. Method: only an untouched step keeps its line; a rewritten or
+ * verbatim-with-mention step gets "" (shown in English), and a dropped step's
+ * line goes with it, so nothing after it shifts.
+ *
+ * A language block whose length does not match the English was never safely
+ * paired to begin with; on an adapted recipe its lines are dropped, never
+ * guessed at.
+ */
+function adaptTranslations(
+  tr: AdaptableTranslations,
+  original: AdaptableRecipe,
+  removedIngredientIndices: number[],
+  methodFrom: (number | null)[],
+): AdaptableTranslations {
+  const out: AdaptableTranslations = {};
+  for (const [lang, t] of Object.entries(tr)) {
+    if (!t) continue;
+    const block: AdaptableTranslations[string] = {};
+    if (t.name) block.name = t.name;
+    if (t.ingredients && t.ingredients.length === original.ingredients.length) {
+      block.ingredients = t.ingredients.filter((_, i) => !removedIngredientIndices.includes(i));
+    }
+    if (t.method && t.method.length === original.method.length) {
+      block.method = methodFrom.map((from) => (from === null ? "" : (t.method![from] ?? "")));
+    }
+    out[lang] = block;
+  }
+  return out;
 }
 
 /** "onion and garlic" — for the one warm line the client sees. */
@@ -461,4 +520,12 @@ export function omittedPhrase(omitted: string[]): string {
   if (!xs.length) return "";
   if (xs.length === 1) return xs[0];
   return `${xs.slice(0, -1).join(", ")} and ${xs[xs.length - 1]}`;
+}
+
+/** The keepsake's line for a recipe adapted for this client — the same words
+ *  as the app's recipe card (sq-sheets.tsx). Null when nothing was left out. */
+export function madeWithoutForYou(omits: string[] | undefined, inSteps: boolean | undefined): string | null {
+  const phrase = omittedPhrase(omits ?? []);
+  if (!phrase) return null;
+  return `Made without ${phrase} for you.${inSteps ? " Leave it out wherever the steps below mention it." : ""}`;
 }
