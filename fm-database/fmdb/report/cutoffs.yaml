@@ -37,8 +37,31 @@
 #   ige          total IgE never goes above the check-up sentence (cap_at_B): it swings widely with ordinary allergies
 #   rf / anti_ccp / ana   any result above the laboratory's limit gets the check-up sentence, more than three times
 #                the limit the doctor sentence
-# Every other extra result is read on the per-cent rule (fallback_pct), which she had approved already. The lines
-# behind D4 to D6 are from memory, like the first table: a doctor's read is still recommended and NOT recorded as done.
+# Every other extra result is read on the per-cent rule (fallback_pct), which she had approved already.
+#
+# SOURCE CHECK, 21 Nov 2026 (her instruction: no doctor will put a name to this, "so find a way"). In place of a
+# doctor's read, each line added on 20 Nov was checked against a published guideline or paper. What was found:
+#   rf / anti_ccp  "more than three times the upper limit" is the 2010 ACR/EULAR rheumatoid arthritis classification
+#                criteria's own definition of a high-positive result (low-positive: above the limit, up to three times).
+#                CONFIRMED.  https://pubmed.ncbi.nlm.nih.gov/23221588/
+#   ana          the same two steps are applied to ANA by her decision D5; no guideline sets them. Known limit: a low
+#                positive ANA is common in healthy adults (31.7% at 1:40, 5% at 1:160: Tan et al. 1997), which the
+#                approved wording says ("also appear in people who stay well"). NOT a guideline line.
+#   ige          capping total IgE at the check-up sentence agrees with Ireland's HSE laboratory guidance: a raised
+#                total IgE does not diagnose allergy and is never, by itself, a reason for specialist referral.
+#                CONFIRMED.  https://www.hse.ie/eng/about/who/cspd/lsr/resources/total-ige-and-specific-ige.pdf
+#   urine        NICE NG203 acts on blood in urine at 1+ or more and repeats it (2 of 3 tests) before calling it
+#                persistent, and does not rely on a strip for protein: a positive is confirmed on an early-morning
+#                sample. The report's "trace = watch, present = repeat the sample" is the same or more cautious.
+#                CONFIRMED.  https://www.nice.org.uk/guidance/ng203/chapter/Recommendations
+#   mentzer      below 13 points to thalassaemia trait, above 13 to low iron (Mentzer, Lancet 1973). CONFIRMED as
+#                the published line. Its accuracy varies a lot between studies (sensitivity 74-91%), which is why
+#                the report only says the pattern "can be inherited" and "needs a deeper look".
+#                https://pmc.ncbi.nlm.nih.gov/articles/PMC9121960  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11317290/
+#   rdwi         NOT used in any rule: published sources give its formula and the direction of its 220 line
+#                differently. It is shown with no comment.
+# The first table (19 Nov) was source-checked only for its corrected lines and the six questions of 20 Nov; the rest
+# of it is still from memory.
 #
 # Levels (what the report prints):
 #   A  just outside, or middle zone   no doctor wording
@@ -65,8 +88,8 @@ fallback_pct: {A: ">0", B: 15, C: ">50"}
 cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
 
 # Small red cells (MCV below the laboratory's range) with a Mentzer index below this line: the report adds one
-# paragraph saying the pattern can be inherited (her "yes", 20 Nov 2026). The line is from memory (below 13 points to
-# thalassaemia trait, above it to low iron): a doctor's read is recommended and NOT recorded as done.
+# paragraph saying the pattern can be inherited (her "yes", 20 Nov 2026). Below 13 points to thalassaemia trait,
+# above it to low iron: the published line, see the source check of 21 Nov 2026 above.
 mentzer_trait_below: 13
 
 # Never past the check-up sentence: the level stops at B. (added 20 Nov, D4)
