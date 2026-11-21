@@ -40,3 +40,9 @@ def test_plan_leave_out_list():
 def test_coach_override_wins():
     assert alcohol_risk(c(active_conditions=["Gout"], alcohol_ok=True)) is False
     assert alcohol_risk(c(alcohol_ok=False)) is True
+
+
+def test_lab_units():
+    assert not alcohol_risk(c(lab_markers=[{"marker_name": "Uric acid", "value": 300}]))  # µmol/L, normal
+    assert alcohol_risk(c(lab_markers=[{"marker_name": "Uric acid", "value": 480}]))
+    assert alcohol_risk(c(lab_markers=[{"marker_name": "Triglycerides", "value": 3.0}]))  # mmol/L, high

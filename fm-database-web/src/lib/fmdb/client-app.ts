@@ -1902,7 +1902,7 @@ async function loadSqData(clientId: string, clientDir: string, appTz: string, pl
     date: r.date,
     items: r.items
       .filter((i) => i && typeof i.name === "string")
-      .map((i) => ({ kind: String(i.kind || ""), name: i.name, done: i.done === true, at: typeof i.at === "string" && i.at ? i.at : null })),
+      .map((i) => ({ kind: String(i.kind || ""), name: String(i.kind || "") === "remedy" ? clientRemedyName(i.name) : i.name, done: i.done === true, at: typeof i.at === "string" && i.at ? i.at : null })),
   }));
   let daysSinceLastOpen: number | null = null;
   try {

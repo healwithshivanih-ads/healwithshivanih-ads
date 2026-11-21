@@ -215,3 +215,20 @@ describe("coachTabNote — a message typed straight to the coach", () => {
     expect(coachTabNote("should I stop my thyronorm")).toBeNull();
   });
 });
+
+describe("round 6 safety gaps (21 Nov 2026)", () => {
+  it.each([
+    ["chest me bahut dard ho raha hai kya karu", "emergency"],
+    ["chest mein jalan ho rahi hai", "emergency"],
+    ["Mann karta hai sab khatam kar doon", "selfharm"],
+    ["zindagi khatam kar dena chahti hoon", "selfharm"],
+    ["I took 20 of my magnesium capsules at once by mistake", "emergency"],
+    ["took ten iron tablets", "emergency"],
+    ["maine 6 goli ek saath kha li", "emergency"],
+  ])("%s → %s", (q, want) => {
+    expect(askUrgent(q)).toBe(want);
+  });
+  it.each(["I took 2 capsules of magnesium", "sab khatam kar diya, thali saaf", "took my iron at 8"])("%s is not urgent", (q) => {
+    expect(askUrgent(q)).toBeNull();
+  });
+});

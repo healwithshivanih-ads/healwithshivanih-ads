@@ -61,7 +61,7 @@ export function dropSupplementForms(s: string): string {
 // ── urgent ─────────────────────────────────────────────────────────────────
 
 const SELF =
-  /suicid|su[ie]?c[ie]de|\bkms\b|kill(ing)? my ?self|end(ing)? my life|end it all|want to die|wanna die|wish i (was|were) dead|better off dead|better off without me|don'?t want to (be here|live|go on|wake up)|no point (in )?living|(harm|hurt|cut)(ing)? my ?self|self.?harm|unalive|marna chaht|mar jau|mar jana chaht|jeena nahi|jeene ka ma+n+ nahi|khudkushi|jaan de d/;
+  /suicid|su[ie]?c[ie]de|\bkms\b|kill(ing)? my ?self|end(ing)? my life|end it all|want to die|wanna die|wish i (was|were) dead|better off dead|better off without me|don'?t want to (be here|live|go on|wake up)|no point (in )?living|(harm|hurt|cut)(ing)? my ?self|self.?harm|unalive|marna chaht|mar jau|mar jana chaht|jeena nahi|jeene ka ma+n+ nahi|khudkushi|jaan de d|(sab|sabkuch|sab kuch|zindagi|khud ko|apne aap ko) khatam kar (doon|du|dun|dena|lu|loon|lena)|zindagi se thak|jeena nahi chaht/;
 
 /** Each emergency phrase is tried on its own so a denied one ("no chest pain")
  *  can be skipped without hiding a real one later in the same message. */
@@ -72,7 +72,7 @@ const EMERG_SOURCES: RegExp[] = [
   /heart attack|\bstroke\b|seizure|\bfaint|pass(ed|ing) out|collaps|unconscious|slurr|numb on one side|face (is )?droop/,
   /(severe|heavy|lot of) bleeding|bleeding (heavily|a lot)|(cough|vomit)ing blood|overdose/,
   /too many (pills|tablets|capsules|medicines?|goli)|took (all|the whole) (of )?(my |the )?(pills|tablets|capsules|strip|bottle)|zyada goli/,
-  /seene? (me|mein|main|mai) (\w+ ){0,2}(dard|jalan|dabav|bhaari)|chh?ati (me|mein|main|mai) (\w+ ){0,2}dard/,
+  /(seene?|ch[ea]{1,2}s?t) (me|mein|main|mai) (\w+ ){0,2}(dard|jalan|dabav|bhaari)|chh?ati (me|mein|main|mai) (\w+ ){0,2}dard/,
   /saans (nahi|nhi|lene me)|saans phool|behosh|dil ka daura|khoon ki ulti/,
   // A reaction to food: swelling of the lips, tongue, throat or face, or a
   // closing throat. At a restaurant table this cannot wait for the coach.
@@ -116,12 +116,29 @@ function liveListHit(s: string): boolean {
   });
 }
 
+const WORD_COUNT: Record<string, number> = { five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, paanch: 5, das: 10, bees: 20 };
+/** "I took 20 of my magnesium capsules at once by mistake": five or more of
+ *  anything taken is an overdose question, never a "combine" question. */
+function tookMany(s: string): boolean {
+  const re = /\b(took|taken|swallowed|kha li|kha liya|kha gayi|le li|le liya)\b\s*(\d{1,3}|[a-z]+)\b/g;
+  for (let m = re.exec(s); m; m = re.exec(s)) {
+    const n = /^\d+$/.test(m[2]) ? Number(m[2]) : (WORD_COUNT[m[2]] ?? 0);
+    if (n >= 5 && /capsule|tablet|pill|goli|supplement|softgel|dose|strip|bottle|magnesium|iron|vitamin|zinc|melatonin|ashwagandha/.test(s.slice(m.index, m.index + 80))) return true;
+  }
+  const re2 = /\b(\d{1,3}|[a-z]+) (capsules?|tablets?|pills?|goli|goliyan|softgels?)\b.{0,30}\b(took|taken|kha li|kha liya|le li|le liya|swallowed|at once|ek saath)/g;
+  for (let m = re2.exec(s); m; m = re2.exec(s)) {
+    const n = /^\d+$/.test(m[1]) ? Number(m[1]) : (WORD_COUNT[m[1]] ?? 0);
+    if (n >= 5) return true;
+  }
+  return false;
+}
+
 /** Self-harm first, then emergency. Null when neither. */
 export function askUrgent(q: string): UrgentKind | null {
   const s = normalizeAsk(q);
   if (!s) return null;
   if (SELF.test(s)) return "selfharm";
-  if (emergencyHit(s) || liveListHit(s)) return "emergency";
+  if (emergencyHit(s) || liveListHit(s) || tookMany(s)) return "emergency";
   return null;
 }
 
@@ -129,6 +146,11 @@ export function askUrgent(q: string): UrgentKind | null {
 
 const MEDICINE =
   /ssri|antidepress|sertraline|escitalopram|fluoxetine|thyronorm|eltroxin|levothyrox|metformin|insulin|statin|omez|pantop|antacid|antibiotic|painkiller|paracetamol|ibuprofen|crocin|\bpills?\b|medicine|medication|\btablets?\b|prescri|\bdrug|dawai|\bdawa\b|\bgoli/;
+
+/** MEDICINE without the generic words (pill, tablet, goli, medicine): a
+ *  named prescription drug. */
+const MEDICINE_NAMED =
+  /ssri|antidepress|sertraline|escitalopram|fluoxetine|thyronorm|eltroxin|levothyrox|metformin|insulin|statin|omez|pantop|antacid|antibiotic|painkiller|paracetamol|ibuprofen|crocin|prescri|\bdawai|\bdawa\b|medication|medicine/;
 
 const KIN =
   "husband|wife|pati|patni|son|daughter|beta|beti|mother|father|mum|mom|dad|mummy|papa|sister|brother|friend|saas|sasur|in.?laws?|kids?|children|family";
@@ -192,6 +214,9 @@ export function askHandoff(q: string): HandoffKind | null {
   const raw = normalizeAsk(q);
   if (!raw) return null;
   const s = dropSupplementForms(raw);
+  // "goli bhool gayi" is her plan's tablet, not a prescription: a missed
+  // capsule wins unless a real medicine is named.
+  if (isMissedCapsule(raw) && !MEDICINE_NAMED.test(s)) return "dose";
   if (MEDICINE.test(s)) return "medicine";
   if (OTHER_PERSON.test(s) || (OTHER_PERSON_STATED.test(s) && !ASKS_FOR_SELF.test(s))) return "other_person";
   if (ALCOHOL.test(s)) return "alcohol";
@@ -218,7 +243,7 @@ function isWithFoodOrDrink(s: string): boolean {
 /** "I missed my B-complex", "iron lena bhool gayi". */
 export function isMissedCapsule(q: string): boolean {
   const s = normalizeAsk(q);
-  return /missed|forgot|forgotten|didn'?t take|bhool/.test(s) && new RegExp(`${SUPP_RE}|capsule|tablet|dose`).test(s);
+  return /missed|forgot|forgotten|didn'?t take|did not take|skipped|skip ho gay|bhool|bhul gay|chhoot gay|chut gay|nahi li|nahi liya/.test(s) && new RegExp(`${SUPP_RE}|capsule|tablet|dose|goli|goliyan|pill|softgel`).test(s);
 }
 
 // ── the words on each card ─────────────────────────────────────────────────

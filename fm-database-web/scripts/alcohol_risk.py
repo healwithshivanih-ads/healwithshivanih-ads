@@ -69,7 +69,15 @@ def alcohol_risk(client: dict, plan: dict | None = None) -> bool:
     ):
         for name, val in _iter_lab_values(client):
             n = str(name).lower()
-            if re.search(pat, n) and not (excl and re.search(excl, n)) and val is not None and val > limit:
+            if not re.search(pat, n) or (excl and re.search(excl, n)) or val is None:
+                continue
+            # Units are not stored: uric acid over 20 is µmol/L (÷ 59.48),
+            # triglycerides under 20 are mmol/L (× 88.57).
+            if "uric" in pat and val > 20:
+                val = val / 59.48
+            elif "triglycer" in pat and val < 20:
+                val = val * 88.57
+            if val > limit:
                 return True
     if {"insulin", "sulfonylurea"} & _drug_classes(client):
         return True

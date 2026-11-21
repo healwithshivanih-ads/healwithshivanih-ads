@@ -13,6 +13,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { NO_ANSWER_CARD, coachCard, handoffCard, urgentCard, type AskButton, type AskCard } from "@/lib/fmdb/ask-card";
+import { inLanguageOf } from "@/lib/fmdb/ask-hinglish";
 import { HANDOFF_COPY, REPLY_LINE, type HandoffKind } from "@/lib/fmdb/ask-safety";
 import { SqIcon } from "./sq-ui";
 
@@ -31,7 +32,7 @@ export const OFFLINE_CARD: AskCard = coachCard("I couldn't get an answer just no
 /** Shown when the day's typed questions are used up (the server's cap). The
  *  tappable questions and the plan lookups are not counted and still work. */
 export const LIMIT_CARD: AskCard = coachCard(
-  "That is all the typed questions I can answer today. The questions on Today still work, and I can pass this one to your coach.",
+  "You've asked a lot today, and that's good. Typed answers are back tomorrow; the questions on Today still answer straight away. Shall I send this one to your coach?",
 );
 
 /**
@@ -40,6 +41,10 @@ export const LIMIT_CARD: AskCard = coachCard(
  * becomes an offer to send the question to the coach.
  */
 export async function fetchModelCard(token: string, question: string): Promise<AskCard> {
+  return inLanguageOf(question, await fetchModelCardEn(token, question));
+}
+
+async function fetchModelCardEn(token: string, question: string): Promise<AskCard> {
   try {
     const res = await fetch("/api/app-copilot", {
       method: "POST",
