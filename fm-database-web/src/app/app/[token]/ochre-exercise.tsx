@@ -109,7 +109,7 @@ export function ExerciseOverlay({
           <Icon name="x" />
         </button>
         <h2 className="ex-h">{session.name}</h2>
-        {session.when && <p className="ex-when">{session.when}</p>}
+        {sessionWhen(session) && <p className="ex-when">{sessionWhen(session)}</p>}
         <ol className="ex-list">
           {items.map((it, i) => (
             <li key={`${it.slug}-${i}`}>
@@ -117,7 +117,7 @@ export function ExerciseOverlay({
               {it.prescription && <span> — {it.prescription}</span>}
               {/* Only when it differs from the session, so the common case stays
                   quiet and the exception is the thing that stands out. */}
-              {it.cadence && <span className="ex-cad"> · {it.cadence}</span>}
+              {itemCadence(it) && <span className="ex-cad"> · {itemCadence(it)}</span>}
             </li>
           ))}
         </ol>
@@ -171,7 +171,7 @@ export function ExerciseOverlay({
       {/* The dose, given the loudest treatment on the card — it is the one
           thing that differs between this client and the next. */}
       {item.prescription && <p className="ex-dose">{item.prescription}</p>}
-      {item.cadence && <p className="ex-cad-line">{item.cadence}</p>}
+      {itemCadence(item) && <p className="ex-cad-line">{itemCadence(item)}</p>}
       {item.support && item.support !== "none" && (
         <p className="ex-support">Support: {item.support}</p>
       )}
@@ -279,4 +279,19 @@ export function ExerciseOverlay({
       )}
     </div>
   );
+}
+
+/** The session's header, unless it says "Daily" while its own movements are
+ *  weekly ("3x/week") — the two read as a contradiction. */
+export function sessionWhen(session: { when?: string | null; items: { cadence?: string | null }[] }): string {
+  const w = (session.when ?? "").trim();
+  if (/^daily$/i.test(w) && session.items.some((i) => /week/i.test(i.cadence ?? ""))) return "";
+  return w;
+}
+
+/** An item's cadence, unless the prescription already says how often ("twice a week"). */
+export function itemCadence(item: { cadence?: string | null; prescription?: string | null }): string {
+  const c = (item.cadence ?? "").trim();
+  if (/^daily$/i.test(c) && /\b(a|per|each|every) week\b|\bweekly\b|x\s*\/\s*week/i.test(item.prescription ?? "")) return "";
+  return c;
 }

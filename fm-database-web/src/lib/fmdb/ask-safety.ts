@@ -188,7 +188,7 @@ const WEIGHT_CHANGE =
   /(lost|gained|dropped|put on).{0,20}\d+(\.\d)? ?(kg|kilo|pound|lb)|\d+(\.\d)? ?(kg|kilo).{0,25}(in|within) (a|one|two|\d+) (day|week)|(badh|kam ho|ghat) gaya|(vajan|wajan|weight).{0,30}(kitna|how much).{0,30}(kam|lose|loss|ghat)|how much (weight )?will i lose/;
 
 const SYMPTOM =
-  /side effect|\bpain|hurts?\b|aches?\b|aching|nausea|vomit|\brash|bleed|fever|pregnan|dizz|giddy|light.?headed|\bperiod|acidity|constipat|loose motion|diarr|bloat|\bgas\b|swelling|swollen|cramp|\bnumb\b|numbness|tingl|\bitch|headache|infection|palpitat|\bdard\b|chakkar|ghabra|\bulti\b|bukhar|kamzori|sujan|soojan|\bjalan\b|khujli|\bdast\b|kabz/;
+  /side effect|\bpain|\bhurts?\b|\baches?\b|\baching|(stomach|tummy|back|ear|tooth|body|joint) ?aches?|nausea|vomit|\brash|bleed|fever|pregnan|dizz|giddy|light.?headed|\bperiod|acidity|constipat|loose motion|diarr|bloat|\bgas\b|swelling|swollen|cramp|\bnumb\b|numbness|tingl|\bitch|headache|infection|palpitat|\bdard\b|chakkar|ghabra|\bulti\b|bukhar|kamzori|sujan|soojan|\bjalan\b|khujli|\bdast\b|kabz/;
 
 const DOSE = /\b(dose|dosage|mg\b|mcg\b|double|increase|reduce|stop taking|skip|come off|wean|discontinue|quit taking)/;
 /** A count against a supplement — "can I take 2 vitamin D3 tablets today?".

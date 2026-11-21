@@ -20,7 +20,10 @@ const REPLY = "Your coach replies within 24 hours.";
 export function SqSuppsSheet({ data }: { data: ClientAppData }) {
   const now = data.supplements;
   const next = data.upcomingSupplements ?? [];
-  if (!now.length && !next.length) {
+  // A bought remedy (psyllium) is ordered with the supplements, so it is
+  // listed with them too — the order sheet and this list must agree.
+  const bought = data.remedies.filter((r) => r.assigned && r.buyUrl);
+  if (!now.length && !next.length && !bought.length) {
     return (
       <SqCard>
         <p className="sq-sub">There are no supplements in your plan right now.</p>
@@ -37,6 +40,14 @@ export function SqSuppsSheet({ data }: { data: ClientAppData }) {
                 <b>{s.name}</b>
                 <small>{[s.dose, s.timing].filter(Boolean).join(" · ")}</small>
                 {s.why && <small>{s.why}</small>}
+              </span>
+            </div>
+          ))}
+          {bought.map((r) => (
+            <div key={"rx-" + r.slug} className="sq-li sq-li-static">
+              <span className="sq-li-body">
+                <b>{r.name}</b>
+                <small>{[r.dose, r.timing].filter(Boolean).join(" · ")}</small>
               </span>
             </div>
           ))}
