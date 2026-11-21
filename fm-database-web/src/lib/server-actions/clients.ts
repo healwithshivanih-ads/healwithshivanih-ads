@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { resolvePersonDir } from "@/lib/fmdb/person-dir";
+import { allocateNextClientId } from "@/lib/fmdb/next-client-id";
 import { PYTHON, SCRIPTS_DIR, runShim, excerpt } from "@/lib/fmdb/shim";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import type { LabPretest } from "@/lib/fmdb/types";
@@ -245,23 +246,12 @@ function normaliseMobile(n: string): string {
 
 /** Auto-generate the next client ID by scanning existing cl-NNN dirs. */
 /**
- * Next free `cl-0NN` id. Exported so the booking webhook can allocate an id
- * for a lead who books before she is in the database at all.
+ * Auto-numbered client id. Counts parked prospects as well as active clients
+ * (see lib/fmdb/next-client-id.ts for why). Exported so the booking webhook
+ * can allocate an id for a lead who books before they are in the database.
  */
 export async function nextClientId(): Promise<string> {
-  const root = getPlansRoot();
-  const clientsDir = path.join(root, "clients");
-  let maxN = 0;
-  try {
-    const entries = await fs.readdir(clientsDir);
-    for (const entry of entries) {
-      const m = entry.match(/^cl-(\d+)$/);
-      if (m) maxN = Math.max(maxN, parseInt(m[1], 10));
-    }
-  } catch {
-    // directory doesn't exist yet — start from 0
-  }
-  return `cl-${String(maxN + 1).padStart(3, "0")}`;
+  return allocateNextClientId();
 }
 
 /**
