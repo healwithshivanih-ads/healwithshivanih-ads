@@ -198,3 +198,14 @@ longevity_panels:
       - "Heart: hs-CRP, ApoB, ApoA1, Lp(a), homocysteine, full lipids"
       - "Also: HbA1c, TSH + total T3/T4, kidney panel, urine routine"
     not_covered: ["vitamin D", "vitamin B12", "free T3/T4", "iron studies"]
+  - key: body-age-deeper
+    name: "Body age, with deeper tests"
+    # The standard client panel (profiles_final id 1: Aarogyam F Pro + fasting glucose, ₹4,959 cost) plus the
+    # urine routine add-on (₹135 cost), so the deeper report has its Urine section like the standard one.
+    # Approved by Shivani 21 Nov 2026 ("Yes, add it"): cost 4,959 → 5,094. Profile 1 itself is unchanged.
+    thyrocare_items: ["Aarogyam F Pro", "Fasting Blood Sugar (FBS)", "Urine routine"]
+    our_cost_inr: 5094
+    list_inr: 7259
+    covers:
+      - "Everything in profile 1 (see profiles_final)"
+      - "Urine routine"
