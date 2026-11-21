@@ -1,8 +1,7 @@
 /**
  * Every word a buyer reads on the body age order page. APPROVED by Shivani on 21 Nov 2026,
  * word for word as it stands. Any change to a sentence here needs her yes again.
- * `fields.voucher` and `voucherNote` were added the same evening for the Rs 500 voucher and are NOT yet approved:
- * the page must not go live with them until she says yes.
+ * `fields.voucher` and `voucherNote` (the Rs 500 voucher) were added and approved by her the same evening.
  * Rules the words follow: "body age report" and "test", never the product's internal name or the brand name;
  * the laboratory is never named; nothing is called urgent; no programme, plan length or programme price; no
  * "free"; every session is online. A test (order-copy.test.ts) fails on any of these.

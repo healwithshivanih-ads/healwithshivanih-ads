@@ -229,6 +229,6 @@ email they signed up with, 14 days, never extended, no timers and no reminders.
 - `api/body-age/order/route.ts` checks the code, refuses one a paid order already used, and charges the reduced
   amount; the order keeps `voucher_code` and `discount_inr` (`amount_inr` is what was charged).
 - With no `BODY_AGE_VOUCHER_SECRET` every code is refused, so the voucher is off by default.
-- The form shows the code box for one person only. Its two lines (`fields.voucher`, `voucherNote`) are NOT yet
-  approved by Shivani; the wording fingerprint test was refreshed for them and must be re-approved with her yes.
+- The form shows the code box for one person only. Its two lines (`fields.voucher`, `voucherNote`) were approved
+  by Shivani on 21 Nov 2026 ("yes approved") and are in the wording fingerprint.
 - Not built: the check page on the marketing site (sign-up saved + code issued there).
