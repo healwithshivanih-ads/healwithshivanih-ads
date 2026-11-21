@@ -106,7 +106,7 @@ coach helps and with what. They can then pass that on when a friend mentions a n
 | Reactions and side effects taken seriously | **No**: already in study gap 7 | Keep it in the build plan; the research backs it (59% fear side effects) | No |
 | Programme pause (illness, travel) | **Partly**: trip and illness days extend the plan, capped at 14 days; no true pause | Already study gap 7; keep it | No |
 | No money surprises; clear refund terms | **Partly**: terms exist (14-day exit), but no programme-payment status in the app | Already study gap 7 (programme payments); also show the client what they paid and what is included | No |
-| Supplement commission disclosed | **Unknown**: the buy-link manager holds commission | Decide whether to state it once in the plan, as NBHWC asks | No, but it is a trust call for the coach |
+| Supplement commission disclosed | **No, by decision**: the coach decided on 21 Nov 2026 not to add a disclosure line | None: no line on the order page or the plan | Settled by the coach |
 | Consent for reports sent on WhatsApp (DPDP Act) | **Not checked** | Have the intake consent name WhatsApp report-sharing and its purpose ([DPDP Act](https://www.indiacode.nic.in/bitstream/123456789/22037/2/a2023-22.pdf)) | No |
 | Coach comments on logged meals | **Partly**: the diary's photos are read by AI; the diary is to be hidden (study 5.3) | If the diary returns, the coach must visibly reply to logs; "never looked at my meals" is a named complaint | No |
 | Easy login, works offline | **Yes**: a token link, no password | Keep; check the plan reads with a weak signal | No |

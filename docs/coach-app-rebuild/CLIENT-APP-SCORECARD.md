@@ -112,7 +112,7 @@ number.
 Next in line:
 
 - **B1** This week's menu (+0.6): old look, dishes not tappable, no family version.
-- **E3** The public supplement page (+0.6): raw timing text, later phases listed, no commission line.
+- **E3** The public supplement page (+0.6): raw timing text, later phases listed. (No commission line, by the coach's decision of 21 Nov.)
 - **G1** Tests (+0.2): raw errors on a real-money flow.
 
 ### Where we already beat best practice
@@ -316,7 +316,7 @@ Ours comes from reading the code (paths under `fm-database-web/src/`; design is 
 | E1 | Best | 7: plan per goal with instructions (from docs) | 7: dosage schedule, iOS-only in places | 7: clear what and when | 7: plan in Shop tab | 7: practitioner-set; why-it's-for less clear |
 | E2 | Ours | 7: state line per row plus one action | 7: optimistic with rollback; but if one save in "I already have them all" fails, the screen reverts rows the server saved (sq-everything.tsx:87,107) † | 8: feeds the Running-low card on Home | 7: Buy, then ordered, then arrived: three taps over time | 8: "The shop page shows the real price", no invented prices |
 | E2 | Best | 7: cart from the plan (from docs) | 8: orders, tracking, receipts | 7: fewer missed supplies | 7: easy, but part of the ease is autoship (the conflicting part) † | 5: refill emails and autoship push buying **Conflict:** automatic refill reminder emails |
-| E3 | Ours | 4: generic system font, emoji clock, off-brand green | 6: token-gated, latest published plan file | 6: a WhatsApp-linked list, no tracking | 7: one Order button per item | 6: no lapsed check, by design (the library floor keeps re-order links); raw timing, later phases listed, no commission line † |
+| E3 | Ours | 4: generic system font, emoji clock, off-brand green | 6: token-gated, latest published plan file | 6: a WhatsApp-linked list, no tracking | 7: one Order button per item | 6: no lapsed check, by design (the library floor keeps re-order links); raw timing, later phases listed (no commission line is her decision, not a fault) † |
 | E3 | Best | 6: store-like page (from docs) | 7: plan opens as a cart | 6: convenience, not care | 7: link to purchase | 6: practitioner margin, disclosure varies |
 | E4 | Ours | 7: state sentence, one button, phone-specific steps | 7: works; iOS needs Home Screen; on/off only, no times | 7: supplement-time and check-in reminders | 7: Android and iPhone fix-it steps | 9: client opt-in; the cron checks the contact gate for lapsed clients (cron/app-reminders:181) |
 | E4 | Best | 8: tidy notification with actions (from docs) | 8: reliable, snooze 10 min | 7: fewer missed doses | 8: act from the alert | 8: user creates the schedule |
