@@ -195,3 +195,23 @@ marked beside the line: CONFIRMED, CAUTIOUS, STEP (between two guideline lines) 
 Four changes followed, at her word: low fasting glucose reaches the strongest level below 54 (was 50); the scarring
 score's lower line is 2.0 from age 65 (`fib4_65`, `build_sections(age=)`); a high transferrin saturation is read
 above 45 for women and above 50 for men; a low positive ANA is quiet like total IgE (`quiet_at_B`).
+
+## What the coach-app rebuild must carry over (21 Nov 2026)
+
+The coach app is being rebuilt (study: `docs/coach-app-rebuild/FEATURE-STUDY.md`, rows A6 and C45). These body age
+surfaces were built the same week and must survive it. Where they sit may change only on the coach's say-so; what
+they do, and the guards behind them, may not.
+
+| Surface | Where today | Behind it |
+|---|---|---|
+| Body age report card: build, preview, **Send by email** | client Overview → "Contact & engagement" panel. `(v2)/clients-v2/[id]/body-age-report-card.tsx`, fed by `overview/page.tsx` | `server-actions/body-age-report.ts` (`buildBodyAgeReport`, `latestBodyAgeReport`, `sendBodyAgeReport`) → `scripts/body-age-report.py`; send rules in `lib/fmdb/body-age-send.ts::decideSend`; files served by `/api/body-age-file/[id]` (coach-only, NOT public) |
+| Report orders list | left menu "Report orders" → `/report-orders` (`(v2)/report-orders/`, nav item in `components/fm/FmAppShell.tsx`) | `server-actions/body-age-orders.ts` (`loadBodyAgeOrderList`, `moveBodyAgeOrder`, `attachTestOrder`, `createRecordsForOrder`); `lib/fmdb/body-age-order-intake.ts`, `body-age-lab-items.ts`; orders arrive from Fly via `app-staging-action.py::_mirror_body_age_orders` |
+| Public order page (buyer-facing, served from Fly, not a coach screen) | `/order/body-age` (`app/order/body-age/`, wording in `order-copy.ts`) | `/api/body-age/order`, `order/[id]`, `order/[id]/confirm`, `webhook`; `lib/fmdb/body-age-orders.ts`, `body-age-payment.ts`; public prefixes `/order/` and `/api/body-age/` in `middleware-policy.ts` |
+
+Guards that must come across unchanged:
+- **Embargo and test profile:** `decideSend` and `body-age-report.py` refuse everyone but `cl-900` until 2 Jan 2027 20:00 IST; `cl-900` only ever mails the coach.
+- **Nothing sends by itself:** the report goes out on a confirmed click; a paid order emails the coach only.
+- **Order page switch** `BODY_AGE_ORDER_PAGE` (off / test / live); `live` is still off before the embargo; test mode takes Razorpay test keys only.
+- **A send needs** `ready: true`, the report saved on the record, and a valid record email; the send is logged in the report folder's `sent.json` and read back as "✓ Sent".
+- **Prospects sweep** keeps a report buyer until `credit_until` (`fmdb/plan/prospects.py`).
+- Tests that pin all this: `__tests__/body-age-send.test.ts`, `body-age-orders.test.ts`, `body-age-order-intake.test.ts`, `server-actions/body-age-report.test.ts`, `fm-database/tests/test_body_age_order_mirror.py`, `test_prospects_body_age_report.py`.
