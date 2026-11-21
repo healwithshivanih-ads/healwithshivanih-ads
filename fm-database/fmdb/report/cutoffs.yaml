@@ -60,8 +60,48 @@
 #                https://pmc.ncbi.nlm.nih.gov/articles/PMC9121960  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11317290/
 #   rdwi         NOT used in any rule: published sources give its formula and the direction of its 220 line
 #                differently. It is shown with no comment.
-# The first table (19 Nov) was source-checked only for its corrected lines and the six questions of 20 Nov; the rest
-# of it is still from memory.
+#
+# THE FIRST TABLE, SOURCE CHECK OF 21 Nov 2026 (her "Yes, check it"). Each line was looked up in a published
+# guideline. Four words are used: CONFIRMED (the line is the guideline's own), CAUTIOUS (ours speaks sooner than the
+# guideline), STEP (a step placed between two guideline lines; no guideline sets it), NOT FOUND (the search did not
+# return the source; the line is still from memory). No number was changed by this check.
+#   hba1c      5.7 and 6.5 CONFIRMED (ADA: prediabetes 5.7-6.4, diabetes from 6.5). 6.0 and 10 STEP.
+#   glucose    100 and 126 CONFIRMED (ADA). 110 STEP. Low side: ADA's line for a clinically important low is below
+#              54; ours are below 60 (doctor) and below 50 (strongest). NOT FOUND in this search; the strongest line
+#              sits 4 points under ADA's. OPEN for her: move it to 54.
+#   ldl / non_hdl   NOT FOUND in this search (the usual 100/130/160/190 table, non-HDL 30 higher).
+#   tg         150, 200, 500 CONFIRMED (ATP III). 1000 CONFIRMED (Endocrine Society 2012: severe, pancreatitis risk).
+#   hdl        40 men / 50 women CONFIRMED. 35 / 45 STEP.
+#   apob       130 CONFIRMED (2018 AHA/ACC risk-enhancing factor). 100 and 160 STEP.
+#   lpa        30 and 50 mg/dL, 75 and 125 nmol/L CONFIRMED (EAS 2022; AHA/ACC 2018). 90 mg/dL and 200 nmol/L STEP.
+#   hscrp      1.0 and 3.0 CONFIRMED (AHA/CDC 2003). 10 as "look for a passing cause" is usual practice.
+#   hcy        NOT FOUND (15 and 30 are the usual moderate band).
+#   tsh        low 0.40 and 0.10 CONFIRMED (ATA 2016, grades 1 and 2). High: guidelines treat above 10 and weigh each
+#              person below that; our doctor sentence starts at 7.0. CAUTIOUS. 6.0, 0.30 and 50 STEP.
+#   potassium  UK Kidney Association: mild 5.5-5.9, moderate 6.0-6.4, severe from 6.5. Ours: doctor above 5.5,
+#              strongest from 6.0. CAUTIOUS.
+#   sodium     low 135, 130, 125 CONFIRMED (European hyponatraemia guideline). High side STEP.
+#   calcium    NOT FOUND (usual grades: mild under 12, moderate 12-14). Ours speak sooner.
+#   alt / ast / ggt / alp   multiples of the laboratory's limit: STEP (the ACG 2017 guideline grades rises but the
+#              search did not return its numbers).
+#   fib4       1.3 and 2.67 CONFIRMED. From age 65 the lower line is 2.0, not 1.3 (EASL; McPherson 2017): ours puts
+#              some older buyers in the "middle zone" who would not be. OPEN for her: use 2.0 from 65.
+#   hb         13 men / 12 women CONFIRMED (WHO, kept in its 2024 guideline). 8.0 and the high lines NOT FOUND.
+#   wbc / platelets   150 and 450 are the usual range; the rest STEP.
+#   vitd       low 12, 20, 30 CONFIRMED (IOM: deficient under 12, enough from 20; Endocrine Society: 20 and 30).
+#              High: possible harm above 100 found; 150 NOT FOUND.
+#   b12        200 pg/mL (148 pmol/L) CONFIRMED as the usual deficiency line; 300 (221 pmol/L) CONFIRMED as the top
+#              of the uncertain band (NICE NG239). 150 STEP.
+#   tsat       high: EASL 2022 uses above 45% for women and above 50% for men; ours is above 50 for both. Low 16
+#              NOT FOUND.
+#   lead       5 CONFIRMED (NIOSH adult reference level, 2015). 10 STEP. 45 is a children's line; for adults the
+#              published lines are 50 with symptoms or 80. Ours speaks sooner. CAUTIOUS.
+#   mercury / arsenic / cadmium, and the per-cent rule   STEP.
+# Sources: ADA Standards of Care (diagnosis table); ATP III; Endocrine Society hypertriglyceridaemia guideline 2012;
+# 2018 AHA/ACC cholesterol guideline; EAS Lp(a) consensus 2022; AHA/CDC statement on inflammatory markers 2003;
+# ATA hyperthyroidism guideline 2016; ATA/AACE hypothyroidism guideline 2012; UKKA hyperkalaemia guideline 2023;
+# European hyponatraemia guideline; WHO haemoglobin cut-offs guideline 2024; NIH ODS vitamin D fact sheet;
+# NICE NG239; EASL haemochromatosis guideline 2022; NIOSH adult blood lead guidance.
 #
 # Levels (what the report prints):
 #   A  just outside, or middle zone   no doctor wording
