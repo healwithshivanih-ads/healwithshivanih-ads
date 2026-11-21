@@ -1002,3 +1002,32 @@ def test_the_two_small_cell_indices_say_when_there_is_nothing_to_read_and_flag_t
     assert not small.drafts                                                # she approved the sentence on 20 Nov 2026
     iron = _plus([_lab("MENTZER INDEX", 16, "", "-")], over={"MCV": 70})
     assert "Small red cells" not in dict(iron.section_text["blood"][1])
+
+
+# ── the four changes of 21 Nov 2026, after the check against published guidelines (her "make these changes") ──
+def test_a_low_morning_sugar_reaches_the_strongest_level_below_54():
+    assert [level_for("glucose", v, lo=70, hi=100) for v in (59, 54, 53.9, 49)] == ["C", "C", "D", "D"]
+
+
+def test_the_scarring_scores_lower_line_is_two_from_age_65():
+    assert level_for("fib4", 1.6) == "A" and level_for("fib4_65", 1.6) == "" and level_for("fib4_65", 2.1) == "A" and level_for("fib4_65", 2.7) == "C"
+    old = make_report(dict(FX["person"], date_of_birth="1958-01-01"), labs(STEADY), kind="standard", sample=True,
+                      sample_date=FX["sample_date"], report_date=FX["report_date"])
+    assert old.age >= 65 and (old.rows["fib4"].a, old.rows["fib4"].rtxt) == (2.0, "under 2.0 low · over 2.67 high")
+    assert report("standard").rows["fib4"].a == 1.3                                   # the test profile is 52
+
+
+def test_iron_carriers_read_too_full_above_45_for_a_woman_and_above_50_for_a_man():
+    assert [level_for("tsat", 48, lo=16, hi=50, sex=x) for x in ("F", "M")] == ["B", ""]
+    assert [level_for("tsat", 52, lo=16, hi=50, sex=x) for x in ("F", "M")] == ["B", "B"]
+    assert [level_for("tsat", 61, lo=16, hi=50, sex=x) for x in ("F", "M")] == ["C", "C"]
+
+
+def test_a_low_positive_ana_is_watched_and_does_not_bring_the_session_offer():
+    rp = _plus([_lab("Anti Nuclear Antibodies (ANA)", 30, "<=20", "AU/mL")])
+    sec = next(s for s in rp.sections if s.id == "immune")
+    page = text(report_html(rp))
+    assert (rp.rows["ana"].level, sec.status, rp.decision.outcome) == ("B", "watch", "self")
+    assert "One of your autoimmune markers is raised." in page and "worth mentioning at your next routine check-up" in page and not rp.drafts
+    rf = _plus([_lab("Rheumatoid Factor (RF)", 20, "<=18", "IU/mL")])                 # the other two markers are unchanged
+    assert next(s for s in rf.sections if s.id == "immune").status == "needs a deeper look" and rf.decision.outcome == "foundation"

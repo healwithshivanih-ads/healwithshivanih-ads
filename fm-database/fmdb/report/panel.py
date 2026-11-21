@@ -383,7 +383,7 @@ def _lab_range_text(lo: Optional[float], hi: Optional[float], under: bool) -> tu
 
 
 def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str], deeper: bool,
-                   cutoffs: Optional[dict] = None) -> list[Section]:
+                   cutoffs: Optional[dict] = None, age: Optional[int] = None) -> list[Section]:
     """Sections with their rows, from one draw's lab values and the engine's calculated scores.
 
     A row whose result is not on file is left out; a section with no rows at all is left out too."""
@@ -417,12 +417,16 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                     lo, hi = (_scale(lo, sp.scale) if lo is not None else None), _scale(hi, sp.scale)
             if sp.kind == "z3":
                 kind, a, b, rtxt = "z3", sp.a, sp.b, sp.rtxt
+                if sp.key == "fib4" and age is not None and age >= 65:      # the lower line is 2.0 from age 65 (cutoffs.yaml)
+                    a, rtxt = 2.0, "under 2.0 low · over 2.67 high"
             elif sp.kind == "min":
                 kind, a, b, rtxt, lo, hi = "min", sp.a, None, sp.rtxt, sp.a, None
             else:
                 kind, a, b, rtxt = _lab_range_text(lo, hi, sp.under)
             st = state_of(v, kind, a, b, sp.b_incl)
             ckey, unit_warn = sp.key, ""
+            if sp.key == "fib4" and age is not None and age >= 65:
+                ckey = "fib4_65"
             if sp.key == "lpa":           # the lines are per unit; laboratories report Lp(a) in mg/dL or nmol/L
                 u = unit.lower().replace(" ", "")
                 if "nmol" in u:
@@ -456,7 +460,7 @@ def build_sections(labs: list[dict], markers: list[dict], *, sex: Optional[str],
                 rtxt=("illustrative range, " + rtxt.replace("lab ", "")) if illustrative else rtxt,
                 calc=bool(sp.comp), state=st, level=lv, nature=sp.nature, group=sp.group or sp.key, beyond=sp.beyond,
                 lo=lo, hi=hi, b_incl=sp.b_incl, illustrative=illustrative, side=side,
-                extra=sp.extra, quiet=sp.quiet, note=note, table=sp.table, ref=_ref_text(lab),
+                extra=sp.extra, quiet=sp.quiet or (lv == "B" and sp.key in ((cutoffs or load_cutoffs()).get("quiet_at_B") or [])), note=note, table=sp.table, ref=_ref_text(lab),
                 warn=unit_warn or ("" if kind != "none" or sp.noflag else f"{sp.name}: the laboratory's range could not be read")))
         if sec.rows:
             out.append(sec)
