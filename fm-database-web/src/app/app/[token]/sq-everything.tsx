@@ -346,11 +346,11 @@ export function SqVitalsSheet({ data, todayYmd }: { data: ClientAppData; todayYm
         <label className="sq-sec" htmlFor="sq-vw">
           Weight in kg
         </label>
-        <input id="sq-vw" className="sq-dinput" inputMode="decimal" placeholder="68.5" value={w} onChange={(e) => setW(e.target.value)} />
+        <input id="sq-vw" className="sq-dinput" inputMode="decimal" placeholder="kg" value={w} onChange={(e) => setW(e.target.value)} />
         <label className="sq-sec" htmlFor="sq-vb">
-          Blood pressure
+          Blood pressure (two numbers, like 120/80)
         </label>
-        <input id="sq-vb" className="sq-dinput" inputMode="numeric" placeholder="118/76" value={p} onChange={(e) => setP(e.target.value)} />
+        <input id="sq-vb" className="sq-dinput" inputMode="numeric" placeholder="top / bottom" value={p} onChange={(e) => setP(e.target.value)} />
       </SqCard>
       {err && (
         <p className="sq-err" role="alert">

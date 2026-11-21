@@ -33,7 +33,7 @@ export function orderRows(data: ClientAppData): OrderRow[] {
     ...(s.pack ? { pack: s.pack } : {}),
   }));
   for (const r of data.remedies) {
-    if (r.assigned && r.buyUrl) rows.push({ id: "rx-" + r.slug, name: r.name, buyUrl: r.buyUrl, shop: shopOf(r.buyUrl) });
+    if (r.assigned && r.buyUrl) rows.push({ id: "rx-" + r.slug, name: buyName(r.name), buyUrl: r.buyUrl, shop: shopOf(r.buyUrl) });
   }
   return rows;
 }
@@ -55,3 +55,8 @@ export function leftWords(st: SupplyStatus): string {
   return `about ${st.daysLeft} days left`;
 }
 
+/** What is bought, not the remedy: "Psyllium Husk with Fresh Yogurt" is
+ *  ordered as "Psyllium Husk" (nobody buys the yogurt online). */
+function buyName(name: string): string {
+  return name.replace(/\s+(with|in|and)\s+(fresh |warm |plain )?(yogurt|yoghurt|curd|dahi|milk|water|honey|ghee).*$/i, "").trim() || name;
+}

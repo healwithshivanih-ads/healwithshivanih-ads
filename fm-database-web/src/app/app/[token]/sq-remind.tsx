@@ -9,6 +9,19 @@ import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { usePush } from "@/lib/fmdb/use-push";
 import { SqCard } from "./sq-ui";
 
+const BUTTON = "the button above";
+const IOS = [
+  "Open this app in Safari, tap the Share button, then Add to Home Screen.",
+  "Open the app from that new icon on your Home Screen.",
+  `Come back to Reminders and tap ${BUTTON}, then Allow.`,
+  "Still nothing? Settings → Notifications → this app → Allow Notifications.",
+];
+const ANDROID = [
+  `Tap ${BUTTON}, then Allow when your phone asks.`,
+  "If it says blocked: tap the lock or ⋮ next to the web address → Notifications → Allow.",
+  "Still nothing? Settings → Apps → Chrome → Notifications → turn them on.",
+];
+
 export function SqRemindSheet({ data }: { data: ClientAppData }) {
   const p = usePush(data.token);
   const ios = typeof navigator !== "undefined" && /iphone|ipad|ipod/i.test(navigator.userAgent);
@@ -35,22 +48,14 @@ export function SqRemindSheet({ data }: { data: ClientAppData }) {
         {p.note && <p className="sq-sub">{p.note}</p>}
       </SqCard>
       {(p.state === "unsupported" || p.state === "blocked" || p.state === "off") && (
-        <SqCard title="If it doesn't work">
-          {ios ? (
-            <ol className="sq-steps">
-              <li>Open this app in Safari and tap the Share button.</li>
-              <li>Tap Add to Home Screen, then open the app from that icon.</li>
-              <li>Come back here and tap Yes, remind me.</li>
-              <li>Still nothing? Settings → Notifications → find this app → Allow Notifications.</li>
-            </ol>
-          ) : (
-            <ol className="sq-steps">
-              <li>Tap Yes, remind me, then Allow when your phone asks.</li>
-              <li>If it says blocked: tap the lock or three dots next to the web address → Notifications → Allow.</li>
-              <li>Still nothing? Settings → Apps → Chrome → Notifications → turn them on.</li>
-            </ol>
-          )}
-        </SqCard>
+        <>
+          <SqCard title={ios ? "On this iPhone" : "On this Android phone"}>
+            <ol className="sq-steps">{(ios ? IOS : ANDROID).map((t) => <li key={t}>{t}</li>)}</ol>
+          </SqCard>
+          <SqCard title={ios ? "On an Android phone" : "On an iPhone"}>
+            <ol className="sq-steps">{(ios ? ANDROID : IOS).map((t) => <li key={t}>{t}</li>)}</ol>
+          </SqCard>
+        </>
       )}
     </>
   );

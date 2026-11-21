@@ -200,7 +200,7 @@ describe("nextMoment — the one card on Home", () => {
   });
 
   it("is never something from an earlier part of the day", () => {
-    // Nothing ticked, opened at lunchtime: breakfast is not offered as "next".
+    // No ticks saved, opened at lunchtime: breakfast is not offered as "next".
     expect(nextMoment(moments(), NONE, rankFloorAt(13))?.id).toBe("m-lunch");
     expect(upcomingMoments(moments(), NONE, rankFloorAt(13)).map((m) => m.band)).not.toContain("morning");
     // …but it is still in the whole day, where she can tick it.
@@ -240,7 +240,7 @@ describe("rankFloorAt — the windows of the day", () => {
   const at = (h: number, m = 0) => nextMoment(moments(), NONE, rankFloorAt(h, m))?.id;
 
   it("gives each meal its own window, so an unticked one gives way to the next", () => {
-    // Nothing ticked all day: the card follows the clock, not the oldest gap.
+    // No ticks saved all day: the card follows the clock, not the oldest gap.
     expect(at(7)).toBe("rx-chia-water");
     expect(at(8)).toBe("m-breakfast");
     expect(at(10, 29)).toBe("m-breakfast");
@@ -372,8 +372,8 @@ describe("recordSummary — one line for a saved day", () => {
   });
 
   it("is plain about a day with nothing ticked", () => {
-    expect(recordSummary([row("meal", "A", false), row("meal", "B", false)])).toBe("Nothing ticked · 2 on the plan");
-    expect(recordSummary([])).toBe("Nothing ticked");
+    expect(recordSummary([row("meal", "A", false), row("meal", "B", false)])).toBe("No ticks saved · 2 on the plan");
+    expect(recordSummary([])).toBe("No ticks saved");
   });
 
   it("knows a day logged before meals could be ticked", () => {
@@ -407,10 +407,10 @@ describe("buildRecord — the days, newest first", () => {
     expect(rec.flatMap((s) => s.days).some((d) => d.date < "2026-11-12")).toBe(false);
   });
 
-  it("says only 'Nothing ticked' for a day with no saved row", () => {
+  it("says only 'No ticks saved' for a day with no saved row", () => {
     const rec = buildRecord([day("2026-11-16", 3, 3)], TODAY, "x");
     const tue = rec[0].days.find((d) => d.date === "2026-11-17")!;
-    expect(tue).toMatchObject({ label: "Tue 17 Nov", summary: "Nothing ticked", items: null, today: false });
+    expect(tue).toMatchObject({ label: "Tue 17 Nov", summary: "No ticks saved", items: null, today: false });
   });
 
   it("shows today from the phone, never from a saved row for today", () => {

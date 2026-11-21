@@ -596,6 +596,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                     />
                     <SqNavRow title="Your record" note="Everything you have ticked, day by day" onOpen={() => open({ k: "record" })} />
                     <SqNavRow title="Reminders" note="Your phone reminds you at each supplement time" onOpen={() => open({ k: "remind" })} />
+                    <SqNavRow title="Keep the app on your phone" note="Add it to your Home Screen, and what to do if you lose the link" onOpen={() => open({ k: "start" })} />
                     <SqSwitchRow
                       title="Track every item on Home"
                       on={track}

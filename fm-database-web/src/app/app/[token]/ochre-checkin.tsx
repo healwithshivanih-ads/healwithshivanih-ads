@@ -143,7 +143,7 @@ export function CheckinScreen({
           How has your week been?
         </h2>
         <p className="muted" style={{ fontSize: 13.5, maxWidth: 290, margin: "0 auto" }}>
-          A quiet moment to tell {data.coach.name.split(" ")[0]} how you&apos;re really doing. No right answers.
+          A quiet moment to tell {coachWord(data.coach.name)} how you&apos;re really doing. No right answers.
         </p>
       </div>
 
@@ -264,7 +264,7 @@ export function CheckinScreen({
       {error && <div className="checkin-error">{error}</div>}
 
       <button className="submit-btn" disabled={!canSubmit} onClick={submit}>
-        {sending ? "Sending…" : canSubmit ? `Send to ${data.coach.name.split(" ")[0]}` : "Choose how you’re feeling to continue"}
+        {sending ? "Sending…" : canSubmit ? `Send to ${coachWord(data.coach.name)}` : "Choose how you’re feeling to continue"}
       </button>
       <div className="muted" style={{ textAlign: "center", fontSize: 12, marginTop: 12, paddingBottom: 4 }}>
         Only {data.coach.name.split(" ")[0]} sees this
@@ -580,4 +580,10 @@ export function MoveSheet({
       </div>
     </>
   );
+}
+
+/** "your coach" when the app does not use the coach's name (the new front). */
+function coachWord(name: string): string {
+  const first = name.split(" ")[0];
+  return !first || first === "Coach" ? "your coach" : first;
 }

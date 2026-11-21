@@ -47,6 +47,15 @@ export function SqStartSheet() {
           ))}
         </div>
       </SqCard>
+      {/* Round 7 (21 Nov 2026): losing the link was the problem 7 of 8 testers
+          named. The icon keeps the app one tap away; the coach resends it. */}
+      <SqCard title="Keep the app on your phone">
+        <ol className="sq-steps">
+          <li>iPhone: open this app in Safari, tap Share, then Add to Home Screen.</li>
+          <li>Android: tap ⋮ next to the web address, then Add to Home screen or Install app.</li>
+          <li>Lost it, or got a new phone? Message your coach on WhatsApp and you will get your link again.</li>
+        </ol>
+      </SqCard>
       <SqCard title="Do I have to do all of it?">
         <p className="sq-sub">
           Start with the meals. Add the supplements as they arrive. The practices are there when you are ready for them.
