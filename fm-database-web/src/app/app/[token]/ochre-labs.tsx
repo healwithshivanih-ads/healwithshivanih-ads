@@ -310,7 +310,19 @@ export function LabVaultBody() {
 /** `numbersHeld`: the new front, before the coach has shared results
  *  (released-results.ts). Booking and orders stay; the numbers wait for "Your
  *  results", so the two screens never disagree (round 7, 21 Nov 2026). */
-export function LabsOverlay({ onClose, numbersHeld = false }: { onClose: () => void; numbersHeld?: boolean }) {
+/** `onResults`: the new front. Numbers live only on "Your results", with its
+ *  plain Above / Below tags, never this vault's functional-range "Worth
+ *  exploring" (scorecard F3): this screen keeps booking and orders and points
+ *  there. */
+export function LabsOverlay({
+  onClose,
+  numbersHeld = false,
+  onResults,
+}: {
+  onClose: () => void;
+  numbersHeld?: boolean;
+  onResults?: () => void;
+}) {
   const { labVault } = useOchre();
   const sub =
     labVault && labVault.summary.total > 0 ? vaultSummaryLine(labVault.summary, labVault.mode) : undefined;
@@ -323,7 +335,7 @@ export function LabsOverlay({ onClose, numbersHeld = false }: { onClose: () => v
         <h2 className="h-serif" style={{ fontSize: 24, margin: "0 0 2px" }}>
           Your labs
         </h2>
-        {sub && !numbersHeld && (
+        {sub && !numbersHeld && !onResults && (
           <div className="muted" style={{ fontSize: 13.5, marginBottom: 10 }}>
             {sub}
           </div>
@@ -335,6 +347,18 @@ export function LabsOverlay({ onClose, numbersHeld = false }: { onClose: () => v
               <p style={{ fontSize: 15, color: INK, lineHeight: 1.6, margin: 0 }}>
                 Your coach goes through your numbers with you first. After that they appear under Your results.
               </p>
+            </div>
+          </>
+        ) : onResults ? (
+          <>
+            <LabOrdersCard />
+            <div className="card" style={{ padding: 20, marginTop: 14 }}>
+              <p style={{ fontSize: 15, color: INK, lineHeight: 1.6, margin: "0 0 12px" }}>
+                Your numbers are under Your results, each marked within, above or below the lab&rsquo;s usual range.
+              </p>
+              <button type="button" className="submit-btn" onClick={onResults}>
+                See your results
+              </button>
             </div>
           </>
         ) : (

@@ -518,6 +518,8 @@ export interface JourneyItem {
   kind: "start" | "update" | "checkin";
   week: number;
   when: string;
+  /** YYYY-MM-DD behind `when`, so a screen can order by date ("" if unknown) */
+  date?: string;
   title: string;
   summary?: string;
   note?: { who: string; text: string };
@@ -5513,6 +5515,7 @@ export async function loadClientAppData(
   // ---- journey ----------------------------------------------------------------
   const coachName = "Shivani Hari";
   const journey: JourneyItem[] = [];
+  const ymdOf = (d: Date): string => (Number.isNaN(d.getTime()) ? "" : d.toISOString().slice(0, 10));
   const weekOf = (d: Date): number =>
     startDate ? Math.max(Math.floor((d.getTime() - startDate.getTime()) / 86_400_000 / 7) + 1, 0) : 0;
   if (startDate) {
@@ -5520,6 +5523,7 @@ export async function loadClientAppData(
       kind: "start",
       week: 0,
       when: fmtDay(startDate),
+      date: ymdOf(startDate),
       title: "Your plan began",
       note: { who: coachName, text: `Twelve weeks, one day at a time. I'm with you.` },
     });
@@ -5539,6 +5543,7 @@ export async function loadClientAppData(
       kind: "update",
       week: weekOf(d),
       when: fmtDay(d),
+      date: ymdOf(d),
       title: "Plan updated",
       note: { who: coachName, text: clean },
     });
@@ -5602,6 +5607,7 @@ export async function loadClientAppData(
           kind: "checkin",
           week: weekOf(d),
           when: fmtDay(d),
+          date: ymdOf(d),
           title: "Symptom check (MSQ)",
           summary: `You scored ${Number(msq.total) || 0} — every retake shows the trend.`,
         });
@@ -5616,6 +5622,7 @@ export async function loadClientAppData(
           kind: "checkin",
           week: weekOf(d),
           when: fmtDay(d),
+          date: ymdOf(d),
           title: "Weekly check-in",
           summary: raw ? `You replied: “${raw}”` : "You checked in over WhatsApp.",
         });
@@ -5626,6 +5633,7 @@ export async function loadClientAppData(
           kind: "checkin",
           week: weekOf(d),
           when: fmtDay(d),
+          date: ymdOf(d),
           title: "Weekly check-in",
           summary: asStr(checkin.feel) || `You rated the week ${rating} of 5.`,
         });
