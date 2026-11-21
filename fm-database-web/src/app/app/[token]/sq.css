@@ -867,3 +867,12 @@
 .sq-app .sq-daygro small { color: var(--sq-muted); font-size: 13px; }
 .sq-app .sq-daygro-meal { padding-top: 8px; }
 .sq-app .sq-daygro-meal .sq-sec { margin: 6px 0 2px; }
+
+/* Your progress (sq-progress.tsx) */
+.sq-app button.sq-ringbtn { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; padding: 0; }
+.sq-app .sq-prog-spark { display: block; width: 100%; height: 70px; margin: 8px 0 4px; }
+.sq-app .sq-prog-good { margin: 6px 0 0; padding-left: 18px; font-size: 16px; color: var(--sq-ink); }
+.sq-app .sq-prog-good li { margin: 4px 0; }
+.sq-app .sq-prog-j > summary { list-style: none; }
+.sq-app .sq-prog-j > summary::-webkit-details-marker { display: none; }
+.sq-app .sq-prog-j > p { padding: 0 4px 8px; }
