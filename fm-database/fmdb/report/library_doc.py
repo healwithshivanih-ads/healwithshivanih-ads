@@ -22,14 +22,15 @@ SHOW = {"loss": "[women: regular blood loss such as heavy periods · men: slow b
 GROUPS = [("blood.small", "Added paragraphs"), ("steady.", "Sections with nothing off"), ("liver.fat", "Sections with nothing off"), ("b12_high", "Sections with nothing off"),
           ("rest.", "Page 1 and the letter"), ("todo.", "Page 1 and the letter"), ("letter.", "Page 1 and the letter"),
           ("bodyage.", "Your body age"), ("onebody.", "What connects"), ("conn.", "What connects"),
-          ("next.", "Your next test"), ("line.", "Your next step"), ("step.", "Your next step")]
+          ("next.", "Your next test"), ("line.", "Your next step"), ("step.", "Your next step"),
+          ("two.", "The page for two")]
 
 
 # what the {slots} in the page-1 and next-step phrases are shown as: one example person
 EXAMPLE = {"name": "Asha", "date": "4 November 2026", "status": "watch", "others": "your sugar average", "ba": "55.2", "age": "50",
            "n": "five", "parts": "your blood count and your vitamins and iron", "names": "Your thyroid signal", "sit": "sits",
            "its_their": "its", "it_is": "It is", "count": "Two things", "is_are": "are",
-           "things": "your artery numbers and your sugar average"}
+           "things": "your artery numbers and your sugar average", "section": "Liver", "whose": "Asha's", "his": "her", "other": "Ravi"}
 EXAMPLE_FOR = {"todo.deep.many": {"names": "Your haemoglobin, your vitamin B12 and your iron"},
                "todo.soon": {"names": "Your salts", "is_are": "are"},
                "step.soon.headline": {"count": "One result", "needs": "needs", "names": "salts"},

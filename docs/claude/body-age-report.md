@@ -91,9 +91,50 @@ approved, no personal Foundation link, a broken link in the PDF.
   couples, 19 Nov 2026: "Yes, flat 7,000"): it sits on each buyer's own record and never passes to a partner.
 - Fonts (OFL) and the ring mark are in `fmdb/report/assets/` and inlined into the page, so a render needs no network.
 
+## The page for two (21 Nov 2026) — built, not wired to the coach app
+
+Her choice for two-person orders ("Joint report first"): the approved four-page "page for two" goes WITH each
+person's own full report, all on one email. `fmdb/report/two.py::make_two(report_a, report_b)` takes two finished
+single reports (same kind, same morning, same report date, different names) and makes the page;
+`pdf.build_two_pdf` prints it with the single report's page furniture; `mail.two_email_html` is the one email draft.
+
+```bash
+echo '{"client_ids":["cl-900","cl-900"],"kind":"standard","names":["R.","M."],
+       "invented":[null,{"values":{"HbA1c":5.8},"sex":"F","date_of_birth":"1976-03-02"}]}' | python fm-database-web/scripts/body-age-report.py
+```
+
+One folder (`<first person>/files/body-age/<report no>/`): both people's PDFs, the page for two, `email.html`,
+`email-preview.html`, `ring-1.png` / `ring-2.png` / `mark.png`, `sources.txt` (where each sentence came from) and
+`report.json` (`two: true`, `client_ids`, `attachments`, `ready`). Same JSON shape as one person, plus `reports`.
+
+- **Three sources, and the code says which** (`two.Said`, `Two.sources`): `sample` = the approved sample's own words
+  (`two.SAMPLE`; `tests/fixtures/body_age/approved_two_sample.txt` is the sample PDF as text and a test fails if a
+  `SAMPLE` entry is not in it) · `own` = a sentence already approved in that person's own report, printed after
+  their name in bold · `draft` = one of the four `two.*` keys in `wording.DRAFT`, which keep `ready` false until
+  her own yes puts the key in `APPROVED_DRAFTS`.
+- **The next step is each person's own `decide.py` outcome.** A session is offered by name ("A Foundation session
+  for R., online"), at that person's own price and date, with that person's own pay link; the partner is only "welcome
+  to join". A pair with no offer prints no price. Doctor wording is always the person's own approved sentence.
+- **Three places the generator does NOT follow the sample, each because a later rule of hers overrides it:** body
+  age is a whole number ("about 42", not "42.8"); the far-out line has no "as well" and no "See yours."; "Where you
+  differ" is each person's own section headlines, because the sample's two paragraphs were written by hand.
+- **The sample's second person cannot happen under the report's own rules**: anyone with a section on watch is
+  retested at four months and gets "the steps are yours" or a session, so "yours could wait a year" never meets
+  "the sugar pattern you share". The letter and the sugar paragraph print only for the sample's pattern (both
+  younger, sugar the one section on watch for both, one person with a section needing attention); otherwise the
+  letter is each person's own.
+- **An order for two is one household** (her rule, 21 Nov 2026: "the 2 people have to be in the same household").
+  One home visit, one address, one morning. So the sample's "You share a kitchen" and "in a kitchen you share" are
+  true for every pair and stay as approved. The order page's wording should say so (`order-copy.ts`, still a draft).
+- **Launch lock**: both ids go through the same lock as one (`locked()`), before anything is read or written.
+  `invented` (made-up results so one test record can be two people) is for `cl-900` only and is never recorded.
+- **Not done**: the coach app does not call it. The order list needs a "build for two" action that passes the
+  order's two `client_ids`, the report card needs to show three PDFs, and `sendBodyAgeReport` needs to attach all
+  three and send one email (to the buyer's address on the order; `decideSend` rules unchanged).
+
 ## Not built yet
 
-The joint report for two (her choice, 21 Nov 2026: joint report before launch); the WhatsApp answers; the revenue
+The WhatsApp answers; the revenue
 export for a report order; a refund step; an order whose buyer goes quiet for 15 days before the report exists is
 not yet protected from parking (the guard starts at the report).
 

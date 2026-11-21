@@ -88,8 +88,8 @@ def furniture_html(n: int, head_r: str) -> str:
     return f"<!doctype html><html><head><meta charset=utf-8><style>{fonts_css()}</style><style>{css}</style></head><body>{pages}</body></html>"
 
 
-def build_pdf(rp: Any, out: Path, chrome: Optional[str] = None) -> dict:
-    """Write the report PDF to `out`. Returns {pages, links} for checking."""
+def render_pdf(html: str, out: Path, head_r: str, title: str, chrome: Optional[str] = None) -> dict:
+    """Print one page of HTML to an A4 PDF with the report's header, footer and ring mark. Returns {pages, links}."""
     from pypdf import PdfReader, PdfWriter
     chrome = chrome or find_chrome()
     if not chrome:
@@ -98,11 +98,11 @@ def build_pdf(rp: Any, out: Path, chrome: Optional[str] = None) -> dict:
     out.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="body-age-") as tmp:
         t = Path(tmp)
-        (t / "report.html").write_text(report_html(rp, CSS_DEEPER if rp.kind == "deeper" else CSS_STANDARD))
+        (t / "report.html").write_text(html)
         chrome_pdf(chrome, t / "report.html", t / "body.pdf")
         body = PdfReader(str(t / "body.pdf"))
         n = len(body.pages)
-        (t / "furniture.html").write_text(furniture_html(n, head_right(rp)))
+        (t / "furniture.html").write_text(furniture_html(n, head_r))
         chrome_pdf(chrome, t / "furniture.html", t / "furniture.pdf", 6000)
         furn = PdfReader(str(t / "furniture.pdf"))
         if len(furn.pages) != n:
@@ -110,10 +110,22 @@ def build_pdf(rp: Any, out: Path, chrome: Optional[str] = None) -> dict:
         w = PdfWriter(clone_from=body)                # clone keeps the in-document jump targets Chrome wrote
         for i, pg in enumerate(w.pages):
             pg.merge_page(furn.pages[i], over=True)    # carries the footer's link areas across
-        w.add_metadata({"/Title": f"Body age report, {rp.name}, {W.day(rp.sample_date)}", "/Author": "Shivani Hari"})
+        w.add_metadata({"/Title": title, "/Author": "Shivani Hari"})
         with open(out, "wb") as fh:
             w.write(fh)
     return {"pages": n, "links": links(out)}
+
+
+def build_pdf(rp: Any, out: Path, chrome: Optional[str] = None) -> dict:
+    """Write the report PDF to `out`. Returns {pages, links} for checking."""
+    return render_pdf(report_html(rp, CSS_DEEPER if rp.kind == "deeper" else CSS_STANDARD), out, head_right(rp),
+                      f"Body age report, {rp.name}, {W.day(rp.sample_date)}", chrome)
+
+
+def build_two_pdf(two: Any, out: Path, chrome: Optional[str] = None) -> dict:
+    """Write the page for two (a two.Two) to `out`, with the same page furniture as the single report."""
+    from . import two as T
+    return render_pdf(T.two_html(two), out, T.head_right(two), T.title(two), chrome)
 
 
 def links(pdf: Path) -> list[tuple[int, str, str]]:
