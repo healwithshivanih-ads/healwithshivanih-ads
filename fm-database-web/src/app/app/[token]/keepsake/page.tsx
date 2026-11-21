@@ -9,6 +9,7 @@
 
 import { cookies } from "next/headers";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { madeWithoutForYou } from "@/lib/fmdb/recipe-adapt";
 import { KeepsakePrintButton } from "./keepsake-print-button";
 
 export const dynamic = "force-dynamic";
@@ -93,6 +94,13 @@ export default async function KeepsakePage({ params }: { params: Promise<{ token
                 <div style={{ fontSize: 12.5, color: OCHRE, fontWeight: 600, marginBottom: 10 }}>
                   {[r.serves, r.time].filter(Boolean).join("  ·  ")}
                 </div>
+              )}
+              {/* A food taken out of this recipe for this client: the keepsake
+                  must say so, or the recipe reads as the catalogue's own. */}
+              {madeWithoutForYou(r.omits, r.omitsInSteps) && (
+                <p style={{ margin: "0 0 10px", fontSize: 12.5, color: INK, fontWeight: 600 }}>
+                  {madeWithoutForYou(r.omits, r.omitsInSteps)}
+                </p>
               )}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 18 }}>
                 <div>

@@ -352,6 +352,33 @@ export default async function KitchenSheetPage({
                     >
                       {t("method", "Method")}
                     </div>
+                    {/* A food taken out of this recipe for this client — said
+                        before the method, so the cook knows before starting. */}
+                    {r.madeWithout && (
+                      <p
+                        style={{
+                          margin: "0 0 8px",
+                          padding: "6px 10px",
+                          background: PAPER,
+                          border: `1px solid ${LINE}`,
+                          borderRadius: 6,
+                          fontSize: 12.5,
+                          color: INK,
+                          fontWeight: 600,
+                        }}
+                      >
+                        {r.madeWithout.hi ? (
+                          <>
+                            <span style={{ fontFamily: HI_FONT }}>{r.madeWithout.hi}</span>
+                            <span style={{ color: MUTED, display: "block", fontSize: 11, fontWeight: 400 }}>
+                              {r.madeWithout.en}
+                            </span>
+                          </>
+                        ) : (
+                          r.madeWithout.en
+                        )}
+                      </p>
+                    )}
                     <ol style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, color: INK }}>
                       {r.method.map((m, j) => (
                         <li key={j} style={{ marginBottom: 5 }}>

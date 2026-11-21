@@ -98,6 +98,11 @@ ui:
   print: पीडीएफ सेव करें / प्रिंट करें
   language: भाषा
   some_english: कुछ चीज़ें अभी अंग्रेज़ी में दिखाई गई हैं
+  # "Made without onion" on a recipe adapted for this client ({foods} = the
+  # foods, from terms below). Printed above the method on the cook's sheet.
+  made_without: "{foods} के बिना बनाएँ।"
+  leave_out_in_steps: विधि में जहाँ भी इसका ज़िक्र हो, इसे न डालें।
+  and: और
 
 # ── Foods + dish names (longest-phrase matched) ─────────────────────────────
 terms:
