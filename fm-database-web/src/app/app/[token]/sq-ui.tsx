@@ -67,6 +67,8 @@ export type SqSheet =
   | { k: "hosted"; id: "menu" | "grocery" | "checkin" | "labs" | "move" }
   /** released body age and lab numbers (sq-results.tsx) */
   | { k: "results" }
+  /** Your progress (sq-progress.tsx) */
+  | { k: "progress" }
   | { k: "soon"; title: string };
 
 export type SqIconName = "home" | "leaf" | "chat" | "grid" | "x" | "check" | "chev" | "right" | "left" | "up" | "bag" | "pen" | "camera";

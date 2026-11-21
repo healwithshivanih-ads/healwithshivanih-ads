@@ -65,7 +65,7 @@ describe("the Sequoya shell frame", () => {
     const html = draw(7, 12);
     expect(html).toContain('<span class="sq-word">Sequoya</span>');
     expect(html).toContain("<span>Week 7</span>");
-    expect(html).toContain('aria-label="Week 7 of 12"');
+    expect(html).toContain('aria-label="Your progress, week 7 of 12"');
   });
 
   it("draws one ring per week lived on a 12-week programme, the current week heaviest", () => {

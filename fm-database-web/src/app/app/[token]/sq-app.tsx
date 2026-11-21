@@ -46,6 +46,7 @@ import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeShee
 import { SqStartSheet } from "./sq-start";
 import { orderRows, SqOrderSheet, SqSuppsSheet, SqTripSheet, SqVitalsSheet } from "./sq-everything";
 import { SqRemindSheet } from "./sq-remind";
+import { SqProgressSheet } from "./sq-progress";
 import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
 import "./sq.css";
 
@@ -414,6 +415,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
     } else if (sheet.k === "results") {
       sheetTitle = "Your results";
       sheetBody = <SqResultsSheet results={data.sq?.results ?? null} onAsk={() => toCoach("Could you walk me through my results?")} />;
+    } else if (sheet.k === "progress") {
+      sheetTitle = "Your progress";
+      sheetBody = <SqProgressSheet data={data} open={open} />;
     } else if (sheet.k === "scenes") {
       sheetTitle = "Backgrounds";
       sheetBody = <SqScenesSheet prefs={prefs} setPrefs={setPrefs} />;
@@ -459,12 +463,10 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
           <SequoyaRingMark size={30} />
         </span>
         <span className="sq-word">Sequoya</span>
-        {/* Not a button until "Your progress" is built: a tap that only says
-            "not built yet" is worse than no tap. */}
-        <span className="sq-ringbtn" role="img" aria-label={`Week ${week} of ${totalWeeks}`}>
+        <button type="button" className="sq-ringbtn" aria-label={`Your progress, week ${week} of ${totalWeeks}`} onClick={() => open({ k: "progress" })}>
           <span>Week {week}</span>
           <WeekRings week={week} total={totalWeeks} />
-        </span>
+        </button>
       </header>
 
       {/* aria-busy until the phone's own ticks and clock are known: before
@@ -598,6 +600,7 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
                       note={data.travel ? "Your coach has your dates" : "Tell your coach your dates"}
                       onOpen={() => open({ k: "trip" })}
                     />
+                    <SqNavRow title="Your progress" note="How you feel, your readings and your tests, week by week" onOpen={() => open({ k: "progress" })} />
                     <SqNavRow title="Your record" note="Everything you have ticked, day by day" onOpen={() => open({ k: "record" })} />
                     <SqNavRow title="Reminders" note="Your phone reminds you at each supplement time" onOpen={() => open({ k: "remind" })} />
                     <SqNavRow title="Keep the app on your phone" note="Add it to your Home Screen, and what to do if you lose the link" onOpen={() => open({ k: "start" })} />

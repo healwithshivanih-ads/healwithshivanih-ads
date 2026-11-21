@@ -1,0 +1,211 @@
+"use client";
+
+/**
+ * Your progress (scorecard F4), in the new front. Headline first, the rest a
+ * tap away. What improved leads; nothing here chases (no streaks, no nudges).
+ *
+ * - Wellbeing: data.symptomScore, built only from real weekly check-ins.
+ * - Weight and blood pressure: data.body.history, which is the union of all
+ *   three weight stores (collectMeasurementSnapshots: the coach's log, the
+ *   app's own readings and the intake), so a coach edit shows here too.
+ * - Tests: dates only. Numbers live on Your results, which carries the
+ *   released-results switch and the plain Above / Below tags.
+ */
+
+import type { ClientAppData, JourneyItem } from "@/lib/fmdb/client-app";
+import { SqCard, SqNavRow, type SqSheet } from "./sq-ui";
+
+type Point = { x: string; v: number };
+
+export interface Trend {
+  first: Point;
+  last: Point;
+  delta: number;
+}
+
+function trendOf(points: Point[]): Trend | null {
+  if (points.length < 2) return null;
+  const first = points[0];
+  const last = points[points.length - 1];
+  return { first, last, delta: Math.round((last.v - first.v) * 10) / 10 };
+}
+
+const shortDate = (ymd: string): string => {
+  const d = new Date(`${ymd.slice(0, 10)}T00:00:00Z`);
+  return Number.isNaN(d.getTime()) ? ymd : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+};
+
+export function progressTrends(data: Pick<ClientAppData, "symptomScore" | "body">) {
+  const hist = data.body?.history ?? [];
+  const wellbeing = trendOf((data.symptomScore?.points ?? []).map((p) => ({ x: `Week ${p.wk}`, v: p.v })));
+  const weight = trendOf(hist.filter((h) => h.weightKg != null).map((h) => ({ x: h.date, v: h.weightKg as number })));
+  const bpRows = hist.filter((h) => h.bpSystolic != null && h.bpDiastolic != null);
+  const systolic = trendOf(bpRows.map((h) => ({ x: h.date, v: h.bpSystolic as number })));
+  const bp =
+    bpRows.length >= 1
+      ? {
+          first: bpRows[0],
+          last: bpRows[bpRows.length - 1],
+          count: bpRows.length,
+          systolic,
+        }
+      : null;
+  return { wellbeing, weight, bp, weightPoints: hist.filter((h) => h.weightKg != null).length };
+}
+
+/** The good news, in plain words, or "" when there is none yet. Weight counts
+ *  as good news only for a client with a weight goal; BP only when it started
+ *  at or above 130 and came down. */
+export function progressHeadline(data: Pick<ClientAppData, "symptomScore" | "body" | "weightLoss">): string[] {
+  const t = progressTrends(data);
+  const out: string[] = [];
+  if (t.wellbeing && t.wellbeing.delta > 0) out.push(`You feel better: wellbeing up ${t.wellbeing.delta} points since you started.`);
+  if (t.weight && data.weightLoss && t.weight.delta < 0) out.push(`Down ${Math.abs(t.weight.delta)} kg since ${shortDate(t.weight.first.x)}.`);
+  const s = t.bp?.systolic;
+  if (s && s.first.v >= 130 && s.delta <= -5) out.push(`Blood pressure lower than at the start: ${t.bp!.last.bpSystolic}/${t.bp!.last.bpDiastolic} now.`);
+  return out;
+}
+
+function Spark({ points, label }: { points: number[]; label: string }) {
+  if (points.length < 2) return null;
+  const W = 300, H = 70, pad = 8;
+  const min = Math.min(...points), max = Math.max(...points);
+  const span = max - min || 1;
+  const xy = points.map((v, i) => [pad + (i / (points.length - 1)) * (W - 2 * pad), pad + (1 - (v - min) / span) * (H - 2 * pad)]);
+  const d = xy.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
+  const [lx, ly] = xy[xy.length - 1];
+  return (
+    <svg className="sq-prog-spark" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" role="img" aria-label={label}>
+      <path d={d} fill="none" stroke="var(--sq-growth)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      <circle cx={lx} cy={ly} r="4" fill="var(--sq-growth)" />
+    </svg>
+  );
+}
+
+function JourneyRow({ item }: { item: JourneyItem }) {
+  const more = item.summary || item.note?.text;
+  const head = (
+    <span className="sq-li-body">
+      <b>{item.title}</b>
+      <small>{item.week > 0 ? `Week ${item.week} · ${item.when}` : item.when}</small>
+    </span>
+  );
+  if (!more) return <div className="sq-li sq-li-static">{head}</div>;
+  return (
+    <details className="sq-prog-j">
+      <summary className="sq-li">{head}</summary>
+      {item.summary && <p className="sq-sub">{item.summary}</p>}
+      {item.note?.text && (
+        <p className="sq-sub">
+          <b>Your coach:</b> {item.note.text}
+        </p>
+      )}
+    </details>
+  );
+}
+
+export function SqProgressSheet({ data, open }: { data: ClientAppData; open: (s: SqSheet) => void }) {
+  const { week, totalWeeks } = data.client;
+  const t = progressTrends(data);
+  const good = progressHeadline(data);
+  const hist = data.body?.history ?? [];
+  const rawPoints = data.labCheckpoints?.list ?? [];
+  // a short plan puts the retest and the full panel in the same week: one row
+  const checkpoints = rawPoints.filter((c, i) => !rawPoints.slice(i + 1).some((n) => n.label === c.label)).map((c) => ({
+    ...c,
+    // the payload's last row names the coach; app copy says "your coach"
+    value: /full review/i.test(c.value) ? "Full review with your coach" : c.sub === "Baseline" ? "On file" : c.value,
+  }));
+  const journey = data.journey ?? [];
+
+  return (
+    <>
+      <SqCard>
+        <p className="sq-big-num">
+          Week {week} <span className="sq-sub">of {totalWeeks}</span>
+        </p>
+        {good.length ? (
+          <ul className="sq-prog-good">
+            {good.map((g) => (
+              <li key={g}>{g}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="sq-sub">Your progress builds up here from your weekly check-ins and the readings you and your coach save.</p>
+        )}
+      </SqCard>
+
+      <SqCard title="How you feel">
+        {data.symptomScore && t.wellbeing ? (
+          <>
+            <p className="sq-sub">
+              Wellbeing <b>{t.wellbeing.last.v}</b> / 100,{" "}
+              {t.wellbeing.delta > 0 ? `up ${t.wellbeing.delta} since your first check-in` : t.wellbeing.delta < 0 ? "lower than at your first check-in" : "the same as at your first check-in"}
+            </p>
+            <Spark points={data.symptomScore.points.map((p) => p.v)} label={`Wellbeing by week, now ${t.wellbeing.last.v} out of 100`} />
+            <p className="sq-sub sq-small">From your weekly check-ins.</p>
+          </>
+        ) : (
+          <p className="sq-sub">Your line starts after your second weekly check-in.</p>
+        )}
+      </SqCard>
+
+      <SqCard title="Weight and blood pressure">
+        {t.weight ? (
+          <>
+            <p className="sq-sub">
+              Weight <b>{t.weight.last.v} kg</b> on {shortDate(t.weight.last.x)}
+              {` (${t.weight.delta > 0 ? "+" : ""}${t.weight.delta} kg since ${shortDate(t.weight.first.x)})`}
+            </p>
+            <Spark points={hist.filter((h) => h.weightKg != null).map((h) => h.weightKg as number)} label="Weight over time" />
+          </>
+        ) : t.weightPoints === 1 ? (
+          <p className="sq-sub">One weight saved so far. The line starts with the next one.</p>
+        ) : null}
+        {t.bp && (
+          <p className="sq-sub">
+            Blood pressure <b>{t.bp.last.bpSystolic}/{t.bp.last.bpDiastolic}</b> on {shortDate(t.bp.last.date)}
+            {t.bp.count > 1 ? ` (first saved: ${t.bp.first.bpSystolic}/${t.bp.first.bpDiastolic} on ${shortDate(t.bp.first.date)})` : ""}
+          </p>
+        )}
+        {!t.weightPoints && !t.bp && <p className="sq-sub">No readings saved yet.</p>}
+        <p className="sq-sub sq-small">Every reading you or your coach have saved.</p>
+        <div className="sq-row-btns">
+          <button type="button" className="sq-btn sq-btn-quiet sq-btn-small" onClick={() => open({ k: "vitals" })}>
+            Save a reading
+          </button>
+        </div>
+      </SqCard>
+
+      <SqCard title="Tests">
+        {checkpoints.length > 0 && (
+          <div className="sq-list">
+            {checkpoints.map((c) => (
+              <div key={c.label} className="sq-li sq-li-static">
+                <span className="sq-li-body">
+                  <b>
+                    {c.label} · {c.sub}
+                  </b>
+                  <small>{c.value}</small>
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="sq-list">
+          <SqNavRow title="Your results" note="Numbers your coach has gone through with you" onOpen={() => open({ k: "results" })} />
+        </div>
+      </SqCard>
+
+      {journey.length > 0 && (
+        <SqCard title="Your journey">
+          <div className="sq-list">
+            {journey.map((j, i) => (
+              <JourneyRow key={`${j.kind}:${j.week}:${i}`} item={j} />
+            ))}
+          </div>
+        </SqCard>
+      )}
+    </>
+  );
+}
