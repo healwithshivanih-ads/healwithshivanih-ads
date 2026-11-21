@@ -265,9 +265,11 @@ def test_hdl_inside_the_laboratorys_own_range_is_not_called_low():
 
 
 def test_a_measured_result_the_report_has_no_row_for_is_flagged_to_the_coach():
-    rp = _plus([_lab("Total IgE", 198, "< 100", "IU/mL"), _lab("Lipase", 65.5, "5-60", "U/L"), _lab("Amylase", 60, "28-100", "U/L")])
+    rp = _plus([_lab("Prolactin", 40, "4-15", "ng/mL"), _lab("Total IgE", 198, "< 100", "IU/mL"), _lab("Lipase", 65.5, "5-60", "U/L"),
+                _lab("DHEA-S", 200, "35-430", "ug/dL")])
     warned = " | ".join(rp.warnings)
-    assert "Total IgE" in warned and "Lipase" in warned and "Amylase" not in warned
+    assert "Prolactin" in warned and "DHEA" not in warned
+    assert "Total IgE" not in warned and "Lipase" not in warned         # both have rows since 20 Nov 2026
     assert report("deeper").warnings == []                            # the test profile has none
 
 
@@ -400,7 +402,8 @@ def test_email_carries_the_approved_short_version():
     t = text(mail.email_html(rp))
     assert "Your body age is about 42 . You are 52." in t
     assert "Most people need two to four further tests, usually ₹1,000 to ₹5,000 in all" in t      # no surprise later
-    assert "A Foundation session, online, ₹7,000." in t and "if you book by 21 July 2026" in t
+    assert "A Foundation session, online: ₹12,000 ₹7,000 (42% off)." in t      # the full price is crossed out (Shivani, 20 Nov 2026)
+    assert "fully adjusted against a Foundation session if you sign up by 21 July 2026" in t
     assert "online session by video call" in t
     assert "https://example.test/foundation/t" in mail.email_html(rp)
     assert 'src="cid:ring"' in mail.email_html(rp)
@@ -452,7 +455,9 @@ def test_foundation_price_and_deadline_follow_the_report_type_and_date():
     std, deep = report("standard"), report("deeper")
     assert (std.step["price"], deep.step["price"]) == (7000, 2000) == (FOUNDATION_AFTER_INR["standard"], FOUNDATION_AFTER_INR["deeper"])
     assert credit_deadline(date(2026, 7, 7)) == date(2026, 7, 21) and CREDIT_DAYS == 14
-    assert "₹12,000, with what you paid for this report taken off, if you book by 21 July 2026." in std.step["credit"]
+    assert std.step["credit"] == "The price of your body age report is fully adjusted against a Foundation session if you sign up by 21 July 2026."
+    assert (std.step["pct_off"], deep.step["pct_off"]) == (42, 83) and std.step["fresh"] == "After 21 July 2026 the session is ₹12,000."
+    assert "₹12,000 ₹2,000 83% off" in text(report_html(deep)) and "<s>₹12,000</s> ₹2,000 (83% off)" in deep.step["email_offer"]
 
 
 def test_the_web_price_rule_and_the_report_print_the_same_figures():
@@ -600,6 +605,8 @@ def test_no_draft_gives_supplement_advice_or_false_comfort_above_just_outside():
     from fmdb.report.findings import FINDINGS, GENERIC, at
     for f in FINDINGS + [GENERIC]:
         for lv in ("B", "C"):
+            if f.id == "u_red_cells":       # F17 as Shivani approved it on 20 Nov 2026 ("The commonest reasons are a period...")
+                continue
             block = " ".join(at(t, lv) for t in (f.head, f.today, f.why, f.do, f.summary)) + " " + f.line.get(lv, "")
             assert not SOFT.search(block), (f.id, lv, SOFT.search(block).group(0))
 
@@ -809,7 +816,7 @@ def test_command_builds_the_test_profile_and_records_it(tmp_path, monkeypatch, c
 
 
 @pytest.mark.skipif(os.environ.get("FMDB_PDF_TESTS") != "1", reason="prints with Chrome; run locally with FMDB_PDF_TESTS=1")
-@pytest.mark.parametrize("kind,pages", [("standard", 16), ("deeper", 19)])
+@pytest.mark.parametrize("kind,pages", [("standard", 18), ("deeper", 20)])      # 16 and 19 before the extra results of 20 Nov 2026
 def test_pdf_has_the_approved_page_count_and_working_links(kind, pages, tmp_path):
     from fmdb.report.pdf import build_pdf
     from pypdf import PdfReader
@@ -825,3 +832,173 @@ def test_pdf_has_the_approved_page_count_and_working_links(kind, pages, tmp_path
     assert all("It does not diagnose, treat or prescribe." in t for t in pages_text), "the disclaimer is on every page"
     first = pages_text[0]
     assert "Sequoya by Shivani Hari" in first and "Read by" not in first
+
+
+# ── the extra results: every other test the two packages print (her "All approved", 20 Nov 2026) ─────────────
+def _urine(**over):
+    base = {"Urine Colour": ("Pale Yellow", "Pale Yellow"), "Urine Appearance": ("Clear", "Clear"), "Urine Volume": ("20", ""),
+            "Specific Gravity": ("1.015", "1.003-1.030"), "Urine pH": ("6.0", "5-8"), "Urinary Protein": ("Absent", "Absent"),
+            "Urinary Glucose": ("Absent", "Absent"), "Urine Ketone": ("Absent", "Absent"), "Urinary Bilirubin": ("Absent", "Absent"),
+            "Urobilinogen": ("Normal", "Normal"), "Bile Salt": ("Absent", "Absent"), "Bile Pigment": ("Absent", "Absent"),
+            "Urine Blood": ("Absent", "Absent"), "Nitrite": ("Absent", "Absent"), "Leucocyte Esterase": ("Absent", "Absent"),
+            "Urinary Leucocytes (Pus Cells)": ("1-2", "0-5"), "Urine Red Blood Cells": ("Absent", "0-2"), "Epithelial Cells": ("Few", ""),
+            "Casts": ("Absent", "Absent"), "Crystals": ("Absent", "Absent"), "Bacteria": ("Absent", "Absent"), "Yeast": ("Absent", "Absent"),
+            "Parasite": ("Absent", "Absent"), "Mucus": ("Present", "")}
+    for k, v in over.items():
+        name = next(n for n in base if k.lower() in n.lower())
+        base[name] = (v, base[name][1])
+    return [dict(test_name=n, value=v, unit="", reference_range=r) for n, (v, r) in base.items()]
+
+
+def test_extras_change_neither_body_age_nor_the_drawings_nor_the_outcome_when_in_range():
+    a, b = _plus([]), _plus(_urine() + [_lab("Total IgE", 40, "< 100", "IU/mL"), _lab("Lipase", 30, "5-60", "U/L"), _lab("Nickel", 2, "< 15", "µg/L")])
+    assert (a.body_age, a.decision.outcome, a.figures.keys()) == (b.body_age, b.decision.outcome, b.figures.keys())
+    assert [s.id for s in b.sections][-4:] == ["immune", "pancreas", "metals", "urine"] and not b.drafts and not b.missing and not b.warnings
+    page = text(report_html(b))
+    for want in ("Your urine test is clear.", "Your allergy and autoimmune markers are quiet.", "Your pancreas enzymes are in range.",
+                 "How it looks", "What is dissolved in it", "Under the microscope", "Metals and trace elements", "No known use in the body"):
+        assert want in page, want
+    assert "your urine test" in b.rest and not FORBIDDEN.search(page.replace(BRAND, ""))
+
+
+def test_an_older_draw_without_urine_results_simply_has_no_urine_section():
+    rp = report("standard")
+    assert "urine" not in [s.id for s in rp.sections] and not rp.warnings
+    assert "urine" in [s.id for s in _plus(_urine(), kind="standard").sections]            # both reports carry it
+
+
+def test_total_ige_never_goes_past_the_checkup_sentence_and_never_brings_the_session_offer():
+    for v in (198, 2500):
+        rp = _plus([_lab("Total IgE", v, "< 100", "IU/mL")])
+        sec = next(s for s in rp.sections if s.id == "immune")
+        page = text(report_html(rp))
+        assert (rp.rows["ige"].level, sec.status) == ("B", "watch") and rp.decision.outcome == "self"
+        assert "Your allergy antibody is raised." in page and "worth mentioning at your next routine check-up" in page
+        assert DOCTOR not in page and not rp.drafts and "immune" in [x["id"] for x in rp.stand]      # clearly off: listed on page 1 (D7)
+
+
+@pytest.mark.parametrize("name,value,rng,level", [("Rheumatoid Factor (RF)", 20, "<=18", "B"), ("Rheumatoid Factor (RF)", 60, "<=18", "C"),
+                                                   ("Anti CCP (ACCP)", 6, "<5", "B"), ("Anti Nuclear Antibodies (ANA)", 70, "<=20", "C")])
+def test_an_autoimmune_marker_above_its_limit_gets_the_checkup_sentence_and_three_times_the_doctor_sentence(name, value, rng, level):
+    rp = _plus([_lab(name, value, rng, "IU/mL")])
+    page = text(report_html(rp))
+    assert [h.level for h in rp.hits["immune"]] == [level] and "One of your autoimmune markers is raised." in page
+    assert (DOCTOR in page) == (level == "C") and rp.decision.outcome == "foundation" and not rp.drafts and not rp.missing
+
+
+def test_a_small_extra_is_in_its_section_and_on_the_one_page_summary_but_not_on_page_one():
+    rp = _plus([_lab("Lipase", 65.5, "5-60", "U/L"), _lab("Amylase", 105, "28-100", "U/L"), _lab("Magnesium", 1.85, "1.90-3.10"),
+                _lab("Folate", 5.2, ">5.38", "ng/mL"), _lab("Fructosamine", 290, "<286", "umol/L")])
+    assert rp.decision.outcome == "self"                               # five small extras do not bring the session offer
+    assert not rp.stand and "pancreas" not in rp.rest and all(t["tag"] != "Worth watching" for t in rp.todo)
+    page = text(report_html(rp))
+    for want in ("One of your pancreas enzymes is above its range.", "see a doctor the same day", "Your magnesium is low.", "Your folate is low.",
+                 "Your sugar average over the last few weeks reads high."):
+        assert want in page, want
+    assert not rp.drafts and not rp.missing
+    assert any("pancreas enzymes" in t for _n, t, _i in rp.summary["work"])
+
+
+def test_one_white_cell_type_off_leaves_the_blood_count_steady_with_one_paragraph():
+    rp = _plus([_lab("Monocytes - Absolute Count", 0.15, "0.2 - 1.0", "X 10³ / µL")], over={"Eosinophils": 9})
+    sec = next(s for s in rp.sections if s.id == "blood")
+    assert sec.status == "steady" and not rp.hits["blood"] and rp.decision.outcome == "nothing"
+    para = dict(rp.section_text["blood"][1])["Eosinophils and Monocytes"]
+    assert para.startswith("One type of white cell sits outside its range.") and "such as worms" in para and para.endswith("It is read again at your next test.")
+    page = text(report_html(rp))
+    assert "Your white cell types, as actual counts" in page and "the same cells as actual numbers in your blood" in page
+
+
+def test_a_finer_blood_measure_off_prints_one_sentence_and_says_what_it_is_read_with():
+    rp = _plus([_lab("Mean Platelet Volume (MPV)", 13.1, "6.5-12", "fL"), _lab("Mean Corp.Hemo. Conc (MCHC)", 31.0, "31.5-34.5", "g/dL")])
+    paras = dict(rp.section_text["blood"][1])
+    assert next(s for s in rp.sections if s.id == "blood").status == "steady"
+    assert paras["Haemoglobin concentration (MCHC) and Platelet size (MPV)"].endswith("your haemoglobin and platelet count, which are in range.")
+    assert rp.rows["platelets"].value == 236 and rp.rows["hb"].value == 14.7                 # the count and haemoglobin rows still read their own lines
+
+
+def test_the_laboratorys_own_ratios_are_shown_and_never_flag():
+    rp = _plus([_lab("TC/ HDL CHOLESTEROL RATIO", 6.2, "3-5", "Ratio"), _lab("LDL / HDL RATIO", 3.9, "1.5-3.5", "Ratio"),
+                _lab("HDL / LDL RATIO", 0.3, "> 0.40", "Ratio"), _lab("SGOT / SGPT RATIO", 2.4, "<2", "Ratio"),
+                _lab("BUN / Sr.CREATININE RATIO", 25, "9:1-23:1", "Ratio"), _lab("AVERAGE BLOOD GLUCOSE (ABG)", 125, "90-120")])
+    for k in ("tc_hdl_lab", "ldl_hdl_lab", "hdl_ldl_lab", "ast_alt", "bun_creat", "avg_glucose", "vldl"):
+        assert k in rp.rows and not rp.rows[k].level, k
+    assert rp.decision.outcome == "nothing" and all(s.status == "steady" for s in rp.sections) and not rp.warnings
+    assert rp.rows["ast"].value == 20.9 and rp.rows["hdl"].value == 56.3                     # the results themselves are untouched
+    assert "Your laboratory's cholesterol ratios" in text(report_html(rp))
+
+
+def test_a_further_element_above_its_range_is_named_and_a_low_one_only_when_the_body_needs_it():
+    rp = _plus([_lab("NICKEL", 20, "< 15", "µg/L"), _lab("STRONTIUM", 5, "8 - 38", "µg/L"), _lab("SELENIUM", 50, "60 - 340", "µg/L"),
+                _lab("TIN", 1, "<2", "µg/L"), _lab("CREATININE - URINE", 100, "20-300")])
+    ids = sorted((h.finding.id, h.rows[0].key) for h in rp.hits["metals"])
+    assert ids == [("element_high", "nickel"), ("element_low", "selenium")] and not rp.rows["strontium"].level
+    page = text(report_html(rp))
+    assert "One element is above its range: Nickel." in page and "Your selenium is low." in page
+    assert "Your blood was also read for four further elements." in page and not rp.drafts and not rp.missing
+
+
+def test_direct_and_indirect_bilirubin_print_the_approved_bilirubin_finding():
+    rp = _plus([_lab("BILIRUBIN -DIRECT", 0.26, "0 - 0.20"), _lab("BILIRUBIN (INDIRECT)", 0.4, "0-0.9")], kind="standard")
+    assert [(h.finding.id, [r.key for r in h.rows]) for h in rp.hits["liver"]] == [("bilirubin", ["bili_direct"])]
+    assert rp.rows["bilirubin"].value == 0.59 and rp.rows["bili_indirect"].value == 0.4
+
+
+def test_the_kidney_intro_names_potassium_only_when_the_laboratory_measured_it():
+    with_k = text(report_html(report("standard")))
+    without = text(report_html(make_report(FX["person"], [l for l in labs() if l["test_name"] != "Potassium"], kind="standard", sample=True,
+                                           sample_date=FX["sample_date"], report_date=FX["report_date"])))
+    assert "Sodium, potassium, chloride and calcium" in with_k and "Sodium, chloride and calcium show" in without
+
+
+@pytest.mark.parametrize("over,finding,level,words", [
+    (dict(protein="Trace"), "u_protein", "A", "Your urine shows protein."),
+    (dict(protein="Present (++)"), "u_protein", "B", "It needs a repeat on a fresh morning sample."),
+    (dict(glucose="Present"), "u_glucose", "B", "Your urine shows glucose."),
+    (dict(ketone="Trace"), "u_ketones", "A", "Your urine shows ketones."),
+    (dict(blood="Present"), "u_red_cells", "B", "It needs a repeat sample, away from your period."),
+    (dict(nitrite="Positive"), "u_infection", "B", "see a doctor now"),
+    (dict(pus="8-10"), "u_infection", "B", "Your urine shows signs of a possible infection."),
+    (dict(crystals="Few"), "u_other", "A", "One result in your urine test is outside the usual."),
+    (dict(colour="Red"), "u_other", "A", "One result in your urine test is outside the usual."),
+])
+def test_a_urine_result_prints_its_paragraph_marks_the_section_and_never_brings_the_session_offer(over, finding, level, words):
+    rp = _plus(_urine(**over), kind="standard")
+    sec = next(s for s in rp.sections if s.id == "urine")
+    assert [(h.finding.id, h.level) for h in rp.hits["urine"]] == [(finding, level)] and sec.status == "watch"
+    page = text(report_html(rp))
+    assert words in page and rp.decision.outcome == "self" and DOCTOR not in page and not rp.drafts and not rp.missing and not rp.warnings
+    assert ("worth mentioning at your next routine check-up" in page) == (level == "B")
+    assert ("urine" in [x["id"] for x in rp.stand]) == (level == "B")                       # D7
+
+
+def test_urine_words_that_cannot_be_read_are_shown_unmarked_and_the_coach_is_told():
+    rp = _plus(_urine(casts="see remarks"), kind="standard")
+    assert not rp.rows["u_casts"].level and any("casts" in w and "read it yourself" in w for w in rp.warnings)
+    rp = _plus(_urine(epithelial="Plenty", mucus="Present"), kind="standard")
+    assert next(s for s in rp.sections if s.id == "urine").status == "steady" and not rp.warnings
+
+
+def test_a_blood_result_is_never_read_as_a_urine_result():
+    rp = _plus([_lab("Blood Glucose - Random", 300, "70-140"), _lab("C-Reactive Protein", 30, "<5", "mg/L")], kind="standard")
+    assert "urine" not in [s.id for s in rp.sections]
+
+
+def test_every_urine_finding_prints_its_own_paragraph_even_beside_a_clearer_one():
+    rp = _plus(_urine(protein="Trace", pus="8-10"), kind="standard")
+    titles = [a for a, _b in rp.section_text["urine"][1]]
+    assert rp.section_text["urine"][0] == "Your urine shows signs of a possible infection." and "Protein in the urine" in titles
+
+
+def test_the_two_small_cell_indices_say_when_there_is_nothing_to_read_and_flag_the_inherited_pattern_when_there_is():
+    idx = [_lab("MENTZER INDEX", 19.1, "", "-"), _lab("RED CELL DISTRIBUTION WIDTH INDEX (RDWI)", 260, "", "-")]
+    rp = _plus(idx)
+    page = text(report_html(rp))
+    assert "to help tell low iron from an inherited trait. Your red cells are a normal size, so there is nothing to read here." in page
+    assert not rp.drafts and "Small red cells" not in dict(rp.section_text["blood"][1])
+    small = _plus([_lab("MENTZER INDEX", 11.5, "", "-")], over={"MCV": 70})
+    page = text(report_html(small))
+    assert "nothing to read here" not in page and "That pattern can be inherited" in dict(small.section_text["blood"][1])["Small red cells"]
+    assert not small.drafts                                                # she approved the sentence on 20 Nov 2026
+    iron = _plus([_lab("MENTZER INDEX", 16, "", "-")], over={"MCV": 70})
+    assert "Small red cells" not in dict(iron.section_text["blood"][1])

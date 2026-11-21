@@ -1,6 +1,9 @@
 [b12_high.head]
 phrase: Your B12 is well above its range.
 
+[blood.small_cells_inherited]
+phrase: Your red cells are small, and there are plenty of them. That pattern can be inherited, and it can look like low iron without being low iron. It needs a deeper look to tell the two apart.
+
 [bodyage.level]
 phrase: A body age of {ba} at {age} says that today your blood looks much like that of other people your age in those studies.
 
@@ -148,6 +151,9 @@ phrase: {count} here {needs} a doctor's attention soon: your {names}.
 [step.soon.para]
 phrase: Please see your doctor in the next day or two, and take this report with you. That comes before anything else here.
 
+[todo.deep.lpa]
+phrase: It is inherited, so the useful question is what to do about the rest of your heart numbers.
+
 [todo.deep.many]
 phrase: {names}. All sit well outside their range, and blood alone cannot say why.
 
@@ -217,6 +223,33 @@ summary: ALP, just above its range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.autoimmune.A]
+head: One of your autoimmune markers is raised.
+today: You may notice nothing. What to watch for is joints that are stiff or swollen for more than half an hour in the morning, rashes, or tiredness that does not lift.
+why: These antibodies can appear years before any symptom, and they also appear in people who stay well. A raised result is a reason to look closer. It is not a diagnosis.
+do: This needs a deeper look, with your history and your family's.
+summary: One of your autoimmune markers is raised.
+closing: 
+page 1 step: 
+
+[finding.autoimmune.B]
+head: One of your autoimmune markers is raised.
+today: You may notice nothing. What to watch for is joints that are stiff or swollen for more than half an hour in the morning, rashes, or tiredness that does not lift.
+why: These antibodies can appear years before any symptom, and they also appear in people who stay well. A raised result is a reason to look closer. It is not a diagnosis.
+do: This needs a deeper look, with your history and your family's.
+summary: One of your autoimmune markers is raised.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.autoimmune.C]
+head: One of your autoimmune markers is raised.
+today: You may notice nothing. What to watch for is joints that are stiff or swollen for more than half an hour in the morning, rashes, or tiredness that does not lift.
+why: These antibodies can appear years before any symptom, and they also appear in people who stay well. A raised result is a reason to look closer. It is not a diagnosis.
+do: This needs a deeper look, with your history and your family's.
+summary: One of your autoimmune markers is raised.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.b12_low.A]
 head: Your vitamin B12 is in range, at the low end.
 today: Often nothing. Sometimes tiredness, or pins and needles in the hands or feet.
@@ -271,6 +304,33 @@ summary: Bilirubin, a little raised. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.chloride.A]
+head: Your chloride sits just outside its range.
+today: Nothing you would feel.
+why: Chloride travels with sodium and follows how much water you had before the test. A small move by itself, with sodium in range, usually means little.
+do: It is read again at your next test.
+summary: Chloride, just outside its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.chloride.B]
+head: Your chloride appears to be clearly outside its range.
+today: Nothing you would feel.
+why: Chloride travels with sodium and follows how much water you had before the test. A repeat shows whether it holds.
+do: Consider a repeat test on a fresh sample to confirm.
+summary: Chloride, just outside its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.chloride.C]
+head: Your chloride appears to be far outside its range.
+today: Nothing you would feel.
+why: Chloride travels with sodium and with the balance of acid in the blood. A reading this far out usually has a reason, and it is worth finding.
+do: A repeat test on a fresh sample in the coming days is the usual first step.
+summary: Chloride, just outside its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.crp.A]
 head: Your inflammation marker sits in the middle zone, where most adults are.
 today: Nothing you would feel.
@@ -307,6 +367,60 @@ summary: Kidney filtering figure, below 60.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.element_high.A]
+head: One element is above its range: {name}.
+today: Nothing you would feel.
+why: It reaches us through water, food, cookware, dental and medical materials, cosmetics and work. What matters is finding where yours is coming from.
+do: This needs a deeper look for the source.
+summary: One element is above its range: {name}.
+closing: 
+page 1 step: 
+
+[finding.element_high.B]
+head: One element is above its range: {name}.
+today: Nothing you would feel.
+why: It reaches us through water, food, cookware, dental and medical materials, cosmetics and work. What matters is finding where yours is coming from.
+do: This needs a deeper look for the source.
+summary: One element is above its range: {name}.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.element_high.C]
+head: One element is above its range: {name}.
+today: Nothing you would feel.
+why: It reaches us through water, food, cookware, dental and medical materials, cosmetics and work. What matters is finding where yours is coming from.
+do: This needs a deeper look for the source.
+summary: One element is above its range: {name}.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.element_low.A]
+head: Your {lname} is low.
+today: Nothing you would feel.
+why: The body needs a little of this, and it comes from food.
+do: This needs a deeper look for the source.
+summary: Your {lname} is low.
+closing: 
+page 1 step: 
+
+[finding.element_low.B]
+head: Your {lname} is low.
+today: Nothing you would feel.
+why: The body needs a little of this, and it comes from food.
+do: This needs a deeper look for the source.
+summary: Your {lname} is low.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.element_low.C]
+head: Your {lname} is low.
+today: Nothing you would feel.
+why: The body needs a little of this, and it comes from food.
+do: This needs a deeper look for the source.
+summary: Your {lname} is low.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.enzymes.A]
 head: One of your liver enzymes sits just above its range.
 today: Nothing you would feel.
@@ -334,6 +448,60 @@ summary: A liver enzyme, just above its range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.ferritin_high.A]
+head: Your ferritin sits just above its range.
+today: Nothing you would feel.
+why: Ferritin is the measure of stored iron, and it also rises with any inflammation, a recent infection, alcohol or fat stored in the liver. A little above the range it is most often one of those.
+do: It is read again at your next test. If you take iron, mention it.
+summary: Ferritin, just above its range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.ferritin_high.B]
+head: Your ferritin appears to be clearly above its range.
+today: Nothing you would feel.
+why: Ferritin is the measure of stored iron, and it also rises with inflammation, a recent infection, alcohol or fat stored in the liver. A repeat, read with your inflammation marker and liver results, helps tell these apart.
+do: This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so.
+summary: Ferritin, just above its range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.ferritin_high.C]
+head: Your ferritin appears to be far above its range.
+today: Nothing you would feel.
+why: Ferritin is the measure of stored iron, and it also rises with inflammation, alcohol or fat stored in the liver. At this level it can sometimes mean the body is holding too much iron, which runs in families. It is worth finding the reason.
+do: This needs a deeper look, read with your inflammation marker and liver results. If you take iron, say so.
+summary: Ferritin, just above its range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.ferritin_low.A]
+head: Your iron stores sit just below their range.
+today: You may notice nothing.
+why: Ferritin is the measure of the iron your body has stored. Stores run down before haemoglobin does, so this is the early sign.
+do: {iron_food}It is read again at your next test.
+summary: Iron stores, just below their range. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.ferritin_low.B]
+head: Your iron stores appear to be clearly low.
+today: Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Ferritin is the measure of the iron your body has stored. Stores run down when less iron comes in than goes out: too little in food, poor absorption, or {loss}.
+do: This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores.
+summary: Iron stores, just below their range. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.ferritin_low.C]
+head: Your iron stores appear to be very low.
+today: Low iron stores often show as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Ferritin is the measure of the iron your body has stored. Stores this low usually have a reason, and it is worth finding: too little in food, poor absorption, or {loss}.
+do: This needs a deeper look: where the shortfall is coming from, and how best to rebuild the stores.
+summary: Iron stores, just below their range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.fib4.A]
 head: One score that estimates liver scarring sits in the middle zone.
 today: Nothing you would feel.
@@ -349,6 +517,60 @@ today: Nothing you would feel.
 why: This score is worked out from your age, two liver enzymes and your platelets. Above the upper line it is the usual signal for a scan of the liver.
 do: It needs a deeper look.
 summary: The liver scarring score, in the middle zone. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.folate_low.A]
+head: Your folate is low.
+today: Often nothing. Sometimes tiredness or a sore tongue.
+why: Folate and B12 build red cells together and keep homocysteine down. Low folate usually comes from few greens and pulses on the plate, from alcohol, or from some medicines.
+do: Greens, pulses and citrus every day are where folate comes from.
+summary: Your folate is low.
+closing: 
+page 1 step: 
+
+[finding.folate_low.B]
+head: Your folate is low.
+today: Often nothing. Sometimes tiredness or a sore tongue.
+why: Folate and B12 build red cells together and keep homocysteine down. Low folate usually comes from few greens and pulses on the plate, from alcohol, or from some medicines.
+do: Greens, pulses and citrus every day are where folate comes from.
+summary: Your folate is low.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.folate_low.C]
+head: Your folate is low.
+today: Often nothing. Sometimes tiredness or a sore tongue.
+why: Folate and B12 build red cells together and keep homocysteine down. Low folate usually comes from few greens and pulses on the plate, from alcohol, or from some medicines.
+do: Greens, pulses and citrus every day are where folate comes from.
+summary: Your folate is low.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.fructosamine.A]
+head: Your sugar average over the last few weeks reads high.
+today: Nothing you would feel.
+why: Fructosamine shows the last two to three weeks, where HbA1c shows three months. When it is high and HbA1c is not, sugar has been running higher recently.
+do: The same things that move your other sugar results: what is on the plate and when, and movement after meals.
+summary: Your sugar average over the last few weeks reads high.
+closing: 
+page 1 step: 
+
+[finding.fructosamine.B]
+head: Your sugar average over the last few weeks reads high.
+today: Nothing you would feel.
+why: Fructosamine shows the last two to three weeks, where HbA1c shows three months. When it is high and HbA1c is not, sugar has been running higher recently.
+do: The same things that move your other sugar results: what is on the plate and when, and movement after meals.
+summary: Your sugar average over the last few weeks reads high.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.fructosamine.C]
+head: Your sugar average over the last few weeks reads high.
+today: Nothing you would feel.
+why: Fructosamine shows the last two to three weeks, where HbA1c shows three months. When it is high and HbA1c is not, sugar has been running higher recently.
+do: The same things that move your other sugar results: what is on the plate and when, and movement after meals.
+summary: Your sugar average over the last few weeks reads high.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
@@ -496,6 +718,33 @@ summary: Protective cholesterol, clearly low.
 closing: A result at this level is worth mentioning at your next routine check-up.
 page 1 step: More regular movement, which is what a low <a href="#heart">protective cholesterol</a> points to.
 
+[finding.ige.A]
+head: Your allergy antibody is raised.
+today: You may already know why: a blocked nose, itchy eyes, skin that flares, or a food that does not sit well. Some people notice nothing.
+why: IgE rises with allergies to dust, pollen or foods, with eczema and asthma, and with some gut infections. The number does not say what you are reacting to.
+do: Notice what sets your symptoms off, and when. If they bother you, this needs a deeper look.
+summary: Your allergy antibody is raised.
+closing: 
+page 1 step: 
+
+[finding.ige.B]
+head: Your allergy antibody is raised.
+today: You may already know why: a blocked nose, itchy eyes, skin that flares, or a food that does not sit well. Some people notice nothing.
+why: IgE rises with allergies to dust, pollen or foods, with eczema and asthma, and with some gut infections. The number does not say what you are reacting to.
+do: Notice what sets your symptoms off, and when. If they bother you, this needs a deeper look.
+summary: Your allergy antibody is raised.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.ige.C]
+head: Your allergy antibody is raised.
+today: You may already know why: a blocked nose, itchy eyes, skin that flares, or a food that does not sit well. Some people notice nothing.
+why: IgE rises with allergies to dust, pollen or foods, with eczema and asthma, and with some gut infections. The number does not say what you are reacting to.
+do: Notice what sets your symptoms off, and when. If they bother you, this needs a deeper look.
+summary: Your allergy antibody is raised.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.iron_high.A]
 head: Your iron carriers are fuller than they should be.
 today: Nothing you would feel.
@@ -550,6 +799,33 @@ summary: Iron, a little low. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
+[finding.iron_low_stores.A]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.
+do: It is read again at your next test.
+summary: Iron, a little low. Read again at your next test.
+closing: 
+page 1 step: 
+
+[finding.iron_low_stores.B]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.
+do: This needs a deeper look: the carriers and the stores together, and why they are low.
+summary: Iron, a little low. Read again at your next test.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.iron_low_stores.C]
+head: Your iron carriers are running low.
+today: Low iron often shows as tiredness, hair fall, restless legs or breathlessness on the stairs.
+why: Transferrin saturation shows how full the carriers that move iron around your body are. When it is low, less iron is reaching your tissues. Your ferritin, shown beside it, is the measure of what is stored.
+do: This needs a deeper look: the carriers and the stores together, and why they are low.
+summary: Iron, a little low. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.kidney.A]
 head: One marker of how your kidneys clear waste sits just above its range.
 today: Nothing you would feel.
@@ -576,6 +852,15 @@ do: This needs a deeper look, starting with a repeat test in the coming days.
 summary: A kidney marker, just above its range. Read again at your next test.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
+
+[finding.ldl_only.A]
+head: Your LDL cholesterol sits a little above the aim, while the particle count is in range.
+today: Nothing you would feel.
+why: The particle count is the better guide of the two, and yours is in range. LDL a little above the aim is worth keeping an eye on, not a finding by itself.
+do: Food comes first: the kind of fat, the amount of fibre, what dinner looks like.
+summary: LDL cholesterol, a little above the aim. The particle count is in range.
+closing: 
+page 1 step: Keeping your <a href="#heart">LDL cholesterol</a> near the aim through how you eat: which fats, how much fibre.
 
 [finding.lipids.A]
 head: Your arteries are carrying a slightly heavier load of cholesterol particles than we would like.
@@ -622,6 +907,87 @@ summary: Lp(a), an inherited particle, just above the line. Nothing to do.
 closing: A level this high needs a doctor's attention, because there are things a doctor can do about the overall risk. Please speak to your doctor.
 page 1 step: 
 
+[finding.lppla2.A]
+head: A marker of inflammation inside the artery wall is raised.
+today: Nothing you would feel.
+why: This enzyme is made where artery walls are inflamed, so it adds to what your cholesterol particles and your background inflammation already show.
+do: It moves with the same things as the rest of this section: food, movement, sleep and smoking.
+summary: A marker of inflammation inside the artery wall is raised.
+closing: 
+page 1 step: 
+
+[finding.lppla2.B]
+head: A marker of inflammation inside the artery wall is raised.
+today: Nothing you would feel.
+why: This enzyme is made where artery walls are inflamed, so it adds to what your cholesterol particles and your background inflammation already show.
+do: It moves with the same things as the rest of this section: food, movement, sleep and smoking.
+summary: A marker of inflammation inside the artery wall is raised.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.lppla2.C]
+head: A marker of inflammation inside the artery wall is raised.
+today: Nothing you would feel.
+why: This enzyme is made where artery walls are inflamed, so it adds to what your cholesterol particles and your background inflammation already show.
+do: It moves with the same things as the rest of this section: food, movement, sleep and smoking.
+summary: A marker of inflammation inside the artery wall is raised.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.magnesium_high.A]
+head: Your magnesium is above its range.
+today: Nothing you would feel.
+why: A high reading usually comes from supplements or antacids, or from kidneys clearing it slowly.
+do: It is read again at your next test, alongside your kidney results.
+summary: Your magnesium is above its range.
+closing: 
+page 1 step: 
+
+[finding.magnesium_high.B]
+head: Your magnesium is above its range.
+today: Nothing you would feel.
+why: A high reading usually comes from supplements or antacids, or from kidneys clearing it slowly.
+do: It is read again at your next test, alongside your kidney results.
+summary: Your magnesium is above its range.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.magnesium_high.C]
+head: Your magnesium is above its range.
+today: Nothing you would feel.
+why: A high reading usually comes from supplements or antacids, or from kidneys clearing it slowly.
+do: It is read again at your next test, alongside your kidney results.
+summary: Your magnesium is above its range.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.magnesium_low.A]
+head: Your magnesium is low.
+today: Sometimes cramps, twitching or restless sleep. Often nothing.
+why: Blood holds only a little of the body's magnesium, so a low reading means the reserve is being drawn on. Loose motions, alcohol and some medicines for acidity or blood pressure are common reasons.
+do: It is read again at your next test, alongside your kidney results.
+summary: Your magnesium is low.
+closing: 
+page 1 step: 
+
+[finding.magnesium_low.B]
+head: Your magnesium is low.
+today: Sometimes cramps, twitching or restless sleep. Often nothing.
+why: Blood holds only a little of the body's magnesium, so a low reading means the reserve is being drawn on. Loose motions, alcohol and some medicines for acidity or blood pressure are common reasons.
+do: It is read again at your next test, alongside your kidney results.
+summary: Your magnesium is low.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.magnesium_low.C]
+head: Your magnesium is low.
+today: Sometimes cramps, twitching or restless sleep. Often nothing.
+why: Blood holds only a little of the body's magnesium, so a low reading means the reserve is being drawn on. Loose motions, alcohol and some medicines for acidity or blood pressure are common reasons.
+do: It is read again at your next test, alongside your kidney results.
+summary: Your magnesium is low.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
 [finding.metals.A]
 head: {names} {is_are} above {its_their} limit.
 today: Usually nothing.
@@ -646,6 +1012,33 @@ today: Usually nothing.
 why: Blood levels mostly reflect the last few weeks: a fish meal can raise mercury and arsenic, and smoking raises cadmium. A raised level that holds on a repeat means more is coming in than the body is clearing, and the work is to find the source. Water, cookware, cosmetics, traditional remedies and the workplace are the usual ones.
 do: This needs a deeper look: tracing the source is the first step.
 summary: 
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.pancreas.A]
+head: One of your pancreas enzymes is above its range.
+today: Nothing you would feel.
+why: Small rises are common and often pass. Alcohol, a heavy meal the night before, gallstones and some medicines can all do it.
+do: It is read again at your next test. If you ever have strong pain high in the tummy that goes through to the back, see a doctor the same day.
+summary: One of your pancreas enzymes is above its range.
+closing: 
+page 1 step: 
+
+[finding.pancreas.B]
+head: One of your pancreas enzymes is above its range.
+today: Nothing you would feel.
+why: Small rises are common and often pass. Alcohol, a heavy meal the night before, gallstones and some medicines can all do it.
+do: It is read again at your next test. If you ever have strong pain high in the tummy that goes through to the back, see a doctor the same day.
+summary: One of your pancreas enzymes is above its range.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.pancreas.C]
+head: One of your pancreas enzymes is above its range.
+today: Nothing you would feel.
+why: Small rises are common and often pass. Alcohol, a heavy meal the night before, gallstones and some medicines can all do it.
+do: It is read again at your next test. If you ever have strong pain high in the tummy that goes through to the back, see a doctor the same day.
+summary: One of your pancreas enzymes is above its range.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
@@ -727,6 +1120,33 @@ today: Nothing you would feel.
 why: Platelets are the cells that help blood clot. A count this high can sometimes follow an infection, low iron or inflammation, and occasionally the body is making too many. It is worth finding the reason.
 do: A repeat test in the coming days is the usual first step, with a look at the reason.
 summary: Platelets, just above their range. Read again at your next test.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.proteins.A]
+head: One of your blood proteins sits outside its range.
+today: Nothing you would feel.
+why: These proteins are made by the liver and the immune system. They shift with how much water you had, with long-running inflammation or infection, and with how well the liver and kidneys are working.
+do: It is read with your liver and kidney results, and again at your next test.
+summary: One of your blood proteins sits outside its range.
+closing: 
+page 1 step: 
+
+[finding.proteins.B]
+head: One of your blood proteins sits outside its range.
+today: Nothing you would feel.
+why: These proteins are made by the liver and the immune system. They shift with how much water you had, with long-running inflammation or infection, and with how well the liver and kidneys are working.
+do: It is read with your liver and kidney results, and again at your next test.
+summary: One of your blood proteins sits outside its range.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.proteins.C]
+head: One of your blood proteins sits outside its range.
+today: Nothing you would feel.
+why: These proteins are made by the liver and the immune system. They shift with how much water you had, with long-running inflammation or infection, and with how well the liver and kidneys are working.
+do: It is read with your liver and kidney results, and again at your next test.
+summary: One of your blood proteins sits outside its range.
 closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
@@ -908,6 +1328,168 @@ why: A low signal means the brain is asking for less thyroid hormone, usually be
 do: This needs a deeper look: the full thyroid picture, read alongside your history and what you take.
 summary: Thyroid signal, just below its range. Read again at your next test.
 closing: A signal this far outside its range needs a doctor's attention, because medicine can be part of the answer. Please speak to your doctor.
+page 1 step: 
+
+[finding.u_glucose.A]
+head: Your urine shows glucose.
+today: Nothing you would feel.
+why: Sugar spills into urine when blood sugar runs high, and with some medicines for diabetes. It is read with your sugar results in this report.
+do: It is read with your sugar results, and again at your next test.
+summary: Your urine shows glucose.
+closing: 
+page 1 step: 
+
+[finding.u_glucose.B]
+head: Your urine shows glucose.
+today: Nothing you would feel.
+why: Sugar spills into urine when blood sugar runs high, and with some medicines for diabetes. It is read with your sugar results in this report.
+do: It is read with your sugar results, and again at your next test.
+summary: Your urine shows glucose.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.u_glucose.C]
+head: Your urine shows glucose.
+today: Nothing you would feel.
+why: Sugar spills into urine when blood sugar runs high, and with some medicines for diabetes. It is read with your sugar results in this report.
+do: It is read with your sugar results, and again at your next test.
+summary: Your urine shows glucose.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.u_infection.A]
+head: Your urine shows signs of a possible infection.
+today: You may notice burning, urgency or going more often. Some people notice nothing.
+why: These are the body's response to bacteria in the urinary tract. A sample that was not collected mid-stream can also show them.
+do: If you have burning, fever or pain in the lower back, see a doctor now. If you feel well, repeat the test on a clean mid-stream sample.
+summary: Your urine shows signs of a possible infection.
+closing: 
+page 1 step: 
+
+[finding.u_infection.B]
+head: Your urine shows signs of a possible infection.
+today: You may notice burning, urgency or going more often. Some people notice nothing.
+why: These are the body's response to bacteria in the urinary tract. A sample that was not collected mid-stream can also show them.
+do: If you have burning, fever or pain in the lower back, see a doctor now. If you feel well, repeat the test on a clean mid-stream sample.
+summary: Your urine shows signs of a possible infection.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.u_infection.C]
+head: Your urine shows signs of a possible infection.
+today: You may notice burning, urgency or going more often. Some people notice nothing.
+why: These are the body's response to bacteria in the urinary tract. A sample that was not collected mid-stream can also show them.
+do: If you have burning, fever or pain in the lower back, see a doctor now. If you feel well, repeat the test on a clean mid-stream sample.
+summary: Your urine shows signs of a possible infection.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.u_ketones.A]
+head: Your urine shows ketones.
+today: Nothing you would feel.
+why: Ketones appear when the body is burning fat for fuel: after a long fast, on a very low-carbohydrate diet, or when you have been unwell.
+do: It is read with your sugar results, and again at your next test.
+summary: Your urine shows ketones.
+closing: 
+page 1 step: 
+
+[finding.u_ketones.B]
+head: Your urine shows ketones.
+today: Nothing you would feel.
+why: Ketones appear when the body is burning fat for fuel: after a long fast, on a very low-carbohydrate diet, or when you have been unwell.
+do: It is read with your sugar results, and again at your next test.
+summary: Your urine shows ketones.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.u_ketones.C]
+head: Your urine shows ketones.
+today: Nothing you would feel.
+why: Ketones appear when the body is burning fat for fuel: after a long fast, on a very low-carbohydrate diet, or when you have been unwell.
+do: It is read with your sugar results, and again at your next test.
+summary: Your urine shows ketones.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.u_other.A]
+head: One result in your urine test is outside the usual.
+today: Nothing you would feel.
+why: Most of these shift with how much water you drank and what you ate the day before.
+do: It is read again at your next test.
+summary: One result in your urine test is outside the usual.
+closing: 
+page 1 step: 
+
+[finding.u_other.B]
+head: One result in your urine test is outside the usual.
+today: Nothing you would feel.
+why: Most of these shift with how much water you drank and what you ate the day before.
+do: It is read again at your next test.
+summary: One result in your urine test is outside the usual.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.u_other.C]
+head: One result in your urine test is outside the usual.
+today: Nothing you would feel.
+why: Most of these shift with how much water you drank and what you ate the day before.
+do: It is read again at your next test.
+summary: One result in your urine test is outside the usual.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.u_protein.A]
+head: Your urine shows protein.
+today: Nothing you would feel.
+why: Healthy kidneys keep protein in the blood. A little can appear after hard exercise, with a fever or when you are dehydrated. Protein that is there every time is an early sign of strain on the kidneys.
+do: It needs a repeat on a fresh morning sample.
+summary: Your urine shows protein.
+closing: 
+page 1 step: 
+
+[finding.u_protein.B]
+head: Your urine shows protein.
+today: Nothing you would feel.
+why: Healthy kidneys keep protein in the blood. A little can appear after hard exercise, with a fever or when you are dehydrated. Protein that is there every time is an early sign of strain on the kidneys.
+do: It needs a repeat on a fresh morning sample.
+summary: Your urine shows protein.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.u_protein.C]
+head: Your urine shows protein.
+today: Nothing you would feel.
+why: Healthy kidneys keep protein in the blood. A little can appear after hard exercise, with a fever or when you are dehydrated. Protein that is there every time is an early sign of strain on the kidneys.
+do: It needs a repeat on a fresh morning sample.
+summary: Your urine shows protein.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
+page 1 step: 
+
+[finding.u_red_cells.A]
+head: Your urine shows red cells.
+today: Nothing you would feel.
+why: The commonest reasons are a period, hard exercise the day before, or a urinary infection. Red cells that are there on a repeat sample need to be traced.
+do: It needs a repeat sample, away from your period.
+summary: Your urine shows red cells.
+closing: 
+page 1 step: 
+
+[finding.u_red_cells.B]
+head: Your urine shows red cells.
+today: Nothing you would feel.
+why: The commonest reasons are a period, hard exercise the day before, or a urinary infection. Red cells that are there on a repeat sample need to be traced.
+do: It needs a repeat sample, away from your period.
+summary: Your urine shows red cells.
+closing: A result at this level is worth mentioning at your next routine check-up.
+page 1 step: 
+
+[finding.u_red_cells.C]
+head: Your urine shows red cells.
+today: Nothing you would feel.
+why: The commonest reasons are a period, hard exercise the day before, or a urinary infection. Red cells that are there on a repeat sample need to be traced.
+do: It needs a repeat sample, away from your period.
+summary: Your urine shows red cells.
+closing: A result this far outside its range needs a doctor's attention. Please speak to your doctor.
 page 1 step: 
 
 [finding.uric.A]

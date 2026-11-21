@@ -19,9 +19,10 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from .findings import FOLDED_INTO_LIPIDS, LINE_D, LINE_D_SHORT, Hit, at, hits_in
+from .findings import BY_NAME, FOLDED_INTO_LIPIDS, LINE_D, LINE_D_SHORT, Hit, at, hits_in
 from .levels import rank
-from .panel import Row, Section, b12_high, num
+from .levels import load_cutoffs
+from .panel import FURTHER_ELEMENTS, Row, Section, b12_high, num, small_cells
 
 # Draft keys Shivani has approved. "finding.<id>.<level>" for a block in findings.py, or a key of DRAFT below.
 APPROVED_DRAFTS: set[str] = {
@@ -75,6 +76,34 @@ APPROVED_DRAFTS: set[str] = {
     "finding.hb_low.B", "finding.hb_low.C", "finding.white_cells.B", "finding.white_cells.C",
     "finding.platelets.A", "finding.platelets.B", "finding.platelets.C",
     "finding.vitd_low.B", "finding.vitd_low.C", "finding.b12_low.B", "finding.b12_low.C",
+    # The wording written for the fixes found on a real panel (chloride, LDL with the particle count in range, ferritin
+    # low and high, low iron when ferritin is measured, the page-1 line for Lp(a)): her "all approved", 20 Nov 2026.
+    "finding.ldl_only.A",
+    "finding.chloride.A", "finding.chloride.B", "finding.chloride.C",
+    "finding.iron_low_stores.A", "finding.iron_low_stores.B", "finding.iron_low_stores.C",
+    "finding.ferritin_low.A", "finding.ferritin_low.B", "finding.ferritin_low.C",
+    "finding.ferritin_high.A", "finding.ferritin_high.B", "finding.ferritin_high.C",
+    "todo.deep.lpa",
+    "blood.small_cells_inherited",      # her "Approve it", 20 Nov 2026
+    # The extra results, F3 to F19: her "All approved" of extra-results-wording-draft.md, 20 Nov 2026, built at her
+    # "Do this task here". The same approved words at every level.
+    "finding.folate_low.A", "finding.folate_low.B", "finding.folate_low.C",
+    "finding.magnesium_low.A", "finding.magnesium_low.B", "finding.magnesium_low.C",
+    "finding.magnesium_high.A", "finding.magnesium_high.B", "finding.magnesium_high.C",
+    "finding.proteins.A", "finding.proteins.B", "finding.proteins.C",
+    "finding.fructosamine.A", "finding.fructosamine.B", "finding.fructosamine.C",
+    "finding.lppla2.A", "finding.lppla2.B", "finding.lppla2.C",
+    "finding.ige.A", "finding.ige.B", "finding.ige.C",
+    "finding.autoimmune.A", "finding.autoimmune.B", "finding.autoimmune.C",
+    "finding.pancreas.A", "finding.pancreas.B", "finding.pancreas.C",
+    "finding.element_high.A", "finding.element_high.B", "finding.element_high.C",
+    "finding.element_low.A", "finding.element_low.B", "finding.element_low.C",
+    "finding.u_protein.A", "finding.u_protein.B", "finding.u_protein.C",
+    "finding.u_glucose.A", "finding.u_glucose.B", "finding.u_glucose.C",
+    "finding.u_ketones.A", "finding.u_ketones.B", "finding.u_ketones.C",
+    "finding.u_red_cells.A", "finding.u_red_cells.B", "finding.u_red_cells.C",
+    "finding.u_infection.A", "finding.u_infection.B", "finding.u_infection.C",
+    "finding.u_other.A", "finding.u_other.B", "finding.u_other.C",
     "finding.egfr_low.C",
     "finding.hb_high.A", "finding.hb_high.B", "finding.hb_high.C",
     "finding.platelets_high.A", "finding.platelets_high.B", "finding.platelets_high.C",
@@ -104,6 +133,8 @@ DRAFT: dict[str, tuple[str, str]] = {
     "rest.also": ("Page 1, a fourth section that is not steady", " Also marked “{status}”: {name}."),
     "todo.start.other": ("Page 1, step 1, when neither sugar nor cholesterol is marked", "Walk for ten minutes after your largest meal, every day until your next test. It is the cheapest way to keep these numbers where they are."),
     "todo.work.also": ("Page 1, step 2, cholesterol plus another result food moves", " The same changes work on {others}."),
+    "blood.small_cells_inherited": ("Blood count, red cells small AND the Mentzer index below 13: an added paragraph",
+                                    "Your red cells are small, and there are plenty of them. That pattern can be inherited, and it can look like low iron without being low iron. It needs a deeper look to tell the two apart."),
     "todo.watch": ("Page 1, a step for results just outside range that food does not move", "{names} {sit} just outside {its_their} range. Nothing to do now. {it_is} read again at your next test."),
     "todo.deep.lpa": ("Page 1, deeper-look step when Lp(a) is the only such result",
                       "It is inherited, so the useful question is what to do about the rest of your heart numbers."),
@@ -199,6 +230,8 @@ def off(r: Row) -> str:
 
 
 def val(r: Row) -> str:
+    if r.vtext:
+        return r.vtext
     return f"{num(r.value)}%" if r.unit == "%" else f"{num(r.value)} {r.unit}".strip()
 
 
@@ -256,6 +289,69 @@ READS = {
     "nutrients": "Vitamin D, vitamin B12 and iron are the reserves your energy, nerves and blood are built from. A standard panel rarely includes them, and each can run low or high for years without a symptom.",
     "metals": "Lead, mercury, arsenic and cadmium reach us through water, food, cookware, cosmetics and work. Small amounts are common. What matters is whether any is high enough to be worth tracing to its source.",
 }
+READS.update({
+    "immune": "Four antibodies. One rises with allergy. The other three can rise when the immune system turns on the body's own joints or tissues. A raised result is a signal to look closer, and by itself it is not a diagnosis.",
+    "pancreas": "Two enzymes your pancreas makes to digest food. They rise when the pancreas is irritated.",
+    "urine": "A urine test is a second window on the kidneys, on sugar, and on the urinary tract. Most of it is a simple yes or no: is something there that should not be?",
+})
+# Her "All approved" of 20 Nov 2026. Potassium is not on either package, so the kidney intro names it only when the
+# laboratory measured it; the metals intro gains a sentence when the further elements were read.
+KIDNEYS_READS_NO_POTASSIUM = "Creatinine and urea show how well the kidneys are clearing waste. Sodium, chloride and calcium show whether the body's salts are in balance."
+METALS_READS_FURTHER = (" Your blood was also read for {n} further elements. A few are needed in tiny amounts. The rest have no use in the body, "
+                        "and are measured to see whether any has built up.")
+FURTHER_ALL_IN_RANGE = "All eighteen further elements are in range."
+STEADY_HEAD = {"immune": "Your allergy and autoimmune markers are quiet.", "pancreas": "Your pancreas enzymes are in range.",
+               "urine": "Your urine test is clear."}
+# F9 and F10: one fixed paragraph, no level, and the section's status does not move.
+NOTE_WBC = ("One type of white cell sits outside its range. The mix of white cells shifts for a few days with a cold, an allergy, a hard workout "
+            "or a poor night. One type a little off, with the total in range, is rarely meaningful by itself.")
+NOTE_WBC_EOS = " Eosinophils rise with allergy, and with some gut infections such as worms."
+NOTE_WBC_DO = " It is read again at your next test."
+NOTE_INDEX = ("One of the finer measures in this panel sits outside its range. By itself it tells us little. It is read with your haemoglobin "
+              "and platelet count, which are {where}.")
+
+
+def reads(sec: Section, deeper: bool) -> str:
+    """"What this section reads" for one section."""
+    keys = {r.key for r in sec.rows}
+    if sec.id == "kidneys" and "potassium" not in keys:
+        return KIDNEYS_READS_NO_POTASSIUM
+    t = READS[sec.id]
+    if sec.id == "thyroid" and deeper and keys & {"ft4", "ft3"}:
+        t += THYROID_READS_DEEPER
+    n = len(keys & set(FURTHER_ELEMENTS))
+    if sec.id == "metals" and n:
+        t += METALS_READS_FURTHER.format(n=word(n))
+    return t
+
+
+def note_paras(sec: Section, rows: dict[str, Row], lib: Optional["Lib"] = None) -> list[tuple[str, str]]:
+    """The fixed paragraphs for results that are shown and explained but never a level (F9, F10)."""
+    out: list[tuple[str, str]] = []
+    m = rows.get("mentzer")
+    line = load_cutoffs().get("mentzer_trait_below")
+    if sec.id == "blood" and lib is not None and m is not None and line and small_cells(rows) and m.value < float(line):
+        out.append(("Small red cells", lib.d("blood.small_cells_inherited")))
+
+    def names(rs: list[Row]) -> str:
+        return join(list(dict.fromkeys(r.name for r in rs)))
+    wbc = [r for r in sec.rows if r.note == "wbc_type"]
+    total = rows.get("wbc")
+    if wbc and not (total and total.level):          # with the total itself off, the white cell finding speaks
+        eos = NOTE_WBC_EOS if any(r.key.startswith("eos") and r.hi is not None and r.value > r.hi for r in wbc) else ""
+        out.append((names(wbc), NOTE_WBC + eos + NOTE_WBC_DO))
+    idx = [r for r in sec.rows if r.note == "index"]
+    if idx:
+        marked = any(rows.get(k) is not None and rows[k].level for k in ("hb", "platelets"))
+        out.append((names(idx), NOTE_INDEX.format(where="marked above" if marked else "in range")))
+    return out
+
+
+def small_extras_only(hits: list[Hit]) -> bool:
+    """True when everything off in a section is an explained extra just outside its range: page 1 does not list it (D7)."""
+    return bool(hits) and all(rank(h.level) <= 1 and all(r.extra for r in h.rows) for h in hits)
+
+
 THYROID_READS_DEEPER = " This report adds the free hormones, which are the part your cells can use."
 MOVES = {
     "heart": "The kind of fat and fibre in your food, body weight, how well the thyroid is working, alcohol and sleep all move these numbers within months. Lp(a) is set almost entirely by your genes. Some people also need medicine.",
@@ -266,6 +362,9 @@ MOVES = {
     "blood": "Iron, vitamin B12 and folate, recent infections, and long-standing inflammation.",
     "nutrients": "Sunlight and supplements for vitamin D. Diet, absorption and supplements for B12. Diet, blood loss and inflammation for iron.",
     "metals": "Drinking water, some fish, rice from certain regions, old paint and pipes, some traditional remedies and cosmetics, and smoking.",
+    "immune": "Allergies and their seasons, infections, some medicines, and conditions that run in families.",
+    "pancreas": "Alcohol, a heavy or fatty meal the night before, gallstones, some medicines, and how well the kidneys clear these enzymes.",
+    "urine": "How much water you drank, your period, hard exercise the day before, and how the sample was collected.",
 }
 FH = [
     "Your doctor diagnoses and treats illness. Nothing here replaces that.",
@@ -320,7 +419,7 @@ def slots_for(h: Hit, sex: str) -> dict:
     r = max(h.rows, key=lambda x: rank(x.level))
     names = join([x.name for x in h.rows])
     many = len(h.rows) > 1
-    return dict(name=r.name, dist=off(r), names=names, is_are="are" if many else "is", its_their="their" if many else "its",
+    return dict(name=r.name, lname=r.name.lower(), dist=off(r), names=names, is_are="are" if many else "is", its_their="their" if many else "its",
                 loss="regular blood loss such as heavy periods" if sex == "F" else "slow blood loss",
                 # iron-rich food is the first thought for a woman at the low edge; for a man the reason comes first
                 iron_food=("Iron-rich food with something sour alongside, such as lemon, amla or tomato, helps the body take iron in. "
@@ -334,11 +433,11 @@ def line_of(h: Hit) -> str:
 
 
 def noun_of(h: Hit) -> str:
-    return join([r.name.lower() if r.name != "Lp(a)" else r.name for r in h.rows]) if h.finding.id in ("metals", "generic") else h.finding.noun
+    return join([r.name.lower() if r.name != "Lp(a)" else r.name for r in h.rows]) if h.finding.id in BY_NAME else h.finding.noun
 
 
 def is_plural(h: Hit) -> bool:
-    if h.finding.id in ("metals", "generic"):       # named by their rows: one metal is singular ("your lead is")
+    if h.finding.id in BY_NAME:       # named by their rows: one metal is singular ("your lead is")
         return len(h.rows) > 1
     return h.finding.plural
 
@@ -360,7 +459,7 @@ def also_para(h: Hit, lib: Lib, sex: str) -> tuple[str, str]:
     do = at(f.do, h.level).format(**s)
     if h.is_generic:
         return s["name"], at(f.why, h.level).format(**s) + " " + order(h, do)
-    return f.title, at(f.head, h.level).format(**s) + " " + order(h, do)
+    return f.title or s["name"], at(f.head, h.level).format(**s) + " " + order(h, do)
 
 
 def also_paras(lead: Hit, others: list[Hit], lib: Lib, sex: str) -> list[tuple[str, str]]:
@@ -368,8 +467,8 @@ def also_paras(lead: Hit, others: list[Hit], lib: Lib, sex: str) -> list[tuple[s
     finding is itself only just outside range, the small ones beside it too."""
     out = []
     for o in others:
-        if rank(o.level) < 2 and rank(lead.level) >= 2:
-            continue
+        if rank(o.level) < 2 and rank(lead.level) >= 2 and not all(r.table in ("looks", "dissolved", "microscope") for r in o.rows):
+            continue            # (a urine finding always prints its own paragraph: D6)
         if lead.finding.id == "lipids" and o.finding.id == "hcy" and o.level == "B":
             continue            # as approved: homocysteine at this level is covered by the section's check-up line
         out.append(also_para(o, lib, sex))
@@ -449,8 +548,12 @@ def steady_text(sec: Section, rows: dict[str, Row], lib: Lib) -> tuple[str, list
     if sid == "blood":
         return ("Your red cells are fresh and even. This is the strongest part of your report.",
                 [("Today", "Red cells like these go with stamina and good recovery.")])
+    if sid in STEADY_HEAD:
+        return STEADY_HEAD[sid], []
     if sid == "metals":
         head = "No heavy metal is above range."
+        if set(FURTHER_ELEMENTS) <= {r.key for r in sec.rows}:
+            head += " " + FURTHER_ALL_IN_RANGE
         if any(r.illustrative for r in sec.rows):
             head += " These values are illustrative: the test profile has no metals results."
         return head, [("Today", "Nothing to trace and nothing to act on.")]
@@ -576,7 +679,7 @@ def todo_steps(rp: Any, lib: Lib) -> list[dict]:
     if deep:
         steps.append(dict(tag="Needs a deeper look", when="after you have seen your doctor" if soon else "the next step", text=deep_step(deep, rp, lib), email=deep_step(deep, rp, lib, link=False)))
     else:
-        watch = [h for h in all_hits(rp) if h.nature != "work" and rank(h.level) == 1]
+        watch = [h for h in all_hits(rp) if h.nature != "work" and rank(h.level) == 1 and not all(r.extra for r in h.rows)]      # D7
         if watch:
             many = len(watch) > 1 or is_plural(watch[0])
             t = lib.d("todo.watch", names=cap(join(["your " + noun_of(h) for h in watch])), sit="sit" if many else "sits",
@@ -612,12 +715,14 @@ def letter(rp: Any, lib: Lib) -> list[str]:
 
 
 def rest_line(rp: Any, lib: Lib) -> str:
-    approved = {"liver": "your liver", "kidneys": "your kidneys", "blood": "your blood count", "metals": "your metals"}
+    # the last three are the subjects of her approved steady headlines for those sections (20 Nov 2026)
+    approved = {"liver": "your liver", "kidneys": "your kidneys", "blood": "your blood count", "metals": "your metals",
+                "immune": "your allergy and autoimmune markers", "pancreas": "your pancreas enzymes", "urine": "your urine test"}
     names = [approved.get(s.id) or lib.d(f"rest.{s.id}") for s in rp.sections if s.status == "steady"]
     line = f"Everything else is steady: {join(names)}." if names else ""
     shown = {x["id"] for x in rp.stand}
     for s in rp.sections:
-        if s.status == "steady" or s.id in shown:
+        if s.status == "steady" or s.id in shown or small_extras_only(rp.hits.get(s.id) or []):
             continue
         if s.id == "nutrients" and b12_high(rp.rows) and _lv(rp.rows, "hcy") >= 2:
             line += " Your B12 is high, which matters for one finding above."
@@ -727,7 +832,7 @@ def summary(rp: Any, lib: Lib) -> dict:
             full = ", although your B12 is full" if deeper and b12_high(rows) else ""
             deep.append(("Homocysteine", f"{num(r.value)} {r.unit}, {distance(r)}{full}." + _line(h.level), sid))
         else:
-            title = r.name if h.finding.id in ("metals", "generic") else h.finding.title
+            title = r.name if h.finding.id in BY_NAME else h.finding.title
             deep.append((title, f"{r.name} {val(r)}, {off(r)}.".replace(f"{title} ", "", 1) + _line(h.level), sid))
     gapw, _n = gap_words(rp.decision.body_age_gap)
     start = rp.todo[0]["short"] if rp.todo else ""
@@ -781,20 +886,24 @@ def next_step(rp: Any, lib: Lib) -> dict:
         else:
             second = lib.d("step.foundation.far", names=join([noun_of(h) for h in far]), is_are="are" if len(far) > 1 or is_plural(far[0]) else "is")
     far_only = second
+    pct_off = round(100 * (rp.foundation_list - rp.foundation_after) / rp.foundation_list)
     if clear:
         second += (" " if second else "") + f"Your {join(clear[:1] + ['your ' + c for c in clear[1:]])} {'are' if len(clear) != 1 or clear[0].endswith('s') else 'is'} worth mentioning at your next routine check-up."
     return dict(
         outcome="foundation", headline=headline, paras=[p for p in (why, second) if p],
         email_paras=[p for p in (why, far_only) if p],
-        price=rp.foundation_after, credit=f"{inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
+        # Shivani, 20 Nov 2026: the full price crossed out, the price they pay, the discount, then her sentence
+        price=rp.foundation_after, list_price=rp.foundation_list, pct_off=pct_off,
+        credit=f"The price of your body age report is fully adjusted against a Foundation session if you sign up by {deadline}.",
         steps=[
             ("Before your session", "You fill in your full history in your own time, about 25 minutes, one short section at a time. It covers your health story in the order it happened, your diagnoses and family history, medicines past and present, how you eat, sleep, move and handle stress, your childhood and surroundings, what you have already tried, and each part of your body that bothers you. This is the part blood cannot show."),
             ("In your session", "It is online, by video call, wherever you are. I read your history against this report, and we go through both together."),
             ("Further tests", "You get the short list worth doing for you, and I read those with you when they are back. Most people need two to four, usually ₹1,000 to ₹5,000 in all, paid to the laboratory. You see the list and the price before you decide."),
             ("What you leave with", leave),
         ],
-        fresh=f"Your report fee comes off the session if you book by {deadline}. After that the session is {inr(rp.foundation_list)}.",
+        fresh=f"After {deadline} the session is {inr(rp.foundation_list)}.",
         after="Nothing, unless you want it. You leave with the order to work in, and your next test will show what has moved.",
-        email_offer=f"<b>A Foundation session, online, {inr(rp.foundation_after)}.</b> That is {inr(rp.foundation_list)}, with what you paid for this report taken off, if you book by {deadline}.",
+        email_offer=(f"<b>A Foundation session, online: <s>{inr(rp.foundation_list)}</s> {inr(rp.foundation_after)} ({pct_off}% off).</b> "
+                     f"The price of your body age report is fully adjusted against a Foundation session if you sign up by {deadline}."),
         email_how=("You fill in your history first. Then we have an online session by video call: I read it against your report, and you leave with the short list of "
                    "further tests worth doing and the order to work in. Most people need two to four further tests, usually ₹1,000 to ₹5,000 in all, paid to the laboratory."))

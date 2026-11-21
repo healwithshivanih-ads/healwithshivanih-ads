@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from . import wording as W
-from .panel import NINE, Row, num, rng
+from .panel import INDICES_NOTHING_TO_READ, NINE, TABLES, Row, num, rng, small_cells
 
 ASSETS = Path(__file__).with_name("assets")
 BACK = '<p class="back"><a href="#contents">Back to contents</a></p>'
@@ -143,6 +143,27 @@ def marker_rows(rows: list[Row], deep_rows: list[str]) -> str:
     return "".join(out)
 
 
+def compact_tables(rows: list[Row]) -> str:
+    """The results printed as compact tables (D8): one table per heading, a row for each result."""
+    out = []
+    for key in dict.fromkeys(r.table for r in rows if r.table):
+        title, gloss = TABLES[key]
+        if key == "small_cell_indices" and "mcv" in {r.key for r in rows} and not small_cells({r.key: r for r in rows}):
+            gloss += INDICES_NOTHING_TO_READ
+        trs = []
+        for r in (x for x in rows if x.table == key):
+            beyond = (r.hi is not None and r.value > r.hi) or (r.lo is not None and r.value < r.lo)
+            said = "outside range" if r.state == "out" else ("" if (beyond and not r.vtext) or not (r.ref or r.vtext) else "in range")
+            if r.vtext and r.state == "ok" and not r.ref:
+                said = ""
+            unit = r.unit if re.search(r"\w", r.unit) and r.unit.lower() != "ratio" else ""
+            value = r.vtext or f"{num(r.value)} <span>{unit}</span>"
+            trs.append(f'<tr class="{r.state}"><td>{r.name}</td><td class="v"><b>{value}</b></td><td class="r">{r.ref}</td><td class="s">{said}</td></tr>')
+        out.append(f'<div class="ctw"><p class="cth"><b>{title}</b>' + (f"<span>{gloss}</span>" if gloss else "") + "</p>"
+                   f'<table class="ct"><tbody>{"".join(trs)}</tbody></table></div>')
+    return "".join(out)
+
+
 def report_main(rp: Any) -> str:
     """The <main> of the report. `rp` is a build.Report."""
     deeper = rp.kind == "deeper"
@@ -168,16 +189,19 @@ def report_main(rp: Any) -> str:
         fig = rp.figures.get(s.id)
         figure = f'<h3>{fig[0]}</h3><div class="viz">{fig[1]}</div>' if fig else ""
         text = rp.section_text[s.id]
-        reads = W.READS[s.id] + (W.THYROID_READS_DEEPER if s.id == "thyroid" and deeper and any(r.key in ("ft4", "ft3") for r in s.rows) else "")
+        reads = W.reads(s, deeper)
+        bars = [r for r in s.rows if not r.table]
+        long = " long" if n > 12 else ""
+        results = (f'<ul class="ml{long}">{marker_rows(bars, rp.decision.deep_rows)}</ul>' if bars else "") + compact_tables(s.rows)
         unit = (f'{head(s.id, s.name)}<span class="status {s.key}">{s.status}</span><p class="headline">{text[0]}</p>'
                 + (f'<p class="inline">{squares(states)} {inr_} of {n} in range</p>' if s.key == "steady" else "")
                 + f'<h3>What this section reads</h3><p class="edu">{reads}</p>{figure}'
-                f'<h3>Your results · {n} markers, {inr_} in range</h3><ul class="ml">{marker_rows(s.rows, rp.decision.deep_rows)}</ul>')
-        tail = ('<h3>What it means for you</h3><div class="means">' + "".join(f"<p><b>{a}.</b> {b}</p>" for a, b in text[1]) + "</div>"
-                f'<h3>What moves these numbers</h3><p class="edu">{W.MOVES[s.id]}</p>')
+                f'<h3>Your results · {n} markers, {inr_} in range</h3>{results}')
+        tail = (('<h3>What it means for you</h3><div class="means">' + "".join(f"<p><b>{a}.</b> {b}</p>" for a, b in text[1]) + "</div>" if text[1] else "")
+                + f'<h3>What moves these numbers</h3><p class="edu">{W.MOVES[s.id]}</p>')
         if s.id in rp.decision.testimonials:
             tail += W.TESTIMONIAL[s.id]
-        sec_html.append(f'<section id="{s.id}"><div class="unit">{unit}</div>{tail}{BACK}</section>')
+        sec_html.append(f'<section id="{s.id}"><div class="unit{long}">{unit}</div>{tail}{BACK}</section>')
 
     nine = "".join(
         f'<li class="m {r.state}"><div class="mn"><b>{r.name}</b></div>'
@@ -214,7 +238,7 @@ def report_main(rp: Any) -> str:
     if st["outcome"] == "foundation":
         call = (f'<a class="call" href="{rp.book_url}">Book your session</a>' if rp.book_url else '<span class="call">Book your session</span>')
         help_html = (f'<p class="headline">{st["headline"]}</p>{paras}<ol class="steps"><li><div class="st"><b>A Foundation session, online</b>'
-                     f'<span>{W.inr(st["price"])}</span></div><p class="cr">{st["credit"]}</p><ul class="for">'
+                     f'<span><s>{W.inr(st["list_price"])}</s> {W.inr(st["price"])} <em>{st["pct_off"]}% off</em></span></div><p class="cr">{st["credit"]}</p><ul class="for">'
                      + "".join(f"<li><b>{a}.</b> {b}</li>" for a, b in st["steps"]) + f"</ul><p>{call}</p></li></ol>"
                      f'<p class="fresh">{st["fresh"]}</p><h3>And after that</h3><div class="means"><p>{st["after"]}</p></div>')
     else:

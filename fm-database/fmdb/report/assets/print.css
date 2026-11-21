@@ -33,3 +33,6 @@ a.call{font-weight:650} span.call{font-weight:650;text-decoration:underline;text
 /* the one action on the page is a button: square, solid, no underline (her ask, 19 Nov) */
 main .call{display:inline-block;background:#A93860;color:#fff;font-family:var(--sans);font-weight:650;font-size:16px;line-height:1.2;letter-spacing:.01em;padding:12px 24px;text-decoration:none;margin-top:8px}
 p.back{margin-top:16px;font-size:12.5px;color:var(--mute);break-before:avoid}
+
+/* a long results list cannot sit on one page: let it run on (each row still stays whole) */
+.unit.long,ul.ml.long{break-inside:auto} table.ct tr,.cth{break-inside:avoid} .cth{break-after:avoid}

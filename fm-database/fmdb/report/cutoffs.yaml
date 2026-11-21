@@ -33,6 +33,13 @@
 #   phosphorus   strongest level below 1.0 mg/dL (RCPath G158: 0.3 mmol/L)
 #   urea / bun   strongest level from 180 mg/dL of urea, which is 84 mg/dL counted as urea nitrogen (RCPath G158: 30 mmol/L)
 #
+# ADDED 20 Nov 2026 with the extra results (her "All approved" of extra-results-wording-draft.md, decisions D4 and D5):
+#   ige          total IgE never goes above the check-up sentence (cap_at_B): it swings widely with ordinary allergies
+#   rf / anti_ccp / ana   any result above the laboratory's limit gets the check-up sentence, more than three times
+#                the limit the doctor sentence
+# Every other extra result is read on the per-cent rule (fallback_pct), which she had approved already. The lines
+# behind D4 to D6 are from memory, like the first table: a doctor's read is still recommended and NOT recorded as done.
+#
 # Levels (what the report prints):
 #   A  just outside, or middle zone   no doctor wording
 #   B  clearly raised or clearly low  "worth mentioning at your next routine check-up"
@@ -56,6 +63,14 @@ fallback_pct: {A: ">0", B: 15, C: ">50"}
 
 # Never print a doctor line on their own: the level stops at A.
 cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
+
+# Small red cells (MCV below the laboratory's range) with a Mentzer index below this line: the report adds one
+# paragraph saying the pattern can be inherited (her "yes", 20 Nov 2026). The line is from memory (below 13 points to
+# thalassaemia trait, above it to low iron): a doctor's read is recommended and NOT recorded as done.
+mentzer_trait_below: 13
+
+# Never past the check-up sentence: the level stops at B. (added 20 Nov, D4)
+cap_at_B: [ige]
 
 # A result INSIDE the laboratory's own printed range stops at A, whatever the lines below say: the report prints
 # that range beside the result and must not contradict it. (corrected 19 Nov)
@@ -118,3 +133,7 @@ markers:
   mercury:    {high_x: {B: ">1", C: ">2"}}
   arsenic:    {high_x: {B: ">1", C: ">2"}}
   cadmium:    {high_x: {B: ">1", C: ">2"}}
+  # allergy and autoimmune markers (added 20 Nov, D5)
+  rf:         {high_x: {B: ">1", C: ">3"}}
+  anti_ccp:   {high_x: {B: ">1", C: ">3"}}
+  ana:        {high_x: {B: ">1", C: ">3"}}
