@@ -131,3 +131,10 @@ packages print now has a row. Source of every word: `extra-results-wording-draft
   Her pick between the two is open.
 - The two approved samples changed by rows only (VLDL, total protein, globulin, neutrophils, eosinophils, UIBC)
   and are now 18 and 20 pages (were 16 and 19).
+
+## Source check in place of a doctor's read (21 Nov 2026)
+No doctor will put a name to the cut-offs, so every line in `cutoffs.yaml` was looked up in a published guideline and
+marked beside the line: CONFIRMED, CAUTIOUS, STEP (between two guideline lines) or NOT FOUND (still from memory).
+Four changes followed, at her word: low fasting glucose reaches the strongest level below 54 (was 50); the scarring
+score's lower line is 2.0 from age 65 (`fib4_65`, `build_sections(age=)`); a high transferrin saturation is read
+above 45 for women and above 50 for men; a low positive ANA is quiet like total IgE (`quiet_at_B`).

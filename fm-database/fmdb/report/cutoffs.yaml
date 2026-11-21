@@ -68,7 +68,8 @@
 #   hba1c      5.7 and 6.5 CONFIRMED (ADA: prediabetes 5.7-6.4, diabetes from 6.5). 6.0 and 10 STEP.
 #   glucose    100 and 126 CONFIRMED (ADA). 110 STEP. Low side: ADA's line for a clinically important low is below
 #              54; ours are below 60 (doctor) and below 50 (strongest). NOT FOUND in this search; the strongest line
-#              sits 4 points under ADA's. OPEN for her: move it to 54.
+#              sat 4 points under ADA's. CHANGED 21 Nov at her word: the strongest line is now below 54 (confirmed in
+#              ADA's hypoglycaemia classification, Level 2).
 #   ldl / non_hdl   NOT FOUND in this search (the usual 100/130/160/190 table, non-HDL 30 higher).
 #   tg         150, 200, 500 CONFIRMED (ATP III). 1000 CONFIRMED (Endocrine Society 2012: severe, pancreatitis risk).
 #   hdl        40 men / 50 women CONFIRMED. 35 / 45 STEP.
@@ -85,15 +86,15 @@
 #   alt / ast / ggt / alp   multiples of the laboratory's limit: STEP (the ACG 2017 guideline grades rises but the
 #              search did not return its numbers).
 #   fib4       1.3 and 2.67 CONFIRMED. From age 65 the lower line is 2.0, not 1.3 (EASL; McPherson 2017): ours puts
-#              some older buyers in the "middle zone" who would not be. OPEN for her: use 2.0 from 65.
+#              some older buyers in the "middle zone" who would not be. CHANGED 21 Nov at her word: 2.0 from 65.
 #   hb         13 men / 12 women CONFIRMED (WHO, kept in its 2024 guideline). 8.0 and the high lines NOT FOUND.
 #   wbc / platelets   150 and 450 are the usual range; the rest STEP.
 #   vitd       low 12, 20, 30 CONFIRMED (IOM: deficient under 12, enough from 20; Endocrine Society: 20 and 30).
 #              High: possible harm above 100 found; 150 NOT FOUND.
 #   b12        200 pg/mL (148 pmol/L) CONFIRMED as the usual deficiency line; 300 (221 pmol/L) CONFIRMED as the top
 #              of the uncertain band (NICE NG239). 150 STEP.
-#   tsat       high: EASL 2022 uses above 45% for women and above 50% for men; ours is above 50 for both. Low 16
-#              NOT FOUND.
+#   tsat       high: EASL 2022 uses above 45% for women and above 50% for men. CHANGED 21 Nov at her word: split
+#              by sex to match. Low 16 NOT FOUND.
 #   lead       5 CONFIRMED (NIOSH adult reference level, 2015). 10 STEP. 45 is a children's line; for adults the
 #              published lines are 50 with symptoms or 80. Ours speaks sooner. CAUTIOUS.
 #   mercury / arsenic / cadmium, and the per-cent rule   STEP.
@@ -132,6 +133,11 @@ cap_at_A: [insulin, apoa1, homa, tyg, hsi, apob_apoa1, remnant, tg_hdl, nlr]
 # above it to low iron: the published line, see the source check of 21 Nov 2026 above.
 mentzer_trait_below: 13
 
+# A result at the check-up level (B) that is treated like total IgE: its paragraph and the check-up sentence, the
+# section at "watch", no session offer by itself. Far out (C) it counts like any other result. (added 21 Nov: a low
+# positive ANA is common in healthy adults, 31.7% at 1:40 in Tan et al. 1997; this replaces that part of D5)
+quiet_at_B: [ana]
+
 # Never past the check-up sentence: the level stops at B. (added 20 Nov, D4)
 cap_at_B: [ige]
 
@@ -154,7 +160,8 @@ fallback_plus:                                                                  
 markers:
   # sugar
   hba1c:      {high: {A: 5.7, B: 6.0, C: 6.5, D: 10}}
-  glucose:    {high: {A: 100, B: 110, C: 126, D: 250}, low: {C: 60, D: 50}}        # corrected 19 Nov: D 250, was 300
+  # corrected 19 Nov: high D 250, was 300. Changed 21 Nov: low D below 54 (was 50), the ADA's line for a clinically important low
+  glucose:    {high: {A: 100, B: 110, C: 126, D: 250}, low: {C: 60, D: 54}}
   # heart and arteries
   ldl:        {high: {A: 100, B: 130, C: 190}}
   non_hdl:    {high: {A: 130, B: 160, C: 220}}
@@ -181,6 +188,7 @@ markers:
   bilirubin:  {high_x: {A: ">1", B: 1.5, C: ">3"}, high: {D: 5.0}}                      # corrected 19 Nov: D from 5.0 mg/dL
   albumin:    {low: {B: 3.2, C: 3.0}}                                                  # corrected 19 Nov: its own row
   fib4:       {high: {A: 1.3, C: ">2.67"}}
+  fib4_65:    {high: {A: 2.0, C: ">2.67"}}                   # added 21 Nov: from age 65 the lower line is 2.0 (EASL; McPherson 2017)
   # blood count
   # corrected 19 Nov: men C below 13.0 (was B 13.0, C 11.0); the high lines are new
   hb:         {low: {M: {A: 13.5, C: 13.0, D: 8.0}, F: {A: 12.5, B: 12.0, C: 11.0, D: 8.0}},
@@ -190,7 +198,8 @@ markers:
   # deeper report only
   vitd:       {low: {A: 30, B: 20, C: 12}, high: {B: ">100", C: ">150"}}
   b12:        {low: {A: 300, B: 200, C: 150}}
-  tsat:       {low: {B: 16}, high: {B: ">50", C: ">60"}}
+  # changed 21 Nov: the high line is split by sex, above 45 for women and above 50 for men (EASL haemochromatosis guideline 2022)
+  tsat:       {low: {B: 16}, high: {M: {B: ">50", C: ">60"}, F: {B: ">45", C: ">60"}}}
   lead:       {high: {B: 5.0, C: 10, D: 45}}                 # µg/dL
   lead_ug_l:  {high: {B: 50, C: 100, D: 450}}                # fixed 20 Nov: the SAME lines when the laboratory reports µg/L (1 µg/dL = 10 µg/L)
   mercury:    {high_x: {B: ">1", C: ">2"}}
