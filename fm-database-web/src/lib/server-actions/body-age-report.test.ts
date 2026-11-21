@@ -21,7 +21,29 @@ vi.mock("@/app/api/email/actions", () => ({
 }));
 vi.mock("@/lib/fmdb/mail-from", () => ({ clientMailer: () => ({ user: "coach@example.com", pass: "x", from: "Coach <coach@example.com>", personal: true }) }));
 
-import { latestBodyAgeReport, sendBodyAgeReport } from "./body-age-report";
+const calls: string[] = [];
+let shimOutcome = "foundation";
+let stageOk = true;
+vi.mock("@/lib/fmdb/shim", () => ({
+  runShim: async (_s: string, p: { client_id: string; record: boolean }) => {
+    calls.push(`build:${p.record}`);
+    return { ok: true, ready: true, blockers: [], warnings: [], report: { outcome: shimOutcome }, files: { html: `/x/files/body-age/${"BA-S-900-260704"}/report.html` }, recorded: p.record };
+  },
+}));
+vi.mock("./app-token", () => ({
+  ensureClientAppToken: async () => {
+    calls.push("token");
+    return { ok: true, token: "t".repeat(20) };
+  },
+}));
+vi.mock("./foundation-session", () => ({
+  startFoundationSession: async () => {
+    calls.push("stage");
+    return stageOk ? { ok: true } : { ok: false, error: "x" };
+  },
+}));
+
+import { buildBodyAgeReport, latestBodyAgeReport, sendBodyAgeReport } from "./body-age-report";
 import { EMBARGO_UNTIL_MS } from "@/lib/fmdb/body-age-send";
 
 const NO = "BA-S-900-260704";
@@ -49,6 +71,9 @@ beforeEach(() => {
   process.env.FMDB_PLANS_DIR = root;
   outbox.length = 0;
   failNext = false;
+  calls.length = 0;
+  shimOutcome = "foundation";
+  stageOk = true;
 });
 afterEach(() => {
   vi.useRealTimers();
@@ -107,5 +132,37 @@ describe("sending a body age report", () => {
     expect(outbox).toHaveLength(0);
     expect(fs.existsSync(path.join(rep, "sent.json"))).toBe(false);
     expect((await sendBodyAgeReport("cl-900", "../../x")).ok).toBe(false);
+  });
+});
+
+describe("building the report that goes out", () => {
+  it("a look (not saved) touches nothing but the build", async () => {
+    person("cl-300");
+    await buildBodyAgeReport("cl-300", "standard", false);
+    expect(calls).toEqual(["build:false"]);
+  });
+
+  it("saving makes the personal link first, builds, then prepares the pay page, in that order", async () => {
+    person("cl-300");
+    const v = await buildBodyAgeReport("cl-300", "standard", true);
+    expect(calls).toEqual(["token", "build:true", "stage"]);
+    expect(v.ok && v.warnings).toEqual([]);
+  });
+
+  it("no pay page is prepared when the report offers no session, or for someone already in care", async () => {
+    person("cl-300");
+    shimOutcome = "nothing";
+    await buildBodyAgeReport("cl-300", "standard", true);
+    person("cl-301", { engagement_status: "signed_up" });
+    shimOutcome = "foundation";
+    await buildBodyAgeReport("cl-301", "standard", true);
+    expect(calls.filter((c) => c === "stage")).toEqual([]);
+  });
+
+  it("tells the coach when the pay page could not be prepared", async () => {
+    person("cl-300");
+    stageOk = false;
+    const v = await buildBodyAgeReport("cl-300", "standard", true);
+    expect(v.ok && v.warnings.join(" ")).toMatch(/pay page could not be prepared/);
   });
 });

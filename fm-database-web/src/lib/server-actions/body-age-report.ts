@@ -8,7 +8,9 @@
  * its own: it passes the script's answer on. Building never emails anyone; `sendBodyAgeReport` below does, on the coach's click only.
  *
  * `record: true` also writes the report to the person's record (report entry, the 14-day Foundation credit, the
- * segment). Leave it off for a look; turn it on for the one that is actually going out.
+ * segment). Leave it off for a look; turn it on for the one that is actually going out. With it on, this action
+ * also makes sure their personal link exists before the build and, when the report offers the session, puts the
+ * record on the public server afterwards so the pay page shows the price the report quotes.
  */
 
 import fs from "node:fs/promises";
@@ -37,10 +39,28 @@ export async function buildBodyAgeReport(
   if (!/^[\w-]+$/.test(clientId)) return { ok: false, error: "bad client id" };
   if (kind !== "standard" && kind !== "deeper") return { ok: false, error: "kind must be standard or deeper" };
   try {
+    // The report prints the person's own session pay link, which needs their link token. Make sure it exists
+    // before the build that is going out, so the coach never has to "open the pay link, then build again".
+    if (record) {
+      const { ensureClientAppToken } = await import("./app-token");
+      await ensureClientAppToken(clientId).catch(() => null); // a failure shows up as the script's own blocker
+    }
     // Chrome renders the PDF and the email images: allow three minutes.
     const raw = (await runShim("body-age-report.py", { client_id: clientId, kind, record }, 180_000)) as BodyAgeShimResult;
     const view = toBodyAgeView(clientId, kind, raw);
     if (!view.ok) return view;
+    // The pay page is on the public server and reads the 14-day price from the record there. The script has just
+    // written that price's dates, so put the record on the public server now (the same step as the Foundation
+    // pay-link button). Only for someone who has not signed up: a client in care is already there.
+    if (record && view.outcome === "foundation" && !(await hasSignedUp(clientId))) {
+      const { startFoundationSession } = await import("./foundation-session");
+      const staged = await startFoundationSession(clientId).catch(() => ({ ok: false as const }));
+      if (!staged.ok) {
+        view.warnings.push(
+          "Saved, but their session pay page could not be prepared. Open the Foundation pay link on their page once before you send.",
+        );
+      }
+    }
     // A rebuild keeps the report number, so an earlier send of it still shows.
     const last = lastSend(await readJson<unknown>(path.join(reportDir(clientId, view.reportNo), "sent.json")));
     return { ...view, sentAt: last?.sent_at ?? null, sentTo: last?.to ?? null, sentTest: last?.test === true };
@@ -73,6 +93,11 @@ async function recordedReportNos(clientId: string): Promise<{ nos: string[]; ema
     .map((r) => (r && typeof r === "object" ? (r as Record<string, unknown>).report_no : null))
     .filter((n): n is string => typeof n === "string");
   return { nos, email: typeof c?.email === "string" ? c.email : null };
+}
+
+async function hasSignedUp(clientId: string): Promise<boolean> {
+  const c = (await loadClientById(clientId)) as Record<string, unknown> | null;
+  return c?.engagement_status === "signed_up";
 }
 
 async function viewOf(clientId: string, reportNo: string): Promise<BodyAgeView | null> {

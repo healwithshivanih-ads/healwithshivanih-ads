@@ -166,7 +166,7 @@ def main(argv: list[str]) -> int:
 
     blockers = [f"needs wording: {m}" for m in rp.missing]
     if rp.decision.outcome == "foundation" and not book_url:
-        blockers.append("no personal Foundation link yet: open the Foundation pay link on their page, then build again")
+        blockers.append("no personal session link yet: tick 'Save to their record' and build again (that makes the link)")
     if rp.drafts:
         blockers.append(f"{len(rp.drafts)} sentence group(s) are drafts Shivani has not approved (see drafts)")
 

@@ -90,7 +90,7 @@ export function BodyAgeReportCard({ clientId, initial = null }: { clientId: stri
       </div>
       <label style={{ fontSize: 12, display: "flex", gap: 6, alignItems: "center", marginTop: 8, color: "var(--fm-muted, #6f6a5d)" }}>
         <input type="checkbox" checked={record} onChange={(e) => setRecord(e.target.checked)} disabled={busy} />
-        Save to their record. Tick this for the one you will send: it starts the 14-day session credit.
+        Save to their record. Tick this for the one you will send: it starts the 14-day session price and sets up their pay link.
       </label>
 
       {error && (
