@@ -197,7 +197,9 @@ def main(argv: list[str]) -> int:
         except Exception as e:  # noqa: BLE001 - Chrome missing or a render failure: say so, keep the HTML
             blockers.append(f"the PDF could not be made: {e}")
     summary = dict(rp.record(), name=rp.name, subject=mail.SUBJECT, attachment=mail.attachment_name(rp), book_url=book_url,
-                   statuses={s.id: s.status for s in rp.sections}, drafts=rp.drafts, warnings=rp.warnings)
+                   statuses={s.id: s.status for s in rp.sections}, drafts=rp.drafts, warnings=rp.warnings,
+                   # Read back by the coach card's Send button: a report that was not ready when built is never sent.
+                   ready=not blockers, blockers=blockers, pages=pages)
     (out_dir / "report.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False))
     files["json"] = str(out_dir / "report.json")
 
