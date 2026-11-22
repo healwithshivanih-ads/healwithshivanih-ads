@@ -68,10 +68,13 @@ function weekReading(n: number): Pick<CourseTrackDef, "introId" | "reading" | "r
   return { introId: `r${n}`, reading: CALM_GUT_READINGS[n].text, readingTitle: CALM_GUT_READINGS[n].title };
 }
 
+/** The safety line, word for word as on the course pages and in the emails
+ *  (wording approved 22 Nov 2026, after the persona review). */
 const GENERAL_SAFETY =
-  "Listen only when you can safely close your eyes: never while driving, cooking, bathing or caring for a child. " +
+  "Listen only when you can safely close your eyes: never while driving, cooking or bathing, and not while you're " +
+  "the only adult with a child who is awake. Listening while your baby sleeps nearby and you're lying down is fine. " +
   "This does not replace a diagnosis or your medicine. Blood in stools, weight loss without trying, symptoms that " +
-  "wake you at night, or new symptoms after 50 mean seeing a doctor first.";
+  "wake you at night, or new or clearly changed symptoms after 50 mean seeing a doctor first.";
 
 export const CALM_GUT: CourseDef = {
   slug: "calm-gut",
@@ -101,6 +104,8 @@ export const CALM_GUT: CourseDef = {
     },
     { id: "s8", kind: "session", week: 8, title: "Your calm gut, going forward", subtitle: "Session 8 · keeping it", minutes: { music: 24, voice: 24 }, rev: "d1", ...weekReading(8) },
     { id: "daily", kind: "practice", title: "Daily practice", subtitle: "Once a day", minutes: { music: 16, voice: 16 }, rev: "d1", reading: null },
+    // A ~7-minute version for busy days (audio: calm-gut/d1/daily-short-{music,voice}.m4a).
+    { id: "daily-short", kind: "practice", title: "Short daily practice", subtitle: "For a busy day", minutes: { music: 7, voice: 7 }, rev: "d1", reading: null },
     { id: "night", kind: "practice", title: "Night practice", subtitle: "For bed · ends in sleep", minutes: { music: 19, voice: 18 }, rev: "d1", reading: null },
     {
       id: "flare",

@@ -44,6 +44,8 @@ const TRACKS = [
   { id: "daily", rev: "d1", dir: "00-daily-practice", music: "Daily practice (draft 1, with music).m4a", voice: "Daily practice (draft 1).m4a" },
   { id: "night", rev: "d1", dir: "00b-night-practice", music: "Night practice (with music, draft 1).m4a", voice: "Night practice (voice only, draft 1).m4a" },
   { id: "flare", rev: "d2", dir: "09-flare-up", music: "Flare-up (with music, draft 2).m4a", voice: "Flare-up (voice only, draft 2).m4a" },
+  // The short daily practice (~7 min): add its source files here once recorded;
+  // until then it goes up by hand as calm-gut/d1/daily-short-{music,voice}.m4a.
   // The 8 weekly intros (the readings, voiced): voice only.
   ...[1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ id: `r${n}`, rev: "d1", dir: "10-weekly-readings", voice: `Week ${n} reading (draft 1).m4a` })),
 ];

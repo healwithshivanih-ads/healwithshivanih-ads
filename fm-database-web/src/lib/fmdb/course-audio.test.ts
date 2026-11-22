@@ -103,6 +103,8 @@ describe("storage mode", () => {
   });
   it("never signs a key outside the course layout", () => {
     expect(isValidAudioKey("calm-gut/d1/s1-music.m4a")).toBe(true);
+    expect(isValidAudioKey("calm-gut/d1/daily-short-voice.m4a")).toBe(true);
+    expect(isValidAudioKey("calm-gut/d1/../x-voice.m4a")).toBe(false);
     expect(isValidAudioKey("../clients/cl-001/client.yaml")).toBe(false);
     expect(isValidAudioKey("calm-gut/d1/s1-music.mp3")).toBe(false);
     expect(audioLinkFor("../etc/passwd", "gd-1", { env: { COURSE_AUDIO_DIR: "/x", COURSE_AUDIO_SECRET: "z" } })).toBeNull();

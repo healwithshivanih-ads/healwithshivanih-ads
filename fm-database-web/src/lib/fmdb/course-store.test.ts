@@ -39,6 +39,7 @@ afterAll(async () => {
 const store = await import("./course-store");
 const tier = await import("./guided-tier");
 const { POST: enroll } = await import("@/app/api/guided-enroll/route");
+const { POST: deactivate } = await import("@/app/api/guided-enroll/deactivate/route");
 const { POST: course } = await import("@/app/api/app-course/route");
 const { GET: stream } = await import("@/app/api/app-course/stream/[ticket]/route");
 const { loadClientAppData } = await import("./client-app");
@@ -201,7 +202,7 @@ describe("the app payload for a course-only buyer", () => {
     expect(data!.course?.week).toBe(1);
     expect(data!.course?.currentSessionId).toBe("s1");
     const open = data!.course!.tracks.filter((t) => t.unlocked).map((t) => t.id);
-    expect(open).toEqual(["s1", "daily", "night", "flare", "r1"]);
+    expect(open).toEqual(["s1", "daily", "daily-short", "night", "flare", "r1"]);
     expect(data!.course!.tracks.find((t) => t.id === "s2")!.unlocksLabel).toMatch(/^Opens /);
     expect(data!.course!.scoreDue).toBe(0);
     // No coach access, no plan surfaces.
@@ -354,5 +355,50 @@ describe("store helpers", () => {
     expect(store.acceptLogDate("2026-12-02", "2026-12-08")).toBe("2026-12-02");
     expect(store.acceptLogDate("2026-12-01", "2026-12-08")).toBe("2026-12-08");
     expect(store.acceptLogDate("2026-12-10", "2026-12-08")).toBe("2026-12-08");
+  });
+});
+
+describe("refund: POST /api/guided-enroll/deactivate", () => {
+  function deReq(body: Record<string, unknown>, secret = "enroll-secret") {
+    return new Request("https://app.example.test/api/guided-enroll/deactivate", {
+      method: "POST",
+      headers: { "x-guided-secret": secret },
+      body: JSON.stringify(body),
+    }) as AnyReq;
+  }
+  async function newBuyer(payment_id: string, email: string) {
+    const r = await enroll(enrollReq({ ...CONTRACT, payment_id, email, started_on: todayIst() }));
+    return ((await r.json()) as Record<string, unknown>).token as string;
+  }
+
+  it("refuses without the secret, and without a key", async () => {
+    expect((await deactivate(deReq({ payment_id: "pay_X" }, "wrong"))).status).toBe(401);
+    expect((await deactivate(deReq({}))).status).toBe(400);
+    expect((await deactivate(deReq({ payment_id: "pay_nobody" }))).status).toBe(404);
+  });
+
+  it("switches a buyer off by payment id: the app closes, the course API refuses, a repeat is harmless", async () => {
+    const t = await newBuyer("pay_REFUND1", "refund1@example.com");
+    expect(await loadClientAppData(t)).not.toBeNull();
+    const r = await deactivate(deReq({ payment_id: "pay_REFUND1", reason: "7-day refund" }));
+    const j = (await r.json()) as Record<string, unknown>;
+    expect(r.status).toBe(200);
+    expect(j.turned_off).toBe(1);
+    expect(await loadClientAppData(t)).toBeNull();
+    expect((await tier.resolveGuidedSubscriberByToken(t))?.status).toBe("refunded");
+    expect((await call({ token: t, action: "history" })).status).toBe(401);
+    const again = (await (await deactivate(deReq({ payment_id: "pay_REFUND1" }))).json()) as Record<string, unknown>;
+    expect(again.turned_off).toBe(0);
+  });
+
+  it("works with a gift key, and by email (active course records only)", async () => {
+    const g = await enroll(enrollReq({ ...CONTRACT, payment_id: "gift-refund-0000-1111", email: "gift.r@example.com", amount_paise: 0, reason: "gift" }));
+    const gt = ((await g.json()) as Record<string, unknown>).token as string;
+    expect((await deactivate(deReq({ gift_key: "gift-refund-0000-1111" }))).status).toBe(200);
+    expect(await loadClientAppData(gt)).toBeNull();
+    const t = await newBuyer("pay_REFUND2", "Refund2@Example.com");
+    const r = (await (await deactivate(deReq({ email: "refund2@example.com" }))).json()) as Record<string, unknown>;
+    expect(r.turned_off).toBe(1);
+    expect(await loadClientAppData(t)).toBeNull();
   });
 });

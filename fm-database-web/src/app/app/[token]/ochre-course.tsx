@@ -6,7 +6,7 @@
  * For a course-only buyer this IS the app: Today (flare-up tile, this week's
  * session, the daily and night practice, the 30-second log), Sessions (all
  * eight, one opening a week), Progress (bloating + the 5-question score, the
- * listening streak) and Help (reminders, safety, support). Written to sit
+ * days listened, never a streak) and Help (reminders, safety, support). Written to sit
  * inside the full app too, for programme clients later (course.only false).
  *
  * Rules carried from the launch plan: safety text on every track's screen;
@@ -275,27 +275,53 @@ export function CourseNowPlaying({ onOpen }: { onOpen: (id: string) => void }) {
 
 // ── Today ────────────────────────────────────────────────────────────────────
 
+/** Days with a listen in the current course week, and in all. No streaks:
+ *  a missed day never shows as something broken (persona review, 22 Nov). */
+export function listenedCounts(days: Record<string, CourseDayLog>, startYmd: string, week: number, today: string) {
+  const weekStart = new Date(Date.parse(`${startYmd}T00:00:00Z`) + 7 * Math.max(0, week - 1) * 86_400_000)
+    .toISOString()
+    .slice(0, 10);
+  let thisWeek = 0;
+  let total = 0;
+  for (const [k, d] of Object.entries(days)) {
+    if (!d.listened) continue;
+    total++;
+    if (k >= weekStart && k <= today) thisWeek++;
+  }
+  return { thisWeek, total };
+}
+
+/** The earliest open session not heard yet, if it is behind this week's. */
+export function catchUpSession(course: AppCourse, listened: Set<string>): AppCourseTrack | null {
+  const open = course.tracks.filter((t) => t.kind === "session" && t.unlocked);
+  const behind = open.find((t) => !listened.has(t.id) && t.id !== course.currentSessionId);
+  return behind ?? null;
+}
+
 export function CourseTodayScreen({
   openPlayer,
   openLog,
   openScore,
-  goTab,
 }: {
   openPlayer: (id: string) => void;
   openLog: () => void;
   openScore: () => void;
-  goTab: (t: string) => void;
+  goTab?: (t: string) => void;
 }) {
-  const { course, days, today, streak, scoreDue, listened } = useCourse();
+  const { course, days, today, scoreDue, listened } = useCourse();
   const flare = course.tracks.find((t) => t.kind === "flare");
   const current = course.tracks.find((t) => t.id === course.currentSessionId);
+  // Behind? Show the one to catch up on, not two new things at once.
+  const catchUp = catchUpSession(course, listened);
+  const session = catchUp ?? current;
   const daily = course.tracks.find((t) => t.id === "daily");
-  const night = course.tracks.find((t) => t.id === "night");
+  const short = course.tracks.find((t) => t.id === "daily-short");
   const todayLog = days[today];
   const logged = !!todayLog && (todayLog.bloating !== undefined || todayLog.meals !== undefined || todayLog.stress !== undefined);
   const nextLocked = course.tracks.find((t) => t.kind === "session" && !t.unlocked);
   const title = course.ownerFirstName ? `${course.ownerFirstName}'s ${course.title}` : course.title;
-  const listenedToday = !!todayLog?.listened;
+  const counts = listenedCounts(days, course.startedOn, course.week, today);
+  const intro = session?.introId ? course.tracks.find((t) => t.id === session.introId) : null;
 
   return (
     <div className="cg-screen">
@@ -307,8 +333,31 @@ export function CourseTodayScreen({
       </p>
 
       <div className="cg-list">
-        {flare && (
-          <Row dot="fire" label="Having a bad moment?" title="Flare-up, 4 minutes" meta="Play it now, wherever you can close your eyes" onClick={() => openPlayer(flare.id)} />
+        {session && (
+          <div className="cg-it cg-it-card">
+            <button className="cg-it-main" onClick={() => openPlayer(session.id)}>
+              <span className="cg-dot grow" aria-hidden />
+              <span className="cg-it-body">
+                <span className="cg-k">{catchUp ? "Catch up" : "This week"}</span>
+                <span className="cg-t">{catchUp ? `Catch up: ${session.title}` : session.title}</span>
+                <span className="cg-m">
+                  {catchUp && current
+                    ? `Week ${session.week} session, ${session.minutes.music} minutes. This week's, ${current.title}, is there when you're ready.`
+                    : `Session ${session.week}, ${session.minutes.music} minutes${!session.listened && session.introId ? ". Starts with a 2-minute intro the first time." : ""}`}
+                </span>
+              </span>
+              <span className="cg-go" aria-hidden>
+                ›
+              </span>
+            </button>
+            {intro && (
+              <div className="cg-it-links">
+                <button className="cg-link-btn" onClick={() => openPlayer(intro.id)}>
+                  This week&apos;s reading: {session.readingTitle}, to hear or read
+                </button>
+              </div>
+            )}
+          </div>
         )}
         {scoreDue !== null && (
           <Row
@@ -319,40 +368,49 @@ export function CourseTodayScreen({
             onClick={openScore}
           />
         )}
-        {current && (
-          <Row
-            dot="grow"
-            label="This week"
-            title={current.title}
-            meta={`Session ${current.week}, ${current.minutes.music} minutes${!current.listened && current.introId ? ". Starts with a 2-minute intro the first time." : ""}`}
-            onClick={() => openPlayer(current.id)}
-            done={listened.has(current.id) && listenedToday}
-          />
+        {flare && (
+          <Row dot="fire" label="Having a bad moment?" title="Flare-up, 4 minutes" meta="Play it now, wherever you can close your eyes" onClick={() => openPlayer(flare.id)} />
         )}
-        {current?.introId && current.readingTitle && (
-          <Row dot="grey" label="This week's reading" title={current.readingTitle} meta="Read it, or hear it in 2 minutes" onClick={() => openPlayer(current.introId!)} />
+        {daily && (
+          <div className="cg-it cg-it-card">
+            <button className="cg-it-main" onClick={() => openPlayer(daily.id)}>
+              <span className="cg-dot grow" aria-hidden />
+              <span className="cg-it-body">
+                <span className="cg-k">Every day</span>
+                <span className="cg-t">{daily.title}</span>
+                <span className="cg-m">{daily.minutes.music} minutes</span>
+              </span>
+              <span className="cg-go" aria-hidden>
+                ›
+              </span>
+            </button>
+            {short && (
+              <div className="cg-it-links">
+                <button className="cg-link-btn" onClick={() => openPlayer(short.id)}>
+                  Short daily practice · {short.minutes.music} min
+                </button>
+              </div>
+            )}
+          </div>
         )}
-        {daily && <Row dot="grow" label="Every day" title={daily.title} meta={`${daily.minutes.music} minutes`} onClick={() => openPlayer(daily.id)} />}
-        {night && <Row dot="grey" label="At bedtime" title={night.title} meta={`${night.minutes.music} minutes, ends in sleep`} onClick={() => openPlayer(night.id)} />}
         <Row
           dot="grey"
           label="Today"
           title="30-second log"
           meta={
             logged
-              ? `Bloating ${todayLog?.bloating ?? "–"}, stress ${todayLog?.stress ?? "–"}${listenedToday ? ", listened" : ""}. Tap to change.`
+              ? `Bloating ${todayLog?.bloating ?? "–"}, stress ${todayLog?.stress ?? "–"}${todayLog?.listened ? ", listened" : ""}. Tap to change.`
               : "Bloating, meals, bowel, stress and sleep"
           }
           onClick={openLog}
         />
       </div>
 
-      <button className="cg-note-line" onClick={() => goTab("progress")}>
-        {streak === 0
-          ? "No listening streak yet. Today can be day one."
-          : `${streak} ${streak === 1 ? "day" : "days"} in a row with a listen.`}{" "}
-        <span className="cg-link">See your progress</span>
-      </button>
+      <p className="cg-note-line">
+        {counts.thisWeek === 0
+          ? "No listening yet this week. The short practice takes 7 minutes."
+          : `You listened on ${counts.thisWeek} ${counts.thisWeek === 1 ? "day" : "days"} this week.`}
+      </p>
     </div>
   );
 }
@@ -470,30 +528,36 @@ function BloatingChart() {
         {pts.map((p) => (
           <circle key={p.d.week} cx={p.x} cy={p.y} r="3.5" fill="#FFFDFA" stroke="#557A43" strokeWidth="2" />
         ))}
+        <text x={W - padR} y={y(10) + 12} textAnchor="end" fontSize="10" fill="#6B655F">
+          more bloating ↑
+        </text>
+        <text x={W - padR} y={y(0) - 5} textAnchor="end" fontSize="10" fill="#6B655F">
+          less bloating ↓
+        </text>
         {data.map((d) => (
           <text key={d.week} x={x(d.week)} y={H - 6} textAnchor="middle" fontSize="10" fill="#6B655F">
             {d.week}
           </text>
         ))}
       </svg>
-      <p className="cg-m" style={{ margin: 0 }}>Average for each week, 0 to 10. A line going down means less bloating.</p>
+      <p className="cg-m" style={{ margin: 0 }}>Your average for each week, 0 to 10. Lower on the chart means less bloating.</p>
     </>
   );
 }
 
 export function CourseProgressScreen({ openScore }: { openScore: () => void }) {
-  const { course, days, streak, listened, scoreDue, scores } = useCourse();
+  const { course, days, today, listened, scoreDue, scores } = useCourse();
   const sessionsTotal = course.tracks.filter((t) => t.kind === "session").length;
   const sessionsHeard = course.tracks.filter((t) => t.kind === "session" && listened.has(t.id)).length;
-  const daysListened = Object.values(days).filter((d) => d.listened).length;
+  const counts = listenedCounts(days, course.startedOn, course.week, today);
   return (
     <div className="cg-screen">
       <h1 className="cg-h1">Your progress</h1>
       <p className="cg-sub">Only you see this.</p>
       <div className="cg-card">
         <div className="cg-lines">
-          <div className="cg-line"><span>Days in a row with a listen</span><b>{streak}</b></div>
-          <div className="cg-line"><span>Days you listened</span><b>{daysListened}</b></div>
+          <div className="cg-line"><span>Days you listened this week</span><b>{counts.thisWeek}</b></div>
+          <div className="cg-line"><span>Days you listened in total</span><b>{counts.total}</b></div>
           <div className="cg-line"><span>Sessions heard</span><b>{sessionsHeard} of {sessionsTotal}</b></div>
         </div>
       </div>
@@ -512,7 +576,7 @@ export function CourseProgressScreen({ openScore }: { openScore: () => void }) {
                 <b className="cg-bar-val">{s.total}</b>
               </div>
             ))}
-            <p className="cg-m" style={{ margin: 0 }}>Out of 50. Lower means your gut is bothering you less.</p>
+            <p className="cg-m" style={{ margin: 0 }}>Out of 50. A shorter bar means your gut is bothering you less.</p>
           </>
         ) : (
           <p className="cg-m" style={{ margin: 0 }}>Your scores show here once you&apos;ve done the first check.</p>
@@ -668,6 +732,23 @@ export function CoursePlayerOverlay({
   const [progress, setProgress] = useState(0);
   const [offlineErr, setOfflineErr] = useState("");
   const [showReading, setShowReading] = useState(false);
+  // The safety text shows in full the first time each track is opened on this
+  // phone, then folds to one line (persona review, 22 Nov: Play comes first).
+  const safetyKey = `ochre.course.safety.${course.slug}.${trackId}`;
+  const [safetyOpen, setSafetyOpen] = useState<boolean>(() => {
+    try {
+      return !localStorage.getItem(safetyKey);
+    } catch {
+      return true;
+    }
+  });
+  useEffect(() => {
+    try {
+      localStorage.setItem(safetyKey, new Date().toISOString());
+    } catch {
+      /* private mode: it simply shows in full each time */
+    }
+  }, [safetyKey]);
   const pt = t ? toPlayerTrack(course, t) : null;
   const isThis = !!pt && p.track?.id === pt.id;
   // This session's intro is playing ahead of it.
@@ -757,23 +838,6 @@ export function CoursePlayerOverlay({
           {t.kind === "intro" ? `${t.readingTitle}, read aloud. ${minutes} minutes.` : `${capitalise(t.subtitle.replace(/^Session \d+ · /, ""))}. ${minutes} minutes.`}
         </p>
 
-        <div className="cg-card cg-safety" role="note">
-          <h2 className="cg-h2">Before you listen</h2>
-          <p className="cg-p">{course.safety}</p>
-          {t.safetyExtra && <p className="cg-p"><b>{t.safetyExtra}</b></p>}
-        </div>
-
-        {introPlaying && introTrack && (
-          <div className="cg-card cg-intro-now" role="status">
-            <p className="cg-p">
-              <b>The week {t.week} intro is playing first:</b> {introTrack.readingTitle}. The session follows straight after.
-            </p>
-            <button className="cg-btn ghost" onClick={() => void skipIntro()}>
-              Skip intro
-            </button>
-          </div>
-        )}
-
         <div className="cg-transport">
           <input
             type="range"
@@ -791,19 +855,30 @@ export function CoursePlayerOverlay({
           </div>
           <div className="cg-buttons">
             <button className="cg-skip" onClick={() => skip(-15)} disabled={!live} aria-label="Back 15 seconds">
-              −15 s
+              Back 15 s
             </button>
             <button className="cg-play" onClick={() => (live && p.playing ? pause() : start())} aria-label={live && p.playing ? "Pause" : "Play"}>
               {live && p.loading ? <span className="spinner" /> : live && p.playing ? <PauseGlyph size={28} /> : <PlayGlyph size={28} />}
             </button>
             <button className="cg-skip" onClick={() => skip(15)} disabled={!live} aria-label="Forward 15 seconds">
-              +15 s
+              Forward 15 s
             </button>
           </div>
           {!live && resumeAt > 30 && <p className="cg-m cg-center">Picks up at {fmtTime(Math.max(0, resumeAt - 5))}</p>}
           {live && p.error && <p className="cg-error">{p.error}</p>}
           {isThis && p.counted && <p className="cg-m cg-center">Counted as listened today</p>}
         </div>
+
+        {introPlaying && introTrack && (
+          <div className="cg-card cg-intro-now" role="status">
+            <p className="cg-p">
+              <b>The week {t.week} intro is playing first:</b> {introTrack.readingTitle}. The session follows straight after.
+            </p>
+            <button className="cg-btn ghost" onClick={() => void skipIntro()}>
+              Skip intro
+            </button>
+          </div>
+        )}
 
         <div className="cg-card">
           {!t.voiceOnly && (
@@ -817,6 +892,7 @@ export function CoursePlayerOverlay({
               onChange={switchVersion}
             />
           )}
+          {!t.voiceOnly && version === "music" && <p className="cg-m cg-hint">Prefer only the voice? Switch to Voice only.</p>}
           <Seg label="Speed" value={rate} options={PLAYBACK_RATES.map((r) => ({ v: r as number, l: `${r}×` }))} onChange={changeRate} />
           {offlineSupported() && (
             <div className="cg-seg-row">
@@ -856,8 +932,25 @@ export function CoursePlayerOverlay({
               )}
             </div>
           )}
+          {offlineSupported() && offline !== "yes" && <p className="cg-m cg-hint">Plays without internet, e.g. on a flight.</p>}
           {offlineErr && <p className="cg-error">{offlineErr}</p>}
         </div>
+
+        {safetyOpen ? (
+          <div className="cg-card cg-safety" role="note">
+            <h2 className="cg-h2">Before you listen</h2>
+            <p className="cg-p">{course.safety}</p>
+            {t.safetyExtra && (
+              <p className="cg-p">
+                <b>{t.safetyExtra}</b>
+              </p>
+            )}
+          </div>
+        ) : (
+          <button className="cg-safety-line" onClick={() => setSafetyOpen(true)} aria-expanded={false}>
+            Safety: read before listening ▸
+          </button>
+        )}
 
         {t.kind === "intro" && t.reading && <ReadingText title={t.readingTitle} text={t.reading} />}
         {t.kind !== "intro" && introTrack && t.reading && (
@@ -889,14 +982,33 @@ export function CoursePlayerOverlay({
 
 // ── Daily log ────────────────────────────────────────────────────────────────
 
-function Scale({ value, onChange, label }: { value: number | undefined; onChange: (v: number) => void; label: string }) {
+/** A 0–10 picker with its two ends named, so nobody has to guess which way is good. */
+function Scale({
+  value,
+  onChange,
+  label,
+  low,
+  high,
+}: {
+  value: number | undefined;
+  onChange: (v: number) => void;
+  label: string;
+  low: string;
+  high: string;
+}) {
   return (
-    <div className="cg-scale" role="radiogroup" aria-label={label}>
-      {Array.from({ length: 11 }, (_, i) => (
-        <button key={i} role="radio" aria-checked={value === i} className={value === i ? "on" : ""} onClick={() => onChange(i)}>
-          {i}
-        </button>
-      ))}
+    <div>
+      <div className="cg-scale" role="radiogroup" aria-label={`${label}, 0 ${low}, 10 ${high}`}>
+        {Array.from({ length: 11 }, (_, i) => (
+          <button key={i} role="radio" aria-checked={value === i} className={value === i ? "on" : ""} onClick={() => onChange(i)}>
+            {i}
+          </button>
+        ))}
+      </div>
+      <div className="cg-scale-ends" aria-hidden>
+        <span>0 {low}</span>
+        <span>10 {high}</span>
+      </div>
     </div>
   );
 }
@@ -923,27 +1035,56 @@ function Choice<T extends string>({
   );
 }
 
+/** A half-filled log survives the app being closed (a baby wakes up) and
+ *  comes back the next time the log opens that day. */
+function draftKey(slug: string, day: string) {
+  return `ochre.course.logdraft.${slug}.${day}`;
+}
+function readDraft(slug: string, day: string): { log: CourseDayLog; listenTouched: boolean } | null {
+  try {
+    const raw = localStorage.getItem(draftKey(slug, day));
+    return raw ? (JSON.parse(raw) as { log: CourseDayLog; listenTouched: boolean }) : null;
+  } catch {
+    return null;
+  }
+}
+
 export function CourseLogOverlay({ onClose }: { onClose: () => void }) {
-  const { days, today, saveLog } = useCourse();
-  const [log, setLog] = useState<CourseDayLog>(() => ({ ...(days[today] ?? {}) }));
+  const { course, days, today, saveLog } = useCourse();
+  const [draft] = useState(() => readDraft(course.slug, today));
+  const [log, setLog] = useState<CourseDayLog>(() => ({ ...(days[today] ?? {}), ...(draft?.log ?? {}) }));
   // "I listened today" is ticked by the player too; send it only when the
   // listener changed it here, so a tick landing while this form is open
   // is not overwritten by the form's older copy.
-  const [listenTouched, setListenTouched] = useState(false);
+  const [listenTouched, setListenTouched] = useState(draft?.listenTouched ?? false);
+  const [dirty, setDirty] = useState(false);
+  useEffect(() => {
+    if (!dirty) return;
+    try {
+      localStorage.setItem(draftKey(course.slug, today), JSON.stringify({ log, listenTouched }));
+    } catch {
+      /* private mode: no draft, the form still works */
+    }
+  }, [dirty, log, listenTouched, course.slug, today]);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
-  const set = (patch: CourseDayLog) => setLog((l) => ({ ...l, ...patch }));
+  const set = (patch: CourseDayLog) => {
+    setDirty(true);
+    setLog((l) => ({ ...l, ...patch }));
+  };
   return (
     <div className="overlay-scroll cg-overlay">
       <button className="cg-back" onClick={onClose}>‹ Back</button>
       <div className="cg-screen">
         <p className="cg-date">{longDate()}</p>
         <h1 className="cg-h1">How was your gut today?</h1>
-        <p className="cg-sub">About 30 seconds. Skip anything you&apos;re not sure of.</p>
+        <p className="cg-sub">
+          {draft ? "Carrying on where you left off. " : "About 30 seconds. "}Skip anything you&apos;re not sure of.
+        </p>
 
         <div className="cg-card">
-          <p className="cg-q">Bloating <span className="cg-m">0 none, 10 the worst</span></p>
-          <Scale label="Bloating" value={log.bloating} onChange={(v) => set({ bloating: v })} />
+          <p className="cg-q">Bloating</p>
+          <Scale label="Bloating" low="none" high="worst" value={log.bloating} onChange={(v) => set({ bloating: v })} />
 
           <p className="cg-q">Comfort after meals</p>
           <Choice
@@ -970,8 +1111,8 @@ export function CourseLogOverlay({ onClose }: { onClose: () => void }) {
             ]}
           />
 
-          <p className="cg-q">Stress <span className="cg-m">0 calm, 10 very stressed</span></p>
-          <Scale label="Stress" value={log.stress} onChange={(v) => set({ stress: v })} />
+          <p className="cg-q">Stress</p>
+          <Scale label="Stress" low="calm" high="very stressed" value={log.stress} onChange={(v) => set({ stress: v })} />
 
           <p className="cg-q">Sleep last night</p>
           <Choice
@@ -1019,7 +1160,14 @@ export function CourseLogOverlay({ onClose }: { onClose: () => void }) {
             const { listened, ...rest } = log;
             const ok = await saveLog(today, listenTouched ? { ...rest, listened: !!listened } : rest);
             setBusy(false);
-            if (ok) onClose();
+            if (ok) {
+              try {
+                localStorage.removeItem(draftKey(course.slug, today));
+              } catch {
+                /* nothing to clear */
+              }
+              onClose();
+            }
             else setErr("Saved on this phone, but it didn't reach the server. It will try again next time you save.");
           }}
         >
@@ -1063,12 +1211,12 @@ export function CourseScoreOverlay({ onClose }: { onClose: () => void }) {
       <div className="cg-screen">
         <p className="cg-date">{scoreDue === 4 ? "Halfway check" : scoreDue === 8 ? "End-of-course check" : "Symptom check"}</p>
         <h1 className="cg-h1">Over the past 7 days</h1>
-        <p className="cg-sub">0 means not at all, 10 as bad as it gets.</p>
+        <p className="cg-sub">Same five questions each time, so you can see what changes.</p>
         <div className="cg-card">
           {COURSE_SCORE_QUESTIONS.map((q) => (
             <div key={q.id}>
               <p className="cg-q">{q.label}</p>
-              <Scale label={q.label} value={answers[q.id]} onChange={(v) => setAnswers((a) => ({ ...a, [q.id]: v }))} />
+              <Scale label={q.label} low="not at all" high="worst" value={answers[q.id]} onChange={(v) => setAnswers((a) => ({ ...a, [q.id]: v }))} />
             </div>
           ))}
         </div>

@@ -22,6 +22,8 @@ import {
   touchCourseDevice,
 } from "@/lib/fmdb/course-devices";
 import { CourseDeviceGate } from "./course-device-gate";
+import { CourseEndedScreen } from "./course-ended";
+import { resolveGuidedSubscriberByToken } from "@/lib/fmdb/guided-tier";
 
 export const dynamic = "force-dynamic";
 
@@ -60,7 +62,12 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 export default async function ClientAppPage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
   const data = await loadOnce(token);
-  if (!data) return <OchreAppError />;
+  if (!data) {
+    // A course switched off after a refund: say so plainly, not "link broken".
+    const sub = await resolveGuidedSubscriberByToken(token).catch(() => null);
+    if (sub && sub.product === "course" && sub.status === "refunded") return <CourseEndedScreen />;
+    return <OchreAppError />;
+  }
   // A course buyer's link works on two phones (course-devices.ts). Any other
   // device gets the gate: register while a slot is free, else a code emailed
   // to the buyer. Programme clients never reach this.

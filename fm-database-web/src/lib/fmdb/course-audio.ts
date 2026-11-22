@@ -47,7 +47,8 @@ export function courseAudioMode(env: Env = process.env): CourseAudioMode {
 }
 
 /** Object keys we will ever sign or serve: `calm-gut/d1/s3-music.m4a`. */
-const KEY_RE = /^[a-z0-9-]{1,40}\/[a-z0-9]{1,12}\/[a-z0-9]{1,12}-(music|voice)\.m4a$/;
+// Track ids may hold a hyphen (daily-short); never a slash or a dot, so no path can escape.
+const KEY_RE = /^[a-z0-9-]{1,40}\/[a-z0-9]{1,12}\/[a-z0-9][a-z0-9-]{0,24}-(music|voice)\.m4a$/;
 export function isValidAudioKey(key: string): boolean {
   return KEY_RE.test(key);
 }

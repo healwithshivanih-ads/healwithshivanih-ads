@@ -321,6 +321,40 @@ export async function findActiveGuidedByEmail(email: string): Promise<GuidedSubs
   return null;
 }
 
+/** Course buyers to switch off for a refund: by payment id / gift key, or by
+ *  email (every ACTIVE course record on that address). Guided-protocol
+ *  subscribers are never matched here. */
+export async function findCourseSubscribersForRefund(q: {
+  payment_id?: string;
+  email?: string;
+}): Promise<GuidedSubscriber[]> {
+  const pid = (q.payment_id || "").trim();
+  const email = (q.email || "").trim().toLowerCase();
+  if (!pid && !email) return [];
+  const out: GuidedSubscriber[] = [];
+  for (const s of await listGuidedSubscribers()) {
+    if (s.product !== "course") continue;
+    if (pid ? s.payment_id === pid : s.email === email && s.status === "active") out.push(s);
+  }
+  return out;
+}
+
+/** Switch a course buyer off (refunded). The token stops resolving, the
+ *  course API refuses it, the reminder cron skips it. Returns false when it
+ *  was already off. */
+export async function markGuidedRefunded(subscriberId: string, now: Date = new Date()): Promise<boolean> {
+  const f = subscriberFile(subscriberId);
+  const d = await readYamlFile(f);
+  if (!d) throw new Error(`guided subscriber not found: ${subscriberId}`);
+  if (d.status === "refunded") return false;
+  d.status = "refunded";
+  d.refunded_at = now.toISOString();
+  d.updated_at = now.toISOString();
+  d.version = (typeof d.version === "number" ? d.version : 1) + 1;
+  await withFsRetry(() => fs.writeFile(f, dumpYaml(d), "utf8"));
+  return true;
+}
+
 /** Mark a subscriber upgraded to a client. Their token now lives on the
  *  client record (client resolution runs first), and the guided branch stops
  *  resolving it (status filter) — one identity, no seam. */

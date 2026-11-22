@@ -12,6 +12,10 @@ import { OchreContext } from "./ochre-context";
 import { Header, BottomNav } from "./ochre-ui";
 import { CourseDeviceGate } from "./course-device-gate";
 import {
+  catchUpSession,
+  listenedCounts,
+  CourseLogOverlay,
+  CourseScoreOverlay,
   CourseProvider,
   CourseTodayScreen,
   CourseSessionsScreen,
@@ -41,7 +45,7 @@ describe("Today for a course buyer", () => {
     expect(html).toContain("Having a bad moment?");
     expect(html).toContain("Calm belly");
     expect(html).toContain("Daily practice");
-    expect(html).toContain("Night practice");
+    expect(html).toContain("Short daily practice · 7 min");
     expect(html).toContain("Week 1 of 8");
     // Week-0 symptom check is offered on day 0 (the welcome email promises it).
     expect(html).toContain("Symptom check");
@@ -79,7 +83,7 @@ describe("the weekly reading and intro", () => {
   it("Today offers this week's reading (opens its voiced intro, with the text)", () => {
     const html = wrap(course("2026-12-15T06:00:00Z"), <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
     expect(html).toContain("This week&#x27;s reading");
-    expect(html).toContain("Read it, or hear it in 2 minutes");
+    expect(html).toContain("to hear or read");
   });
   it("an intro's player has no music / voice switch and shows the reading open", () => {
     const html = wrap(course("2026-12-15T06:00:00Z"), <CoursePlayerOverlay trackId="r2" onClose={noop} />);
@@ -108,7 +112,7 @@ describe("the player", () => {
   it("shows the safety text on every track, and session 7's extra line", () => {
     const c = course("2027-01-20T06:00:00Z"); // day 43: s7 open
     const s1 = wrap(c, <CoursePlayerOverlay trackId="s1" onClose={noop} />);
-    expect(s1).toContain("never while driving, cooking, bathing or caring for a child");
+    expect(s1).toContain("not while you&#x27;re the only adult with a child who is awake");
     expect(s1).toContain("With music");
     expect(s1).toContain("Voice only");
     const s7 = wrap(c, <CoursePlayerOverlay trackId="s7" onClose={noop} />);
@@ -138,6 +142,66 @@ describe("progress", () => {
   it("renders with no data yet", () => {
     const html = wrap(course("2026-12-08T06:00:00Z"), <CourseProgressScreen openScore={noop} />);
     expect(html).toContain("Log bloating for a few days");
+  });
+});
+
+describe("persona-review fixes (22 Nov)", () => {
+  it("Today's order: this week's session, then flare-up, then the daily practice, then the log; check only when due", () => {
+    const c = course("2026-12-15T06:00:00Z");
+    c.scoreDue = null;
+    const html = wrap(c, <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    const at = (t: string) => html.indexOf(t);
+    expect(at("Turning down the volume")).toBeGreaterThan(-1);
+    expect(at("Turning down the volume")).toBeLessThan(at("Flare-up, 4 minutes"));
+    expect(at("Flare-up, 4 minutes")).toBeLessThan(at("Daily practice"));
+    expect(at("Daily practice")).toBeLessThan(at("30-second log"));
+    expect(html).not.toContain("Symptom check");
+    expect(html).not.toContain("Night practice"); // trimmed from Today; still under Sessions
+  });
+
+  it("someone behind sees one thing to catch up on, not two new sessions", () => {
+    const c = course("2026-12-23T06:00:00Z"); // week 3, nothing heard
+    expect(catchUpSession(c, new Set())?.id).toBe("s1");
+    expect(catchUpSession(c, new Set(["s1", "s2"]))).toBeNull();
+    const html = wrap(c, <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    expect(html).toContain("Catch up: Calm belly");
+    expect(html).toContain("This week&#x27;s, The river, is there when you&#x27;re ready");
+  });
+
+  it("no streak: days listened this week and in total", () => {
+    const days = { "2026-12-08": { listened: true }, "2026-12-15": { listened: true }, "2026-12-16": { listened: true }, "2026-12-17": {} };
+    expect(listenedCounts(days, "2026-12-08", 2, "2026-12-17")).toEqual({ thisWeek: 2, total: 3 });
+    const html = wrap(course("2026-12-15T06:00:00Z"), <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    expect(html).not.toMatch(/in a row/);
+    expect(html).toContain("No listening yet this week");
+  });
+
+  it("the bloating chart: less bloating sits lower, and the axis says so in words", () => {
+    const c = course("2026-12-22T06:00:00Z");
+    c.history.days = { "2026-12-08": { bloating: 8 }, "2026-12-15": { bloating: 2 } };
+    const html = wrap(c, <CourseProgressScreen openScore={noop} />);
+    const cys = [...html.matchAll(/<circle cx="[\d.]+" cy="([\d.]+)"/g)].map((m) => Number(m[1]));
+    expect(cys).toHaveLength(2);
+    expect(cys[1]).toBeGreaterThan(cys[0]); // week 2 (2/10) is drawn lower than week 1 (8/10)
+    expect(html).toContain("less bloating ↓");
+    expect(html).toContain("more bloating ↑");
+  });
+
+  it("the player: Play comes before the safety text; plain labels and hints", () => {
+    const html = wrap(course("2026-12-08T06:00:00Z"), <CoursePlayerOverlay trackId="s1" onClose={noop} />);
+    expect(html.indexOf('aria-label="Play"')).toBeLessThan(html.indexOf("Before you listen"));
+    expect(html).toContain("Back 15 s");
+    expect(html).toContain("Forward 15 s");
+    expect(html).toContain("Prefer only the voice? Switch to Voice only.");
+  });
+
+  it("the 0–10 pickers name both ends", () => {
+    const log = wrap(course("2026-12-08T06:00:00Z"), <CourseLogOverlay onClose={noop} />);
+    expect(log).toContain("0 none");
+    expect(log).toContain("10 worst");
+    expect(log).toContain("10 very stressed");
+    const check = wrap(course("2026-12-08T06:00:00Z"), <CourseScoreOverlay onClose={noop} />);
+    expect(check).toContain("0 not at all");
   });
 });
 

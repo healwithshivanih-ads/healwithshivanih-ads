@@ -16,13 +16,15 @@ import { emptyCourseRecord } from "./course-store";
 describe("Calm Gut course definition", () => {
   it("has 8 weekly sessions, daily, night, flare-up and 8 weekly intros", () => {
     const ids = CALM_GUT.tracks.map((t) => t.id);
-    expect(ids).toEqual(["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "daily", "night", "flare", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8"]);
+    expect(ids).toEqual(["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "daily", "daily-short", "night", "flare", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8"]);
     expect(CALM_GUT.tracks.filter((t) => t.kind === "session").map((t) => t.week)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 
   it("carries the approved safety text, and the extra lines on session 7 and the flare-up", () => {
-    expect(CALM_GUT.safety).toMatch(/never while driving, cooking, bathing or caring for a child/);
-    expect(CALM_GUT.safety).toMatch(/new symptoms after 50/);
+    // Word for word the text used on the course pages and in the emails (22 Nov).
+    expect(CALM_GUT.safety).toBe(
+      "Listen only when you can safely close your eyes: never while driving, cooking or bathing, and not while you're the only adult with a child who is awake. Listening while your baby sleeps nearby and you're lying down is fine. This does not replace a diagnosis or your medicine. Blood in stools, weight loss without trying, symptoms that wake you at night, or new or clearly changed symptoms after 50 mean seeing a doctor first.",
+    );
     expect(getCourseTrack(CALM_GUT, "s7")!.safetyExtra).toMatch(/chest pain can be the heart/);
     expect(getCourseTrack(CALM_GUT, "flare")!.safetyExtra).toMatch(/severe, new, or different/);
   });
@@ -60,6 +62,13 @@ describe("Calm Gut course definition", () => {
     const r2 = getCourseTrack(CALM_GUT, "r2")!;
     expect(isTrackUnlocked(r2, 6)).toBe(false);
     expect(isTrackUnlocked(r2, 7)).toBe(true);
+  });
+
+  it("has a short daily practice slot, open from day 0, with music and voice files", () => {
+    const short = getCourseTrack(CALM_GUT, "daily-short")!;
+    expect(short).toMatchObject({ kind: "practice", title: "Short daily practice", rev: "d1", minutes: { music: 7, voice: 7 } });
+    expect(isTrackUnlocked(short, 0)).toBe(true);
+    expect(courseAudioKey(CALM_GUT, short, "music")).toBe("calm-gut/d1/daily-short-music.m4a");
   });
 
   it("keys audio by course, revision, track and version", () => {
