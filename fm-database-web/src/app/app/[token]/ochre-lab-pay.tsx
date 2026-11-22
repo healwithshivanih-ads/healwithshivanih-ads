@@ -31,6 +31,7 @@ import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-ord
 import type { Invoice } from "@/lib/fmdb/invoices";
 import { InvoiceReceipt } from "@/components/invoice-receipt";
 import { labErrorWords } from "@/lib/fmdb/lab-error-words";
+import { pretestLines } from "@/lib/fmdb/lab-pretest";
 
 function waHref(number: string, text: string): string {
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
@@ -86,6 +87,34 @@ function loadRazorpay(): Promise<boolean> {
     s.onerror = () => resolve(false);
     document.body.appendChild(s);
   });
+}
+
+/** "Before your test": the lab's lines, with the coach's personal points for
+ *  this client (order.pretest_flags) highlighted and first. */
+function PretestList({ order }: { order: LabOrder }) {
+  const lines = pretestLines(order.pretest_instructions, order.pretest_flags);
+  if (lines.length === 0) return null;
+  return (
+    <div className="lab-rec-pre">
+      <div className="lab-rec-pre-h">Before your test</div>
+      <ul className="lab-rec-pre-list">
+        {lines.map((line, i) =>
+          line.flagged ? (
+            <li key={i} className="lab-rec-flag">
+              <span className="lab-rec-flag-tag">For you</span>
+              <span>{line.text}</span>
+              {line.note && <strong>{line.note}</strong>}
+            </li>
+          ) : (
+            <li key={i}>
+              <span className="lab-rec-dot">·</span>
+              <span>{line.text}</span>
+            </li>
+          ),
+        )}
+      </ul>
+    </div>
+  );
 }
 
 const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
@@ -372,19 +401,7 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
           {o.fasting_required && (
             <div className="lab-rec-fast">Fasting sample · we&apos;ll arrange home collection</div>
           )}
-          {o.pretest_instructions && o.pretest_instructions.length > 0 && (
-            <div className="lab-rec-pre">
-              <div className="lab-rec-pre-h">Before your test</div>
-              <ul className="lab-rec-pre-list">
-                {o.pretest_instructions.map((line, i) => (
-                  <li key={i}>
-                    <span className="lab-rec-dot">·</span>
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <PretestList order={o} />
           <div className="lab-rec-foot">
             <PriceBlock listInr={o.list_inr} amountInr={o.amount_inr} />
             {confirming[o.order_id] ? (
