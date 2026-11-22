@@ -2,6 +2,8 @@
  * Every word a buyer reads on the body age order page. APPROVED by Shivani on 21 Nov 2026,
  * word for word as it stands. Any change to a sentence here needs her yes again.
  * `fields.voucher` and `voucherNote` (the Rs 500 voucher) were added and approved by her the same evening.
+ * `pin.yes` and `pin.no` (the PIN code check, 22 Nov 2026) are NOT yet approved: she must say yes before the
+ * page goes live with them.
  * Rules the words follow: "body age report" and "test", never the product's internal name or the brand name;
  * the laboratory is never named; nothing is called urgent; no programme, plan length or programme price; no
  * "free"; every session is online. A test (order-copy.test.ts) fails on any of these.
@@ -45,6 +47,10 @@ export const COPY = {
     voucher: "Voucher code (if you have one)",
   },
   voucherNote: "From the body age check. ₹500 comes off when you pay, for one person's report.",
+  pin: {
+    yes: "The home visit reaches this PIN code.",
+    no: "The home visit does not reach this PIN code yet. Nothing has been charged. Message us on WhatsApp and we will tell you what is possible.",
+  },
   slots: { morning: "Early morning (7 to 9)", late_morning: "Late morning (9 to 11)" },
   visitNote: "We confirm the day and time with you on WhatsApp before anyone comes.",
   consent: "I am 18 or over. Everyone named here has agreed to this test, and to their results being used to prepare this report.",

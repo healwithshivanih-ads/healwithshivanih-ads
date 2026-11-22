@@ -18,8 +18,10 @@ import {
   sanitizeOrderInput,
   saveBodyAgeOrder,
 } from "@/lib/fmdb/body-age-orders";
+import { loadPincodeList, pincodeAnswer } from "@/lib/fmdb/body-age-pincode";
 import { checkVoucher } from "@/lib/fmdb/body-age-voucher";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
+import { COPY } from "@/app/order/body-age/order-copy";
 
 export const dynamic = "force-dynamic";
 
@@ -42,6 +44,12 @@ export async function POST(req: Request) {
   // The laboratory needs about 36 hours to arrange a home visit.
   const checked = sanitizeOrderInput(body, { todayYmd: istYmdPlusHours(0), minDateYmd: istYmdPlusHours(36) });
   if (!checked.ok) return NextResponse.json({ ok: false, error: checked.error }, { status: 400 });
+
+  // The laboratory must come to this PIN code. With no list on file the answer is "unknown" and the order goes
+  // ahead (the visit is then confirmed by hand, with a full refund if the laboratory cannot come).
+  if (pincodeAnswer(checked.input.visit.pincode, await loadPincodeList()) === "no") {
+    return NextResponse.json({ ok: false, error: COPY.pin.no }, { status: 400 });
+  }
 
   // The body age check's voucher: Rs 500 off one person's report, once, for the email it was issued to.
   let voucher: { code: string; offInr: number } | undefined;

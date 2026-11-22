@@ -273,3 +273,22 @@ email they signed up with, 14 days, never extended, no timers and no reminders.
 - The form shows the code box for one person only. Its two lines (`fields.voucher`, `voucherNote`) were approved
   by Shivani on 21 Nov 2026 ("yes approved") and are in the wording fingerprint.
 - Not built: the check page on the marketing site (sign-up saved + code issued there).
+
+## PIN code check before payment (22 Nov 2026) — built, waits for the list
+
+Her rule (21 Nov 2026): the PIN code is checked at the time of booking, before payment.
+
+- The laboratory's partner site publishes its list of serviceable PIN codes ("Pincode Serviceability → Download
+  List", refreshed weekly). The app has no live link to the laboratory, so a COPY of that list lives at
+  `fm-database/data/lab_providers/thyrocare_pincodes.txt` (one six-digit code per line, `#` notes; first line = the
+  date it was read). **The file is not in the repo yet**: downloading it needs Shivani's yes.
+- `lib/fmdb/body-age-pincode.ts`: `pincodeAnswer` → `yes` / `no` / `unknown`. No file or an empty file is `unknown`
+  and the order goes ahead as before (visit confirmed by hand, full refund if the laboratory cannot come). An empty
+  list never refuses everyone.
+- The form asks `POST /api/body-age/pincode` as soon as six digits are typed, shows `COPY.pin.yes` / `COPY.pin.no`,
+  and disables Pay on `no`. The order route asks again on the server and refuses a `no` before any order or payment
+  is created.
+- `COPY.pin.yes` / `COPY.pin.no` are NOT yet approved by Shivani (the wording fingerprint includes them).
+- The list goes stale: re-read it from the partner site about once a month and before launch. A stale list can be
+  wrong both ways, which is why `pin.no` sends the buyer to WhatsApp. After a deploy, check on Fly that the file is
+  shipped (ask the pincode route for a code that is in the list; it must not answer `unknown`).
