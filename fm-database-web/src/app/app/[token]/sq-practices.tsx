@@ -8,6 +8,7 @@
  * A plan with no practices says so plainly rather than showing an empty tab.
  */
 
+import type { ReactNode } from "react";
 import { SCENES, SCENE_KEYS, type PracticePrefs, type SceneKey, type SqPractice } from "./sq-practice-data";
 import { SqCard, SqNavRow, type SqSheet } from "./sq-ui";
 
@@ -18,6 +19,7 @@ export function SqPractices({
   next,
   onBegin,
   open,
+  course,
 }: {
   list: SqPractice[];
   prefs: PracticePrefs;
@@ -29,6 +31,8 @@ export function SqPractices({
   /** Start a practice. Called straight from the tap, so sound can start. */
   onBegin: (id: string) => void;
   open: (s: SqSheet) => void;
+  /** A course the coach gave this client (sq-course.tsx), shown first. */
+  course?: ReactNode;
 }) {
   const last = prefs.last ? list.find((p) => p.id === prefs.last!.id) ?? null : null;
   const first = last ?? list[0] ?? null;
@@ -43,7 +47,9 @@ export function SqPractices({
         <p>Start any of these, any time.</p>
       </div>
 
-      {!first ? (
+      {course}
+
+      {!first && course ? null : !first ? (
         <SqCard>
           <p className="sq-sub">There are no practices on your plan yet. Your coach adds them when they will help.</p>
         </SqCard>

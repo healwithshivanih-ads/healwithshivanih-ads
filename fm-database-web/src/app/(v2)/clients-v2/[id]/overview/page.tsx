@@ -128,6 +128,8 @@ import { IfmBaselineCard, type IfmBaseline } from "../ifm-baseline-card";
 import { CycleTrackingPanel } from "../cycle-tracking-panel";
 import { WeeklyGenerationToggle } from "../weekly-generation-toggle";
 import { AppNutrientsToggle } from "../app-nutrients-toggle";
+import { ClientCourseToggle } from "../client-course-toggle";
+import { clientCourseStart } from "@/lib/fmdb/client-courses";
 import { ResultsSharedToggle } from "../results-shared-toggle";
 import { ProgressSharedToggle } from "../progress-shared-toggle";
 import { nutrientsShown } from "@/lib/fmdb/meal-macros";
@@ -1775,6 +1777,14 @@ export default async function ClientV2Page({
                 clientId={client.client_id}
                 on={nutrientsShown(client as unknown as Record<string, unknown>, diaryGentle(client as unknown as Record<string, unknown>))}
                 gentle={diaryGentle(client as unknown as Record<string, unknown>)}
+              />
+            )}
+            {publishedPlan && (client as unknown as { app_shell?: string }).app_shell === "v2" && (
+              <ClientCourseToggle
+                clientId={client.client_id}
+                slug="calm-gut"
+                title="Calm Gut"
+                startedOn={clientCourseStart(client as unknown as Record<string, unknown>, "calm-gut")}
               />
             )}
             {publishedPlan && (client as unknown as { app_shell?: string }).app_shell === "v2" && (

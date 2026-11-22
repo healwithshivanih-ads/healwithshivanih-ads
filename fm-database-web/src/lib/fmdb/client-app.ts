@@ -34,7 +34,7 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { resolveGuidedSubscriberByToken } from "@/lib/fmdb/guided-tier";
 import { buildGuidedAppData } from "@/lib/fmdb/guided-app";
-import { buildCourseAppData, type AppCourse } from "@/lib/fmdb/course-app";
+import { buildClientCourse, buildCourseAppData, type AppCourse } from "@/lib/fmdb/course-app";
 import { getCourse } from "@/lib/fmdb/courses";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
 import {
@@ -6617,6 +6617,9 @@ export async function loadClientAppData(
     endgame,
     appShell: sqShell,
     sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault), await loadAlcoholRisk(client, clientId, planSlug), releasedProgress(client as Record<string, unknown>, week, todayUTC.toISOString().slice(0, 10))) : null,
+    // A course the coach gave this client in their own app (client.yaml#courses,
+    // client-courses.ts). New front only: today's app has no place for it.
+    course: sqShell === "v2" ? await buildClientCourse(client as Record<string, unknown>, clientId, appTz) : null,
     labOrders,
     client: {
       firstName,

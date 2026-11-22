@@ -876,3 +876,9 @@
 .sq-app .sq-prog-j > summary { list-style: none; }
 .sq-app .sq-prog-j > summary::-webkit-details-marker { display: none; }
 .sq-app .sq-prog-j > p { padding: 0 4px 8px; }
+
+/* Calm Gut inside the new app (sq-course.tsx). A locked week is a plain row;
+   the course's own night player and symptom check sit over everything, in
+   the course's look (app.css .ochre-app .cg-*). */
+.sq-app .sq-li-off { cursor: default; opacity: .62; }
+.sq-app .sq-cg-host { position: fixed; inset: 0; z-index: 90; display: flex; justify-content: center; background: #1d1b1a; }

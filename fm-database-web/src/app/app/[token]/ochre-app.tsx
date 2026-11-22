@@ -59,6 +59,7 @@ import { OrderOverlay } from "./ochre-order";
 import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 import { isPlanSetupHold, pickAppShell } from "@/lib/fmdb/app-shell";
 import SqApp from "./sq-app";
+import { registerAppOffline } from "./app-offline-sw";
 import { mealTickItems } from "./sq-day";
 
 interface Stored {
@@ -388,6 +389,12 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       stop = true;
     };
   }, [data.token, data.course?.only]);
+
+  // Someone with a course can save tracks for offline; this lets the app
+  // itself open with no signal so those tracks can be played (app-offline-sw.ts).
+  useEffect(() => {
+    if (data.course) registerAppOffline();
+  }, [data.course]);
 
   useEffect(() => {
     const token = data.token;
@@ -830,7 +837,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // so both fronts read and write the same data and switching back loses
   // nothing.
   if (shell === "sq") {
-    return (
+    const sq = (
       <OchreContext.Provider value={data}>
         <SqApp
           data={data}
@@ -848,6 +855,15 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
           }}
         />
       </OchreContext.Provider>
+    );
+    // A course the coach gave this client (client.yaml#courses) plays
+    // through the same provider a course buyer's app uses.
+    return data.course ? (
+      <CourseProvider course={data.course} token={data.token} clientId={data.clientId}>
+        {sq}
+      </CourseProvider>
+    ) : (
+      sq
     );
   }
 

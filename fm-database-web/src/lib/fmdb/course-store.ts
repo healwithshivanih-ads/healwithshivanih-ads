@@ -3,6 +3,8 @@
  *
  *     <plansRoot>/guided/<subscriberId>/course-<slug>.json   ← written by Fly (the app)
  *     <plansRoot>/guided/<subscriberId>/_course_fired.json   ← written by the Mac (reminder cron)
+ *     <plansRoot>/clients/<clientId>/course-<slug>.json       ← a programme client given the
+ *                                                               course in their own app (Fly)
  *
  * Two files, one writer each: the guided/ tree is Mutagen-synced both ways,
  * and two machines writing the same file is how a sync conflict starts.
@@ -21,7 +23,10 @@
 
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import yaml from "js-yaml";
 import { guidedRoot, resolveGuidedSubscriberByToken, type GuidedSubscriber } from "./guided-tier";
+import { getPlansRoot } from "./paths";
+import { clientCourseOwnerId, clientCourseStart } from "./client-courses";
 import { withFsRetry } from "./fs-retry";
 import {
   COURSE_SCORE_QUESTIONS,
@@ -97,8 +102,20 @@ export function emptyCourseRecord(slug: string): CourseRecord {
   };
 }
 
+/** Where an owner's course data lives. A buyer's id is their subscriber id
+ *  (guided/<id>/); a programme client's is "client:<clientId>"
+ *  (client-courses.ts), saved beside their other app data in clients/<id>/. */
+export function ownerDir(ownerId: string): string {
+  const m = /^client:([a-z0-9][a-z0-9-]{0,63})$/i.exec(ownerId);
+  if (m) return path.join(getPlansRoot(), "clients", m[1]);
+  if (ownerId.includes("/") || ownerId.includes("..") || ownerId.startsWith("client:")) {
+    throw new Error("bad course owner id");
+  }
+  return path.join(guidedRoot(), ownerId);
+}
+
 function recordFile(subscriberId: string, slug: string): string {
-  return path.join(guidedRoot(), subscriberId, `course-${slug}.json`);
+  return path.join(ownerDir(subscriberId), `course-${slug}.json`);
 }
 
 export function firedFile(subscriberId: string): string {
@@ -202,20 +219,79 @@ export function acceptLogDate(sent: unknown, todayYmd: string): string {
 
 // ── token → listener ────────────────────────────────────────────────────────
 
-export interface CourseListener {
-  sub: GuidedSubscriber;
-  course: CourseDef;
-}
+/** Who is listening: a course buyer (their own link), or a programme client
+ *  the coach gave the course to in their own app (client-courses.ts). */
+export type CourseListener =
+  | {
+      kind: "buyer";
+      sub: GuidedSubscriber;
+      course: CourseDef;
+      /** The record owner id (course-store paths). */
+      ownerId: string;
+      startYmd: string;
+      tz: string;
+    }
+  | {
+      kind: "client";
+      clientId: string;
+      course: CourseDef;
+      ownerId: string;
+      startYmd: string;
+      tz: string;
+    };
 
-/** Token → an ACTIVE subscriber who owns `slug`. Null otherwise. */
+/** Token → an ACTIVE subscriber who owns `slug`, or a client whose record
+ *  has the course switched on. Null otherwise.
+ *
+ *  The client path reads client.yaml directly, by app_token only, and hands
+ *  back an owner id that writes ONLY to clients/<id>/course-<slug>.json. It
+ *  is not resolveAppToken: nothing here widens what an /api/app-* route may
+ *  write. */
 export async function resolveCourseToken(token: string, slug = "calm-gut"): Promise<CourseListener | null> {
   if (!token || token.length < 16) return null;
   const course = getCourse(slug);
   if (!course) return null;
   const sub = await resolveGuidedSubscriberByToken(token);
-  if (!sub || sub.status !== "active") return null;
-  if (!sub.courses.includes(slug)) return null;
-  return { sub, course };
+  if (sub) {
+    if (sub.status !== "active") return null;
+    if (!sub.courses.includes(slug)) return null;
+    return { kind: "buyer", sub, course, ownerId: sub.subscriber_id, startYmd: sub.start_date, tz: sub.timezone };
+  }
+  const client = await findClientByAppToken(token);
+  if (!client) return null;
+  const startYmd = clientCourseStart(client.doc, slug);
+  if (!startYmd) return null;
+  const tz = typeof client.doc.timezone === "string" && client.doc.timezone ? client.doc.timezone : "Asia/Kolkata";
+  return { kind: "client", clientId: client.id, course, ownerId: clientCourseOwnerId(client.id), startYmd, tz };
+}
+
+/** client.yaml whose app_token is `token` (clients/ only, never prospects). */
+async function findClientByAppToken(token: string): Promise<{ id: string; doc: Record<string, unknown> } | null> {
+  const dir = path.join(getPlansRoot(), "clients");
+  let ids: string[];
+  try {
+    ids = await fs.readdir(dir);
+  } catch {
+    return null;
+  }
+  for (const id of ids) {
+    if (!/^[a-z0-9][a-z0-9-]{0,63}$/i.test(id)) continue;
+    let raw: string;
+    try {
+      raw = await fs.readFile(path.join(dir, id, "client.yaml"), "utf-8");
+    } catch {
+      continue;
+    }
+    // Cheap pre-check before parsing every client's YAML.
+    if (!raw.includes(token)) continue;
+    try {
+      const doc = yaml.load(raw) as Record<string, unknown> | null;
+      if (doc && doc.app_token === token) return { id, doc };
+    } catch {
+      /* unreadable record: not this one */
+    }
+  }
+  return null;
 }
 
 // ── read / write ────────────────────────────────────────────────────────────

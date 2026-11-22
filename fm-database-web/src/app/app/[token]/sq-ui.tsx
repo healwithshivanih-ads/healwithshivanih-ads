@@ -39,6 +39,11 @@ export interface SqShellState {
 /** Every full-screen sheet the shell can open. */
 export type SqSheet =
   | { k: "day" }
+  /** Calm Gut, when the coach gave the course (sq-course.tsx): the eight
+   *  weeks, a track playing, the symptom check */
+  | { k: "course-weeks" }
+  | { k: "course-play"; id: string }
+  | { k: "course-score" }
   | { k: "record" }
   | { k: "recday"; date: string }
   | { k: "recipe"; slot: string }

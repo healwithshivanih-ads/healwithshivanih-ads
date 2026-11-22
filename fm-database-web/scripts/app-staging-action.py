@@ -104,6 +104,8 @@ _APP_CLIENT_KEYS = (
     "app_shell",
     # Coach's switch for menu grams in the new app (meal-macros.ts nutrientsShown).
     "app_nutrients",
+    # Courses given in the client's own app (client-courses.ts), e.g. Calm Gut.
+    "courses",
     # Released results (new front, step 5): the switch, its note, and the
     # computed markers that hold body age. Read only when results are shared.
     "results_shared_on",

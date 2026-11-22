@@ -20,6 +20,8 @@ import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
 import { dumpYaml } from "@/lib/fmdb/yaml-dump";
 import { clientDir } from "@/lib/fmdb/client-thread";
+import { getCourse } from "@/lib/fmdb/courses";
+import { withClientCourse } from "@/lib/fmdb/client-courses";
 import { clientAppUrl } from "@/lib/fmdb/coach-mobile";
 import {
   DIARY_DEFAULT_DAYS,
@@ -304,6 +306,25 @@ export async function setAppNutrientsAction(clientId: string, on: boolean | null
   if (!c) return { ok: false, error: "client not found" };
   if (on === null) delete c.doc.app_nutrients;
   else c.doc.app_nutrients = on;
+  writeClient(c.file, c.doc);
+  revalidatePath(`/clients-v2/${clientId}/overview`);
+  return { ok: true };
+}
+
+/**
+ * The coach's switch for a course in the client's own app (client.yaml#courses,
+ * client-courses.ts), e.g. Calm Gut. On starts week 1 today, or keeps the
+ * date it already had; off removes it (their listening record stays, so
+ * turning it back on later picks up where they were).
+ */
+export async function setClientCourseAction(clientId: string, slug: string, on: boolean): Promise<{ ok: true } | Fail> {
+  if (!getCourse(slug)) return { ok: false, error: "unknown course" };
+  const c = readClient(clientId);
+  if (!c) return { ok: false, error: "client not found" };
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  const next = withClientCourse(c.doc, slug, on, today);
+  if (next.length) c.doc.courses = next;
+  else delete c.doc.courses;
   writeClient(c.file, c.doc);
   revalidatePath(`/clients-v2/${clientId}/overview`);
   return { ok: true };

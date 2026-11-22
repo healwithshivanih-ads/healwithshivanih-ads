@@ -2,10 +2,13 @@
  * POST /api/app-course — the course listener's write-backs and audio links.
  *
  * Auth: body.token must resolve to an ACTIVE guided subscriber who owns the
- * course (course-store.ts::resolveCourseToken). Deliberately NOT
+ * course, or to a programme client whose record has the course switched on
+ * (client-courses.ts), via course-store.ts::resolveCourseToken. Deliberately NOT
  * resolveAppToken: that one hands out client ids for clients/<id>/ writes,
- * and must keep refusing guided tokens. Everything here writes only under
- * guided/<subscriberId>/.
+ * and must keep refusing guided tokens. Everything here writes only the
+ * course files: guided/<subscriberId>/ for a buyer, and for a client only
+ * clients/<id>/course-<slug>.json. A client never reaches the device, push,
+ * reminder or refund actions (BUYER_ONLY).
  *
  * Actions (body.action):
  *   audio      { track, version }            → { url, expiresAt } short-lived link
@@ -65,6 +68,9 @@ import {
 
 export const dynamic = "force-dynamic";
 
+/** Actions that exist only on a course buyer's own link. */
+const BUYER_ONLY = new Set(["device-claim", "device-code", "device-verify", "reminders", "push", "refund"]);
+
 const LIMITS: Record<string, number> = {
   audio: 300,
   listen: 60,
@@ -110,13 +116,21 @@ export async function POST(req: NextRequest) {
   const slug = typeof body.course === "string" && body.course ? body.course : "calm-gut";
   const listener = await resolveCourseToken(token, slug);
   if (!listener) return bad("invalid or expired link", 401);
-  const { sub, course } = listener;
-  const today = ymdInTz(new Date(), sub.timezone);
-  const day = courseDay(sub.start_date, today);
+  const { course, ownerId } = listener;
+  const today = ymdInTz(new Date(), listener.tz);
+  const day = courseDay(listener.startYmd, today);
   const deviceId = deviceIdFromCookieHeader(req.headers.get("cookie"));
 
+  // A programme client has the course inside their own app: no phone limit,
+  // no refund, and no course reminders (their app has its own). Those
+  // actions belong to a buyer's course link only.
+  if (listener.kind === "client") {
+    if (BUYER_ONLY.has(action)) return bad("not available in this app", 403);
+  }
+  const sub = listener.kind === "buyer" ? listener.sub : null;
+
   // ── registering a phone ───────────────────────────────────────────────────
-  if (action === "device-claim" || action === "device-verify") {
+  if (sub && (action === "device-claim" || action === "device-verify")) {
     try {
       const setCookie = (res: NextResponse, raw: string) => {
         res.cookies.set(COURSE_DEVICE_COOKIE, raw, deviceCookieOptions(isHttps(req)));
@@ -135,7 +149,7 @@ export async function POST(req: NextRequest) {
       return bad("save failed", 500);
     }
   }
-  if (action === "device-code") {
+  if (sub && action === "device-code") {
     // Always the address the course was bought with; nothing typed on the
     // phone can change where the code goes.
     if (!sub.email) return bad("no email on record", 409);
@@ -152,7 +166,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Everything else: only from one of the listener's registered phones.
-  if (courseDeviceLimitActive() && (await courseDeviceStatus(sub.subscriber_id, deviceId)) !== "known") {
+  if (sub && courseDeviceLimitActive() && (await courseDeviceStatus(sub.subscriber_id, deviceId)) !== "known") {
     return bad("this phone isn't registered for the course", 403);
   }
 
@@ -164,7 +178,7 @@ export async function POST(req: NextRequest) {
       // Locked sessions get no link, whatever the phone thinks the date is.
       if (!isTrackUnlocked(track, day)) return bad("not open yet", 403);
       if (action === "audio") {
-        const link = audioLinkFor(courseAudioKey(course, track, version), sub.subscriber_id);
+        const link = audioLinkFor(courseAudioKey(course, track, version), ownerId);
         if (!link) return bad("audio not available yet", 503);
         return NextResponse.json({ ok: true, url: link.url, expiresAt: link.expiresAt });
       }
@@ -172,7 +186,7 @@ export async function POST(req: NextRequest) {
       // An intro is the reading read aloud: it never counts as listening
       // (the tick, the streak and "sessions heard" belong to the session).
       if (track.kind === "intro") return NextResponse.json({ ok: true, date, counted: false });
-      const r = await saveListen(sub.subscriber_id, course.slug, date, track.id, version);
+      const r = await saveListen(ownerId, course.slug, date, track.id, version);
       return NextResponse.json({ ok: true, date, streak: listeningStreak(r.days, today) });
     }
 
@@ -180,7 +194,7 @@ export async function POST(req: NextRequest) {
       const date = acceptLogDate(body.date, today);
       const log = sanitizeDayLog(body);
       if (Object.keys(log).length === 0) return bad("nothing to save");
-      const r = await saveDayLog(sub.subscriber_id, course.slug, date, log);
+      const r = await saveDayLog(ownerId, course.slug, date, log);
       return NextResponse.json({ ok: true, date, day: r.days[date] });
     }
 
@@ -188,18 +202,18 @@ export async function POST(req: NextRequest) {
       const answers = sanitizeScore(body.answers);
       if (!answers) return bad("all five answers (0–10) required");
       const week = scoreCheckpointFor(course, Math.max(0, day));
-      const r = await saveScore(sub.subscriber_id, course.slug, today, week, answers);
+      const r = await saveScore(ownerId, course.slug, today, week, answers);
       const saved = r.scores.find((s) => s.week === week);
       return NextResponse.json({ ok: true, week, total: saved?.total ?? 0, scores: r.scores });
     }
 
-    if (action === "reminders") {
+    if (sub && action === "reminders") {
       const prefs = { daily_time: sanitizeTime(body.daily_time), unlock: body.unlock !== false };
       const r = await saveReminderPrefs(sub.subscriber_id, course.slug, prefs);
       return NextResponse.json({ ok: true, reminders: r.reminders });
     }
 
-    if (action === "push") {
+    if (sub && action === "push") {
       const op = typeof body.op === "string" ? body.op : "";
       if (op === "subscribe") {
         const s = body.subscription as WebPushSubscription | undefined;
@@ -227,7 +241,7 @@ export async function POST(req: NextRequest) {
       return bad("unknown push op");
     }
 
-    if (action === "refund") {
+    if (sub && action === "refund") {
       const offer = refundOffer(sub);
       if (!offer.eligible) return bad("a refund can be asked for in the first 7 days after buying", 403);
       const res = await requestFunnelRefund(sub);
@@ -252,7 +266,7 @@ export async function POST(req: NextRequest) {
     }
 
     // history
-    const r = await readCourseRecord(sub.subscriber_id, course.slug);
+    const r = await readCourseRecord(ownerId, course.slug);
     return NextResponse.json({ ok: true, days: r.days, scores: r.scores, streak: listeningStreak(r.days, today) });
   } catch (err) {
     console.error("[app-course] failed:", action, err);

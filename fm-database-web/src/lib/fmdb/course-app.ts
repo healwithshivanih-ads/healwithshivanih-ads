@@ -19,9 +19,11 @@ import type { ClientAppData } from "./client-app";
 import type { GuidedSubscriber } from "./guided-tier";
 import { refundOffer, rupees } from "./course-refund";
 import { courseImage, type CourseImage } from "./course-images";
+import { clientCourseOwnerId, clientCourses } from "./client-courses";
 import {
   courseDay,
   dueScoreWeek,
+  getCourse,
   isTrackUnlocked,
   trackUnlockYmd,
   type CourseDef,
@@ -182,6 +184,25 @@ export function buildAppCourse(
     ),
     reminders: record.reminders,
   };
+}
+
+/** A course the coach gave a programme client in their own app, or null when
+ *  none is switched on (client.yaml#courses, client-courses.ts). The record
+ *  is the client's own: clients/<id>/course-<slug>.json. */
+export async function buildClientCourse(
+  doc: Record<string, unknown>,
+  clientId: string,
+  tz: string,
+  now: Date = new Date(),
+): Promise<AppCourse | null> {
+  const entry = clientCourses(doc)[0];
+  if (!entry) return null;
+  const course = getCourse(entry.slug);
+  if (!course) return null;
+  const record = await readCourseRecord(clientCourseOwnerId(clientId), course.slug);
+  const c = buildAppCourse(course, entry.started_on, record, { tz, now, only: false });
+  // No refund and no course reminders here: the client app has its own.
+  return { ...c, tracks: c.tracks.map((t) => ({ ...t, image: courseImage(t.id) })), refund: null };
 }
 
 /** The whole app payload for a course-only buyer. */

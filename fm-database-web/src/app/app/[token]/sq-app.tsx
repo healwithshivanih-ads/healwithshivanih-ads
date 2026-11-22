@@ -46,6 +46,7 @@ import { recipeTitle, recordDayTitle, SqDaySheet, SqEatingOutSheet, SqRecipeShee
 import { SqStartSheet } from "./sq-start";
 import { orderRows, SqOrderSheet, SqSuppsSheet, SqTripSheet, SqVitalsSheet } from "./sq-everything";
 import { SqRemindSheet } from "./sq-remind";
+import { SqCourseCard, SqCourseLayer, SqCourseWeeksSheet } from "./sq-course";
 import { SqProgressSheet } from "./sq-progress";
 import { SqCard, SqIcon, SqNavRow, SqSwitchRow, type SqIconName, type SqSheet, type SqShellState } from "./sq-ui";
 import "./sq.css";
@@ -438,6 +439,9 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
       sheetBody = (
         <SqTripSheet data={data} todayYmd={todayYmd} onEatOut={data.planRef?.eatingOut ? () => open({ k: "eatout" }) : undefined} />
       );
+    } else if (sheet.k === "course-weeks") {
+      sheetTitle = data.course?.title ?? "Course";
+      sheetBody = <SqCourseWeeksSheet onPlay={(id) => open({ k: "course-play", id })} />;
     } else if (sheet.k === "remind") {
       sheetTitle = "Reminders";
       sheetBody = <SqRemindSheet data={data} />;
@@ -528,7 +532,23 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
         ) : tab === "coach" ? (
           <SqCoach data={data} thread={coach} />
         ) : tab === "practices" ? (
-          <SqPractices list={practices} prefs={prefs} todayYmd={todayYmd} next={data.mindBody} onBegin={beginPractice} open={open} />
+          <SqPractices
+            list={practices}
+            prefs={prefs}
+            todayYmd={todayYmd}
+            next={data.mindBody}
+            onBegin={beginPractice}
+            open={open}
+            course={
+              data.course ? (
+                <SqCourseCard
+                  onPlay={(id) => open({ k: "course-play", id })}
+                  onWeeks={() => open({ k: "course-weeks" })}
+                  onScore={() => open({ k: "course-score" })}
+                />
+              ) : null
+            }
+          />
         ) : (
           <>
             <div className="sq-greet">
@@ -694,7 +714,16 @@ export default function SqApp({ data, state }: { data: ClientAppData; state: SqS
         />
       )}
       {sheet?.k === "night" && <SqGoodnight pending={bedtimeOpen} onTick={(id) => state.toggleTick(id)} onClose={close} />}
-      {sheet && sheet.k !== "practice" && sheet.k !== "night" && sheet.k !== "hosted" && (
+      {data.course && (sheet?.k === "course-play" || sheet?.k === "course-score") && (
+        <SqCourseLayer
+          view={sheet.k === "course-play" ? { k: "play", id: sheet.id } : { k: "score" }}
+          onClose={close}
+          // The session's intro opens in place of the session, so Back
+          // returns to wherever the session was opened from.
+          onOpenTrack={(id) => setStack((prev) => [...prev.slice(0, -1), { k: "course-play", id }])}
+        />
+      )}
+      {sheet && sheet.k !== "practice" && sheet.k !== "night" && sheet.k !== "hosted" && sheet.k !== "course-play" && sheet.k !== "course-score" && (
         // key: each sheet is its own element, so opening one from another
         // starts at the top and plays its own entrance.
         <div key={depth} className="sq-sheet" role="dialog" aria-modal="true" aria-labelledby="sq-sheet-title">
