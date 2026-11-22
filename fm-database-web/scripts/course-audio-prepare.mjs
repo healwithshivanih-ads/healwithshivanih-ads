@@ -44,6 +44,8 @@ const TRACKS = [
   { id: "daily", rev: "d1", dir: "00-daily-practice", music: "Daily practice (draft 1, with music).m4a", voice: "Daily practice (draft 1).m4a" },
   { id: "night", rev: "d1", dir: "00b-night-practice", music: "Night practice (with music, draft 1).m4a", voice: "Night practice (voice only, draft 1).m4a" },
   { id: "flare", rev: "d2", dir: "09-flare-up", music: "Flare-up (with music, draft 2).m4a", voice: "Flare-up (voice only, draft 2).m4a" },
+  // The 8 weekly intros (the readings, voiced): voice only.
+  ...[1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ id: `r${n}`, rev: "d1", dir: "10-weekly-readings", voice: `Week ${n} reading (draft 1).m4a` })),
 ];
 
 const only = typeof args.only === "string" ? new Set(args.only.split(",")) : null;
@@ -56,7 +58,7 @@ if (bucket && /public/i.test(bucket)) {
 let n = 0;
 for (const t of TRACKS) {
   if (only && !only.has(t.id)) continue;
-  for (const v of ["music", "voice"]) {
+  for (const v of ["music", "voice"].filter((x) => t[x])) {
     const src = path.join(SRC, t.dir, t[v]);
     if (!fs.existsSync(src)) {
       console.error(`missing: ${src}`);

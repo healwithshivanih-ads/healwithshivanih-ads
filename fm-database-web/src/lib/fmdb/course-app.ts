@@ -49,8 +49,13 @@ export interface AppCourseTrack {
   /** Audio revision — part of the offline cache key. */
   rev: string;
   safetyExtra?: string;
-  /** The week's 2-minute reading; null until written. */
+  /** The week's 2-minute reading (sessions and intros); null otherwise. */
   reading: string | null;
+  readingTitle?: string;
+  /** Sessions: the week's intro track id (r1 …). */
+  introId?: string;
+  /** Only a voice version exists (intros): no music/voice switch. */
+  voiceOnly?: boolean;
   /** Listened to ≥ 80% at least once. */
   listened: boolean;
 }
@@ -122,6 +127,9 @@ export function buildAppCourse(
       rev: t.rev,
       ...(t.safetyExtra ? { safetyExtra: t.safetyExtra } : {}),
       reading: t.reading,
+      ...(t.readingTitle ? { readingTitle: t.readingTitle } : {}),
+      ...(t.introId ? { introId: t.introId } : {}),
+      ...(t.voiceOnly ? { voiceOnly: true } : {}),
       listened: listenedIds.has(t.id),
     };
   });

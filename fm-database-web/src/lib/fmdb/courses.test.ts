@@ -14,9 +14,9 @@ import { dueCourseReminders } from "./course-reminders";
 import { emptyCourseRecord } from "./course-store";
 
 describe("Calm Gut course definition", () => {
-  it("has 8 weekly sessions plus daily, night and flare-up", () => {
+  it("has 8 weekly sessions, daily, night, flare-up and 8 weekly intros", () => {
     const ids = CALM_GUT.tracks.map((t) => t.id);
-    expect(ids).toEqual(["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "daily", "night", "flare"]);
+    expect(ids).toEqual(["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "daily", "night", "flare", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8"]);
     expect(CALM_GUT.tracks.filter((t) => t.kind === "session").map((t) => t.week)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 
@@ -29,14 +29,37 @@ describe("Calm Gut course definition", () => {
 
   it("never makes a claim the copy rules forbid", () => {
     const all = JSON.stringify(CALM_GUT).toLowerCase();
-    for (const w of ["cure", "heal", "treats", "guarantee", "permanent", "supplement", "ai voice", "voice clone"]) {
+    for (const w of ["cure", "treats ibs", "treats gerd", "guarantee", "permanent", "supplement", "ai voice", "voice clone"]) {
       expect(all).not.toContain(w);
     }
+    // "heal" only ever in the negative (week 7: "It doesn't heal damage…").
+    for (const m of all.matchAll(/(\S+\s+)heal/g)) expect(m[1].trim()).toBe("doesn't");
     expect(CALM_GUT.tagline).toMatch(/may ease/);
   });
 
-  it("leaves the 8 readings as placeholders for now", () => {
-    expect(CALM_GUT.tracks.every((t) => t.reading === null)).toBe(true);
+  it("each session carries its week's reading and its voiced intro", () => {
+    for (let n = 1; n <= 8; n++) {
+      const s = getCourseTrack(CALM_GUT, `s${n}`)!;
+      const r = getCourseTrack(CALM_GUT, `r${n}`)!;
+      expect(s.introId).toBe(`r${n}`);
+      expect(s.reading && s.reading.length).toBeGreaterThan(400);
+      expect(r.reading).toBe(s.reading);
+      expect(r).toMatchObject({ kind: "intro", week: n, voiceOnly: true, rev: "d1" });
+    }
+    expect(getCourseTrack(CALM_GUT, "s1")!.readingTitle).toBe("Your gut has a mind of its own");
+    expect(getCourseTrack(CALM_GUT, "daily")!.reading).toBeNull();
+  });
+
+  it("an intro's key is always the voice file (there is no music version)", () => {
+    const r3 = getCourseTrack(CALM_GUT, "r3")!;
+    expect(courseAudioKey(CALM_GUT, r3, "music")).toBe("calm-gut/d1/r3-voice.m4a");
+    expect(courseAudioKey(CALM_GUT, r3, "voice")).toBe("calm-gut/d1/r3-voice.m4a");
+  });
+
+  it("an intro opens with its week", () => {
+    const r2 = getCourseTrack(CALM_GUT, "r2")!;
+    expect(isTrackUnlocked(r2, 6)).toBe(false);
+    expect(isTrackUnlocked(r2, 7)).toBe(true);
   });
 
   it("keys audio by course, revision, track and version", () => {

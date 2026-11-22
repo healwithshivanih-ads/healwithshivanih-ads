@@ -14,6 +14,10 @@
  *  - Links: short-lived. A link that died mid-pause is fetched again and
  *    playback resumes where it was.
  *  - Offline: a saved copy (course-offline.ts) plays from the phone first.
+ *  - Intros: the first time a week's session is played, its 2-minute intro
+ *    (the reading, voiced) plays first and flows straight into the session;
+ *    "Skip intro" jumps ahead at any point. An intro keeps no position and
+ *    never counts as a listen — those belong to the session.
  *
  * Existing app audio (sq-sound.ts, ochre-breath-audio.ts) is short clips via
  * Web Audio; nothing here touches it.
@@ -29,6 +33,8 @@ export interface PlayerTrack {
   title: string;
   subtitle: string;
   rev: string;
+  /** "intro" tracks keep no resume position and never count as a listen. */
+  kind?: string;
 }
 
 export interface PlayerState {
@@ -41,6 +47,9 @@ export interface PlayerState {
   error: string | null;
   /** True once this play counted as a listen (≥ 80%). */
   counted: boolean;
+  /** While an intro plays ahead of a session: that session (it starts when
+   *  the intro ends or is skipped). */
+  introFor: PlayerTrack | null;
 }
 
 const LISTEN_FRACTION = 0.8;
@@ -58,7 +67,9 @@ let state: PlayerState = {
   duration: 0,
   error: null,
   counted: false,
+  introFor: null,
 };
+let pendingSession: { track: PlayerTrack; version: CourseVersion } | null = null;
 const listeners = new Set<() => void>();
 let lastTick: number | null = null;
 let playedSec = 0;
@@ -159,11 +170,20 @@ function ensureAudio(): HTMLAudioElement {
     checkListened();
   });
   a.addEventListener("ended", () => {
+    if (pendingSession) {
+      // The intro finished: straight into the session, no tap needed.
+      void startPendingSession();
+      return;
+    }
     if (state.track) lsSet(posKey(state.track, state.version), "0");
     checkListened(true);
     emit({ playing: false, current: 0 });
   });
   a.addEventListener("error", () => {
+    if (pendingSession) {
+      void startPendingSession(); // intro failed mid-way: go to the session
+      return;
+    }
     // A link that expired while paused: fetch a fresh one once and carry on.
     if (state.track && !retriedLink && !objectUrl) {
       retriedLink = true;
@@ -178,7 +198,7 @@ function ensureAudio(): HTMLAudioElement {
 }
 
 function savePos(force: boolean) {
-  if (!state.track || !audio) return;
+  if (!state.track || !audio || state.track.kind === "intro") return;
   const now = Date.now();
   if (!force && now - lastSaved < 5000) return;
   lastSaved = now;
@@ -188,7 +208,7 @@ function savePos(force: boolean) {
 
 function checkListened(ended = false) {
   const t = state.track;
-  if (!t || !audio || state.counted) return;
+  if (!t || !audio || state.counted || t.kind === "intro") return;
   const dur = audio.duration;
   if (!dur || !Number.isFinite(dur)) return;
   if (playedSec / dur < LISTEN_FRACTION && !(ended && playedSec / dur >= LISTEN_FRACTION - 0.05)) return;
@@ -249,6 +269,48 @@ function setMediaSession(t: PlayerTrack) {
   } catch {
     /* MediaMetadata missing (old browser) — plain playback still works */
   }
+}
+
+function introKey(session: PlayerTrack) {
+  return `ochre.course.intro.${clientKey}.${session.courseSlug}.${session.id}`;
+}
+
+/** Has this phone already played (or skipped) the intro for this session? */
+export function introSeen(session: PlayerTrack): boolean {
+  return !!lsGet(introKey(session));
+}
+
+async function startPendingSession() {
+  const next = pendingSession;
+  pendingSession = null;
+  emit({ introFor: null });
+  if (next) await load(next.track, next.version, { autoplay: true });
+}
+
+/**
+ * The first play of a week's session: its intro first, then the session.
+ * Marked as seen at the start, so a skip or a half-heard intro is not
+ * forced on the listener again.
+ */
+export async function playWithIntro(intro: PlayerTrack, session: PlayerTrack, version: CourseVersion): Promise<void> {
+  lsSet(introKey(session), new Date().toISOString());
+  pendingSession = { track: session, version };
+  emit({ introFor: session });
+  await load({ ...intro, kind: "intro" }, "voice", { autoplay: true, at: 0 });
+  // An intro that won't load must never stand between them and the session.
+  if (state.error && pendingSession) await startPendingSession();
+}
+
+/** "Skip intro": go straight to the session. */
+export async function skipIntro(): Promise<void> {
+  if (!pendingSession) return;
+  audio?.pause();
+  await startPendingSession();
+}
+
+/** Change which version of the session follows the intro. */
+export function setPendingVersion(v: CourseVersion) {
+  if (pendingSession) pendingSession = { ...pendingSession, version: v };
 }
 
 export function configurePlayer(opts: { token: string; clientKey: string; onListened?: (trackId: string) => void }) {
@@ -354,6 +416,7 @@ export function skip(delta: number) {
 
 /** Stop and forget the current track (closing the player for good). */
 export function stop() {
+  pendingSession = null;
   if (!audio) return;
   savePos(true);
   audio.pause();
@@ -361,7 +424,7 @@ export function stop() {
   audio.load();
   if (objectUrl) URL.revokeObjectURL(objectUrl);
   objectUrl = null;
-  emit({ track: null, playing: false, current: 0, duration: 0, loading: false, error: null });
+  emit({ track: null, playing: false, current: 0, duration: 0, loading: false, error: null, introFor: null });
   if (typeof navigator !== "undefined" && "mediaSession" in navigator) navigator.mediaSession.metadata = null;
 }
 

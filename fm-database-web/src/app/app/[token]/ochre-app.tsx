@@ -1127,7 +1127,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               )}
               {overlay.type === "labs" && <LabsOverlay onClose={closeOverlay} />}
               {overlay.type === "course-player" && data.course && (
-                <CoursePlayerOverlay trackId={overlay.trackId} onClose={closeOverlay} />
+                <CoursePlayerOverlay trackId={overlay.trackId} onClose={closeOverlay} onOpenTrack={openCoursePlayer} />
               )}
               {overlay.type === "course-log" && data.course && <CourseLogOverlay onClose={closeOverlay} />}
               {overlay.type === "course-score" && data.course && <CourseScoreOverlay onClose={closeOverlay} />}

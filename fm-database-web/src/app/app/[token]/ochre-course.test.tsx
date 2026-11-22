@@ -74,10 +74,31 @@ describe("the link is personal", () => {
   });
 });
 
+describe("the weekly reading and intro", () => {
+  it("this week's card offers the intro and the reading text", () => {
+    const html = wrap(course("2026-12-15T06:00:00Z"), <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    expect(html).toContain("Play this week&#x27;s intro");
+    expect(html).toContain("Turning down the volume"); // week 2's reading title
+    expect(html).toContain("<details");
+  });
+  it("an intro's player has no music / voice switch and shows the reading open", () => {
+    const html = wrap(course("2026-12-15T06:00:00Z"), <CoursePlayerOverlay trackId="r2" onClose={noop} />);
+    expect(html).not.toContain("With music");
+    expect(html).toContain("week 2 reading");
+    expect(html).toMatch(/<details[^>]*open/);
+  });
+  it("the session's player links to its intro", () => {
+    const html = wrap(course("2026-12-15T06:00:00Z"), <CoursePlayerOverlay trackId="s2" onClose={noop} onOpenTrack={noop} />);
+    expect(html).toContain("Play this week&#x27;s intro");
+    expect(html).toContain("With music");
+  });
+});
+
 describe("Sessions", () => {
   it("lists all eight, later ones locked with their opening date", () => {
     const html = wrap(course("2026-12-08T06:00:00Z"), <CourseSessionsScreen openPlayer={noop} />);
-    for (const t of CALM_GUT.tracks) expect(html).toContain(t.title.replace(",", ","));
+    for (const t of CALM_GUT.tracks.filter((x) => x.kind !== "intro")) expect(html).toContain(t.title);
+    expect(html).not.toContain("Week 1 intro"); // intros live with their session, not in the list
     expect(html).toContain("Opens Tue 15 Dec");
     expect((html.match(/cg-track locked/g) ?? []).length).toBe(7);
   });

@@ -165,6 +165,9 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ok: true, url: link.url, expiresAt: link.expiresAt });
       }
       const date = acceptLogDate(body.date, today);
+      // An intro is the reading read aloud: it never counts as listening
+      // (the tick, the streak and "sessions heard" belong to the session).
+      if (track.kind === "intro") return NextResponse.json({ ok: true, date, counted: false });
       const r = await saveListen(sub.subscriber_id, course.slug, date, track.id, version);
       return NextResponse.json({ ok: true, date, streak: listeningStreak(r.days, today) });
     }

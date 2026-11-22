@@ -201,7 +201,7 @@ describe("the app payload for a course-only buyer", () => {
     expect(data!.course?.week).toBe(1);
     expect(data!.course?.currentSessionId).toBe("s1");
     const open = data!.course!.tracks.filter((t) => t.unlocked).map((t) => t.id);
-    expect(open).toEqual(["s1", "daily", "night", "flare"]);
+    expect(open).toEqual(["s1", "daily", "night", "flare", "r1"]);
     expect(data!.course!.tracks.find((t) => t.id === "s2")!.unlocksLabel).toMatch(/^Opens /);
     expect(data!.course!.scoreDue).toBe(0);
     // No coach access, no plan surfaces.
@@ -237,6 +237,19 @@ describe("POST /api/app-course", () => {
     const locked = await call({ token, action: "audio", track: "s2", version: "music" });
     expect(locked.status).toBe(403);
     expect((await call({ token, action: "audio", track: "nope" })).status).toBe(400);
+  });
+
+  it("an intro streams its voice file even if music is asked for, and never counts as a listen", async () => {
+    const r1 = await call({ token, action: "audio", track: "r1", version: "music" });
+    expect(r1.status).toBe(200);
+    const ticket = String(r1.body.url).split("/").pop()!;
+    const key = JSON.parse(Buffer.from(ticket.split(".")[0], "base64url").toString()).k;
+    expect(key).toBe("calm-gut/d1/r1-voice.m4a");
+    expect((await call({ token, action: "audio", track: "r2" })).status).toBe(403);
+    const listen = await call({ token, action: "listen", track: "r1", version: "voice", date: todayIst() });
+    expect(listen.body.counted).toBe(false);
+    const rec = await store.readCourseRecord(subId, "calm-gut");
+    expect(rec.listens.some((l) => l.track === "r1")).toBe(false);
   });
 
   it("the stream serves the file with Range, and refuses a forged ticket", async () => {

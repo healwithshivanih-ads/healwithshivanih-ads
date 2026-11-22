@@ -25,14 +25,18 @@ import {
   configurePlayer,
   fmtTime,
   getPlayerState,
+  introSeen,
   load,
+  playWithIntro,
   pause,
   play,
   preferredVersion,
   savedPosition,
   seek,
+  setPendingVersion,
   setPreferredVersion,
   skip,
+  skipIntro,
   stop,
   subscribePlayer,
   type CourseVersion,
@@ -177,7 +181,19 @@ function usePlayer() {
 }
 
 function toPlayerTrack(course: AppCourse, t: AppCourseTrack): PlayerTrack {
-  return { courseSlug: course.slug, id: t.id, title: t.title, subtitle: t.subtitle, rev: t.rev };
+  return { courseSlug: course.slug, id: t.id, title: t.title, subtitle: t.subtitle, rev: t.rev, kind: t.kind };
+}
+
+/** The week's reading as text, folded until opened. */
+function Reading({ title, text, open = false }: { title?: string; text: string; open?: boolean }) {
+  return (
+    <details className="cg-reading" open={open}>
+      <summary>This week&apos;s reading{title ? `: ${title}` : ""}</summary>
+      {text.split(/\n\n+/).map((para, i) => (
+        <p key={i}>{para}</p>
+      ))}
+    </details>
+  );
 }
 
 // ── small pieces ─────────────────────────────────────────────────────────────
@@ -310,12 +326,12 @@ export function CourseTodayScreen({
               <PlayGlyph size={16} /> Listen
             </span>
           </button>
-          {current.reading && (
-            <div className="card" style={{ padding: "14px 16px", marginTop: 10 }}>
-              <div className="eyebrow">This week&apos;s reading</div>
-              <div style={{ fontSize: 14, lineHeight: 1.65, marginTop: 6, whiteSpace: "pre-line" }}>{current.reading}</div>
-            </div>
+          {current.introId && (
+            <button className="cg-intro-link" onClick={() => openPlayer(current.introId!)}>
+              <PlayGlyph size={14} /> Play this week&apos;s intro · 2 min
+            </button>
           )}
+          {current.reading && <Reading title={current.readingTitle} text={current.reading} />}
           {nextLocked && (
             <div className="muted" style={{ fontSize: 12.5, marginTop: 8 }}>
               Next: {nextLocked.title} · {nextLocked.unlocksLabel?.replace(/^Opens /, "opens ")}
@@ -365,7 +381,7 @@ export function CourseTodayScreen({
 export function CourseSessionsScreen({ openPlayer }: { openPlayer: (id: string) => void }) {
   const { course } = useCourse();
   const sessions = course.tracks.filter((t) => t.kind === "session");
-  const others = course.tracks.filter((t) => t.kind !== "session");
+  const others = course.tracks.filter((t) => t.kind !== "session" && t.kind !== "intro");
   return (
     <div className="screen-pad screen-anim">
       <div className="greeting">
@@ -649,16 +665,31 @@ export function CourseHelpScreen() {
 
 // ── Player overlay ───────────────────────────────────────────────────────────
 
-export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onClose: () => void }) {
+export function CoursePlayerOverlay({
+  trackId,
+  onClose,
+  onOpenTrack,
+}: {
+  trackId: string;
+  onClose: () => void;
+  /** Open another track's player (the session's intro). */
+  onOpenTrack?: (id: string) => void;
+}) {
   const { course, token } = useCourse();
   const t = course.tracks.find((x) => x.id === trackId) ?? null;
   const p = usePlayer();
-  const [version, setVersion] = useState<CourseVersion>(() => preferredVersion());
+  const [preferred, setVersion] = useState<CourseVersion>(() => preferredVersion());
+  // The intros exist in one version only.
+  const version: CourseVersion = t?.voiceOnly ? "voice" : preferred;
   const [offline, setOffline] = useState<"no" | "yes" | "saving">("no");
   const [progress, setProgress] = useState(0);
   const [offlineErr, setOfflineErr] = useState("");
   const pt = t ? toPlayerTrack(course, t) : null;
   const isThis = !!pt && p.track?.id === pt.id;
+  // This session's intro is playing ahead of it.
+  const introPlaying = !!pt && p.introFor?.id === pt.id;
+  const live = isThis || introPlaying;
+  const introTrack = t?.introId ? (course.tracks.find((x) => x.id === t.introId) ?? null) : null;
 
   useEffect(() => {
     if (!pt) return;
@@ -685,16 +716,25 @@ export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onC
     );
   }
 
-  const resumeAt = isThis ? p.current : savedPosition(pt, version);
-  const duration = isThis && p.duration ? p.duration : t.minutes[version] * 60;
+  const resumeAt = live ? p.current : savedPosition(pt, version);
+  const duration = live && p.duration ? p.duration : t.minutes[version] * 60;
   const start = () => {
-    if (isThis && p.version === version) void play();
-    else void load(pt, version, { autoplay: true });
+    if (introPlaying || (isThis && p.version === version)) {
+      void play();
+      return;
+    }
+    // First play of a week's session on this phone: the intro first.
+    if (introTrack && !t.listened && !introSeen(pt) && savedPosition(pt, version) === 0) {
+      void playWithIntro(toPlayerTrack(course, introTrack), pt, version);
+      return;
+    }
+    void load(pt, version, { autoplay: true });
   };
   const switchVersion = (v: CourseVersion) => {
     setVersion(v);
     setPreferredVersion(v);
-    if (isThis) void load(pt, v, { autoplay: p.playing });
+    if (introPlaying) setPendingVersion(v);
+    else if (isThis) void load(pt, v, { autoplay: p.playing });
   };
   const fetchLink = async () => {
     const res = await fetch("/api/app-course", {
@@ -714,14 +754,16 @@ export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onC
         onClick={() => {
           // Closing leaves a playing session playing (eyes closed, phone down);
           // the Now Playing pill brings it back. A paused one is put away.
-          if (isThis && !p.playing) stop();
+          if (live && !p.playing) stop();
           onClose();
         }}
       >
         <Icon name="arrowLeft" size={16} /> Back
       </button>
       <div className="overlay-pad">
-        <div className="eyebrow">{t.kind === "session" ? `Calm Gut · week ${t.week}` : "Calm Gut"}</div>
+        <div className="eyebrow">
+          {t.kind === "session" ? `Calm Gut · week ${t.week}` : t.kind === "intro" ? `Calm Gut · week ${t.week} reading` : "Calm Gut"}
+        </div>
         <h2 className="h-serif" style={{ fontSize: 26, margin: "6px 0 2px", lineHeight: 1.2 }}>
           {t.title}
         </h2>
@@ -734,6 +776,21 @@ export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onC
           {t.safetyExtra && <strong style={{ display: "block", marginTop: 6 }}>{t.safetyExtra}</strong>}
         </div>
 
+        {introPlaying && introTrack && (
+          <div className="cg-intro-now" role="status">
+            <span>
+              <strong>Week {t.week} intro</strong>
+              <span className="muted" style={{ display: "block", fontSize: 12.5 }}>
+                {introTrack.readingTitle}. The session follows straight after.
+              </span>
+            </span>
+            <button className="cg-btn" onClick={() => void skipIntro()}>
+              Skip intro
+            </button>
+          </div>
+        )}
+
+        {!t.voiceOnly && (
         <div className="cg-toggle" role="radiogroup" aria-label="Version">
           {(["music", "voice"] as const).map((v) => (
             <button key={v} role="radio" aria-checked={version === v} className={version === v ? "on" : ""} onClick={() => switchVersion(v)}>
@@ -741,6 +798,7 @@ export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onC
             </button>
           ))}
         </div>
+        )}
 
         <div className="cg-transport">
           <input
@@ -748,32 +806,32 @@ export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onC
             className="cg-scrub"
             min={0}
             max={Math.max(1, Math.floor(duration))}
-            value={Math.floor(isThis ? p.current : resumeAt)}
-            onChange={(e) => isThis && seek(Number(e.target.value))}
-            disabled={!isThis}
+            value={Math.floor(live ? p.current : resumeAt)}
+            onChange={(e) => live && seek(Number(e.target.value))}
+            disabled={!live}
             aria-label="Position"
           />
           <div className="cg-times">
-            <span>{fmtTime(isThis ? p.current : resumeAt)}</span>
+            <span>{fmtTime(live ? p.current : resumeAt)}</span>
             <span>{fmtTime(duration)}</span>
           </div>
           <div className="cg-buttons">
-            <button className="cg-skip" onClick={() => skip(-15)} disabled={!isThis} aria-label="Back 15 seconds">
+            <button className="cg-skip" onClick={() => skip(-15)} disabled={!live} aria-label="Back 15 seconds">
               −15
             </button>
             <button
               className="cg-play"
-              onClick={() => (isThis && p.playing ? pause() : start())}
-              aria-label={isThis && p.playing ? "Pause" : "Play"}
+              onClick={() => (live && p.playing ? pause() : start())}
+              aria-label={live && p.playing ? "Pause" : "Play"}
             >
-              {isThis && p.loading ? <span className="spinner" /> : isThis && p.playing ? <PauseGlyph size={30} /> : <PlayGlyph size={30} />}
+              {live && p.loading ? <span className="spinner" /> : live && p.playing ? <PauseGlyph size={30} /> : <PlayGlyph size={30} />}
             </button>
-            <button className="cg-skip" onClick={() => skip(15)} disabled={!isThis} aria-label="Forward 15 seconds">
+            <button className="cg-skip" onClick={() => skip(15)} disabled={!live} aria-label="Forward 15 seconds">
               +15
             </button>
           </div>
-          {!isThis && resumeAt > 30 && <div className="muted cg-resume">Picks up at {fmtTime(Math.max(0, resumeAt - 5))}</div>}
-          {isThis && p.error && <div className="cg-error">{p.error}</div>}
+          {!live && resumeAt > 30 && <div className="muted cg-resume">Picks up at {fmtTime(Math.max(0, resumeAt - 5))}</div>}
+          {live && p.error && <div className="cg-error">{p.error}</div>}
           {isThis && p.counted && <div className="muted cg-resume">Counted as listened today</div>}
         </div>
 
@@ -818,12 +876,12 @@ export function CoursePlayerOverlay({ trackId, onClose }: { trackId: string; onC
           </div>
         )}
 
-        {t.reading && (
-          <div className="card" style={{ padding: "14px 16px", marginTop: 16 }}>
-            <div className="eyebrow">This week&apos;s reading</div>
-            <div style={{ fontSize: 14, lineHeight: 1.65, marginTop: 6, whiteSpace: "pre-line" }}>{t.reading}</div>
-          </div>
+        {introTrack && !introPlaying && onOpenTrack && (
+          <button className="cg-intro-link" style={{ marginTop: 16 }} onClick={() => onOpenTrack(introTrack.id)}>
+            <PlayGlyph size={14} /> Play this week&apos;s intro · 2 min
+          </button>
         )}
+        {t.reading && <Reading title={t.readingTitle} text={t.reading} open={t.kind === "intro"} />}
       </div>
     </div>
   );
