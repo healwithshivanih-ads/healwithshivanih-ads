@@ -1,5 +1,5 @@
 /**
- * The week photos for Calm Gut: her own photographs, one per session (plus
+ * The week photos for Calm Gut, one per session (plus
  * the daily, night and flare-up tracks), prepared by
  * scripts/course-images-prepare.mjs into public/ochre-app/calm-gut/.
  *

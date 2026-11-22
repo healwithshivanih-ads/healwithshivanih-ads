@@ -5,7 +5,7 @@
  *
  *   node scripts/course-images-prepare.mjs --src <folder of her photos> [--demo]
  *
- * In <folder>, name each photo by its track: s1 … s8, daily, night, flare
+ * In <folder>, name each image by its track: s1 … s8, daily, night, flare
  * (any of .jpg .jpeg .png .heic). The week intros use their session's photo,
  * the short daily practice uses the daily one.
  *
@@ -14,10 +14,12 @@
  * the files are named demo-<id>… instead: shown only when the server runs
  * with COURSE_IMAGES_DEMO=1, and git-ignored, so stand-ins never ship.
  *
- * The treatment (Shivani 22 Nov 2026, "your photographs, one per week"):
- * colour turned well down, a slight warm shift, softened contrast and a fine
- * film grain, so eleven phone photos read as one set and never as stock.
- * Nothing generated: these are her own photographs.
+ * The photos are made in ChatGPT in her Chrome (Shivani 22 Nov 2026), one
+ * art direction for all: quiet documentary photo, soft daylight, muted earthy
+ * colour, no people, hands or text. The treatment is a light touch (her pick,
+ * 22 Nov 2026, over a heavier fade that greyed them out): colour eased back
+ * about a quarter, a little warmth, softer contrast and a fine grain, so the
+ * eleven read as one set and never as glossy AI images.
  */
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -35,8 +37,7 @@ if (!SRC) {
 const DEMO = args.demo === true;
 const OUT = path.join(path.dirname(new URL(import.meta.url).pathname), "..", "public", "ochre-app", "calm-gut");
 const IDS = ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "daily", "night", "flare"];
-const LOOK =
-  "hue=s=0.28,colorbalance=rs=0.03:gs=0.01:bs=-0.05:rm=0.02:bm=-0.03,eq=contrast=0.96:brightness=0.01:gamma=1.04,noise=alls=9:allf=t";
+const LOOK = "hue=s=0.72,colorbalance=rs=0.02:bs=-0.03:rm=0.01:bm=-0.02,eq=contrast=0.97:gamma=1.02,noise=alls=7:allf=t";
 
 fs.mkdirSync(OUT, { recursive: true });
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "cg-img-"));
