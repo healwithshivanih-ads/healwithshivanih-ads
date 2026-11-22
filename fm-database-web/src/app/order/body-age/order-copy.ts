@@ -3,7 +3,7 @@
  * word for word as it stands. Any change to a sentence here needs her yes again.
  * `fields.voucher` and `voucherNote` (the Rs 500 voucher) were added and approved by her the same evening.
  * `pin.yes` and `pin.no` (the PIN code check) were approved by her on 22 Nov 2026.
- * `whatsappTick` (a copy of the report on WhatsApp, with the buyer's consent, 22 Nov 2026) is NOT yet approved.
+ * `whatsappTick` (a copy of the report on WhatsApp, with the buyer's consent) was approved by her on 22 Nov 2026.
  * Rules the words follow: "body age report" and "test", never the product's internal name or the brand name;
  * the laboratory is never named; nothing is called urgent; no programme, plan length or programme price; no
  * "free"; every session is online. A test (order-copy.test.ts) fails on any of these.

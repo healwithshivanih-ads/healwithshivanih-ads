@@ -298,7 +298,7 @@ Her rule (21 Nov 2026): the PIN code is checked at the time of booking, before p
 
 Her rule (21 Nov 2026): "yes we can send the report on whatsapp also (need their consent for this)".
 
-- Order form: an optional, unticked box (`COPY.whatsappTick`, NOT yet approved by her). Ticked → the order carries
+- Order form: an optional, unticked box (`COPY.whatsappTick`, approved by her on 22 Nov 2026). Ticked → the order carries
   `report_on_whatsapp: true` (consent time = `consent_at`). Absent = never send it there. Only a real `true` from
   the form counts.
 - Coach order card (`/report-orders`): a line "Asked for the report on WhatsApp too" with a link that opens HER
