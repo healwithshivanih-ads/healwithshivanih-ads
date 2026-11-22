@@ -1031,3 +1031,27 @@ def test_a_low_positive_ana_is_watched_and_does_not_bring_the_session_offer():
     assert "One of your autoimmune markers is raised." in page and "worth mentioning at your next routine check-up" in page and not rp.drafts
     rf = _plus([_lab("Rheumatoid Factor (RF)", 20, "<=18", "IU/mL")])                 # the other two markers are unchanged
     assert next(s for s in rf.sections if s.id == "immune").status == "needs a deeper look" and rf.decision.outcome == "foundation"
+
+
+def test_page_one_joins_sections_marked_the_same_into_one_sentence():
+    """Two sections with the same mark read as one sentence, not the phrase twice (her own deeper report, 21 Nov 2026)."""
+    from types import SimpleNamespace as N
+    from fmdb.report import wording as W
+
+    def line(sections):
+        rp = N(sections=[N(id=i, status=st, name=nm) for i, st, nm in sections], stand=[], hits={}, rows={})
+        return W.rest_line(rp, W.Lib())
+
+    one = line([("liver", "steady", "Liver"), ("nutrients", "watch", "Vitamins and iron")])
+    assert one == "Everything else is steady: your liver. Also marked “watch”: vitamins and iron."   # unchanged
+    two = line([("liver", "steady", "Liver"), ("nutrients", "watch", "Vitamins and iron"),
+                ("immune", "watch", "Allergy and autoimmune markers")])
+    assert two == ("Everything else is steady: your liver. "
+                   "Also marked “watch”: vitamins and iron, and allergy and autoimmune markers.")
+    assert two.count("Also marked") == 1
+    mixed = line([("nutrients", "watch", "Vitamins and iron"), ("thyroid", "needs a deeper look", "Thyroid"),
+                  ("sugar", "watch", "Energy and sugar")])
+    assert mixed == ("Also marked “watch”: vitamins and iron, and energy and sugar. "
+                     "Also marked “needs a deeper look”: thyroid.")
+    plain = line([("thyroid", "watch", "Thyroid"), ("liver", "watch", "Liver")])
+    assert plain == "Also marked “watch”: thyroid and liver."

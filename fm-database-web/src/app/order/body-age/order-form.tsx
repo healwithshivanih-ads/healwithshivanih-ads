@@ -67,6 +67,9 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
   const [b, setB] = useState<Person>(EMPTY);
   const [visit, setVisit] = useState({ address: "", pincode: "", preferred_date: "", preferred_slot: "morning", notes: "" });
   const [consent, setConsent] = useState(false);
+  const [voucher, setVoucher] = useState("");
+  const [onWhatsApp, setOnWhatsApp] = useState(false);
+  const [pin, setPin] = useState<"" | "yes" | "no" | "unknown">("");
   const [busy, setBusy] = useState(false);
   const [state, setState] = useState<"form" | "confirming" | "done">("form");
   const [error, setError] = useState("");
@@ -74,6 +77,18 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
   const rupees = (n: number) => `₹${n.toLocaleString("en-IN")}`;
   const onVisit = (k: keyof typeof visit) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setVisit({ ...visit, [k]: e.target.value });
+
+  // Ask as soon as six digits are in, so someone outside the laboratory's area finds out before paying.
+  const onPincode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 6);
+    setVisit({ ...visit, pincode: value });
+    setPin("");
+    if (value.length !== 6) return;
+    void fetch("/api/body-age/pincode", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pincode: value }) })
+      .then((r) => r.json())
+      .then((j: { covered?: "yes" | "no" | "unknown" }) => setPin(j.covered ?? "unknown"))
+      .catch(() => setPin("unknown"));
+  };
 
   const waitForPaid = async (orderId: string, key: string) => {
     for (let i = 0; i < 45; i++) {
@@ -91,7 +106,7 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       const res = await fetch("/api/body-age/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ report_kind: kind, people: two ? [a, b] : [a], visit, consent }),
+        body: JSON.stringify({ report_kind: kind, people: two ? [a, b] : [a], visit, consent, voucher_code: two ? "" : voucher, report_on_whatsapp: onWhatsApp }),
       });
       const j = (await res.json()) as { ok: boolean; error?: string; order_id: string; access_key: string; razorpay_order_id: string; amount_inr: number; keyId: string };
       if (!j.ok) throw new Error(j.error || "Payment could not be started. Please try again.");
@@ -191,7 +206,9 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       <label style={label} htmlFor="v-address">{COPY.fields.address}</label>
       <textarea id="v-address" style={{ ...input, minHeight: 84 }} value={visit.address} onChange={onVisit("address")} autoComplete="street-address" required />
       <label style={label} htmlFor="v-pin">{COPY.fields.pincode}</label>
-      <input id="v-pin" style={input} inputMode="numeric" pattern="\d{6}" maxLength={6} value={visit.pincode} onChange={onVisit("pincode")} autoComplete="postal-code" required />
+      <input id="v-pin" style={input} inputMode="numeric" pattern="\d{6}" maxLength={6} value={visit.pincode} onChange={onPincode} autoComplete="postal-code" required />
+      {pin === "yes" && <p style={{ fontSize: 13, color: MUTE, margin: "6px 0 0" }}>{COPY.pin.yes}</p>}
+      {pin === "no" && <p role="alert" style={{ fontSize: 14, color: HOT, margin: "6px 0 0" }}>{COPY.pin.no}</p>}
       <label style={label} htmlFor="v-date">{COPY.fields.preferred_date}</label>
       <input id="v-date" style={input} type="date" min={minDate} value={visit.preferred_date} onChange={onVisit("preferred_date")} required />
       <label style={label} htmlFor="v-slot">{COPY.fields.preferred_slot}</label>
@@ -201,7 +218,19 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       </select>
       <label style={label} htmlFor="v-notes">{COPY.fields.notes}</label>
       <input id="v-notes" style={input} value={visit.notes} onChange={onVisit("notes")} maxLength={300} />
+      {!two && (
+        <>
+          <label style={label} htmlFor="v-voucher">{COPY.fields.voucher}</label>
+          <input id="v-voucher" style={input} value={voucher} onChange={(e) => setVoucher(e.target.value)} maxLength={24} autoCapitalize="characters" autoComplete="off" />
+          <p style={{ fontSize: 13, color: MUTE, margin: "6px 0 0" }}>{COPY.voucherNote}</p>
+        </>
+      )}
       <p style={{ fontSize: 13, color: MUTE, margin: "10px 0 0" }}>{COPY.visitNote}</p>
+
+      <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "22px 0 0", fontSize: 14.5, lineHeight: 1.45 }}>
+        <input type="checkbox" checked={onWhatsApp} onChange={(e) => setOnWhatsApp(e.target.checked)} style={{ marginTop: 4 }} />
+        <span>{COPY.whatsappTick}</span>
+      </label>
 
       <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "26px 0 0", fontSize: 14.5, lineHeight: 1.45 }}>
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} style={{ marginTop: 4 }} required />
@@ -211,7 +240,7 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       {error && (
         <p role="alert" style={{ color: HOT, fontSize: 14.5, margin: "16px 0 0" }}>{error}</p>
       )}
-      <button type="submit" disabled={busy} style={{ width: "100%", margin: "18px 0 0", padding: "15px 20px", background: HOT, color: "#fff", border: 0, borderRadius: 6, fontSize: 17, fontWeight: 700, cursor: "pointer", opacity: busy ? 0.6 : 1 }}>
+      <button type="submit" disabled={busy || pin === "no"} style={{ width: "100%", margin: "18px 0 0", padding: "15px 20px", background: HOT, color: "#fff", border: 0, borderRadius: 6, fontSize: 17, fontWeight: 700, cursor: "pointer", opacity: busy || pin === "no" ? 0.6 : 1 }}>
         {busy ? COPY.paying : `${COPY.pay} ${rupees(amount)}`}
       </button>
     </form>

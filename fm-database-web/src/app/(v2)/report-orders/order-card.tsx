@@ -17,6 +17,12 @@ const STATUS: Record<string, string> = {
 };
 const SLOT: Record<string, string> = { morning: "early morning (7 to 9)", late_morning: "late morning (9 to 11)" };
 
+/** Her own WhatsApp, opened on the buyer's number. Nothing is sent by the app: she attaches the PDF and sends. */
+function whatsappLink(phone: string): string {
+  const d = phone.replace(/\D/g, "");
+  return `https://wa.me/${d.length === 10 ? `91${d}` : d}`;
+}
+
 export function OrderCard({ row, labItems }: { row: OrderRow; labItems: LabItems }) {
   const { order: o, unplaced } = row;
   const router = useRouter();
@@ -57,6 +63,12 @@ export function OrderCard({ row, labItems }: { row: OrderRow; labItems: LabItems
           Home visit asked for <b>{o.visit.preferred_date}</b>, {SLOT[o.visit.preferred_slot] ?? o.visit.preferred_slot} · {o.visit.address}, {o.visit.pincode}
           {o.visit.notes ? ` · “${o.visit.notes}”` : ""}
         </div>
+        {o.report_on_whatsapp && (
+          <div>
+            Asked for the report on <b>WhatsApp too</b>. Email it as usual, then{" "}
+            <a href={whatsappLink(o.people[0].phone)} target="_blank" rel="noreferrer">open their WhatsApp chat</a> and attach the PDF yourself.
+          </div>
+        )}
         {o.booked_for && <div>Booked for {o.booked_for}{o.collected_on ? ` · sample taken ${o.collected_on}` : ""}</div>}
         {labItems.items.length > 0 && (o.status === "paid" || o.status === "booked") && (
           <div style={{ color: "var(--fm-muted, #6f6a5d)" }}>

@@ -11,13 +11,17 @@ import Razorpay from "razorpay";
 import {
   BODY_AGE_ORDER_KIND,
   buildBodyAgeOrder,
+  loadBodyAgeOrders,
   orderPageMode,
   orderRazorpayKeys,
   patchBodyAgeOrder,
   sanitizeOrderInput,
   saveBodyAgeOrder,
 } from "@/lib/fmdb/body-age-orders";
+import { loadPincodeList, pincodeAnswer } from "@/lib/fmdb/body-age-pincode";
+import { checkVoucher } from "@/lib/fmdb/body-age-voucher";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
+import { COPY } from "@/app/order/body-age/order-copy";
 
 export const dynamic = "force-dynamic";
 
@@ -41,14 +45,39 @@ export async function POST(req: Request) {
   const checked = sanitizeOrderInput(body, { todayYmd: istYmdPlusHours(0), minDateYmd: istYmdPlusHours(36) });
   if (!checked.ok) return NextResponse.json({ ok: false, error: checked.error }, { status: 400 });
 
+  // The laboratory must come to this PIN code. With no list on file the answer is "unknown" and the order goes
+  // ahead (the visit is then confirmed by hand, with a full refund if the laboratory cannot come).
+  if (pincodeAnswer(checked.input.visit.pincode, await loadPincodeList()) === "no") {
+    return NextResponse.json({ ok: false, error: COPY.pin.no }, { status: 400 });
+  }
+
+  // The body age check's voucher: Rs 500 off one person's report, once, for the email it was issued to.
+  let voucher: { code: string; offInr: number } | undefined;
+  const code = checked.input.voucher_code;
+  if (code) {
+    const v = checkVoucher(code, {
+      email: checked.input.people[0].email,
+      people: checked.input.people.length,
+      todayYmd: istYmdPlusHours(0),
+      secret: process.env.BODY_AGE_VOUCHER_SECRET,
+    });
+    if (!v.ok) return NextResponse.json({ ok: false, error: v.error }, { status: 400 });
+    const used = (await loadBodyAgeOrders()).some(
+      (o) => o.voucher_code === code && o.status !== "pending" && o.status !== "cancelled",
+    );
+    if (used) return NextResponse.json({ ok: false, error: "That voucher code has already been used." }, { status: 400 });
+    voucher = { code, offInr: v.offInr };
+  }
+
   const orderId = `ba-${istYmdPlusHours(0).replace(/-/g, "")}-${crypto.randomBytes(5).toString("hex").slice(0, 8)}`;
   const order = buildBodyAgeOrder(
     orderId,
     crypto.randomBytes(18).toString("base64url"),
     checked.input,
-    checked.amountInr,
+    checked.amountInr - (voucher?.offInr ?? 0),
     new Date().toISOString(),
     mode === "test",
+    voucher,
   );
   await saveBodyAgeOrder(order);
 

@@ -3122,3 +3122,175 @@ video.ex-stepfig { object-fit: contain; border-radius: 4px; }
 .ochre-app .cg-dim span { font: 500 13px 'Instrument Sans', system-ui, sans-serif; color: #8d857c; }
 @media (prefers-reduced-motion: no-preference) { .ochre-app .cg-dim { animation: cg-fade 1.2s ease; } }
 @keyframes cg-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ========================================================================
+   The recommended lab order and its pay form (ochre-lab-pay.tsx). These were
+   inline styles; the values here are the same ones, so the Labs tab reads as
+   it did. The Getting started screen below redraws them in the new look.
+   ======================================================================== */
+.ochre-app {
+.lab-rec { padding: 14px 15px; margin-bottom: 10px; }
+.lab-rec-eyebrow { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--forest); }
+.lab-rec-note { font-size: 15.5px; color: var(--ink); margin-top: 7px; line-height: 1.45; }
+.lab-rec-block { margin-top: 12px; }
+.lab-rec-sec { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+.lab-rec-list { margin: 7px 0 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.lab-rec-list li { font-size: 12.8px; color: var(--ink); display: flex; gap: 7px; line-height: 1.4; }
+.lab-rec-tick { color: var(--forest); flex-shrink: 0; }
+.lab-rec-fast { font-size: 11.5px; color: var(--ochre); margin-top: 10px; }
+.lab-rec-pre { margin-top: 10px; }
+.lab-rec-pre-h { font-size: 11.5px; font-weight: 600; color: var(--ink); }
+.lab-rec-pre-list { margin: 5px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.lab-rec-pre-list li { font-size: 12px; color: var(--muted); display: flex; gap: 7px; line-height: 1.4; }
+.lab-rec-dot { flex-shrink: 0; }
+/* a pre-test line the coach flagged for this client (lab-pretest.ts) */
+.lab-rec-pre-list li.lab-rec-flag {
+  display: block; color: var(--ink);
+  background: var(--forest-tint-2); border-radius: 10px; padding: 9px 11px;
+}
+.lab-rec-flag-tag {
+  display: block; margin-bottom: 3px;
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--forest);
+}
+.lab-rec-flag strong { display: block; margin-top: 4px; font-weight: 700; }
+.lab-rec-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);
+}
+.lab-rec-confirm { font-size: 13px; color: var(--forest); }
+.lab-rec-book { width: auto; padding: 10px 22px; }
+.lab-price { font-size: 17px; }
+.lab-price-deal { font-size: 21px; }
+.lab-form { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); display: grid; gap: 9px; }
+.lab-form-q { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+.lab-field {
+  width: 100%; box-sizing: border-box; padding: 10px 12px;
+  font-size: 13.5px; font-family: inherit; color: var(--ink);
+  background: var(--bg, #fff); border: 1px solid var(--line); border-radius: 10px;
+}
+.lab-field-area { min-height: 56px; resize: vertical; }
+.lab-field-note { min-height: 44px; resize: vertical; }
+.lab-form-row { display: flex; gap: 9px; }
+.lab-form-row .lab-field { flex: 1; min-width: 0; }
+.lab-hint { font-size: 11px; color: var(--muted); margin-top: -3px; }
+.lab-hint-warm { font-size: 11.5px; color: var(--ochre); margin-top: 0; }
+.lab-form-actions { display: flex; gap: 10px; align-items: center; margin-top: 2px; }
+.lab-pay { flex: 1; padding: 11px 18px; }
+.lab-cancel { background: transparent; border: none; color: var(--muted); font-size: 13px; cursor: pointer; }
+}
+
+/* ========================================================================
+   Getting started (DiscoveryOnboardingScreen in ochre-discovery.tsx): the
+   screen a client sees between signing up and their plan — intake, book
+   labs, results. Drawn in the look of the new front (sq.css, look D): a soft
+   sky behind the greeting that follows the day, light cards, serif titles,
+   pill buttons, larger type. The colours are sq.css's own values. The
+   wordmark in the bar is untouched, so no client sees the new name early.
+   ======================================================================== */
+.ochre-app {
+.ob {
+  --ob-sky: #ebe2d5;
+  --ob-card: #fffdfa;
+  --ob-fire-fill: #b53d67;
+  --ob-fire-text: #a93860;
+  --ob-growth: #557a43;
+  --ob-muted: #5f5953;
+  --ob-line-strong: rgba(42, 41, 45, 0.22);
+  display: flex; flex-direction: column; gap: 14px;
+  font-size: 16px; line-height: 1.5;
+}
+.ob > * { flex-shrink: 0; }
+.ob[data-time="morning"] { --ob-sky: #f1dfcc; }
+.ob[data-time="evening"] { --ob-sky: #e7d3ce; }
+/* the bar joins the sky, as it does on the new front */
+.app:has(.ob) .appbar { background: #ebe2d5; }
+.app:has(.ob[data-time="morning"]) .appbar { background: #f1dfcc; }
+.app:has(.ob[data-time="evening"]) .appbar { background: #e7d3ce; }
+
+.ob-greet {
+  background: var(--ob-sky); color: var(--ink);
+  margin: -16px -18px 0; padding: 6px 18px 42px;
+  border-radius: 0 0 30px 30px;
+}
+.ob-greet h1 {
+  font-family: var(--serif); font-weight: 400; font-size: 33px;
+  line-height: 1.15; letter-spacing: -0.015em; margin: 0; text-wrap: balance;
+}
+.ob-greet p { font-size: 15.5px; margin: 4px 0 0; }
+.ob-greet + * { margin-top: -42px; }
+
+.ob-hero {
+  background: var(--ob-card); color: var(--ink);
+  border-radius: 26px; padding: 20px 20px 18px;
+  box-shadow: var(--shadow-card);
+}
+.ob-eyebrow {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ob-fire-text);
+}
+.ob-hero h2 {
+  font-family: var(--serif); font-weight: 500; font-size: 26px;
+  line-height: 1.2; letter-spacing: -0.01em; margin: 8px 0 0; text-wrap: balance;
+}
+.ob-hero p { color: var(--ob-muted); font-size: 16px; margin: 6px 0 0; }
+
+.ob-steps { display: flex; gap: 6px; margin-top: 18px; }
+.ob-step { flex: 1; min-width: 0; text-align: center; font-size: 12px; line-height: 1.25; color: var(--ob-muted); }
+.ob-step i { display: block; height: 4px; border-radius: 999px; background: var(--ob-line-strong); margin-bottom: 6px; }
+.ob-step[data-state="done"] i { background: var(--ob-growth); }
+.ob-step[data-state="now"] i { background: var(--ob-fire-fill); }
+.ob-step[data-state="now"] { color: var(--ob-fire-text); font-weight: 700; }
+
+.ob-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  border: none; border-radius: 999px; padding: 12px 20px; min-height: 46px;
+  background: var(--ob-fire-fill); color: #fff; cursor: pointer;
+  font-family: var(--sans); font-weight: 600; font-size: 16px; text-decoration: none;
+  transition: transform 0.12s;
+}
+.ob-btn:active { transform: scale(0.97); }
+.ob-btn-block { width: 100%; }
+.ob-soft { background: var(--paper-2); border-radius: 20px; padding: 14px 16px; font-size: 15.5px; color: var(--ob-muted); }
+.ob-link { color: var(--ob-fire-text); font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+/* the lab order on this screen */
+.ob .section { margin: 8px 0 0; }
+.ob .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--ink); }
+.ob .card { background: var(--ob-card); border-radius: 20px; }
+.ob .lab-rec { padding: 18px; }
+.ob .lab-rec-eyebrow { font-weight: 600; letter-spacing: 0.14em; color: var(--ob-fire-text); }
+.ob .lab-rec-note { font-size: 17px; margin-top: 8px; }
+.ob .lab-rec-block { margin-top: 16px; }
+.ob .lab-rec-sec { font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; color: var(--ob-muted); }
+.ob .lab-rec-list { margin-top: 10px; gap: 8px; }
+.ob .lab-rec-list li { font-size: 15.5px; gap: 10px; }
+.ob .lab-rec-tick { color: var(--ob-growth); font-weight: 700; }
+.ob .lab-rec-fast { font-size: 14.5px; margin-top: 16px; }
+.ob .lab-rec-pre { margin-top: 16px; background: var(--paper-2); border-radius: 16px; padding: 14px 16px; }
+.ob .lab-rec-pre-h { font-size: 15.5px; }
+.ob .lab-rec-pre-list { margin-top: 8px; gap: 7px; }
+.ob .lab-rec-pre-list li { font-size: 14.5px; color: var(--ob-muted); gap: 9px; }
+.ob .lab-rec-pre-list li.lab-rec-flag {
+  color: var(--ink); background: #f6dce6; border-radius: 14px; padding: 12px 14px; font-size: 15px;
+}
+.ob .lab-rec-flag-tag { font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; color: var(--ob-fire-text); margin-bottom: 4px; }
+.ob .lab-rec-flag strong { margin-top: 6px; font-weight: 600; color: #7a1f45; }
+.ob .lab-rec-foot { flex-wrap: wrap; margin-top: 18px; padding-top: 16px; }
+.ob .lab-price { font-family: var(--serif); font-weight: 500; font-size: 26px; }
+.ob .lab-rec-confirm { font-size: 15px; color: var(--ob-fire-text); }
+.ob .lab-rec-book,
+.ob .lab-pay {
+  margin-top: 0; border-radius: 999px; min-height: 46px; padding: 12px 20px;
+  background: var(--ob-fire-fill); box-shadow: none; font-size: 16px;
+}
+.ob .lab-form { margin-top: 16px; padding-top: 16px; gap: 11px; }
+.ob .lab-form-q { font-size: 15.5px; color: var(--ink); font-weight: 600; }
+.ob .lab-field { font-size: 16px; padding: 12px 14px; border-radius: 14px; background: #fff; border-color: var(--ob-line-strong); }
+.ob .lab-field-area { min-height: 72px; }
+/* at this type size a date does not fit beside the pincode on a phone */
+.ob .lab-form-row { flex-direction: column; gap: 11px; }
+.ob .lab-hint { font-size: 13.5px; margin-top: -4px; }
+.ob .lab-hint-warm { font-size: 13.5px; margin-top: 0; }
+.ob .lab-form-actions { margin-top: 4px; }
+.ob .lab-cancel { font-size: 15px; min-height: 44px; padding: 0 8px; }
+}

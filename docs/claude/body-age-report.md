@@ -257,3 +257,86 @@ Guards that must come across unchanged:
 - **A send needs** `ready: true`, the report saved on the record, and a valid record email; the send is logged in the report folder's `sent.json` and read back as "✓ Sent".
 - **Prospects sweep** keeps a report buyer until `credit_until` (`fmdb/plan/prospects.py`).
 - Tests that pin all this: `__tests__/body-age-send.test.ts`, `body-age-orders.test.ts`, `body-age-order-intake.test.ts`, `server-actions/body-age-report.test.ts`, `fm-database/tests/test_body_age_order_mirror.py`, `test_prospects_body_age_report.py`.
+
+## The Rs 500 voucher from the body age check (21 Nov 2026) — built on the order side, OFF until the secret is set
+
+Her rules: Rs 500 off either report for ONE person (not on the price for two), one per person, tied to the
+email they signed up with, 14 days, never extended, no timers and no reminders.
+
+- `lib/fmdb/body-age-voucher.ts`: `issueVoucher(email, todayYmd, secret)` → `BA-<last day YYMMDD>-<6 letters>`
+  (HMAC of email + day); `checkVoucher` refuses a wrong email, two people, a past day, an edited date, or no secret.
+  The check page lives on the marketing site, which shares no database with this app, so the code proves itself.
+  **The marketing site must issue codes with exactly this function and the same `BODY_AGE_VOUCHER_SECRET`.**
+- `api/body-age/order/route.ts` checks the code, refuses one a paid order already used, and charges the reduced
+  amount; the order keeps `voucher_code` and `discount_inr` (`amount_inr` is what was charged).
+- With no `BODY_AGE_VOUCHER_SECRET` every code is refused, so the voucher is off by default.
+- The form shows the code box for one person only. Its two lines (`fields.voucher`, `voucherNote`) were approved
+  by Shivani on 21 Nov 2026 ("yes approved") and are in the wording fingerprint.
+- Not built: the check page on the marketing site (sign-up saved + code issued there).
+
+## PIN code check before payment (22 Nov 2026) — built, waits for the list
+
+Her rule (21 Nov 2026): the PIN code is checked at the time of booking, before payment.
+
+- The laboratory's partner site publishes its list of serviceable PIN codes ("Pincode Serviceability → Download
+  List", refreshed weekly). The app has no live link to the laboratory, so a COPY of that list lives at
+  `fm-database/data/lab_providers/thyrocare_pincodes.txt` (one six-digit code per line, `#` notes; first line = the
+  date it was read). Added 22 Nov 2026 with her yes: 4,778 codes; a test fails if the file is missing or shrinks
+  below 3,000 codes.
+- `lib/fmdb/body-age-pincode.ts`: `pincodeAnswer` → `yes` / `no` / `unknown`. No file or an empty file is `unknown`
+  and the order goes ahead as before (visit confirmed by hand, full refund if the laboratory cannot come). An empty
+  list never refuses everyone.
+- The form asks `POST /api/body-age/pincode` as soon as six digits are typed, shows `COPY.pin.yes` / `COPY.pin.no`,
+  and disables Pay on `no`. The order route asks again on the server and refuses a `no` before any order or payment
+  is created.
+- `COPY.pin.yes` / `COPY.pin.no` were approved by Shivani on 22 Nov 2026 ("Yes, approve them") and are in the wording fingerprint.
+- The list goes stale: re-read it from the partner site about once a month and before launch. A stale list can be
+  wrong both ways, which is why `pin.no` sends the buyer to WhatsApp. After a deploy, check on Fly that the file is
+  shipped (ask the pincode route for a code that is in the list; it must not answer `unknown`).
+
+## A copy of the report on WhatsApp (22 Nov 2026) — consent built, sending is by hand
+
+Her rule (21 Nov 2026): "yes we can send the report on whatsapp also (need their consent for this)".
+
+- Order form: an optional, unticked box (`COPY.whatsappTick`, approved by her on 22 Nov 2026). Ticked → the order carries
+  `report_on_whatsapp: true` (consent time = `consent_at`). Absent = never send it there. Only a real `true` from
+  the form counts.
+- Coach order card (`/report-orders`): a line "Asked for the report on WhatsApp too" with a link that opens HER
+  WhatsApp on the buyer's number. The app sends nothing: she emails the report as usual, then attaches the PDF in
+  WhatsApp herself.
+- Why by hand: the app's WhatsApp sender can send approved templates, text inside the 24-hour window, and voice
+  notes. It cannot send a PDF. Doing that needs a document send added to the WhatsApp server and, because a buyer
+  is almost never inside the 24-hour window, a Meta-approved template with a document. She asked for the WhatsApp
+  server to be left alone, so that is not built; it needs her go-ahead.
+- The email stays the delivery of record ("a report is re-sent only to the email on the order").
+
+## Launch day: the one checklist (written 22 Nov 2026)
+
+Launch moment: Sat 2 Jan 2027, 20:00 IST. Nothing below happens without Shivani's own yes. Two apps: the order
+side (this repo, Fly app behind intake.theochretree.com) and the marketing site (`~/ochre-funnel`, grow.theochretree.com).
+
+**In the week before**
+1. Re-read the laboratory's PIN code list (partner site → Order Booking → Pincode Serviceability → Download List)
+   into `fm-database/data/lab_providers/thyrocare_pincodes.txt`; keep the header date current. Merge.
+2. A fresh pair of Razorpay TEST keys (`RAZORPAY_TEST_KEY_ID` / `RAZORPAY_TEST_KEY_SECRET`); the pair on the Mac
+   answers "not authorised". Then one full practice payment in test mode: check → code → order → pay → order shows
+   paid → attach to the test profile → build → send to herself.
+3. Her 30 to 40 second video into the landing page's photo slot (marketing site, `content/body-age/`).
+4. Rebuild the coach app on the Mac (ask her) so the order list shows the voucher and the WhatsApp line.
+
+**On the day, in this order**
+1. Order side: deploy. Set on Fly: `BODY_AGE_VOUCHER_SECRET` (a new long random value), `BODY_AGE_ORDER_PAGE=live`
+   (it stays closed until 20:00 by itself), and confirm the LIVE Razorpay keys and `RAZORPAY_WEBHOOK_SECRET` are set.
+2. Razorpay dashboard (live mode): add the webhook `https://intake.theochretree.com/api/body-age/webhook`.
+3. Marketing site: deploy (migrate first, as that repo's notes say). Set on Fly: `BODY_AGE_VOUCHER_SECRET` (the SAME
+   value) and `BODY_AGE_PAGES=live`.
+4. After 20:00: open `/body-age` and `/body-age-check`; do one sign-up with her own email; use the code on the order
+   page; stop at the payment screen and check it shows the reduced price. Ask `/api/body-age/pincode` about a
+   covered code: it must answer yes, not unknown (proves the list shipped).
+5. Then link the landing page from the bio page, reels and emails.
+
+**Known and accepted at launch**
+- The report on WhatsApp is sent by hand (tick on the order → link on the order card → she attaches the PDF).
+- No refund screen and no report orders in the revenue figures: coach-side work waiting for the coach-app rebuild.
+- The sample on the landing page is her own report with the name hidden; it carries the SAMPLE stamp.
+- First real deeper order: check the Urine section prints.

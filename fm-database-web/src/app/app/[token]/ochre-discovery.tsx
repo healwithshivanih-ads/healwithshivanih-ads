@@ -8,9 +8,11 @@
  * See docs/DISCOVERY_TIER_SPEC.md.
  */
 
+import { useEffect, useState } from "react";
 import { Icon } from "./ochre-context";
 import { useOchre } from "./ochre-context";
 import { LabOrdersCard } from "./ochre-lab-pay";
+import { bandForHour } from "./day-plan";
 import type { DiscoveryStage } from "@/lib/fmdb/discovery-tier";
 
 /** Format a YYYY-MM-DD as "10 Jul 2026" (UTC — the date is day-granular). */
@@ -306,50 +308,44 @@ function stageStepIndex(stage: DiscoveryStage): number {
   }
 }
 
-function OnboardStepper({ active, enrolled }: { active: number; enrolled?: boolean }) {
-  const steps = enrolled ? ONBOARD_STEPS_ENROLLED : ONBOARD_STEPS;
+/** The four beats as thin bars under the card's text. Decorative: the eyebrow
+ *  above the title already says "Step N of 4" in words. */
+function OnboardStepper({ steps, active }: { steps: string[]; active: number }) {
   return (
-    <div style={{ display: "flex", gap: 6, margin: "2px 0 18px" }} aria-hidden>
-      {steps.map((label, i) => {
-        const cur = i === active;
-        const done = i < active;
-        return (
-          <div key={i} style={{ flex: 1, textAlign: "center" }}>
-            <div
-              style={{
-                height: 4,
-                borderRadius: 999,
-                background: done || cur ? "var(--forest, #2d5a3d)" : "var(--line, #e6e1d6)",
-                opacity: done ? 0.65 : 1,
-              }}
-            />
-            <div
-              style={{
-                fontSize: 10.5,
-                marginTop: 5,
-                lineHeight: 1.2,
-                color: cur ? "var(--forest, #2d5a3d)" : "var(--muted, #6f6a5d)",
-                fontWeight: cur ? 700 : 500,
-              }}
-            >
-              {label}
-            </div>
-          </div>
-        );
-      })}
+    <div className="ob-steps" aria-hidden>
+      {steps.map((label, i) => (
+        <div key={label} className="ob-step" data-state={i < active ? "done" : i === active ? "now" : "next"}>
+          <i />
+          {label}
+        </div>
+      ))}
     </div>
   );
 }
 
-function OnboardCard({ icon, title, body }: { icon: string; title: string; body: string }) {
+/** The one card that says where the client is: step, title, a line of body,
+ *  then the four beats. Drawn like the new front's "next" card (light, serif
+ *  title, no emoji). */
+function OnboardCard({
+  steps,
+  active,
+  title,
+  body,
+}: {
+  steps: string[];
+  active: number;
+  title: string;
+  body: string;
+}) {
   return (
-    <div className="rightnow" style={{ marginTop: 4 }}>
-      <div className="rn-body" style={{ textAlign: "center", padding: "10px 6px" }}>
-        <div style={{ fontSize: 32, marginBottom: 6 }} aria-hidden>{icon}</div>
-        <div className="rn-title" style={{ fontSize: 18 }}>{title}</div>
-        <div className="rn-sub" style={{ marginBottom: 0 }}>{body}</div>
+    <section className="ob-hero">
+      <div className="ob-eyebrow">
+        Step {active + 1} of {steps.length} · {steps[active]}
       </div>
-    </div>
+      <h2>{title}</h2>
+      <p>{body}</p>
+      <OnboardStepper steps={steps} active={active} />
+    </section>
   );
 }
 
@@ -357,22 +353,27 @@ function OnboardCard({ icon, title, body }: { icon: string; title: string; body:
 function OnboardContactLine() {
   const { coach } = useOchre();
   return (
-    <div className="coach-line" style={{ marginTop: 16 }}>
-      <Icon name="whatsapp" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
-      <div>
-        <div className="q">Stuck on a step, or want to change something? We&apos;re a message away.</div>
-        <a
-          className="who"
-          style={{ color: "var(--forest)", textDecoration: "none" }}
-          href={waHref(coach.whatsappNumber, "Hi,a question about getting started on the app —")}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp us →
-        </a>
-      </div>
+    <div className="ob-soft">
+      Stuck on a step, or want to change something? We&apos;re a message away.{" "}
+      <a
+        className="ob-link"
+        href={waHref(coach.whatsappNumber, "Hi,a question about getting started on the app —")}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp us →
+      </a>
     </div>
   );
+}
+
+/** The sky behind the greeting follows the client's own clock, as it does on
+ *  the new front (sq-app.tsx). */
+function skyForHour(hour: number): "morning" | "midday" | "evening" {
+  const band = bandForHour(hour);
+  if (band === "waking" || band === "morning") return "morning";
+  if (band === "midday") return "midday";
+  return "evening";
 }
 
 export function DiscoveryOnboardingScreen() {
@@ -380,36 +381,43 @@ export function DiscoveryOnboardingScreen() {
   const stage: DiscoveryStage = data.discoveryStage ?? "onboard_intake";
   const { client, intakeUrl } = data;
   const enrolled = data.tier === "enrolled";
+  const steps = enrolled ? ONBOARD_STEPS_ENROLLED : ONBOARD_STEPS;
+  const active = stageStepIndex(stage);
+
+  // The phone's own clock, read after mount: reading it during render would
+  // differ between the server and the phone. Midday until then.
+  const [hour, setHour] = useState<number | null>(null);
+  useEffect(() => {
+    const tick = () => setHour(new Date().getHours());
+    tick();
+    const onShow = () => {
+      if (document.visibilityState === "visible") tick();
+    };
+    document.addEventListener("visibilitychange", onShow);
+    return () => document.removeEventListener("visibilitychange", onShow);
+  }, []);
 
   return (
-    <div className="screen-pad screen-anim">
-      <div className="greeting">
-        <div className="hi">Hi {client.firstName}</div>
-        <div className="date script">Welcome to The Ochre Tree</div>
+    <div className="screen-pad screen-anim ob" data-time={hour === null ? "midday" : skyForHour(hour)}>
+      <div className="ob-greet">
+        <h1>Hi {client.firstName}</h1>
+        <p>Welcome to The Ochre Tree</p>
       </div>
-
-      <OnboardStepper active={stageStepIndex(stage)} enrolled={enrolled} />
 
       {stage === "onboard_intake" && (
         <>
           <OnboardCard
-            icon="📝"
+            steps={steps}
+            active={active}
             title="Let&apos;s start with your story"
             body="A short intake form — your history, symptoms and goals. Everything in your plan is built from this, so take your time."
           />
           {intakeUrl ? (
-            <a
-              className="submit-btn"
-              style={{ display: "block", textAlign: "center", textDecoration: "none", marginTop: 14 }}
-              href={intakeUrl}
-            >
+            <a className="ob-btn ob-btn-block" href={intakeUrl}>
               Start my intake →
             </a>
           ) : (
-            <div
-              className="card"
-              style={{ padding: 14, marginTop: 14, fontSize: 13, color: "var(--muted)", lineHeight: 1.5, textAlign: "center" }}
-            >
+            <div className="ob-soft" style={{ textAlign: "center" }}>
               Your intake link is on its way over WhatsApp — open it there and your answers will appear here.
             </div>
           )}
@@ -418,7 +426,8 @@ export function DiscoveryOnboardingScreen() {
 
       {stage === "awaiting_recommendation" && (
         <OnboardCard
-          icon="🌿"
+          steps={steps}
+          active={active}
           title="Thanks — that&apos;s the biggest step"
           body="We&apos;re reading through your intake and choosing the lab tests that matter most for you. They&apos;ll appear here to book, usually within a day or two."
         />
@@ -427,39 +436,40 @@ export function DiscoveryOnboardingScreen() {
       {stage === "book_labs" && (
         <>
           <OnboardCard
-            icon="🧪"
-            title="Your labs are ready"
+            steps={steps}
+            active={active}
+            title="Your lab list is ready"
             body="Based on your intake, here are the tests we&apos;d like to run. Book a home collection below — we&apos;ll arrange the rest."
           />
-          <div style={{ marginTop: 16 }}>
-            <LabOrdersCard showReorderCta={false} />
-          </div>
+          <LabOrdersCard showReorderCta={false} />
         </>
       )}
 
       {stage === "awaiting_results" && (
         <OnboardCard
-          icon="🚚"
+          steps={steps}
+          active={active}
           title="Your sample is on the way"
           body="We&apos;re arranging your home collection. Once your results come in, we&apos;ll add them to your vault and set up your discovery call."
         />
       )}
 
-      {stage === "awaiting_call" && (
-        enrolled ? (
+      {stage === "awaiting_call" &&
+        (enrolled ? (
           <OnboardCard
-            icon="🌱"
+            steps={steps}
+            active={active}
             title="Your results are in"
             body="Shivani is reading them now and writing your programme around what they show. It lands here as soon as it&apos;s ready — you don&apos;t need to do anything in the meantime."
           />
         ) : (
           <OnboardCard
-            icon="📞"
+            steps={steps}
+            active={active}
             title="Your results are in"
             body="Your discovery call is next — we&apos;ll reach out on WhatsApp to find a time. Right after the call, your starting map opens up here."
           />
-        )
-      )}
+        ))}
 
       <OnboardContactLine />
     </div>
