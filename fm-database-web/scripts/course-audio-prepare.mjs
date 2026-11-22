@@ -3,7 +3,7 @@
  * Prepare the Calm Gut audio for the app — $0, runs on the Mac.
  *
  *   node scripts/course-audio-prepare.mjs --src <draft folder> --out <dir>
- *        [--upload-s3 <bucket> --profile <aws profile>] [--only s1,flare]
+ *        [--upload-s3 <bucket> --profile <aws profile> --region ap-south-1] [--only s1,flare]
  *
  * 1. Transcode each draft (48 kHz / ~164 kbps AAC) to 96 kbps stereo AAC,
  *    44.1 kHz, with the moov atom at the front (+faststart) so playback starts
@@ -70,7 +70,11 @@ for (const t of TRACKS) {
     const mb = (fs.statSync(dest).size / 1e6).toFixed(1);
     console.log(`${key}  ${mb} MB`);
     if (bucket) {
-      const prof = typeof args.profile === "string" ? ["--profile", args.profile] : [];
+      const prof = [
+        ...(typeof args.profile === "string" ? ["--profile", args.profile] : []),
+        "--region",
+        typeof args.region === "string" ? args.region : "ap-south-1",
+      ];
       execFileSync("aws", ["s3", "cp", dest, `s3://${bucket}/${key}`, "--content-type", "audio/mp4", "--cache-control", "private, max-age=3600", "--sse", "AES256", ...prof], { stdio: "inherit" });
     }
     n++;

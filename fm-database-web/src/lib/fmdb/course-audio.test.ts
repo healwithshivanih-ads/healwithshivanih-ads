@@ -67,6 +67,14 @@ describe("storage mode", () => {
     // The link carries no app token.
     expect(link.url).not.toMatch(/token/i);
   });
+  it("production (Fly) is S3 only: local disk is refused there unless allowed on purpose", () => {
+    const local = { COURSE_AUDIO_DIR: "/x", COURSE_AUDIO_SECRET: "z" };
+    expect(courseAudioMode({ ...local, FLY_INTAKE_ONLY: "1" })).toBe("off");
+    expect(courseAudioMode({ ...local, FLY_INTAKE_ONLY: "1", COURSE_AUDIO_ALLOW_LOCAL: "1" })).toBe("local");
+    expect(
+      courseAudioMode({ ...local, FLY_INTAKE_ONLY: "1", COURSE_AUDIO_S3_BUCKET: "b", COURSE_AUDIO_S3_KEY_ID: "k", COURSE_AUDIO_S3_SECRET: "s" }),
+    ).toBe("s3");
+  });
   it("never signs a key outside the course layout", () => {
     expect(isValidAudioKey("calm-gut/d1/s1-music.m4a")).toBe(true);
     expect(isValidAudioKey("../clients/cl-001/client.yaml")).toBe(false);

@@ -1,5 +1,7 @@
 /**
  * Private course audio: short-lived links, only for a valid course token.
+ * PRODUCTION = the private S3 bucket (setup steps: docs/claude/
+ * invariants-v0.81-v0.91.md, "Calm Gut audio course"). Local disk = testing.
  *
  * The paid audio is NEVER public: no public-read bucket, nothing under
  * public/. Two storage modes, chosen by env:
@@ -31,9 +33,16 @@ export const DEFAULT_LINK_TTL_SEC = 6 * 60 * 60;
 /** The env vars this module reads (process.env satisfies it). */
 type Env = Record<string, string | undefined>;
 
+/**
+ * Production uses the private S3 bucket and nothing else (Shivani chose it,
+ * 22 Nov 2026). Local disk is for testing on a Mac: on Fly (FLY_INTAKE_ONLY)
+ * it is refused unless COURSE_AUDIO_ALLOW_LOCAL=1 says so on purpose, so a
+ * stray COURSE_AUDIO_DIR can never quietly become the production store.
+ */
 export function courseAudioMode(env: Env = process.env): CourseAudioMode {
   if (env.COURSE_AUDIO_S3_BUCKET && env.COURSE_AUDIO_S3_KEY_ID && env.COURSE_AUDIO_S3_SECRET) return "s3";
-  if (env.COURSE_AUDIO_DIR && ticketSecret(env)) return "local";
+  const production = !!env.FLY_INTAKE_ONLY && env.COURSE_AUDIO_ALLOW_LOCAL !== "1";
+  if (!production && env.COURSE_AUDIO_DIR && ticketSecret(env)) return "local";
   return "off";
 }
 
