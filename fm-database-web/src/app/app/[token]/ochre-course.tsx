@@ -1299,21 +1299,26 @@ export function CourseAccountOverlay({
 
 export function CourseRefundOverlay({ onClose }: { onClose: () => void }) {
   const { course, token } = useCourse();
-  const [state, setState] = useState<"ask" | "busy" | "refunded" | "pending">("ask");
+  const [state, setState] = useState<"ask" | "busy" | "refunded" | "pending" | "too_late" | "not_refundable">("ask");
   const [err, setErr] = useState("");
   const amount = course.refund?.amountLabel ?? "";
   const reload = () => window.location.reload();
 
-  if (state === "refunded" || state === "pending") {
+  if (state !== "ask" && state !== "busy") {
+    const words: Record<typeof state, { h: string; p: string }> = {
+      refunded: { h: "Refund requested", p: "You'll get an email shortly." },
+      pending: { h: "We've received your request", p: "It will be done within 2 working days. Your course stays open until then." },
+      too_late: {
+        h: "The refund window has closed",
+        p: "The 7-day refund window has closed. If something isn't working, just reply to your welcome email and I'll help.",
+      },
+      not_refundable: { h: "Nothing to refund", p: "This course was a gift. If something isn't working, just reply to your welcome email." },
+    };
     return (
       <div className="overlay-scroll cg-overlay">
         <div className="cg-screen" style={{ paddingTop: 72 }}>
-          <h1 className="cg-h1">{state === "refunded" ? "Refund requested" : "We've received your request"}</h1>
-          <p className="cg-p">
-            {state === "refunded"
-              ? "You'll get an email shortly."
-              : "It will be done within 2 working days. Your course stays open until then."}
-          </p>
+          <h1 className="cg-h1">{words[state].h}</h1>
+          <p className="cg-p">{words[state].p}</p>
           <button className="cg-btn" onClick={reload}>
             Close
           </button>
@@ -1338,7 +1343,8 @@ export function CourseRefundOverlay({ onClose }: { onClose: () => void }) {
               setState("busy");
               setErr("");
               const { ok, j } = await post(token, "refund", { course: course.slug });
-              if (ok && (j.status === "refunded" || j.status === "pending")) setState(j.status);
+              const st = j.status;
+              if (ok && (st === "refunded" || st === "pending" || st === "too_late" || st === "not_refundable")) setState(st);
               else {
                 setState("ask");
                 setErr("That didn't go through. Try again, or reply to your welcome email.");

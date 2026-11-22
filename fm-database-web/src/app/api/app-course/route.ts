@@ -50,7 +50,7 @@ import {
 } from "@/lib/fmdb/course-push";
 import type { WebPushSubscription } from "@/lib/fmdb/push-server";
 import { ymdInTz, markGuidedRefunded, markRefundRequested } from "@/lib/fmdb/guided-tier";
-import { refundOffer, requestFunnelRefund, tellCoachRefundPending } from "@/lib/fmdb/course-refund";
+import { refundOffer, refundOutcome, requestFunnelRefund, tellCoachRefundPending } from "@/lib/fmdb/course-refund";
 import {
   COURSE_DEVICE_COOKIE,
   claimCourseDevice,
@@ -231,21 +231,23 @@ export async function POST(req: NextRequest) {
       const offer = refundOffer(sub);
       if (!offer.eligible) return bad("a refund can be asked for in the first 7 days after buying", 403);
       const res = await requestFunnelRefund(sub);
-      if (res.ok) {
+      const outcome = refundOutcome(res);
+      if (outcome === "refunded") {
         // The refund has started: end access now, once.
         await markGuidedRefunded(sub.subscriber_id);
         await removeCourseSubscription(sub.subscriber_id).catch(() => {});
         return NextResponse.json({ ok: true, status: "refunded" });
       }
-      // Not automatic this time: note it and keep access. If the funnel
-      // answered, it has already put a to-do on Shivani's phone; only when it
-      // could not be reached does the app email her (once).
+      // The funnel said no for good: nothing pending, access unchanged.
+      if (outcome === "too_late" || outcome === "not_refundable") return NextResponse.json({ ok: true, status: outcome });
+      // Done by hand: note it and keep access. The funnel alerts Shivani when
+      // it answered; the app emails her only when it could not be reached.
       const firstTime = !sub.refund_requested_at;
       await markRefundRequested(sub.subscriber_id);
-      if (firstTime && !res.reached) {
+      if (firstTime && !res.ok && !res.reached) {
         await tellCoachRefundPending(sub, res.why).catch((e) => console.error("[app-course] refund alert failed:", e));
       }
-      console.error(`[app-course] refund for ${sub.subscriber_id} pending by hand: ${res.why}`);
+      if (!res.ok) console.error(`[app-course] refund for ${sub.subscriber_id} pending by hand: ${res.why}`);
       return NextResponse.json({ ok: true, status: "pending" });
     }
 

@@ -463,7 +463,7 @@ describe("in-app refund request (paid buyers, first 7 days)", () => {
     process.env.GMAIL_USER = "ops@example.test";
     process.env.GMAIL_APP_PASSWORD = "x";
     mailSent.length = 0;
-    funnelReply = { status: 502, body: { ok: false, error: "razorpay down" } };
+    funnelReply = { status: 409, body: { ok: false, reason: "pending_manual" } };
     const b = await buyer("pay_RF_FAIL");
     const r = await call({ token: b.token, action: "refund" });
     expect(r.body).toMatchObject({ ok: true, status: "pending" });
@@ -474,7 +474,36 @@ describe("in-app refund request (paid buyers, first 7 days)", () => {
     expect(mailSent).toHaveLength(0);
   });
 
+  it("funnel says too_late: nothing pending, access unchanged, no email", async () => {
+    process.env.GMAIL_USER = "ops@example.test";
+    process.env.GMAIL_APP_PASSWORD = "x";
+    mailSent.length = 0;
+    funnelReply = { status: 409, body: { ok: false, reason: "too_late" } };
+    const b = await buyer("pay_RF_LATE");
+    expect((await call({ token: b.token, action: "refund" })).body).toMatchObject({ ok: true, status: "too_late" });
+    const sub = await tier.resolveGuidedSubscriberByToken(b.token);
+    expect(sub?.status).toBe("active");
+    expect(sub?.refund_requested_at).toBeUndefined();
+    expect(mailSent).toHaveLength(0);
+    delete process.env.GMAIL_USER;
+    delete process.env.GMAIL_APP_PASSWORD;
+  });
+
+  it("a 5xx from the funnel counts as unreachable: pending, and one email", async () => {
+    process.env.GMAIL_USER = "ops@example.test";
+    process.env.GMAIL_APP_PASSWORD = "x";
+    mailSent.length = 0;
+    funnelReply = { status: 503, body: { ok: false, error: "down" } };
+    const b = await buyer("pay_RF_503");
+    expect((await call({ token: b.token, action: "refund" })).body).toMatchObject({ ok: true, status: "pending" });
+    expect(mailSent).toHaveLength(1);
+    delete process.env.GMAIL_USER;
+    delete process.env.GMAIL_APP_PASSWORD;
+  });
+
   it("funnel unreachable: noted, access stays, Shivani is emailed once", async () => {
+    process.env.GMAIL_USER = "ops@example.test";
+    process.env.GMAIL_APP_PASSWORD = "x";
     mailSent.length = 0;
     const saved = globalThis.fetch;
     globalThis.fetch = (async () => {
@@ -500,7 +529,23 @@ describe("in-app refund request (paid buyers, first 7 days)", () => {
     const env = { CALM_GUT_REFUND_URL: "https://f.test/r", GUIDED_ENROLL_SECRET: "s" };
     const answer = (status: number, body: string) => (async () => new Response(body, { status })) as unknown as typeof fetch;
     expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(200, '{"ok":true}') })).toEqual({ ok: true });
-    expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(400, '{"ok":false,"error":"refused"}') })).toMatchObject({ ok: false, reached: true });
+    expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(409, '{"ok":false,"reason":"in_progress"}') })).toMatchObject({ ok: false, reached: true, reason: "in_progress" });
+    expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(503, '{"ok":false}') })).toMatchObject({ ok: false, reached: false });
+    // Only the one shared secret signs the call.
+    let sentSecret = "";
+    await refundLib.requestFunnelRefund(sub, {
+      env: { ...env, COURSE_REFUND_SECRET: "other" },
+      fetchImpl: (async (_u: string, init: RequestInit) => {
+        sentSecret = (init.headers as Record<string, string>)["x-guided-secret"];
+        return new Response('{"ok":true}');
+      }) as unknown as typeof fetch,
+    });
+    expect(sentSecret).toBe("s");
+    // The funnel's reason picks the words.
+    expect(refundLib.refundOutcome({ ok: false, why: "", reached: true, reason: "too_late" })).toBe("too_late");
+    expect(refundLib.refundOutcome({ ok: false, why: "", reached: true, reason: "gift" })).toBe("not_refundable");
+    expect(refundLib.refundOutcome({ ok: false, why: "", reached: true, reason: "pending_manual" })).toBe("pending");
+    expect(refundLib.refundOutcome({ ok: false, why: "", reached: true, reason: "something_new" })).toBe("pending");
     expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(502, "<html>Bad gateway</html>") })).toMatchObject({ ok: false, reached: false });
     expect(await refundLib.requestFunnelRefund(sub, { env: {} })).toMatchObject({ ok: false, reached: false });
   });
