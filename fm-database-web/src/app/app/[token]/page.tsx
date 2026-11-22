@@ -13,6 +13,14 @@ import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { pickAppShell } from "@/lib/fmdb/app-shell";
 import { logAppOpen } from "@/lib/fmdb/app-opens";
 import OchreApp, { OchreAppError } from "./ochre-app";
+import {
+  COURSE_DEVICE_COOKIE,
+  courseDeviceLimitActive,
+  courseDeviceStatus,
+  maskEmail,
+  touchCourseDevice,
+} from "@/lib/fmdb/course-devices";
+import { CourseDeviceGate } from "./course-device-gate";
 
 export const dynamic = "force-dynamic";
 
@@ -52,6 +60,25 @@ export default async function ClientAppPage({ params }: { params: Promise<{ toke
   const { token } = await params;
   const data = await loadOnce(token);
   if (!data) return <OchreAppError />;
+  // A course buyer's link works on two phones (course-devices.ts). Any other
+  // device gets the gate: register while a slot is free, else a code emailed
+  // to the buyer. Programme clients never reach this.
+  if (data.course?.only && courseDeviceLimitActive()) {
+    const raw = (await cookies()).get(COURSE_DEVICE_COOKIE)?.value ?? null;
+    const status = await courseDeviceStatus(data.clientId, raw);
+    if (status !== "known") {
+      const contact = data.account.contact;
+      return (
+        <CourseDeviceGate
+          token={data.token}
+          mode={status}
+          title={data.course.ownerFirstName ? `${data.course.ownerFirstName}'s ${data.course.title}` : data.course.title}
+          maskedEmail={contact.includes("@") ? maskEmail(contact) : ""}
+        />
+      );
+    }
+    void touchCourseDevice(data.clientId, raw!).catch(() => {});
+  }
   // adoption signal — Fly-only (coach previews on localhost are excluded)
   void logAppOpen(data.clientId);
   return <OchreApp data={data} />;

@@ -3044,3 +3044,8 @@ video.ex-stepfig { object-fit: contain; border-radius: 4px; }
 .ochre-app .cg-bar-fill { display: block; height: 100%; background: var(--forest); border-radius: 999px; }
 .ochre-app .cg-bar-val { width: 24px; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .ochre-app .cg-result { font-family: var(--serif, Georgia, serif); font-size: 64px; color: var(--forest); line-height: 1; }
+.ochre-app .cg-gate { padding: 0 22px; text-align: center; }
+.ochre-app .cg-gate-body { max-width: 340px; margin-top: 6px; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.ochre-app .cg-gate-h { font-family: var(--serif, Georgia, serif); font-size: 21px; font-weight: 500; line-height: 1.25; margin: 6px 0 10px; }
+.ochre-app .cg-gate-sent { color: var(--forest); font-weight: 600; }
+.ochre-app .cg-code { width: 100%; box-sizing: border-box; text-align: center; font: inherit; font-size: 24px; letter-spacing: .35em; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); }

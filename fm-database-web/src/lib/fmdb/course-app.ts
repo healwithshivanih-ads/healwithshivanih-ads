@@ -59,6 +59,9 @@ export interface AppCourse {
   slug: string;
   title: string;
   tagline: string;
+  /** The buyer's first name, shown as "Priya's Calm Gut" — a gentle reminder
+   *  that the link is personal. Empty when unknown. */
+  ownerFirstName: string;
   /** True when the course IS the whole app (a course-only buyer). */
   only: boolean;
   startedOn: string;
@@ -98,7 +101,7 @@ export function buildAppCourse(
   course: CourseDef,
   startYmd: string,
   record: CourseRecord,
-  opts: { tz: string; now?: Date; only: boolean },
+  opts: { tz: string; now?: Date; only: boolean; ownerFirstName?: string },
 ): AppCourse {
   const todayYmd = ymdInTz(opts.now ?? new Date(), opts.tz);
   const day = courseDay(startYmd, todayYmd);
@@ -136,6 +139,7 @@ export function buildAppCourse(
     slug: course.slug,
     title: course.title,
     tagline: course.tagline,
+    ownerFirstName: opts.ownerFirstName ?? "",
     only: opts.only,
     startedOn: startYmd,
     startLabel: new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", day: "numeric", month: "long" }).format(
@@ -168,7 +172,13 @@ export async function buildCourseAppData(
   now: Date = new Date(),
 ): Promise<ClientAppData> {
   const record = await readCourseRecord(sub.subscriber_id, course.slug);
-  const appCourse = buildAppCourse(course, sub.start_date, record, { tz, now, only: true });
+  const owner = (sub.display_name || "").trim().split(/\s+/)[0] ?? "";
+  const appCourse = buildAppCourse(course, sub.start_date, record, {
+    tz,
+    now,
+    only: true,
+    ownerFirstName: owner && owner.toLowerCase() !== "there" ? owner : "",
+  });
   const todayLong = new Intl.DateTimeFormat("en-GB", { timeZone: tz, weekday: "long" }).format(now);
   const DOW_LONG = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const dom = Number(ymdInTz(now, tz).slice(8, 10));

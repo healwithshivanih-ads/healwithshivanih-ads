@@ -78,21 +78,25 @@ describe("weekly unlock from the payment day", () => {
   });
 });
 
-describe("symptom check at weeks 0, 6 and 12", () => {
+describe("symptom check at weeks 0, 4 and 8 (start, halfway, end)", () => {
   it("is due from day 0 until done", () => {
     expect(dueScoreWeek(CALM_GUT, 0, [])).toBe(0);
     expect(dueScoreWeek(CALM_GUT, 5, [])).toBe(0);
     expect(dueScoreWeek(CALM_GUT, 5, [0])).toBeNull();
   });
-  it("week 6 opens on day 42; a missed week-0 check is dropped then", () => {
-    expect(dueScoreWeek(CALM_GUT, 41, [0])).toBeNull();
-    expect(dueScoreWeek(CALM_GUT, 42, [0])).toBe(6);
-    expect(dueScoreWeek(CALM_GUT, 42, [])).toBe(6);
-    expect(scoreCheckpointFor(CALM_GUT, 43)).toBe(6);
+  it("the schedule is the start, halfway and the end of the 8 weeks", () => {
+    expect(CALM_GUT.scoreWeeks).toEqual([0, 4, 8]);
   });
-  it("week 12 opens on day 84", () => {
-    expect(dueScoreWeek(CALM_GUT, 84, [0, 6])).toBe(12);
-    expect(dueScoreWeek(CALM_GUT, 200, [0, 6, 12])).toBeNull();
+  it("week 4 opens on day 28 (halfway); a missed week-0 check is dropped then", () => {
+    expect(dueScoreWeek(CALM_GUT, 27, [0])).toBeNull();
+    expect(dueScoreWeek(CALM_GUT, 28, [0])).toBe(4);
+    expect(dueScoreWeek(CALM_GUT, 28, [])).toBe(4);
+    expect(scoreCheckpointFor(CALM_GUT, 29)).toBe(4);
+  });
+  it("week 8 opens on day 56, when the eight weeks are done", () => {
+    expect(dueScoreWeek(CALM_GUT, 55, [0, 4])).toBeNull();
+    expect(dueScoreWeek(CALM_GUT, 56, [0, 4])).toBe(8);
+    expect(dueScoreWeek(CALM_GUT, 200, [0, 4, 8])).toBeNull();
   });
 });
 

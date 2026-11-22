@@ -10,6 +10,7 @@ import { emptyCourseRecord } from "@/lib/fmdb/course-store";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
 import { OchreContext } from "./ochre-context";
 import { Header, BottomNav } from "./ochre-ui";
+import { CourseDeviceGate } from "./course-device-gate";
 import {
   CourseProvider,
   CourseTodayScreen,
@@ -21,9 +22,9 @@ import {
 
 const noop = () => {};
 
-function course(todayUtc: string, startYmd = "2026-12-08") {
+function course(todayUtc: string, startYmd = "2026-12-08", ownerFirstName = "") {
   const rec = emptyCourseRecord("calm-gut");
-  return buildAppCourse(CALM_GUT, startYmd, rec, { tz: "Asia/Kolkata", now: new Date(todayUtc), only: true });
+  return buildAppCourse(CALM_GUT, startYmd, rec, { tz: "Asia/Kolkata", now: new Date(todayUtc), only: true, ownerFirstName });
 }
 
 function wrap(c: ReturnType<typeof course>, node: React.ReactNode) {
@@ -50,6 +51,26 @@ describe("Today for a course buyer", () => {
     const html = wrap(course("2026-12-23T06:00:00Z"), <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
     expect(html).toContain("The river");
     expect(html).toContain("Week 3 of 8");
+  });
+});
+
+describe("the link is personal", () => {
+  it("Today's header carries the buyer's first name", () => {
+    const html = wrap(course("2026-12-08T06:00:00Z", "2026-12-08", "Priya"), <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    expect(html).toContain("Priya&#x27;s Calm Gut");
+  });
+  it("a third phone sees the limit, the masked buyer email and a code button — no email field", () => {
+    const html = renderToStaticMarkup(<CourseDeviceGate token="t" mode="full" title="Priya's Calm Gut" maskedEmail="p•••o@example.com" />);
+    expect(html).toContain("This course is already open on 2 phones");
+    expect(html).toContain("p•••o@example.com");
+    expect(html).toContain("Email me a code");
+    expect(html).not.toMatch(/type="email"/);
+  });
+  it("progress copy says start, halfway and end", () => {
+    const c = course("2026-12-08T06:00:00Z");
+    const done = { ...c, scoreDue: null };
+    const html = wrap(done, <CourseProgressScreen openScore={noop} />);
+    expect(html).toContain("halfway (week 4) and at the end (week 8)");
   });
 });
 

@@ -269,7 +269,7 @@ export function CourseTodayScreen({
   return (
     <div className="screen-pad screen-anim">
       <div className="greeting">
-        <div className="hi">{course.title}</div>
+        <div className="hi">{course.ownerFirstName ? `${course.ownerFirstName}'s ${course.title}` : course.title}</div>
         <div className="date script">
           {course.finished ? "All eight sessions are open" : `Week ${course.week} of ${course.totalWeeks}`}
         </div>
@@ -292,7 +292,7 @@ export function CourseTodayScreen({
 
       {scoreDue !== null && (
         <button className="cg-card cg-score-cta" onClick={openScore}>
-          <span className="eyebrow">{scoreDue === 0 ? "Before you begin" : `Week ${scoreDue} check`}</span>
+          <span className="eyebrow">{scoreDue === 0 ? "Before you begin" : scoreDue === 4 ? "Halfway check" : "End-of-course check"}</span>
           <span className="cg-card-title">Your 2-minute symptom check</span>
           <span className="muted cg-card-sub">Five questions, the same each time, so you can see what changes.</span>
         </button>
@@ -543,7 +543,7 @@ export function CourseProgressScreen({ openScore }: { openScore: () => void }) {
         <ScoreBars />
         {scoreDue === null && (
           <div className="muted" style={{ fontSize: 12.5, margin: "8px 2px 0" }}>
-            The check comes round at the start, at week 6 and at week 12.
+            The check comes round at the start, halfway (week 4) and at the end (week 8).
           </div>
         )}
       </Section>

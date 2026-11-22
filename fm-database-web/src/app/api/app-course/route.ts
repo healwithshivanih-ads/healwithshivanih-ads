@@ -15,6 +15,13 @@
  *   reminders  { daily_time: "HH:MM"|null, unlock: boolean }
  *   push       { op: "subscribe", subscription } | { op: "unsubscribe", endpoint? } | { op: "status" }
  *   history    {}                            → the saved days + scores (a new phone's first open)
+ *
+ * Two phones per course (course-devices.ts): every action above needs this
+ * device's cookie to be one of the listener's registered phones. These three
+ * are how a phone gets registered, so they are the only ones without it:
+ *   device-claim   {}        → registers this phone while a slot is free (sets the cookie)
+ *   device-code    {}        → emails a 6-digit code to the BUYER's address on record
+ *   device-verify  { code }  → right code: this phone in, least-recently-used phone out
  */
 import { NextRequest, NextResponse } from "next/server";
 import { allowDaily } from "@/lib/fmdb/rate-limit";
@@ -41,6 +48,17 @@ import {
 } from "@/lib/fmdb/course-push";
 import type { WebPushSubscription } from "@/lib/fmdb/push-server";
 import { ymdInTz } from "@/lib/fmdb/guided-tier";
+import {
+  COURSE_DEVICE_COOKIE,
+  claimCourseDevice,
+  courseDeviceLimitActive,
+  courseDeviceStatus,
+  deviceCookieOptions,
+  deviceIdFromCookieHeader,
+  issueCourseCode,
+  sendCourseCodeEmail,
+  verifyCourseCode,
+} from "@/lib/fmdb/course-devices";
 
 export const dynamic = "force-dynamic";
 
@@ -52,7 +70,20 @@ const LIMITS: Record<string, number> = {
   reminders: 30,
   push: 30,
   history: 60,
+  "device-claim": 20,
+  "device-code": 10,
+  "device-verify": 20,
 };
+
+function isHttps(req: Request): boolean {
+  const proto = req.headers.get("x-forwarded-proto");
+  if (proto) return proto.split(",")[0].trim() === "https";
+  try {
+    return new URL(req.url).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
 
 function bad(error: string, status = 400) {
   return NextResponse.json({ ok: false, error }, { status });
@@ -78,6 +109,48 @@ export async function POST(req: NextRequest) {
   const { sub, course } = listener;
   const today = ymdInTz(new Date(), sub.timezone);
   const day = courseDay(sub.start_date, today);
+  const deviceId = deviceIdFromCookieHeader(req.headers.get("cookie"));
+
+  // ── registering a phone ───────────────────────────────────────────────────
+  if (action === "device-claim" || action === "device-verify") {
+    try {
+      const setCookie = (res: NextResponse, raw: string) => {
+        res.cookies.set(COURSE_DEVICE_COOKIE, raw, deviceCookieOptions(isHttps(req)));
+        return res;
+      };
+      if (action === "device-claim") {
+        const raw = await claimCourseDevice(sub.subscriber_id, deviceId);
+        if (!raw) return bad("this course is already open on its phones", 409);
+        return setCookie(NextResponse.json({ ok: true }), raw);
+      }
+      const r = await verifyCourseCode(sub.subscriber_id, typeof body.code === "string" ? body.code : "", deviceId);
+      if (!r.ok) return NextResponse.json({ ok: false, error: r.reason, triesLeft: r.triesLeft }, { status: 400 });
+      return setCookie(NextResponse.json({ ok: true }), r.rawId);
+    } catch (err) {
+      console.error("[app-course] device failed:", err);
+      return bad("save failed", 500);
+    }
+  }
+  if (action === "device-code") {
+    // Always the address the course was bought with; nothing typed on the
+    // phone can change where the code goes.
+    if (!sub.email) return bad("no email on record", 409);
+    const issued = await issueCourseCode(sub.subscriber_id);
+    if (!issued.ok) return bad(issued.reason, 429);
+    try {
+      const sent = await sendCourseCodeEmail(sub.email, (sub.display_name || "").split(/\s+/)[0] ?? "", course.title, issued.code);
+      if (!sent) return bad("email not configured", 503);
+    } catch (err) {
+      console.error("[app-course] code email failed:", err);
+      return bad("email failed", 502);
+    }
+    return NextResponse.json({ ok: true });
+  }
+
+  // Everything else: only from one of the listener's registered phones.
+  if (courseDeviceLimitActive() && (await courseDeviceStatus(sub.subscriber_id, deviceId)) !== "known") {
+    return bad("this phone isn't registered for the course", 403);
+  }
 
   try {
     if (action === "audio" || action === "listen") {

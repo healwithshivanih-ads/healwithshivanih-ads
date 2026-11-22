@@ -44,7 +44,9 @@ export interface CourseDef {
   /** Short line for the header of the course screen. */
   tagline: string;
   totalWeeks: number;
-  /** Weeks (counted from 0 = the start week) the 5-question score is asked. */
+  /** When the 5-question score is asked, in whole weeks since the start:
+   *  Calm Gut asks at 0, 4 and 8 — the start, halfway, the end (Shivani,
+   *  22 Nov 2026). A check opens on day 7 × week. */
   scoreWeeks: number[];
   /** Shown on every track's screen. */
   safety: string;
@@ -61,7 +63,7 @@ export const CALM_GUT: CourseDef = {
   title: "Calm Gut",
   tagline: "8 weeks of gut-directed hypnotherapy. It may ease bloating, discomfort and stress-related gut symptoms.",
   totalWeeks: 8,
-  scoreWeeks: [0, 6, 12],
+  scoreWeeks: [0, 4, 8],
   safety: GENERAL_SAFETY,
   tracks: [
     { id: "s1", kind: "session", week: 1, title: "Calm belly", subtitle: "Session 1 · settling in", minutes: { music: 17, voice: 17 }, rev: "d1", reading: null },
@@ -138,8 +140,8 @@ export function trackUnlockYmd(track: CourseTrackDef, startYmd: string): string 
 
 /**
  * Which symptom check is due today, if any. A check opens on day 7 × week and
- * stays open until it is done or the next one opens (a missed week-6 check is
- * dropped once week 12 arrives, so the listener never owes two at once).
+ * stays open until it is done or the next one opens (a missed week-4 check is
+ * dropped once week 8 arrives, so the listener never owes two at once).
  */
 export function dueScoreWeek(
   course: CourseDef,
