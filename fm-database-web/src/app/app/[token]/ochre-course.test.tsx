@@ -4,7 +4,7 @@
  */
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
-import { buildAppCourse } from "@/lib/fmdb/course-app";
+import { buildAppCourse, type AppCourse } from "@/lib/fmdb/course-app";
 import { CALM_GUT } from "@/lib/fmdb/courses";
 import { emptyCourseRecord } from "@/lib/fmdb/course-store";
 import type { ClientAppData } from "@/lib/fmdb/client-app";
@@ -15,6 +15,8 @@ import {
   catchUpSession,
   listenedCounts,
   CourseLogOverlay,
+  CourseHelpScreen,
+  CourseRefundOverlay,
   CourseScoreOverlay,
   CourseProvider,
   CourseTodayScreen,
@@ -202,6 +204,33 @@ describe("persona-review fixes (22 Nov)", () => {
     expect(log).toContain("10 very stressed");
     const check = wrap(course("2026-12-08T06:00:00Z"), <CourseScoreOverlay onClose={noop} />);
     expect(check).toContain("0 not at all");
+  });
+});
+
+describe("refund on the Help screen", () => {
+  const withRefund = (refund: AppCourse["refund"]) => ({ ...course("2026-12-08T06:00:00Z"), refund });
+  it("a paid buyer in the first 7 days sees a quiet 'Request a refund' link", () => {
+    const html = wrap(withRefund({ eligible: true, amountLabel: "₹1,999", until: "2026-12-15T06:00:00Z", pendingSince: null }), <CourseHelpScreen openRefund={noop} />);
+    expect(html).toContain("Request a refund");
+    expect(html).toContain("For any problem, just reply to your welcome email.");
+  });
+  it("after 7 days (or for a gift) only the reply-to-your-email line", () => {
+    for (const r of [{ eligible: false, amountLabel: "₹1,999", until: "x", pendingSince: null }, null]) {
+      const html = wrap(withRefund(r), <CourseHelpScreen openRefund={noop} />);
+      expect(html).not.toContain("Request a refund");
+      expect(html).toContain("For any problem, just reply to your welcome email.");
+    }
+  });
+  it("a pending request says when it will be done", () => {
+    const html = wrap(withRefund({ eligible: true, amountLabel: "₹1,999", until: "x", pendingSince: "2026-12-09T05:00:00Z" }), <CourseHelpScreen openRefund={noop} />);
+    expect(html).toContain("within 2 working days");
+    expect(html).not.toContain("Request a refund");
+  });
+  it("the confirmation names the amount and the choice", () => {
+    const html = wrap(withRefund({ eligible: true, amountLabel: "₹1,999", until: "x", pendingSince: null }), <CourseRefundOverlay onClose={noop} />);
+    expect(html).toContain("Your course will end now, and ₹1,999 will return to your original payment method in 5–7 working days.");
+    expect(html).toContain(">Refund<");
+    expect(html).toContain("Keep my course");
   });
 });
 

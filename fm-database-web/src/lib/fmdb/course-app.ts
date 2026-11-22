@@ -17,6 +17,7 @@
 
 import type { ClientAppData } from "./client-app";
 import type { GuidedSubscriber } from "./guided-tier";
+import { refundOffer, rupees } from "./course-refund";
 import {
   courseDay,
   dueScoreWeek,
@@ -88,6 +89,14 @@ export interface AppCourse {
   /** The checkpoint week (0 / 6 / 12) whose symptom check is due, or null. */
   scoreDue: number | null;
   reminders: CourseReminderPrefs;
+  /** Paid buyers in their first 7 days can ask for a refund in the app.
+   *  Null for gifts and for programme clients. */
+  refund?: {
+    eligible: boolean;
+    amountLabel: string;
+    until: string;
+    pendingSince: string | null;
+  } | null;
 }
 
 const HISTORY_DAYS = 180;
@@ -324,6 +333,12 @@ export async function buildCourseAppData(
     clientUpdateNote: null,
     guidedWeekly: null,
     guidedAbout: null,
-    course: appCourse,
+    course: {
+      ...appCourse,
+      refund: (() => {
+        const r = refundOffer(sub, now);
+        return r.amountPaise > 0 ? { eligible: r.eligible, amountLabel: rupees(r.amountPaise), until: r.until, pendingSince: r.pendingSince } : null;
+      })(),
+    },
   };
 }

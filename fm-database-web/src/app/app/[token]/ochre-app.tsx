@@ -35,6 +35,7 @@ import {
   CourseScoreOverlay,
   CourseNowPlaying,
   CourseAccountOverlay,
+  CourseRefundOverlay,
 } from "./ochre-course";
 import { PracticesScreen } from "./ochre-practices";
 import { EndgameBanner, LibraryFloorScreen, GraduationReport, MaintenanceHome, MaintenanceCheckout } from "./ochre-endgame";
@@ -143,7 +144,8 @@ type Overlay =
   | { type: "labs" }
   | { type: "course-player"; trackId: string }
   | { type: "course-log" }
-  | { type: "course-score" };
+  | { type: "course-score" }
+  | { type: "course-refund" };
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
   const STORE = `ochre.app.${data.clientId}`;
@@ -853,7 +855,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   if (courseOnly) {
     if (tab === "labs") screen = <CourseSessionsScreen openPlayer={openCoursePlayer} />;
     else if (tab === "progress") screen = <CourseProgressScreen openScore={() => setOverlay({ type: "course-score" })} />;
-    else if (tab === "coach") screen = <CourseHelpScreen />;
+    else if (tab === "coach") screen = <CourseHelpScreen openRefund={() => setOverlay({ type: "course-refund" })} />;
     else
       screen = (
         <CourseTodayScreen
@@ -1131,6 +1133,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               )}
               {overlay.type === "course-log" && data.course && <CourseLogOverlay onClose={closeOverlay} />}
               {overlay.type === "course-score" && data.course && <CourseScoreOverlay onClose={closeOverlay} />}
+              {overlay.type === "course-refund" && data.course && <CourseRefundOverlay onClose={closeOverlay} />}
             </div>
           )}
 

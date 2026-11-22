@@ -61,6 +61,9 @@ export interface GuidedSubscriber {
    *  then payment_id holds the gift key ("gift-<uuid>") and amount is 0.
    *  Absent = paid. */
   reason?: "gift";
+  /** A refund the buyer asked for in the app that could not be completed
+   *  automatically (it is done by hand within 2 working days). */
+  refund_requested_at?: string;
   status: "active" | "refunded" | "upgraded";
   /** Set when status === "upgraded": the client id whose app_token this became. */
   upgraded_to?: string;
@@ -198,6 +201,7 @@ function coerce(d: Record<string, unknown>): GuidedSubscriber | null {
     amount_paisa: typeof d.amount_paisa === "number" ? d.amount_paisa : 0,
     source: d.source === "play" ? "play" : "web",
     ...(d.reason === "gift" ? { reason: "gift" as const } : {}),
+    ...(typeof d.refund_requested_at === "string" && d.refund_requested_at ? { refund_requested_at: d.refund_requested_at } : {}),
     status: d.status === "refunded" ? "refunded" : d.status === "upgraded" ? "upgraded" : "active",
     ...(typeof d.upgraded_to === "string" && d.upgraded_to ? { upgraded_to: d.upgraded_to } : {}),
     timezone: s(d.timezone) || "Asia/Kolkata",
@@ -337,6 +341,17 @@ export async function findCourseSubscribersForRefund(q: {
     if (pid ? s.payment_id === pid : s.email === email && s.status === "active") out.push(s);
   }
   return out;
+}
+
+/** Note an in-app refund request that is waiting to be done by hand. */
+export async function markRefundRequested(subscriberId: string, now: Date = new Date()): Promise<void> {
+  const f = subscriberFile(subscriberId);
+  const d = await readYamlFile(f);
+  if (!d) throw new Error(`guided subscriber not found: ${subscriberId}`);
+  if (!d.refund_requested_at) d.refund_requested_at = now.toISOString();
+  d.updated_at = now.toISOString();
+  d.version = (typeof d.version === "number" ? d.version : 1) + 1;
+  await withFsRetry(() => fs.writeFile(f, dumpYaml(d), "utf8"));
 }
 
 /** Switch a course buyer off (refunded). The token stops resolving, the

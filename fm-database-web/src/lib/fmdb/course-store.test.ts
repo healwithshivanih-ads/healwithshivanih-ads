@@ -40,6 +40,7 @@ const store = await import("./course-store");
 const tier = await import("./guided-tier");
 const { POST: enroll } = await import("@/app/api/guided-enroll/route");
 const { POST: deactivate } = await import("@/app/api/guided-enroll/deactivate/route");
+const refundLib = await import("./course-refund");
 const { POST: course } = await import("@/app/api/app-course/route");
 const { GET: stream } = await import("@/app/api/app-course/stream/[ticket]/route");
 const { loadClientAppData } = await import("./client-app");
@@ -400,5 +401,73 @@ describe("refund: POST /api/guided-enroll/deactivate", () => {
     const r = (await (await deactivate(deReq({ email: "refund2@example.com" }))).json()) as Record<string, unknown>;
     expect(r.turned_off).toBe(1);
     expect(await loadClientAppData(t)).toBeNull();
+  });
+});
+
+describe("in-app refund request (paid buyers, first 7 days)", () => {
+  const realFetch = globalThis.fetch;
+  let funnelCalls: { url: string; body: Record<string, unknown>; secret: string | null }[] = [];
+  let funnelReply: { status: number; body: Record<string, unknown> } = { status: 200, body: { ok: true } };
+  beforeAll(() => {
+    process.env.CALM_GUT_REFUND_URL = "https://funnel.example.test/api/calm-gut/refund";
+    globalThis.fetch = (async (url: string, init: RequestInit) => {
+      funnelCalls.push({ url, body: JSON.parse(String(init.body)), secret: (init.headers as Record<string, string>)["x-guided-secret"] });
+      return new Response(JSON.stringify(funnelReply.body), { status: funnelReply.status });
+    }) as typeof fetch;
+  });
+  afterAll(() => {
+    globalThis.fetch = realFetch;
+    delete process.env.CALM_GUT_REFUND_URL;
+  });
+  beforeEach(() => {
+    funnelCalls = [];
+    funnelReply = { status: 200, body: { ok: true } };
+  });
+  async function buyer(pid: string, extra: Record<string, unknown> = {}) {
+    const r = await enroll(enrollReq({ ...CONTRACT, payment_id: pid, email: `${pid}@example.com`, started_on: todayIst(), ...extra }));
+    const j = (await r.json()) as Record<string, unknown>;
+    return { token: j.token as string, id: j.subscriber_id as string };
+  }
+
+  it("offers it to a paid buyer for 7 days, never to a gift", async () => {
+    const b = await buyer("pay_RF_OFFER");
+    const data = await loadClientAppData(b.token);
+    expect(data!.course!.refund).toMatchObject({ eligible: true, amountLabel: "₹1,999", pendingSince: null });
+    const g = await buyer("gift-rf-offer-0001", { reason: "gift", amount_paise: 0 });
+    expect((await loadClientAppData(g.token))!.course!.refund).toBeNull();
+    expect((await call({ token: g.token, action: "refund" })).status).toBe(403);
+    const sub = (await tier.resolveGuidedSubscriberByToken(b.token))!;
+    expect(refundLib.refundOffer(sub, new Date(Date.parse(sub.purchased_at) + 7 * 86_400_000 - 1000)).eligible).toBe(true);
+    expect(refundLib.refundOffer(sub, new Date(Date.parse(sub.purchased_at) + 7 * 86_400_000 + 1000)).eligible).toBe(false);
+  });
+
+  it("funnel says ok: the funnel gets the payment id with the secret, and access ends once", async () => {
+    const b = await buyer("pay_RF_OK");
+    const r = await call({ token: b.token, action: "refund" });
+    expect(r.body).toMatchObject({ ok: true, status: "refunded" });
+    expect(funnelCalls).toHaveLength(1);
+    expect(funnelCalls[0]).toMatchObject({ url: "https://funnel.example.test/api/calm-gut/refund", secret: "enroll-secret" });
+    expect(funnelCalls[0].body).toMatchObject({ payment_id: "pay_RF_OK", course: "calm-gut" });
+    expect(await loadClientAppData(b.token)).toBeNull();
+    expect((await tier.resolveGuidedSubscriberByToken(b.token))?.status).toBe("refunded");
+    // The funnel also calling deactivate is harmless.
+    const again = (await (await deactivate(new Request("https://x/api/guided-enroll/deactivate", { method: "POST", headers: { "x-guided-secret": "enroll-secret" }, body: JSON.stringify({ payment_id: "pay_RF_OK" }) }) as AnyReq)).json()) as Record<string, unknown>;
+    expect(again.turned_off).toBe(0);
+  });
+
+  it("funnel fails: the request is noted, access stays, the app says 2 working days", async () => {
+    funnelReply = { status: 502, body: { ok: false, error: "razorpay down" } };
+    const b = await buyer("pay_RF_FAIL");
+    const r = await call({ token: b.token, action: "refund" });
+    expect(r.body).toMatchObject({ ok: true, status: "pending" });
+    const data = await loadClientAppData(b.token);
+    expect(data).not.toBeNull();
+    expect(data!.course!.refund!.pendingSince).toBeTruthy();
+    expect((await tier.resolveGuidedSubscriberByToken(b.token))?.status).toBe("active");
+  });
+
+  it("formats rupees", () => {
+    expect(refundLib.rupees(199900)).toBe("₹1,999");
+    expect(refundLib.rupees(249950)).toBe("₹2,499.50");
   });
 });

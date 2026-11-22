@@ -593,7 +593,7 @@ export function CourseProgressScreen({ openScore }: { openScore: () => void }) {
 
 // ── Help (reminders, safety, support) ───────────────────────────────────────
 
-export function CourseHelpScreen() {
+export function CourseHelpScreen({ openRefund }: { openRefund?: () => void }) {
   const { course, token, reminders, setReminders } = useCourse();
   const push = usePush(token, "course");
   const [time, setTime] = useState(reminders.daily_time ?? "20:00");
@@ -663,9 +663,17 @@ export function CourseHelpScreen() {
 
       <div className="cg-card">
         <h2 className="cg-h2">Questions</h2>
-        <p className="cg-p">
-          Stuck with the app or the audio, or a payment question? Write to <b>hello@theochretree.com</b>. Replies within a working day.
-        </p>
+        <p className="cg-p">For any problem, just reply to your welcome email.</p>
+        {course.refund?.pendingSince ? (
+          <p className="cg-m" style={{ margin: 0 }}>
+            You asked for a refund on {new Date(course.refund.pendingSince).toLocaleDateString("en-GB", { day: "numeric", month: "long" })}. It will be done
+            within 2 working days.
+          </p>
+        ) : course.refund?.eligible && openRefund ? (
+          <button className="cg-link-btn quiet" onClick={openRefund}>
+            Request a refund
+          </button>
+        ) : null}
       </div>
     </div>
   );
@@ -1282,6 +1290,68 @@ export function CourseAccountOverlay({
           </div>
         </div>
         <p className="cg-m">Your log and scores are saved to your own record, so a new phone keeps your history. Nobody else reads them.</p>
+      </div>
+    </div>
+  );
+}
+
+// ── Refund (paid buyers, first 7 days) ──────────────────────────────────────
+
+export function CourseRefundOverlay({ onClose }: { onClose: () => void }) {
+  const { course, token } = useCourse();
+  const [state, setState] = useState<"ask" | "busy" | "refunded" | "pending">("ask");
+  const [err, setErr] = useState("");
+  const amount = course.refund?.amountLabel ?? "";
+  const reload = () => window.location.reload();
+
+  if (state === "refunded" || state === "pending") {
+    return (
+      <div className="overlay-scroll cg-overlay">
+        <div className="cg-screen" style={{ paddingTop: 72 }}>
+          <h1 className="cg-h1">{state === "refunded" ? "Refund requested" : "We've received your request"}</h1>
+          <p className="cg-p">
+            {state === "refunded"
+              ? "You'll get an email shortly."
+              : "It will be done within 2 working days. Your course stays open until then."}
+          </p>
+          <button className="cg-btn" onClick={reload}>
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="overlay-scroll cg-overlay">
+      <button className="cg-back" onClick={onClose}>‹ Back</button>
+      <div className="cg-screen">
+        <h1 className="cg-h1">Request a refund</h1>
+        <p className="cg-p">
+          Your course will end now, and {amount} will return to your original payment method in 5–7 working days.
+        </p>
+        <div className="cg-btns">
+          <button
+            className="cg-btn"
+            disabled={state === "busy"}
+            onClick={async () => {
+              setState("busy");
+              setErr("");
+              const { ok, j } = await post(token, "refund", { course: course.slug });
+              if (ok && (j.status === "refunded" || j.status === "pending")) setState(j.status);
+              else {
+                setState("ask");
+                setErr("That didn't go through. Try again, or reply to your welcome email.");
+              }
+            }}
+          >
+            {state === "busy" ? "Requesting…" : "Refund"}
+          </button>
+          <button className="cg-btn ghost" disabled={state === "busy"} onClick={onClose}>
+            Keep my course
+          </button>
+        </div>
+        {err && <p className="cg-error">{err}</p>}
       </div>
     </div>
   );

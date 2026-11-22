@@ -15,6 +15,8 @@
  *   reminders  { daily_time: "HH:MM"|null, unlock: boolean }
  *   push       { op: "subscribe", subscription } | { op: "unsubscribe", endpoint? } | { op: "status" }
  *   history    {}                            → the saved days + scores (a new phone's first open)
+ *   refund     {}                            → paid buyer, first 7 days: ask ochre-funnel to refund;
+ *                                               { status: "refunded" } (access ended) or "pending" (done by hand)
  *
  * Two phones per course (course-devices.ts): every action above needs this
  * device's cookie to be one of the listener's registered phones. These three
@@ -47,7 +49,8 @@ import {
   sendCoursePush,
 } from "@/lib/fmdb/course-push";
 import type { WebPushSubscription } from "@/lib/fmdb/push-server";
-import { ymdInTz } from "@/lib/fmdb/guided-tier";
+import { ymdInTz, markGuidedRefunded, markRefundRequested } from "@/lib/fmdb/guided-tier";
+import { refundOffer, requestFunnelRefund, tellCoachRefundPending } from "@/lib/fmdb/course-refund";
 import {
   COURSE_DEVICE_COOKIE,
   claimCourseDevice,
@@ -70,6 +73,7 @@ const LIMITS: Record<string, number> = {
   reminders: 30,
   push: 30,
   history: 60,
+  refund: 5,
   "device-claim": 20,
   "device-code": 10,
   "device-verify": 20,
@@ -221,6 +225,24 @@ export async function POST(req: NextRequest) {
       }
       if (op === "status") return NextResponse.json({ ok: true, ...(await coursePushStatus(sub.subscriber_id)) });
       return bad("unknown push op");
+    }
+
+    if (action === "refund") {
+      const offer = refundOffer(sub);
+      if (!offer.eligible) return bad("a refund can be asked for in the first 7 days after buying", 403);
+      const res = await requestFunnelRefund(sub);
+      if (res.ok) {
+        // The refund has started: end access now, once.
+        await markGuidedRefunded(sub.subscriber_id);
+        await removeCourseSubscription(sub.subscriber_id).catch(() => {});
+        return NextResponse.json({ ok: true, status: "refunded" });
+      }
+      // Not automatic this time: note it, keep access, tell Shivani once.
+      const firstTime = !sub.refund_requested_at;
+      await markRefundRequested(sub.subscriber_id);
+      if (firstTime) await tellCoachRefundPending(sub, res.why).catch((e) => console.error("[app-course] refund alert failed:", e));
+      console.error(`[app-course] refund for ${sub.subscriber_id} pending by hand: ${res.why}`);
+      return NextResponse.json({ ok: true, status: "pending" });
     }
 
     // history
