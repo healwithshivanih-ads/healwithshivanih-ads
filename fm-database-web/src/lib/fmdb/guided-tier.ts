@@ -57,6 +57,10 @@ export interface GuidedSubscriber {
   payment_id: string;
   amount_paisa: number;
   source: "web" | "play";
+  /** Set only for a free place Shivani gave by hand (the Calm Gut beta):
+   *  then payment_id holds the gift key ("gift-<uuid>") and amount is 0.
+   *  Absent = paid. */
+  reason?: "gift";
   status: "active" | "refunded" | "upgraded";
   /** Set when status === "upgraded": the client id whose app_token this became. */
   upgraded_to?: string;
@@ -193,6 +197,7 @@ function coerce(d: Record<string, unknown>): GuidedSubscriber | null {
     payment_id: s(d.payment_id),
     amount_paisa: typeof d.amount_paisa === "number" ? d.amount_paisa : 0,
     source: d.source === "play" ? "play" : "web",
+    ...(d.reason === "gift" ? { reason: "gift" as const } : {}),
     status: d.status === "refunded" ? "refunded" : d.status === "upgraded" ? "upgraded" : "active",
     ...(typeof d.upgraded_to === "string" && d.upgraded_to ? { upgraded_to: d.upgraded_to } : {}),
     timezone: s(d.timezone) || "Asia/Kolkata",
@@ -251,6 +256,8 @@ export interface CreateGuidedInput {
   payment_id: string;
   amount_paisa: number;
   source: "web" | "play";
+  /** "gift" = a free place given by hand (payment_id is the gift key). */
+  reason?: "gift";
   timezone?: string;
 }
 
@@ -280,8 +287,9 @@ export async function createGuidedSubscriber(
     extra_protocols: [],
     start_date: product === "course" ? courseStartYmd(input.started_on, now, tz) : nextMondayYmd(now, tz),
     payment_id: input.payment_id,
-    amount_paisa: input.amount_paisa,
+    amount_paisa: input.reason === "gift" ? 0 : input.amount_paisa,
     source: input.source,
+    ...(input.reason === "gift" ? { reason: "gift" as const } : {}),
     status: "active",
     timezone: tz,
     purchased_at: iso,

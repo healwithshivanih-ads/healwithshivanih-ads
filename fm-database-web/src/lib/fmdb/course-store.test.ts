@@ -128,6 +128,50 @@ describe("enrolment: POST /api/guided-enroll with product=course", () => {
     expect(tier.courseStartYmd("garbage", now, "Asia/Kolkata")).toBe("2026-12-08");
   });
 
+  it("a free place (gift): no Razorpay id, amount 0, marked gift, starts today, idempotent on the key", async () => {
+    const body = {
+      product: "course",
+      course: "calm-gut",
+      name: "Beta Friend",
+      email: "beta@example.com",
+      phone: "",
+      payment_id: "gift-6f1c2a9e-1111-4c3b-9d2e-0a1b2c3d4e5f",
+      amount_paise: 0,
+      reason: "gift",
+    };
+    const first = (await (await enroll(enrollReq(body))).json()) as Record<string, unknown>;
+    expect(first.ok).toBe(true);
+    expect(first.created).toBe(true);
+    expect(first.reason).toBe("gift");
+    expect(first.start_date).toBe(todayIst());
+    const again = (await (await enroll(enrollReq(body))).json()) as Record<string, unknown>;
+    expect(again.created).toBe(false);
+    expect(again.token).toBe(first.token);
+    const sub = await tier.resolveGuidedSubscriberByToken(first.token as string);
+    expect(sub?.reason).toBe("gift");
+    expect(sub?.amount_paisa).toBe(0);
+    expect(sub?.payment_id).toBe(body.payment_id);
+    // gift_key works as the field name too, and amount is forced to 0
+    const viaKey = (await (
+      await enroll(enrollReq({ ...body, payment_id: undefined, gift_key: "gift-aaaaaaaa-2222", amount_paise: 99900 }))
+    ).json()) as Record<string, unknown>;
+    expect(viaKey.ok).toBe(true);
+    expect((await tier.resolveGuidedSubscriberByToken(viaKey.token as string))?.amount_paisa).toBe(0);
+    // the app treats a gift buyer exactly like a paying one
+    const data = await loadClientAppData(first.token as string);
+    expect(data?.course?.only).toBe(true);
+  });
+
+  it("refuses a gift without a gift- key, a gift for the guided tier, and a paid call using a gift- key", async () => {
+    const base = { product: "course", course: "calm-gut", email: "g@example.com", amount_paise: 0 };
+    expect((await enroll(enrollReq({ ...base, reason: "gift", payment_id: "pay_X1" }))).status).toBe(400);
+    expect((await enroll(enrollReq({ ...base, reason: "gift" }))).status).toBe(400);
+    expect(
+      (await enroll(enrollReq({ payment_id: "gift-bbbbbbbb-3333", reason: "gift", protocol_slug: "gut-reset", email: "g@example.com" }))).status,
+    ).toBe(400);
+    expect((await enroll(enrollReq({ ...base, payment_id: "gift-cccccccc-4444" }))).status).toBe(400);
+  });
+
   it("the guided product still requires a known protocol", async () => {
     const res = await enroll(enrollReq({ payment_id: "pay_G1", email: "x@y.z", protocol_slug: "nope" }));
     expect(res.status).toBe(400);
