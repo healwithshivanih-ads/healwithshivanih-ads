@@ -192,10 +192,11 @@ export async function buildCourseAppData(
   const dom = Number(ymdInTz(now, tz).slice(8, 10));
   const month = new Intl.DateTimeFormat("en-GB", { timeZone: tz, month: "long" }).format(now);
   const firstName = (sub.display_name || "there").split(/\s+/)[0];
+  // Letters only: "Shivani (demo)" → "SD", never "S(".
   const initials =
-    (sub.display_name || "·")
+    (sub.display_name || "")
       .split(/\s+/)
-      .map((w) => w[0]?.toUpperCase() ?? "")
+      .map((w) => w.replace(/[^\p{L}]/gu, "")[0]?.toUpperCase() ?? "")
       .join("")
       .slice(0, 2) || "·";
 

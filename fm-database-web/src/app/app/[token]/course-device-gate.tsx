@@ -36,8 +36,11 @@ export function CourseDeviceGate({
   mode,
   title,
   maskedEmail,
+  maxDevices = 2,
 }: {
   token: string;
+  /** The real limit (COURSE_MAX_DEVICES), so the sentence never lies. */
+  maxDevices?: number;
   mode: "claimable" | "full";
   title: string;
   maskedEmail: string;
@@ -97,7 +100,9 @@ export function CourseDeviceGate({
             </>
           ) : (
             <div className="cg-gate-body">
-              <h1 className="cg-gate-h">This course is already open on 2 phones</h1>
+              <h1 className="cg-gate-h">
+                This course is already open on {maxDevices} {maxDevices === 1 ? "phone" : "phones"}
+              </h1>
               <p>
                 It&apos;s a personal course for the person who bought it. If that&apos;s you on a new phone, we&apos;ll
                 email a 6-digit code to the address you bought it with

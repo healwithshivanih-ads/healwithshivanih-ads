@@ -18,6 +18,7 @@ import {
   courseDeviceLimitActive,
   courseDeviceStatus,
   maskEmail,
+  maxCourseDevices,
   touchCourseDevice,
 } from "@/lib/fmdb/course-devices";
 import { CourseDeviceGate } from "./course-device-gate";
@@ -74,6 +75,7 @@ export default async function ClientAppPage({ params }: { params: Promise<{ toke
           mode={status}
           title={data.course.ownerFirstName ? `${data.course.ownerFirstName}'s ${data.course.title}` : data.course.title}
           maskedEmail={contact.includes("@") ? maskEmail(contact) : ""}
+          maxDevices={maxCourseDevices()}
         />
       );
     }

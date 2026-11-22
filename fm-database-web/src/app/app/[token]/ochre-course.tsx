@@ -645,7 +645,7 @@ export function CourseHelpScreen() {
       </Section>
 
       <Section title="Listening safely">
-        <div className="card-quiet" style={{ fontSize: 13.2, lineHeight: 1.65 }}>
+        <div className="card-quiet" style={{ fontSize: 13.2, lineHeight: 1.65, padding: "13px 15px" }}>
           {course.safety}
         </div>
       </Section>
@@ -717,7 +717,8 @@ export function CoursePlayerOverlay({
   }
 
   const resumeAt = live ? p.current : savedPosition(pt, version);
-  const duration = live && p.duration ? p.duration : t.minutes[version] * 60;
+  // While an intro is loading its length isn't known yet: show the intro's, not the session's.
+  const duration = live && p.duration ? p.duration : (introPlaying && introTrack ? introTrack.minutes.voice : t.minutes[version]) * 60;
   const start = () => {
     if (introPlaying || (isThis && p.version === version)) {
       void play();
