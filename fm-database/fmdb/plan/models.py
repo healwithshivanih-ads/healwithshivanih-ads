@@ -665,6 +665,12 @@ class Client(BaseModel):
     # (food-diary-balance.ts diaryGentle), who is off unless set true. The
     # coach's switch on the client overview. Projected to Fly.
     app_nutrients: Optional[bool] = None
+    # Courses the coach has given this client in their own app (new front),
+    # e.g. [{slug: calm-gut, started_on: '2026-11-22'}]. Free for a client in
+    # care; listening data goes to clients/<id>/course-<slug>.json. The coach's
+    # switch on the client overview; read by
+    # fm-database-web/src/lib/fmdb/client-courses.ts. Projected to Fly.
+    courses: Optional[list[dict]] = None
     # Results the coach has released to the client's app (new front, step 5).
     # A date (YYYY-MM-DD) once the coach presses "Share results"; unset means
     # body age and lab numbers stay off the client's app and every results

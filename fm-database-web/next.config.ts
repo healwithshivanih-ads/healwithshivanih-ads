@@ -12,6 +12,19 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  // The client app's "opens with no signal" worker lives in /ochre-app/ but
+  // looks after the /app/<token> pages (public/ochre-app/app-sw.js).
+  async headers() {
+    return [
+      {
+        source: "/ochre-app/app-sw.js",
+        headers: [
+          { key: "Service-Worker-Allowed", value: "/app/" },
+          { key: "Cache-Control", value: "no-cache" },
+        ],
+      },
+    ];
+  },
   experimental: {
     serverActions: {
       // Lab PDFs and intake transcripts can run 5–10MB; the default 1MB

@@ -34,6 +34,8 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { resolveGuidedSubscriberByToken } from "@/lib/fmdb/guided-tier";
 import { buildGuidedAppData } from "@/lib/fmdb/guided-app";
+import { buildClientCourse, buildCourseAppData, type AppCourse } from "@/lib/fmdb/course-app";
+import { getCourse } from "@/lib/fmdb/courses";
 import { buildAvoidFilter } from "@/lib/fmdb/foods-to-avoid";
 import {
   cyclePhaseForDisplay,
@@ -1624,6 +1626,10 @@ export interface ClientAppData {
     assessFirst: string[];
     practiceLibraryIds: string[];
   } | null;
+  /** An audio course this person owns (Calm Gut) — course-app.ts. Absent for
+   *  everyone without one, so existing builders need no change. `only` marks
+   *  a course-only buyer: the app is then the course and nothing else. */
+  course?: AppCourse | null;
 }
 
 // ── small utils ──────────────────────────────────────────────────────────────
@@ -4067,6 +4073,11 @@ export async function loadClientAppData(
       //    only reached where we'd have returned null.
       const sub = await resolveGuidedSubscriberByToken(token);
       if (sub && sub.status === "active") {
+        // 4a. A course-only buyer (Calm Gut): no protocol, the course is the app.
+        const courseOnly = sub.product === "course" ? getCourse(sub.courses[0] ?? "") : null;
+        if (courseOnly) {
+          return buildCourseAppData(sub, courseOnly, validTz(opts?.deviceTz) ?? sub.timezone);
+        }
         const guidedData = await buildGuidedAppData(sub, validTz(opts?.deviceTz) ?? sub.timezone);
         if (guidedData) return guidedData;
       }
@@ -6606,6 +6617,9 @@ export async function loadClientAppData(
     endgame,
     appShell: sqShell,
     sq: sqShell === "v2" ? await loadSqData(clientId, clientDir, appTz, sqPlanDay, releasedResults(client, labVault), await loadAlcoholRisk(client, clientId, planSlug), releasedProgress(client as Record<string, unknown>, week, todayUTC.toISOString().slice(0, 10))) : null,
+    // A course the coach gave this client in their own app (client.yaml#courses,
+    // client-courses.ts). New front only: today's app has no place for it.
+    course: sqShell === "v2" ? await buildClientCourse(client as Record<string, unknown>, clientId, appTz) : null,
     labOrders,
     client: {
       firstName,

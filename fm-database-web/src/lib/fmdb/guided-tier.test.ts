@@ -144,6 +144,8 @@ describe("guided store — create / resolve / idempotency", () => {
 describe("buildGuidedAppData", () => {
   const base = {
     subscriber_id: "gd-test000001",
+    product: "guided" as const,
+    courses: [] as string[],
     display_name: "Meera Test",
     email: "meera@example.com",
     phone: "",
@@ -221,6 +223,8 @@ describe("gut-reset exemplar — menus, library, about", () => {
   const IST2 = "Asia/Kolkata";
   const base2 = {
     subscriber_id: "gd-test000002",
+    product: "guided" as const,
+    courses: [] as string[],
     display_name: "Meera Test",
     email: "m@example.com",
     phone: "",
@@ -382,6 +386,8 @@ describe("dietary variants — coach review round 1 (3 Aug)", () => {
   it("non-veg subscribers get their variant; Jain get theirs", async () => {
     const mk = (diet: "non_vegetarian" | "jain") => ({
       subscriber_id: "gd-test000003",
+      product: "guided" as const,
+      courses: [] as string[],
       display_name: "T",
       email: "t@example.com",
       phone: "",

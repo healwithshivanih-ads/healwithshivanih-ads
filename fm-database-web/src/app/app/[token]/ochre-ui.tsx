@@ -39,8 +39,30 @@ export function AppAvatar({
 // ── header + nav ─────────────────────────────────────────────────────────────
 
 export function Header({ alert, onAccount }: { alert: boolean; onAccount: () => void }) {
-  const { account, tier } = useOchre();
-  const sequoya = tier === "guided";
+  const { account, tier, course } = useOchre();
+  // Sequoya Lite is the guided protocol tier's name. A Calm Gut course buyer
+  // is tier "guided" underneath but bought from The Ochre Tree, and sees it
+  // (Shivani, 22 Nov 2026: the course is Ochre, not Sequoya).
+  const sequoya = tier === "guided" && !course?.only;
+  if (course?.only) {
+    // Course buyers (Shivani, 22 Nov 2026): the tree-ring mark beside the
+    // name set plainly. The ring is the one designed mark she owns; the word
+    // Sequoya stays off until it launches. No italic accent word.
+    return (
+      <header className="appbar">
+        <div className="masthead">
+          <span className="mark">
+            <SequoyaRingMark size={28} />
+          </span>
+          <span className="wordmark cg-wordmark">The Ochre Tree</span>
+        </div>
+        <button className="avatar-btn" onClick={onAccount} aria-label="Your account">
+          <AppAvatar photoUrl={account.photoUrl} initials={account.avatar} imgClass="ph-img" phClass="ph" />
+          {alert && <span className="badge" />}
+        </button>
+      </header>
+    );
+  }
   return (
     <header className="appbar">
       <div className="masthead">
@@ -88,6 +110,12 @@ const TABS = [
  */
 const TAB_ORDER = ["today", "labs", "plan", "progress", "coach"];
 const NAV_TABS = TAB_ORDER.map((id) => TABS.find((t) => t.id === id)!);
+const COURSE_TABS = [
+  { id: "today", label: "Today" },
+  { id: "labs", label: "Sessions" },
+  { id: "progress", label: "Progress" },
+  { id: "coach", label: "Help" },
+];
 
 export function BottomNav({
   active,
@@ -95,6 +123,7 @@ export function BottomNav({
   coachAlert,
   coachUnread = 0,
   discovery,
+  course,
 }: {
   active: string;
   onChange: (tab: string) => void;
@@ -106,7 +135,27 @@ export function BottomNav({
   coachUnread?: number;
   /** Consult tier — relabels the "today" slot as "Summary" (the Starting Map). */
   discovery?: boolean;
+  /** Course-only buyer: Today · Sessions · Progress · Help (no Plan). The ids
+   *  stay the app's own ("labs" = Sessions, "coach" = Help). */
+  course?: boolean;
 }) {
+  if (course) {
+    // Text only, like the coach app's phone tab bar.
+    return (
+      <nav className="cg-tabs" aria-label="Main">
+        {COURSE_TABS.map((t) => (
+          <button
+            key={t.id}
+            className={active === t.id ? "on" : ""}
+            aria-current={active === t.id ? "page" : undefined}
+            onClick={() => onChange(t.id)}
+          >
+            <span className="tl-label">{t.label}</span>
+          </button>
+        ))}
+      </nav>
+    );
+  }
   return (
     <nav className="bottomnav">
       {(discovery ? TABS : NAV_TABS).map((t) => (

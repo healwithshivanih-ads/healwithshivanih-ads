@@ -12,7 +12,18 @@ const SW = "/ochre-app/sw.js";
 
 export type PushState = "checking" | "unsupported" | "off" | "on" | "blocked";
 
-export function usePush(token: string) {
+/** Where the subscription is stored: the client app (`/api/app-push`, keyed
+ *  on clients/<id>) or a course listener (`/api/app-course`, keyed on
+ *  guided/<id>). Same steps on the phone either way. */
+export type PushTarget = "app" | "course";
+
+function pushBody(target: PushTarget, token: string, op: "subscribe" | "unsubscribe", extra: Record<string, unknown>) {
+  return target === "course"
+    ? { url: "/api/app-course", body: { token, action: "push", op, ...extra } }
+    : { url: "/api/app-push", body: { token, action: op, ...extra } };
+}
+
+export function usePush(token: string, target: PushTarget = "app") {
   const [state, setState] = useState<PushState>("checking");
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState("");
@@ -45,10 +56,11 @@ export function usePush(token: string) {
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY) as BufferSource,
       });
-      const res = await fetch("/api/app-push", {
+      const req = pushBody(target, token, "subscribe", { subscription: sub.toJSON() });
+      const res = await fetch(req.url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, action: "subscribe", subscription: sub.toJSON() }),
+        body: JSON.stringify(req.body),
       });
       const j = await res.json().catch(() => ({}));
       if (!res.ok || !j.ok) {
@@ -71,10 +83,11 @@ export function usePush(token: string) {
       const sub = await reg?.pushManager.getSubscription();
       // The server first: if it cannot be told (offline), the phone keeps its
       // subscription, so reminders are still on in both places, not half off.
-      const res = await fetch("/api/app-push", {
+      const req = pushBody(target, token, "unsubscribe", { endpoint: sub?.endpoint });
+      const res = await fetch(req.url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, action: "unsubscribe", endpoint: sub?.endpoint }),
+        body: JSON.stringify(req.body),
       });
       if (!res.ok) throw new Error("not reached");
       if (sub) await sub.unsubscribe().catch(() => {});

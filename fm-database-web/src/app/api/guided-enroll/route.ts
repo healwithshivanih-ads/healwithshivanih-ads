@@ -11,12 +11,30 @@
  * Idempotent on payment_id: a redelivered webhook returns the existing
  * subscriber (created: false) with the same token. Safe to retry blindly.
  *
+ * Two products:
+ *   guided (default) — { protocol_slug, … }; week 1 starts the next Monday.
+ *   course           — { product: "course", course: "calm-gut", started_on }:
+ *                      no protocol; week 1 opens on started_on (the payment
+ *                      day, IST). Contract with ochre-funnel: the shared
+ *                      calm-gut-build notes ("Enrolment contract").
+ *
+ * Free places (Calm Gut beta, handpicked by Shivani — 22 Nov 2026): the
+ * funnel's admin-only gift enrolment sends `reason: "gift"`, `amount_paise: 0`
+ * and a gift key `gift-<uuid>` (in `payment_id`, or as `gift_key`) instead of
+ * a Razorpay id. Course product only. The key is the idempotency key; the
+ * record carries `reason: gift`, amount 0; the course starts that day.
+ * A non-gift call may not use a "gift-" key, and a gift must use one.
+ *
+ * Field names: `name` / `amount_paise` are accepted as aliases of
+ * `display_name` / `amount_paisa` (the course contract uses the former).
+ *
  * On Fly this writes to the Mutagen-synced volume, so the record appears on
  * the coach's Macs with no manual step (same mechanism as intake).
  */
 import { NextRequest, NextResponse } from "next/server";
 import { createGuidedSubscriber } from "@/lib/fmdb/guided-tier";
 import { getGuidedProtocol } from "@/lib/fmdb/guided-protocols";
+import { getCourse } from "@/lib/fmdb/courses";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +42,15 @@ const MAX_BODY_FIELD = 300;
 
 function str(v: unknown, max = MAX_BODY_FIELD): string {
   return typeof v === "string" ? v.trim().slice(0, max) : "";
+}
+
+/** The public origin this request arrived on (Fly terminates TLS, so trust
+ *  the forwarded proto/host it sets before the raw URL). */
+function requestOrigin(req: NextRequest): string {
+  const host = req.headers.get("x-forwarded-host") || req.headers.get("host") || "";
+  if (!host) return req.nextUrl.origin || "";
+  const proto = (req.headers.get("x-forwarded-proto") || req.nextUrl.protocol.replace(":", "") || "https").split(",")[0].trim();
+  return `${proto}://${host}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -42,14 +69,27 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid JSON" }, { status: 400 });
   }
 
-  const payment_id = str(body.payment_id, 80);
-  const protocol_slug = str(body.protocol_slug, 60);
+  const gift = body.reason === "gift";
+  const payment_id = str(body.payment_id, 80) || (gift ? str(body.gift_key, 80) : "");
+  const product = body.product === "course" ? "course" : "guided";
+  const protocol_slug = product === "course" ? "" : str(body.protocol_slug, 60);
+  const course = product === "course" ? str(body.course, 40) : "";
   const email = str(body.email, 200);
-  const display_name = str(body.display_name, 120) || "there";
+  const display_name = str(body.display_name, 120) || str(body.name, 120) || "there";
   if (!payment_id) {
     return NextResponse.json({ ok: false, error: "payment_id required" }, { status: 400 });
   }
-  if (!getGuidedProtocol(protocol_slug)) {
+  if (gift && (product !== "course" || !/^gift-[A-Za-z0-9-]{8,}$/.test(payment_id))) {
+    return NextResponse.json({ ok: false, error: "a gift is a course place with a gift-<id> key" }, { status: 400 });
+  }
+  if (!gift && payment_id.startsWith("gift-")) {
+    return NextResponse.json({ ok: false, error: "gift keys need reason: gift" }, { status: 400 });
+  }
+  if (product === "course") {
+    if (!getCourse(course)) {
+      return NextResponse.json({ ok: false, error: "unknown course" }, { status: 400 });
+    }
+  } else if (!getGuidedProtocol(protocol_slug)) {
     return NextResponse.json({ ok: false, error: "unknown protocol" }, { status: 400 });
   }
   if (!email && !str(body.phone, 20)) {
@@ -63,26 +103,37 @@ export async function POST(req: NextRequest) {
       : ("" as const);
 
   try {
+    const amount = typeof body.amount_paisa === "number" ? body.amount_paisa : typeof body.amount_paise === "number" ? body.amount_paise : 0;
     const { subscriber, created } = await createGuidedSubscriber({
+      product,
+      ...(product === "course" ? { course, started_on: str(body.started_on, 10) } : {}),
       display_name,
       email,
       phone: str(body.phone, 20),
       protocol_slug,
       dietary_preference,
       payment_id,
-      amount_paisa: typeof body.amount_paisa === "number" ? body.amount_paisa : 0,
+      amount_paisa: gift ? 0 : amount,
       source: body.source === "play" ? "play" : "web",
+      ...(gift ? { reason: "gift" as const } : {}),
       timezone: str(body.timezone, 60) || undefined,
     });
-    const base = (process.env.GUIDED_APP_BASE_URL || "").replace(/\/$/, "");
+    // Always absolute: the funnel drops app_url straight into the welcome
+    // email. Without GUIDED_APP_BASE_URL, the host this request reached IS the
+    // app's host (Fly serves /app/ and this route alike).
+    const base = (process.env.GUIDED_APP_BASE_URL || requestOrigin(req)).replace(/\/$/, "");
     return NextResponse.json({
       ok: true,
       created,
+      product: subscriber.product,
       subscriber_id: subscriber.subscriber_id,
       app_token: subscriber.app_token,
+      token: subscriber.app_token, // alias — the course contract names it `token`
       app_url: base ? `${base}/app/${subscriber.app_token}` : `/app/${subscriber.app_token}`,
       start_date: subscriber.start_date,
       protocol_slug: subscriber.protocol_slug,
+      courses: subscriber.courses,
+      ...(subscriber.reason ? { reason: subscriber.reason } : {}),
     });
   } catch (err) {
     console.error("[guided-enroll] create failed:", err);
