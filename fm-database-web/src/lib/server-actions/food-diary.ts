@@ -332,3 +332,38 @@ export async function setResultsSharedAction(clientId: string, share: boolean, n
   return { ok: true };
 }
 
+/**
+ * Release (or take back) the client's progress in the new app front
+ * (progress-view.ts): client.yaml#progress_shared_on = today makes a fresh
+ * dated snapshot, with an optional note shown on top. Sharing again later is
+ * the next look. `share: false` removes both, and the app goes back to "your
+ * first look comes at a review".
+ */
+export async function setProgressSharedAction(clientId: string, share: boolean, note?: string): Promise<{ ok: true } | Fail> {
+  const c = readClient(clientId);
+  if (!c) return { ok: false, error: "client not found" };
+  if (share) {
+    c.doc.progress_shared_on = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+    const n = (note ?? "").trim();
+    if (n) c.doc.progress_shared_note = n.slice(0, 500);
+    else delete c.doc.progress_shared_note;
+  } else {
+    delete c.doc.progress_shared_on;
+    delete c.doc.progress_shared_note;
+  }
+  writeClient(c.file, c.doc);
+  revalidatePath(`/clients-v2/${clientId}/overview`);
+  return { ok: true };
+}
+
+/** The coach's standing switch: leave weight out of the client's progress. */
+export async function setProgressHideWeightAction(clientId: string, hide: boolean): Promise<{ ok: true } | Fail> {
+  const c = readClient(clientId);
+  if (!c) return { ok: false, error: "client not found" };
+  if (hide) c.doc.progress_hide_weight = true;
+  else delete c.doc.progress_hide_weight;
+  writeClient(c.file, c.doc);
+  revalidatePath(`/clients-v2/${clientId}/overview`);
+  return { ok: true };
+}
+

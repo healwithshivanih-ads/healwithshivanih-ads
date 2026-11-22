@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { journeyByDate, progressCheckpoints, progressHeadline, progressTrends } from "./sq-progress";
+import { progressHeadline, progressTrends } from "@/lib/fmdb/progress-view";
+import { journeyByDate, progressCheckpoints } from "./sq-progress";
 
 const row = (date: string, w: number | null, s: number | null = null, d: number | null = null) => ({
   date, weightKg: w, waistCm: null, hipCm: null, bpSystolic: s, bpDiastolic: d, moodScore: null,

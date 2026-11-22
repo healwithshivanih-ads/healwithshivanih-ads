@@ -4,67 +4,24 @@
  * Your progress (scorecard F4), in the new front. Headline first, the rest a
  * tap away. What improved leads; nothing here chases (no streaks, no nudges).
  *
+ * The coach releases it (progress-view.ts): until she shares, the sheet says
+ * the first look comes at a review and keeps only the test dates, the journey
+ * and the way to save a reading. Once shared it is a dated snapshot with her
+ * line on top, cut to the day she shared it, so a bad week after it never
+ * shows without her.
+ *
  * - Wellbeing: data.symptomScore, built only from real weekly check-ins.
  * - Weight and blood pressure: data.body.history, which is the union of all
  *   three weight stores (collectMeasurementSnapshots: the coach's log, the
  *   app's own readings and the intake), so a coach edit shows here too.
+ *   Weight is left out when the coach has switched it off for this client.
  * - Tests: dates only. Numbers live on Your results, which carries the
  *   released-results switch and the plain Above / Below tags.
  */
 
 import type { ClientAppData, JourneyItem } from "@/lib/fmdb/client-app";
+import { progressAsOf, progressHeadline, progressTrends, shortDate } from "@/lib/fmdb/progress-view";
 import { SqCard, SqNavRow, type SqSheet } from "./sq-ui";
-
-type Point = { x: string; v: number };
-
-export interface Trend {
-  first: Point;
-  last: Point;
-  delta: number;
-}
-
-function trendOf(points: Point[]): Trend | null {
-  if (points.length < 2) return null;
-  const first = points[0];
-  const last = points[points.length - 1];
-  return { first, last, delta: Math.round((last.v - first.v) * 10) / 10 };
-}
-
-const shortDate = (ymd: string): string => {
-  const d = new Date(`${ymd.slice(0, 10)}T00:00:00Z`);
-  return Number.isNaN(d.getTime()) ? ymd : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
-};
-
-export function progressTrends(data: Pick<ClientAppData, "symptomScore" | "body">) {
-  const hist = data.body?.history ?? [];
-  const wellbeing = trendOf((data.symptomScore?.points ?? []).map((p) => ({ x: `Week ${p.wk}`, v: p.v })));
-  const weight = trendOf(hist.filter((h) => h.weightKg != null).map((h) => ({ x: h.date, v: h.weightKg as number })));
-  const bpRows = hist.filter((h) => h.bpSystolic != null && h.bpDiastolic != null);
-  const systolic = trendOf(bpRows.map((h) => ({ x: h.date, v: h.bpSystolic as number })));
-  const bp =
-    bpRows.length >= 1
-      ? {
-          first: bpRows[0],
-          last: bpRows[bpRows.length - 1],
-          count: bpRows.length,
-          systolic,
-        }
-      : null;
-  return { wellbeing, weight, bp, weightPoints: hist.filter((h) => h.weightKg != null).length };
-}
-
-/** The good news, in plain words, or "" when there is none yet. Weight counts
- *  as good news only for a client with a weight goal; BP only when it started
- *  at or above 130 and came down. */
-export function progressHeadline(data: Pick<ClientAppData, "symptomScore" | "body" | "weightLoss">): string[] {
-  const t = progressTrends(data);
-  const out: string[] = [];
-  if (t.wellbeing && t.wellbeing.delta > 0) out.push(`You feel better: wellbeing up ${t.wellbeing.delta} points since you started.`);
-  if (t.weight && data.weightLoss && t.weight.delta < 0) out.push(`Down ${Math.abs(t.weight.delta)} kg since ${shortDate(t.weight.first.x)}.`);
-  const s = t.bp?.systolic;
-  if (s && s.first.v >= 130 && s.delta <= -5) out.push(`Blood pressure lower than at the start: ${t.bp!.last.bpSystolic}/${t.bp!.last.bpDiastolic} now.`);
-  return out;
-}
 
 type Checkpoint = ClientAppData["labCheckpoints"]["list"][number];
 
@@ -132,70 +89,99 @@ function JourneyRow({ item }: { item: JourneyItem }) {
 
 export function SqProgressSheet({ data, open }: { data: ClientAppData; open: (s: SqSheet) => void }) {
   const { week, totalWeeks } = data.client;
-  const t = progressTrends(data);
-  const good = progressHeadline(data);
-  const hist = data.body?.history ?? [];
+  const share = data.sq?.progress ?? null;
+  const v = share ? progressAsOf(data, share) : null;
+  const t = v ? progressTrends(v) : null;
+  const good = v ? progressHeadline(v) : [];
+  const hist = v?.body?.history ?? [];
   const checkpoints = progressCheckpoints(data.labCheckpoints?.list ?? []);
   const journey = journeyByDate(data.journey ?? []);
+  const saveReading = (
+    <div className="sq-row-btns">
+      <button type="button" className="sq-btn sq-btn-quiet sq-btn-small" onClick={() => open({ k: "vitals" })}>
+        Save a reading
+      </button>
+    </div>
+  );
 
   return (
     <>
-      <SqCard>
-        <p className="sq-big-num">
-          Week {week} <span className="sq-sub">of {totalWeeks}</span>
-        </p>
-        {good.length ? (
-          <ul className="sq-prog-good">
-            {good.map((g) => (
-              <li key={g}>{g}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="sq-sub">Your progress builds up here from your weekly check-ins and the readings you and your coach save.</p>
-        )}
-      </SqCard>
-
-      <SqCard title="How you feel">
-        {data.symptomScore && t.wellbeing ? (
-          <>
-            <p className="sq-sub">
-              Wellbeing <b>{t.wellbeing.last.v}</b> / 100,{" "}
-              {t.wellbeing.delta > 0 ? `up ${t.wellbeing.delta} since your first check-in` : t.wellbeing.delta < 0 ? "lower than at your first check-in" : "the same as at your first check-in"}
+      {share && v && t ? (
+        <>
+          <SqCard>
+            <p className="sq-big-num">
+              Week {share.week} <span className="sq-sub">of {totalWeeks}</span>
             </p>
-            <Spark points={data.symptomScore.points.map((p) => p.v)} label={`Wellbeing by week, now ${t.wellbeing.last.v} out of 100`} />
-            <p className="sq-sub sq-small">From your weekly check-ins.</p>
-          </>
-        ) : (
-          <p className="sq-sub">Your line starts after your second weekly check-in.</p>
-        )}
-      </SqCard>
+            <p className="sq-sub sq-small">As of {shortDate(share.on)}</p>
+            {share.note && (
+              <p className="sq-sub">
+                <b>Your coach:</b> {share.note}
+              </p>
+            )}
+            {good.length > 0 && (
+              <ul className="sq-prog-good">
+                {good.map((g) => (
+                  <li key={g}>{g}</li>
+                ))}
+              </ul>
+            )}
+          </SqCard>
 
-      <SqCard title="Weight and blood pressure">
-        {t.weight ? (
-          <>
-            <p className="sq-sub">
-              Weight <b>{t.weight.last.v} kg</b> on {shortDate(t.weight.last.x)}
-              {` (${t.weight.delta > 0 ? "+" : ""}${t.weight.delta} kg since ${shortDate(t.weight.first.x)})`}
+          <SqCard title="How you feel">
+            {v.symptomScore && t.wellbeing ? (
+              <>
+                <p className="sq-sub">
+                  Wellbeing <b>{t.wellbeing.last.v}</b> / 100,{" "}
+                  {t.wellbeing.delta > 0 ? `up ${t.wellbeing.delta} since your first check-in` : t.wellbeing.delta < 0 ? "lower than at your first check-in" : "the same as at your first check-in"}
+                </p>
+                <Spark points={v.symptomScore.points.map((p) => p.v)} label={`Wellbeing by week, now ${t.wellbeing.last.v} out of 100`} />
+                <p className="sq-sub sq-small">From your weekly check-ins.</p>
+              </>
+            ) : (
+              <p className="sq-sub">Your line starts after your second weekly check-in.</p>
+            )}
+          </SqCard>
+
+          <SqCard title={share.hideWeight ? "Blood pressure" : "Weight and blood pressure"}>
+            {t.weight ? (
+              <>
+                <p className="sq-sub">
+                  Weight <b>{t.weight.last.v} kg</b> on {shortDate(t.weight.last.x)}
+                  {` (${t.weight.delta > 0 ? "+" : ""}${t.weight.delta} kg since ${shortDate(t.weight.first.x)})`}
+                </p>
+                <Spark points={hist.filter((h) => h.weightKg != null).map((h) => h.weightKg as number)} label="Weight over time" />
+              </>
+            ) : t.weightPoints === 1 ? (
+              <p className="sq-sub">One weight saved so far. The line starts with the next one.</p>
+            ) : null}
+            {t.bp && (
+              <p className="sq-sub">
+                Blood pressure <b>{t.bp.last.bpSystolic}/{t.bp.last.bpDiastolic}</b> on {shortDate(t.bp.last.date)}
+                {t.bp.count > 1 ? ` (first saved: ${t.bp.first.bpSystolic}/${t.bp.first.bpDiastolic} on ${shortDate(t.bp.first.date)})` : ""}
+              </p>
+            )}
+            {!t.weightPoints && !t.bp && <p className="sq-sub">No readings saved before {shortDate(share.on)}.</p>}
+            <p className="sq-sub sq-small">Readings saved up to {shortDate(share.on)}.</p>
+            {saveReading}
+          </SqCard>
+        </>
+      ) : (
+        <>
+          <SqCard>
+            <p className="sq-big-num">
+              Week {week} <span className="sq-sub">of {totalWeeks}</span>
             </p>
-            <Spark points={hist.filter((h) => h.weightKg != null).map((h) => h.weightKg as number)} label="Weight over time" />
-          </>
-        ) : t.weightPoints === 1 ? (
-          <p className="sq-sub">One weight saved so far. The line starts with the next one.</p>
-        ) : null}
-        {t.bp && (
-          <p className="sq-sub">
-            Blood pressure <b>{t.bp.last.bpSystolic}/{t.bp.last.bpDiastolic}</b> on {shortDate(t.bp.last.date)}
-            {t.bp.count > 1 ? ` (first saved: ${t.bp.first.bpSystolic}/${t.bp.first.bpDiastolic} on ${shortDate(t.bp.first.date)})` : ""}
-          </p>
-        )}
-        {!t.weightPoints && !t.bp && <p className="sq-sub">No readings saved yet.</p>}
-        <p className="sq-sub sq-small">Every reading you or your coach have saved.</p>
-        <div className="sq-row-btns">
-          <button type="button" className="sq-btn sq-btn-quiet sq-btn-small" onClick={() => open({ k: "vitals" })}>
-            Save a reading
-          </button>
-        </div>
-      </SqCard>
+            <p className="sq-sub">
+              Your coach goes through your progress with you at a review, and it appears here then. Every check-in and reading you save counts
+              towards it.
+            </p>
+          </SqCard>
+          <SqCard title="Your readings">
+            <p className="sq-sub">Save your weight or blood pressure whenever you take them.</p>
+            {saveReading}
+          </SqCard>
+        </>
+      )}
 
       <SqCard title="Tests">
         {checkpoints.length > 0 && (

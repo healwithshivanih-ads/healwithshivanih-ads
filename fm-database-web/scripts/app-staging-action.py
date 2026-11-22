@@ -108,6 +108,11 @@ _APP_CLIENT_KEYS = (
     # computed markers that hold body age. Read only when results are shared.
     "results_shared_on",
     "results_shared_note",
+    # Released progress (Your progress): the snapshot date, the coach's note and
+    # her weight switch (progress-view.ts). Nothing shows until she shares.
+    "progress_shared_on",
+    "progress_shared_note",
+    "progress_hide_weight",
     "lab_markers",
     "lab_markers_date",
     # Coach-set inputs to the daily targets (day_targets.py).
