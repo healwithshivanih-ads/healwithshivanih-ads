@@ -35,6 +35,8 @@ export interface PlayerTrack {
   rev: string;
   /** "intro" tracks keep no resume position and never count as a listen. */
   kind?: string;
+  /** Square lock-screen picture (her week photo); the app icon when absent. */
+  artwork?: string;
 }
 
 export interface PlayerState {
@@ -273,10 +275,12 @@ function setMediaSession(t: PlayerTrack) {
       title: t.title,
       artist: "The Ochre Tree",
       album: "Calm Gut",
-      artwork: [
-        { src: "/ochre-app/icon-192.png", sizes: "192x192", type: "image/png" },
-        { src: "/ochre-app/icon-512.png", sizes: "512x512", type: "image/png" },
-      ],
+      artwork: t.artwork
+        ? [{ src: t.artwork, sizes: "512x512", type: "image/jpeg" }]
+        : [
+            { src: "/sq-app/icon-192.png", sizes: "192x192", type: "image/png" },
+            { src: "/sq-app/icon-512.png", sizes: "512x512", type: "image/png" },
+          ],
     });
     const set = (a: MediaSessionAction, h: MediaSessionActionHandler | null) => {
       try {

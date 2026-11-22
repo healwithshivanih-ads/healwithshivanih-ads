@@ -207,6 +207,49 @@ describe("persona-review fixes (22 Nov)", () => {
   });
 });
 
+describe("logo, photos and the night player (22 Nov)", () => {
+  it("Today shows this week's photo when it exists, and nothing when it doesn't", () => {
+    const c = course("2026-12-08T06:00:00Z");
+    const plain = wrap(c, <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    expect(plain).not.toContain("cg-photo");
+    c.tracks = c.tracks.map((t) => (t.id === "s1" ? { ...t, image: { wide: "/ochre-app/calm-gut/s1.jpg?v=1", square: "/ochre-app/calm-gut/s1-sq.jpg?v=1" } } : t));
+    const withPhoto = wrap(c, <CourseTodayScreen openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />);
+    expect(withPhoto).toContain('src="/ochre-app/calm-gut/s1.jpg?v=1"');
+  });
+  it("the player is the dark night player, with the week photo on top (the intro borrows its session's)", () => {
+    const c = course("2026-12-15T06:00:00Z");
+    c.tracks = c.tracks.map((t) => (t.id === "s2" ? { ...t, image: { wide: "/w.jpg", square: "/s.jpg" } } : t));
+    const s2 = wrap(c, <CoursePlayerOverlay trackId="s2" onClose={noop} />);
+    expect(s2).toContain("cg-night");
+    expect(s2).toContain('src="/w.jpg"');
+    const r2 = wrap(c, <CoursePlayerOverlay trackId="r2" onClose={noop} />);
+    expect(r2).toContain('src="/w.jpg"');
+  });
+  it("Shivani's name appears nowhere on a buyer's screens", () => {
+    const c = course("2026-12-15T06:00:00Z", "2026-12-08", "Priya");
+    const screens = [
+      <CourseTodayScreen key="t" openPlayer={noop} openLog={noop} openScore={noop} goTab={noop} />,
+      <CourseSessionsScreen key="s" openPlayer={noop} />,
+      <CourseProgressScreen key="p" openScore={noop} />,
+      <CourseHelpScreen key="h" openRefund={noop} />,
+      <CoursePlayerOverlay key="pl" trackId="s1" onClose={noop} />,
+      <CourseLogOverlay key="l" onClose={noop} />,
+    ];
+    for (const sc of screens) expect(wrap(c, sc)).not.toMatch(/Shivani|Recorded by/);
+  });
+  it("course buyers' header: the tree-ring mark beside the plain name, no italic accent", () => {
+    const data = { tier: "guided", account: { photoUrl: null, avatar: "PR" }, course: course("2026-12-08T06:00:00Z") } as unknown as ClientAppData;
+    const html = renderToStaticMarkup(
+      <OchreContext.Provider value={data}>
+        <Header alert={false} onAccount={noop} />
+      </OchreContext.Provider>,
+    );
+    expect(html).toContain("The Ochre Tree");
+    expect(html).not.toContain("<em>");
+    expect(html).toContain("<svg");
+  });
+});
+
 describe("refund on the Help screen", () => {
   const withRefund = (refund: AppCourse["refund"]) => ({ ...course("2026-12-08T06:00:00Z"), refund });
   it("a paid buyer in the first 7 days sees a quiet 'Request a refund' link", () => {

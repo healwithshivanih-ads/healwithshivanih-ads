@@ -3102,3 +3102,23 @@ video.ex-stepfig { object-fit: contain; border-radius: 4px; }
 .ochre-app .cg-scale-ends { display: flex; justify-content: space-between; margin-top: 4px; font-size: 12px; color: var(--cg-muted2); }
 .ochre-app .cg-it-main:only-child { padding-bottom: 14px; }
 .ochre-app .cg-link-btn.quiet { color: var(--cg-muted); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+.ochre-app .cg-wordmark { font-family: 'Fraunces', Georgia, serif; font-style: normal; font-weight: 500; letter-spacing: .1px; }
+
+/* Calm Gut week photos + the night player (Shivani 22 Nov 2026: options A + C) */
+.ochre-app .cg-photo-btn { display: block; width: 100%; padding: 0; border: 0; background: #3b3a36; cursor: pointer; }
+.ochre-app .cg-photo { display: block; width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+.ochre-app .cg-night {
+  --cg-ground: #1d1b1a; --cg-surface: #262321; --cg-border: #3a3633; --cg-hair: #34302d;
+  --cg-ink: #efe8df; --cg-ink2: #d8cfc5; --cg-muted: #b3aaa0; --cg-muted2: #9d948a;
+  --cg-ghost: #4a4542; --cg-link: #e9a3bd; --cg-grow: #8fb27c;
+  background: var(--cg-ground); color: var(--cg-ink); min-height: 100%; position: relative;
+}
+.ochre-app .cg-night .cg-scrub { accent-color: var(--cg-ink); }
+.ochre-app .cg-player-photo { position: relative; height: min(42vh, 330px); background: #2b2826; }
+.ochre-app .cg-player-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ochre-app .cg-player-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,.35), transparent 28%, transparent 70%, #1d1b1a); }
+.ochre-app .cg-back.on-photo { position: absolute; top: 0; left: 0; z-index: 2; color: #fff; }
+.ochre-app .cg-dim { position: fixed; inset: 0; z-index: 50; background: rgba(12, 11, 10, .9); border: 0; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 60px; cursor: pointer; }
+.ochre-app .cg-dim span { font: 500 13px 'Instrument Sans', system-ui, sans-serif; color: #8d857c; }
+@media (prefers-reduced-motion: no-preference) { .ochre-app .cg-dim { animation: cg-fade 1.2s ease; } }
+@keyframes cg-fade { from { opacity: 0; } to { opacity: 1; } }

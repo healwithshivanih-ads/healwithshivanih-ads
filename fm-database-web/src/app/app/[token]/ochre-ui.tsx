@@ -44,6 +44,25 @@ export function Header({ alert, onAccount }: { alert: boolean; onAccount: () => 
   // is tier "guided" underneath but bought from The Ochre Tree, and sees it
   // (Shivani, 22 Nov 2026: the course is Ochre, not Sequoya).
   const sequoya = tier === "guided" && !course?.only;
+  if (course?.only) {
+    // Course buyers (Shivani, 22 Nov 2026): the tree-ring mark beside the
+    // name set plainly. The ring is the one designed mark she owns; the word
+    // Sequoya stays off until it launches. No italic accent word.
+    return (
+      <header className="appbar">
+        <div className="masthead">
+          <span className="mark">
+            <SequoyaRingMark size={28} />
+          </span>
+          <span className="wordmark cg-wordmark">The Ochre Tree</span>
+        </div>
+        <button className="avatar-btn" onClick={onAccount} aria-label="Your account">
+          <AppAvatar photoUrl={account.photoUrl} initials={account.avatar} imgClass="ph-img" phClass="ph" />
+          {alert && <span className="badge" />}
+        </button>
+      </header>
+    );
+  }
   return (
     <header className="appbar">
       <div className="masthead">

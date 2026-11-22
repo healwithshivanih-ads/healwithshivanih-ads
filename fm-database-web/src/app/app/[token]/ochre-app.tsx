@@ -56,7 +56,7 @@ import { GroceryOverlay } from "./ochre-week-menu";
 import { MsqOverlay } from "./ochre-msq";
 import { FeedbackBanner, FeedbackOverlay } from "./ochre-feedback";
 import { OrderOverlay } from "./ochre-order";
-import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
+import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 import { isPlanSetupHold, pickAppShell } from "@/lib/fmdb/app-shell";
 import SqApp from "./sq-app";
 import { mealTickItems } from "./sq-day";
@@ -1161,10 +1161,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
           {booting && (
             <div className={"token-screen" + (fading ? " fade-out" : "")}>
-              <span className="big-mark">
-                <Mark size={64} />
-              </span>
-              <div className="t">The Ochre Tree</div>
+              <span className="big-mark">{courseOnly ? <SequoyaRingMark size={64} /> : <Mark size={64} />}</span>
+              <div className={"t" + (courseOnly ? " cg-wordmark" : "")}>The Ochre Tree</div>
               <div className="spinner" />
               <div className="s">{courseOnly ? "Opening your course…" : "Opening your plan…"}</div>
             </div>

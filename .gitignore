@@ -16,3 +16,6 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+
+# Calm Gut demo stand-in photos (scripts/course-images-prepare.mjs --demo): never ship
+fm-database-web/public/ochre-app/calm-gut/demo-*

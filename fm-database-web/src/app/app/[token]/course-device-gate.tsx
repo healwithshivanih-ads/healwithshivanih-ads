@@ -10,7 +10,7 @@
 
 import { useEffect, useState } from "react";
 import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
-import { Mark } from "./ochre-context";
+import { SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 
 async function post(token: string, action: string, extra: Record<string, unknown> = {}) {
   const res = await fetch("/api/app-course", {
@@ -90,7 +90,7 @@ export function CourseDeviceGate({
       <div className="app">
         <div className="token-screen cg-gate" style={{ position: "relative", height: "100dvh" }}>
           <span className="big-mark">
-            <Mark size={56} />
+            <SequoyaRingMark size={56} />
           </span>
           <div className="t">{title}</div>
           {view === "claiming" ? (

@@ -49,6 +49,16 @@ const loadOnce = cache(async (token: string) => {
 export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
   const { token } = await params;
   const data = await loadOnce(token);
+  if (data?.course?.only) {
+    // Course buyers install "Calm Gut" with the tree-ring icon (no lettering).
+    return {
+      title: "Calm Gut — The Ochre Tree",
+      description: "Your Calm Gut course.",
+      manifest: "/ochre-app/calm-gut.webmanifest",
+      icons: { icon: "/sq-app/icon-192.png", apple: "/sq-app/apple-touch-icon.png" },
+      appleWebApp: { capable: true, statusBarStyle: "default", title: "Calm Gut" },
+    };
+  }
   if (!data || pickAppShell(data) !== "sq") return {};
   return {
     title: "Sequoya — your plan",

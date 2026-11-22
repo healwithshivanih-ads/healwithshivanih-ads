@@ -182,7 +182,15 @@ function usePlayer() {
 }
 
 function toPlayerTrack(course: AppCourse, t: AppCourseTrack): PlayerTrack {
-  return { courseSlug: course.slug, id: t.id, title: t.title, subtitle: t.subtitle, rev: t.rev, kind: t.kind };
+  return {
+    courseSlug: course.slug,
+    id: t.id,
+    title: t.title,
+    subtitle: t.subtitle,
+    rev: t.rev,
+    kind: t.kind,
+    ...(t.image ? { artwork: t.image.square } : {}),
+  };
 }
 
 // ── the look ─────────────────────────────────────────────────────────────────
@@ -335,6 +343,12 @@ export function CourseTodayScreen({
       <div className="cg-list">
         {session && (
           <div className="cg-it cg-it-card">
+            {session.image && (
+              <button className="cg-photo-btn" onClick={() => openPlayer(session.id)} aria-label={`Play ${session.title}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element -- prepared static JPEG, served as is */}
+                <img className="cg-photo" src={session.image.wide} alt="" fetchPriority="high" />
+              </button>
+            )}
             <button className="cg-it-main" onClick={() => openPlayer(session.id)}>
               <span className="cg-dot grow" aria-hidden />
               <span className="cg-it-body">
@@ -740,6 +754,9 @@ export function CoursePlayerOverlay({
   const [progress, setProgress] = useState(0);
   const [offlineErr, setOfflineErr] = useState("");
   const [showReading, setShowReading] = useState(false);
+  // Night player: once a track has played for 30 seconds the screen goes
+  // near-black (eyes are closed now); a tap brings the controls back.
+  const [dim, setDim] = useState(false);
   // The safety text shows in full the first time each track is opened on this
   // phone, then folds to one line (persona review, 22 Nov: Play comes first).
   const safetyKey = `ochre.course.safety.${course.slug}.${trackId}`;
@@ -773,6 +790,16 @@ export function CoursePlayerOverlay({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trackId, version]);
+
+  const playingHere = (p.track?.id === trackId || p.introFor?.id === trackId) && p.playing;
+  useEffect(() => {
+    if (!playingHere || dim) return;
+    const id = setTimeout(() => setDim(true), 30_000);
+    return () => clearTimeout(id);
+  }, [playingHere, dim]);
+  useEffect(() => {
+    if (!playingHere) setDim(false);
+  }, [playingHere]);
 
   if (!t || !pt) return null;
   if (!t.unlocked) {
@@ -826,10 +853,23 @@ export function CoursePlayerOverlay({
     t.kind === "session" ? `Week ${t.week} session` : t.kind === "intro" ? `Week ${t.week} reading` : t.kind === "flare" ? "For a bad moment" : "Any time";
   const minutes = t.minutes[version];
 
+  const photo =
+    t.image ?? introTrack?.image ?? (t.kind === "intro" ? course.tracks.find((x) => x.introId === t.id)?.image : null) ?? null;
   return (
-    <div className="overlay-scroll cg-overlay cg-player">
+    <div className="overlay-scroll cg-overlay cg-player cg-night">
+      {dim && (
+        <button className="cg-dim" onClick={() => setDim(false)} aria-label="Show the controls">
+          <span>Tap to show the controls</span>
+        </button>
+      )}
+      {photo && (
+        <div className="cg-player-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element -- prepared static JPEG */}
+          <img src={photo.wide} alt="" />
+        </div>
+      )}
       <button
-        className="cg-back"
+        className={"cg-back" + (photo ? " on-photo" : "")}
         onClick={() => {
           // Closing leaves a playing session playing (eyes closed, phone down);
           // the Now Playing bar brings it back. A paused one is put away.
@@ -875,6 +915,7 @@ export function CoursePlayerOverlay({
           {!live && resumeAt > 30 && <p className="cg-m cg-center">Picks up at {fmtTime(Math.max(0, resumeAt - 5))}</p>}
           {live && p.error && <p className="cg-error">{p.error}</p>}
           {isThis && p.counted && <p className="cg-m cg-center">Counted as listened today</p>}
+          {live && p.playing && !dim && <p className="cg-m cg-center">The screen dims in 30 seconds. Close your eyes.</p>}
         </div>
 
         {introPlaying && introTrack && (

@@ -1,0 +1,12 @@
+{
+  "name": "Calm Gut",
+  "short_name": "Calm Gut",
+  "description": "Your Calm Gut course, from The Ochre Tree.",
+  "display": "standalone",
+  "background_color": "#F5F0EB",
+  "theme_color": "#F5F0EB",
+  "icons": [
+    { "src": "/sq-app/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/sq-app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

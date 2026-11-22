@@ -2,8 +2,7 @@
  * Shown on a course link that has been switched off (refunded). Polite and
  * final: no sales line, no "link broken", nothing to tap but a contact.
  */
-import { SequoyaFonts } from "@/components/sequoya/sequoya-brand";
-import { Mark } from "./ochre-context";
+import { SequoyaFonts, SequoyaRingMark } from "@/components/sequoya/sequoya-brand";
 
 export function CourseEndedScreen() {
   return (
@@ -12,7 +11,7 @@ export function CourseEndedScreen() {
       <div className="app">
         <div className="token-screen cg-gate" style={{ position: "relative", height: "100dvh" }}>
           <span className="big-mark">
-            <Mark size={56} />
+            <SequoyaRingMark size={56} />
           </span>
           <div className="cg-gate-body">
             <h1 className="cg-gate-h">This course has ended</h1>

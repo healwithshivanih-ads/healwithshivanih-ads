@@ -18,6 +18,7 @@
 import type { ClientAppData } from "./client-app";
 import type { GuidedSubscriber } from "./guided-tier";
 import { refundOffer, rupees } from "./course-refund";
+import { courseImage, type CourseImage } from "./course-images";
 import {
   courseDay,
   dueScoreWeek,
@@ -59,6 +60,8 @@ export interface AppCourseTrack {
   voiceOnly?: boolean;
   /** Listened to ≥ 80% at least once. */
   listened: boolean;
+  /** Her week photo for this track (course-images.ts); null until it exists. */
+  image?: CourseImage | null;
 }
 
 export interface AppCourse {
@@ -241,9 +244,10 @@ export async function buildCourseAppData(
       coachLine: "",
     },
     coach: {
-      name: "Shivani",
+      // Never shown to a course buyer; no personal name here (Shivani, 22 Nov).
+      name: "Coach",
       role: "Functional medicine coach",
-      initials: "SH",
+      initials: "OT",
       whatsappNumber: "", // a course buyer has no coach access
       whatsappPrefill: "",
       nextSession: null,
@@ -335,6 +339,7 @@ export async function buildCourseAppData(
     guidedAbout: null,
     course: {
       ...appCourse,
+      tracks: appCourse.tracks.map((t) => ({ ...t, image: courseImage(t.id) })),
       refund: (() => {
         const r = refundOffer(sub, now);
         return r.amountPaise > 0 ? { eligible: r.eligible, amountLabel: rupees(r.amountPaise), until: r.until, pendingSince: r.pendingSince } : null;
