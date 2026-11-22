@@ -25,7 +25,7 @@
  * exists reads wrong.
  */
 
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { useOchre, Icon } from "./ochre-context";
 import type { LabOrder, LabOrderStatus, LogisticsSlot } from "@/lib/fmdb/lab-orders";
 import type { Invoice } from "@/lib/fmdb/invoices";
@@ -77,18 +77,6 @@ function minCollectionYmd(): string {
   return d.toLocaleDateString("en-CA");
 }
 
-const FIELD: CSSProperties = {
-  width: "100%",
-  boxSizing: "border-box",
-  padding: "10px 12px",
-  fontSize: 13.5,
-  fontFamily: "inherit",
-  color: "var(--ink, #2c2a24)",
-  background: "var(--bg, #fff)",
-  border: "1px solid var(--line, #e6e1d6)",
-  borderRadius: 10,
-};
-
 function loadRazorpay(): Promise<boolean> {
   return new Promise((resolve) => {
     if (window.Razorpay) return resolve(true);
@@ -116,7 +104,7 @@ const STATUS_LABEL: Record<LabOrderStatus, string> = {
  *  package reads as the deal it is. Falls back to a plain price with no anchor. */
 function PriceBlock({ listInr, amountInr }: { listInr?: number | null; amountInr: number }) {
   const hasDeal = typeof listInr === "number" && listInr > amountInr;
-  if (!hasDeal) return <strong style={{ fontSize: 17 }}>{inr(amountInr)}</strong>;
+  if (!hasDeal) return <strong className="lab-price">{inr(amountInr)}</strong>;
   const saved = listInr - amountInr;
   const pct = Math.round((saved / listInr) * 100);
   return (
@@ -125,7 +113,7 @@ function PriceBlock({ listInr, amountInr }: { listInr?: number | null; amountInr
         {inr(listInr)} if booked individually
       </span>
       <div style={{ display: "flex", alignItems: "baseline", gap: 9, flexWrap: "wrap" }}>
-        <strong style={{ fontSize: 21 }}>{inr(amountInr)}</strong>
+        <strong className="lab-price lab-price-deal">{inr(amountInr)}</strong>
         <span
           style={{
             fontSize: 11,
@@ -361,24 +349,20 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
       )}
 
       {recommended.map((o) => (
-        <div className="card" key={o.order_id} style={{ padding: "14px 15px", marginBottom: 10 }}>
-          <div style={{ fontSize: 11.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.6, color: "var(--forest, #2d5a3d)" }}>
-            Recommended for you
-          </div>
+        <div className="card lab-rec" key={o.order_id}>
+          <div className="lab-rec-eyebrow">Recommended for you</div>
           {/* lead with the personalised reason — why these tests, for this client */}
           {o.coach_note && (
-            <div className="h-serif" style={{ fontSize: 15.5, color: "var(--ink, #2c2a24)", marginTop: 7, lineHeight: 1.45 }}>{o.coach_note}</div>
+            <div className="h-serif lab-rec-note">{o.coach_note}</div>
           )}
           {/* the actual markers — so it reads as a tailored check, not a package */}
           {o.includes && o.includes.length > 0 && (
-            <div style={{ marginTop: 12 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "var(--muted, #6f6a5d)" }}>
-                What we&apos;ll check
-              </div>
-              <ul style={{ margin: "7px 0 0", padding: 0, listStyle: "none", display: "grid", gap: 5 }}>
+            <div className="lab-rec-block">
+              <div className="lab-rec-sec">What we&apos;ll check</div>
+              <ul className="lab-rec-list">
                 {o.includes.map((it, i) => (
-                  <li key={i} style={{ fontSize: 12.8, color: "var(--ink, #2c2a24)", display: "flex", gap: 7, lineHeight: 1.4 }}>
-                    <span style={{ color: "var(--forest, #2d5a3d)", flexShrink: 0 }}>✓</span>
+                  <li key={i}>
+                    <span className="lab-rec-tick">✓</span>
                     <span>{it}</span>
                   </li>
                 ))}
@@ -386,27 +370,27 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
             </div>
           )}
           {o.fasting_required && (
-            <div style={{ fontSize: 11.5, color: "var(--ochre, #b07b1e)", marginTop: 10 }}>Fasting sample · we&apos;ll arrange home collection</div>
+            <div className="lab-rec-fast">Fasting sample · we&apos;ll arrange home collection</div>
           )}
           {o.pretest_instructions && o.pretest_instructions.length > 0 && (
-            <div style={{ marginTop: 10 }}>
-              <div style={{ fontSize: 11.5, fontWeight: 600, color: "var(--ink, #2c2a24)" }}>Before your test</div>
-              <ul style={{ margin: "5px 0 0", padding: 0, listStyle: "none", display: "grid", gap: 4 }}>
+            <div className="lab-rec-pre">
+              <div className="lab-rec-pre-h">Before your test</div>
+              <ul className="lab-rec-pre-list">
                 {o.pretest_instructions.map((line, i) => (
-                  <li key={i} style={{ fontSize: 12, color: "var(--muted, #6f6a5d)", display: "flex", gap: 7, lineHeight: 1.4 }}>
-                    <span style={{ flexShrink: 0 }}>·</span>
+                  <li key={i}>
+                    <span className="lab-rec-dot">·</span>
                     <span>{line}</span>
                   </li>
                 ))}
               </ul>
             </div>
           )}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginTop: 14, paddingTop: 12, borderTop: "1px solid var(--line, #e6e1d6)" }}>
+          <div className="lab-rec-foot">
             <PriceBlock listInr={o.list_inr} amountInr={o.amount_inr} />
             {confirming[o.order_id] ? (
-              <span style={{ fontSize: 13, color: "var(--forest, #2d5a3d)" }}>Confirming your payment…</span>
+              <span className="lab-rec-confirm">Confirming your payment…</span>
             ) : bookingId !== o.order_id ? (
-              <button className="submit-btn" style={{ width: "auto", padding: "10px 22px" }} onClick={() => startBooking(o)}>
+              <button className="submit-btn lab-rec-book" onClick={() => startBooking(o)}>
                 Book home collection →
               </button>
             ) : null}
@@ -414,38 +398,31 @@ export function LabOrdersCard({ showReorderCta = true }: { showReorderCta?: bool
 
           {/* Collection logistics — shown once the client taps "Book". */}
           {bookingId === o.order_id && !confirming[o.order_id] && (
-            <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px dashed var(--line, #e6e1d6)", display: "grid", gap: 9 }}>
-              <div style={{ fontSize: 12.5, color: "var(--muted, #6f6a5d)", lineHeight: 1.4 }}>
-                Where + when should we collect your sample at home?
+            <div className="lab-form">
+              <div className="lab-form-q">Where and when should we collect your sample at home?</div>
+              <input className="lab-field" placeholder="Full name" value={form.full_name} onChange={(e) => setField("full_name", e.target.value)} />
+              <input className="lab-field" placeholder="Phone for the collection" inputMode="tel" value={form.phone} onChange={(e) => setField("phone", e.target.value)} />
+              <textarea className="lab-field lab-field-area" placeholder="Collection address (flat, building, area, landmark)" value={form.address} onChange={(e) => setField("address", e.target.value)} />
+              <div className="lab-form-row">
+                <input className="lab-field" placeholder="Pincode" inputMode="numeric" maxLength={6} value={form.pincode} onChange={(e) => setField("pincode", e.target.value.replace(/\D/g, ""))} />
+                <input className="lab-field" type="date" aria-label="Preferred date" min={minCollectionYmd()} value={form.preferred_date} onChange={(e) => setField("preferred_date", e.target.value)} />
               </div>
-              <input style={FIELD} placeholder="Full name" value={form.full_name} onChange={(e) => setField("full_name", e.target.value)} />
-              <input style={FIELD} placeholder="Phone for the collection" inputMode="tel" value={form.phone} onChange={(e) => setField("phone", e.target.value)} />
-              <textarea style={{ ...FIELD, minHeight: 56, resize: "vertical" }} placeholder="Collection address (flat, building, area, landmark)" value={form.address} onChange={(e) => setField("address", e.target.value)} />
-              <div style={{ display: "flex", gap: 9 }}>
-                <input style={{ ...FIELD, flex: 1 }} placeholder="Pincode" inputMode="numeric" maxLength={6} value={form.pincode} onChange={(e) => setField("pincode", e.target.value.replace(/\D/g, ""))} />
-                <input style={{ ...FIELD, flex: 1 }} type="date" min={minCollectionYmd()} value={form.preferred_date} onChange={(e) => setField("preferred_date", e.target.value)} />
-              </div>
-              <div style={{ fontSize: 11, color: "var(--muted, #6f6a5d)", marginTop: -3 }}>
-                We need about 36 hours&apos; notice to arrange your home visit.
-              </div>
-              <select style={FIELD} value={form.preferred_slot} onChange={(e) => setField("preferred_slot", e.target.value)}>
+              <div className="lab-hint">We need about 36 hours&apos; notice to arrange your home visit.</div>
+              <select className="lab-field" aria-label="Preferred time slot" value={form.preferred_slot} onChange={(e) => setField("preferred_slot", e.target.value)}>
                 <option value="">Preferred time slot…</option>
                 {SLOT_OPTIONS.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
               </select>
               {o.fasting_required && (
-                <div style={{ fontSize: 11.5, color: "var(--ochre, #b07b1e)" }}>Fasting sample — a morning slot works best.</div>
+                <div className="lab-hint lab-hint-warm">Fasting sample — a morning slot works best.</div>
               )}
-              <textarea style={{ ...FIELD, minHeight: 44, resize: "vertical" }} placeholder="Anything we should know? (optional)" value={form.notes} onChange={(e) => setField("notes", e.target.value)} />
-              <div style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 2 }}>
-                <button className="submit-btn" style={{ flex: 1, padding: "11px 18px" }} onClick={() => pay(o)} disabled={busy === o.order_id}>
+              <textarea className="lab-field lab-field-note" placeholder="Anything we should know? (optional)" value={form.notes} onChange={(e) => setField("notes", e.target.value)} />
+              <div className="lab-form-actions">
+                <button className="submit-btn lab-pay" onClick={() => pay(o)} disabled={busy === o.order_id}>
                   {busy === o.order_id ? "Opening…" : `Pay ${inr(o.amount_inr)}`}
                 </button>
-                <button
-                  onClick={() => { setBookingId(null); setError(""); }}
-                  style={{ background: "transparent", border: "none", color: "var(--muted, #6f6a5d)", fontSize: 13, cursor: "pointer" }}
-                >
+                <button className="lab-cancel" onClick={() => { setBookingId(null); setError(""); }}>
                   Cancel
                 </button>
               </div>
