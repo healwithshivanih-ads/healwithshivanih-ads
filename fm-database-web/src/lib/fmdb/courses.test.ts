@@ -66,14 +66,14 @@ describe("Calm Gut course definition", () => {
 
   it("has a short daily practice slot, open from day 0, with music and voice files", () => {
     const short = getCourseTrack(CALM_GUT, "daily-short")!;
-    expect(short).toMatchObject({ kind: "practice", title: "Short daily practice", rev: "d1", minutes: { music: 7, voice: 7 } });
+    expect(short).toMatchObject({ kind: "practice", title: "Short daily practice", rev: "d2", minutes: { music: 7, voice: 7 } });
     expect(isTrackUnlocked(short, 0)).toBe(true);
-    expect(courseAudioKey(CALM_GUT, short, "music")).toBe("calm-gut/d1/daily-short-music.m4a");
+    expect(courseAudioKey(CALM_GUT, short, "music")).toBe("calm-gut/d2/daily-short-music.m4a");
   });
 
   it("keys audio by course, revision, track and version", () => {
-    expect(courseAudioKey(CALM_GUT, getCourseTrack(CALM_GUT, "s3")!, "voice")).toBe("calm-gut/d1/s3-voice.m4a");
-    expect(courseAudioKey(CALM_GUT, getCourseTrack(CALM_GUT, "flare")!, "music")).toBe("calm-gut/d2/flare-music.m4a");
+    expect(courseAudioKey(CALM_GUT, getCourseTrack(CALM_GUT, "s3")!, "voice")).toBe("calm-gut/d2/s3-voice.m4a");
+    expect(courseAudioKey(CALM_GUT, getCourseTrack(CALM_GUT, "flare")!, "music")).toBe("calm-gut/d3/flare-music.m4a");
   });
 
   it("getCourse refuses unknown slugs", () => {

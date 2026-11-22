@@ -30,8 +30,8 @@ beforeAll(async () => {
   delete process.env.COURSE_AUDIO_S3_BUCKET;
   delete process.env.FLY_INTAKE_ONLY;
   process.env.COURSE_DEVICE_LIMIT = "1"; // a client must not need a registered phone
-  await fs.mkdir(path.join(audioDir, "calm-gut", "d1"), { recursive: true });
-  await fs.writeFile(path.join(audioDir, "calm-gut", "d1", "s1-music.m4a"), Buffer.from("0123456789abcdef"));
+  await fs.mkdir(path.join(audioDir, "calm-gut", "d2"), { recursive: true });
+  await fs.writeFile(path.join(audioDir, "calm-gut", "d2", "s1-music.m4a"), Buffer.from("0123456789abcdef"));
   await fs.mkdir(path.join(tmp, "guided"), { recursive: true });
   for (const [id, token, courses] of [
     ["cl-on", TOKEN_ON, `courses:\n- slug: calm-gut\n  started_on: '${ymdDaysAgo(2)}'\n`],
