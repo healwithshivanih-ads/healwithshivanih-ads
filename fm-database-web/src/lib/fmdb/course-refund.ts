@@ -13,8 +13,13 @@
  * ok → access ends here, once (markGuidedRefunded is idempotent, so the
  *      funnel calling /api/guided-enroll/deactivate as well is harmless).
  * anything else (unset URL, timeout, 4xx/5xx, ok:false) → the request is
- *      noted on the record, access stays on, and Shivani gets one email
- *      from the ops mailbox to do it by hand ("within 2 working days").
+ *      noted on the record, access stays on, and it is done by hand
+ *      ("within 2 working days").
+ * Who tells Shivani: when the funnel ANSWERED (any JSON reply, ok:false
+ *      included) it has already put a "refund by hand" to-do on her phone,
+ *      so the app stays quiet. Only when the funnel could not be reached
+ *      (unset URL, network error, timeout, a reply with no JSON body) does
+ *      the app email her, once.
  */
 
 import type { GuidedSubscriber } from "./guided-tier";
@@ -51,7 +56,10 @@ export function rupees(paise: number): string {
   return `₹${r.toLocaleString("en-IN", { minimumFractionDigits: Number.isInteger(r) ? 0 : 2, maximumFractionDigits: 2 })}`;
 }
 
-export type FunnelRefundResult = { ok: true } | { ok: false; why: string };
+/** `reached`: the funnel answered with JSON (so it knows, and alerts
+ *  Shivani itself). False: it never got the request, or its reply was not
+ *  JSON (a crash / proxy error page). */
+export type FunnelRefundResult = { ok: true } | { ok: false; why: string; reached: boolean };
 
 /** Ask ochre-funnel to refund. Never throws; 15 s timeout. */
 export async function requestFunnelRefund(
@@ -61,7 +69,7 @@ export async function requestFunnelRefund(
   const env = opts.env ?? process.env;
   const url = env.CALM_GUT_REFUND_URL || "";
   const secret = env.COURSE_REFUND_SECRET || env.GUIDED_ENROLL_SECRET || "";
-  if (!url || !secret) return { ok: false, why: "refund URL or secret not set" };
+  if (!url || !secret) return { ok: false, why: "refund URL or secret not set", reached: false };
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 15_000);
   try {
@@ -76,11 +84,11 @@ export async function requestFunnelRefund(
       }),
       signal: ctrl.signal,
     });
-    const j = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-    if (res.ok && j.ok === true) return { ok: true };
-    return { ok: false, why: `HTTP ${res.status}${j.error ? `: ${j.error}` : ""}` };
+    const j = (await res.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+    if (res.ok && j?.ok === true) return { ok: true };
+    return { ok: false, why: `HTTP ${res.status}${j?.error ? `: ${j.error}` : ""}`, reached: j !== null && typeof j === "object" };
   } catch (e) {
-    return { ok: false, why: e instanceof Error ? e.message : "request failed" };
+    return { ok: false, why: e instanceof Error ? e.message : "request failed", reached: false };
   } finally {
     clearTimeout(timer);
   }

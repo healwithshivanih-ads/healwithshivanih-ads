@@ -11,6 +11,10 @@ import path from "node:path";
 
 vi.mock("@/lib/fmdb/rate-limit", () => ({ allowDaily: async () => ({ ok: true }) }));
 vi.mock("server-only", () => ({}));
+const mailSent: { to: string; subject: string }[] = [];
+vi.mock("nodemailer", () => ({
+  default: { createTransport: () => ({ sendMail: async (m: { to: string; subject: string }) => void mailSent.push(m) }) },
+}));
 
 let tmp: string;
 let audioDir: string;
@@ -455,7 +459,10 @@ describe("in-app refund request (paid buyers, first 7 days)", () => {
     expect(again.turned_off).toBe(0);
   });
 
-  it("funnel fails: the request is noted, access stays, the app says 2 working days", async () => {
+  it("funnel answers ok:false: noted, access stays, and NO email (the funnel already put a to-do on her phone)", async () => {
+    process.env.GMAIL_USER = "ops@example.test";
+    process.env.GMAIL_APP_PASSWORD = "x";
+    mailSent.length = 0;
     funnelReply = { status: 502, body: { ok: false, error: "razorpay down" } };
     const b = await buyer("pay_RF_FAIL");
     const r = await call({ token: b.token, action: "refund" });
@@ -464,6 +471,38 @@ describe("in-app refund request (paid buyers, first 7 days)", () => {
     expect(data).not.toBeNull();
     expect(data!.course!.refund!.pendingSince).toBeTruthy();
     expect((await tier.resolveGuidedSubscriberByToken(b.token))?.status).toBe("active");
+    expect(mailSent).toHaveLength(0);
+  });
+
+  it("funnel unreachable: noted, access stays, Shivani is emailed once", async () => {
+    mailSent.length = 0;
+    const saved = globalThis.fetch;
+    globalThis.fetch = (async () => {
+      throw new Error("ECONNREFUSED");
+    }) as typeof fetch;
+    try {
+      const b = await buyer("pay_RF_DOWN");
+      expect((await call({ token: b.token, action: "refund" })).body).toMatchObject({ ok: true, status: "pending" });
+      expect(mailSent).toHaveLength(1);
+      expect(mailSent[0].subject).toMatch(/refund to do by hand/i);
+      await call({ token: b.token, action: "refund" }); // a second tap: no second email
+      expect(mailSent).toHaveLength(1);
+      expect((await tier.resolveGuidedSubscriberByToken(b.token))?.status).toBe("active");
+    } finally {
+      globalThis.fetch = saved;
+      delete process.env.GMAIL_USER;
+      delete process.env.GMAIL_APP_PASSWORD;
+    }
+  });
+
+  it("reached = the funnel answered with JSON; an HTML error page or no answer is not reached", async () => {
+    const sub = (await tier.resolveGuidedSubscriberByToken((await buyer("pay_RF_REACH")).token))!;
+    const env = { CALM_GUT_REFUND_URL: "https://f.test/r", GUIDED_ENROLL_SECRET: "s" };
+    const answer = (status: number, body: string) => (async () => new Response(body, { status })) as unknown as typeof fetch;
+    expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(200, '{"ok":true}') })).toEqual({ ok: true });
+    expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(400, '{"ok":false,"error":"refused"}') })).toMatchObject({ ok: false, reached: true });
+    expect(await refundLib.requestFunnelRefund(sub, { env, fetchImpl: answer(502, "<html>Bad gateway</html>") })).toMatchObject({ ok: false, reached: false });
+    expect(await refundLib.requestFunnelRefund(sub, { env: {} })).toMatchObject({ ok: false, reached: false });
   });
 
   it("formats rupees", () => {

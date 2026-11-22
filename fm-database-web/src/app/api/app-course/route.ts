@@ -237,10 +237,14 @@ export async function POST(req: NextRequest) {
         await removeCourseSubscription(sub.subscriber_id).catch(() => {});
         return NextResponse.json({ ok: true, status: "refunded" });
       }
-      // Not automatic this time: note it, keep access, tell Shivani once.
+      // Not automatic this time: note it and keep access. If the funnel
+      // answered, it has already put a to-do on Shivani's phone; only when it
+      // could not be reached does the app email her (once).
       const firstTime = !sub.refund_requested_at;
       await markRefundRequested(sub.subscriber_id);
-      if (firstTime) await tellCoachRefundPending(sub, res.why).catch((e) => console.error("[app-course] refund alert failed:", e));
+      if (firstTime && !res.reached) {
+        await tellCoachRefundPending(sub, res.why).catch((e) => console.error("[app-course] refund alert failed:", e));
+      }
       console.error(`[app-course] refund for ${sub.subscriber_id} pending by hand: ${res.why}`);
       return NextResponse.json({ ok: true, status: "pending" });
     }
