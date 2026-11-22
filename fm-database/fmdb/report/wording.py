@@ -728,13 +728,19 @@ def rest_line(rp: Any, lib: Lib) -> str:
     names = [approved.get(s.id) or lib.d(f"rest.{s.id}") for s in rp.sections if s.status == "steady"]
     line = f"Everything else is steady: {join(names)}." if names else ""
     shown = {x["id"] for x in rp.stand}
+    also: dict[str, list[str]] = {}          # status → section names, in page order
     for s in rp.sections:
         if s.status == "steady" or s.id in shown or small_extras_only(rp.hits.get(s.id) or []):
             continue
         if s.id == "nutrients" and b12_high(rp.rows) and _lv(rp.rows, "hcy") >= 2:
             line += " Your B12 is high, which matters for one finding above."
         else:
-            line += lib.d("rest.also", status=s.status, name=s.name.lower())
+            also.setdefault(s.status, []).append(s.name.lower())
+    # one sentence per status: two sections marked the same read "Also marked “watch”: a and b.", not the
+    # phrase twice (seen on a real deeper report, 21 Nov 2026). One section reads exactly as before.
+    for status, names in also.items():
+        many = len(names) > 1 and any(" and " in n for n in names)   # "vitamins and iron, and allergy and autoimmune markers"
+        line += lib.d("rest.also", status=status, name=(", ".join(names[:-1]) + ", and " + names[-1]) if many else join(names))
     return line.strip()
 
 

@@ -309,3 +309,34 @@ Her rule (21 Nov 2026): "yes we can send the report on whatsapp also (need their
   is almost never inside the 24-hour window, a Meta-approved template with a document. She asked for the WhatsApp
   server to be left alone, so that is not built; it needs her go-ahead.
 - The email stays the delivery of record ("a report is re-sent only to the email on the order").
+
+## Launch day: the one checklist (written 22 Nov 2026)
+
+Launch moment: Sat 2 Jan 2027, 20:00 IST. Nothing below happens without Shivani's own yes. Two apps: the order
+side (this repo, Fly app behind intake.theochretree.com) and the marketing site (`~/ochre-funnel`, grow.theochretree.com).
+
+**In the week before**
+1. Re-read the laboratory's PIN code list (partner site → Order Booking → Pincode Serviceability → Download List)
+   into `fm-database/data/lab_providers/thyrocare_pincodes.txt`; keep the header date current. Merge.
+2. A fresh pair of Razorpay TEST keys (`RAZORPAY_TEST_KEY_ID` / `RAZORPAY_TEST_KEY_SECRET`); the pair on the Mac
+   answers "not authorised". Then one full practice payment in test mode: check → code → order → pay → order shows
+   paid → attach to the test profile → build → send to herself.
+3. Her 30 to 40 second video into the landing page's photo slot (marketing site, `content/body-age/`).
+4. Rebuild the coach app on the Mac (ask her) so the order list shows the voucher and the WhatsApp line.
+
+**On the day, in this order**
+1. Order side: deploy. Set on Fly: `BODY_AGE_VOUCHER_SECRET` (a new long random value), `BODY_AGE_ORDER_PAGE=live`
+   (it stays closed until 20:00 by itself), and confirm the LIVE Razorpay keys and `RAZORPAY_WEBHOOK_SECRET` are set.
+2. Razorpay dashboard (live mode): add the webhook `https://intake.theochretree.com/api/body-age/webhook`.
+3. Marketing site: deploy (migrate first, as that repo's notes say). Set on Fly: `BODY_AGE_VOUCHER_SECRET` (the SAME
+   value) and `BODY_AGE_PAGES=live`.
+4. After 20:00: open `/body-age` and `/body-age-check`; do one sign-up with her own email; use the code on the order
+   page; stop at the payment screen and check it shows the reduced price. Ask `/api/body-age/pincode` about a
+   covered code: it must answer yes, not unknown (proves the list shipped).
+5. Then link the landing page from the bio page, reels and emails.
+
+**Known and accepted at launch**
+- The report on WhatsApp is sent by hand (tick on the order → link on the order card → she attaches the PDF).
+- No refund screen and no report orders in the revenue figures: coach-side work waiting for the coach-app rebuild.
+- The sample on the landing page is her own report with the name hidden; it carries the SAMPLE stamp.
+- First real deeper order: check the Urine section prints.
