@@ -289,7 +289,7 @@ Her rule (21 Nov 2026): the PIN code is checked at the time of booking, before p
 - The form asks `POST /api/body-age/pincode` as soon as six digits are typed, shows `COPY.pin.yes` / `COPY.pin.no`,
   and disables Pay on `no`. The order route asks again on the server and refuses a `no` before any order or payment
   is created.
-- `COPY.pin.yes` / `COPY.pin.no` are NOT yet approved by Shivani (the wording fingerprint includes them).
+- `COPY.pin.yes` / `COPY.pin.no` were approved by Shivani on 22 Nov 2026 ("Yes, approve them") and are in the wording fingerprint.
 - The list goes stale: re-read it from the partner site about once a month and before launch. A stale list can be
   wrong both ways, which is why `pin.no` sends the buyer to WhatsApp. After a deploy, check on Fly that the file is
   shipped (ask the pincode route for a code that is in the list; it must not answer `unknown`).
