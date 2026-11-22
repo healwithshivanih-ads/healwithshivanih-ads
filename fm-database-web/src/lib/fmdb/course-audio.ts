@@ -72,6 +72,10 @@ export interface PresignInput {
   now?: Date;
   /** Override the host (tests use the AWS docs example's legacy host). */
   host?: string;
+  /** Signed `response-content-type`: S3 answers with this type whatever the
+   *  object's stored metadata says. The console stored the Calm Gut files
+   *  as audio/x-m4a; Safari / Media Session are surest with audio/mp4. */
+  responseContentType?: string;
 }
 
 /** AWS Signature V4 presigned GET URL for one S3 object. */
@@ -88,6 +92,7 @@ export function presignS3Get(i: PresignInput): string {
     ["X-Amz-Date", amzDate],
     ["X-Amz-Expires", String(Math.max(1, Math.min(604_800, Math.floor(i.expiresSec))))],
     ["X-Amz-SignedHeaders", "host"],
+    ...(i.responseContentType ? ([["response-content-type", i.responseContentType]] as [string, string][]) : []),
   ];
   const query = params
     .map(([k, v]) => [rfc3986(k), rfc3986(v)] as const)
@@ -200,6 +205,7 @@ export function audioLinkFor(
         key,
         expiresSec: ttl,
         now,
+        responseContentType: "audio/mp4",
       }),
     };
   }

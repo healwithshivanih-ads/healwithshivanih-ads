@@ -32,6 +32,32 @@ describe("S3 SigV4 presign", () => {
     );
   });
 
+  it("matches botocore for our real layout, with and without a signed response-content-type", () => {
+    // Reference signatures from botocore 1.43 generate_presigned_url (fake
+    // credentials, clock fixed at 2026-12-08T10:00:00Z). The bucket stores
+    // these files as audio/x-m4a, so the app signs response-content-type.
+    const base = {
+      bucket: "ochre-course-audio",
+      region: "ap-south-1",
+      keyId: "AKIDEXAMPLE",
+      secret: "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY",
+      key: "calm-gut/d2/flare-music.m4a",
+      expiresSec: 21600,
+      now: new Date("2026-12-08T10:00:00Z"),
+    };
+    const sig = (u: string) => new URL(u).searchParams.get("X-Amz-Signature");
+    expect(sig(presignS3Get(base))).toBe("3ab28a202299e6d8a67bc916811728d1e2b0caccd430cbd1adc49f698bf1b2d9");
+    const typed = presignS3Get({ ...base, responseContentType: "audio/mp4" });
+    expect(sig(typed)).toBe("164e8885853246a7427fedf7e0978b2d42c47cc460ab114e52b010b5589b514b");
+    expect(new URL(typed).searchParams.get("response-content-type")).toBe("audio/mp4");
+  });
+
+  it("the app's S3 links ask for audio/mp4", () => {
+    const env = { COURSE_AUDIO_S3_BUCKET: "ochre-course-audio", COURSE_AUDIO_S3_KEY_ID: "k", COURSE_AUDIO_S3_SECRET: "s" };
+    const link = audioLinkFor("calm-gut/d1/s1-music.m4a", "gd-1", { env })!;
+    expect(new URL(link.url).searchParams.get("response-content-type")).toBe("audio/mp4");
+  });
+
   it("uses the regional virtual-host by default and caps expiry at 7 days", () => {
     const url = presignS3Get({
       bucket: "ochre-course-audio",
