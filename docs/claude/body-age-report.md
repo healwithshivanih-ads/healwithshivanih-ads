@@ -281,7 +281,8 @@ Her rule (21 Nov 2026): the PIN code is checked at the time of booking, before p
 - The laboratory's partner site publishes its list of serviceable PIN codes ("Pincode Serviceability → Download
   List", refreshed weekly). The app has no live link to the laboratory, so a COPY of that list lives at
   `fm-database/data/lab_providers/thyrocare_pincodes.txt` (one six-digit code per line, `#` notes; first line = the
-  date it was read). **The file is not in the repo yet**: downloading it needs Shivani's yes.
+  date it was read). Added 22 Nov 2026 with her yes: 4,778 codes; a test fails if the file is missing or shrinks
+  below 3,000 codes.
 - `lib/fmdb/body-age-pincode.ts`: `pincodeAnswer` → `yes` / `no` / `unknown`. No file or an empty file is `unknown`
   and the order goes ahead as before (visit confirmed by hand, full refund if the laboratory cannot come). An empty
   list never refuses everyone.
