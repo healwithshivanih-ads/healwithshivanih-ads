@@ -293,3 +293,19 @@ Her rule (21 Nov 2026): the PIN code is checked at the time of booking, before p
 - The list goes stale: re-read it from the partner site about once a month and before launch. A stale list can be
   wrong both ways, which is why `pin.no` sends the buyer to WhatsApp. After a deploy, check on Fly that the file is
   shipped (ask the pincode route for a code that is in the list; it must not answer `unknown`).
+
+## A copy of the report on WhatsApp (22 Nov 2026) — consent built, sending is by hand
+
+Her rule (21 Nov 2026): "yes we can send the report on whatsapp also (need their consent for this)".
+
+- Order form: an optional, unticked box (`COPY.whatsappTick`, NOT yet approved by her). Ticked → the order carries
+  `report_on_whatsapp: true` (consent time = `consent_at`). Absent = never send it there. Only a real `true` from
+  the form counts.
+- Coach order card (`/report-orders`): a line "Asked for the report on WhatsApp too" with a link that opens HER
+  WhatsApp on the buyer's number. The app sends nothing: she emails the report as usual, then attaches the PDF in
+  WhatsApp herself.
+- Why by hand: the app's WhatsApp sender can send approved templates, text inside the 24-hour window, and voice
+  notes. It cannot send a PDF. Doing that needs a document send added to the WhatsApp server and, because a buyer
+  is almost never inside the 24-hour window, a Meta-approved template with a document. She asked for the WhatsApp
+  server to be left alone, so that is not built; it needs her go-ahead.
+- The email stays the delivery of record ("a report is re-sent only to the email on the order").

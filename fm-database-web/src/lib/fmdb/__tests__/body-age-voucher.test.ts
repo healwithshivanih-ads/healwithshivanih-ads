@@ -71,3 +71,24 @@ describe("body age voucher", () => {
     expect([reduced.amount_inr, reduced.voucher_code, reduced.discount_inr]).toEqual([4499, "BA-270117-ABCDEF", 500]);
   });
 });
+
+describe("body age order: a copy of the report on WhatsApp", () => {
+  const form = (extra: Record<string, unknown>) => ({
+    report_kind: "standard",
+    consent: true,
+    people: [{ full_name: "Asha Rao", date_of_birth: "1980-05-01", sex: "F", email: EMAIL, phone: "9876543210" }],
+    visit: { address: "12 Test Lane, Test Nagar", pincode: "400001", preferred_date: "2027-01-10", preferred_slot: "morning", notes: "" },
+    ...extra,
+  });
+  const opts = { todayYmd: "2027-01-05", minDateYmd: "2027-01-07" };
+
+  it("is recorded only when the buyer ticked it themselves", () => {
+    for (const [sent, want] of [[true, true], [false, undefined], [undefined, undefined], ["true", undefined], [1, undefined]] as const) {
+      const checked = sanitizeOrderInput(form(sent === undefined ? {} : { report_on_whatsapp: sent }), opts);
+      expect(checked.ok).toBe(true);
+      if (!checked.ok) continue;
+      const order = buildBodyAgeOrder("ba-20270105-aaaaaaaa", "k", checked.input, 4999, "2027-01-05T00:00:00Z", true);
+      expect(order.report_on_whatsapp, String(sent)).toBe(want);
+    }
+  });
+});
