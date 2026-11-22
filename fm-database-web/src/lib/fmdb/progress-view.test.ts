@@ -62,4 +62,10 @@ describe("progressAsOf", () => {
     expect(lines).not.toMatch(/kg|weight/i);
     expect(lines).toMatch(/Blood pressure 142\/92 → 128\/84/);
   });
+  it("counts the check-ins when they share a week, never 'Week 0 to Week 0'", () => {
+    const same = { symptomScore: score([{ wk: 0, v: 80 }, { wk: 0, v: 60 }]), body: body([]), weightLoss: null };
+    expect(progressDraftLines(same)[0]).toBe("Wellbeing 80 → 60 / 100 (from 2 check-ins).");
+    const apart = { symptomScore: score([{ wk: 1, v: 50 }, { wk: 4, v: 62 }]), body: body([]), weightLoss: null };
+    expect(progressDraftLines(apart)).toContain("Wellbeing 50 → 62 / 100 (Week 1 to Week 4).");
+  });
 });
