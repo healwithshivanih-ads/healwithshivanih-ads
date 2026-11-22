@@ -39,8 +39,11 @@ export function AppAvatar({
 // ── header + nav ─────────────────────────────────────────────────────────────
 
 export function Header({ alert, onAccount }: { alert: boolean; onAccount: () => void }) {
-  const { account, tier } = useOchre();
-  const sequoya = tier === "guided";
+  const { account, tier, course } = useOchre();
+  // Sequoya Lite is the guided protocol tier's name. A Calm Gut course buyer
+  // is tier "guided" underneath but bought from The Ochre Tree, and sees it
+  // (Shivani, 22 Nov 2026: the course is Ochre, not Sequoya).
+  const sequoya = tier === "guided" && !course?.only;
   return (
     <header className="appbar">
       <div className="masthead">
@@ -88,6 +91,12 @@ const TABS = [
  */
 const TAB_ORDER = ["today", "labs", "plan", "progress", "coach"];
 const NAV_TABS = TAB_ORDER.map((id) => TABS.find((t) => t.id === id)!);
+const COURSE_TABS = [
+  { id: "today", label: "Today", icon: "today" },
+  { id: "labs", label: "Sessions", icon: "play" },
+  { id: "progress", label: "Progress", icon: "progress" },
+  { id: "coach", label: "Help", icon: "message" },
+];
 
 export function BottomNav({
   active,
@@ -95,6 +104,7 @@ export function BottomNav({
   coachAlert,
   coachUnread = 0,
   discovery,
+  course,
 }: {
   active: string;
   onChange: (tab: string) => void;
@@ -106,7 +116,24 @@ export function BottomNav({
   coachUnread?: number;
   /** Consult tier — relabels the "today" slot as "Summary" (the Starting Map). */
   discovery?: boolean;
+  /** Course-only buyer: Today · Sessions · Progress · Help (no Plan). The ids
+   *  stay the app's own ("labs" = Sessions, "coach" = Help). */
+  course?: boolean;
 }) {
+  if (course) {
+    return (
+      <nav className="bottomnav">
+        {COURSE_TABS.map((t) => (
+          <button key={t.id} className={"tab" + (active === t.id ? " active" : "")} onClick={() => onChange(t.id)}>
+            <span className="ic">
+              <Icon name={t.icon} size={23} />
+            </span>
+            <span className="tl-label">{t.label}</span>
+          </button>
+        ))}
+      </nav>
+    );
+  }
   return (
     <nav className="bottomnav">
       {(discovery ? TABS : NAV_TABS).map((t) => (

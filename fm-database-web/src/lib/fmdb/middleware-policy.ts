@@ -105,6 +105,12 @@ export const PUBLIC_PATH_PREFIXES = [
   // webhook. Shared-secret protected inside the handler (fails closed when
   // the secret is unset) — public here only so Fly can reach it.
   "/api/guided-enroll",
+  // Calm Gut course (course-store.ts / course-audio.ts): the listener's log,
+  // symptom check, reminder choice and short-lived audio links, all checked
+  // against a course token inside the handler; plus /stream/<ticket>, which
+  // serves a track only for a signed, expiring ticket. Off this list they
+  // 404 on Fly and the course plays nothing.
+  "/api/app-course",
   // GET serves the client's avatar; POST lets the client set their own.
   // Token-scoped, re-verified server-side. Matches /api/app-photo and
   // /api/app-photo/<token>.

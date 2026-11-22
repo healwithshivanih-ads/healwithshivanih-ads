@@ -35,6 +35,11 @@ import { sendPushToClient, pushStatus } from "@/lib/fmdb/push-server";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { clientDir } from "@/lib/fmdb/client-thread";
 import { leftWords, lowRows } from "@/lib/fmdb/supply-rows";
+import { listGuidedSubscribers } from "@/lib/fmdb/guided-tier";
+import { getCourse } from "@/lib/fmdb/courses";
+import { readCourseRecord, readCourseFired, writeCourseFired } from "@/lib/fmdb/course-store";
+import { coursePushStatus, sendCoursePush } from "@/lib/fmdb/course-push";
+import { dueCourseReminders } from "@/lib/fmdb/course-reminders";
 
 export const dynamic = "force-dynamic";
 
@@ -275,6 +280,44 @@ export async function POST(req: NextRequest) {
     if (dirty) {
       await writeFired(clientId, fired).catch((e) =>
         console.error(`[app-reminders] ${clientId}: failed to persist fired:`, e?.message),
+      );
+    }
+  }
+
+  // Course listeners (Calm Gut — guided/<id>, not clients/). Only the
+  // reminders they chose in the app: a daily one at their time and "a new
+  // session is open". Push must be on; refunded / upgraded records are out.
+  for (const sub of await listGuidedSubscribers()) {
+    if (sub.status !== "active" || sub.courses.length === 0) continue;
+    if (!(await coursePushStatus(sub.subscriber_id)).enabled) continue;
+    const tz = clientTz({ timezone: sub.timezone });
+    const subToday = todayInTz(tz);
+    const { minutes: nowMin } = nowInTz(tz);
+    const fired = await readCourseFired(sub.subscriber_id);
+    let dirty = false;
+    for (const slug of sub.courses) {
+      const course = getCourse(slug);
+      if (!course) continue;
+      const record = await readCourseRecord(sub.subscriber_id, slug);
+      for (const r of dueCourseReminders({ course, startYmd: sub.start_date, record, fired, todayYmd: subToday, nowMin })) {
+        const ok = await sendCoursePush(sub.subscriber_id, {
+          title: r.title,
+          body: r.body,
+          url: `/app/${sub.app_token}`,
+          tag: r.key,
+        });
+        if (ok) {
+          fired[r.key] = subToday;
+          dirty = true;
+          sent.push({ clientId: sub.subscriber_id, id: r.key });
+        } else {
+          skipped.push({ clientId: sub.subscriber_id, id: r.key, reason: "push_unavailable" });
+        }
+      }
+    }
+    if (dirty) {
+      await writeCourseFired(sub.subscriber_id, fired).catch((e) =>
+        console.error(`[app-reminders] ${sub.subscriber_id}: failed to persist course fired:`, e?.message),
       );
     }
   }

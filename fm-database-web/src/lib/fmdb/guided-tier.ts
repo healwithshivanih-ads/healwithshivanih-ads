@@ -25,13 +25,22 @@ import { getPlansRoot } from "./paths";
 import { withFsRetry } from "./fs-retry";
 import { dumpYaml } from "./yaml-dump";
 
+/** What was bought. "guided" = the self-guided protocol tier (₹6,999/yr).
+ *  "course" = a one-time audio course (Calm Gut) with no protocol. */
+export type GuidedProduct = "guided" | "course";
+
 export interface GuidedSubscriber {
   subscriber_id: string;
+  /** Absent on records written before courses existed → "guided". */
+  product: GuidedProduct;
+  /** Audio courses this subscriber owns ("calm-gut"). A course buyer has one;
+   *  a guided subscriber has none unless one is added later. */
+  courses: string[];
   display_name: string;
   email: string;
   phone: string;
   app_token: string;
-  /** Slug in guided-protocols.ts ("gut-reset" …). */
+  /** Slug in guided-protocols.ts ("gut-reset" …). Empty for a course buyer. */
   protocol_slug: string;
   /** Dietary identity, captured at join. Used ONLY to render authored
    *  alternates + an acknowledgement chip — never to compute a personalised
@@ -41,7 +50,8 @@ export interface GuidedSubscriber {
   dietary_preference: "" | "vegetarian" | "vegetarian_egg" | "jain" | "non_vegetarian";
   /** Additional protocols bought later (₹2,499/₹2,999 each). */
   extra_protocols: string[];
-  /** YYYY-MM-DD — the Monday week 1 begins. */
+  /** YYYY-MM-DD — the Monday week 1 begins (guided), or the payment day
+   *  (course: week 1 opens the day they pay). */
   start_date: string;
   /** Razorpay/Play payment id — the enrolment idempotency key. */
   payment_id: string;
@@ -104,6 +114,28 @@ export function nextMondayYmd(now: Date, tz: string): string {
   return p2; // en-CA gives YYYY-MM-DD
 }
 
+/** Today's date (YYYY-MM-DD) in a timezone. */
+export function ymdInTz(now: Date, tz: string): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: tz,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+}
+
+/** A course starts the day it is paid for. The funnel sends that date
+ *  (`started_on`, IST); trust it only when it is a real date within a few
+ *  days of now — a replayed or malformed value falls back to today. */
+export function courseStartYmd(startedOn: string | undefined, now: Date, tz: string): string {
+  const today = ymdInTz(now, tz);
+  if (!startedOn || !/^\d{4}-\d{2}-\d{2}$/.test(startedOn)) return today;
+  const t = Date.parse(`${startedOn}T00:00:00Z`);
+  const n = Date.parse(`${today}T00:00:00Z`);
+  if (!Number.isFinite(t) || Math.abs(t - n) > 3 * 86_400_000) return today;
+  return startedOn;
+}
+
 /** 1-indexed programme week for a YYYY-MM-DD "today" in the subscriber's tz.
  *  0 → not started yet. */
 export function guidedWeek(startYmd: string, todayYmd: string): number {
@@ -134,13 +166,20 @@ async function subscriberDirs(): Promise<string[]> {
 
 function coerce(d: Record<string, unknown>): GuidedSubscriber | null {
   const s = (v: unknown): string => (typeof v === "string" ? v : "");
-  if (!s(d.subscriber_id) || !s(d.app_token) || !s(d.protocol_slug)) return null;
+  const product: GuidedProduct = d.product === "course" ? "course" : "guided";
+  const courses = Array.isArray(d.courses) ? (d.courses as unknown[]).map((x) => String(x)).filter(Boolean) : [];
+  if (!s(d.subscriber_id) || !s(d.app_token)) return null;
+  // A guided subscriber needs a protocol; a course buyer needs a course.
+  if (product === "guided" && !s(d.protocol_slug)) return null;
+  if (product === "course" && courses.length === 0) return null;
   const diet = ((): GuidedSubscriber["dietary_preference"] => {
     const v = s(d.dietary_preference);
     return v === "vegetarian" || v === "vegetarian_egg" || v === "jain" || v === "non_vegetarian" ? v : "";
   })();
   return {
     subscriber_id: s(d.subscriber_id),
+    product,
+    courses,
     display_name: s(d.display_name),
     email: s(d.email),
     phone: s(d.phone),
@@ -176,6 +215,17 @@ export async function resolveGuidedSubscriberByToken(
   return null;
 }
 
+/** Every readable subscriber record (reminder cron). */
+export async function listGuidedSubscribers(): Promise<GuidedSubscriber[]> {
+  const out: GuidedSubscriber[] = [];
+  for (const id of await subscriberDirs()) {
+    const d = await readYamlFile(subscriberFile(id));
+    const s = d ? coerce(d) : null;
+    if (s) out.push(s);
+  }
+  return out;
+}
+
 /** payment_id → subscriber (enrolment idempotency). */
 export async function findGuidedByPaymentId(paymentId: string): Promise<GuidedSubscriber | null> {
   if (!paymentId) return null;
@@ -187,6 +237,12 @@ export async function findGuidedByPaymentId(paymentId: string): Promise<GuidedSu
 }
 
 export interface CreateGuidedInput {
+  /** Defaults to "guided". */
+  product?: GuidedProduct;
+  /** Course buyers: the course slug ("calm-gut"). */
+  course?: string;
+  /** Course buyers: the payment day (YYYY-MM-DD, IST) — week 1 opens then. */
+  started_on?: string;
   display_name: string;
   email: string;
   phone: string;
@@ -209,16 +265,20 @@ export async function createGuidedSubscriber(
 
   const tz = input.timezone || "Asia/Kolkata";
   const iso = now.toISOString();
+  const product: GuidedProduct = input.product === "course" ? "course" : "guided";
+  if (product === "course" && !input.course) throw new Error("course buyer needs a course");
   const sub: GuidedSubscriber = {
     subscriber_id: newSubscriberId(),
+    product,
+    courses: product === "course" && input.course ? [input.course] : [],
     display_name: input.display_name.slice(0, 120),
     email: input.email.slice(0, 200).toLowerCase(),
     phone: input.phone.slice(0, 20),
     app_token: newGuidedToken(),
-    protocol_slug: input.protocol_slug,
+    protocol_slug: product === "course" ? "" : input.protocol_slug,
     dietary_preference: input.dietary_preference ?? "",
     extra_protocols: [],
-    start_date: nextMondayYmd(now, tz),
+    start_date: product === "course" ? courseStartYmd(input.started_on, now, tz) : nextMondayYmd(now, tz),
     payment_id: input.payment_id,
     amount_paisa: input.amount_paisa,
     source: input.source,
@@ -235,8 +295,12 @@ export async function createGuidedSubscriber(
   return { subscriber: sub, created: true };
 }
 
-/** Active subscriber with this email, if any (adoption lookup at client
- *  onboarding — the guided→1:1 upgrade path). */
+/** Active guided-PROTOCOL subscriber with this email, if any (adoption
+ *  lookup at client onboarding — the guided→1:1 upgrade path). A course
+ *  buyer (product "course") is never adopted: adoption marks the record
+ *  upgraded, which would take their course away. Their course link keeps
+ *  working beside the client app until programme clients get the course
+ *  in their own app. */
 export async function findActiveGuidedByEmail(email: string): Promise<GuidedSubscriber | null> {
   const needle = email.trim().toLowerCase();
   if (!needle) return null;
@@ -244,7 +308,7 @@ export async function findActiveGuidedByEmail(email: string): Promise<GuidedSubs
     const d = await readYamlFile(subscriberFile(id));
     if (!d) continue;
     const s = coerce(d);
-    if (s && s.status === "active" && s.email === needle) return s;
+    if (s && s.status === "active" && s.product === "guided" && s.email === needle) return s;
   }
   return null;
 }

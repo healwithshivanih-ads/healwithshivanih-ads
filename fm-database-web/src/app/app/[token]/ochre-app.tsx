@@ -24,6 +24,18 @@ import {
   DiscoveryOnboardingScreen,
 } from "./ochre-discovery";
 import { GuidedCoachScreen } from "./ochre-guided";
+import {
+  CourseProvider,
+  CourseTodayScreen,
+  CourseSessionsScreen,
+  CourseProgressScreen,
+  CourseHelpScreen,
+  CoursePlayerOverlay,
+  CourseLogOverlay,
+  CourseScoreOverlay,
+  CourseNowPlaying,
+  CourseAccountOverlay,
+} from "./ochre-course";
 import { PracticesScreen } from "./ochre-practices";
 import { EndgameBanner, LibraryFloorScreen, GraduationReport, MaintenanceHome, MaintenanceCheckout } from "./ochre-endgame";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
@@ -128,7 +140,10 @@ type Overlay =
   | { type: "order" }
   | { type: "portions" }
   | { type: "account" }
-  | { type: "labs" };
+  | { type: "labs" }
+  | { type: "course-player"; trackId: string }
+  | { type: "course-log" }
+  | { type: "course-score" };
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
   const STORE = `ochre.app.${data.clientId}`;
@@ -351,10 +366,16 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         const reg = await navigator.serviceWorker.getRegistration("/ochre-app/sw.js");
         const sub = await reg?.pushManager.getSubscription();
         if (!sub || stop) return;
-        await fetch("/api/app-push", {
+        // A course-only listener's subscription lives with their course
+        // record (guided/<id>), not under clients/ — /api/app-push refuses them.
+        await fetch(data.course?.only ? "/api/app-course" : "/api/app-push", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ token, action: "subscribe", subscription: sub.toJSON() }),
+          body: JSON.stringify(
+            data.course?.only
+              ? { token, action: "push", op: "subscribe", subscription: sub.toJSON(), quiet: true }
+              : { token, action: "subscribe", subscription: sub.toJSON() },
+          ),
         });
       } catch {
         // Nothing to do and nothing to say — they already have notifications
@@ -364,7 +385,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     return () => {
       stop = true;
     };
-  }, [data.token]);
+  }, [data.token, data.course?.only]);
 
   useEffect(() => {
     const token = data.token;
@@ -763,6 +784,10 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   // no labs. Coach + Labs tabs swap to guided screens; check-in routes to
   // the Coach tab, which explains the 1:1 boundary honestly.
   const guided = data.tier === "guided";
+  // A course-only buyer (Calm Gut): the app is the course — its own Today,
+  // Sessions, Progress and Help, the Ochre wordmark, no plan surfaces.
+  const courseOnly = !!data.course?.only;
+  const openCoursePlayer = (trackId: string) => setOverlay({ type: "course-player", trackId });
   // Pre-call onboarding: a discovery client whose labs aren't in / call isn't
   // done yet. The whole app is the guided onboarding flow (no tabs) — the
   // Starting Map + upgrade countdown stay hidden until post_call.
@@ -825,7 +850,20 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   }
 
   let screen: React.ReactNode = null;
-  if (onboarding) {
+  if (courseOnly) {
+    if (tab === "labs") screen = <CourseSessionsScreen openPlayer={openCoursePlayer} />;
+    else if (tab === "progress") screen = <CourseProgressScreen openScore={() => setOverlay({ type: "course-score" })} />;
+    else if (tab === "coach") screen = <CourseHelpScreen />;
+    else
+      screen = (
+        <CourseTodayScreen
+          openPlayer={openCoursePlayer}
+          openLog={() => setOverlay({ type: "course-log" })}
+          openScore={() => setOverlay({ type: "course-score" })}
+          goTab={go}
+        />
+      );
+  } else if (onboarding) {
     screen = <DiscoveryOnboardingScreen />;
   } else if (discovery) {
     if (tab === "plan") screen = <DiscoveryLockedScreen feature="plan" />;
@@ -959,7 +997,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     );
   }
 
-  return (
+  const body = (
     <OchreContext.Provider value={data}>
       {/* The Sequoya palette (ash / charcoal / fireweed, Fraunces + Instrument
           Sans) for every client since 2026-10-22 — it began as the guided
@@ -969,7 +1007,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       <div className="ochre-app sequoya">
         <SequoyaFonts />
         <div className={"app" + (textLarge ? " text-lg" : "")}>
-          <Header alert={!submitted && !onHold} onAccount={() => setOverlay({ type: "account" })} />
+          <Header alert={!courseOnly && !submitted && !onHold} onAccount={() => setOverlay({ type: "account" })} />
           {showPlanUpdatedBanner && (
             <div
               style={{
@@ -1009,7 +1047,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               </button>
             </div>
           )}
-          {welcomeBack && (
+          {welcomeBack && !courseOnly && (
             <div className="ot-welcome-back">
               <span style={{ flex: 1 }}>
                 🌿 <strong>Welcome back{data.client.firstName ? `, ${data.client.firstName}` : ""}.</strong> While you were away, your tree grew — you&rsquo;re in Week {welcomeBack.toWeek} now.
@@ -1036,14 +1074,16 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               live and starts moving on its own that day.
             </div>
           )}
-          {!inCheckin && !((graduationTakeover || data.mode === "MAINTENANCE") && tab === "today") && <EndgameBanner goCoach={() => go("coach")} onRenew={() => setMaintOpen(true)} />}
-          {!inCheckin && !onboarding && !discovery && tab === "today" && <FeedbackBanner onOpen={openFeedback} />}
+          {!courseOnly && !inCheckin && !((graduationTakeover || data.mode === "MAINTENANCE") && tab === "today") && <EndgameBanner goCoach={() => go("coach")} onRenew={() => setMaintOpen(true)} />}
+          {!courseOnly && !inCheckin && !onboarding && !discovery && tab === "today" && <FeedbackBanner onOpen={openFeedback} />}
           <main className="screen-scroll" key={onboarding ? "onboarding" : inCheckin ? "checkin" : tab}>
             {screen}
           </main>
           {!onboarding && (
-            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!guided && !submitted && !onHold} coachUnread={guided ? 0 : coachUnread} discovery={discovery} />
+            <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!guided && !submitted && !onHold} coachUnread={guided ? 0 : coachUnread} discovery={discovery} course={courseOnly} />
           )}
+
+          {courseOnly && !overlay && <CourseNowPlaying onOpen={openCoursePlayer} />}
 
           {!booting && <InstallPrompt />}
 
@@ -1064,7 +1104,20 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "feedback" && <FeedbackOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}
               {overlay.type === "portions" && <PortionsOverlay onClose={closeOverlay} />}
-              {overlay.type === "account" && (
+              {overlay.type === "account" && courseOnly && (
+                <CourseAccountOverlay
+                  name={data.account.name}
+                  contact={data.account.contact}
+                  textLarge={textLarge}
+                  onTextLarge={changeTextLarge}
+                  onClose={closeOverlay}
+                  goHelp={() => {
+                    closeOverlay();
+                    go("coach");
+                  }}
+                />
+              )}
+              {overlay.type === "account" && !courseOnly && (
                 <AccountOverlay
                   onClose={closeOverlay}
                   textLarge={textLarge}
@@ -1073,6 +1126,11 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
                 />
               )}
               {overlay.type === "labs" && <LabsOverlay onClose={closeOverlay} />}
+              {overlay.type === "course-player" && data.course && (
+                <CoursePlayerOverlay trackId={overlay.trackId} onClose={closeOverlay} />
+              )}
+              {overlay.type === "course-log" && data.course && <CourseLogOverlay onClose={closeOverlay} />}
+              {overlay.type === "course-score" && data.course && <CourseScoreOverlay onClose={closeOverlay} />}
             </div>
           )}
 
@@ -1105,12 +1163,19 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               </span>
               <div className="t">The Ochre Tree</div>
               <div className="spinner" />
-              <div className="s">Opening your plan…</div>
+              <div className="s">{courseOnly ? "Opening your course…" : "Opening your plan…"}</div>
             </div>
           )}
         </div>
       </div>
     </OchreContext.Provider>
+  );
+  return data.course ? (
+    <CourseProvider course={data.course} token={data.token} clientId={data.clientId}>
+      {body}
+    </CourseProvider>
+  ) : (
+    body
   );
 }
 
