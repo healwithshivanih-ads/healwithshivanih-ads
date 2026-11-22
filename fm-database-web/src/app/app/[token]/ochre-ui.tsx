@@ -92,10 +92,10 @@ const TABS = [
 const TAB_ORDER = ["today", "labs", "plan", "progress", "coach"];
 const NAV_TABS = TAB_ORDER.map((id) => TABS.find((t) => t.id === id)!);
 const COURSE_TABS = [
-  { id: "today", label: "Today", icon: "today" },
-  { id: "labs", label: "Sessions", icon: "play" },
-  { id: "progress", label: "Progress", icon: "progress" },
-  { id: "coach", label: "Help", icon: "message" },
+  { id: "today", label: "Today" },
+  { id: "labs", label: "Sessions" },
+  { id: "progress", label: "Progress" },
+  { id: "coach", label: "Help" },
 ];
 
 export function BottomNav({
@@ -121,13 +121,16 @@ export function BottomNav({
   course?: boolean;
 }) {
   if (course) {
+    // Text only, like the coach app's phone tab bar.
     return (
-      <nav className="bottomnav">
+      <nav className="cg-tabs" aria-label="Main">
         {COURSE_TABS.map((t) => (
-          <button key={t.id} className={"tab" + (active === t.id ? " active" : "")} onClick={() => onChange(t.id)}>
-            <span className="ic">
-              <Icon name={t.icon} size={23} />
-            </span>
+          <button
+            key={t.id}
+            className={active === t.id ? "on" : ""}
+            aria-current={active === t.id ? "page" : undefined}
+            onClick={() => onChange(t.id)}
+          >
             <span className="tl-label">{t.label}</span>
           </button>
         ))}

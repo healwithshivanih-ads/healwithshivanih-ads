@@ -50,7 +50,12 @@ export interface PlayerState {
   /** While an intro plays ahead of a session: that session (it starts when
    *  the intro ends or is skipped). */
   introFor: PlayerTrack | null;
+  /** Playback speed: 1, 1.25 or 1.5 (remembered on this phone). */
+  rate: number;
 }
+
+/** The speeds a listener can pick. Pitch stays natural (browsers keep it). */
+export const PLAYBACK_RATES = [1, 1.25, 1.5] as const;
 
 const LISTEN_FRACTION = 0.8;
 
@@ -68,6 +73,7 @@ let state: PlayerState = {
   error: null,
   counted: false,
   introFor: null,
+  rate: 1,
 };
 let pendingSession: { track: PlayerTrack; version: CourseVersion } | null = null;
 const listeners = new Set<() => void>();
@@ -118,6 +124,27 @@ function lsSet(k: string, v: string) {
   }
 }
 
+/** Speed preference, per phone. */
+export function preferredRate(): number {
+  const n = Number(lsGet("ochre.course.rate"));
+  return (PLAYBACK_RATES as readonly number[]).includes(n) ? n : 1;
+}
+
+function applyRate(a: HTMLAudioElement, r: number) {
+  // defaultPlaybackRate survives a.load(); playbackRate is the live one.
+  a.defaultPlaybackRate = r;
+  a.playbackRate = r;
+  (a as HTMLAudioElement & { preservesPitch?: boolean }).preservesPitch = true;
+}
+
+/** Change the speed now and for every later play on this phone. */
+export function setRate(r: number) {
+  if (!(PLAYBACK_RATES as readonly number[]).includes(r)) return;
+  lsSet("ochre.course.rate", String(r));
+  if (audio) applyRate(audio, r);
+  emit({ rate: r });
+}
+
 /** Version preference (music / voice only), per phone. */
 export function preferredVersion(): CourseVersion {
   return lsGet("ochre.course.version") === "voice" ? "voice" : "music";
@@ -136,6 +163,8 @@ function ensureAudio(): HTMLAudioElement {
   if (audio) return audio;
   const a = new Audio();
   a.preload = "metadata";
+  applyRate(a, preferredRate());
+  state = { ...state, rate: preferredRate() };
   a.addEventListener("loadedmetadata", () => emit({ duration: a.duration || 0 }));
   a.addEventListener("durationchange", () => emit({ duration: a.duration || 0 }));
   a.addEventListener("playing", () => {
@@ -365,6 +394,7 @@ export async function load(
     const at = opts.at ?? Math.max(0, savedPosition(t, v) - 5);
     a.src = src;
     a.load();
+    applyRate(a, state.rate);
     if (at > 0) {
       const seekWhenReady = () => {
         try {

@@ -19,8 +19,6 @@ import type { AppCourse, AppCourseTrack } from "@/lib/fmdb/course-app";
 import type { CourseDayLog, CourseScore } from "@/lib/fmdb/course-store";
 import { COURSE_SCORE_QUESTIONS } from "@/lib/fmdb/courses";
 import { usePush } from "@/lib/fmdb/use-push";
-import { Icon } from "./ochre-context";
-import { Section } from "./ochre-ui";
 import {
   configurePlayer,
   fmtTime,
@@ -30,11 +28,14 @@ import {
   playWithIntro,
   pause,
   play,
+  PLAYBACK_RATES,
+  preferredRate,
   preferredVersion,
   savedPosition,
   seek,
   setPendingVersion,
   setPreferredVersion,
+  setRate,
   skip,
   skipIntro,
   stop,
@@ -184,19 +185,12 @@ function toPlayerTrack(course: AppCourse, t: AppCourseTrack): PlayerTrack {
   return { courseSlug: course.slug, id: t.id, title: t.title, subtitle: t.subtitle, rev: t.rev, kind: t.kind };
 }
 
-/** The week's reading as text, folded until opened. */
-function Reading({ title, text, open = false }: { title?: string; text: string; open?: boolean }) {
-  return (
-    <details className="cg-reading" open={open}>
-      <summary>This week&apos;s reading{title ? `: ${title}` : ""}</summary>
-      {text.split(/\n\n+/).map((para, i) => (
-        <p key={i}>{para}</p>
-      ))}
-    </details>
-  );
-}
-
-// ── small pieces ─────────────────────────────────────────────────────────────
+// ── the look ─────────────────────────────────────────────────────────────────
+// Same look as the new coach app (mock-up v12, Shivani 22 Nov 2026: "check the
+// new coach app look - that works"): ash ground, off-white rows with a thin
+// border and no shadow, Fraunces headings (never italic), Instrument Sans text,
+// charcoal square-cornered buttons, plain hairline lists, text-only tab bar.
+// No gradients, no pills for actions, no emoji or decorative icons.
 
 function PlayGlyph({ size = 18 }: { size?: number }) {
   return (
@@ -214,44 +208,62 @@ function PauseGlyph({ size = 18 }: { size?: number }) {
   );
 }
 
-function TrackRow({ t, onOpen, highlight }: { t: AppCourseTrack; onOpen: (id: string) => void; highlight?: boolean }) {
-  const { listened } = useCourse();
-  const mins = t.minutes.music;
+/** A Today row: coloured dot, small grey label, title, one line, chevron. */
+function Row({
+  dot,
+  label,
+  title,
+  meta,
+  onClick,
+  done,
+}: {
+  dot: "fire" | "grow" | "cedar" | "grey";
+  label: string;
+  title: string;
+  meta?: string;
+  onClick: () => void;
+  done?: boolean;
+}) {
   return (
-    <button
-      className={"cg-track" + (t.unlocked ? "" : " locked") + (highlight ? " current" : "")}
-      onClick={() => t.unlocked && onOpen(t.id)}
-      disabled={!t.unlocked}
-      aria-label={t.unlocked ? `Play ${t.title}` : `${t.title}, ${t.unlocksLabel ?? "not open yet"}`}
-    >
-      <span className="cg-track-ico" aria-hidden>
-        {t.unlocked ? t.kind === "practice" && t.id === "night" ? <Icon name="moon" size={18} /> : <PlayGlyph /> : <Icon name="clock" size={17} />}
+    <button className="cg-it" onClick={onClick}>
+      <span className={`cg-dot ${dot}`} aria-hidden />
+      <span className="cg-it-body">
+        <span className="cg-k">{label}</span>
+        <span className="cg-t">{title}</span>
+        {meta && <span className="cg-m">{meta}</span>}
       </span>
-      <span className="cg-track-body">
-        <span className="cg-track-title">{t.title}</span>
-        <span className="cg-track-sub">
-          {t.unlocked ? `${t.subtitle} · ${mins} min` : t.unlocksLabel}
+      {done ? (
+        <span className="cg-ok" aria-label="Done today">
+          ✓
         </span>
-      </span>
-      {listened.has(t.id) && (
-        <span className="cg-done" aria-label="Listened">
-          <Icon name="check" size={15} />
+      ) : (
+        <span className="cg-go" aria-hidden>
+          ›
         </span>
       )}
     </button>
   );
 }
 
-/** "Now playing" pill: shows while a track is loaded and the player is closed. */
+function capitalise(s: string): string {
+  return s ? s[0].toUpperCase() + s.slice(1) : s;
+}
+
+function longDate(): string {
+  return new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+}
+
+/** "Now playing" bar: shows while a track is loaded and the player is closed. */
 export function CourseNowPlaying({ onOpen }: { onOpen: (id: string) => void }) {
   const p = usePlayer();
   if (!p.track) return null;
+  const sessionId = p.introFor?.id ?? p.track.id;
   return (
     <div className="cg-now">
-      <button className="cg-now-main" onClick={() => onOpen(p.track!.id)}>
-        <span className="cg-now-title">{p.track.title}</span>
+      <button className="cg-now-main" onClick={() => onOpen(sessionId)}>
+        <span className="cg-now-title">{p.introFor ? `${p.introFor.title}, intro` : p.track.title}</span>
         <span className="cg-now-time">
-          {fmtTime(p.current)} / {fmtTime(p.duration)}
+          {fmtTime(p.current)} of {fmtTime(p.duration)}
         </span>
       </button>
       <button className="cg-now-btn" onClick={() => (p.playing ? pause() : void play())} aria-label={p.playing ? "Pause" : "Play"}>
@@ -274,103 +286,72 @@ export function CourseTodayScreen({
   openScore: () => void;
   goTab: (t: string) => void;
 }) {
-  const { course, days, today, streak, scoreDue } = useCourse();
+  const { course, days, today, streak, scoreDue, listened } = useCourse();
   const flare = course.tracks.find((t) => t.kind === "flare");
   const current = course.tracks.find((t) => t.id === course.currentSessionId);
-  const practices = course.tracks.filter((t) => t.kind === "practice");
+  const daily = course.tracks.find((t) => t.id === "daily");
+  const night = course.tracks.find((t) => t.id === "night");
   const todayLog = days[today];
   const logged = !!todayLog && (todayLog.bloating !== undefined || todayLog.meals !== undefined || todayLog.stress !== undefined);
   const nextLocked = course.tracks.find((t) => t.kind === "session" && !t.unlocked);
+  const title = course.ownerFirstName ? `${course.ownerFirstName}'s ${course.title}` : course.title;
+  const listenedToday = !!todayLog?.listened;
 
   return (
-    <div className="screen-pad screen-anim">
-      <div className="greeting">
-        <div className="hi">{course.ownerFirstName ? `${course.ownerFirstName}'s ${course.title}` : course.title}</div>
-        <div className="date script">
-          {course.finished ? "All eight sessions are open" : `Week ${course.week} of ${course.totalWeeks}`}
-        </div>
+    <div className="cg-screen">
+      <p className="cg-date">{longDate()}</p>
+      <h1 className="cg-h1">{title}</h1>
+      <p className="cg-sub">
+        {course.finished ? "All eight sessions are open." : `Week ${course.week} of ${course.totalWeeks}.`}
+        {nextLocked?.unlocksLabel ? ` Next, ${nextLocked.title}, ${nextLocked.unlocksLabel.replace(/^Opens /, "opens ")}.` : ""}
+      </p>
+
+      <div className="cg-list">
+        {flare && (
+          <Row dot="fire" label="Having a bad moment?" title="Flare-up, 4 minutes" meta="Play it now, wherever you can close your eyes" onClick={() => openPlayer(flare.id)} />
+        )}
+        {scoreDue !== null && (
+          <Row
+            dot="cedar"
+            label="Symptom check"
+            title={scoreDue === 0 ? "Before you begin" : scoreDue === 4 ? "Halfway" : "End of the course"}
+            meta="Five questions, about 2 minutes. The same each time, so you can see what changes."
+            onClick={openScore}
+          />
+        )}
+        {current && (
+          <Row
+            dot="grow"
+            label="This week"
+            title={current.title}
+            meta={`Session ${current.week}, ${current.minutes.music} minutes${!current.listened && current.introId ? ". Starts with a 2-minute intro the first time." : ""}`}
+            onClick={() => openPlayer(current.id)}
+            done={listened.has(current.id) && listenedToday}
+          />
+        )}
+        {current?.introId && current.readingTitle && (
+          <Row dot="grey" label="This week's reading" title={current.readingTitle} meta="Read it, or hear it in 2 minutes" onClick={() => openPlayer(current.introId!)} />
+        )}
+        {daily && <Row dot="grow" label="Every day" title={daily.title} meta={`${daily.minutes.music} minutes`} onClick={() => openPlayer(daily.id)} />}
+        {night && <Row dot="grey" label="At bedtime" title={night.title} meta={`${night.minutes.music} minutes, ends in sleep`} onClick={() => openPlayer(night.id)} />}
+        <Row
+          dot="grey"
+          label="Today"
+          title="30-second log"
+          meta={
+            logged
+              ? `Bloating ${todayLog?.bloating ?? "–"}, stress ${todayLog?.stress ?? "–"}${listenedToday ? ", listened" : ""}. Tap to change.`
+              : "Bloating, meals, bowel, stress and sleep"
+          }
+          onClick={openLog}
+        />
       </div>
 
-      {flare && (
-        <button className="cg-flare" onClick={() => openPlayer(flare.id)}>
-          <span className="cg-flare-ico" aria-hidden>
-            <Icon name="heart" size={20} />
-          </span>
-          <span>
-            <span className="cg-flare-title">Having a bad moment?</span>
-            <span className="cg-flare-sub">Flare-up · 4 minutes, right now</span>
-          </span>
-          <span className="chev" aria-hidden>
-            <Icon name="chev" size={18} />
-          </span>
-        </button>
-      )}
-
-      {scoreDue !== null && (
-        <button className="cg-card cg-score-cta" onClick={openScore}>
-          <span className="eyebrow">{scoreDue === 0 ? "Before you begin" : scoreDue === 4 ? "Halfway check" : "End-of-course check"}</span>
-          <span className="cg-card-title">Your 2-minute symptom check</span>
-          <span className="muted cg-card-sub">Five questions, the same each time, so you can see what changes.</span>
-        </button>
-      )}
-
-      {current && (
-        <Section title="This week's session">
-          <button className="cg-hero" onClick={() => openPlayer(current.id)}>
-            <span className="cg-hero-eyebrow">Week {current.week}</span>
-            <span className="cg-hero-title">{current.title}</span>
-            <span className="cg-hero-sub">
-              {current.subtitle} · {current.minutes.music} min
-            </span>
-            <span className="cg-hero-play">
-              <PlayGlyph size={16} /> Listen
-            </span>
-          </button>
-          {current.introId && (
-            <button className="cg-intro-link" onClick={() => openPlayer(current.introId!)}>
-              <PlayGlyph size={14} /> Play this week&apos;s intro · 2 min
-            </button>
-          )}
-          {current.reading && <Reading title={current.readingTitle} text={current.reading} />}
-          {nextLocked && (
-            <div className="muted" style={{ fontSize: 12.5, marginTop: 8 }}>
-              Next: {nextLocked.title} · {nextLocked.unlocksLabel?.replace(/^Opens /, "opens ")}
-            </div>
-          )}
-        </Section>
-      )}
-
-      <Section title="Every day">
-        {practices.map((t) => (
-          <TrackRow key={t.id} t={t} onOpen={openPlayer} />
-        ))}
-      </Section>
-
-      <Section title="Today's 30-second log" action={logged ? "Edit" : undefined} onAction={openLog}>
-        <button className="cg-card" onClick={openLog}>
-          {logged ? (
-            <>
-              <span className="cg-card-title">Logged for today</span>
-              <span className="muted cg-card-sub">
-                Bloating {todayLog?.bloating ?? "–"}/10 · stress {todayLog?.stress ?? "–"}/10
-                {todayLog?.listened ? " · listened" : ""}
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="cg-card-title">How was your gut today?</span>
-              <span className="muted cg-card-sub">Bloating, meals, bowel, stress and sleep. Patterns you can see.</span>
-            </>
-          )}
-        </button>
-      </Section>
-
-      <button className="cg-streak" onClick={() => goTab("progress")}>
-        <span className="cg-streak-n">{streak}</span>
-        <span>
-          {streak === 1 ? "day" : "days"} in a row with a listen
-          <span className="muted" style={{ display: "block", fontSize: 12 }}>See your progress</span>
-        </span>
+      <button className="cg-note-line" onClick={() => goTab("progress")}>
+        {streak === 0
+          ? "No listening streak yet. Today can be day one."
+          : `${streak} ${streak === 1 ? "day" : "days"} in a row with a listen.`}{" "}
+        <span className="cg-link">See your progress</span>
       </button>
     </div>
   );
@@ -378,48 +359,61 @@ export function CourseTodayScreen({
 
 // ── Sessions ─────────────────────────────────────────────────────────────────
 
+function TrackLine({ t, onOpen, current }: { t: AppCourseTrack; onOpen: (id: string) => void; current?: boolean }) {
+  const { listened } = useCourse();
+  const right = !t.unlocked
+    ? t.unlocksLabel
+    : listened.has(t.id)
+      ? `${t.minutes.music} min ✓`
+      : `${t.minutes.music} min`;
+  return (
+    <button
+      className={"cg-track" + (t.unlocked ? "" : " locked") + (current ? " current" : "")}
+      onClick={() => t.unlocked && onOpen(t.id)}
+      disabled={!t.unlocked}
+      aria-label={t.unlocked ? `Play ${t.title}` : `${t.title}, ${t.unlocksLabel ?? "not open yet"}`}
+    >
+      <span className="cg-track-l">
+        {t.week ? <span className="cg-k">Week {t.week}</span> : null}
+        <span className="cg-t">{t.title}</span>
+      </span>
+      <span className="cg-track-r">
+        {current && <span className="cg-tag fire">This week</span>}
+        <span className="cg-m">{right}</span>
+      </span>
+    </button>
+  );
+}
+
 export function CourseSessionsScreen({ openPlayer }: { openPlayer: (id: string) => void }) {
   const { course } = useCourse();
   const sessions = course.tracks.filter((t) => t.kind === "session");
   const others = course.tracks.filter((t) => t.kind !== "session" && t.kind !== "intro");
   return (
-    <div className="screen-pad screen-anim">
-      <div className="greeting">
-        <div className="hi">Sessions</div>
-        <div className="date script">One new session opens each week</div>
+    <div className="cg-screen">
+      <h1 className="cg-h1">Sessions</h1>
+      <p className="cg-sub">{`${course.tagline} Listen to this week's session most days, and the daily practice on the others.`}</p>
+      <div className="cg-card">
+        <h2 className="cg-h2">The eight weeks</h2>
+        <div className="cg-lines">
+          {sessions.map((t) => (
+            <TrackLine key={t.id} t={t} onOpen={openPlayer} current={t.id === course.currentSessionId} />
+          ))}
+        </div>
       </div>
-      <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, margin: "0 2px 6px" }}>
-        {`${course.tagline} Listen to this week's session most days, and the daily practice on the others.`}
-      </p>
-      <Section title="The eight weeks">
-        {sessions.map((t) => (
-          <TrackRow key={t.id} t={t} onOpen={openPlayer} highlight={t.id === course.currentSessionId} />
-        ))}
-      </Section>
-      <Section title="Any time">
-        {others.map((t) => (
-          <TrackRow key={t.id} t={t} onOpen={openPlayer} />
-        ))}
-      </Section>
+      <div className="cg-card">
+        <h2 className="cg-h2">Any time</h2>
+        <div className="cg-lines">
+          {others.map((t) => (
+            <TrackLine key={t.id} t={t} onOpen={openPlayer} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
 // ── Progress ─────────────────────────────────────────────────────────────────
-
-/** Hand-drawn feel: a gently wobbled line through the points (deterministic). */
-function wobblePath(pts: { x: number; y: number }[]): string {
-  if (!pts.length) return "";
-  let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
-  for (let i = 1; i < pts.length; i++) {
-    const a = pts[i - 1];
-    const b = pts[i];
-    const mx = (a.x + b.x) / 2;
-    const my = (a.y + b.y) / 2 + (i % 2 ? 1.2 : -1.2);
-    d += ` Q ${mx.toFixed(1)} ${my.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
-  }
-  return d;
-}
 
 export function bloatingWeeks(days: Record<string, CourseDayLog>, startYmd: string, weeks: number) {
   const start = Date.parse(`${startYmd}T00:00:00Z`);
@@ -449,120 +443,86 @@ function BloatingChart() {
   const data = bloatingWeeks(days, course.startedOn, weeks);
   const W = 320;
   const H = 150;
-  const padL = 22;
+  const padL = 24;
   const padR = 10;
-  const padT = 12;
+  const padT = 10;
   const padB = 24;
   const x = (w: number) => padL + ((w - 1) / Math.max(weeks - 1, 1)) * (W - padL - padR);
-  const y = (v: number) => padT + (v / 10) * (H - padT - padB); // 0 at top = calm is up
+  // Plain scale: 0 at the bottom, 10 at the top. Down is good, and the text says so.
+  const y = (v: number) => padT + (1 - v / 10) * (H - padT - padB);
   const pts = data.filter((d) => d.avg !== null).map((d) => ({ x: x(d.week), y: y(d.avg!), d }));
   if (!pts.length) {
-    return (
-      <div className="card-quiet soon">
-        <Icon name="progress" size={16} style={{ color: "var(--muted)", flexShrink: 0 }} />
-        <span>Log bloating for a few days and your weekly line appears here.</span>
-      </div>
-    );
+    return <p className="cg-m" style={{ margin: 0 }}>Log bloating for a few days and your weekly line appears here.</p>;
   }
+  const line = pts.map((p, i) => `${i ? "L" : "M"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
   return (
-    <div className="card" style={{ padding: "12px 12px 6px" }}>
-      <div className="muted" style={{ fontSize: 12, margin: "0 4px 4px" }}>
-        Average bloating each week, 0 to 10. Less bloating sits higher on the chart.
-      </div>
-      <svg width="100%" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Weekly average bloating">
+    <>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Average bloating each week">
         {[0, 5, 10].map((v) => (
           <g key={v}>
-            <line x1={padL} x2={W - padR} y1={y(v)} y2={y(v)} stroke="var(--line)" strokeDasharray="2 4" />
-            <text x={padL - 6} y={y(v) + 3} textAnchor="end" fontSize="9" fill="var(--muted)">
+            <line x1={padL} x2={W - padR} y1={y(v)} y2={y(v)} stroke="#EFE8E0" />
+            <text x={padL - 8} y={y(v) + 3.5} textAnchor="end" fontSize="10" fill="#6B655F">
               {v}
             </text>
           </g>
         ))}
-        <path d={wobblePath(pts)} fill="none" stroke="var(--forest)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d={line} fill="none" stroke="#557A43" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
         {pts.map((p) => (
-          <circle key={p.d.week} cx={p.x} cy={p.y} r="3.4" fill="var(--paper)" stroke="var(--forest)" strokeWidth="2" />
+          <circle key={p.d.week} cx={p.x} cy={p.y} r="3.5" fill="#FFFDFA" stroke="#557A43" strokeWidth="2" />
         ))}
         {data.map((d) => (
-          <text key={d.week} x={x(d.week)} y={H - 7} textAnchor="middle" fontSize="9.5" fill="var(--muted)">
+          <text key={d.week} x={x(d.week)} y={H - 6} textAnchor="middle" fontSize="10" fill="#6B655F">
             {d.week}
           </text>
         ))}
       </svg>
-    </div>
-  );
-}
-
-function ScoreBars() {
-  const { scores } = useCourse();
-  if (!scores.length) return null;
-  const max = 50;
-  return (
-    <div className="card" style={{ padding: "14px 16px" }}>
-      {scores.map((s) => (
-        <div key={s.week} className="cg-bar-row">
-          <span className="cg-bar-label">{s.week === 0 ? "Start" : `Week ${s.week}`}</span>
-          <span className="cg-bar-track">
-            <span className="cg-bar-fill" style={{ width: `${(s.total / max) * 100}%` }} />
-          </span>
-          <span className="cg-bar-val">{s.total}</span>
-        </div>
-      ))}
-      <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>
-        Out of 50. Lower means your gut is bothering you less.
-      </div>
-    </div>
+      <p className="cg-m" style={{ margin: 0 }}>Average for each week, 0 to 10. A line going down means less bloating.</p>
+    </>
   );
 }
 
 export function CourseProgressScreen({ openScore }: { openScore: () => void }) {
-  const { course, days, streak, listened, scoreDue } = useCourse();
+  const { course, days, streak, listened, scoreDue, scores } = useCourse();
+  const sessionsTotal = course.tracks.filter((t) => t.kind === "session").length;
   const sessionsHeard = course.tracks.filter((t) => t.kind === "session" && listened.has(t.id)).length;
   const daysListened = Object.values(days).filter((d) => d.listened).length;
-  // The last 14 days as dots.
-  const last14 = Array.from({ length: 14 }, (_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - (13 - i));
-    const k = d.toLocaleDateString("en-CA");
-    return { k, on: !!days[k]?.listened };
-  });
   return (
-    <div className="screen-pad screen-anim">
-      <div className="greeting">
-        <div className="hi">Your progress</div>
-        <div className="date script">Yours alone: only you see this</div>
-      </div>
-      <div className="cg-stats">
-        <div className="cg-stat">
-          <span className="cg-stat-n">{streak}</span>
-          <span className="cg-stat-l">day streak</span>
-        </div>
-        <div className="cg-stat">
-          <span className="cg-stat-n">{daysListened}</span>
-          <span className="cg-stat-l">days listened</span>
-        </div>
-        <div className="cg-stat">
-          <span className="cg-stat-n">
-            {sessionsHeard}/{course.tracks.filter((t) => t.kind === "session").length}
-          </span>
-          <span className="cg-stat-l">sessions heard</span>
+    <div className="cg-screen">
+      <h1 className="cg-h1">Your progress</h1>
+      <p className="cg-sub">Only you see this.</p>
+      <div className="cg-card">
+        <div className="cg-lines">
+          <div className="cg-line"><span>Days in a row with a listen</span><b>{streak}</b></div>
+          <div className="cg-line"><span>Days you listened</span><b>{daysListened}</b></div>
+          <div className="cg-line"><span>Sessions heard</span><b>{sessionsHeard} of {sessionsTotal}</b></div>
         </div>
       </div>
-      <div className="cg-dots" aria-label="Last 14 days of listening">
-        {last14.map((d) => (
-          <span key={d.k} className={"cg-dot" + (d.on ? " on" : "")} title={d.k} />
-        ))}
-      </div>
-      <Section title="Bloating">
+      <div className="cg-card">
+        <h2 className="cg-h2">Bloating</h2>
         <BloatingChart />
-      </Section>
-      <Section title="Symptom check" action={scoreDue !== null ? "Take it now" : undefined} onAction={openScore}>
-        <ScoreBars />
-        {scoreDue === null && (
-          <div className="muted" style={{ fontSize: 12.5, margin: "8px 2px 0" }}>
-            The check comes round at the start, halfway (week 4) and at the end (week 8).
-          </div>
+      </div>
+      <div className="cg-card">
+        <h2 className="cg-h2">Symptom check</h2>
+        {scores.length > 0 ? (
+          <>
+            {scores.map((s) => (
+              <div key={s.week} className="cg-bar-row">
+                <span className="cg-bar-label">{s.week === 0 ? "Start" : s.week === 4 ? "Halfway" : "End"}</span>
+                <span className="cg-bar-track"><span className="cg-bar-fill" style={{ width: `${(s.total / 50) * 100}%` }} /></span>
+                <b className="cg-bar-val">{s.total}</b>
+              </div>
+            ))}
+            <p className="cg-m" style={{ margin: 0 }}>Out of 50. Lower means your gut is bothering you less.</p>
+          </>
+        ) : (
+          <p className="cg-m" style={{ margin: 0 }}>Your scores show here once you&apos;ve done the first check.</p>
         )}
-      </Section>
+        {scoreDue !== null ? (
+          <button className="cg-btn" onClick={openScore}>Take the check now</button>
+        ) : (
+          <p className="cg-m" style={{ margin: 0 }}>The check comes round at the start, halfway (week 4) and at the end (week 8).</p>
+        )}
+      </div>
     </div>
   );
 }
@@ -575,95 +535,117 @@ export function CourseHelpScreen() {
   const [time, setTime] = useState(reminders.daily_time ?? "20:00");
   const [saved, setSaved] = useState("");
   return (
-    <div className="screen-pad screen-anim">
-      <div className="greeting">
-        <div className="hi">Help and reminders</div>
-        <div className="date script">{course.title}</div>
-      </div>
+    <div className="cg-screen">
+      <h1 className="cg-h1">Help and reminders</h1>
+      <p className="cg-sub">{course.title}</p>
 
-      <Section title="Reminders">
-        <div className="card" style={{ padding: "14px 16px" }}>
-          {push.state === "unsupported" ? (
-            <div style={{ fontSize: 13.5, lineHeight: 1.6 }}>
-              Reminders need the app on your home screen. On iPhone: Share, then Add to Home Screen, then open it from there.
-            </div>
-          ) : push.state === "blocked" ? (
-            <div style={{ fontSize: 13.5, lineHeight: 1.6 }}>
-              Notifications are blocked for this app in your phone&apos;s settings. Allow them there, then come back.
-            </div>
-          ) : push.state !== "on" ? (
+      <div className="cg-card">
+        <h2 className="cg-h2">Reminders</h2>
+        {push.state === "unsupported" ? (
+          <p className="cg-p">Reminders need the app on your home screen. On iPhone: Share, then Add to Home Screen, then open it from there.</p>
+        ) : push.state === "blocked" ? (
+          <p className="cg-p">Notifications are blocked for this app in your phone&apos;s settings. Allow them there, then come back.</p>
+        ) : push.state !== "on" ? (
+          <>
+            <p className="cg-p">One reminder a day at a time you choose, and a note when a new session opens. Nothing else.</p>
             <button className="cg-btn" disabled={push.busy || push.state === "checking"} onClick={() => void push.enable()}>
-              <Icon name="bell" size={16} /> Turn on reminders
+              Turn on reminders
             </button>
-          ) : (
-            <>
-              <label className="cg-field">
-                <span>A daily reminder at</span>
-                <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
-              </label>
-              <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
+          </>
+        ) : (
+          <>
+            <label className="cg-field">
+              <span>Daily reminder at</span>
+              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+            </label>
+            <div className="cg-btns">
+              <button
+                className="cg-btn"
+                onClick={async () => {
+                  const ok = await setReminders(time, reminders.unlock);
+                  setSaved(ok ? `Saved. Every day at ${time}.` : "That didn't save. Try again.");
+                }}
+              >
+                Save time
+              </button>
+              {reminders.daily_time && (
                 <button
-                  className="cg-btn"
+                  className="cg-btn ghost"
                   onClick={async () => {
-                    const ok = await setReminders(time, reminders.unlock);
-                    setSaved(ok ? `Saved: every day at ${time}.` : "Couldn't save. Try again.");
+                    const ok = await setReminders(null, reminders.unlock);
+                    setSaved(ok ? "Daily reminder off." : "That didn't save. Try again.");
                   }}
                 >
-                  Save time
+                  No daily reminder
                 </button>
-                {reminders.daily_time && (
-                  <button
-                    className="cg-btn ghost"
-                    onClick={async () => {
-                      const ok = await setReminders(null, reminders.unlock);
-                      setSaved(ok ? "Daily reminder off." : "Couldn't save. Try again.");
-                    }}
-                  >
-                    No daily reminder
-                  </button>
-                )}
-              </div>
-              <label className="cg-check">
-                <input
-                  type="checkbox"
-                  checked={reminders.unlock}
-                  onChange={(e) => void setReminders(reminders.daily_time, e.target.checked)}
-                />
-                <span>Tell me when a new session opens</span>
-              </label>
-              <button className="link" style={{ marginTop: 8 }} onClick={() => void push.disable()}>
-                Turn all reminders off
-              </button>
-            </>
-          )}
-          {(push.note || saved) && (
-            <div className="muted" style={{ fontSize: 12.5, marginTop: 8 }}>
-              {saved || push.note}
+              )}
             </div>
-          )}
-        </div>
-      </Section>
+            <label className="cg-check">
+              <input type="checkbox" checked={reminders.unlock} onChange={(e) => void setReminders(reminders.daily_time, e.target.checked)} />
+              <span>Tell me when a new session opens</span>
+            </label>
+            <button className="cg-link-btn" onClick={() => void push.disable()}>
+              Turn all reminders off
+            </button>
+          </>
+        )}
+        {(push.note || saved) && <p className="cg-m" style={{ margin: 0 }}>{saved || push.note}</p>}
+      </div>
 
-      <Section title="Listening safely">
-        <div className="card-quiet" style={{ fontSize: 13.2, lineHeight: 1.65, padding: "13px 15px" }}>
-          {course.safety}
-        </div>
-      </Section>
+      <div className="cg-card">
+        <h2 className="cg-h2">Listening safely</h2>
+        <p className="cg-p">{course.safety}</p>
+      </div>
 
-      <Section title="Questions">
-        <div className="card-quiet soon">
-          <Icon name="message" size={16} style={{ color: "var(--muted)", flexShrink: 0 }} />
-          <span>
-            Stuck with the app or the audio, or a payment question? Write to <strong>hello@theochretree.com</strong>.
-            Replies within a working day.
-          </span>
-        </div>
-      </Section>
+      <div className="cg-card">
+        <h2 className="cg-h2">Questions</h2>
+        <p className="cg-p">
+          Stuck with the app or the audio, or a payment question? Write to <b>hello@theochretree.com</b>. Replies within a working day.
+        </p>
+      </div>
     </div>
   );
 }
 
 // ── Player overlay ───────────────────────────────────────────────────────────
+
+function Seg<T extends string | number>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: T;
+  options: { v: T; l: string }[];
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="cg-seg-row">
+      <span className="cg-seg-label">{label}</span>
+      <div className="cg-seg" role="radiogroup" aria-label={label}>
+        {options.map((o) => (
+          <button key={String(o.v)} role="radio" aria-checked={value === o.v} className={value === o.v ? "on" : ""} onClick={() => onChange(o.v)}>
+            {o.l}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ReadingText({ title, text }: { title?: string; text: string }) {
+  return (
+    <div className="cg-card">
+      {title && <h2 className="cg-h2">{title}</h2>}
+      {text.split(/\n\n+/).map((para, i) => (
+        <p key={i} className="cg-p">
+          {para}
+        </p>
+      ))}
+    </div>
+  );
+}
 
 export function CoursePlayerOverlay({
   trackId,
@@ -679,11 +661,13 @@ export function CoursePlayerOverlay({
   const t = course.tracks.find((x) => x.id === trackId) ?? null;
   const p = usePlayer();
   const [preferred, setVersion] = useState<CourseVersion>(() => preferredVersion());
+  const [rate, setRateState] = useState<number>(() => preferredRate());
   // The intros exist in one version only.
   const version: CourseVersion = t?.voiceOnly ? "voice" : preferred;
   const [offline, setOffline] = useState<"no" | "yes" | "saving">("no");
   const [progress, setProgress] = useState(0);
   const [offlineErr, setOfflineErr] = useState("");
+  const [showReading, setShowReading] = useState(false);
   const pt = t ? toPlayerTrack(course, t) : null;
   const isThis = !!pt && p.track?.id === pt.id;
   // This session's intro is playing ahead of it.
@@ -693,10 +677,10 @@ export function CoursePlayerOverlay({
 
   useEffect(() => {
     if (!pt) return;
-    let live = true;
-    void isSavedOffline(pt, version).then((s) => live && setOffline(s ? "yes" : "no"));
+    let alive = true;
+    void isSavedOffline(pt, version).then((s) => alive && setOffline(s ? "yes" : "no"));
     return () => {
-      live = false;
+      alive = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trackId, version]);
@@ -704,13 +688,11 @@ export function CoursePlayerOverlay({
   if (!t || !pt) return null;
   if (!t.unlocked) {
     return (
-      <div className="overlay-scroll">
-        <button className="back-link" onClick={onClose}>
-          <Icon name="arrowLeft" size={16} /> Back
-        </button>
-        <div className="overlay-pad">
-          <h2 className="h-serif">{t.title}</h2>
-          <p className="muted">{t.unlocksLabel}</p>
+      <div className="overlay-scroll cg-overlay">
+        <button className="cg-back" onClick={onClose}>‹ Back</button>
+        <div className="cg-screen">
+          <h1 className="cg-h1">{t.title}</h1>
+          <p className="cg-sub">{t.unlocksLabel}</p>
         </div>
       </div>
     );
@@ -737,6 +719,10 @@ export function CoursePlayerOverlay({
     if (introPlaying) setPendingVersion(v);
     else if (isThis) void load(pt, v, { autoplay: p.playing });
   };
+  const changeRate = (r: number) => {
+    setRateState(r);
+    setRate(r);
+  };
   const fetchLink = async () => {
     const res = await fetch("/api/app-course", {
       method: "POST",
@@ -747,58 +733,45 @@ export function CoursePlayerOverlay({
     if (!j.ok || !j.url) throw new Error(j.error || "Audio is not available right now.");
     return j.url;
   };
+  const context =
+    t.kind === "session" ? `Week ${t.week} session` : t.kind === "intro" ? `Week ${t.week} reading` : t.kind === "flare" ? "For a bad moment" : "Any time";
+  const minutes = t.minutes[version];
 
   return (
-    <div className="overlay-scroll cg-player">
+    <div className="overlay-scroll cg-overlay cg-player">
       <button
-        className="back-link"
+        className="cg-back"
         onClick={() => {
           // Closing leaves a playing session playing (eyes closed, phone down);
-          // the Now Playing pill brings it back. A paused one is put away.
+          // the Now Playing bar brings it back. A paused one is put away.
           if (live && !p.playing) stop();
           onClose();
         }}
       >
-        <Icon name="arrowLeft" size={16} /> Back
+        ‹ Back
       </button>
-      <div className="overlay-pad">
-        <div className="eyebrow">
-          {t.kind === "session" ? `Calm Gut · week ${t.week}` : t.kind === "intro" ? `Calm Gut · week ${t.week} reading` : "Calm Gut"}
-        </div>
-        <h2 className="h-serif" style={{ fontSize: 26, margin: "6px 0 2px", lineHeight: 1.2 }}>
-          {t.title}
-        </h2>
-        <div className="muted" style={{ fontSize: 13.5 }}>
-          {t.subtitle} · {t.minutes[version]} min
-        </div>
+      <div className="cg-screen">
+        <p className="cg-date">{context}</p>
+        <h1 className="cg-h1">{t.title}</h1>
+        <p className="cg-sub">
+          {t.kind === "intro" ? `${t.readingTitle}, read aloud. ${minutes} minutes.` : `${capitalise(t.subtitle.replace(/^Session \d+ · /, ""))}. ${minutes} minutes.`}
+        </p>
 
-        <div className="cg-safety" role="note">
-          {course.safety}
-          {t.safetyExtra && <strong style={{ display: "block", marginTop: 6 }}>{t.safetyExtra}</strong>}
+        <div className="cg-card cg-safety" role="note">
+          <h2 className="cg-h2">Before you listen</h2>
+          <p className="cg-p">{course.safety}</p>
+          {t.safetyExtra && <p className="cg-p"><b>{t.safetyExtra}</b></p>}
         </div>
 
         {introPlaying && introTrack && (
-          <div className="cg-intro-now" role="status">
-            <span>
-              <strong>Week {t.week} intro</strong>
-              <span className="muted" style={{ display: "block", fontSize: 12.5 }}>
-                {introTrack.readingTitle}. The session follows straight after.
-              </span>
-            </span>
-            <button className="cg-btn" onClick={() => void skipIntro()}>
+          <div className="cg-card cg-intro-now" role="status">
+            <p className="cg-p">
+              <b>The week {t.week} intro is playing first:</b> {introTrack.readingTitle}. The session follows straight after.
+            </p>
+            <button className="cg-btn ghost" onClick={() => void skipIntro()}>
               Skip intro
             </button>
           </div>
-        )}
-
-        {!t.voiceOnly && (
-        <div className="cg-toggle" role="radiogroup" aria-label="Version">
-          {(["music", "voice"] as const).map((v) => (
-            <button key={v} role="radio" aria-checked={version === v} className={version === v ? "on" : ""} onClick={() => switchVersion(v)}>
-              {v === "music" ? "With music" : "Voice only"}
-            </button>
-          ))}
-        </div>
         )}
 
         <div className="cg-transport">
@@ -818,71 +791,97 @@ export function CoursePlayerOverlay({
           </div>
           <div className="cg-buttons">
             <button className="cg-skip" onClick={() => skip(-15)} disabled={!live} aria-label="Back 15 seconds">
-              −15
+              −15 s
             </button>
-            <button
-              className="cg-play"
-              onClick={() => (live && p.playing ? pause() : start())}
-              aria-label={live && p.playing ? "Pause" : "Play"}
-            >
-              {live && p.loading ? <span className="spinner" /> : live && p.playing ? <PauseGlyph size={30} /> : <PlayGlyph size={30} />}
+            <button className="cg-play" onClick={() => (live && p.playing ? pause() : start())} aria-label={live && p.playing ? "Pause" : "Play"}>
+              {live && p.loading ? <span className="spinner" /> : live && p.playing ? <PauseGlyph size={28} /> : <PlayGlyph size={28} />}
             </button>
             <button className="cg-skip" onClick={() => skip(15)} disabled={!live} aria-label="Forward 15 seconds">
-              +15
+              +15 s
             </button>
           </div>
-          {!live && resumeAt > 30 && <div className="muted cg-resume">Picks up at {fmtTime(Math.max(0, resumeAt - 5))}</div>}
-          {live && p.error && <div className="cg-error">{p.error}</div>}
-          {isThis && p.counted && <div className="muted cg-resume">Counted as listened today</div>}
+          {!live && resumeAt > 30 && <p className="cg-m cg-center">Picks up at {fmtTime(Math.max(0, resumeAt - 5))}</p>}
+          {live && p.error && <p className="cg-error">{p.error}</p>}
+          {isThis && p.counted && <p className="cg-m cg-center">Counted as listened today</p>}
         </div>
 
-        {offlineSupported() && (
-          <div className="cg-offline">
-            {offline === "yes" ? (
-              <>
-                <span>
-                  <Icon name="check" size={14} /> Saved on this phone
+        <div className="cg-card">
+          {!t.voiceOnly && (
+            <Seg
+              label="Sound"
+              value={version}
+              options={[
+                { v: "music" as CourseVersion, l: "With music" },
+                { v: "voice" as CourseVersion, l: "Voice only" },
+              ]}
+              onChange={switchVersion}
+            />
+          )}
+          <Seg label="Speed" value={rate} options={PLAYBACK_RATES.map((r) => ({ v: r as number, l: `${r}×` }))} onChange={changeRate} />
+          {offlineSupported() && (
+            <div className="cg-seg-row">
+              <span className="cg-seg-label">On this phone</span>
+              {offline === "yes" ? (
+                <span className="cg-m">
+                  Saved.{" "}
+                  <button
+                    className="cg-link-btn"
+                    onClick={async () => {
+                      await removeOffline(pt, version);
+                      setOffline("no");
+                    }}
+                  >
+                    Remove
+                  </button>
                 </span>
+              ) : offline === "saving" ? (
+                <span className="cg-m">Saving… {Math.round(progress * 100)}%</span>
+              ) : (
                 <button
-                  className="link"
+                  className="cg-btn ghost small"
                   onClick={async () => {
-                    await removeOffline(pt, version);
-                    setOffline("no");
+                    setOfflineErr("");
+                    setOffline("saving");
+                    try {
+                      await saveOffline(pt, version, fetchLink, setProgress);
+                      setOffline("yes");
+                    } catch (e) {
+                      setOffline("no");
+                      setOfflineErr(e instanceof Error ? e.message : "Couldn't save.");
+                    }
                   }}
                 >
-                  Remove
+                  Save for offline
                 </button>
-              </>
-            ) : offline === "saving" ? (
-              <span>Saving… {Math.round(progress * 100)}%</span>
-            ) : (
-              <button
-                className="cg-btn ghost"
-                onClick={async () => {
-                  setOfflineErr("");
-                  setOffline("saving");
-                  try {
-                    await saveOffline(pt, version, fetchLink, setProgress);
-                    setOffline("yes");
-                  } catch (e) {
-                    setOffline("no");
-                    setOfflineErr(e instanceof Error ? e.message : "Couldn't save.");
-                  }
-                }}
-              >
-                Save for offline
+              )}
+            </div>
+          )}
+          {offlineErr && <p className="cg-error">{offlineErr}</p>}
+        </div>
+
+        {t.kind === "intro" && t.reading && <ReadingText title={t.readingTitle} text={t.reading} />}
+        {t.kind !== "intro" && introTrack && t.reading && (
+          <div className="cg-card">
+            <h2 className="cg-h2">This week&apos;s reading</h2>
+            <p className="cg-p">{t.readingTitle}</p>
+            <div className="cg-btns">
+              {onOpenTrack && !introPlaying && (
+                <button className="cg-btn ghost" onClick={() => onOpenTrack(introTrack.id)}>
+                  Play this week&apos;s intro, 2 min
+                </button>
+              )}
+              <button className="cg-btn ghost" onClick={() => setShowReading((v) => !v)}>
+                {showReading ? "Hide the text" : "Read it"}
               </button>
-            )}
-            {offlineErr && <div className="cg-error">{offlineErr}</div>}
+            </div>
+            {showReading &&
+              t.reading.split(/\n\n+/).map((para, i) => (
+                <p key={i} className="cg-p">
+                  {para}
+                </p>
+              ))}
           </div>
         )}
-
-        {introTrack && !introPlaying && onOpenTrack && (
-          <button className="cg-intro-link" style={{ marginTop: 16 }} onClick={() => onOpenTrack(introTrack.id)}>
-            <PlayGlyph size={14} /> Play this week&apos;s intro · 2 min
-          </button>
-        )}
-        {t.reading && <Reading title={t.readingTitle} text={t.reading} open={t.kind === "intro"} />}
       </div>
     </div>
   );
@@ -935,83 +934,81 @@ export function CourseLogOverlay({ onClose }: { onClose: () => void }) {
   const [err, setErr] = useState("");
   const set = (patch: CourseDayLog) => setLog((l) => ({ ...l, ...patch }));
   return (
-    <div className="overlay-scroll">
-      <button className="back-link" onClick={onClose}>
-        <Icon name="arrowLeft" size={16} /> Back
-      </button>
-      <div className="overlay-pad">
-        <div className="eyebrow">Today · about 30 seconds</div>
-        <h2 className="h-serif" style={{ fontSize: 24, margin: "6px 0 14px" }}>
-          How was your gut today?
-        </h2>
+    <div className="overlay-scroll cg-overlay">
+      <button className="cg-back" onClick={onClose}>‹ Back</button>
+      <div className="cg-screen">
+        <p className="cg-date">{longDate()}</p>
+        <h1 className="cg-h1">How was your gut today?</h1>
+        <p className="cg-sub">About 30 seconds. Skip anything you&apos;re not sure of.</p>
 
-        <div className="cg-q">Bloating (0 = none, 10 = worst)</div>
-        <Scale label="Bloating" value={log.bloating} onChange={(v) => set({ bloating: v })} />
+        <div className="cg-card">
+          <p className="cg-q">Bloating <span className="cg-m">0 none, 10 the worst</span></p>
+          <Scale label="Bloating" value={log.bloating} onChange={(v) => set({ bloating: v })} />
 
-        <div className="cg-q">Comfort after meals</div>
-        <Choice
-          label="Comfort after meals"
-          value={log.meals}
-          onChange={(v) => set({ meals: v })}
-          options={[
-            { v: "poor", l: "Poor" },
-            { v: "okay", l: "Okay" },
-            { v: "good", l: "Good" },
-          ]}
-        />
-
-        <div className="cg-q">Bowel movement</div>
-        <Choice
-          label="Bowel movement"
-          value={log.bowel}
-          onChange={(v) => set({ bowel: v })}
-          options={[
-            { v: "none", l: "None" },
-            { v: "easy", l: "Easy" },
-            { v: "hard", l: "Hard" },
-            { v: "loose", l: "Loose" },
-          ]}
-        />
-
-        <div className="cg-q">Stress (0 = calm, 10 = very stressed)</div>
-        <Scale label="Stress" value={log.stress} onChange={(v) => set({ stress: v })} />
-
-        <div className="cg-q">Sleep last night</div>
-        <Choice
-          label="Sleep"
-          value={log.sleep}
-          onChange={(v) => set({ sleep: v })}
-          options={[
-            { v: "poor", l: "Poor" },
-            { v: "okay", l: "Okay" },
-            { v: "good", l: "Good" },
-          ]}
-        />
-
-        <label className="cg-check" style={{ marginTop: 14 }}>
-          <input
-            type="checkbox"
-            checked={!!log.listened}
-            onChange={(e) => {
-              setListenTouched(true);
-              set({ listened: e.target.checked });
-            }}
+          <p className="cg-q">Comfort after meals</p>
+          <Choice
+            label="Comfort after meals"
+            value={log.meals}
+            onChange={(v) => set({ meals: v })}
+            options={[
+              { v: "poor", l: "Poor" },
+              { v: "okay", l: "Okay" },
+              { v: "good", l: "Good" },
+            ]}
           />
-          <span>I listened today</span>
-        </label>
-        <div className="muted" style={{ fontSize: 11.5, margin: "2px 0 0 26px" }}>
-          Ticks itself when you play most of a track.
-        </div>
 
-        <div className="cg-q">My triggers (optional)</div>
-        <textarea
-          className="cg-note"
-          rows={3}
-          maxLength={600}
-          placeholder="A meal, a stressful moment, anything you noticed"
-          value={log.note ?? ""}
-          onChange={(e) => set({ note: e.target.value })}
-        />
+          <p className="cg-q">Bowel movement</p>
+          <Choice
+            label="Bowel movement"
+            value={log.bowel}
+            onChange={(v) => set({ bowel: v })}
+            options={[
+              { v: "none", l: "None" },
+              { v: "easy", l: "Easy" },
+              { v: "hard", l: "Hard" },
+              { v: "loose", l: "Loose" },
+            ]}
+          />
+
+          <p className="cg-q">Stress <span className="cg-m">0 calm, 10 very stressed</span></p>
+          <Scale label="Stress" value={log.stress} onChange={(v) => set({ stress: v })} />
+
+          <p className="cg-q">Sleep last night</p>
+          <Choice
+            label="Sleep"
+            value={log.sleep}
+            onChange={(v) => set({ sleep: v })}
+            options={[
+              { v: "poor", l: "Poor" },
+              { v: "okay", l: "Okay" },
+              { v: "good", l: "Good" },
+            ]}
+          />
+
+          <label className="cg-check">
+            <input
+              type="checkbox"
+              checked={!!log.listened}
+              onChange={(e) => {
+                setListenTouched(true);
+                set({ listened: e.target.checked });
+              }}
+            />
+            <span>
+              I listened today <span className="cg-m">ticks itself when you play most of a track</span>
+            </span>
+          </label>
+
+          <p className="cg-q">My triggers <span className="cg-m">optional</span></p>
+          <textarea
+            className="cg-note"
+            rows={3}
+            maxLength={600}
+            placeholder="A meal, a stressful moment, anything you noticed"
+            value={log.note ?? ""}
+            onChange={(e) => set({ note: e.target.value })}
+          />
+        </div>
 
         <button
           className="cg-btn wide"
@@ -1028,7 +1025,7 @@ export function CourseLogOverlay({ onClose }: { onClose: () => void }) {
         >
           {busy ? "Saving…" : "Save today"}
         </button>
-        {err && <div className="cg-error">{err}</div>}
+        {err && <p className="cg-error">{err}</p>}
       </div>
     </div>
   );
@@ -1046,17 +1043,13 @@ export function CourseScoreOverlay({ onClose }: { onClose: () => void }) {
 
   if (result !== null) {
     return (
-      <div className="overlay-scroll">
-        <div className="overlay-pad" style={{ textAlign: "center", paddingTop: 60 }}>
-          <div className="cg-result">{result}</div>
-          <div className="muted">out of 50</div>
-          <h2 className="h-serif" style={{ fontSize: 22, margin: "14px 0 6px" }}>
-            Saved
-          </h2>
-          <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.6, maxWidth: 300, margin: "0 auto" }}>
-            The same five questions come round again, so you can see what changes. Lower is better.
-          </p>
-          <button className="cg-btn" style={{ marginTop: 18 }} onClick={onClose}>
+      <div className="overlay-scroll cg-overlay">
+        <div className="cg-screen cg-center" style={{ paddingTop: 72 }}>
+          <p className="cg-result">{result}</p>
+          <p className="cg-sub">out of 50</p>
+          <h1 className="cg-h1" style={{ fontSize: 24 }}>Saved</h1>
+          <p className="cg-p">The same five questions come round again, so you can see what changes. Lower is better.</p>
+          <button className="cg-btn wide" onClick={onClose}>
             Done
           </button>
         </div>
@@ -1065,24 +1058,20 @@ export function CourseScoreOverlay({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="overlay-scroll">
-      <button className="back-link" onClick={onClose}>
-        <Icon name="arrowLeft" size={16} /> Back
-      </button>
-      <div className="overlay-pad">
-        <div className="eyebrow">{scoreDue === 0 || scoreDue === null ? "Symptom check" : `Week ${scoreDue} symptom check`}</div>
-        <h2 className="h-serif" style={{ fontSize: 24, margin: "6px 0 4px" }}>
-          Over the past 7 days
-        </h2>
-        <p className="muted" style={{ fontSize: 13, margin: "0 0 10px" }}>
-          0 = not at all, 10 = as bad as it gets.
-        </p>
-        {COURSE_SCORE_QUESTIONS.map((q) => (
-          <div key={q.id}>
-            <div className="cg-q">{q.label}</div>
-            <Scale label={q.label} value={answers[q.id]} onChange={(v) => setAnswers((a) => ({ ...a, [q.id]: v }))} />
-          </div>
-        ))}
+    <div className="overlay-scroll cg-overlay">
+      <button className="cg-back" onClick={onClose}>‹ Back</button>
+      <div className="cg-screen">
+        <p className="cg-date">{scoreDue === 4 ? "Halfway check" : scoreDue === 8 ? "End-of-course check" : "Symptom check"}</p>
+        <h1 className="cg-h1">Over the past 7 days</h1>
+        <p className="cg-sub">0 means not at all, 10 as bad as it gets.</p>
+        <div className="cg-card">
+          {COURSE_SCORE_QUESTIONS.map((q) => (
+            <div key={q.id}>
+              <p className="cg-q">{q.label}</p>
+              <Scale label={q.label} value={answers[q.id]} onChange={(v) => setAnswers((a) => ({ ...a, [q.id]: v }))} />
+            </div>
+          ))}
+        </div>
         <button
           className="cg-btn wide"
           disabled={!complete || busy}
@@ -1095,9 +1084,9 @@ export function CourseScoreOverlay({ onClose }: { onClose: () => void }) {
             else setErr("That didn't save. Check your connection and try again.");
           }}
         >
-          {busy ? "Saving…" : complete ? "Save my score" : "Answer all five"}
+          {busy ? "Saving…" : complete ? "Save my score" : "Answer all five to save"}
         </button>
-        {err && <div className="cg-error">{err}</div>}
+        {err && <p className="cg-error">{err}</p>}
       </div>
     </div>
   );
@@ -1106,7 +1095,7 @@ export function CourseScoreOverlay({ onClose }: { onClose: () => void }) {
 // ── Account (course-only) ────────────────────────────────────────────────────
 
 /** The package account overlay talks about body measures, labs, plan
- *  reminders and "your logs reach Shivani" — none of which is true for a
+ *  reminders and "your logs reach Shivani", none of which is true for a
  *  course buyer. This one is only what is. */
 export function CourseAccountOverlay({
   name,
@@ -1125,48 +1114,26 @@ export function CourseAccountOverlay({
 }) {
   const { course } = useCourse();
   return (
-    <div className="overlay-scroll">
-      <button className="back-link" onClick={onClose}>
-        <Icon name="arrowLeft" size={16} /> Back
-      </button>
-      <div className="overlay-pad">
-        <div className="acct-card">
-          <div style={{ flex: 1 }}>
-            <div className="acct-name">{name}</div>
-            <div className="acct-sub">{contact}</div>
-            <div className="acct-plan">
-              {course.title} · started {course.startLabel}
-            </div>
-          </div>
-        </div>
-        <div className="set-group">
-          <div className="card" style={{ overflow: "hidden" }}>
-            <label className="set-row" style={{ cursor: "pointer" }}>
-              <span className="sr-name" style={{ flex: 1 }}>
-                Larger text
-                <span className="sr-meta">Bigger type across the app</span>
-              </span>
+    <div className="overlay-scroll cg-overlay">
+      <button className="cg-back" onClick={onClose}>‹ Back</button>
+      <div className="cg-screen">
+        <h1 className="cg-h1">{name}</h1>
+        <p className="cg-sub">
+          {contact}. {course.title}, started {course.startLabel}.
+        </p>
+        <div className="cg-card">
+          <div className="cg-lines">
+            <label className="cg-line" style={{ cursor: "pointer" }}>
+              <span>Larger text</span>
               <input type="checkbox" checked={textLarge} onChange={(e) => onTextLarge(e.target.checked)} />
             </label>
-            <button
-              className="set-row"
-              onClick={goHelp}
-              style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left", cursor: "pointer" }}
-            >
-              <span className="sr-name" style={{ flex: 1 }}>
-                Reminders
-                <span className="sr-meta">A daily time, and when a new session opens</span>
-              </span>
-              <Icon name="chev" size={17} style={{ color: "var(--muted)" }} />
+            <button className="cg-line cg-line-btn" onClick={goHelp}>
+              <span>Reminders</span>
+              <span className="cg-go" aria-hidden>›</span>
             </button>
           </div>
         </div>
-        <div className="muted" style={{ fontSize: 12.5, lineHeight: 1.6, marginTop: 14 }}>
-          Your log and scores are saved to your own record, so a new phone keeps your history. Nobody else reads them.
-        </div>
-        <div className="muted" style={{ textAlign: "center", fontSize: 11.5, marginTop: 18, paddingBottom: 8 }}>
-          The Ochre Tree · {course.title}
-        </div>
+        <p className="cg-m">Your log and scores are saved to your own record, so a new phone keeps your history. Nobody else reads them.</p>
       </div>
     </div>
   );

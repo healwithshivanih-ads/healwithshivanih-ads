@@ -140,7 +140,7 @@ export function CourseDeviceGate({
                   <button className="cg-btn wide" disabled={busy || code.length !== 6} onClick={() => void verify()}>
                     {busy ? "Checking…" : "Open the course here"}
                   </button>
-                  <button className="link" style={{ marginTop: 10 }} disabled={busy} onClick={() => void sendCode()}>
+                  <button className="cg-link-btn" disabled={busy} onClick={() => void sendCode()}>
                     Send a new code
                   </button>
                 </>
