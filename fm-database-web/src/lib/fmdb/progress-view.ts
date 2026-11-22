@@ -120,7 +120,13 @@ export function progressHeadline(data: ProgressInput): string[] {
 export function progressDraftLines(data: ProgressInput): string[] {
   const t = progressTrends(data);
   const out = [...progressHeadline(data)];
-  if (t.wellbeing) out.push(`Wellbeing ${t.wellbeing.first.v} → ${t.wellbeing.last.v} / 100 (${t.wellbeing.first.x} to ${t.wellbeing.last.x}).`);
+  if (t.wellbeing) {
+    // Two check-ins can carry the same week (both before the plan began, say):
+    // then the weeks say nothing, so count the check-ins instead.
+    const n = data.symptomScore?.points.length ?? 0;
+    const span = t.wellbeing.first.x === t.wellbeing.last.x ? `from ${n} check-ins` : `${t.wellbeing.first.x} to ${t.wellbeing.last.x}`;
+    out.push(`Wellbeing ${t.wellbeing.first.v} → ${t.wellbeing.last.v} / 100 (${span}).`);
+  }
   else out.push("Wellbeing: not enough weekly check-ins yet (needs two).");
   if (t.weight) out.push(`Weight ${t.weight.first.v} → ${t.weight.last.v} kg (${shortDate(t.weight.first.x)} to ${shortDate(t.weight.last.x)}).`);
   if (t.bp) {
