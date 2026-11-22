@@ -8,7 +8,7 @@ import { describe, expect, it } from "vitest";
  * it. If this fails you changed a sentence a buyer reads (or a comment in that file): show her the exact change,
  * and only after her own yes replace the fingerprint below (shasum -a 256 on the file).
  */
-const APPROVED_SHA256 = "1926c04afad9b7ed2e1d4b9fa73150d3cd4842b0f12c2e7a3dd55b7604dda077";
+const APPROVED_SHA256 = "37a3023e151aff0df2bb4712104c49592bd11bc118fcf43eb5bbaa06977e9d14";
 
 describe("body age order page wording", () => {
   it("is the wording Shivani approved", () => {

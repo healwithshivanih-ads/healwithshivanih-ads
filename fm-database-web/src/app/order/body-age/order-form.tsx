@@ -67,6 +67,7 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
   const [b, setB] = useState<Person>(EMPTY);
   const [visit, setVisit] = useState({ address: "", pincode: "", preferred_date: "", preferred_slot: "morning", notes: "" });
   const [consent, setConsent] = useState(false);
+  const [voucher, setVoucher] = useState("");
   const [busy, setBusy] = useState(false);
   const [state, setState] = useState<"form" | "confirming" | "done">("form");
   const [error, setError] = useState("");
@@ -91,7 +92,7 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       const res = await fetch("/api/body-age/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ report_kind: kind, people: two ? [a, b] : [a], visit, consent }),
+        body: JSON.stringify({ report_kind: kind, people: two ? [a, b] : [a], visit, consent, voucher_code: two ? "" : voucher }),
       });
       const j = (await res.json()) as { ok: boolean; error?: string; order_id: string; access_key: string; razorpay_order_id: string; amount_inr: number; keyId: string };
       if (!j.ok) throw new Error(j.error || "Payment could not be started. Please try again.");
@@ -201,6 +202,13 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       </select>
       <label style={label} htmlFor="v-notes">{COPY.fields.notes}</label>
       <input id="v-notes" style={input} value={visit.notes} onChange={onVisit("notes")} maxLength={300} />
+      {!two && (
+        <>
+          <label style={label} htmlFor="v-voucher">{COPY.fields.voucher}</label>
+          <input id="v-voucher" style={input} value={voucher} onChange={(e) => setVoucher(e.target.value)} maxLength={24} autoCapitalize="characters" autoComplete="off" />
+          <p style={{ fontSize: 13, color: MUTE, margin: "6px 0 0" }}>{COPY.voucherNote}</p>
+        </>
+      )}
       <p style={{ fontSize: 13, color: MUTE, margin: "10px 0 0" }}>{COPY.visitNote}</p>
 
       <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "26px 0 0", fontSize: 14.5, lineHeight: 1.45 }}>

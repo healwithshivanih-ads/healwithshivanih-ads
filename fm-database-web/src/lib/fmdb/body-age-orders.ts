@@ -21,6 +21,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { dumpYaml } from "./yaml-dump";
 import { LOGISTICS_SLOTS, sanitizeLogistics, type LogisticsSlot } from "./lab-orders";
+import { tidyVoucher } from "./body-age-voucher";
 import { EMBARGO_UNTIL_MS } from "./body-age-send";
 
 export type ReportKind = "standard" | "deeper";
@@ -112,6 +113,9 @@ export interface BodyAgeOrder {
   paid_at?: string;
   /** Set on the coach's Mac once the order has been turned into records, one per person, in order. */
   client_ids?: string[];
+  /** The body age check's voucher, when one was used: `amount_inr` is already the reduced price. */
+  voucher_code?: string;
+  discount_inr?: number;
   booked_for?: string;
   collected_on?: string;
 }
@@ -120,6 +124,8 @@ export interface OrderInput {
   report_kind: ReportKind;
   people: OrderPerson[];
   visit: OrderVisit;
+  /** As typed, tidied. NOT yet checked: the order route checks it (it needs the secret and the paid orders). */
+  voucher_code?: string;
 }
 
 const EMAIL = /^[^\s@<>,;]+@[^\s@<>,;]+\.[^\s@<>,;]+$/;
@@ -185,10 +191,12 @@ export function sanitizeOrderInput(
     return { ok: false, error: e.charAt(0).toUpperCase() + e.slice(1) + (e.endsWith(".") ? "" : ".") };
   }
   const l = checked.logistics;
+  const voucher_code = tidyVoucher(r.voucher_code);
   return {
     ok: true,
     amountInr,
     input: {
+      ...(voucher_code ? { voucher_code } : {}),
       report_kind,
       people,
       visit: { address: l.address, pincode: l.pincode, preferred_date: l.preferred_date, preferred_slot: l.preferred_slot, notes: l.notes },
@@ -206,8 +214,10 @@ export function buildBodyAgeOrder(
   amountInr: number,
   nowIso: string,
   test: boolean,
+  voucher?: { code: string; offInr: number },
 ): BodyAgeOrder {
   return {
+    ...(voucher ? { voucher_code: voucher.code, discount_inr: voucher.offInr } : {}),
     order_id: orderId,
     kind: BODY_AGE_ORDER_KIND,
     report_kind: input.report_kind,
