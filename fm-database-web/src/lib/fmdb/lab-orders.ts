@@ -137,6 +137,10 @@ export interface LabOrder {
   /** Client-facing "before your test" lines from the order's lab catalogue.
    *  Display-only, attached in the client-app projection, NOT stored on disk. */
   pretest_instructions?: string[];
+  /** The coach's personal additions to those lines for THIS client (e.g. "your
+   *  own supplement contains biotin"). Stored on the order. Read through
+   *  `pretestLines` in lab-pretest.ts, which explains the shape. */
+  pretest_flags?: { match: string; note: string }[];
   status: LabOrderStatus;
   recommended_by: string;
   recommended_at: string;
