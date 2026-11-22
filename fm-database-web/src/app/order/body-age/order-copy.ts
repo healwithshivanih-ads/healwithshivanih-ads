@@ -3,6 +3,7 @@
  * word for word as it stands. Any change to a sentence here needs her yes again.
  * `fields.voucher` and `voucherNote` (the Rs 500 voucher) were added and approved by her the same evening.
  * `pin.yes` and `pin.no` (the PIN code check) were approved by her on 22 Nov 2026.
+ * `whatsappTick` (a copy of the report on WhatsApp, with the buyer's consent) was approved by her on 22 Nov 2026.
  * Rules the words follow: "body age report" and "test", never the product's internal name or the brand name;
  * the laboratory is never named; nothing is called urgent; no programme, plan length or programme price; no
  * "free"; every session is online. A test (order-copy.test.ts) fails on any of these.
@@ -51,6 +52,7 @@ export const COPY = {
     no: "The home visit does not reach this PIN code yet. Nothing has been charged. Message us on WhatsApp and we will tell you what is possible.",
   },
   slots: { morning: "Early morning (7 to 9)", late_morning: "Late morning (9 to 11)" },
+  whatsappTick: "Also send my report to my WhatsApp number.",
   visitNote: "We confirm the day and time with you on WhatsApp before anyone comes.",
   consent: "I am 18 or over. Everyone named here has agreed to this test, and to their results being used to prepare this report.",
   pay: "Pay",

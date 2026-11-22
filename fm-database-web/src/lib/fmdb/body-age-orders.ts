@@ -113,6 +113,9 @@ export interface BodyAgeOrder {
   paid_at?: string;
   /** Set on the coach's Mac once the order has been turned into records, one per person, in order. */
   client_ids?: string[];
+  /** The buyer ticked "also send my report on WhatsApp" on the order form (consent, given at `consent_at`). The
+   *  report still goes by email; WhatsApp is the extra copy. Absent = not asked for: never send it there. */
+  report_on_whatsapp?: true;
   /** The body age check's voucher, when one was used: `amount_inr` is already the reduced price. */
   voucher_code?: string;
   discount_inr?: number;
@@ -124,6 +127,8 @@ export interface OrderInput {
   report_kind: ReportKind;
   people: OrderPerson[];
   visit: OrderVisit;
+  /** The buyer asked for a copy of the report on WhatsApp too (their own tick; false or absent = no). */
+  report_on_whatsapp?: true;
   /** As typed, tidied. NOT yet checked: the order route checks it (it needs the secret and the paid orders). */
   voucher_code?: string;
 }
@@ -197,6 +202,7 @@ export function sanitizeOrderInput(
     amountInr,
     input: {
       ...(voucher_code ? { voucher_code } : {}),
+      ...(r.report_on_whatsapp === true ? { report_on_whatsapp: true as const } : {}),
       report_kind,
       people,
       visit: { address: l.address, pincode: l.pincode, preferred_date: l.preferred_date, preferred_slot: l.preferred_slot, notes: l.notes },
@@ -218,6 +224,7 @@ export function buildBodyAgeOrder(
 ): BodyAgeOrder {
   return {
     ...(voucher ? { voucher_code: voucher.code, discount_inr: voucher.offInr } : {}),
+    ...(input.report_on_whatsapp ? { report_on_whatsapp: true as const } : {}),
     order_id: orderId,
     kind: BODY_AGE_ORDER_KIND,
     report_kind: input.report_kind,

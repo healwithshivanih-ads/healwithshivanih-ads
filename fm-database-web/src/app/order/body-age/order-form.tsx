@@ -68,6 +68,7 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
   const [visit, setVisit] = useState({ address: "", pincode: "", preferred_date: "", preferred_slot: "morning", notes: "" });
   const [consent, setConsent] = useState(false);
   const [voucher, setVoucher] = useState("");
+  const [onWhatsApp, setOnWhatsApp] = useState(false);
   const [pin, setPin] = useState<"" | "yes" | "no" | "unknown">("");
   const [busy, setBusy] = useState(false);
   const [state, setState] = useState<"form" | "confirming" | "done">("form");
@@ -105,7 +106,7 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
       const res = await fetch("/api/body-age/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ report_kind: kind, people: two ? [a, b] : [a], visit, consent, voucher_code: two ? "" : voucher }),
+        body: JSON.stringify({ report_kind: kind, people: two ? [a, b] : [a], visit, consent, voucher_code: two ? "" : voucher, report_on_whatsapp: onWhatsApp }),
       });
       const j = (await res.json()) as { ok: boolean; error?: string; order_id: string; access_key: string; razorpay_order_id: string; amount_inr: number; keyId: string };
       if (!j.ok) throw new Error(j.error || "Payment could not be started. Please try again.");
@@ -225,6 +226,11 @@ export function OrderForm({ test, minDate, prices }: { test: boolean; minDate: s
         </>
       )}
       <p style={{ fontSize: 13, color: MUTE, margin: "10px 0 0" }}>{COPY.visitNote}</p>
+
+      <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "22px 0 0", fontSize: 14.5, lineHeight: 1.45 }}>
+        <input type="checkbox" checked={onWhatsApp} onChange={(e) => setOnWhatsApp(e.target.checked)} style={{ marginTop: 4 }} />
+        <span>{COPY.whatsappTick}</span>
+      </label>
 
       <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "26px 0 0", fontSize: 14.5, lineHeight: 1.45 }}>
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} style={{ marginTop: 4 }} required />
