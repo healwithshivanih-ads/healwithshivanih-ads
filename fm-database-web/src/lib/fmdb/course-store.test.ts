@@ -31,8 +31,8 @@ beforeAll(async () => {
   delete process.env.GUIDED_APP_BASE_URL;
   await fs.mkdir(path.join(tmp, "clients"), { recursive: true });
   await fs.mkdir(path.join(tmp, "published"), { recursive: true });
-  await fs.mkdir(path.join(audioDir, "calm-gut", "d1"), { recursive: true });
-  await fs.writeFile(path.join(audioDir, "calm-gut", "d1", "s1-music.m4a"), Buffer.from("0123456789abcdef"));
+  await fs.mkdir(path.join(audioDir, "calm-gut", "d2"), { recursive: true });
+  await fs.writeFile(path.join(audioDir, "calm-gut", "d2", "s1-music.m4a"), Buffer.from("0123456789abcdef"));
 });
 afterAll(async () => {
   process.env = OLD;

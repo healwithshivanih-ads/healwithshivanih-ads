@@ -83,13 +83,17 @@ export const CALM_GUT: CourseDef = {
   totalWeeks: 8,
   scoreWeeks: [0, 4, 8],
   safety: GENERAL_SAFETY,
+  // d2 (flare-up d3), 23 Nov 2026: the music 15 dB under the voice instead of
+  // ~7.7 ("the music gets too overwhelming"), and session 1 without the throat
+  // clear after "worth knowing". A new rev is a new folder in the bucket, so
+  // phones drop their old offline copy. The intros are voice only: still d1.
   tracks: [
-    { id: "s1", kind: "session", week: 1, title: "Calm belly", subtitle: "Session 1 · settling in", minutes: { music: 17, voice: 17 }, rev: "d1", ...weekReading(1) },
-    { id: "s2", kind: "session", week: 2, title: "Turning down the volume", subtitle: "Session 2 · the volume dial", minutes: { music: 24, voice: 24 }, rev: "d1", ...weekReading(2) },
-    { id: "s3", kind: "session", week: 3, title: "The river", subtitle: "Session 3 · an easy flow", minutes: { music: 25, voice: 24 }, rev: "d1", ...weekReading(3) },
-    { id: "s4", kind: "session", week: 4, title: "Soft and spacious", subtitle: "Session 4 · for bloating", minutes: { music: 25, voice: 25 }, rev: "d1", ...weekReading(4) },
-    { id: "s5", kind: "session", week: 5, title: "The stress shield", subtitle: "Session 5 · when the day gets busy", minutes: { music: 24, voice: 24 }, rev: "d1", ...weekReading(5) },
-    { id: "s6", kind: "session", week: 6, title: "Eating with ease", subtitle: "Session 6 · meals and eating out", minutes: { music: 24, voice: 24 }, rev: "d1", ...weekReading(6) },
+    { id: "s1", kind: "session", week: 1, title: "Calm belly", subtitle: "Session 1 · settling in", minutes: { music: 17, voice: 17 }, rev: "d2", ...weekReading(1) },
+    { id: "s2", kind: "session", week: 2, title: "Turning down the volume", subtitle: "Session 2 · the volume dial", minutes: { music: 24, voice: 24 }, rev: "d2", ...weekReading(2) },
+    { id: "s3", kind: "session", week: 3, title: "The river", subtitle: "Session 3 · an easy flow", minutes: { music: 25, voice: 24 }, rev: "d2", ...weekReading(3) },
+    { id: "s4", kind: "session", week: 4, title: "Soft and spacious", subtitle: "Session 4 · for bloating", minutes: { music: 25, voice: 25 }, rev: "d2", ...weekReading(4) },
+    { id: "s5", kind: "session", week: 5, title: "The stress shield", subtitle: "Session 5 · when the day gets busy", minutes: { music: 24, voice: 24 }, rev: "d2", ...weekReading(5) },
+    { id: "s6", kind: "session", week: 6, title: "Eating with ease", subtitle: "Session 6 · meals and eating out", minutes: { music: 24, voice: 24 }, rev: "d2", ...weekReading(6) },
     {
       id: "s7",
       kind: "session",
@@ -97,23 +101,23 @@ export const CALM_GUT: CourseDef = {
       title: "Cool, calm chest",
       subtitle: "Session 7 · acidity and reflux",
       minutes: { music: 24, voice: 24 },
-      rev: "d1",
+      rev: "d2",
       safetyExtra:
         "Trouble or pain swallowing, vomiting blood, black stools or chest pain need a doctor first (chest pain can be the heart). Don't stop acidity tablets on your own.",
       ...weekReading(7),
     },
-    { id: "s8", kind: "session", week: 8, title: "Your calm gut, going forward", subtitle: "Session 8 · keeping it", minutes: { music: 24, voice: 24 }, rev: "d1", ...weekReading(8) },
-    { id: "daily", kind: "practice", title: "Daily practice", subtitle: "Once a day", minutes: { music: 16, voice: 16 }, rev: "d1", reading: null },
-    // A ~7-minute version for busy days (audio: calm-gut/d1/daily-short-{music,voice}.m4a).
-    { id: "daily-short", kind: "practice", title: "Short daily practice", subtitle: "For a busy day", minutes: { music: 7, voice: 7 }, rev: "d1", reading: null },
-    { id: "night", kind: "practice", title: "Night practice", subtitle: "For bed · ends in sleep", minutes: { music: 19, voice: 18 }, rev: "d1", reading: null },
+    { id: "s8", kind: "session", week: 8, title: "Your calm gut, going forward", subtitle: "Session 8 · keeping it", minutes: { music: 24, voice: 24 }, rev: "d2", ...weekReading(8) },
+    { id: "daily", kind: "practice", title: "Daily practice", subtitle: "Once a day", minutes: { music: 16, voice: 16 }, rev: "d2", reading: null },
+    // A ~7-minute version for busy days (audio: calm-gut/d2/daily-short-{music,voice}.m4a).
+    { id: "daily-short", kind: "practice", title: "Short daily practice", subtitle: "For a busy day", minutes: { music: 7, voice: 7 }, rev: "d2", reading: null },
+    { id: "night", kind: "practice", title: "Night practice", subtitle: "For bed · ends in sleep", minutes: { music: 19, voice: 18 }, rev: "d2", reading: null },
     {
       id: "flare",
       kind: "flare",
       title: "Flare-up",
       subtitle: "For a bad moment",
       minutes: { music: 4, voice: 4 },
-      rev: "d2",
+      rev: "d3",
       safetyExtra: "If the pain is severe, new, or different from usual, seek medical care.",
       reading: null,
     },

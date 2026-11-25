@@ -30,22 +30,21 @@ if (!OUT) {
   process.exit(2);
 }
 
-// Source files (final drafts, 22 Nov 2026 — calm-gut-build notes) → app keys.
-// rev must match courses.ts.
+// Source files → app keys. Music drafts 2 (flare-up 3), 23 Nov 2026: the music
+// 15 dB under the voice. rev must match courses.ts.
 const TRACKS = [
-  { id: "s1", rev: "d1", dir: "01-calm-belly", music: "Calm belly - session 1 (YOUR voice, with music, draft 1).m4a", voice: "Calm belly - session 1 (YOUR voice, draft 1).m4a" },
-  { id: "s2", rev: "d1", dir: "02-volume-dial", music: "Turning down the volume - session 2 (with music, draft 1).m4a", voice: "Turning down the volume - session 2 (voice only, draft 1).m4a" },
-  { id: "s3", rev: "d1", dir: "03-the-river", music: "The river - session 3 (with music, draft 1).m4a", voice: "The river - session 3 (voice only, draft 1).m4a" },
-  { id: "s4", rev: "d1", dir: "04-soft-and-spacious", music: "Soft and spacious - session 4 (with music, draft 1).m4a", voice: "Soft and spacious - session 4 (voice only, draft 1).m4a" },
-  { id: "s5", rev: "d1", dir: "05-stress-shield", music: "The stress shield - session 5 (with music, draft 1).m4a", voice: "The stress shield - session 5 (voice only, draft 1).m4a" },
-  { id: "s6", rev: "d1", dir: "06-eating-with-ease", music: "Eating with ease - session 6 (with music, draft 1).m4a", voice: "Eating with ease - session 6 (voice only, draft 1).m4a" },
-  { id: "s7", rev: "d1", dir: "07-cool-calm-chest", music: "Cool calm chest - session 7 (with music, draft 1).m4a", voice: "Cool calm chest - session 7 (voice only, draft 1).m4a" },
-  { id: "s8", rev: "d1", dir: "08-going-forward", music: "Your calm gut going forward - session 8 (with music, draft 1).m4a", voice: "Your calm gut going forward - session 8 (voice only, draft 1).m4a" },
-  { id: "daily", rev: "d1", dir: "00-daily-practice", music: "Daily practice (draft 1, with music).m4a", voice: "Daily practice (draft 1).m4a" },
-  { id: "night", rev: "d1", dir: "00b-night-practice", music: "Night practice (with music, draft 1).m4a", voice: "Night practice (voice only, draft 1).m4a" },
-  { id: "flare", rev: "d2", dir: "09-flare-up", music: "Flare-up (with music, draft 2).m4a", voice: "Flare-up (voice only, draft 2).m4a" },
-  // The short daily practice (~7 min): add its source files here once recorded;
-  // until then it goes up by hand as calm-gut/d1/daily-short-{music,voice}.m4a.
+  { id: "s1", rev: "d2", dir: "01-calm-belly", music: "Calm belly - session 1 (YOUR voice, with music, draft 2).m4a", voice: "Calm belly - session 1 (YOUR voice, draft 2).m4a" },
+  { id: "s2", rev: "d2", dir: "02-volume-dial", music: "Turning down the volume - session 2 (with music, draft 2).m4a", voice: "Turning down the volume - session 2 (voice only, draft 1).m4a" },
+  { id: "s3", rev: "d2", dir: "03-the-river", music: "The river - session 3 (with music, draft 2).m4a", voice: "The river - session 3 (voice only, draft 1).m4a" },
+  { id: "s4", rev: "d2", dir: "04-soft-and-spacious", music: "Soft and spacious - session 4 (with music, draft 2).m4a", voice: "Soft and spacious - session 4 (voice only, draft 1).m4a" },
+  { id: "s5", rev: "d2", dir: "05-stress-shield", music: "The stress shield - session 5 (with music, draft 2).m4a", voice: "The stress shield - session 5 (voice only, draft 1).m4a" },
+  { id: "s6", rev: "d2", dir: "06-eating-with-ease", music: "Eating with ease - session 6 (with music, draft 2).m4a", voice: "Eating with ease - session 6 (voice only, draft 1).m4a" },
+  { id: "s7", rev: "d2", dir: "07-cool-calm-chest", music: "Cool calm chest - session 7 (with music, draft 2).m4a", voice: "Cool calm chest - session 7 (voice only, draft 1).m4a" },
+  { id: "s8", rev: "d2", dir: "08-going-forward", music: "Your calm gut going forward - session 8 (with music, draft 2).m4a", voice: "Your calm gut going forward - session 8 (voice only, draft 1).m4a" },
+  { id: "daily", rev: "d2", dir: "00-daily-practice", music: "Daily practice (draft 2, with music).m4a", voice: "Daily practice (draft 1).m4a" },
+  { id: "night", rev: "d2", dir: "00b-night-practice", music: "Night practice (with music, draft 2).m4a", voice: "Night practice (voice only, draft 1).m4a" },
+  { id: "flare", rev: "d3", dir: "09-flare-up", music: "Flare-up (with music, draft 3).m4a", voice: "Flare-up (voice only, draft 2).m4a" },
+  { id: "daily-short", rev: "d2", dir: "00c-short-daily", music: "Short daily practice (with music, draft 2).m4a", voice: "Short daily practice (voice only, draft 1).m4a" },
   // The 8 weekly intros (the readings, voiced): voice only.
   ...[1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ id: `r${n}`, rev: "d1", dir: "10-weekly-readings", voice: `Week ${n} reading (draft 1).m4a` })),
 ];
