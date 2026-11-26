@@ -235,8 +235,19 @@ def _select_rituals(plan: dict, client: dict, max_n: int = 2) -> list[dict]:
     stages = _client_life_stages(client)
     sex = str(client.get("sex") or "").strip().lower()
 
+    # Rituals this client has said no to (client.yaml#declined_remedies, slugs).
+    # Without this the engine re-adds a ritual the coach removed, because it is
+    # append-only and only knows what is on the plan today.
+    declined_slugs = {str(x).strip().lower() for x in _as_list(client.get("declined_remedies"))}
+    declined_tokens: set[str] = set()
+    for s in declined_slugs:
+        declined_tokens |= _ident_tokens(s)
+
     scored: list[tuple[int, int, str, dict]] = []
     for r in _load_daily_rituals():
+        r_slug = str(r.get("slug") or "").strip().lower()
+        if r_slug in declined_slugs or (_ident_tokens(r_slug) & declined_tokens):
+            continue
         # ── life-stage hard gate (structured avoid_in + text fallback) ──
         avoid_in = [str(x).lower() for x in _as_list(r.get("avoid_in"))]
         if any((st in stages) or (len(st) >= 6 and st[:6] in hay_norm) for st in avoid_in):
@@ -335,6 +346,11 @@ def ensure_morning_rituals(plan: dict, client: dict, max_n: int = 2) -> list[str
 
     existing_names = [_norm(r.get("name")) for r in remedies if isinstance(r, dict)]
     existing_blob = " ".join(existing_names)
+    # A ritual already prescribed by catalogue slug (nutrition.home_remedies)
+    # is on the plan too. Without this, "Warm ghee water on waking" assigned by
+    # slug was invisible here and would be appended again as a custom remedy.
+    for hs in _as_list(nutrition.get("home_remedies")):
+        existing_blob += " " + re.sub(r"[^a-z0-9]+", " ", str(hs).lower())
     added: list[str] = []
     for r in selected:
         entry = _to_custom_remedy(r)

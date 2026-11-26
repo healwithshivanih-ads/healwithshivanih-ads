@@ -1058,6 +1058,15 @@ class Client(BaseModel):
     # client loads untouched. Read downstream as client.get("plan_modules").
     plan_modules: list[str] = Field(default_factory=list)
 
+    # Home-remedy slugs this client has said no to (e.g. "soaked-chia-water").
+    # The morning-ritual engine is append-only: it re-adds any in-scope ritual
+    # that is not on the plan, so removing a ritual from a plan is undone at the
+    # next weekly menu unless the refusal is recorded here. Read by
+    # fm-database-web/scripts/morning_rituals.py as client.get("declined_remedies").
+    # A dedicated list on purpose: foods_to_avoid is prose with negations
+    # ("curd and ghee are fine") and cannot be token-matched safely.
+    declined_remedies: list[str] = Field(default_factory=list)
+
     # ── Location / CRM ────────────────────────────────────────────────────────
     address_line1: str = ""              # street address
     address_line2: str = ""              # apartment, suite, landmark

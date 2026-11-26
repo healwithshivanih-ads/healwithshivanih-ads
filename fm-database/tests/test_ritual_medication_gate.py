@@ -132,3 +132,38 @@ def test_a_drug_token_must_not_match_the_condition_text(monkeypatch):
     assert _run(monkeypatch, _synthetic_ritual(ritual_avoid=["insulin glargine"]), client) == [
         "test-only-ritual"
     ], "a product-specific token wrongly fired on 'insulin resistance' condition text"
+
+
+# ── declined rituals + slug-assigned remedies (26 Nov 2026) ──────────────────
+# cl-906 said no to chia water. Removing it from her plan was not enough: the
+# engine is append-only and would have re-added it at the next weekly menu.
+
+
+def test_declined_remedy_is_not_offered(monkeypatch):
+    ritual = _synthetic_ritual(slug="soaked-chia-water", display_name="Soaked chia water on waking")
+    assert _run(monkeypatch, ritual, dict(_CLIENT)) == ["soaked-chia-water"]
+    declined = dict(_CLIENT, declined_remedies=["soaked-chia-water"])
+    assert _run(monkeypatch, ritual, declined) == []
+
+
+def test_declined_remedy_blocks_a_variant_of_the_same_food(monkeypatch):
+    """Declining chia water also declines a differently named chia ritual."""
+    ritual = _synthetic_ritual(slug="chia-lemon-water", display_name="Chia lemon water")
+    declined = dict(_CLIENT, declined_remedies=["soaked-chia-water"])
+    assert _run(monkeypatch, ritual, declined) == []
+
+
+def test_declining_one_remedy_leaves_others(monkeypatch):
+    declined = dict(_CLIENT, declined_remedies=["soaked-chia-water"])
+    assert _run(monkeypatch, _synthetic_ritual(), declined) == ["test-only-ritual"]
+
+
+def test_ritual_assigned_by_slug_is_not_appended_again(monkeypatch):
+    """A remedy in nutrition.home_remedies must not come back as a custom one."""
+    ritual = _synthetic_ritual(slug="warm-ghee-water", display_name="Warm ghee water on waking")
+    monkeypatch.setattr(morning_rituals, "_load_daily_rituals", lambda: [ritual])
+    plan = {"nutrition": {"home_remedies": ["warm-ghee-water"], "custom_remedies": []}}
+    assert morning_rituals.ensure_morning_rituals(plan, dict(_CLIENT)) == []
+    assert plan["nutrition"]["custom_remedies"] == []
+    bare = {"nutrition": {"home_remedies": [], "custom_remedies": []}}
+    assert morning_rituals.ensure_morning_rituals(bare, dict(_CLIENT)) == ["Warm ghee water on waking"]

@@ -7,10 +7,11 @@ aliases:
 category: ayurvedic_churan
 route: internal
 summary: >-
-  The classical Ayurvedic powder for hyperacidity — trikatu, triphala, musta,
-  vidanga, elaichi, tejpatra, lavanga and trivrit in a sugar base. Used for acid
-  reflux, sour belching and the constipation that often travels with them. It is
-  mildly laxative by design, which is part of how it is meant to work.
+  The classical Ayurvedic powder for hyperacidity, used for acid reflux, sour belching and
+  the constipation that often travels with them. It is mildly laxative by design, which is
+  part of how it is meant to work. By weight it is about half sugar and a third trivrit (a
+  purgative root), with clove next; the other spices and fruits in it are together under
+  a tenth of it. Bought ready-made, not ground at home.
 indications:
 - gerd
 - indigestion
@@ -18,9 +19,13 @@ indications:
 contraindications:
 - pregnancy — contains trivrit (a purgative) and vidanga; avoid
 - active peptic ulcer or GI bleeding — clinician first
-- diarrhoea or loose stools — the formulation is laxative and will worsen it
-- diabetes — sugar-containing base
+- diarrhoea or loose stools — a third of the powder is a purgative and it will worsen them
+- diabetes — half the powder is sugar, about 1.5 g in a 3 g dose and 3 g in a 6 g dose
 - already on a PPI or H2 blocker — this is not a substitute; any change to the drug is the clinician's call
+- hypertension or a sodium-restricted diet — contains a little salt (vida lavana), under 1% of the powder
+- long-term daily use — trivrit is a stimulant purgative; use for a few weeks and review, not as a standing laxative
+- acidity set off by chilli or other pungent food — it contains clove, black pepper, long pepper and dry ginger; start at the low dose and stop if it burns
+- on an iron tablet — the triphala in it carries tannins; the amount is small, but keep it two hours away from iron
 balances_dosha:
 - pitta
 - vata
@@ -37,21 +42,32 @@ ayurvedic_actions:
 virya: cooling
 vipaka: sweet
 preparation: >-
-  Classical powder, taken with warm water.
+  Classical powder, taken with warm water. Composition as published (132 parts in all):
+  sharkara (sugar candy) 66 parts; trivrit (Operculina turpethum root) 44 parts; lavanga
+  (clove) 11 parts; and 1 part each of shunthi (dry ginger), maricha (black pepper), pippali
+  (long pepper), haritaki, vibhitaki, amalaki, musta (nagarmotha), vidanga (vavding), ela
+  (cardamom), patra (tejpatta) and vida lavana (a salt). It cannot be reproduced from the
+  kitchen: trivrit, musta and vidanga are herbs, not spices, and trivrit is a purgative that
+  should not be measured by eye. A home blend of the kitchen spices alone is a warming
+  digestive powder, not this formulation. Buy a sealed pack from an established maker.
 typical_dose: >-
-  1/2 to 1 tsp once or twice a day with warm water. Follow the pack or the practitioner's direction.
+  3 to 6 g a day with warm water: about 1 level teaspoon once a day to start, up to twice a
+  day. Follow the pack or the practitioner's direction.
 duration: >-
   A few weeks at a time, reviewed — not indefinitely.
 timing_notes: >-
-  Traditionally before food or at bedtime.
+  Traditionally before food or at bedtime. Keep it two hours away from an iron tablet.
 linked_to_topics:
 - gerd
 - constipation
 sources:
 - id: ayurvedic-formulary-of-india
   location: Avipattikar Churna — AFI Part I, Churna Prakarana (classical formulation; volume/page not pinned)
+- id: gyawali-2013-jcdr-avipattikar-churna-rats
+  location: Introduction (composition and dose) and Results; PMC3708215
+  quote: All the components are present in 1 part except Lavanga, Trivrit and Sugar candy
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-09-21'
+updated_at: '2026-11-26'
 updated_by: Shivani
