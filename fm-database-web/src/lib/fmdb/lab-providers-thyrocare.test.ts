@@ -95,11 +95,11 @@ describe("real thyrocare.yaml", () => {
     expect(thyro.pretestInstructions.length).toBeGreaterThan(0);
   });
 
-  it("is bookable at Thyrocare list price, and every price leaves us a margin", () => {
+  it("is bookable at Thyrocare list price + 10% on packages, and every price leaves us a margin", () => {
     expect(hasBookablePanel(thyro)).toBe(true);
     expect(thyro.profiles.map((p) => p.id)).toEqual([1, 2, 3, 4]);
     const base = thyro.profiles.find((p) => p.id === 1)!;
-    expect(base.mrpInr).toBe(7079); // F Pro ₹6,999 + fasting glucose ₹80
+    expect(base.mrpInr).toBe(7787); // (F Pro ₹6,999 + fasting glucose ₹80) + 10% for transaction charges
     const r = priceSelection(thyro, { profileId: 1 });
     expect(r.ok).toBe(true);
     for (const prof of thyro.profiles) {

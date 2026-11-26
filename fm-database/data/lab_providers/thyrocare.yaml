@@ -5,9 +5,13 @@
 # against a real F Pro report (17 Nov 2026).
 #
 # PRICES (read from the ThyroNXT partner portal, 18 Nov 2026):
-#   client pays Thyrocare's LIST price ("Test Price" in ThyroNXT) — coach's call;
 #   our_cost_inr = list price − ThyroNXT "Incentive" (what we keep).
 #   Profiles are summed from their parts (F Pro + FBS + hormone tests/bundles).
+#   PACKAGES (profiles_final): client pays Thyrocare's LIST price + 10% for
+#   transaction charges, rounded to the rupee (coach's call, 26 Nov 2026).
+#   mrp_inr already holds the +10% figure; the list price is in the comment
+#   beside it. A re-read of ThyroNXT must re-apply the 10%.
+#   ADD-ONS: client pays the list price ("Test Price" in ThyroNXT), no 10%.
 #   Re-read ThyroNXT when Thyrocare changes its rates; a profile missing
 #   our_cost_inr or mrp_inr is unbookable (lab-providers.ts fails closed).
 #
@@ -54,8 +58,8 @@ profiles_final:
     name: "Aarogyam F Pro + fasting glucose"
     audience: everyone
     our_cost_inr: 4959
-    mrp_inr: 7079
-    margin_inr: 2120
+    mrp_inr: 7787   # Thyrocare list 7079 + 10%
+    margin_inr: 2828
     catalogue_inr: null
     includes:
       - "Thyroid — TSH, free T3 & free T4"
@@ -74,8 +78,8 @@ profiles_final:
     name: "Women's Reproductive"
     audience: "women <45"
     our_cost_inr: 13858
-    mrp_inr: 20023
-    margin_inr: 6165
+    mrp_inr: 22025   # Thyrocare list 20023 + 10%
+    margin_inr: 8167
     catalogue_inr: null
     # = F Pro + FBS + Steroid Profile + FSH + LH + AMH + prolactin + free T + SHBG + Autoimmune Thyroid panel
     includes_extra:
@@ -88,8 +92,8 @@ profiles_final:
     name: "Perimenopause"
     audience: "women 40+"
     our_cost_inr: 10613
-    mrp_inr: 15498
-    margin_inr: 4885
+    mrp_inr: 17048   # Thyrocare list 15498 + 10%
+    margin_inr: 6435
     catalogue_inr: null
     # = F Pro + FBS + Steroid Profile + FSH + LH + SHBG + Autoimmune Thyroid panel
     includes_extra:
@@ -101,8 +105,8 @@ profiles_final:
     name: "Male"
     audience: men
     our_cost_inr: 12858
-    mrp_inr: 18478
-    margin_inr: 5620
+    mrp_inr: 20326   # Thyrocare list 18478 + 10%
+    margin_inr: 7468
     catalogue_inr: null
     # = F Pro + FBS + Steroid Profile + free T + SHBG + LH + FSH + prolactin + PSA + Autoimmune Thyroid panel
     includes_extra:
